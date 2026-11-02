@@ -201,6 +201,8 @@ _ALIASED_LOADERS = (
     ("wishlist", "owned_index", None),
     # BS11-41: the gallery's pool-first synergy tags (a non-blank-only name index).
     ("build_gallery", "load_pool_tags", None),
+    # Builder batch 2b: the printing an ownership correction names (pool + library rows).
+    ("builder", "_printings", None),
 )
 
 

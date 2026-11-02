@@ -493,3 +493,19 @@ class TestBrawlFormatAwareness:
         assert "does not rotate" in out
         rc, out = _run(["scripts/deck.py", "rotation", self._as_format(tmp_path, "Standard")])
         assert rc == 0 and "does not rotate" not in out
+
+
+class TestBuilderSubcommands:
+    """Every `builder.py` subcommand's own help renders (the script-level --help is already
+    covered by TestScriptEntryPoints). The list is read from the parser, so a new subcommand
+    is checked without editing this test."""
+
+    def test_every_builder_subcommand_help_renders(self):
+        rc, out = _run(["scripts/builder.py", "--help"])
+        assert rc == 0 and "usage: builder.py" in out, out
+        import re as _re
+        subs = _re.search(r"\{([a-z,-]+)\}", out).group(1).split(",")
+        assert {"new", "add", "place", "reason", "check", "picks", "derive"} <= set(subs)
+        results = _run_all([(s, ["scripts/builder.py", s, "--help"]) for s in subs])
+        bad = {s: o.strip()[:80] for s, (rc, o) in results.items() if rc != 0 or "usage:" not in o}
+        assert not bad, bad

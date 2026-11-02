@@ -8,6 +8,7 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Abomination of Llanowar
 Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
@@ -30,10 +31,12 @@ Antiquities on the Loose
 Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Archangel of Tithes
+Archive Trap
 Armament Dragon
 Army of the Damned
 Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
+Ashiok, Nightmare Weaver
 Ashroot Animist
 Aurelia, the Warleader
 Aurora Awakener
@@ -62,6 +65,7 @@ Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
 Brass's Bounty
+Breach the Multiverse
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
@@ -108,6 +112,7 @@ Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
+Dictate of Kruphix
 Diligent Zookeeper
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
@@ -147,6 +152,7 @@ Eternal Skylord
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
+Fauna Shaman
 Fear of Isolation
 Fearsome Goblin Pair
 Felonious Rage
@@ -163,6 +169,7 @@ Foggy Swamp Visions
 Fortune, Loyal Steed
 Frantic Confrontation
 Frantic Strength
+Fraying Sanity
 Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
@@ -181,6 +188,7 @@ Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
+Glimpse the Unthinkable
 Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
@@ -195,6 +203,7 @@ Guidelight Matrix
 Guiding Hydra
 Hama, the Bloodbender
 Hammerhead, Maggia Boss
+Harald, King of Skemfar
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
@@ -234,8 +243,11 @@ Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
+Jin-Gitaxias, Core Augur
 Joo Dee, One of Many
 K'un-Lun Warrior
+Kagha, Shadow Archdruid
+Kamahl's Druidic Vow
 Kang the Conqueror
 Kastral, the Windcrested
 Katara, Water Tribe's Hope
@@ -258,6 +270,7 @@ Large Bear
 Lazotep Chancellor
 Leader, Super-Genius
 Leonardo, Big Brother
+Leovold, Emissary of Trest
 Leyline of Mutation
 Leyline of Transformation
 Lifecraft Engine
@@ -267,6 +280,7 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
+Maddening Cacophony
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge
@@ -306,6 +320,7 @@ Nighthowl Pursuer
 Nightwhorl Hermit
 Niko, Light of Hope
 Ninja of the Hand
+Notion Thief
 Nyxbloom Ancient
 Oath of Teferi
 Oglor, Devoted Assistant
@@ -396,6 +411,7 @@ Song of Stupefaction
 Soul Diviner
 Souls of the Lost
 Sozin's Comet
+Sphinx Mindbreaker
 Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Man, Web-Spinner
@@ -424,6 +440,7 @@ Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
+Tasha's Hideous Laughter
 Team Tactics
 Tenured Tethermage
 Terrapact Intimidator
@@ -459,6 +476,7 @@ Toph, the Blind Bandit
 Toph, the First Metalbender
 Topiary Lecturer
 Torbran, Thane of Red Fell
+Traumatize
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
@@ -483,6 +501,7 @@ Virus Beetle
 Vision Quest
 Vito's Inquisitor
 Vizier of the Scorpion
+Voice of the Woods
 Voyager Glidecar
 Vulture, Scheming Scavenger
 War Balloon

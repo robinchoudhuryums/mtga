@@ -15,6 +15,28 @@ quality` is the regression guard, `deck.py preflight` is the gate. Read CLAUDE.m
 Common Gotchas first (the swap gotcha especially: grade every cut from FULL
 oracle text against THIS deck's engine, never a role/fit label).
 
+## Stage 0 — Input from a Builder page (if the swaps came from one)
+
+The owner may paste a Builder page's **Your picks → Copy as text** block instead of a swap
+list (or ask you to read the claude.ai board's `picks` collection). Turn it into checked
+commands first — never apply the block's lines by eye:
+
+`python3 scripts/builder.py picks <slug> -` (paste on stdin) prints, per deck:
+- `deck.py swap <id> --package "CUT=ADD" …` with only the pairs whose cut is in the deck
+  and whose add is not, and a `skipped:` line naming every other pair and why;
+- `protect` / `unprotect` lines checked against the deck's `#: protect:` header — a header
+  edit, made by script, not a swap;
+- an ownership block (`reconcile_crafts --set-exact` lines) — that is an **/ingest** batch,
+  run there as a dry run first, never from this skill;
+- `builder.py hidden …` commands for roles the owner says the tools miss — run them; they
+  change only the project, never a count.
+
+Preview the package (`deck.py swap <id> --package …`), confirm with the owner, then run the
+stages below per swap. Adds with no cut chosen are a question for the owner, not a guess.
+After the commit, re-render the board (`builder.py render <slug> --target artifact --out
+.cycle/board-<slug>`) and republish, so the applied picks fold away; the Pages copy
+rebuilds on merge.
+
 ## Stage 1 — Snapshot quality BEFORE the change (F10 guard baseline)
 
 1. `python3 scripts/deck.py quality <id> --json > /tmp/quality-<id>-before.json`

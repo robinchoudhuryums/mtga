@@ -172,7 +172,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 86 / B 41 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 66% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 88 / B 41 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 67% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -738,7 +738,7 @@ is protecting.
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
   `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**97 of 130 decks**). BOARD-dependent
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**99 of 132 decks**). BOARD-dependent
   colour (Vivid) and creature-GRANTED mana are labelled since 2026-10-06, as is a permanent making EVERY land any colour
   (`land_rainbow_enablers`) and firebending (`combat-only`), both 2026-10-25. IDENTITY is a
   fallback ONLY for a text printing no mana ability (Duskmantle's U/B is an activation COST).
@@ -1034,9 +1034,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **67 decks that print an effective figure** the unpriced count
+  axis, not 1**: across the **68 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 11, so a floor of 1 fires on 83% (the G-07
-  saturation shape) against **23 of 67 (34%)** at 3. BOTH figures are registered in
+  saturation shape) against **24 of 68 (35%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined. [G-85]
 - **BOARD PRESENCE IS AN AXIS AND NOTHING HERE MEASURED IT until 2026-09-18.** The tier
   floor reads interaction + card advantage, `cuts` reads theme fit and role credit, and
@@ -1051,8 +1051,8 @@ is protecting.
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **75 of 130 decks** hold one,
-  so a bare sum would under-report on 60% of the roster; TOKENS and other created bodies
+  and never coerced to 0 (G-16), which is no corner case — **77 of 132 decks** hold one,
+  so a bare sum would under-report on 58% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
   present, never a ceiling. [G-86]
@@ -1427,6 +1427,25 @@ is protecting.
   files while a suite runs** (the guard fails it, correctly); if it fires, `git checkout
   -- <file>`, delete the new `.bak`, and give the offending test a path fixture. [G-88]
 
+- **A BUILDER PAGE IS TEMPLATE + DATA, AND THE REASON IS THE ONLY THING STORED.** A pile
+  graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
+  reasons) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
+  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts`
+  ranks are DERIVED at render from the deck model. The first board typed those figures into
+  the page and they went stale at the first swap. **A reason is graded against a deck
+  VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
+  line name it once a deck changes — re-read it, do not re-stamp it blindly. **The
+  theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
+  rates removal tangential. **The page edits nothing**: a pick is a request that
+  `builder.py picks` turns into checked `swap --package` / protect / `/ingest` lines for
+  `/apply-changes`, and hidden roles sit beside the counted figures, never in the floor
+  (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
+  regenerated. An artifact version holds at most **511 files**, so the claude.ai board
+  ships one thumbnail sprite plus a 672 px image per card (~500 cards); Pages hot-links
+  Scryfall. **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
+  frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
+  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -1705,8 +1724,9 @@ earned it: [C-01]
   (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
-  scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (33 test files + conftest: the markup-contract, CLI-entry-point and
+  scripts/app.py, templates/, Makefile, scripts/builder.py + scripts/builder_template.html
+  + builds/ (the Builder, G-89) [C-06]
+- Testing: tests/ (35 test files + conftest: the markup-contract, CLI-entry-point and
   command-output, analysis-model, gate-pinning, shared-primitive and ingest layers, the
   2026-08 ingest-writer / sync-guard / resilience-layer / CLI-filter coverage of the
   formerly untested scripts, plus test_check_all.py, the gate runner's own mutation layer;
@@ -1716,7 +1736,7 @@ earned it: [C-01]
   mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
   watched-it-fail layer for the seven gates that had none — so all thirteen model-sanity
   gates now have one; and test_dashboard_js.py, the CROSS-LANGUAGE layer running the dashboard's JS
-  matcher under Node against `match_paste`); and test_tempo_sim.py, the `consistency --tempo` land-drop simulation (enter clauses on real text, closed-form agreement), requirements-dev.txt + requirements-app.txt
+  matcher under Node against `match_paste`); and test_tempo_sim.py, the `consistency --tempo` land-drop simulation (enter clauses on real text, closed-form agreement), and test_builder.py + test_builder_template.py, the Builder's data model, render/site and the page's own JS under Node against the deck model, requirements-dev.txt + requirements-app.txt
   (CI installs BOTH, and sets PYTEST_NO_SKIPS so a skip FAILS, at collection too since BS8-07 — installing only -dev
   silently skipped the editor's six write-safety pins on every run),
   pytest.ini, .github/workflows/tests.yml, + test_templates.py's TOKEN gate (a GENERATED
@@ -1979,11 +1999,26 @@ format.
     falls back to the published `collection.json`). The match logic is pinned under Node
     (`test_dashboard_js.py`); what needs a person is the controls and the phone layout.
 
+25. Builder pages on Pages | Subsystem: Presentation & Interface
+    Steps: open the deployed dashboard; follow the ⚒ header link and the Builder section's
+    project card; on the project page switch theme (`t`), collapse the card pane (`p`) and
+    hover a row; open Compare, select a pile card and press ⇄ on a deck card; mark one
+    ownership correction and one "counts as interaction"; press `u`; open Your picks and
+    Copy as text; repeat at 390×844 and keyboard-only.
+    Expected: card images load (hot-linked from Scryfall); ← Dashboard returns; the theme
+    matches the dashboard's; the curve and conflict box update; undo reverses the last
+    change; the copied block holds `swap --package`, ownership and hidden-role lines that
+    `python3 scripts/builder.py picks <slug> -` reads back; no sideways body scroll on a phone.
+    The Pages job refuses a listed project page with no data island, but how the page
+    looks and feels is perceptual and unverified.
+
 **Frozen Subsystems:** none.
 
 **Deploy Command:**
 Presentation: `.github/workflows/pages.yml` — rebuilds `build_dashboard.py` offline and
-publishes `dashboard.html` to GitHub Pages on every push to `main`.
+publishes `dashboard.html` to GitHub Pages on every push to `main`; the same job builds the
+Builder pages (`builder.py site --out _site`) and refuses a missing picker or a data-less
+project page.
 
 Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the roster **dashboard**, and since 2026-08-24 the workflow
@@ -2174,7 +2209,8 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   ASKED to which skill answers it**. Its five task sections are named for the five things
   Robin does — *Ingest new cards* (`/ingest`), *Build a new deck* (`/draft-deck`),
   *Refine a deck* (`/tune-deck` → `/apply-changes`), *Prioritize crafts*
-  (`/add-wishlist`), *Log matches* (`/log-matches`, §5b) — each with the real command path, per-command costs, and every
+  (`/add-wishlist`), *Log matches* (`/log-matches`, §5b), plus §5c *Work a pile on a page*
+  (the Builder, G-89) — each with the real command path, per-command costs, and every
   **reconciliation point** where a human must settle two answers, plus the
   overlapping-answer inventory with measured agreement.
   **Open it whenever a request names a deck task in the user's own words** ("refine

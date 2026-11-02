@@ -23,7 +23,19 @@ The heading used to read "THE 2026-08-24 SESSION" while the stamps under it ran 
 2026-10-01 (BS11-65). The NEWEST stamp is always the first one; each supersedes the
 stamps below it where they disagree.
 
-> **STATE STAMP, 2026-10-09 (NEWEST — supersedes the 2026-10-08 stamp where they disagree).**
+> **STATE STAMP, 2026-11-02 (NEWEST — supersedes the stamps below where they disagree).**
+> **The Builder is complete** (G-89; blocks `builder-batch1…4-broad-implement.md` and
+> `builder-printings-broad-implement.md`): `scripts/builder.py` + `scripts/builder_template.html`
+> keep a graded pile as `builds/<slug>/build.json` and render it as a claude.ai board
+> (`render --target artifact`) or GitHub Pages pages (`site`, run by `pages.yml`). The one live
+> project is `builds/sultai` (426 cards, decks 75-historic-brawl Thranduil and 96 Glarb), published
+> at https://claude.ai/artifact/RfDuwKXX3WmTHYcUrLTgAR from `.cycle/board/`. **Open:** the owner's
+> picks on that board have not been read back yet — read the artifact's `picks` collection (or ask
+> for Copy as text), run `builder.py picks sultai -`, then `/apply-changes`. After any swap to
+> either deck, re-render (`builder.py render sultai --target artifact --out .cycle/board`) and
+> republish. `.cycle/sultai-pile-analysis.md` is still live until those swaps land.
+>
+> **STATE STAMP, 2026-10-09 (superseded by the 2026-11-02 stamp above where they disagree).**
 > PR #204 merged: decks 12 / 18 / 22 / 32 / 34 / 40 tuned, plus two Card-advantage pattern
 > fixes (typed cast-from-top, multi-chapter Saga draws — 14 decks +1/+2, 0 floors moved; block
 > `2026-10-34-tune-tool-gaps-broad-implement.md`). **Deck 34 (Zoologist) owner decisions still

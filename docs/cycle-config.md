@@ -326,6 +326,17 @@ scrolls. Both editor pages carry a `<main>` landmark and a `:focus-visible` rule
 wherever they style `:hover`. **Auditing the SIBLING templates is what found this** —
 the pip fix named one file, and the same bug was sitting two files over.
 
+**The Builder (2026-11-01/02, G-89)** — `scripts/builder.py`, `scripts/builder_template.html`
+and `builds/<slug>/` (`build.json` hand-made content; `images.json` and `printings.json`
+committed caches so the offline Pages job needs no network). One template, two targets:
+`render --target artifact` writes a claude.ai board (`.cycle/board*/`, images as a thumbnail
+sprite plus 672 px files and art sheets — an artifact version holds at most 511 files), and
+`site --out _site` writes `builder.html` + `builds/<slug>.html` for Pages, hot-linking
+Scryfall. The dashboard's ⚒ header link and Builder section point at them. Picks stay in the
+browser (or the artifact's store) and leave only as a copied block `builder.py picks` checks.
+Pinned by `tests/test_builder.py` and `tests/test_builder_template.py` (the page's own JS run
+under Node against the deck model); the perceptual half is Regression Scenario 25.
+
 
 ## [C-07] Subsystem: Testing
 
@@ -358,10 +369,11 @@ cards or stale figures); stats reports the protection axis and flags a ZERO; red
 
 **Deploy Command:**
 Presentation: `.github/workflows/pages.yml` — rebuilds `build_dashboard.py` offline and
-publishes `dashboard.html` to GitHub Pages on every push to `main`.
+publishes `dashboard.html` to GitHub Pages on every push to `main`; since 2026-11-02 the same
+job runs `builder.py site --out _site` (the Builder's `builder.html` + `builds/<slug>.html`).
 
 Data + local tooling ship by commit/push (no build/release step). The
-one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml` rebuilds
+main deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to **GitHub Pages on every push to `main`**
 (no manual step). Everything else is read/run locally. The generated page is a themed
 (dark/light) self-contained view: the BUILD stays offline (embedded data, system fonts,
@@ -370,6 +382,12 @@ images and a ⟳ live re-sync from the Pages URL — always falling back to the 
 snapshot. `build_dashboard.py` restyles are **template-only**: the data pipeline
 (`collect`/`deck_viz`/`craft_rows` → the `#data` island) is the source of truth and must
 stay untouched by any restyle (the payload shape is what `deck.py`/`wishlist.py` produce).
+
+**The Builder pages ride the same job (2026-11-02).** `builder.py site` renders every
+`builds/*` project offline; a project that fails is left out of the picker and annotated
+(`::warning title=Builder build::`), never blocking the dashboard. The verify step refuses a
+missing `builder.html` (the dashboard links to it) and any LISTED project page under 1 KB or
+without its `#data` island.
 
 **What a green deploy can still hide, and how it now says so (BS11-50).** The build refuses
 success only when half or more decks degrade; below that it publishes and prints `WARN:`

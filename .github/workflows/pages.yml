@@ -54,6 +54,17 @@ jobs:
           cat build.err >&2
           grep '^WARN' build.err | sed 's/^WARN:* */::warning title=Dashboard build::/' || true
           exit $rc
+      # The Builder: every builds/<slug>/build.json as its own page (builds/<slug>.html,
+      # data inline, card images hot-linked from Scryfall) plus builder.html, the picker
+      # the dashboard links to. Offline, like the dashboard: image URLs come from each
+      # build's committed images.json. A project that fails to render is left out of the
+      # picker and annotated — it never blocks the dashboard; the verify step below still
+      # refuses a LISTED page that is broken, or a missing picker.
+      - name: Build the Builder pages (offline, from builds/)
+        run: |
+          python3 scripts/builder.py site --out _site 2> builder.err || echo "builder site exited $?"
+          cat builder.err >&2
+          grep '^WARN' builder.err | sed 's/^WARN:* */::warning title=Builder build::/' || true
       # Look at the artifact before publishing it. The build writes through
       # `lib.atomic_write`, so a CRASH fails the step above rather than leaving a partial
       # file — the reachable case is a build that SUCCEEDS with degraded content (an empty
@@ -86,6 +97,25 @@ jobs:
           if ncards < 1:
               sys.exit("Refusing to deploy: _site/collection.json holds no cards")
           print(f"OK: collection.json holds {ncards} cards")
+          # The Builder: the picker the dashboard links to, and every page it lists —
+          # each must be non-trivial and carry its data island, or the link is a dead end.
+          import os
+          if not os.path.exists("_site/builder.html"):
+              sys.exit("Refusing to deploy: _site/builder.html is missing (the dashboard links to it)")
+          try:
+              projects = json.load(open("_site/builds/index.json", encoding="utf-8"))["projects"]
+          except Exception as e:
+              sys.exit(f"Refusing to deploy: _site/builds/index.json unreadable ({e})")
+          for p in projects:
+              page = open(os.path.join("_site", p["page"]), encoding="utf-8").read()
+              ok = len(page) > 1024 and 'id="data"' in page
+              if not ok:
+                  sys.exit(f"Refusing to deploy: builder page {p['page']} is {len(page)} bytes "
+                           f"or has no data island")
+          print(f"OK: builder.html + {len(projects)} project page(s)")
+          if not projects and os.path.isdir("builds") and any(
+                  os.path.exists(os.path.join("builds", d, "build.json")) for d in os.listdir("builds")):
+              print("::warning title=Builder::builds/ holds projects but none rendered — see the Builder build step")
           # Degraded panels publish by design below the majority threshold; say how
           # many, so a green deploy cannot hide them (BS11-50).
           n = blob.count("[analysis error")

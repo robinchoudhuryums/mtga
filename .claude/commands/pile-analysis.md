@@ -57,7 +57,15 @@ PY
 ```
 
 Then create `.cycle/<pile-name>-analysis.md` with the skeleton in **Stage 5**, marked
-`TEMPORARY`, and **commit it before batch 1**. The commit is the point: a doc that only
+`TEMPORARY`, and **start the Builder project beside it** — the page the owner reviews the
+pile on (G-89):
+
+```
+python3 scripts/builder.py new <slug> --decks <id> [<id> …] [--keys K …] --title "<pile name>"
+python3 scripts/builder.py add <slug> --file <scratchpad>/pile-remaining.txt
+```
+
+Commit both **before batch 1**. The commit is the point: a doc that only
 exists in chat does not survive compaction, and this process reliably outlives one
 context window.
 
@@ -175,6 +183,14 @@ Add the batch's verdict table, fold anything new into the standing error list an
 cross-batch observations, and **re-rank the consolidated plan** — it is a live answer, not
 an append-only log.
 
+**Record the batch in the Builder project too**, in the same commit: for each card graded,
+`python3 scripts/builder.py place <slug> "<card>" <pile key>` and
+`python3 scripts/builder.py reason <slug> "<card>" --group "<group>" --text "<why>"`. The
+reason is the one thing the project stores by hand — everything else on the page is derived
+from the deck files when it is rendered — and it records the deck lists it was graded
+against, so `builder.py check <slug>` names it once a deck changes. Write it for a reader
+who has the card text beside it: the deck-specific reason, not a restatement of the card.
+
 Then commit. Per batch, not per session. This is the whole reason the process survives.
 
 ## Stage 4 — When a number looks wrong, suspect the tooling (G-67)
@@ -217,6 +233,11 @@ deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ a
 
 Legend for the verdict tables: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
 
+**The doc and the Builder project hold different things.** The doc holds the framework, the
+error list and the plan; the project holds each card's pile and reason, and the page renders
+them beside live deck figures. Do not copy verdict tables into reasons, or reasons into the
+doc — each has one home.
+
 **The consolidated plan is the deliverable.** A verdict table is raw material; a tiered
 add list, each add's cut candidates, and the reason each is cuttable is the thing the user
 acts on. Include a **protect list** — `cuts` ranks on theme fit and role credit, so a
@@ -230,6 +251,34 @@ the ranking cannot see it.
 2. Applying is `/apply-changes`; drafting a variant the pile surfaced is `/draft-deck`.
 3. Once the swaps land, fold the durable findings into the deck files' `#: notes:` and
    **delete the working doc** — a temporary file left behind reads as live guidance.
+4. **Show the pile on a page.** Confirm the project first —
+   `python3 scripts/builder.py check <slug>` (every card resolves, sits on a pile, and has a
+   reason or is already in a deck) — then pick the surface:
+   - **claude.ai board** (picks shared with Claude through the artifact's store):
+     `python3 scripts/builder.py render <slug> --target artifact --out .cycle/board-<slug>`
+     and publish `.cycle/board-<slug>/index.html` with the Artifact tool, sending
+     `img/thumbs.jpg` and `img/lg/*.jpg` as files (`root` = that directory). An artifact
+     version holds at most 511 files and one publish at most 255 files / 64 MB, so split the
+     large images across publishes. After any deck change, re-render and republish the page
+     (only new cards need their images sent). Give the owner the link.
+   - **GitHub Pages**: nothing to run — the Pages job builds every project on the next merge
+     to `main` (`builder.py site`), and the dashboard's Builder section links to it.
+5. **Read the owner's picks.** On the claude.ai board, read the `picks` collection with the
+   ArtifactData tool (doc id = card-name slug; `picks` ⊂ add<KEY> / cut<KEY> / prot<KEY> /
+   unprot<KEY> / bench / out, plus `pair`, `note`, `own`, `hid`); on Pages, ask the owner for
+   **Your picks → Copy as text**. Either way, `python3 scripts/builder.py picks <slug> -`
+   turns a copied block into checked `swap --package` lines — hand those to
+   `/apply-changes`. A pick is a REQUEST: nothing on the page edits a deck file.
+6. **Process Add-cards requests** (claude.ai board only, and only when the owner says so):
+   read the `requests` collection; for each `status: pending` doc —
+   - `python3 scripts/builder.py add <slug> "<name>" … --pile <dest>` when `dest` is a pile
+     key (a name not on Arena is refused before anything is written — reply with that);
+     for `auto`, grade the cards (Stage 2's full-text pull) and `place` each;
+   - write each card's `reason`, grading it exactly like a batch card;
+   - an `add<KEY>` dest means the owner wants it IN that deck: propose the swap with a cut,
+     never apply it from here;
+   - re-render, republish (the new cards' images too), then set the request doc's
+     `status: "done"` and a one-line `reply` with ArtifactData.
 
 Every commit this skill makes carries the shared verify + commit tail in
 `docs/verify-commit-tail.md` — `check_all.py` first, the session's own trailer, no model

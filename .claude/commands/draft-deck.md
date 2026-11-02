@@ -103,6 +103,16 @@ Stage 5** — grade it from the floor, don't guess.
    a human competitive judgment). Add a rationale; mark PROVISIONAL if it's a WIP brew.
 
 ## Stage 6 — Verify & commit
+**If the deck was drafted from a pile that has a Builder project** (`/pile-analysis` keeps
+one; `python3 scripts/builder.py check <slug>` lists it), add the new deck to it so the page
+grades the pile against this list too:
+`python3 scripts/builder.py add-deck <slug> NN [--key K] [--label L]`, then `place` each
+card the draft used or rejected on the right pile and write its `reason` (Stage 5's screen
+verdicts are the raw material). **If there is no project**, keep the bench as one:
+`python3 scripts/builder.py new <slug> --decks NN`, `add` the cards Stage 5 rejected with a
+reason each — that is the list a later tune reaches for. Either way the page is rendered and
+published per `/pile-analysis` Stage 6 (claude.ai board), or by the Pages job on merge.
+
 Ownership intent: a from-scratch deck is normally ASPIRATIONAL — leave it a WIP so
 `check` shows the craft targets; do NOT reconcile the catalog from it (that's for a
 deck you've actually built and own). If the library didn't change, no gallery rebuild

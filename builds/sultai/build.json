@@ -1,0 +1,4521 @@
+{
+ "schema": 1,
+ "title": "Sultai pile",
+ "decks": [
+  {
+   "key": "T",
+   "id": "75-historic-brawl",
+   "label": "Thranduil"
+  },
+  {
+   "key": "G",
+   "id": "96",
+   "label": "Glarb"
+  }
+ ],
+ "piles": [
+  {
+   "key": "T",
+   "label": "Thranduil's pile",
+   "deck": "T",
+   "intro": "Cards that fit Thranduil's Elves-and-graveyard deck better. Thranduil borrows the activated abilities of Elf cards in your graveyard and loots whenever a legendary Elf enters, so a non-Elf card has to beat an Elf for its slot."
+  },
+  {
+   "key": "G",
+   "label": "Glarb's pile",
+   "deck": "G",
+   "intro": "Cards that fit Glarb's draw-to-mill deck better. Every draw mills the opponent, Bruvac and The Water Crystal multiply it, and Glarb casts mana value 4+ straight off the top."
+  },
+  {
+   "key": "B",
+   "label": "Either deck",
+   "deck": null,
+   "intro": "Cards that work in both decks: shared removal, ramp and fixing, scry Elves, planeswalkers. Copies are shared in Arena, so one card can sit in both lists."
+  },
+  {
+   "key": "N",
+   "label": "Fits neither",
+   "deck": null,
+   "intro": "Cards that fit neither deck, each with the reason. Listed so nothing is silently dropped."
+  }
+ ],
+ "groups": {
+  "A": "Swap candidate",
+  "B": "Exiles your own graveyard (G-42)",
+  "C": "Weaker leave-graveyard payoff",
+  "D": "Non-Elf graveyard body",
+  "E": "Non-Elf looter",
+  "F": "Legendary Elf, trigger only",
+  "G": "Plan mismatch"
+ },
+ "cards": [
+  {
+   "name": "Thranduil, the Elvenking",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Legolas, Counter of Kills",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Tam, Observant Sequencer // Deep Sight",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Thranduil, Sindarin Liege",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Elrond, Master of Healing",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Ezuri, Stalker of Spheres",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Jyoti, Moag Ancient",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Kiora, the Crashing Wave",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Nael, Avizoa Aeronaut",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Rashmi, Eternities Crafter",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Imoti, Celebrant of Bounty",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Kruphix, God of Horizons",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Roalesk, Apex Hybrid",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Tamiyo, Compleated Sage",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Tawnos, the Toymaker",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Oko, the Trickster",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Bonny Pall, Clearcutter",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Omega, Heartless Evolution",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Tishana, Voice of Thunder",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Glarb, Calamity's Augur",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Kotis, Sibsig Champion",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Leovold, Emissary of Trest",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Nashi, Moon's Legacy",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Nashi, Illusion Gadgeteer",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Kotis, the Fangkeeper",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Sidisi, Brood Tyrant",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Teval, the Balanced Scale",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Gonti, Canny Acquisitor",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Brokkos, Apex of Forever",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Oasis of Renewal",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Maralen, Fae Ascendant",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Yarok, the Desecrated",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Sin, Spira's Punishment",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Muldrotha, the Gravetide",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Mimeoplasm, Revered One",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Glamdring, Foe-hammer // Gleam of Death",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Fblthp, Impossibly Lost",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Goldberry, River-Daughter",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Jace Reawakened",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Katara, Waterbending Master",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Marit Lage's Slumber",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Mystic Reflection",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Malcolm, Alluring Scoundrel",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Naban, Dean of Iteration",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Proft, Consulting Detective",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Proft's Eidetic Memory",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "The Key to the Vault",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Vnwxt, Verbose Host",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Arni, Humble Scribe",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Chandra, Chill of Compliance",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Callaphe, Beloved of the Sea",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Elrond, Lord of Rivendell",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Elrond, Moon-Reader",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Fblthp, Lost on the Range",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Geralf, the Fleshwright",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Graviton, Fundamental Force",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Impossible Man",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Invasion of Segovia // Caetus, Sea Tyrant of Segovia",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Ioreth of the Healing House",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Irma, Part-Time Mutant",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Katara, Bending Prodigy",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Kefnet the Mindful",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Kira, Great Glass-Spinner",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Lulu, Stern Guardian",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Matoya, Archon Elder",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Lyra, Tolarian Archangel",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Mindlink Mech",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Mu Yanling, Sky Dancer",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Princess Yue",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Tome of the Infinite",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Unctus, Grand Metatect",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Wasp, Shrinking Savior",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Alora, Rogue Companion",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Arwen's Gift",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Charix, the Raging Isle",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Gale, Conduit of the Arcane",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "God-Eternal Kefnet",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Gandalf, Friend of the Shire",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Irenicus's Vile Duplication",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Jace, the Perfected Mind",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Jace, Wielder of Mysteries",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Leader, Super-Genius",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Multiversal Recruitment",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Orvar, the All-Form",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Taeko, the Patient Avalanche",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Tezzeret, Betrayer of Flesh",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "The Clone Saga",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "The Water Crystal",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "The Theorist, Jace Beleren",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Tui and La, Moon and Ocean",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Urza, Lord High Artificer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Vesuvan Duplimancy",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Yue, the Moon Spirit",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Iymrith, Desert Doom",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Jace, Memory Adept",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Jace, Unraveler of Secrets",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Krang, the All-Powerful",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Pharaoh Rama-Tut",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Syr Elenora, the Discerning",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Teferi, Temporal Pilgrim",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Thryx, the Sudden Storm",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Victor Timely, Wily Tycoon",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Jace, Arcane Strategist",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Kitsune, Dragon's Daughter",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Pol Jamaar, Illusionist",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Reed Richards, Smartest Man",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Ruric Thar, Biomagus",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Zahid, Djinn of the Lamp",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Jin-Gitaxias, Progress Tyrant",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Jadzi, Oracle of Arcavios // Journey to the Oracle",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Jin-Gitaxias, Core Augur",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "The Magic Mirror",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Wan Shi Tong, Librarian",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Gadwick, the Wizened",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Aphelia, Viper Whisperer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Reezug, the Bonecobbler",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Splinter, the Mentor",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Azula, Ruthless Firebender",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Gix, Yawgmoth Praetor",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Isareth the Awakener",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Kaervek, the Punisher",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Tatsunari, Toad Rider",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Yahenni, Undying Partisan",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Davriel, Soul Broker",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Doctor Doom, Unrivaled",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Erebos, God of the Dead",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Gisa, Glorious Resurrector",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Kels, Fight Fixer",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Liliana of the Dark Realms",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Kingpin, Wilson Fisk",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Lo and Li, Royal Advisors",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Lord Dregg, Insect Invader",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Madame Hydra, Reanimated",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Massacre Girl, Known Killer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Moonstone, Harsh Mistress",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "One Ring to Rule Them All",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Price of Fame",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Rev, Tithe Extractor",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Sarevok the Usurper",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Sheoldred, the Apocalypse",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Yawgmoth, Thran Physician",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Whisper, Blood Liturgist",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Aclazotz, Deepest Betrayal // Temple of the Dead",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Ashiok, Wicked Manipulator",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Black Widow, Daring Operative",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Drana, the Last Bloodchief",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Garruk, Veiled Butcher",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Ghoulcaller Gisa",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Gisa, the Hellraiser",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Junji, the Midnight Sky",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Lo and Li, Twin Tutors",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "M.O.D.O.K., Evil Intellect",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Maha, Its Feathers Night",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Ob Nixilis Reignited",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Sauron, the Necromancer",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Seizan, Perverter of Truth",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Seymour Flux",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Shredder, Shadow Master",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Sheoldred // The True Scriptures",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Skithiryx, the Blight Dragon",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Syr Konrad, the Grim",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Tergrid, God of Fright // Tergrid's Lantern",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Witch-king of Angmar",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Yawgmoth's Vile Offering",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Doctor Doom",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Bolas's Citadel",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Ink-Eyes, Servant of Oni",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Lich's Mastery",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Liliana, Death Mage",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Tetzimoc, Primal Death",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "The Cloning of Shredder",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Vraska, Betrayal's Sting",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "K'rrik, Son of Yawgmoth",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Count Nefaria",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Sheoldred, Whispering One",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Morlun, Devourer of Spiders",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Dionus, Elvish Archdruid",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Celeborn the Wise",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Wrenn and Realmbreaker",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Goreclaw, Terror of Qal Sisma",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Kona, Rescue Beastie",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Leyline Immersion",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Mythweaver Poq",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Oyaminartok, Polar Werebear",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Radagast of Rhosgobel",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Tyvar Kell",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Ashaya, Soul of the Wild",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Bosco, Just a Bear",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Greensleeves, Maro-Sorcerer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Wrenn and Seven",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Garruk, Caller of Beasts",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Mitotic Ultimus",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Invasion of Ikoria // Zilortha, Apex of Ikoria",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Kamahl's Druidic Vow",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Golbez, Crystal Collector",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Lazav, the Multifarious",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Krydle of Baldur's Gate",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "The Ancient One",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Zimone the Calculating // Simple Subtraction",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Lazav, Familiar Stranger",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Locke Cole",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Ringsight",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Rona, Disciple of Gix",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Emet-Selch of the Third Seat",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Xande, Dark Mage",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Ashiok, Nightmare Muse",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Phenax, God of Deception",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Uchbenbak, the Great Mistake",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Ultimecia, Time Sorceress",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Ashiok, Sculptor of Fears",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Dragonlord Silumgar",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Tezzeret, Master of the Bridge",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Krang & Shredder",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Xanathar, Guild Kingpin",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Prototype X-8",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Chevill, Bane of Monsters",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Dina, Soul Steeper",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Slimefoot, Thallid Transplant",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Vraska Joins Up",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Abomination of Llanowar",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Dina, Essence Brewer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Journey to Eternity // Atzal, Cave of Eternity",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Long Feng, Grand Secretariat",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Pharika, God of Affliction",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Sarulf, Realm Eater",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Sméagol, Helpful Guide",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "The Mycotyrant",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Furgul, Quag Nurturer",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "High Perfect Morcant",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Kagha, Shadow Archdruid",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Lathril, Blade of the Elves",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Nissa of Shadowed Boughs",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Nemata, Primeval Warden",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Tyvar the Bellicose",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Vraska, Golgari Queen",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Cloud of Darkness",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Ygra, Eater of All",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Yargle and Multani",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Beledros Witherbloom",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Witherbloom, the Balancer",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Arwen Undómiel",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Kinnan, Bonder Prodigy",
+   "pile": "T",
+   "src": "pile"
+  },
+  {
+   "name": "Absorbing Man",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Albiorix, Goose Tyrant // Wild Goose Chase",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Galadriel of Lothlórien",
+   "pile": "B",
+   "src": "pile"
+  },
+  {
+   "name": "Kiora of Salt and Sand",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Kasmina, Enigma Sage",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Nissa, Steward of Elements",
+   "pile": "G",
+   "src": "pile"
+  },
+  {
+   "name": "Llanowar Elves",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Elvish Mystic",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Paradise Druid",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Priest of Titania",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Elvish Archdruid",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Circle of Dreams Druid",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Marwyn, the Nurturer",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Lys Alana Dignitary",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Deathbloom Ritualist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Woodland Weavemaster",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Selvala, Heart of the Wilds",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Fauna Shaman",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Imperious Perfect",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Elvish Warmaster",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Voice of the Woods",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Trystan, Callous Cultivator",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Lluwen, Imperfect Naturalist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Dwynen, Gilt-Leaf Daen",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Izoni, Thousand-Eyed",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Harald, King of Skemfar",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Cantankerous Keepers",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Dawnhand Eulogist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Elderfang Ritualist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Skemfar Avenger",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Morcant's Loyalist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Gloom Ripper",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Leaf-Crowned Visionary",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Shaman of the Pack",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Morcant's Eyes",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Bounty of Skemfar",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Harald Unites the Elves",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Insidious Roots",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Overlord of the Balemurk",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Trystan's Command",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Heartless Act",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Go for the Throat",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Infernal Grasp",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Command Tower",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Eclipsed Realms",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Overgrown Tomb",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Breeding Pool",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Watery Grave",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Woodland Cemetery",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Hinterland Harbor",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Drowned Catacomb",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Llanowar Wastes",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Yavimaya Coast",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Underground River",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Clearwater Pathway // Murkwater Pathway",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Zagoth Triome",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Underground Mortuary",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Hedge Maze",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Undercity Sewers",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Darkslick Shores",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Blooming Marsh",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Botanical Sanctum",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Wastewood Verge",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Darkbore Pathway // Slitherbore Pathway",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Psychic Corrosion",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Teferi's Tutelage",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Sphinx's Tutelage",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Bruvac the Grandiloquent",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Fraying Sanity",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Ruin Crab",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Traumatize",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Maddening Cacophony",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Startled Awake // Persistent Nightmare",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Archive Trap",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Glimpse the Unthinkable",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Sphinx Mindbreaker",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Tasha's Hideous Laughter",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Ulamog, the Ceaseless Hunger",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "The Master of Lake-town",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Ashiok, Nightmare Weaver",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Consuming Aberration",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Rhystic Study",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Mystic Remora",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Phyrexian Arena",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Dictate of Kruphix",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Teferi's Ageless Insight",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Notion Thief",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Brainstorm",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Kaito, Bane of Nightmares",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Drown in the Loch",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Counterspell",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Thought Collapse",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Hero's Downfall",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Assassin's Trophy",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Cyclonic Rift",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Damnation",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Breach the Multiverse",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Theorix Charm",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Arcane Signet",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Talisman of Dominance",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Talisman of Curiosity",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Mind Stone",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Birds of Paradise",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Growth Spiral",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Jidoor, Aristocratic Capital // Overture",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Restless Reef",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Sunken Hollow",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Drowned Secrets",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Navigator's Ruin",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Fleet Swallower",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Ashiok, Dream Render",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Cut Your Losses",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Altar of Dementia",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Grindstone",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Villainous Wealth",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Mind's Dilation",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Visions of Beyond",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Folio of Fancies",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Lord of the Forsaken",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Persistent Petitioners",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Cruel Somnophage // Can't Wake Up",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Gyruda, Doom of Depths",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Duskmantle, House of Shadow",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Hama, the Bloodbender",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Didn't Say Please",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Bloodchief's Thirst",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Keening Stone",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Riverchurn Monument",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Terisian Mindbreaker",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Scavenger's Talent",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Brain Freeze",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Jin-Gitaxias // The Great Synthesis",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Howling Mine",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Hullbreaker Horror",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Niv-Mizzet, Visionary",
+   "pile": "N",
+   "src": "outside"
+  },
+  {
+   "name": "Chulane, Teller of Tales",
+   "pile": "N",
+   "src": "outside"
+  },
+  {
+   "name": "Kenrith's Transformation",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Toxic Deluge",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Murderous Rider // Swift End",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Saw It Coming",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Memory Lapse",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Feed the Swarm",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Tear Asunder",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Anoint with Affliction",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Fatal Push",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Bitter Triumph",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Sheoldred's Edict",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Mystic Snake",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Pongify",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Kogla and Yidaro",
+   "pile": "N",
+   "src": "outside"
+  },
+  {
+   "name": "Talisman of Resilience",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Cultivate",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Nature's Lore",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Farseek",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Thought Scour",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Opt",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Preordain",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Consider",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Memory Deluge",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "The Everflowing Well // The Myriad Pools",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Sokka's Haiku",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Arcane Epiphany",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Laboratory Maniac",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Rot Farm Mortipede",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Wizard's Retort",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Desecrated Tomb",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Chalk Outline",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Attuned Hunter",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Kishla Skimmer",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Undead Hand Ninja",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Dredger's Insight",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Along the Crooked Way",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Willow Geist",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Courser of Kruphix",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Augur of Autumn",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Oracle of Mul Daya",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Precognition Field",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Vivien, Monsters' Advocate",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Eladamri, Korvecdal",
+   "pile": "T",
+   "src": "outside"
+  },
+  {
+   "name": "Inside Information",
+   "pile": "G",
+   "src": "outside"
+  },
+  {
+   "name": "Deathrite Shaman",
+   "pile": "T",
+   "src": "outside"
+  }
+ ],
+ "reasons": {
+  "Legolas, Counter of Kills": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** Legendary Elf body; minor text. **Glarb:** Minor.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tam, Observant Sequencer // Deep Sight": {
+   "group": "Draw engine, outranked",
+   "text": "Owned. Draw one on landfall-prepared casts; small.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elrond, Master of Healing": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** Legendary Elf; counters on scry, draws when targeted. **Glarb:** Few creatures to put counters on.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ezuri, Stalker of Spheres": {
+   "group": "F",
+   "text": "\"Whenever you proliferate, draw a card\" — the deck has one proliferate source (Vraska, Betrayal's Sting).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jyoti, Moag Ancient": {
+   "group": "Fits neither",
+   "text": "Needs commander recasts and land creatures.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kiora, the Crashing Wave": {
+   "group": "Value card",
+   "text": "**Thranduil:** −1 draw + extra land; +1 fogs one threat. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nael, Avizoa Aeronaut": {
+   "group": "F",
+   "text": "Domain: Sultai lands give at most 3 basic types, so \"if there are five … draw a card\" never happens.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rashmi, Eternities Crafter": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** Legendary Elf; a free spell off the top each turn. Bench in both. **Glarb:** Same, and the top card is visible under Glarb, so you know when it hits.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Imoti, Celebrant of Bounty": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Cascade on mana value 6+ — the deck has few 6+ spells.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kruphix, God of Horizons": {
+   "group": "Fits neither",
+   "text": "Hand-size enabler only; rarely a creature in three colours.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Roalesk, Apex Hybrid": {
+   "group": "Fits neither",
+   "text": "A counters-deck card (deck 94's ground).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tamiyo, Compleated Sage": {
+   "group": "B",
+   "text": "\"−X: Exile target nonland permanent card with mana value X from your graveyard\" — Same; the +1 tap is tempo, not removal.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tawnos, the Toymaker": {
+   "group": "Fits neither",
+   "text": "Copies Beasts/Birds; neither deck has them.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Oko, the Trickster": {
+   "group": "Fits neither",
+   "text": "Six mana for counters; weak here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bonny Pall, Clearcutter": {
+   "group": "D",
+   "text": "6 mana; \"Whenever you attack, draw a card, then … put a land card from your hand or graveyard onto the battlefield\" — real value, wrong curve slot beside Selvala/Kamahl's Vow.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Omega, Heartless Evolution": {
+   "group": "Fits neither",
+   "text": "Tempo, not removal; 7 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tishana, Voice of Thunder": {
+   "group": "Draw engine, outranked",
+   "text": "Draws one per creature you control — usually 2–4 here; 7 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kotis, Sibsig Champion": {
+   "group": "B",
+   "text": "\"cast a creature spell from your graveyard by exiling three other cards from your graveyard\" — Three cards a turn, in a yard that is mostly Elves; Muldrotha recasts without exiling anything.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Leovold, Emissary of Trest": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** \"Each opponent can't draw more than one card each turn\" switches off Dictate of Kruphix and Seizan's extra draws for them — it fights this deck's mill.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nashi, Moon's Legacy": {
+   "group": "B",
+   "text": "\"exile up to one target legendary or Rat card from your graveyard and copy it\" — Can target a non-Elf legend, but the deck's legends ARE mostly Elves; menace 3-drop otherwise.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nashi, Illusion Gadgeteer": {
+   "group": "G",
+   "text": "Conjures a copy of a yard card into hand (keeps the original — no G-42 cost); a 4-mana non-Elf. ◇",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kotis, the Fangkeeper": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Exiles X on combat damage and casts them free — an aggressive card in a deck that wins by milling.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sidisi, Brood Tyrant": {
+   "group": "A",
+   "text": "Not an Elf, and its mill is random where Thranduil's loot chooses — Mills three on entry and attack; with 45 creatures most mills make a 2/2 Zombie. Strong, just not Elf-synergistic (the Zombies feed nothing Elf-gated).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gonti, Canny Acquisitor": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Steals a card on combat damage; the deck is a control deck that rarely connects.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Brokkos, Apex of Forever": {
+   "group": "D",
+   "text": "Recursive mutate threat; Elves are non-Human so it can mutate, but it adds a body, not an engine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Maralen, Fae Ascendant": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** Exiles two of their library per Elf or Faerie entering — this deck has almost none.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yarok, the Desecrated": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** If a permanent entering causes a trigger \"that ability triggers an additional time\" — Thranduil's legendary-Elf loot becomes draw 4, discard 2, and every Elf ETB doubles. **Strong add.** **Glarb:** Doubles Sphinx Mindbreaker (mill 20) and Sheoldred's edict, but few ETBs here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sin, Spira's Punishment": {
+   "group": "B",
+   "text": "\"exile a permanent card from your graveyard at random\" — Random — will hit Elves; 7 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mimeoplasm, Revered One": {
+   "group": "B",
+   "text": "\"exile up to X creature cards from your graveyard\" — Eats exactly the Elf creature cards Thranduil borrows from.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Glamdring, Foe-hammer // Gleam of Death": {
+   "group": "Fits neither",
+   "text": "An Equipment for an instants deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fblthp, Impossibly Lost": {
+   "group": "Value card",
+   "text": "**Thranduil:** Draw two on combat damage. **Glarb:** Rarely attacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Goldberry, River-Daughter": {
+   "group": "Fits neither",
+   "text": "Counter-shuffling with no counters plan.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace Reawakened": {
+   "group": "Value card",
+   "text": "**Thranduil:** Loot every turn — feeds the yard. **Glarb:** Loot draws mill two.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "group": "Fits neither",
+   "text": "Instants-matter; off-plan.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Marit Lage's Slumber": {
+   "group": "Fits neither",
+   "text": "Needs snow permanents; neither deck has any.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mystic Reflection": {
+   "group": "Fits neither",
+   "text": "Copies a nonlegendary creature; same problem as Mindlink Mech.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "group": "E",
+   "text": "Combat-gated loot on a non-Elf flier.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Naban, Dean of Iteration": {
+   "group": "Fits neither",
+   "text": "Doubles Wizard ETBs; neither deck is Wizards.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "group": "Draw engine, outranked",
+   "text": "Draws one, no hand size, counters on combat — the counters do nothing here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "group": "E",
+   "text": "Loot that untaps on legendary spells — the closest of the looters, since most of the deck is legendary.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Key to the Vault": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Equipment that casts from YOUR library on combat damage — combat-gated.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vnwxt, Verbose Host": {
+   "group": "Fits neither",
+   "text": "Speed needs opponent life loss; slow in both.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Arni, Humble Scribe": {
+   "group": "E",
+   "text": "`{T}: Draw a card, then discard a card` duplicates Thranduil's own loot; lost to an Elf.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Chandra, Chill of Compliance": {
+   "group": "Swap candidate",
+   "text": "Owned. +1 surveil feeds Matoya and Proft; the other +1 adds mana for noncreature spells; −X stuns a threat. Screened KEY against the list.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Callaphe, Beloved of the Sea": {
+   "group": "Fits neither",
+   "text": "A mild ward tax; no engine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elrond, Lord of Rivendell": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** Legendary Elf; scry 1 per creature entering — modest. **Glarb:** Each scry triggers Matoya — a draw per creature entering. Close.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Elrond, Moon-Reader": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** \"Whenever you activate an ability of a creature, draw a card\" (once a turn) — Glarb's own surveil tap triggers it, so every turn is a draw that mills two. **Good add here too.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fblthp, Lost on the Range": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Plots from the top — a slower version of what Glarb already does.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Geralf, the Fleshwright": {
+   "group": "Fits neither",
+   "text": "Needs several cheap spells a turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Graviton, Fundamental Force": {
+   "group": "Fits neither",
+   "text": "Draw-trigger tapper — minor in Glarb's deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Impossible Man": {
+   "group": "Fits neither",
+   "text": "Clone utility without a target worth copying every turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Invasion of Segovia // Caetus, Sea Tyrant of Segovia": {
+   "group": "Fits neither",
+   "text": "A Kraken-token siege; no payoff.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ioreth of the Healing House": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** `{T}: Untap two other target legendary creatures` — untap Thranduil for a second borrowed {T} ability each turn (Dionus's job, again). **Strong add.** **Glarb:** Untaps Glarb for a second surveil 2, which Matoya turns into a second draw. Real, smaller.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Irma, Part-Time Mutant": {
+   "group": "Fits neither",
+   "text": "Clone; same problem.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Katara, Bending Prodigy": {
+   "group": "Fits neither",
+   "text": "A weak body for either deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kefnet the Mindful": {
+   "group": "Draw engine, outranked",
+   "text": "`{3}{U}`: draw one — an expensive sink.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kira, Great Glass-Spinner": {
+   "group": "Fits neither",
+   "text": "Counters the first targeting of each creature — including your own pump or untap (Ioreth, Dionus).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lulu, Stern Guardian": {
+   "group": "Fits neither",
+   "text": "Defensive; proliferate idles without counters.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lyra, Tolarian Archangel": {
+   "group": "Draw engine, outranked",
+   "text": "Owned. A 3/3 Angel at end step when you drew three — common here, but it is a body, not a draw or a mill.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mindlink Mech": {
+   "group": "Fits neither",
+   "text": "Copies a nonlegendary creature; both decks are mostly legends.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mu Yanling, Sky Dancer": {
+   "group": "Value card",
+   "text": "**Thranduil:** −3: a 4/4 flier. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tome of the Infinite": {
+   "group": "Fits neither",
+   "text": "Slow random value.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Unctus, Grand Metatect": {
+   "group": "Fits neither",
+   "text": "Rummage on blue artifact creatures; few here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Wasp, Shrinking Savior": {
+   "group": "Fits neither",
+   "text": "Needs creatures with power below 0.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Alora, Rogue Companion": {
+   "group": "Fits neither",
+   "text": "Evasion that returns the creature to hand — tempo only.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Arwen's Gift": {
+   "group": "Draw engine, outranked",
+   "text": "Scry 2, draw 2 (cheaper with two legends); one-shot.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Charix, the Raging Isle": {
+   "group": "Fits neither",
+   "text": "Counts Islands; three-colour decks run only a few.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gale, Conduit of the Arcane": {
+   "group": "Fits neither",
+   "text": "Pays off instants/sorceries; Thranduil runs 8, and Glarb's 21 already have better payoffs.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "God-Eternal Kefnet": {
+   "group": "Fits neither",
+   "text": "Copies instants/sorceries drawn — Glarb sees the top, but Kefnet wants them first-drawn each turn; minor.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gandalf, Friend of the Shire": {
+   "group": "Fits neither",
+   "text": "Ring-tempt payoff; neither deck tempts the Ring.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Irenicus's Vile Duplication": {
+   "group": "Fits neither",
+   "text": "Clones a legend — strong only with one ETB engine to copy.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace, the Perfected Mind": {
+   "group": "In one list only",
+   "text": "In Glarb's list. **Why not Thranduil's:** −X mills yourself 3X — self-mill on demand; `{2}{U}{U/P}`.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace, Wielder of Mysteries": {
+   "group": "Different finisher, same job",
+   "text": "+1 mills two and draws one (four milled under Corrosion); its alt-win needs YOUR library empty, which this deck never aims for. `{1}{U}{U}{U}` is hard in three colours.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Leader, Super-Genius": {
+   "group": "E",
+   "text": "Connive each combat; duplicates Thranduil's loot on a non-Elf body.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Multiversal Recruitment": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** Copy Priest of Titania or Voice of the Woods, flashback later. Fine. **Glarb:** \"Create a token that's a copy of target creature you control, except it isn't legendary\" — a second Bruvac quadruples every mill. **Spicy add.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Orvar, the All-Form": {
+   "group": "Fits neither",
+   "text": "Needs instants that target your own permanents.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Taeko, the Patient Avalanche": {
+   "group": "Fits neither",
+   "text": "A blink/bounce payoff; no blink in either deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tezzeret, Betrayer of Flesh": {
+   "group": "Fits neither",
+   "text": "Artifact looting; few artifacts.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Clone Saga": {
+   "group": "Value card",
+   "text": "**Thranduil:** Surveil 3 fills the yard; II copies a creature spell. **Glarb:** Surveil 3 triggers Matoya and Proft.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tui and La, Moon and Ocean": {
+   "group": "Fits neither",
+   "text": "An attacker draw engine; neither deck attacks enough.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Urza, Lord High Artificer": {
+   "group": "Fits neither",
+   "text": "Needs artifacts.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vesuvan Duplimancy": {
+   "group": "Fits neither",
+   "text": "Needs spells that target your creatures.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "group": "Fits neither",
+   "text": "A noncreature-spells payoff; both decks are creature-heavy or draw-heavy.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Iymrith, Desert Doom": {
+   "group": "Draw engine, outranked",
+   "text": "Draws on combat damage only.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace, Memory Adept": {
+   "group": "In one list only",
+   "text": "In Glarb's list. **Why not Thranduil's:** Its 0 \"Target player mills ten cards\" can target YOU — ten cards of Elves for Thranduil. **Good add here too.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace, Unraveler of Secrets": {
+   "group": "Draw engine, outranked",
+   "text": "5 mana; +1 scry 1 then draw (Matoya draws again). Close; −2 bounce is tempo.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Krang, the All-Powerful": {
+   "group": "Swap candidate",
+   "text": "\"If a player drawing a card causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time\" doubles Psychic Corrosion, both Tutelages, Sheoldred and The Theorist — the deck's whole engine. **Strongest add on this list.** Left out on slot count.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Pharaoh Rama-Tut": {
+   "group": "E",
+   "text": "Connives on noncreature spells — 19 here; a non-Elf looter.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Syr Elenora, the Discerning": {
+   "group": "Fits neither",
+   "text": "A hand-size body; Glarb's deck has better.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "group": "Draw engine, outranked",
+   "text": "Spells with mana value 5+ cost {1} less and can't be countered — a flash flier; the deck's MV 5+ spells mostly come off the top already.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "group": "Fits neither",
+   "text": "Few targets for its recursion.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jace, Arcane Strategist": {
+   "group": "Draw engine, outranked",
+   "text": "6 mana for +1: draw a card.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kitsune, Dragon's Daughter": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** 6 mana: swap a weak creature of yours for their best. **Glarb:** Same; mana value 6, so Glarb can cast it off the top.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Pol Jamaar, Illusionist": {
+   "group": "Swap candidate",
+   "text": "Missed by the pile pass. \"Choose a creature type. Draw a card for each creature you control of that type\" — name Elf, usually 4–6 cards. A 6-mana flier, so a bench-level add.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ruric Thar, Biomagus": {
+   "group": "Fits neither",
+   "text": "Mostly a 6-mana flier here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Zahid, Djinn of the Lamp": {
+   "group": "Fits neither",
+   "text": "A 5/6 flier with nothing else.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "group": "Swap candidate",
+   "text": "Copies your first artifact/instant/sorcery each turn — a second Traumatize empties a library — and counters the opponent's first one. Mana value 7, so Glarb casts it off the top.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jadzi, Oracle of Arcavios // Journey to the Oracle": {
+   "group": "Fits neither",
+   "text": "An 8-mana spells-matter card.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Magic Mirror": {
+   "group": "Fits neither",
+   "text": "`{6}{U}{U}{U}` and wants instants/sorceries in the yard.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Wan Shi Tong, Librarian": {
+   "group": "Draw engine, outranked",
+   "text": "Owned. Flash X body that draws half X, and more when they search; decent filler.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gadwick, the Wizened": {
+   "group": "Fits neither",
+   "text": "Draw X for `{X}{U}{U}{U}` — triple blue in a three-colour deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Aphelia, Viper Whisperer": {
+   "group": "Fits neither",
+   "text": "An attack-for-value 2-drop; neither deck is an attacking deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Reezug, the Bonecobbler": {
+   "group": "G",
+   "text": "Casts a creature card from the yard as an artifact; recasting an Elf takes its ability off Thranduil.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Splinter, the Mentor": {
+   "group": "Fits neither",
+   "text": "Its partner text does nothing in Brawl.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Azula, Ruthless Firebender": {
+   "group": "Fits neither",
+   "text": "A discard-on-attack outlet; Thranduil already loots, Glarb rarely attacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gix, Yawgmoth Praetor": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Combat draws; its `{4}{B}{B}{B}` exile needs a hand to discard.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Isareth the Awakener": {
+   "group": "D",
+   "text": "Reanimates on attack for {X}, but the returned creature is exiled if it leaves — and the reanimated Elf no longer lends Thranduil its ability.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kaervek, the Punisher": {
+   "group": "B",
+   "text": "\"exile up to one target black card from your graveyard and copy it\" — Needs crimes; few black cards to copy outside the Elf core.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tatsunari, Toad Rider": {
+   "group": "Fits neither",
+   "text": "Needs enchantments cast.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yahenni, Undying Partisan": {
+   "group": "Fits neither",
+   "text": "A sac outlet with nothing to sacrifice for value.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Davriel, Soul Broker": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** −3 perpetual −3/−3; +1 taxes attackers. Real removal the classifier misses. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Doctor Doom, Unrivaled": {
+   "group": "In one list only",
+   "text": "In Glarb's list. **Why not Thranduil's:** `{T}: draw a card` on a 4-mana lifelink body — fine; non-Elf.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Erebos, God of the Dead": {
+   "group": "Value card",
+   "text": "**Thranduil:** `{1}{B}, Pay 2 life: Draw a card`. **Glarb:** Same, and each draw mills two.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gisa, Glorious Resurrector": {
+   "group": "D",
+   "text": "Steals THEIR dead creatures for a turn; off-plan here (a better fit for a removal-heavy deck).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kels, Fight Fixer": {
+   "group": "G",
+   "text": "Sacrifice payoff; the deck has no sacrifice engine (Yawgmoth would be the outlet, see A).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Liliana of the Dark Realms": {
+   "group": "Fits neither",
+   "text": "Counts Swamps; three-colour decks run few.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kingpin, Wilson Fisk": {
+   "group": "Fits neither",
+   "text": "Sacrifice payoff; no outlets.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lo and Li, Royal Advisors": {
+   "group": "Swap candidate",
+   "text": "`{2}{U/B}: Target player mills four cards`, repeatable at instant speed; an Advisor (with Bruvac and The Master of Lake-town) that grows when they mill.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lord Dregg, Insect Invader": {
+   "group": "Fits neither",
+   "text": "Generic Insect-token engine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Madame Hydra, Reanimated": {
+   "group": "D",
+   "text": "Self-mill 2 per attack and grows with creature cards; a non-Elf 4-drop beater in a deck whose bodies want to be Elves.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Massacre Girl, Known Killer": {
+   "group": "Fits neither",
+   "text": "Wither plus draw — good against go-wide, off-plan for both.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Moonstone, Harsh Mistress": {
+   "group": "A",
+   "text": "Not an Elf — \"Whenever you discard a card, you may exile that card … you may play that card\" — every Thranduil loot becomes card-neutral. But it EXILES the discard, which removes an Elf's ability from Thranduil (G-42), so it is best with non-Elf discards. ◇",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "One Ring to Rule Them All": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** Chapter II \"Destroy all nonlegendary creatures\" kills most of the Elves. **Glarb:** II is nearly one-sided here (6 nonlegendary creatures), I mills each player by your Ring-bearer's power, and III drains for each creature card in THEIR graveyard — which the mill fills. **Strong add.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Treasure + steal on combat damage — same problem.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sarevok the Usurper": {
+   "group": "Fits neither",
+   "text": "Weak scaler.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yawgmoth, Thran Physician": {
+   "group": "A",
+   "text": "Not an Elf; the deck runs no dedicated sacrifice outlet — `Pay 1 life, Sacrifice another creature: -1/-1 counter … and draw a card` is repeatable removal plus card draw off the Elf tokens (Imperious Perfect, Elvish Warmaster, Voice of the Woods, Lathril).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Whisper, Blood Liturgist": {
+   "group": "Fits neither",
+   "text": "Sacrifice two to reanimate — costly without tokens.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Aclazotz, Deepest Betrayal // Temple of the Dead": {
+   "group": "D",
+   "text": "A 5-mana flier with hand attack; strong card, no Elf or graveyard tie.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ashiok, Wicked Manipulator": {
+   "group": "Fights the engine (G-42)",
+   "text": "\"If you would pay life … exile that many cards from the top of your library instead\" — Phyrexian Arena, Doctor Doom and Infernal Grasp would exile YOUR library in a deck that already draws hard. Its −7 is a real finisher; the static is the problem.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Black Widow, Daring Operative": {
+   "group": "D",
+   "text": "Mill 3 then drains = creature cards in yard on combat damage — combat-gated, 5 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Drana, the Last Bloodchief": {
+   "group": "D",
+   "text": "\"defending player chooses a nonlegendary creature card\" — the OPPONENT picks, so they give you a mana Elf.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Garruk, Veiled Butcher": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** Interaction (+2 shrink, −2 edict) and −3 card advantage; the deck's interaction is already 16.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ghoulcaller Gisa": {
+   "group": "D",
+   "text": "Sac outlet that makes Zombies = power; Elves are small, so X is 1–2.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gisa, the Hellraiser": {
+   "group": "Value card",
+   "text": "**Thranduil:** Zombies on crimes (any removal you aim at them) — off-tribe. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Junji, the Midnight Sky": {
+   "group": "D",
+   "text": "A 5-mana flier whose value is its death trigger; the deck wants Elves in the yard, not Dragons.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lo and Li, Twin Tutors": {
+   "group": "Fits neither",
+   "text": "Tutors a Noble: Thranduil's deck has Elrond, Moon-Reader and Maralen, Glarb's has Princess Yue. Thin targets.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Maha, Its Feathers Night": {
+   "group": "Value card",
+   "text": "**Thranduil:** Their creatures have base toughness 1 — pairs with Gloom Ripper. Flier. **Glarb:** A big flier.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sauron, the Necromancer": {
+   "group": "B",
+   "text": "\"Whenever Sauron attacks, exile target creature card from your graveyard\" — Same tax each attack; the token is temporary.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Seizan, Perverter of Truth": {
+   "group": "Swap candidate",
+   "text": "\"At the beginning of each player's upkeep, that player loses 2 life and draws two cards\": the opponent loses two library cards a turn, and your two draws mill four through Psychic Corrosion. Symmetric, which this deck wants (it already runs Dictate of Kruphix).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Seymour Flux": {
+   "group": "Draw engine, outranked",
+   "text": "Pay 1 life: draw one each upkeep — a Phyrexian Arena on a body, and Arena is in.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Shredder, Shadow Master": {
+   "group": "Fits neither",
+   "text": "A combat finisher with no synergy.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Skithiryx, the Blight Dragon": {
+   "group": "Fits neither",
+   "text": "A lone infect threat.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Syr Konrad, the Grim": {
+   "group": "G",
+   "text": "Pings on every creature death, mill and leave-graveyard; strong in a self-mill deck, but 5 mana for 1-point pings. Bench.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tergrid, God of Fright // Tergrid's Lantern": {
+   "group": "Fits neither",
+   "text": "Needs the opponent to sacrifice or discard; neither deck forces it often.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Witch-king of Angmar": {
+   "group": "Fits neither",
+   "text": "A defensive edict against attackers; Ring tempt unused.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Doctor Doom": {
+   "group": "Value card",
+   "text": "**Thranduil:** Two 3/3 Doombots and a draw each end step for 6. **Glarb:** The end-step draw mills two.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bolas's Citadel": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Glarb already casts MV 4+ off the top; Citadel adds the cheap ones for life. `{3}{B}{B}{B}` with 20 black sources, and the life matters against aggro.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ink-Eyes, Servant of Oni": {
+   "group": "Fits neither",
+   "text": "Reanimates THEIR creature on combat damage — both decks rarely connect.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lich's Mastery": {
+   "group": "Fits neither",
+   "text": "Losing life exiles your own permanents; too risky in both.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tetzimoc, Primal Death": {
+   "group": "Fits neither",
+   "text": "A slow, conditional sweeper.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Cloning of Shredder": {
+   "group": "B",
+   "text": "\"Exile target creature card from your graveyard\" — Six mana for copies of a card Thranduil was already using.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** 0: draw (mills two) and proliferate; −2 neutralises a creature. A fine add; 6 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "K'rrik, Son of Yawgmoth": {
+   "group": "Fits neither",
+   "text": "Life-for-mana with no black-pip payoff worth it.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Count Nefaria": {
+   "group": "Fits neither",
+   "text": "A 7-mana flier with nothing else.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Morlun, Devourer of Spiders": {
+   "group": "Fits neither",
+   "text": "An X-cost beater; its drain hits only opponents.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Celeborn the Wise": {
+   "group": "F",
+   "text": "\"Whenever you attack with one or more Elves, scry 1\" and a pump — combat-only, minor.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Goreclaw, Terror of Qal Sisma": {
+   "group": "Fits neither",
+   "text": "Generic big-creature support.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kona, Rescue Beastie": {
+   "group": "Fits neither",
+   "text": "Needs a tapping plan.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Leyline Immersion": {
+   "group": "Value card",
+   "text": "**Thranduil:** On Thranduil: ward 2 and `{T}`: five mana for spells — but it spends the {T} he uses for borrowed abilities. **Glarb:** Same on Glarb: it spends his surveil tap.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mythweaver Poq": {
+   "group": "Fits neither",
+   "text": "Land ramp off a narrow trigger.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Oyaminartok, Polar Werebear": {
+   "group": "Fits neither",
+   "text": "Off-plan beater.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Radagast of Rhosgobel": {
+   "group": "Draw engine, outranked",
+   "text": "First creature each turn costs {2} less with flash; 20 creatures, few of them cheap.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tyvar Kell": {
+   "group": "Swap candidate",
+   "text": "Missed by the pile pass (graded for the old graveyard plan). \"Elves you control have `{T}: Add {B}`\" fixes black on all 11 mana Elves, 0 makes an Elf every turn, +1 untaps one, and the −6 emblem draws two per Elf spell. **Strong add.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ashaya, Soul of the Wild": {
+   "group": "Fits neither",
+   "text": "Makes your creatures lands — no landfall payoff to cash it in.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bosco, Just a Bear": {
+   "group": "Fits neither",
+   "text": "Food with no Food payoff in either deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Greensleeves, Maro-Sorcerer": {
+   "group": "Fits neither",
+   "text": "Landfall threat; neither deck plays extra lands often.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Wrenn and Seven": {
+   "group": "A",
+   "text": "Not an Elf; Wrenn and Realmbreaker took the green-walker slot — +1 reveals four, lands to hand and \"the rest into your graveyard\" — a self-mill that never misses a land drop; −3 is a huge reach body. A real upgrade for any non-Elf slot.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Garruk, Caller of Beasts": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** +1: reveal five, all creature cards to hand — about 2 a turn with 45 creatures in 99 cards. A real card-advantage engine for the Elf deck. **Glarb:** 20 creatures, so +1 finds about one.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mitotic Ultimus": {
+   "group": "Fits neither",
+   "text": "A 9-mana conjure gimmick.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
+   "group": "A",
+   "text": "Not an Elf; competes with Kamahl's Druidic Vow and Journey as a cheat — `search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield` — a tutor that also reanimates; finds Priest of Titania at X=2.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Golbez, Crystal Collector": {
+   "group": "Fits neither",
+   "text": "Needs artifacts; neither deck has many.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lazav, the Multifarious": {
+   "group": "G",
+   "text": "Copies a creature card in the yard for {X} — mostly copying an Elf Thranduil already has.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Krydle of Baldur's Gate": {
+   "group": "F",
+   "text": "Combat trigger mills 1 / scry 1 — negligible.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Ancient One": {
+   "group": "E",
+   "text": "Loot that mills a player; descend 8 to attack; non-Elf.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Zimone the Calculating // Simple Subtraction": {
+   "group": "G",
+   "text": "Prepared on self-mill; the adventure is a −3/−0. Minor.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lazav, Familiar Stranger": {
+   "group": "Fits neither",
+   "text": "Can exile your own yard — a cost in Thranduil's deck; little in Glarb's.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Locke Cole": {
+   "group": "Fits neither",
+   "text": "Small evasive looter.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ringsight": {
+   "group": "Value card",
+   "text": "**Thranduil:** Tutor a card sharing a colour with a legendary creature. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rona, Disciple of Gix": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Exiles one of YOUR historic cards to cast later and exiles your own top card for {4}; little here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Emet-Selch of the Third Seat": {
+   "group": "G",
+   "text": "Pays off instants/sorceries from the yard; the deck runs 8.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Xande, Dark Mage": {
+   "group": "Fits neither",
+   "text": "A beater.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Phenax, God of Deception": {
+   "group": "Swap candidate",
+   "text": "Gives your creatures `{T}: Target player mills X cards, where X is this creature's toughness`. Most of the 20 creatures here have toughness 4–5 (Bruvac, Matoya, Reed, both Sheoldreds, Silumgar, M.O.D.O.K.), so each is a mill-4 engine, doubled under Bruvac. Indestructible.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Uchbenbak, the Great Mistake": {
+   "group": "D",
+   "text": "Descend 8 recursion for a 6/4 vigilance-menace body; nothing Elf.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ultimecia, Time Sorceress": {
+   "group": "B",
+   "text": "Transform: \"exile eight cards from your graveyard\" — Eight cards is most of Thranduil's toolbox; the extra turn costs nine mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ashiok, Sculptor of Fears": {
+   "group": "In one list only",
+   "text": "In Glarb's list. **Why not Thranduil's:** +2 draws and mills BOTH players two — your two feed Thranduil; −5 reanimates from any yard. **Good add here too.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tezzeret, Master of the Bridge": {
+   "group": "Fits neither",
+   "text": "An artifact-deck walker.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Krang & Shredder": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Owned. Exiles to a nonland and casts it if a permanent left your control — needs a sacrifice the deck lacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Xanathar, Guild Kingpin": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Strong — they cannot cast spells on your turn and you play their top card — but 6 mana for a value engine the mill plan does not need. Bench.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Prototype X-8": {
+   "group": "G",
+   "text": "10 mana minus 2 per creature card in the yard; its \"sacrifice it, conjure a duplicate\" line is a gimmick here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "group": "Fits neither",
+   "text": "Bounty card advantage needs repeat removal to cash in.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dina, Soul Steeper": {
+   "group": "Fits neither",
+   "text": "Lifegain payoff; no lifegain plan.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Slimefoot, Thallid Transplant": {
+   "group": "Fits neither",
+   "text": "Card advantage off basics entering; few basics, no Fungus plan.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vraska Joins Up": {
+   "group": "Value card",
+   "text": "**Thranduil:** Deathtouch counters; draw when a legend deals combat damage — the Elves do attack. **Glarb:** Rarely attacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dina, Essence Brewer": {
+   "group": "Fits neither",
+   "text": "Sacrifice payoff; neither deck has a sacrifice outlet.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Long Feng, Grand Secretariat": {
+   "group": "Fits neither",
+   "text": "Counters payoff; neither deck stacks counters.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Pharika, God of Affliction": {
+   "group": "Fits neither",
+   "text": "Exiles creature cards from graveyards — fights Thranduil's yard; gives the card's owner a token.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sarulf, Realm Eater": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Slow, conditional sweeper. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Needs a creature to die each turn for the Ring to tempt you.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Mycotyrant": {
+   "group": "G",
+   "text": "Counts Fungi/Saprolings; descend tokens only.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Furgul, Quag Nurturer": {
+   "group": "F",
+   "text": "`{T}, Sacrifice a creature: Add {G}` equal to power — a sac outlet Thranduil can borrow, plus a free Leech each turn. The closest of these to a swap; Alchemy (conjure). ◇",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nissa of Shadowed Boughs": {
+   "group": "D",
+   "text": "−5 reanimates; landfall loyalty — the deck plays ~1 land a turn, so −5 is slow.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nemata, Primeval Warden": {
+   "group": "Draw engine, outranked",
+   "text": "Exiles their dying creatures (keeps them out of the graveyard Consuming Aberration counts) and draws off Saprolings.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tyvar the Bellicose": {
+   "group": "A",
+   "text": "Missed at draft time — Legendary Elf; \"Whenever a mana ability of this creature resolves, put +1/+1 counters equal to the mana produced\" turns the 11 mana Elves into growing bodies; Elves attacking gain deathtouch.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vraska, Golgari Queen": {
+   "group": "In one list only",
+   "text": "In Thranduil's list. **Why not Glarb's:** +2 needs a permanent to sacrifice; −3 kills mana value 3 or less. Fine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ygra, Eater of All": {
+   "group": "Fits neither",
+   "text": "A Food/lifegain deck card.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Yargle and Multani": {
+   "group": "Fits neither",
+   "text": "A big vanilla reanimation target.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Beledros Witherbloom": {
+   "group": "D",
+   "text": "Pest each upkeep; 7 mana and \"Pay 10 life\" untap — no Elf payoff for Pests.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Witherbloom, the Balancer": {
+   "group": "Fits neither",
+   "text": "An instants/sorceries deck card.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Arwen Undómiel": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** A legendary Elf (a loot trigger), but its payoff is scry, which the deck barely does. **Glarb:** Scry payoff with Matoya; small.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kinnan, Bonder Prodigy": {
+   "group": "Swap candidate",
+   "text": "Missed by the pile pass. \"Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced\" doubles all 11 mana Elves, and `{5}{G}{U}` puts a non-Human creature (any Elf) from the top five onto the battlefield. **Strong add.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Absorbing Man": {
+   "group": "Fits neither",
+   "text": "A gimmick with no tie to either engine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Albiorix, Goose Tyrant // Wild Goose Chase": {
+   "group": "Value card",
+   "text": "**Thranduil:** The adventure draws two, discards two — fuel. Flier body after. **Glarb:** Draw two mills four.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Galadriel of Lothlórien": {
+   "group": "Scry Elf",
+   "text": "**Thranduil:** Legendary Elf; scry ramp needs the Ring. **Glarb:** Lands onto the battlefield on scry — ramp plus Matoya draws.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kiora of Salt and Sand": {
+   "group": "Fits neither",
+   "text": "Superfriends support; neither deck runs enough walkers.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kasmina, Enigma Sage": {
+   "group": "Draw engine, outranked",
+   "text": "+2 scry 1 (feeds Matoya) and shares loyalty abilities with the deck's three Ashioks and Jaces — cute, low impact.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nissa, Steward of Elements": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Scry 2 and puts lands/small creatures from the top into play; green-blue value without a mill tie.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Drowned Secrets": {
+   "group": "Swap candidate",
+   "text": "\"Whenever you cast a blue spell, target player mills two cards\" — 42 blue spells here. A 2-mana engine that does not need a draw.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Navigator's Ruin": {
+   "group": "Different finisher, same job",
+   "text": "Raid — mill four only if you attacked; this deck rarely attacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fleet Swallower": {
+   "group": "Different finisher, same job",
+   "text": "\"Whenever this creature attacks, target player mills half their library\" — a 7-mana creature that must attack; Traumatize and kicked Maddening Cacophony do it from the hand.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Ashiok, Dream Render": {
+   "group": "Fights the engine (G-42)",
+   "text": "Cut at draft: its −1 \"exile each opponent's graveyard\" empties the yard Consuming Aberration, Drown in the Loch and Sheoldred's transform count.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Cut Your Losses": {
+   "group": "Different finisher, same job",
+   "text": "Half a library for 6 (twice with casualty); the deck already holds Traumatize, Maddening Cacophony and Jidoor's Overture as half-library mills.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Altar of Dementia": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "\"Sacrifice a creature: mills … equal to the sacrificed creature's power\" — the deck makes almost no fodder (its tokens are a few Ashiok Nightmares).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Grindstone": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "`{3}, {T}`: mill two, repeating while the two share a colour — about 2–4 a turn for 3 mana each turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Villainous Wealth": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Exile X of their library and cast them — real library exile, but `{X}{B}{G}{U}` competes with Tasha's Hideous Laughter, which exiles until 20 total mana value — usually ten or more cards — for 3.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mind's Dilation": {
+   "group": "Cast their cards / combat-gated",
+   "text": "7 mana; exiles one card per opponent spell — slow as library exile.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Visions of Beyond": {
+   "group": "Swap candidate",
+   "text": "1 mana: \"If a graveyard has twenty or more cards in it, draw three cards instead\" — the opponent's graveyard passes 20 early here, so it is a 1-mana draw-three (six milled through Corrosion).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Folio of Fancies": {
+   "group": "Draw engine, outranked",
+   "text": "`{X}{X}, {T}`: each player draws X (both libraries shrink; yours mills them twice through Corrosion), then `{2}{U}` mills them equal to hand size. A real engine; bench.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Lord of the Forsaken": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "`{B}, Sacrifice another creature: mill three` — same missing fodder; 6 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Persistent Petitioners": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "Its 12-card mill needs four Advisors tapped; it is the one card a deck may run in any number, so it only works as a dozen-copy package — a different deck.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Cruel Somnophage // Can't Wake Up": {
+   "group": "Different finisher, same job",
+   "text": "Mill four for 2, then a body that grows with creature cards in all graveyards. Fine; smaller than the deck's 2-mana mills (Glimpse the Unthinkable mills ten).",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Gyruda, Doom of Depths": {
+   "group": "Different finisher, same job",
+   "text": "\"Each player mills four cards\" and you take a creature from among them — a one-shot, symmetric 6-drop.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Duskmantle, House of Shadow": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "A land that makes only colourless — in a three-colour deck already at 3.5 points of tapped-land cost — for a 3-mana mill one.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Hama, the Bloodbender": {
+   "group": "Different finisher, same job",
+   "text": "Owned. Mills three and lets you cast one of their noncreature spells by waterbending — deck 22's engine piece; a 5-mana one-shot here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Didn't Say Please": {
+   "group": "Different finisher, same job",
+   "text": "Counter + mill three — the same card as Thought Collapse, which is in. The first card to add if you want more counters.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bloodchief's Thirst": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Sorcery; 1 mana early, 4 kicked for anything. Interchangeable. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Keening Stone": {
+   "group": "Mill outlet whose cost the deck lacks",
+   "text": "6 to cast and `{5}, {T}` to mill X = their graveyard; Riverchurn Monument's exhaust does the same once for 4.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Riverchurn Monument": {
+   "group": "Swap candidate",
+   "text": "Owned. `{1}, {T}`: mill two every turn, and once per game its exhaust mills \"cards equal to the number of cards in their graveyard\" — doubles a half-milled yard.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Terisian Mindbreaker": {
+   "group": "Different finisher, same job",
+   "text": "Half a library on attack, unearth for `{1}{U}{U}{U}`; a 7-mana artifact creature doing Fleet Swallower's job.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Scavenger's Talent": {
+   "group": "G",
+   "text": "Same — Food and \"whenever you sacrifice\" need an outlet the deck lacks.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Brain Freeze": {
+   "group": "Different finisher, same job",
+   "text": "Mill three plus storm; the deck casts one or two spells a turn, so it is usually mill three.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Jin-Gitaxias // The Great Synthesis": {
+   "group": "Swap candidate",
+   "text": "\"Whenever you cast a noncreature spell with mana value 3 or greater, draw a card\" — 28 such spells here, and each draw mills two. Owned. Lost its slot to Jin-Gitaxias, Core Augur, but both fit.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Howling Mine": {
+   "group": "Draw engine, outranked",
+   "text": "Symmetric extra draw — the same job as Dictate of Kruphix, which is in; a second one would refill their hand too. Bench.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Hullbreaker Horror": {
+   "group": "Draw engine, outranked",
+   "text": "A 7-mana bounce engine; strong in control, but each turn's mill matters more than tempo here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** Flips on the third draw in a turn — Thranduil's loot gets there; the walker's −3 regrows instants/sorceries (8 here). **Glarb:** Flips on your third draw — routine here — and her −7 draws half your library: through Psychic Corrosion that mills them for about twice as many. Spicy, risky.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Niv-Mizzet, Visionary": {
+   "group": "Fits neither",
+   "text": "Off colour identity: needs {R}.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Chulane, Teller of Tales": {
+   "group": "Fits neither",
+   "text": "Off colour identity: needs {W}.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kenrith's Transformation": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Turns a threat into a 3/3 and draws a card. **Glarb:** Same, and the draw mills two.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Toxic Deluge": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** A sweeper that kills your own Elves. **Glarb:** A sweeper; the deck already runs Damnation.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Murderous Rider // Swift End": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Instant kill + a lifelink body. Interchangeable with Go for the Throat. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Saw It Coming": {
+   "group": "Counterspell",
+   "text": "**Thranduil:** Off-plan here. **Glarb:** A 3-mana counter (foretell 2); outranked by Wizard's Retort.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Memory Lapse": {
+   "group": "Counterspell",
+   "text": "**Thranduil:** Counters are off-plan in a tap-out Elf deck. **Glarb:** Counter that puts the spell back on top of their library — it delays, and it undoes a mill.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Feed the Swarm": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Also kills an enchantment — one of the few noncreature answers; you lose life equal to its mana value. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Tear Asunder": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** Kicked, it exiles any nonland permanent — the deck answers few noncreature permanents (4 of 15 pieces). Good add. **Glarb:** Same: kicked, a 4-mana exile-anything; the deck has Assassin's Trophy and Cyclonic Rift already.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Anoint with Affliction": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Mana value 3 or less only. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Fatal Push": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Mana value 2 or less without revolt — narrow in Brawl's bigger threats. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Bitter Triumph": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Discard a card — fuel here — or pay 3 life: instant kill of a creature or planeswalker. Good fit. **Glarb:** Discarding costs a card in a draw deck; pay 3 life instead.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sheoldred's Edict": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** Instant edict that also hits planeswalkers or a token. Interchangeable. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Mystic Snake": {
+   "group": "Counterspell",
+   "text": "**Thranduil:** Off-plan here. **Glarb:** Flash counter on a body; `{1}{G}{U}{U}` on 15 green sources.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Pongify": {
+   "group": "Removal (interchangeable)",
+   "text": "**Thranduil:** 1 mana but gives them a 3/3. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kogla and Yidaro": {
+   "group": "Fits neither",
+   "text": "Off colour identity: needs {R}{R}.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Talisman of Resilience": {
+   "group": "Ramp",
+   "text": "**Thranduil:** Elves are better ramp here. **Glarb:** Cut at draft for Kaito, Bane of Nightmares.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Cultivate": {
+   "group": "Ramp",
+   "text": "**Thranduil:** Two basics; the deck ramps on Elves. **Glarb:** Slower than the rocks in the list.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Nature's Lore": {
+   "group": "Ramp",
+   "text": "**Thranduil:** Fetches any Forest-typed land untapped — Overgrown Tomb, Breeding Pool, Zagoth Triome. The deck already has 11 mana Elves. **Glarb:** Same; 8 ramp pieces already.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Farseek": {
+   "group": "Ramp",
+   "text": "**Thranduil:** Finds Watery Grave / Overgrown Tomb tapped. Fine. **Glarb:** Same.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Ramp",
+   "text": "**Thranduil:** Any colour for legendary spells, uncounterable — good with 17 legendary Elves, but not an Elf. **Glarb:** Fewer legends here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Thought Scour": {
+   "group": "Value card",
+   "text": "**Thranduil:** Target yourself: mill two, draw one. **Glarb:** Cut at draft for Theorix Charm; target them: mill two, and the draw mills two more.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Opt": {
+   "group": "Draw engine, outranked",
+   "text": "Scry 1 then draw — under Matoya that is two draws, four milled. A cheap filler; Brainstorm is in.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Preordain": {
+   "group": "Draw engine, outranked",
+   "text": "Scry 2 then draw; same as Opt, slightly better.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Consider": {
+   "group": "Value card",
+   "text": "**Thranduil:** Surveil 1 + draw. **Glarb:** Surveil triggers Matoya: two draws for 1 mana.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Memory Deluge": {
+   "group": "Swap candidate",
+   "text": "Instant: two of the top X, then flashback — four draws for eight mana of the late game, each draw milling two.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "The Everflowing Well // The Myriad Pools": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** Mill two, draw two — the mill feeds Thranduil. **Glarb:** Draw two mills four through Corrosion. Owned. Either is fine.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Sokka's Haiku": {
+   "group": "Different finisher, same job",
+   "text": "Owned. Counter + draw, but \"mill three cards\" mills YOU, and it costs 5.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Arcane Epiphany": {
+   "group": "Draw engine, outranked",
+   "text": "Draw three for 4 (Glarb is a Wizard); fine, outranked by the repeatable engines.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Laboratory Maniac": {
+   "group": "G",
+   "text": "Self-mill alt-win; a 100-card deck never empties its own library on purpose.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Rot Farm Mortipede": {
+   "group": "C",
+   "text": "+1/+1 counters or menace/lifelink when cards leave — Vanilla-ish bodies that need the event every turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Wizard's Retort": {
+   "group": "Swap candidate",
+   "text": "**Thranduil:** No Wizards; a plain 3-mana counter. **Glarb:** Glarb is a Frog Wizard, so it costs `{U}{U}` with Glarb out. The best counter left out.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Desecrated Tomb": {
+   "group": "C",
+   "text": "\"…leave your graveyard, create a 1/1 black Bat\" — Weaker Chalk Outline.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Chalk Outline": {
+   "group": "C",
+   "text": "\"Whenever one or more creature cards leave your graveyard, create a 2/2 … then investigate\" — Best of the rest; 4-mana do-nothing until a recast. First reserve if the recursion count grows.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Attuned Hunter": {
+   "group": "C",
+   "text": "+1/+1 counters or menace/lifelink when cards leave — Vanilla-ish bodies that need the event every turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Kishla Skimmer": {
+   "group": "C",
+   "text": "\"Whenever a card leaves your graveyard during your turn, draw a card\" (once a turn) — Fine card draw, but a 2-mana non-Elf; Elrond, Moon-Reader is the draw engine here.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Undead Hand Ninja": {
+   "group": "C",
+   "text": "drain 1 when creature cards leave — Too small.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Dredger's Insight": {
+   "group": "C",
+   "text": "ETB mill four, take an artifact/creature/land — A one-shot dig; the deck has better self-mill on Elf bodies.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Along the Crooked Way": {
+   "group": "C",
+   "text": "ETB \"return target creature card … to your hand\"; leave → amass Goblins — The Goblin army is off-tribe.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Willow Geist": {
+   "group": "C",
+   "text": "+1/+1 counters or menace/lifelink when cards leave — Vanilla-ish bodies that need the event every turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Courser of Kruphix": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Lands from the top plus life; Glarb does the first part. `{1}{G}{G}` on 15 green sources.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Augur of Autumn": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Lands from the top — Glarb does it; the creature half needs coven.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Oracle of Mul Daya": {
+   "group": "Ramp",
+   "text": "**Thranduil:** An Elf: extra land drop and lands from the top. Good. **Glarb:** Extra land drop plus Ruin Crab's landfall; Glarb already plays lands from the top.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Precognition Field": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Instants and sorceries from the top (21 here) — the closest of these; covers the cheap ones Glarb cannot. Bench.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Vivien, Monsters' Advocate": {
+   "group": "Duplicates Glarb's top-of-library",
+   "text": "Creatures from the top; the deck runs 20 creatures, mostly utility. `{3}{G}{G}`.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Eladamri, Korvecdal": {
+   "group": "A",
+   "text": "Missed at draft time — Legendary Elf (a loot); \"You may cast creature spells from the top of your library\" with 45 creatures; from the yard Thranduil gets `{G}, {T}, Tap two untapped creatures: … put it onto the battlefield` — a free creature cheat every turn.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Inside Information": {
+   "group": "Cast their cards / combat-gated",
+   "text": "Exile X and play them this turn for life; a one-turn burst.",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  },
+  "Deathrite Shaman": {
+   "group": "A",
+   "text": "Missed at draft time — it surfaced in the phase-1 Elf search but never reached the list — A 1-mana Elf with THREE activated abilities, so it is a Thranduil card twice: in play, and in the yard (`{T}: Exile target land card from a graveyard. Add one mana of any color`; `{B}`: drain 2; `{G}`: gain 2). Can target the OPPONENT'S graveyard, so it need not eat Elves. **Strongest add on this list.**",
+   "graded_at": {
+    "75-historic-brawl": "3a89a91d2b4e",
+    "96": "f86da0733f29"
+   }
+  }
+ }
+}

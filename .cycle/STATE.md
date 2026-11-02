@@ -46,6 +46,26 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 
 ## Completed this cycle
 
+- **2026-11-02 — Builder alternate printings** (block `builder-printings-broad-implement.md`): view-only Arena
+  artworks per card (`unique:art`, cached in builds/<slug>/printings.json; art sheets on the artifact). Builder plan
+  complete; `.cycle/builder-scope.md` deleted. Board republished (v19).
+- **2026-11-02 — Builder batch 4** (block `builder-batch4-broad-implement.md`): /pile-analysis, /draft-deck and
+  /apply-changes wired to Builder projects (incl. request processing); `builder.py add-deck`; CLAUDE.md G-89.
+- **2026-11-02 — Builder batch 3** (block `builder-batch3-broad-implement.md`): `builder.py site` (Pages, offline):
+  builder.html picker + builds/<slug>.html; dashboard ⚒ link + Builder section; pages.yml build + verify;
+  scenario 25, README, systems-map §5c.
+- **2026-11-01 — Builder batch 2b** (block `builder-batch2b-broad-implement.md`): Compare view with ⇄ pairing and
+  mana curve now/after; hidden-role markers (`builder.py hidden`); ownership tag + "I own exactly" queue → /ingest
+  block; applied state; conflict warnings; undo (`u`); next-band hint. Board republished.
+- **2026-11-01 — Builder batch 2 + 2a** (block `builder-batch2a-broad-implement.md`): generic `scripts/builder_template.html`;
+  `builder.py render --target pages|artifact`; theme toggle, 2×2 row picks, inline note row, collapsible pane + hover
+  preview, Protect/Unprotect requests, 672 px images with a thumbnail sprite (artifact versions cap at 511 files);
+  Sultai board republished (v14–17) from `builds/sultai`; `.cycle/board/src/` retired.
+- **2026-11-01 — Builder batch 1** (block `builder-batch1-broad-implement.md`): `scripts/builder.py` (new/add/place/
+  reason/check/picks/derive) with `builds/<slug>/build.json` holding only hand-made content; derivation moved out of the
+  Sultai board's refresh.py; `builds/sultai/` migrated (426 cards, 292 reasons, graded_at hashes); 14 tests + CLI help
+  test; `check_all` soft sweep for reasons written against an older deck list; `/pile-analysis` Stage 6 keeps a pile as
+  a build. Font pairing 1 recorded in `.cycle/builder-scope.md`.
 - **2026-10-31 — deck-95 session tooling fixes 1–3** (block `deck95-tooling-broad-implement.md`): `tier --to` now
   runs on untiered and ≥2-band-mismatch decks (exit code held, not returned); the rationale audit's shorthand index
   derives the head of a comma-less legendary creature/planeswalker title (Sakashima, Emiel), front-face typed —
@@ -299,6 +319,7 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
   (conditional mana) — K-12's long form has the probe. (Soul Immolation closed 2026-10-01.)
 
 ## Open follow-on items
+- **Classifier holes surfaced by deck 96's draft (2026-11-01), acknowledged in role_baseline.txt by postedit:** Jin-Gitaxias, Core Augur ("draw seven cards" at end step) and Dictate of Kruphix ("draws an additional card") score NO card-advantage role — both are pattern holes (G-67). Notion Thief (draw replacement) likewise. The mill cards (Archive Trap, Glimpse, Maddening Cacophony, Fraying Sanity, Sphinx Mindbreaker, Ashiok Nightmare Weaver) score zero because opponent mill is a clock with no role by design (G-62) — not holes. Measure before widening (K-14: diff the floors).
 - **2026-11-01 — the six keywords from the 2026-10-31 ingests are BASELINED, not themed** (ascend, battalion,
   conjure, constellation, partner, seek) so CI could go green for the PR. Baselining is the reversible half of K-01;
   the per-keyword THEME call is still open (constellation → enchantments and battalion → go-wide/attack look like
@@ -424,6 +445,24 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-02 (latest) — Builder complete** (all four batches + alternate printings). Next: /sync-docs for two G-35 figures.
+
+**2026-11-02 (latest) — Builder batch 4 done** (block `builder-batch4-broad-implement.md`). Suite green, check_all OK.
+**Next:** the last approved Builder item — view-only alternate Arena printings; /sync-docs for two G-35 figures.
+
+**2026-11-02 (latest) — Builder batch 3 done** (block `builder-batch3-broad-implement.md`). Publishes on the next merge to main.
+**Next:** Builder batch 4 (skills wiring, request processing, CLAUDE.md entry), then alternate printings.
+
+**2026-11-01 (latest) — Builder batch 2b done** (block `builder-batch2b-broad-implement.md`). check_all OK.
+**Next:** Builder batch 3 (Pages integration: builder.html, dashboard link/section, deploy check, scenario 25).
+
+**2026-11-01 (latest) — Builder batch 2 + 2a done** (block `builder-batch2a-broad-implement.md`). check_all OK, suite green.
+Re-render the board with `python3 scripts/builder.py render sultai --target artifact --out .cycle/board` after any deck swap.
+**Next:** Builder batch 2b (compare view, hidden roles, ownership queue, applied state, conflicts, undo, floor, curve).
+
+**2026-11-01 (latest) — Builder batch 1 done** (block `builder-batch1-broad-implement.md`). check_all OK, suite green.
+**Next:** Builder batch 2 (generic template + `builder.py render`), per `.cycle/builder-scope.md`.
+
 **2026-10-31 (latest) — deck-95 session tooling fixes 1–3 done** (block `deck95-tooling-broad-implement.md`).
 check_all OK; pytest 1 FAILED, pre-existing (the six unindexed keywords from today's ingests — see Open follow-on).
 **Next:** the keyword triage to turn CI green, then /sync-docs (G-26, `tier --to`).

@@ -37,3 +37,4 @@ credentials*.json
 # Claude Code mods: engine-generated type declarations (laid on each load)
 tools/mods/*/.claude-plugin/types/
 tools/mods/*/tsconfig.json
+.cycle/board/img/
