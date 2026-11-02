@@ -42,8 +42,18 @@ mkdir -p ~/mtga-logs && cat > ~/mtga-logs/extract.sh <<'EXTRACT_EOF'
 #     finalMatchResult, EventSetDeckV3 (the deck you played) and DeckUpsertDeckV3;
 #   * one `[MTGA-GAME]<local time>: {json}` line per FINISHED game, boiled down from
 #     the play-by-play (GREMessageType_GameStateMessage): your seat, who went first,
-#     the last turn number, each seat's mulligans, life totals, the game result, and
-#     every card each seat showed as "owner:grpId:colours" (L = land).
+#     the last turn number, each seat's mulligans, life totals, the game result,
+#     every card each seat showed as "owner:grpId:colours" (L = land), each seat's
+#     lands on the battlefield at the end of every turn ("lands"), and the lands and
+#     total cards each seat had seen by the end ("seen", "lands/cards" — hand,
+#     battlefield, graveyard and exile; library excluded).
+#
+# LAND COUNTS READ ZONE MEMBERSHIP, NOT THE CARD LIST (2026-11-02). "cards" keeps one
+# entry per grpId, so four Islands are one entry there; a land count from it would say
+# a flooded game was a screwed one. Arena re-sends every CHANGED zone with its full
+# objectInstanceIds list, so the latest list per zone is who is in it now, and each
+# physical card sits in exactly one zone. These feed parse_matches.py's suggested loss
+# reasons (screw / flood); a line written before this change simply lacks the fields.
 #
 # WHY SUMMARISE HERE rather than keep the raw lines: the play-by-play is 1.0-2.4 MB per
 # match (measured 2026-09-27, 8 matches; single lines up to 88 KB). Archived raw, the
@@ -86,7 +96,61 @@ function perseat(arr, k,   n, s, i, o) {
     for (i = 1; i <= n; i++) o = o (o == "" ? "" : ", ") "\"" s[i] "\": " ((k, s[i]) in arr ? arr[k, s[i]] : 0)
     return "{" o "}"
 }
+# Lands each seat controls on the battlefield right now, stored under turn tn. Nothing is
+# stored until a battlefield zone has been seen: a zero would read as "no lands" and make
+# every loss look screwed, where a blank honestly reads as "not recorded".
+function snap(k, tn,   z, nz, zs, m, ids, i, o, s, ns, ss, cnt, bf) {
+    split("", cnt); bf = 0
+    nz = split(zl[k], zs, " ")
+    for (z = 1; z <= nz; z++) {
+        if (zt[k, zs[z]] != "ZoneType_Battlefield") continue
+        bf = 1
+        m = split(zm[k, zs[z]], ids, ",")
+        for (i = 1; i <= m; i++) {
+            if (ids[i] == "" || !((k, ids[i]) in ob)) continue
+            split(ob[k, ids[i]], o, ":")
+            if (o[3] == "1") cnt[o[1]]++
+        }
+    }
+    if (!bf) return
+    ns = split(seats[k], ss, " ")
+    for (s = 1; s <= ns; s++) lt[k, ss[s], tn] = (ss[s] in cnt) ? cnt[ss[s]] : 0
+}
+# "lands/cards" a seat owns in hand, battlefield, graveyard and exile — what it has seen.
+function seen(k, seat,   z, nz, zs, m, ids, i, o, nl, nc, ty) {
+    nl = 0; nc = 0
+    if (zl[k] == "") return ""
+    nz = split(zl[k], zs, " ")
+    for (z = 1; z <= nz; z++) {
+        ty = zt[k, zs[z]]
+        if (ty != "ZoneType_Hand" && ty != "ZoneType_Battlefield" && \
+            ty != "ZoneType_Graveyard" && ty != "ZoneType_Exile") continue
+        m = split(zm[k, zs[z]], ids, ",")
+        for (i = 1; i <= m; i++) {
+            if (ids[i] == "" || !((k, ids[i]) in ob)) continue
+            split(ob[k, ids[i]], o, ":")
+            if (o[2] != seat) continue
+            nc++; if (o[3] == "1") nl++
+        }
+    }
+    return nl "/" nc
+}
+function landsjson(k,   n, s, i, o, t, v, last) {
+    n = split(seats[k], s, " "); o = ""; last = (k in turns) ? turns[k] : 0
+    for (i = 1; i <= n; i++) {
+        v = ""
+        for (t = 1; t <= last; t++) v = v (t > 1 ? "," : "") ((k, s[i], t) in lt ? lt[k, s[i], t] : "")
+        o = o (o == "" ? "" : ", ") "\"" s[i] "\": \"" v "\""
+    }
+    return "{" o "}"
+}
+function seenjson(k,   n, s, i, o) {
+    n = split(seats[k], s, " "); o = ""
+    for (i = 1; i <= n; i++) o = o (o == "" ? "" : ", ") "\"" s[i] "\": \"" seen(k, s[i]) "\""
+    return "{" o "}"
+}
 function emit(k, e,   res, why) {
+    if (k in cur) snap(k, cur[k])
     res = str(e, "result"); sub(/^ResultType_/, "", res)
     why = str(e, "reason"); sub(/^ResultReason_/, "", why)
     print "[MTGA-GAME]" stamp ": {\"matchId\": \"" mid "\", \"game\": " game \
@@ -94,7 +158,8 @@ function emit(k, e,   res, why) {
         ", \"turns\": " (k in turns ? turns[k] : 0) ", \"winner\": " (num(e, "winningTeamId") + 0) \
         ", \"result\": \"" res "\", \"reason\": \"" why "\"" \
         ", \"mulligans\": " perseat(mull, k) ", \"teams\": " perseat(team, k) \
-        ", \"life\": " perseat(life, k) ", \"cards\": [" cards[k] "]}"
+        ", \"life\": " perseat(life, k) ", \"lands\": " landsjson(k) \
+        ", \"seen\": " seenjson(k) ", \"cards\": [" cards[k] "]}"
     done[k] = 1
 }
 index($0, "GREMessageType_GameStateMessage") == 0 {
@@ -123,6 +188,11 @@ index($0, "GREMessageType_GameStateMessage") == 0 {
             if (tn != "") {
                 if (!(k in turns) || tn > turns[k]) turns[k] = tn
                 if (tn == 1 && a != "" && !(k in first)) first[k] = a
+                # A new turn: what is on the battlefield now is how the last one ended.
+                if (!(k in cur) || tn > cur[k]) {
+                    if (k in cur) snap(k, cur[k])
+                    cur[k] = tn
+                }
             }
         } else if (index(h, "\"lifeTotal\"")) {
             s = num(body, "systemSeatNumber")
@@ -133,8 +203,24 @@ index($0, "GREMessageType_GameStateMessage") == 0 {
                 if (v != "" && (!((k, s) in mull) || v > mull[k, s])) mull[k, s] = v
                 v = num(body, "teamId"); if (v != "") team[k, s] = v
             }
+        } else if (index(h, "\"zoneId\"")) {
+            zid = num(body, "zoneId")
+            if (zid != "") {
+                if (!((k, zid) in zt)) zl[k] = zl[k] " " zid
+                zt[k, zid] = str(body, "type")
+                v = ""; ii = index(body, "\"objectInstanceIds\"")
+                if (ii) {
+                    v = substr(body, ii); ii = index(v, "["); jj = index(v, "]")
+                    v = (ii && jj > ii) ? substr(v, ii + 1, jj - ii - 1) : ""
+                    gsub(/[^0-9,]/, "", v)
+                }
+                zm[k, zid] = v
+            }
         } else if (index(h, "\"instanceId\"") && index(body, "\"GameObjectType_Card\"")) {
             o = num(body, "ownerSeatId"); gid = num(body, "grpId")
+            iid = num(body, "instanceId"); cs = num(body, "controllerSeatId")
+            if (iid != "" && o != "")
+                ob[k, iid] = (cs != "" ? cs : o) ":" o ":" (index(body, "CardType_Land") ? 1 : 0)
             if (o != "" && gid != "" && !((k, o ":" gid) in have)) {
                 have[k, o ":" gid] = 1
                 cards[k] = cards[k] (cards[k] == "" ? "" : ", ") "\"" o ":" gid ":" colours(body) \
@@ -544,6 +630,19 @@ the game, while the owner still remembers it — which is exactly now.
 3. Write their answers with Stage 1c's `--annotate` (dry run, then `--apply`), keeping
    the ids the block printed. A value left empty CLEARS that field (on these new rows it is
    already empty, so leaving one blank changes nothing).
+   **A loss may carry `suggested: <word> (<evidence>)`** (since 2026-11-02): a guess from
+   the game line by three rules registered before any data — `keep` (mulliganed to 5 or
+   fewer), `screw` (2 or fewer lands in play at the end of your 4th turn), `flood` (60%+
+   of the cards you saw were lands, over 7+ of your turns). Show it beside the loss and
+   ask whether it is right. When the owner agrees,
+   `python3 scripts/parse_matches.py --accept <id> …` (dry run, then `--apply`) writes it
+   through the same `--annotate` writer; a wrong one is corrected with `--annotate`
+   instead. **Never accept a suggestion the owner did not confirm** — `--review`'s
+   agreement figure counts an acceptance as agreement, so an unread one flatters the
+   rule it is meant to test. `python3 scripts/parse_matches.py --review` lists every
+   unconfirmed loss with its suggestion, and how each rule has fared (rates from 20
+   confirmed losses). screw and flood need the extractor from 2026-11-02 — **re-run the
+   install block in Stage 0 on the Mac** once; older game lines read `keep` only.
 4. **A match the owner wants thrown out** (they stepped away, misclicked into a queue):
    `<id> void=<why>` — e.g. `void=stepped-away`. Never delete the row. Dedup keys on it,
    and the next paste starts from the last copy's day, so a deleted match comes straight

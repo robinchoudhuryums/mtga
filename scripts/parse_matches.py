@@ -130,7 +130,12 @@ HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar"
           # `GAME_FACT_PREFIX`), but only when blank: a value you typed is never replaced.
           "On Play", "Opponent Archetype", "Loss Reason", "Note",
           # FROM THE PLAY-BY-PLAY, appended 2026-09-27 — see `LOG_DETAIL_COLUMNS`.
-          "My Mulligans", "Opp Mulligans", "Turns", "Opponent Colors", "Opponent Cards"]
+          "My Mulligans", "Opp Mulligans", "Turns", "Opponent Colors", "Opponent Cards",
+          # A HEURISTIC loss reason, appended 2026-11-02 (match-digest decision 2). It is
+          # NEVER a confirmed reason: it reaches `Loss Reason` only when the owner accepts
+          # it (`--accept`), so this column and that one can be compared afterwards.
+          "Suggested Why"]
+SUGGESTED_WHY = "Suggested Why"
 
 # The loss-reason vocabulary. CLOSED so it can be COUNTED — free text cannot answer
 # "which decks flood out", which is the whole reason to record it. An unrecognized value
@@ -572,6 +577,101 @@ def match_details(games, names=None):
     return out, None
 
 
+# ── Suggested loss reasons (match-digest decision 2, built 2026-11-02) ─────────────────
+#
+# PRE-REGISTERED on 2026-09-25, before any game data existed, and kept as registered:
+#   keep  — I mulliganed to 5 or fewer;
+#   screw — the game reached my 4th turn with 2 or fewer lands in play;
+#   flood — lands were at least 60% of the cards I saw, in a game of 7+ of my turns.
+# `misplay`, `outclassed`, `answer`, `removed` and `slow` stay the owner's call. These are
+# GUESSES until measured: `--review` reports how often each rule matched the owner's
+# confirmed reason, and refuses a rate under 20 confirmed losses. Retune or drop a rule
+# from that measurement, never from a single game.
+# screw and flood need the per-turn land counts the extractor records since 2026-11-02
+# ("lands", "seen"); a game line from before then can only be read for keep.
+_KEEP_MAX_HAND = 5
+_SCREW_MY_TURN, _SCREW_MAX_LANDS = 4, 2
+_FLOOD_SHARE, _FLOOD_MIN_MY_TURNS = 0.60, 7
+SUGGEST_RULES = ("keep", "screw", "flood")
+_AGREEMENT_FLOOR = 20
+
+
+def _my_team(game):
+    seat = _seats(game)[0]
+    return _int((game.get("teams") or {}).get(str(seat))) or seat
+
+
+def _game_lost(game):
+    winner = _int(game.get("winner"))
+    return bool(winner) and bool(_seats(game)[0]) and winner != _my_team(game)
+
+
+def _per_turn(value):
+    """"0,1,,2" -> [0, 1, None, 2] (index 0 = turn 1)."""
+    return [int(x) if x.strip().isdigit() else None for x in str(value).split(",")] \
+        if value not in (None, "") else []
+
+
+def game_loss_signals(game):
+    """([(rule, evidence)] for each pre-registered rule that fired in ONE game,
+    [rule] that could not be evaluated from what the line records)."""
+    seat, _opp = _seats(game)
+    fired, blind = [], []
+    mull = _int((game.get("mulligans") or {}).get(str(seat)))
+    if 7 - mull <= _KEEP_MAX_HAND:
+        fired.append(("keep", f"mulliganed to {7 - mull}"))
+    first, turns = _int(game.get("first")), _int(game.get("turns"))
+    lands = _per_turn((game.get("lands") or {}).get(str(seat)))
+    if not first or all(x is None for x in lands):
+        blind += ["screw", "flood"]
+        return fired, blind
+    on_play = first == seat
+    g4 = 2 * _SCREW_MY_TURN - 1 if on_play else 2 * _SCREW_MY_TURN
+    if turns >= g4 and g4 <= len(lands) and lands[g4 - 1] is not None:
+        if lands[g4 - 1] <= _SCREW_MAX_LANDS:
+            fired.append(("screw", f"{lands[g4 - 1]} land(s) in play at the end of my "
+                                   f"turn {_SCREW_MY_TURN}"))
+    my_turns = (turns + 1) // 2 if on_play else turns // 2
+    seen = str((game.get("seen") or {}).get(str(seat)) or "")
+    if "/" in seen:
+        nl, nc = (_int(x) for x in seen.split("/", 1))
+        if nc and my_turns >= _FLOOD_MIN_MY_TURNS and nl / nc >= _FLOOD_SHARE:
+            fired.append(("flood", f"{nl} of {nc} cards seen were lands, over "
+                                   f"{my_turns} turns"))
+    else:
+        blind.append("flood")
+    return fired, blind
+
+
+def suggest_loss_reason(games):
+    """The `Suggested Why` cell for a LOST match, or "" when its lines cannot say.
+
+    One word, then its evidence in brackets: "screw (2 land(s) in play at the end of my
+    turn 4)". The FIRST rule to fire in the first lost game wins, in the registered
+    order keep → screw → flood; "none (…)" says the rules were read and nothing fired,
+    which is a different fact from a blank (never evaluated)."""
+    lost = [(i, g) for i, g in enumerate(games, 1) if _game_lost(g)]
+    if not lost:
+        return ""
+    blind = set()
+    for i, g in lost:
+        fired, b = game_loss_signals(g)
+        blind |= set(b)
+        if fired:
+            rule, why = fired[0]
+            where = f"game {i}: " if len(games) > 1 else ""
+            return f"{rule} ({where}{why})"
+    if blind:
+        return (f"none (no rule fired; {' and '.join(r for r in SUGGEST_RULES if r in blind)}"
+                f" not readable — the game line predates the 2026-11-02 extractor)")
+    return "none (no rule fired)"
+
+
+def suggested_word(cell):
+    """The rule word of a `Suggested Why` cell ("screw (…)" -> "screw"), or ""."""
+    return (cell or "").strip().split(" ", 1)[0].strip()
+
+
 def load_arena_cards(path=None):
     """{grpId: card name} from the cache; {} when there is none yet."""
     path = path or ARENA_CARDS_CSV
@@ -657,6 +757,14 @@ def apply_game_details(rows_by_id, facts, names):
             if old != new:
                 moved[col] = (old, new)
                 row[col] = new
+        # A suggestion is written once, into a blank cell, and only for a loss; it never
+        # touches `Loss Reason` (decision 2: the owner confirms it with --accept).
+        if ((row.get("Result") or "").upper() == "L"
+                and not (row.get(SUGGESTED_WHY) or "").strip()):
+            sug = suggest_loss_reason(games)
+            if sug:
+                moved[SUGGESTED_WHY] = ("", sug)
+                row[SUGGESTED_WHY] = sug
         if moved:
             changes.append((mid, row, moved))
     return changes, orphans, notes
@@ -732,8 +840,13 @@ def _print_loss_prompt(losses, facts, names, out=print):
             bits.append(f"vs {opp or '?'}" + (f": {'; '.join(seen)}" if seen else ""))
         elif mid not in facts:
             bits.append("no game details")
+        if (r.get(SUGGESTED_WHY) or "").strip():
+            bits.append(f"suggested: {r[SUGGESTED_WHY]}")
         out(f"   # {' · '.join(bits)}")
         out(f"   {mid} why= opp=")
+    if any(suggested_word(r.get(SUGGESTED_WHY)) in LOSS_REASONS for r in losses):
+        out("   (a suggestion is a guess from the game line — `--accept` confirms the "
+            "suggested ones in one step, `--review` lists every unconfirmed loss)")
 
 
 _BASIC_NAMES = {"Plains", "Island", "Swamp", "Mountain", "Forest", "Wastes"}
@@ -1710,6 +1823,7 @@ def parse_manual(text, existing_ids=(), deck_ids=None, today=None):
             "Loss Reason": why, "Note": (kv.get("note") or "").strip(),
             # A hand row has no play-by-play; these stay blank, never guessed.
             **{c: "" for c in LOG_DETAIL_COLUMNS},
+            SUGGESTED_WHY: "",
         })
     return rows, warnings
 
@@ -2085,6 +2199,106 @@ def _void_fields(row, why):
     return {"Result": VOID, "Note": f"{tag}: {why}" + (f" · {note}" if note else "")}
 
 
+def _unconfirmed_losses(rows):
+    return [r for r in rows if (r.get("Result") or "").upper() == "L"
+            and not (r.get("Loss Reason") or "").strip()]
+
+
+def suggestion_agreement(rows):
+    """{rule: (fired, agreed, missed)} over losses with BOTH a suggestion and a confirmed
+    reason, plus that population's size. `missed` = the owner named the rule and it did
+    not fire. Accepting a suggestion counts as agreeing with it, so `--accept` without
+    reading the game makes this number flatter itself — accept only what you remember."""
+    pop = [r for r in rows if (r.get("Result") or "").upper() == "L"
+           and (r.get("Loss Reason") or "").strip() and (r.get(SUGGESTED_WHY) or "").strip()]
+    out = {}
+    for rule in SUGGEST_RULES:
+        fired = [r for r in pop if suggested_word(r[SUGGESTED_WHY]) == rule]
+        agreed = sum(1 for r in fired if r["Loss Reason"].strip() == rule)
+        missed = sum(1 for r in pop if r["Loss Reason"].strip() == rule
+                     and suggested_word(r[SUGGESTED_WHY]) != rule)
+        out[rule] = (len(fired), agreed, missed)
+    return out, len(pop)
+
+
+def review(rows, out=print):
+    """`--review`: every LOSS with no confirmed reason, numbered, with its suggestion and
+    the game facts behind it, then how the rules have fared against confirmed reasons."""
+    todo = sorted(_unconfirmed_losses(rows),
+                  key=lambda r: (r.get("Date") or "", r.get("Match ID") or ""))
+    if not todo:
+        out("Every recorded loss has a confirmed reason.")
+    else:
+        sug = [r for r in todo if suggested_word(r.get(SUGGESTED_WHY)) in LOSS_REASONS]
+        out(f"{len(todo)} loss(es) with no confirmed reason; {len(sug)} carry a suggestion:")
+        for i, r in enumerate(todo, 1):
+            bits = [f"{r.get('Date') or '?'}", f"deck {r.get('Deck') or '?'}"]
+            if r.get("On Play"):
+                bits.append(f"on the {r['On Play']}")
+            if r.get("My Mulligans") and r["My Mulligans"].strip("0/"):
+                bits.append(f"mull {r['My Mulligans']}")
+            if r.get("Turns"):
+                bits.append(f"turn {r['Turns']}")
+            if r.get("Opponent Colors"):
+                bits.append(f"vs {r['Opponent Colors']}")
+            cell = (r.get(SUGGESTED_WHY) or "").strip()
+            if cell:
+                bits.append(f"suggested: {cell}")
+            elif (r.get("Turns") or "").strip():
+                bits.append("not suggested (ingested before suggestions existed)")
+            else:
+                bits.append("no game details")
+            out(f"  {i:>3}. {(r.get('Match ID') or '')[:8]}  " + " · ".join(bits))
+        if sug:
+            out("\nConfirm the suggestions you agree with: `--accept` (all) or `--accept "
+                "<id> <id>…` (8-character ids are fine), dry run until --apply. Correct a "
+                "wrong one with `--annotate` (`<matchId> why=<word>`) instead.")
+    stats, n = suggestion_agreement(rows)
+    out(f"\nSuggestion agreement — {n} confirmed loss(es) carry a suggestion "
+        f"(rates from {_AGREEMENT_FLOOR}):")
+    for rule, (fired, agreed, missed) in stats.items():
+        rate = f" ({agreed / fired:.0%})" if n >= _AGREEMENT_FLOOR and fired else ""
+        out(f"  {rule:<6} suggested {fired}, agreed {agreed}{rate}; you named it "
+            f"{missed} time(s) it did not fire")
+    if n < _AGREEMENT_FLOOR:
+        out(f"  ({_AGREEMENT_FLOOR - n} more confirmed loss(es) before a rate means "
+            f"anything — the rules were registered before any data and are guesses until "
+            f"then.)")
+    return 0
+
+
+def accept(ids, out=MATCHES_CSV, apply=False):
+    """`--accept [id …]`: copy each named (or every) unconfirmed loss's SUGGESTED rule
+    into `Loss Reason`, through the `--annotate` writer so it inherits its checks and
+    its dry run. A "none" suggestion is never accepted — there is nothing to confirm."""
+    rows = load_matches(out)
+    todo = {(r.get("Match ID") or "").strip(): r for r in _unconfirmed_losses(rows)}
+    chosen = []
+    if ids:
+        for raw in ids:
+            hits = [m for m in todo if m.startswith(raw.strip())]
+            if len(hits) != 1:
+                eprint(f"WARN:  {raw!r}: " + ("no unconfirmed loss starts with that id"
+                       if not hits else f"matches {len(hits)} losses — give more of it")
+                       + " — skipped.")
+                continue
+            chosen.append(hits[0])
+    else:
+        chosen = sorted(todo)
+    lines = []
+    for mid in chosen:
+        word = suggested_word(todo[mid].get(SUGGESTED_WHY))
+        if word in LOSS_REASONS:
+            lines.append(f"{mid} why={word}")
+        elif ids:
+            eprint(f"WARN:  {mid[:8]}: no rule fired for this loss — nothing to accept; "
+                   f"name the reason with --annotate.")
+    if not lines:
+        print("No suggested loss reason to accept.")
+        return 0
+    return annotate("\n".join(lines) + "\n", out, apply=apply)
+
+
 def annotate(text, out=MATCHES_CSV, apply=False):
     """`--annotate`: fill the hand-only columns on matches the LOG already recorded.
 
@@ -2433,6 +2647,12 @@ def main():
                     help="fill opp/why/play/note on matches the LOG already recorded, "
                          "from `<matchId> key=value` lines — updates rows in place "
                          "rather than appending, so it cannot double-count")
+    ap.add_argument("--review", action="store_true",
+                    help="list every loss with no confirmed reason, with its suggested "
+                         "reason and the rules' agreement so far")
+    ap.add_argument("--accept", nargs="*", metavar="MATCH_ID",
+                    help="confirm SUGGESTED loss reasons into Loss Reason (all, or the "
+                         "named ids; 8-character prefixes work) — dry run unless --apply")
     ap.add_argument("--since", metavar="YYYY-MM-DD",
                     help="ignore log lines dated before this (INCLUSIVE of the day). "
                          "The extraction never consumes Player.log, so every paste "
@@ -2473,6 +2693,10 @@ def main():
         print(mark)
         return 0
 
+    if args.accept is not None:
+        return accept(args.accept, args.out, apply=args.apply)
+    if args.review:
+        return review(load_matches(args.out))
     if args.annotate:
         if not args.source:
             ap.error("--annotate needs the lines: a file, or '-' for stdin")
