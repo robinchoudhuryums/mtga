@@ -443,7 +443,9 @@ class TestAddDeck:
         B.set_reason(b, "Opt", "fine")
         k = B.add_deck(b, str(other), key="T", label="Thranduil")
         assert k == "T" and [d["key"] for d in b["decks"]] == ["G", "T"]
-        assert [p["key"] for p in b["piles"]] == ["G", "T", "N"]
+        # a second deck brings the shared pile, and "Doesn't fit" (one deck) becomes "Fits neither"
+        assert [(p["key"], p["label"]) for p in b["piles"]][1:] == \
+            [("T", "Thranduil's pile"), ("B", "Either deck"), ("N", "Fits neither")]
         assert set(b["reasons"]["Opt"]["graded_at"]) == {deck_path}       # not re-stamped
         with pytest.raises(B.BuildError, match="already in this build"):
             B.add_deck(b, str(other))
@@ -509,3 +511,55 @@ class TestPrintingArts:
         data = json.loads(_re.search(r'id="data">(.*?)</script>', s, _re.S).group(1).replace("<\\/", "</"))
         by = {c["n"]: c for c in data["cards"]}
         assert len(by["Opt"]["al"]) == 2 and "al" not in by["Counterspell"]
+
+
+class TestDeckCount:
+    """The deck-less piles are named for the number of decks, and a build of one or of three
+    decks renders like a build of two (Batch C)."""
+
+    def _copies(self, tmp, deck_path, n):
+        out = []
+        for i in range(n):
+            p = tmp / f"copy{i}.txt"
+            shutil.copy(deck_path, p)
+            out.append(str(p))
+        return out
+
+    def test_pile_labels_follow_the_deck_count(self, scratch):
+        deck_path, tmp = scratch
+        paths = self._copies(tmp, deck_path, 3)
+        assert [p["label"] for p in B.new_build("one", paths[:1])["piles"]][1:] == ["Doesn't fit"]
+        assert [p["label"] for p in B.new_build("two", paths[:2])["piles"]][2:] == ["Either deck", "Fits neither"]
+        three = B.new_build("three", paths)
+        assert [p["label"] for p in three["piles"]][3:] == ["More than one deck", "Fits none"]
+        assert len({d["key"] for d in three["decks"]}) == 3            # three Glarbs, three keys
+
+    def test_add_deck_retitles_default_labels_and_keeps_renamed_ones(self, scratch):
+        deck_path, tmp = scratch
+        paths = self._copies(tmp, deck_path, 3)
+        b = B.new_build("grow", paths[:1])
+        B.add_deck(b, paths[1])                                         # 1 → 2: the shared pile appears
+        assert [(p["key"], p["label"]) for p in b["piles"] if p["deck"] is None] == \
+            [("B", "Either deck"), ("N", "Fits neither")]
+        next(p for p in b["piles"] if p["key"] == "N")["label"] = "Bin"  # the owner renamed it
+        B.add_deck(b, paths[2])                                         # 2 → 3
+        assert [(p["key"], p["label"]) for p in b["piles"] if p["deck"] is None] == \
+            [("B", "More than one deck"), ("N", "Bin")]
+
+    @pytest.mark.parametrize("n", [1, 3])
+    def test_one_and_three_deck_builds_render(self, scratch, monkeypatch, n):
+        deck_path, tmp = scratch
+        monkeypatch.setattr(B, "image_urls",
+                            lambda slug, names, fetch=True: {x: "https://cards.scryfall.io/normal/front/a/b/x.jpg" for x in names})
+        paths = self._copies(tmp, deck_path, n)
+        b = B.new_build(f"r{n}", paths)
+        B.add_cards(b, ["Murder"], pile=b["piles"][0]["key"])
+        B.save_build(f"r{n}", b)
+        r = B.render(f"r{n}", "pages", str(tmp / f"out{n}"), tempo=False, fetch=False)
+        s = open(r["page"], encoding="utf-8").read()
+        data = json.loads(re.search(r'<script type="application/json" id="data">(.*?)</script>', s, re.S)
+                          .group(1).replace("<\\/", "</"))
+        assert len(data["meta"]["decks"]) == n == len(data["meta"]["live"])
+        assert [p["label"] for p in data["meta"]["piles"]][n:] == \
+            ([B.shared_pile_labels(n)[0]] if n > 1 else []) + [B.shared_pile_labels(n)[1]]
+        assert any(c["n"] == "Murder" for c in data["cards"])

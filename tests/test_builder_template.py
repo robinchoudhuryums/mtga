@@ -393,3 +393,45 @@ class TestDecidedAndGestureUndo:
         assert out["decided"] == [[True, False, True], [False, False, False], [True, True, True]]
         assert out["afterB"] == ["benchG", "benchT"] and out["undoDepth"] == 1
         assert out["afterU"] is None and out["toasts"][-1].startswith("Undid: Bench: B")   # it had no picks before
+
+
+_HARNESS_QUICK = """
+const fs = require('fs');
+const input = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const DK = input.keys, DECKS = Object.fromEntries(DK.map(k => [k, {label: "Glarb", dc: "var(--idU)"}]));
+const PILEDEFS = [{k:"P", deck: DK[0]}, {k:"B", deck: null}];
+const PICKLAB = {}; DK.forEach(k=>["add","cut","bench","out","prot","unprot"].forEach(x=>PICKLAB[x+k]=x+k));
+const ICON = {bench: "|", out: "o"};
+let picks = {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const own = quick({id:"a", n:"A", p:"P"}), shared = quick({id:"b", n:"B", p:"B"});
+const count = (h, re) => (h.match(re) || []).length;
+console.log(JSON.stringify({
+  ownBench: count(own, /data-v="bench/g), sharedBench: count(shared, /data-v="bench/g),
+  sharedOut: count(shared, /data-v="out/g), menu: shared.includes('class="qmore"'),
+  letters: [...shared.matchAll(/>\\+([^<]+)</g)].map(m => m[1]),
+  colours: assignColours(input.srcs)}));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestManyDecks:
+    @pytest.mark.parametrize("keys,menu", [(["G", "G2", "G3"], False), (["G", "G2", "G3", "G4", "G5"], True)])
+    def test_row_buttons_and_accents(self, tmp_path, keys, menu):
+        """Row buttons name decks by their unique KEY (three Glarbs read +G +G2 +G3, not +G +G +G);
+        a shared pile offers Bench and Keep out per deck, folded into a menu past three decks;
+        two decks of one colour identity get different accents."""
+        fx = tmp_path / "in.json"
+        fx.write_text(json.dumps({"keys": keys, "srcs": ["U24 · B20 · G15", "U22 · G15", "U10"]}))
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+                      + _extract(["pickColour", "quick", "colourRank", "assignColours"]))
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_QUICK)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js), str(fx)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["letters"] == keys
+        assert out["ownBench"] == 1 and out["sharedBench"] == out["sharedOut"] == len(keys)
+        assert out["menu"] is menu
+        assert out["colours"] == ["U", "G", "U"]          # deck 2 avoids U; deck 3 has only U

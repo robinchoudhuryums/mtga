@@ -162,6 +162,14 @@ def current_hashes(build):
 
 
 # ---------------------------------------------------------------- mutations
+def shared_pile_labels(n):
+    """The default labels of the two deck-less piles for a build of `n` decks: (the "fits more
+    than one deck" pile, or None when there is only one deck; the "fits no deck" pile)."""
+    if n <= 1:
+        return None, "Doesn't fit"
+    return ("Either deck", "Fits neither") if n == 2 else ("More than one deck", "Fits none")
+
+
 def new_build(slug, deck_ids, keys=None, title=None):
     if os.path.exists(build_path(slug)):
         raise BuildError(f"build {slug!r} already exists")
@@ -179,9 +187,10 @@ def new_build(slug, deck_ids, keys=None, title=None):
         decks.append({"key": k, "id": did, "label": label})
     piles = [{"key": d["key"], "label": f"{d['label']}'s pile", "deck": d["key"], "intro": ""}
              for d in decks]
-    if len(decks) > 1:
-        piles.append({"key": "B", "label": "Either deck", "deck": None, "intro": ""})
-    piles.append({"key": "N", "label": "Fits neither", "deck": None, "intro": ""})
+    shared, none = shared_pile_labels(len(decks))
+    if shared:
+        piles.append({"key": "B", "label": shared, "deck": None, "intro": ""})
+    piles.append({"key": "N", "label": none, "deck": None, "intro": ""})
     build = {"schema": SCHEMA, "title": title or slug.replace("-", " ").title(),
              "decks": decks, "piles": piles, "groups": dict(DEFAULT_GROUPS),
              "cards": [], "reasons": {}}
@@ -204,10 +213,24 @@ def add_deck(build, did, key=None, label=None):
         if key:
             raise BuildError(f"key {k!r} is already used by a deck or pile")
         k = next(f"{k}{i}" for i in range(2, 99) if f"{k}{i}" not in used)
+    old_n = len(build["decks"])
     build["decks"].append({"key": k, "id": d["id"], "label": label})
     piles = build.setdefault("piles", [])
     at = next((i for i, p in enumerate(piles) if p.get("deck") is None), len(piles))
     piles.insert(at, {"key": k, "label": f"{label}'s pile", "deck": k, "intro": ""})
+    # A deck count change changes what the deck-less piles mean. A label still at the OLD
+    # default follows the new count; one the owner renamed is left alone. Going from one deck
+    # to two adds the shared pile a one-deck build has no use for.
+    (o_sh, o_no), (n_sh, n_no) = shared_pile_labels(old_n), shared_pile_labels(old_n + 1)
+    shared = next((p for p in piles if p.get("deck") is None and p["key"] != "N"), None)
+    if shared is None and n_sh and "B" not in {p["key"] for p in piles} and "B" not in _deck_keys(build):
+        piles.insert(next((i for i, p in enumerate(piles) if p["key"] == "N"), len(piles)),
+                     {"key": "B", "label": n_sh, "deck": None, "intro": ""})
+    elif shared is not None and shared.get("label") == o_sh:
+        shared["label"] = n_sh
+    none = next((p for p in piles if p["key"] == "N" and p.get("deck") is None), None)
+    if none is not None and none.get("label") == o_no:
+        none["label"] = n_no
     return k
 
 

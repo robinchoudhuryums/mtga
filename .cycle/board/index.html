@@ -126,6 +126,11 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .qb{display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:2px 6px;min-height:22px;font:500 .74rem/1.3 var(--mono);cursor:pointer;color:var(--muted)}
 .qb svg{width:12px;height:12px;display:block}
 .qb .qi{display:inline-flex;align-items:center;gap:2px}
+/* more than three decks: Bench / Keep out live in a per-row menu so the row keeps its width */
+.qmore{grid-column:1/-1;position:relative}
+.qmore summary{list-style:none}
+.qmore summary::-webkit-details-marker{display:none}
+.qmenu{position:absolute;right:0;top:calc(100% + 3px);z-index:6;display:grid;grid-template-columns:repeat(2,auto);gap:3px;background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .qb:hover{border-color:var(--qc);color:var(--ink)}
 .qb[aria-pressed="true"]{background:var(--qc);border-color:var(--qc);color:var(--panel)}
 .noteDot{font-size:.8rem;color:var(--accent)}
@@ -383,10 +388,17 @@ document.addEventListener("error",e=>{ const im=e.target; if(im&&im.tagName==="I
 
 /* Decks: label from build.json (else the commander's first name), accent from the deck's most-produced colour. */
 function mainColour(src){ let best="C",n=-1; (src||"").split("·").forEach(t=>{ const m=t.trim().match(/^([WUBRG])(\d+)/); if(m && +m[2]>n){ n=+m[2]; best=m[1]; } }); return best; }
+/* A deck's colours, most-produced first ("U24 · B20 · G15" → U, B, G). */
+function colourRank(src){ return (src||"").split("·").map(t=>t.trim().match(/^([WUBRG])(\d+)/)).filter(Boolean).sort((a,b)=>+b[2]-+a[2]||"WUBRG".indexOf(a[1])-"WUBRG".indexOf(b[1])).map(m=>m[1]); }
+/* One accent per deck, in build order: each takes its most-produced colour no earlier deck took,
+   so two decks of one colour identity do not share an accent; when every colour is taken, its own top. */
+function assignColours(srcs){ const used=new Set();
+  return srcs.map(src=>{ const r=colourRank(src), c=r.find(x=>!used.has(x))||r[0]||"C"; used.add(c); return c; }); }
 const DECKS = {};
-(META.decks||Object.keys(LIVE).map(k=>({key:k}))).forEach(dd=>{ const k=dd.key, L=LIVE[k]||{};
+const DDEFS = META.decks||Object.keys(LIVE).map(k=>({key:k})), DCOL = assignColours(DDEFS.map(dd=>(LIVE[dd.key]||{}).sources));
+DDEFS.forEach((dd,di)=>{ const k=dd.key, L=LIVE[k]||{};
   DECKS[k]={ key:k, label:dd.label||(L.cmd||L.name||k).split(",")[0].split(" ")[0], full:L.name||"", id:L.id||dd.id||"", cmd:L.cmd||"",
-    size:L.size||0, lands:L.lands||0, list:L.list||[], dc:`var(--id${mainColour(L.sources)})`,
+    size:L.size||0, lands:L.lands||0, list:L.list||[], dc:`var(--id${DCOL[di]})`,
     portrait:{id:slug(L.cmd||""), im:(META.portraits||{})[k]||""} }; });
 const DK = Object.keys(DECKS);
 const DLNAME = {}; DK.forEach(k=>DECKS[k].list.forEach(x=>{ DLNAME[slug(x.n)]=x.n; }));
@@ -524,19 +536,21 @@ function roleTags(c, all){ const hid=hidOf(c), sus=(c.hr||[]).filter(r=>!hid.inc
 
 /* ---------- rows ---------- */
 function quick(c){ const p=(picks[c.id]||{}).picks||[];
-  const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(DECKS[k].label[0])}</button>`; }).join("");
-  const n=Math.max(2,DK.length), pad=(xs)=>xs.concat(Array(Math.max(0,n-xs.length)).fill("<span></span>")).join(""), scope=pileScope(c);
+  const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(k)}</button>`; }).join("");
+  const many=DK.length>3, n=many?2:Math.max(2,DK.length), pad=(xs)=>xs.concat(Array(Math.max(0,n-xs.length)).fill("<span></span>")).join(""), scope=pileScope(c);
   const xb=(kind,k)=>{ if(c["i"+k]) return "<span></span>"; const v=kind+k;
-    return `<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}"><span class="qi">${ICON[kind]}${esc(DECKS[k].label[0])}</span></button>`; };
+    return `<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}"><span class="qi">${ICON[kind]}${esc(k)}</span></button>`; };
+  if(many){ const set=p.filter(v=>["bench","out"].includes(kindOf(v))).length;
+    return `<span class="q" style="--qn:2">${dbtn}${DK.length%2?"<span></span>":""}<details class="qmore"><summary class="qb" aria-label="Bench or keep out: ${esc(c.n)}${set?` (${set} set)`:""}" title="Bench / Keep out">⋯${set?` ${set}`:""}</summary><span class="qmenu">${scope.flatMap(k=>[xb("bench",k),xb("out",k)]).join("")}</span></details></span>`; }
   const xbtn = scope.length===1 ? pad([xb("bench",scope[0]),xb("out",scope[0])]) : pad(scope.map(k=>xb("bench",k)))+pad(scope.map(k=>xb("out",k)));
-  return `<span class="q" style="--qn:${n}">${dbtn}${"<span></span>".repeat(n-DK.length)}${xbtn}</span>`; }
+  return `<span class="q" style="--qn:${n}">${dbtn}${"<span></span>".repeat(Math.max(0,n-DK.length))}${xbtn}</span>`; }
 function noteRowHTML(c,col){ const p=picks[c.id]||{};
   return `<div class="inote"><textarea class="note" id="ni-${col}${c.id}" data-id="${c.id}" rows="1" aria-label="Note for Claude on ${esc(c.n)}" placeholder="A note for Claude on ${esc(c.n)} (Esc to close)">${esc(p.note||"")}</textarea><span class="saved" data-saved="${c.id}" aria-live="polite"></span></div>`; }
 /* A row. `col` is "" in a pile view, "L"/"R" in the Compare view (a card can be in both columns,
    so rows are found by data attributes, never by id). The deck column adds the cut rank and ⇄. */
 function rowHTML(c, col=""){
   const tags = DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${c["p"+k]?"Protected":"In"} ${esc(DECKS[k].label)}</span>`).join("")
-    + DK.filter(k=>(c.vd||{})[k]).map(k=>`<span class="tag vd ${(c.vs||{})[k]||""}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}">${esc(DECKS[k].label[0])} ${esc(c.vd[k])}</span>`).join("");
+    + DK.filter(k=>(c.vd||{})[k]).map(k=>`<span class="tag vd ${(c.vs||{})[k]||""}" style="--dc:${DECKS[k].dc}" title="${esc(vTitle(c,k))}">${esc(k)} ${esc(c.vd[k])}</span>`).join("");
   const ap = hasApplied(c.id), k=CMP.deck, d=DECKS[k];
   let extra="", cls="", lead="";
   if(col==="R"){ const x=d.list.find(x=>x.n===c.n)||{}, s=BYID[SEL], cutBy=pairedTo(k,c.n);
@@ -551,7 +565,7 @@ function rowHTML(c, col=""){
     <span class="th">${thumb(c)}</span>
     <button type="button" class="main" data-sel="${c.id}" aria-current="${col==="R"?c.id===INSPECT:c.id===SEL}" aria-expanded="${NOTEOPEN===c.id&&NOTECOL===col}" title="Click again to write a note">
       <span class="l1"><span class="nm">${esc(c.n)}</span><span class="cost">${pips(c.c)}</span><span class="noteDot" title="Has a note"${hasNote(c.id)?"":" hidden"}>✎</span></span>
-      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut · ${esc(DECKS[k].label[0])}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
+      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut · ${esc(k)}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
     </button>
     ${extra}${quick(c)}
   </div>${NOTEOPEN===c.id&&NOTECOL===col?noteRowHTML(c,col):""}</div>`;
@@ -1009,6 +1023,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-v]"); if(b){ const id=b.dataset.id, v=b.dataset.v, col=colOf(b);
     const where=b.closest("#sheet")?"#sheet ":b.closest(".detail")?"#detail ":b.closest(".dlist")?".dlist ":`.rw[data-w="${id}"][data-col="${col}"] `; togglePick(id,v); refreshView(id);
     const again=document.querySelector(`${where}[data-id="${id}"][data-v="${v}"]`); if(again) again.focus(); return; }
+  if(e.target.closest(".qmore")) return;            // the per-row Bench / Keep out menu opens itself
   const sel=e.target.closest("[data-sel]")||(e.target.closest("[data-row]")&&!e.target.closest("button")?e.target.closest("[data-row]"):null);
   if(sel){ const id=sel.dataset.sel||sel.dataset.row, col=colOf(sel);
     if(view==="compare"&&col==="R"){ if(narrow()){ ACTIVECOL="R"; VISIBLE=COLIDS.R; openSheet(id,true); } else inspect(id,false); return; }
