@@ -45,13 +45,14 @@
 1 Bruvac the Grandiloquent (JMP) 10
 1 Fraying Sanity (WOT) 19
 1 The Water Crystal (FIN) 85
-1 Ruin Crab (ZNR) 75
+1 Master's Councillors (HOB) 47
 1 Way of the Necromancer (FRA) 239
 1 Ichormoon Gauntlet (ONE) 56
 1 Flux Channeler (WAR) 52
 1 Scavenger's Talent (BLB) 111
 1 Altar of Dementia (BRR) 3
 1 Lithoform Engine (ZNR) 245
+1 Deepmuck Desperado (OTJ) 42
 
 # Big mill and library exile — the finishers
 1 Terisian Mindbreaker (BRO) 83
@@ -71,6 +72,7 @@
 1 Doctor Doom, Unrivaled (MSC) 654
 1 Sheoldred, the Apocalypse (DMU) 107
 1 Ominous Seas (IKO) 61
+1 Kasmina, Enigma Sage (STX) 196
 
 # Interaction
 1 Drown in the Loch (ELD) 188
@@ -95,7 +97,6 @@
 1 Jin-Gitaxias // The Great Synthesis (MOM) 65
 1 Krang, the All-Powerful (TMC) 13
 1 Lord of the Forsaken (MID) 110
-1 Nashi, Moon's Legacy (MAT) 39
 1 One Ring to Rule Them All (LTR) 102
 1 Phenax, God of Deception (PIO) 316
 1 Riverchurn Monument (DFT) 57
@@ -105,7 +106,6 @@
 1 Nissa, Voice of Zendikar (PIO) 188
 1 The Mycotyrant (LCI) 235
 1 Planetarium of Wan Shi Tong (TLA) 259
-1 Elven Chorus (LTR) 160
 1 Immortus, Master of Eternity (MSC) 623
 1 Defiler of Dreams (DMU) 46
 1 Tezzeret the Schemer (KLR) 209
@@ -179,3 +179,4 @@
 #~ +Archive Trap | BENCH (owner, 2026-11-03): cut in the trim to 100, kept on the bench
 #~ +Jin-Gitaxias, Core Augur | BENCH (owner, 2026-11-03): cut in the trim to 100, kept on the bench
 #~ +Cyclonic Rift | BENCH (owner, 2026-11-03): cut in the trim to 100, kept on the bench
+#~ +The Ancient One | BENCH (owner, 2026-11-03): 8/8 Altar fodder (mills 20) and a loot that mills by mana value
