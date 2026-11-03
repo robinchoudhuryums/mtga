@@ -192,6 +192,7 @@
    "y": "2021"
   }
  ],
+ "Bilbo, Thief in the Night": [],
  "Birds of Paradise": [
   {
    "a": "Ben Wootten",
@@ -781,6 +782,7 @@
    "y": "2021"
   }
  ],
+ "Curious Homunculus // Voracious Reader": [],
  "Cut Your Losses": [],
  "Cyclonic Rift": [
   {
@@ -841,6 +843,7 @@
  "Dawnhand Eulogist": [],
  "Deathbloom Ritualist": [],
  "Deathrite Shaman": [],
+ "Defiler of Dreams": [],
  "Delighted Halfling": [
   {
    "a": "Inka Schulz",
@@ -963,6 +966,32 @@
  "Elrond, Lord of Rivendell": [],
  "Elrond, Master of Healing": [],
  "Elrond, Moon-Reader": [],
+ "Elven Chorus": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "cn": "160",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Stephen L. Walsh",
+   "art": "https://cards.scryfall.io/art_crop/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Elvish Archdruid": [
   {
    "a": "Anastasia Balakchina",
@@ -1480,6 +1509,7 @@
   }
  ],
  "Hullbreaker Horror": [],
+ "Immortus, Master of Eternity": [],
  "Imoti, Celebrant of Bounty": [
   {
    "a": "Bastien L. Deharme",
@@ -2284,6 +2314,7 @@
   }
  ],
  "Nissa, Steward of Elements": [],
+ "Nissa, Voice of Zendikar": [],
  "Niv-Mizzet, Visionary": [],
  "Notion Thief": [
   {
@@ -2532,6 +2563,7 @@
    "y": "2024"
   }
  ],
+ "Planetarium of Wan Shi Tong": [],
  "Pol Jamaar, Illusionist": [],
  "Pongify": [],
  "Precognition Field": [],
@@ -3055,6 +3087,7 @@
  "Terisian Mindbreaker": [],
  "Tetzimoc, Primal Death": [],
  "Teval, the Balanced Scale": [],
+ "Tezzeret the Schemer": [],
  "Tezzeret, Betrayer of Flesh": [
   {
    "a": "Bryan Sola",
@@ -3152,6 +3185,30 @@
    "fx": [],
    "im": "https://cards.scryfall.io/normal/front/f/5/f5f1809c-fadb-4974-ae94-292e5d97afb8.jpg?1783908850",
    "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
+ "Tireless Provisioner": [
+  {
+   "a": "Wangjie Li",
+   "art": "https://cards.scryfall.io/art_crop/front/9/9/995938ee-3ba7-42c9-9e0f-76b4a105f55e.jpg?1783915909",
+   "cn": "262",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/9/995938ee-3ba7-42c9-9e0f-76b4a105f55e.jpg?1783915909",
+   "r": "U",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Josu Hernaiz",
+   "art": "https://cards.scryfall.io/art_crop/front/5/d/5dbc2162-238d-492b-b629-94f771230d92.jpg?1783908616",
+   "cn": "728",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/d/5dbc2162-238d-492b-b629-94f771230d92.jpg?1783908616",
+   "r": "U",
    "set": "J25",
    "sn": "Foundations Jumpstart",
    "y": "2024"
