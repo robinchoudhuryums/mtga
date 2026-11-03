@@ -84,7 +84,7 @@
 
 # Added 2026-11-03 — the owner's board picks (trimmed to 100 the same day)
 1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
-1 Chandra, Chill of Compliance (FRA) 212
+1 Thryx, the Sudden Storm (THB) 76
 1 Cut Your Losses (SNC) 38
 1 Erebos, God of the Dead (PIO) 291
 1 Ioreth of the Healing House (LTR) 56
