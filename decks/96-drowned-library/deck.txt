@@ -9,7 +9,7 @@
 #: archetype: deck wins by emptying the opponent's library. Every card we DRAW mills them: Psychic Corrosion and the
 #: archetype: two Tutelages turn draws into mill 2, Bruvac doubles any mill, The Water Crystal adds four, Fraying
 #: archetype: Sanity repeats a turn's graveyard total at end step. Glarb's surveil is the draw engine's spark —
-#: archetype: Matoya draws on every surveil/scry, Proft pays {2} to draw on it — and Rhystic Study, Mystic Remora,
+#: archetype: Matoya draws on every surveil/scry, Proft pays {2} to draw on it — and Rhystic Study,
 #: archetype: Dictate of Kruphix, The Theorist and Jin-Gitaxias, Core Augur keep the draws coming. The finishers are big mills
 #: archetype: (Traumatize, Maddening Cacophony kicked, Startled Awake, Archive Trap, Sphinx Mindbreaker) and
 #: archetype: repeated library EXILE (Tasha's Hideous Laughter, three Ashioks, Ulamog's twenty per attack); most
@@ -17,7 +17,7 @@
 #: archetype: Drown in the Loch scales with it, Yawgmoth's Vile Offering and Breach the Multiverse reanimate from it,
 #: archetype: Consuming Aberration grows with it. DISTINCT from deck 22 (Dimir Standard mill-control, Hama + the
 #: archetype: Water Crystal): this is a 100-card Sultai draw engine whose mill is a by-product of drawing.
-#: protect: Glarb, Calamity's Augur; Psychic Corrosion; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage; Tasha's Hideous Laughter
+#: protect: Glarb, Calamity's Augur; Psychic Corrosion; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage; Tasha's Hideous Laughter; Ashiok, Nightmare Muse; Jace, Memory Adept; Sheoldred, the Apocalypse; Teferi, Temporal Pilgrim; The Theorist, Jace Beleren
 #: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick 2 of 2: draw + mill/exile
 #: notes: under Glarb; pick 1 is 75-historic-brawl). The optimal list, crafts included. Brawl is 1v1 at 25 life with
 #: notes: a ~92-card library after the opening hand, so mill needs ~90 cards: a doubler plus one big mill does it.
@@ -64,7 +64,6 @@
 
 # Card draw — every draw is two milled
 1 Rhystic Study (FCA) 31
-1 Mystic Remora (TLE) 16
 1 Phyrexian Arena (FDN) 180
 1 Dictate of Kruphix (FDN) 587
 1 Matoya, Archon Elder (FIN) 62
@@ -79,13 +78,11 @@
 1 Sheoldred, the Apocalypse (DMU) 107
 1 Notion Thief (PIO) 235
 1 Brainstorm (TLE) 155
-1 Kaito, Bane of Nightmares (DSK) 220
 
 # Interaction
 1 Drown in the Loch (ELD) 188
 1 Counterspell (MAR) 52
 1 Thought Collapse (JMP) 184
-1 Infernal Grasp (MID) 107
 1 Go for the Throat (BRO) 102
 1 Hero's Downfall (FDN) 175
 1 Price of Fame (GRN) 83
@@ -102,18 +99,49 @@
 
 # Ramp
 1 Arcane Signet (FRC) 20
-1 Talisman of Dominance (AA1) 20
 1 Talisman of Curiosity (AA1) 19
-1 Mind Stone (HA1) 19
-1 Paradise Druid (WAR) 171
-1 Birds of Paradise (BLC) 81
-1 Growth Spiral (RNA) 178
 
 # Added 2026-11-03 — the owner's board picks; their cuts are still to be chosen (deck is over 100 until then)
 1 Deathrite Shaman (EA3) 15
 1 Leader, Super-Genius (MSH) 64
 1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
 1 Ultimecia, Time Sorceress (FIN) 247
+1 Chalk Outline (MKM) 157
+1 Chandra, Chill of Compliance (FRA) 212
+1 Consider (TLE) 157
+1 Cruel Somnophage // Can't Wake Up (WOE) 222
+1 Cut Your Losses (SNC) 38
+1 Desecrated Tomb (M19) 230
+1 Dredger's Insight (DFT) 159
+1 Erebos, God of the Dead (PIO) 291
+1 Ioreth of the Healing House (LTR) 56
+1 Jace, Wielder of Mysteries (WAR) 54
+1 Jin-Gitaxias (MOM) 65
+1 Kishla Skimmer (TDM) 201
+1 Krang & Shredder (TMT) 153
+1 Krang, the All-Powerful (TMC) 13
+1 Lo and Li, Royal Advisors (TLE) 108
+1 Lord of the Forsaken (MID) 110
+1 Lyra, Tolarian Archangel (FRA) 217
+1 Mimeoplasm, Revered One (DFT) 214
+1 Multiversal Recruitment (MSC) 629
+1 Nashi, Moon's Legacy (MAT) 39
+1 One Ring to Rule Them All (LTR) 102
+1 Phenax, God of Deception (PIO) 316
+1 Riverchurn Monument (DFT) 57
+1 Sauron, the Necromancer (LTR) 106
+1 Sidisi, Brood Tyrant (KTK) 199y
+1 Tam, Observant Sequencer // Deep Sight (SOS) 237
+1 Tamiyo, Compleated Sage (NEO) 238
+1 The Cloning of Shredder (TMT) 60
+1 Toxic Deluge (MH3) 277
+1 Undead Hand Ninja (MSC) 670
+1 Villainous Wealth (OTP) 58
+1 Visions of Beyond (TLE) 21
+1 Vraska, Betrayal's Sting (ONE) 115
+1 Willow Geist (MID) 207
+1 Wizard's Retort (JMP) 198
+1 Xanathar, Guild Kingpin (AFR) 239
 
 # Lands
 1 Command Tower (FRC) 22
@@ -142,7 +170,27 @@
 4 Swamp (FRA) 285
 2 Forest (FRA) 289
 
-#~ +Nashi, Moon's Legacy | BENCH (builder sultai): benched on the board
-#~ +Pharaoh Rama-Tut | BENCH (builder sultai): benched on the board
-#~ +Pol Jamaar, Illusionist | BENCH (builder sultai): benched on the board
-#~ +The Cloning of Shredder | BENCH (builder sultai): benched on the board
+#~ +Arwen's Gift | BENCH (builder sultai): benched on the board
+#~ +Drowned Secrets | BENCH (builder sultai): benched on the board
+#~ +Duskmantle, House of Shadow | BENCH (builder sultai): benched on the board
+#~ +Fblthp, Lost on the Range | BENCH (builder sultai): benched on the board
+#~ +Fleet Swallower | BENCH (builder sultai): benched on the board
+#~ +Folio of Fancies | BENCH (builder sultai): benched on the board
+#~ +Gix, Yawgmoth Praetor | BENCH (builder sultai): benched on the board
+#~ +Howling Mine | BENCH (builder sultai): benched on the board
+#~ +Inside Information | BENCH (builder sultai): benched on the board
+#~ +Kefnet the Mindful | BENCH (builder sultai): benched on the board
+#~ +Kiora, the Crashing Wave | BENCH (builder sultai): benched on the board
+#~ +Kitsune, Dragon's Daughter | BENCH (builder sultai): benched on the board
+#~ +Maha, Its Feathers Night | BENCH (builder sultai): benched on the board
+#~ +Nissa, Steward of Elements | BENCH (builder sultai): benched on the board
+#~ +Preordain | BENCH (builder sultai): benched on the board
+#~ +Rashmi, Eternities Crafter | BENCH (builder sultai): benched on the board
+#~ +Ringsight | BENCH (builder sultai): benched on the board
+#~ +Seizan, Perverter of Truth | BENCH (builder sultai): benched on the board
+#~ +Seymour Flux | BENCH (builder sultai): benched on the board
+#~ +Sheoldred's Edict | BENCH (builder sultai): benched on the board
+#~ +Terisian Mindbreaker | BENCH (builder sultai): benched on the board
+#~ +Thryx, the Sudden Storm | BENCH (builder sultai): benched on the board
+#~ +Tishana, Voice of Thunder | BENCH (builder sultai): benched on the board
+#~ +Vivien, Monsters' Advocate | BENCH (builder sultai): benched on the board

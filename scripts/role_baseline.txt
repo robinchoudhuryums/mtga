@@ -86,16 +86,19 @@ Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
+Consider
 Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
+Cruel Somnophage // Can't Wake Up
 Cruelclaw's Heist
 Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
+Cut Your Losses
 Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
@@ -470,6 +473,7 @@ Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
 Ty Lee, Artful Acrobat
+Tyvar the Bellicose
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
