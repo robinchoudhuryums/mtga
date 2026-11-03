@@ -165,8 +165,6 @@
 #~ +Seizan, Perverter of Truth | BENCH (builder sultai): benched on the board
 #~ +Seymour Flux | BENCH (builder sultai): benched on the board
 #~ +Sheoldred's Edict | BENCH (builder sultai): benched on the board
-#~ +Terisian Mindbreaker | BENCH (builder sultai): benched on the board
-#~ +Thryx, the Sudden Storm | BENCH (builder sultai): benched on the board
 #~ +Tishana, Voice of Thunder | BENCH (builder sultai): benched on the board
 #~ +Vivien, Monsters' Advocate | BENCH (builder sultai): benched on the board
 #~ +Fblthp, Impossibly Lost | BENCH (builder sultai): benched on the board
