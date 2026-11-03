@@ -44,6 +44,7 @@
 1 Fraying Sanity (WOT) 19
 1 The Water Crystal (FIN) 85
 1 Ruin Crab (ZNR) 75
+1 Way of the Necromancer (FRA) 239
 
 # Big mill and library exile — the finishers
 1 Traumatize (MAR) 15
@@ -86,7 +87,6 @@
 1 Go for the Throat (BRO) 102
 1 Hero's Downfall (FDN) 175
 1 Price of Fame (GRN) 83
-1 Assassin's Trophy (MKM) 187
 1 Cyclonic Rift (SOA) 14
 1 Yawgmoth's Vile Offering (DOM) 114
 1 Ob Nixilis Reignited (PIO) 99
