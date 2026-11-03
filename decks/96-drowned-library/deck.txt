@@ -32,6 +32,9 @@
 #: notes: Wielder of Mysteries, Visions of Beyond, Cut Your Losses and Phenax were added later. PARKED VARIANT from
 #: notes: the pile analysis: Maralen, Fae Ascendant + Elves + theft (every Elf entering exiles two of their library;
 #: notes: the free cast is capped by the Elf/Faerie count, so it needs 8–10 cheap nonlegendary Elves from outside).
+#: notes: LANDS (owner, 2026-11-03): four Islands became Waterlogged Grove, Barkchannel Pathway, Willowrush Verge and
+#: notes: Gloomlake Verge — G 15→18, B 20→21, U unchanged at 24; Glarb on curve 63.7%→69.8%, none of the four enters tapped.
+#: notes: Opulent Palace for a Swamp was measured too (Glarb 71.9%) and left out: its tapped entry cost back most of the gain.
 
 # Commander
 1 Glarb, Calamity's Augur (BLB) 215
@@ -134,7 +137,11 @@
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
 1 Restless Reef (LCI) 282
 1 Sunken Hollow (EA3) 23
-8 Island (FRA) 283
+4 Island (FRA) 283
+1 Gloomlake Verge (DSK) 260
+1 Willowrush Verge (DFT) 270
+1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
+1 Waterlogged Grove (HA7) 25
 4 Swamp (FRA) 285
 2 Forest (FRA) 289
 
