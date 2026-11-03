@@ -109,6 +109,12 @@
 1 Birds of Paradise (BLC) 81
 1 Growth Spiral (RNA) 178
 
+# Added 2026-11-03 — the owner's board picks; their cuts are still to be chosen (deck is over 100 until then)
+1 Deathrite Shaman (EA3) 15
+1 Leader, Super-Genius (MSH) 64
+1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
+1 Ultimecia, Time Sorceress (FIN) 247
+
 # Lands
 1 Command Tower (FRC) 22
 1 Watery Grave (EOE) 261
@@ -135,3 +141,8 @@
 8 Island (FRA) 283
 4 Swamp (FRA) 285
 2 Forest (FRA) 289
+
+#~ +Nashi, Moon's Legacy | BENCH (builder sultai): benched on the board
+#~ +Pharaoh Rama-Tut | BENCH (builder sultai): benched on the board
+#~ +Pol Jamaar, Illusionist | BENCH (builder sultai): benched on the board
+#~ +The Cloning of Shredder | BENCH (builder sultai): benched on the board
