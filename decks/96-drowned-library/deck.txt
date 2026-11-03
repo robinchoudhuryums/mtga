@@ -9,7 +9,7 @@
 #: archetype: deck wins by emptying the opponent's library. Every card we DRAW mills them: the two Tutelages
 #: archetype: turn draws into mill 2, Bruvac doubles any mill, The Water Crystal adds four, Fraying Sanity repeats a
 #: archetype: turn's graveyard total at end step. Glarb's surveil is the draw engine's spark — Matoya draws on every
-#: archetype: surveil/scry, Malcolm loots on every hit — and Doctor Doom, Unrivaled, The Theorist and thirteen
+#: archetype: surveil/scry, Malcolm loots on every hit — and The Theorist, Defiler of Dreams and fourteen
 #: archetype: planeswalkers keep the draws coming, Krang doubling the triggers. The finishers are big mills
 #: archetype: (Terisian Mindbreaker's attack or unearth, Cut Your Losses, Riverchurn Monument, Jace, the Perfected Mind's −X) and
 #: archetype: repeated library EXILE (three Ashioks), with Lithoform Engine copying the big turns; many are mana value 4+, so Glarb casts
@@ -53,6 +53,7 @@
 1 Altar of Dementia (BRR) 3
 1 Lithoform Engine (ZNR) 245
 1 Deepmuck Desperado (OTJ) 42
+1 Echocasting Symposium (SOS) 44
 
 # Big mill and library exile — the finishers
 1 Terisian Mindbreaker (BRO) 83
@@ -69,7 +70,6 @@
 1 The Theorist, Jace Beleren (FRA) 43
 1 Teferi, Temporal Pilgrim (BRO) 66
 1 Reed Richards, Smartest Man (MSC) 636
-1 Doctor Doom, Unrivaled (MSC) 654
 1 Sheoldred, the Apocalypse (DMU) 107
 1 Ominous Seas (IKO) 61
 1 Kasmina, Enigma Sage (STX) 196
