@@ -53,6 +53,15 @@ def scratch(tmp_path, monkeypatch):
     return str(dst), tmp_path
 
 
+def _one_less_island(text):
+    """A list change that touches no reason's card: one Island fewer, whatever the count is
+    today. The owner's 2026-11-03 land package halved deck 96's Islands, and three tests that
+    edited a literal Island count failed on a sound check_build."""
+    m = re.search(r"^(\d+) Island \(", text, re.M)
+    assert m and int(m.group(1)) > 1, "deck 96 no longer runs two or more Islands"
+    return text[:m.start(1)] + str(int(m.group(1)) - 1) + text[m.end(1):]
+
+
 def _new(deck_path):
     return B.new_build("t", [deck_path], keys=["G"], title="Test")
 
@@ -117,8 +126,7 @@ class TestCheck:
         B.set_reason(b, "Opt", "fine")
         assert not [m for s, m in B.check_build(b) if s == "stale"]
         text = open(deck_path, encoding="utf-8").read()
-        assert "8 Island" in text
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
         stale = [m for s, m in B.check_build(b) if s == "stale"]
         assert stale and "Opt" in stale[0]
 
@@ -139,7 +147,7 @@ class TestCheck:
         B.save_build("t", b)
         assert B.stale_summary("t") is None
         text = open(deck_path, encoding="utf-8").read()
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
         line = B.stale_summary("t")
         assert line and "builder.py check t" in line
 
@@ -265,7 +273,7 @@ class TestVerdicts:
         B.set_verdict(b, "Opt", "G", "★★")
         B.set_verdict(b, "Murder", "G", "★", pre=True)
         text = open(deck_path, encoding="utf-8").read()
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
         cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
         assert cards["Opt"]["vd"] == {"G": "★★"} and cards["Opt"]["vs"] == {"G": "stale"}
         assert cards["Murder"]["vs"] == {"G": "pre"} and cards["Counterspell"]["vd"] == {}
