@@ -30,7 +30,6 @@ Antiquities on the Loose
 Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Archangel of Tithes
-Archive Trap
 Armament Dragon
 Army of the Damned
 Arnim Zola, Bio-Fanatic
@@ -62,7 +61,6 @@ Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
 Brass's Bounty
-Breach the Multiverse
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
@@ -86,13 +84,11 @@ Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
-Consider
 Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
-Cruel Somnophage // Can't Wake Up
 Cruelclaw's Heist
 Crustacean Commando
 Cryogen Relic
@@ -405,7 +401,6 @@ Song of Stupefaction
 Soul Diviner
 Souls of the Lost
 Sozin's Comet
-Sphinx Mindbreaker
 Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Man, Web-Spinner
@@ -467,7 +462,6 @@ Toph, the Blind Bandit
 Toph, the First Metalbender
 Topiary Lecturer
 Torbran, Thane of Red Fell
-Traumatize
 Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
