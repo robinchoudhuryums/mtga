@@ -269,6 +269,10 @@ dialog#sheet .detail{position:static;max-height:none;border:none;box-shadow:none
 .dlist th,.dlist td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 .dlist thead th{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
 .dlist td:first-child{font-family:var(--mono);color:var(--muted)}
+.dlist td.dcard{display:flex;align-items:center;gap:8px}
+.dlist .th{flex:0 0 34px;width:34px;height:47px;border-radius:3px;overflow:hidden;background:var(--raise);display:block}
+.dlist .th img{width:100%;height:100%;object-fit:cover;display:block}
+.dlist .th .spr{display:block;width:34px;height:47px;background-repeat:no-repeat}
 .dlist tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--raise) 70%,transparent)}
 .dlist tr.cutrow td{background:var(--sel)}
 .dlist tr.protsep th{color:var(--dc);font-family:var(--display);font-weight:400;padding-top:12px;border-bottom:1px solid var(--dc)}
@@ -831,7 +835,7 @@ function listsHTML(){ return `<div class="lists">`+DK.map(k=>{ const d=DECKS[k];
     const id=slug(c.n), have=!!BYID[id], p=(picks[id]||{}).picks||[], adds=pairedTo(k,c.n), pv=(c.prot?"unprot":"prot")+k;
     const cutBtn = have?`<button type="button" class="mini" style="--dc:${d.dc}" data-id="${id}" data-v="cut${k}" aria-pressed="${p.includes("cut"+k)}" aria-label="Cut ${esc(c.n)} from ${esc(d.label)}">Cut</button>`:"";
     const protBtn = `<button type="button" class="mini" style="--dc:${d.dc}" data-id="${id}" data-v="${pv}" aria-pressed="${p.includes(pv)}" aria-label="${esc(PICKLAB[pv])}: ${esc(c.n)}">${c.prot?"Unprotect":"Protect"}</button>`;
-    return `<tr class="${p.includes("cut"+k)?"cutrow":""}"><td>${c.prot?"—":(c.r??"–")}</td><td>${have?`<button type="button" class="linkish" data-zoom="${id}">${esc(c.n)}</button>`:esc(c.n)}</td><td>${c.mv??""}</td><td>${esc((c.roles||[]).join(", "))}</td>
+    return `<tr class="${p.includes("cut"+k)?"cutrow":""}"><td>${c.prot?"—":(c.r??"–")}</td><td class="dcard"><span class="th">${have?thumb(BYID[id]):""}</span>${have?`<button type="button" class="linkish" data-zoom="${id}">${esc(c.n)}</button>`:esc(c.n)}</td><td>${c.mv??""}</td><td>${esc((c.roles||[]).join(", "))}</td>
     <td class="marks">${cutBtn}${protBtn}${adds.length?` <span class="status">replaced by ${esc(adds.join(", "))}</span>`:""}</td></tr>`; }).join("")}
   </tbody></table></div></section>`; }).join("")+`</div>`; }
 function pileHashOf(id){ const c=BYID[id], p=c&&PILES.find(x=>x.k===c.p); return p?p.hash:ONE&&c&&c.p?"compare":"lists"; }
