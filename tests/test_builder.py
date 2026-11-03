@@ -27,6 +27,17 @@ def scratch(tmp_path, monkeypatch):
     src = D.find_deck("96")["path"]
     dst = tmp_path / "deck96.txt"
     shutil.copy(src, dst)
+    # The tests below rest on a fixed premise about deck 96: these cards are OUT of it and
+    # Counterspell / Dictate of Kruphix are IN it. The live deck is edited from the Builder
+    # board, so pin the premise here rather than read whatever the deck holds today (the
+    # owner added Krang to Glarb on 2026-11-03 and two tests failed on a sound picks_report).
+    out = {"Krang, the All-Powerful", "Murder", "Opt"}
+    lines = dst.read_text(encoding="utf-8").split("\n")
+    dst.write_text("\n".join(l for l in lines
+                             if not any(l.startswith(f"1 {n} (") for n in out)), encoding="utf-8")
+    _m, cards = D.parse_deck_file(str(dst))
+    names = {n for _q, n, _s, _c in cards}
+    assert {"Counterspell", "Dictate of Kruphix"} <= names, "deck 96 no longer runs the fixture's in-deck cards"
     return str(dst), tmp_path
 
 
