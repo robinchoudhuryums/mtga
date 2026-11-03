@@ -87,6 +87,11 @@ def deck_hash(ref):
     so editing `#: notes:` does not mark every reason stale while any swap does."""
     D = _deck()
     _meta, cards = D.parse_deck_file(deck_ref(ref)["path"])
+    return _cards_hash(cards)
+
+
+def _cards_hash(cards):
+    D = _deck()
     tally = {}
     for q, n, _s, _c in cards:
         k = D._ms_key(n)
@@ -278,8 +283,9 @@ def set_reason(build, name, text, group=None):
         raise BuildError(f"{n!r} is not in this build; add it first")
     if not (text or "").strip():
         raise BuildError("a reason needs text")
-    build["reasons"][n] = {"group": group or "", "text": text.strip(),
-                           "graded_at": current_hashes(build)}
+    hashes = current_hashes(build)
+    build["reasons"][n] = {"group": group or "", "text": text.strip(), "graded_at": hashes}
+    record_snapshots(build, hashes)
     return n
 
 
@@ -391,8 +397,128 @@ def verdict_status(build, hashes=None):
 
 
 # ---------------------------------------------------------------- check
+# ---------------------------------------------------------------- reason staleness
+# A reason used to go stale when ANY card in its deck changed, so one round of swaps flagged
+# every reason on the board (426 after the Glarb trim) and the warning stopped meaning
+# anything. A reason is now stale only when a card that ENTERED or LEFT the deck since it was
+# written is the reason's own card or is named in its text. That needs the list as it was:
+# `snapshots` in build.json keeps it per graded hash, and for a reason written before
+# snapshots existed the deck file's git history is searched for the version with that hash.
+_HISTORY = {}
+
+
+def _names_of(cards):
+    seen, out = set(), []
+    for _q, n, _s, _c in cards:
+        k = _deck()._ms_key(n)
+        if k not in seen:
+            seen.add(k)
+            out.append(n)
+    return sorted(out)
+
+
+def record_snapshots(build, hashes):
+    """Store each deck's card names under its current hash, and drop snapshots nothing
+    refers to any more (no reason or verdict graded against them, and not current)."""
+    D = _deck()
+    snaps = build.setdefault("snapshots", {})
+    for did, h in hashes.items():
+        s = snaps.setdefault(did, {})
+        if h not in s:
+            _m, cards = D.parse_deck_file(deck_ref(did)["path"])
+            s[h] = _names_of(cards)
+    used = {(i, h) for r in build["reasons"].values() for i, h in (r.get("graded_at") or {}).items()}
+    used |= {(i, h) for i, h in hashes.items()}
+    for did, s in snaps.items():
+        for h in [h for h in s if (did, h) not in used]:
+            del s[h]
+
+
+def _history_names(did, h, limit=400):
+    """The deck's card names at the commit whose list hashes to `h`, from git, or None."""
+    key = (did, h)
+    if key in _HISTORY:
+        return _HISTORY[key]
+    _HISTORY[key] = None
+    path = deck_ref(did)["path"]
+    rel = os.path.relpath(path, REPO_ROOT)
+    try:
+        revs = subprocess.run(["git", "log", f"-n{limit}", "--format=%H", "--", rel], cwd=REPO_ROOT,
+                              capture_output=True, text=True, timeout=60).stdout.split()
+    except (OSError, subprocess.SubprocessError):
+        return None
+    D = _deck()
+    import tempfile
+    for rev in revs:
+        try:
+            text = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=REPO_ROOT, capture_output=True,
+                                  text=True, timeout=30).stdout
+        except (OSError, subprocess.SubprocessError):
+            continue
+        if not text:
+            continue
+        fd, tmp = tempfile.mkstemp(suffix=".txt")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                fh.write(text)
+            _m, cards = D.parse_deck_file(tmp)
+        except Exception:
+            continue
+        finally:
+            os.remove(tmp)
+        hv = _cards_hash(cards)
+        _HISTORY.setdefault((did, hv), _names_of(cards))
+        if hv == h:
+            _HISTORY[key] = _names_of(cards)
+            return _HISTORY[key]
+    return None
+
+
+def _name_forms(name):
+    """The spellings a reason uses for a card: the full name, a split card's front, and a
+    legend's short name before the comma (four letters or more, so "Ob" is never a match)."""
+    forms = {name, name.split(" // ")[0]}
+    head = name.split(" // ")[0].split(",")[0].strip()
+    if len(head) >= 4:
+        forms.add(head)
+    return forms
+
+
+def mentioned(text, names):
+    """The names in `names` that `text` mentions, by any of their forms, as whole words."""
+    out = []
+    for n in names:
+        for f in _name_forms(n):
+            if re.search(r"(?<![A-Za-z])" + re.escape(f) + r"(?![A-Za-z])", text or "", re.I):
+                out.append(n)
+                break
+    return out
+
+
+def reason_changes(build, name, reason, hashes, current):
+    """For one reason: [(deck id, changed names it concerns)] for each deck whose list
+    changed since it was written in a way that touches it, or [(deck id, None)] when the
+    deck's earlier list cannot be found (a stale reason, as before snapshots existed)."""
+    D = _deck()
+    out = []
+    for did, h in (reason.get("graded_at") or {}).items():
+        if did not in hashes or hashes[did] == h:
+            continue
+        old = (build.get("snapshots", {}).get(did, {}) or {}).get(h) or _history_names(did, h)
+        if old is None:
+            out.append((did, None))
+            continue
+        ok, nk = {D._ms_key(n): n for n in old}, {D._ms_key(n): n for n in current[did]}
+        changed = [ok[k] for k in ok.keys() - nk.keys()] + [nk[k] for k in nk.keys() - ok.keys()]
+        hit = [n for n in changed if D._ms_key(n) == D._ms_key(name)] + mentioned(reason.get("text", ""), changed)
+        if hit:
+            out.append((did, sorted(set(hit))))
+    return out
+
+
 def check_build(build):
-    """[(severity, message)] — 'stale' (a deck changed since the reason was written),
+    """[(severity, message)] — 'stale' (a card the reason concerns entered or left a deck since
+    it was written),
     'unknown' (a name no longer resolves), 'unplaced' (no pile or an unknown pile),
     'reasonless' (in no deck of the build and carries no reason). Never raises on a card."""
     out = []
@@ -402,11 +528,12 @@ def check_build(build):
         return [("deck", str(e))]
     piles = set(_pile_keys(build))
     labels = {d["id"]: d.get("label") or d["id"] for d in build["decks"]}
-    in_any = set()
+    in_any, current = set(), {}
     D = _deck()
     for d in build["decks"]:
         _m, cards = D.parse_deck_file(deck_ref(d["id"])["path"])
         in_any |= {D._ms_key(n) for _q, n, _s, _c in cards}
+        current[d["id"]] = _names_of(cards)
     idx = _name_index()
     for c in build["cards"]:
         try:
@@ -418,11 +545,13 @@ def check_build(build):
             out.append(("unplaced", f"{c['name']} is on no pile"))
         r = build["reasons"].get(c["name"])
         if r:
-            moved = [labels[i] for i, h in (r.get("graded_at") or {}).items()
-                     if i in hashes and hashes[i] != h]
-            if moved:
-                out.append(("stale", f"{c['name']}: reason written before {', '.join(moved)}'s "
-                                     f"list changed — re-read it"))
+            for did, hit in reason_changes(build, c["name"], r, hashes, current):
+                if hit is None:
+                    out.append(("stale", f"{c['name']}: reason written before {labels[did]}'s list "
+                                         f"changed, and that list is not on record — re-read it"))
+                else:
+                    out.append(("stale", f"{c['name']}: reason concerns {', '.join(hit)}, which "
+                                         f"entered or left {labels[did]} since — re-read it"))
         elif D._ms_key(c["name"]) not in in_any:
             out.append(("reasonless", f"{c['name']} is in no deck and has no reason yet"))
     for n in build["reasons"]:
@@ -452,7 +581,7 @@ def stale_summary(slug):
     un = sum(1 for s, _ in issues if s in ("unknown", "deck"))
     if not st and not un:
         return None
-    parts = ([f"{st} reason(s) written against an older deck list"] if st else []) + \
+    parts = ([f"{st} reason(s) name a card that entered or left a deck since"] if st else []) + \
             ([f"{un} unresolved name(s) or deck(s)"] if un else [])
     return f"builder {slug}: {', '.join(parts)} — python3 scripts/builder.py check {slug}"
 
@@ -688,8 +817,9 @@ def picks_from_db(build, docs):
                     d["cuts"].append(name)
                 else:
                     d[{"prot": "protect", "unprot": "unprotect"}.get(kind, kind)].append(name)
-        if (doc.get("note") or "").strip():
-            notes.append(f"{name} — {doc['note'].strip()}")
+        note = (doc.get("note") or "").strip()
+        if note and (doc.get("replyTo") or "").strip() != note:      # unanswered, or edited since
+            notes.append(f"{name} — {note}")
         if isinstance(doc.get("own"), int) and doc["own"] >= 0:
             own.append((doc["own"], name, None, None))
         hidden += [(name, r) for r in (doc.get("hid") or []) if r in ("interaction", "card advantage")]
@@ -871,7 +1001,7 @@ def _plan_lines(plans, parsed, slug):
     for n, role in parsed.get("hidden", []):
         lines.append(f"# hidden role — python3 scripts/builder.py hidden {slug} \"{n}\" --role {role.replace(' ', '-')}")
     if parsed.get("notes"):
-        lines.append("# notes:")
+        lines.append("# notes waiting for a reply (write it to the card's record: reply, replyTo = the note):")
         lines += [f"#   {n}" for n in parsed["notes"]]
     return lines
 
@@ -991,11 +1121,14 @@ def execute_apply(build, plans, slug, run_swap=None):
     return log, consumed
 
 
-def cleanup_ops(docs, consumed):
-    """The board-database writes that drop settled marks: one entry per affected document,
-    {id, card, picks, pair, delete}, where `picks` and `pair` are the document's values AFTER
-    the cleanup and `delete` is true when nothing is left (the page deletes an empty record
-    the same way). Bench and Keep out marks are never consumed: they are standing state."""
+def cleanup_ops(docs, consumed, at=None):
+    """The board-database writes that settle marks: one entry per affected document,
+    {id, card, picks, pair, done}, where `picks` and `pair` are the values AFTER the cleanup
+    and `done` is the document's history with each settled mark appended as {v, at}. A
+    settled mark moves to `done` rather than vanishing, so a mark that leaves `picks` with no
+    `done` entry is one the owner took back, and the two stay distinguishable. Bench and Keep
+    out marks are never consumed: they are standing state."""
+    at = at or datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     by_id = {}
     for doc in docs:
         if (doc.get("card") or "").strip():
@@ -1007,20 +1140,31 @@ def cleanup_ops(docs, consumed):
         if not doc:
             continue
         e = changed.setdefault(did, {"id": did, "card": doc["card"], "picks": list(doc.get("picks") or []),
-                                     "pair": dict(doc.get("pair") or {})})
+                                     "pair": dict(doc.get("pair") or {}), "done": list(doc.get("done") or [])})
         if code in e["picks"]:
             e["picks"].remove(code)
+            e["done"].append({"v": code, "at": at})
         if clear_pair:
             e["pair"].pop(code[3:], None)
-    out = []
-    for did, e in sorted(changed.items()):
-        doc = by_id[did]
-        if e["picks"] == list(doc.get("picks") or []) and e["pair"] == dict(doc.get("pair") or {}):
-            continue
-        own = doc.get("own")
-        e["delete"] = not e["picks"] and not (doc.get("note") or "").strip() and own is None and not doc.get("hid")
-        out.append(e)
-    return out
+    return [e for did, e in sorted(changed.items())
+            if e["picks"] != list(by_id[did].get("picks") or []) or e["pair"] != dict(by_id[did].get("pair") or {})]
+
+
+def apply_log_entry(plans, log, at=None):
+    """The record of one `apply --apply` run for the board's `log` collection: when, and what
+    landed in each deck, so the owner reads on the board what changed and when."""
+    at = at or datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    lines = []
+    for did, pl in plans.items():
+        lines += [f"{pl['label']}: −{c} +{a}" for c, a in pl["swaps"]]
+        lines += [f"{pl['label']}: +{a}" for a in pl["adds"]] + [f"{pl['label']}: −{c}" for c in pl["cuts"]]
+        lines += [f"{pl['label']}: protect {c}" for c in pl["protect"]]
+        lines += [f"{pl['label']}: unprotect {c}" for c in pl["unprotect"] + pl["unprotect_cut"]]
+        lines += [f"{pl['label']}: bench {c}" for c in pl["bench_add"]]
+        lines += [f"{pl['label']}: bench line retired — " + ln.split("|")[0].replace("#~", "").strip()
+                  for ln in pl["bench_retire"]]
+    failed = [ln for ln in log if "FAILED" in ln or "stopped" in ln]
+    return {"at": at, "lines": lines, "failed": failed}
 
 
 def _post_checks(did):
@@ -1072,7 +1216,11 @@ def deck_live(did, tempo=True):
         nonland.append({"n": n, "mv": mvs.get(n), "r": rank.get(n), "prot": n in prot,
                         "roles": role_groups(sorted(D.classify_roles(cd.get("text") or "")))})
     nonland.sort(key=lambda c: (c["r"] is None, c["r"] or 0, c["n"]))
+    cfmt = D.normalize_format(meta.get("format"))
     return {"id": did, "name": d["name"], "cmd": meta.get("commander"), "size": vec.get("size"),
+            # the format's size: exact for a singleton (Brawl) deck, a minimum otherwise —
+            # the deck panel counts the cuts still to make against it
+            "target": 100 if cfmt in D.BIG_DECK_FORMATS else 60, "exact": cfmt in D.SINGLETON_FORMATS,
             "floor": D.tier_band(vec), "interaction": vec["interaction"], "ca": vec["card_advantage"],
             # the deck's own colours only: a commander-identity land reads as five colours
             # in deck_color_sources (G-37 residual), which put a phantom "W1 · R1" on a UBG deck
@@ -1727,13 +1875,15 @@ def main(argv=None):
                 print(line)
             if docs is not None:
                 ops = cleanup_ops(docs, consumed)
+                entry = apply_log_entry(plans, log)
                 dest = args.cleanup or os.path.join(args.db if os.path.isdir(args.db) else os.path.dirname(args.db),
                                                     "cleanup.json")
                 with open(dest, "w", encoding="utf-8") as fh:
-                    json.dump(ops, fh, indent=1, ensure_ascii=False)
-                print(f"\nBoard cleanup: {len(ops)} record(s) → {dest}. Write it to the board's `picks` "
-                      "collection now (update each record's picks and pair; delete the empty ones), so "
-                      "an applied mark cannot come back as a pending pick.")
+                    json.dump({"picks": ops, "log": entry}, fh, indent=1, ensure_ascii=False)
+                print(f"\nBoard cleanup: {len(ops)} record(s) and one log entry → {dest}. Write them to the "
+                      "board now: `update` each `picks` record's picks, pair and done (settled marks move "
+                      "to done, so the board shows them as history), and `set` the log entry in the `log` "
+                      "collection under a new id, so an applied mark cannot come back as a pending pick.")
             else:
                 print("\nThese picks came from copied text: on the page you copied them from, open "
                       "Your picks and press Clear applied marks.")

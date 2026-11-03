@@ -119,16 +119,23 @@ class TestCheck:
         assert "stale" not in sev and "unknown" not in sev
         assert "unplaced" in sev and "reasonless" in sev
 
-    def test_a_deck_change_marks_its_reasons_stale(self, scratch):
+    def test_a_deck_change_marks_only_the_reasons_it_touches_stale(self, scratch):
+        # Since 2026-11-03 a reason is stale only when a card that entered or left the deck is
+        # its own card or named in its text; one fewer Island touches neither reason here.
         deck_path, _ = scratch
         b = _new(deck_path)
-        B.add_cards(b, ["Opt"], pile="G")
+        B.add_cards(b, ["Opt", "Murder"], pile="G")
         B.set_reason(b, "Opt", "fine")
+        B.set_reason(b, "Murder", "better than Dictate of Kruphix here")
         assert not [m for s, m in B.check_build(b) if s == "stale"]
         text = open(deck_path, encoding="utf-8").read()
         open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
+        assert not [m for s, m in B.check_build(b) if s == "stale"]
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Dictate of Kruphix (")) + "\n")
         stale = [m for s, m in B.check_build(b) if s == "stale"]
-        assert stale and "Opt" in stale[0]
+        assert len(stale) == 1 and stale[0].startswith("Murder:")
 
     def test_a_notes_edit_does_not_mark_reasons_stale(self, scratch):
         deck_path, _ = scratch
@@ -143,11 +150,12 @@ class TestCheck:
         deck_path, _ = scratch
         b = _new(deck_path)
         B.add_cards(b, ["Opt"], pile="G")
-        B.set_reason(b, "Opt", "fine")
+        B.set_reason(b, "Opt", "beside Counterspell")
         B.save_build("t", b)
         assert B.stale_summary("t") is None
         text = open(deck_path, encoding="utf-8").read()
-        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
         line = B.stale_summary("t")
         assert line and "builder.py check t" in line
 
@@ -799,20 +807,86 @@ class TestApply:
         assert "#~ +Murder | BENCH (builder t)" in text and "+Duress" not in text
         assert "#~ +Negate | BENCH (owner)" in text
 
-    def test_cleanup_drops_settled_marks_and_their_pair_but_never_a_bench(self):
+    def test_cleanup_moves_settled_marks_to_history_and_never_touches_a_bench(self):
         docs = [{"card": "Murder", "picks": ["addG", "benchT"], "pair": {"G": "Counterspell"}},
-                {"card": "Counterspell", "picks": ["cutG"]},
+                {"card": "Counterspell", "picks": ["cutG"], "done": [{"v": "protG", "at": "2026-11-01"}]},
                 {"card": "Opt", "picks": ["addG"], "note": "keep this"}]
         ops = B.cleanup_ops(docs, [("Murder", "addG", True), ("Counterspell", "cutG", False),
-                                   ("Opt", "addG", False), ("Not On Board", "addG", False)])
+                                   ("Opt", "addG", False), ("Not On Board", "addG", False)], at="T")
         by = {o["card"]: o for o in ops}
-        assert by["Murder"]["picks"] == ["benchT"] and by["Murder"]["pair"] == {} and not by["Murder"]["delete"]
-        assert by["Counterspell"]["delete"] is True
-        assert by["Opt"]["picks"] == [] and by["Opt"]["delete"] is False          # the note keeps it
+        assert by["Murder"]["picks"] == ["benchT"] and by["Murder"]["pair"] == {}
+        assert by["Murder"]["done"] == [{"v": "addG", "at": "T"}]
+        # a settled mark is history, not a deletion — earlier history is kept
+        assert by["Counterspell"]["picks"] == [] and by["Counterspell"]["done"][-1] == {"v": "cutG", "at": "T"}
+        assert len(by["Counterspell"]["done"]) == 2 and "delete" not in by["Counterspell"]
         assert by["Murder"]["id"] == "murder" and "Not On Board" not in by
+
+    def test_apply_log_entry_names_what_landed(self):
+        plans = {"96": {"label": "Glarb", "swaps": [("Counterspell", "Murder")], "adds": ["Opt"], "cuts": [],
+                        "protect": [], "unprotect": [], "unprotect_cut": ["Counterspell"], "bench_add": ["Duress"],
+                        "bench_retire": ["#~ +Negate | BENCH (builder t): x"]}}
+        e = B.apply_log_entry(plans, ["96: swap −a +b — FAILED"], at="T")
+        assert e["at"] == "T" and "Glarb: −Counterspell +Murder" in e["lines"] and "Glarb: +Opt" in e["lines"]
+        assert "Glarb: unprotect Counterspell" in e["lines"] and "Glarb: bench Duress" in e["lines"]
+        assert any("retired — +Negate" in x for x in e["lines"]) and e["failed"]
+
+    def test_a_note_with_a_current_reply_is_not_listed_again(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        p = B.picks_from_db(b, [{"card": "Opt", "picks": [], "note": "why?", "reply": "because", "replyTo": "why?"},
+                                {"card": "Murder", "picks": [], "note": "and this?", "reply": "x", "replyTo": "older"},
+                                {"card": "Duress", "picks": [], "note": "new one"}])
+        assert p["notes"] == ["Murder — and this?", "Duress — new one"]
 
     def test_cli_needs_exactly_one_source(self, scratch, capsys):
         deck_path, _ = scratch
         _new(deck_path)
         assert B.main(["apply", "t"]) == 2
         assert "give the picks one way" in capsys.readouterr().err
+
+
+class TestStaleReasons:
+    """A reason goes stale only when a card that entered or left its deck is its own card or
+    is named in its text — before 2026-11-03 any change flagged every reason (426 at once)."""
+
+    def test_only_reasons_touching_a_changed_card_go_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder", "Duress"], pile="G")
+        B.set_reason(b, "Opt", "a cheap draw beside Counterspell")       # names the card that leaves
+        B.set_reason(b, "Murder", "plain removal")                       # names nothing that changes
+        B.set_reason(b, "Duress", "the cut itself")
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
+        stale = [m for s, m in B.check_build(b) if s == "stale"]
+        assert len(stale) == 1 and stale[0].startswith("Opt:") and "Counterspell" in stale[0]
+
+    def test_a_reason_for_the_card_that_moved_is_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Counterspell"], pile="G")
+        B.set_reason(b, "Counterspell", "the deck's cheapest answer")
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
+        assert any(m.startswith("Counterspell:") for s, m in B.check_build(b) if s == "stale")
+
+    def test_snapshots_keep_only_what_reasons_refer_to(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt"], pile="G")
+        B.set_reason(b, "Opt", "x")
+        assert list(b["snapshots"][deck_path]) == [B.deck_hash(deck_path)]
+
+    def test_name_forms_match_whole_words_and_legend_short_names(self):
+        assert B.mentioned("Glarb casts it off the top", ["Glarb, Calamity's Augur"]) == ["Glarb, Calamity's Augur"]
+        assert B.mentioned("an Optimal line", ["Opt"]) == []
+        assert B.mentioned("unlike Ob it is cheap", ["Ob Nixilis Reignited"]) == []
+
+
+class TestDeckTarget:
+    def test_live_figures_carry_the_format_size(self, scratch):
+        deck_path, _ = scratch
+        L = B.deck_live(deck_path, tempo=False)
+        assert L["target"] == 100 and L["exact"] is True

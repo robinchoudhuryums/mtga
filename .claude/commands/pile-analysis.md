@@ -277,9 +277,16 @@ the ranking cannot see it.
    and later cut in chat still carries its old add mark and reads as pending until it is
    cleared. Then rerun with `--apply`: swaps go through `deck.py swap`, the rest is one
    INV-04-checked write, and the legality, printing and rationale checks print. It writes
-   `cleanup.json` beside the dump — **write it to the board's `picks` collection in the same
-   step** (ArtifactData batch: `update` each record's `picks` and `pair`, `delete` the ones
-   marked `delete`; read each first for its version), so an applied mark cannot come back.
+   `cleanup.json` beside the dump — **write it to the board in the same step** (ArtifactData
+   batch: `update` each `picks` record's `picks`, `pair` and `done` from its `picks` list, and
+   `set` its `log` entry in the `log` collection under a new id; read each record first for its
+   version), so an applied mark cannot come back. A settled mark moves to `done` (history the
+   page shows), so a mark that leaves `picks` with no `done` entry is one the owner took back.
+   **Reply to the owner's notes on the board**: the dry run lists the notes still waiting;
+   answer each by updating that record's `reply` (the answer) and `replyTo` (the note text it
+   answers). **Propose cuts as suggestions, not picks**: when the owner asks for cut candidates,
+   write them to the card's record as `sug: [{v: "cut<KEY>", why: "<one line>"}]`; the page
+   draws them dashed and they count for nothing until the owner accepts one.
    Bench lines for cards no longer benched are only listed; `--retire-bench` removes them, and
    use it only when the owner marked on this one surface (a GitHub Pages copy keeps its own
    picks in the browser). On Pages, ask the owner for **Your picks → Copy as text** and pass

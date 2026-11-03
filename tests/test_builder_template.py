@@ -433,7 +433,7 @@ class TestManyDecks:
         fx = tmp_path / "in.json"
         fx.write_text(json.dumps({"keys": keys, "srcs": ["U24 · B20 · G15", "U22 · G15", "U10"]}))
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "sugOf", "sugA"]) + "\n"
                       + _extract(["pickColour", "quick", "colourRank", "assignColours"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_QUICK)
@@ -501,7 +501,7 @@ class TestOneDeck:
         Keep out and a card in the list reads − Cut — while the values stay per deck, so the
         picks, the copy and builder.py picks read exactly what a two-deck board writes."""
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "sugOf", "sugA"]) + "\n"
                       + _extract(["pickColour", "quick"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_ONE)

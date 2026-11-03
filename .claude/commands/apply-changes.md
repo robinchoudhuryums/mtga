@@ -28,8 +28,9 @@ cuts, protect changes, bench lines, with every pick the deck already shows skipp
 Confirm it with the owner; read the add list against the conversation, since a card added and
 later cut in chat still carries its add mark. `--apply` writes it (swaps through `deck.py swap`,
 the rest as one INV-04-checked write) and prints the legality, printing and rationale checks;
-then write the `cleanup.json` it leaves beside the dump to the board's `picks` collection, so
-an applied mark cannot come back. Bench lines the board no longer marks are only listed
+then write the `cleanup.json` it leaves beside the dump to the board (its `picks` updates move
+settled marks into `done`; its `log` entry goes in the `log` collection), so an applied mark
+cannot come back and the owner sees what landed. Bench lines the board no longer marks are only listed
 (`--retire-bench` removes them, for a round marked on one surface only). Stages 1, 3 and 4
 below still apply around it: the quality snapshot before, the guard and preflight after.
 
