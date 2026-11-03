@@ -116,7 +116,7 @@
 1 Erebos, God of the Dead (PIO) 291
 1 Ioreth of the Healing House (LTR) 56
 1 Jace, Wielder of Mysteries (WAR) 54
-1 Jin-Gitaxias (MOM) 65
+1 Jin-Gitaxias // The Great Synthesis (MOM) 65
 1 Kishla Skimmer (TDM) 201
 1 Krang & Shredder (TMT) 153
 1 Krang, the All-Powerful (TMC) 13
