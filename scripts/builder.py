@@ -626,6 +626,419 @@ def picks_report(build, text, slug=None):
     return lines
 
 
+# ---------------------------------------------------------------- apply
+# `apply` turns the board's picks into deck-file edits in one checked run, so a round of picks
+# no longer goes through hand-run swaps, flex lines and header edits (where a short card name
+# once added a duplicate Jin-Gitaxias). The picks come from the board's DATABASE (read with the
+# ArtifactData tool into a folder, then `--db <folder>`), or from a copied "Copy as text" block
+# when the board was a GitHub Pages copy, which keeps its picks in the browser only.
+_PICK_RE = re.compile(r"^(add|cut|bench|out|prot|unprot)(.+)$")
+_BENCH_LINE = re.compile(r"^#~\s*\+(.+?)\s*\|\s*BENCH \(builder (\S+?)\)")
+
+
+def read_db_dump(path):
+    """The board's `picks` documents from a database dump: the folder the ArtifactData tool
+    writes with `out_dir` (`<dir>/picks/<doc id>.json`), the `picks` folder itself, or one
+    JSON file holding a list of documents. Each document is {card, picks, pair, note, own, hid}."""
+    if os.path.isfile(path):
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+        return data if isinstance(data, list) else [data]
+    folder = os.path.join(path, "picks") if os.path.isdir(os.path.join(path, "picks")) else path
+    if not os.path.isdir(folder):
+        raise BuildError(f"no database dump at {path!r}")
+    docs = []
+    for fn in sorted(os.listdir(folder)):
+        if fn.endswith(".json"):
+            with open(os.path.join(folder, fn), encoding="utf-8") as fh:
+                doc = json.load(fh)
+            if isinstance(doc, dict) and isinstance(doc.get("data"), dict) and "card" not in doc:
+                doc = doc["data"]                      # a wrapped {id, version, data} record
+            docs.append(doc)
+    return docs
+
+
+def picks_from_db(build, docs):
+    """The database documents in `parse_picks`' shape, so `apply` and `picks` read one model
+    whichever surface the owner marked on. A legacy deck-less `bench` / `out` (before
+    2026-11-02) reads as every deck of the build the card is not being added to."""
+    keys = {d["key"]: d["id"] for d in build["decks"]}
+    out, notes, own, hidden = {}, [], [], []
+    for doc in docs:
+        name = (doc.get("card") or "").strip()
+        if not name:
+            continue
+        codes = [c for c in (doc.get("picks") or []) if isinstance(c, str)]
+        adds = {c[3:] for c in codes if c.startswith("add")}
+        for code in codes:
+            if code in ("bench", "out"):
+                targets = [k for k in keys if k not in adds]
+                kind = code
+            else:
+                m = _PICK_RE.match(code)
+                if not m or m.group(2) not in keys:
+                    continue
+                kind, targets = m.group(1), [m.group(2)]
+            for k in targets:
+                d = out.setdefault(keys[k], _empty_deck_picks())
+                if kind == "add":
+                    cut = (doc.get("pair") or {}).get(k)
+                    (d["pairs"].append((cut, name)) if cut else d["adds"].append(name))
+                elif kind == "cut":
+                    d["cuts"].append(name)
+                else:
+                    d[{"prot": "protect", "unprot": "unprotect"}.get(kind, kind)].append(name)
+        if (doc.get("note") or "").strip():
+            notes.append(f"{name} — {doc['note'].strip()}")
+        if isinstance(doc.get("own"), int) and doc["own"] >= 0:
+            own.append((doc["own"], name, None, None))
+        hidden += [(name, r) for r in (doc.get("hid") or []) if r in ("interaction", "card advantage")]
+    # A cut that is also some add's pair is the swap's cut, not a second "cut with no add".
+    for d in out.values():
+        paired = {c for c, _a in d["pairs"]}
+        d["cuts"] = [c for c in d["cuts"] if c not in paired]
+    return {"decks": out, "notes": notes, "own": own, "hidden": hidden}
+
+
+def _builder_bench_lines(path, slug):
+    """`#~` bench lines this build wrote into the deck file, as {card key: line text}. Only
+    lines tagged `BENCH (builder <slug>)` belong to the board; a hand-written bench line is
+    never reconciled away."""
+    D = _deck()
+    found = {}
+    with open(path, encoding="utf-8") as fh:
+        for ln in fh.read().split("\n"):
+            m = _BENCH_LINE.match(ln)
+            if m and m.group(2) == slug:
+                found[D._ms_key(m.group(1))] = ln
+    return found
+
+
+def plan_apply(build, parsed, slug, retire_bench=False):
+    """What `apply` would do to each deck, checked against the deck file as it is NOW:
+    {deck id: {"swaps", "adds", "cuts", "protect", "unprotect", "bench_add", "bench_retire",
+    "unprotect_cut", "out", "skipped"}}. A pick the deck already shows (an add it runs, a cut
+    it no longer runs) is skipped as applied, so running `apply` twice changes nothing.
+
+    BENCH RECONCILE: the board's bench marks are the whole bench, because the board never
+    counts a bench mark as applied and "Clear applied marks" leaves them. So a builder-tagged
+    `#~` line whose card is no longer benched (or is now in the deck) is retired, and a
+    benched card with no `#~` line gets one. The retirement half only runs with
+    `retire_bench`: the owner marks on two surfaces (the claude.ai board keeps its picks in
+    its database, a GitHub Pages copy in the browser), and a bench set on one is absent from
+    the other — a dry run against the board's database on 2026-11-03 would have pruned nine
+    bench lines set on Pages that day. Without the flag the stale lines are only LISTED.
+
+    `consume` lists the board marks this plan settles, as (card, pick code, clears a pair):
+    a planned edit, or a pick the deck already shows. `apply --db` turns them into a cleanup
+    file so the board stops carrying them. A mark the board never clears outlives its edit,
+    and once the deck changes again off the board (a cut made in chat) the old add mark reads
+    as pending: the same dry run proposed adding back 25 cards the owner had since cut."""
+    D = _deck()
+    idx = _name_index()
+    carddata = idx[0]
+    plans = {}
+    for b in build["decks"]:
+        did, K = b["id"], b["key"]
+        p = parsed["decks"].get(did, _empty_deck_picks())
+        ref = deck_ref(did)
+        meta, cards = D.parse_deck_file(ref["path"])
+        runs = {D._ms_key(n) for _q, n, _s, _c in cards}
+        protected = D._protected(meta)
+        lock = D.commander_identity_lock(meta, carddata)
+        plan = {"label": b.get("label") or did, "swaps": [], "adds": [], "cuts": [], "protect": [],
+                "unprotect": [], "unprotect_cut": [], "bench_add": [], "bench_retire": [],
+                "out": [], "skipped": [], "bench_stale": [], "consume": []}
+
+        def res(n):
+            try:
+                return resolve_name(n, idx)
+            except BuildError as e:
+                plan["skipped"].append(str(e))
+                return None
+
+        def off_identity(name):
+            if lock is None:
+                return False
+            cd = carddata.get(D._ms_key(name)) or carddata.get(name.lower())
+            ident = D.card_colors(cd.get("colors", "")) if cd else None
+            return ident is not None and not ident <= lock
+
+        for cut, add in p["pairs"]:
+            c, a = res(cut), res(add)
+            if not c or not a:
+                continue
+            if D._ms_key(a) in runs and D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} → {a} is already applied")
+                plan["consume"] += [(a, "add" + K, True), (c, "cut" + K, False)]
+            elif D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} is not in {did}, so it cannot be cut for {a}")
+            elif D._ms_key(a) in runs:
+                plan["skipped"].append(f"{a} is already in {did}")
+            elif off_identity(a):
+                plan["skipped"].append(f"{a} is outside the commander's colour identity")
+            else:
+                plan["swaps"].append((c, a))
+                runs.discard(D._ms_key(c)); runs.add(D._ms_key(a))
+                plan["consume"] += [(a, "add" + K, True), (c, "cut" + K, False)]
+        for n in p["adds"]:
+            a = res(n)
+            if not a:
+                continue
+            if D._ms_key(a) in runs:
+                plan["skipped"].append(f"{a} is already in {did} (applied)")
+                plan["consume"].append((a, "add" + K, False))
+            elif off_identity(a):
+                plan["skipped"].append(f"{a} is outside the commander's colour identity")
+            else:
+                plan["adds"].append(a)
+                runs.add(D._ms_key(a))
+                plan["consume"].append((a, "add" + K, False))
+        for n in p["cuts"]:
+            c = res(n)
+            if not c:
+                continue
+            plan["consume"].append((c, "cut" + K, False))
+            if D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} is not in {did} (already cut)")
+            else:
+                plan["cuts"].append(c)
+                runs.discard(D._ms_key(c))
+        # A cut card leaves the protect line too: the owner's cut decides, and a stale protect
+        # entry is a silent no-op that check_all then flags (G-68).
+        for c in [c for c, _a in plan["swaps"]] + plan["cuts"]:
+            if D._ms_key(c) in protected:
+                plan["unprotect_cut"].append(c)
+        for kind in ("protect", "unprotect"):
+            for n in p[kind]:
+                c = res(n)
+                if not c:
+                    continue
+                k = D._ms_key(c)
+                if k not in runs:
+                    plan["skipped"].append(f"{kind} {c}: not in {did}")
+                elif (kind == "protect") == (k in protected):
+                    plan["skipped"].append(f"{c} is {'already' if kind == 'protect' else 'not'} protected")
+                    plan["consume"].append((c, ("prot" if kind == "protect" else "unprot") + K, False))
+                else:
+                    plan[kind].append(c)
+                    plan["consume"].append((c, ("prot" if kind == "protect" else "unprot") + K, False))
+        bench = []
+        for n in p["bench"]:
+            c = res(n)
+            if not c:
+                continue
+            if D._ms_key(c) in runs:
+                plan["skipped"].append(f"bench {c}: it is in {did} now (cut it first to bench it)")
+            else:
+                bench.append(c)
+        have_flex = {D._ms_key(f["in"]) for f in D.parse_flex(ref["path"]) if f.get("in")}
+        plan["bench_add"] = [c for c in bench if D._ms_key(c) not in have_flex]
+        want = {D._ms_key(c) for c in bench}
+        # A bench line for a card the deck now RUNS is stale on every surface (the G-04 +In
+        # rot), so it always goes; one the board merely no longer marks waits for the flag.
+        for k, ln in sorted(_builder_bench_lines(ref["path"], slug).items()):
+            if k in runs:
+                plan["bench_retire"].append(ln)
+            elif k not in want:
+                plan["bench_retire" if retire_bench else "bench_stale"].append(ln)
+        plan["out"] = [x for x in (res(n) for n in p["out"]) if x]
+        plans[did] = plan
+    return plans
+
+
+def _plan_lines(plans, parsed, slug):
+    lines = []
+    for did, pl in plans.items():
+        acts = sum(len(pl[k]) for k in ("swaps", "adds", "cuts", "protect", "unprotect",
+                                         "bench_add", "bench_retire"))
+        lines.append(f"# {pl['label']} ({did}) — {acts} change(s)")
+        lines += [f"  swap   −{c}  +{a}" for c, a in pl["swaps"]]
+        lines += [f"  add    +{a}   (no cut chosen)" for a in pl["adds"]]
+        lines += [f"  cut    −{c}   (no add)" for c in pl["cuts"]]
+        lines += [f"  protect     {c}" for c in pl["protect"]]
+        lines += [f"  unprotect   {c}" for c in pl["unprotect"]]
+        lines += [f"  unprotect   {c}   (cut, so it leaves the protect line)" for c in pl["unprotect_cut"]]
+        lines += [f"  bench  +{c}   (new #~ line)" for c in pl["bench_add"]]
+        lines += [f"  bench  retire: {ln}" for ln in pl["bench_retire"]]
+        lines += [f"  bench  not on the board (kept; --retire-bench removes it): {ln}" for ln in pl["bench_stale"]]
+        if pl["out"]:
+            lines.append(f"  keep out (no edit): {'; '.join(pl['out'])}")
+        lines += [f"  skipped: {s}" for s in pl["skipped"]]
+    if parsed.get("own"):
+        lines.append("# ownership — not applied here; save the lines to a file, then /ingest (dry run first):")
+        lines += [f"  {q} {n}" + (f" ({st}) {cn}" if st else "") for q, n, st, cn in parsed["own"]]
+    for n, role in parsed.get("hidden", []):
+        lines.append(f"# hidden role — python3 scripts/builder.py hidden {slug} \"{n}\" --role {role.replace(' ', '-')}")
+    if parsed.get("notes"):
+        lines.append("# notes:")
+        lines += [f"#   {n}" for n in parsed["notes"]]
+    return lines
+
+
+def _section_header_index(lines):
+    """The index of the deck's board-picks section header (`# … board picks …`), or None."""
+    for i, ln in enumerate(lines):
+        if ln.startswith("# ") and not ln.startswith(("#:", "#~")) and "board picks" in ln.lower():
+            return i
+    return None
+
+
+def _edit_deck_lines(lines, plan, slug, printing):
+    """The deck file's lines with `plan`'s unpaired cuts, unpaired adds, protect changes and
+    bench retirements applied. Swaps and new bench lines are written by deck.py itself."""
+    D = _deck()
+    out = list(lines)
+    for c in plan["cuts"]:
+        k = D._ms_key(c)
+        for i, ln in enumerate(out):
+            m = re.match(r"^(\d+)\s+(.+?)\s+\(", ln)
+            if m and D._ms_key(m.group(2)) == k:
+                q = int(m.group(1))
+                if q > 1:
+                    out[i] = f"{q - 1}" + ln[len(m.group(1)):]
+                else:
+                    del out[i]
+                break
+    if plan["adds"]:
+        new = [printing(a) for a in plan["adds"]]
+        h = _section_header_index(out)
+        if h is not None:
+            j = h + 1
+            while j < len(out) and out[j].strip() and not (out[j].startswith("# ") or out[j].startswith("#~")):
+                j += 1
+            out[j:j] = new
+        else:
+            at = next((i for i, ln in enumerate(out) if ln.startswith("# ") and "land" in ln.lower()), None)
+            if at is None:
+                at = next((i for i, ln in enumerate(out) if ln.startswith("#~")), len(out))
+            out[at:at] = [f"# Board picks (builder {slug})"] + new + [""]
+    drop = {D._ms_key(c) for c in plan["unprotect"] + plan["unprotect_cut"]}
+    if drop or plan["protect"]:
+        pidx = [i for i, ln in enumerate(out) if re.match(r"^#:\s*protect:", ln)]
+        for i in pidx:
+            names = [x.strip() for x in out[i].split(":", 2)[2].split(";") if x.strip()]
+            keep = [n for n in names if D._ms_key(n) not in drop]
+            out[i] = "#: protect: " + "; ".join(keep) if keep else None
+        if plan["protect"]:
+            live = [i for i in pidx if out[i] is not None]
+            if live:
+                out[live[-1]] = out[live[-1]] + "; " + "; ".join(plan["protect"])
+            else:
+                at = next((i for i, ln in enumerate(out) if ln.startswith("#: notes:")), None)
+                if at is None:
+                    at = max((i for i, ln in enumerate(out) if ln.startswith("#:")), default=-1) + 1
+                out.insert(at, "#: protect: " + "; ".join(plan["protect"]))
+        out = [ln for ln in out if ln is not None]
+    retire = set(plan["bench_retire"])
+    return [ln for ln in out if ln not in retire]
+
+
+def _run_swap(did, cut, add):
+    """One swap through deck.py itself, so its section placement, flex retirement, identity
+    refusal, .bak and recommendations.csv row all apply exactly as for a hand-run swap."""
+    r = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"), "swap", did,
+                        "--cut", cut, "--add", add, "--apply"], capture_output=True, text=True, cwd=REPO_ROOT)
+    return r.returncode == 0 and "Applied." in r.stdout, (r.stdout + r.stderr).strip()
+
+
+def execute_apply(build, plans, slug, run_swap=None):
+    """Write each deck's plan: swaps first (deck.py swap), then one checked write for the
+    unpaired cuts and adds, protect changes and bench retirements (deck.py's INV-04 write:
+    the copy count must come out as planned or nothing is saved), then the new bench lines
+    (deck.py's flex writer). Returns log lines. A failed swap stops that deck's remaining
+    steps, so a half-applied deck is never followed by edits that assumed the swap.
+    Returns (log lines, consumed marks): only a deck whose run finished settles its marks."""
+    D = _deck()
+    run_swap = run_swap or _run_swap
+    idx = D._printing_index()
+    sq = D._squash_index(idx, lambda k: idx[k][0])
+
+    def printing(name):
+        key, _c = D._resolve_card_name(name, idx, lambda k: idx[k][0], sq)
+        if not key:
+            raise BuildError(f"no printing found for {name!r}")
+        disp, setc, coll = idx[key]
+        return f"1 {disp} ({setc}) {coll}"
+
+    log, consumed = [], []
+    for did, pl in plans.items():
+        ref = deck_ref(did)
+        ok = True
+        for c, a in pl["swaps"]:
+            good, out = run_swap(did, c, a)
+            log.append(f"{did}: swap −{c} +{a} — {'done' if good else 'FAILED'}")
+            if not good:
+                log.append("  " + out.splitlines()[-1] if out else "  (no output)")
+                ok = False
+                break
+        if not ok:
+            log.append(f"{did}: stopped — the remaining picks for this deck were not applied")
+            continue
+        if any(pl[k] for k in ("adds", "cuts", "protect", "unprotect", "unprotect_cut", "bench_retire")):
+            with open(ref["path"], encoding="utf-8") as fh:
+                lines = fh.read().rstrip("\n").split("\n")
+            _m, cards = D.parse_deck_file(ref["path"])
+            total = sum(q for q, *_ in cards) + len(pl["adds"]) - len(pl["cuts"])
+            D._safe_write_lines(ref["path"], _edit_deck_lines(lines, pl, slug, printing), total)
+            log.append(f"{did}: +{len(pl['adds'])} add(s), −{len(pl['cuts'])} cut(s), "
+                       f"{len(pl['protect'])} protect, {len(pl['unprotect']) + len(pl['unprotect_cut'])} unprotect, "
+                       f"{len(pl['bench_retire'])} bench line(s) retired")
+        for c in pl["bench_add"]:
+            line, _bak = D._flex_add(ref, f"+{c} | BENCH (builder {slug}): benched on the board", True)
+            log.append(f"{did}: bench line written — {line}")
+        consumed += pl["consume"]
+    return log, consumed
+
+
+def cleanup_ops(docs, consumed):
+    """The board-database writes that drop settled marks: one entry per affected document,
+    {id, card, picks, pair, delete}, where `picks` and `pair` are the document's values AFTER
+    the cleanup and `delete` is true when nothing is left (the page deletes an empty record
+    the same way). Bench and Keep out marks are never consumed: they are standing state."""
+    by_id = {}
+    for doc in docs:
+        if (doc.get("card") or "").strip():
+            by_id[image_slug(doc["card"])] = doc
+    changed = {}
+    for name, code, clear_pair in consumed:
+        did = image_slug(name)
+        doc = by_id.get(did)
+        if not doc:
+            continue
+        e = changed.setdefault(did, {"id": did, "card": doc["card"], "picks": list(doc.get("picks") or []),
+                                     "pair": dict(doc.get("pair") or {})})
+        if code in e["picks"]:
+            e["picks"].remove(code)
+        if clear_pair:
+            e["pair"].pop(code[3:], None)
+    out = []
+    for did, e in sorted(changed.items()):
+        doc = by_id[did]
+        if e["picks"] == list(doc.get("picks") or []) and e["pair"] == dict(doc.get("pair") or {}):
+            continue
+        own = doc.get("own")
+        e["delete"] = not e["picks"] and not (doc.get("note") or "").strip() and own is None and not doc.get("hid")
+        out.append(e)
+    return out
+
+
+def _post_checks(did):
+    """One line each from the checks a hand-applied round ran: size and legality, printings,
+    and the rationale audit."""
+    def run(*a):
+        r = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"), *a],
+                           capture_output=True, text=True, cwd=REPO_ROOT)
+        return (r.stdout or "") + (r.stderr or "")
+    legal = run("legal", did)
+    size = next((ln.strip() for ln in legal.splitlines() if ln.startswith("Deck size")), "")
+    issues = next((ln.strip() for ln in legal.splitlines() if "construction issue" in ln), "")
+    printing = (run("resolve", "--check", did).strip().splitlines() or [""])[-1].strip()
+    audit = [ln.strip() for ln in run("tier", did, "--audit-rationale").splitlines() if "⚠" in ln or "✓" in ln]
+    return [f"{did}: {size}" + (f" · {issues}" if issues else ""), f"{did}: {printing}"] + \
+           [f"{did}: {a}" for a in audit]
+
+
 # ---------------------------------------------------------------- derive
 def _tapped_cost(did):
     o = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"),
@@ -1200,6 +1613,14 @@ def main(argv=None):
                                            help="exit 1 when anything is stale or unresolved")
     p = sub.add_parser("picks", help="turn the board's copied picks into swap --package lines")
     p.add_argument("slug"); p.add_argument("file", nargs="?", default="-")
+    p = sub.add_parser("apply", help="apply the board's picks to the deck files (dry run unless --apply)")
+    p.add_argument("slug"); p.add_argument("file", nargs="?",
+                                           help="a Copy as text block (- for stdin); omit with --db")
+    p.add_argument("--db", help="a dump of the board's database (the folder ArtifactData writes with out_dir)")
+    p.add_argument("--apply", action="store_true", help="write the edits (default: print the plan)")
+    p.add_argument("--retire-bench", action="store_true",
+                   help="also remove this build's #~ bench lines whose card is no longer benched on the board")
+    p.add_argument("--cleanup", help="with --db: where to write the board cleanup file (default: <dump>/cleanup.json)")
     p = sub.add_parser("derive", help="print the page data (cards + live deck stats) as JSON")
     p.add_argument("slug"); p.add_argument("--out")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
@@ -1277,6 +1698,50 @@ def main(argv=None):
                 print(f"  {sev:10} {msg}")
             bad = any(s in ("stale", "unknown", "deck") for s, _ in issues)
             return 1 if (args.strict and bad) else 0
+        elif args.cmd == "apply":
+            if bool(args.db) == bool(args.file):
+                raise BuildError("give the picks one way: --db <dump folder> or a Copy as text file (- for stdin)")
+            docs = None
+            if args.db:
+                docs = read_db_dump(args.db)
+                parsed = picks_from_db(b, docs)
+            else:
+                text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
+                parsed = parse_picks(text)
+            known = {d["id"] for d in b["decks"]}
+            for did in parsed["decks"]:
+                if did not in known:
+                    print(f"# {did}: not a deck of this build — skipped")
+            plans = plan_apply(b, parsed, args.slug, retire_bench=args.retire_bench)
+            for line in _plan_lines(plans, parsed, args.slug):
+                print(line)
+            if not args.apply:
+                if docs is not None:
+                    n = len(cleanup_ops(docs, [c for pl in plans.values() for c in pl["consume"]]))
+                    print(f"\n{n} board record(s) would have their settled marks cleared after --apply.")
+                print("\n(dry run — pass --apply to write; each deck file gets a .bak)")
+                return 0
+            print()
+            log, consumed = execute_apply(b, plans, args.slug)
+            for line in log:
+                print(line)
+            if docs is not None:
+                ops = cleanup_ops(docs, consumed)
+                dest = args.cleanup or os.path.join(args.db if os.path.isdir(args.db) else os.path.dirname(args.db),
+                                                    "cleanup.json")
+                with open(dest, "w", encoding="utf-8") as fh:
+                    json.dump(ops, fh, indent=1, ensure_ascii=False)
+                print(f"\nBoard cleanup: {len(ops)} record(s) → {dest}. Write it to the board's `picks` "
+                      "collection now (update each record's picks and pair; delete the empty ones), so "
+                      "an applied mark cannot come back as a pending pick.")
+            else:
+                print("\nThese picks came from copied text: on the page you copied them from, open "
+                      "Your picks and press Clear applied marks.")
+            for did, pl in plans.items():
+                if any(pl[k] for k in ("swaps", "adds", "cuts", "protect", "unprotect", "unprotect_cut",
+                                       "bench_add", "bench_retire")):
+                    for line in _post_checks(did):
+                        print(line)
         elif args.cmd == "picks":
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
             for line in picks_report(b, text, args.slug):

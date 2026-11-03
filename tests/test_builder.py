@@ -679,3 +679,140 @@ class TestBackFaces:
         by = {c["n"]: c for c in data["cards"]}
         assert by[self.NAMES[0]]["im2"] == "https://x/normal/back/r.jpg"
         assert "im2" not in by["Opt"]
+
+
+class TestApply:
+    """`builder.py apply`: the board's picks become deck-file edits in one checked run, and the
+    marks a run settles are cleared from the board so they cannot come back as pending picks
+    (a dry run against the live board on 2026-11-03 proposed re-adding 25 cut cards)."""
+
+    @staticmethod
+    def _deck(deck_path):
+        import deck as Dm
+        meta, cards = Dm.parse_deck_file(deck_path)
+        return meta, {Dm._ms_key(n): q for q, n, _s, _c in cards}, open(deck_path, encoding="utf-8").read()
+
+    def test_db_documents_read_in_the_picks_shape(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        docs = [{"card": "Murder", "picks": ["addG"], "pair": {"G": "Counterspell"}},
+                {"card": "Counterspell", "picks": ["cutG"]},
+                {"card": "Opt", "picks": ["addG"], "note": "cheap cantrip"},
+                {"card": "Duress", "picks": ["bench"], "own": 2},
+                {"card": "Consider", "picks": ["protG", "unknownX"], "hid": ["card advantage"]}]
+        p = B.picks_from_db(b, docs)
+        d = p["decks"][deck_path]
+        assert d["pairs"] == [("Counterspell", "Murder")]
+        assert d["cuts"] == []                       # the swap's cut is not a second unpaired cut
+        assert d["adds"] == ["Opt"] and d["bench"] == ["Duress"] and d["protect"] == ["Consider"]
+        assert p["notes"] == ["Opt — cheap cantrip"]
+        assert p["own"] == [(2, "Duress", None, None)]
+        assert p["hidden"] == [("Consider", "card advantage")]
+
+    def test_dump_folder_and_wrapped_records_both_read(self, tmp_path):
+        d = tmp_path / "dump" / "picks"
+        d.mkdir(parents=True)
+        (d / "opt.json").write_text(json.dumps({"card": "Opt", "picks": ["addG"]}))
+        (d / "murder.json").write_text(json.dumps({"id": "murder", "version": 3,
+                                                   "data": {"card": "Murder", "picks": ["cutG"]}}))
+        docs = B.read_db_dump(str(tmp_path / "dump"))
+        assert sorted(x["card"] for x in docs) == ["Murder", "Opt"]
+
+    def test_plan_skips_what_the_deck_already_shows_and_still_consumes_it(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Counterspell", "picks": ["addG"]},   # already in
+                                     {"card": "Murder", "picks": ["cutG"]},         # already out
+                                     {"card": "Opt", "picks": ["addG"]},
+                                     {"card": "Lightning Bolt", "picks": ["addG"]}])  # off identity
+        pl = B.plan_apply(b, parsed, "t")[deck_path]
+        assert pl["adds"] == ["Opt"] and pl["cuts"] == []
+        assert any("Counterspell is already in" in s for s in pl["skipped"])
+        assert any("Murder is not in" in s for s in pl["skipped"])
+        assert any("Lightning Bolt is outside" in s for s in pl["skipped"])
+        consumed = {(n, c) for n, c, _p in pl["consume"]}
+        assert {("Counterspell", "addG"), ("Murder", "cutG"), ("Opt", "addG")} <= consumed
+        assert ("Lightning Bolt", "addG") not in consumed          # refused, so the mark stays
+
+    def test_execute_writes_unpaired_adds_cuts_and_protect_with_resolver_printings(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        meta0, before, _t = self._deck(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Opt", "picks": ["addG"]},
+                                     {"card": "Dictate of Kruphix", "picks": ["cutG"]},
+                                     {"card": "Counterspell", "picks": ["protG"]}])
+        plans = B.plan_apply(b, parsed, "t")
+        log, consumed = B.execute_apply(b, plans, "t", run_swap=lambda *a: (_ for _ in ()).throw(AssertionError))
+        meta, after, text = self._deck(deck_path)
+        import deck as Dm
+        assert Dm._ms_key("Opt") in after and Dm._ms_key("Dictate of Kruphix") not in after
+        assert sum(after.values()) == sum(before.values())
+        assert re.search(r"^1 Opt \([A-Z0-9]+\) \S+$", text, re.M)     # a resolver printing, not a typed one
+        assert Dm._ms_key("Counterspell") in Dm._protected(meta)
+        assert {(n, c) for n, c, _p in consumed} >= {("Opt", "addG"), ("Counterspell", "protG")}
+        # running it again changes nothing: every pick is now applied
+        again = B.plan_apply(b, parsed, "t")[deck_path]
+        assert not (again["adds"] or again["cuts"] or again["protect"])
+
+    def test_a_cut_card_leaves_the_protect_line(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        meta, _c, _t = self._deck(deck_path)
+        import deck as Dm
+        prot = next(n.strip() for n in meta["protect"].split(";")
+                    if n.strip() and n.strip() != meta["commander"].strip())
+        pl = B.plan_apply(b, B.picks_from_db(b, [{"card": prot, "picks": ["cutG"]}]), "t")
+        assert pl[deck_path]["unprotect_cut"] == [prot]
+        B.execute_apply(b, pl, "t")
+        meta2, after, _t = self._deck(deck_path)
+        assert Dm._ms_key(prot) not in after and Dm._ms_key(prot) not in Dm._protected(meta2)
+
+    def test_a_failed_swap_stops_the_deck_and_settles_nothing(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        _m, before, text0 = self._deck(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Murder", "picks": ["addG"], "pair": {"G": "Counterspell"}},
+                                     {"card": "Opt", "picks": ["addG"]}])
+        plans = B.plan_apply(b, parsed, "t")
+        calls = []
+        log, consumed = B.execute_apply(b, plans, "t", run_swap=lambda *a: (calls.append(a) or (False, "boom")))
+        assert calls == [(deck_path, "Counterspell", "Murder")]
+        assert any("FAILED" in ln for ln in log) and any("stopped" in ln for ln in log)
+        assert consumed == [] and open(deck_path, encoding="utf-8").read() == text0
+
+    def test_bench_reconcile_adds_missing_keeps_unmarked_and_retires_only_with_the_flag(self, scratch):
+        deck_path, _ = scratch
+        with open(deck_path, "a", encoding="utf-8") as fh:
+            fh.write("#~ +Duress | BENCH (builder t): benched on the board\n"
+                     "#~ +Counterspell | BENCH (builder t): benched on the board\n"   # now in the deck
+                     "#~ +Negate | BENCH (owner): a hand-written bench line\n")
+        b = _new(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Murder", "picks": ["benchG"]}])
+        pl = B.plan_apply(b, parsed, "t")[deck_path]
+        assert pl["bench_add"] == ["Murder"]
+        assert [ln for ln in pl["bench_retire"]] == ["#~ +Counterspell | BENCH (builder t): benched on the board"]
+        assert pl["bench_stale"] == ["#~ +Duress | BENCH (builder t): benched on the board"]
+        pl2 = B.plan_apply(b, parsed, "t", retire_bench=True)[deck_path]
+        assert len(pl2["bench_retire"]) == 2 and not any("Negate" in ln for ln in pl2["bench_retire"])
+        B.execute_apply(b, {deck_path: pl2}, "t")
+        text = open(deck_path, encoding="utf-8").read()
+        assert "#~ +Murder | BENCH (builder t)" in text and "+Duress" not in text
+        assert "#~ +Negate | BENCH (owner)" in text
+
+    def test_cleanup_drops_settled_marks_and_their_pair_but_never_a_bench(self):
+        docs = [{"card": "Murder", "picks": ["addG", "benchT"], "pair": {"G": "Counterspell"}},
+                {"card": "Counterspell", "picks": ["cutG"]},
+                {"card": "Opt", "picks": ["addG"], "note": "keep this"}]
+        ops = B.cleanup_ops(docs, [("Murder", "addG", True), ("Counterspell", "cutG", False),
+                                   ("Opt", "addG", False), ("Not On Board", "addG", False)])
+        by = {o["card"]: o for o in ops}
+        assert by["Murder"]["picks"] == ["benchT"] and by["Murder"]["pair"] == {} and not by["Murder"]["delete"]
+        assert by["Counterspell"]["delete"] is True
+        assert by["Opt"]["picks"] == [] and by["Opt"]["delete"] is False          # the note keeps it
+        assert by["Murder"]["id"] == "murder" and "Not On Board" not in by
+
+    def test_cli_needs_exactly_one_source(self, scratch, capsys):
+        deck_path, _ = scratch
+        _new(deck_path)
+        assert B.main(["apply", "t"]) == 2
+        assert "give the picks one way" in capsys.readouterr().err

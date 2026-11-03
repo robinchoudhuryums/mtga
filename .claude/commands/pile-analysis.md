@@ -265,14 +265,26 @@ the ranking cannot see it.
      (only new cards need their images sent). Give the owner the link.
    - **GitHub Pages**: nothing to run — the Pages job builds every project on the next merge
      to `main` (`builder.py site`), and the dashboard's Builder section links to it.
-5. **Read the owner's picks.** On the claude.ai board, read the `picks` collection with the
-   ArtifactData tool (doc id = card-name slug; `picks` ⊂ add<KEY> / cut<KEY> / prot<KEY> /
-   unprot<KEY> / bench<KEY> / out<KEY>, plus `pair`, `note`, `own`, `hid`; a legacy deck-less
-   `bench` / `out` from before 2026-11-02 is read as every deck the card is not in or being
-   added to); on Pages, ask the owner for
-   **Your picks → Copy as text**. Either way, `python3 scripts/builder.py picks <slug> -`
-   turns a copied block into checked `swap --package` lines — hand those to
-   `/apply-changes`. A pick is a REQUEST: nothing on the page edits a deck file.
+5. **Read and apply the owner's picks.** On the claude.ai board, dump the `picks` collection
+   with the ArtifactData tool (`action: "list"`, `collection: "picks"`, `out_dir:
+   <scratchpad>/board-db`; doc id = card-name slug; `picks` ⊂ add<KEY> / cut<KEY> /
+   prot<KEY> / unprot<KEY> / bench<KEY> / out<KEY>, plus `pair`, `note`, `own`, `hid`; a legacy
+   deck-less `bench` / `out` reads as every deck the card is not being added to). Then
+   `python3 scripts/builder.py apply <slug> --db <scratchpad>/board-db` prints the checked
+   plan: swaps, unpaired adds and cuts, protect changes and bench lines, with every pick the
+   deck already shows skipped as applied. Show it to the owner; a pick is a REQUEST, and only
+   what they confirm is applied. **Read the add list against the conversation**: a card added
+   and later cut in chat still carries its old add mark and reads as pending until it is
+   cleared. Then rerun with `--apply`: swaps go through `deck.py swap`, the rest is one
+   INV-04-checked write, and the legality, printing and rationale checks print. It writes
+   `cleanup.json` beside the dump — **write it to the board's `picks` collection in the same
+   step** (ArtifactData batch: `update` each record's `picks` and `pair`, `delete` the ones
+   marked `delete`; read each first for its version), so an applied mark cannot come back.
+   Bench lines for cards no longer benched are only listed; `--retire-bench` removes them, and
+   use it only when the owner marked on this one surface (a GitHub Pages copy keeps its own
+   picks in the browser). On Pages, ask the owner for **Your picks → Copy as text** and pass
+   the block as `builder.py apply <slug> -`; they press Clear applied marks there afterwards.
+   Commit with the shared tail, and record the owner's notes where they belong.
 6. **Process Add-cards requests** (claude.ai board only, and only when the owner says so):
    read the `requests` collection; for each `status: pending` doc —
    - `python3 scripts/builder.py add <slug> "<name>" … --pile <dest>` when `dest` is a pile

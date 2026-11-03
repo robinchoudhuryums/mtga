@@ -1212,7 +1212,7 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
 
 (async()=>{ let api=null;
   try{ api=window.claude&&window.claude.use?await window.claude.use("db"):null; }catch(e){ api=null; }
-  if(!api){ banner(META.target==="pages" ? "Picks are saved in this browser. To send them to Claude, open Your picks and use Copy as text." : "Picks are saved in this browser only, so Claude cannot read them here. Open the board on claude.ai to share them."); return; }
+  if(!api){ banner(META.target==="pages" ? "Picks are saved in this browser only, apart from the claude.ai board's. To send them to Claude, open Your picks and use Copy as text; after Claude applies them, press Clear applied marks." : "Picks are saved in this browser only, so Claude cannot read them here. Open the board on claude.ai to share them."); return; }
   db=api;
   try{ const u=await window.claude.use("user"); if(u&&u.can){ const w=await u.can("data.write"); if(w===false){ canWrite=false; banner("You can view this board but not save picks on it."); } } }catch(e){}
   const timer=setTimeout(()=>banner("Saved picks have not loaded yet. Marks you make now still save."),10000);
