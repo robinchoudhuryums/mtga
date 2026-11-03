@@ -31,10 +31,22 @@ def scratch(tmp_path, monkeypatch):
     # Counterspell / Dictate of Kruphix are IN it. The live deck is edited from the Builder
     # board, so pin the premise here rather than read whatever the deck holds today (the
     # owner added Krang to Glarb on 2026-11-03 and two tests failed on a sound picks_report).
+    # The IN half is pinned the same way: the owner's 2026-11-03 trim cut both of them, and
+    # 35 tests errored on a fixture that asserted a fact about the live list. Missing ones
+    # are added from the resolver's printing (G-65), never a typed one.
     out = {"Krang, the All-Powerful", "Murder", "Opt"}
     lines = dst.read_text(encoding="utf-8").split("\n")
-    dst.write_text("\n".join(l for l in lines
-                             if not any(l.startswith(f"1 {n} (") for n in out)), encoding="utf-8")
+    lines = [l for l in lines if not any(l.startswith(f"1 {n} (") for n in out)]
+    _m, cards = D.parse_deck_file(str(dst))
+    have = {n for _q, n, _s, _c in cards}
+    idx = D._printing_index()
+    sq = D._squash_index(idx, lambda k: idx[k][0])
+    for n in ("Counterspell", "Dictate of Kruphix"):
+        if n not in have:
+            key, _c = D._resolve_card_name(n, idx, lambda k: idx[k][0], sq)
+            disp, setc, coll = idx[key]
+            lines.append(f"1 {disp} ({setc}) {coll}")
+    dst.write_text("\n".join(lines) + "\n", encoding="utf-8")
     _m, cards = D.parse_deck_file(str(dst))
     names = {n for _q, n, _s, _c in cards}
     assert {"Counterspell", "Dictate of Kruphix"} <= names, "deck 96 no longer runs the fixture's in-deck cards"

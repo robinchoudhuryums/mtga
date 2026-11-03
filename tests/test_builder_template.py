@@ -109,7 +109,14 @@ class TestPageArithmeticMatchesTheModel:
         deck_path = tmp_path / "deck96.txt"
         shutil.copy(src, deck_path)
         text = deck_path.read_text(encoding="utf-8")
-        add, cut = "Murder", "Counterspell"                     # Murder is not in deck 96
+        # The cut is any non-commander card deck 96 protects, so a live-deck trim cannot
+        # take it away (it used to be Counterspell, which the owner cut on 2026-11-03).
+        meta, held = D.parse_deck_file(str(deck_path))
+        held = {n for _q, n, _s, _c in held}
+        prot = [n.strip() for n in (meta.get("protect") or "").split(";")]
+        cut = next(n for n in prot if n in held and n != (meta.get("commander") or "").strip())
+        add = "Murder"                                          # Murder is not in deck 96
+        assert add not in held
         b = B.new_build("t", [str(deck_path)], keys=["G"])
         B.add_cards(b, [add, cut], pile="G")
         data = B.derive(b, tempo=False)
