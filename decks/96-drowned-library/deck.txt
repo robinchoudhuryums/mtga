@@ -12,12 +12,12 @@
 #: archetype: surveil/scry, Malcolm loots on every hit — and Doctor Doom, Unrivaled, The Theorist and thirteen
 #: archetype: planeswalkers keep the draws coming, Krang doubling the triggers. The finishers are big mills
 #: archetype: (Terisian Mindbreaker's attack or unearth, Cut Your Losses, Riverchurn Monument, Jace, the Perfected Mind's −X) and
-#: archetype: repeated library EXILE (Tasha's Hideous Laughter, three Ashioks); many are mana value 4+, so Glarb casts
+#: archetype: repeated library EXILE (three Ashioks), with Lithoform Engine copying the big turns; many are mana value 4+, so Glarb casts
 #: archetype: them straight off the top. Their milled graveyard is a resource: Drown in the Loch scales with it,
 #: archetype: Yawgmoth's Vile Offering reanimates from it, Villainous Wealth casts from their library, Consuming
 #: archetype: Aberration grows with it. DISTINCT from deck 22 (Dimir Standard mill-control, Hama + the
 #: archetype: Water Crystal): this is a 100-card Sultai draw engine whose mill is a by-product of drawing.
-#: protect: Glarb, Calamity's Augur; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage; Tasha's Hideous Laughter; Ashiok, Nightmare Muse; Jace, Memory Adept; Sheoldred, the Apocalypse; Teferi, Temporal Pilgrim; The Theorist, Jace Beleren
+#: protect: Glarb, Calamity's Augur; Bruvac the Grandiloquent; Matoya, Archon Elder; Teferi's Tutelage; Sphinx's Tutelage; Ashiok, Nightmare Muse; Jace, Memory Adept; Sheoldred, the Apocalypse; Teferi, Temporal Pilgrim; The Theorist, Jace Beleren
 #: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick 2 of 2: draw + mill/exile
 #: notes: under Glarb; pick 1 is 75-historic-brawl). The optimal list, crafts included. Brawl is 1v1 at 25 life with
 #: notes: a ~92-card library after the opening hand, so mill needs ~90 cards: a doubler plus one big mill does it.
@@ -48,12 +48,12 @@
 1 Flux Channeler (WAR) 52
 1 Scavenger's Talent (BLB) 111
 1 Altar of Dementia (BRR) 3
+1 Lithoform Engine (ZNR) 245
 
 # Big mill and library exile — the finishers
 1 Terisian Mindbreaker (BRO) 83
 1 Jace, Memory Adept (PIO) 330
 1 Jace, the Perfected Mind (ONE) 57
-1 Tasha's Hideous Laughter (AFR) 78
 1 Ashiok, Nightmare Muse (THB) 208
 1 Ashiok, Sculptor of Fears (THB) 274
 1 Ashiok, Nightmare Weaver (PIO) 352
