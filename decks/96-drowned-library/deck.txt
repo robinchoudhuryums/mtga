@@ -11,7 +11,7 @@
 #: archetype: turn's graveyard total at end step. Glarb's surveil is the draw engine's spark — Matoya draws on every
 #: archetype: surveil/scry, Malcolm loots on every hit — and Doctor Doom, Unrivaled, The Theorist and thirteen
 #: archetype: planeswalkers keep the draws coming, Krang doubling the triggers. The finishers are big mills
-#: archetype: (Maddening Cacophony kicked, Cut Your Losses, Riverchurn Monument, Jace, the Perfected Mind's −X) and
+#: archetype: (Terisian Mindbreaker's attack or unearth, Cut Your Losses, Riverchurn Monument, Jace, the Perfected Mind's −X) and
 #: archetype: repeated library EXILE (Tasha's Hideous Laughter, three Ashioks); many are mana value 4+, so Glarb casts
 #: archetype: them straight off the top. Their milled graveyard is a resource: Drown in the Loch scales with it,
 #: archetype: Yawgmoth's Vile Offering reanimates from it, Villainous Wealth casts from their library, Consuming
@@ -50,7 +50,7 @@
 1 Altar of Dementia (BRR) 3
 
 # Big mill and library exile — the finishers
-1 Maddening Cacophony (ZNR) 67
+1 Terisian Mindbreaker (BRO) 83
 1 Jace, Memory Adept (PIO) 330
 1 Jace, the Perfected Mind (ONE) 57
 1 Tasha's Hideous Laughter (AFR) 78
