@@ -618,6 +618,21 @@ class TestBackFaces:
         calls.clear()
         assert B.back_image_urls("t", self.NAMES) == got and calls == []   # cache only
 
+    def test_a_card_stored_under_its_front_name_is_still_a_candidate(self, scratch, monkeypatch):
+        """The build may store a DFC under its FRONT name only ("Rona, Herald of Invasion"),
+        which has no " // " to mark it; the caller passes such names as `two_faced` (render
+        reads them off the type line). Trystan and Ultimecia were missing their backs on the
+        board because of this (2026-11-03)."""
+        deck_path, _ = scratch
+        _new(deck_path)
+        calls = []
+        self._fake(monkeypatch, calls)
+        front = "Rona, Herald of Invasion"
+        assert B.back_image_urls("t", [front, "Opt"]) == {}                 # not a candidate
+        assert calls == []
+        got = B.back_image_urls("t", [front, "Opt"], two_faced=[front])
+        assert got == {front: "https://x/normal/back/r.jpg"} and calls == [[front]]
+
     def test_a_pages_render_carries_the_back_url(self, scratch, monkeypatch):
         deck_path, tmp = scratch
         b = _new(deck_path)

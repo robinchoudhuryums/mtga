@@ -812,21 +812,25 @@ def image_urls(slug, names, fetch=True):
 BACK_KEY = "back:"   # images.json key prefix for a two-faced card's back face
 
 
-def back_image_urls(slug, names, fetch=True):
+def back_image_urls(slug, names, fetch=True, two_faced=()):
     """{name: Scryfall `normal` URL of the BACK face} for the two-faced cards among `names`.
 
     `image_urls` keeps only the front face: Scryfall puts a transform or modal DFC's
     images under `card_faces`, and the front is all a row thumbnail needs. The back is
     a different card face, so the pane and the zoom view need it too. A split, Adventure
     or Room card shares one image with both halves on it, and is cached as "" (no separate
-    back) so it is not looked up again. Only names with " // " are candidates. Cached in
+    back) so it is not looked up again. Candidates are names with " // " plus `two_faced`:
+    a card the build stores under its FRONT name only ("Trystan, Callous Cultivator") has no
+    " // " in its name, so the caller passes the names whose TYPE line has one (2026-11-03 —
+    the owner found Trystan's and Ultimecia's backs missing on the board). Cached in
     the same images.json under `back:<name>`; an outage leaves the cache as it was."""
     cache_path = os.path.join(os.path.dirname(build_path(slug)), "images.json")
     try:
         cache = json.load(open(cache_path, encoding="utf-8"))
     except (OSError, ValueError):
         cache = {}
-    cand = [n for n in dict.fromkeys(names) if " // " in n]
+    two = set(two_faced)
+    cand = [n for n in dict.fromkeys(names) if " // " in n or n in two]
     need = [n for n in cand if BACK_KEY + n not in cache]
     if need and fetch:
         try:
@@ -1006,7 +1010,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
                       fetch=fetch and (images or target == "pages"))
     arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
     backs = back_image_urls(slug, [c["n"] for c in data["cards"]],
-                            fetch=fetch and (images or target == "pages"))
+                            fetch=fetch and (images or target == "pages"),
+                            two_faced=[c["n"] for c in data["cards"] if " // " in (c.get("t") or "")])
     for c in data["cards"]:
         if arts.get(c["n"]):
             c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
