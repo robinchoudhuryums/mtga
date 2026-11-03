@@ -142,6 +142,17 @@
 1 Willow Geist (MID) 207
 1 Wizard's Retort (JMP) 198
 1 Xanathar, Guild Kingpin (AFR) 239
+1 Insidious Roots (MKM) 208
+1 Nissa, Voice of Zendikar (PIO) 188
+1 The Mycotyrant (LCI) 235
+1 Planetarium of Wan Shi Tong (TLA) 259
+1 Elven Chorus (LTR) 160
+1 Immortus, Master of Eternity (MSC) 623
+1 Defiler of Dreams (DMU) 46
+1 Tezzeret the Schemer (KLR) 209
+1 Bilbo, Thief in the Night (HOB) 33
+1 Curious Homunculus // Voracious Reader (SIR) 58
+1 Tireless Provisioner (J25) 728
 
 # Lands
 1 Command Tower (FRC) 22
