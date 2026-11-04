@@ -37,6 +37,15 @@
 #: notes: Bounty of Skemfar, Harald, King of Skemfar) for Yarok, Sidisi, Wrenn and Seven, Deathrite Shaman, Eladamri,
 #: notes: Kinnan, Yawgmoth, Kotis and Ioreth; Elves 39→33. Lathril and Voice stay protected: Imperious Perfect,
 #: notes: Thranduil, Sindarin Liege's landfall and Morcant's Eyes make Elf tokens. Kotis's exile cost spends non-Elf cards.
+#: notes: TRIM, 2026-11-04 (owner's picks): Leyline of Transformation for Overlord of the Balemurk (it returns to
+#: notes: HAND, and the deck needs board power besides Thranduil); cut Isareth, Nashi (Moon's Legacy), Pol Jamaar,
+#: notes: Selvala, Sheoldred (Whispering One) and The Ancient One. 103 cards: three more cuts to choose; Leovold,
+#: notes: Kagha and Deathrite Shaman are under consideration on the board. Tyvar the Bellicose, Ioreth and Woodland
+#: notes: Weavemaster stay (owner). LEYLINE, named Elf: every creature, creature spell and creature card you own is
+#: notes: an Elf, so Thranduil borrows Yawgmoth's sacrifice-and-draw, Kinnan's dig, Rona's loot and Ioreth's untap
+#: notes: from the yard, his draw-two fires on all 17 legendary non-Elf creatures, and the lords, Priest, Archdruid,
+#: notes: Lathril, Voice, Dionus, Tyvar Kell and Morcant count every creature and token. Never activate Sheoldred //
+#: notes: The True Scriptures' borrowed transform on Thranduil: it exiles him, and he cannot return transformed.
 
 
 # Commander (leads from the command zone; also one of the 100)
@@ -50,7 +59,6 @@
 1 Marwyn, the Nurturer (DOM) 172
 1 Deathbloom Ritualist (BRO) 208
 1 Woodland Weavemaster (HOB) 143
-1 Selvala, Heart of the Wilds (JMP) 429
 1 Kinnan, Bonder Prodigy (IKO) 192
 
 # Elf engines — activated abilities Thranduil borrows from the graveyard; Ioreth untaps him for a second use
@@ -79,16 +87,15 @@
 1 Leaf-Crowned Visionary (DMU) 167
 1 Morcant's Eyes (ECL) 185
 1 Harald Unites the Elves (KHM) 213
+1 Leyline of Transformation (DSK) 63
 
 # Graveyard engine — recast, reanimate, and payoffs for cards leaving the graveyard
 1 Teval, the Balanced Scale (TDC) 8
 1 Muldrotha, the Gravetide (FDN) 243
 1 Oasis of Renewal (YTDM) 24
 1 Insidious Roots (MKM) 208
-1 Overlord of the Balemurk (DSK) 113
 1 Kamahl's Druidic Vow (DOM) 166
 1 Journey to Eternity // Atzal, Cave of Eternity (RIX) 160
-1 Sheoldred, Whispering One (MUL) 16
 1 Wrenn and Realmbreaker (MOM) 217
 1 Yarok, the Desecrated (M20) 220
 1 Sidisi, Brood Tyrant (KTK) 199y
@@ -111,17 +118,13 @@
 # Added 2026-11-03 — the owner's board picks; their cuts are still to be chosen (deck is over 100 until then)
 1 Black Widow, Daring Operative (MSC) 831
 1 Invasion of Ikoria // Zilortha, Apex of Ikoria (MOM) 190
-1 Isareth the Awakener (M19) 104
 1 Leader, Super-Genius (MSH) 64
 1 Madame Hydra, Reanimated (MSC) 538
 1 Nashi, Illusion Gadgeteer (YOTJ) 24
-1 Nashi, Moon's Legacy (MAT) 39
 1 Nissa of Shadowed Boughs (ZNR) 231
-1 Pol Jamaar, Illusionist (J25) 38
 1 Prototype X-8 (YEOE) 24
 1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
 1 Sin, Spira's Punishment (FIN) 242
-1 The Ancient One (LCI) 222
 1 The Cloning of Shredder (TMT) 60
 1 Tyvar Kell (KHM) 198
 1 Garruk, Caller of Beasts (PIO) 347
