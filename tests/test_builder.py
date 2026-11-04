@@ -280,8 +280,14 @@ class TestVerdicts:
         B.add_cards(b, ["Opt", "Murder", "Counterspell"], pile="G")
         B.set_verdict(b, "Opt", "G", "★★")
         B.set_verdict(b, "Murder", "G", "★", pre=True)
+        B.set_reason(b, "Opt", "a cheap draw beside Counterspell")
         text = open(deck_path, encoding="utf-8").read()
         open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
+        cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
+        assert cards["Opt"]["vs"] == {"G": ""}             # a basic count moved: nothing it concerns
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
         cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
         assert cards["Opt"]["vd"] == {"G": "★★"} and cards["Opt"]["vs"] == {"G": "stale"}
         assert cards["Murder"]["vs"] == {"G": "pre"} and cards["Counterspell"]["vd"] == {}
@@ -890,3 +896,22 @@ class TestDeckTarget:
         deck_path, _ = scratch
         L = B.deck_live(deck_path, tempo=False)
         assert L["target"] == 100 and L["exact"] is True
+
+
+class TestPublishPlan:
+    """A board is a page plus images; republishing index.html alone left new cards blank."""
+
+    def test_lists_changed_and_removed_files_since_the_last_mark(self, tmp_path):
+        (tmp_path / "img" / "lg").mkdir(parents=True)
+        (tmp_path / "index.html").write_text("a")
+        (tmp_path / "img" / "thumbs.jpg").write_bytes(b"t")
+        (tmp_path / "img" / "lg" / "opt.jpg").write_bytes(b"o")
+        (tmp_path / "img" / "old-loose.jpg").write_bytes(b"x")          # an older layout's leftover
+        changed, removed = B.publish_plan(str(tmp_path))
+        assert changed == ["img/lg/opt.jpg", "img/thumbs.jpg", "index.html"] and removed == []
+        B.publish_plan(str(tmp_path), mark=True)
+        assert B.publish_plan(str(tmp_path)) == ([], [])
+        (tmp_path / "index.html").write_text("b")
+        (tmp_path / "img" / "lg" / "opt.jpg").unlink()
+        (tmp_path / "img" / "lg" / "murder.jpg").write_bytes(b"m")
+        assert B.publish_plan(str(tmp_path)) == (["img/lg/murder.jpg", "index.html"], ["img/lg/opt.jpg"])

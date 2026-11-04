@@ -357,6 +357,11 @@ def set_verdict(build, name, deck, mark, pre=False, _idx=None, _hashes=None):
         did = next(d["id"] for d in build["decks"] if d["key"] == k)
         h = (_hashes or {}).get(did) or deck_hash(did)
         cur[k] = {"m": norm_verdict(mark), "graded_at": None if pre else h}
+        if not pre:
+            snaps = build.setdefault("snapshots", {}).setdefault(did, {})
+            if h not in snaps:
+                _m, cards = _deck().parse_deck_file(deck_ref(did)["path"])
+                snaps[h] = _names_of(cards)
     if not cur:
         allv.pop(n, None)
     return n, k
@@ -379,6 +384,7 @@ def read_verdict_file(text):
 def verdict_status(build, hashes=None):
     """{deck_key: {"missing": [...], "pre": [...], "stale": [...]}} over the build's cards."""
     hashes = hashes or current_hashes(build)
+    current = current_names(build)
     out = {}
     allv = build.get("verdicts", {})
     for d in build["decks"]:
@@ -390,10 +396,33 @@ def verdict_status(build, hashes=None):
                 st["missing"].append(c["name"])
             elif v.get("graded_at") is None:
                 st["pre"].append(c["name"])
-            elif hashes.get(did) != v["graded_at"]:
+            elif verdict_stale(build, c["name"], did, v["graded_at"], hashes, current):
                 st["stale"].append(c["name"])
         out[k] = st
     return out
+
+
+def current_names(build):
+    D = _deck()
+    out = {}
+    for d in build["decks"]:
+        _m, cards = D.parse_deck_file(deck_ref(d["id"])["path"])
+        out[d["id"]] = _names_of(cards)
+    return out
+
+
+def verdict_stale(build, name, did, graded, hashes, current):
+    """A verdict is out of date when its deck's list changed since it was given AND the change
+    touches it: the card itself entered or left, or the card's reason names a card that did
+    (the reason rule, applied per deck). An earlier list that cannot be found counts as stale."""
+    if hashes.get(did) == graded:
+        return False
+    changed = _list_changes(build, did, graded, current)
+    if changed is None:
+        return True
+    D = _deck()
+    r = build["reasons"].get(name) or {}
+    return any(D._ms_key(n) == D._ms_key(name) for n in changed) or bool(mentioned(r.get("text", ""), changed))
 
 
 # ---------------------------------------------------------------- check
@@ -428,6 +457,9 @@ def record_snapshots(build, hashes):
             _m, cards = D.parse_deck_file(deck_ref(did)["path"])
             s[h] = _names_of(cards)
     used = {(i, h) for r in build["reasons"].values() for i, h in (r.get("graded_at") or {}).items()}
+    ids = {d["key"]: d["id"] for d in build["decks"]}
+    used |= {(ids[k], x["graded_at"]) for vv in build.get("verdicts", {}).values()
+             for k, x in vv.items() if k in ids and x.get("graded_at")}
     used |= {(i, h) for i, h in hashes.items()}
     for did, s in snaps.items():
         for h in [h for h in s if (did, h) not in used]:
@@ -495,6 +527,17 @@ def mentioned(text, names):
     return out
 
 
+def _list_changes(build, did, h, current):
+    """Card names that entered or left deck `did` since its list hashed to `h`, or None when
+    that list is not on record (no snapshot, and not in the deck file's git history)."""
+    D = _deck()
+    old = (build.get("snapshots", {}).get(did, {}) or {}).get(h) or _history_names(did, h)
+    if old is None:
+        return None
+    ok, nk = {D._ms_key(n): n for n in old}, {D._ms_key(n): n for n in current[did]}
+    return [ok[k] for k in ok.keys() - nk.keys()] + [nk[k] for k in nk.keys() - ok.keys()]
+
+
 def reason_changes(build, name, reason, hashes, current):
     """For one reason: [(deck id, changed names it concerns)] for each deck whose list
     changed since it was written in a way that touches it, or [(deck id, None)] when the
@@ -504,12 +547,10 @@ def reason_changes(build, name, reason, hashes, current):
     for did, h in (reason.get("graded_at") or {}).items():
         if did not in hashes or hashes[did] == h:
             continue
-        old = (build.get("snapshots", {}).get(did, {}) or {}).get(h) or _history_names(did, h)
-        if old is None:
+        changed = _list_changes(build, did, h, current)
+        if changed is None:
             out.append((did, None))
             continue
-        ok, nk = {D._ms_key(n): n for n in old}, {D._ms_key(n): n for n in current[did]}
-        changed = [ok[k] for k in ok.keys() - nk.keys()] + [nk[k] for k in nk.keys() - ok.keys()]
         hit = [n for n in changed if D._ms_key(n) == D._ms_key(name)] + mentioned(reason.get("text", ""), changed)
         if hit:
             out.append((did, sorted(set(hit))))
@@ -1265,6 +1306,7 @@ def derive(build, tempo=True):
     printing = _printings()
     hidden = build.get("hidden", {})
     verdicts, hashes = build.get("verdicts", {}), current_hashes(build)
+    names_now = current_names(build)
     ids = {d["key"]: d["id"] for d in build["decks"]}
     on_board = {c["name"] for c in build["cards"]}
     # Deck-list cards that are on no pile still get a record (pile None), so the page can
@@ -1299,7 +1341,7 @@ def derive(build, tempo=True):
         vv = verdicts.get(n, {})
         rec["vd"] = {k: x["m"] for k, x in vv.items() if k in live}
         rec["vs"] = {k: ("pre" if x.get("graded_at") is None else
-                         "stale" if x["graded_at"] != hashes.get(ids[k]) else "")
+                         "stale" if verdict_stale(build, n, ids[k], x["graded_at"], hashes, names_now) else "")
                      for k, x in vv.items() if k in live}
         out.append(rec)
     return {"cards": out,
@@ -1624,6 +1666,54 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
 
 
 # ---------------------------------------------------------------- Pages site
+# ---------------------------------------------------------------- publish plan
+# A claude.ai board is a page plus image files (img/lg/*.jpg, img/thumbs.jpg, img/arts-*.jpg).
+# Republishing index.html alone left new cards with no picture and the thumbnail sprite out of
+# step with the page's sprite map (found 2026-11-04: 16 new cards had no image, and the sprite
+# on the board was the previous layout). `publish_plan` lists exactly what changed since the
+# last publish, recorded in <out>/.published.json, so each republish sends those files.
+PUBLISHED = ".published.json"
+
+
+def _file_sig(path):
+    with open(path, "rb") as fh:
+        return f"{os.path.getsize(path)}:{hashlib.sha1(fh.read()).hexdigest()[:16]}"
+
+
+_SITE_FILE = re.compile(r"^(index\.html|img/thumbs\.jpg|img/arts-\d+\.jpg|img/lg/[^/]+\.jpg)$")
+
+
+def site_files(out_dir):
+    """{published path: signature} for the files `render` writes for an artifact board
+    (index.html, the thumbnail and art sprites, the large images); leftovers of an older
+    layout in the same folder are not part of the board and are ignored."""
+    out = {}
+    for root, _dirs, files in os.walk(out_dir):
+        for fn in files:
+            full = os.path.join(root, fn)
+            rel = os.path.relpath(full, out_dir).replace(os.sep, "/")
+            if _SITE_FILE.match(rel):
+                out[rel] = _file_sig(full)
+    return out
+
+
+def publish_plan(out_dir, mark=False):
+    """(changed, removed): paths to send and paths to drop since the last recorded publish.
+    `mark` records the current files as published; run it after the publish succeeds."""
+    now = site_files(out_dir)
+    rec = os.path.join(out_dir, PUBLISHED)
+    before = {}
+    if os.path.exists(rec):
+        with open(rec, encoding="utf-8") as fh:
+            before = json.load(fh)
+    changed = sorted(p for p, s in now.items() if before.get(p) != s)
+    removed = sorted(p for p in before if p not in now)
+    if mark:
+        with open(rec, "w", encoding="utf-8") as fh:
+            json.dump(now, fh, indent=0, sort_keys=True)
+    return changed, removed
+
+
 def _offline():
     """No network during a site build: the Pages job runs offline (like build_dashboard's
     `_no_network`), so deck.py's live-Scryfall fallbacks are neutralised and image URLs
@@ -1777,6 +1867,9 @@ def main(argv=None):
     p.add_argument("--out", required=True, help="output directory (index.html, and img/ for artifact)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
     p.add_argument("--no-images", action="store_true", help="artifact: do not download images")
+    p = sub.add_parser("publish-plan", help="list a rendered board's files changed since its last publish")
+    p.add_argument("out", help="the render's output directory (e.g. .cycle/board)")
+    p.add_argument("--mark", action="store_true", help="record the current files as published (after publishing)")
     p = sub.add_parser("site", help="render every build for GitHub Pages (offline): builder.html + builds/")
     p.add_argument("--out", required=True, help="the site directory (e.g. _site)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
@@ -1793,6 +1886,17 @@ def main(argv=None):
         for f in failures:
             print(f"WARN: builder project failed to render — {f}", file=sys.stderr)
         return 1 if failures else 0
+    if args.cmd == "publish-plan":
+        changed, removed = publish_plan(args.out, mark=args.mark)
+        if args.mark:
+            print(f"Recorded {len(site_files(args.out))} file(s) as published.")
+            return 0
+        print(f"{len(changed)} file(s) to send" + (f", {len(removed)} to remove" if removed else "") + ":")
+        for x in changed:
+            print(f"  {x}")
+        for x in removed:
+            print(f"  remove {x}")
+        return 0
     try:
         if args.cmd == "new":
             b = new_build(args.slug, args.decks, args.keys, args.title)
