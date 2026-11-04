@@ -1089,15 +1089,29 @@ const LS=`builder-${SLUG}-picks`;
 const saveLocal=()=>{ try{ localStorage.setItem(LS,JSON.stringify(picks)); }catch(e){} };
 const loadLocal=()=>{ const x=readJSON(LS); Object.keys(x).forEach(id=>{ if(x[id]&&Array.isArray(x[id].picks)) x[id].picks=upgradeLegacy(id,x[id].picks).filter(v=>PICKLAB[v]); }); return x; };
 const writing={};
+/* The board's copy of each record as last read. A save sends only the fields the owner changed
+   against it, as an `update`, and never `reply` / `replyTo` / fields it did not touch: a full
+   `set` from a page holding an older copy erased a reply Claude had just written. `update`
+   rejects a document that does not exist yet, and only then is the record created whole. */
+const SERVER = {};
+const PFIELDS = ["card","picks","note","pair","own","hid","pile","done","sug"];
+function changedFields(full,srv){ if(!srv) return Object.assign({},full); const ch={};
+  PFIELDS.forEach(k=>{ if(JSON.stringify(full[k]===undefined?null:full[k])!==JSON.stringify(srv[k]===undefined?null:srv[k])) ch[k]=full[k]; });
+  return Object.keys(ch).length?ch:null; }
 function flashSaved(id,local){ document.querySelectorAll(`[data-saved="${id}"]`).forEach(el=>{ el.textContent=local?"Saved in this browser":"Saved"; clearTimeout(el._t); el._t=setTimeout(()=>{el.textContent="";},2500); }); }
 async function persist(id){ const p=picks[id]||{picks:[],note:""};
   if(!db){ saveLocal(); flashSaved(id,true); return; }
   if(writing[id]){ writing[id].again=true; return; } writing[id]={again:false};
   try{ const ref=db.collection("picks").doc(id);
     const ownSet = p.own!==undefined&&p.own!==null&&p.own!=="";
-    if(!(p.picks||[]).length&&!p.note&&!ownSet&&!(p.hid||[]).length&&!(p.done||[]).length&&!(p.sug||[]).length) await ref.delete();
-    else await ref.set({card:nameOf(id),picks:p.picks||[],note:p.note||"",pair:p.pair||{},own:ownSet?p.own:null,hid:p.hid||[],pile:(BYID[id]||{}).p||"",
-      done:p.done||[],sug:p.sug||[],reply:p.note?(p.reply||""):"",replyTo:p.note?(p.replyTo||""):"",at:new Date().toISOString()});
+    if(!(p.picks||[]).length&&!p.note&&!ownSet&&!(p.hid||[]).length&&!(p.done||[]).length&&!(p.sug||[]).length){ await ref.delete(); delete SERVER[id]; }
+    else { const full={card:nameOf(id),picks:p.picks||[],note:p.note||"",pair:p.pair||{},own:ownSet?p.own:null,hid:p.hid||[],pile:(BYID[id]||{}).p||"",
+      done:p.done||[],sug:p.sug||[]};
+      const ch=changedFields(full,SERVER[id]);
+      if(ch){ ch.at=new Date().toISOString();
+        try{ await ref.update(ch); }
+        catch(e){ if(!(e&&e.code==="invalid_argument")) throw e; await ref.set(Object.assign(full,{at:ch.at})); }
+        SERVER[id]=Object.assign({},SERVER[id]||{},full); } }
   }catch(e){ if(e&&e.code==="invalid_argument"){ canWrite=false; banner("You can view this board but not save picks on it."); } else if(e&&e.code==="quota_exceeded") banner("The board's storage is full, so this pick was not saved."); else banner("A pick could not be saved just now. Try again."); }
   const again=writing[id].again; delete writing[id]; if(again) persist(id); else flashSaved(id); }
 function togglePick(id,v){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
@@ -1262,7 +1276,8 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
   try{ const u=await window.claude.use("user"); if(u&&u.can){ const w=await u.can("data.write"); if(w===false){ canWrite=false; banner("You can view this board but not save picks on it."); } } }catch(e){}
   const timer=setTimeout(()=>banner("Saved picks have not loaded yet. Marks you make now still save."),10000);
   db.collection("picks").onSnapshot(snap=>{ if(!snap.metadata.fromCache){ clearTimeout(timer); if(canWrite) banner(""); }
-    const next={}, upg=[]; snap.docs.forEach(d=>{ const x=d.data()||{}; if(!nameOf(d.id)) return;
+    const next={}, upg=[]; Object.keys(SERVER).forEach(k=>delete SERVER[k]);
+    snap.docs.forEach(d=>{ const x=d.data()||{}; SERVER[d.id]=JSON.parse(JSON.stringify(x)); if(!nameOf(d.id)) return;
       if(Array.isArray(x.picks)){ const u=upgradeLegacy(d.id,x.picks); if(u!==x.picks){ x.picks=u; upg.push(d.id); } }
       const pair={}; if(x.pair&&typeof x.pair==="object") DK.forEach(k=>{ if(typeof x.pair[k]==="string") pair[k]=x.pair[k]; });
       next[d.id]={picks:Array.isArray(x.picks)?x.picks.filter(v=>PICKLAB[v]):[],note:typeof x.note==="string"?x.note:"",pair,

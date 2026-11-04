@@ -9300,7 +9300,7 @@ _RECS_SUGGEST_WINDOW = 20
 _RECS_MIN_SAMPLE = 20
 
 
-def recommendation_row(d, cut, add, source, today=None):
+def recommendation_row(d, cut, add, source, today=None, cache=None):
     """Score an ACCEPTED swap against what the recommenders said at that moment.
 
     `swap --apply` is the only place in this toolkit where a human's real add/cut
@@ -9319,8 +9319,14 @@ def recommendation_row(d, cut, add, source, today=None):
     decision was made against; re-deriving one later would score against a deck the swap
     already changed.
 
+    Either side may be blank: `builder.py apply` records an add with no cut chosen, or a cut
+    with no add, as a decision too, and the blank side's columns stay blank rather than read
+    as a model miss. `cache` (a dict) lets one caller score several rows against the same
+    pre-change deck while computing each model once.
+
     Returns a row dict, or None if neither model could be computed."""
     import datetime
+    cache = {} if cache is None else cache
     row = {c: "" for c in RECS_HEADER}
     row.update({"Date": today or datetime.date.today().isoformat(),
                 "Deck": d["id"], "Source": source, "Cut": cut, "Add": add})
@@ -9329,7 +9335,11 @@ def recommendation_row(d, cut, add, source, today=None):
     # The cut side is the CLEAN measurement: `cuts` ranks the cards already in the deck,
     # so the cut always has a well-defined position in a list that always contains it.
     try:
-        rows, _central, prot_present, _int = rank_cut_candidates(d)
+        if not cut.strip():
+            raise LookupError("no cut on this row")
+        if "cuts" not in cache:
+            cache["cuts"] = rank_cut_candidates(d)
+        rows, _central, prot_present, _int = cache["cuts"]
         # `_ms_key` both sides, like the `Cut Protected` join below it. A raw `.lower()`
         # compare blanked `Cut Rank` whenever the deck stored a DFC under one face and the
         # swap named the other — telemetry only (G-56 keeps this ledger report-only, and
@@ -9353,7 +9363,11 @@ def recommendation_row(d, cut, add, source, today=None):
     # to lands and off-theme removal (that is what `--lands`/`--interaction`/`--ramp`
     # exist for). "Not surfaced" is therefore common and is NOT on its own a model miss.
     try:
-        res = suggest_scored(d, limit=0)
+        if not add.strip():
+            raise LookupError("no add on this row")
+        if "suggest" not in cache:
+            cache["suggest"] = suggest_scored(d, limit=0)
+        res = cache["suggest"]
         if res.get("ok"):
             picks = res["picks"]
             al = add.strip().lower()

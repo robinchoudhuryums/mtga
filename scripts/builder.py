@@ -1113,6 +1113,38 @@ def _run_swap(did, cut, add):
     return r.returncode == 0 and "Applied." in r.stdout, (r.stdout + r.stderr).strip()
 
 
+def _ledger_rows(ref, plan):
+    """recommendations.csv rows for the plan's unpaired adds and cuts, scored against the deck
+    BEFORE the write, as `swap --apply` scores a swap. Swaps record their own rows through
+    deck.py. Telemetry never costs an edit: any failure here records nothing."""
+    D = _deck()
+    cache, rows = {}, []
+    try:
+        for a in plan["adds"]:
+            r = D.recommendation_row(ref, "", a, "builder", cache=cache)
+            if r:
+                rows.append(r)
+        for c in plan["cuts"]:
+            r = D.recommendation_row(ref, c, "", "builder", cache=cache)
+            if r:
+                rows.append(r)
+    except Exception:
+        return []
+    return rows
+
+
+def _append_ledger(rows):
+    D = _deck()
+    done = 0
+    for r in rows:
+        try:
+            D.append_recommendation(r)
+            done += 1
+        except Exception:
+            break
+    return done
+
+
 def execute_apply(build, plans, slug, run_swap=None):
     """Write each deck's plan: swaps first (deck.py swap), then one checked write for the
     unpaired cuts and adds, protect changes and bench retirements (deck.py's INV-04 write:
@@ -1151,7 +1183,11 @@ def execute_apply(build, plans, slug, run_swap=None):
                 lines = fh.read().rstrip("\n").split("\n")
             _m, cards = D.parse_deck_file(ref["path"])
             total = sum(q for q, *_ in cards) + len(pl["adds"]) - len(pl["cuts"])
+            recs = _ledger_rows(ref, pl)
             D._safe_write_lines(ref["path"], _edit_deck_lines(lines, pl, slug, printing), total)
+            n = _append_ledger(recs)
+            if n:
+                log.append(f"{did}: {n} unpaired pick(s) recorded in recommendations.csv")
             log.append(f"{did}: +{len(pl['adds'])} add(s), −{len(pl['cuts'])} cut(s), "
                        f"{len(pl['protect'])} protect, {len(pl['unprotect']) + len(pl['unprotect_cut'])} unprotect, "
                        f"{len(pl['bench_retire'])} bench line(s) retired")

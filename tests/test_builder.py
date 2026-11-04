@@ -24,6 +24,7 @@ import deck as D  # noqa: E402
 def scratch(tmp_path, monkeypatch):
     """A scratch builds/ dir plus a scratch copy of deck 96; returns (deck_path, tmp_path)."""
     monkeypatch.setattr(B, "BUILDS_DIR", str(tmp_path / "builds"))
+    monkeypatch.setattr(D, "RECS_CSV", str(tmp_path / "recommendations.csv"))
     src = D.find_deck("96")["path"]
     dst = tmp_path / "deck96.txt"
     shutil.copy(src, dst)
@@ -764,6 +765,12 @@ class TestApply:
         assert re.search(r"^1 Opt \([A-Z0-9]+\) \S+$", text, re.M)     # a resolver printing, not a typed one
         assert Dm._ms_key("Counterspell") in Dm._protected(meta)
         assert {(n, c) for n, c, _p in consumed} >= {("Opt", "addG"), ("Counterspell", "protG")}
+        recs = Dm.load_recommendations()                                 # the scratch ledger
+        assert [(r["Source"], r["Cut"], r["Add"]) for r in recs] == \
+            [("builder", "", "Opt"), ("builder", "Dictate of Kruphix", "")]
+        assert recs[0]["Cut Rank"] == recs[0]["Cut Of"] == "" and recs[0]["Add Of"]
+        assert recs[1]["Add Surfaced"] == recs[1]["Add Of"] == "" and recs[1]["Cut Rank"]
+        assert any("2 unpaired pick(s) recorded" in ln for ln in log)
         # running it again changes nothing: every pick is now applied
         again = B.plan_apply(b, parsed, "t")[deck_path]
         assert not (again["adds"] or again["cuts"] or again["protect"])

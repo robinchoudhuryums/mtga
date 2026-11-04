@@ -30,7 +30,10 @@ later cut in chat still carries its add mark. `--apply` writes it (swaps through
 the rest as one INV-04-checked write) and prints the legality, printing and rationale checks;
 then write the `cleanup.json` it leaves beside the dump to the board (its `picks` updates move
 settled marks into `done`; its `log` entry goes in the `log` collection), so an applied mark
-cannot come back and the owner sees what landed. Bench lines the board no longer marks are only listed
+cannot come back and the owner sees what landed. Write each `picks` record with `update` of
+those fields only, never a whole-record `set` (it would erase marks made since the dump).
+Unpaired adds and cuts are recorded in recommendations.csv (`Source` = `builder`, the
+missing half blank), as each swap already is. Bench lines the board no longer marks are only listed
 (`--retire-bench` removes them, for a round marked on one surface only). Stages 1, 3 and 4
 below still apply around it: the quality snapshot before, the guard and preflight after.
 

@@ -287,6 +287,12 @@ the ranking cannot see it.
    answers). **Propose cuts as suggestions, not picks**: when the owner asks for cut candidates,
    write them to the card's record as `sug: [{v: "cut<KEY>", why: "<one line>"}]`; the page
    draws them dashed and they count for nothing until the owner accepts one.
+   **Every write to a `picks` record is an ArtifactData `update` naming only the fields you
+   own** (`reply` + `replyTo`; `sug`; the cleanup's `picks` + `pair` + `done`), never a `set`
+   of the whole record: a `set` from a copy read minutes earlier erases a mark the owner made
+   since. The page does the same in reverse — it sends only the fields the owner changed and
+   never `reply` / `replyTo` — so the two writers no longer overwrite each other. `set` only a
+   record that does not exist yet (a suggestion on an unmarked card).
    Bench lines for cards no longer benched are only listed; `--retire-bench` removes them, and
    use it only when the owner marked on this one surface (a GitHub Pages copy keeps its own
    picks in the browser). On Pages, ask the owner for **Your picks → Copy as text** and pass
