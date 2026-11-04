@@ -9116,3 +9116,37 @@ untouched:
 
 The shown labels (`PICKLAB`) leave the deck out, but Copy as text reads `FULLLAB`, so the
 block `builder.py picks` parses is the same on one deck as on two.
+
+**2026-11-03/04 — applying picks, and the board as a two-way record.** Three rounds of Glarb
+picks were applied by hand from a dumped `picks` collection before `builder.py apply` existed;
+round two found eight bench lines "unbenched" when four had only been cleared, and a dry run
+of the new tool resurrected 25 add marks the owner had long since answered in chat — a mark
+outlives the conversation that settled it. So:
+- `apply <slug> --db <dump>` plans against the LIVE deck files (a pick the deck already shows
+  is skipped as applied), writes swaps through `deck.py swap` and everything else in one
+  INV-04-checked write, and leaves `cleanup.json`. Its `picks` updates MOVE each settled mark
+  into the record's `done` history instead of deleting it, so a mark that leaves `picks` with
+  no `done` entry is one the owner took back, and the two are told apart on the page; its
+  `log` entry lists what landed. Bench lines the board no longer marks are only listed
+  (`--retire-bench` removes them), because a Pages copy keeps its own picks.
+- An unpaired add or cut is a decision too, so it is recorded in recommendations.csv with
+  `Source` = `builder` and the missing half's columns blank (a blank add must not read as an
+  unsurfaced one in `feedback`); `recommendation_row` caches its two models per deck.
+- **Stale reasons were saturated**: after one Glarb trim every reason and verdict on the board
+  read stale (426), so the warning said nothing. A reason or verdict is now stale only when a
+  card that ENTERED or LEFT the deck since it was graded is its own card or is named in its
+  reason (full name, split front, or a legend's short name of 4+ letters, whole word). The old
+  list comes from `snapshots` in build.json, or the deck file's git history for a reason
+  written before snapshots. Sultai: 426 → 231 reasons, verdicts 426 → 51 / 180, every one
+  naming a card the trim moved.
+- **Replies, suggestions, the size line.** Claude answers a note in the record's `reply` /
+  `replyTo` (the note it answers; an edited note shows the reply as answering an earlier
+  version), proposes cuts as `sug` (dashed, counted for nothing until accepted), and the deck
+  panel shows "109 / 100 · 9 cuts to go". **The two writers raced**: the page saved with a
+  whole-record `set`, so a page holding a copy older than Claude's reply erased it on its
+  next save. It now sends only the fields the owner changed against the last copy it read,
+  as an `update`, and never `reply` / `replyTo`; the skills write Claude's fields the same
+  way. Residual: two writers changing the SAME field at once still last-writer-wins.
+- **Republishing a page alone left 24 new cards without an image** and the thumbnail sprite a
+  layout behind the page's sprite map. `publish-plan <out>` compares the page, sprites and
+  large images with `.published.json` and lists what to send; `--mark` after the publish.

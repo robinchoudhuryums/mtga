@@ -30,7 +30,7 @@ Phase: implement — **Batches 1 (ingest), 2 (deck legality + parse gates) and 3
 Scope: broad
 Test Command: `python3 scripts/check_all.py`
 Subsystem cycles since last Seams audit: 3 (counter adopted 2026-09-08; no Seams audit has run)
-Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
+Updated: 2026-11-04 (Builder open items — see Where I left off)
 
 ## In progress (facts to carry forward — NOT judgments)
 - **Broad scan #10 is fully implemented — nothing outstanding from the scan.** Four
@@ -445,6 +445,8 @@ Updated: 2026-10-31 (deck-95 session tooling fixes — see Where I left off)
 - The full history of what was decided against lives in `.cycle/HISTORY.md`.
 
 ## Where I left off
+**2026-11-04 (latest) — Builder open items closed** (block `11-builder-open-items-broad-implement.md`): verdict staleness uses the reason rule (Sultai verdicts 426 → 51 / 180); `apply` records unpaired adds/cuts in recommendations.csv (`Source` builder); the board page saves only the fields the owner changed and never `reply`/`replyTo` (the reply race), and the skills write board records with `update`; `builder.py publish-plan` lists the page and images to republish (24 missing images sent, board v45); docs synced (G-89 + long form, README, systems map §5c, scenario 25). **Open:** the owner's "unprotect Teferi's Tutelage" mark; a PR if wanted.
+
 **2026-11-04 (latest) — Builder items 4–8 done** (block `11-builder-items4-8-broad-implement.md`): settled marks keep a `done` history and each apply writes a `log` entry; reasons go stale only when a card they concern moves (Sultai 426 → 231, all real); note replies and Claude's suggested cuts live on the board; the deck panel counts cuts to go. The Sultai board's database was cleaned first (71 settled marks cleared, 11 bench marks added; the owner's "unprotect Teferi's Tutelage" mark is awaiting their call). **Open:** republish the board; /sync-docs for G-89 / README / systems map / scenario 25; verdict staleness still uses the old rule.
 
 **2026-11-03 (latest) — Builder items 1–3 done** (block `11-builder-apply-broad-implement.md`): `builder.py apply <slug> --db <dump>` (or a copied block) plans and, with `--apply`, writes the board's picks through deck.py's own writers, then prints a `cleanup.json` to write back to the board so applied marks cannot return; bench reconcile retires builder lines for cards now in the deck and lists the rest (`--retire-bench`). Owner chose options 1+3 after the dry run found 25 stale add marks and 9 bench lines the Pages copy held. **Open:** one-time clearing of the Sultai board's stale add marks (owner to confirm); /sync-docs for G-89, README, systems map §5c. Deck 96 (Glarb) trimmed to 100 and tuned this session.

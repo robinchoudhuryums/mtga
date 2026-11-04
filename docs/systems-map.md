@@ -236,6 +236,8 @@ as a Builder project, so the owner can review it on a page instead of in chat.
 | 4 | `builder.py check <slug>` (also a soft `check_all` line) | reasons written against an older deck list | ~1s |
 | 5 | `builder.py verdict <slug> <card> <deck> <mark>` / `--file` | a per-deck star (★★★ … ✗), stamped like a reason | <1s |
 | 6 | `deck.py flex <id> --add "+Card \| note" --apply` (from step 3's output, run by `/apply-changes`) | a benched card as a `#~` line in the deck file | <1s |
+| 7 | `builder.py apply <slug> --db <dump>` (claude.ai board) / `… -` (a copied block) | dry run: the checked plan; `--apply`: writes it, records unpaired picks in recommendations.csv, leaves `cleanup.json` (`done` history + `log`) for the board | ~10s + one `deck.py swap` per swap |
+| 8 | `builder.py publish-plan <out> [--mark]` | the page and images changed since the last publish | <1s |
 
 A ONE-DECK build (the usual case) opens on Compare: the piles are a filter, the candidates
 are grouped by verdict with ✗ collapsed, and the deck panel shows the live curve. A two-deck
@@ -246,8 +248,11 @@ build keeps the pile tabs.
 - ⚖ **A pick is a request, never an edit.** The page cannot write deck files; step 3 turns
   the copied block into the `/apply-changes` input, and a pick whose cut has left the deck
   is named, not applied.
-- ⚖ **A reason is graded against a deck version.** `check` flags it after a swap; the
-  owner decides whether the reason still holds.
+- ⚖ **A reason is graded against a deck version.** `check` flags it when a card that entered
+  or left the deck is its own card or is named in it; the owner decides whether it still holds.
+- ⚖ **Two writers share each board record.** The page sends only the fields the owner changed;
+  Claude `update`s only `reply`/`replyTo`, `sug` and the cleanup fields. A dry run's add list is
+  read against the conversation: a mark outlives the chat that settled it.
 - ⚖ **A bench reaches the deck file, a keep-out does not.** Step 3 prints one `flex --add`
   per benched card; `/apply-changes` writes them with the swaps, so the next `/tune-deck`
   reads the bench. It refuses a card the deck runs or another `#~` line names.

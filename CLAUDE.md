@@ -1439,25 +1439,26 @@ is protecting.
 
 - **A BUILDER PAGE IS TEMPLATE + DATA, AND THE REASON IS THE ONLY THING STORED.** A pile
   graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
-  reasons, verdicts) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
-  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts`
-  ranks are DERIVED at render from the deck model. The first board typed those figures into
-  the page and they went stale at the first swap. **A reason is graded against a deck
-  VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
-  line name it once a deck changes — re-read it, do not re-stamp it blindly. Per-deck
-  VERDICT stars (`builder.py verdict`, ★★★…✗) are stamped the same way; an imported grade
-  reads pre-draft until re-graded. **The
-  theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
-  rates removal tangential. **The page edits nothing**: a pick is a request that
-  `builder.py picks` turns into checked `swap --package` / protect / `flex --add` / `/ingest`
-  lines for `/apply-changes` (a pile move is a request too), and hidden roles sit beside the counted figures, never in the floor
-  (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
-  regenerated (the 511-file artifact limit: long form). **A ONE-DECK build drops what only tells decks apart**: it opens on Compare, piles
-  become a filter, candidates sit in verdict sections (✗ collapsed), the deck panel carries
-  the live curve; Copy as text stays deck-named (`FULLLAB`). A two-faced card ships its BACK too (the pane and zoom flip with `f`). **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
-  frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
-  (G-65). `/pile-analysis` Stage 6 owns
-  publishing and the request queue. [G-89]
+  reasons, verdicts) and renders through `scripts/builder.py` + `scripts/builder_template.html`;
+  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts` ranks
+  are DERIVED at render. The first board typed those figures in and they went stale at the
+  first swap. **A reason or VERDICT star is graded against a deck VERSION** (`graded_at`, a
+  list hash); `builder.py check` and a soft `check_all` line call it stale only when a card
+  that entered or left the deck is its own card or is NAMED in its reason (2026-11-04: any
+  change had flagged all 426). Re-read it, never re-stamp. **The theme-fit grade is
+  NOT shown**: it misreads graveyard polarity (G-42). **The page edits nothing**: a pick is a
+  request; `builder.py apply <slug> --db <dump>` turns the board's picks into a checked plan
+  (dry run), writes it with `--apply` (swaps via `deck.py swap`; unpaired picks reach
+  recommendations.csv), and leaves a `cleanup.json` that moves settled
+  marks to the record's `done` history and logs what landed. **Write a board record with
+  `update` of your own fields only** (`reply`/`replyTo`, `sug`, cleanup) — the page likewise
+  sends only what the owner changed, so neither erases the other. Suggested cuts are `sug`,
+  never picks. Hidden roles sit beside the counted figures, never in the floor (G-25). Restyle
+  the TEMPLATE; republish with `builder.py publish-plan <out>` (the
+  page AND its changed images, then `--mark`), since index.html alone left new cards blank. A
+  ONE-DECK build opens on Compare with verdict sections; Copy as text stays deck-named
+  (`FULLLAB`). **Alternate printings are VIEW-ONLY**: a deck line keeps the pool's printing
+  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
 
 ## Known Issues
 
@@ -2018,7 +2019,10 @@ format.
     hover a row; open Compare, select a pile card and press ⇄ on a deck card; mark one
     ownership correction and one "counts as interaction"; press `u`; open Your picks and
     Copy as text; repeat at 390×844 and keyboard-only. Then: set Verdict and Decision
-    filters and sort by verdict; on an added card open "Choose a cut", hover and arrow
+    filters and sort by verdict; on the claude.ai board, reply to a note (Claude writes
+    `reply`) and confirm it shows under the note, Accept one dashed suggestion and Dismiss
+    another, check the deck panel's "N / 100 · K cuts to go" line, and mark a card WHILE
+    Claude writes a reply to it (the reply must survive); on an added card open "Choose a cut", hover and arrow
     through it (the preview follows) and pick one; in Compare click a deck card (the pile
     card must stay selected); bulk-mark the shown cards, then press `u` once; queue a pile
     move from the pane; on a build of four or more decks open a row's ⋯ menu. Then a ONE-DECK
