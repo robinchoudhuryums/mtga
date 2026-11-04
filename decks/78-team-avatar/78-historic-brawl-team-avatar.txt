@@ -18,9 +18,9 @@
 #: tier: B — PROVISIONAL and a RE-GRADE CANDIDATE: the metrics floor reads A since Wan
 #: tier: Shi Tong came in, one band above this letter, pending the owner's call. A
 #: tier: 100-card deck is graded per 60 cards (the floor's thresholds scale ×1.67), so
-#: tier: interaction 13 and card advantage 7 read as about 7.8 and 4.2 per 60, which clears
-#: tier: the A line (A wants 7 and a sum of 11 in a 60) with one card to spare: losing two
-#: tier: interaction or card-advantage cards puts the floor back at B.
+#: tier: interaction 13 and card advantage 9 read as about 7.8 and 5.4 per 60, which clears
+#: tier: the A line (A wants 7 and a sum of 11 in a 60) with one interaction card to spare and
+#: tier: three on the sum: losing two interaction cards puts the floor back at B.
 #: tier: It is ahead of deck 78 on the engine, on cheap answers and on card advantage:
 #: tier: five trigger multipliers where deck 78 has two, Swords to Plowshares, Fractured
 #: tier: Identity, Leyline Binding and Buried in the Garden on top of deck 78's tricks, and

@@ -5052,6 +5052,16 @@ pattern edit, and the mechanism meant to enforce that turned out to be disarmed 
 [G-18]'s BS3-02 entry, which was found by this very edit coming back a no-op.
 
 
+**2026-11-02 — the six keywords baselined on 2026-11-01, triaged one at a time.** Three are themed:
+- constellation → enchantments·payoff. It needed the enchantments theme first (K-15's long form).
+- battalion → go-wide·aggro, battle cry's shape (6 pool cards).
+- seek → card draw (99 pool cards), the tag side of a fact the role classifier already read (K-09).
+
+Three stay baselined, for three different reasons:
+- ascend counts PERMANENTS, which no theme here measures.
+- conjure is Alchemy card creation whose effects vary card by card.
+- partner is a deckbuilding rule with no play effect.
+
 ## [K-02] `forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson
 
 **`forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson.**
@@ -5716,6 +5726,32 @@ roster card advantage up in 5 decks (4, 7, 69, 87, 91), **0 tier floors moved**;
 `#: tier:` blocks quoting the old figure were re-grounded. Hand attack gained the COMPOUND clause
 the same day ("Target opponent sacrifices …, discards a card, and loses 3 life" — Scarring
 Memories, Cruel Ultimatum, Dusk Mangler, Smallpox; pool +4, report-only).
+
+**The dated K-12 widenings, moved here from CLAUDE.md on 2026-11-02 to keep the rule under its
+word cap.** **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap) joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:** EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" → Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11 decks, 0 tier floors moved; then a draw offered as a MODE of a recurring trigger (Black Market Connections), 5 decks, 0 floors.
+
+**2026-11-02 — seven card-draw shapes.** Each was found reading real cards, and each was measured
+on the pool before it landed (64 cards gained the role, none lost it; card advantage rose by 1–3 in
+37 roster decks; 0 tier floors moved, so no letter needs a re-read):
+- `draws? (six|seven|…|ten) cards`: the count list stopped at five, so Jin-Gitaxias, Core
+  Augur, Griselbrand and every "each player draws seven" wheel scored none (23 cards; a wheel
+  counts the way "each player draws three" already did).
+- `draws? an additional card`: Dictate of Kruphix, Howling Mine, Midnight Oil (8).
+- `instead … you draw a card`: Notion Thief and Leader, Super-Genius (2).
+- `you may play the exiled cards`: Black Cat, Cunning Thief (1).
+- The phase-trigger MODE pattern now reads "at the beginning of combat on your turn" and a
+  "hasn't been chosen THIS TURN" reset (Glorious Sunrise, Shadrix; 2). A bare "hasn't been
+  chosen" (Zuko, once a game) stays out.
+- The same draw mode on a WHENEVER trigger (Elder Gargaroth, Galadriel, Kastral, The Vision; 7).
+  It excludes a rummage mode (Territorial Kavu) and a trigger that sacrifices to choose (Gorbag).
+- The whenever pattern's CONDITION window went from 80 to 120 characters. A qualified
+  combat-damage condition runs past 80 (Tidus, Yuna's Guardian is 94; Haliya, Kutzil). The
+  condition cannot cross a period or comma, and the EFFECT window the if-clause note warns
+  about is unchanged (21).
+Eighteen decks' `#: tier:` prose quoted the old count and was re-grounded in the same change:
+deck 87's "Leader and Black Cat score no role" stopped being true, and 78-historic-brawl's
+"losing two interaction or card-advantage cards puts the floor back at B" became interaction
+only, since the sum now has three to spare.
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
@@ -8764,6 +8800,15 @@ satisfies "unless you control a Plains" as G-87's gate already said; 0 roster ch
 board-state gate scored as a free rainbow land. Leyline of the Guildpact is no longer silent: it is
 disclosed by `consistency`'s every-land-any-colour line (G-35), though still not counted.
 
+**2026-11-02 — the enchantments twin.** Constellation sat on the K-01 baseline because there was no
+enchantments theme to map it onto. `_ENCHANTMENT_MATTERS_RE` is this rule one card type over, with
+the same three guards: no hate templating, `(?<!or )`/`(?! or creature)`, and the
+`an|another|one or more` enters anchor. It adds one guard of its own: the count gate's span
+cannot cross a comma. The first draft read Volatile Orbit's "if you control a Planet, this
+enchantment deals 4 damage" as a count of enchantments, which a 40-card sample caught. It
+matches 101 pool cards (0.63%). In the roster, deck 90 (the enchantress Shrine deck) holds 6
+and decks 29/29a hold 3–4.
+
 ## [K-16] `deck.py tribes` reads a card's OWN NAME as a tribal reference
 
 `cmd_tribes`' type-matters scan asks, for each creature type the deck fields, whether any
@@ -9071,3 +9116,37 @@ untouched:
 
 The shown labels (`PICKLAB`) leave the deck out, but Copy as text reads `FULLLAB`, so the
 block `builder.py picks` parses is the same on one deck as on two.
+
+**2026-11-03/04 — applying picks, and the board as a two-way record.** Three rounds of Glarb
+picks were applied by hand from a dumped `picks` collection before `builder.py apply` existed;
+round two found eight bench lines "unbenched" when four had only been cleared, and a dry run
+of the new tool resurrected 25 add marks the owner had long since answered in chat — a mark
+outlives the conversation that settled it. So:
+- `apply <slug> --db <dump>` plans against the LIVE deck files (a pick the deck already shows
+  is skipped as applied), writes swaps through `deck.py swap` and everything else in one
+  INV-04-checked write, and leaves `cleanup.json`. Its `picks` updates MOVE each settled mark
+  into the record's `done` history instead of deleting it, so a mark that leaves `picks` with
+  no `done` entry is one the owner took back, and the two are told apart on the page; its
+  `log` entry lists what landed. Bench lines the board no longer marks are only listed
+  (`--retire-bench` removes them), because a Pages copy keeps its own picks.
+- An unpaired add or cut is a decision too, so it is recorded in recommendations.csv with
+  `Source` = `builder` and the missing half's columns blank (a blank add must not read as an
+  unsurfaced one in `feedback`); `recommendation_row` caches its two models per deck.
+- **Stale reasons were saturated**: after one Glarb trim every reason and verdict on the board
+  read stale (426), so the warning said nothing. A reason or verdict is now stale only when a
+  card that ENTERED or LEFT the deck since it was graded is its own card or is named in its
+  reason (full name, split front, or a legend's short name of 4+ letters, whole word). The old
+  list comes from `snapshots` in build.json, or the deck file's git history for a reason
+  written before snapshots. Sultai: 426 → 231 reasons, verdicts 426 → 51 / 180, every one
+  naming a card the trim moved.
+- **Replies, suggestions, the size line.** Claude answers a note in the record's `reply` /
+  `replyTo` (the note it answers; an edited note shows the reply as answering an earlier
+  version), proposes cuts as `sug` (dashed, counted for nothing until accepted), and the deck
+  panel shows "109 / 100 · 9 cuts to go". **The two writers raced**: the page saved with a
+  whole-record `set`, so a page holding a copy older than Claude's reply erased it on its
+  next save. It now sends only the fields the owner changed against the last copy it read,
+  as an `update`, and never `reply` / `replyTo`; the skills write Claude's fields the same
+  way. Residual: two writers changing the SAME field at once still last-writer-wins.
+- **Republishing a page alone left 24 new cards without an image** and the thumbnail sprite a
+  layout behind the page's sprite map. `publish-plan <out>` compares the page, sprites and
+  large images with `.published.json` and lists what to send; `--mark` after the publish.

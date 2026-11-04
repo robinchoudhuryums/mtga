@@ -24,10 +24,43 @@ import deck as D  # noqa: E402
 def scratch(tmp_path, monkeypatch):
     """A scratch builds/ dir plus a scratch copy of deck 96; returns (deck_path, tmp_path)."""
     monkeypatch.setattr(B, "BUILDS_DIR", str(tmp_path / "builds"))
+    monkeypatch.setattr(D, "RECS_CSV", str(tmp_path / "recommendations.csv"))
     src = D.find_deck("96")["path"]
     dst = tmp_path / "deck96.txt"
     shutil.copy(src, dst)
+    # The tests below rest on a fixed premise about deck 96: these cards are OUT of it and
+    # Counterspell / Dictate of Kruphix are IN it. The live deck is edited from the Builder
+    # board, so pin the premise here rather than read whatever the deck holds today (the
+    # owner added Krang to Glarb on 2026-11-03 and two tests failed on a sound picks_report).
+    # The IN half is pinned the same way: the owner's 2026-11-03 trim cut both of them, and
+    # 35 tests errored on a fixture that asserted a fact about the live list. Missing ones
+    # are added from the resolver's printing (G-65), never a typed one.
+    out = {"Krang, the All-Powerful", "Murder", "Opt"}
+    lines = dst.read_text(encoding="utf-8").split("\n")
+    lines = [l for l in lines if not any(l.startswith(f"1 {n} (") for n in out)]
+    _m, cards = D.parse_deck_file(str(dst))
+    have = {n for _q, n, _s, _c in cards}
+    idx = D._printing_index()
+    sq = D._squash_index(idx, lambda k: idx[k][0])
+    for n in ("Counterspell", "Dictate of Kruphix"):
+        if n not in have:
+            key, _c = D._resolve_card_name(n, idx, lambda k: idx[k][0], sq)
+            disp, setc, coll = idx[key]
+            lines.append(f"1 {disp} ({setc}) {coll}")
+    dst.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _m, cards = D.parse_deck_file(str(dst))
+    names = {n for _q, n, _s, _c in cards}
+    assert {"Counterspell", "Dictate of Kruphix"} <= names, "deck 96 no longer runs the fixture's in-deck cards"
     return str(dst), tmp_path
+
+
+def _one_less_island(text):
+    """A list change that touches no reason's card: one Island fewer, whatever the count is
+    today. The owner's 2026-11-03 land package halved deck 96's Islands, and three tests that
+    edited a literal Island count failed on a sound check_build."""
+    m = re.search(r"^(\d+) Island \(", text, re.M)
+    assert m and int(m.group(1)) > 1, "deck 96 no longer runs two or more Islands"
+    return text[:m.start(1)] + str(int(m.group(1)) - 1) + text[m.end(1):]
 
 
 def _new(deck_path):
@@ -87,17 +120,23 @@ class TestCheck:
         assert "stale" not in sev and "unknown" not in sev
         assert "unplaced" in sev and "reasonless" in sev
 
-    def test_a_deck_change_marks_its_reasons_stale(self, scratch):
+    def test_a_deck_change_marks_only_the_reasons_it_touches_stale(self, scratch):
+        # Since 2026-11-03 a reason is stale only when a card that entered or left the deck is
+        # its own card or named in its text; one fewer Island touches neither reason here.
         deck_path, _ = scratch
         b = _new(deck_path)
-        B.add_cards(b, ["Opt"], pile="G")
+        B.add_cards(b, ["Opt", "Murder"], pile="G")
         B.set_reason(b, "Opt", "fine")
+        B.set_reason(b, "Murder", "better than Dictate of Kruphix here")
         assert not [m for s, m in B.check_build(b) if s == "stale"]
         text = open(deck_path, encoding="utf-8").read()
-        assert "8 Island" in text
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
+        assert not [m for s, m in B.check_build(b) if s == "stale"]
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Dictate of Kruphix (")) + "\n")
         stale = [m for s, m in B.check_build(b) if s == "stale"]
-        assert stale and "Opt" in stale[0]
+        assert len(stale) == 1 and stale[0].startswith("Murder:")
 
     def test_a_notes_edit_does_not_mark_reasons_stale(self, scratch):
         deck_path, _ = scratch
@@ -112,11 +151,12 @@ class TestCheck:
         deck_path, _ = scratch
         b = _new(deck_path)
         B.add_cards(b, ["Opt"], pile="G")
-        B.set_reason(b, "Opt", "fine")
+        B.set_reason(b, "Opt", "beside Counterspell")
         B.save_build("t", b)
         assert B.stale_summary("t") is None
         text = open(deck_path, encoding="utf-8").read()
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
         line = B.stale_summary("t")
         assert line and "builder.py check t" in line
 
@@ -241,8 +281,14 @@ class TestVerdicts:
         B.add_cards(b, ["Opt", "Murder", "Counterspell"], pile="G")
         B.set_verdict(b, "Opt", "G", "★★")
         B.set_verdict(b, "Murder", "G", "★", pre=True)
+        B.set_reason(b, "Opt", "a cheap draw beside Counterspell")
         text = open(deck_path, encoding="utf-8").read()
-        open(deck_path, "w", encoding="utf-8").write(text.replace("8 Island", "7 Island", 1))
+        open(deck_path, "w", encoding="utf-8").write(_one_less_island(text))
+        cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
+        assert cards["Opt"]["vs"] == {"G": ""}             # a basic count moved: nothing it concerns
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
         cards = {c["n"]: c for c in B.derive(b, tempo=False)["cards"]}
         assert cards["Opt"]["vd"] == {"G": "★★"} and cards["Opt"]["vs"] == {"G": "stale"}
         assert cards["Murder"]["vs"] == {"G": "pre"} and cards["Counterspell"]["vd"] == {}
@@ -618,6 +664,21 @@ class TestBackFaces:
         calls.clear()
         assert B.back_image_urls("t", self.NAMES) == got and calls == []   # cache only
 
+    def test_a_card_stored_under_its_front_name_is_still_a_candidate(self, scratch, monkeypatch):
+        """The build may store a DFC under its FRONT name only ("Rona, Herald of Invasion"),
+        which has no " // " to mark it; the caller passes such names as `two_faced` (render
+        reads them off the type line). Trystan and Ultimecia were missing their backs on the
+        board because of this (2026-11-03)."""
+        deck_path, _ = scratch
+        _new(deck_path)
+        calls = []
+        self._fake(monkeypatch, calls)
+        front = "Rona, Herald of Invasion"
+        assert B.back_image_urls("t", [front, "Opt"]) == {}                 # not a candidate
+        assert calls == []
+        got = B.back_image_urls("t", [front, "Opt"], two_faced=[front])
+        assert got == {front: "https://x/normal/back/r.jpg"} and calls == [[front]]
+
     def test_a_pages_render_carries_the_back_url(self, scratch, monkeypatch):
         deck_path, tmp = scratch
         b = _new(deck_path)
@@ -633,3 +694,231 @@ class TestBackFaces:
         by = {c["n"]: c for c in data["cards"]}
         assert by[self.NAMES[0]]["im2"] == "https://x/normal/back/r.jpg"
         assert "im2" not in by["Opt"]
+
+
+class TestApply:
+    """`builder.py apply`: the board's picks become deck-file edits in one checked run, and the
+    marks a run settles are cleared from the board so they cannot come back as pending picks
+    (a dry run against the live board on 2026-11-03 proposed re-adding 25 cut cards)."""
+
+    @staticmethod
+    def _deck(deck_path):
+        import deck as Dm
+        meta, cards = Dm.parse_deck_file(deck_path)
+        return meta, {Dm._ms_key(n): q for q, n, _s, _c in cards}, open(deck_path, encoding="utf-8").read()
+
+    def test_db_documents_read_in_the_picks_shape(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        docs = [{"card": "Murder", "picks": ["addG"], "pair": {"G": "Counterspell"}},
+                {"card": "Counterspell", "picks": ["cutG"]},
+                {"card": "Opt", "picks": ["addG"], "note": "cheap cantrip"},
+                {"card": "Duress", "picks": ["bench"], "own": 2},
+                {"card": "Consider", "picks": ["protG", "unknownX"], "hid": ["card advantage"]}]
+        p = B.picks_from_db(b, docs)
+        d = p["decks"][deck_path]
+        assert d["pairs"] == [("Counterspell", "Murder")]
+        assert d["cuts"] == []                       # the swap's cut is not a second unpaired cut
+        assert d["adds"] == ["Opt"] and d["bench"] == ["Duress"] and d["protect"] == ["Consider"]
+        assert p["notes"] == ["Opt — cheap cantrip"]
+        assert p["own"] == [(2, "Duress", None, None)]
+        assert p["hidden"] == [("Consider", "card advantage")]
+
+    def test_dump_folder_and_wrapped_records_both_read(self, tmp_path):
+        d = tmp_path / "dump" / "picks"
+        d.mkdir(parents=True)
+        (d / "opt.json").write_text(json.dumps({"card": "Opt", "picks": ["addG"]}))
+        (d / "murder.json").write_text(json.dumps({"id": "murder", "version": 3,
+                                                   "data": {"card": "Murder", "picks": ["cutG"]}}))
+        docs = B.read_db_dump(str(tmp_path / "dump"))
+        assert sorted(x["card"] for x in docs) == ["Murder", "Opt"]
+
+    def test_plan_skips_what_the_deck_already_shows_and_still_consumes_it(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Counterspell", "picks": ["addG"]},   # already in
+                                     {"card": "Murder", "picks": ["cutG"]},         # already out
+                                     {"card": "Opt", "picks": ["addG"]},
+                                     {"card": "Lightning Bolt", "picks": ["addG"]}])  # off identity
+        pl = B.plan_apply(b, parsed, "t")[deck_path]
+        assert pl["adds"] == ["Opt"] and pl["cuts"] == []
+        assert any("Counterspell is already in" in s for s in pl["skipped"])
+        assert any("Murder is not in" in s for s in pl["skipped"])
+        assert any("Lightning Bolt is outside" in s for s in pl["skipped"])
+        consumed = {(n, c) for n, c, _p in pl["consume"]}
+        assert {("Counterspell", "addG"), ("Murder", "cutG"), ("Opt", "addG")} <= consumed
+        assert ("Lightning Bolt", "addG") not in consumed          # refused, so the mark stays
+
+    def test_execute_writes_unpaired_adds_cuts_and_protect_with_resolver_printings(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        meta0, before, _t = self._deck(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Opt", "picks": ["addG"]},
+                                     {"card": "Dictate of Kruphix", "picks": ["cutG"]},
+                                     {"card": "Counterspell", "picks": ["protG"]}])
+        plans = B.plan_apply(b, parsed, "t")
+        log, consumed = B.execute_apply(b, plans, "t", run_swap=lambda *a: (_ for _ in ()).throw(AssertionError))
+        meta, after, text = self._deck(deck_path)
+        import deck as Dm
+        assert Dm._ms_key("Opt") in after and Dm._ms_key("Dictate of Kruphix") not in after
+        assert sum(after.values()) == sum(before.values())
+        assert re.search(r"^1 Opt \([A-Z0-9]+\) \S+$", text, re.M)     # a resolver printing, not a typed one
+        assert Dm._ms_key("Counterspell") in Dm._protected(meta)
+        assert {(n, c) for n, c, _p in consumed} >= {("Opt", "addG"), ("Counterspell", "protG")}
+        recs = Dm.load_recommendations()                                 # the scratch ledger
+        assert [(r["Source"], r["Cut"], r["Add"]) for r in recs] == \
+            [("builder", "", "Opt"), ("builder", "Dictate of Kruphix", "")]
+        assert recs[0]["Cut Rank"] == recs[0]["Cut Of"] == "" and recs[0]["Add Of"]
+        assert recs[1]["Add Surfaced"] == recs[1]["Add Of"] == "" and recs[1]["Cut Rank"]
+        assert any("2 unpaired pick(s) recorded" in ln for ln in log)
+        # running it again changes nothing: every pick is now applied
+        again = B.plan_apply(b, parsed, "t")[deck_path]
+        assert not (again["adds"] or again["cuts"] or again["protect"])
+
+    def test_a_cut_card_leaves_the_protect_line(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        meta, _c, _t = self._deck(deck_path)
+        import deck as Dm
+        prot = next(n.strip() for n in meta["protect"].split(";")
+                    if n.strip() and n.strip() != meta["commander"].strip())
+        pl = B.plan_apply(b, B.picks_from_db(b, [{"card": prot, "picks": ["cutG"]}]), "t")
+        assert pl[deck_path]["unprotect_cut"] == [prot]
+        B.execute_apply(b, pl, "t")
+        meta2, after, _t = self._deck(deck_path)
+        assert Dm._ms_key(prot) not in after and Dm._ms_key(prot) not in Dm._protected(meta2)
+
+    def test_a_failed_swap_stops_the_deck_and_settles_nothing(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        _m, before, text0 = self._deck(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Murder", "picks": ["addG"], "pair": {"G": "Counterspell"}},
+                                     {"card": "Opt", "picks": ["addG"]}])
+        plans = B.plan_apply(b, parsed, "t")
+        calls = []
+        log, consumed = B.execute_apply(b, plans, "t", run_swap=lambda *a: (calls.append(a) or (False, "boom")))
+        assert calls == [(deck_path, "Counterspell", "Murder")]
+        assert any("FAILED" in ln for ln in log) and any("stopped" in ln for ln in log)
+        assert consumed == [] and open(deck_path, encoding="utf-8").read() == text0
+
+    def test_bench_reconcile_adds_missing_keeps_unmarked_and_retires_only_with_the_flag(self, scratch):
+        deck_path, _ = scratch
+        with open(deck_path, "a", encoding="utf-8") as fh:
+            fh.write("#~ +Duress | BENCH (builder t): benched on the board\n"
+                     "#~ +Counterspell | BENCH (builder t): benched on the board\n"   # now in the deck
+                     "#~ +Negate | BENCH (owner): a hand-written bench line\n")
+        b = _new(deck_path)
+        parsed = B.picks_from_db(b, [{"card": "Murder", "picks": ["benchG"]}])
+        pl = B.plan_apply(b, parsed, "t")[deck_path]
+        assert pl["bench_add"] == ["Murder"]
+        assert [ln for ln in pl["bench_retire"]] == ["#~ +Counterspell | BENCH (builder t): benched on the board"]
+        assert pl["bench_stale"] == ["#~ +Duress | BENCH (builder t): benched on the board"]
+        pl2 = B.plan_apply(b, parsed, "t", retire_bench=True)[deck_path]
+        assert len(pl2["bench_retire"]) == 2 and not any("Negate" in ln for ln in pl2["bench_retire"])
+        B.execute_apply(b, {deck_path: pl2}, "t")
+        text = open(deck_path, encoding="utf-8").read()
+        assert "#~ +Murder | BENCH (builder t)" in text and "+Duress" not in text
+        assert "#~ +Negate | BENCH (owner)" in text
+
+    def test_cleanup_moves_settled_marks_to_history_and_never_touches_a_bench(self):
+        docs = [{"card": "Murder", "picks": ["addG", "benchT"], "pair": {"G": "Counterspell"}},
+                {"card": "Counterspell", "picks": ["cutG"], "done": [{"v": "protG", "at": "2026-11-01"}]},
+                {"card": "Opt", "picks": ["addG"], "note": "keep this"}]
+        ops = B.cleanup_ops(docs, [("Murder", "addG", True), ("Counterspell", "cutG", False),
+                                   ("Opt", "addG", False), ("Not On Board", "addG", False)], at="T")
+        by = {o["card"]: o for o in ops}
+        assert by["Murder"]["picks"] == ["benchT"] and by["Murder"]["pair"] == {}
+        assert by["Murder"]["done"] == [{"v": "addG", "at": "T"}]
+        # a settled mark is history, not a deletion — earlier history is kept
+        assert by["Counterspell"]["picks"] == [] and by["Counterspell"]["done"][-1] == {"v": "cutG", "at": "T"}
+        assert len(by["Counterspell"]["done"]) == 2 and "delete" not in by["Counterspell"]
+        assert by["Murder"]["id"] == "murder" and "Not On Board" not in by
+
+    def test_apply_log_entry_names_what_landed(self):
+        plans = {"96": {"label": "Glarb", "swaps": [("Counterspell", "Murder")], "adds": ["Opt"], "cuts": [],
+                        "protect": [], "unprotect": [], "unprotect_cut": ["Counterspell"], "bench_add": ["Duress"],
+                        "bench_retire": ["#~ +Negate | BENCH (builder t): x"]}}
+        e = B.apply_log_entry(plans, ["96: swap −a +b — FAILED"], at="T")
+        assert e["at"] == "T" and "Glarb: −Counterspell +Murder" in e["lines"] and "Glarb: +Opt" in e["lines"]
+        assert "Glarb: unprotect Counterspell" in e["lines"] and "Glarb: bench Duress" in e["lines"]
+        assert any("retired — +Negate" in x for x in e["lines"]) and e["failed"]
+
+    def test_a_note_with_a_current_reply_is_not_listed_again(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        p = B.picks_from_db(b, [{"card": "Opt", "picks": [], "note": "why?", "reply": "because", "replyTo": "why?"},
+                                {"card": "Murder", "picks": [], "note": "and this?", "reply": "x", "replyTo": "older"},
+                                {"card": "Duress", "picks": [], "note": "new one"}])
+        assert p["notes"] == ["Murder — and this?", "Duress — new one"]
+
+    def test_cli_needs_exactly_one_source(self, scratch, capsys):
+        deck_path, _ = scratch
+        _new(deck_path)
+        assert B.main(["apply", "t"]) == 2
+        assert "give the picks one way" in capsys.readouterr().err
+
+
+class TestStaleReasons:
+    """A reason goes stale only when a card that entered or left its deck is its own card or
+    is named in its text — before 2026-11-03 any change flagged every reason (426 at once)."""
+
+    def test_only_reasons_touching_a_changed_card_go_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt", "Murder", "Duress"], pile="G")
+        B.set_reason(b, "Opt", "a cheap draw beside Counterspell")       # names the card that leaves
+        B.set_reason(b, "Murder", "plain removal")                       # names nothing that changes
+        B.set_reason(b, "Duress", "the cut itself")
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
+        stale = [m for s, m in B.check_build(b) if s == "stale"]
+        assert len(stale) == 1 and stale[0].startswith("Opt:") and "Counterspell" in stale[0]
+
+    def test_a_reason_for_the_card_that_moved_is_stale(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Counterspell"], pile="G")
+        B.set_reason(b, "Counterspell", "the deck's cheapest answer")
+        text = open(deck_path, encoding="utf-8").read()
+        open(deck_path, "w", encoding="utf-8").write(
+            "\n".join(l for l in text.split("\n") if not l.startswith("1 Counterspell (")) + "\n")
+        assert any(m.startswith("Counterspell:") for s, m in B.check_build(b) if s == "stale")
+
+    def test_snapshots_keep_only_what_reasons_refer_to(self, scratch):
+        deck_path, _ = scratch
+        b = _new(deck_path)
+        B.add_cards(b, ["Opt"], pile="G")
+        B.set_reason(b, "Opt", "x")
+        assert list(b["snapshots"][deck_path]) == [B.deck_hash(deck_path)]
+
+    def test_name_forms_match_whole_words_and_legend_short_names(self):
+        assert B.mentioned("Glarb casts it off the top", ["Glarb, Calamity's Augur"]) == ["Glarb, Calamity's Augur"]
+        assert B.mentioned("an Optimal line", ["Opt"]) == []
+        assert B.mentioned("unlike Ob it is cheap", ["Ob Nixilis Reignited"]) == []
+
+
+class TestDeckTarget:
+    def test_live_figures_carry_the_format_size(self, scratch):
+        deck_path, _ = scratch
+        L = B.deck_live(deck_path, tempo=False)
+        assert L["target"] == 100 and L["exact"] is True
+
+
+class TestPublishPlan:
+    """A board is a page plus images; republishing index.html alone left new cards blank."""
+
+    def test_lists_changed_and_removed_files_since_the_last_mark(self, tmp_path):
+        (tmp_path / "img" / "lg").mkdir(parents=True)
+        (tmp_path / "index.html").write_text("a")
+        (tmp_path / "img" / "thumbs.jpg").write_bytes(b"t")
+        (tmp_path / "img" / "lg" / "opt.jpg").write_bytes(b"o")
+        (tmp_path / "img" / "old-loose.jpg").write_bytes(b"x")          # an older layout's leftover
+        changed, removed = B.publish_plan(str(tmp_path))
+        assert changed == ["img/lg/opt.jpg", "img/thumbs.jpg", "index.html"] and removed == []
+        B.publish_plan(str(tmp_path), mark=True)
+        assert B.publish_plan(str(tmp_path)) == ([], [])
+        (tmp_path / "index.html").write_text("b")
+        (tmp_path / "img" / "lg" / "opt.jpg").unlink()
+        (tmp_path / "img" / "lg" / "murder.jpg").write_bytes(b"m")
+        assert B.publish_plan(str(tmp_path)) == (["img/lg/murder.jpg", "index.html"], ["img/lg/opt.jpg"])

@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, and now graded UNDER the floor rather than at it: the
 #: tier: 2026-08-13 interaction repair took the measurable floor from B to A. Interaction
-#: tier: reads 5 +1? and card advantage 3, and both still under-read (K-12): The Chief
+#: tier: reads 5 +1? and card advantage 4, and both still under-read (K-12): The Chief
 #: tier: Warg draws on every satisfied attack and Kraven draws when their best creature
 #: tier: dies — shapes the classifier cannot see. The honest
 #: tier: cost is the mana: Tolsimir reads 65% and Head of the Hunt 74% on curve, and

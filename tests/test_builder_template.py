@@ -109,7 +109,14 @@ class TestPageArithmeticMatchesTheModel:
         deck_path = tmp_path / "deck96.txt"
         shutil.copy(src, deck_path)
         text = deck_path.read_text(encoding="utf-8")
-        add, cut = "Murder", "Counterspell"                     # Murder is not in deck 96
+        # The cut is any non-commander card deck 96 protects, so a live-deck trim cannot
+        # take it away (it used to be Counterspell, which the owner cut on 2026-11-03).
+        meta, held = D.parse_deck_file(str(deck_path))
+        held = {n for _q, n, _s, _c in held}
+        prot = [n.strip() for n in (meta.get("protect") or "").split(";")]
+        cut = next(n for n in prot if n in held and n != (meta.get("commander") or "").strip())
+        add = "Murder"                                          # Murder is not in deck 96
+        assert add not in held
         b = B.new_build("t", [str(deck_path)], keys=["G"])
         B.add_cards(b, [add, cut], pile="G")
         data = B.derive(b, tempo=False)
@@ -426,7 +433,7 @@ class TestManyDecks:
         fx = tmp_path / "in.json"
         fx.write_text(json.dumps({"keys": keys, "srcs": ["U24 · B20 · G15", "U22 · G15", "U10"]}))
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "sugOf", "sugA"]) + "\n"
                       + _extract(["pickColour", "quick", "colourRank", "assignColours"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_QUICK)
@@ -494,7 +501,7 @@ class TestOneDeck:
         Keep out and a card in the list reads − Cut — while the values stay per deck, so the
         picks, the copy and builder.py picks read exactly what a two-deck board writes."""
         js = tmp_path / "fns.js"
-        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope"]) + "\n"
+        js.write_text(_extract_consts(["KINDS", "deckOfPick", "kindOf", "pileScope", "sugOf", "sugA"]) + "\n"
                       + _extract(["pickColour", "quick"]))
         h = tmp_path / "h.js"
         h.write_text(_HARNESS_ONE)
@@ -570,3 +577,50 @@ class TestVerdictSectionMarkup:
 
     def test_jumps_open_the_section_first(self):
         assert SRC.count("revealCand(") >= 3      # the definition, the package link, Your picks
+
+
+_HARNESS_PERSIST = """
+const fs = require('fs');
+const store = {"opt": {card: "Opt", picks: ["addG"], note: "why this?", pair: {}, own: null, hid: [],
+                       pile: "G", done: [], sug: [], reply: "Claude's answer", replyTo: "why this?"}};
+const calls = [];
+const err = code => Object.assign(new Error(code), {code});
+const db = {collection: () => ({doc: id => ({
+  update: async d => { calls.push(["update", id, Object.keys(d).sort()]);
+                       if (!store[id]) throw err("invalid_argument"); Object.assign(store[id], d); },
+  set: async d => { calls.push(["set", id, Object.keys(d).sort()]); store[id] = d; },
+  delete: async () => { calls.push(["delete", id]); delete store[id]; }})})};
+let canWrite = true; const writing = {}; const BYID = {opt: {p: "G"}, murder: {p: "G"}};
+const nameOf = id => ({opt: "Opt", murder: "Murder"})[id];
+const banner = () => {}, saveLocal = () => {}, flashSaved = () => {};
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+SERVER.opt = JSON.parse(JSON.stringify(store.opt));           // what the snapshot listener holds
+// the page's copy is older: it has the note but not Claude's reply
+let picks = {opt: {picks: ["addG", "protG"], note: "why this?", pair: {}, own: null, hid: [], done: [], sug: []},
+             murder: {picks: ["cutG"], note: "", pair: {}, own: null, hid: [], done: [], sug: []}};
+(async () => {
+  await persist("opt"); await persist("opt"); await persist("murder");
+  console.log(JSON.stringify({calls, opt: store.opt, murder: store.murder}));
+})();
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestPersistKeepsReplies:
+    def test_save_sends_changed_fields_only_and_never_the_reply(self, tmp_path):
+        """A whole-document set from a page holding an older copy erased a reply Claude had
+        just written (2026-11-04). The page now updates only the fields the owner changed."""
+        js = tmp_path / "fns.js"
+        js.write_text(_extract_consts(["SERVER", "PFIELDS"]) + "\n"
+                      + _extract(["changedFields"]) + "\nasync " + _extract(["persist"])
+                      + "\nglobalThis.SERVER = SERVER;")
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_PERSIST)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out["calls"][0] == ["update", "opt", ["at", "picks"]]
+        assert out["opt"]["reply"] == "Claude's answer" and out["opt"]["picks"] == ["addG", "protG"]
+        assert len([c for c in out["calls"] if c[1] == "opt"]) == 1      # the second save had nothing to send
+        assert out["calls"][1:] == [["update", "murder", ["at", "card", "done", "hid", "note", "own", "pair", "picks", "pile", "sug"]],
+                                    ["set", "murder", ["at", "card", "done", "hid", "note", "own", "pair", "picks", "pile", "sug"]]]
+        assert "reply" not in out["murder"]

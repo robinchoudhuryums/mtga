@@ -263,12 +263,24 @@ dialog#sheet .detail{position:static;max-height:none;border:none;box-shadow:none
 .panel h3{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:1.15rem;letter-spacing:.03em}
 .lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:14px}
 .dlist{border-top:2px solid var(--dc)}
+.qb[data-sug],.pb[data-sug]{outline:2px dashed var(--qc);outline-offset:-4px}
+.tag.sug{border-style:dashed;color:var(--accent);border-color:var(--accent)}
+.sugbox{border:1px dashed var(--accent);border-radius:8px;padding:6px 10px;margin:8px 0}
+.sugbox p{margin:4px 0}
+.reply{border-left:3px solid var(--accent);padding:4px 10px;margin:6px 0;background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:0 6px 6px 0}
+.hist{font-size:.8rem}
+.histlist{margin:10px 0}.histlist summary{cursor:pointer;font-weight:600}
+.histlist li.bad{color:var(--bad)}
 .dlist h3{color:var(--dc)}
 .tablewrap{overflow-x:auto}
 .dlist table,.proj table{width:100%;border-collapse:collapse;font-size:.86rem}
 .dlist th,.dlist td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 .dlist thead th{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
 .dlist td:first-child{font-family:var(--mono);color:var(--muted)}
+.dlist td.dcard{display:flex;align-items:center;gap:8px}
+.dlist .th{flex:0 0 34px;width:34px;height:47px;border-radius:3px;overflow:hidden;background:var(--raise);display:block}
+.dlist .th img{width:100%;height:100%;object-fit:cover;display:block}
+.dlist .th .spr{display:block;width:34px;height:47px;background-repeat:no-repeat}
 .dlist tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--raise) 70%,transparent)}
 .dlist tr.cutrow td{background:var(--sel)}
 .dlist tr.protsep th{color:var(--dc);font-family:var(--display);font-weight:400;padding-top:12px;border-bottom:1px solid var(--dc)}
@@ -498,7 +510,7 @@ document.getElementById("vf").innerHTML = `<option value="all">Any</option>`+(ON
 document.getElementById("df").innerHTML = `<option value="all">Any</option>`+(ONE ? `<option value="${esc(K1)}">Undecided</option>`
   : DK.map(k=>`<option value="${esc(k)}">Undecided for ${esc(DECKS[k].label)}</option>`).join("")+`<option value="any">Undecided for any deck</option>`);
 if(!ONE) document.getElementById("sort").insertAdjacentHTML("beforeend", DK.map(k=>`<option value="v:${esc(k)}">Verdict — ${esc(DECKS[k].label)}</option>`).join(""));   // one deck: the verdict sections order it
-let picks = {}, reasons = {}, requests = {};
+let picks = {}, reasons = {}, requests = {}, LOGS = {};
 let db = null, canWrite = true, view = PILEKEYS[0]||"lists", VISIBLE = [], SEL = null, NOTEOPEN = null, NOTECOL = "";
 /* Choosing cuts: CUTOPEN = "<card id>|<deck>" whose cut list is open in the pane; CUTQ its search.
    INSPECT = a deck card read in the Compare view's second pane slot (SEL stays the pile card). */
@@ -578,6 +590,22 @@ function nextBand(k,i,c){ const R=(LIVE[k]||{}).req||{}, order=["D","C","B","A"]
   if(needI) parts.push(`+${needI} interaction`); if(needS>needI) parts.push(`+${needS-needI} ${needI?"more ":""}interaction or card advantage`);
   return {b:nx, parts}; }
 const hasNote = id => !!((picks[id]||{}).note||"").trim();
+/* Claude's suggestions (sug: [{v, why}]) are not picks: nothing counts them until the owner
+   marks the same pick, which accepts it. A suggested button is drawn dashed. */
+const sugOf = (id,v) => ((picks[id]||{}).sug||[]).find(g=>g.v===v);
+const sugA = (id,v,on) => !on&&sugOf(id,v) ? ` data-sug="1"` : "";
+const openSugs = id => ((picks[id]||{}).sug||[]).filter(g=>!hasPick(id,g.v));
+function sugHTML(id){ const xs=openSugs(id); if(!xs.length) return "";
+  return `<div class="sugbox" role="note"><p class="field-l">Claude suggests</p>${xs.map(g=>`<p><span class="tag sug">${esc(PICKLAB[g.v])}</span> ${esc(g.why||"")}
+    <button type="button" class="mini" data-id="${id}" data-v="${g.v}">Accept</button><button type="button" class="mini" data-sugno="${id}" data-sv="${g.v}">Dismiss</button></p>`).join("")}</div>`; }
+/* Claude's reply to a note, written to the card's record (reply, replyTo = the note it answers). */
+function replyHTML(id){ const p=picks[id]||{}; if(!p.reply||!(p.note||"").trim()) return "";
+  const old=(p.replyTo||"").trim()!==(p.note||"").trim();
+  return `<div class="reply"><b>Claude:</b> ${esc(p.reply)}${old?` <span class="status">(a reply to an earlier version of your note)</span>`:""}</div>`; }
+/* Settled marks move to done: [{v, at}] (Clear applied marks, or Claude's cleanup after an apply),
+   so a mark that left with no history entry is one the owner took back. */
+const histText = id => ((picks[id]||{}).done||[]).map(x=>`${PICKLAB[x.v]||x.v} — applied ${String(x.at||"").slice(0,10)}`);
+function histHTML(id){ const h=histText(id); return h.length?`<p class="status hist">History: ${esc(h.join("; "))}</p>`:""; }
 const inAny = c => DK.some(k=>c["i"+k]);
 const LABEL_RE = new RegExp("^("+DK.map(k=>DECKS[k].label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+"):\\s*");
 function firstLine(c){ const r=reasonOf(c); if(!r) return inAny(c) ? "In the list" : ""; let t=plain(r.w).replace(LABEL_RE,""); const m=t.match(/^(.{20,140}?[.;])\s/); return m?m[1]:t.slice(0,140); }
@@ -593,13 +621,13 @@ function roleTags(c, all){ const hid=hidOf(c), sus=(c.hr||[]).filter(r=>!hid.inc
 
 /* ---------- rows ---------- */
 function quick(c){ const p=(picks[c.id]||{}).picks||[];
-  if(ONE){ const k=K1, btn=(v,label)=>`<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${label}</button>`;
+  if(ONE){ const k=K1, btn=(v,label)=>`<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}"${sugA(c.id,v,p.includes(v))} aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${label}</button>`;
     if(c["i"+k]) return `<span class="q one">${btn("cut"+k,"− Cut")}</span>`;
     return `<span class="q one">${btn("add"+k,"+ Add")}${btn("bench"+k,`<span class="qi">${ICON.bench}<span class="qw">Bench</span></span>`)}${btn("out"+k,`<span class="qi">${ICON.out}<span class="qw">Keep out</span></span>`)}</span>`; }
-  const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(k)}</button>`; }).join("");
+  const dbtn = DK.map(k=>{ const inK=c["i"+k], v=(inK?"cut":"add")+k; return `<button type="button" class="qb" style="--qc:${DECKS[k].dc}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}"${sugA(c.id,v,p.includes(v))} aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}">${inK?"−":"+"}${esc(k)}</button>`; }).join("");
   const many=DK.length>3, n=many?2:Math.max(2,DK.length), pad=(xs)=>xs.concat(Array(Math.max(0,n-xs.length)).fill("<span></span>")).join(""), scope=pileScope(c);
   const xb=(kind,k)=>{ if(c["i"+k]) return "<span></span>"; const v=kind+k;
-    return `<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}" aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}"><span class="qi">${ICON[kind]}${esc(k)}</span></button>`; };
+    return `<button type="button" class="qb" style="--qc:${pickColour(v)}" data-id="${c.id}" data-v="${v}" aria-pressed="${p.includes(v)}"${sugA(c.id,v,p.includes(v))} aria-label="${esc(PICKLAB[v])}: ${esc(c.n)}" title="${esc(PICKLAB[v])}"><span class="qi">${ICON[kind]}${esc(k)}</span></button>`; };
   if(many){ const set=p.filter(v=>["bench","out"].includes(kindOf(v))).length;
     return `<span class="q" style="--qn:2">${dbtn}${DK.length%2?"<span></span>":""}<details class="qmore"><summary class="qb" aria-label="Bench or keep out: ${esc(c.n)}${set?` (${set} set)`:""}" title="Bench / Keep out">⋯${set?` ${set}`:""}</summary><span class="qmenu">${scope.flatMap(k=>[xb("bench",k),xb("out",k)]).join("")}</span></details></span>`; }
   const xbtn = scope.length===1 ? pad([xb("bench",scope[0]),xb("out",scope[0])]) : pad(scope.map(k=>xb("bench",k)))+pad(scope.map(k=>xb("out",k)));
@@ -625,7 +653,7 @@ function rowHTML(c, col=""){
     <span class="th">${thumb(c)}</span>
     <button type="button" class="main" data-sel="${c.id}" aria-current="${col==="R"?c.id===INSPECT:c.id===SEL}" aria-expanded="${NOTEOPEN===c.id&&NOTECOL===col}" title="Click again to write a note">
       <span class="l1"><span class="nm">${esc(c.n)}</span><span class="cost">${pips(c.c)}</span><span class="noteDot" title="Has a note"${hasNote(c.id)?"":" hidden"}>✎</span></span>
-      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut${ONE?"":` · ${esc(k)}`}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
+      <span class="l2">${lead}${ap?`<span class="tag done">Applied ✓</span>`:""}${openSugs(c.id).length?`<span class="tag sug" title="Claude suggests ${esc(openSugs(c.id).map(g=>PICKLAB[g.v]).join("; "))} — open the card to accept or dismiss it">✦ suggested</span>`:""}${isSwap(c)?`<span class="seal">Swap</span>`:""}${col==="R"?"":tags}${ownTag(c)}${(c.al||[]).length>1?`<span class="tag" title="${c.al.length} artworks on Arena — see the card pane">⧉${c.al.length}</span>`:""}${DK.filter(k=>needsCut(c.id,k)).map(k=>`<span class="tag need" title="Added to ${esc(DECKS[k].label)} with no cut chosen yet">needs a cut${ONE?"":` · ${esc(k)}`}</span>`).join("")}${roleTags(c,false)}<span class="why1">${sym(esc(firstLine(c)))}</span></span>
     </button>
     ${extra}${quick(c)}
   </div>${NOTEOPEN===c.id&&NOTECOL===col?noteRowHTML(c,col):""}</div>`;
@@ -662,7 +690,7 @@ function filterCuts(input){ const q=input.value.trim().toLowerCase(), box=input.
 function detailHTML(c, inSheet){
   if(!c) return `<p class="empty">Choose a card from the list.</p>`;
   const p=picks[c.id]||{}, v=p.picks||[], r=reasonOf(c), idx=VISIBLE.indexOf(c.id), sfx=inSheet?"-s":"";
-  const pb=(val,label)=>`<button type="button" class="pb" style="--qc:${pickColour(val)}" data-id="${c.id}" data-v="${val}" aria-pressed="${v.includes(val)}" aria-label="${esc(PICKLAB[val]||label)}: ${esc(c.n)}">${label}</button>`;
+  const pb=(val,label)=>`<button type="button" class="pb" style="--qc:${pickColour(val)}" data-id="${c.id}" data-v="${val}" aria-pressed="${v.includes(val)}"${sugA(c.id,val,v.includes(val))} aria-label="${esc(PICKLAB[val]||label)}: ${esc(c.n)}">${label}</button>`;
   const chips=[...DK.filter(k=>c["i"+k]).map(k=>`<span class="tag ${c["p"+k]?"prot":"in"}" style="--dc:${DECKS[k].dc}">${ONE?(c["p"+k]?"Protected":"In the deck"):`${c["p"+k]?"Protected in":"In"} ${esc(DECKS[k].label)}`}</span>`), `<span class="tag">${esc(own(c))}</span>`, roleTags(c,true)].join("");
   const applied=v.filter(x=>isApplied(c.id,x)), conf=conflicts().filter(x=>x.ids.includes(c.id));
   const oq=p.own, hid=hidOf(c);
@@ -677,6 +705,7 @@ function detailHTML(c, inSheet){
     <p class="dtype">${esc(c.t)}${idx>-1?` · ${idx+1} of ${VISIBLE.length}`:""}</p>
     <div class="chips">${chips}</div>
     ${applied.length?`<p class="status"><span class="tag done">Applied ✓</span> ${esc(applied.map(x=>PICKLAB[x]).join("; "))} — the deck file already shows it.</p>`:""}
+    ${histHTML(c.id)}${sugHTML(c.id)}
     ${conf.length?`<div class="conf" role="note"><b>⚠ Conflict</b><ul>${conf.map(x=>`<li>${esc(x.msg)}</li>`).join("")}</ul></div>`:""}
     ${r?`<p class="reason">${isSwap(c)?`<span class="seal">Swap candidate</span>`:`<span class="seal">${esc(groupLabel(r.g))}</span>`}${fmt(r.w)}</p>`:`<p class="reason pending">${inAny(c)?"In the list.":"No reason written yet."}</p>`}
     <details class="rules"><summary>Rules text</summary><p>${sym(esc(c.x||"(no rules text)"))}</p></details>
@@ -695,7 +724,7 @@ function detailHTML(c, inSheet){
       <span class="status">${c.o?`records say ×${c.o}`:"records say not owned"}${c.pr?` · ${esc(c.pr)}`:""}${oq!=null&&oq!==""?" · correction queued":""}</span></div>
     <label class="field-l" for="n-${c.id}${sfx}">Note for Claude</label>
     <textarea class="note" id="n-${c.id}${sfx}" data-id="${c.id}" rows="2" placeholder="A question, a hunch, a combo to check">${esc(p.note||"")}</textarea>
-    <span class="saved" data-saved="${c.id}" aria-live="polite"></span>
+    <span class="saved" data-saved="${c.id}" aria-live="polite"></span>${replyHTML(c.id)}
     ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out${ONE?"":" (this pile's deck; every deck on a shared pile)"} · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom${hasBack(c)?` · <span>f</span> flip`:""}</p>`}`;
 }
 function renderDetail(){ const c=BYID[SEL], x=view==="compare"&&INSPECT?BYID[INSPECT]:null;
@@ -831,7 +860,7 @@ function listsHTML(){ return `<div class="lists">`+DK.map(k=>{ const d=DECKS[k];
     const id=slug(c.n), have=!!BYID[id], p=(picks[id]||{}).picks||[], adds=pairedTo(k,c.n), pv=(c.prot?"unprot":"prot")+k;
     const cutBtn = have?`<button type="button" class="mini" style="--dc:${d.dc}" data-id="${id}" data-v="cut${k}" aria-pressed="${p.includes("cut"+k)}" aria-label="Cut ${esc(c.n)} from ${esc(d.label)}">Cut</button>`:"";
     const protBtn = `<button type="button" class="mini" style="--dc:${d.dc}" data-id="${id}" data-v="${pv}" aria-pressed="${p.includes(pv)}" aria-label="${esc(PICKLAB[pv])}: ${esc(c.n)}">${c.prot?"Unprotect":"Protect"}</button>`;
-    return `<tr class="${p.includes("cut"+k)?"cutrow":""}"><td>${c.prot?"—":(c.r??"–")}</td><td>${have?`<button type="button" class="linkish" data-zoom="${id}">${esc(c.n)}</button>`:esc(c.n)}</td><td>${c.mv??""}</td><td>${esc((c.roles||[]).join(", "))}</td>
+    return `<tr class="${p.includes("cut"+k)?"cutrow":""}"><td>${c.prot?"—":(c.r??"–")}</td><td class="dcard"><span class="th">${have?thumb(BYID[id]):""}</span>${have?`<button type="button" class="linkish" data-zoom="${id}">${esc(c.n)}</button>`:esc(c.n)}</td><td>${c.mv??""}</td><td>${esc((c.roles||[]).join(", "))}</td>
     <td class="marks">${cutBtn}${protBtn}${adds.length?` <span class="status">replaced by ${esc(adds.join(", "))}</span>`:""}</td></tr>`; }).join("")}
   </tbody></table></div></section>`; }).join("")+`</div>`; }
 function pileHashOf(id){ const c=BYID[id], p=c&&PILES.find(x=>x.k===c.p); return p?p.hash:ONE&&c&&c.p?"compare":"lists"; }
@@ -840,14 +869,19 @@ const hidPicks = role => Object.keys(picks).filter(id=>BYID[id]&&(picks[id].hid|
 function picksHTML(){ const groups={}, done=[];
   Object.keys(picks).forEach(id=>{ if(!nameOf(id)) return; (picks[id].picks||[]).forEach(v=>{ if(!PICKLAB[v]) return; if(isApplied(id,v)) done.push([id,v]); else (groups[v]=groups[v]||[]).push(id); }); });
   const noted=Object.keys(picks).filter(id=>hasNote(id)&&nameOf(id)).sort(), owns=ownIds(), hids=HROLES.map(r=>[r,hidPicks(r)]).filter(x=>x[1].length);
-  if(!Object.keys(groups).length&&!noted.length&&!done.length&&!owns.length&&!hids.length) return `<div class="panel"><p class="empty">No picks or notes yet. Mark cards in any pile and they gather here.</p></div>`;
+  const sugs=Object.keys(picks).filter(id=>nameOf(id)&&openSugs(id).length).sort(), hist=Object.keys(picks).filter(id=>nameOf(id)&&histText(id).length).sort();
+  const logs=Object.values(LOGS).sort((a,b)=>b.at.localeCompare(a.at)).slice(0,8);
+  if(!Object.keys(groups).length&&!noted.length&&!done.length&&!owns.length&&!hids.length&&!sugs.length&&!hist.length&&!logs.length) return `<div class="panel"><p class="empty">No picks or notes yet. Mark cards in any pile and they gather here.</p></div>`;
   const li=(id,extra)=>`<li>${BYID[id]&&BYID[id].p?`<a href="#${pileHashOf(id)}" data-jump="${id}">${esc(nameOf(id))}</a>`:esc(nameOf(id))}${extra||""}</li>`;
-  return `<div class="panel plist">${confHTML(null)}${noted.length?`<h3>Notes (${noted.length})</h3><ul>${noted.map(id=>li(id,` — ${esc(picks[id].note)}`)).join("")}</ul>`:""}
+  return `<div class="panel plist">${confHTML(null)}${noted.length?`<h3>Notes (${noted.length})</h3><ul>${noted.map(id=>li(id,` — ${esc(picks[id].note)}${replyHTML(id)}`)).join("")}</ul>`:""}
+  ${sugs.length?`<h3>Claude's suggestions (${sugs.length})</h3><p class="status">Not picks until you accept one; a suggested button is drawn dashed.</p><ul>${sugs.map(id=>li(id,openSugs(id).map(g=>` <span class="tag sug">${esc(PICKLAB[g.v])}</span> ${esc(g.why||"")} <button type="button" class="mini" data-id="${id}" data-v="${g.v}">Accept</button><button type="button" class="mini" data-sugno="${id}" data-sv="${g.v}">Dismiss</button>`).join(""))).join("")}</ul>`:""}
   ${PICKORDER.filter(v=>groups[v]).map(v=>`<h3>${esc(PICKLAB[v])} (${groups[v].length})</h3><ul>${groups[v].sort().map(id=>{ const k=deckOfPick(v), pr=k?((picks[id]||{}).pair||{})[k]:"";
     return li(id, v.startsWith("add")?(pr?` <span class="status">replaces ${esc(pr)}</span>`:` <span class="status">no cut chosen</span>`):""); }).join("")}</ul>`).join("")}
   ${owns.length?`<h3>Ownership corrections (${owns.length})</h3><ul>${owns.map(id=>li(id,` <span class="status">records ×${BYID[id].o||0} → you own ${picks[id].own}</span>`)).join("")}</ul>`:""}
   ${hids.map(([r,ids])=>`<h3>Counts as ${r} (${ids.length})</h3><ul>${ids.map(id=>li(id)).join("")}</ul>`).join("")}
   ${done.length?`<h3>Applied ✓ (${done.length})</h3><p class="status">The deck files already show these, so they are left out of Copy as text.</p><ul>${done.map(([id,v])=>li(id,` <span class="status">${esc(PICKLAB[v])}</span>`)).join("")}</ul><p><button type="button" class="ghost" id="clearapplied">Clear applied marks</button></p>`:""}
+  ${hist.length?`<details class="histlist"><summary>History — applied and cleared (${hist.length})</summary><p class="status">A mark Claude applied or you cleared stays here; a mark you took back leaves no entry.</p><ul>${hist.map(id=>li(id,` — ${esc(histText(id).join("; "))}`)).join("")}</ul></details>`:""}
+  ${logs.length?`<details class="histlist"><summary>What Claude applied (${logs.length} run${logs.length>1?"s":""})</summary>${logs.map(l=>`<p class="field-l">${esc(l.at.slice(0,16).replace("T"," "))}</p><ul>${l.lines.map(x=>`<li>${esc(x)}</li>`).join("")}${l.failed.map(x=>`<li class="bad">${esc(x)}</li>`).join("")}</ul>`).join("")}</details>`:""}
   <p><button type="button" class="btn" id="copy">Copy as text</button> <span class="status" id="copied" aria-live="polite"></span></p></div>`; }
 function copyText(){ const lines=[], has=(id,v)=>pending(id).includes(v)&&nameOf(id);
   const noted=Object.keys(picks).filter(id=>hasNote(id)&&nameOf(id)).sort(); if(noted.length){ lines.push("Notes:"); noted.forEach(id=>lines.push("  - "+nameOf(id)+" — "+picks[id].note)); }
@@ -896,6 +930,13 @@ async function submitRequest(){ const names=parseNames(document.getElementById("
   render(); setAddStatus(`Queued ${names.length} card(s).`+(on.length?` Already on the board: ${on.join("; ")}. Claude will move them instead.`:"")+(db?"":" This browser cannot share it with Claude: copy the requests below.")); }
 
 /* ---------- deck strip, tabs ---------- */
+/* "112 / 100: 12 cuts to go": a Brawl deck must be exactly its size, a constructed one at least it.
+   Counted after your picks too, so marking cuts shows the gap close. */
+function sizeNote(k,pr){ const L=LIVE[k]||{}, t=L.target, after=pr.size1; if(!t||after==null) return "";
+  if(after>t&&L.exact) return `${after-t} cut${after-t>1?"s":""} to go`; if(after<t) return `${t-after} to add`; return ""; }
+function sizeHTML(k,pr){ const L=LIVE[k]||{}, t=L.target; if(!t||pr.size0==null) return "";
+  if(!L.exact&&pr.size0>=t&&pr.size1>=t) return "";
+  return `<span>Size <b>${pr.size0===pr.size1?pr.size0:`${pr.size0} → <span class="chg">${pr.size1}</span>`} / ${t}</b>${sizeNote(k,pr)?` <span class="status">${esc(sizeNote(k,pr))}</span>`:` <span class="status">on size</span>`}</span>`; }
 function renderDecks(){ const compact=narrow();
   document.getElementById("decks").innerHTML=DK.map(k=>{ const d=DECKS[k], L=LIVE[k]||{}, pr=project(k);
     let a=0,c=0; Object.keys(picks).forEach(id=>{ const v=pending(id); if(v.includes("add"+k))a++; if(v.includes("cut"+k))c++; });
@@ -903,9 +944,9 @@ function renderDecks(){ const compact=narrow();
     const delta=(x,y)=>x===y?`${x}`:`${x} → <span class="chg">${y}</span>`;
     return `<details class="deck" style="--dc:${d.dc}" ${compact?"":"open"}>
       <summary><span class="portrait"><img src="${esc(imgSrc(d.portrait,"s"))}" alt="" loading="lazy"></span><h2>${esc(d.full)}</h2>
-      <span class="sumline">${esc(d.label)} · floor ${esc(pr.f1)} · int ${pr.i1} · ca ${pr.c1}${(a||c)?` · +${a}/−${c}`:""}${nc?` · ${nc} need a cut`:""}</span></summary>
+      <span class="sumline">${esc(d.label)} · floor ${esc(pr.f1)} · int ${pr.i1} · ca ${pr.c1}${sizeNote(k,pr)?` · ${sizeNote(k,pr)}`:""}${(a||c)?` · +${a}/−${c}`:""}${nc?` · ${nc} need a cut`:""}</span></summary>
       <div class="dmeta">Deck ${esc(d.id)} · commander ${esc(d.cmd)} · ${d.size} cards · read from the deck file ${esc(META.refreshed||"")}</div>
-      ${ONE?`<div class="onegrid"><div class="onestat">`:""}<div class="kv"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b>${hidI}</span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b>${hidC}</span><span>Sources <b>${esc(L.sources)}</b></span><span>Tapped-land cost <b>${esc(L.tapped)}</b></span><span>Avg MV <b>${delta(pr.mv0,pr.mv1)}</b></span><span>Crafts <b>${delta(pr.cr0,pr.cr1)}</b></span><span>Your marks <b>+${a} / −${c}</b></span>${nc?`<span style="color:var(--warn)"><b style="color:var(--warn)">${nc}</b> need${nc>1?"":"s"} a cut</span>`:""}${nconf?`<span style="color:var(--warn)">⚠ <b style="color:var(--warn)">${nconf}</b> conflict${nconf>1?"s":""}</span>`:""}</div>
+      ${ONE?`<div class="onegrid"><div class="onestat">`:""}<div class="kv"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b>${hidI}</span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b>${hidC}</span><span>Sources <b>${esc(L.sources)}</b></span><span>Tapped-land cost <b>${esc(L.tapped)}</b></span><span>Avg MV <b>${delta(pr.mv0,pr.mv1)}</b></span>${sizeHTML(k,pr)}<span>Crafts <b>${delta(pr.cr0,pr.cr1)}</b></span><span>Your marks <b>+${a} / −${c}</b></span>${nc?`<span style="color:var(--warn)"><b style="color:var(--warn)">${nc}</b> need${nc>1?"":"s"} a cut</span>`:""}${nconf?`<span style="color:var(--warn)">⚠ <b style="color:var(--warn)">${nconf}</b> conflict${nconf>1?"s":""}</span>`:""}</div>
       ${ONE?nextBandHTML(k,pr.i1,pr.c1):""}
       <details class="protlist"><summary>Protected cards (${(L.protect||[]).length})</summary><p>${(L.protect||[]).map(esc).join(" · ")}</p></details>${ONE?`</div>${curveHTML(k)}</div>`:""}</details>`; }).join(""); }
 function renderTabs(){ document.getElementById("tabs").innerHTML=PILES.map(p=>`<button class="tab ${p.tone?"pile":""}" role="tab" type="button" data-k="${esc(p.k)}" id="tab-${p.hash}" aria-selected="false" style="--tc:${p.tone||"var(--ink)"}">${esc(p.label)}<span class="n"></span></button>`).join(""); }
@@ -914,7 +955,7 @@ function updateTabCounts(){
   PILES.forEach(p=>{ const t=document.querySelector(`.tab[data-k="${p.k}"]`), el=t&&t.querySelector(".n"); if(!el) return;
   if(p.k==="lists"||p.k==="compare"){ el.textContent=""; return; }
   if(p.k==="add"){ const n=Object.values(requests).filter(r=>r.status!=="done").length; el.textContent=n||""; return; }
-  if(p.k==="picks"){ el.textContent=Object.keys(picks).filter(id=>((picks[id].picks||[]).length||(picks[id].note||"").trim())&&nameOf(id)).length||""; return; }
+  if(p.k==="picks"){ el.textContent=Object.keys(picks).filter(id=>((picks[id].picks||[]).length||(picks[id].note||"").trim()||openSugs(id).length)&&nameOf(id)).length||""; return; }
   const xs=CARDS.filter(c=>c.p===p.k), dn=xs.filter(decidedInPile).length; el.textContent=`${dn}/${xs.length}`;
   t.style.setProperty("--pct",(xs.length?Math.round(100*dn/xs.length):0)+"%"); t.setAttribute("aria-label",`${p.label}: ${dn} of ${xs.length} decided`); }); }
 
@@ -1048,14 +1089,29 @@ const LS=`builder-${SLUG}-picks`;
 const saveLocal=()=>{ try{ localStorage.setItem(LS,JSON.stringify(picks)); }catch(e){} };
 const loadLocal=()=>{ const x=readJSON(LS); Object.keys(x).forEach(id=>{ if(x[id]&&Array.isArray(x[id].picks)) x[id].picks=upgradeLegacy(id,x[id].picks).filter(v=>PICKLAB[v]); }); return x; };
 const writing={};
+/* The board's copy of each record as last read. A save sends only the fields the owner changed
+   against it, as an `update`, and never `reply` / `replyTo` / fields it did not touch: a full
+   `set` from a page holding an older copy erased a reply Claude had just written. `update`
+   rejects a document that does not exist yet, and only then is the record created whole. */
+const SERVER = {};
+const PFIELDS = ["card","picks","note","pair","own","hid","pile","done","sug"];
+function changedFields(full,srv){ if(!srv) return Object.assign({},full); const ch={};
+  PFIELDS.forEach(k=>{ if(JSON.stringify(full[k]===undefined?null:full[k])!==JSON.stringify(srv[k]===undefined?null:srv[k])) ch[k]=full[k]; });
+  return Object.keys(ch).length?ch:null; }
 function flashSaved(id,local){ document.querySelectorAll(`[data-saved="${id}"]`).forEach(el=>{ el.textContent=local?"Saved in this browser":"Saved"; clearTimeout(el._t); el._t=setTimeout(()=>{el.textContent="";},2500); }); }
 async function persist(id){ const p=picks[id]||{picks:[],note:""};
   if(!db){ saveLocal(); flashSaved(id,true); return; }
   if(writing[id]){ writing[id].again=true; return; } writing[id]={again:false};
   try{ const ref=db.collection("picks").doc(id);
     const ownSet = p.own!==undefined&&p.own!==null&&p.own!=="";
-    if(!(p.picks||[]).length&&!p.note&&!ownSet&&!(p.hid||[]).length) await ref.delete();
-    else await ref.set({card:nameOf(id),picks:p.picks||[],note:p.note||"",pair:p.pair||{},own:ownSet?p.own:null,hid:p.hid||[],pile:(BYID[id]||{}).p||"",at:new Date().toISOString()});
+    if(!(p.picks||[]).length&&!p.note&&!ownSet&&!(p.hid||[]).length&&!(p.done||[]).length&&!(p.sug||[]).length){ await ref.delete(); delete SERVER[id]; }
+    else { const full={card:nameOf(id),picks:p.picks||[],note:p.note||"",pair:p.pair||{},own:ownSet?p.own:null,hid:p.hid||[],pile:(BYID[id]||{}).p||"",
+      done:p.done||[],sug:p.sug||[]};
+      const ch=changedFields(full,SERVER[id]);
+      if(ch){ ch.at=new Date().toISOString();
+        try{ await ref.update(ch); }
+        catch(e){ if(!(e&&e.code==="invalid_argument")) throw e; await ref.set(Object.assign(full,{at:ch.at})); }
+        SERVER[id]=Object.assign({},SERVER[id]||{},full); } }
   }catch(e){ if(e&&e.code==="invalid_argument"){ canWrite=false; banner("You can view this board but not save picks on it."); } else if(e&&e.code==="quota_exceeded") banner("The board's storage is full, so this pick was not saved."); else banner("A pick could not be saved just now. Try again."); }
   const again=writing[id].again; delete writing[id]; if(again) persist(id); else flashSaved(id); }
 function togglePick(id,v){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
@@ -1063,8 +1119,12 @@ function togglePick(id,v){ if(!canWrite){ banner("You can view this board but no
   const p=picks[id]||(picks[id]={picks:[],note:""}); const s=new Set(p.picks||[]);
   const k=deckOfPick(v), kd=kindOf(v), cleared=[];
   if(s.has(v)) s.delete(v); else { s.add(v); if(k&&EXCL.includes(kd)) EXCL.filter(x=>x!==kd).forEach(x=>{ if(s.delete(x+k)) cleared.push(PICKLAB[x+k]); }); }
+  if(s.has(v)&&(p.sug||[]).some(g=>g.v===v)) p.sug=p.sug.filter(g=>g.v!==v);   /* marking a suggested pick accepts it */
   p.picks=[...s]; persist(id);
   if(cleared.length&&!GESTURE) toast(`${PICKLAB[v]} — cleared ${cleared.join(" and ")} for ${nameOf(id)}.`); }
+function dismissSug(id,v){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
+  const p=picks[id]; if(!p) return; snapshot(id,`dismiss suggestion: ${nameOf(id)}`);
+  p.sug=(p.sug||[]).filter(g=>g.v!==v); persist(id); refreshView(id); toast(`Dismissed: ${PICKLAB[v]||v} for ${nameOf(id)}.`); }
 /* b / o: Bench or Keep out for the pile's decks the card is not in. All on → all off. */
 function toggleScoped(id,kind){ const c=BYID[id]; if(!c) return; const ks=pileScope(c).filter(k=>!c["i"+k]);
   if(!ks.length){ toast(`${c.n} is already in ${pileScope(c).map(k=>DECKS[k].label).join(" and ")}.`); return; }
@@ -1082,7 +1142,9 @@ function pairWith(cutId){ const s=BYID[SEL], k=CMP.deck, cut=BYID[cutId]; if(!s|
   snapshot(s.id,`${s.n} replaces ${cut.n}`); const p=picks[s.id]||(picks[s.id]={picks:[],note:""}), v=new Set(p.picks||[]);
   v.add("add"+k); v.delete("bench"+k); v.delete("out"+k); p.picks=[...v]; p.pair=Object.assign({},p.pair||{},{[k]:cut.n}); persist(s.id); render(); renderDecks(); toast(`${s.n} replaces ${cut.n} in ${DECKS[k].label}.`); }
 function clearApplied(){ const ids=Object.keys(picks).filter(hasApplied); if(!ids.length) return;
-  ids.forEach(id=>{ snapshot(id,`clear applied marks: ${nameOf(id)}`); const p=picks[id]; p.picks=(p.picks||[]).filter(v=>!isApplied(id,v)); persist(id); });
+  const at=new Date().toISOString().slice(0,19)+"Z";
+  ids.forEach(id=>{ snapshot(id,`clear applied marks: ${nameOf(id)}`); const p=picks[id];
+    p.done=(p.done||[]).concat((p.picks||[]).filter(v=>isApplied(id,v)).map(v=>({v,at}))); p.picks=(p.picks||[]).filter(v=>!isApplied(id,v)); persist(id); });
   render(); renderDecks(); toast(`Cleared applied marks on ${ids.length} card(s).`); }
 
 /* ---------- events ---------- */
@@ -1108,6 +1170,7 @@ document.addEventListener("click",e=>{
     document.querySelectorAll(".seg [data-side]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.side===CMP.side))); return; }
   const hb=e.target.closest("[data-hid]"); if(hb){ const id=hb.dataset.hid, role=hb.dataset.role, inSheet=!!hb.closest("#sheet"); toggleHidden(id,role); refreshView(id);
     const again=document.querySelector(`${inSheet?"#sheet":"#detail"} [data-hid="${id}"][data-role="${role}"]`); if(again) again.focus(); return; }
+  const sn=e.target.closest("[data-sugno]"); if(sn){ dismissSug(sn.dataset.sugno, sn.dataset.sv); return; }
   const b=e.target.closest("[data-v]"); if(b){ const id=b.dataset.id, v=b.dataset.v, col=colOf(b);
     const where=b.closest("#sheet")?"#sheet ":b.closest(".detail")?"#detail ":b.closest(".dlist")?".dlist ":`.rw[data-w="${id}"][data-col="${col}"] `; togglePick(id,v); refreshView(id);
     const again=document.querySelector(`${where}[data-id="${id}"][data-v="${v}"]`); if(again) again.focus(); return; }
@@ -1208,16 +1271,19 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
 
 (async()=>{ let api=null;
   try{ api=window.claude&&window.claude.use?await window.claude.use("db"):null; }catch(e){ api=null; }
-  if(!api){ banner(META.target==="pages" ? "Picks are saved in this browser. To send them to Claude, open Your picks and use Copy as text." : "Picks are saved in this browser only, so Claude cannot read them here. Open the board on claude.ai to share them."); return; }
+  if(!api){ banner(META.target==="pages" ? "Picks are saved in this browser only, apart from the claude.ai board's. To send them to Claude, open Your picks and use Copy as text; after Claude applies them, press Clear applied marks." : "Picks are saved in this browser only, so Claude cannot read them here. Open the board on claude.ai to share them."); return; }
   db=api;
   try{ const u=await window.claude.use("user"); if(u&&u.can){ const w=await u.can("data.write"); if(w===false){ canWrite=false; banner("You can view this board but not save picks on it."); } } }catch(e){}
   const timer=setTimeout(()=>banner("Saved picks have not loaded yet. Marks you make now still save."),10000);
   db.collection("picks").onSnapshot(snap=>{ if(!snap.metadata.fromCache){ clearTimeout(timer); if(canWrite) banner(""); }
-    const next={}, upg=[]; snap.docs.forEach(d=>{ const x=d.data()||{}; if(!nameOf(d.id)) return;
+    const next={}, upg=[]; Object.keys(SERVER).forEach(k=>delete SERVER[k]);
+    snap.docs.forEach(d=>{ const x=d.data()||{}; SERVER[d.id]=JSON.parse(JSON.stringify(x)); if(!nameOf(d.id)) return;
       if(Array.isArray(x.picks)){ const u=upgradeLegacy(d.id,x.picks); if(u!==x.picks){ x.picks=u; upg.push(d.id); } }
       const pair={}; if(x.pair&&typeof x.pair==="object") DK.forEach(k=>{ if(typeof x.pair[k]==="string") pair[k]=x.pair[k]; });
       next[d.id]={picks:Array.isArray(x.picks)?x.picks.filter(v=>PICKLAB[v]):[],note:typeof x.note==="string"?x.note:"",pair,
-        own:Number.isInteger(x.own)&&x.own>=0?x.own:null, hid:Array.isArray(x.hid)?x.hid.filter(r=>HROLES.includes(r)):[]}; });
+        own:Number.isInteger(x.own)&&x.own>=0?x.own:null, hid:Array.isArray(x.hid)?x.hid.filter(r=>HROLES.includes(r)):[],
+        done:Array.isArray(x.done)?x.done.filter(h=>h&&typeof h.v==="string"):[], reply:typeof x.reply==="string"?x.reply:"",
+        replyTo:typeof x.replyTo==="string"?x.replyTo:"", sug:Array.isArray(x.sug)?x.sug.filter(g=>g&&PICKLAB[g.v]):[]}; });
     const local=loadLocal(), migrate=[]; Object.keys(local).forEach(id=>{ if(!next[id]&&nameOf(id)&&((local[id].picks||[]).length||local[id].note)){ next[id]=local[id]; migrate.push(id); } });
     const focusedNote=document.activeElement&&document.activeElement.classList.contains("note");
     picks=next; if(!focusedNote){ render(); } else { updateTabCounts(); } renderDecks();
@@ -1226,6 +1292,9 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
   },err=>{ clearTimeout(timer); banner("Saved picks could not be loaded. Reload the page to try again."); });
   db.collection("requests").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(Array.isArray(x.names)) next[d.id]={names:x.names.filter(n=>typeof n==="string").slice(0,300),dest:String(x.dest||""),note:typeof x.note==="string"?x.note:"",at:String(x.at||""),status:String(x.status||"pending"),reply:typeof x.reply==="string"?x.reply:""}; });
     requests=next; updateTabCounts(); if(view==="add") render(); },()=>{});
+  db.collection("log").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{};
+      if(Array.isArray(x.lines)) next[d.id]={at:String(x.at||""),lines:x.lines.filter(l=>typeof l==="string").slice(0,300),failed:Array.isArray(x.failed)?x.failed.filter(l=>typeof l==="string"):[]}; });
+    LOGS=next; if(view==="picks") render(); },()=>{});
   db.collection("reasons").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(BYID[d.id]&&typeof x.text==="string") next[d.id]={group:typeof x.group==="string"?x.group:"",text:x.text}; });
     reasons=next; if(isPileView(view)) render(); },()=>{});
 })();

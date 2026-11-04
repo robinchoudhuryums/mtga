@@ -21,7 +21,23 @@ The owner may paste a Builder page's **Your picks → Copy as text** block inste
 list (or ask you to read the claude.ai board's `picks` collection). Turn it into checked
 commands first — never apply the block's lines by eye:
 
-`python3 scripts/builder.py picks <slug> -` (paste on stdin) prints, per deck:
+**Preferred: `python3 scripts/builder.py apply <slug> --db <dump>`** (a dump of the board's
+`picks` collection, made with ArtifactData `list` + `out_dir`), or `… apply <slug> -` with a
+copied block on stdin. Its dry run is the checked plan for every deck: swaps, unpaired adds and
+cuts, protect changes, bench lines, with every pick the deck already shows skipped as applied.
+Confirm it with the owner; read the add list against the conversation, since a card added and
+later cut in chat still carries its add mark. `--apply` writes it (swaps through `deck.py swap`,
+the rest as one INV-04-checked write) and prints the legality, printing and rationale checks;
+then write the `cleanup.json` it leaves beside the dump to the board (its `picks` updates move
+settled marks into `done`; its `log` entry goes in the `log` collection), so an applied mark
+cannot come back and the owner sees what landed. Write each `picks` record with `update` of
+those fields only, never a whole-record `set` (it would erase marks made since the dump).
+Unpaired adds and cuts are recorded in recommendations.csv (`Source` = `builder`, the
+missing half blank), as each swap already is. Bench lines the board no longer marks are only listed
+(`--retire-bench` removes them, for a round marked on one surface only). Stages 1, 3 and 4
+below still apply around it: the quality snapshot before, the guard and preflight after.
+
+`python3 scripts/builder.py picks <slug> -` (paste on stdin) is the read-only form. It prints, per deck:
 - `deck.py swap <id> --package "CUT=ADD" …` with only the pairs whose cut is in the deck
   and whose add is not, and a `skipped:` line naming every other pair and why;
 - `protect` / `unprotect` lines checked against the deck's `#: protect:` header — a header

@@ -291,7 +291,7 @@ Whenever another creature you control enters while this creature has a -1/-1 cou
 Sage of the Skies,Creature — Human Monk,"When you cast this spell, if you've cast another spell this turn, copy this spell. (The copy becomes a token.)
 Flying, lifelink",W,Human; Monk; lifegain; flying; evasion; lifelink,TDM,22,1
 Savior of the Sleeping,Creature — Human Knight,"Vigilance
-Whenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on this creature.",W,Human; Knight; counters; reanimator; graveyard; vigilance; combat,WOE,28,1
+Whenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on this creature.",W,Human; Knight; counters; reanimator; graveyard; vigilance; combat; enchantments,WOE,28,1
 Sheriff of Safe Passage,Creature — Human Knight,"This creature enters with a +1/+1 counter on it plus an additional +1/+1 counter on it for each other creature you control.
 Plot {1}{W} (You may pay {1}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,Human; Knight; counters; plot; tempo; cost-reduction; exile cast,OTJ,29,1
 Sidequest: Catch a Fish,Enchantment // Land,"At the beginning of your upkeep, look at the top card of your library. If it's an artifact or creature card, you may reveal it and put it into your hand. If you put a card into your hand this way, create a Food token and transform this enchantment. // {T}: Add {W}.
@@ -1006,7 +1006,7 @@ Agents of HYDRA,Creature — Human Spy Villain,"When this creature dies, create 
 Azula Always Lies,Instant — Lesson,"Choose one or both —
 • Target creature gets -1/-1 until end of turn.
 • Put a +1/+1 counter on target creature.",B,Lesson; counters; removal,TLA,84,1
-Balemurk Leech,Creature — Leech,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, each opponent loses 1 life.",B,Leech; eerie,DSK,84,1
+Balemurk Leech,Creature — Leech,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, each opponent loses 1 life.",B,Leech; eerie; enchantments,DSK,84,1
 Beamsaw Prospector,Creature — Human Artificer,"When this creature dies, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",B,Human; Artificer; sacrifice; tokens; ramp,EOE,89,1
 Barbed Bloodletter,Artifact — Equipment,"Flash
 When this Equipment enters, attach it to target creature you control. That creature gains wither until end of turn. (It deals damage to creatures in the form of -1/-1 counters.)
@@ -2513,7 +2513,7 @@ Trample",R/G,Shapeshifter; trample; evasion; changeling; tribal,ECL,226,1
 Trance — {4}{R}{G}, {T}: Exile Terra, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
 I, II, III — Create a token that's a copy of target nonlegendary enchantment you control. It gains haste. If it's a Saga, put up to three lore counters on it. Sacrifice it at the beginning of your next end step.
 IV — Add {W}{W}, {U}{U}, {B}{B}, {R}{R}, and {G}{G}. Exile Esper Terra, then return it to the battlefield (front face up).
-Flying",W/U/B/R/G,Human; Wizard; Warrior; saga; mill; sacrifice; tokens; etb; blink; flying; evasion; transform; graveyard; haste; aggro,FIN,245,1
+Flying",W/U/B/R/G,Human; Wizard; Warrior; saga; mill; sacrifice; tokens; etb; blink; flying; evasion; transform; graveyard; haste; aggro; enchantments,FIN,245,1
 Noggle Robber,Creature — Noggle Rogue,"When this creature enters or dies, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R/G,Noggle; Rogue; sacrifice; tokens; etb; treasure,ECL,237,1
 Uncle Iroh,Legendary Creature — Human Noble Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
 Lesson spells you cast cost {1} less to cast.",R/G,Human; Noble; Ally; firebending; bending; cost-reduction,TLA,248,1
@@ -2638,7 +2638,7 @@ Whenever Suki attacks, create a 1/1 white Ally creature token that's tapped and 
 Earth Kingdom Soldier,Creature — Human Soldier,"Vigilance
 When this creature enters, put a +1/+1 counter on each of up to two target creatures you control.",W/G,Human; Soldier; counters; etb; vigilance; combat,TLA,216,1
 "Yuna, Hope of Spira",Legendary Creature — Human Cleric,"During your turn, Yuna and enchantment creatures you control have trample, lifelink, and ward {2}.
-At the beginning of your end step, return up to one target enchantment card from your graveyard to the battlefield with a finality counter on it. (If a permanent with a finality counter on it would be put into a graveyard from the battlefield, exile it instead.)",W/G,Human; Cleric; counters; reanimator; graveyard; lifegain; trample; evasion; lifelink; ward; protection,FIN,250,1
+At the beginning of your end step, return up to one target enchantment card from your graveyard to the battlefield with a finality counter on it. (If a permanent with a finality counter on it would be put into a graveyard from the battlefield, exile it instead.)",W/G,Human; Cleric; counters; reanimator; graveyard; lifegain; trample; evasion; lifelink; ward; protection; enchantments,FIN,250,1
 Rinoa Heartilly,Legendary Creature — Human Rebel Warlock,"When Rinoa Heartilly enters, create Angelo, a legendary 1/1 green and white Dog creature token.
 Angelo Cannon — Whenever Rinoa Heartilly attacks, another target creature you control gets +1/+1 until end of turn for each creature you control.",W/G,Human; Rebel; Warlock; tokens; etb; pump,FIN,237,1
 Birnin Zana Plaza,Land,"This land enters tapped.
@@ -4096,7 +4096,7 @@ Death in the Family,Instant,Exile target creature with mana value 3 or less.,B,r
 Fugitive Droid,Artifact Creature — Robot Scientist,"This creature can't be blocked if an artifact entered the battlefield under your control this turn.
 {U}, Sacrifice this creature: Counter target spell that targets an artifact or creature you control.",U,Robot; Scientist; counterspell; sacrifice; artifacts,TMT,40,1
 Slumbering Keepguard,Creature — Human Knight,"Whenever an enchantment you control enters, scry 1.
-{2}{W}: This creature gets +1/+1 until end of turn for each enchantment you control.",W,Human; Knight; scry; pump; selection,WOE,29,1
+{2}{W}: This creature gets +1/+1 until end of turn for each enchantment you control.",W,Human; Knight; scry; pump; selection; enchantments,WOE,29,1
 Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
@@ -5717,17 +5717,17 @@ Delirium — If there are four or more card types among cards in your graveyard,
 The creature you control deals damage equal to its power to the creature an opponent controls.",R/G,counters; graveyard; delirium,DSK,210,1
 Unwilling Vessel,Creature — Human Wizard,"Vigilance
 Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a possession counter on this creature.
-When this creature dies, create an X/X blue Spirit creature token with flying, where X is the number of counters on this creature.",U,Human; Wizard; counters; tokens; vigilance; combat; eerie,DSK,81,2
+When this creature dies, create an X/X blue Spirit creature token with flying, where X is the number of counters on this creature.",U,Human; Wizard; counters; tokens; vigilance; combat; eerie; enchantments,DSK,81,2
 Inquisitive Glimmer,Enchantment Creature — Fox Glimmer,"Enchantment spells you cast cost {1} less to cast.
-Unlock costs you pay cost {1} less.",W/U,Fox; Glimmer; cost-reduction,DSK,217,1
+Unlock costs you pay cost {1} less.",W/U,Fox; Glimmer; cost-reduction; enchantments,DSK,217,1
 Splitskin Doll,Artifact Creature — Toy,"When this creature enters, draw a card. Then discard a card unless you control another creature with power 2 or less.",W,Toy; card draw; etb,DSK,33,1
-Optimistic Scavenger,Creature — Human Scout,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a +1/+1 counter on target creature.",W,Human; Scout; counters; eerie,DSK,21,1
+Optimistic Scavenger,Creature — Human Scout,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, put a +1/+1 counter on target creature.",W,Human; Scout; counters; eerie; enchantments,DSK,21,1
 Ghostly Keybearer,Creature — Spirit,"Flying
 Whenever this creature deals combat damage to a player, unlock a locked door of up to one target Room you control.",U,Spirit; flying; evasion,DSK,61,1
 Moldering Gym,Enchantment — Room // Enchantment — Room,"When you unlock this door, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, manifest dread, then put three +1/+1 counters on that creature.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; counters; ramp; manifest; tokens; manifest dread; graveyard,DSK,190,1
-Cult Healer,Creature — Human Doctor,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, this creature gains lifelink until end of turn.",W,Human; Doctor; lifegain; eerie; lifelink,DSK,2,1
+Cult Healer,Creature — Human Doctor,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, this creature gains lifelink until end of turn.",W,Human; Doctor; lifegain; eerie; lifelink; enchantments,DSK,2,1
 Bashful Beastie,Creature — Beast,"When this creature dies, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",G,Beast; graveyard; selection; manifest; tokens; manifest dread,DSK,169,1
 Horrid Vigor,Instant,Target creature gains deathtouch and indestructible until end of turn.,G,deathtouch; combat; removal; indestructible; resilience,DSK,184,1
 Fear of Lost Teeth,Enchantment Creature — Nightmare,"When this creature dies, it deals 1 damage to any target and you gain 1 life.",B,Nightmare; lifegain; burn; noncombat damage,DSK,97,1
@@ -6333,7 +6333,7 @@ Whenever you cast a spell, add {R} and put a +1/+1 counter on The Vision and Sca
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
 Whenever you draw your second card each turn, put a +1/+1 counter on Blue Marvel.",U,Human; Scientist; Hero; counters; flying; evasion; ward; protection,MSC,530,1
 "Captain America, Skybound",Legendary Creature — Human Soldier Hero,"Flying, vigilance
-Battalion — Whenever Captain America and at least two other creatures attack, put a +1/+1 counter on each attacking creature. They gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",W,Human; Soldier; Hero; counters; flying; evasion; vigilance; combat; battalion; indestructible; resilience,MSC,588,1
+Battalion — Whenever Captain America and at least two other creatures attack, put a +1/+1 counter on each attacking creature. They gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",W,Human; Soldier; Hero; counters; flying; evasion; vigilance; combat; battalion; indestructible; resilience; go-wide; aggro,MSC,588,1
 "Iron Man, Titan of Innovation",Legendary Artifact Creature — Human Hero,"Flying, haste
 Genius Industrialist — Whenever Iron Man attacks, create a Treasure token, then you may sacrifice a noncreature artifact. If you do, search your library for an artifact card with mana value equal to 1 plus the sacrificed artifact's mana value, put it onto the battlefield tapped, then shuffle.",U/R,Human; Hero; sacrifice; tokens; treasure; flying; evasion; haste; aggro,MAR,91,1
 "Captain Marvel, Apex Avenger",Legendary Creature — Human Kree Hero,"Flying, double strike, indestructible
@@ -6613,7 +6613,7 @@ Seething Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
 Cycling {U}{B}{R} ({U}{B}{R}, Discard this card: Draw a card.)",U/B/R,card draw; sacrifice; ramp; mana; cycling,MH3,225,1
 "Hei Bai, Forest Guardian",Legendary Creature — Bear Spirit,"When Hei Bai enters, reveal cards from the top of your library until you reveal a Shrine card. You may put that card onto the battlefield. Then shuffle.
-{W}{U}{B}{R}{G}, {T}: For each legendary enchantment you control, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",W/U/B/R/G,Bear; Spirit; tokens; etb,TLE,139,1
+{W}{U}{B}{R}{G}, {T}: For each legendary enchantment you control, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",W/U/B/R/G,Bear; Spirit; tokens; etb; enchantments,TLE,139,1
 Go-Shintai of Life's Origin,Legendary Enchantment Creature — Shrine,"{W}{U}{B}{R}{G}, {T}: Return target enchantment card from your graveyard to the battlefield.
 Whenever Go-Shintai of Life's Origin or another nontoken Shrine you control enters, create a 1/1 colorless Shrine enchantment creature token.",W/U/B/R/G,Shrine; reanimator; graveyard; tokens,HA6,6,1
 Sanctum of All,Legendary Enchantment — Shrine,"At the beginning of your upkeep, you may search your library and/or graveyard for a Shrine card and put it onto the battlefield. If you search your library this way, shuffle.
@@ -6629,13 +6629,13 @@ Honden of Infinite Rage,Legendary Enchantment — Shrine,"At the beginning of yo
 Honden of Life's Web,Legendary Enchantment — Shrine,"At the beginning of your upkeep, create a 1/1 colorless Spirit creature token for each Shrine you control.",G,Shrine; tokens,HA3,20,1
 "Calix, Destiny's Hand",Legendary Planeswalker — Calix,"+1: Look at the top four cards of your library. You may reveal an enchantment card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.
 −3: Exile target creature or enchantment you don't control until target enchantment you control leaves the battlefield.
-−7: Return all enchantment cards from your graveyard to the battlefield.",W/G,Calix; planeswalker; reanimator; graveyard; removal; selection,THB,211,1
+−7: Return all enchantment cards from your graveyard to the battlefield.",W/G,Calix; planeswalker; reanimator; graveyard; removal; selection; enchantments,THB,211,1
 "Elesh Norn, Mother of Machines",Legendary Creature — Phyrexian Praetor,"Vigilance
 If a permanent entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
 Permanents entering don't cause abilities of permanents your opponents control to trigger.",W,Phyrexian; Praetor; vigilance; combat,ONE,10,1
 "Jodah, the Unifier",Legendary Creature — Human Wizard,"Legendary creatures you control get +X/+X, where X is the number of legendary creatures you control.
 Whenever you cast a legendary spell from your hand, exile cards from the top of your library until you exile a legendary nonland card with lesser mana value. You may cast that card without paying its mana cost. Put the rest on the bottom of your library in a random order.",W/U/B/R/G,Human; Wizard; card advantage; pump,DMU,203,1
-Setessan Champion,Creature — Human Warrior,"Constellation — Whenever an enchantment you control enters, put a +1/+1 counter on this creature and draw a card.",G,Human; Warrior; counters; card draw; constellation,THB,198,1
+Setessan Champion,Creature — Human Warrior,"Constellation — Whenever an enchantment you control enters, put a +1/+1 counter on this creature and draw a card.",G,Human; Warrior; counters; card draw; constellation; enchantments; payoff,THB,198,1
 "Omnath, Locus of All",Legendary Creature — Phyrexian Elemental,"If you would lose unspent mana, that mana becomes black instead.
 At the beginning of your first main phase, look at the top card of your library. You may reveal that card if it has three or more colored mana symbols in its mana cost. If you do, add three mana in any combination of its colors and put it into your hand. If you don't reveal it, put it into your hand.",W/U/B/R/G,Phyrexian; Elemental; selection,MOM,249,1
 "Aragorn, the Uniter",Legendary Creature — Human Noble,"Whenever you cast a white spell, create a 1/1 white Human Soldier creature token.
@@ -6644,7 +6644,7 @@ Whenever you cast a red spell, Aragorn deals 3 damage to target opponent.
 Whenever you cast a green spell, target creature gets +4/+4 until end of turn.",W/U/R/G,Human; Noble; tokens; burn; scry; pump; noncombat damage; selection,LTR,192,1
 "Nissa, Leyline Tamer",Legendary Creature — Elf Wizard,"Deathtouch, vigilance
 Landfall — Whenever a land you control enters, draw a card. Then if this is the first time this ability has resolved this turn, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R,Elf; Wizard; card draw; landfall; vigilance; combat; deathtouch; removal; lands,FRC,2,1
-"Sythis, Harvest's Hand",Legendary Enchantment Creature — Nymph,"Whenever you cast an enchantment spell, you gain 1 life and draw a card.",W/G,Nymph; lifegain; card draw,J21,722,1
+"Sythis, Harvest's Hand",Legendary Enchantment Creature — Nymph,"Whenever you cast an enchantment spell, you gain 1 life and draw a card.",W/G,Nymph; lifegain; card draw; enchantments,J21,722,1
 Jin-Gitaxias,Legendary Creature — Phyrexian Praetor // Enchantment — Saga,"Ward {2}
 Whenever you cast a noncreature spell with mana value 3 or greater, draw a card.
 {3}{U}: Exile Jin-Gitaxias, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery and only if you have seven or more cards in hand. // (As this Saga enters and after your draw step, add a lore counter.)
@@ -6681,7 +6681,7 @@ Whenever you cast a noncreature spell, choose a counter on target permanent. Put
 "Quintorius, Fate Splitter",Legendary Planeswalker — Quintorius,"As long as Quintorius entered this turn, you may activate the loyalty abilities of planeswalkers you control twice this turn rather than only once.
 0: Proliferate. You gain 3 life.
 −1: Seek a non-Quintorius planeswalker card.
-−3: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Then put a +1/+1 counter on each creature you control.",W/U,Quintorius; planeswalker; counters; lifegain; tokens; seek; proliferate,YFRA,26,1
+−3: Create a 2/2 colorless Wizard Soldier creature token named Cadet. Then put a +1/+1 counter on each creature you control.",W/U,Quintorius; planeswalker; counters; lifegain; tokens; seek; proliferate; card draw,YFRA,26,1
 Prophet of the Planeswalker,Creature — Human Cleric,"When this creature enters, you may behold a planeswalker. If you do, it perpetually gains ""Loyalty abilities of this planeswalker cost an additional [+1] to activate.""",W,Human; Cleric; etb; behold; dragons,YFRA,2,1
 Kiora of Salt and Sand,Legendary Creature — Merfolk Noble,"Whenever you attack, if you've activated a loyalty ability this turn, untap target attacking creature. It can't be blocked this turn.
 Planeswalkers you control have ""[−8]: Create an 8/8 blue Leviathan creature token with hexproof.""",U/G,Merfolk; Noble; planeswalker; tokens,FRA,273,1

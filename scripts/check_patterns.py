@@ -438,6 +438,8 @@ def _pattern_groups():
                  # registering it "raw" would be the wrong-corpus mistake this file's
                  # own docstring warns about.
                  "_ARTIFACT_MATTERS_RE",
+                 # Its enchantment twin (2026-11-02), run on the same `_clean_text`.
+                 "_ENCHANTMENT_MATTERS_RE",
                  # BS11-76/77/79 rule guards, all run on the lowercased text. A dead
                  # `_BLINK_RETURN_RE` empties the blink tag; a dead incidental-reminder
                  # filter silently restores the ~70 crime/Role/madness false positives;

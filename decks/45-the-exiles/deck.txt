@@ -69,7 +69,7 @@
 #: tier:    81.7% against 16 white sources. It has FLASH, which is the real mitigation —
 #: tier:    hold it and cast it the turn the white arrives rather than on curve — but a
 #: tier:    protected payoff that wants a colour the deck is scarcest on is a live risk.
-#: tier: 3. CARD ADVANTAGE READS 8 (7 repeatable), and the claim here USED TO SAY 0 --
+#: tier: 3. CARD ADVANTAGE READS 9 (all repeatable), and the claim here USED TO SAY 0 --
 #: tier:    that was false, not merely stale, and it was false from the build. The audit
 #: tier:    could not see it: its pattern needs the number ADJACENT to the cue and
 #: tier:    "READS 0" puts a verb between them (the G-26 copula residual, same shape that

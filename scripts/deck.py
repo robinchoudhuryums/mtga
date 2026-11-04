@@ -2277,6 +2277,29 @@ _ROLE_PATTERNS = {
     # half X cards, rounded down") was uncounted AND unflagged — the same
     # missed-by-both hole as Repulsive Mutation, on the card-advantage axis.
     "Card advantage": [r"draws? (?:two|three|four|five|half x|x|that many) cards?",
+                       # SIX OR MORE (2026-11-02): the count list above stopped at five, so
+                       # "draw seven cards" — Jin-Gitaxias, Core Augur, Griselbrand, Memory
+                       # Jar, and every "each player draws seven" wheel — scored no card
+                       # advantage. A wheel counts here as "each player draws three" already
+                       # does above. Measured: 23 pool cards gained, all draws of seven.
+                       r"draws? (?:six|seven|eight|nine|ten) cards",
+                       # AN EXTRA CARD IN THE DRAW STEP (2026-11-02): Dictate of Kruphix,
+                       # Howling Mine, Midnight Oil, Rites of Flourishing — "draws an
+                       # additional card" recurs every draw step and matched nothing. The
+                       # symmetric ones count the way "each player draws two" does above.
+                       # Measured: 8 pool cards, all true positives.
+                       r"draws? an additional card",
+                       # A DRAW BY REPLACEMENT (2026-11-02): Notion Thief ("instead that
+                       # player skips that draw and you draw a card") and Leader,
+                       # Super-Genius ("if a creature you control would connive, instead you
+                       # draw a card, then that creature connives") — a draw the card adds
+                       # every time the replaced event happens. Measured: those 2 pool cards.
+                       r"instead (?:that player skips that draw and )?you draw a card",
+                       # PLAYING THE EXILED CARDS (2026-11-02): Black Cat, Cunning Thief
+                       # exiles two of an opponent's top nine face down and lets you play
+                       # them — the heist patterns below read "exile the top N … you may
+                       # play", not a look-then-exile-some. Measured: 1 pool card.
+                       r"you may play the exiled cards",
                        r"draw a card for each", r"draws? cards? equal to",
                        # A REPEATABLE single draw accrues advantage; the cantrip rule is
                        # about ONE-SHOT single draws. Phyrexian Arena reads as a cantrip
@@ -2325,10 +2348,27 @@ _ROLE_PATTERNS = {
                        # bullet anchor keeps it to the modes of THIS trigger; a mode that
                        # "hasn't been chosen" is usable once a game (Zuko, Conflicted) and
                        # is not repeatable, so it stays out. Measured: 3 pool cards gained.
-                       r"at the beginning of (?:your|each|the) "
-                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)"
-                       r"[^\n]{0,80}?\bchoose\b(?![^\n]*hasn't been chosen)[^\n]*(?:\n[^\n]*){0,4}?"
-                       r"\n• [^\n]*?\bdraws? a card",
+                       # 2026-11-02: two holes in that pattern. "At the beginning of combat
+                       # ON YOUR TURN" is the word order the phase list cannot read (the
+                       # same hole the plain combat pattern above closes) — Glorious Sunrise
+                       # and Shadrix Silverquill offer a draw every turn and scored none. And
+                       # "hasn't been chosen THIS TURN" resets each turn, so it recurs; only
+                       # the bare form (once a game) stays out.
+                       r"at the beginning of (?:(?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|(?:precombat|first) main phase)|combat on your turn)"
+                       r"[^\n]{0,80}?\bchoose\b(?![^\n]*hasn't been chosen(?! this turn))[^\n]*(?:\n[^\n]*){0,4}?"
+                       r"\n• (?![^\n]*\bdiscard)[^\n]*?\bdraws? a card",
+                       # The same modal draw on a WHENEVER trigger (2026-11-02): Elder
+                       # Gargaroth ("whenever this creature attacks or blocks, choose one — …
+                       # • Draw a card"), Galadriel, Light of Valinor, Kastral, The Vision.
+                       # A whenever trigger recurs by construction, like the plain whenever
+                       # pattern below. Two shapes are excluded because the draw costs a
+                       # card: a RUMMAGE mode ("• Discard a card. If you do, draw a card",
+                       # Territorial Kavu) and a trigger that SACRIFICES to choose (Gorbag
+                       # of Minas Morgul). Measured: 7 pool cards, all true positives.
+                       r"\bwhenever\b(?![^\n]*\bsacrifice\b[^\n]*\bchoose\b)[^\n]{0,100}?\bchoose\b"
+                       r"(?![^\n]*hasn't been chosen(?! this turn))[^\n]*(?:\n[^\n]*){0,4}?"
+                       r"\n• (?![^\n]*\bdiscard)[^\n]*?\bdraws? a card",
                        # REMOVE A COUNTER, THEN DRAW (2026-09-29): Dawn of a New Age's "At the
                        # beginning of your end step, remove a hope counter from this
                        # enchantment. If you do, draw a card." The sentence break stopped the
@@ -2346,7 +2386,16 @@ _ROLE_PATTERNS = {
                        # the pool) puts "draw a card" in the CONDITION, and a naive
                        # `whenever .* draw a card` swept every one into card advantage —
                        # scoring a draw-payoff as a draw, which is backwards.
-                       r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
+                       # The CONDITION window is 120 characters, not 80 (2026-11-02): a
+                       # combat-damage condition with a qualifier runs past 80 — "whenever one
+                       # or more creatures you control with counters on them deal combat
+                       # damage to a player" is 94 (Tidus, Yuna's Guardian), Haliya's and
+                       # Kutzil's are the same shape. The condition span cannot cross a period
+                       # or a comma, so a longer one stays inside the trigger; the EFFECT
+                       # window (the 60 after the comma), which the if-clause note below
+                       # warns about, is unchanged. Measured: 21 pool cards gained, all real
+                       # repeating draws.
+                       r"\bwhenever\b[^.,]{0,120}?, [^.]{0,60}?draws? a card",
                        # AN INTERVENING IF-CLAUSE PUSHES THE DRAW OUT OF BOTH WINDOWS
                        # ABOVE, and Magic templates a large family that way: "<trigger>,
                        # if <condition>, draw a card". The two patterns above allow 60
@@ -9251,7 +9300,7 @@ _RECS_SUGGEST_WINDOW = 20
 _RECS_MIN_SAMPLE = 20
 
 
-def recommendation_row(d, cut, add, source, today=None):
+def recommendation_row(d, cut, add, source, today=None, cache=None):
     """Score an ACCEPTED swap against what the recommenders said at that moment.
 
     `swap --apply` is the only place in this toolkit where a human's real add/cut
@@ -9270,8 +9319,14 @@ def recommendation_row(d, cut, add, source, today=None):
     decision was made against; re-deriving one later would score against a deck the swap
     already changed.
 
+    Either side may be blank: `builder.py apply` records an add with no cut chosen, or a cut
+    with no add, as a decision too, and the blank side's columns stay blank rather than read
+    as a model miss. `cache` (a dict) lets one caller score several rows against the same
+    pre-change deck while computing each model once.
+
     Returns a row dict, or None if neither model could be computed."""
     import datetime
+    cache = {} if cache is None else cache
     row = {c: "" for c in RECS_HEADER}
     row.update({"Date": today or datetime.date.today().isoformat(),
                 "Deck": d["id"], "Source": source, "Cut": cut, "Add": add})
@@ -9280,7 +9335,11 @@ def recommendation_row(d, cut, add, source, today=None):
     # The cut side is the CLEAN measurement: `cuts` ranks the cards already in the deck,
     # so the cut always has a well-defined position in a list that always contains it.
     try:
-        rows, _central, prot_present, _int = rank_cut_candidates(d)
+        if not cut.strip():
+            raise LookupError("no cut on this row")
+        if "cuts" not in cache:
+            cache["cuts"] = rank_cut_candidates(d)
+        rows, _central, prot_present, _int = cache["cuts"]
         # `_ms_key` both sides, like the `Cut Protected` join below it. A raw `.lower()`
         # compare blanked `Cut Rank` whenever the deck stored a DFC under one face and the
         # swap named the other — telemetry only (G-56 keeps this ledger report-only, and
@@ -9304,7 +9363,11 @@ def recommendation_row(d, cut, add, source, today=None):
     # to lands and off-theme removal (that is what `--lands`/`--interaction`/`--ramp`
     # exist for). "Not surfaced" is therefore common and is NOT on its own a model miss.
     try:
-        res = suggest_scored(d, limit=0)
+        if not add.strip():
+            raise LookupError("no add on this row")
+        if "suggest" not in cache:
+            cache["suggest"] = suggest_scored(d, limit=0)
+        res = cache["suggest"]
         if res.get("ok"):
             picks = res["picks"]
             al = add.strip().lower()

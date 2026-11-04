@@ -8397,3 +8397,59 @@ class TestConsistencyDisclosesUnpricedDiscounts:
                               "consistency", str(p)], capture_output=True, text=True).stdout
         assert "Winnowing ◊" in out
         assert "◊ a discount this table does not price" in out and "convoke" in out.lower()
+
+
+class TestCardDrawHoles20261102:
+    """Draws the Card-advantage patterns missed, each pinned on its real oracle text, with
+    the shapes that must STAY out beside them (a rummage mode, a sacrifice-to-choose, a
+    once-a-game mode). Measured on the pool when it landed: 64 cards gained the role, 37
+    roster decks' card-advantage count rose, 0 tier floors moved."""
+
+    CA = "Card advantage"
+
+    @pytest.mark.parametrize("name,text", [
+        ("Jin-Gitaxias, Core Augur", "Flash\nAt the beginning of your end step, draw seven cards.\n"
+         "Each opponent's maximum hand size is reduced by seven."),
+        ("Dictate of Kruphix", "Flash\nAt the beginning of each player's draw step, that player draws an additional card."),
+        ("Notion Thief", "Flash\nIf an opponent would draw a card except the first one they draw in each of their "
+         "draw steps, instead that player skips that draw and you draw a card."),
+        ("Leader, Super-Genius", "If a creature you control would connive, instead you draw a card, then that "
+         "creature connives.\nAt the beginning of combat on your turn, target creature you control connives."),
+        ("Black Cat, Cunning Thief", "When Black Cat enters, look at the top nine cards of target opponent's "
+         "library, exile two of them face down, then put the rest on the bottom of their library in a random "
+         "order. You may play the exiled cards for as long as they remain exiled."),
+        ("Glorious Sunrise", "At the beginning of combat on your turn, choose one —\n• Creatures you control get "
+         "+1/+1 and gain trample until end of turn.\n• Target land gains \"{T}: Add {G}{G}{G}\" until end of "
+         "turn.\n• Draw a card if you control a creature with power 3 or greater.\n• You gain 3 life."),
+        ("Shadrix Silverquill", "Flying, double strike\nAt the beginning of combat on your turn, you may choose "
+         "two. Each mode must target a different player.\n• Target player creates a 2/1 white and black Inkling "
+         "creature token with flying.\n• Target player draws a card and loses 1 life.\n• Target player puts a "
+         "+1/+1 counter on each creature they control."),
+        ("Elder Gargaroth", "Reach, vigilance, trample\nWhenever this creature attacks or blocks, choose one —\n"
+         "• Create a 3/3 green Beast creature token.\n• You gain 3 life.\n• Draw a card."),
+        ("Galadriel, Light of Valinor", "Alliance — Whenever another creature you control enters, choose one "
+         "that hasn't been chosen this turn —\n• Add {G}{G}{G}.\n• Put a +1/+1 counter on each creature you "
+         "control.\n• Scry 2, then draw a card."),
+        ("Tidus, Yuna's Guardian", "At the beginning of combat on your turn, you may move a counter from target "
+         "creature you control onto a second target creature you control.\nCheer — Whenever one or more "
+         "creatures you control with counters on them deal combat damage to a player, you may draw a card and "
+         "proliferate. Do this only once each turn."),
+    ])
+    def test_now_card_advantage(self, name, text):
+        assert self.CA in deck.classify_roles(text), name
+
+    @pytest.mark.parametrize("name,text", [
+        # a rummage MODE is card-neutral, like every loot
+        ("Territorial Kavu", "Domain — Territorial Kavu's power and toughness are each equal to the number of "
+         "basic land types among lands you control.\nWhenever this creature attacks, choose one —\n• Discard a "
+         "card. If you do, draw a card.\n• Exile up to one target card from a graveyard."),
+        # the draw costs the creature that dealt the damage
+        ("Gorbag of Minas Morgul", "Whenever a Goblin or Orc you control deals combat damage to a player, you may "
+         "sacrifice it. When you do, choose one —\n• Draw a card.\n• Create a Treasure token."),
+        # "hasn't been chosen" with no "this turn" is once a GAME, not repeatable
+        ("Zuko, Conflicted", "At the beginning of your first main phase, choose one that hasn't been chosen and "
+         "you lose 2 life —\n• Draw a card.\n• Put a +1/+1 counter on Zuko.\n• Add {R}.\n• Exile Zuko, then "
+         "return him to the battlefield under an opponent's control."),
+    ])
+    def test_still_not_card_advantage(self, name, text):
+        assert self.CA not in deck.classify_roles(text), name

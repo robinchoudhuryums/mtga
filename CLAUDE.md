@@ -1439,25 +1439,26 @@ is protecting.
 
 - **A BUILDER PAGE IS TEMPLATE + DATA, AND THE REASON IS THE ONLY THING STORED.** A pile
   graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
-  reasons, verdicts) and is rendered by `scripts/builder.py` through `scripts/builder_template.html`;
-  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts`
-  ranks are DERIVED at render from the deck model. The first board typed those figures into
-  the page and they went stale at the first swap. **A reason is graded against a deck
-  VERSION** (`graded_at`, a hash of each list), so `builder.py check` and a soft `check_all`
-  line name it once a deck changes — re-read it, do not re-stamp it blindly. Per-deck
-  VERDICT stars (`builder.py verdict`, ★★★…✗) are stamped the same way; an imported grade
-  reads pre-draft until re-graded. **The
-  theme-fit grade is NOT shown as a verdict**: it misreads graveyard polarity (G-42) and
-  rates removal tangential. **The page edits nothing**: a pick is a request that
-  `builder.py picks` turns into checked `swap --package` / protect / `flex --add` / `/ingest`
-  lines for `/apply-changes` (a pile move is a request too), and hidden roles sit beside the counted figures, never in the floor
-  (G-25). Restyle the TEMPLATE, never a rendered page — `.cycle/board*/index.html` is
-  regenerated (the 511-file artifact limit: long form). **A ONE-DECK build drops what only tells decks apart**: it opens on Compare, piles
-  become a filter, candidates sit in verdict sections (✗ collapsed), the deck panel carries
-  the live curve; Copy as text stays deck-named (`FULLLAB`). A two-faced card ships its BACK too (the pane and zoom flip with `f`). **Alternate printings are VIEW-ONLY** (`printings.json`, Scryfall `unique:art`, so a
-  frame-only variant of the same art is never listed): a deck line keeps the pool's one printing
-  (G-65). `/pile-analysis` Stage 6 owns
-  publishing and the request queue. [G-89]
+  reasons, verdicts) and renders through `scripts/builder.py` + `scripts/builder_template.html`;
+  oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts` ranks
+  are DERIVED at render. The first board typed those figures in and they went stale at the
+  first swap. **A reason or VERDICT star is graded against a deck VERSION** (`graded_at`, a
+  list hash); `builder.py check` and a soft `check_all` line call it stale only when a card
+  that entered or left the deck is its own card or is NAMED in its reason (2026-11-04: any
+  change had flagged all 426). Re-read it, never re-stamp. **The theme-fit grade is
+  NOT shown**: it misreads graveyard polarity (G-42). **The page edits nothing**: a pick is a
+  request; `builder.py apply <slug> --db <dump>` turns the board's picks into a checked plan
+  (dry run), writes it with `--apply` (swaps via `deck.py swap`; unpaired picks reach
+  recommendations.csv), and leaves a `cleanup.json` that moves settled
+  marks to the record's `done` history and logs what landed. **Write a board record with
+  `update` of your own fields only** (`reply`/`replyTo`, `sug`, cleanup) — the page likewise
+  sends only what the owner changed, so neither erases the other. Suggested cuts are `sug`,
+  never picks. Hidden roles sit beside the counted figures, never in the floor (G-25). Restyle
+  the TEMPLATE; republish with `builder.py publish-plan <out>` (the
+  page AND its changed images, then `--mark`), since index.html alone left new cards blank. A
+  ONE-DECK build opens on Compare with verdict sections; Copy as text stays deck-named
+  (`FULLLAB`). **Alternate printings are VIEW-ONLY**: a deck line keeps the pool's printing
+  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
 
 ## Known Issues
 
@@ -1469,7 +1470,9 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   SEVEN were themed in 2026-08 (vivid→multicolor·payoff, job select→equipment·tokens,
   opus→spellslinger·payoff, increment→counters·spellslinger, infusion→lifegain·payoff,
   disappear→sacrifice·aristocrats, paradigm→exile cast·card advantage) and THREE were
-  deliberately left, for three different reasons. **A keyword's reported COUNT is not
+  deliberately left, for three different reasons. **2026-11-02:** constellation → enchantments·payoff (the
+  text-read enchantments theme, K-15's twin), battalion → go-wide·aggro, seek → card draw;
+  ascend, conjure and partner stay baselined (no shared theme; Alchemy creation; deckbuilding only). **A keyword's reported COUNT is not
   its population**: Scryfall lists `Jump` on all 11 `Jump-start` cards, so mapping it
   would have put `evasion` on 11 graveyard spells for the sake of 2 real ones — the same
   source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names —
@@ -1533,7 +1536,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   gallery (`load_pool_tags`) read pool-first now, and `load_card_meta`'s correction reaches a
   library row stored under a DFC FRONT name (10 cards, 8 decks had missed it);
   `check_agreement._agree_card_synergies` holds `card.py` to the model.
-  **Residual: 351 pool blanks — a new theme for four cards is not the fix.** [K-09]
+  **Residual: 349 pool blanks — a new theme for four cards is not the fix.** [K-09]
 - **THE TAGGER HAD NO `artifacts` RULE AT ALL, the largest single cause of the median-rank
   finding G-22 records (added 2026-09-14).** Every `artifacts` tag came from the KEYWORD map (affinity /
   improvise / modular / craft…), so a card whose whole text is "artifacts you control get
@@ -1547,7 +1550,8 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   the anchor it matches "when THIS artifact enters" (every artifact with an ETB), and `artifact
   or creature` is **236 cards** of generic either-type text. Reads `_clean_text` (K-09). Pool
   tag 158 → 415; **0 of 112 tier floors moved** (G-80: tags feed cuts/suggest, the floor reads
-  TEXT). Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
+  TEXT). **Its twin `_ENCHANTMENT_MATTERS_RE` (2026-11-02)** carries the same
+  guards plus a count span that cannot cross a comma: 101 pool cards, 0.63%. Residual: BEING an artifact is deliberately untagged (~19% of the pool) — G-83's
   `cost_scale_resource` answers that from the TYPE LINE. [K-15]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
@@ -1578,15 +1582,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. **2026-10-07:** steal AURAS ("You control enchanted creature" — Control Magic, Kitnap)
-  joined `Removal (spot)` and COPY effects (token copies, clones, becomes-a-copy) joined
-  `Payoff / engine`; bounce left interaction for the tempo line (G-25). **2026-10-23:**
-  EXTRA LAND DROPS → Ramp, "twice that many … instead" → Payoff, "X damage divided" →
-  Removal; 0 tier floors. **2026-10-25:** X-scaled drain and lifegain, "lands … are every
-  basic land type" → Ramp, SEEK → Card advantage (onto the battlefield is Ramp), and an
-  empowered Jace's −3 draw when the empower is 3+ or repeatable; card advantage rose in 11
-  decks, 0 tier floors moved; then a draw offered as a MODE of a recurring trigger (Black
-  Market Connections), 5 decks, 0 floors. [K-12]
+  tune failed. **The dated widenings since 2026-10-07 are in the long form; the latest, 2026-11-02:** draws of
+  seven or more, "draws an additional card", replacement draws (Notion Thief, Leader), a draw
+  MODE on a combat-on-your-turn or whenever trigger, and a 120-character whenever condition —
+  64 pool cards, card advantage up in 37 decks, 0 tier floors moved. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a
@@ -2020,7 +2019,10 @@ format.
     hover a row; open Compare, select a pile card and press ⇄ on a deck card; mark one
     ownership correction and one "counts as interaction"; press `u`; open Your picks and
     Copy as text; repeat at 390×844 and keyboard-only. Then: set Verdict and Decision
-    filters and sort by verdict; on an added card open "Choose a cut", hover and arrow
+    filters and sort by verdict; on the claude.ai board, reply to a note (Claude writes
+    `reply`) and confirm it shows under the note, Accept one dashed suggestion and Dismiss
+    another, check the deck panel's "N / 100 · K cuts to go" line, and mark a card WHILE
+    Claude writes a reply to it (the reply must survive); on an added card open "Choose a cut", hover and arrow
     through it (the preview follows) and pick one; in Compare click a deck card (the pile
     card must stay selected); bulk-mark the shown cards, then press `u` once; queue a pile
     move from the pane; on a build of four or more decks open a row's ⋯ menu. Then a ONE-DECK

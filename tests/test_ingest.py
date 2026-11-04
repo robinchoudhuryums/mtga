@@ -1173,3 +1173,36 @@ class TestTagSynergiesNoOpWritesNothing:
         baks = glob.glob(str(p) + ".*bak*")
         assert ts.main() == 0                     # second pass changes nothing
         assert glob.glob(str(p) + ".*bak*") == baks
+
+
+class TestEnchantmentsThemeAndKeywordTriage:
+    """2026-11-02: an enchantments theme read from text (the artifacts rule one type over),
+    and three keywords taken off the K-01 baseline onto themes they already mean."""
+
+    def test_enchantress_cards_carry_the_theme(self):
+        for text in ["Constellation — Whenever this creature or another enchantment you control enters, draw a card.",
+                     "Enchantment spells you cast cost {1} less to cast.",
+                     "{T}: Add X mana of any one color, where X is the number of enchantments you control."]:
+            assert "enchantments" in ts.tags_for({"Type": "Creature", "Card Text": text}, []), text
+
+    def test_hate_and_this_enchantment_stay_out(self):
+        # removal aimed at enchantments is not an enchantments card (the G-42 shape), and a
+        # count clause must not run across a comma into "this enchantment" (Volatile Orbit)
+        for text in ["Destroy target artifact or enchantment.",
+                     "When this enchantment enters, if you control a Planet, this enchantment deals 4 damage "
+                     "to any target."]:
+            assert "enchantments" not in ts.tags_for({"Type": "Enchantment", "Card Text": text}, []), text
+
+    def test_keywords_map_to_their_themes(self):
+        assert ts.KEYWORD_THEMES["constellation"] == ["enchantments", "payoff"]
+        assert ts.KEYWORD_THEMES["battalion"] == ["go-wide", "aggro"]
+        assert ts.KEYWORD_THEMES["seek"] == ["card draw"]
+        tags = ts.tags_for({"Type": "Creature", "Card Text": "Battalion — Whenever this creature and at least "
+                            "two other creatures attack, this creature gets +2/+2 until end of turn."}, ["Battalion"])
+        assert {"go-wide", "aggro"} <= set(tags)
+
+    def test_the_triaged_keywords_left_the_baseline(self):
+        import os
+        base = open(os.path.join(os.path.dirname(ts.__file__), "keyword_baseline.txt"), encoding="utf-8").read().split()
+        assert not {"constellation", "battalion", "seek"} & set(base)
+        assert {"ascend", "conjure", "partner"} <= set(base)     # still deliberately unthemed

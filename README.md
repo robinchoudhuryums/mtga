@@ -1381,6 +1381,8 @@ python3 scripts/builder.py check sultai        # reasons and verdicts written be
 python3 scripts/builder.py site --out _site     # every project for GitHub Pages (offline)
 python3 scripts/builder.py render sultai --target artifact --out .cycle/board   # a claude.ai board
 python3 scripts/builder.py picks sultai copied.txt   # the page's Copy-as-text → swap --package lines
+python3 scripts/builder.py apply sultai --db board-db  # the board's picks → a checked plan; --apply writes it
+python3 scripts/builder.py publish-plan .cycle/board  # files changed since the last publish; --mark after
 ```
 
 On GitHub Pages the dashboard links to `builder.html`, a list of projects, and each
@@ -1401,6 +1403,11 @@ browser; **Your picks → Copy as text** gives Claude `swap --package` lines, pr
 requests, a `deck.py flex --add` line per benched card (so the bench lands in the deck
 file's `#~` block), and an `/ingest` block for the ownership corrections. The projection's tier floor
 uses only the counted figures — hidden roles are shown beside it, never inside it.
+On the claude.ai board Claude reads your picks directly: `apply` applies only what you
+confirm, moves the settled marks into each card's history (shown under **Your picks**), and
+logs what landed. Claude's replies to your notes appear under the note, and cuts it proposes
+appear as dashed suggestions you Accept or Dismiss. The deck panel counts the cards still to
+cut ("109 / 100 · 9 cuts to go").
 A card with more than one artwork on Arena shows **Arena printings** in its pane — every
 distinct illustration with its set, collector number, rarity and treatment (showcase,
 borderless …), oldest first. It is view-only: choose the art in Arena. A borderless frame of

@@ -87,6 +87,11 @@ def deck_hash(ref):
     so editing `#: notes:` does not mark every reason stale while any swap does."""
     D = _deck()
     _meta, cards = D.parse_deck_file(deck_ref(ref)["path"])
+    return _cards_hash(cards)
+
+
+def _cards_hash(cards):
+    D = _deck()
     tally = {}
     for q, n, _s, _c in cards:
         k = D._ms_key(n)
@@ -278,8 +283,9 @@ def set_reason(build, name, text, group=None):
         raise BuildError(f"{n!r} is not in this build; add it first")
     if not (text or "").strip():
         raise BuildError("a reason needs text")
-    build["reasons"][n] = {"group": group or "", "text": text.strip(),
-                           "graded_at": current_hashes(build)}
+    hashes = current_hashes(build)
+    build["reasons"][n] = {"group": group or "", "text": text.strip(), "graded_at": hashes}
+    record_snapshots(build, hashes)
     return n
 
 
@@ -351,6 +357,11 @@ def set_verdict(build, name, deck, mark, pre=False, _idx=None, _hashes=None):
         did = next(d["id"] for d in build["decks"] if d["key"] == k)
         h = (_hashes or {}).get(did) or deck_hash(did)
         cur[k] = {"m": norm_verdict(mark), "graded_at": None if pre else h}
+        if not pre:
+            snaps = build.setdefault("snapshots", {}).setdefault(did, {})
+            if h not in snaps:
+                _m, cards = _deck().parse_deck_file(deck_ref(did)["path"])
+                snaps[h] = _names_of(cards)
     if not cur:
         allv.pop(n, None)
     return n, k
@@ -373,6 +384,7 @@ def read_verdict_file(text):
 def verdict_status(build, hashes=None):
     """{deck_key: {"missing": [...], "pre": [...], "stale": [...]}} over the build's cards."""
     hashes = hashes or current_hashes(build)
+    current = current_names(build)
     out = {}
     allv = build.get("verdicts", {})
     for d in build["decks"]:
@@ -384,15 +396,170 @@ def verdict_status(build, hashes=None):
                 st["missing"].append(c["name"])
             elif v.get("graded_at") is None:
                 st["pre"].append(c["name"])
-            elif hashes.get(did) != v["graded_at"]:
+            elif verdict_stale(build, c["name"], did, v["graded_at"], hashes, current):
                 st["stale"].append(c["name"])
         out[k] = st
     return out
 
 
+def current_names(build):
+    D = _deck()
+    out = {}
+    for d in build["decks"]:
+        _m, cards = D.parse_deck_file(deck_ref(d["id"])["path"])
+        out[d["id"]] = _names_of(cards)
+    return out
+
+
+def verdict_stale(build, name, did, graded, hashes, current):
+    """A verdict is out of date when its deck's list changed since it was given AND the change
+    touches it: the card itself entered or left, or the card's reason names a card that did
+    (the reason rule, applied per deck). An earlier list that cannot be found counts as stale."""
+    if hashes.get(did) == graded:
+        return False
+    changed = _list_changes(build, did, graded, current)
+    if changed is None:
+        return True
+    D = _deck()
+    r = build["reasons"].get(name) or {}
+    return any(D._ms_key(n) == D._ms_key(name) for n in changed) or bool(mentioned(r.get("text", ""), changed))
+
+
 # ---------------------------------------------------------------- check
+# ---------------------------------------------------------------- reason staleness
+# A reason used to go stale when ANY card in its deck changed, so one round of swaps flagged
+# every reason on the board (426 after the Glarb trim) and the warning stopped meaning
+# anything. A reason is now stale only when a card that ENTERED or LEFT the deck since it was
+# written is the reason's own card or is named in its text. That needs the list as it was:
+# `snapshots` in build.json keeps it per graded hash, and for a reason written before
+# snapshots existed the deck file's git history is searched for the version with that hash.
+_HISTORY = {}
+
+
+def _names_of(cards):
+    seen, out = set(), []
+    for _q, n, _s, _c in cards:
+        k = _deck()._ms_key(n)
+        if k not in seen:
+            seen.add(k)
+            out.append(n)
+    return sorted(out)
+
+
+def record_snapshots(build, hashes):
+    """Store each deck's card names under its current hash, and drop snapshots nothing
+    refers to any more (no reason or verdict graded against them, and not current)."""
+    D = _deck()
+    snaps = build.setdefault("snapshots", {})
+    for did, h in hashes.items():
+        s = snaps.setdefault(did, {})
+        if h not in s:
+            _m, cards = D.parse_deck_file(deck_ref(did)["path"])
+            s[h] = _names_of(cards)
+    used = {(i, h) for r in build["reasons"].values() for i, h in (r.get("graded_at") or {}).items()}
+    ids = {d["key"]: d["id"] for d in build["decks"]}
+    used |= {(ids[k], x["graded_at"]) for vv in build.get("verdicts", {}).values()
+             for k, x in vv.items() if k in ids and x.get("graded_at")}
+    used |= {(i, h) for i, h in hashes.items()}
+    for did, s in snaps.items():
+        for h in [h for h in s if (did, h) not in used]:
+            del s[h]
+
+
+def _history_names(did, h, limit=400):
+    """The deck's card names at the commit whose list hashes to `h`, from git, or None."""
+    key = (did, h)
+    if key in _HISTORY:
+        return _HISTORY[key]
+    _HISTORY[key] = None
+    path = deck_ref(did)["path"]
+    rel = os.path.relpath(path, REPO_ROOT)
+    try:
+        revs = subprocess.run(["git", "log", f"-n{limit}", "--format=%H", "--", rel], cwd=REPO_ROOT,
+                              capture_output=True, text=True, timeout=60).stdout.split()
+    except (OSError, subprocess.SubprocessError):
+        return None
+    D = _deck()
+    import tempfile
+    for rev in revs:
+        try:
+            text = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=REPO_ROOT, capture_output=True,
+                                  text=True, timeout=30).stdout
+        except (OSError, subprocess.SubprocessError):
+            continue
+        if not text:
+            continue
+        fd, tmp = tempfile.mkstemp(suffix=".txt")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                fh.write(text)
+            _m, cards = D.parse_deck_file(tmp)
+        except Exception:
+            continue
+        finally:
+            os.remove(tmp)
+        hv = _cards_hash(cards)
+        _HISTORY.setdefault((did, hv), _names_of(cards))
+        if hv == h:
+            _HISTORY[key] = _names_of(cards)
+            return _HISTORY[key]
+    return None
+
+
+def _name_forms(name):
+    """The spellings a reason uses for a card: the full name, a split card's front, and a
+    legend's short name before the comma (four letters or more, so "Ob" is never a match)."""
+    forms = {name, name.split(" // ")[0]}
+    head = name.split(" // ")[0].split(",")[0].strip()
+    if len(head) >= 4:
+        forms.add(head)
+    return forms
+
+
+def mentioned(text, names):
+    """The names in `names` that `text` mentions, by any of their forms, as whole words."""
+    out = []
+    for n in names:
+        for f in _name_forms(n):
+            if re.search(r"(?<![A-Za-z])" + re.escape(f) + r"(?![A-Za-z])", text or "", re.I):
+                out.append(n)
+                break
+    return out
+
+
+def _list_changes(build, did, h, current):
+    """Card names that entered or left deck `did` since its list hashed to `h`, or None when
+    that list is not on record (no snapshot, and not in the deck file's git history)."""
+    D = _deck()
+    old = (build.get("snapshots", {}).get(did, {}) or {}).get(h) or _history_names(did, h)
+    if old is None:
+        return None
+    ok, nk = {D._ms_key(n): n for n in old}, {D._ms_key(n): n for n in current[did]}
+    return [ok[k] for k in ok.keys() - nk.keys()] + [nk[k] for k in nk.keys() - ok.keys()]
+
+
+def reason_changes(build, name, reason, hashes, current):
+    """For one reason: [(deck id, changed names it concerns)] for each deck whose list
+    changed since it was written in a way that touches it, or [(deck id, None)] when the
+    deck's earlier list cannot be found (a stale reason, as before snapshots existed)."""
+    D = _deck()
+    out = []
+    for did, h in (reason.get("graded_at") or {}).items():
+        if did not in hashes or hashes[did] == h:
+            continue
+        changed = _list_changes(build, did, h, current)
+        if changed is None:
+            out.append((did, None))
+            continue
+        hit = [n for n in changed if D._ms_key(n) == D._ms_key(name)] + mentioned(reason.get("text", ""), changed)
+        if hit:
+            out.append((did, sorted(set(hit))))
+    return out
+
+
 def check_build(build):
-    """[(severity, message)] — 'stale' (a deck changed since the reason was written),
+    """[(severity, message)] — 'stale' (a card the reason concerns entered or left a deck since
+    it was written),
     'unknown' (a name no longer resolves), 'unplaced' (no pile or an unknown pile),
     'reasonless' (in no deck of the build and carries no reason). Never raises on a card."""
     out = []
@@ -402,11 +569,12 @@ def check_build(build):
         return [("deck", str(e))]
     piles = set(_pile_keys(build))
     labels = {d["id"]: d.get("label") or d["id"] for d in build["decks"]}
-    in_any = set()
+    in_any, current = set(), {}
     D = _deck()
     for d in build["decks"]:
         _m, cards = D.parse_deck_file(deck_ref(d["id"])["path"])
         in_any |= {D._ms_key(n) for _q, n, _s, _c in cards}
+        current[d["id"]] = _names_of(cards)
     idx = _name_index()
     for c in build["cards"]:
         try:
@@ -418,11 +586,13 @@ def check_build(build):
             out.append(("unplaced", f"{c['name']} is on no pile"))
         r = build["reasons"].get(c["name"])
         if r:
-            moved = [labels[i] for i, h in (r.get("graded_at") or {}).items()
-                     if i in hashes and hashes[i] != h]
-            if moved:
-                out.append(("stale", f"{c['name']}: reason written before {', '.join(moved)}'s "
-                                     f"list changed — re-read it"))
+            for did, hit in reason_changes(build, c["name"], r, hashes, current):
+                if hit is None:
+                    out.append(("stale", f"{c['name']}: reason written before {labels[did]}'s list "
+                                         f"changed, and that list is not on record — re-read it"))
+                else:
+                    out.append(("stale", f"{c['name']}: reason concerns {', '.join(hit)}, which "
+                                         f"entered or left {labels[did]} since — re-read it"))
         elif D._ms_key(c["name"]) not in in_any:
             out.append(("reasonless", f"{c['name']} is in no deck and has no reason yet"))
     for n in build["reasons"]:
@@ -452,7 +622,7 @@ def stale_summary(slug):
     un = sum(1 for s, _ in issues if s in ("unknown", "deck"))
     if not st and not un:
         return None
-    parts = ([f"{st} reason(s) written against an older deck list"] if st else []) + \
+    parts = ([f"{st} reason(s) name a card that entered or left a deck since"] if st else []) + \
             ([f"{un} unresolved name(s) or deck(s)"] if un else [])
     return f"builder {slug}: {', '.join(parts)} — python3 scripts/builder.py check {slug}"
 
@@ -626,6 +796,470 @@ def picks_report(build, text, slug=None):
     return lines
 
 
+# ---------------------------------------------------------------- apply
+# `apply` turns the board's picks into deck-file edits in one checked run, so a round of picks
+# no longer goes through hand-run swaps, flex lines and header edits (where a short card name
+# once added a duplicate Jin-Gitaxias). The picks come from the board's DATABASE (read with the
+# ArtifactData tool into a folder, then `--db <folder>`), or from a copied "Copy as text" block
+# when the board was a GitHub Pages copy, which keeps its picks in the browser only.
+_PICK_RE = re.compile(r"^(add|cut|bench|out|prot|unprot)(.+)$")
+_BENCH_LINE = re.compile(r"^#~\s*\+(.+?)\s*\|\s*BENCH \(builder (\S+?)\)")
+
+
+def read_db_dump(path):
+    """The board's `picks` documents from a database dump: the folder the ArtifactData tool
+    writes with `out_dir` (`<dir>/picks/<doc id>.json`), the `picks` folder itself, or one
+    JSON file holding a list of documents. Each document is {card, picks, pair, note, own, hid}."""
+    if os.path.isfile(path):
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+        return data if isinstance(data, list) else [data]
+    folder = os.path.join(path, "picks") if os.path.isdir(os.path.join(path, "picks")) else path
+    if not os.path.isdir(folder):
+        raise BuildError(f"no database dump at {path!r}")
+    docs = []
+    for fn in sorted(os.listdir(folder)):
+        if fn.endswith(".json"):
+            with open(os.path.join(folder, fn), encoding="utf-8") as fh:
+                doc = json.load(fh)
+            if isinstance(doc, dict) and isinstance(doc.get("data"), dict) and "card" not in doc:
+                doc = doc["data"]                      # a wrapped {id, version, data} record
+            docs.append(doc)
+    return docs
+
+
+def picks_from_db(build, docs):
+    """The database documents in `parse_picks`' shape, so `apply` and `picks` read one model
+    whichever surface the owner marked on. A legacy deck-less `bench` / `out` (before
+    2026-11-02) reads as every deck of the build the card is not being added to."""
+    keys = {d["key"]: d["id"] for d in build["decks"]}
+    out, notes, own, hidden = {}, [], [], []
+    for doc in docs:
+        name = (doc.get("card") or "").strip()
+        if not name:
+            continue
+        codes = [c for c in (doc.get("picks") or []) if isinstance(c, str)]
+        adds = {c[3:] for c in codes if c.startswith("add")}
+        for code in codes:
+            if code in ("bench", "out"):
+                targets = [k for k in keys if k not in adds]
+                kind = code
+            else:
+                m = _PICK_RE.match(code)
+                if not m or m.group(2) not in keys:
+                    continue
+                kind, targets = m.group(1), [m.group(2)]
+            for k in targets:
+                d = out.setdefault(keys[k], _empty_deck_picks())
+                if kind == "add":
+                    cut = (doc.get("pair") or {}).get(k)
+                    (d["pairs"].append((cut, name)) if cut else d["adds"].append(name))
+                elif kind == "cut":
+                    d["cuts"].append(name)
+                else:
+                    d[{"prot": "protect", "unprot": "unprotect"}.get(kind, kind)].append(name)
+        note = (doc.get("note") or "").strip()
+        if note and (doc.get("replyTo") or "").strip() != note:      # unanswered, or edited since
+            notes.append(f"{name} — {note}")
+        if isinstance(doc.get("own"), int) and doc["own"] >= 0:
+            own.append((doc["own"], name, None, None))
+        hidden += [(name, r) for r in (doc.get("hid") or []) if r in ("interaction", "card advantage")]
+    # A cut that is also some add's pair is the swap's cut, not a second "cut with no add".
+    for d in out.values():
+        paired = {c for c, _a in d["pairs"]}
+        d["cuts"] = [c for c in d["cuts"] if c not in paired]
+    return {"decks": out, "notes": notes, "own": own, "hidden": hidden}
+
+
+def _builder_bench_lines(path, slug):
+    """`#~` bench lines this build wrote into the deck file, as {card key: line text}. Only
+    lines tagged `BENCH (builder <slug>)` belong to the board; a hand-written bench line is
+    never reconciled away."""
+    D = _deck()
+    found = {}
+    with open(path, encoding="utf-8") as fh:
+        for ln in fh.read().split("\n"):
+            m = _BENCH_LINE.match(ln)
+            if m and m.group(2) == slug:
+                found[D._ms_key(m.group(1))] = ln
+    return found
+
+
+def plan_apply(build, parsed, slug, retire_bench=False):
+    """What `apply` would do to each deck, checked against the deck file as it is NOW:
+    {deck id: {"swaps", "adds", "cuts", "protect", "unprotect", "bench_add", "bench_retire",
+    "unprotect_cut", "out", "skipped"}}. A pick the deck already shows (an add it runs, a cut
+    it no longer runs) is skipped as applied, so running `apply` twice changes nothing.
+
+    BENCH RECONCILE: the board's bench marks are the whole bench, because the board never
+    counts a bench mark as applied and "Clear applied marks" leaves them. So a builder-tagged
+    `#~` line whose card is no longer benched (or is now in the deck) is retired, and a
+    benched card with no `#~` line gets one. The retirement half only runs with
+    `retire_bench`: the owner marks on two surfaces (the claude.ai board keeps its picks in
+    its database, a GitHub Pages copy in the browser), and a bench set on one is absent from
+    the other — a dry run against the board's database on 2026-11-03 would have pruned nine
+    bench lines set on Pages that day. Without the flag the stale lines are only LISTED.
+
+    `consume` lists the board marks this plan settles, as (card, pick code, clears a pair):
+    a planned edit, or a pick the deck already shows. `apply --db` turns them into a cleanup
+    file so the board stops carrying them. A mark the board never clears outlives its edit,
+    and once the deck changes again off the board (a cut made in chat) the old add mark reads
+    as pending: the same dry run proposed adding back 25 cards the owner had since cut."""
+    D = _deck()
+    idx = _name_index()
+    carddata = idx[0]
+    plans = {}
+    for b in build["decks"]:
+        did, K = b["id"], b["key"]
+        p = parsed["decks"].get(did, _empty_deck_picks())
+        ref = deck_ref(did)
+        meta, cards = D.parse_deck_file(ref["path"])
+        runs = {D._ms_key(n) for _q, n, _s, _c in cards}
+        protected = D._protected(meta)
+        lock = D.commander_identity_lock(meta, carddata)
+        plan = {"label": b.get("label") or did, "swaps": [], "adds": [], "cuts": [], "protect": [],
+                "unprotect": [], "unprotect_cut": [], "bench_add": [], "bench_retire": [],
+                "out": [], "skipped": [], "bench_stale": [], "consume": []}
+
+        def res(n):
+            try:
+                return resolve_name(n, idx)
+            except BuildError as e:
+                plan["skipped"].append(str(e))
+                return None
+
+        def off_identity(name):
+            if lock is None:
+                return False
+            cd = carddata.get(D._ms_key(name)) or carddata.get(name.lower())
+            ident = D.card_colors(cd.get("colors", "")) if cd else None
+            return ident is not None and not ident <= lock
+
+        for cut, add in p["pairs"]:
+            c, a = res(cut), res(add)
+            if not c or not a:
+                continue
+            if D._ms_key(a) in runs and D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} → {a} is already applied")
+                plan["consume"] += [(a, "add" + K, True), (c, "cut" + K, False)]
+            elif D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} is not in {did}, so it cannot be cut for {a}")
+            elif D._ms_key(a) in runs:
+                plan["skipped"].append(f"{a} is already in {did}")
+            elif off_identity(a):
+                plan["skipped"].append(f"{a} is outside the commander's colour identity")
+            else:
+                plan["swaps"].append((c, a))
+                runs.discard(D._ms_key(c)); runs.add(D._ms_key(a))
+                plan["consume"] += [(a, "add" + K, True), (c, "cut" + K, False)]
+        for n in p["adds"]:
+            a = res(n)
+            if not a:
+                continue
+            if D._ms_key(a) in runs:
+                plan["skipped"].append(f"{a} is already in {did} (applied)")
+                plan["consume"].append((a, "add" + K, False))
+            elif off_identity(a):
+                plan["skipped"].append(f"{a} is outside the commander's colour identity")
+            else:
+                plan["adds"].append(a)
+                runs.add(D._ms_key(a))
+                plan["consume"].append((a, "add" + K, False))
+        for n in p["cuts"]:
+            c = res(n)
+            if not c:
+                continue
+            plan["consume"].append((c, "cut" + K, False))
+            if D._ms_key(c) not in runs:
+                plan["skipped"].append(f"{c} is not in {did} (already cut)")
+            else:
+                plan["cuts"].append(c)
+                runs.discard(D._ms_key(c))
+        # A cut card leaves the protect line too: the owner's cut decides, and a stale protect
+        # entry is a silent no-op that check_all then flags (G-68).
+        for c in [c for c, _a in plan["swaps"]] + plan["cuts"]:
+            if D._ms_key(c) in protected:
+                plan["unprotect_cut"].append(c)
+        for kind in ("protect", "unprotect"):
+            for n in p[kind]:
+                c = res(n)
+                if not c:
+                    continue
+                k = D._ms_key(c)
+                if k not in runs:
+                    plan["skipped"].append(f"{kind} {c}: not in {did}")
+                elif (kind == "protect") == (k in protected):
+                    plan["skipped"].append(f"{c} is {'already' if kind == 'protect' else 'not'} protected")
+                    plan["consume"].append((c, ("prot" if kind == "protect" else "unprot") + K, False))
+                else:
+                    plan[kind].append(c)
+                    plan["consume"].append((c, ("prot" if kind == "protect" else "unprot") + K, False))
+        bench = []
+        for n in p["bench"]:
+            c = res(n)
+            if not c:
+                continue
+            if D._ms_key(c) in runs:
+                plan["skipped"].append(f"bench {c}: it is in {did} now (cut it first to bench it)")
+            else:
+                bench.append(c)
+        have_flex = {D._ms_key(f["in"]) for f in D.parse_flex(ref["path"]) if f.get("in")}
+        plan["bench_add"] = [c for c in bench if D._ms_key(c) not in have_flex]
+        want = {D._ms_key(c) for c in bench}
+        # A bench line for a card the deck now RUNS is stale on every surface (the G-04 +In
+        # rot), so it always goes; one the board merely no longer marks waits for the flag.
+        for k, ln in sorted(_builder_bench_lines(ref["path"], slug).items()):
+            if k in runs:
+                plan["bench_retire"].append(ln)
+            elif k not in want:
+                plan["bench_retire" if retire_bench else "bench_stale"].append(ln)
+        plan["out"] = [x for x in (res(n) for n in p["out"]) if x]
+        plans[did] = plan
+    return plans
+
+
+def _plan_lines(plans, parsed, slug):
+    lines = []
+    for did, pl in plans.items():
+        acts = sum(len(pl[k]) for k in ("swaps", "adds", "cuts", "protect", "unprotect",
+                                         "bench_add", "bench_retire"))
+        lines.append(f"# {pl['label']} ({did}) — {acts} change(s)")
+        lines += [f"  swap   −{c}  +{a}" for c, a in pl["swaps"]]
+        lines += [f"  add    +{a}   (no cut chosen)" for a in pl["adds"]]
+        lines += [f"  cut    −{c}   (no add)" for c in pl["cuts"]]
+        lines += [f"  protect     {c}" for c in pl["protect"]]
+        lines += [f"  unprotect   {c}" for c in pl["unprotect"]]
+        lines += [f"  unprotect   {c}   (cut, so it leaves the protect line)" for c in pl["unprotect_cut"]]
+        lines += [f"  bench  +{c}   (new #~ line)" for c in pl["bench_add"]]
+        lines += [f"  bench  retire: {ln}" for ln in pl["bench_retire"]]
+        lines += [f"  bench  not on the board (kept; --retire-bench removes it): {ln}" for ln in pl["bench_stale"]]
+        if pl["out"]:
+            lines.append(f"  keep out (no edit): {'; '.join(pl['out'])}")
+        lines += [f"  skipped: {s}" for s in pl["skipped"]]
+    if parsed.get("own"):
+        lines.append("# ownership — not applied here; save the lines to a file, then /ingest (dry run first):")
+        lines += [f"  {q} {n}" + (f" ({st}) {cn}" if st else "") for q, n, st, cn in parsed["own"]]
+    for n, role in parsed.get("hidden", []):
+        lines.append(f"# hidden role — python3 scripts/builder.py hidden {slug} \"{n}\" --role {role.replace(' ', '-')}")
+    if parsed.get("notes"):
+        lines.append("# notes waiting for a reply (write it to the card's record: reply, replyTo = the note):")
+        lines += [f"#   {n}" for n in parsed["notes"]]
+    return lines
+
+
+def _section_header_index(lines):
+    """The index of the deck's board-picks section header (`# … board picks …`), or None."""
+    for i, ln in enumerate(lines):
+        if ln.startswith("# ") and not ln.startswith(("#:", "#~")) and "board picks" in ln.lower():
+            return i
+    return None
+
+
+def _edit_deck_lines(lines, plan, slug, printing):
+    """The deck file's lines with `plan`'s unpaired cuts, unpaired adds, protect changes and
+    bench retirements applied. Swaps and new bench lines are written by deck.py itself."""
+    D = _deck()
+    out = list(lines)
+    for c in plan["cuts"]:
+        k = D._ms_key(c)
+        for i, ln in enumerate(out):
+            m = re.match(r"^(\d+)\s+(.+?)\s+\(", ln)
+            if m and D._ms_key(m.group(2)) == k:
+                q = int(m.group(1))
+                if q > 1:
+                    out[i] = f"{q - 1}" + ln[len(m.group(1)):]
+                else:
+                    del out[i]
+                break
+    if plan["adds"]:
+        new = [printing(a) for a in plan["adds"]]
+        h = _section_header_index(out)
+        if h is not None:
+            j = h + 1
+            while j < len(out) and out[j].strip() and not (out[j].startswith("# ") or out[j].startswith("#~")):
+                j += 1
+            out[j:j] = new
+        else:
+            at = next((i for i, ln in enumerate(out) if ln.startswith("# ") and "land" in ln.lower()), None)
+            if at is None:
+                at = next((i for i, ln in enumerate(out) if ln.startswith("#~")), len(out))
+            out[at:at] = [f"# Board picks (builder {slug})"] + new + [""]
+    drop = {D._ms_key(c) for c in plan["unprotect"] + plan["unprotect_cut"]}
+    if drop or plan["protect"]:
+        pidx = [i for i, ln in enumerate(out) if re.match(r"^#:\s*protect:", ln)]
+        for i in pidx:
+            names = [x.strip() for x in out[i].split(":", 2)[2].split(";") if x.strip()]
+            keep = [n for n in names if D._ms_key(n) not in drop]
+            out[i] = "#: protect: " + "; ".join(keep) if keep else None
+        if plan["protect"]:
+            live = [i for i in pidx if out[i] is not None]
+            if live:
+                out[live[-1]] = out[live[-1]] + "; " + "; ".join(plan["protect"])
+            else:
+                at = next((i for i, ln in enumerate(out) if ln.startswith("#: notes:")), None)
+                if at is None:
+                    at = max((i for i, ln in enumerate(out) if ln.startswith("#:")), default=-1) + 1
+                out.insert(at, "#: protect: " + "; ".join(plan["protect"]))
+        out = [ln for ln in out if ln is not None]
+    retire = set(plan["bench_retire"])
+    return [ln for ln in out if ln not in retire]
+
+
+def _run_swap(did, cut, add):
+    """One swap through deck.py itself, so its section placement, flex retirement, identity
+    refusal, .bak and recommendations.csv row all apply exactly as for a hand-run swap."""
+    r = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"), "swap", did,
+                        "--cut", cut, "--add", add, "--apply"], capture_output=True, text=True, cwd=REPO_ROOT)
+    return r.returncode == 0 and "Applied." in r.stdout, (r.stdout + r.stderr).strip()
+
+
+def _ledger_rows(ref, plan):
+    """recommendations.csv rows for the plan's unpaired adds and cuts, scored against the deck
+    BEFORE the write, as `swap --apply` scores a swap. Swaps record their own rows through
+    deck.py. Telemetry never costs an edit: any failure here records nothing."""
+    D = _deck()
+    cache, rows = {}, []
+    try:
+        for a in plan["adds"]:
+            r = D.recommendation_row(ref, "", a, "builder", cache=cache)
+            if r:
+                rows.append(r)
+        for c in plan["cuts"]:
+            r = D.recommendation_row(ref, c, "", "builder", cache=cache)
+            if r:
+                rows.append(r)
+    except Exception:
+        return []
+    return rows
+
+
+def _append_ledger(rows):
+    D = _deck()
+    done = 0
+    for r in rows:
+        try:
+            D.append_recommendation(r)
+            done += 1
+        except Exception:
+            break
+    return done
+
+
+def execute_apply(build, plans, slug, run_swap=None):
+    """Write each deck's plan: swaps first (deck.py swap), then one checked write for the
+    unpaired cuts and adds, protect changes and bench retirements (deck.py's INV-04 write:
+    the copy count must come out as planned or nothing is saved), then the new bench lines
+    (deck.py's flex writer). Returns log lines. A failed swap stops that deck's remaining
+    steps, so a half-applied deck is never followed by edits that assumed the swap.
+    Returns (log lines, consumed marks): only a deck whose run finished settles its marks."""
+    D = _deck()
+    run_swap = run_swap or _run_swap
+    idx = D._printing_index()
+    sq = D._squash_index(idx, lambda k: idx[k][0])
+
+    def printing(name):
+        key, _c = D._resolve_card_name(name, idx, lambda k: idx[k][0], sq)
+        if not key:
+            raise BuildError(f"no printing found for {name!r}")
+        disp, setc, coll = idx[key]
+        return f"1 {disp} ({setc}) {coll}"
+
+    log, consumed = [], []
+    for did, pl in plans.items():
+        ref = deck_ref(did)
+        ok = True
+        for c, a in pl["swaps"]:
+            good, out = run_swap(did, c, a)
+            log.append(f"{did}: swap −{c} +{a} — {'done' if good else 'FAILED'}")
+            if not good:
+                log.append("  " + out.splitlines()[-1] if out else "  (no output)")
+                ok = False
+                break
+        if not ok:
+            log.append(f"{did}: stopped — the remaining picks for this deck were not applied")
+            continue
+        if any(pl[k] for k in ("adds", "cuts", "protect", "unprotect", "unprotect_cut", "bench_retire")):
+            with open(ref["path"], encoding="utf-8") as fh:
+                lines = fh.read().rstrip("\n").split("\n")
+            _m, cards = D.parse_deck_file(ref["path"])
+            total = sum(q for q, *_ in cards) + len(pl["adds"]) - len(pl["cuts"])
+            recs = _ledger_rows(ref, pl)
+            D._safe_write_lines(ref["path"], _edit_deck_lines(lines, pl, slug, printing), total)
+            n = _append_ledger(recs)
+            if n:
+                log.append(f"{did}: {n} unpaired pick(s) recorded in recommendations.csv")
+            log.append(f"{did}: +{len(pl['adds'])} add(s), −{len(pl['cuts'])} cut(s), "
+                       f"{len(pl['protect'])} protect, {len(pl['unprotect']) + len(pl['unprotect_cut'])} unprotect, "
+                       f"{len(pl['bench_retire'])} bench line(s) retired")
+        for c in pl["bench_add"]:
+            line, _bak = D._flex_add(ref, f"+{c} | BENCH (builder {slug}): benched on the board", True)
+            log.append(f"{did}: bench line written — {line}")
+        consumed += pl["consume"]
+    return log, consumed
+
+
+def cleanup_ops(docs, consumed, at=None):
+    """The board-database writes that settle marks: one entry per affected document,
+    {id, card, picks, pair, done}, where `picks` and `pair` are the values AFTER the cleanup
+    and `done` is the document's history with each settled mark appended as {v, at}. A
+    settled mark moves to `done` rather than vanishing, so a mark that leaves `picks` with no
+    `done` entry is one the owner took back, and the two stay distinguishable. Bench and Keep
+    out marks are never consumed: they are standing state."""
+    at = at or datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    by_id = {}
+    for doc in docs:
+        if (doc.get("card") or "").strip():
+            by_id[image_slug(doc["card"])] = doc
+    changed = {}
+    for name, code, clear_pair in consumed:
+        did = image_slug(name)
+        doc = by_id.get(did)
+        if not doc:
+            continue
+        e = changed.setdefault(did, {"id": did, "card": doc["card"], "picks": list(doc.get("picks") or []),
+                                     "pair": dict(doc.get("pair") or {}), "done": list(doc.get("done") or [])})
+        if code in e["picks"]:
+            e["picks"].remove(code)
+            e["done"].append({"v": code, "at": at})
+        if clear_pair:
+            e["pair"].pop(code[3:], None)
+    return [e for did, e in sorted(changed.items())
+            if e["picks"] != list(by_id[did].get("picks") or []) or e["pair"] != dict(by_id[did].get("pair") or {})]
+
+
+def apply_log_entry(plans, log, at=None):
+    """The record of one `apply --apply` run for the board's `log` collection: when, and what
+    landed in each deck, so the owner reads on the board what changed and when."""
+    at = at or datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    lines = []
+    for did, pl in plans.items():
+        lines += [f"{pl['label']}: −{c} +{a}" for c, a in pl["swaps"]]
+        lines += [f"{pl['label']}: +{a}" for a in pl["adds"]] + [f"{pl['label']}: −{c}" for c in pl["cuts"]]
+        lines += [f"{pl['label']}: protect {c}" for c in pl["protect"]]
+        lines += [f"{pl['label']}: unprotect {c}" for c in pl["unprotect"] + pl["unprotect_cut"]]
+        lines += [f"{pl['label']}: bench {c}" for c in pl["bench_add"]]
+        lines += [f"{pl['label']}: bench line retired — " + ln.split("|")[0].replace("#~", "").strip()
+                  for ln in pl["bench_retire"]]
+    failed = [ln for ln in log if "FAILED" in ln or "stopped" in ln]
+    return {"at": at, "lines": lines, "failed": failed}
+
+
+def _post_checks(did):
+    """One line each from the checks a hand-applied round ran: size and legality, printings,
+    and the rationale audit."""
+    def run(*a):
+        r = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"), *a],
+                           capture_output=True, text=True, cwd=REPO_ROOT)
+        return (r.stdout or "") + (r.stderr or "")
+    legal = run("legal", did)
+    size = next((ln.strip() for ln in legal.splitlines() if ln.startswith("Deck size")), "")
+    issues = next((ln.strip() for ln in legal.splitlines() if "construction issue" in ln), "")
+    printing = (run("resolve", "--check", did).strip().splitlines() or [""])[-1].strip()
+    audit = [ln.strip() for ln in run("tier", did, "--audit-rationale").splitlines() if "⚠" in ln or "✓" in ln]
+    return [f"{did}: {size}" + (f" · {issues}" if issues else ""), f"{did}: {printing}"] + \
+           [f"{did}: {a}" for a in audit]
+
+
 # ---------------------------------------------------------------- derive
 def _tapped_cost(did):
     o = subprocess.run([sys.executable, os.path.join(REPO_ROOT, "scripts", "deck.py"),
@@ -659,7 +1293,11 @@ def deck_live(did, tempo=True):
         nonland.append({"n": n, "mv": mvs.get(n), "r": rank.get(n), "prot": n in prot,
                         "roles": role_groups(sorted(D.classify_roles(cd.get("text") or "")))})
     nonland.sort(key=lambda c: (c["r"] is None, c["r"] or 0, c["n"]))
+    cfmt = D.normalize_format(meta.get("format"))
     return {"id": did, "name": d["name"], "cmd": meta.get("commander"), "size": vec.get("size"),
+            # the format's size: exact for a singleton (Brawl) deck, a minimum otherwise —
+            # the deck panel counts the cuts still to make against it
+            "target": 100 if cfmt in D.BIG_DECK_FORMATS else 60, "exact": cfmt in D.SINGLETON_FORMATS,
             "floor": D.tier_band(vec), "interaction": vec["interaction"], "ca": vec["card_advantage"],
             # the deck's own colours only: a commander-identity land reads as five colours
             # in deck_color_sources (G-37 residual), which put a phantom "W1 · R1" on a UBG deck
@@ -704,6 +1342,7 @@ def derive(build, tempo=True):
     printing = _printings()
     hidden = build.get("hidden", {})
     verdicts, hashes = build.get("verdicts", {}), current_hashes(build)
+    names_now = current_names(build)
     ids = {d["key"]: d["id"] for d in build["decks"]}
     on_board = {c["name"] for c in build["cards"]}
     # Deck-list cards that are on no pile still get a record (pile None), so the page can
@@ -738,7 +1377,7 @@ def derive(build, tempo=True):
         vv = verdicts.get(n, {})
         rec["vd"] = {k: x["m"] for k, x in vv.items() if k in live}
         rec["vs"] = {k: ("pre" if x.get("graded_at") is None else
-                         "stale" if x["graded_at"] != hashes.get(ids[k]) else "")
+                         "stale" if verdict_stale(build, n, ids[k], x["graded_at"], hashes, names_now) else "")
                      for k, x in vv.items() if k in live}
         out.append(rec)
     return {"cards": out,
@@ -812,21 +1451,25 @@ def image_urls(slug, names, fetch=True):
 BACK_KEY = "back:"   # images.json key prefix for a two-faced card's back face
 
 
-def back_image_urls(slug, names, fetch=True):
+def back_image_urls(slug, names, fetch=True, two_faced=()):
     """{name: Scryfall `normal` URL of the BACK face} for the two-faced cards among `names`.
 
     `image_urls` keeps only the front face: Scryfall puts a transform or modal DFC's
     images under `card_faces`, and the front is all a row thumbnail needs. The back is
     a different card face, so the pane and the zoom view need it too. A split, Adventure
     or Room card shares one image with both halves on it, and is cached as "" (no separate
-    back) so it is not looked up again. Only names with " // " are candidates. Cached in
+    back) so it is not looked up again. Candidates are names with " // " plus `two_faced`:
+    a card the build stores under its FRONT name only ("Trystan, Callous Cultivator") has no
+    " // " in its name, so the caller passes the names whose TYPE line has one (2026-11-03 —
+    the owner found Trystan's and Ultimecia's backs missing on the board). Cached in
     the same images.json under `back:<name>`; an outage leaves the cache as it was."""
     cache_path = os.path.join(os.path.dirname(build_path(slug)), "images.json")
     try:
         cache = json.load(open(cache_path, encoding="utf-8"))
     except (OSError, ValueError):
         cache = {}
-    cand = [n for n in dict.fromkeys(names) if " // " in n]
+    two = set(two_faced)
+    cand = [n for n in dict.fromkeys(names) if " // " in n or n in two]
     need = [n for n in cand if BACK_KEY + n not in cache]
     if need and fetch:
         try:
@@ -1006,7 +1649,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
                       fetch=fetch and (images or target == "pages"))
     arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
     backs = back_image_urls(slug, [c["n"] for c in data["cards"]],
-                            fetch=fetch and (images or target == "pages"))
+                            fetch=fetch and (images or target == "pages"),
+                            two_faced=[c["n"] for c in data["cards"] if " // " in (c.get("t") or "")])
     for c in data["cards"]:
         if arts.get(c["n"]):
             c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
@@ -1058,6 +1702,54 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
 
 
 # ---------------------------------------------------------------- Pages site
+# ---------------------------------------------------------------- publish plan
+# A claude.ai board is a page plus image files (img/lg/*.jpg, img/thumbs.jpg, img/arts-*.jpg).
+# Republishing index.html alone left new cards with no picture and the thumbnail sprite out of
+# step with the page's sprite map (found 2026-11-04: 16 new cards had no image, and the sprite
+# on the board was the previous layout). `publish_plan` lists exactly what changed since the
+# last publish, recorded in <out>/.published.json, so each republish sends those files.
+PUBLISHED = ".published.json"
+
+
+def _file_sig(path):
+    with open(path, "rb") as fh:
+        return f"{os.path.getsize(path)}:{hashlib.sha1(fh.read()).hexdigest()[:16]}"
+
+
+_SITE_FILE = re.compile(r"^(index\.html|img/thumbs\.jpg|img/arts-\d+\.jpg|img/lg/[^/]+\.jpg)$")
+
+
+def site_files(out_dir):
+    """{published path: signature} for the files `render` writes for an artifact board
+    (index.html, the thumbnail and art sprites, the large images); leftovers of an older
+    layout in the same folder are not part of the board and are ignored."""
+    out = {}
+    for root, _dirs, files in os.walk(out_dir):
+        for fn in files:
+            full = os.path.join(root, fn)
+            rel = os.path.relpath(full, out_dir).replace(os.sep, "/")
+            if _SITE_FILE.match(rel):
+                out[rel] = _file_sig(full)
+    return out
+
+
+def publish_plan(out_dir, mark=False):
+    """(changed, removed): paths to send and paths to drop since the last recorded publish.
+    `mark` records the current files as published; run it after the publish succeeds."""
+    now = site_files(out_dir)
+    rec = os.path.join(out_dir, PUBLISHED)
+    before = {}
+    if os.path.exists(rec):
+        with open(rec, encoding="utf-8") as fh:
+            before = json.load(fh)
+    changed = sorted(p for p, s in now.items() if before.get(p) != s)
+    removed = sorted(p for p in before if p not in now)
+    if mark:
+        with open(rec, "w", encoding="utf-8") as fh:
+            json.dump(now, fh, indent=0, sort_keys=True)
+    return changed, removed
+
+
 def _offline():
     """No network during a site build: the Pages job runs offline (like build_dashboard's
     `_no_network`), so deck.py's live-Scryfall fallbacks are neutralised and image URLs
@@ -1195,6 +1887,14 @@ def main(argv=None):
                                            help="exit 1 when anything is stale or unresolved")
     p = sub.add_parser("picks", help="turn the board's copied picks into swap --package lines")
     p.add_argument("slug"); p.add_argument("file", nargs="?", default="-")
+    p = sub.add_parser("apply", help="apply the board's picks to the deck files (dry run unless --apply)")
+    p.add_argument("slug"); p.add_argument("file", nargs="?",
+                                           help="a Copy as text block (- for stdin); omit with --db")
+    p.add_argument("--db", help="a dump of the board's database (the folder ArtifactData writes with out_dir)")
+    p.add_argument("--apply", action="store_true", help="write the edits (default: print the plan)")
+    p.add_argument("--retire-bench", action="store_true",
+                   help="also remove this build's #~ bench lines whose card is no longer benched on the board")
+    p.add_argument("--cleanup", help="with --db: where to write the board cleanup file (default: <dump>/cleanup.json)")
     p = sub.add_parser("derive", help="print the page data (cards + live deck stats) as JSON")
     p.add_argument("slug"); p.add_argument("--out")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
@@ -1203,6 +1903,9 @@ def main(argv=None):
     p.add_argument("--out", required=True, help="output directory (index.html, and img/ for artifact)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
     p.add_argument("--no-images", action="store_true", help="artifact: do not download images")
+    p = sub.add_parser("publish-plan", help="list a rendered board's files changed since its last publish")
+    p.add_argument("out", help="the render's output directory (e.g. .cycle/board)")
+    p.add_argument("--mark", action="store_true", help="record the current files as published (after publishing)")
     p = sub.add_parser("site", help="render every build for GitHub Pages (offline): builder.html + builds/")
     p.add_argument("--out", required=True, help="the site directory (e.g. _site)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
@@ -1219,6 +1922,17 @@ def main(argv=None):
         for f in failures:
             print(f"WARN: builder project failed to render — {f}", file=sys.stderr)
         return 1 if failures else 0
+    if args.cmd == "publish-plan":
+        changed, removed = publish_plan(args.out, mark=args.mark)
+        if args.mark:
+            print(f"Recorded {len(site_files(args.out))} file(s) as published.")
+            return 0
+        print(f"{len(changed)} file(s) to send" + (f", {len(removed)} to remove" if removed else "") + ":")
+        for x in changed:
+            print(f"  {x}")
+        for x in removed:
+            print(f"  remove {x}")
+        return 0
     try:
         if args.cmd == "new":
             b = new_build(args.slug, args.decks, args.keys, args.title)
@@ -1272,6 +1986,52 @@ def main(argv=None):
                 print(f"  {sev:10} {msg}")
             bad = any(s in ("stale", "unknown", "deck") for s, _ in issues)
             return 1 if (args.strict and bad) else 0
+        elif args.cmd == "apply":
+            if bool(args.db) == bool(args.file):
+                raise BuildError("give the picks one way: --db <dump folder> or a Copy as text file (- for stdin)")
+            docs = None
+            if args.db:
+                docs = read_db_dump(args.db)
+                parsed = picks_from_db(b, docs)
+            else:
+                text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
+                parsed = parse_picks(text)
+            known = {d["id"] for d in b["decks"]}
+            for did in parsed["decks"]:
+                if did not in known:
+                    print(f"# {did}: not a deck of this build — skipped")
+            plans = plan_apply(b, parsed, args.slug, retire_bench=args.retire_bench)
+            for line in _plan_lines(plans, parsed, args.slug):
+                print(line)
+            if not args.apply:
+                if docs is not None:
+                    n = len(cleanup_ops(docs, [c for pl in plans.values() for c in pl["consume"]]))
+                    print(f"\n{n} board record(s) would have their settled marks cleared after --apply.")
+                print("\n(dry run — pass --apply to write; each deck file gets a .bak)")
+                return 0
+            print()
+            log, consumed = execute_apply(b, plans, args.slug)
+            for line in log:
+                print(line)
+            if docs is not None:
+                ops = cleanup_ops(docs, consumed)
+                entry = apply_log_entry(plans, log)
+                dest = args.cleanup or os.path.join(args.db if os.path.isdir(args.db) else os.path.dirname(args.db),
+                                                    "cleanup.json")
+                with open(dest, "w", encoding="utf-8") as fh:
+                    json.dump({"picks": ops, "log": entry}, fh, indent=1, ensure_ascii=False)
+                print(f"\nBoard cleanup: {len(ops)} record(s) and one log entry → {dest}. Write them to the "
+                      "board now: `update` each `picks` record's picks, pair and done (settled marks move "
+                      "to done, so the board shows them as history), and `set` the log entry in the `log` "
+                      "collection under a new id, so an applied mark cannot come back as a pending pick.")
+            else:
+                print("\nThese picks came from copied text: on the page you copied them from, open "
+                      "Your picks and press Clear applied marks.")
+            for did, pl in plans.items():
+                if any(pl[k] for k in ("swaps", "adds", "cuts", "protect", "unprotect", "unprotect_cut",
+                                       "bench_add", "bench_retire")):
+                    for line in _post_checks(did):
+                        print(line)
         elif args.cmd == "picks":
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
             for line in picks_report(b, text, args.slug):
