@@ -1028,6 +1028,101 @@
    "name": "Weapons Manufacturing",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Suki, Courageous Rescuer",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Renegade Rallier",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Chandra, Spark Hunter",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Experimental Synthesizer",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Aether Revolt",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Mouser Foundry",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Pegasus Guardian // Rescue the Foal",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Blood Aspirant",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Evolution Sage",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Truth and Justice",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Karn's Bastion",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Metastatic Evangel",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Cankerbloom",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Huatli's Raptor",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Pollenbright Druid",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Contagion Engine",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Grateful Apparition",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Proud Pack-Rhino",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Planewide Celebration",
+   "pile": "R",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1502,7 +1597,7 @@
   },
   "Roxanne, Starfall Savant": {
    "group": "Strong",
-   "text": "In the list. A Cat; Meteorite pings 2 on ETB/attack; doubles artifact-TOKEN mana — Foods under Night of the Sweets' Revenge tap twice.",
+   "text": "In the list. A Cat whose Meteorite pings 2 on entry/attack and is itself an artifact token — Roxanne doubles its mana, Bilbo's Treasures and Night of the Sweets' Revenge's Foods (owner's pushback, cut suggestion withdrawn).",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1558,7 +1653,7 @@
   },
   "Sami, Wildcat Captain": {
    "group": "Strong",
-   "text": "In the list. Every spell has affinity for artifacts — Foods make the deck cheap. Double strike body.",
+   "text": "In the list. Every spell has affinity for artifacts — with a standing Food pile most spells cost little or nothing late (owner's pushback, cut suggestion withdrawn). Double strike, vigilance.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1733,7 +1828,7 @@
   },
   "Krenko, Baron of Tin Street": {
    "group": "Strong",
-   "text": "In the list. Every artifact to the graveyard — every Food crack — is a `{R}` hasty Goblin, itself a token (Peregrin / Tippy-Toe Food).",
+   "text": "In the list. Every Food sacrificed is an artifact put into a graveyard: {R} for a hasty Goblin token (another Food under Peregrin / Tippy-Toe); {T}, sac an artifact pumps Goblins.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -2434,6 +2529,139 @@
   "Weapons Manufacturing": {
    "group": "Out",
    "text": "Pool sweep 2026-11-05. Triggers on NONTOKEN artifacts only — Foods are tokens.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Suki, Courageous Rescuer": {
+   "group": "Strong",
+   "text": "Leave/proliferate sweep 2026-11-05. Leave payoff: once each of our turns, a permanent leaving (a Food crack) makes a 1/1 Ally — a token, so another Food under Peregrin / Tippy-Toe; the team gets +1/+0. Owned.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Renegade Rallier": {
+   "group": "Strong",
+   "text": "Leave/proliferate sweep 2026-11-05. Revolt is free here — crack a Food first — then return a permanent MV ≤2 from the graveyard (Ragost, Biotech, Samwise, Belladonna, Gilded Goose).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Chandra, Spark Hunter": {
+   "group": "Strong",
+   "text": "Leave/proliferate sweep 2026-11-05. +2: sacrifice a Food to draw a card, every turn — repeatable card advantage off the currency; 0 makes Vehicle artifact tokens; the emblem burns on every artifact entering. Owned.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Experimental Synthesizer": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. {R}: exiles a card to play when it enters AND when it leaves — two plays from exile (Rocco, Pia, Quintorius triggers) — then a Samurai.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Aether Revolt": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. Revolt is on whenever a Food was cracked this turn: Biotech Specialist 2 → 4, Ragost 3 → 5, Quintorius' drain and Dragonspark +2. Spice; the energy half does nothing.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mouser Foundry": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. A Robot token on entering and on leaving, and {4}{R}, sac: 3 to a creature. Owned.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pegasus Guardian // Rescue the Foal": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. A Pegasus each end step a permanent left (a Food crack); the adventure blink resets Rocco's counters (G-42).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Blood Aspirant": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. A counter whenever we sacrifice a permanent — every Food — and a ping that stops a blocker.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Evolution Sage": {
+   "group": "Strong",
+   "text": "Leave/proliferate sweep 2026-11-05. Proliferate on every landfall — Rocco's exiled lands, fetches, Tireless Provisioner's lands — each Rocco counter and walker loyalty grows; doubled under Doubling Season.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "group": "Strong",
+   "text": "Leave/proliferate sweep 2026-11-05. Protection from white and blue, and each hit puts a counter and proliferates — the team's counters all grow.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Karn's Bastion": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. A land that proliferates for {4}: costs a colour source in a three-colour deck, but takes no spell slot.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Metastatic Evangel": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. Every nontoken creature entering proliferates — about 40 creatures here.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Cankerbloom": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. Interaction AND proliferate: {1}, sac: destroy an artifact or an enchantment, or proliferate. Restores interaction if Spider Food and Undergrowth Leopard go.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Huatli's Raptor": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. GW 2-drop that proliferates on entry.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pollenbright Druid": {
+   "group": "Real",
+   "text": "Leave/proliferate sweep 2026-11-05. 2-drop: a counter or a proliferate on entry.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Contagion Engine": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. Six mana: −1/−1 on each of their creatures (kills tokens) and proliferate twice a turn.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Grateful Apparition": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. Evasive 2-drop that proliferates on combat damage.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Proud Pack-Rhino": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. A shield counter or a proliferate on entry.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Planewide Celebration": {
+   "group": "Situational",
+   "text": "Leave/proliferate sweep 2026-11-05. Seven-mana four-mode spell (proliferate, tokens, life, recursion).",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -3739,6 +3967,120 @@
   "Weapons Manufacturing": {
    "R": {
     "m": "✗",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Suki, Courageous Rescuer": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Renegade Rallier": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Chandra, Spark Hunter": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Experimental Synthesizer": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Aether Revolt": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mouser Foundry": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pegasus Guardian // Rescue the Foal": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Blood Aspirant": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Evolution Sage": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Karn's Bastion": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Metastatic Evangel": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Cankerbloom": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Huatli's Raptor": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pollenbright Druid": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Contagion Engine": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Grateful Apparition": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Proud Pack-Rhino": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Planewide Celebration": {
+   "R": {
+    "m": "◇",
     "graded_at": "6c91e4d3961c"
    }
   }

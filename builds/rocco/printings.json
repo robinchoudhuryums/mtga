@@ -51,6 +51,7 @@
   }
  ],
  "Aerid Konstrari": [],
+ "Aether Revolt": [],
  "Aetherflux Reservoir": [
   {
    "a": "Cliff Childs",
@@ -96,14 +97,18 @@
  "Bilbo, Fellow Conspirator": [],
  "Bill the Pony": [],
  "Biotech Specialist": [],
+ "Blood Aspirant": [],
  "Bloombrute": [],
  "Bosco, Just a Bear": [],
  "Brimaz, King of Oreskos": [],
  "Bristlebud Farmer": [],
  "Bumi's Feast Lecture": [],
+ "Cankerbloom": [],
  "Caretaker's Talent": [],
  "Castle Doom": [],
  "Cat Collector": [],
+ "Chandra, Spark Hunter": [],
+ "Contagion Engine": [],
  "Courier of Comestibles": [],
  "Craterclaw Colossus": [],
  "Creeping Crystal Coating": [],
@@ -252,8 +257,10 @@
   }
  ],
  "Enduring Courage": [],
+ "Evolution Sage": [],
  "Exalted Sunborn": [],
  "Excalibur II": [],
+ "Experimental Synthesizer": [],
  "Feasting Troll King": [],
  "Felidar Retreat": [
   {
@@ -355,6 +362,7 @@
  "Glittering Stockpile": [],
  "Gloryheath Lynx": [],
  "Goldspan Dragon": [],
+ "Grateful Apparition": [],
  "Greenhouse Propagator": [],
  "Haliya, Guided by Light": [],
  "Heliod's Intervention": [],
@@ -363,6 +371,7 @@
  "Hobbit's Sting": [],
  "Honored Dreyleader": [],
  "Hook Swords": [],
+ "Huatli's Raptor": [],
  "Hungering Puppetbeast": [],
  "Hurska Sweet-Tooth": [],
  "Improvised Arsenal": [],
@@ -451,6 +460,7 @@
   }
  ],
  "Ka-Zar of the Savage Land": [],
+ "Karn's Bastion": [],
  "Karn, Legacy Reforged": [],
  "Karn, the Great Creator": [
   {
@@ -580,6 +590,7 @@
   }
  ],
  "Meriadoc Brandybuck": [],
+ "Metastatic Evangel": [],
  "Michelangelo, Game Master": [],
  "Michelangelo, the Heart": [],
  "Mindslaver": [],
@@ -588,6 +599,7 @@
  "Momo, Playful Pet": [],
  "Mondrak, Glory Dominus": [],
  "Motivated Muralist": [],
+ "Mouser Foundry": [],
  "Mowu, Loyal Companion": [
   {
    "a": "Kimonas Theodossiou",
@@ -676,10 +688,14 @@
   }
  ],
  "Pawpatch Formation": [],
+ "Pegasus Guardian // Rescue the Foal": [],
  "Pep, Raucous Raider": [],
  "Peregrin Took": [],
  "Pia Nalaar, Consul of Revival": [],
  "Pippin's Bravery": [],
+ "Planewide Celebration": [],
+ "Pollenbright Druid": [],
+ "Proud Pack-Rhino": [],
  "Provisions Merchant": [],
  "Purphoros, Bronze-Blooded": [
   {
@@ -713,6 +729,7 @@
  "Ragost, Deft Gastronaut": [],
  "Regal Caracal": [],
  "Release the Dogs": [],
+ "Renegade Rallier": [],
  "Resourceful Collector": [],
  "Revive the Shire": [],
  "Rin and Seri, Inseparable": [],
@@ -762,6 +779,7 @@
  "Spider Food": [],
  "Spider-Ham, Peter Porker": [],
  "Stew the Coneys": [],
+ "Suki, Courageous Rescuer": [],
  "Svella, Ice Shaper": [
   {
    "a": "Andrew Mar",
@@ -790,6 +808,7 @@
  ],
  "Swiftblade Vindicator": [],
  "Sword of Light and Shadow": [],
+ "Sword of Truth and Justice": [],
  "Syr Ginger, the Meal Ender": [],
  "T'Challa, the Black Panther": [],
  "Tarkir Duneshaper // Burnished Dunestomper": [],
