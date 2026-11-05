@@ -2178,6 +2178,191 @@
    "name": "Deathrite Shaman",
    "pile": "T",
    "src": "outside"
+  },
+  {
+   "name": "Chatterfang, Squirrel General",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Fiend Artisan",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Killmonger, Scourge of Wakanda",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Drag to the Roots",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Havengul Lich",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Six",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Victimize",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Tyvar's Stand",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Sultai Charm",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Skyfisher Spider",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Professor Dellian Fel",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Desperate Plea",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Status // Statue",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Abrupt Decay",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Annihilating Glare",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Deathsprout",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Back for More",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Ancient Greenwarden",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Thranduil's Company",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Cauldron of Essence",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Perennial Gravewarden",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Moon-Vigil Adherents",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Tyvar, the Pummeler",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Leaf-Leap Guide",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Distracted Botanist",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Freyalise, Skyshroud Partisan",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Advanced Floral Invocations",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Squirming Emergence",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Shandalar // Leyline Surge",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "See the Unwritten",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Scrounge for Eternity",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Glissa Sunslayer",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Elvish Elegy",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Jenova, Ancient Calamity",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Garruk, Apex Predator",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Regal Gorgon",
+   "pile": "T",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Relic Seeker",
+   "pile": "T",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -5588,6 +5773,302 @@
     "75-historic-brawl": "abfe943277aa",
     "96": "f86da0733f29"
    }
+  },
+  "Chatterfang, Squirrel General": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"If one or more tokens would be created … those tokens plus that many 1/1 … Squirrel tokens are created instead\" doubles Imperious Perfect, Tyvar Kell, Sidisi, Teval, Izoni, Insidious Roots, Morcant's Eyes and Lathril; with Leyline every Squirrel is an Elf (Lathril, Voice, Priest, the lords). \"{B}, Sacrifice X Squirrels: Target creature gets +X/-X\" is removal, and Thranduil borrows it from the yard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Fiend Artisan": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield\" — a tutor engine fed by tokens, and with Leyline Thranduil borrows it from the yard. Grows +1/+1 per creature card in the graveyard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Killmonger, Scourge of Wakanda": {
+   "group": "Interaction",
+   "text": "**Thranduil:** \"When Killmonger enters, you may sacrifice another creature. When you do, destroy target nonland permanent an opponent controls.\" Tokens pay it, Yarok doubles it (two kills), and every reanimation repeats it; +2/+1 once two creature cards are in the yard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Drag to the Roots": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Instant, \"Destroy target nonland permanent\"; delirium (four card types in the yard) makes it {B}{G}, which self-mill reaches early.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Havengul Lich": {
+   "group": "Recursion",
+   "text": "**Thranduil:** \"{1}: You may cast target creature card in a graveyard this turn\" — any graveyard, theirs included — and it gains that card's activated abilities; with Leyline Thranduil borrows it too. Casting an Elf out of your yard costs Thranduil that card's ability.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Six": {
+   "group": "Recursion",
+   "text": "**Thranduil:** \"During your turn, nonland permanent cards in your graveyard have retrace\" — cast them by discarding a land, which a mill deck has to spare; Twilight Diviner copies each one. Mills three on attack.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Victimize": {
+   "group": "Recursion",
+   "text": "**Thranduil:** 3 mana: sacrifice a creature (a token) and \"return the chosen cards to the battlefield tapped\" — two creatures back; Twilight Diviner copies one.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Tyvar's Stand": {
+   "group": "Protection",
+   "text": "**Thranduil:** {X}{G} instant: \"+X/+X and gains hexproof and indestructible\" — one mana protects Thranduil; the deck has only 4 protection pieces.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Sultai Charm": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Instant, three modes: \"Destroy target monocolored creature\", \"Destroy target artifact or enchantment\", or \"Draw two cards, then discard a card\" (a loot that stocks the yard). Interaction that is never dead.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Skyfisher Spider": {
+   "group": "Interaction",
+   "text": "**Thranduil:** \"When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\" Killmonger's trigger on a reach body; tokens pay it, Yarok doubles it, recursion repeats it. Dies: gain life per creature card in the yard (and exiles itself).",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Professor Dellian Fel": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Planeswalker: \"0: You draw a card and lose 1 life\", \"−3: Destroy target creature\", \"+2: You gain 3 life\" — a draw engine that is also removal.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Desperate Plea": {
+   "group": "Interaction",
+   "text": "**Thranduil:** 2 mana, sacrifice a creature: \"Choose one or both — return target creature card … if its power is less than or equal to the sacrificed creature's power; destroy target creature.\" Removal plus reanimation for a token.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Status // Statue": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Statue is an instant \"Destroy target artifact, creature, or enchantment\"; Status ({B/G}) gives deathtouch as a trick.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Abrupt Decay": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Uncounterable instant, \"Destroy target nonland permanent with mana value 3 or less\" — cheap, but capped.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Annihilating Glare": {
+   "group": "Interaction",
+   "text": "**Thranduil:** {B} sorcery, \"pay {4} or sacrifice an artifact or creature: Destroy target creature or planeswalker\" — one mana with a token.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Deathsprout": {
+   "group": "Interaction",
+   "text": "**Thranduil:** Instant, \"Destroy target creature. Search your library for a basic land card, put it onto the battlefield tapped\" — removal plus ramp; {1}{B}{B}{G}.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Back for More": {
+   "group": "Recursion",
+   "text": "**Thranduil:** 6-mana instant: \"Return target creature card from your graveyard to the battlefield. When you do, it fights up to one target creature you don't control.\" Reanimation that is also removal.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Ancient Greenwarden": {
+   "group": "Lands",
+   "text": "**Thranduil:** \"You may play lands from your graveyard\" and land-entering triggers trigger twice — doubles Thranduil, Sindarin Liege's Elf tokens and Thranduil's Company; pairs with Aftermath Analyst and Wrenn and Seven. 6 mana.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Thranduil's Company": {
+   "group": "Lands",
+   "text": "**Thranduil:** An Elf: \"you may play an additional land on each of your turns\" and \"Landfall — … put two +1/+1 counters on target creature\" — with lands coming back from the yard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Cauldron of Essence": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life\", and \"{1}{B}{G}, {T}, Sacrifice a creature: Return target creature card from your graveyard to the battlefield\" — tokens become drain and reanimation.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Perennial Gravewarden": {
+   "group": "Engine",
+   "text": "**Thranduil:** An Elf with menace that returns at end step \"if a creature entered and a creature died this turn\" — free sacrifice fodder that comes back.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Moon-Vigil Adherents": {
+   "group": "Body",
+   "text": "**Thranduil:** An Elf with trample, \"+1/+1 for each creature you control and each creature card in your graveyard\" — board power.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Tyvar, the Pummeler": {
+   "group": "Body",
+   "text": "**Thranduil:** A legendary Elf (Thranduil's draw-two); \"{3}{G}{G}: Creatures you control get +X/+X … where X is the greatest power\" is a finisher Thranduil can borrow from the yard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Leaf-Leap Guide": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"{1}, {T}: Return another target creature you control to its owner's hand\" re-buys Killmonger, Skyfisher and Thornmantle; grows with each creature entering. Not an Elf without Leyline.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Distracted Botanist": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"When this creature dies, permanent cards in your graveyard perpetually gain 'When this permanent enters, you draw a card and gain 1 life'\" — every reanimation draws afterwards.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Freyalise, Skyshroud Partisan": {
+   "group": "Engine",
+   "text": "**Thranduil:** \"+1: Untap up to one target Elf\" untaps Thranduil for a second borrowed ability; \"−1: Seek an Elf card.\"",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Advanced Floral Invocations": {
+   "group": "Recursion",
+   "text": "**Thranduil:** {B/G} Class: landfall mill 2; level 3 \"You may play lands and cast creature spells from your graveyard.\"",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Squirming Emergence": {
+   "group": "Recursion",
+   "text": "**Thranduil:** 3 mana: return \"target nonland permanent card in your graveyard with mana value less than or equal to the number of permanent cards in your graveyard\" — almost anything in a mill deck.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Invasion of Shandalar // Leyline Surge": {
+   "group": "Recursion",
+   "text": "**Thranduil:** \"When this Siege enters, return up to three target permanent cards from your graveyard to your hand.\"",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "See the Unwritten": {
+   "group": "Engine",
+   "text": "**Thranduil:** Look at eight, put one (two with a 4-power creature) onto the battlefield, \"Put the rest into your graveyard\" — a dig that also mills seven.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Scrounge for Eternity": {
+   "group": "Recursion",
+   "text": "**Thranduil:** Sacrifice a creature: return a creature card with mana value 5 or less, plus a Lander token.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Glissa Sunslayer": {
+   "group": "Body",
+   "text": "**Thranduil:** A legendary Elf (draw-two) with first strike and deathtouch; on combat damage draws, destroys an enchantment or removes counters.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Elvish Elegy": {
+   "group": "Engine",
+   "text": "**Thranduil:** {B/G}: \"Mill three cards, then each creature card in your graveyard perpetually gets +1/+1\" — every reanimation comes back bigger; may keep an Elf or land.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "group": "Engine",
+   "text": "**Thranduil:** Puts counters equal to its power on a creature each combat and makes it a Mutant; \"Whenever a Mutant you control dies during your turn, you draw cards equal to its power\" — sacrifice it to Yawgmoth or Izoni.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Garruk, Apex Predator": {
+   "group": "Interaction",
+   "text": "**Thranduil:** 7 mana: +1 a 3/3 deathtouch Beast or destroy a planeswalker, −3 destroy a creature. A bomb at the top of the curve.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Vraska, Regal Gorgon": {
+   "group": "Interaction",
+   "text": "**Thranduil:** 7 mana: −3 destroy a creature; +2 counters and menace; −10 counters per creature card in the yard.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
+  },
+  "Vraska, Relic Seeker": {
+   "group": "Interaction",
+   "text": "**Thranduil:** 6 mana: +2 a 2/2 menace Pirate, −3 destroy an artifact, creature or enchantment and make a Treasure.",
+   "graded_at": {
+    "75-historic-brawl": "9eec51ae8b81",
+    "96": "513dca9a9ac1"
+   }
   }
  },
  "verdicts": {
@@ -6883,8 +7364,8 @@
   },
   "Kels, Fight Fixer": {
    "T": {
-    "m": "★",
-    "graded_at": "abfe943277aa"
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "△",
@@ -7803,8 +8284,8 @@
   },
   "Abomination of Llanowar": {
    "T": {
-    "m": "△",
-    "graded_at": "abfe943277aa"
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "✗",
@@ -7813,8 +8294,8 @@
   },
   "Dina, Essence Brewer": {
    "T": {
-    "m": "★",
-    "graded_at": "abfe943277aa"
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "△",
@@ -7973,8 +8454,8 @@
   },
   "Ygra, Eater of All": {
    "T": {
-    "m": "◇",
-    "graded_at": "abfe943277aa"
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "△",
@@ -8524,7 +9005,7 @@
   "Vivien, Monsters' Advocate": {
    "T": {
     "m": "★★",
-    "graded_at": "abfe943277aa"
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "△",
@@ -9313,8 +9794,8 @@
   },
   "Fatal Push": {
    "T": {
-    "m": "◇",
-    "graded_at": "abfe943277aa"
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "◇",
@@ -9623,8 +10104,8 @@
   },
   "Assassin's Trophy": {
    "T": {
-    "m": "★★",
-    "graded_at": "abfe943277aa"
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "★★★",
@@ -9754,7 +10235,7 @@
   "Bitter Triumph": {
    "T": {
     "m": "★★",
-    "graded_at": "abfe943277aa"
+    "graded_at": "9eec51ae8b81"
    },
    "G": {
     "m": "★★",
@@ -9850,6 +10331,422 @@
     "m": "★",
     "graded_at": "f86da0733f29"
    }
+  },
+  "Chatterfang, Squirrel General": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Fiend Artisan": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Killmonger, Scourge of Wakanda": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Drag to the Roots": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Havengul Lich": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Six": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Victimize": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Tyvar's Stand": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Sultai Charm": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Skyfisher Spider": {
+   "T": {
+    "m": "★★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Professor Dellian Fel": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Desperate Plea": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Status // Statue": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Abrupt Decay": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Annihilating Glare": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Deathsprout": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Back for More": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Ancient Greenwarden": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Thranduil's Company": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Cauldron of Essence": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Perennial Gravewarden": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Moon-Vigil Adherents": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Tyvar, the Pummeler": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Leaf-Leap Guide": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Distracted Botanist": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Freyalise, Skyshroud Partisan": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Advanced Floral Invocations": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Squirming Emergence": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Invasion of Shandalar // Leyline Surge": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "See the Unwritten": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Scrounge for Eternity": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Glissa Sunslayer": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Elvish Elegy": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Garruk, Apex Predator": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Vraska, Regal Gorgon": {
+   "T": {
+    "m": "★★",
+    "graded_at": "9eec51ae8b81"
+   }
+  },
+  "Vraska, Relic Seeker": {
+   "T": {
+    "m": "★",
+    "graded_at": "9eec51ae8b81"
+   }
+  }
+ },
+ "snapshots": {
+  "75-historic-brawl": {
+   "9eec51ae8b81": [
+    "Black Widow, Daring Operative",
+    "Blooming Marsh",
+    "Botanical Sanctum",
+    "Breeding Pool",
+    "Cantankerous Keepers",
+    "Circle of Dreams Druid",
+    "Clearwater Pathway // Murkwater Pathway",
+    "Cloud of Darkness",
+    "Command Tower",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Darkslick Shores",
+    "Deathbloom Ritualist",
+    "Deathrite Shaman",
+    "Dionus, Elvish Archdruid",
+    "Drowned Catacomb",
+    "Eclipsed Realms",
+    "Eladamri, Korvecdal",
+    "Elrond, Moon-Reader",
+    "Elvish Archdruid",
+    "Elvish Mystic",
+    "Fauna Shaman",
+    "Forest",
+    "Garruk, Caller of Beasts",
+    "Go for the Throat",
+    "Harald Unites the Elves",
+    "Heartless Act",
+    "Hedge Maze",
+    "High Perfect Morcant",
+    "Hinterland Harbor",
+    "Imperious Perfect",
+    "Infernal Grasp",
+    "Insidious Roots",
+    "Invasion of Ikoria // Zilortha, Apex of Ikoria",
+    "Ioreth of the Healing House",
+    "Island",
+    "Izoni, Thousand-Eyed",
+    "Journey to Eternity // Atzal, Cave of Eternity",
+    "Kagha, Shadow Archdruid",
+    "Kamahl's Druidic Vow",
+    "Kinnan, Bonder Prodigy",
+    "Kotis, Sibsig Champion",
+    "Lathril, Blade of the Elves",
+    "Leader, Super-Genius",
+    "Leaf-Crowned Visionary",
+    "Leovold, Emissary of Trest",
+    "Leyline of Transformation",
+    "Liliana, Death Mage",
+    "Llanowar Wastes",
+    "Lluwen, Imperfect Naturalist",
+    "Madame Hydra, Reanimated",
+    "Maralen, Fae Ascendant",
+    "Marwyn, the Nurturer",
+    "Morcant's Eyes",
+    "Muldrotha, the Gravetide",
+    "Nashi, Illusion Gadgeteer",
+    "Nissa of Shadowed Boughs",
+    "Oasis of Renewal",
+    "Overgrown Tomb",
+    "Price of Fame",
+    "Priest of Titania",
+    "Prototype X-8",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sheoldred // The True Scriptures",
+    "Sidisi, Brood Tyrant",
+    "Sin, Spira's Punishment",
+    "Swamp",
+    "Tamiyo, Compleated Sage",
+    "Teval, the Balanced Scale",
+    "The Cloning of Shredder",
+    "Thranduil, Sindarin Liege",
+    "Thranduil, the Elvenking",
+    "Trystan's Command",
+    "Trystan, Callous Cultivator",
+    "Tyvar Kell",
+    "Tyvar the Bellicose",
+    "Undercity Sewers",
+    "Underground Mortuary",
+    "Underground River",
+    "Voice of the Woods",
+    "Vraska, Golgari Queen",
+    "Wastewood Verge",
+    "Watery Grave",
+    "Woodland Cemetery",
+    "Woodland Weavemaster",
+    "Wrenn and Realmbreaker",
+    "Wrenn and Seven",
+    "Yarok, the Desecrated",
+    "Yavimaya Coast",
+    "Yawgmoth's Vile Offering",
+    "Yawgmoth, Thran Physician",
+    "Zagoth Triome"
+   ]
+  },
+  "96": {
+   "513dca9a9ac1": [
+    "Absorbing Man",
+    "Altar of Dementia",
+    "Ashiok, Nightmare Muse",
+    "Ashiok, Nightmare Weaver",
+    "Ashiok, Sculptor of Fears",
+    "Barkchannel Pathway // Tidechannel Pathway",
+    "Bilbo, Thief in the Night",
+    "Blooming Marsh",
+    "Botanical Sanctum",
+    "Breeding Pool",
+    "Bruvac the Grandiloquent",
+    "Cankerbloom",
+    "Clearwater Pathway // Murkwater Pathway",
+    "Command Tower",
+    "Consuming Aberration",
+    "Cut Your Losses",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Darkslick Shores",
+    "Deepmuck Desperado",
+    "Defiler of Dreams",
+    "Didn't Say Please",
+    "Drown in the Loch",
+    "Drowned Catacomb",
+    "Echocasting Symposium",
+    "Erebos, God of the Dead",
+    "Flux Channeler",
+    "Forest",
+    "Fraying Sanity",
+    "Glarb, Calamity's Augur",
+    "Gloomlake Verge",
+    "Hedge Maze",
+    "Hinterland Harbor",
+    "Ichormoon Gauntlet",
+    "Immortus, Master of Eternity",
+    "Insidious Roots",
+    "Ioreth of the Healing House",
+    "Island",
+    "Jace, Memory Adept",
+    "Jace, Wielder of Mysteries",
+    "Jace, the Perfected Mind",
+    "Jidoor, Aristocratic Capital // Overture",
+    "Jin-Gitaxias // The Great Synthesis",
+    "Kasmina, Enigma Sage",
+    "Krang, the All-Powerful",
+    "Lithoform Engine",
+    "Llanowar Wastes",
+    "Lord of the Forsaken",
+    "M.O.D.O.K., Evil Intellect",
+    "Malcolm, Alluring Scoundrel",
+    "Master's Councillors",
+    "Matoya, Archon Elder",
+    "Nissa, Voice of Zendikar",
+    "Ob Nixilis Reignited",
+    "Ominous Seas",
+    "One Ring to Rule Them All",
+    "Overgrown Tomb",
+    "Phenax, God of Deception",
+    "Planetarium of Wan Shi Tong",
+    "Reed Richards, Smartest Man",
+    "Reject Imperfection",
+    "Restless Reef",
+    "Riverchurn Monument",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Scavenger's Talent",
+    "Sheoldred // The True Scriptures",
+    "Sheoldred, the Apocalypse",
+    "Sphinx's Tutelage",
+    "Sunken Hollow",
+    "Swamp",
+    "Tainted Observer",
+    "Teferi's Tutelage",
+    "Teferi, Temporal Pilgrim",
+    "Terisian Mindbreaker",
+    "Tezzeret the Schemer",
+    "The Mycotyrant",
+    "The Theorist, Jace Beleren",
+    "The Water Crystal",
+    "Thryx, the Sudden Storm",
+    "Tireless Provisioner",
+    "Undercity Sewers",
+    "Underground Mortuary",
+    "Underground River",
+    "Villainous Wealth",
+    "Vraska, Betrayal's Sting",
+    "Vraska, Golgari Queen",
+    "Waterlogged Grove",
+    "Watery Grave",
+    "Way of the Necromancer",
+    "Willowrush Verge",
+    "Woodland Cemetery",
+    "Yavimaya Coast",
+    "Yawgmoth's Vile Offering",
+    "Zagoth Triome"
+   ]
   }
  }
 }
