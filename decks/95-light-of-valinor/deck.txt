@@ -28,7 +28,7 @@
 #: archetype: draws on every creature entering. DISTINCT from deck 78 (Bant, but Ally trigger-doubling in combat)
 #: archetype: and deck 94 (Simic counters): this one is a value-blink engine.
 #: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
-#: tier: A — owner's call, 2026-11-05, matching the metrics floor: the deck has interaction 12 and card advantage
+#: tier: A — owner's call, 2026-11-05, matching the metrics floor: the deck has interaction 13 and card advantage
 #: tier: 12, on the A line scaled to 100 cards, so cutting an interaction piece drops the floor to B. What the floor
 #: tier: cannot see: every blink re-fires an enters trigger, and Y'shtola, Silver Surfer, Elesh Norn and Panharmonicon
 #: tier: multiply them, so Galadriel's modes (mana, a team counter, scry-and-draw) pay out several times a turn.

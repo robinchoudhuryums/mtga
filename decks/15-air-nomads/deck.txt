@@ -2,14 +2,14 @@
 #: format: Standard
 #: arena: 15 Air Nomads, 8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d
 #: tier: B — Azorius fliers tempo, re-grounded 2026-10-17 after a twelve-swap pass. The
-#: tier: measurable floor reads A: interaction 7 plus card advantage 7 at a 3.11 curve.
+#: tier: measurable floor reads A: interaction 8 plus card advantage 7 at a 3.11 curve.
 #: tier: Kept at B, one band below the floor, as a deliberate call like 35a and 21a: this is
 #: tier: a flavour-first singleton build with a DIFFUSE spine (21 central themes), and the
 #: tier: pass is unplayed. What it fixed: protection 1 -> 5 (Liliana the Faultless's
 #: tier: hexproof, Moogles' Valor's team indestructible, Sheltered by Ghosts' ward, Hakoda), three Gleaming Bastions
 #: tier: for basics (cards below 90% on curve 23 -> 17), and a lifegain/token layer —
 #: tier: Exalted Sunborn doubles every token, The Wind Crystal doubles every life gain and
-#: tier: gives the whole board flying and lifelink. What still argues down: only 3 of the 7
+#: tier: gives the whole board flying and lifelink. What still argues down: only 3 of the 8
 #: tier: interaction pieces answer a noncreature permanent.
 #: colors: WU
 #: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo, going WIDE with Ally tokens

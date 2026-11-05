@@ -23,7 +23,7 @@
 #: tier: WHAT ARGUES UP: card advantage went 2 -> 3 on a card the classifier UNDER-reads badly —
 #: tier:    Inspiring Call draws one per countered creature, which in a deck multiplying counters
 #: tier:    is routinely three or four cards for {2}{G}. `shape` reads BALANCED 6 / 7 on 21
-#: tier: creatures with 14 early drops: the 2026-10-12 earthbend package added a TALL route. The
+#: tier: creatures with 12 early drops: the 2026-10-12 earthbend package added a TALL route. The
 #: tier: kill is redundant five ways (Craterhoof, Jumbo Cactuar, Colossification, Famished
 #: tier: Worldsire, and an earthbent land creature under the counter multipliers) rather than one
 #: tier: card deep, and no metric here can see mana PRODUCTION, which is the deck's real engine.

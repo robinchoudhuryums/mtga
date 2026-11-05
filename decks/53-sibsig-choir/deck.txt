@@ -11,7 +11,7 @@
 #: tier:     word: WIDE 10 against tall 5, on ten distinct effects that scale with creature
 #: tier:     COUNT. Tokens feed anthems, anthems make the tokens a clock, and the removal
 #: tier:     suite feeds Gisa by committing a crime every turn.
-#: tier:   TIGHT CURVE — borderline. 3.56 average on 7 early drops, and it UNDER-reads
+#: tier:   TIGHT CURVE — borderline. 3.56 average on 6 early drops, and it UNDER-reads
 #: tier:     because Dread Summons books as MV 1 (X counts as 0); you cast it for four or
 #: tier:     five. The 2026-08 pass cost 0.20 of curve and two early drops for three
 #: tier:     stronger cards; watch this axis before the next add.

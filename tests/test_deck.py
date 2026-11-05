@@ -8499,3 +8499,85 @@ class TestPowerOnlyShrinkIsNotRemoval:
                      "Target creature an opponent controls gets -X/-X until end of turn, where X is 3.",
                      "Target creature gets -5/-1 until end of turn."):
             assert "Removal (spot)" in deck.classify_roles(text), text
+
+
+class TestRoleHoles20261105:
+    """Six recorded G-67 holes closed 2026-11-05, each pinned on the card's real text plus a
+    NEGATIVE neighbour, since a widened pattern that matches everything passes a positive test."""
+
+    def test_non_type_damage_sweep(self):
+        t = "II — This Saga deals 2 damage to each non-Villain creature and each opponent."
+        assert "Sweeper" in deck.classify_roles(t)                       # Avengers: Under Siege
+        assert "Sweeper" not in deck.classify_roles("This deals 2 damage to each opponent.")
+
+    def test_self_exile_and_each_opposing_creature(self):
+        t = ("0: If you have at least 15 life more than your starting life total, exile Ajani "
+             "and each artifact and creature your opponents control.")
+        assert "Sweeper" in deck.classify_roles(t)                       # Ajani, Strength of the Pride
+        assert "Sweeper" not in deck.classify_roles("Exile Ajani and each card in your graveyard.")
+
+    def test_chosen_opposing_permanents_exiled(self):
+        t = ("I — Starting with you, each player chooses up to one permanent with mana value 3 or "
+             "greater from among permanents your opponents control. Exile those permanents.")
+        assert "Removal (spot)" in deck.classify_roles(t)                # The Legend of Yangchen
+
+    def test_power_damage_to_up_to_one_other_target(self):
+        t = ("Whenever this creature attacks, it deals damage equal to its power to up to one other "
+             "target creature. Excess damage is dealt to that creature's controller instead.")
+        assert "Removal (spot)" in deck.classify_roles(t)                # Ravenous Tyrannosaurus
+        assert "Removal (spot)" not in deck.classify_roles(
+            "It deals damage equal to its power to up to one target player.")
+
+    def test_coloured_pip_cost_reduction(self):
+        t = ("The first instant or sorcery spell you cast each turn costs {U} (or {1}) less to cast "
+             "for each land you control with a flood counter on it.")
+        assert "Cost reduction / cheat" in deck.classify_roles(t)        # Eluge
+        assert "Cost reduction / cheat" not in deck.classify_roles("This spell costs {U} less to cast.")
+
+    def test_triggered_scaling_mana_is_ramp(self):
+        t = ("At the beginning of each player's first main phase, that player may put a +1/+1 counter "
+             "on this creature. If they do, they add {C} for each counter on it.")
+        assert "Ramp / fixing" in deck.classify_roles(t)                 # Cheering Crowd
+
+    def test_proliferate_is_an_engine(self):
+        assert "Payoff / engine" in deck.classify_roles("Tap three untapped Elves you control: Proliferate.")
+
+
+class TestTypedMvGate:
+    """`targets` gained the typed non-creature MV cap (2026-11-05). The negatives are the
+    two shapes the first measurement got wrong: a wipe naming "creature and planeswalker
+    cards", and a "total mana value" the row above already owns."""
+
+    def _gate(self, text):
+        for rx, label, kind in deck._TARGET_GATES:
+            if kind == "type_mv":
+                m = rx.search(text)
+                return m and m.groups()
+        raise AssertionError("no type_mv gate")
+
+    def test_tutor_and_recursion_caps_are_read(self):
+        assert self._gate("−3: Search your library for an artifact card with mana value 1 or less, "
+                          "reveal it, put it into your hand, then shuffle.") == ("artifact", "1")
+        assert self._gate("When this enchantment enters, return target nonland permanent card with "
+                          "mana value 3 or less from your graveyard to the battlefield.") == ("nonland permanent", "3")
+
+    def test_a_wipe_and_a_total_are_not_this_gate(self):
+        assert not self._gate("Exile all creatures and planeswalkers with mana value 3 or less from the "
+                              "battlefield and all creature and planeswalker cards with mana value 3 or "
+                              "less from all graveyards.")
+        assert not self._gate("Put any number of nonland permanent cards with total mana value 4 or less "
+                              "from among them onto the battlefield.")
+        assert not self._gate("Return up to one target artifact, creature, or non-Aura enchantment card "
+                              "with mana value 3 or less from your graveyard to the battlefield.")
+
+
+class TestXSpellIsNotAnEarlyDrop:
+    """An {X} spell books at X = 0 (G-60), so `early_drops` counted {X}{R} as a one-drop;
+    66 roster decks over-read their early game until 2026-11-05 (0 tier floors moved)."""
+
+    def test_x_spell_is_excluded_and_a_real_two_drop_counts(self, tmp_path):
+        p = tmp_path / "x.txt"
+        p.write_text("#: name: X test\n#: format: Standard\n#: colors: R\n"
+                     "1 Hell to Pay (DSK) 140\n1 Shock (FDN) 93\n", encoding="utf-8")
+        vec = deck.deck_quality_vector(deck.find_deck(str(p), allow_path=True))
+        assert vec["early_drops"] == 1

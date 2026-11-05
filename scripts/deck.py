@@ -2047,6 +2047,9 @@ _ROLE_PATTERNS = {
         # noncreature-answer profile. Anchoring on the anaphor is precise on its own —
         # "destroy/exile the chosen <permanent>" only ever appears in removal text.
         r"(?:destroy|exile) the chosen (?:permanent|creature|card|artifact|enchantment)",
+        # "…chooses up to one permanent … from among permanents your opponents control.
+        # Exile those permanents." (The Legend of Yangchen, chapter I — 2026-11-05).
+        r"permanents? (?:your opponents|an opponent) controls?\. (?:destroy|exile) (?:those|that|the chosen) (?:permanents?|creatures?)",
         # The `(?!(?:player|opponent)\b(?! or planeswalker))` guard mirrors the one the
         # scaling-damage sibling below documents as load-bearing: "deals N damage to
         # target OPPONENT/PLAYER" is reach, not an answer, and this fixed-damage twin
@@ -2099,7 +2102,7 @@ _ROLE_PATTERNS = {
         # Measured against the whole pool: 8 matches, zero false positives — the player
         # guard is kept anyway, since "to up to one target player" is the same reach the
         # sibling patterns exclude.
-        r"deals? damage equal to [^.]{0,80}?to up to \w+ (?:another )?target (?!player|opponent)\w+",
+        r"deals? damage equal to [^.]{0,80}?to up to \w+ (?:an)?(?:other )?target (?!player|opponent)\w+",
         # TARGET-FIRST word order. The two patterns above both assume "equal to X"
         # precedes "to target"; Magic also templates it the other way round, and that
         # half was a whitelist hole (G-67). Triumphant Chomp — "deals damage to target
@@ -2235,7 +2238,14 @@ _ROLE_PATTERNS = {
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? (?:\d+|x) damage to each (?:other )?creature",
+                # `non-<type>` (2026-11-05): "2 damage to each NON-VILLAIN creature and each
+                # opponent" (Avengers: Under Siege) is a one-sided sweep the bare form missed.
+                r"deals? (?:\d+|x) damage to each (?:other )?(?:non-?[a-z]+ )?creature",
+                # "exile Ajani AND EACH artifact and creature your opponents control"
+                # (Ajani, Strength of the Pride's 0): the self-exile names the card first, so
+                # the "exile each …" pattern below never sees its verb (2026-11-05).
+                r"(?:destroy|exile) [^.]{0,30}?\band each [^.]{0,40}?(?:creatures?|permanents?)"
+                r" (?:your opponents control|you don't control)",
                 # ONE-SIDED damage sweep (K-12, 2026-10-01). The symmetric pattern above
                 # needs "damage to each creature" contiguous, so the templating that names
                 # the OPPONENT first — "deals X damage to each opponent and each creature
@@ -2656,6 +2666,9 @@ _ROLE_PATTERNS = {
                        r"(?m)^[^\n:]{0,40}:[^.\n]{0,40}?empower jace (?:\d+|x)\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
+                      # TRIGGERED mana that scales ("they add {C} for each counter on it" —
+                      # Cheering Crowd) has no {T}: cost and scored nothing (2026-11-05).
+                      r"\badds? \{[wubrgc]\}(?:\{[wubrgc]\})* for each",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
                       # ANY-COLOUR MANA. The pattern above requires a literal `{` right
                       # after "add", so it reads "{T}: Add {G}" and misses "{T}: Add one
@@ -2729,6 +2742,10 @@ _ROLE_PATTERNS = {
         # is what the REST of the deck does is a payoff by definition; the doubler AXIS
         # (`doubler_support`) is a separate, deliberately untaken question.
         r"triggers an additional time",
+        # PROLIFERATE (2026-11-05) multiplies every counter the rest of the deck puts down —
+        # the replacement-multiplier argument below, one mechanic over. 70 pool cards, 31 of
+        # which scored no role at all (High Perfect Morcant, Contagion Engine, Thrummingbird).
+        r"\bproliferate\b",
         # REPLACEMENT MULTIPLIERS (2026-10-23): "twice that many … instead" / "that many plus
         # one … instead" — Doubling Season, Hardened Scales, Vorinclex, Parallel Lives,
         # Anointed Procession, Branching Evolution, Ozolith. The same argument as the trigger
@@ -2820,7 +2837,9 @@ _ROLE_PATTERNS = {
         # BS8-29: 263 of 810 hits were a card discounting ITSELF ("this spell costs {1}
         # less to cast for each…", "this ability costs {1} less") — self-pricing, not a
         # cost-reduction engine, and an IMPACT role worth +6 in `cuts`.
-        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{[0-9x]+\} less",
+        # A coloured-pip reduction (Eluge: "costs {U} (or {1}) less") is the same engine;
+        # the numeric-only braces missed it (2026-11-05).
+        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{(?:[0-9x]+|[wubrgc])\}\s+(?:\(or \{1\}\)\s+)?less",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -14200,7 +14219,10 @@ def deck_quality_vector(d):
             entry = mana.get(nl)
             if entry and entry[1] is not None:
                 mvs += [entry[1]] * q
-                if entry[1] <= 2:
+                # An {X} spell books at X = 0 (G-60), so a {X}{R} burn spell read as a
+                # one-drop; it is cast late for a real X, not on turn one or two. Front-face
+                # cost, like the MV beside it (2026-11-05).
+                if entry[1] <= 2 and "{x}" not in front_face_cost(entry[0] or "").lower():
                     early += q
                     # A cheap MANA SOURCE is not a cheap THREAT, and `early_drops`
                     # counts them alike — which is how a curve argument gets made from
@@ -17221,6 +17243,17 @@ _TARGET_GATES = [
     (re.compile(r"(?:creature (?:or \w+ )?cards?\b[^.]{0,60}?\b|creatures? you control with )"
                 r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
     (re.compile(r"total mana value (\d+) or less", re.I), "cards totalling MV ≤{0}", "mv"),
+    # The TYPED non-creature cap (2026-11-05): "nonland permanent card with mana value 3 or
+    # less" (Season of the Burrow), "artifact card with mana value N or less" (Tezzeret,
+    # Cruel Captain). The creature gate above is scoped to creature cards on purpose, so
+    # these pool cards (7 in the roster) reported no gate at all. `(?<!or )` leaves a
+    # "creature or planeswalker card" to the creature gate rather than reporting it twice;
+    # `(?<!and )` keeps out Shadows' Verdict's "all creature and planeswalker cards" (a wipe,
+    # 106 false unmet flags in the first measurement); `(?<!total )` leaves "total mana
+    # value" to the row above; `(?<!aura )` refuses half of "non-Aura enchantment card" (Excava).
+    (re.compile(r"(?<!or )(?<!and )(?<!aura )\b((?:nonland |noncreature )?(?:permanent|artifact|enchantment|planeswalker)"
+                r"(?: or (?:artifact|enchantment|planeswalker))?) cards?\b[^.]{0,60}?(?<!total )\bmana value (\d+) or less",
+                re.I), "{0} cards MV ≤{1}", "type_mv"),
     (re.compile(r"sacrifice (?:an artifact or creature|a creature or artifact)", re.I),
      "artifacts + creatures to sacrifice", "sac_ac"),
     (re.compile(r"sacrifice (?:a|another) creature", re.I), "creatures to sacrifice", "sac_c"),
@@ -17503,6 +17536,21 @@ def target_counts(cards, carddata, mana):
             if kind == "mv":
                 hits = [o for o in others if "creature" in o["type"]
                         and o["mv"] is not None and o["mv"] <= num]
+            elif kind == "type_mv":
+                words = groups[0].lower().split()
+                cap = int(groups[1])
+                kinds = [w for w in words if w in ("permanent", "artifact", "enchantment", "planeswalker")]
+
+                def _fits(o, kinds=kinds, words=words):
+                    t = o["type"]
+                    if "nonland" in words and "land" in t.split():
+                        return False
+                    if "noncreature" in words and "creature" in t.split():
+                        return False
+                    if "permanent" in kinds:
+                        return not {"instant", "sorcery"} & set(t.split())
+                    return any(lib.type_matches(t, k) for k in kinds)
+                hits = [o for o in others if _fits(o) and o["mv"] is not None and o["mv"] <= cap]
             elif kind == "sac_ac":
                 hits = [o for o in others
                         if "creature" in o["type"] or "artifact" in o["type"]

@@ -41,7 +41,6 @@ Ashroot Animist
 Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
-Avengers: Under Siege
 Azula, Cunning Usurper
 Badgermole
 Ball Lightning
@@ -54,7 +53,6 @@ Biotech Specialist
 Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
-Bloated Contaminator
 Bloodthirsty Conqueror
 Blooming Cactusfolk
 Body of Research
@@ -84,11 +82,9 @@ Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
 Chatterfang, Squirrel General
-Cheering Crowd
 Claim Jumper
 Collector's Vault
 Colossification
-Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -138,7 +134,6 @@ Echo, Perceptive Prodigy
 Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
-Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
 Encumbered Reejerey
@@ -183,7 +178,6 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Ghoulcaller Gisa
 Giant Cindermaw
-Giant-Man, Gargantuan Genius
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
@@ -213,14 +207,12 @@ Hellrider
 Herald of Eternal Dawn
 Herald of Secret Streams
 High Fae Trickster
-High Perfect Morcant
 Honden of Night's Reach
 Honored Knight-Captain
 Hop to It
 Hornet Queen
 Hour of Victory
 How to Start a Riot
-Huatli's Raptor
 Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
@@ -282,7 +274,6 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
-Merfolk Skydiver
 Miasmic Mummy
 Mind Transfer Protocol
 Miner's Guidewing
@@ -354,7 +345,6 @@ Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
-Ravenous Tyrannosaurus
 Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
@@ -365,7 +355,6 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
-Roalesk, Apex Hybrid
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -480,7 +469,6 @@ Unstoppable Slasher
 Valentina Allegra de Fontaine
 Vastlands Scavenger // Bind to Life
 Venomized Cat
-Venomous Brutalizer
 Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer

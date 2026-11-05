@@ -62,9 +62,9 @@
 #: tier:     the 2026-08 pass — the redundant copies were spent on interaction, which is
 #: tier:     where a singleton reanimator actually runs short.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.22 on 9 early drops, and that average UNDER-reads because Stargaze
+#: tier:     MV 4.22 on 8 early drops, and that average UNDER-reads because Stargaze
 #: tier:     books as MV 1 (X counts as 0). It is still the slowest list on this branch,
-#: tier:     and 9 early drops is the number to watch: across fifteen swaps it has run
+#: tier:     and 8 early drops is the number to watch: across fifteen swaps it has run
 #: tier:     11 -> 9 -> 10 -> 9 -> 11 -> 10 -> 9 while avg MV moved 4.28 -> 4.42 -> 4.22.
 #: tier:     Every repair has come from CHEAP cards (Maximum Overdrive, Iron-Shield Elf)
 #: tier:     replacing expensive redundant ones, and every relapse from swapping a two-drop

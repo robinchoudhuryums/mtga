@@ -7,7 +7,7 @@
 #: tier: (ungraded — new build, grade after a play session)
 #: archetype: Izzet (U/R) artifact POISON. Variant of 26 Iron Colossi: where core 26 ramps into a
 #: archetype: few enormous bodies, this deck fields CHEAP EVASIVE ones and converts their chip
-#: archetype: damage into a real clock (avg MV 2.97, 14 early drops, 23 evasive creatures — Mechan Navigator's cut for Esoteric Duplicator moved both figures 2026-08-23).
+#: archetype: damage into a real clock (avg MV 2.97, 13 early drops, 23 evasive creatures — Mechan Navigator's cut for Esoteric Duplicator moved both figures 2026-08-23).
 #: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
 #: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
 #: archetype: (Falcon's Wing Harness, Iron Man Armor, Mind Transfer Protocol,
