@@ -1,14 +1,13 @@
 # Rocco pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** A new Historic Brawl deck (proposed deck 97), commander **Rocco, Street
+**Status: DRAFTED as deck 97 (Street Feast), 2026-11-05; Builder board `builds/rocco` published.** Owner picks pending. A new Historic Brawl deck (proposed deck 97), commander **Rocco, Street
 Chef** (MAT) 44, `{R}{G}{W}`. The owner's brief: Food first, Dog and Cat subthemes, watch for
 other synergies. Delete this doc once the deck is drafted and its findings are folded into the
 deck file's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** 171 cards (the owner's message, 2026-11-05). 54 already sit in other decks; for
 a NEW deck they are still candidates (the collection is shared), so all 171 are graded.
-**Builder project:** created once the draft deck file exists (`builder.py new` grades against a
-deck; there is none yet).
+**Builder project:** `builds/rocco` (deck 97), board https://claude.ai/artifact/EAzBxG8zy9VCQMuFejDKwH.
 
 ## 1. The decision framework
 
@@ -342,6 +341,8 @@ Biotech Specialist (each crack is damage).
 - `engines`' Food PAYOFF side misses "Sacrifice three Foods" (Peregrin Took, Samwise) and every
   "sacrifice an artifact" payoff that eats Foods (Biotech, Krenko, Shrapnel Blast, Vision of Love):
   it reads 6 Food payoffs on a list holding about 15.
+- Heliod's Intervention ("Destroy X target artifacts and/or enchantments") scores no role: the
+  X-count target is outside the Removal patterns.
 
 ### Open questions for the owner
 

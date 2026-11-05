@@ -38,3 +38,4 @@ credentials*.json
 tools/mods/*/.claude-plugin/types/
 tools/mods/*/tsconfig.json
 .cycle/board/img/
+.cycle/board-rocco/img/

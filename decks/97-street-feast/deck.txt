@@ -1,0 +1,135 @@
+#: name: Street Feast
+#: format: Historic Brawl
+#: colors: WRG
+#: commander: Rocco, Street Chef
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), NAYA FOOD around Rocco, Street Chef:
+#: archetype: each end step every player exiles their top card and may play it, and every play from exile — by
+#: archetype: ANY player — is our +1/+1 counter and our Food. The engine is what we do with the Foods: Peregrin
+#: archetype: Took and Tippy-Toe add a Food to every token we create, Mondrak doubles them, Pia Nalaar, Consul of Revival, makes a
+#: archetype: Thopter for each play from exile; Sam, Loyal Attendant and Mutagen Man each take {1} off a Food
+#: archetype: crack, so with both a crack is free. Each Food then pays three ways: Biotech Specialist (2 damage
+#: archetype: per artifact sacrificed), Haliya and Teething Wurmlet (life when an artifact enters), and the
+#: archetype: lifegain-into-cards layer (Tippy-Toe, Well of Lost Dreams, Belladonna Took, Kwia's Lotus). Cats
+#: archetype: and Dogs are the body layer: Brimaz, Leonin Warleader, the Ajanis and Jetmir go wide, Generous Pup
+#: archetype: and Yoshimaru turn Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie the tribes.
+#: archetype: DISTINCT from deck 21 (Standard WBG Food aristocrats) and deck 88 (Naya Historic Brawl, no Food).
+#: protect: Rocco, Street Chef; Sam, Loyal Attendant; Mutagen Man, Living Ooze; Peregrin Took; Tippy-Toe, Terrific Partner; Mondrak, Glory Dominus; Pia Nalaar, Consul of Revival; Haliya, Guided by Light; Teething Wurmlet; Biotech Specialist
+#: notes: Drafted 2026-11-05 from the 171-card Rocco pile (.cycle/rocco-pile-analysis.md holds the batch
+#: notes: verdicts and the bench). Ownership is information only; the list is the optimal one.
+#: notes: TIER UNSET — the letter is the owner's call. Measured floor at draft: A (interaction 15, card
+#: notes: advantage 6 against the 100-card A line of 12 and 19; protection 4; board power 111; printed avg
+#: notes: MV 3.03). Card advantage is the thin axis: Tippy-Toe, Belladonna Took, Haliya and Well of Lost
+#: notes: Dreams draw only off lifegain or tokens, which the role counter reads as conditional.
+#: notes: The bench (Lita, Wish Good Luck, Krovod Haunch, Bumi's Feast Lecture, Giant Opportunity, Dyadrine,
+#: notes: Brimaz's fellow Cats Qala / Sally Pride / Keeper of Fables …) lives on the Builder board
+#: notes: `builds/rocco` with a reason and verdict per card. Manabase: 38 lands; one Mountain moved to Plains
+#: notes: on `consistency`'s basic-rebalance hint (white carries most of the double pips).
+
+# Commander
+1 Rocco, Street Chef (MAT) 44
+
+# Engine — token-plus-Food replacements, free cracks, exile payoffs
+1 Ragost, Deft Gastronaut (EOE) 224
+1 Sam, Loyal Attendant (LTC) 7
+1 Peregrin Took (LTR) 181
+1 Tippy-Toe, Terrific Partner (MSC) 734
+1 Pia Nalaar, Consul of Revival (MAT) 42
+1 Mondrak, Glory Dominus (ONE) 23
+1 Biotech Specialist (EOE) 214
+1 Haliya, Guided by Light (EOE) 19
+1 Belladonna Took (HOB) 4
+
+# Food makers and payoffs
+1 Samwise Gamgee (LTR) 222
+1 Rosie Cotton of South Lane (LTR) 27
+1 Cat Collector (FDN) 4
+1 Gilded Goose (ELD) 160
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Bilbo, Fellow Conspirator (HOC) 4
+1 Heroic Feast (MSH) 172
+1 Tireless Provisioner (J25) 728
+1 Night of the Sweets' Revenge (WOE) 178
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Teething Wurmlet (BRO) 192
+1 Lucky the Pizza Dog (MSC) 726
+
+# Artifacts and mana
+1 Roxanne, Starfall Savant (OTJ) 228
+1 Sami, Wildcat Captain (EOE) 226
+1 Shuri, the Black Panther (MSC) 95
+1 Krenko, Baron of Tin Street (MKM) 135
+1 Goldspan Dragon (KHM) 139
+1 Pep, Raucous Raider (YECL) 23
+
+# Lifegain into cards
+1 Kwia Vigorbloom (FRA) 140
+1 Well of Lost Dreams (BRR) 62
+1 Vision of Love (MSH) 158
+1 Ajani Resolute (FRA) 195
+
+# Counters
+1 Generous Pup (J25) 4
+1 Yoshimaru, Beloved Companion (FRA) 209
+1 Sovereign Okinec Ahau (LCI) 240
+1 Kutzil, Malamet Exemplar (LCI) 232
+
+# Cats, Dogs and go-wide
+1 Jinnie Fay, Jetmir's Second (SNC) 195
+1 Rin and Seri, Inseparable (M21) 278
+1 Adeline, Resplendent Cathar (MID) 1
+1 Brimaz, King of Oreskos (J25) 58
+1 Ajani, Strength of the Pride (M20) 2
+1 Felidar Retreat (FDN) 574
+1 Leonin Warleader (M19) 23
+1 Angel of Invention (KLR) 7
+1 Jetmir, Nexus of Revels (SNC) 193
+1 Ajani, Nacatl Pariah // Ajani, Nacatl Avenger (MH3) 237
+1 Greenhouse Propagator (FRA) 104
+1 Release the Dogs (FDN) 580
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Rocco, Cabaretti Caterer (SNC) 218
+
+# Interaction
+1 Hobbit's Sting (LTR) 20
+1 Food Coma (WOE) 308
+1 Pawpatch Formation (BLB) 186
+1 Stew the Coneys (LTR) 189
+1 Wicked Wolf (ELD) 181
+1 Legion Extruder (BIG) 12
+1 Dragonspark Reactor (NEO) 137
+1 Shrapnel Blast (EA3) 3
+1 Galvanic Blast (SOM) 91
+1 Heliod's Intervention (THB) 19
+1 Spider Food (WOE) 186
+1 Undergrowth Leopard (TDM) 165
+
+# Lands
+1 Command Tower (FRC) 22
+1 The Shire (LTR) 260
+1 Castle Doom (MSH) 263
+1 Mirrex (ONE) 254
+1 Jetmir's Garden (SNC) 250
+1 Cabaretti Courtyard (SNC) 249
+1 Sacred Foundry (EOE) 256
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Sunbaked Canyon (TLE) 58
+1 Battlefield Forge (BRO) 257
+1 Brushland (BRO) 259
+1 Karplusan Forest (DMU) 250
+1 Inspiring Vantage (OTJ) 269
+1 Razorverge Thicket (ONE) 257
+1 Copperline Gorge (ONE) 249
+1 Needleverge Pathway // Pillarverge Pathway (ZNR) 263
+1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
+1 Clifftop Retreat (DOM) 239
+1 Sunpetal Grove (XLN) 257
+1 Rootbound Crag (XLN) 256
+1 Prismatic Vista (SPG) 38
+1 Fabled Passage (BLB) 252
+1 Mana Confluence (EOS) 25
+5 Plains (FRA) 281
+5 Forest (FRA) 289
+3 Mountain (FRA) 287

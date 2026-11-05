@@ -46,6 +46,7 @@ Badgermole
 Ball Lightning
 Baxter Stockman
 Bejeweled Warg
+Bilbo, Fellow Conspirator
 Billowing Shriekmass
 Bioengineered Future
 Biogenic Upgrade
@@ -203,6 +204,7 @@ Hecteyes
 Hedge Shredder
 Hei Bai, Forest Guardian
 Hei Bai, Spirit of Balance
+Heliod's Intervention
 Hellrider
 Herald of Eternal Dawn
 Herald of Secret Streams
@@ -233,6 +235,7 @@ Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
+Jinnie Fay, Jetmir's Second
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kamahl's Druidic Vow
@@ -247,6 +250,7 @@ Klaw, Sonic Subjugator
 Kona, Rescue Beastie
 Koya, Death from Above
 Kraven, Proud Predator
+Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
 Kumena, Tyrant of Orazca
@@ -319,6 +323,7 @@ Ozai's Cruelty
 Pain 101
 Paradox Surveyor
 Paranormal Analyst
+Peregrin Took
 Perigee Beckoner
 Personify
 Peter Parker
@@ -346,6 +351,7 @@ Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
 Reckless Velocitaur
+Release the Dogs
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
@@ -355,6 +361,7 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
+Rocco, Cabaretti Caterer
 Rockalanche
 Rustler Rampage
 Salvation Swan

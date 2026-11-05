@@ -1,0 +1,3206 @@
+{
+ "schema": 1,
+ "title": "Rocco pile — Street Feast",
+ "decks": [
+  {
+   "key": "R",
+   "id": "97",
+   "label": "Rocco"
+  }
+ ],
+ "piles": [
+  {
+   "key": "R",
+   "label": "Rocco's pile",
+   "deck": "R",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Ragost, Deft Gastronaut",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Wish Good Luck",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Hurska Sweet-Tooth",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Resourceful Collector",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Iroh, Tea Master",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Samwise Gamgee",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sam, Loyal Attendant",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Rosie Cotton of South Lane",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Lita, Little Orphan Amphibian",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Krovod Haunch",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Momo, Playful Pet",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Hobbit's Sting",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Cat Collector",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sidequest: Catch a Fish",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "The Battle of Bywater",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Food Coma",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Bill the Pony",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Late to Dinner",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Overcooked",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Gilded Goose",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Many Partings",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Pippin's Bravery",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Bumi's Feast Lecture",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Courier of Comestibles",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Intrepid Trufflesnout // Go Hog Wild",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Lucky the Pizza Dog",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Meriadoc Brandybuck",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Michelangelo, the Heart",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Pawpatch Formation",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Revive the Shire",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Spider-Ham, Peter Porker",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tough Cookie",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Unlucky Cabbage Merchant",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Welcome to Sweettooth",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Bilbo, Fellow Conspirator",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Creeping Crystal Coating",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Eager Trufflesnout",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Elephant-Mandrill",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Food Chain",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Giant Opportunity",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Heroic Feast",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Hinterland Chef",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Honored Dreyleader",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Peregrin Took",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Stew the Coneys",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Spider Food",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "The Cabbage Merchant",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tireless Provisioner",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Bristlebud Farmer",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Elanor Gardner",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Night of the Sweets' Revenge",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Provisions Merchant",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Wicked Wolf",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tippy-Toe, Terrific Partner",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Bosco, Just a Bear",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Galadriel, Gift-Giver",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Feasting Troll King",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "The Shire",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Big Spender",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Legion Extruder",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Improvised Arsenal",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Urabrask's Forge",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mutagen Man, Living Ooze",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tenured Tethermage",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Svella, Ice Shaper",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Aerid Konstrari",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Roxanne, Starfall Savant",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Pia Nalaar, Consul of Revival",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mabel, Heir to Cragflame",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Hook Swords",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Thorin, King of Durin's Folk",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "T'Challa, the Black Panther",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Dyadrine, Synthesis Amalgam",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Toph, the First Metalbender",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sami, Wildcat Captain",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mondrak, Glory Dominus",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Dockside Extortionist",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Craterclaw Colossus",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Indomitable Creativity",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Shuri, the Black Panther",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Iron Spider, Stark Upgrade",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Karn, the Great Creator",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Karn, Legacy Reforged",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Radiant Lotus",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ori, Plate Stacker",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Galvanic Blast",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Heliod's Intervention",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Meria, Scholar of Antiquity",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Mox Opal",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Motivated Muralist",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Arc Reactor",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Hungering Puppetbeast",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Woodwork Prodigy",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Dragonspark Reactor",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tempestra, Dame of Games",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Shrapnel Blast",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Vision of Love",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sokenzan Smelter",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Glittering Stockpile",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Krenko, Baron of Tin Street",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Lithobraking",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Momo's Heist",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Goldspan Dragon",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Purphoros, Bronze-Blooded",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Rootwire Amalgam",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Biotech Specialist",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Variable Solutions",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Rootha, Ardent Artisan // Next Iteration",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Pep, Raucous Raider",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Kwia Vigorbloom",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mindslaver",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Castle Doom",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Haliya, Guided by Light",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Elesh Norn // The Argent Etchings",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Wedding Ring",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Teething Wurmlet",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ancient Cornucopia",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Arabella, Abandoned Doll",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Excalibur II",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sword of Light and Shadow",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Aetherflux Reservoir",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Well of Lost Dreams",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Belladonna Took",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ajani Resolute",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "West Wind Avatar",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Shortcut to Mushrooms",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Michelangelo, Game Master",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Tarkir Duneshaper // Burnished Dunestomper",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Ainok Bond-Kin",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Generous Pup",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Yoshimaru, Beloved Companion",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Flickering Hound",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Release the Dogs",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Enduring Courage",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "District Mascot",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Torgal, A Fine Hound",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Jiang Yanggu, Never Alone",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mowu, Loyal Companion",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Jinnie Fay, Jetmir's Second",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Rin and Seri, Inseparable",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Basri, Tomorrow's Champion",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Gloryheath Lynx",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Leonin Sanctifier",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Lion Sash",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Adeline, Resplendent Cathar",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Brimaz, King of Oreskos",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ajani, Caller of the Pride",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ajani, Strength of the Pride",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Felidar Retreat",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Leonin Warleader",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Qala, Ajani's Pridemate",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Angel of Invention",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sally Pride, Lioness Leader",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Old Hob, Alleycat Blues",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Undergrowth Leopard",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Greenhouse Propagator",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Mythweaver Poq",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Keeper of Fables",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Ka-Zar of the Savage Land",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Swiftblade Vindicator",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Arcbound Shikari",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Dedicated Commons",
+   "pile": "N",
+   "src": "pile"
+  },
+  {
+   "name": "Solarium Sentry",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Kutzil, Malamet Exemplar",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Drizzt Do'Urden",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Sovereign Okinec Ahau",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Zar Ojanen, Scion of Efrava",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Scattered Groves",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Jetmir, Nexus of Revels",
+   "pile": "R",
+   "src": "pile"
+  },
+  {
+   "name": "Rocco, Cabaretti Caterer",
+   "pile": "R",
+   "src": "pile"
+  }
+ ],
+ "reasons": {
+  "Ragost, Deft Gastronaut": {
+   "group": "Engine",
+   "text": "In the list. Every artifact is a Food; `{1}`, sac a Food: 3 to each opponent, untaps when we gained life — the Food → damage engine (R2).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Wish Good Luck": {
+   "group": "Real",
+   "text": "Food + Treasure + 3/2 Vehicle for 2: three artifacts (Ragost reads each as a Food).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Hurska Sweet-Tooth": {
+   "group": "Real",
+   "text": "Attack → Food; lifegain → pay `{G/W}` pump. Fine, not an engine.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Resourceful Collector": {
+   "group": "Real",
+   "text": "Alchemy: each end step a graveyard permanent becomes a playable Food. Recursion, but from the graveyard, not exile (no Rocco trigger).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Iroh, Tea Master": {
+   "group": "Situational",
+   "text": "Donate a permanent each combat for a growing Ally; donating a spent Food is cheap. Spicy, slow.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Samwise Gamgee": {
+   "group": "Strong",
+   "text": "In the list. Food per nontoken creature entering; three Foods → historic card back.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sam, Loyal Attendant": {
+   "group": "Engine",
+   "text": "In the list. Food every combat and every Food ability costs `{1}` less: halves the crack cost (R2).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "group": "Strong",
+   "text": "In the list. Every token we create → +1/+1 counter; each Rocco trigger is a Food, so each is a counter too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Lita, Little Orphan Amphibian": {
+   "group": "Real",
+   "text": "Alliance Food / counter / scry per creature entering.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Krovod Haunch": {
+   "group": "Real",
+   "text": "A Food card (Courier tutors it), +2/+0 equip, two Dogs when it dies.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Momo, Playful Pet": {
+   "group": "Situational",
+   "text": "1-drop flier; leaves → Food or counter.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Hobbit's Sting": {
+   "group": "Strong",
+   "text": "In the list. Instant removal, X = creatures + Foods — real interaction at `{1}{W}` (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Cat Collector": {
+   "group": "Strong",
+   "text": "In the list. Food on entry; first lifegain each of our turns → a Cat token (R3, R5).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sidequest: Catch a Fish": {
+   "group": "Situational",
+   "text": "Upkeep card selection that flips to a land; pool-absent (unverified).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "The Battle of Bywater": {
+   "group": "Marginal",
+   "text": "Kills power 3+ — ours too, once Rocco's counters land.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Food Coma": {
+   "group": "Strong",
+   "text": "In the list. O-ring a creature plus a Food — interaction (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bill the Pony": {
+   "group": "Situational",
+   "text": "Two Foods; the toughness-damage trick is narrow.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Late to Dinner": {
+   "group": "Situational",
+   "text": "Reanimate one creature + Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Overcooked": {
+   "group": "Out",
+   "text": "\"Players can't gain life\" — switches off every Food (R9).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Gilded Goose": {
+   "group": "Strong",
+   "text": "In the list. Ramp that makes and spends Food on turn 1.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Many Partings": {
+   "group": "Situational",
+   "text": "Basic land + Food for `{G}`.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pippin's Bravery": {
+   "group": "Marginal",
+   "text": "Pump.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bumi's Feast Lecture": {
+   "group": "Real",
+   "text": "Food, then earthbend twice the Foods — a large hasty land by mid-game.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Courier of Comestibles": {
+   "group": "Real",
+   "text": "Tutors a Food CARD (Krovod Haunch, Ancient Cornucopia…) or makes a Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Intrepid Trufflesnout // Go Hog Wild": {
+   "group": "Marginal",
+   "text": "Attacks alone → Food; pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Lucky the Pizza Dog": {
+   "group": "Real",
+   "text": "In the list. Cat / Dog / Hero spell → Food; lifegain → counter. Value tracks the Cat+Dog count (R5).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Meriadoc Brandybuck": {
+   "group": "Situational",
+   "text": "Halflings attack → Food; depends on the Halfling count.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Michelangelo, the Heart": {
+   "group": "Real",
+   "text": "Attack → counter + Food each turn.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pawpatch Formation": {
+   "group": "Strong",
+   "text": "In the list. Modal instant: flier or enchantment removal, or draw + Food (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Revive the Shire": {
+   "group": "Situational",
+   "text": "Permanent card back + Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Spider-Ham, Peter Porker": {
+   "group": "Strong",
+   "text": "In the list. Food on entry and +1/+1 to other Cats, Dogs, Bears, Birds, Boars, Squirrels… — the one lord covering both tribes (R5).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tough Cookie": {
+   "group": "Situational",
+   "text": "Food, then `{2}{G}`: animate a noncreature artifact (a Food) as a 4/4.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Unlucky Cabbage Merchant": {
+   "group": "Situational",
+   "text": "One-shot: a Food sacrifice fetches a basic, then it goes to the library bottom.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Welcome to Sweettooth": {
+   "group": "Real",
+   "text": "Saga: 1/1, Food, then counters = 1 + Foods.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bilbo, Fellow Conspirator": {
+   "group": "Strong",
+   "text": "In the list. Each Food we create also makes a Treasure: ramp that scales with every producer.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Creeping Crystal Coating": {
+   "group": "Situational",
+   "text": "Flash aura: +0/+3 and Food on attack.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Eager Trufflesnout": {
+   "group": "Marginal",
+   "text": "Combat-damage Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elephant-Mandrill": {
+   "group": "Marginal",
+   "text": "Gives the opponent a Food too; grows off THEIR artifacts.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Food Chain": {
+   "group": "Marginal",
+   "text": "Exile a creature for creature-only mana; not a Food card despite the name.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Giant Opportunity": {
+   "group": "Real",
+   "text": "Three Foods, or two Foods into a 7/7.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Heroic Feast": {
+   "group": "Strong",
+   "text": "In the list. Every lifegain puts a counter on that many creatures: one crack = three counters (R3, R4).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Hinterland Chef": {
+   "group": "Situational",
+   "text": "Alchemy draft; the drafted card becomes a Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Honored Dreyleader": {
+   "group": "Real",
+   "text": "Grows with every Food entering.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Peregrin Took": {
+   "group": "Engine",
+   "text": "In the list. Every token creation adds a Food, and three Foods: draw a card — card advantage from the currency (R2).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Stew the Coneys": {
+   "group": "Strong",
+   "text": "In the list. Instant bite removal + Food (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Spider Food": {
+   "group": "Real",
+   "text": "In the list. Artifact / enchantment / flier removal + Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "The Cabbage Merchant": {
+   "group": "Real",
+   "text": "Their noncreature spells give us Food; two Foods tap for any colour.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tireless Provisioner": {
+   "group": "Strong",
+   "text": "In the list. Landfall Food or Treasure; Rocco's exiled lands count (R1).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bristlebud Farmer": {
+   "group": "Real",
+   "text": "Two Foods; attack: sac a Food to dig three for a permanent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elanor Gardner": {
+   "group": "Situational",
+   "text": "Food, and a basic each end step we sacrificed a Food.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Night of the Sweets' Revenge": {
+   "group": "Strong",
+   "text": "In the list. Foods tap for `{G}` — every Food is a mana rock — plus an overrun finisher.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Provisions Merchant": {
+   "group": "Situational",
+   "text": "Food; attack: sac a Food for team +1/+1 and trample.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Wicked Wolf": {
+   "group": "Strong",
+   "text": "In the list. ETB fight (interaction) and a Food sink for counters + indestructible.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tippy-Toe, Terrific Partner": {
+   "group": "Engine",
+   "text": "In the list. Every token creation adds a Food, and a lifegain turn draws a card (R3) — the card-advantage engine.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bosco, Just a Bear": {
+   "group": "Situational",
+   "text": "Food per legendary creature; Food sink for counters.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Galadriel, Gift-Giver": {
+   "group": "Real",
+   "text": "ETB/attack: counter, Food or Treasure.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Feasting Troll King": {
+   "group": "Situational",
+   "text": "Three Foods cast from hand; returns for three Foods. `{G}{G}{G}{G}` in three colours.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "The Shire": {
+   "group": "Real",
+   "text": "In the list. Legendary land that makes Food; untapped with a legendary creature (Rocco).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger": {
+   "group": "Strong",
+   "text": "In the list. 2/1 Cat + transform; the walker makes Cats and pings (red permanent: Rocco). Pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Big Spender": {
+   "group": "Situational",
+   "text": "Alchemy; Treasure on blocks, spellbook for two artifacts.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Legion Extruder": {
+   "group": "Strong",
+   "text": "In the list. ETB 2 to any target (interaction); `{2}`, sac a Food: 3/3 Golem.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Improvised Arsenal": {
+   "group": "Situational",
+   "text": "+1/+0 per artifact (Foods count).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Urabrask's Forge": {
+   "group": "Real",
+   "text": "A token every combat — each is an extra Food under Peregrin / Tippy-Toe and a counter under Rosie.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mutagen Man, Living Ooze": {
+   "group": "Strong",
+   "text": "In the list. Artifact-token abilities cost `{1}` less: with Sam, a Food crack is FREE (R2, R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tenured Tethermage": {
+   "group": "Situational",
+   "text": "Tap two artifacts: two counters.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Svella, Ice Shaper": {
+   "group": "Situational",
+   "text": "Mana rock maker; the `{8}` free cast is slow.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Aerid Konstrari": {
+   "group": "Situational",
+   "text": "Heartwood tokens; flier.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Roxanne, Starfall Savant": {
+   "group": "Strong",
+   "text": "In the list. A Cat; Meteorite pings 2 on ETB/attack; doubles artifact-TOKEN mana — Foods under Night of the Sweets' Revenge tap twice.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pia Nalaar, Consul of Revival": {
+   "group": "Engine",
+   "text": "In the list. Every play from exile is a hasty 1/1 flier — a second Rocco payoff (R1), and each token is a Food under Peregrin / Tippy-Toe.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mabel, Heir to Cragflame": {
+   "group": "Situational",
+   "text": "Mouse lord; the equipment is the value here.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Hook Swords": {
+   "group": "Situational",
+   "text": "1/1 Ally + first-strike equipment.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Thorin, King of Durin's Folk": {
+   "group": "Marginal",
+   "text": "Dwarf payoffs; no Dwarves.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "T'Challa, the Black Panther": {
+   "group": "Situational",
+   "text": "Vibranium tokens; counters on big artifact spells.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Dyadrine, Synthesis Amalgam": {
+   "group": "Real",
+   "text": "Removes Rocco's counters for a draw + Robot each attack (R4).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Toph, the First Metalbender": {
+   "group": "Situational",
+   "text": "Earthbend 2 each end step; artifacts-as-lands is incidental.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sami, Wildcat Captain": {
+   "group": "Strong",
+   "text": "In the list. Every spell has affinity for artifacts — Foods make the deck cheap. Double strike body.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "group": "Engine",
+   "text": "In the list. Doubles every token: Foods, Thopters, Cats.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Dockside Extortionist": {
+   "group": "Situational",
+   "text": "Treasure per opposing artifact/enchantment; 1v1-variable.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Craterclaw Colossus": {
+   "group": "Situational",
+   "text": "`{R}{R}{R}` finisher scaling with artifacts.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Indomitable Creativity": {
+   "group": "Marginal",
+   "text": "`{R}{R}{R}` polymorph; destroys our own Foods for random permanents.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Shuri, the Black Panther": {
+   "group": "Strong",
+   "text": "In the list. Lifelink 2-drop; attack draws with three artifacts (Foods) (R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Iron Spider, Stark Upgrade": {
+   "group": "Situational",
+   "text": "Counters on artifact creatures; few here.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Karn, the Great Creator": {
+   "group": "Marginal",
+   "text": "Its −2 wants a sideboard Brawl does not have.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Karn, Legacy Reforged": {
+   "group": "Situational",
+   "text": "Upkeep mana per artifact, artifact spells only.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Radiant Lotus": {
+   "group": "Real",
+   "text": "Sac Foods for three mana each — a burst.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ori, Plate Stacker": {
+   "group": "Situational",
+   "text": "One-sided artifact/enchantment wipe at 7.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Galvanic Blast": {
+   "group": "Strong",
+   "text": "In the list. `{R}`, 4 damage with three artifacts (Foods) — cheap interaction (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Heliod's Intervention": {
+   "group": "Strong",
+   "text": "In the list. Instant artifact/enchantment removal, or gain twice X (a lifegain trigger) (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Meria, Scholar of Antiquity": {
+   "group": "Marginal",
+   "text": "Taps NONTOKEN artifacts — Foods are tokens.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mox Opal": {
+   "group": "Real",
+   "text": "Metalcraft from Foods.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Motivated Muralist": {
+   "group": "Situational",
+   "text": "Alchemy; conjures Inspiring Statuary.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Arc Reactor": {
+   "group": "Situational",
+   "text": "Improvise rock; Foods tap to pay.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Hungering Puppetbeast": {
+   "group": "Situational",
+   "text": "Food sink for counters and keywords.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Woodwork Prodigy": {
+   "group": "Real",
+   "text": "A Cat that makes a Heartwood every turn it re-prepares. Pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Dragonspark Reactor": {
+   "group": "Strong",
+   "text": "In the list. A charge counter per artifact entering — every Food — then burns a player AND a creature (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tempestra, Dame of Games": {
+   "group": "Situational",
+   "text": "Sac a Food to copy a creature for a turn.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Shrapnel Blast": {
+   "group": "Strong",
+   "text": "In the list. Sac a Food: 5 to any target at instant speed (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Vision of Love": {
+   "group": "Strong",
+   "text": "In the list. Sac a Food: draw two at instant speed.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sokenzan Smelter": {
+   "group": "Real",
+   "text": "Each combat a Food becomes a hasty 3/1.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Glittering Stockpile": {
+   "group": "Situational",
+   "text": "Treasure that grows.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Krenko, Baron of Tin Street": {
+   "group": "Strong",
+   "text": "In the list. Every artifact to the graveyard — every Food crack — is a `{R}` hasty Goblin, itself a token (Peregrin / Tippy-Toe Food).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Lithobraking": {
+   "group": "Situational",
+   "text": "2 to each creature — our 1/1 tokens too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Momo's Heist": {
+   "group": "Marginal",
+   "text": "Threaten an artifact.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Goldspan Dragon": {
+   "group": "Strong",
+   "text": "In the list. Treasures make two mana; Bilbo turns every Food into a Treasure too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Purphoros, Bronze-Blooded": {
+   "group": "Situational",
+   "text": "Haste for the team; cheat ability narrow.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Rootwire Amalgam": {
+   "group": "Situational",
+   "text": "Prototype body.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Biotech Specialist": {
+   "group": "Engine",
+   "text": "In the list. Every artifact sacrificed — every Food crack — deals 2 to the opponent (R2).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Variable Solutions": {
+   "group": "Situational",
+   "text": "Alchemy modal.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Rootha, Ardent Artisan // Next Iteration": {
+   "group": "Situational",
+   "text": "Alchemy; pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Pep, Raucous Raider": {
+   "group": "Strong",
+   "text": "In the list. Combat damage exiles their top card for us to play — a cast from exile (R1) — and sac an artifact for three mana.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "group": "Strong",
+   "text": "In the list. Lifelink flier; first lifegain each turn makes a Lotus (three mana).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mindslaver": {
+   "group": "Marginal",
+   "text": "10 mana total.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Castle Doom": {
+   "group": "Real",
+   "text": "In the list. Utility land: sac a Food for a 3/3.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Haliya, Guided by Light": {
+   "group": "Engine",
+   "text": "In the list. 1 life per creature or artifact entering — every Food — and a draw at 3+ life; Warp is a cast from exile (R1, R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elesh Norn // The Argent Etchings": {
+   "group": "Situational",
+   "text": "Punisher + transform; pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Wedding Ring": {
+   "group": "Situational",
+   "text": "Symmetric in 1v1.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Teething Wurmlet": {
+   "group": "Strong",
+   "text": "In the list. Every artifact entering is 1 life: each Food becomes a lifegain trigger (R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ancient Cornucopia": {
+   "group": "Real",
+   "text": "Any-colour rock + once-a-turn lifegain. Not a Food card (Courier misses it).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Arabella, Abandoned Doll": {
+   "group": "Real",
+   "text": "Drain per small creature on attack.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Excalibur II": {
+   "group": "Real",
+   "text": "Grows with every lifegain.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sword of Light and Shadow": {
+   "group": "Real",
+   "text": "Protection, 3 life and a creature back on each hit.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Aetherflux Reservoir": {
+   "group": "Situational",
+   "text": "Lifegain per spell; the 50-life shot is a reach at 25 life.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Well of Lost Dreams": {
+   "group": "Strong",
+   "text": "In the list. Every lifegain: pay X to draw X — Food cracks become draws (R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Belladonna Took": {
+   "group": "Engine",
+   "text": "In the list. Tokens entering: first gives life, second draws, third puts a counter on the team — Foods, Thopters and Cats all count.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ajani Resolute": {
+   "group": "Strong",
+   "text": "In the list. Lifegain adds loyalty; −4 is a Pridemate Cat; −10 a team anthem.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "West Wind Avatar": {
+   "group": "Situational",
+   "text": "A 7-mana Cat: sac a Food for 3 life, then draws (disappear).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Shortcut to Mushrooms": {
+   "group": "Real",
+   "text": "A Food sacrificed (a permanent left) is a counter at end step.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Michelangelo, Game Master": {
+   "group": "Situational",
+   "text": "Disappear counters on itself.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Tarkir Duneshaper // Burnished Dunestomper": {
+   "group": "Marginal",
+   "text": "A Dog 1-drop; pool-absent.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ainok Bond-Kin": {
+   "group": "Real",
+   "text": "Every countered creature has first strike — Rocco counters (R4). Dog.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Generous Pup": {
+   "group": "Strong",
+   "text": "In the list. A counter on the Pup spreads to every creature — one Rocco trigger, team counters (R4). Dog.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Yoshimaru, Beloved Companion": {
+   "group": "Strong",
+   "text": "In the list. Every counter placement is one more (R4). Dog.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Flickering Hound": {
+   "group": "Situational",
+   "text": "Blink on creature cast — resets Rocco's counters (G-42). Dog.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Release the Dogs": {
+   "group": "Real",
+   "text": "In the list. Four Dogs: two extra Foods under Peregrin + Tippy-Toe, eight Dogs under Mondrak.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Enduring Courage": {
+   "group": "Situational",
+   "text": "Haste for tokens; a Dog.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "District Mascot": {
+   "group": "Situational",
+   "text": "Dog; counters remove an artifact.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Torgal, A Fine Hound": {
+   "group": "Situational",
+   "text": "Any-colour dork; Human-spell counters.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Jiang Yanggu, Never Alone": {
+   "group": "Real",
+   "text": "Mowu (a Dog token) and untaps all tokens at end step.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mowu, Loyal Companion": {
+   "group": "Situational",
+   "text": "Dog; counters +1 on itself.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Jinnie Fay, Jetmir's Second": {
+   "group": "Strong",
+   "text": "In the list. MAY turn any token creation into 2/2 haste Cats or 3/1 Dogs — Foods become bodies when the board needs them, and it feeds both tribes.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Rin and Seri, Inseparable": {
+   "group": "Strong",
+   "text": "In the list. Dog spell → Cat, Cat spell → Dog; `{R}{G}{W}`: damage = Dogs, life = Cats. The tribal payoff (R5).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Basri, Tomorrow's Champion": {
+   "group": "Real",
+   "text": "`{W}` lifelink Cat each turn.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Gloryheath Lynx": {
+   "group": "Situational",
+   "text": "Lifelink Cat; Plains on saddle.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Leonin Sanctifier": {
+   "group": "Situational",
+   "text": "Lifelink Cat; Alchemy grant.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Lion Sash": {
+   "group": "Real",
+   "text": "A Cat that eats graveyards and grows.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "group": "Strong",
+   "text": "In the list. A Human token every attack — tokens feed Peregrin, Tippy-Toe, Belladonna, Rosie.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Brimaz, King of Oreskos": {
+   "group": "Strong",
+   "text": "In the list. A Cat token on every attack and block.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Caller of the Pride": {
+   "group": "Real",
+   "text": "+1 counter; −8 makes Cats equal to our life total — large in a Food deck.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Strength of the Pride": {
+   "group": "Strong",
+   "text": "In the list. +1 gains life per creature; −2 Pridemate Cat; 0 at 40 life exiles their artifacts and creatures (one-sided wipe) (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Felidar Retreat": {
+   "group": "Strong",
+   "text": "In the list. Landfall: a 2/2 Cat or team counters; Rocco's exiled lands are landfall.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Leonin Warleader": {
+   "group": "Strong",
+   "text": "In the list. Two lifelink Cats attacking each swing — tokens and lifegain both.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Qala, Ajani's Pridemate": {
+   "group": "Real",
+   "text": "Cat that grows on lifegain and pumps the attack.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Angel of Invention": {
+   "group": "Strong",
+   "text": "In the list. Lifelink flier, team anthem, two Servos (artifact tokens).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sally Pride, Lioness Leader": {
+   "group": "Real",
+   "text": "Cat; Mutants per nontoken creature, team counters on attack.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Old Hob, Alleycat Blues": {
+   "group": "Situational",
+   "text": "Cat; a temporary token every combat (a Food under Peregrin / Tippy-Toe).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Undergrowth Leopard": {
+   "group": "Real",
+   "text": "In the list. Cat 2-drop that trades for an artifact or enchantment (R6).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Greenhouse Propagator": {
+   "group": "Real",
+   "text": "In the list. Cat mana dork; 1 life per creature entering (R3).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mythweaver Poq": {
+   "group": "Situational",
+   "text": "Alchemy: duplicates each land drop; a Cat.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Keeper of Fables": {
+   "group": "Real",
+   "text": "Cat; non-Human combat damage draws.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ka-Zar of the Savage Land": {
+   "group": "Real",
+   "text": "In the list. Lands off the top, and Zabu, a Cat token that grows on landfall.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Swiftblade Vindicator": {
+   "group": "Situational",
+   "text": "Double strike body for Rocco's counters.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Arcbound Shikari": {
+   "group": "Situational",
+   "text": "Artifact-creature Cat; few artifact creatures here.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Dedicated Commons": {
+   "group": "Marginal",
+   "text": "R/W dual tapped unless we control a planeswalker.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Solarium Sentry": {
+   "group": "Situational",
+   "text": "Cat; life when they cast cheap spells.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Kutzil, Malamet Exemplar": {
+   "group": "Strong",
+   "text": "In the list. Opponents can't cast spells on our turn; a countered creature connecting draws — Rocco's counters make every creature qualify (R4). Cat.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Drizzt Do'Urden": {
+   "group": "Real",
+   "text": "Guenhwyvar is a Cat token; double strike body.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Sovereign Okinec Ahau": {
+   "group": "Strong",
+   "text": "In the list. Each attack doubles the counters a creature carries above base — Rocco's counters compound (R4). Cat.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Zar Ojanen, Scion of Efrava": {
+   "group": "Situational",
+   "text": "Domain counters; three basic types at most.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Scattered Groves": {
+   "group": "Situational",
+   "text": "Tapped G/W dual with cycling.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Jetmir, Nexus of Revels": {
+   "group": "Strong",
+   "text": "In the list. Go-wide anthem (3 / 6 / 9 creatures) — tokens make it live. Cat.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Rocco, Cabaretti Caterer": {
+   "group": "Real",
+   "text": "In the list. X-tutor a creature onto the battlefield; the other Rocco.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  }
+ },
+ "snapshots": {
+  "97": {
+   "6c91e4d3961c": [
+    "Adeline, Resplendent Cathar",
+    "Ajani Resolute",
+    "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+    "Ajani, Strength of the Pride",
+    "Angel of Invention",
+    "Battlefield Forge",
+    "Belladonna Took",
+    "Bilbo, Fellow Conspirator",
+    "Biotech Specialist",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Brimaz, King of Oreskos",
+    "Brushland",
+    "Cabaretti Courtyard",
+    "Castle Doom",
+    "Cat Collector",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Copperline Gorge",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Dragonspark Reactor",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Food Coma",
+    "Forest",
+    "Galvanic Blast",
+    "Generous Pup",
+    "Gilded Goose",
+    "Goldspan Dragon",
+    "Greenhouse Propagator",
+    "Haliya, Guided by Light",
+    "Heliod's Intervention",
+    "Heroic Feast",
+    "Hobbit's Sting",
+    "Inspiring Vantage",
+    "Jetmir's Garden",
+    "Jetmir, Nexus of Revels",
+    "Jinnie Fay, Jetmir's Second",
+    "Ka-Zar of the Savage Land",
+    "Karplusan Forest",
+    "Krenko, Baron of Tin Street",
+    "Kutzil, Malamet Exemplar",
+    "Kwia Vigorbloom",
+    "Legion Extruder",
+    "Leonin Warleader",
+    "Lucky the Pizza Dog",
+    "Mana Confluence",
+    "Mirrex",
+    "Mondrak, Glory Dominus",
+    "Mountain",
+    "Mutagen Man, Living Ooze",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Night of the Sweets' Revenge",
+    "Pawpatch Formation",
+    "Pep, Raucous Raider",
+    "Peregrin Took",
+    "Pia Nalaar, Consul of Revival",
+    "Plains",
+    "Prismatic Vista",
+    "Ragost, Deft Gastronaut",
+    "Razorverge Thicket",
+    "Release the Dogs",
+    "Rin and Seri, Inseparable",
+    "Rocco, Cabaretti Caterer",
+    "Rocco, Street Chef",
+    "Rootbound Crag",
+    "Rosie Cotton of South Lane",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Sam, Loyal Attendant",
+    "Sami, Wildcat Captain",
+    "Samwise Gamgee",
+    "Shrapnel Blast",
+    "Shuri, the Black Panther",
+    "Sovereign Okinec Ahau",
+    "Spider Food",
+    "Spider-Ham, Peter Porker",
+    "Stew the Coneys",
+    "Stomping Ground",
+    "Sunbaked Canyon",
+    "Sunpetal Grove",
+    "Teething Wurmlet",
+    "Temple Garden",
+    "The Shire",
+    "Tippy-Toe, Terrific Partner",
+    "Tireless Provisioner",
+    "Undergrowth Leopard",
+    "Vision of Love",
+    "Well of Lost Dreams",
+    "Wicked Wolf",
+    "Yoshimaru, Beloved Companion"
+   ]
+  }
+ },
+ "verdicts": {
+  "Ragost, Deft Gastronaut": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Wish Good Luck": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Hurska Sweet-Tooth": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Resourceful Collector": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Iroh, Tea Master": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Samwise Gamgee": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sam, Loyal Attendant": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Lita, Little Orphan Amphibian": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Krovod Haunch": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Momo, Playful Pet": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Hobbit's Sting": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Cat Collector": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sidequest: Catch a Fish": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "The Battle of Bywater": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Food Coma": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bill the Pony": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Late to Dinner": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Overcooked": {
+   "R": {
+    "m": "✗",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Gilded Goose": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Many Partings": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pippin's Bravery": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bumi's Feast Lecture": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Courier of Comestibles": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Intrepid Trufflesnout // Go Hog Wild": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Lucky the Pizza Dog": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Meriadoc Brandybuck": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Michelangelo, the Heart": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pawpatch Formation": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Revive the Shire": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Spider-Ham, Peter Porker": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tough Cookie": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Unlucky Cabbage Merchant": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Welcome to Sweettooth": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bilbo, Fellow Conspirator": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Creeping Crystal Coating": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Eager Trufflesnout": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elephant-Mandrill": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Food Chain": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Giant Opportunity": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Heroic Feast": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Hinterland Chef": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Honored Dreyleader": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Peregrin Took": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Stew the Coneys": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Spider Food": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "The Cabbage Merchant": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tireless Provisioner": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bristlebud Farmer": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elanor Gardner": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Night of the Sweets' Revenge": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Provisions Merchant": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Wicked Wolf": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tippy-Toe, Terrific Partner": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bosco, Just a Bear": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Galadriel, Gift-Giver": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Feasting Troll King": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "The Shire": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Big Spender": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Legion Extruder": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Improvised Arsenal": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Urabrask's Forge": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mutagen Man, Living Ooze": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tenured Tethermage": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Svella, Ice Shaper": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Aerid Konstrari": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Roxanne, Starfall Savant": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pia Nalaar, Consul of Revival": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mabel, Heir to Cragflame": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Hook Swords": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Thorin, King of Durin's Folk": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "T'Challa, the Black Panther": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Dyadrine, Synthesis Amalgam": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Toph, the First Metalbender": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sami, Wildcat Captain": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Dockside Extortionist": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Craterclaw Colossus": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Indomitable Creativity": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Shuri, the Black Panther": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Iron Spider, Stark Upgrade": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Karn, the Great Creator": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Karn, Legacy Reforged": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Radiant Lotus": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ori, Plate Stacker": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Galvanic Blast": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Heliod's Intervention": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Meria, Scholar of Antiquity": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mox Opal": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Motivated Muralist": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Arc Reactor": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Hungering Puppetbeast": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Woodwork Prodigy": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Dragonspark Reactor": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tempestra, Dame of Games": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Shrapnel Blast": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Vision of Love": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sokenzan Smelter": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Glittering Stockpile": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Krenko, Baron of Tin Street": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Lithobraking": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Momo's Heist": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Goldspan Dragon": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Purphoros, Bronze-Blooded": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Rootwire Amalgam": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Biotech Specialist": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Variable Solutions": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Rootha, Ardent Artisan // Next Iteration": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Pep, Raucous Raider": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mindslaver": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Castle Doom": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Haliya, Guided by Light": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elesh Norn // The Argent Etchings": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Wedding Ring": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Teething Wurmlet": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ancient Cornucopia": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Arabella, Abandoned Doll": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Excalibur II": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sword of Light and Shadow": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Aetherflux Reservoir": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Well of Lost Dreams": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Belladonna Took": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ajani Resolute": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "West Wind Avatar": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Shortcut to Mushrooms": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Michelangelo, Game Master": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Tarkir Duneshaper // Burnished Dunestomper": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ainok Bond-Kin": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Generous Pup": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Yoshimaru, Beloved Companion": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Flickering Hound": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Release the Dogs": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Enduring Courage": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "District Mascot": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Torgal, A Fine Hound": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Jiang Yanggu, Never Alone": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mowu, Loyal Companion": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Jinnie Fay, Jetmir's Second": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Rin and Seri, Inseparable": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Basri, Tomorrow's Champion": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Gloryheath Lynx": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Leonin Sanctifier": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Lion Sash": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Brimaz, King of Oreskos": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Caller of the Pride": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ajani, Strength of the Pride": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Felidar Retreat": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Leonin Warleader": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Qala, Ajani's Pridemate": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Angel of Invention": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sally Pride, Lioness Leader": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Old Hob, Alleycat Blues": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Undergrowth Leopard": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Greenhouse Propagator": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mythweaver Poq": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Keeper of Fables": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ka-Zar of the Savage Land": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Swiftblade Vindicator": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Arcbound Shikari": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Dedicated Commons": {
+   "R": {
+    "m": "△",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Solarium Sentry": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Kutzil, Malamet Exemplar": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Drizzt Do'Urden": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Sovereign Okinec Ahau": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Zar Ojanen, Scion of Efrava": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Scattered Groves": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Jetmir, Nexus of Revels": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Rocco, Cabaretti Caterer": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  }
+ }
+}
