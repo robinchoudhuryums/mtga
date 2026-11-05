@@ -58,6 +58,11 @@ cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are l
 - **Halfling cluster (LTR)**: Samwise, Sam, Rosie Cotton, Meriadoc already in batch 1 — Food
   makers that care about Halflings and Foods. Watch for Peregrin, Bilbo, Elanor, Belladonna,
   The Shire.
+- **Token-plus-Food replacements stack**: Peregrin Took and Tippy-Toe each add a Food to EVERY
+  token creation, so one Food becomes three with both out; Bilbo adds a Treasure per Food. With
+  Rosie Cotton every token is a counter. This is the deck's engine core, not Rocco.
+- **Lifegain → draw** (Tippy-Toe) and **Food → draw** (Peregrin) give a Naya deck real card
+  advantage; Night of the Sweets' Revenge makes every Food a mana rock.
 - **Lifegain → Cat tokens** (Cat Collector) links the Food and Cat halves (R3, R5).
 - **Pool-absent cards** read "!!NOT-HISTORIC-BRAWL" in the pull with rarity `?`: that is
   UNVERIFIED (no pool row), not illegal. Sidequest: Catch a Fish runs in deck 3-brawl.
@@ -100,6 +105,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Michelangelo, the Heart | ★ | Attack → counter + Food each turn. |
 | Pawpatch Formation | ★★ | Modal instant: flier or enchantment removal, or draw + Food (R6). |
 | Revive the Shire | ◇ | Permanent card back + Food. |
+
+### Batch 2 (cards 30–59)
+
+| Card | R | Note |
+|---|---|---|
+| Spider-Ham, Peter Porker | ★★ | Food on entry and +1/+1 to other Cats, Dogs, Bears, Birds, Boars, Squirrels… — the one lord covering both tribes (R5). |
+| Tough Cookie | ◇ | Food, then `{2}{G}`: animate a noncreature artifact (a Food) as a 4/4. |
+| Unlucky Cabbage Merchant | ◇ | One-shot: a Food sacrifice fetches a basic, then it goes to the library bottom. |
+| Welcome to Sweettooth | ★ | Saga: 1/1, Food, then counters = 1 + Foods. |
+| Bilbo, Fellow Conspirator | ★★ | Each Food we create also makes a Treasure: ramp that scales with every producer. |
+| Creeping Crystal Coating | ◇ | Flash aura: +0/+3 and Food on attack. |
+| Eager Trufflesnout | △ | Combat-damage Food. |
+| Elephant-Mandrill | △ | Gives the opponent a Food too; grows off THEIR artifacts. |
+| Food Chain | △ | Exile a creature for creature-only mana; not a Food card despite the name. |
+| Giant Opportunity | ★ | Three Foods, or two Foods into a 7/7. |
+| Heroic Feast | ★★ | Every lifegain puts a counter on that many creatures: one crack = three counters (R3, R4). |
+| Hinterland Chef | ◇ | Alchemy draft; the drafted card becomes a Food. |
+| Honored Dreyleader | ★ | Grows with every Food entering. |
+| Peregrin Took | ★★★ | Every token creation adds a Food, and three Foods: draw a card — card advantage from the currency (R2). |
+| Stew the Coneys | ★★ | Instant bite removal + Food (R6). |
+| Spider Food | ★ | Artifact / enchantment / flier removal + Food. |
+| The Cabbage Merchant | ★ | Their noncreature spells give us Food; two Foods tap for any colour. |
+| Tireless Provisioner | ★★ | Landfall Food or Treasure; Rocco's exiled lands count (R1). |
+| Bristlebud Farmer | ★ | Two Foods; attack: sac a Food to dig three for a permanent. |
+| Elanor Gardner | ◇ | Food, and a basic each end step we sacrificed a Food. |
+| Night of the Sweets' Revenge | ★★ | Foods tap for `{G}` — every Food is a mana rock — plus an overrun finisher. |
+| Provisions Merchant | ◇ | Food; attack: sac a Food for team +1/+1 and trample. |
+| Wicked Wolf | ★★ | ETB fight (interaction) and a Food sink for counters + indestructible. |
+| Tippy-Toe, Terrific Partner | ★★★ | Every token creation adds a Food, and a lifegain turn draws a card (R3) — the card-advantage engine. |
+| Bosco, Just a Bear | ◇ | Food per legendary creature; Food sink for counters. |
+| Galadriel, Gift-Giver | ★ | ETB/attack: counter, Food or Treasure. |
+| Feasting Troll King | ◇ | Three Foods cast from hand; returns for three Foods. `{G}{G}{G}{G}` in three colours. |
+| The Shire | ★ | Legendary land that makes Food; untapped with a legendary creature (Rocco). |
+| Ajani, Nacatl Pariah | ★★ | 2/1 Cat + transform; the walker makes Cats and pings (red permanent: Rocco). Pool-absent. |
+| Big Spender | ◇ | Alchemy; Treasure on blocks, spellbook for two artifacts. |
 
 ## 5. Consolidated plan (live)
 
