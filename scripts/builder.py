@@ -1685,6 +1685,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     if target == "artifact":
         meta["sprite"] = _sprite(out_dir, [image_slug(n) for n in urls]) if images else None
         meta["arts"] = _art_sprites(out_dir, arts) if images and arts else None
+    if target == "artifact" and images:
+        write_manifest(out_dir, data, urls)
     import html as _html
     title = meta.get("title") or slug
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
@@ -1719,10 +1721,74 @@ def _file_sig(path):
 _SITE_FILE = re.compile(r"^(index\.html|img/thumbs\.jpg|img/arts-\d+\.jpg|img/lg/[^/]+\.jpg)$")
 
 
+# The board's own file list, written by every artifact render that ships images. The image
+# folder is a CACHE — a card that left the pile keeps its img/lg file on disk — so without
+# this list a republish could not tell "no longer used" from "still on the board", and the
+# stale files kept their slots in the version (2026-11-05: five such images took the board
+# to the 512-entry refusal). `site_files` reads only what the manifest names when it exists.
+MANIFEST = ".manifest.json"
+# A claude.ai artifact version holds at most 511 files, the page included; one publish
+# sends at most 255, so a larger change goes up in several publishes to the same url.
+ARTIFACT_FILE_CAP = 511
+PUBLISH_BATCH = 255
+CAP_WARN = 0.95
+
+
+def prunable_cards(data):
+    """Pile cards settled OUT of every deck: run by no deck and graded ✗ in each. They
+    are the cards that can leave the pile (and the board) without losing a live question —
+    the pruning rule when a board nears ARTIFACT_FILE_CAP. Deck-list cards (pile None)
+    are never prunable: the page shows them because a deck runs them."""
+    keys = [d["key"] for d in data["meta"]["decks"]]
+    out = []
+    for c in data["cards"]:
+        if c.get("p") is None or any(c.get("i" + k) for k in keys):
+            continue
+        vd = c.get("vd") or {}
+        if keys and all(vd.get(k) == "✗" for k in keys):
+            out.append(c["n"])
+    return sorted(out)
+
+
+def write_manifest(out_dir, data, urls):
+    """Record the files this render's page uses: index.html, the sprites, each card's
+    large image and its back face where one was shipped (`b2`)."""
+    meta = data["meta"]
+    files = {"index.html"}
+    if meta.get("sprite"):
+        files.add(meta["sprite"]["src"])
+    files.update((meta.get("arts") or {}).get("sheets") or [])
+    for n in urls:
+        rel = f"img/lg/{image_slug(n)}.jpg"
+        if os.path.exists(os.path.join(out_dir, rel)):
+            files.add(rel)
+    for c in data["cards"]:
+        if c.get("b2"):
+            files.add(f"img/lg/{image_slug(c['n'])}--back.jpg")
+    with open(os.path.join(out_dir, MANIFEST), "w", encoding="utf-8") as fh:
+        json.dump({"files": sorted(files), "prunable": prunable_cards(data)}, fh, indent=0)
+
+
+def read_manifest(out_dir):
+    try:
+        with open(os.path.join(out_dir, MANIFEST), encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return None
+
+
 def site_files(out_dir):
-    """{published path: signature} for the files `render` writes for an artifact board
-    (index.html, the thumbnail and art sprites, the large images); leftovers of an older
-    layout in the same folder are not part of the board and are ignored."""
+    """{published path: signature} for the files the board uses. With a render manifest,
+    exactly the files it names (that exist); without one (an older render), every file
+    matching the board's layout — leftovers of an older layout are ignored either way."""
+    man = read_manifest(out_dir)
+    if man is not None:
+        out = {}
+        for rel in man.get("files", []):
+            full = os.path.join(out_dir, rel)
+            if os.path.exists(full):
+                out[rel] = _file_sig(full)
+        return out
     out = {}
     for root, _dirs, files in os.walk(out_dir):
         for fn in files:
@@ -1731,6 +1797,12 @@ def site_files(out_dir):
             if _SITE_FILE.match(rel):
                 out[rel] = _file_sig(full)
     return out
+
+
+def board_capacity(out_dir):
+    """(files on the board, cap, prunable card names) for a rendered board."""
+    man = read_manifest(out_dir) or {}
+    return len(site_files(out_dir)), ARTIFACT_FILE_CAP, list(man.get("prunable", []))
 
 
 def publish_plan(out_dir, mark=False):
@@ -1927,11 +1999,25 @@ def main(argv=None):
         if args.mark:
             print(f"Recorded {len(site_files(args.out))} file(s) as published.")
             return 0
-        print(f"{len(changed)} file(s) to send" + (f", {len(removed)} to remove" if removed else "") + ":")
+        n, cap, prunable = board_capacity(args.out)
+        print(f"{len(changed)} file(s) to send" + (f", {len(removed)} to remove" if removed else "")
+              + f" — the board holds {n} of {cap} file(s):")
         for x in changed:
             print(f"  {x}")
         for x in removed:
             print(f"  remove {x}")
+        if len(changed) > PUBLISH_BATCH:
+            print(f"ⓘ more than {PUBLISH_BATCH} files: send them in several publishes to the same url.")
+        if n > cap or n >= cap * CAP_WARN:
+            over = n > cap
+            print(("✗ OVER the artifact's file cap — the publish will be refused. "
+                   if over else f"⚠ within {cap - n} file(s) of the artifact's cap. ")
+                  + (f"{len(prunable)} pile card(s) are settled out of every deck (no deck runs them, "
+                     f"✗ in each) and can leave the pile: " + "; ".join(prunable)
+                     if prunable else "No pile card is settled out of every deck to prune."),
+                  file=sys.stderr)
+            if over:
+                return 2
         return 0
     try:
         if args.cmd == "new":

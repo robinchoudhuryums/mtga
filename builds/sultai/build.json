@@ -2368,34 +2368,34 @@
  "reasons": {
   "Legolas, Counter of Kills": {
    "group": "Loot trigger only",
-   "text": "**Thranduil:** A legendary Elf, so entering loots, but it has no activated ability to lend from the yard and no other synergy. **Glarb:** Its untap is on SCRY and the deck surveils; only Princess Yue scries.",
+   "text": "**Thranduil:** A legendary Elf, so entering loots, but it has no activated ability to lend from the yard and no other synergy. **Glarb:** Its untap is on SCRY and the deck surveils; only Kasmina's +2 and the Planetarium scry.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tam, Observant Sequencer // Deep Sight": {
    "group": "Draw engine, outranked",
-   "text": "Landfall prepares Tam; a prepared Tam casts a copy of Deep Sight for {G}{U}: draw a card, gain 1. **Thranduil:** Two mana a draw on a body with no graveyard tie. **Glarb:** Each copy's draw mills through Psychic Corrosion and the Tutelages, and Glarb's land plays off the top keep it prepared; small but on-plan.",
+   "text": "Landfall prepares Tam; a prepared Tam casts a copy of Deep Sight for {G}{U}: draw a card, gain 1. **Thranduil:** Two mana a draw on a body with no graveyard tie. **Glarb:** Each copy's draw mills through the Tutelages, and Glarb's land plays off the top keep it prepared; small but on-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Elrond, Master of Healing": {
    "group": "Scry payoff, no scry",
-   "text": "**Thranduil:** A legendary Elf entering loots through Thranduil, but its own text needs scry and the list scries never (only surveil), and it has no activated ability for the yard. **Glarb:** \"Whenever you scry\" — Glarb SURVEILS; only Princess Yue scries, and the deck has few creatures to put counters on.",
+   "text": "**Thranduil:** A legendary Elf entering loots through Thranduil, but its own text needs scry and the list scries only off Temple of Mystery, and it has no activated ability for the yard. **Glarb:** \"Whenever you scry\" — Glarb SURVEILS; only Kasmina's +2 and the Planetarium scry, and the deck has few creatures to put counters on.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ezuri, Stalker of Spheres": {
    "group": "Proliferate draw engine",
-   "text": "**Thranduil:** Pay {3} to proliferate twice on entry across 7 planeswalkers and Marwyn/Dionus/Kotis counters, then draws on every proliferate from High Perfect Morcant, Vraska and Yawgmoth's discard; a legendary Elf, so a Thranduil loot too. **Glarb:** The ETB adds loyalty to 9 walkers and draws two (each milling), but nothing here proliferates again.",
+   "text": "**Thranduil:** Pay {3} to proliferate twice on entry across the planeswalkers and Marwyn/Dionus/Kotis counters, then draws on every proliferate from High Perfect Morcant and Yawgmoth's discard; a legendary Elf, so a Thranduil loot too. **Glarb:** The ETB adds loyalty to the walkers and draws two (each milling), and Vraska, Flux Channeler, Cankerbloom, Tainted Observer, Ichormoon Gauntlet and Reject Imperfection each proliferate again for a draw.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jyoti, Moag Ancient": {
@@ -2442,8 +2442,8 @@
    "group": "Fits neither",
    "text": "\"You have no maximum hand size.\" **Thranduil:** No hand-size problem and rarely a creature. **Glarb:** Keeps Jin-Gitaxias's seven and feeds the Water Crystal's hand count, but Reed Richards already gives no maximum hand size.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Roalesk, Apex Hybrid": {
@@ -2456,18 +2456,18 @@
   },
   "Tamiyo, Compleated Sage": {
    "group": "Yard copy (non-Elf targets)",
-   "text": "\"−X: Exile target nonland permanent card with mana value X from your graveyard. Create a token that's a copy.\" **Thranduil:** Plenty of non-Elf targets at MV ≤5 (Cloud of Darkness, Sheoldred's edict, Overlord, Yarok); the exile triggers Teval and Roots. Skip Elf targets (G-42). **Glarb:** Little in your own yard; the +1 tap is tempo.",
+   "text": "\"−X: Exile target nonland permanent card with mana value X from your graveyard. Create a token that's a copy.\" **Thranduil:** Plenty of non-Elf targets at MV ≤5 (Yarok, Sidisi, Kotis, Teval); the exile triggers Teval and Roots. Skip Elf targets (G-42). **Glarb:** Little in your own yard; the +1 tap is tempo.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tawnos, the Toymaker": {
    "group": "Fits neither",
-   "text": "**Thranduil:** Copies Beasts/Birds; the list runs neither. **Glarb:** One Bird (Birds of Paradise).",
+   "text": "**Thranduil:** Copies Beasts/Birds; the list runs neither. **Glarb:** One Bird (Tainted Observer).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Oko, the Trickster": {
@@ -2506,16 +2506,16 @@
    "group": "Graveyard recast engine",
    "text": "**Thranduil:** In the list: a creature cast from the yard each turn by \"exiling three other cards\"; lands and non-Elf spells make up most of the yard, so the cost can spare the Elf tools (G-42), and the recasts trigger Insidious Roots and Teval. **Glarb:** Own-yard recursion is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Leovold, Emissary of Trest": {
    "group": "In one list only",
-   "text": "In Thranduil's list. **Thranduil:** A 3-mana legendary Elf (a loot), a draw lock on the opponent, and a draw when targeted. **Glarb:** \"Each opponent can't draw more than one card each turn\" switches off the opponent's half of Dictate of Kruphix and Jace's −7, which the list runs to empty their library; it fights the mill.",
+   "text": "Cut from Thranduil's list 2026-11-05. **Thranduil:** A 3-mana legendary Elf (a loot), a draw lock on the opponent, and a draw when targeted. **Glarb:** \"Each opponent can't draw more than one card each turn\" does little here: the mill plan does not make them draw.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Nashi, Moon's Legacy": {
@@ -2528,10 +2528,10 @@
   },
   "Nashi, Illusion Gadgeteer": {
    "group": "Graveyard recursion",
-   "text": "**Thranduil:** Recursion that leaves the original in Thranduil's yard, so no G-42 cost; Yarok doubles the ETB into two cards. **Glarb:** The duplicate gains flash, so a spent Counterspell, removal spell or Traumatize comes back at instant speed.",
+   "text": "**Thranduil:** Recursion that leaves the original in Thranduil's yard, so no G-42 cost; Yarok doubles the ETB into two cards. **Glarb:** The duplicate gains flash, so a spent counterspell (Didn't Say Please, Reject Imperfection) or removal spell comes back at instant speed.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kotis, the Fangkeeper": {
@@ -2546,8 +2546,8 @@
    "group": "Self-mill token engine",
    "text": "**Thranduil:** In the list: mills three on entry (six with Yarok) and attack, and most mills make a 2/2 Zombie with 45 creatures. The Zombies feed Yawgmoth's sac-draw, Insidious Roots mana, Eladamri's tap cost and Circle of Dreams. **Glarb:** Mills its own library; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Gonti, Canny Acquisitor": {
@@ -2562,24 +2562,24 @@
    "group": "Graveyard-cast threat",
    "text": "**Thranduil:** A recast from the yard triggers Teval, Oasis of Renewal and Insidious Roots, and mutating onto an Elf keeps its tap ability. A mutate cast does not ENTER, so Kotis only rewards a normal Kotis or Muldrotha cast. **Glarb:** A trample threat with {G}{G} mutate on a green splash; the deck wins by mill, not combat.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Maralen, Fae Ascendant": {
    "group": "In one list only",
-   "text": "**Thranduil:** In the list. Every Elf entering (33 Elves plus tokens) exiles two of their library, and the free cast is capped by the Elf count, which this deck keeps high. **Glarb:** Only Paradise Druid is an Elf, so it fires once or twice; the notes park it as a separate Elf variant.",
+   "text": "**Thranduil:** In the list. Every Elf entering (33 Elves plus tokens) exiles two of their library, and the free cast is capped by the Elf count, which this deck keeps high. **Glarb:** Only Tireless Provisioner is an Elf, so it fires once or twice; the notes park it as a separate Elf variant.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Yarok, the Desecrated": {
    "group": "ETB doubler",
-   "text": "**Thranduil:** In the list: \"that ability triggers an additional time\" — each legendary Elf entering is two Thranduil loots, and the ETB mills (Lluwen, Trystan, Sidisi, Overlord, Eulogist), Morcant's blight and Sindarin Liege's landfall tokens all double. **Glarb:** Doubles Ruin Crab's landfall (mill 6, 12 with Bruvac), Sphinx Mindbreaker and Teferi's Tutelage's loot.",
+   "text": "**Thranduil:** In the list: \"that ability triggers an additional time\" — each legendary Elf entering is two Thranduil loots, and the ETB mills (Trystan, Sidisi), Morcant's blight and Sindarin Liege's landfall tokens all double. **Glarb:** Doubles Teferi's Tutelage's entry loot; little else here triggers on entry.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sin, Spira's Punishment": {
@@ -2624,10 +2624,10 @@
   },
   "Jace Reawakened": {
    "group": "Value card",
-   "text": "\"+1: Draw a card, then discard a card.\" (not castable before turn four) **Thranduil:** A {U}{U} loot every turn that bins an Elf for Thranduil; card-neutral, and Thranduil already loots. **Glarb:** Each loot is a draw that mills via Psychic Corrosion and the Tutelages, and each draw adds Teferi loyalty.",
+   "text": "\"+1: Draw a card, then discard a card.\" (not castable before turn four) **Thranduil:** A {U}{U} loot every turn that bins an Elf for Thranduil; card-neutral, and Thranduil already loots. **Glarb:** Each loot is a draw that mills via the Tutelages, and each draw adds Teferi loyalty.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Katara, Waterbending Master": {
@@ -2656,10 +2656,10 @@
   },
   "Malcolm, Alluring Scoundrel": {
    "group": "Combat-gated looter",
-   "text": "**Thranduil:** On a 2-power flier the loot is combat-gated, so it is situational. **Glarb:** The loot is a draw that mills via the Tutelages, but the list rarely attacks.",
+   "text": "**Thranduil:** On a 2-power flier the loot is combat-gated, so it is situational. **Glarb:** In the list. The loot is a draw that mills via the Tutelages, but the list rarely attacks.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Naban, Dean of Iteration": {
@@ -2680,10 +2680,10 @@
   },
   "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
    "group": "Legendary-untap looter",
-   "text": "**Thranduil:** A 2-mana loot that untaps on each of 38 legendary spells, filling Thranduil's yard several times a turn; Elrond draws off the activation and Ioreth untaps it. Card-neutral, so not ★★★. **Glarb:** Each loot draw mills through Corrosion and both Tutelages, and 26 legendary spells untap it.",
+   "text": "**Thranduil:** A 2-mana loot that untaps on each of 38 legendary spells, filling Thranduil's yard several times a turn; Elrond draws off the activation and Ioreth untaps it. Card-neutral, so not ★★★. **Glarb:** Each loot draw mills through both Tutelages, and 26 legendary spells untap it.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "The Key to the Vault": {
@@ -2696,10 +2696,10 @@
   },
   "Vnwxt, Verbose Host": {
    "group": "Fits neither",
-   "text": "Speed rises only on your turns when an opponent loses life; max speed doubles every draw. **Thranduil:** Combat and the drains (Dawnhand Eulogist, Deathrite, Trystan) reach it, then a Thranduil loot draws four. **Glarb:** Doubled draws are doubled mill triggers, but the control list rarely makes them lose life on its own turn.",
+   "text": "Speed rises only on your turns when an opponent loses life; max speed doubles every draw. **Thranduil:** Combat and Trystan's drain reach it, then a Thranduil loot draws four. **Glarb:** Doubled draws are doubled mill triggers, but the control list rarely makes them lose life on its own turn.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Arni, Humble Scribe": {
@@ -2712,10 +2712,10 @@
   },
   "Chandra, Chill of Compliance": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** +1 surveil 1 bins an Elf for Thranduil each turn, but a {1}{U}{U} walker in the deck's thinnest colour adds little beside its self-mill. **Glarb:** On the bench, screened KEY. +1 surveil feeds Matoya and Proft and returns a binned noncreature spell; the other +1 adds mana for noncreature spells; −X stuns a threat.",
+   "text": "**Thranduil:** +1 surveil 1 bins an Elf for Thranduil each turn, but a {1}{U}{U} walker in the deck's thinnest colour adds little beside its self-mill. **Glarb:** On the bench, screened KEY. +1 surveil feeds Matoya and returns a binned noncreature spell; the other +1 adds mana for noncreature spells; −X stuns a threat.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Callaphe, Beloved of the Sea": {
@@ -2736,10 +2736,10 @@
   },
   "Elrond, Moon-Reader": {
    "group": "In one list only",
-   "text": "\"Whenever you activate an ability of a creature, draw a card\" (once a turn). **Thranduil:** In the list. Tapping any of ~13 mana creatures is an activation, so it draws every turn, on the opponent's turn too; a legendary Elf (loot on entry). **Glarb:** Not in the list, but Glarb's surveil tap, Princess Yue's scry and Doctor Doom trigger it, so each turn is a draw that mills. A good add.",
+   "text": "\"Whenever you activate an ability of a creature, draw a card\" (once a turn). **Thranduil:** In the list. Tapping any of ~13 mana creatures is an activation, so it draws every turn, on the opponent's turn too; a legendary Elf (loot on entry). **Glarb:** Not in the list, but Glarb's surveil tap and Ioreth's untap trigger it, so each turn is a draw that mills. A good add.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Fblthp, Lost on the Range": {
@@ -2754,48 +2754,48 @@
    "group": "Fits neither",
    "text": "**Thranduil:** \"Other than your first spell that turn\" — the mana Elves make two spells a turn reachable, and Zombies feed Yawgmoth and Insidious Roots, but it is a token engine bolted on. **Glarb:** A control deck casts most spells on the opponent's turn; few triggers.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Graviton, Fundamental Force": {
    "group": "Fits neither",
-   "text": "\"Whenever you draw your second card each turn\" — tap a creature. **Thranduil:** A loot reaches it, but a one-creature tap is minor. **Glarb:** Draws twice most turns, but a tap on the opponent's turn needs a second draw before combat (Theorist plus Notion Thief or Rhystic); M.O.D.O.K.'s edict does the job better.",
+   "text": "\"Whenever you draw your second card each turn\" — tap a creature. **Thranduil:** A loot reaches it, but a one-creature tap is minor. **Glarb:** Draws twice most turns, but a tap on the opponent's turn needs a second draw before combat (The Theorist plus a second draw source); M.O.D.O.K.'s edict does the job better.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Impossible Man": {
    "group": "Fits neither",
    "text": "**Thranduil:** `{2}{U}`: copy Thranduil (keeping its own name, so no legend rule) for a second set of borrowed Elf abilities, or copy a mana Elf — real but mana-hungry. **Glarb:** Copy Matoya or Sheoldred, the Apocalypse for a turn; situational.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Invasion of Segovia // Caetus, Sea Tyrant of Segovia": {
    "group": "Fits neither",
    "text": "Two 1/1 Kraken tokens; the Caetus half needs the Siege defeated in combat. **Thranduil:** Tokens feed Insidious Roots, but nothing else here. **Glarb:** Convoke and untaps do not draw or mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ioreth of the Healing House": {
    "group": "Legend untapper",
-   "text": "\"{T}: Untap two other target legendary creatures.\" **Thranduil:** In the list since 2026-11-02. Untaps Thranduil for another borrowed {T} ability each turn (past Dionus's once-a-turn untap) plus a legendary mana Elf. **Glarb:** Untaps Glarb and Doctor Doom: a second surveil 2 (Matoya draws) and a second Doom draw, each milling.",
+   "text": "\"{T}: Untap two other target legendary creatures.\" **Thranduil:** In the list since 2026-11-02. Untaps Thranduil for another borrowed {T} ability each turn (past Dionus's once-a-turn untap) plus a legendary mana Elf. **Glarb:** In the list. Untaps Glarb and Rona: a second surveil 2 (Matoya draws) and a second Rona loot, each milling through the Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Irma, Part-Time Mutant": {
    "group": "Fits neither",
    "text": "**Thranduil:** Each combat she becomes a copy of a creature you control and stays that way — a second Thranduil or Priest of Titania — but only from combat on, and she dies to removal like any 3-drop. **Glarb:** Copy Matoya or Sheoldred, the Apocalypse; same shape, fewer targets.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Katara, Bending Prodigy": {
@@ -2816,10 +2816,10 @@
   },
   "Kira, Great Glass-Spinner": {
    "group": "Fits neither",
-   "text": "Counters the first spell or ability targeting each of your creatures each turn. **Thranduil:** Protection, but it also counters Ioreth's untap, Gloom Ripper's pump target and Journey to Eternity. **Glarb:** Protects Glarb from removal; a creature-light control list gains little else.",
+   "text": "Counters the first spell or ability targeting each of your creatures each turn. **Thranduil:** Protection, but it also counters Ioreth's untap. **Glarb:** Protects Glarb from removal; a creature-light control list gains little else.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Lulu, Stern Guardian": {
@@ -2832,10 +2832,10 @@
   },
   "Lyra, Tolarian Archangel": {
    "group": "Draw payoff body",
-   "text": "**Thranduil:** A Thranduil loot plus the draw step reaches three draws, but UU for a body, not a graveyard card. **Glarb:** Three draws in a turn is common here (Dictate, Phyrexian Arena, The Theorist on their turn), so it makes a 3/3 flier most end steps — a body, though, not a draw or a mill.",
+   "text": "**Thranduil:** A Thranduil loot plus the draw step reaches three draws, but UU for a body, not a graveyard card. **Glarb:** Three draws in a turn happens here (The Theorist on their turn, Rona's loot, Matoya), so it makes a 3/3 flier most end steps — a body, though, not a draw or a mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Mindlink Mech": {
@@ -2864,26 +2864,26 @@
   },
   "Unctus, Grand Metatect": {
    "group": "Loot granter",
-   "text": "Other blue creatures have \"Whenever this creature becomes tapped, draw a card, then discard a card.\" **Thranduil:** The mana Elves are green, so only by spending {U/P} at sorcery speed. **Glarb:** Glarb's surveil tap and Princess Yue's scry become loots, two draws a turn that each mill.",
+   "text": "Other blue creatures have \"Whenever this creature becomes tapped, draw a card, then discard a card.\" **Thranduil:** The mana Elves are green, so only by spending {U/P} at sorcery speed. **Glarb:** Glarb's surveil tap becomes a loot, a draw a turn that mills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Wasp, Shrinking Savior": {
    "group": "Fits neither",
    "text": "**Thranduil:** Draws one per attack at best (only its own −3/−0 makes a negative power). **Glarb:** Jace, the Perfected Mind's +1 also gives −3/−0, so two cards a turn is possible; each draw mills two.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Alora, Rogue Companion": {
    "group": "Tempo bounce",
-   "text": "**Thranduil:** \"…return that creature to its owner's hand\" — the bounce re-buys an ETB (Keepers, Eulogist, Sidisi, Maralen, doubled by Yarok) or a legendary Elf's Thranduil loot, and the Elves make recasting cheap; still a 4-mana do-nothing body. **Glarb:** Few attackers (Kaito, Restless Reef); tempo with no mill.",
+   "text": "**Thranduil:** \"…return that creature to its owner's hand\" — the bounce re-buys an ETB (Sidisi, Maralen, Trystan, doubled by Yarok) or a legendary Elf's Thranduil loot, and the Elves make recasting cheap; still a 4-mana do-nothing body. **Glarb:** Few attackers (Restless Reef); tempo with no mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Arwen's Gift": {
@@ -2920,18 +2920,18 @@
   },
   "Gandalf, Friend of the Shire": {
    "group": "Fits neither",
-   "text": "Its draw needs the Ring to tempt you, and neither list tempts it. **Thranduil:** Three sorceries to flash; little gained. **Glarb:** Flashing the eight sorceries (Traumatize, Damnation, the big mills) at end of turn suits control, but that is all it does.",
+   "text": "Its draw needs the Ring to tempt you, and neither list tempts it. **Thranduil:** Three sorceries to flash; little gained. **Glarb:** Flashing the three sorceries (Cut Your Losses, Villainous Wealth, Yawgmoth's Vile Offering) at end of turn suits control, but that is all it does.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Irenicus's Vile Duplication": {
    "group": "Fits neither",
-   "text": "**Thranduil:** A flying, non-legendary token copy of one of your creatures: re-buys Cloud of Darkness, Silumgar or Sheoldred's ETB (doubled by Yarok) or a second Priest of Titania, but it needs that target on board. **Glarb:** Copies Sphinx Mindbreaker (mill ten) or Sheoldred, the Apocalypse; castable off the top at MV 4. Situational in both.",
+   "text": "**Thranduil:** A flying, non-legendary token copy of one of your creatures: re-buys Sidisi's or Trystan's ETB (doubled by Yarok) or a second Priest of Titania, but it needs that target on board. **Glarb:** Copies Terisian Mindbreaker (half their library on attack) or Sheoldred, the Apocalypse; castable off the top at MV 4. Situational in both.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jace, the Perfected Mind": {
@@ -2944,18 +2944,18 @@
   },
   "Jace, Wielder of Mysteries": {
    "group": "Draw-and-mill walker",
-   "text": "**Thranduil:** +1 can self-mill two and draw, but `{1}{U}{U}{U}` against 15 blue sources is hard. **Glarb:** +1 mills two (four with Bruvac) and its draw triggers Corrosion and both Tutelages; the empty-library win is deck-out insurance for a list that draws hard. 24 blue sources cast it. On the deck's bench.",
+   "text": "**Thranduil:** +1 can self-mill two and draw, but `{1}{U}{U}{U}` against 15 blue sources is hard. **Glarb:** +1 mills two (four with Bruvac) and its draw triggers both Tutelages; the empty-library win is deck-out insurance for a list that draws hard. 24 blue sources cast it. In the list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Leader, Super-Genius": {
    "group": "Repeatable loot",
-   "text": "**Thranduil:** Each combat a creature connives and Leader adds a draw first — draw two, discard one every turn, card advantage that bins an Elf for Thranduil; UU on a light-blue base is the cost. **Glarb:** Two draws a turn are two Psychic Corrosion and Tutelage triggers, blue is the main colour, and Glarb casts it off the top.",
+   "text": "**Thranduil:** Each combat a creature connives and Leader adds a draw first — draw two, discard one every turn, card advantage that bins an Elf for Thranduil; UU on a light-blue base is the cost. **Glarb:** Two draws a turn are two triggers of each Tutelage, blue is the main colour, and Glarb casts it off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Multiversal Recruitment": {
@@ -2976,10 +2976,10 @@
   },
   "Taeko, the Patient Avalanche": {
    "group": "Fits neither",
-   "text": "**Thranduil:** Only Elrond, Moon-Reader's blink makes creatures leave without dying. **Glarb:** Only Kaito's ninjutsu returns a creature; no blink.",
+   "text": "**Thranduil:** Only Elrond, Moon-Reader's blink makes creatures leave without dying. **Glarb:** No ninjutsu or blink since Kaito was cut.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tezzeret, Betrayer of Flesh": {
@@ -2992,10 +2992,10 @@
   },
   "The Clone Saga": {
    "group": "Value card",
-   "text": "**Thranduil:** Surveil 3 bins Elves for Thranduil; II copies a creature spell (the copy isn't legendary, so no extra loot). **Glarb:** Surveil 3 triggers Matoya and Proft for draws, and II can copy Sheoldred, the Apocalypse.",
+   "text": "**Thranduil:** Surveil 3 bins Elves for Thranduil; II copies a creature spell (the copy isn't legendary, so no extra loot). **Glarb:** Surveil 3 triggers Matoya for a draw, and II can copy Sheoldred, the Apocalypse.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tui and La, Moon and Ocean": {
@@ -3016,18 +3016,18 @@
   },
   "Vesuvan Duplimancy": {
    "group": "Fits neither",
-   "text": "**Thranduil:** Needs spells that target only one of your creatures; Journey to Eternity and Trystan's Command's copy mode are about all. **Glarb:** Effectively none here.",
+   "text": "**Thranduil:** Needs spells that target only one of your creatures; Trystan's Command's copy mode is about all. **Glarb:** Effectively none here.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Yue, the Moon Spirit": {
    "group": "Fits neither",
-   "text": "Waterbend {5} casts a noncreature spell free, so it only saves mana on a 6+ card. **Thranduil:** The Elves can tap to pay it, but its noncreature top end is Trystan's Command and the 6-mana walkers. **Glarb:** Only Breach the Multiverse and Ashiok, Sculptor of Fears cost 6+.",
+   "text": "Waterbend {5} casts a noncreature spell free, so it only saves mana on a 6+ card. **Thranduil:** The Elves can tap to pay it, but its noncreature top end is Trystan's Command and the 6-mana walkers. **Glarb:** Few noncreature spells cost 6+ (Ashiok, Sculptor of Fears; Cut Your Losses).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Iymrith, Desert Doom": {
@@ -3056,10 +3056,10 @@
   },
   "Krang, the All-Powerful": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** No draw-triggered permanents in the list; a 5-mana 3/3. **Glarb:** \"If a player drawing a card causes a triggered ability… triggers an additional time\" doubles Psychic Corrosion, both Tutelages, Sheoldred, the Apocalypse, Teferi, Temporal Pilgrim and M.O.D.O.K.; Glarb casts it off the top. The strongest add on this list.",
+   "text": "**Thranduil:** No draw-triggered permanents in the list; a 5-mana 3/3. **Glarb:** \"If a player drawing a card causes a triggered ability… triggers an additional time\" doubles both Tutelages, Sheoldred, the Apocalypse, Teferi, Temporal Pilgrim and M.O.D.O.K.; Glarb casts it off the top. In the list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Pharaoh Rama-Tut": {
@@ -3080,26 +3080,26 @@
   },
   "Thryx, the Sudden Storm": {
    "group": "Cost reducer, outranked",
-   "text": "**Thranduil:** A 5-mana flash flier, `{U}{U}`. **Glarb:** 17 spells of MV 5+ cost {1} less and can't be countered, wherever cast from; a 4/5 flier.",
+   "text": "**Thranduil:** A 5-mana flash flier, `{U}{U}`. **Glarb:** In the list. Spells of MV 5+ cost {1} less and can't be countered, wherever cast from; a 4/5 flier.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Victor Timely, Wily Tycoon": {
    "group": "Spell recursion",
-   "text": "**Thranduil:** Recasts one removal spell (MV ≤4) free, twice with Yarok. **Glarb:** Many targets: Glimpse the Unthinkable, Tasha's Hideous Laughter, Maddening Cacophony, Counterspell and the removal all land in its yard; a 5-drop castable off the top.",
+   "text": "**Thranduil:** Recasts one removal spell (MV ≤4) free, twice with Yarok. **Glarb:** Many targets: Didn't Say Please, Reject Imperfection, Drown in the Loch and the removal land in its yard; a 5-drop castable off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jace, Arcane Strategist": {
    "group": "Draw engine, outranked",
-   "text": "**Thranduil:** Six mana with UU for a +1 draw; Ob Nixilis and Vraska, Betrayal's Sting draw for less in the colours the list runs deep. **Glarb:** Each +1 draw mills through Psychic Corrosion and the Tutelages and Glarb casts it off the top, but at 6 it trails Ob Nixilis, Teferi and Jace, Memory Adept, already in.",
+   "text": "**Thranduil:** Six mana with UU for a +1 draw; the list's walkers are green and black. **Glarb:** Each +1 draw mills through the Tutelages and Glarb casts it off the top, but at 6 it trails Ob Nixilis, Teferi and Jace, Memory Adept, already in.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kitsune, Dragon's Daughter": {
@@ -3136,10 +3136,10 @@
   },
   "Jin-Gitaxias, Progress Tyrant": {
    "group": "Swap candidate",
-   "text": "\"Whenever you cast an artifact, instant, or sorcery spell, copy that spell\" and counter the opponent's first. **Thranduil:** ~7 instants/sorceries; little to copy. **Glarb:** 21 instants/sorceries: a second Traumatize empties a library, and the counter taxes their removal. MV 7 casts off the top.",
+   "text": "\"Whenever you cast an artifact, instant, or sorcery spell, copy that spell\" and counter the opponent's first. **Thranduil:** ~7 instants/sorceries; little to copy. **Glarb:** About six instants/sorceries since the trim, so little to copy; the counter still taxes their removal. MV 7 casts off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jadzi, Oracle of Arcavios // Journey to the Oracle": {
@@ -3184,10 +3184,10 @@
   },
   "Reezug, the Bonecobbler": {
    "group": "Graveyard recast",
-   "text": "**Thranduil:** `{T}`: a creature card in your yard becomes an artifact you may cast this turn — recast a non-Elf (Sheoldred, Muldrotha, Sidisi) and keep its abilities; recasting an Elf takes it off Thranduil. Overlaps Kotis and Muldrotha. **Glarb:** Its own yard holds few creatures.",
+   "text": "**Thranduil:** `{T}`: a creature card in your yard becomes an artifact you may cast this turn — recast a non-Elf (Muldrotha, Sidisi, Yarok) and keep its abilities; recasting an Elf takes it off Thranduil. Overlaps Kotis and Muldrotha. **Glarb:** Its own yard holds few creatures.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Splinter, the Mentor": {
@@ -3216,26 +3216,26 @@
   },
   "Isareth the Awakener": {
    "group": "Reanimation on attack",
-   "text": "**Thranduil:** Reanimates on attack for {X}; spend it on non-Elf ETB targets (Cloud of Darkness, Silumgar, Sheoldred, Overlord) that Yarok doubles, so Thranduil keeps his Elf tools; a returned creature is exiled if it leaves. **Glarb:** Own-yard reanimation is not the plan.",
+   "text": "**Thranduil:** Reanimates on attack for {X}; spend it on non-Elf ETB targets (Sidisi, Yarok) that Yarok doubles, so Thranduil keeps his Elf tools; a returned creature is exiled if it leaves. **Glarb:** Own-yard reanimation is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kaervek, the Punisher": {
    "group": "Exiles your own graveyard (G-42)",
-   "text": "\"exile up to one target black card from your graveyard and copy it. You may cast the copy.\" **Thranduil:** Maralen, Yawgmoth and removal commit crimes; copy Infernal Grasp, Price of Fame or Vile Offering — not Deathbloom, Izoni or Trystan, whose abilities Thranduil borrows. **Glarb:** The Tutelages commit a crime every turn, and the yard holds black removal, Damnation and Breach the Multiverse to recast.",
+   "text": "\"exile up to one target black card from your graveyard and copy it. You may cast the copy.\" **Thranduil:** Maralen, Yawgmoth and removal commit crimes; copy Fatal Push, Heartless Act or Vile Offering — not Izoni or Trystan, whose abilities Thranduil borrows. **Glarb:** The Tutelages commit a crime every turn, and the yard holds Yawgmoth's Vile Offering and the black removal to recast.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tatsunari, Toad Rider": {
    "group": "Fits neither",
-   "text": "**Thranduil:** About six enchantments to trigger Keimi. **Glarb:** About eight (Corrosion, the Tutelages, Rhystic Study…), so Keimi drains a little; still a weak body.",
+   "text": "**Thranduil:** About six enchantments to trigger Keimi. **Glarb:** About eight (the Tutelages, Fraying Sanity, Ominous Seas, Scavenger's Talent, the Gods…), so Keimi drains a little; still a weak body.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Yahenni, Undying Partisan": {
@@ -3256,26 +3256,26 @@
   },
   "Doctor Doom, Unrivaled": {
    "group": "In one list only",
-   "text": "**Thranduil:** \"{T}: You draw a card\" is repeatable card advantage on a 4-mana lifelink body; it triggers Elrond, Moon-Reader and Ioreth untaps it for a second draw. Not in the list. **Glarb:** In the list: every tap is a draw the Tutelages and Psychic Corrosion turn into mill, and once our library is empty it wins outright.",
+   "text": "**Thranduil:** \"{T}: You draw a card\" is repeatable card advantage on a 4-mana lifelink body; it triggers Elrond, Moon-Reader and Ioreth untaps it for a second draw. Not in the list. **Glarb:** Cut from the list: every tap would be a draw the Tutelages turn into mill, and once our library is empty it wins outright.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Erebos, God of the Dead": {
    "group": "Value card",
-   "text": "\"{1}{B}, Pay 2 life: Draw a card.\" **Thranduil:** A repeatable mana sink for the Elf mana engines that turns spare mana into cards. **Glarb:** Same, and each draw mills two through Psychic Corrosion or a Tutelage; Sheoldred's lifegain pays the life.",
+   "text": "\"{1}{B}, Pay 2 life: Draw a card.\" **Thranduil:** A repeatable mana sink for the Elf mana engines that turns spare mana into cards. **Glarb:** In the list. Same, and each draw mills two through each Tutelage; Sheoldred's lifegain pays the life.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Gisa, Glorious Resurrector": {
    "group": "Removal-dependent value",
-   "text": "**Thranduil:** Touches nothing in our yard and only fires after removal; the decayed bodies feed Yawgmoth and Izoni, but that is a board-state payoff. **Glarb:** Damnation and spot removal give it bodies, but it EXILES their dying creatures, which Drown in the Loch, Consuming Aberration and Sheoldred's chapter III want in their graveyard.",
+   "text": "**Thranduil:** Touches nothing in our yard and only fires after removal; the decayed bodies feed Yawgmoth and Izoni, but that is a board-state payoff. **Glarb:** Spot removal gives it bodies, but it EXILES their dying creatures, which Drown in the Loch, Consuming Aberration and Sheoldred's chapter III want in their graveyard.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kels, Fight Fixer": {
@@ -3304,10 +3304,10 @@
   },
   "Lo and Li, Royal Advisors": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** Self-target mill four is repeatable fuel (Kagha casts from it that turn), but three mana an activation. **Glarb:** \"{2}{U/B}: Target player mills four\" at instant speed grows huge with Bruvac and The Water Crystal; it and the other Advisors (Bruvac, The Master of Lake-town) grow when they mill.",
+   "text": "**Thranduil:** Self-target mill four is repeatable fuel (Muldrotha and Kotis cast from it), but three mana an activation. **Glarb:** \"{2}{U/B}: Target player mills four\" at instant speed grows huge with Bruvac and The Water Crystal; it and the other Advisors (Bruvac) grow when they mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Lord Dregg, Insect Invader": {
@@ -3328,10 +3328,10 @@
   },
   "Massacre Girl, Known Killer": {
    "group": "Minus-counter draw",
-   "text": "**Thranduil:** Draws when an opposing creature dies with toughness below 1, and the list does that: High Perfect Morcant's blight per Elf entering, Yawgmoth's -1/-1 counters, Gloom Ripper's -0/-X, Garruk's +2. **Glarb:** Few attackers and one -X/-X effect (Theorix Charm); a 4/4 menace.",
+   "text": "**Thranduil:** Draws when an opposing creature dies with toughness below 1, and the list does that: High Perfect Morcant's blight per Elf entering and Yawgmoth's -1/-1 counters. **Glarb:** Few attackers and no -X/-X effect; a 4/4 menace.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Moonstone, Harsh Mistress": {
@@ -3344,10 +3344,10 @@
   },
   "One Ring to Rule Them All": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** Chapter II \"Destroy all nonlegendary creatures\" kills 18 of the list's creatures, most of the mana Elves. **Glarb:** II is nearly one-sided (6 nonlegendary creatures), I mills each player by your Ring-bearer's power, and III drains for each creature card in THEIR graveyard, which the mill fills. Strong add.",
+   "text": "**Thranduil:** Chapter II \"Destroy all nonlegendary creatures\" kills 18 of the list's creatures, most of the mana Elves. **Glarb:** In the list. II is nearly one-sided (6 nonlegendary creatures), I mills each player by your Ring-bearer's power, and III drains for each creature card in THEIR graveyard, which the mill fills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Rev, Tithe Extractor": {
@@ -3376,10 +3376,10 @@
   },
   "Whisper, Blood Liturgist": {
    "group": "Token-fed reanimation",
-   "text": "\"{T}, Sacrifice two creatures: Return target creature card from your graveyard to the battlefield.\" **Thranduil:** Elf, Zombie and Plant tokens pay the cost; reanimate a non-Elf bomb (Sheoldred, Muldrotha) and trigger Kotis, Teval and Roots. **Glarb:** Few tokens, and own-yard recursion is not the plan.",
+   "text": "\"{T}, Sacrifice two creatures: Return target creature card from your graveyard to the battlefield.\" **Thranduil:** Elf, Zombie and Plant tokens pay the cost; reanimate a non-Elf bomb (Muldrotha, Yarok) and trigger Kotis, Teval and Roots. **Glarb:** Few tokens, and own-yard recursion is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Aclazotz, Deepest Betrayal // Temple of the Dead": {
@@ -3392,34 +3392,34 @@
   },
   "Ashiok, Wicked Manipulator": {
    "group": "Slow value walker",
-   "text": "**Thranduil:** +1 is card selection and −2 makes two bodies, but nothing here touches the graveyard engine; a generic 5-mana walker. **Glarb:** The pay-life static only meets the three shocklands and Jace's compleated cost (Phyrexian Arena and Infernal Grasp LOSE life, not pay it). +1 puts a card in hand without a draw trigger, and −7 counts only YOUR exiled cards — weaker than the three Ashioks already in.",
+   "text": "**Thranduil:** +1 is card selection and −2 makes two bodies, but nothing here touches the graveyard engine; a generic 5-mana walker. **Glarb:** The pay-life static only meets the three shocklands and Jace's compleated cost. +1 puts a card in hand without a draw trigger, and −7 counts only YOUR exiled cards — weaker than the three Ashioks already in.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Black Widow, Daring Operative": {
    "group": "Self-mill threat, outranked",
-   "text": "**Thranduil:** The ETB mill 3 is real fuel and Yarok doubles it, but the drain (creature cards in your yard) is combat-gated on a 5-drop, and Dawnhand Eulogist already mills 3 for 4. **Glarb:** Mills your own library and counts your own creature cards; Glarb's mill fills the opponent's yard, so it is off-plan.",
+   "text": "**Thranduil:** In the list (the owner's keep). The ETB mill 3 is real fuel and Yarok doubles it, but the drain (creature cards in your yard) is combat-gated on a 5-drop. **Glarb:** Mills your own library and counts your own creature cards; Glarb's mill fills the opponent's yard, so it is off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Drana, the Last Bloodchief": {
    "group": "Recursion, opponent's pick",
    "text": "\"defending player chooses a nonlegendary creature card in your graveyard.\" **Thranduil:** Recursion every attack that also triggers Teval, Oasis, Insidious Roots and Kotis, but the opponent picks the worst of ~18 nonlegendary creatures — usually a mana Elf whose ability Thranduil was using (G-42). **Glarb:** Own-yard recursion with almost no creature cards there; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Garruk, Veiled Butcher": {
    "group": "In one list only",
-   "text": "In Thranduil's list. **Thranduil:** Interaction (+2 −4/−1, −2 edict paid with a token) plus −3 card advantage; exiling their dying creatures costs nothing here. **Glarb:** \"If a creature an opponent controls would die, exile it instead\" keeps cards out of the yard Consuming Aberration, Drown in the Loch, Breach and Ashiok's −5 read (G-42), so it is a weaker fit than its removal suggests.",
+   "text": "Cut from Thranduil's list 2026-11-05. **Thranduil:** Interaction (+2 −4/−1, −2 edict paid with a token) plus −3 card advantage; exiling their dying creatures costs nothing here. **Glarb:** \"If a creature an opponent controls would die, exile it instead\" keeps cards out of the yard Consuming Aberration, Drown in the Loch and Ashiok's −5 read (G-42), so it is a weaker fit than its removal suggests.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ghoulcaller Gisa": {
@@ -3434,56 +3434,56 @@
    "group": "Value card",
    "text": "\"Whenever you commit a crime, create two tapped 2/2 … Zombie Rogue\" tokens (once a turn). **Thranduil:** Maralen's opponent-targeting ETB, Yawgmoth's counters, Deathrite and the removal commit crimes; the Zombies fuel Yawgmoth, Izoni and Insidious Roots, and Gisa pumps Kotis and Teval/Sidisi Zombies. **Glarb:** Teferi's and Sphinx's Tutelage target an opponent on every draw, so two blockers a turn; defence, not the mill plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Junji, the Midnight Sky": {
    "group": "Death-trigger reanimator",
    "text": "**Thranduil:** Its death trigger reanimates a non-Dragon (prefer a non-Elf or the opponent's, to keep Thranduil's tools); sac outlets (Yawgmoth, Izoni, Vraska +2) fire it on demand, and Kotis or Muldrotha can recast it. **Glarb:** A 5-mana flier castable off the top; its reanimation can take a creature from their milled yard, but few sac outlets.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Lo and Li, Twin Tutors": {
    "group": "Fits neither",
-   "text": "\"Search your library for a Lesson or Noble card.\" **Thranduil:** Five Noble targets (Lathril, High Perfect Morcant, Elrond, Maralen, Thranduil, Sindarin Liege) at 5 mana, and Nobles gain lifelink. **Glarb:** One target (Princess Yue) and no Lessons.",
+   "text": "\"Search your library for a Lesson or Noble card.\" **Thranduil:** Five Noble targets (Lathril, High Perfect Morcant, Elrond, Maralen, Thranduil, Sindarin Liege) at 5 mana, and Nobles gain lifelink. **Glarb:** No target since Princess Yue was cut (Glarb is the only Noble), and no Lessons.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Maha, Its Feathers Night": {
    "group": "Toughness-1 static",
-   "text": "**Thranduil:** \"Creatures your opponents control have base toughness 1\" turns High Perfect Morcant's blight on every Elf entry, Yawgmoth's −1/−1 counter and Gloom Ripper into removal; ward—discard feeds the yard. **Glarb:** A 5-mana flier off the top; the static has few partners here.",
+   "text": "**Thranduil:** \"Creatures your opponents control have base toughness 1\" turns High Perfect Morcant's blight on every Elf entry and Yawgmoth's −1/−1 counter into removal; ward—discard feeds the yard. **Glarb:** A 5-mana flier off the top; the static has few partners here.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sauron, the Necromancer": {
    "group": "Exiles your own graveyard (G-42)",
-   "text": "**Thranduil:** Each attack exiles a creature card from your yard for a one-turn copy whose ETB fires (Gloom Ripper, Cloud of Darkness, Sheoldred's edict); aim it at non-Elf cards (G-42), and it still trims the reanimation targets. **Glarb:** Its own yard holds few creatures; the mill fills theirs.",
+   "text": "**Thranduil:** Each attack exiles a creature card from your yard for a one-turn copy whose ETB fires (Sidisi, Yarok); aim it at non-Elf cards (G-42), and it still trims the reanimation targets. **Glarb:** Its own yard holds few creatures; the mill fills theirs.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Seizan, Perverter of Truth": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** Symmetric draw two each upkeep; with Leovold in the list the opponent draws only one — a two-card combo. **Glarb:** \"That player loses 2 life and draws two cards\": the opponent loses two library cards a turn (and 4 life to Sheoldred, the Apocalypse), and your two draws mill four through Corrosion. Symmetric, which this deck wants (Dictate of Kruphix).",
+   "text": "**Thranduil:** Symmetric draw two each upkeep; with Leovold (cut 2026-11-05) the opponent drew only one. **Glarb:** \"That player loses 2 life and draws two cards\": the opponent loses two library cards a turn (and 4 life to Sheoldred, the Apocalypse), and your two draws mill four through each Tutelage. Symmetric, which this deck wants.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Seymour Flux": {
    "group": "Draw engine, outranked",
-   "text": "**Thranduil:** A draw per upkeep on a body; card advantage but no graveyard tie. **Glarb:** A Phyrexian Arena on a body (Arena is in); every draw mills, and Glarb casts it off the top.",
+   "text": "**Thranduil:** A draw per upkeep on a body; card advantage but no graveyard tie. **Glarb:** A Phyrexian Arena on a body; every draw mills, and Glarb casts it off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Shredder, Shadow Master": {
@@ -3512,10 +3512,10 @@
   },
   "Tergrid, God of Fright // Tergrid's Lantern": {
    "group": "Steal on sacrifice",
-   "text": "**Thranduil:** Sheoldred, Whispering One's upkeep edict and Garruk's −2 and −3 hand it a permanent each time. **Glarb:** M.O.D.O.K.'s edict on our second draw each turn and Sheoldred's ETB and chapter II (discard three) do the same; Glarb casts it off the top. The Lantern face forces it alone.",
+   "text": "**Thranduil:** Sheoldred's ETB and chapter II hand it a permanent; little else here forces a sacrifice or discard. **Glarb:** M.O.D.O.K.'s edict on our second draw each turn and Sheoldred's ETB and chapter II (discard three) do the same; Glarb casts it off the top. The Lantern face forces it alone.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Witch-king of Angmar": {
@@ -3528,10 +3528,10 @@
   },
   "Doctor Doom": {
    "group": "Value card",
-   "text": "**Thranduil:** Two 3/3 Doombots (doubled by Yarok) feed Yawgmoth, Izoni and Insidious Roots, plus an end-step draw for 6 mana. **Glarb:** Not the list's Doctor Doom, Unrivaled; this one's end-step draw is a mill trigger each turn and it casts off the top as MV 6.",
+   "text": "**Thranduil:** Two 3/3 Doombots (doubled by Yarok) feed Yawgmoth, Izoni and Insidious Roots, plus an end-step draw for 6 mana. **Glarb:** Its end-step draw is a mill trigger each turn and it casts off the top as MV 6.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Bolas's Citadel": {
@@ -3552,10 +3552,10 @@
   },
   "Lich's Mastery": {
    "group": "Risky combo piece",
-   "text": "**Thranduil:** Every life paid (Yawgmoth, shocklands) exiles a card, which eats Thranduil's yard. **Glarb:** With Sheoldred, the Apocalypse each draw gains 2 and draws 2 more until our library is empty, milling them via the Tutelages; Doctor Doom's tap then wins. Losing Mastery loses the game.",
+   "text": "**Thranduil:** Every life paid (Yawgmoth, shocklands) exiles a card, which eats Thranduil's yard. **Glarb:** With Sheoldred, the Apocalypse each draw gains 2 and draws 2 more until our library is empty, milling them via the Tutelages; Jace, Wielder of Mysteries then wins on the empty library. Losing Mastery loses the game.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tetzimoc, Primal Death": {
@@ -3568,18 +3568,18 @@
   },
   "The Cloning of Shredder": {
    "group": "Yard copy (non-Elf targets)",
-   "text": "\"Exile target creature card from your graveyard. Create a token that's a copy\" — three nonlegendary copies. **Thranduil:** On a non-Elf: three Sheoldred edicts, Cloud of Darkness kills or Silumgar steals, doubled by Yarok. **Glarb:** Works only if a creature reached your yard (Sphinx Mindbreaker binned by surveil = 30 mill).",
+   "text": "\"Exile target creature card from your graveyard. Create a token that's a copy\" — three nonlegendary copies. **Thranduil:** On a non-Elf (Sidisi, Muldrotha, Teval) it makes three copies, ETBs doubled by Yarok. **Glarb:** Works only if a creature reached your yard (Terisian Mindbreaker binned by surveil).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Vraska, Betrayal's Sting": {
    "group": "In one list only",
-   "text": "In Thranduil's list. **Thranduil:** 0: draw and proliferate (walkers, Marwyn/Dionus/Kotis counters); −2 removal; a 6-drop. **Glarb:** The 0 draw mills through Corrosion and both Tutelages and proliferates nine walkers; −2 neutralises a creature, and Glarb can cast it off the top.",
+   "text": "In Glarb's list; no longer in Thranduil's. **Thranduil:** 0: draw and proliferate (walkers, Marwyn/Dionus/Kotis counters); −2 removal; a 6-drop. **Glarb:** The 0 draw mills through both Tutelages and proliferates the walkers; −2 neutralises a creature, and Glarb can cast it off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "K'rrik, Son of Yawgmoth": {
@@ -3608,10 +3608,10 @@
   },
   "Celeborn the Wise": {
    "group": "Loot trigger only",
-   "text": "**Thranduil:** A legendary Elf entering is a Thranduil loot (twice with Yarok in the list), but it has no activated ability for the yard and its scry/pump is combat-only. **Glarb:** Scry 1 when Celeborn himself attacks triggers Matoya and Proft — a 4-mana combat-gated draw.",
+   "text": "**Thranduil:** A legendary Elf entering is a Thranduil loot (twice with Yarok in the list), but it has no activated ability for the yard and its scry/pump is combat-only. **Glarb:** Scry 1 when Celeborn himself attacks triggers Matoya — a 4-mana combat-gated draw.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Goreclaw, Terror of Qal Sisma": {
@@ -3624,18 +3624,18 @@
   },
   "Kona, Rescue Beastie": {
    "group": "Fits neither",
-   "text": "**Thranduil:** Needs Kona tapped; Eladamri's tap-two cost or an attack does it, then a free permanent from hand (Sheoldred, Muldrotha). **Glarb:** No tap plan beyond attacking.",
+   "text": "**Thranduil:** Needs Kona tapped; Eladamri's tap-two cost or an attack does it, then a free permanent from hand (Muldrotha, Yarok). **Glarb:** No tap plan beyond attacking.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Leyline Immersion": {
    "group": "Legend mana aura",
-   "text": "**Thranduil:** Ward 2 and five spell-only mana on a legend that doesn't need its {T} (Muldrotha, Sidisi, Yarok); Ioreth and Kinnan add more. A 4-mana ramp aura beside 11 mana creatures. **Glarb:** Glarb's tap is surveil, so it goes on Matoya or Proft; ramp in a deck that casts its top end free.",
+   "text": "**Thranduil:** Ward 2 and five spell-only mana on a legend that doesn't need its {T} (Muldrotha, Sidisi, Yarok); Ioreth and Kinnan add more. A 4-mana ramp aura beside 11 mana creatures. **Glarb:** Glarb's tap is surveil, so it goes on Matoya; ramp in a deck that casts its top end free.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Mythweaver Poq": {
@@ -3664,18 +3664,18 @@
   },
   "Tyvar Kell": {
    "group": "Mana support, Elf-scaled",
-   "text": "**Thranduil:** \"Elves you control have {T}: Add {B}\" fixes black on 33 Elves (Thranduil included), 0 makes an Elf a turn, +1 untaps a mana Elf, and the −6 emblem draws two per Elf spell; real mana synergy, but its value scales with Elf count and costs {G}{G}. **Glarb:** One Elf in the list; off-plan.",
+   "text": "**Thranduil:** In the list. \"Elves you control have {T}: Add {B}\" fixes black on 33 Elves (Thranduil included), 0 makes an Elf a turn, +1 untaps a mana Elf, and the −6 emblem draws two per Elf spell; real mana synergy, but its value scales with Elf count and costs {G}{G}. **Glarb:** One Elf in the list; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ashaya, Soul of the Wild": {
    "group": "Fits neither",
-   "text": "\"Nontoken creatures you control are Forest lands.\" **Thranduil:** Each creature entering becomes landfall for Thranduil, Sindarin Liege (an Elf token) and grows Wrenn and Seven's Treefolk, but it switches off Kinnan, whose trigger needs a nonland permanent. **Glarb:** Only Ruin Crab cares; a GG body in a list whose green is a splash.",
+   "text": "\"Nontoken creatures you control are Forest lands.\" **Thranduil:** Each creature entering becomes landfall for Thranduil, Sindarin Liege (an Elf token) and grows Wrenn and Seven's Treefolk, but it switches off Kinnan, whose trigger needs a nonland permanent. **Glarb:** Nothing here cares about Forests; a GG body in a list whose green is a splash.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Bosco, Just a Bear": {
@@ -3688,10 +3688,10 @@
   },
   "Greensleeves, Maro-Sorcerer": {
    "group": "Fits neither",
-   "text": "**Thranduil:** A 3/3 Badger per land; Wrenn and Seven's 0, Teval and Kamahl's Druidic Vow put extra lands in, and the tokens feed Yawgmoth, but nothing ties it to the graveyard engine. **Glarb:** One land a turn plus Growth Spiral; a 5-mana threat with no draw or mill.",
+   "text": "**Thranduil:** A 3/3 Badger per land; Wrenn and Seven's 0, Teval and Kamahl's Druidic Vow put extra lands in, and the tokens feed Yawgmoth, but nothing ties it to the graveyard engine. **Glarb:** One land a turn; a 5-mana threat with no draw or mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Wrenn and Seven": {
@@ -3720,10 +3720,10 @@
   },
   "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
    "group": "Swap candidate",
-   "text": "\"search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield.\" **Thranduil:** A flexible tutor or reanimation (Priest of Titania at X=2, Muldrotha at 6); only Kinnan, Ioreth and Yawgmoth are Human. Competes with Kamahl's Druidic Vow and Journey. **Glarb:** {X}{G}{G} on a green splash for few targets (Sheoldred, the Apocalypse at 6 mana).",
+   "text": "\"search your library and/or graveyard for a non-Human creature card with mana value X or less and put it onto the battlefield.\" **Thranduil:** A flexible tutor or reanimation (Priest of Titania at X=2, Muldrotha at 6); only Kinnan, Ioreth and Yawgmoth are Human. Competes with Kamahl's Druidic Vow. **Glarb:** {X}{G}{G} on a green splash for few targets (Sheoldred, the Apocalypse at 6 mana).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Golbez, Crystal Collector": {
@@ -3736,10 +3736,10 @@
   },
   "Lazav, the Multifarious": {
    "group": "Graveyard copy toolbox",
-   "text": "\"{X}: Lazav becomes a copy of target creature card in your graveyard with mana value X\" — no exile, so no G-42 cost. **Thranduil:** Copying an Elf duplicates what Thranduil already borrows, but a binned Muldrotha, Teval, Kotis or Sidisi becomes a second copy for X. Not in the list. **Glarb:** Surveil 1 triggers Matoya and Proft; few creature cards to copy.",
+   "text": "\"{X}: Lazav becomes a copy of target creature card in your graveyard with mana value X\" — no exile, so no G-42 cost. **Thranduil:** Copying an Elf duplicates what Thranduil already borrows, but a binned Muldrotha, Teval, Kotis or Sidisi becomes a second copy for X. Not in the list. **Glarb:** Surveil 1 triggers Matoya; few creature cards to copy.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Krydle of Baldur's Gate": {
@@ -3784,10 +3784,10 @@
   },
   "Ringsight": {
    "group": "Tutor",
-   "text": "**Thranduil:** Thranduil is BGU, so it finds any coloured card — Priest of Titania or a missing engine piece; Fauna Shaman already tutors creatures. **Glarb:** Glarb is BGU too: a 3-mana tutor for Psychic Corrosion or Bruvac in a singleton deck.",
+   "text": "**Thranduil:** Thranduil is BGU, so it finds any coloured card — Priest of Titania or a missing engine piece; Fauna Shaman already tutors creatures. **Glarb:** Glarb is BGU too: a 3-mana tutor for a Tutelage or Bruvac in a singleton deck.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Rona, Disciple of Gix": {
@@ -3800,10 +3800,10 @@
   },
   "Emet-Selch of the Third Seat": {
    "group": "Plan mismatch",
-   "text": "**Thranduil:** \"Spells you cast from your graveyard cost {2} less\" discounts Muldrotha, Kotis and Kagha recasts, but the recast half wants instants and sorceries and the list runs seven. **Glarb:** 21 instants and sorceries to recast, but it needs an opponent to lose life, and Sheoldred, the Apocalypse is nearly the only source.",
+   "text": "**Thranduil:** \"Spells you cast from your graveyard cost {2} less\" discounts Muldrotha and Kotis recasts, but the recast half wants instants and sorceries and the list runs seven. **Glarb:** About six instants and sorceries to recast, but it needs an opponent to lose life, and Sheoldred, the Apocalypse is nearly the only source.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Xande, Dark Mage": {
@@ -3816,34 +3816,34 @@
   },
   "Phenax, God of Deception": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** Can target yourself to mill X for fuel, but the Elves are 1–2 toughness and tap for mana. **Glarb:** On the bench. 12 of 20 creatures have toughness 4+ (Glarb, Bruvac, Matoya, Reed, both Sheoldreds, Silumgar, M.O.D.O.K.), each a mill engine Bruvac doubles. Indestructible.",
+   "text": "**Thranduil:** Can target yourself to mill X for fuel, but the Elves are 1–2 toughness and tap for mana. **Glarb:** In the list. Most creatures have toughness 4+ (Glarb, Bruvac, Matoya, Reed, both Sheoldreds, M.O.D.O.K.), each a mill engine Bruvac doubles. Indestructible.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Uchbenbak, the Great Mistake": {
    "group": "Self-recurring threat",
    "text": "**Thranduil:** A self-recurring beater ranks behind engines; its one tie is the descend return, which triggers Teval, Insidious Roots and Kotis. **Glarb:** A beater.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ultimecia, Time Sorceress": {
    "group": "Surveil body, optional extra turn",
-   "text": "**Thranduil:** Surveil 2 on enter/attack bins Elves; the extra turn's \"exile eight cards from your graveyard\" is optional, and a self-milled yard has eight non-Elf cards to spend (G-42), but it costs eight mana. **Glarb:** Each surveil draws off Matoya and Proft; its own yard is free to exile, and the extra turn is an extra draw step.",
+   "text": "**Thranduil:** Surveil 2 on enter/attack bins Elves; the extra turn's \"exile eight cards from your graveyard\" is optional, and a self-milled yard has eight non-Elf cards to spend (G-42), but it costs eight mana. **Glarb:** Each surveil draws off Matoya; its own yard is free to exile, and the extra turn is an extra draw step.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ashiok, Sculptor of Fears": {
    "group": "In one list only",
-   "text": "In Glarb's list. **Thranduil:** +2 draws and mills each player two, so your two feed the yard every turn, and −5 reanimates from either graveyard; a real add, but a 6-drop competing with Vraska and Liliana. **Glarb:** +2's draw triggers Corrosion and both Tutelages on top of its own mill two, and −5 steals a creature from the yard the deck fills.",
+   "text": "In Glarb's list. **Thranduil:** +2 draws and mills each player two, so your two feed the yard every turn, and −5 reanimates from either graveyard; a real add, but a 6-drop competing with Vraska, Golgari Queen. **Glarb:** +2's draw triggers both Tutelages on top of its own mill two, and −5 steals a creature from the yard the deck fills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tezzeret, Master of the Bridge": {
@@ -3856,10 +3856,10 @@
   },
   "Krang & Shredder": {
    "group": "Library exile, conditional theft",
-   "text": "\"each opponent exiles cards from the top of their library until they exile a nonland card\" on enter and attack; Disappear casts one free. **Thranduil:** Sac outlets meet Disappear, but it is a 6-drop with no yard synergy. **Glarb:** Library exile with a 6/7 body Glarb can cast from the top, but only Mind Stone, Kaito's ninjutsu and Princess Yue reliably make a permanent leave.",
+   "text": "\"each opponent exiles cards from the top of their library until they exile a nonland card\" on enter and attack; Disappear casts one free. **Thranduil:** Sac outlets meet Disappear, but it is a 6-drop with no yard synergy. **Glarb:** Library exile with a 6/7 body Glarb can cast from the top, but nothing here reliably makes a permanent leave.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Xanathar, Guild Kingpin": {
@@ -3872,10 +3872,10 @@
   },
   "Prototype X-8": {
    "group": "Cast-ETB doubler",
-   "text": "\"Whenever another creature you control enters, if you cast it, sacrifice it. Conjure a duplicate.\" **Thranduil:** Every cast Elf triggers its ETB twice (two loots for a legend), and the original lands in the yard where Thranduil borrows its ability; costs {2} less per creature card in the self-milled yard. Not in the list. **Glarb:** Few creature cards in its yard, so near 10 mana.",
+   "text": "\"Whenever another creature you control enters, if you cast it, sacrifice it. Conjure a duplicate.\" **Thranduil:** Every cast Elf triggers its ETB twice (two loots for a legend), and the original lands in the yard where Thranduil borrows its ability; costs {2} less per creature card in the self-milled yard. In the list. **Glarb:** Few creature cards in its yard, so near 10 mana.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Chevill, Bane of Monsters": {
@@ -3888,10 +3888,10 @@
   },
   "Dina, Soul Steeper": {
    "group": "Fits neither",
-   "text": "\"Whenever you gain life, each opponent loses 1 life.\" **Thranduil:** Lifegain is incidental (Trystan, Deathrite, Dawnhand, Izoni) and the sac outlet gives no card. **Glarb:** Sheoldred's draw lifegain triggers it, but drain is not the win.",
+   "text": "\"Whenever you gain life, each opponent loses 1 life.\" **Thranduil:** Lifegain is incidental (Trystan, Izoni) and the sac outlet gives no card. **Glarb:** Sheoldred's draw lifegain triggers it, but drain is not the win.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Slimefoot, Thallid Transplant": {
@@ -3922,24 +3922,24 @@
    "group": "Fits neither",
    "text": "**Thranduil:** Sacrifices (Yawgmoth, Izoni, Vraska +2) and dying creatures put +1/+1 counters, which Yawgmoth and Morcant proliferate — minor. **Glarb:** Few deaths or counters.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Pharika, God of Affliction": {
    "group": "Fits neither",
    "text": "**Thranduil:** `{B}{G}`: exile a creature card from a graveyard, its owner gets a 1/1 deathtouch Snake — on your own non-Elf cards that is a Snake plus Teval's Zombie and an Insidious Roots Plant; never point it at an Elf (G-42). **Glarb:** Shrinks the opponent's yard that Drown and Consuming Aberration count, and hands them deathtouch tokens.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sarulf, Realm Eater": {
    "group": "Symmetric slow sweeper",
-   "text": "\"exile each other nonland permanent with mana value less than or equal to\" its counters — yours too. **Thranduil:** Would exile your own cheap mana Elves and enchantments. **Glarb:** Can be held at one or two counters, but the MV 3 engines (Psychic Corrosion, the Tutelages) die with a bigger wipe.",
+   "text": "\"exile each other nonland permanent with mana value less than or equal to\" its counters — yours too. **Thranduil:** Would exile your own cheap mana Elves and enchantments. **Glarb:** Can be held at one or two counters, but the cheap engines (the Tutelages) die with a bigger wipe.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sméagol, Helpful Guide": {
@@ -3952,10 +3952,10 @@
   },
   "The Mycotyrant": {
    "group": "Self-mill token payoff",
-   "text": "**Thranduil:** Power counts only Fungi (itself plus its tokens), but each permanent card the self-mill bins is a descend, so a mill turn makes 2–3 Fungus tokens: Yawgmoth/Izoni fodder and mana with Insidious Roots. **Glarb:** Its own permanents rarely hit the yard (Glarb's surveil only).",
+   "text": "**Thranduil:** Power counts only Fungi (itself plus its tokens), but each permanent card the self-mill bins is a descend, so a mill turn makes 2–3 Fungus tokens: Yawgmoth/Izoni fodder and mana with Insidious Roots. **Glarb:** In the list. Its own permanents rarely hit the yard (Glarb's surveil only).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Furgul, Quag Nurturer": {
@@ -3968,58 +3968,58 @@
   },
   "Nissa of Shadowed Boughs": {
    "group": "Reanimation walker",
-   "text": "**Thranduil:** −5 puts a creature with MV ≤ lands from hand or yard onto the battlefield; Wrenn and Seven's 0, Kamahl's Vow, Teval, Kagha and Muldrotha add land drops, so loyalty climbs. **Glarb:** Own-yard reanimation is not the plan.",
+   "text": "**Thranduil:** −5 puts a creature with MV ≤ lands from hand or yard onto the battlefield; Wrenn and Seven's 0, Kamahl's Vow, Teval and Muldrotha add land drops, so loyalty climbs. **Glarb:** Own-yard reanimation is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Nemata, Primeval Warden": {
    "group": "Plan conflict (exile)",
    "text": "**Thranduil:** Saprolings feed Yawgmoth and Insidious Roots, but it is a slow draw engine. **Glarb:** \"If a creature an opponent controls would die, exile it instead\" keeps cards out of the yard Consuming Aberration, Drown in the Loch and the reanimation spells read (G-42); the Saproling draw is slow.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tyvar the Bellicose": {
    "group": "Elf-scaled counters",
-   "text": "**Thranduil:** A legendary Elf (Thranduil loot) that grows each mana creature by the mana it makes (big on Priest of Titania) and gives attacking Elves deathtouch; no activated ability, so nothing to borrow. **Glarb:** Two mana creatures; off-plan.",
+   "text": "**Thranduil:** In the list. A legendary Elf (Thranduil loot) that grows each mana creature by the mana it makes (big on Priest of Titania) and gives attacking Elves deathtouch; no activated ability, so nothing to borrow. **Glarb:** Two mana creatures; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Vraska, Golgari Queen": {
    "group": "In one list only",
-   "text": "In Thranduil's list: +2 sacrifices a token or spent permanent to draw, −3 kills MV 3 or less. **Why not Glarb's:** +2 needs fodder the list barely has; −3 is fine removal.",
+   "text": "In both lists: +2 sacrifices a token or spent permanent to draw, −3 kills MV 3 or less. **Glarb:** +2 needs fodder the list barely has; −3 is fine removal.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ygra, Eater of All": {
    "group": "Fits neither",
-   "text": "\"Other creatures are Food artifacts\" with a {2}, sacrifice ability. **Thranduil:** Every creature becomes its own sac outlet (binning Elves), but it turns off Go for the Throat against their creatures. **Glarb:** A 6/6 body; same Go for the Throat conflict.",
+   "text": "\"Other creatures are Food artifacts\" with a {2}, sacrifice ability. **Thranduil:** Every creature becomes its own sac outlet (binning Elves), but it makes every creature an artifact, which nonartifact removal then misses. **Glarb:** A 6/6 body.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Yargle and Multani": {
    "group": "Fits neither",
-   "text": "**Thranduil:** A big vanilla body that Sheoldred, Whispering One or Atzal could reanimate, but with no evasion. **Glarb:** A vanilla body; nothing here wants it.",
+   "text": "**Thranduil:** A big vanilla body worth reanimating, but with no evasion. **Glarb:** A vanilla body; nothing here wants it.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Beledros Witherbloom": {
    "group": "Token engine, no yard tie",
    "text": "**Thranduil:** A Pest every upkeep feeds Yawgmoth and Izoni (sacrifice: draw), Insidious Roots mana and Eladamri's tap cost, but it is a 7-drop with no graveyard tie. **Glarb:** Glarb can cast it off the top, but it neither draws nor mills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Witherbloom, the Balancer": {
@@ -4032,42 +4032,42 @@
   },
   "Arwen Undómiel": {
    "group": "Scry payoff, little scry",
-   "text": "**Thranduil:** A 2-mana legendary Elf, so its entry is a Thranduil loot, but the counter trigger needs scry and the list scries nowhere else; its {4}{G}{U} scry 2 is a weak tool to borrow from the yard. **Glarb:** \"Whenever you scry\" misses Glarb's surveil; only Princess Yue and its own 6-mana scry trigger it (and Matoya).",
+   "text": "**Thranduil:** A 2-mana legendary Elf, so its entry is a Thranduil loot, but the counter trigger needs scry and the list scries only off Temple of Mystery; its {4}{G}{U} scry 2 is a weak tool to borrow from the yard. **Glarb:** \"Whenever you scry\" misses Glarb's surveil; only Kasmina's +2, the Planetarium and its own 6-mana scry trigger it.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kinnan, Bonder Prodigy": {
    "group": "Mana doubler",
    "text": "**Thranduil:** In the list: \"Whenever you tap a nonland permanent for mana, add one mana\" adds a mana to each of the 11 mana creatures, Insidious Roots tokens and Thranduil's borrowed mana abilities, and `{5}{G}{U}` puts a non-Human creature (any Elf) from the top five onto the battlefield. **Glarb:** Boosts four rocks and two dorks; many of its creatures are Humans.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Absorbing Man": {
    "group": "Copies an engine (Glarb)",
-   "text": "\"Becomes a copy of up to one target artifact, non-Aura enchantment, or land\" each turn. **Thranduil:** At best a second Insidious Roots or Oasis of Renewal on a fragile 4/4; it feeds nothing itself. **Glarb:** A second Psychic Corrosion, Tutelage, Water Crystal or Teferi's Ageless Insight every turn for 3 mana; it needs one on board and dies as a creature.",
+   "text": "\"Becomes a copy of up to one target artifact, non-Aura enchantment, or land\" each turn. **Thranduil:** At best a second Insidious Roots or Oasis of Renewal on a fragile 4/4; it feeds nothing itself. **Glarb:** In the list. A second Tutelage or Water Crystal every turn for 3 mana; it needs one on board and dies as a creature.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Albiorix, Goose Tyrant // Wild Goose Chase": {
    "group": "Loot on a body",
-   "text": "**Thranduil:** \"Draw two cards, then discard two cards\" for 2 bins two cards (Elves become Thranduil's tools, anything else feeds Kotis/Muldrotha), then a 3-mana flier that grows off token sacrifices (Yawgmoth, Izoni, Vraska). **Glarb:** Two draws trigger Psychic Corrosion and both Tutelages, but discarding two is a real cost in a control deck; card-neutral.",
+   "text": "**Thranduil:** \"Draw two cards, then discard two cards\" for 2 bins two cards (Elves become Thranduil's tools, anything else feeds Kotis/Muldrotha), then a 3-mana flier that grows off token sacrifices (Yawgmoth, Izoni, Vraska). **Glarb:** Two draws trigger both Tutelages twice, but discarding two is a real cost in a control deck; card-neutral.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Galadriel of Lothlórien": {
    "group": "Scry payoff, no scry",
-   "text": "**Thranduil:** A legendary Elf for Thranduil's loot, but no Ring and no scry in the list, so its land ramp never fires. **Glarb:** \"Whenever you scry\" — Glarb's tap is SURVEIL, not scry; only Princess Yue scries, and nothing tempts with the Ring.",
+   "text": "**Thranduil:** A legendary Elf for Thranduil's loot, but no Ring and scry only off Temple of Mystery, so its land ramp never fires. **Glarb:** \"Whenever you scry\" — Glarb's tap is SURVEIL, not scry; only Kasmina's +2 and the Planetarium scry, and nothing tempts with the Ring.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kiora of Salt and Sand": {
@@ -4080,10 +4080,10 @@
   },
   "Kasmina, Enigma Sage": {
    "group": "Planeswalker support",
-   "text": "**Thranduil:** Shares +2 scry 1 with seven walkers, but scry has no payoff here. **Glarb:** Every other walker (nine of them) gains \"+2: Scry 1\", which Matoya and Proft turn into draws that mill; cute, low impact.",
+   "text": "**Thranduil:** Shares +2 scry 1 with the walkers, but scry has no payoff here. **Glarb:** In the list. Every other walker gains \"+2: Scry 1\", which Matoya turns into draws that mill; cute, low impact.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Nissa, Steward of Elements": {
@@ -4104,42 +4104,42 @@
   },
   "Navigator's Ruin": {
    "group": "Different finisher, same job",
-   "text": "\"Raid — … if you attacked this turn, target opponent mills four.\" **Thranduil:** Opponent-only mill; off-plan. **Glarb:** Needs an attack each turn; only Restless Reef, Kaito and Ashiok's tokens swing.",
+   "text": "\"Raid — … if you attacked this turn, target opponent mills four.\" **Thranduil:** Opponent-only mill; off-plan. **Glarb:** Needs an attack each turn; only Restless Reef and Ashiok's tokens swing.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Fleet Swallower": {
    "group": "Different finisher, same job",
-   "text": "\"Whenever this creature attacks, target player mills half their library.\" **Thranduil:** A 7-mana body whose self-target attack decks you on the second swing. **Glarb:** On the bench; castable off the top and lethal with Bruvac, but no evasion or haste, where Traumatize and kicked Maddening Cacophony do it from hand.",
+   "text": "\"Whenever this creature attacks, target player mills half their library.\" **Thranduil:** A 7-mana body whose self-target attack decks you on the second swing. **Glarb:** On the bench; castable off the top and lethal with Bruvac, but no evasion or haste.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ashiok, Dream Render": {
    "group": "Fights the engine (G-42)",
    "text": "**Thranduil:** −1 can mill you four a turn for fuel, and \"exile each opponent's graveyard\" leaves Thranduil's yard alone. **Glarb:** Cut at draft: that exile empties the yard Consuming Aberration, Drown in the Loch and Sheoldred's transform count (G-42).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Cut Your Losses": {
    "group": "Different finisher, same job",
-   "text": "**Thranduil:** Self-target mills half your library as fuel (as Traumatize would), but 6 mana that does nothing on its own. **Glarb:** On the bench, screened KEY. Half a library for 6, all of it with casualty or Bruvac, and MV 6 casts off the top; Traumatize, Maddening Cacophony and Jidoor's Overture already do the job.",
+   "text": "**Thranduil:** Self-target mills half your library as fuel (as Traumatize would), but 6 mana that does nothing on its own. **Glarb:** In the list. Half a library for 6, all of it with casualty or Bruvac, and MV 6 casts off the top; with Traumatize and Maddening Cacophony cut, it and Jidoor's Overture are the big mills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Altar of Dementia": {
    "group": "Sac outlet / mill outlet",
-   "text": "\"Sacrifice a creature: Target player mills cards equal to the sacrificed creature's power.\" **Thranduil:** A free instant-speed sac outlet that bins an Elf card for Thranduil on demand and can self-mill (Sidisi turns milled creatures into Zombies). **Glarb:** Fodder is thin (Theorist Illusions, Ashiok Nightmares, Teferi's Spirit); a finisher only by sacrificing Consuming Aberration.",
+   "text": "\"Sacrifice a creature: Target player mills cards equal to the sacrificed creature's power.\" **Thranduil:** A free instant-speed sac outlet that bins an Elf card for Thranduil on demand and can self-mill (Sidisi turns milled creatures into Zombies). **Glarb:** In the list. Fodder is thin (Theorist Illusions, Ashiok Nightmares, Teferi's Spirit); a finisher only by sacrificing Consuming Aberration.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Grindstone": {
@@ -4152,10 +4152,10 @@
   },
   "Villainous Wealth": {
    "group": "Cast their cards / combat-gated",
-   "text": "**Thranduil:** A huge mana sink for the Elf mana engines, but not a graveyard card. **Glarb:** Exiles X of their library and casts them — real library exile, but `{X}{B}{G}{U}` competes with Tasha's Hideous Laughter, which exiles to 20 total mana value for 3.",
+   "text": "**Thranduil:** A huge mana sink for the Elf mana engines, but not a graveyard card. **Glarb:** Exiles X of their library and casts them — real library exile; in the list since Tasha's Hideous Laughter was cut.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Mind's Dilation": {
@@ -4176,18 +4176,18 @@
   },
   "Folio of Fancies": {
    "group": "Draw engine, bench",
-   "text": "**Thranduil:** Symmetric draw with no graveyard or Elf tie. **Glarb:** `{X}{X}, {T}`: each player draws X (yours trigger Corrosion and the Tutelages; theirs shrink their library and Sheoldred punishes them), or `{2}{U}, {T}`: mill them equal to hand size. Both need the tap, so one per turn; a real engine, on the bench.",
+   "text": "**Thranduil:** Symmetric draw with no graveyard or Elf tie. **Glarb:** `{X}{X}, {T}`: each player draws X (yours trigger the Tutelages; theirs shrink their library and Sheoldred punishes them), or `{2}{U}, {T}`: mill them equal to hand size. Both need the tap, so one per turn; a real engine, on the bench.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Lord of the Forsaken": {
    "group": "Sac outlet with self-mill",
-   "text": "**Thranduil:** \"{B}, Sacrifice another creature: Target player mills three\" — a free sac outlet that targets US to stock Thranduil's yard, and its colourless mana pays for Muldrotha's and Kotis's graveyard casts. **Glarb:** The deck lacks fodder (21 creatures, few tokens); 6 mana.",
+   "text": "**Thranduil:** \"{B}, Sacrifice another creature: Target player mills three\" — a free sac outlet that targets US to stock Thranduil's yard, and its colourless mana pays for Muldrotha's and Kotis's graveyard casts. **Glarb:** In the list, though fodder is thin (few tokens); 6 mana.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Persistent Petitioners": {
@@ -4200,10 +4200,10 @@
   },
   "Cruel Somnophage // Can't Wake Up": {
    "group": "Different finisher, same job",
-   "text": "**Thranduil:** Can't Wake Up can target yourself (mill four for 2), then a {1}{B} body sized by creature cards in ALL graveyards — big in this creature-heavy self-mill list. **Glarb:** Mill four (doubled by Bruvac, +4 with the Water Crystal) then a scaling body; fine, but Glimpse the Unthinkable mills ten for the same 2 mana.",
+   "text": "**Thranduil:** Can't Wake Up can target yourself (mill four for 2), then a {1}{B} body sized by creature cards in ALL graveyards — big in this creature-heavy self-mill list. **Glarb:** Mill four (doubled by Bruvac, +4 with the Water Crystal) then a scaling body; fine, and with Glimpse the Unthinkable cut it is the cheap mill on offer.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Gyruda, Doom of Depths": {
@@ -4232,10 +4232,10 @@
   },
   "Didn't Say Please": {
    "group": "Different finisher, same job",
-   "text": "\"Counter target spell. Its controller mills three cards.\" **Thranduil:** A {1}{U}{U} counter in a green-heavy list; the mill does nothing here. **Glarb:** The same card as Thought Collapse, which is in, beside Counterspell and Drown in the Loch — the first add if you want more counters.",
+   "text": "\"Counter target spell. Its controller mills three cards.\" **Thranduil:** A {1}{U}{U} counter in a green-heavy list; the mill does nothing here. **Glarb:** In the list, beside Drown in the Loch and Reject Imperfection; the same card as Thought Collapse, which was cut.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Bloodchief's Thirst": {
@@ -4248,34 +4248,34 @@
   },
   "Keening Stone": {
    "group": "Mill outlet, slow",
-   "text": "**Thranduil:** 11 mana to mill a player; the deck's self-mill is already cheap and it does nothing else. **Glarb:** 6 to cast and `{5}, {T}` to mill X = their graveyard — doubled by Bruvac, but the list's big mills (Traumatize, Maddening Cacophony) do it for less.",
+   "text": "**Thranduil:** 11 mana to mill a player; the deck's self-mill is already cheap and it does nothing else. **Glarb:** 6 to cast and `{5}, {T}` to mill X = their graveyard — doubled by Bruvac, and with Traumatize and Maddening Cacophony cut, only Cut Your Losses does it for less.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Riverchurn Monument": {
    "group": "Swap candidate",
-   "text": "\"{1}, {T}: Any number of target players each mill two\"; the Exhaust mills \"cards equal to the number of cards in their graveyard.\" **Thranduil:** Cheap self-mill, but the list has a dozen sources. **Glarb:** Mill two a turn (more with Bruvac and the Water Crystal), and the Exhaust doubles a half-milled yard.",
+   "text": "\"{1}, {T}: Any number of target players each mill two\"; the Exhaust mills \"cards equal to the number of cards in their graveyard.\" **Thranduil:** Cheap self-mill, but the list has a dozen sources. **Glarb:** In the list. Mill two a turn (more with Bruvac and the Water Crystal), and the Exhaust doubles a half-milled yard.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Terisian Mindbreaker": {
    "group": "Different finisher, same job",
-   "text": "\"Defending player mills half their library\" on attack. **Thranduil:** Opponent-only mill; off-plan. **Glarb:** Castable off the top, and Unearth gives a hasty half-library mill (all with Bruvac); a 7-mana creature doing Fleet Swallower's job.",
+   "text": "\"Defending player mills half their library\" on attack. **Thranduil:** Opponent-only mill; off-plan. **Glarb:** In the list. Castable off the top, and Unearth gives a hasty half-library mill (all with Bruvac); a 7-mana creature doing Fleet Swallower's job.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Scavenger's Talent": {
    "group": "Sacrifice engine, thin",
-   "text": "**Thranduil:** Yawgmoth and Izoni are outlets, level 2 self-mills two per sacrifice, and level 3 trades three tokens for a reanimation; slow, mana-hungry. **Glarb:** Few creatures and no outlets; nothing here sacrifices.",
+   "text": "**Thranduil:** Yawgmoth and Izoni are outlets, level 2 self-mills two per sacrifice, and level 3 trades three tokens for a reanimation; slow, mana-hungry. **Glarb:** In the list: Altar of Dementia and Lord of the Forsaken are outlets, though fodder is thin.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Brain Freeze": {
@@ -4288,18 +4288,18 @@
   },
   "Jin-Gitaxias // The Great Synthesis": {
    "group": "Swap candidate",
-   "text": "\"Whenever you cast a noncreature spell with mana value 3 or greater, draw a card.\" **Thranduil:** About 14 such spells; a 5-mana draw body, not graveyard synergy. **Glarb:** About 27 such spells, each draw mills; with seven in hand the Saga's chapter I draws a handful into Psychic Corrosion. Lost its slot to Jin-Gitaxias, Core Augur, but the two have different names and both fit.",
+   "text": "\"Whenever you cast a noncreature spell with mana value 3 or greater, draw a card.\" **Thranduil:** About 14 such spells; a 5-mana draw body, not graveyard synergy. **Glarb:** About 27 such spells, each draw mills; with seven in hand the Saga's chapter I draws a handful, each milling through the Tutelages. In the list since Jin-Gitaxias, Core Augur was cut.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Howling Mine": {
    "group": "Symmetric draw, bench",
-   "text": "**Thranduil:** Symmetric draw with no graveyard tie; it refills the opponent as much as us. **Glarb:** A 2-mana second Dictate of Kruphix: our extra draw triggers Psychic Corrosion and the Tutelages, theirs feeds Sheoldred, the Apocalypse and Notion Thief and shortens their library — though it refills their hand too.",
+   "text": "**Thranduil:** Symmetric draw with no graveyard tie; it refills the opponent as much as us. **Glarb:** A 2-mana symmetric draw: our extra draw triggers the Tutelages, theirs feeds Sheoldred, the Apocalypse and shortens their library — though it refills their hand too.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Hullbreaker Horror": {
@@ -4344,26 +4344,26 @@
   },
   "Toxic Deluge": {
    "group": "Removal (interchangeable)",
-   "text": "**Thranduil:** A sweeper that kills your own Elves and mana engine. **Glarb:** A second sweeper beside Damnation, and choosing X can spare Glarb's tougher blockers.",
+   "text": "**Thranduil:** A sweeper that kills your own Elves and mana engine. **Glarb:** A sweeper, with Damnation cut, and choosing X can spare Glarb's tougher blockers.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Murderous Rider // Swift End": {
    "group": "Removal (interchangeable)",
-   "text": "\"Destroy target creature or planeswalker. You lose 2 life.\" **Thranduil:** Instant kill plus a lifelink body later; interchangeable with Go for the Throat. The body goes to the library bottom, not the yard. **Glarb:** Same.",
+   "text": "\"Destroy target creature or planeswalker. You lose 2 life.\" **Thranduil:** Instant kill plus a lifelink body later; interchangeable with Heartless Act. The body goes to the library bottom, not the yard. **Glarb:** Same.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Saw It Coming": {
    "group": "Counterspell",
-   "text": "**Thranduil:** A {U}{U} counter in a G/B-weighted list. **Glarb:** A flexible 3-mana counter (foretell 2); competes with Counterspell and Thought Collapse.",
+   "text": "**Thranduil:** A {U}{U} counter in a G/B-weighted list. **Glarb:** A flexible 3-mana counter (foretell 2); competes with Didn't Say Please and Reject Imperfection.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Memory Lapse": {
@@ -4376,34 +4376,34 @@
   },
   "Feed the Swarm": {
    "group": "Removal (interchangeable)",
-   "text": "**Thranduil:** Also kills an enchantment — one of the few noncreature answers beside Trystan's Command and Vraska's −3; you lose life equal to its mana value. **Glarb:** Same answer; Assassin's Trophy and Cyclonic Rift already cover noncreature permanents, so it competes on cost.",
+   "text": "**Thranduil:** Also kills an enchantment — one of the few noncreature answers beside Trystan's Command and Vraska's −3; you lose life equal to its mana value. **Glarb:** Same answer, and with Cyclonic Rift cut few cards here answer a noncreature permanent.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tear Asunder": {
    "group": "Swap candidate",
-   "text": "**Thranduil:** Kicked, it exiles any nonland permanent — only Vraska, Golgari Queen's −3 answers an artifact now. Good add. **Glarb:** Kicked, a 4-mana exile-anything; the deck has Assassin's Trophy and Cyclonic Rift already.",
+   "text": "**Thranduil:** Kicked, it exiles any nonland permanent — Assassin's Trophy, Drag to the Roots, Killmonger and Skyfisher Spider already answer one. **Glarb:** Kicked, a 4-mana exile-anything; few cards here answer a noncreature permanent.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Anoint with Affliction": {
    "group": "Removal (interchangeable)",
-   "text": "**Thranduil:** \"Exile target creature if it has mana value 3 or less\" — a cheap instant exile, but the cap misses the big threats; Heartless Act, Go for the Throat and Infernal Grasp already fill the 2-mana slot. **Glarb:** Same cap; its six spot-removal spells are unconditional or near it.",
+   "text": "**Thranduil:** \"Exile target creature if it has mana value 3 or less\" — a cheap instant exile, but the cap misses the big threats; Heartless Act and Fatal Push already fill the cheap slot. **Glarb:** Same cap.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Fatal Push": {
    "group": "Removal (interchangeable)",
-   "text": "**Thranduil:** Mana value 2 or less without revolt; Yawgmoth's sacrifices turn on the MV 4 mode. Narrow against Brawl's bigger threats. **Glarb:** Same, with fewer ways to turn on revolt.",
+   "text": "**Thranduil:** In the list. Mana value 2 or less without revolt; Yawgmoth's sacrifices turn on the MV 4 mode. Narrow against Brawl's bigger threats. **Glarb:** Same, with fewer ways to turn on revolt.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Bitter Triumph": {
@@ -4448,10 +4448,10 @@
   },
   "Talisman of Resilience": {
    "group": "Ramp",
-   "text": "\"{T}: Add {B} or {G}.\" **Thranduil:** A plain rock behind ~13 creature mana sources (Kinnan gives it a bonus, as he does every dork). **Glarb:** The B/G pair misses blue; cut at draft for Kaito, Bane of Nightmares.",
+   "text": "\"{T}: Add {B} or {G}.\" **Thranduil:** A plain rock behind ~13 creature mana sources (Kinnan gives it a bonus, as he does every dork). **Glarb:** The B/G pair misses blue; cut at draft.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Cultivate": {
@@ -4464,58 +4464,58 @@
   },
   "Nature's Lore": {
    "group": "Ramp",
-   "text": "**Thranduil:** Fetches any Forest-typed land untapped — Overgrown Tomb, Breeding Pool, Zagoth Triome — and triggers Thranduil, Sindarin Liege's landfall; the list already has 12 mana Elves plus Kinnan. **Glarb:** Same fixing; 7 ramp pieces already.",
+   "text": "**Thranduil:** Fetches any Forest-typed land untapped — Overgrown Tomb, Breeding Pool — and triggers Thranduil, Sindarin Liege's landfall; the list already has 12 mana Elves plus Kinnan. **Glarb:** Same fixing; 7 ramp pieces already.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Farseek": {
    "group": "Ramp",
-   "text": "**Thranduil:** Finds a typed dual (Overgrown Tomb, Watery Grave, Breeding Pool, Zagoth Triome) tapped; with 11 mana creatures it is below the bar. **Glarb:** Same targets plus Sunken Hollow; a 2-mana ramp spell in a deck with fewer mana creatures.",
+   "text": "**Thranduil:** Finds a typed dual (Overgrown Tomb, Watery Grave, Breeding Pool) tapped; with 11 mana creatures it is below the bar. **Glarb:** Same targets plus Zagoth Triome and Sunken Hollow; a 2-mana ramp spell in a deck with fewer mana creatures.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Delighted Halfling": {
    "group": "Ramp",
-   "text": "**Thranduil:** Any colour for legendary spells, uncounterable — 38 legendary nonland cards here, and Kinnan adds a mana each tap; in the yard it lends Thranduil nothing. **Glarb:** 26 legendary spells too, but green is the light colour (15 sources) and Birds and Paradise Druid already fill the 1-drop fixer slot.",
+   "text": "**Thranduil:** Any colour for legendary spells, uncounterable — 38 legendary nonland cards here, and Kinnan adds a mana each tap; in the yard it lends Thranduil nothing. **Glarb:** 26 legendary spells too, but green is the light colour (15 sources) and the list runs almost no mana creatures.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Thought Scour": {
    "group": "Value card",
-   "text": "\"Target player mills two cards. Draw a card.\" **Thranduil:** Target yourself: 1-mana instant fuel and a card. **Glarb:** Target them: mill two (four with Bruvac) and the draw mills two more; the draft cut it for Theorix Charm.",
+   "text": "\"Target player mills two cards. Draw a card.\" **Thranduil:** Target yourself: 1-mana instant fuel and a card. **Glarb:** Target them: mill two (four with Bruvac) and the draw mills two more; the draft cut it.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Opt": {
    "group": "Draw engine, outranked",
-   "text": "**Thranduil:** A cantrip with no synergy. **Glarb:** Scry 1 then draw — with Matoya that is two draws, four milled with one Tutelage. A cheap filler; Brainstorm is in.",
+   "text": "**Thranduil:** A cantrip with no synergy. **Glarb:** Scry 1 then draw — with Matoya that is two draws, four milled with one Tutelage. A cheap filler.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Preordain": {
    "group": "Draw engine, outranked",
-   "text": "\"Scry 2, then draw a card.\" **Thranduil:** Scry bottoms cards instead of binning them. **Glarb:** The scry triggers Matoya and Proft and the draw mills; a cheap cantrip competing with Brainstorm.",
+   "text": "\"Scry 2, then draw a card.\" **Thranduil:** Scry bottoms cards instead of binning them. **Glarb:** The scry triggers Matoya and the draw mills; a cheap cantrip.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Consider": {
    "group": "Cantrip / surveil",
-   "text": "**Thranduil:** Surveil 1 can bin an Elf, plus a draw — a 1-mana cantrip with no other hook. **Glarb:** \"Surveil 1. Draw a card\": surveil triggers Matoya (and Proft), so two draws for 1 mana, each milling through Corrosion and both Tutelages.",
+   "text": "**Thranduil:** Surveil 1 can bin an Elf, plus a draw — a 1-mana cantrip with no other hook. **Glarb:** \"Surveil 1. Draw a card\": surveil triggers Matoya, so two draws for 1 mana, each milling through both Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Memory Deluge": {
@@ -4552,10 +4552,10 @@
   },
   "Laboratory Maniac": {
    "group": "Plan mismatch",
-   "text": "**Thranduil:** Self-mill alt-win; a 100-card deck never empties its own library on purpose. **Glarb:** Deck-out insurance for a list that draws hard, but Doctor Doom, Unrivaled already covers that.",
+   "text": "**Thranduil:** Self-mill alt-win; a 100-card deck never empties its own library on purpose. **Glarb:** Deck-out insurance for a list that draws hard, but Jace, Wielder of Mysteries already covers that.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Rot Farm Mortipede": {
@@ -4576,18 +4576,18 @@
   },
   "Desecrated Tomb": {
    "group": "Weaker leave-graveyard payoff",
-   "text": "**Thranduil:** \"…leave your graveyard, create a 1/1 black Bat\" — Muldrotha, Kotis, Sheoldred, Whispering One and Liliana's +1 trigger it, but Teval and Insidious Roots already pay off the same event better. **Glarb:** Glarb's mill fills the opponent's yard; its own creature cards rarely leave the graveyard.",
+   "text": "**Thranduil:** \"…leave your graveyard, create a 1/1 black Bat\" — Muldrotha, Kotis and Cauldron of Essence trigger it, but Teval and Insidious Roots already pay off the same event better. **Glarb:** Glarb's mill fills the opponent's yard; its own creature cards rarely leave the graveyard.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Chalk Outline": {
    "group": "Weaker leave-graveyard payoff",
    "text": "**Thranduil:** \"Whenever one or more creature cards leave your graveyard, create a 2/2 … then investigate\" — a second Insidious Roots for the Muldrotha/Kotis/Vile Offering recasts; 4 mana that does nothing until one happens. First reserve. **Glarb:** Own-yard recursion is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Attuned Hunter": {
@@ -4600,26 +4600,26 @@
   },
   "Kishla Skimmer": {
    "group": "Leave-graveyard draw",
-   "text": "**Thranduil:** \"Whenever a card leaves your graveyard during your turn, draw a card\" (once a turn) fires off Kotis's exile cost, Muldrotha and Kagha casts, Sheoldred's upkeep reanimation and Teval's land return — a 2-mana repeatable draw beside Elrond. **Glarb:** Its own yard rarely empties; off-plan.",
+   "text": "**Thranduil:** \"Whenever a card leaves your graveyard during your turn, draw a card\" (once a turn) fires off Kotis's exile cost, Muldrotha casts, Cauldron of Essence and Teval's land return — a 2-mana repeatable draw beside Elrond. **Glarb:** Its own yard rarely empties; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Undead Hand Ninja": {
    "group": "Weaker leave-graveyard payoff",
-   "text": "**Thranduil:** \"Whenever one or more creature cards leave your graveyard\" drains 1 off Sheoldred, Kotis and Muldrotha, but a 1-point drain on a 2/1 is too small. **Glarb:** Its own yard rarely loses creatures; off-plan.",
+   "text": "**Thranduil:** \"Whenever one or more creature cards leave your graveyard\" drains 1 off Kotis, Muldrotha and Cauldron of Essence, but a 1-point drain on a 2/1 is too small. **Glarb:** Its own yard rarely loses creatures; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Dredger's Insight": {
    "group": "Weaker leave-graveyard payoff",
-   "text": "**Thranduil:** A 2-mana mill four that keeps an artifact, creature or land — fuel plus a card; the lifegain fires off Muldrotha, Kotis and the reanimators, but it is a one-shot beside the repeat self-mill (Kagha, Sidisi, Overlord). **Glarb:** Own-library mill is not the plan.",
+   "text": "**Thranduil:** A 2-mana mill four that keeps an artifact, creature or land — fuel plus a card; the lifegain fires off Muldrotha, Kotis and the reanimators, but it is a one-shot beside the repeat self-mill (Sidisi, Teval, Advanced Floral Invocations). **Glarb:** Own-library mill is not the plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Along the Crooked Way": {
@@ -4632,10 +4632,10 @@
   },
   "Willow Geist": {
    "group": "Weaker leave-graveyard payoff",
-   "text": "**Thranduil:** A 1-drop that gets a +1/+1 counter whenever cards leave your yard (Kotis's exile cost, Muldrotha, Sheoldred's reanimation, Teval's land), but a body, not an engine. **Glarb:** Its own yard rarely changes; off-plan.",
+   "text": "**Thranduil:** A 1-drop that gets a +1/+1 counter whenever cards leave your yard (Kotis's exile cost, Muldrotha, Cauldron of Essence, Teval's land), but a body, not an engine. **Glarb:** Its own yard rarely changes; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Courser of Kruphix": {
@@ -4656,26 +4656,26 @@
   },
   "Oracle of Mul Daya": {
    "group": "Ramp",
-   "text": "**Thranduil:** An Elf: extra land drop and lands from the top, and each land feeds Sindarin Liege's landfall tokens. **Glarb:** Extra land drop plus Ruin Crab's landfall; Glarb already plays lands from the top.",
+   "text": "**Thranduil:** An Elf: extra land drop and lands from the top, and each land feeds Sindarin Liege's landfall tokens. **Glarb:** Extra land drop; Glarb already plays lands from the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Precognition Field": {
    "group": "Duplicates Glarb's top-of-library",
-   "text": "**Thranduil:** Seven instants and sorceries to cast off the top; little to find. **Glarb:** 21 instants and sorceries, and it covers the cheap ones Glarb cannot (Counterspell, Drown in the Loch, the 2-mana removal); its {3} exile clears a dead top card. Bench.",
+   "text": "**Thranduil:** Seven instants and sorceries to cast off the top; little to find. **Glarb:** About six instants and sorceries since the trim, and it covers the cheap ones Glarb cannot (Drown in the Loch, Didn't Say Please); its {3} exile clears a dead top card. Bench.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Vivien, Monsters' Advocate": {
    "group": "Top-of-library creatures",
    "text": "\"You may cast creature spells from the top of your library\"; +1 makes a 3/3 Beast. **Thranduil:** Card advantage in a creature-dense list, plus a token a turn for Yawgmoth, Izoni and Insidious Roots; overlaps Eladamri. **Glarb:** About 20 creatures, mostly utility, and {3}{G}{G} on a green splash.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Eladamri, Korvecdal": {
@@ -4696,50 +4696,50 @@
   },
   "Deathrite Shaman": {
    "group": "Mana + graveyard exile",
-   "text": "**Thranduil:** In the list: a 1-mana Elf with three activated abilities, so Thranduil borrows all three from the yard. Point it at the OPPONENT'S graveyard to spare Elf cards; exiling your own non-Elf lands or creatures triggers Teval's Zombie, Oasis's seek and Insidious Roots. **Glarb:** The land ability ramps off their milled yard and `{B}` drains 2, but each exile shrinks the graveyard Drown in the Loch and Consuming Aberration count.",
+   "text": "**Thranduil:** Cut from the list: a 1-mana Elf with three activated abilities, so Thranduil borrows all three from the yard. Point it at the OPPONENT'S graveyard to spare Elf cards; exiling your own non-Elf lands or creatures triggers Teval's Zombie, Oasis's seek and Insidious Roots. **Glarb:** The land ability ramps off their milled yard and `{B}` drains 2, but each exile shrinks the graveyard Drown in the Loch and Consuming Aberration count.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Llanowar Elves": {
    "group": "",
-   "text": "\"{T}: Add {G}.\" — **Thranduil:** In-list 1-drop accelerant feeding the Elf/mana engine; an Elf whose ability Thranduil keeps from the yard. **Glarb:** A green-only dork in a U-heavy control list that already has Birds and Paradise Druid.",
+   "text": "\"{T}: Add {G}.\" — **Thranduil:** Cut from the list: a 1-drop accelerant feeding the Elf/mana engine; an Elf whose ability Thranduil keeps from the yard. **Glarb:** A green-only dork in a U-heavy control list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Elvish Mystic": {
    "group": "",
-   "text": "\"{T}: Add {G}.\" — **Thranduil:** In list: turn-one ramp, and in the yard Thranduil borrows the mana tap. **Glarb:** A green-only dork in a U/B-heavy list that already runs Birds, Paradise Druid and four rocks.",
+   "text": "\"{T}: Add {G}.\" — **Thranduil:** Cut 2026-11-05 (the owner's call): turn-one ramp, and in the yard Thranduil borrows the mana tap. **Glarb:** A green-only dork in a U/B-heavy list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Paradise Druid": {
    "group": "",
-   "text": "\"{T}: Add one mana of any color. / hexproof while untapped\" — **Thranduil:** Elf mana fixer whose any-colour tap ability Thranduil borrows from the yard (doubled by Dionus); core keep. **Glarb:** Resilient two-mana fixer that ramps to Glarb's MV4+ top-casts; real, competes with Birds/rocks.",
+   "text": "\"{T}: Add one mana of any color. / hexproof while untapped\" — **Thranduil:** Elf mana fixer whose any-colour tap ability Thranduil borrows from the yard (doubled by Dionus); cut from the list. **Glarb:** Resilient two-mana fixer that ramps to Glarb's MV4+ top-casts; real, but cut from the list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Priest of Titania": {
    "group": "",
-   "text": "\"{T}: Add {G} for each Elf on the battlefield.\" — **Thranduil:** Elf-count mana engine with ~33 Elves, and in the yard Thranduil taps for it too. **Glarb:** With only Paradise Druid as another Elf it is a 2-mana mono-G dork.",
+   "text": "\"{T}: Add {G} for each Elf on the battlefield.\" — **Thranduil:** Elf-count mana engine with ~33 Elves, and in the yard Thranduil taps for it too. **Glarb:** With only Tireless Provisioner as another Elf it is a 2-mana mono-G dork.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Elvish Archdruid": {
    "group": "",
-   "text": "\"{T}: Add {G} for each Elf you control.\" — **Thranduil:** Core mana engine at 33 Elves, and Thranduil taps for the same amount once it is in the yard. **Glarb:** Glarb's list holds one Elf (Paradise Druid), so it is a 3-mana single-G dork.",
+   "text": "\"{T}: Add {G} for each Elf you control.\" — **Thranduil:** Core mana engine at 33 Elves, and Thranduil taps for the same amount once it is in the yard. **Glarb:** Glarb's list holds one Elf (Tireless Provisioner), so it is a 3-mana single-G dork.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Circle of Dreams Druid": {
@@ -4762,32 +4762,32 @@
    "group": "",
    "text": "\"{T}: Add {G}{G}. Activate only if there is an Elf card in your graveyard.\" — **Thranduil:** Self-mill keeps an Elf in the yard so it is a 2-for-1 ramp dork, and Thranduil borrows it; the deck is already deep in mana Elves. **Glarb:** No Elf cards in the yard, so its mana never turns on, and behold costs {2} more.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Deathbloom Ritualist": {
    "group": "",
    "text": "\"{T}: Add X mana of any one color, where X is the number of creature cards in your graveyard.\" — **Thranduil:** Self-mill creature deck grows X quickly, and in the yard it is a borrowed any-colour mana ability for Thranduil. **Glarb:** Glarb mills the opponent, so its own yard holds few creature cards; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Woodland Weavemaster": {
    "group": "",
-   "text": "\"Spend this mana only to cast Elf spells and activate abilities of Elf sources.\" — **Thranduil:** In list: restricted mana, but it does pay for Thranduil's borrowed Elf-source abilities; a real slot, not a core one. **Glarb:** The only Elf in G is Paradise Druid, so the restricted mana is dead.",
+   "text": "\"Spend this mana only to cast Elf spells and activate abilities of Elf sources.\" — **Thranduil:** Cut 2026-11-05 (the owner's call): restricted mana, but it does pay for Thranduil's borrowed Elf-source abilities; a real slot, not a core one. **Glarb:** The only Elf in G is Tireless Provisioner, so the restricted mana is dead.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Selvala, Heart of the Wilds": {
    "group": "",
    "text": "\"{G}, {T}: Add X mana in any combination of colors, where X is the greatest power among creatures you control.\" — **Thranduil:** Legendary Elf (loot) whose any-colour burst mana Thranduil can borrow; the draw half is symmetric but minor. **Glarb:** Small-creature control deck: X is low and the enters draw is symmetric; below the bar.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Fauna Shaman": {
@@ -4802,8 +4802,8 @@
    "group": "",
    "text": "\"{G}, {T}: Create a 1/1 green Elf Warrior creature token.\" — **Thranduil:** Repeatable token maker (Voice/Lathril fodder, Insidious Roots mana) that Thranduil borrows from the yard; the lord half is incidental. **Glarb:** Elf token maker with no draw, mill or interaction text.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Elvish Warmaster": {
@@ -4832,10 +4832,10 @@
   },
   "Lluwen, Imperfect Naturalist": {
    "group": "",
-   "text": "\"When Lluwen enters, mill four cards, then you may put a creature or land card from among the milled cards on top of your library.\" — **Thranduil:** 2-mana legendary Elf: Thranduil loot trigger, mills four, sets up the top, and leaves a borrowed Worm-token ability in the yard. **Glarb:** Mills its own library, and recursion of its own yard is not Glarb's plan.",
+   "text": "\"When Lluwen enters, mill four cards, then you may put a creature or land card from among the milled cards on top of your library.\" — **Thranduil:** Cut 2026-11-05 (the owner's call). A 2-mana legendary Elf: Thranduil loot trigger, mills four, sets up the top, and leaves a borrowed Worm-token ability in the yard. **Glarb:** Mills its own library, and recursion of its own yard is not Glarb's plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Dwynen, Gilt-Leaf Daen": {
@@ -4864,18 +4864,18 @@
   },
   "Cantankerous Keepers": {
    "group": "",
-   "text": "\"When this creature enters, mill four cards, then put all Elf cards from among them into your hand.\" — **Thranduil:** Cheap via affinity at 33 Elves and nets ~1–2 cards, but milled Elves go to hand instead of staying as Thranduil's tools. **Glarb:** An Elf-affinity body with own-library mill; off-plan.",
+   "text": "\"When this creature enters, mill four cards, then put all Elf cards from among them into your hand.\" — **Thranduil:** Cut 2026-11-05. Cheap via affinity at 33 Elves and nets ~1–2 cards, but milled Elves go to hand instead of staying as Thranduil's tools. **Glarb:** An Elf-affinity body with own-library mill; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Dawnhand Eulogist": {
    "group": "",
-   "text": "\"When this creature enters, mill three cards. Then if there is an Elf card in your graveyard, each opponent loses 2 life…\" — **Thranduil:** In list: self-mill 3 fills the toolbox, and the drain is near-guaranteed. **Glarb:** Self-mill does nothing for opponent mill; the 2 life loss is only a 2-card mill through Master of Lake-town.",
+   "text": "\"When this creature enters, mill three cards. Then if there is an Elf card in your graveyard, each opponent loses 2 life…\" — **Thranduil:** Cut from the list: self-mill 3 fills the toolbox, and the drain is near-guaranteed. **Glarb:** Self-mill does nothing for opponent mill; the 2 life loss does nothing for the mill.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Elderfang Ritualist": {
@@ -4904,18 +4904,18 @@
   },
   "Gloom Ripper": {
    "group": "",
-   "text": "\"…gets -0/-X … where X is the number of Elves you control plus the number of Elf cards in your graveyard.\" — **Thranduil:** In list: X runs large with 33 Elves plus the yard, so it's real removal on a body; 5 mana keeps it from ★★. **Glarb:** X is about 1 here, so it's dead.",
+   "text": "\"…gets -0/-X … where X is the number of Elves you control plus the number of Elf cards in your graveyard.\" — **Thranduil:** Cut from the list: X runs large with 33 Elves plus the yard, so it's real removal on a body; 5 mana keeps it from ★★. **Glarb:** X is about 1 here, so it's dead.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Leaf-Crowned Visionary": {
    "group": "",
    "text": "\"Whenever you cast an Elf spell, you may pay {G}. If you do, draw a card.\" — **Thranduil:** Repeatable card draw off 33 Elf spells is real CA; the lord half is tiebreaker value only. **Glarb:** No Elf spells to trigger it; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Shaman of the Pack": {
@@ -4928,10 +4928,10 @@
   },
   "Morcant's Eyes": {
    "group": "",
-   "text": "\"At the beginning of your upkeep, surveil 1. … Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard.\" — **Thranduil:** Bins an Elf every upkeep, then cashes the full Elf yard into tokens. **Glarb:** The upkeep surveil triggers Matoya and Proft for a draw; the token half is dead here.",
+   "text": "\"At the beginning of your upkeep, surveil 1. … Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard.\" — **Thranduil:** Bins an Elf every upkeep, then cashes the full Elf yard into tokens. **Glarb:** The upkeep surveil triggers Matoya for a draw; the token half is dead here.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Bounty of Skemfar": {
@@ -4952,18 +4952,18 @@
   },
   "Insidious Roots": {
    "group": "",
-   "text": "\"Whenever one or more creature cards leave your graveyard, create a 0/1 green Plant\" — **Thranduil:** Muldrotha, Kotis, reanimation, Deathrite and Overlord all trigger it, and Elf/Zombie tokens tap for any colour. **Glarb:** Creature cards rarely leave its own yard and it makes few tokens.",
+   "text": "\"Whenever one or more creature cards leave your graveyard, create a 0/1 green Plant\" — **Thranduil:** Muldrotha, Kotis, Mycoid Resurrection, Cauldron of Essence and the reanimation all trigger it, and Elf/Zombie tokens tap for any colour. **Glarb:** In the list, though creature cards rarely leave its own yard and it makes few tokens.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Overlord of the Balemurk": {
    "group": "",
-   "text": "\"Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.\" — **Thranduil:** Two-mana impending self-mill plus recursion, repeated on attacks: the deck's exact engine. **Glarb:** Own-yard mill and recursion isn't the plan; at most it returns one threat.",
+   "text": "\"Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.\" — **Thranduil:** Cut 2026-11-05. Two-mana impending self-mill plus recursion, repeated on attacks: the deck's exact engine. **Glarb:** Own-yard mill and recursion isn't the plan; at most it returns one threat.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Trystan's Command": {
@@ -4986,16 +4986,16 @@
    "group": "",
    "text": "\"Destroy target nonartifact creature.\" — **Thranduil:** Cheap instant removal in a deck that needs interaction. **Glarb:** Cheap instant removal for a control deck.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Infernal Grasp": {
    "group": "",
-   "text": "\"Destroy target creature. You lose 2 life.\" — **Thranduil:** Two-mana instant unconditional removal in a list whose interaction comes from outside the pile. **Glarb:** Same: cheap instant removal is a core keep in a control deck.",
+   "text": "\"Destroy target creature. You lose 2 life.\" — **Thranduil:** Two-mana instant unconditional removal in a list whose interaction comes from outside the pile. **Glarb:** Same: cheap instant removal, though cut from the current list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Command Tower": {
@@ -5024,10 +5024,10 @@
   },
   "Breeding Pool": {
    "group": "",
-   "text": "\"({T}: Add {G} or {U}.) As this land enters, you may pay 2 life.\" — **Thranduil:** Untapped typed dual; enables Hinterland Harbor and Wastewood Verge. **Glarb:** Untapped G/U dual covering the green splash and blue core.",
+   "text": "\"({T}: Add {G} or {U}.) As this land enters, you may pay 2 life.\" — **Thranduil:** Untapped typed dual; enables Wastewood Verge. **Glarb:** Untapped G/U dual covering the green splash and blue core.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Watery Grave": {
@@ -5048,106 +5048,106 @@
   },
   "Hinterland Harbor": {
    "group": "",
-   "text": "\"enters tapped unless you control a Forest or an Island\" — **Thranduil:** A G/U checkland that is usually untapped with the deck's typed lands. **Glarb:** Usually untapped, but G/U is the less important pair here.",
+   "text": "\"enters tapped unless you control a Forest or an Island\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. A G/U checkland that is usually untapped with the deck's typed lands. **Glarb:** Usually untapped, but G/U is the less important pair here.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Drowned Catacomb": {
    "group": "",
-   "text": "\"This land enters tapped unless you control an Island or a Swamp. {T}: Add {U} or {B}.\" — **Thranduil:** U/B is the list's lightest pair; a fine but replaceable dual. **Glarb:** U/B is this deck's core pair and 12 basic Islands/Swamps keep it untapped.",
+   "text": "\"This land enters tapped unless you control an Island or a Swamp. {T}: Add {U} or {B}.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. U/B is the list's lightest pair; a fine but replaceable dual. **Glarb:** U/B is this deck's core pair and 12 basic Islands/Swamps keep it untapped.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Llanowar Wastes": {
    "group": "",
-   "text": "\"{T}: Add {B} or {G}. This land deals 1 damage to you.\" — **Thranduil:** In list: untapped B/G, the deck's main pair. **Glarb:** In list: untapped, but B/G is the minor pair here.",
+   "text": "\"{T}: Add {B} or {G}. This land deals 1 damage to you.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05: untapped B/G, the deck's main pair. **Glarb:** In list: untapped, but B/G is the minor pair here.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Yavimaya Coast": {
    "group": "",
-   "text": "\"{T}: Add {G} or {U}. This land deals 1 damage to you.\" — **Thranduil:** Always-untapped G/U source; ping is minor at 25 life. **Glarb:** Always-untapped G/U source; strong manabase keep.",
+   "text": "\"{T}: Add {G} or {U}. This land deals 1 damage to you.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. Always-untapped G/U source; ping is minor at 25 life. **Glarb:** Always-untapped G/U source; strong manabase keep.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Underground River": {
    "group": "",
-   "text": "\"{T}: Add {U} or {B}. This land deals 1 damage to you.\" — **Thranduil:** An untapped U/B painland, U being the deck's lightest colour. **Glarb:** U/B is the deck's core pair and this land is always untapped.",
+   "text": "\"{T}: Add {U} or {B}. This land deals 1 damage to you.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. An untapped U/B painland, U being the deck's lightest colour. **Glarb:** U/B is the deck's core pair and this land is always untapped.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Clearwater Pathway // Murkwater Pathway": {
    "group": "",
-   "text": "\"{T}: Add {U}. // {T}: Add {B}.\" — **Thranduil:** Untapped, chosen for B sources in the draft; one colour once played. **Glarb:** Untapped U or B, but only one of them per game.",
+   "text": "\"{T}: Add {U}. // {T}: Add {B}.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. Untapped, chosen for B sources in the draft; one colour once played. **Glarb:** Untapped U or B, but only one of them per game.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Zagoth Triome": {
    "group": "",
-   "text": "\"({T}: Add {B}, {G}, or {U}.) This land enters tapped. Cycling {3}\" — **Thranduil:** In list: all three colours and three basic types (turns on the checklands and the Verge). **Glarb:** In list: all three colours with cycling; the tapped entry is fine in control.",
+   "text": "\"({T}: Add {B}, {G}, or {U}.) This land enters tapped. Cycling {3}\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05: all three colours and three basic types (turns on the checklands and the Verge). **Glarb:** In list: all three colours with cycling; the tapped entry is fine in control.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Underground Mortuary": {
    "group": "",
-   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Surveil bins an Elf for Thranduil; owner kept the surveil lands for exactly that. **Glarb:** Surveil triggers Matoya and Proft (a draw, which mills); worth the tapped entry.",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Surveil bins an Elf for Thranduil; swapped for an owned stand-in 2026-11-05. **Glarb:** Surveil triggers Matoya (a draw, which mills); worth the tapped entry.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Hedge Maze": {
    "group": "",
-   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** A tapped surveil land that bins an Elf for Thranduil (the notes keep it). **Glarb:** Its surveil triggers Matoya and Proft, but it enters tapped.",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. A tapped surveil land that bins an Elf for Thranduil (the notes keep it). **Glarb:** Its surveil triggers Matoya, but it enters tapped.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Undercity Sewers": {
    "group": "",
-   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Tapped, but the surveil bins an Elf for Thranduil (the notes keep it for that). **Glarb:** Tapped, but the surveil triggers Matoya/Proft.",
+   "text": "\"This land enters tapped. When this land enters, surveil 1.\" — **Thranduil:** Tapped, but the surveil bins an Elf for Thranduil (the notes keep it for that). **Glarb:** Tapped, but the surveil triggers Matoya.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Darkslick Shores": {
    "group": "",
-   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** In list: U/B is the minor pair, and it's usually tapped late in 100 cards. **Glarb:** In list: U/B, the main pair.",
+   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05: U/B is the minor pair, and it's usually tapped late in 100 cards. **Glarb:** In list: U/B, the main pair.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Blooming Marsh": {
    "group": "",
-   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** B/G dual that is untapped only early; real but a tier below the check/shock lands. **Glarb:** Untapped only early in a long control game; a real but replaceable dual.",
+   "text": "\"This land enters tapped unless you control two or fewer other lands.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. B/G dual that is untapped only early; real but a tier below the check/shock lands. **Glarb:** Untapped only early in a long control game; a real but replaceable dual.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Botanical Sanctum": {
    "group": "",
-   "text": "\"enters tapped unless you control two or fewer other lands\" — **Thranduil:** An untapped G/U land early; G is the main colour. **Glarb:** A late-tapped G/U fastland in a deck whose core pair is U/B.",
+   "text": "\"enters tapped unless you control two or fewer other lands\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05. An untapped G/U land early; G is the main colour. **Glarb:** A late-tapped G/U fastland in a deck whose core pair is U/B.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Wastewood Verge": {
@@ -5160,18 +5160,18 @@
   },
   "Darkbore Pathway // Slitherbore Pathway": {
    "group": "",
-   "text": "\"{T}: Add {B}. // {T}: Add {G}.\" — **Thranduil:** In list: an untapped B or G source for the {B}{B} cards. **Glarb:** In list: untapped but one colour only, from the minor pair.",
+   "text": "\"{T}: Add {B}. // {T}: Add {G}.\" — **Thranduil:** Swapped for an owned stand-in 2026-11-05: an untapped B or G source for the {B}{B} cards. **Glarb:** In list: untapped but one colour only, from the minor pair.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Psychic Corrosion": {
    "group": "",
-   "text": "\"Whenever you draw a card, each opponent mills two cards.\" — **Thranduil:** Opponent mill is off-plan for a self-graveyard deck. **Glarb:** The deck's core draw-to-mill engine (protected).",
+   "text": "\"Whenever you draw a card, each opponent mills two cards.\" — **Thranduil:** Opponent mill is off-plan for a self-graveyard deck. **Glarb:** Cut in the owner's trim; the Tutelages carry the draw-to-mill plan now.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Teferi's Tutelage": {
@@ -5208,82 +5208,82 @@
   },
   "Ruin Crab": {
    "group": "",
-   "text": "\"Landfall — Whenever a land you control enters, each opponent mills three cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** A 1-drop that mills about 3 per land drop (6 with Bruvac), with no draw needed.",
+   "text": "\"Landfall — Whenever a land you control enters, each opponent mills three cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** Cut from the list: a 1-drop that mills about 3 per land drop (6 with Bruvac), with no draw needed.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Traumatize": {
    "group": "",
    "text": "\"Target player mills half their library, rounded down.\" — **Thranduil:** Can self-target for ~45 cards of fuel (Muldrotha, Izoni, Morcant's Eyes), but it's a 5-mana UU sorcery that does nothing on its own. **Glarb:** A big mill that Bruvac doubles into the whole library, and Glarb can cast it from the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Maddening Cacophony": {
    "group": "",
-   "text": "\"Each opponent mills eight cards. If this spell was kicked, instead each opponent mills half their library…\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** In list: a kicked finisher, and with Bruvac it mills the whole library.",
+   "text": "\"Each opponent mills eight cards. If this spell was kicked, instead each opponent mills half their library…\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** Cut from the list: a kicked finisher, and with Bruvac it mills the whole library.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Startled Awake // Persistent Nightmare": {
    "group": "",
    "text": "\"Target opponent mills thirteen cards. / {3}{U}{U}: Put this card from your graveyard onto the battlefield transformed.\" — **Thranduil:** Opponent-only mill; off-plan. **Glarb:** Big mill (26 with Bruvac) that Glarb casts off the top, with a recursion body.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Archive Trap": {
    "group": "",
    "text": "\"Target opponent mills thirteen cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** A 13-card mill that Glarb can cast from the top, and it is free after their Assassin's Trophy fetch.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Glimpse the Unthinkable": {
    "group": "",
    "text": "\"Target player mills ten cards.\" — **Thranduil:** A cheap self-mill of ten for fuel, but card disadvantage with no body or recursion. **Glarb:** Two-mana mill of ten that Bruvac and the Water Crystal scale.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sphinx Mindbreaker": {
    "group": "",
-   "text": "\"When this creature enters, each opponent mills ten cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** In list: mill 10 (20 with Bruvac); 7 mana but castable off the top.",
+   "text": "\"When this creature enters, each opponent mills ten cards.\" — **Thranduil:** Opponent mill is off-plan. **Glarb:** Cut from the list: mill 10 (20 with Bruvac); 7 mana but castable off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Tasha's Hideous Laughter": {
    "group": "",
-   "text": "\"Each opponent exiles cards from the top of their library until … total mana value 20 or greater.\" — **Thranduil:** Library exile has no role in T. **Glarb:** Cheap library-exile finisher (protected); core keep.",
+   "text": "\"Each opponent exiles cards from the top of their library until … total mana value 20 or greater.\" — **Thranduil:** Library exile has no role in T. **Glarb:** A cheap library-exile finisher; cut in the owner's trim.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ulamog, the Ceaseless Hunger": {
    "group": "",
    "text": "\"When you cast this spell, exile two target permanents. … defending player exiles the top twenty cards\" — **Thranduil:** Elf mana can cast it but it is off-plan, and Kinnan's put skips the cast trigger. **Glarb:** A 10-mana finisher; the library exile wins, but it needs ramp or Glarb's top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "The Master of Lake-town": {
    "group": "",
    "text": "\"Whenever a player loses life, that player mills that many cards.\" — **Thranduil:** Self-mill from shocks and Yawgmoth life payments is incidental; the opponent-side mill is off-plan. **Glarb:** Turns damage, drains and Sheoldred's draw tax into mill; a deathtouch blocker.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ashiok, Nightmare Weaver": {
@@ -5304,66 +5304,66 @@
   },
   "Rhystic Study": {
    "group": "",
-   "text": "\"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.\" — **Thranduil:** Card advantage, but in 1v1 the tax is often paid, and draws are not its engine. **Glarb:** Every draw it forces also mills through the Tutelages and Corrosion.",
+   "text": "\"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.\" — **Thranduil:** Card advantage, but in 1v1 the tax is often paid, and draws are not its engine. **Glarb:** Every draw it forces also mills through the Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Mystic Remora": {
    "group": "",
-   "text": "\"Whenever an opponent casts a noncreature spell, you may draw a card unless that player pays {4}.\" — **Thranduil:** Blue card flow with upkeep tax in a creature-mana list; no synergy. **Glarb:** Cheap early draw engine, and each draw mills via the Tutelages/Corrosion.",
+   "text": "\"Whenever an opponent casts a noncreature spell, you may draw a card unless that player pays {4}.\" — **Thranduil:** Blue card flow with upkeep tax in a creature-mana list; no synergy. **Glarb:** Cheap early draw engine, and each draw mills via the Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Phyrexian Arena": {
    "group": "",
-   "text": "\"At the beginning of your upkeep, you draw a card and lose 1 life.\" — **Thranduil:** Steady card advantage (the first axis under the synergy-first rule), but plain, with no graveyard tie-in. **Glarb:** In list: an extra draw every turn means an extra mill trigger every turn.",
+   "text": "\"At the beginning of your upkeep, you draw a card and lose 1 life.\" — **Thranduil:** Steady card advantage (the first axis under the synergy-first rule), but plain, with no graveyard tie-in. **Glarb:** Cut from the list: an extra draw every turn means an extra mill trigger every turn.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Dictate of Kruphix": {
    "group": "",
-   "text": "\"At the beginning of each player's draw step, that player draws an additional card.\" — **Thranduil:** Symmetric draw hands the opponent cards with no payoff for T. **Glarb:** Each of our draws mills via Corrosion and their extra draw shortens their library; deliberate keep.",
+   "text": "\"At the beginning of each player's draw step, that player draws an additional card.\" — **Thranduil:** Symmetric draw hands the opponent cards with no payoff for T. **Glarb:** Each of our draws mills via the Tutelages and their extra draw shortens their library; cut in the owner's trim.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Teferi's Ageless Insight": {
    "group": "",
    "text": "\"If you would draw a card except the first one … draw two cards instead.\" — **Thranduil:** Doubles Thranduil's loot (4 drawn, 1 discarded), but it is a 4-mana do-nothing alone. **Glarb:** Doubles every extra draw, so it doubles every mill trigger.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Notion Thief": {
    "group": "",
-   "text": "\"If an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.\" — **Thranduil:** A 4-mana U/B flash body with no graveyard or Elf synergy. **Glarb:** Turns Dictate of Kruphix's symmetric draw one-sided: every extra draw is ours and mills them.",
+   "text": "\"If an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.\" — **Thranduil:** A 4-mana U/B flash body with no graveyard or Elf synergy. **Glarb:** Turns any extra draw of theirs into ours; with Dictate of Kruphix cut, there are few.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Brainstorm": {
    "group": "",
-   "text": "\"Draw three cards, then put two cards from your hand on top of your library…\" — **Thranduil:** Weak without shuffles; it puts cards back instead of binning them. **Glarb:** In list: three draws are three Corrosion or Tutelage triggers, and it feeds Reed Richards.",
+   "text": "\"Draw three cards, then put two cards from your hand on top of your library…\" — **Thranduil:** Weak without shuffles; it puts cards back instead of binning them. **Glarb:** Cut from the list: three draws are three triggers of each Tutelage, and it feeds Reed Richards.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kaito, Bane of Nightmares": {
    "group": "",
-   "text": "\"0: Surveil 2. Then draw a card for each opponent who lost life this turn. / −2: Tap target creature. Put two stun counters on it.\" — **Thranduil:** Surveil 2 a turn bins Elves and the stun is interaction; competes for a slot. **Glarb:** Surveil feeds Matoya/Proft draws, plus stun interaction and a hexproof body; strong keep.",
+   "text": "\"0: Surveil 2. Then draw a card for each opponent who lost life this turn. / −2: Tap target creature. Put two stun counters on it.\" — **Thranduil:** Surveil 2 a turn bins Elves and the stun is interaction; competes for a slot. **Glarb:** Surveil feeds Matoya draws, plus stun interaction and a hexproof body; cut in the owner's trim.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Drown in the Loch": {
@@ -5378,112 +5378,112 @@
    "group": "",
    "text": "\"Counter target spell.\" — **Thranduil:** UU is hard on ~2 Islands plus the U duals; this mana is better spent on B/G removal. **Glarb:** Hard counter in a control list.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Thought Collapse": {
    "group": "",
-   "text": "\"Counter target spell. Its controller mills three cards.\" — **Thranduil:** A {U}{U} counter in a G/B-weighted list; interaction, but off-colour-weight. **Glarb:** In list: a counter plus mill 3 (6 with Bruvac).",
+   "text": "\"Counter target spell. Its controller mills three cards.\" — **Thranduil:** A {U}{U} counter in a G/B-weighted list; interaction, but off-colour-weight. **Glarb:** Cut from the list: a counter plus mill 3 (6 with Bruvac).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Hero's Downfall": {
    "group": "",
-   "text": "\"Destroy target creature or planeswalker.\" — **Thranduil:** Instant creature/planeswalker removal; a strong add to T's interaction. **Glarb:** Flexible instant removal; strong keep.",
+   "text": "\"Destroy target creature or planeswalker.\" — **Thranduil:** Instant creature/planeswalker removal; a strong add to T's interaction. **Glarb:** Flexible instant removal.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Assassin's Trophy": {
    "group": "",
-   "text": "\"Destroy target permanent an opponent controls.\" — **Thranduil:** A 2-mana answer to any permanent. **Glarb:** A 2-mana answer to anything, and the fetch it gives turns on Archive Trap.",
+   "text": "\"Destroy target permanent an opponent controls.\" — **Thranduil:** A 2-mana answer to any permanent. **Glarb:** A 2-mana answer to anything, and the fetch it gives would turn on Archive Trap, which the list does not run.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Cyclonic Rift": {
    "group": "",
    "text": "\"Return target nonland permanent you don't control to its owner's hand. Overload {6}{U}\" — **Thranduil:** The Elf mana engines make the 7-mana one-sided overload realistic; the cheap mode is only tempo. **Glarb:** Flexible one-sided bounce, and the overload is a reset.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Damnation": {
    "group": "",
-   "text": "\"Destroy all creatures.\" — **Thranduil:** Kills the deck's own Elf mana base and Thranduil; the reanimation to rebuild exists, but it fights the go-wide board. **Glarb:** In list: a board wipe for a control deck with few creatures that matter.",
+   "text": "\"Destroy all creatures.\" — **Thranduil:** Kills the deck's own Elf mana base and Thranduil; the reanimation to rebuild exists, but it fights the go-wide board. **Glarb:** Cut from the list: a board wipe for a control deck with few creatures that matter.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Breach the Multiverse": {
    "group": "",
    "text": "\"Each player mills ten cards. For each player, choose a creature or planeswalker card in that player's graveyard. Put those cards onto the battlefield under your control.\" — **Thranduil:** Self-mill 10 plus two reanimations (pick a non-Elf from our yard); a big graveyard payoff the mana Elves reach. **Glarb:** Mills them 10 (doubled) and steals their best; but mills our own library 10 in a mill race; real.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Theorix Charm": {
    "group": "",
    "text": "\"Counter … unless its controller pays {2} / -2/-2 / Mill three cards, then draw a card\" — **Thranduil:** A flexible instant whose mill-3-draw mode stocks the yard. **Glarb:** Flexible interaction; the draw mode triggers mill but self-mills 3.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Arcane Signet": {
    "group": "",
    "text": "\"{T}: Add one mana of any color in your commander's color identity.\" — **Thranduil:** Plain rock in a list with ~12 creature mana sources that do more. **Glarb:** Fixing ramp toward Glarb's MV 4+ top-deck casts.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Talisman of Dominance": {
    "group": "",
-   "text": "\"{T}: Add {U} or {B}. This artifact deals 1 damage to you.\" — **Thranduil:** T's ramp comes from Elves; a rock is below the bar. **Glarb:** In list: a 2-mana rock towards the MV 4+ top-deck casts.",
+   "text": "\"{T}: Add {U} or {B}. This artifact deals 1 damage to you.\" — **Thranduil:** T's ramp comes from Elves; a rock is below the bar. **Glarb:** Cut from the list: a 2-mana rock towards the MV 4+ top-deck casts.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Talisman of Curiosity": {
    "group": "",
    "text": "\"{T}: Add {G} or {U}. This artifact deals 1 damage to you.\" — **Thranduil:** T ramps with mana Elves that Thranduil borrows; a rock is below the bar. **Glarb:** Two-mana ramp/fixing toward MV4+ casts; a real slot-competitor.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Mind Stone": {
    "group": "",
    "text": "\"{T}: Add {C}. {1}, {T}, Sacrifice this artifact: Draw a card.\" — **Thranduil:** The deck's Elf mana makes a colourless rock redundant. **Glarb:** Ramp toward Glarb's 4+ casts that later cycles into a draw.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Birds of Paradise": {
    "group": "",
    "text": "\"{T}: Add one mana of any color.\" — **Thranduil:** A 1-drop that fixes all three colours (Kinnan adds); not an Elf, but mana is synergy. **Glarb:** A 1-drop fixer, though green is the splash.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Growth Spiral": {
    "group": "",
-   "text": "\"Draw a card. You may put a land card from your hand onto the battlefield.\" — **Thranduil:** Instant ramp plus a cantrip that turns on Sindarin Liege's landfall; a real playable. **Glarb:** In list: a draw trigger plus ramp at instant speed.",
+   "text": "\"Draw a card. You may put a land card from your hand onto the battlefield.\" — **Thranduil:** Instant ramp plus a cantrip that turns on Sindarin Liege's landfall; a real playable. **Glarb:** Cut from the list: a draw trigger plus ramp at instant speed.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jidoor, Aristocratic Capital // Overture": {
@@ -5512,50 +5512,50 @@
   },
   "Abomination of Llanowar": {
    "group": "Elf count only",
-   "text": "**Thranduil:** Cut 2026-11-02 as Elf-only: its P/T counts Elves plus Elf cards in the yard, and it borrows Thranduil nothing — a big menace body, not a synergy. **Glarb:** The list holds one Elf (Paradise Druid), so it is a small B/G body.",
+   "text": "**Thranduil:** Back in the list with the 2026-11-05 package (cut 2026-11-02 as Elf-only): its P/T counts Elves plus Elf cards in the yard, and it borrows Thranduil nothing — a big menace body, not a synergy. **Glarb:** The list holds one Elf (Tireless Provisioner), so it is a small B/G body.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Jin-Gitaxias, Core Augur": {
    "group": "Draw engine, top end",
-   "text": "**Thranduil:** The Elf mana can reach ten, and seven cards at end step forces a cleanup discard that bins Elves, but UU on a light-blue base. **Glarb:** In the list: seven draws each end step is fourteen mill through Psychic Corrosion alone, more with the Tutelages and Bruvac; ten mana is the cost.",
+   "text": "**Thranduil:** The Elf mana can reach ten, and seven cards at end step forces a cleanup discard that bins Elves, but UU on a light-blue base. **Glarb:** Cut from the list: seven draws each end step is fourteen mill through each Tutelage, more with Bruvac; ten mana is the cost.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Kagha, Shadow Archdruid": {
    "group": "Graveyard engine",
-   "text": "**Thranduil:** In the list: a legendary Elf (Thranduil's loot), and \"cast a permanent spell from among cards… put there from your library this turn\" turns each self-mill that turn (its own two, Sidisi, Wrenn and Seven's +1, Kamahl's Druidic Vow) into a free card. **Glarb:** Own-yard casting is not the plan; a 1/4 blocker.",
+   "text": "**Thranduil:** Cut from the list: a legendary Elf (Thranduil's loot), and \"cast a permanent spell from among cards… put there from your library this turn\" turns each self-mill that turn (its own two, Sidisi, Wrenn and Seven's +1, Kamahl's Druidic Vow) into a free card. **Glarb:** Own-yard casting is not the plan; a 1/4 blocker.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ob Nixilis Reignited": {
    "group": "Draw + removal walker",
-   "text": "**Thranduil:** In the list: +1 draws every turn and −3 is a spot kill — card advantage plus interaction at 5. **Glarb:** In the list: each +1 draw mills through Psychic Corrosion and the Tutelages, and Glarb casts it off the top.",
+   "text": "**Thranduil:** Cut from the list: +1 draws every turn and −3 is a spot kill — card advantage plus interaction at 5. **Glarb:** In the list: each +1 draw mills through the Tutelages, and Glarb casts it off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sheoldred, Whispering One": {
    "group": "Reanimation engine",
-   "text": "**Thranduil:** In the list: an upkeep reanimation every turn — aim it at non-Elf creatures so Thranduil keeps the Elf tools (the notes' G-42 caveat) — plus an edict each opposing upkeep; it also feeds Teval and Insidious Roots. **Glarb:** Glarb casts it off the top and the edict is real control, but its own yard holds few creatures.",
+   "text": "**Thranduil:** Cut from the list: an upkeep reanimation every turn — aim it at non-Elf creatures so Thranduil keeps the Elf tools (the notes' G-42 caveat) — plus an edict each opposing upkeep; it also feeds Teval and Insidious Roots. **Glarb:** Glarb casts it off the top and the edict is real control, but its own yard holds few creatures.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "The Water Crystal": {
    "group": "Mill amplifier",
-   "text": "**Thranduil:** It only adds to opponents' mill, which this list does not do. **Glarb:** In the list: \"they mill that many cards plus four instead\" turns every Psychic Corrosion and Tutelage trigger from two into six, and blue spells cost {1} less.",
+   "text": "**Thranduil:** It only adds to opponents' mill, which this list does not do. **Glarb:** In the list: \"they mill that many cards plus four instead\" turns every Tutelage trigger from two into six, and blue spells cost {1} less.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Ashiok, Nightmare Muse": {
@@ -5584,66 +5584,66 @@
   },
   "Matoya, Archon Elder": {
    "group": "Surveil draw engine",
-   "text": "\"Whenever you scry or surveil, draw a card.\" **Thranduil:** Only Morcant's Eyes surveils every turn; the surveil lands and Price of Fame are one-shots. **Glarb:** In the list and protected. Glarb's {T}: Surveil 2 becomes a draw every turn, and each draw mills.",
+   "text": "\"Whenever you scry or surveil, draw a card.\" **Thranduil:** Only Morcant's Eyes surveils every turn; the surveil lands and Twilight Diviner are one-shots. **Glarb:** In the list and protected. Glarb's {T}: Surveil 2 becomes a draw every turn, and each draw mills.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sheoldred, the Apocalypse": {
    "group": "Draw drain",
-   "text": "\"Whenever an opponent draws a card, they lose 2 life.\" **Thranduil:** Each loot gains 4 and their draw step drains 2; a deathtouch body that rewards the deck's card flow. **Glarb:** In the list. Dictate makes them draw more, The Master of Lake-town turns each drain into mill, and our draws gain life.",
+   "text": "\"Whenever an opponent draws a card, they lose 2 life.\" **Thranduil:** Each loot gains 4 and their draw step drains 2; a deathtouch body that rewards the deck's card flow. **Glarb:** In the list: their draw step drains 2 and our draws gain life.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Cloud of Darkness": {
    "group": "Graveyard-scaled removal",
-   "text": "**Thranduil:** \"−X/−X, where X is the number of permanent cards in your graveyard\" — the self-mill fills X fast, Yarok doubles the ETB, and it leaves a 5-mana flier: removal that scales with the plan. **Glarb:** Its own yard holds mostly spent instants and sorceries, not permanents, so X stays small and the {G}{G} is hard on two Forests.",
+   "text": "Cut from Thranduil's list 2026-11-05. **Thranduil:** \"−X/−X, where X is the number of permanent cards in your graveyard\" — the self-mill fills X fast, Yarok doubles the ETB, and it leaves a 5-mana flier: removal that scales with the plan. **Glarb:** Its own yard holds mostly spent instants and sorceries, not permanents, so X stays small and the {G}{G} is hard on two Forests.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Dionus, Elvish Archdruid": {
    "group": "Mana engine (untap)",
-   "text": "**Thranduil:** Each Elf untaps the first time it taps on your turn, so Priest of Titania, Archdruid and the other mana Elves tap twice, Voice and Lathril's tap costs come back, and Thranduil uses two borrowed abilities a turn; a legendary Elf, so it is also a loot. **Glarb:** One Elf (Paradise Druid) in the list, so the grant does nothing.",
+   "text": "**Thranduil:** Each Elf untaps the first time it taps on your turn, so Priest of Titania, Archdruid and the other mana Elves tap twice, Voice and Lathril's tap costs come back, and Thranduil uses two borrowed abilities a turn; a legendary Elf, so it is also a loot. **Glarb:** One Elf (Tireless Provisioner) in the list, so the grant does nothing.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Glarb, Calamity's Augur": {
    "group": "Commander (Glarb)",
-   "text": "**Thranduil:** Surveil 2 every turn bins Elves for Thranduil, and 33 cards at MV 4+ cast off the top; overlaps Eladamri's top-of-library casting but adds the fill. **Glarb:** The commander: surveil triggers Matoya and Proft, and the MV 4+ finishers cast straight off the top.",
+   "text": "**Thranduil:** Surveil 2 every turn bins Elves for Thranduil, and 33 cards at MV 4+ cast off the top; overlaps Eladamri's top-of-library casting but adds the fill. **Glarb:** The commander: surveil triggers Matoya, and the MV 4+ finishers cast straight off the top.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Journey to Eternity // Atzal, Cave of Eternity": {
    "group": "Recursion engine",
    "text": "**Thranduil:** The creature returns and Atzal becomes an any-colour land that reanimates a creature each turn; Yawgmoth and Izoni sacrifice to start it. Spend Atzal on non-Elf creatures first, since reanimating an Elf trades its borrowed ability. **Glarb:** 20 creatures and no sacrifice outlet, so it rarely flips.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Price of Fame": {
    "group": "Core removal",
-   "text": "**Thranduil:** Unconditional instant removal, 2 mana against a commander or other legend, and the surveil 2 bins Elves for Thranduil. **Glarb:** Same removal; the surveil triggers Matoya and Proft.",
+   "text": "**Thranduil:** Unconditional instant removal, 2 mana against a commander or other legend, and the surveil 2 bins Elves for Thranduil. **Glarb:** Same removal; the surveil triggers Matoya.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Reed Richards, Smartest Man": {
    "group": "Draw multiplier",
-   "text": "**Thranduil:** Turns the first extra draw each turn into four: Elrond's activation draw or Thranduil's loot becomes a big refill, with the discards feeding the yard; 6 mana mono-blue. **Glarb:** The first extra draw on EACH turn becomes four — Dictate's extra, Theorist's draw on their turn, Doctor Doom — and every card drawn mills through Corrosion and the Tutelages.",
+   "text": "**Thranduil:** Turns the first extra draw each turn into four: Elrond's activation draw or Thranduil's loot becomes a big refill, with the discards feeding the yard; 6 mana mono-blue. **Glarb:** The first extra draw on EACH turn becomes four — Theorist's draw on their turn, Rona's loot, Matoya's surveil draw — and every card drawn mills through the Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Thranduil, Sindarin Liege": {
@@ -5656,26 +5656,26 @@
   },
   "Princess Yue": {
    "group": "Scry engine",
-   "text": "**Thranduil:** `{T}: Scry 2` sets up the top but bins nothing; it does trigger Elrond. **Glarb:** In the list: each scry triggers Matoya's draw and Proft's, so a draw a turn that mills through Corrosion and both Tutelages, and she returns as a land when she dies.",
+   "text": "**Thranduil:** `{T}: Scry 2` sets up the top but bins nothing; it does trigger Elrond. **Glarb:** Cut from the list: each scry would trigger Matoya's draw, a draw a turn that mills through both Tutelages, and she returns as a land when she dies.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Teval, the Balanced Scale": {
    "group": "Graveyard engine",
-   "text": "**Thranduil:** In the list: mills three on each attack, returns a land, and every time cards leave the yard (Kotis, Muldrotha, Kagha, Overlord, Deathrite) makes a 2/2 Zombie — on a 4-mana flier. **Glarb:** Mills its own library; the tokens need its own yard to empty.",
+   "text": "**Thranduil:** In the list: mills three on each attack, returns a land, and every time cards leave the yard (Kotis, Muldrotha, Cauldron of Essence, Aftermath Analyst, Ancient Greenwarden) makes a 2/2 Zombie — on a 4-mana flier. **Glarb:** Mills its own library; the tokens need its own yard to empty.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Thranduil, the Elvenking": {
    "group": "Commander",
-   "text": "**Thranduil:** The commander: \"has all activated abilities of all Elf cards in your graveyard\" and loots on each legendary Elf entering. **Glarb:** One Elf in the list (Paradise Druid) and no legendary Elves; off-plan.",
+   "text": "**Thranduil:** The commander: \"has all activated abilities of all Elf cards in your graveyard\" and loots on each legendary Elf entering. **Glarb:** One Elf in the list (Tireless Provisioner) and no legendary Elves; off-plan.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Lathril, Blade of the Elves": {
@@ -5712,18 +5712,18 @@
   },
   "Dragonlord Silumgar": {
    "group": "Steal body (in both lists)",
-   "text": "**Thranduil:** In the list. \"Gain control of target creature or planeswalker\" on a 6-mana flying deathtouch body; Yarok doubles the trigger into two steals. **Glarb:** In the list. Removal on a body that Glarb can cast off the top (mana value 6).",
+   "text": "**Thranduil:** Cut from the list. \"Gain control of target creature or planeswalker\" on a 6-mana flying deathtouch body; Yarok doubles the trigger into two steals. **Glarb:** Cut from the list. Removal on a body that Glarb can cast off the top (mana value 6).",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Proft, Consulting Detective": {
    "group": "Draw engine (in Glarb's list)",
-   "text": "**Thranduil:** Surveil comes only from Morcant's Eyes, Price of Fame and three lands, so it draws about once a turn at {2}. **Glarb:** In the list. Glarb's {T}: Surveil 2 plus Princess Yue and Kaito trigger it every turn; each draw mills two through Corrosion.",
+   "text": "**Thranduil:** Surveil comes only from Morcant's Eyes, Twilight Diviner and two lands, so it draws about once a turn at {2}. **Glarb:** Cut from the list. Glarb's {T}: Surveil 2 would trigger it every turn, each draw milling through the Tutelages.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Sheoldred // The True Scriptures": {
@@ -5736,73 +5736,73 @@
   },
   "High Perfect Morcant": {
    "group": "Blight + proliferate engine",
-   "text": "**Thranduil:** In the list. Every Elf entering, tokens included, makes each opponent blight 1; \"Tap three untapped Elves you control: Proliferate\" grows the blight, seven planeswalkers and Marwyn/Dionus/Kotis counters, and Thranduil borrows it from the yard. A legendary Elf, so a loot. **Glarb:** One Elf (Paradise Druid), so a 4-mana 4/4 that blights once and never proliferates.",
+   "text": "**Thranduil:** In the list. Every Elf entering, tokens included, makes each opponent blight 1; \"Tap three untapped Elves you control: Proliferate\" grows the blight, the planeswalkers and Marwyn/Dionus/Kotis counters, and Thranduil borrows it from the yard. A legendary Elf, so a loot. **Glarb:** One Elf (Tireless Provisioner), so a 4-mana 4/4 that blights once and never proliferates.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Liliana, Death Mage": {
    "group": "Removal + recursion walker",
-   "text": "**Thranduil:** In the list. +1 returns a creature card each turn (a non-Elf, so Thranduil keeps his tools) and triggers Teval, Oasis and Roots; −3 is removal. **Glarb:** −3 is removal and −7 drains 2 per creature card in the milled opponent's yard, a real finisher; the +1 has little to return.",
+   "text": "**Thranduil:** Cut from the list. +1 returns a creature card each turn (a non-Elf, so Thranduil keeps his tools) and triggers Teval, Oasis and Roots; −3 is removal. **Glarb:** −3 is removal and −7 drains 2 per creature card in the milled opponent's yard, a real finisher; the +1 has little to return.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Oasis of Renewal": {
    "group": "Graveyard engine",
-   "text": "**Thranduil:** In the list. Two seeks on entry, then up to two a turn \"whenever a land / nonland card leaves your graveyard\" — Kotis, Muldrotha, Teval, Kagha, Liliana, Overlord and Deathrite all trigger it. **Glarb:** Two cards on entry, but the deck rarely moves cards out of its own yard and seeking is not a draw.",
+   "text": "**Thranduil:** In the list. Two seeks on entry, then up to two a turn \"whenever a land / nonland card leaves your graveyard\" — Kotis, Muldrotha, Teval, Cauldron of Essence, Aftermath Analyst and Ancient Greenwarden all trigger it. **Glarb:** Two cards on entry, but the deck rarely moves cards out of its own yard and seeking is not a draw.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Teferi, Temporal Pilgrim": {
    "group": "Draw engine (in list)",
-   "text": "**Thranduil:** A 5-mana draw walker with no graveyard synergy. **Glarb:** In the list. \"0: Draw a card\" every turn mills via Psychic Corrosion and the Tutelages, every draw adds loyalty, and Reed Richards turns the first extra draw into four.",
+   "text": "**Thranduil:** A 5-mana draw walker with no graveyard synergy. **Glarb:** In the list. \"0: Draw a card\" every turn mills via the Tutelages, every draw adds loyalty, and Reed Richards turns the first extra draw into four.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "The Theorist, Jace Beleren": {
    "group": "Draw engine (in list)",
-   "text": "\"At the beginning of each opponent's draw step, you draw a card.\" **Thranduil:** A free card a round and Illusion tokens for Insidious Roots; blue is the light colour. **Glarb:** In the list. The off-turn draw mills via Psychic Corrosion and the Tutelages, and Reed Richards makes it four; −2 bounces.",
+   "text": "\"At the beginning of each opponent's draw step, you draw a card.\" **Thranduil:** A free card a round and Illusion tokens for Insidious Roots; blue is the light colour. **Glarb:** In the list. The off-turn draw mills via the Tutelages, and Reed Richards makes it four; −2 bounces.",
    "graded_at": {
-    "75-historic-brawl": "abfe943277aa",
-    "96": "f86da0733f29"
+    "75-historic-brawl": "5c0e16c58c76",
+    "96": "513dca9a9ac1"
    }
   },
   "Chatterfang, Squirrel General": {
    "group": "Engine",
-   "text": "**Thranduil:** \"If one or more tokens would be created … those tokens plus that many 1/1 … Squirrel tokens are created instead\" doubles Imperious Perfect, Tyvar Kell, Sidisi, Teval, Izoni, Insidious Roots, Morcant's Eyes and Lathril; with Leyline every Squirrel is an Elf (Lathril, Voice, Priest, the lords). \"{B}, Sacrifice X Squirrels: Target creature gets +X/-X\" is removal, and Thranduil borrows it from the yard.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"If one or more tokens would be created … those tokens plus that many 1/1 … Squirrel tokens are created instead\" doubles Imperious Perfect, Tyvar Kell, Sidisi, Teval, Izoni, Insidious Roots, Morcant's Eyes and Lathril; with Leyline every Squirrel is an Elf (Lathril, Voice, Priest, the lords). \"{B}, Sacrifice X Squirrels: Target creature gets +X/-X\" is removal, and Thranduil borrows it from the yard.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Fiend Artisan": {
    "group": "Engine",
-   "text": "**Thranduil:** \"{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield\" — a tutor engine fed by tokens, and with Leyline Thranduil borrows it from the yard. Grows +1/+1 per creature card in the graveyard.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield\" — a tutor engine fed by tokens, and with Leyline Thranduil borrows it from the yard. Grows +1/+1 per creature card in the graveyard.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Killmonger, Scourge of Wakanda": {
    "group": "Interaction",
-   "text": "**Thranduil:** \"When Killmonger enters, you may sacrifice another creature. When you do, destroy target nonland permanent an opponent controls.\" Tokens pay it, Yarok doubles it (two kills), and every reanimation repeats it; +2/+1 once two creature cards are in the yard.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"When Killmonger enters, you may sacrifice another creature. When you do, destroy target nonland permanent an opponent controls.\" Tokens pay it, Yarok doubles it (two kills), and every reanimation repeats it; +2/+1 once two creature cards are in the yard.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Drag to the Roots": {
    "group": "Interaction",
-   "text": "**Thranduil:** Instant, \"Destroy target nonland permanent\"; delirium (four card types in the yard) makes it {B}{G}, which self-mill reaches early.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). Instant, \"Destroy target nonland permanent\"; delirium (four card types in the yard) makes it {B}{G}, which self-mill reaches early.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5818,7 +5818,7 @@
    "group": "Recursion",
    "text": "**Thranduil:** \"During your turn, nonland permanent cards in your graveyard have retrace\" — cast them by discarding a land, which a mill deck has to spare; Twilight Diviner copies each one. Mills three on attack.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5826,15 +5826,15 @@
    "group": "Recursion",
    "text": "**Thranduil:** 3 mana: sacrifice a creature (a token) and \"return the chosen cards to the battlefield tapped\" — two creatures back; Twilight Diviner copies one.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Tyvar's Stand": {
    "group": "Protection",
-   "text": "**Thranduil:** {X}{G} instant: \"+X/+X and gains hexproof and indestructible\" — one mana protects Thranduil; the deck has only 4 protection pieces.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). {X}{G} instant: \"+X/+X and gains hexproof and indestructible\" — one mana protects Thranduil; the deck has only 4 protection pieces.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5848,9 +5848,9 @@
   },
   "Skyfisher Spider": {
    "group": "Interaction",
-   "text": "**Thranduil:** \"When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\" Killmonger's trigger on a reach body; tokens pay it, Yarok doubles it, recursion repeats it. Dies: gain life per creature card in the yard (and exiles itself).",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\" Killmonger's trigger on a reach body; tokens pay it, Yarok doubles it, recursion repeats it. Dies: gain life per creature card in the yard (and exiles itself).",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5888,9 +5888,9 @@
   },
   "Annihilating Glare": {
    "group": "Interaction",
-   "text": "**Thranduil:** {B} sorcery, \"pay {4} or sacrifice an artifact or creature: Destroy target creature or planeswalker\" — one mana with a token.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). {B} sorcery, \"pay {4} or sacrifice an artifact or creature: Destroy target creature or planeswalker\" — one mana with a token.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5912,25 +5912,25 @@
   },
   "Ancient Greenwarden": {
    "group": "Lands",
-   "text": "**Thranduil:** \"You may play lands from your graveyard\" and land-entering triggers trigger twice — doubles Thranduil, Sindarin Liege's Elf tokens and Thranduil's Company; pairs with Aftermath Analyst and Wrenn and Seven. 6 mana.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"You may play lands from your graveyard\" and land-entering triggers trigger twice — doubles Thranduil, Sindarin Liege's Elf tokens and Thranduil's Company; pairs with Aftermath Analyst and Wrenn and Seven. 6 mana.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Thranduil's Company": {
    "group": "Lands",
-   "text": "**Thranduil:** An Elf: \"you may play an additional land on each of your turns\" and \"Landfall — … put two +1/+1 counters on target creature\" — with lands coming back from the yard.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). An Elf: \"you may play an additional land on each of your turns\" and \"Landfall — … put two +1/+1 counters on target creature\" — with lands coming back from the yard.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Cauldron of Essence": {
    "group": "Engine",
-   "text": "**Thranduil:** \"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life\", and \"{1}{B}{G}, {T}, Sacrifice a creature: Return target creature card from your graveyard to the battlefield\" — tokens become drain and reanimation.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life\", and \"{1}{B}{G}, {T}, Sacrifice a creature: Return target creature card from your graveyard to the battlefield\" — tokens become drain and reanimation.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5960,9 +5960,9 @@
   },
   "Leaf-Leap Guide": {
    "group": "Engine",
-   "text": "**Thranduil:** \"{1}, {T}: Return another target creature you control to its owner's hand\" re-buys Killmonger, Skyfisher and Thornmantle; grows with each creature entering. Not an Elf without Leyline.",
+   "text": "**Thranduil:** \"{1}, {T}: Return another target creature you control to its owner's hand\" re-buys Killmonger and Skyfisher Spider; grows with each creature entering. Not an Elf without Leyline.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -5976,17 +5976,17 @@
   },
   "Freyalise, Skyshroud Partisan": {
    "group": "Engine",
-   "text": "**Thranduil:** \"+1: Untap up to one target Elf\" untaps Thranduil for a second borrowed ability; \"−1: Seek an Elf card.\"",
+   "text": "**Thranduil:** In the list (2026-11-05 package). \"+1: Untap up to one target Elf\" untaps Thranduil for a second borrowed ability; \"−1: Seek an Elf card.\"",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
   "Advanced Floral Invocations": {
    "group": "Recursion",
-   "text": "**Thranduil:** {B/G} Class: landfall mill 2; level 3 \"You may play lands and cast creature spells from your graveyard.\"",
+   "text": "**Thranduil:** In the list (2026-11-05 package). {B/G} Class: landfall mill 2; level 3 \"You may play lands and cast creature spells from your graveyard.\"",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -6024,9 +6024,9 @@
   },
   "Glissa Sunslayer": {
    "group": "Body",
-   "text": "**Thranduil:** A legendary Elf (draw-two) with first strike and deathtouch; on combat damage draws, destroys an enchantment or removes counters.",
+   "text": "**Thranduil:** In the list (2026-11-05 package). A legendary Elf (draw-two) with first strike and deathtouch; on combat damage draws, destroys an enchantment or removes counters.",
    "graded_at": {
-    "75-historic-brawl": "9eec51ae8b81",
+    "75-historic-brawl": "5c0e16c58c76",
     "96": "513dca9a9ac1"
    }
   },
@@ -10649,6 +10649,99 @@
     "Yawgmoth's Vile Offering",
     "Yawgmoth, Thran Physician",
     "Zagoth Triome"
+   ],
+   "5c0e16c58c76": [
+    "Abomination of Llanowar",
+    "Advanced Floral Invocations",
+    "Aftermath Analyst",
+    "Agna Qel'a",
+    "Ancient Greenwarden",
+    "Annihilating Glare",
+    "Assassin's Trophy",
+    "Ba Sing Se",
+    "Black Widow, Daring Operative",
+    "Blooming Cactusfolk",
+    "Breeding Pool",
+    "Cauldron of Essence",
+    "Champions of the Perfect",
+    "Chatterfang, Squirrel General",
+    "Circle of Dreams Druid",
+    "Command Tower",
+    "Dionus, Elvish Archdruid",
+    "Drag to the Roots",
+    "Dreamroot Cascade",
+    "Eclipsed Realms",
+    "Eladamri, Korvecdal",
+    "Elrond, Moon-Reader",
+    "Elven Passage",
+    "Elvish Archdruid",
+    "Evolving Wilds",
+    "Fatal Push",
+    "Fauna Shaman",
+    "Fiend Artisan",
+    "Foggy Bottom Swamp",
+    "Forest",
+    "Freyalise, Skyshroud Partisan",
+    "Glissa Sunslayer",
+    "Gloomlake Verge",
+    "Harald Unites the Elves",
+    "Heartless Act",
+    "Hidden Lair",
+    "High Perfect Morcant",
+    "Imperious Perfect",
+    "Insidious Roots",
+    "Ioreth of the Healing House",
+    "Island",
+    "Izoni, Thousand-Eyed",
+    "Kamahl's Druidic Vow",
+    "Killmonger, Scourge of Wakanda",
+    "Kinnan, Bonder Prodigy",
+    "Kotis, Sibsig Champion",
+    "Lathril, Blade of the Elves",
+    "Leyline of Transformation",
+    "Maralen, Fae Ascendant",
+    "Marwyn, the Nurturer",
+    "Meditation Pools",
+    "Morcant's Eyes",
+    "Muldrotha, the Gravetide",
+    "Mycoid Resurrection",
+    "Oasis of Renewal",
+    "Opulent Palace",
+    "Overgrown Tomb",
+    "Priest of Titania",
+    "Prototype X-8",
+    "Reflecting Pool",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sheoldred // The True Scriptures",
+    "Sidisi, Brood Tyrant",
+    "Skyfisher Spider",
+    "Surveillance Room",
+    "Swamp",
+    "Temple of Mystery",
+    "Terramorphic Expanse",
+    "Teval, the Balanced Scale",
+    "Thranduil's Company",
+    "Thranduil, Sindarin Liege",
+    "Thranduil, the Elvenking",
+    "Three Tree City",
+    "Trystan's Command",
+    "Trystan, Callous Cultivator",
+    "Twilight Diviner",
+    "Tyvar Kell",
+    "Tyvar the Bellicose",
+    "Tyvar's Stand",
+    "Undercity Sewers",
+    "Voice of the Woods",
+    "Vraska, Golgari Queen",
+    "Wastewood Verge",
+    "Watery Grave",
+    "Willowrush Verge",
+    "Woodland Cemetery",
+    "Wrenn and Realmbreaker",
+    "Wrenn and Seven",
+    "Yarok, the Desecrated",
+    "Yawgmoth's Vile Offering",
+    "Yawgmoth, Thran Physician"
    ]
   },
   "96": {
