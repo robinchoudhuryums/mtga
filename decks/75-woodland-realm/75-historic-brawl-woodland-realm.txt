@@ -11,7 +11,7 @@
 #: archetype: five Elves: a 7/7), Lathril (tap ten Elves: drain 10), Imperious Perfect, Fauna Shaman and Morcant
 #: archetype: give him a token maker, a tutor and a win condition. Dionus untaps each Elf the first time it taps
 #: archetype: on our turn, so Thranduil uses two of those abilities a turn, and Elrond, Moon-Reader draws whenever
-#: archetype: he activates one. Self-mill Elves (Aftermath Analyst, Lluwen, Trystan,
+#: archetype: he activates one. Self-mill Elves (Aftermath Analyst, Trystan,
 #: archetype: Thranduil, Sindarin Liege's adventure) and Fauna Shaman's discard stock the yard; Teval, Muldrotha,
 #: archetype: Oasis of Renewal and Insidious Roots turn graveyard recasting into tokens and cards. The 100-card
 #: archetype: Historic Brawl sibling of deck 75 (the 60-card Standard Elvenking list): Thranduil is the COMMANDER
@@ -59,7 +59,9 @@
 #: notes: Liege's tokens) and SACRIFICE-DRAIN (Chatterfang's Squirrels feed Fiend Artisan, Killmonger, Skyfisher,
 #: notes: Glare, Yawgmoth and Izoni; Cauldron drains on every death). Kept on the owner's call: Black Widow, Maralen,
 #: notes: Harald, Circle of Dreams Druid, Elrond, Tyvar the Bellicose, Ioreth, Woodland Weavemaster. Blue is thin
-#: notes: (15 sources; Leyline {U}{U} 46% on turn 4) — a land pass is next.
+#: notes: (15 sources; Leyline {U}{U} 46% on turn 4) — a land pass is next. The Maralen and Elrond spots were
+#: notes: settled the same day by cutting Woodland Weavemaster and Lluwen instead (owner): Yarok stays, since it
+#: notes: doubles 38 triggers here (Thranduil's draw-two, Killmonger and Skyfisher, every landfall). 100 cards.
 
 
 # Commander (leads from the command zone; also one of the 100)
@@ -70,7 +72,6 @@
 1 Elvish Archdruid (FDN) 219
 1 Circle of Dreams Druid (AFR) 176
 1 Marwyn, the Nurturer (DOM) 172
-1 Woodland Weavemaster (HOB) 143
 1 Kinnan, Bonder Prodigy (IKO) 192
 
 # Elf engines — activated abilities Thranduil borrows from the graveyard; Ioreth untaps him for a second use
@@ -91,7 +92,6 @@
 1 Thranduil, Sindarin Liege (HOB) 166
 1 Glissa Sunslayer (ONE) 202
 1 Trystan, Callous Cultivator (ECL) 199
-1 Lluwen, Imperfect Naturalist (ECL) 232
 1 Izoni, Thousand-Eyed (GRN) 180
 1 Eladamri, Korvecdal (MH3) 149
 1 Abomination of Llanowar (HA4) 20
