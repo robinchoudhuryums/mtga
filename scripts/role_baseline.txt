@@ -8,6 +8,7 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Abomination of Llanowar
 Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
@@ -55,6 +56,7 @@ Blasphemous Edict
 Blitzball Shot
 Bloated Contaminator
 Bloodthirsty Conqueror
+Blooming Cactusfolk
 Body of Research
 Boiling Rock Rioter
 Bolg's Company
@@ -81,6 +83,7 @@ Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
+Chatterfang, Squirrel General
 Cheering Crowd
 Claim Jumper
 Collector's Vault
@@ -230,7 +233,6 @@ Ingenious Leonin
 Insatiable Skittermaw
 Insurrection
 Interface Ace
-Invasion of Ikoria // Zilortha, Apex of Ikoria
 Involuntary Employment
 Ioreth of the Healing House
 Iroh, Dragon of the West
@@ -241,7 +243,6 @@ Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Joo Dee, One of Many
 K'un-Lun Warrior
-Kagha, Shadow Archdruid
 Kamahl's Druidic Vow
 Kang the Conqueror
 Katara, Water Tribe's Hope
@@ -464,6 +465,7 @@ Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
+Twilight Diviner
 Ty Lee, Artful Acrobat
 Tyvar the Bellicose
 Ultron Drone

@@ -11,7 +11,7 @@
 #: archetype: five Elves: a 7/7), Lathril (tap ten Elves: drain 10), Imperious Perfect, Fauna Shaman and Morcant
 #: archetype: give him a token maker, a tutor and a win condition. Dionus untaps each Elf the first time it taps
 #: archetype: on our turn, so Thranduil uses two of those abilities a turn, and Elrond, Moon-Reader draws whenever
-#: archetype: he activates one. Self-mill Elves (Cantankerous Keepers, Lluwen, Trystan,
+#: archetype: he activates one. Self-mill Elves (Aftermath Analyst, Lluwen, Trystan,
 #: archetype: Thranduil, Sindarin Liege's adventure) and Fauna Shaman's discard stock the yard; Teval, Muldrotha,
 #: archetype: Oasis of Renewal and Insidious Roots turn graveyard recasting into tokens and cards. The 100-card
 #: archetype: Historic Brawl sibling of deck 75 (the 60-card Standard Elvenking list): Thranduil is the COMMANDER
@@ -39,55 +39,70 @@
 #: notes: Thranduil, Sindarin Liege's landfall and Morcant's Eyes make Elf tokens. Kotis's exile cost spends non-Elf cards.
 #: notes: TRIM, 2026-11-04 (owner's picks): Leyline of Transformation for Overlord of the Balemurk (it returns to
 #: notes: HAND, and the deck needs board power besides Thranduil); cut Isareth, Nashi (Moon's Legacy), Pol Jamaar,
-#: notes: Selvala, Sheoldred (Whispering One) and The Ancient One. 103 cards: three more cuts to choose; Leovold,
-#: notes: Kagha and Deathrite Shaman are under consideration on the board. Tyvar the Bellicose, Ioreth and Woodland
+#: notes: Selvala, Sheoldred (Whispering One) and The Ancient One (103 cards then; see the 2026-11-05 package). Tyvar the Bellicose, Ioreth and Woodland
 #: notes: Weavemaster stay (owner). LEYLINE, named Elf: every creature, creature spell and creature card you own is
 #: notes: an Elf, so Thranduil borrows Yawgmoth's sacrifice-and-draw, Kinnan's dig, Rona's loot and Ioreth's untap
 #: notes: from the yard, his draw-two fires on all 17 legendary non-Elf creatures, and the lords, Priest, Archdruid,
 #: notes: Lathril, Voice, Dionus, Tyvar Kell and Morcant count every creature and token. Never activate Sheoldred //
 #: notes: The True Scriptures' borrowed transform on Thranduil: it exiles him, and he cannot return transformed.
+#: notes: PACKAGE, 2026-11-05 (owner's picks, 21 swaps + Leovold cut): Assassin's Trophy, Fatal Push, Drag to the
+#: notes: Roots, Killmonger, Skyfisher Spider and Annihilating Glare for Go for the Throat, Infernal Grasp, Price of
+#: notes: Fame, Liliana, Cloud of Darkness and Deathrite (removal that costs a token, and 4 instants); Champions of the
+#: notes: Perfect, Abomination of Llanowar, Aftermath Analyst, Chatterfang, Mycoid Resurrection, Tyvar's Stand,
+#: notes: Ancient Greenwarden, Thranduil's Company, Glissa Sunslayer, Fiend Artisan, Twilight Diviner, Freyalise,
+#: notes: Cauldron of Essence, Blooming Cactusfolk and Advanced Floral Invocations for Leaf-Crowned Visionary,
+#: notes: Madame Hydra, Cantankerous Keepers, Sin, Cloning of Shredder, Tamiyo, Garruk (Caller of Beasts), Nissa
+#: notes: (Shadowed Boughs), Kagha, Deathbloom Ritualist, Nashi (Illusion Gadgeteer), Invasion of Ikoria, Journey to
+#: notes: Eternity, Leader and Elvish Mystic. 102 cards: two cuts still to choose, for the Maralen and Elrond spots
+#: notes: (owner kept both; Prototype X-8 and Abomination or Oasis proposed). Two packages now: LANDFALL (Company's
+#: notes: extra land, Greenwarden doubling every land trigger, Floral's mill, Analyst's mass return, the Sindarin
+#: notes: Liege's tokens) and SACRIFICE-DRAIN (Chatterfang's Squirrels feed Fiend Artisan, Killmonger, Skyfisher,
+#: notes: Glare, Yawgmoth and Izoni; Cauldron drains on every death). Kept on the owner's call: Black Widow, Maralen,
+#: notes: Harald, Circle of Dreams Druid, Elrond, Tyvar the Bellicose, Ioreth, Woodland Weavemaster. Blue is thin
+#: notes: (15 sources; Leyline {U}{U} 46% on turn 4) — a land pass is next.
 
 
 # Commander (leads from the command zone; also one of the 100)
 1 Thranduil, the Elvenking (HOB) 167
 
 # Elf mana — on the battlefield they ramp; in the graveyard Thranduil taps for them; Kinnan doubles them
-1 Elvish Mystic (HOC) 205
 1 Priest of Titania (MH3) 286
 1 Elvish Archdruid (FDN) 219
 1 Circle of Dreams Druid (AFR) 176
 1 Marwyn, the Nurturer (DOM) 172
-1 Deathbloom Ritualist (BRO) 208
 1 Woodland Weavemaster (HOB) 143
 1 Kinnan, Bonder Prodigy (IKO) 192
 
 # Elf engines — activated abilities Thranduil borrows from the graveyard; Ioreth untaps him for a second use
 1 Fauna Shaman (BRO) 179
 1 Imperious Perfect (FDN) 719
-1 Deathrite Shaman (EA3) 15
+1 Annihilating Glare (ONE) 80
 1 Voice of the Woods (J25) 738
 1 Dionus, Elvish Archdruid (J25) 52
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
 1 Elrond, Moon-Reader (HOB) 36
 1 Ioreth of the Healing House (LTR) 56
+1 Fiend Artisan (IKO) 220
+1 Freyalise, Skyshroud Partisan (J21) 26
 
 # Legendary Elves — each one entering is Thranduil's draw two, discard one
 1 Maralen, Fae Ascendant (ECL) 233
-1 Leovold, Emissary of Trest (UMA) 202
 1 Thranduil, Sindarin Liege (HOB) 166
-1 Kagha, Shadow Archdruid (HBG) 236
+1 Glissa Sunslayer (ONE) 202
 1 Trystan, Callous Cultivator (ECL) 199
 1 Lluwen, Imperfect Naturalist (ECL) 232
 1 Izoni, Thousand-Eyed (GRN) 180
 1 Eladamri, Korvecdal (MH3) 149
+1 Abomination of Llanowar (HA4) 20
 
 # Elf support — self-mill and Elf-card payoffs
-1 Cantankerous Keepers (HOB) 122
-1 Leaf-Crowned Visionary (DMU) 167
+1 Aftermath Analyst (MKM) 148
+1 Champions of the Perfect (ECL) 171
 1 Morcant's Eyes (ECL) 185
 1 Harald Unites the Elves (KHM) 213
 1 Leyline of Transformation (DSK) 63
+1 Blooming Cactusfolk (YOTJ) 16
 
 # Graveyard engine — recast, reanimate, and payoffs for cards leaving the graveyard
 1 Teval, the Balanced Scale (TDC) 8
@@ -95,40 +110,38 @@
 1 Oasis of Renewal (YTDM) 24
 1 Insidious Roots (MKM) 208
 1 Kamahl's Druidic Vow (DOM) 166
-1 Journey to Eternity // Atzal, Cave of Eternity (RIX) 160
+1 Cauldron of Essence (SOS) 179
 1 Wrenn and Realmbreaker (MOM) 217
 1 Yarok, the Desecrated (M20) 220
 1 Sidisi, Brood Tyrant (KTK) 199y
 1 Wrenn and Seven (MID) 208
 1 Yawgmoth, Thran Physician (FCA) 11
 1 Kotis, Sibsig Champion (TDC) 5
+1 Advanced Floral Invocations (YSOS) 13
+1 Twilight Diviner (ECL) 122
+1 Mycoid Resurrection (YLCI) 26
+1 Ancient Greenwarden (ZNR) 178
 
 # Interaction
-1 Price of Fame (GRN) 83
+1 Drag to the Roots (DSK) 213
 1 Yawgmoth's Vile Offering (DOM) 114
 1 Sheoldred // The True Scriptures (MOM) 125
 1 Vraska, Golgari Queen (GRN) 213
-1 Cloud of Darkness (FIN) 217
+1 Skyfisher Spider (BRO) 221
 1 Trystan's Command (ECL) 247
-1 Liliana, Death Mage (M21) 328
+1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Heartless Act (TLA) 103
-1 Go for the Throat (BRO) 102
-1 Infernal Grasp (MID) 107
+1 Assassin's Trophy (MKM) 187
+1 Fatal Push (FCA) 9
 
-# Added 2026-11-03 — the owner's board picks; their cuts are still to be chosen (deck is over 100 until then)
+# Tokens, landfall and bodies — Chatterfang doubles every token; Thranduil's Company and Tyvar Kell feed the engine
 1 Black Widow, Daring Operative (MSC) 831
-1 Invasion of Ikoria // Zilortha, Apex of Ikoria (MOM) 190
-1 Leader, Super-Genius (MSH) 64
-1 Madame Hydra, Reanimated (MSC) 538
-1 Nashi, Illusion Gadgeteer (YOTJ) 24
-1 Nissa of Shadowed Boughs (ZNR) 231
+1 Thranduil's Company (HOB) 168
 1 Prototype X-8 (YEOE) 24
 1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
-1 Sin, Spira's Punishment (FIN) 242
-1 The Cloning of Shredder (TMT) 60
+1 Chatterfang, Squirrel General (BLC) 82
 1 Tyvar Kell (KHM) 198
-1 Garruk, Caller of Beasts (PIO) 347
-1 Tamiyo, Compleated Sage (NEO) 238
+1 Tyvar's Stand (ONE) 190
 1 Tyvar the Bellicose (MAT) 48
 
 # Lands (36)
