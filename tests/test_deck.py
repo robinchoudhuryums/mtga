@@ -8453,3 +8453,49 @@ class TestCardDrawHoles20261102:
     ])
     def test_still_not_card_advantage(self, name, text):
         assert self.CA not in deck.classify_roles(text), name
+
+
+class TestCheckLintReadsLocalCosts:
+    """`deck.py check` passed an EMPTY cost table to its castability lint, so every stray read
+    "cost unknown" while `mana` called the same card "hybrid — paid on-color" (Gangly
+    Stompling {2}{R/G} in GU deck 34, 2026-11-05: 67 of 67 roster strays). It reads the local
+    card-mana.csv now (still offline), and honours `#: uncastable-ok:` as `mana` does."""
+
+    def _run(self, tmp_path, capsys, body):
+        p = tmp_path / "scratch.txt"
+        p.write_text(body, encoding="utf-8")
+        deck.cmd_check(type("A", (), {"id": str(p)})())
+        return capsys.readouterr().out
+
+    def test_a_hybrid_stray_is_labelled_hybrid(self, tmp_path, capsys):
+        out = self._run(tmp_path, capsys, "#: colors: GU\n1 Gangly Stompling (ECL) 226\n")
+        assert "Gangly Stompling — identity has R (hybrid — paid on-color)" in out
+        assert "cost unknown" not in out
+
+    def test_an_uncastable_card_is_still_listed_unless_exempt(self, tmp_path, capsys):
+        line = "1 Captain America, Living Legend (MSH) 210\n"
+        out = self._run(tmp_path, capsys, "#: colors: WGR\n" + line)
+        assert "Captain America, Living Legend — needs U (not castable)" in out
+        out = self._run(tmp_path, capsys,
+                        "#: colors: WGR\n#: uncastable-ok: Captain America, Living Legend\n" + line)
+        assert "stray outside" not in out and "not castable" not in out
+
+
+class TestPowerOnlyShrinkIsNotRemoval:
+    """A "-N/-0" shrink kills nothing: until 2026-11-05 the Removal (spot) pattern matched any
+    "gets -N", so 48 pool cards whose only shrink is to POWER (Oko, Lorwyn Liege's +1,
+    Startle, Jace, the Perfected Mind) counted toward interaction — three decks' counts and
+    two tier floors moved when it was narrowed. NEGATIVE assertions first: a test that only
+    checks the real shrinks still pass would pass a pattern that matches everything."""
+
+    def test_power_only_shrinks_score_no_removal(self):
+        for text in ("Target creature gets -2/-0 until your next turn.",
+                     "Target creature an opponent controls gets -3/-0 until end of turn.",
+                     "Target creature gets -X/-0 until end of turn."):
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_real_shrinks_still_score_removal(self):
+        for text in ("Target creature gets -2/-2 until end of turn.",
+                     "Target creature an opponent controls gets -X/-X until end of turn, where X is 3.",
+                     "Target creature gets -5/-1 until end of turn."):
+            assert "Removal (spot)" in deck.classify_roles(text), text

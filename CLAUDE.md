@@ -1036,9 +1036,9 @@ is protecting.
   two primitives the ◊ list and the effective figure already use so the three cannot
   disagree (G-40). **DISCLOSURE, never pricing** — report-only for G-25/G-60's reason, and do
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
-  axis, not 1**: across the **68 decks that print an effective figure** the unpriced count
+  axis, not 1**: across the **67 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 12, so a floor of 1 fires on 93% (the G-07
-  saturation shape) against **27 of 68 (40%)** at 3. BOTH figures are registered in
+  saturation shape) against **26 of 67 (39%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined.
   **Until 2026-11-02 it read keywords from a field `load_card_data` never carries**, so
   every KEYWORD discount (convoke, affinity, improvise, delve) was invisible to it while the

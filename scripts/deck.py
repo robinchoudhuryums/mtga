@@ -1195,10 +1195,17 @@ def cmd_check(args):
               f"{', '.join(_names[:4])}{'…' if len(_names) > 4 else ''}) — not a craft, "
               f"so not flagged above; `deck.py rotation {d['id']}` lists them all.")
 
-    # Castability lint (offline, identity-only — pass an empty mana dict). Flags
-    # cards whose color identity strays outside the deck's declared colors.
+    # Castability lint. Flags cards whose color identity strays outside the deck's
+    # declared colors. It reads the LOCAL cost table (card-mana.csv — no network, so
+    # `check` stays offline) so a stray explained by a hybrid pip is labelled as one:
+    # with an empty table every stray read "cost unknown" here while `mana` called the
+    # same card "hybrid — paid on-color" (Gangly Stompling {2}{R/G} in GU deck 34).
+    # With costs known, a card that truly cannot be cast moves to the uncastable list,
+    # so both lists are printed — nothing the identity-only read showed disappears.
     declared = _declared_colors(meta)
-    _, off_ident, _, _ = _castability(cards, declared, {}, load_card_data())
+    uncast, off_ident, _, _ = _castability(cards, declared, load_mana(), load_card_data(),
+                                           exempt=_uncastable_ok(meta))
+    off_ident = [(n, why + " (not castable)") for n, why in uncast] + off_ident
     if declared and off_ident:
         cols = "".join(sorted(declared))
         print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
@@ -2111,9 +2118,12 @@ _ROLE_PATTERNS = {
         # (`x` since 2026-10-23: Lukka, Bound to Ruin's −4, Fire Covenant, Huatli and seven
         # more say "X damage divided" and scored no Removal — 10 pool cards, all removal.)
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
-        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
-        r"target creature (?:an opponent controls )?gets -[0-9x]",
-        r"creature an opponent controls gets -[0-9x]",
+        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol). The TOUGHNESS half
+        # must fall: until 2026-11-05 a bare "-[0-9x]" also matched a POWER-only shrink
+        # ("-2/-0" — Oko, Lorwyn Liege's +1, Startle, Befuddle, Icy Reception: 48 pool
+        # cards), which kills nothing and is a one-turn combat effect, not removal.
+        r"target creature (?:an opponent controls )?gets -[0-9x]+/-(?:[1-9]|x)",
+        r"creature an opponent controls gets -[0-9x]+/-(?:[1-9]|x)",
         # SINGLE-TARGET BOUNCE LEFT THIS BUCKET 2026-10-07 (owner's call). It answers a
         # permanent for a turn and hands the card back, which is the PERMANENCE line the
         # neutralization block below draws — a one-turn tap-down and a stun were already
