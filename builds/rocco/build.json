@@ -1305,8 +1305,8 @@
    }
   },
   "Giant Opportunity": {
-   "group": "Real",
-   "text": "Three Foods, or two Foods into a 7/7.",
+   "group": "Strong",
+   "text": "Re-graded on the owner's note: one card is three Foods, and Peregrin, Tippy-Toe and the doublers each multiply it (Mondrak + both replacements = 10 Foods), or two Foods into a 7/7. A one-shot, so ★★ rather than the repeatable ★★★ engines.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1375,8 +1375,8 @@
    }
   },
   "Elanor Gardner": {
-   "group": "Situational",
-   "text": "Food, and a basic each end step we sacrificed a Food.",
+   "group": "Real",
+   "text": "Re-graded on the owner's note: a basic each end step we sacrificed a Food is repeatable ramp, and each land is landfall for Tireless Provisioner and Felidar Retreat.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1410,8 +1410,8 @@
    }
   },
   "Bosco, Just a Bear": {
-   "group": "Situational",
-   "text": "Food per legendary creature; Food sink for counters.",
+   "group": "Strong",
+   "text": "Re-graded on the owner's note: the list runs 32 legendary creatures, so the ETB is several Foods (before doublers), and {2}{G}, sac a Food is a repeatable trampling sink.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1459,8 +1459,8 @@
    }
   },
   "Improvised Arsenal": {
-   "group": "Situational",
-   "text": "+1/+0 per artifact (Foods count).",
+   "group": "Real",
+   "text": "+1/+0 per artifact — Foods make it large — and {4}{R} copies it; equip {R}.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1494,8 +1494,8 @@
    }
   },
   "Aerid Konstrari": {
-   "group": "Situational",
-   "text": "Heartwood tokens; flier.",
+   "group": "Real",
+   "text": "Re-graded on the owner's note: {6}: +X/+0 where X counts artifacts — every Food — on a 4-mana flier, and each activation adds a Heartwood.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1572,14 +1572,14 @@
   },
   "Dockside Extortionist": {
    "group": "Situational",
-   "text": "Treasure per opposing artifact/enchantment; 1v1-variable.",
+   "text": "1v1-variable on its own; the owner's Iroh line is real — Iroh donates our permanents, and donated artifacts/enchantments count for Dockside's Treasures. A two-card spice combo.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
   },
   "Craterclaw Colossus": {
-   "group": "Situational",
-   "text": "`{R}{R}{R}` finisher scaling with artifacts.",
+   "group": "Real",
+   "text": "Foods DO count — the ◇ was for the cost, not the count: {4}{R}{R}{R} is 58% castable by turn 7 on 22 red sources. With a standing Food pile it is a one-turn alpha strike; a finisher, not an engine.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -1676,8 +1676,8 @@
    }
   },
   "Hungering Puppetbeast": {
-   "group": "Situational",
-   "text": "Food sink for counters and keywords.",
+   "group": "Real",
+   "text": "Re-graded on the owner's note: a {1} sacrifice outlet for Foods that grows and grants hexproof (protection the list is short on); each sacrifice also fires Biotech Specialist and Krenko.",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -2397,8 +2397,8 @@
    }
   },
   "Bard Class": {
-   "group": "Real",
-   "text": "Pool sweep 2026-11-05. Legendary creatures enter with a counter, get cheaper, and level 3 exiles two per legendary spell — the list runs many legends.",
+   "group": "Strong",
+   "text": "Re-graded: 34 legendary nonland spells here — every legend enters with a counter, costs {R}{G} less at level 2, and level 3 exiles two to play per legendary spell (more plays from exile for Rocco, Pia, Quintorius).",
    "graded_at": {
     "97": "6c91e4d3961c"
    }
@@ -2772,7 +2772,7 @@
   },
   "Giant Opportunity": {
    "R": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -2832,7 +2832,7 @@
   },
   "Elanor Gardner": {
    "R": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -2862,7 +2862,7 @@
   },
   "Bosco, Just a Bear": {
    "R": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -2904,7 +2904,7 @@
   },
   "Improvised Arsenal": {
    "R": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -2934,7 +2934,7 @@
   },
   "Aerid Konstrari": {
    "R": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -3006,7 +3006,7 @@
   },
   "Craterclaw Colossus": {
    "R": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -3090,7 +3090,7 @@
   },
   "Hungering Puppetbeast": {
    "R": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "6c91e4d3961c"
    }
   },
@@ -3708,7 +3708,7 @@
   },
   "Bard Class": {
    "R": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "6c91e4d3961c"
    }
   },
