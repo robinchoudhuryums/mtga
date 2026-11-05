@@ -51,7 +51,7 @@ cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are l
 
 ## 2. Standing error list
 
-- (none yet)
+- Pool-absent cards read "!!NOT-HISTORIC-BRAWL" in the pull; unverified, not illegal (`legal` passed the list).
 
 ## 3. Cross-batch observations
 
@@ -290,4 +290,63 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+**Measured on a scratch list** (`deck.py tier/stats/legal` on a file outside decks/, 62 nonland
+cards below + The Shire, Castle Doom, Scattered Groves, Command Tower and 33 basics as a
+placeholder manabase): legal at 100; **floor A** — interaction 15 (+2 unclassified) and card
+advantage 6 (+2 unclassified) against an A line of 12 and 19; protection 4; board power 113;
+printed avg MV 3.02. 42 of the 70 distinct cards are not in the library (information only, R8).
+
+### Core (62 nonland) — the proposed list
+
+- **Engine (9):** Ragost, Sam Loyal Attendant, Peregrin Took, Tippy-Toe, Pia Nalaar Consul of
+  Revival, Mondrak, Biotech Specialist, Haliya, Belladonna Took.
+- **Food makers / payoffs (13):** Samwise, Rosie Cotton, Cat Collector, Gilded Goose, Spider-Ham,
+  Bilbo Fellow Conspirator, Heroic Feast, Tireless Provisioner, Night of the Sweets' Revenge,
+  Mutagen Man, Teething Wurmlet, Lita, Lucky the Pizza Dog.
+- **Artifact / mana (6):** Roxanne, Sami, Shuri, Krenko Baron of Tin Street, Goldspan Dragon, Pep.
+- **Lifegain → cards (4):** Kwia Vigorbloom, Well of Lost Dreams, Vision of Love, Ajani Resolute.
+- **Counters (4):** Generous Pup, Yoshimaru, Sovereign Okinec Ahau, Kutzil.
+- **Cats / Dogs / go-wide (13):** Jinnie Fay, Rin and Seri, Adeline, Brimaz, Ajani Strength of the
+  Pride, Felidar Retreat, Leonin Warleader, Angel of Invention, Jetmir, Ajani Nacatl Pariah,
+  Greenhouse Propagator, Release the Dogs, Ka-Zar.
+- **Interaction (12):** Hobbit's Sting, Food Coma, Pawpatch Formation, Stew the Coneys, Wicked Wolf,
+  Legion Extruder, Dragonspark Reactor, Shrapnel Blast, Galvanic Blast, Heliod's Intervention,
+  Spider Food, Undergrowth Leopard.
+- **Tutor (1):** Rocco, Cabaretti Caterer.
+
+### Bench (★, for the owner's swaps)
+
+Wish Good Luck, Hurska, Resourceful Collector, Krovod Haunch, Bumi's Feast Lecture, Courier of
+Comestibles, Michelangelo the Heart, Welcome to Sweettooth, Giant Opportunity, Honored Dreyleader,
+The Cabbage Merchant, Bristlebud Farmer, Galadriel Gift-Giver, Urabrask's Forge, Dyadrine, Radiant
+Lotus, Mox Opal, Woodwork Prodigy, Sokenzan Smelter, Ancient Cornucopia, Arabella, Excalibur II,
+Sword of Light and Shadow, Shortcut to Mushrooms, Ainok Bond-Kin, Jiang Yanggu, Basri, Lion Sash,
+Ajani Caller of the Pride, Qala, Sally Pride, Keeper of Fables, Drizzt.
+
+### Out, with the reason
+
+Overcooked (stops all lifegain, R9); The Battle of Bywater and Lithobraking (kill our own
+countered creatures / tokens); Flickering Hound (blink resets Rocco's counters, G-42); Meria
+(nontoken artifacts only); Karn, the Great Creator (no sideboard in Brawl); Elephant-Mandrill (feeds
+the opponent); Indomitable Creativity (`{R}{R}{R}`, eats our Foods); Thorin (no Dwarves).
+
+### Protect (what `cuts` cannot see)
+
+Sam, Loyal Attendant + Mutagen Man (each `{1}` off a Food crack — together free), Peregrin Took and
+Tippy-Toe (token-creation replacements, value is the rest of the deck), Mondrak (doubler), Pia
+Nalaar (second Rocco payoff), Haliya and Teething Wurmlet (each Food is a lifegain trigger),
+Biotech Specialist (each crack is damage).
+
+### Tooling holes recorded (G-67, fix after the pile)
+
+- `engines`' Food PAYOFF side misses "Sacrifice three Foods" (Peregrin Took, Samwise) and every
+  "sacrifice an artifact" payoff that eats Foods (Biotech, Krenko, Shrapnel Blast, Vision of Love):
+  it reads 6 Food payoffs on a list holding about 15.
+
+### Open questions for the owner
+
+1. Dogs: the list carries six Dog cards (Generous Pup, Yoshimaru, Lucky, Rin and Seri, Release the
+   Dogs, Jinnie Fay's Dog mode); the pool's Dog payoffs are thin (R5). More Dogs means trading
+   Cats or engine pieces.
+2. Manabase: 37 lands with Gilded Goose, Bilbo's Treasures and Night of the Sweets' Revenge, or
+   trim to 36? Picked at draft time from `suggest --lands`.
