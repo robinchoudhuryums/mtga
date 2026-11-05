@@ -82,27 +82,115 @@
  "Ajani, Strength of the Pride": [],
  "Ancient Cornucopia": [],
  "Angel of Invention": [],
+ "Annie Flash, the Veteran": [],
+ "Anointed Procession": [],
  "Arabella, Abandoned Doll": [],
+ "Arahbo, the First Fang": [],
  "Arc Reactor": [],
  "Arcbound Shikari": [],
+ "Archangel Elspeth": [],
+ "Bard Class": [],
  "Basri, Tomorrow's Champion": [],
  "Belladonna Took": [],
  "Big Spender": [],
  "Bilbo, Fellow Conspirator": [],
  "Bill the Pony": [],
  "Biotech Specialist": [],
+ "Bloombrute": [],
  "Bosco, Just a Bear": [],
  "Brimaz, King of Oreskos": [],
  "Bristlebud Farmer": [],
  "Bumi's Feast Lecture": [],
+ "Caretaker's Talent": [],
  "Castle Doom": [],
  "Cat Collector": [],
  "Courier of Comestibles": [],
  "Craterclaw Colossus": [],
  "Creeping Crystal Coating": [],
+ "Dawn of Hope": [
+  {
+   "a": "Sung Choi",
+   "art": "https://cards.scryfall.io/art_crop/front/c/f/cf2a9e82-8670-4b7f-b5f0-8e10f8aeff1c.jpg?1783934203",
+   "cn": "8",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/f/cf2a9e82-8670-4b7f-b5f0-8e10f8aeff1c.jpg?1783934203",
+   "r": "R",
+   "set": "GRN",
+   "sn": "Guilds of Ravnica",
+   "y": "2018"
+  },
+  {
+   "a": "Maël Ollivier-Henry",
+   "art": "https://cards.scryfall.io/art_crop/front/d/e/de36ecaa-62e0-4f1c-b07f-837a786dc897.jpg?1783914934",
+   "cn": "2",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/e/de36ecaa-62e0-4f1c-b07f-837a786dc897.jpg?1783914934",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Dedicated Commons": [],
  "District Mascot": [],
  "Dockside Extortionist": [],
+ "Doubling Season": [
+  {
+   "a": "Eva Eskelinen",
+   "art": "https://cards.scryfall.io/art_crop/front/c/7/c7d7db76-0a0c-444f-96f1-559838450549.jpg?1783914920",
+   "cn": "52",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/7/c7d7db76-0a0c-444f-96f1-559838450549.jpg?1783914920",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "Kemonomichi",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d545e9d-3b8e-44f5-8b4e-d8573ecc5819.jpg?1783914909",
+   "cn": "81",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d545e9d-3b8e-44f5-8b4e-d8573ecc5819.jpg?1783914909",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "Chuck Lukacs",
+   "art": "https://cards.scryfall.io/art_crop/front/f/2/f2c4f80e-84a0-463b-82c3-5c6503809351.jpg?1783909062",
+   "cn": "216",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/2/f2c4f80e-84a0-463b-82c3-5c6503809351.jpg?1783909062",
+   "r": "M",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Kevin Eastman",
+   "art": "https://cards.scryfall.io/art_crop/front/8/c/8c2d6fde-5c3b-48c3-828c-832f00570824.jpg?1783904178",
+   "cn": "11",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/c/8c2d6fde-5c3b-48c3-828c-832f00570824.jpg?1783904178",
+   "r": "M",
+   "set": "PZA",
+   "sn": "Teenage Mutant Ninja Turtles Source Material",
+   "y": "2026"
+  }
+ ],
  "Dragonspark Reactor": [],
  "Drizzt Do'Urden": [
   {
@@ -133,9 +221,38 @@
  "Dyadrine, Synthesis Amalgam": [],
  "Eager Trufflesnout": [],
  "Elanor Gardner": [],
+ "Elder Gargaroth": [],
  "Elephant-Mandrill": [],
  "Elesh Norn // The Argent Etchings": [],
+ "Elspeth, Storm Slayer": [],
+ "Elspeth, Sun's Champion": [
+  {
+   "a": "Leonardo Santanna",
+   "art": "https://cards.scryfall.io/art_crop/front/6/f/6f816d97-10f0-4d92-aa21-254754530554.jpg?1783910707",
+   "cn": "97",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/f/6f816d97-10f0-4d92-aa21-254754530554.jpg?1783910707",
+   "r": "M",
+   "set": "BLC",
+   "sn": "Bloomburrow Commander",
+   "y": "2024"
+  },
+  {
+   "a": "Eric Deschamps",
+   "art": "https://cards.scryfall.io/art_crop/front/8/f/8f8bdb2a-d6be-4a9c-bfa8-de00ccf3ca06.jpg?1783908251",
+   "cn": "321",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/f/8f8bdb2a-d6be-4a9c-bfa8-de00ccf3ca06.jpg?1783908251",
+   "r": "M",
+   "set": "PIO",
+   "sn": "Pioneer Masters",
+   "y": "2024"
+  }
+ ],
  "Enduring Courage": [],
+ "Exalted Sunborn": [],
  "Excalibur II": [],
  "Feasting Troll King": [],
  "Felidar Retreat": [
@@ -164,6 +281,7 @@
    "y": "2020"
   }
  ],
+ "Feline Sovereign": [],
  "Flickering Hound": [],
  "Food Chain": [],
  "Food Coma": [],
@@ -233,6 +351,7 @@
    "y": "2024"
   }
  ],
+ "Ginger, Queen of Sweets": [],
  "Glittering Stockpile": [],
  "Gloryheath Lynx": [],
  "Goldspan Dragon": [],
@@ -274,6 +393,7 @@
    "y": "2024"
   }
  ],
+ "Innkeeper's Talent": [],
  "Intrepid Trufflesnout // Go Hog Wild": [],
  "Iroh, Tea Master": [],
  "Iron Spider, Stark Upgrade": [],
@@ -374,6 +494,7 @@
  "Krovod Haunch": [],
  "Kutzil, Malamet Exemplar": [],
  "Kwia Vigorbloom": [],
+ "Laelia, the Blade Reforged": [],
  "Late to Dinner": [],
  "Legion Extruder": [],
  "Leonin Sanctifier": [],
@@ -462,6 +583,7 @@
  "Michelangelo, Game Master": [],
  "Michelangelo, the Heart": [],
  "Mindslaver": [],
+ "Minsc & Boo, Timeless Heroes": [],
  "Momo's Heist": [],
  "Momo, Playful Pet": [],
  "Mondrak, Glory Dominus": [],
@@ -491,12 +613,68 @@
   }
  ],
  "Mox Opal": [],
+ "Mushroom Watchdogs": [],
  "Mutagen Man, Living Ooze": [],
  "Mythweaver Poq": [],
  "Night of the Sweets' Revenge": [],
+ "Ocelot Pride": [],
  "Old Hob, Alleycat Blues": [],
  "Ori, Plate Stacker": [],
  "Overcooked": [],
+ "Parallel Lives": [
+  {
+   "a": "Lander Strijbol",
+   "art": "https://cards.scryfall.io/art_crop/front/7/3/73558b8d-fb08-4df5-99e3-d4c11c9ccfa7.jpg?1783914916",
+   "cn": "58",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/3/73558b8d-fb08-4df5-99e3-d4c11c9ccfa7.jpg?1783914916",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "BODAX",
+   "art": "https://cards.scryfall.io/art_crop/front/9/3/93ee144f-3c76-444f-8a9a-318ee6407526.jpg?1783914908",
+   "cn": "83",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/3/93ee144f-3c76-444f-8a9a-318ee6407526.jpg?1783914908",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "Steve Prescott",
+   "art": "https://cards.scryfall.io/art_crop/front/5/0/5047bf16-982d-44b4-ae8a-9c5a271cae0a.jpg?1783905419",
+   "cn": "36",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/0/5047bf16-982d-44b4-ae8a-9c5a271cae0a.jpg?1783905419",
+   "r": "M",
+   "set": "OMB",
+   "sn": "Through the Omenpaths Bonus Sheet",
+   "y": "2025"
+  },
+  {
+   "a": "Jim Cheung & Justin Ponsor",
+   "art": "https://cards.scryfall.io/art_crop/front/0/c/0c9c514f-f506-4b2c-af58-79922834cde7.jpg?1783905379",
+   "cn": "36",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/c/0c9c514f-f506-4b2c-af58-79922834cde7.jpg?1783905379",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  }
+ ],
  "Pawpatch Formation": [],
  "Pep, Raucous Raider": [],
  "Peregrin Took": [],
@@ -530,8 +708,10 @@
   }
  ],
  "Qala, Ajani's Pridemate": [],
+ "Quintorius Kand": [],
  "Radiant Lotus": [],
  "Ragost, Deft Gastronaut": [],
+ "Regal Caracal": [],
  "Release the Dogs": [],
  "Resourceful Collector": [],
  "Revive the Shire": [],
@@ -570,6 +750,7 @@
  "Sam, Loyal Attendant": [],
  "Sami, Wildcat Captain": [],
  "Samwise Gamgee": [],
+ "Scalesoul Gnome": [],
  "Scattered Groves": [],
  "Shortcut to Mushrooms": [],
  "Shrapnel Blast": [],
@@ -609,6 +790,7 @@
  ],
  "Swiftblade Vindicator": [],
  "Sword of Light and Shadow": [],
+ "Syr Ginger, the Meal Ender": [],
  "T'Challa, the Black Panther": [],
  "Tarkir Duneshaper // Burnished Dunestomper": [],
  "Teething Wurmlet": [],
@@ -642,6 +824,45 @@
    "y": "2026"
   }
  ],
+ "The Wandering Emperor": [
+  {
+   "a": "Tommy Arnold",
+   "art": "https://cards.scryfall.io/art_crop/front/f/a/fab2d8a9-ab4c-4225-a570-22636293c17d.jpg?1783923909",
+   "cn": "42",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/a/fab2d8a9-ab4c-4225-a570-22636293c17d.jpg?1783923909",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Terada Katsuya",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/71327818-2784-4fde-8e19-ef8677694a5f.jpg?1783923805",
+   "cn": "303",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/1/71327818-2784-4fde-8e19-ef8677694a5f.jpg?1783923805",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Hisashi Momose",
+   "art": "https://cards.scryfall.io/art_crop/front/b/9/b92aafa5-9a21-4564-8b33-dab414cd5dca.jpg?1783923800",
+   "cn": "316",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/9/b92aafa5-9a21-4564-8b33-dab414cd5dca.jpg?1783923800",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Thorin, King of Durin's Folk": [],
  "Tippy-Toe, Terrific Partner": [],
  "Tireless Provisioner": [
@@ -671,11 +892,40 @@
  "Toph, the First Metalbender": [],
  "Torgal, A Fine Hound": [],
  "Tough Cookie": [],
+ "Trail of Crumbs": [],
  "Undergrowth Leopard": [],
  "Unlucky Cabbage Merchant": [],
  "Urabrask's Forge": [],
+ "Valakut Exploration": [
+  {
+   "a": "Jesper Ejsing",
+   "art": "https://cards.scryfall.io/art_crop/front/1/8/18cb7bf6-9c7c-4e62-a678-7b75862e2f64.jpg?1783929344",
+   "cn": "175",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/8/18cb7bf6-9c7c-4e62-a678-7b75862e2f64.jpg?1783929344",
+   "r": "R",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  },
+  {
+   "a": "Aenami",
+   "art": "https://cards.scryfall.io/art_crop/front/6/9/6954cc66-ab80-4457-b0da-61d80e80e25e.jpg?1783929287",
+   "cn": "303",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/9/6954cc66-ab80-4457-b0da-61d80e80e25e.jpg?1783929287",
+   "r": "R",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  }
+ ],
  "Variable Solutions": [],
  "Vision of Love": [],
+ "Visions of Phyrexia": [],
+ "Weapons Manufacturing": [],
  "Wedding Ring": [
   {
    "a": "Olena Richards",

@@ -878,6 +878,156 @@
    "name": "Rocco, Cabaretti Caterer",
    "pile": "R",
    "src": "pile"
+  },
+  {
+   "name": "Doubling Season",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Parallel Lives",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Exalted Sunborn",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth, Storm Slayer",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Caretaker's Talent",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Scalesoul Gnome",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Quintorius Kand",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Arahbo, the First Fang",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Valakut Exploration",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Bloombrute",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Ocelot Pride",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Trail of Crumbs",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Dawn of Hope",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "The Wandering Emperor",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Minsc & Boo, Timeless Heroes",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Regal Caracal",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Annie Flash, the Veteran",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Anointed Procession",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Innkeeper's Talent",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Elder Gargaroth",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Archangel Elspeth",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Syr Ginger, the Meal Ender",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Visions of Phyrexia",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Laelia, the Blade Reforged",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Bard Class",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Ginger, Queen of Sweets",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Feline Sovereign",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Mushroom Watchdogs",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth, Sun's Champion",
+   "pile": "R",
+   "src": "added"
+  },
+  {
+   "name": "Weapons Manufacturing",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2077,6 +2227,216 @@
    "graded_at": {
     "97": "6c91e4d3961c"
    }
+  },
+  "Doubling Season": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Doubles every token AND every counter we place: each Rocco trigger becomes two counters and two Foods, and Generous Pup's spread doubles too. Stacks with Mondrak and Parallel Lives.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Parallel Lives": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Token doubler at 4: every Food, Thopter and Cat twice; Peregrin / Tippy-Toe's extra Food is doubled as well.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Exalted Sunborn": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Token doubler on a lifelink flier; Warp {1}{W} exiles it at end step and the later cast is FROM EXILE — a Rocco and Pia Nalaar trigger.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Token doubler that makes a Soldier each turn (two with itself), puts a counter on the team, and −3 kills a creature MV 3+ — interaction too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Caretaker's Talent": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Once a turn, tokens entering draw a card — every Food creation is a draw, which fixes the deck's thin card advantage; level 3 pumps creature tokens.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Scalesoul Gnome": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Every card played from exile conjures a duplicate into our hand — Rocco's exile play each turn becomes a card. A trample-haste 5-drop too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Quintorius Kand": {
+   "group": "Engine",
+   "text": "Pool sweep 2026-11-05. Every spell cast from exile drains 2 and gains 2 (a lifegain trigger for Tippy-Toe, Heroic Feast, Cat Collector); +1 makes 3/2 Spirits.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Arahbo, the First Fang": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Cat lord; every nontoken Cat entering makes a 1/1 Cat — itself a token for Peregrin / Tippy-Toe's Food and Belladonna.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Valakut Exploration": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Landfall exiles the top card to play — more plays from exile (Rocco, Pia, Quintorius); unplayed cards burn the opponent at end step.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bloombrute": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. First lifegain each turn draws a card — a Food crack is a draw. GW 4-drop body.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ocelot Pride": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Lifegain → a Cat each end step; with the city's blessing (ten permanents, easy with Foods) it copies every token that entered this turn — the Foods too.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Trail of Crumbs": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Every Food sacrificed: pay {1} to dig two for a permanent — card selection off the currency.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Dawn of Hope": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Every lifegain: pay {2} to draw; a lifelink Soldier sink late. Repeatable card advantage.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "The Wandering Emperor": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Flash interaction: exile a tapped attacker, make 2/2s, or counter + first strike at instant speed.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Minsc & Boo, Timeless Heroes": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. A hasty Boo token each upkeep (a Food under Peregrin / Tippy-Toe), +1 three counters, −2 sacrifice for damage and cards.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Regal Caracal": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Cat lord that gives every Cat lifelink — each combat is several lifegain events — and two lifelink Cats on entry.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Annie Flash, the Veteran": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Flash 6-drop: returns a MV ≤3 permanent, and each time it taps exiles two cards to play — two more plays from exile.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Anointed Procession": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. A third pure token doubler; diminishing once Doubling Season, Parallel Lives and Mondrak are in.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Innkeeper's Talent": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. A counter every combat for 2; level 2 gives countered permanents ward 1, level 3 doubles every counter.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elder Gargaroth": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Attack or block: a 3/3, 3 life or a card — value every combat.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Archangel Elspeth": {
+   "group": "Strong",
+   "text": "Pool sweep 2026-11-05. Lifelink Soldier each turn, two counters + flying, and −6 returns every permanent MV ≤3.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Syr Ginger, the Meal Ender": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. A Food artifact creature that grows and scries whenever another artifact (a Food) goes to the graveyard.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Visions of Phyrexia": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. Exile the top card each upkeep to play — a second impulse per turn; a Powerstone when unused.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Laelia, the Blade Reforged": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. Attack impulse + grows on every exile from library — Rocco's end-step exile counts.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Bard Class": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. Legendary creatures enter with a counter, get cheaper, and level 3 exiles two per legendary spell — the list runs many legends.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Ginger, Queen of Sweets": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. Monarch in 1v1 plus a Gingerbrute (Food creature) each upkeep; 6 mana.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Feline Sovereign": {
+   "group": "Real",
+   "text": "Pool sweep 2026-11-05. Cat lord; Cats connecting destroy an artifact or enchantment.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Mushroom Watchdogs": {
+   "group": "Situational",
+   "text": "Pool sweep 2026-11-05. A Dog that eats Foods for counters at sorcery speed.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Elspeth, Sun's Champion": {
+   "group": "Situational",
+   "text": "Pool sweep 2026-11-05. Three Soldiers a turn, but −3 kills our own countered creatures (power 4+).",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
+  },
+  "Weapons Manufacturing": {
+   "group": "Out",
+   "text": "Pool sweep 2026-11-05. Triggers on NONTOKEN artifacts only — Foods are tokens.",
+   "graded_at": {
+    "97": "6c91e4d3961c"
+   }
   }
  },
  "snapshots": {
@@ -3199,6 +3559,186 @@
   "Rocco, Cabaretti Caterer": {
    "R": {
     "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Doubling Season": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Parallel Lives": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Exalted Sunborn": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Caretaker's Talent": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Scalesoul Gnome": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Quintorius Kand": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Arahbo, the First Fang": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Valakut Exploration": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bloombrute": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ocelot Pride": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Trail of Crumbs": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Dawn of Hope": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "The Wandering Emperor": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Minsc & Boo, Timeless Heroes": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Regal Caracal": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Annie Flash, the Veteran": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Anointed Procession": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Innkeeper's Talent": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elder Gargaroth": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Archangel Elspeth": {
+   "R": {
+    "m": "★★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Syr Ginger, the Meal Ender": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Visions of Phyrexia": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Laelia, the Blade Reforged": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Bard Class": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Ginger, Queen of Sweets": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Feline Sovereign": {
+   "R": {
+    "m": "★",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Mushroom Watchdogs": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Elspeth, Sun's Champion": {
+   "R": {
+    "m": "◇",
+    "graded_at": "6c91e4d3961c"
+   }
+  },
+  "Weapons Manufacturing": {
+   "R": {
+    "m": "✗",
     "graded_at": "6c91e4d3961c"
    }
   }

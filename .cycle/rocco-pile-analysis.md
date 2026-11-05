@@ -351,3 +351,22 @@ Biotech Specialist (each crack is damage).
    Cats or engine pieces.
 2. Manabase: 37 lands with Gilded Goose, Bilbo's Treasures and Night of the Sweets' Revenge, or
    trim to 36? Picked at draft time from `suggest --lands`.
+
+## 6. Pool sweep for deck 97 (2026-11-05, after the draft)
+
+`suggest --limit 0`, `--interaction` and `pool.py --regex` effect-shape sweeps (exile-cast payoffs,
+token replacements, Food / artifact-sacrifice / token-entering payoffs, lifegain → draw, Cat/Dog
+lords, repeatable impulse draw), full text read on 58 finalists; 30 added to `builds/rocco` with a
+reason and verdict each (board v2).
+
+**Owned package, previewed with `swap 97 --package` (nothing written):** −Rocco, Cabaretti Caterer
++Doubling Season · −Ka-Zar +Parallel Lives · −Sami +Exalted Sunborn · −Spider Food +Elspeth, Storm
+Slayer · −Pep +Quintorius Kand · −Greenhouse Propagator +Arahbo · −Goldspan Dragon +Valakut
+Exploration · −Vision of Love +Bloombrute. Result: legal, floor A, interaction 15 (unchanged),
+card advantage 6 → 7, board power 111 → 102 (tokens read zero), avg MV 3.03 → 3.08.
+
+**Crafts worth it:** Caretaker's Talent (a draw every turn Foods enter), Ocelot Pride (copies the
+turn's tokens with the city's blessing), Trail of Crumbs, Dawn of Hope; Anointed Procession only if
+fewer doublers land. **Spice (owned):** Scalesoul Gnome — each play from exile conjures a duplicate.
+**Declined:** Weapons Manufacturing and Junkyard Scrapper (NONTOKEN artifacts only), Case of the
+Pilfered Proof (Detectives), Elspeth, Sun's Champion (−3 kills our countered creatures).
