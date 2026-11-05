@@ -20,6 +20,14 @@
 #: archetype: engine deck where the graveyard is the second hand. Built from the owner's 250-card Sultai pile
 #: archetype: plus the pool (the Sultai pile analysis, deleted 2026-11-01 — `git log --diff-filter=D -- .cycle/`).
 #: protect: Thranduil, the Elvenking; Dionus, Elvish Archdruid; Priest of Titania; Lathril, Blade of the Elves; Voice of the Woods; Fauna Shaman
+#: tier: A — owner's call, 2026-11-05, matching the metrics floor: the deck has interaction 13 and card advantage
+#: tier: 10, above the A line scaled to 100 cards. Thirteen answers, four of them instants and
+#: tier: ten that hit a noncreature permanent, most paid with a token (Killmonger, Skyfisher Spider, Annihilating
+#: tier: Glare, Chatterfang). What the floor cannot see: Yarok doubling Thranduil's draw-two and every landfall,
+#: tier: Leyline making every creature an Elf for Thranduil's borrowed abilities and the lords, and the recursion
+#: tier: suite (Muldrotha, Kotis, Cauldron, Mycoid Resurrection, Twilight Diviner). The one clear weakness is the
+#: tier: budget manabase: owned stand-ins enter tapped often enough to cost tempo, and the wishlisted rare lands
+#: tier: are the fix. Protection is thin (Tyvar's Stand, Glissa, Yawgmoth) for a commander the plan runs through.
 #: notes: DRAFTED 2026-11-01 with /draft-deck from the Sultai pile analysis (owner's pick: Graveyard & Elves
 #: notes: under Thranduil; the draw/mill/exile deck under Glarb is next). The optimal list, crafts included.
 #: notes: ENGINE CAVEAT (G-42): Thranduil only has the abilities of Elf cards that STAY in the graveyard, so
