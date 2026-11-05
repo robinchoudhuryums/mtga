@@ -71,6 +71,10 @@ cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are l
   do not.
 - **Second exile payoff**: Pia Nalaar, Consul of Revival makes a Thopter per play from exile —
   Rocco's own trigger, twice.
+- **Artifact-sacrifice payoffs read every Food crack**: Biotech Specialist (2 damage), Krenko
+  (a Goblin), Dragonspark Reactor (counter on entry). With free cracks (Sam + Mutagen Man) each
+  Food is 3 life + 2 damage + a token. **Artifact ENTERING payoffs** (Haliya, Teething Wurmlet)
+  make each Food a lifegain event, so lifegain payoffs fire several times a turn (revises R3).
 - **Lifegain → Cat tokens** (Cat Collector) links the Food and Cat halves (R3, R5).
 - **Pool-absent cards** read "!!NOT-HISTORIC-BRAWL" in the pull with rarity `?`: that is
   UNVERIFIED (no pool row), not illegal. Sidequest: Catch a Fish runs in deck 3-brawl.
@@ -183,6 +187,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Heliod's Intervention | ★★ | Instant artifact/enchantment removal, or gain twice X (a lifegain trigger) (R6). |
 | Meria, Scholar of Antiquity | △ | Taps NONTOKEN artifacts — Foods are tokens. |
 | Mox Opal | ★ | Metalcraft from Foods. |
+
+### Batch 4 (cards 90–119)
+
+| Card | R | Note |
+|---|---|---|
+| Motivated Muralist | ◇ | Alchemy; conjures Inspiring Statuary. |
+| Arc Reactor | ◇ | Improvise rock; Foods tap to pay. |
+| Hungering Puppetbeast | ◇ | Food sink for counters and keywords. |
+| Woodwork Prodigy | ★ | A Cat that makes a Heartwood every turn it re-prepares. Pool-absent. |
+| Dragonspark Reactor | ★★ | A charge counter per artifact entering — every Food — then burns a player AND a creature (R6). |
+| Tempestra, Dame of Games | ◇ | Sac a Food to copy a creature for a turn. |
+| Shrapnel Blast | ★★ | Sac a Food: 5 to any target at instant speed (R6). |
+| Vision of Love | ★★ | Sac a Food: draw two at instant speed. |
+| Sokenzan Smelter | ★ | Each combat a Food becomes a hasty 3/1. |
+| Glittering Stockpile | ◇ | Treasure that grows. |
+| Krenko, Baron of Tin Street | ★★ | Every artifact to the graveyard — every Food crack — is a `{R}` hasty Goblin, itself a token (Peregrin / Tippy-Toe Food). |
+| Lithobraking | ◇ | 2 to each creature — our 1/1 tokens too. |
+| Momo's Heist | △ | Threaten an artifact. |
+| Goldspan Dragon | ★★ | Treasures make two mana; Bilbo turns every Food into a Treasure too. |
+| Purphoros, Bronze-Blooded | ◇ | Haste for the team; cheat ability narrow. |
+| Rootwire Amalgam | ◇ | Prototype body. |
+| Biotech Specialist | ★★★ | Every artifact sacrificed — every Food crack — deals 2 to the opponent (R2). |
+| Variable Solutions | ◇ | Alchemy modal. |
+| Rootha, Ardent Artisan | ◇ | Alchemy; pool-absent. |
+| Pep, Raucous Raider | ★★ | Combat damage exiles their top card for us to play — a cast from exile (R1) — and sac an artifact for three mana. |
+| Kwia Vigorbloom | ★★ | Lifelink flier; first lifegain each turn makes a Lotus (three mana). |
+| Mindslaver | △ | 10 mana total. |
+| Castle Doom | ★ | Utility land: sac a Food for a 3/3. |
+| Haliya, Guided by Light | ★★★ | 1 life per creature or artifact entering — every Food — and a draw at 3+ life; Warp is a cast from exile (R1, R3). |
+| Elesh Norn | ◇ | Punisher + transform; pool-absent. |
+| Wedding Ring | ◇ | Symmetric in 1v1. |
+| Teething Wurmlet | ★★ | Every artifact entering is 1 life: each Food becomes a lifegain trigger (R3). |
+| Ancient Cornucopia | ★ | Any-colour rock + once-a-turn lifegain. Not a Food card (Courier misses it). |
+| Arabella, Abandoned Doll | ★ | Drain per small creature on attack. |
+| Excalibur II | ★ | Grows with every lifegain. |
 
 ## 5. Consolidated plan (live)
 
