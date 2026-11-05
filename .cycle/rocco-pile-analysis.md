@@ -1,0 +1,106 @@
+# Rocco pile — analysis (TEMPORARY working doc)
+
+**Status: IN PROGRESS.** A new Historic Brawl deck (proposed deck 97), commander **Rocco, Street
+Chef** (MAT) 44, `{R}{G}{W}`. The owner's brief: Food first, Dog and Cat subthemes, watch for
+other synergies. Delete this doc once the deck is drafted and its findings are folded into the
+deck file's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
+
+**Source list:** 171 cards (the owner's message, 2026-11-05). 54 already sit in other decks; for
+a NEW deck they are still candidates (the collection is shared), so all 171 are graded.
+**Builder project:** created once the draft deck file exists (`builder.py new` grades against a
+deck; there is none yet).
+
+## 1. The decision framework
+
+**The commander.** "At the beginning of your end step, each player exiles the top card of their
+library. Until your next end step, each player may play the card they exiled this way. Whenever
+a player plays a land from exile or casts a spell from exile, you put a +1/+1 counter on target
+creature and create a Food token."
+
+- **R1 — Rocco is a symmetric impulse draw that only WE are paid for.** Every player gets one
+  extra card a turn; every play from exile, by ANY player, is our +1/+1 counter and our Food.
+  So the opponent's extra card is the price, and our edge is (a) using our extra card better and
+  (b) cashing the Foods. A card that adds a SECOND play from exile per turn (impulse draw,
+  "exile the top card … you may play it") is a multiplier: it is extra card advantage AND an
+  extra Rocco trigger. Grade those on plays-from-exile per turn.
+- **R2 — Food is the currency, and a Food costs `{2}` to cash.** A producer is worth what the
+  payoffs do with it. Payoffs that do NOT need the `{2}` (sacrifice a Food as a cost, "Foods you
+  control" counts, Food-as-artifact counts) beat payoffs that need a crack per use. Sam, Loyal
+  Attendant's `{1}` discount changes this rule for the whole deck.
+- **R3 — Lifegain is the second currency.** Each crack is 3 life; realistic crack rate is 1–2 a
+  turn on mana. "Whenever you gain life" payoffs fire about once a turn unless something gains
+  life for free (lifelink, Ragost's untap loop). Count free lifegain before grading a payoff that
+  wants several gains a turn.
+- **R4 — Counters arrive for free.** Every Rocco trigger is a +1/+1 counter; counter payoffs and
+  counter doublers are live from turn 4.
+- **R5 — Tribe viability is the PAYOFF count (G-59).** In the Naya-identity Historic Brawl pool:
+  **Cat payoffs 23** (152 Cat creatures) — a real subtheme; **Dog payoffs 9** (69 Dog creatures) —
+  flavour unless the pile itself carries the payoffs. Grade a Dog card on its own text.
+- **R6 — Historic Brawl, 100 cards, singleton, 25 life, 1v1, free first mulligan.** The A floor
+  at 100 cards is interaction 12 with interaction + card advantage 19 (G-08 per-60 scaling).
+  Interaction is the axis to watch: Food decks tend to be all engine.
+- **R7 — Colour identity is WRG and it is a LEGALITY rule** (Brawl): a card outside it is
+  illegal however payable. The pull marks identity; castability reads the printed cost.
+- **R8 — Ownership is information only** (Player Profile).
+- **R9 — The G-42 mirror here is "players can't gain life" / lifegain denial.** A card that
+  stops lifegain turns every Food into a `{2}` do-nothing.
+
+**Structurally invisible:** `Food` is flagged an unindexed mechanic on Rocco's own card; the
+`food` synergy tag exists. "Play from exile" value (R1) is invisible to every model — `suggest`
+cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are legal here.
+
+## 2. Standing error list
+
+- (none yet)
+
+## 3. Cross-batch observations
+
+- **Halfling cluster (LTR)**: Samwise, Sam, Rosie Cotton, Meriadoc already in batch 1 — Food
+  makers that care about Halflings and Foods. Watch for Peregrin, Bilbo, Elanor, Belladonna,
+  The Shire.
+- **Lifegain → Cat tokens** (Cat Collector) links the Food and Cat halves (R3, R5).
+- **Pool-absent cards** read "!!NOT-HISTORIC-BRAWL" in the pull with rarity `?`: that is
+  UNVERIFIED (no pool row), not illegal. Sidequest: Catch a Fish runs in deck 3-brawl.
+
+## 4. Running verdicts
+
+Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`.
+
+### Batch 1 (cards 0–29)
+
+| Card | R | Note |
+|---|---|---|
+| Ragost, Deft Gastronaut | ★★★ | Every artifact is a Food; `{1}`, sac a Food: 3 to each opponent, untaps when we gained life — the Food → damage engine (R2). |
+| Wish Good Luck | ★ | Food + Treasure + 3/2 Vehicle for 2: three artifacts (Ragost reads each as a Food). |
+| Hurska Sweet-Tooth | ★ | Attack → Food; lifegain → pay `{G/W}` pump. Fine, not an engine. |
+| Resourceful Collector | ★ | Alchemy: each end step a graveyard permanent becomes a playable Food. Recursion, but from the graveyard, not exile (no Rocco trigger). |
+| Iroh, Tea Master | ◇ | Donate a permanent each combat for a growing Ally; donating a spent Food is cheap. Spicy, slow. |
+| Samwise Gamgee | ★★ | Food per nontoken creature entering; three Foods → historic card back. |
+| Sam, Loyal Attendant | ★★★ | Food every combat and every Food ability costs `{1}` less: halves the crack cost (R2). |
+| Rosie Cotton of South Lane | ★★ | Every token we create → +1/+1 counter; each Rocco trigger is a Food, so each is a counter too. |
+| Lita, Little Orphan Amphibian | ★ | Alliance Food / counter / scry per creature entering. |
+| Krovod Haunch | ★ | A Food card (Courier tutors it), +2/+0 equip, two Dogs when it dies. |
+| Momo, Playful Pet | ◇ | 1-drop flier; leaves → Food or counter. |
+| Hobbit's Sting | ★★ | Instant removal, X = creatures + Foods — real interaction at `{1}{W}` (R6). |
+| Cat Collector | ★★ | Food on entry; first lifegain each of our turns → a Cat token (R3, R5). |
+| Sidequest: Catch a Fish | ◇ | Upkeep card selection that flips to a land; pool-absent (unverified). |
+| The Battle of Bywater | △ | Kills power 3+ — ours too, once Rocco's counters land. |
+| Food Coma | ★★ | O-ring a creature plus a Food — interaction (R6). |
+| Bill the Pony | ◇ | Two Foods; the toughness-damage trick is narrow. |
+| Late to Dinner | ◇ | Reanimate one creature + Food. |
+| Overcooked | ✗ | "Players can't gain life" — switches off every Food (R9). |
+| Gilded Goose | ★★ | Ramp that makes and spends Food on turn 1. |
+| Many Partings | ◇ | Basic land + Food for `{G}`. |
+| Pippin's Bravery | △ | Pump. |
+| Bumi's Feast Lecture | ★ | Food, then earthbend twice the Foods — a large hasty land by mid-game. |
+| Courier of Comestibles | ★ | Tutors a Food CARD (Krovod Haunch, Ancient Cornucopia…) or makes a Food. |
+| Intrepid Trufflesnout | △ | Attacks alone → Food; pool-absent. |
+| Lucky the Pizza Dog | ★ | Cat / Dog / Hero spell → Food; lifegain → counter. Value tracks the Cat+Dog count (R5). |
+| Meriadoc Brandybuck | ◇ | Halflings attack → Food; depends on the Halfling count. |
+| Michelangelo, the Heart | ★ | Attack → counter + Food each turn. |
+| Pawpatch Formation | ★★ | Modal instant: flier or enchantment removal, or draw + Food (R6). |
+| Revive the Shire | ◇ | Permanent card back + Food. |
+
+## 5. Consolidated plan (live)
+
+(after the last batch)
