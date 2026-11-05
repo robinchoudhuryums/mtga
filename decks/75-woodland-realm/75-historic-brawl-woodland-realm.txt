@@ -62,6 +62,10 @@
 #: notes: (15 sources; Leyline {U}{U} 46% on turn 4) — a land pass is next. The Maralen and Elrond spots were
 #: notes: settled the same day by cutting Woodland Weavemaster and Lluwen instead (owner): Yarok stays, since it
 #: notes: doubles 38 triggers here (Thranduil's draw-two, Killmonger and Skyfisher, every landfall). 100 cards.
+#: notes: LANDS, 2026-11-05: three Forests became Reflecting Pool, Willowrush Verge and Waterlogged Grove (the
+#: notes: Grove sacrifices to draw, so the land reaches the yard for Greenwarden, Analyst and Floral). Sources
+#: notes: U 15 -> 18, B 20 -> 21, G 22 held; Leyline on turn 4 46% -> 57%; tapped-land cost 2.2 -> 2.1. The tool's
+#: notes: Island -> Forest hint was declined (it costs Leyline). Circle of Dreams Druid's {G}{G}{G} stays ~31% on T3.
 
 
 # Commander (leads from the command zone; also one of the 100)
@@ -164,7 +168,10 @@
 1 Darkslick Shores (ONE) 250
 1 Blooming Marsh (OTJ) 266
 1 Botanical Sanctum (OTJ) 267
-8 Forest (FRA) 289
+5 Forest (FRA) 289
+1 Waterlogged Grove (HA7) 25
+1 Willowrush Verge (DFT) 270
+1 Reflecting Pool (FRC) 23
 1 Wastewood Verge (DFT) 268
 1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
 5 Swamp (FRA) 285

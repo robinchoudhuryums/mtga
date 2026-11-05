@@ -62,6 +62,9 @@ Thought-Stalker Warlock,Creature — Lizard Warlock,"Menace (This creature can't
 When this creature enters, choose target opponent. If they lost life this turn, they reveal their hand, you choose a nonland card from it, and they discard that card. Otherwise, they discard a card.",B,Lizard; Warlock; etb; menace; evasion,BLB,118,Uncommon,70,"Deck 70: Menace body + the reveal-and-choose discard Pilfer did, upgraded — full Thoughtseize mode once they have lost life this turn (Painful Quandary / Bandit's Talent L2 / Thornplate all feed it). Rotates ~2027.",2.0,seed
 Daggerfang Duo,Creature — Rat Squirrel,"Deathtouch
 When this creature enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",B,Rat; Squirrel; graveyard; mill; etb; deathtouch; combat; removal,BLB,89,Common,,,1.0,seed
+"Chatterfang, Squirrel General",Legendary Creature — Squirrel Warrior,"Forestwalk (This creature can't be blocked as long as defending player controls a Forest.)
+If one or more tokens would be created under your control, those tokens plus that many 1/1 green Squirrel creature tokens are created instead.
+{B}, Sacrifice X Squirrels: Target creature gets +X/-X until end of turn.",B/G,Squirrel; Warrior; sacrifice; tokens; pump; removal; landwalk,BLC,82,Mythic,75-historic-brawl,Thranduil package 2026-11-05,5.0,seed
 Birds of Paradise,Creature — Bird,"Flying
 {T}: Add one mana of any color.",G,Bird; mana; flying; evasion,BLC,81,Rare,96,,4.0,seed
 "Gix, Yawgmoth Praetor",Legendary Creature — Phyrexian Praetor,"Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.
@@ -86,6 +89,9 @@ Unearth {3}{R}{R}
 Underground River,Land,"{T}: Add {C}.
 {T}: Add {U} or {B}. This land deals 1 damage to you.",U/B,mana,BRO,267,Rare,91; 75-historic-brawl; 96,,4.0,seed
 Go for the Throat,Instant,Destroy target nonartifact creature.,B,removal,BRO,102,Uncommon,75-historic-brawl; 96,,3.0,seed
+Skyfisher Spider,Creature — Spider,"Reach
+When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.
+When this creature dies, you may gain 1 life for each creature card in your graveyard. If you do, exile this card from your graveyard.",B/G,Spider; graveyard; lifegain; sacrifice; removal; etb; reach; defense,BRO,221,Uncommon,75-historic-brawl,Thranduil package 2026-11-05,5.5,seed
 Cryptcaller Chariot,Artifact — Vehicle,"Menace
 Whenever you discard one or more cards, create that many tapped 2/2 black Zombie creature tokens.
 Crew 2",B,vehicle; tokens; crew; vehicles; menace; evasion,DFT,80,Rare,91,,5.5,seed
@@ -207,6 +213,8 @@ Deathrite Shaman,Creature — Elf Shaman,"{T}: Exile target land card from a gra
 Sunken Hollow,Land — Island Swamp,"({T}: Add {U} or {B}.)
 This land enters tapped unless you control two or more basic lands.",U/B,Island; Swamp; mana,EA3,23,Rare,91; 96,,3.0,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
+Twilight Diviner,Creature — Elf Cleric,"When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+Whenever one or more other creatures you control enter, if they entered or were cast from a graveyard, create a token that's a copy of one of them. This ability triggers only once each turn.",B,Elf; Cleric; graveyard; tokens; etb; selection; surveil,ECL,122,Rare,75-historic-brawl,Thranduil package 2026-11-05,3.0,seed
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 Embercleave,Legendary Artifact — Equipment,"Flash
@@ -243,6 +251,8 @@ Whenever this creature deals combat damage to a player, roll a d20. You create a
 "Yawgmoth, Thran Physician",Legendary Creature — Human Cleric,"Protection from Humans
 Pay 1 life, Sacrifice another creature: Put a -1/-1 counter on up to one target creature and draw a card.
 {B}{B}, Discard a card: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B,Human; Cleric; counters; card draw; sacrifice; protection; proliferate,FCA,11,Mythic,75-historic-brawl,,5.0,seed
+Fatal Push,Instant,"Destroy target creature if it has mana value 2 or less.
+Revolt — Destroy that creature if it has mana value 4 or less instead if a permanent left the battlefield under your control this turn.",B,removal; revolt,FCA,9,Uncommon,75-historic-brawl,Thranduil package 2026-11-05,3.0,seed
 "Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,Mythic,83; 83a; 75-historic-brawl,,5.5,seed
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
@@ -372,11 +382,15 @@ Inexorable Tide,Enchantment,"Whenever you cast a spell, proliferate. (Choose any
 "Ulamog, the Ceaseless Hunger",Legendary Creature — Eldrazi,"When you cast this spell, exile two target permanents.
 Indestructible
 Whenever Ulamog attacks, defending player exiles the top twenty cards of their library.",Colorless,Eldrazi; indestructible; resilience,HA3,1,Mythic,96,,5.0,seed
+Abomination of Llanowar,Legendary Creature — Elf Horror,"Vigilance; menace (This creature can't be blocked except by two or more creatures.)
+Abomination of Llanowar's power and toughness are each equal to the number of Elves you control plus the number of Elf cards in your graveyard.",B/G,Elf; Horror; graveyard; vigilance; combat; menace; evasion,HA4,20,Uncommon,75-historic-brawl,Thranduil package 2026-11-05,2.5,seed
 Glimpse the Unthinkable,Sorcery,Target player mills ten cards.,U/B,mill; graveyard,HA6,8,Rare,96,,3.0,seed
 Nurturing Peatland,Land,"{T}, Pay 1 life: Add {B} or {G}.
 {1}, {T}, Sacrifice this land: Draw a card.",B/G,pay life; card draw; sacrifice,HA7,23,Rare,89,,3.0,seed
 Silent Clearing,Land,"{T}, Pay 1 life: Add {W} or {B}.
 {1}, {T}, Sacrifice this land: Draw a card.",W/B,pay life; card draw; sacrifice,HA7,24,Rare,91,,3.0,seed
+Waterlogged Grove,Land,"{T}, Pay 1 life: Add {G} or {U}.
+{1}, {T}, Sacrifice this land: Draw a card.",U/G,pay life; card draw; sacrifice,HA7,25,Rare,75-historic-brawl,Thranduil package 2026-11-05,3.0,seed
 Ancient Bronze Dragon,Creature — Elder Dragon,"Flying
 Whenever this creature deals combat damage to a player, roll a d20. When you do, put X +1/+1 counters on each of up to two target creatures, where X is the result.",G,Elder; Dragon; counters; flying; evasion,HBG,199,Mythic,94,,6.5,seed
 "Kagha, Shadow Archdruid",Legendary Creature — Elf Druid,"Whenever Kagha attacks, it gains deathtouch until end of turn. Mill two cards. (Put the top two cards of your library into your graveyard.)
@@ -390,6 +404,8 @@ Whenever you draw your second card each turn, target player mills three cards. (
 Smaug the Impenetrable,Legendary Creature — Dragon,"Flying, indestructible, haste
 Whenever Smaug is dealt noncombat damage, create that many Treasure tokens.",B/R,Dragon; tokens; treasure; noncombat damage; flying; evasion; indestructible; resilience; haste; aggro,HOC,9,Rare,92,,6.0,seed
 Elvish Mystic,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,HOC,205,Common,75-historic-brawl,,1.5,seed
+Fiend Artisan,Creature — Nightmare,"This creature gets +1/+1 for each creature card in your graveyard.
+{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle. Activate only as a sorcery.",B/G,Nightmare; graveyard; sacrifice; pump,IKO,220,Mythic,75-historic-brawl,Thranduil package 2026-11-05,5.0,seed
 "Kinnan, Bonder Prodigy",Legendary Creature — Human Druid,"Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced.
 {5}{G}{U}: Look at the top five cards of your library. You may put a non-Human creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",U/G,Human; Druid; selection,IKO,192,Mythic,75-historic-brawl,,5.5,seed
 Zagoth Triome,Land — Swamp Forest Island,"({T}: Add {B}, {G}, or {U}.)
@@ -398,6 +414,9 @@ Cycling {3} ({3}, Discard this card: Draw a card.)",U/B/G,Swamp; Forest; Island;
 Alert Heedbonder,Creature — Human Scout,"Vigilance
 At the beginning of your end step, you gain 1 life for each creature you control with vigilance.",W/G,Human; Scout; lifegain; vigilance; combat,IKO,218,Uncommon,95,,2.5,seed
 Ram Through,Instant,"Target creature you control deals damage equal to its power to target creature you don't control. If the creature you control has trample, excess damage is dealt to that creature's controller instead.",G,removal; trample; evasion,IKO,170,Common,88,,2.0,seed
+"Freyalise, Skyshroud Partisan",Legendary Planeswalker — Freyalise,"+1: Untap up to one target Elf. That Elf and a random Elf creature card in your hand perpetually get +1/+1.
+−1: Seek an Elf card.
+−6: Conjure a card named Regal Force onto the battlefield.",G,Freyalise; planeswalker; pump; seek; card draw; conjure,J21,26,Mythic,75-historic-brawl,Thranduil package 2026-11-05,8.5,seed
 Svyelun of Sea and Sky,Legendary Creature — Merfolk God,"Svyelun has indestructible as long as you control at least two other Merfolk.
 Whenever Svyelun attacks, draw a card.
 Other Merfolk you control have ward {1}. (Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)",U,Merfolk; God; card draw; indestructible; resilience; ward; protection,J21,259,Mythic,94,,8.5,seed
@@ -701,6 +720,11 @@ Blackcleave Cliffs,Land,"This land enters tapped unless you control two or fewer
 {T}: Add {B} or {R}.",B/R,mana,ONE,248,Rare,93,,4.0,seed
 Darkslick Shores,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {U} or {B}.",U/B,mana,ONE,250,Rare,91; 75-historic-brawl; 96,,4.0,seed
+Glissa Sunslayer,Legendary Creature — Phyrexian Zombie Elf,"First strike, deathtouch
+Whenever Glissa Sunslayer deals combat damage to a player, choose one —
+• You draw a card and lose 1 life.
+• Destroy target enchantment.
+• Remove up to three counters from target permanent.",B/G,Phyrexian; Zombie; Elf; pay life; card draw; removal; first strike; combat; deathtouch,ONE,202,Rare,75-historic-brawl,Thranduil package 2026-11-05,6.5,seed
 Razorverge Thicket,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {G} or {W}.",W/G,mana,ONE,257,Rare,95,,4.0,seed
 Seachrome Coast,Land,"This land enters tapped unless you control two or fewer other lands.
@@ -718,8 +742,11 @@ Necrogen Rotpriest,Creature — Phyrexian Zombie Cleric,"Toxic 2 (Players dealt 
 Whenever a creature you control with toxic deals combat damage to a player, that player gets an additional poison counter.
 {1}{B}{G}: Target creature you control with toxic gains deathtouch until end of turn.",B/G,Phyrexian; Zombie; Cleric; toxic; deathtouch; combat; removal,ONE,212,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
 Reject Imperfection,Instant,"Counter target spell. If that spell's mana value was 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,counterspell; proliferate; counters,ONE,67,Uncommon,94,,3.0,seed
+Tyvar's Stand,Instant,"Target creature you control gets +X/+X and gains hexproof and indestructible until end of turn. (It can't be the target of spells or abilities your opponents control. Damage and effects that say ""destroy"" don't destroy it.)",G,pump; hexproof; protection; indestructible; resilience,ONE,190,Uncommon,75-historic-brawl,Thranduil package 2026-11-05,2.5,seed
 Venomous Brutalizer,Creature — Phyrexian Knight,"Toxic 3 (Players dealt combat damage by this creature also get three poison counters.)
 When this creature enters, you may pay {1}{G}. If you do, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Phyrexian; Knight; etb; toxic; proliferate; counters,ONE,193,Uncommon,89,deck 89 tune 2026-10-23,2.0,seed
+Annihilating Glare,Sorcery,"As an additional cost to cast this spell, pay {4} or sacrifice an artifact or creature.
+Destroy target creature or planeswalker.",B,sacrifice; removal,ONE,80,Common,75-historic-brawl,Thranduil package 2026-11-05,3.0,seed
 The Dross Pits,Land — Sphere,"This land enters tapped.
 {T}: Add {B}.
 {1}{B}, {T}, Sacrifice this land: Draw a card.",B,Sphere; card draw; sacrifice; mana,ONE,251,Common,89,deck 89 tune 2026-10-22,1.5,seed
@@ -1148,11 +1175,19 @@ Deeproot Waters,Enchantment,"Whenever you cast a Merfolk spell, create a 1/1 blu
 "Valgavoth, the Lifeline",Legendary Creature — Insect Angel,"Flying
 Whenever you gain life, creature cards in your hand and graveyard perpetually get +1/+1.
 As long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",W,Insect; Angel; counters; graveyard; lifegain; pump; flying; evasion,YFRA,3,Rare,95,,6.5,seed
+Mycoid Resurrection,Sorcery,"Fathomless descent — Each creature card in your graveyard perpetually gets +X/+X, where X is the number of permanent cards in your graveyard. Then return a creature card from your graveyard to the battlefield.",B/G,reanimator; graveyard; pump; fathomless descent,YLCI,26,Rare,75-historic-brawl,Thranduil package 2026-11-05,5.5,seed
 "Oglor, Devoted Assistant",Legendary Creature — Homunculus,"At the beginning of your upkeep, look at the top two cards of your library, then put one of them into your graveyard.
 Whenever a creature card is put into your graveyard from your library or hand, it perpetually gains ""When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.""",U,Homunculus; graveyard; tokens; selection,YMID,20,Mythic,91,,5.0,seed
 Assemble from Parts,Instant,"Target creature card in your graveyard perpetually gains ""{1}{B}{B}, Exile this card from your graveyard: Shuffle it into its owner's library. Create a token that's a copy of it, except it's a 4/4 black Zombie in addition to its other types. Activate only as a sorcery.""",B,graveyard; tokens,YMID,25,Rare,91,,4.0,seed
 Contagion Dispenser,Artifact,"When Contagion Dispenser enters, proliferate.
 Whenever you proliferate during your turn, draft a card from Contagion Dispenser's spellbook. This ability triggers only once each turn.",U/G,etb; draft from a spellbook; proliferate; counters,YONE,19,Rare,94,,3.0,seed
+Blooming Cactusfolk,Creature — Plant Druid,"Trample
+At the beginning of your end step, nonland cards in your hand perpetually gain ""This spell costs {1} less to cast.""",G,Plant; Druid; cost-reduction; trample; evasion,YOTJ,16,Rare,75-historic-brawl,Thranduil package 2026-11-05,3.0,seed
+Advanced Floral Invocations,Enchantment — Class,"Landfall — Whenever a land you control enters, mill two cards.
+{B/G}: Level 2
+Whenever a land you control enters, creature cards in your graveyard perpetually get +1/+1.
+{4}{B/G}{B/G}: Level 3
+You may play lands and cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",B/G,Class; counters; graveyard; mill; landfall; pump; lands,YSOS,13,Rare,75-historic-brawl,Thranduil package 2026-11-05,6.0,seed
 Mardu Thunderkite,Creature — Dragon,"Flying
 Mobilize 1
 When this creature enters, creatures you control perpetually gain your choice of menace, lifelink, or haste.",W/B/R,Dragon; lifegain; etb; flying; evasion; lifelink; mobilize; go-wide; aggro; menace; haste,YTDM,23,Mythic,93,,5.0,seed
