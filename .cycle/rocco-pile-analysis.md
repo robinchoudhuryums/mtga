@@ -258,6 +258,36 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Lion Sash | ★ | A Cat that eats graveyards and grows. |
 | Adeline, Resplendent Cathar | ★★ | A Human token every attack — tokens feed Peregrin, Tippy-Toe, Belladonna, Rosie. |
 
+### Batch 6 (cards 146–170)
+
+| Card | R | Note |
+|---|---|---|
+| Brimaz, King of Oreskos | ★★ | A Cat token on every attack and block. |
+| Ajani, Caller of the Pride | ★ | +1 counter; −8 makes Cats equal to our life total — large in a Food deck. |
+| Ajani, Strength of the Pride | ★★ | +1 gains life per creature; −2 Pridemate Cat; 0 at 40 life exiles their artifacts and creatures (one-sided wipe) (R6). |
+| Felidar Retreat | ★★ | Landfall: a 2/2 Cat or team counters; Rocco's exiled lands are landfall. |
+| Leonin Warleader | ★★ | Two lifelink Cats attacking each swing — tokens and lifegain both. |
+| Qala, Ajani's Pridemate | ★ | Cat that grows on lifegain and pumps the attack. |
+| Angel of Invention | ★★ | Lifelink flier, team anthem, two Servos (artifact tokens). |
+| Sally Pride, Lioness Leader | ★ | Cat; Mutants per nontoken creature, team counters on attack. |
+| Old Hob, Alleycat Blues | ◇ | Cat; a temporary token every combat (a Food under Peregrin / Tippy-Toe). |
+| Undergrowth Leopard | ★ | Cat 2-drop that trades for an artifact or enchantment (R6). |
+| Greenhouse Propagator | ★ | Cat mana dork; 1 life per creature entering (R3). |
+| Mythweaver Poq | ◇ | Alchemy: duplicates each land drop; a Cat. |
+| Keeper of Fables | ★ | Cat; non-Human combat damage draws. |
+| Ka-Zar of the Savage Land | ★ | Lands off the top, and Zabu, a Cat token that grows on landfall. |
+| Swiftblade Vindicator | ◇ | Double strike body for Rocco's counters. |
+| Arcbound Shikari | ◇ | Artifact-creature Cat; few artifact creatures here. |
+| Dedicated Commons | △ | R/W dual tapped unless we control a planeswalker. |
+| Solarium Sentry | ◇ | Cat; life when they cast cheap spells. |
+| Kutzil, Malamet Exemplar | ★★ | Opponents can't cast spells on our turn; a countered creature connecting draws — Rocco's counters make every creature qualify (R4). Cat. |
+| Drizzt Do'Urden | ★ | Guenhwyvar is a Cat token; double strike body. |
+| Sovereign Okinec Ahau | ★★ | Each attack doubles the counters a creature carries above base — Rocco's counters compound (R4). Cat. |
+| Zar Ojanen, Scion of Efrava | ◇ | Domain counters; three basic types at most. |
+| Scattered Groves | ◇ | Tapped G/W dual with cycling. |
+| Jetmir, Nexus of Revels | ★★ | Go-wide anthem (3 / 6 / 9 creatures) — tokens make it live. Cat. |
+| Rocco, Cabaretti Caterer | ★ | X-tutor a creature onto the battlefield; the other Rocco. |
+
 ## 5. Consolidated plan (live)
 
 (after the last batch)
