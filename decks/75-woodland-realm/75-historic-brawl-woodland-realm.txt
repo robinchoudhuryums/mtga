@@ -66,6 +66,18 @@
 #: notes: Grove sacrifices to draw, so the land reaches the yard for Greenwarden, Analyst and Floral). Sources
 #: notes: U 15 -> 18, B 20 -> 21, G 22 held; Leyline on turn 4 46% -> 57%; tapped-land cost 2.2 -> 2.1. The tool's
 #: notes: Island -> Forest hint was declined (it costs Leyline). Circle of Dreams Druid's {G}{G}{G} stays ~31% on T3.
+#: notes: LANDS, 2026-11-05 — BUDGET STAND-INS (owner's pick, variant A, all owned, 0 crafts) for fourteen unowned
+#: notes: lands; the rares stay on the wishlist as the upgrade path — swap each back when crafted: Zagoth Triome ->
+#: notes: Opulent Palace; Waterlogged Grove -> Meditation Pools; Underground Mortuary -> Foggy Bottom Swamp; Hedge Maze
+#: notes: -> Surveillance Room; Hinterland Harbor -> Dreamroot Cascade; Botanical Sanctum -> Temple of Mystery; Drowned
+#: notes: Catacomb -> Gloomlake Verge; Darkslick Shores -> Hidden Lair; Clearwater Pathway -> Agna Qel'a; Blooming
+#: notes: Marsh -> Ba Sing Se; Darkbore Pathway -> Elven Passage; Llanowar Wastes -> Evolving Wilds; Underground River
+#: notes: -> Terramorphic Expanse; Yavimaya Coast -> Three Tree City (name Elf: with Leyline it counts every creature).
+#: notes: Measured: sources U 18 -> 20, B 21 -> 20, G 22 -> 23; Leyline on T4 57% -> 64%; tempo sim 49.2 -> 43.3 on
+#: notes: curve, tapped-land cost 2.1 -> 3.3. The three fetches each trigger landfall twice and go to the graveyard
+#: notes: for Ancient Greenwarden to replay; Meditation Pools and Foggy Bottom Swamp sacrifice to draw. Variants
+#: notes: measured and passed over: two Temples + Great Arashin City (43.8, U 18), no Three Tree City (44.1, U 17),
+#: notes: basics-heavy (41.5, G 19).
 
 
 # Commander (leads from the command zone; also one of the 100)
@@ -155,25 +167,25 @@
 1 Breeding Pool (EOE) 251
 1 Watery Grave (EOE) 261
 1 Woodland Cemetery (DOM) 248
-1 Hinterland Harbor (DOM) 240
-1 Drowned Catacomb (XLN) 253
-1 Llanowar Wastes (BRO) 264
-1 Yavimaya Coast (DMU) 261
-1 Underground River (BRO) 267
-1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
-1 Zagoth Triome (IKO) 259
-1 Underground Mortuary (MKM) 271
-1 Hedge Maze (MKM) 262
+1 Dreamroot Cascade (SOS) 254
+1 Gloomlake Verge (DSK) 260
+1 Evolving Wilds (ECL) 264
+1 Three Tree City (BLB) 260
+1 Terramorphic Expanse (MSC) 828
+1 Agna Qel'a (TLA) 264
+1 Opulent Palace (TDM) 264
+1 Foggy Bottom Swamp (TLA) 269
+1 Surveillance Room (MSH) 274
 1 Undercity Sewers (PZA) 0
-1 Darkslick Shores (ONE) 250
-1 Blooming Marsh (OTJ) 266
-1 Botanical Sanctum (OTJ) 267
+1 Hidden Lair (MSH) 269
+1 Ba Sing Se (TLA) 266
+1 Temple of Mystery (FDN) 702
 5 Forest (FRA) 289
-1 Waterlogged Grove (HA7) 25
+1 Meditation Pools (TLA) 272
 1 Willowrush Verge (DFT) 270
 1 Reflecting Pool (FRC) 23
 1 Wastewood Verge (DFT) 268
-1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Elven Passage (HOB) 181
 5 Swamp (FRA) 285
 2 Island (FRA) 283
 
