@@ -75,6 +75,10 @@ cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are l
   (a Goblin), Dragonspark Reactor (counter on entry). With free cracks (Sam + Mutagen Man) each
   Food is 3 life + 2 damage + a token. **Artifact ENTERING payoffs** (Haliya, Teething Wurmlet)
   make each Food a lifegain event, so lifegain payoffs fire several times a turn (revises R3).
+- **Dogs earn slots through counters, not tribe** (R5 held): Yoshimaru, Generous Pup and
+  Ainok Bond-Kin are COUNTER payoffs — Rocco supplies a counter every turn. The Dog/Cat tribal
+  payoffs are Rin and Seri, Spider-Ham, Lucky and Jinnie Fay (which converts any token, Foods
+  included, into Cats or Dogs).
 - **Lifegain → Cat tokens** (Cat Collector) links the Food and Cat halves (R3, R5).
 - **Pool-absent cards** read "!!NOT-HISTORIC-BRAWL" in the pull with rarity `?`: that is
   UNVERIFIED (no pool row), not illegal. Sidequest: Catch a Fish runs in deck 3-brawl.
@@ -222,6 +226,37 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Ancient Cornucopia | ★ | Any-colour rock + once-a-turn lifegain. Not a Food card (Courier misses it). |
 | Arabella, Abandoned Doll | ★ | Drain per small creature on attack. |
 | Excalibur II | ★ | Grows with every lifegain. |
+
+### Batch 5 (cards 120–145)
+
+| Card | R | Note |
+|---|---|---|
+| Sword of Light and Shadow | ★ | Protection, 3 life and a creature back on each hit. |
+| Aetherflux Reservoir | ◇ | Lifegain per spell; the 50-life shot is a reach at 25 life. |
+| Well of Lost Dreams | ★★ | Every lifegain: pay X to draw X — Food cracks become draws (R3). |
+| Belladonna Took | ★★★ | Tokens entering: first gives life, second draws, third puts a counter on the team — Foods, Thopters and Cats all count. |
+| Ajani Resolute | ★★ | Lifegain adds loyalty; −4 is a Pridemate Cat; −10 a team anthem. |
+| West Wind Avatar | ◇ | A 7-mana Cat: sac a Food for 3 life, then draws (disappear). |
+| Shortcut to Mushrooms | ★ | A Food sacrificed (a permanent left) is a counter at end step. |
+| Michelangelo, Game Master | ◇ | Disappear counters on itself. |
+| Tarkir Duneshaper | △ | A Dog 1-drop; pool-absent. |
+| Ainok Bond-Kin | ★ | Every countered creature has first strike — Rocco counters (R4). Dog. |
+| Generous Pup | ★★ | A counter on the Pup spreads to every creature — one Rocco trigger, team counters (R4). Dog. |
+| Yoshimaru, Beloved Companion | ★★ | Every counter placement is one more (R4). Dog. |
+| Flickering Hound | ◇ | Blink on creature cast — resets Rocco's counters (G-42). Dog. |
+| Release the Dogs | ★ | Four Dogs: two extra Foods under Peregrin + Tippy-Toe, eight Dogs under Mondrak. |
+| Enduring Courage | ◇ | Haste for tokens; a Dog. |
+| District Mascot | ◇ | Dog; counters remove an artifact. |
+| Torgal, A Fine Hound | ◇ | Any-colour dork; Human-spell counters. |
+| Jiang Yanggu, Never Alone | ★ | Mowu (a Dog token) and untaps all tokens at end step. |
+| Mowu, Loyal Companion | ◇ | Dog; counters +1 on itself. |
+| Jinnie Fay, Jetmir's Second | ★★ | MAY turn any token creation into 2/2 haste Cats or 3/1 Dogs — Foods become bodies when the board needs them, and it feeds both tribes. |
+| Rin and Seri, Inseparable | ★★ | Dog spell → Cat, Cat spell → Dog; `{R}{G}{W}`: damage = Dogs, life = Cats. The tribal payoff (R5). |
+| Basri, Tomorrow's Champion | ★ | `{W}` lifelink Cat each turn. |
+| Gloryheath Lynx | ◇ | Lifelink Cat; Plains on saddle. |
+| Leonin Sanctifier | ◇ | Lifelink Cat; Alchemy grant. |
+| Lion Sash | ★ | A Cat that eats graveyards and grows. |
+| Adeline, Resplendent Cathar | ★★ | A Human token every attack — tokens feed Peregrin, Tippy-Toe, Belladonna, Rosie. |
 
 ## 5. Consolidated plan (live)
 
