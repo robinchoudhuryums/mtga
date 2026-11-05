@@ -63,6 +63,14 @@ cannot price a second Rocco trigger. Alchemy "perpetually"/"conjure" cards are l
   Rosie Cotton every token is a counter. This is the deck's engine core, not Rocco.
 - **Lifegain → draw** (Tippy-Toe) and **Food → draw** (Peregrin) give a Naya deck real card
   advantage; Night of the Sweets' Revenge makes every Food a mana rock.
+- **Free Food cracks**: Sam, Loyal Attendant (`{1}` less) + Mutagen Man (artifact tokens `{1}`
+  less) make a Food crack cost `{0}` — free lifegain on demand, which turns Tippy-Toe's draw,
+  Heroic Feast, Cat Collector and Ragost's untap into engines (R2, R3).
+- **Foods are ARTIFACT tokens**: metalcraft (Galvanic Blast, Mox Opal), affinity (Sami),
+  "three or more artifacts" (Shuri) all read them. Cards that need NONTOKEN artifacts (Meria)
+  do not.
+- **Second exile payoff**: Pia Nalaar, Consul of Revival makes a Thopter per play from exile —
+  Rocco's own trigger, twice.
 - **Lifegain → Cat tokens** (Cat Collector) links the Food and Cat halves (R3, R5).
 - **Pool-absent cards** read "!!NOT-HISTORIC-BRAWL" in the pull with rarity `?`: that is
   UNVERIFIED (no pool row), not illegal. Sidequest: Catch a Fish runs in deck 3-brawl.
@@ -140,6 +148,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | The Shire | ★ | Legendary land that makes Food; untapped with a legendary creature (Rocco). |
 | Ajani, Nacatl Pariah | ★★ | 2/1 Cat + transform; the walker makes Cats and pings (red permanent: Rocco). Pool-absent. |
 | Big Spender | ◇ | Alchemy; Treasure on blocks, spellbook for two artifacts. |
+
+### Batch 3 (cards 60–89)
+
+| Card | R | Note |
+|---|---|---|
+| Legion Extruder | ★★ | ETB 2 to any target (interaction); `{2}`, sac a Food: 3/3 Golem. |
+| Improvised Arsenal | ◇ | +1/+0 per artifact (Foods count). |
+| Urabrask's Forge | ★ | A token every combat — each is an extra Food under Peregrin / Tippy-Toe and a counter under Rosie. |
+| Mutagen Man, Living Ooze | ★★ | Artifact-token abilities cost `{1}` less: with Sam, a Food crack is FREE (R2, R3). |
+| Tenured Tethermage | ◇ | Tap two artifacts: two counters. |
+| Svella, Ice Shaper | ◇ | Mana rock maker; the `{8}` free cast is slow. |
+| Aerid Konstrari | ◇ | Heartwood tokens; flier. |
+| Roxanne, Starfall Savant | ★★ | A Cat; Meteorite pings 2 on ETB/attack; doubles artifact-TOKEN mana — Foods under Night of the Sweets' Revenge tap twice. |
+| Pia Nalaar, Consul of Revival | ★★★ | Every play from exile is a hasty 1/1 flier — a second Rocco payoff (R1), and each token is a Food under Peregrin / Tippy-Toe. |
+| Mabel, Heir to Cragflame | ◇ | Mouse lord; the equipment is the value here. |
+| Hook Swords | ◇ | 1/1 Ally + first-strike equipment. |
+| Thorin, King of Durin's Folk | △ | Dwarf payoffs; no Dwarves. |
+| T'Challa, the Black Panther | ◇ | Vibranium tokens; counters on big artifact spells. |
+| Dyadrine, Synthesis Amalgam | ★ | Removes Rocco's counters for a draw + Robot each attack (R4). |
+| Toph, the First Metalbender | ◇ | Earthbend 2 each end step; artifacts-as-lands is incidental. |
+| Sami, Wildcat Captain | ★★ | Every spell has affinity for artifacts — Foods make the deck cheap. Double strike body. |
+| Mondrak, Glory Dominus | ★★★ | Doubles every token: Foods, Thopters, Cats. |
+| Dockside Extortionist | ◇ | Treasure per opposing artifact/enchantment; 1v1-variable. |
+| Craterclaw Colossus | ◇ | `{R}{R}{R}` finisher scaling with artifacts. |
+| Indomitable Creativity | △ | `{R}{R}{R}` polymorph; destroys our own Foods for random permanents. |
+| Shuri, the Black Panther | ★★ | Lifelink 2-drop; attack draws with three artifacts (Foods) (R3). |
+| Iron Spider, Stark Upgrade | ◇ | Counters on artifact creatures; few here. |
+| Karn, the Great Creator | △ | Its −2 wants a sideboard Brawl does not have. |
+| Karn, Legacy Reforged | ◇ | Upkeep mana per artifact, artifact spells only. |
+| Radiant Lotus | ★ | Sac Foods for three mana each — a burst. |
+| Ori, Plate Stacker | ◇ | One-sided artifact/enchantment wipe at 7. |
+| Galvanic Blast | ★★ | `{R}`, 4 damage with three artifacts (Foods) — cheap interaction (R6). |
+| Heliod's Intervention | ★★ | Instant artifact/enchantment removal, or gain twice X (a lifegain trigger) (R6). |
+| Meria, Scholar of Antiquity | △ | Taps NONTOKEN artifacts — Foods are tokens. |
+| Mox Opal | ★ | Metalcraft from Foods. |
 
 ## 5. Consolidated plan (live)
 
