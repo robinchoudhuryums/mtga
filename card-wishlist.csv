@@ -9,6 +9,12 @@ Fallen Shinobi,Creature — Zombie Ninja,"Ninjutsu {2}{U}{B} ({2}{U}{B}, Return 
 Whenever this creature deals combat damage to a player, that player exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.",U/B,Zombie; Ninja; heist; ninjutsu; evasion; tempo,AA3,19,Rare,91,,3.0,seed
 The Book of Exalted Deeds,Legendary Artifact — Book,"At the beginning of your end step, if you gained 3 or more life this turn, create a 3/3 white Angel creature token with flying.
 {W}{W}{W}, {T}, Exile The Book of Exalted Deeds: Put an enlightened counter on target Angel. It gains ""You can't lose the game and your opponents can't win the game."" Activate only as a sorcery.",W,Book; counters; lifegain; tokens,AFR,4,Mythic,95,,7.0,seed
+Bard Class,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Legendary creatures you control enter with an additional +1/+1 counter on them.
+{R}{G}: Level 2
+Legendary spells you cast cost {R}{G} less to cast. This effect reduces only the amount of colored mana you pay.
+{3}{R}{G}: Level 3
+Whenever you cast a legendary spell, exile the top two cards of your library. You may play them this turn.",R/G,Class; counters; impulse,AFR,217,Rare,97,,6.5,seed
 Circle of Dreams Druid,Creature — Elf Druid,{T}: Add {G} for each creature you control.,G,Elf; Druid; mana,AFR,176,Rare,75-historic-brawl,,4.0,seed
 Tasha's Hideous Laughter,Sorcery,Each opponent exiles cards from the top of their library until that player has exiled cards with total mana value 20 or greater.,U,,AFR,78,Rare,96,,3.0,seed
 "Trelasarra, Moon Dancer",Legendary Creature — Elf Cleric,"Whenever you gain life, put a +1/+1 counter on Trelasarra and scry 1. (Look at the top card of your library. You may put that card on the bottom.)",W/G,Elf; Cleric; counters; lifegain; scry; selection,AFR,236,Uncommon,95,,4.5,seed
@@ -32,6 +38,12 @@ Rhonas's Monument,Legendary Artifact,"Green creature spells you cast cost {1} le
 Whenever you cast a creature spell, target creature you control gets +2/+2 and gains trample until end of turn.",Colorless,cost-reduction; pump; trample; evasion,AKR,279,Uncommon,89,deck 89 tune 2026-10-23,6.0,seed
 Wayward Servant,Creature — Zombie,"Whenever another Zombie you control enters, each opponent loses 1 life and you gain 1 life.",W/B,Zombie; lifegain,AKR,267,Uncommon,91,,5.5,seed
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
+Caretaker's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever one or more tokens you control enter, draw a card. This ability triggers only once each turn.
+{W}: Level 2
+When this Class becomes level 2, create a token that's a copy of target token you control.
+{3}{W}: Level 3
+Creature tokens you control get +2/+2.",W,Class; card draw; tokens; pump,BLB,6,Rare,97,,7.0,seed
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
@@ -232,6 +244,7 @@ Outlaws' Merriment,Enchantment,"At the beginning of your upkeep, choose one at r
 Drown in the Loch,Instant,"Choose one —
 • Counter target spell with mana value less than or equal to the number of cards in its controller's graveyard.
 • Destroy target creature with mana value less than or equal to the number of cards in its controller's graveyard.",U/B,counterspell; graveyard; removal,ELD,188,Uncommon,96,,4.0,seed
+Giant Opportunity,Sorcery,"You may sacrifice two Foods. If you do, create a 7/7 green Giant creature token. Otherwise, create three Food tokens. (They're artifacts with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,lifegain; sacrifice; tokens; food,ELD,159,Uncommon,97,,2.0,seed
 Archenemy's Charm,Instant,"Choose one —
 • Exile target creature or planeswalker.
 • Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
@@ -500,6 +513,8 @@ Promising Vein,Land — Cave,"{T}: Add {C}.
 The Watcher in the Water,Legendary Creature — Kraken,"The Watcher in the Water enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.
 Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.",U,Kraken; counters; card draw; tokens,LTR,75,Mythic,94,,7.0,seed
+Elanor Gardner,Legendary Creature — Halfling Scout,"When Elanor enters, create a Food token.
+At the beginning of your end step, if you sacrificed a Food this turn, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.",G,Halfling; Scout; sacrifice; tokens; ramp; etb; food,LTR,286,Rare,97,,4.0,seed
 Ioreth of the Healing House,Legendary Creature — Human Cleric,"{T}: Untap another target permanent.
 {T}: Untap two other target legendary creatures.",U,Human; Cleric,LTR,56,Uncommon,75-historic-brawl,,2.5,seed
 Shire Terrace,Land,"{T}: Add {C}.
@@ -527,6 +542,8 @@ Whenever this creature enters or deals combat damage to a player, draw a card, t
 "Liliana, Waker of the Dead",Legendary Planeswalker — Liliana,"+1: Each player discards a card. Each opponent who can't loses 3 life.
 −3: Target creature gets -X/-X until end of turn, where X is the number of cards in your graveyard.
 −7: You get an emblem with ""At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.""",B,Liliana; planeswalker; reanimator; graveyard; removal; discard; haste; aggro,M21,108,Mythic,91,,10.0,seed
+Feline Sovereign,Creature — Cat,"Other Cats you control get +1/+1 and have protection from Dogs.
+Whenever one or more Cats you control deal combat damage to a player, destroy up to one target artifact or enchantment that player controls.",G,Cat; pump,M21,180,Rare,97,,6.5,seed
 Teferi's Ageless Insight,Legendary Enchantment,"If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.",U,card draw,M21,76,Rare,96,,5.5,seed
 Teferi's Tutelage,Enchantment,"When this enchantment enters, draw a card, then discard a card.
 Whenever you draw a card, target opponent mills two cards. (They put the top two cards of their library into their graveyard.)",U,graveyard; mill; card draw; etb,M21,78,Uncommon,96,,4.0,seed
@@ -558,6 +575,9 @@ You may cast creature spells from the top of your library.
 Whenever Grist or another creature you control enters, if it entered from your graveyard or you cast it from your graveyard, you may pay {G}. If you do, exile Grist, then return it to the battlefield transformed under its owner's control. // +1: Create a 1/1 black and green Insect creature token, then mill two cards. Put a deathtouch counter on the token if a black card was milled this way.
 −2: Destroy target artifact or enchantment.
 −6: For each creature card in your graveyard, create a token that's a copy of it, except it's a 1/1 black and green Insect.",B/G,Insect; Grist; planeswalker; counters; graveyard; mill; tokens; removal; transform; deathtouch; combat,MH3,251,Mythic,89,deck 89 tune 2026-10-23,8.0,seed
+Ocelot Pride,Creature — Cat,"First strike, lifelink
+Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)
+At the beginning of your end step, if you gained life this turn, create a 1/1 white Cat creature token. Then if you have the city's blessing, for each token you control that entered this turn, create a token that's a copy of it.",W,Cat; lifegain; tokens; lifelink; ascend; first strike; combat,MH3,38,Mythic,97,,7.0,seed
 Bloodstained Mire,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,MH3,216,Rare,89,,3.0,seed
 Branching Evolution,Enchantment,"If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.",G,counters,MH3,285,Rare,94,,5.5,seed
 Fanatic of Rhonas,Creature — Snake Druid,"{T}: Add {G}.
@@ -792,6 +812,8 @@ Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonla
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Make Your Own Luck,Sorcery,"Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/G,selection; plot; tempo; cost-reduction,OTJ,218,Uncommon,,,3.5,seed
 Anguished Unmaking,Instant,Exile target nonland permanent. You lose 3 life.,W/B,pay life; removal,OTP,35,Mythic,91,,6.5,seed
+Contagion Engine,Artifact,"When this artifact enters, put a -1/-1 counter on each creature target player controls.
+{4}, {T}: Proliferate twice. (Choose any number of permanents and/or players, then give each another counter of each kind already there. Then do it again.)",Colorless,counters; etb; proliferate,OTP,61,Mythic,97,,6.5,seed
 Archive Trap,Instant — Trap,"If an opponent searched their library this turn, you may pay {0} rather than pay this spell's mana cost.
 Target opponent mills thirteen cards.",U,Trap; mill; graveyard,OTP,7,Rare,96,,3.0,seed
 Detention Sphere,Enchantment,"When this enchantment enters, you may exile target nonland permanent not named Detention Sphere and all other permanents with the same name as that permanent.
@@ -1072,8 +1094,14 @@ Overwhelming Victory,Instant — Lesson,"Overwhelming Victory deals 5 damage to 
 "Smellerbee, Rebel Fighter",Legendary Creature — Human Rebel Ally,"First strike
 Other creatures you control have haste.
 Whenever Smellerbee attacks, you may discard your hand. If you do, draw cards equal to the number of attacking creatures.",R,Human; Rebel; Ally; card draw; first strike; combat; haste; aggro,TLE,125,Rare,92; 93,,5.5,seed
+The Cabbage Merchant,Legendary Creature — Human Citizen,"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Whenever a creature deals combat damage to you, sacrifice a Food token.
+Tap two untapped Foods you control: Add one mana of any color.",G,Human; Citizen; food; lifegain; sacrifice; tokens,TLE,134,Rare,97,,6.0,seed
 "Zuko, Avatar Hunter",Legendary Creature — Human Noble,"Reach (This creature can block creatures with flying.)
 Whenever you cast a red spell, create a 2/2 red Soldier creature token.",R,Human; Noble; tokens; reach; defense,TLE,246,Rare,92,,5.5,seed
+"Bosco, Just a Bear",Legendary Creature — Bear,"When Bosco enters, create a Food token for each legendary creature you control. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}{G}, Sacrifice a Food: Put two +1/+1 counters on Bosco. He gains trample until end of turn.",G,Bear; counters; lifegain; sacrifice; tokens; etb; food; trample; evasion,TLE,132,Uncommon,97,,2.5,seed
+Bumi's Feast Lecture,Sorcery — Lesson,"Create a Food token. Then earthbend X, where X is twice the number of Foods you control. (A Food token is an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."" To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Lesson; food; counters; lifegain; tokens; earthbend; bending,TLE,133,Uncommon,97,,2.0,seed
 Frantic Confrontation,Instant,Target creature you control gets +X/+0 and gains first strike and trample until end of turn.,R,pump; trample; evasion; first strike; combat,TLE,117,Uncommon,92,,2.0,seed
 "Longshot, Rebel Bowman",Legendary Creature — Human Rebel Ally,"Reach (This creature can block creatures with flying.)
 Noncreature spells you cast cost {1} less to cast.
@@ -1084,6 +1112,9 @@ Princess Yue,Legendary Creature — Human Noble Ally,"When Princess Yue dies, if
 Whenever you cast a noncreature spell, Zuko gains first strike until end of turn.
 Whenever Zuko deals combat damage to a player, put a +1/+1 counter on him.",B/R,Human; Noble; counters; spellslinger; firebending; bending; first strike; combat,TLE,150,Uncommon,92,,4.5,seed
 Brainstorm,Instant,"Draw three cards, then put two cards from your hand on top of your library in any order.",U,card draw,TLE,155,Common,96,,2.5,seed
+"Michelangelo, the Heart",Legendary Creature — Mutant Ninja Turtle,"Trample
+Raid (the Fridge) — At the beginning of your second main phase, if you attacked this turn, put a +1/+1 counter on target creature and create a Food token.
+Partner—Character select (You can have two commanders if both have this ability.)",G,Mutant; Ninja; Turtle; counters; tokens; food; partner; trample; evasion,TMC,5,Mythic,97,,5.0,seed
 Waste Not,Enchantment,"Whenever an opponent discards a creature card, create a 2/2 black Zombie creature token.
 Whenever an opponent discards a land card, add {B}{B}.
 Whenever an opponent discards a noncreature, nonland card, draw a card.",B,card draw; tokens; discard,TMC,132,Mythic,91,,8.0,seed
@@ -1126,12 +1157,14 @@ Draw two cards, then amass Zombies X, where X is the number of cards in your han
 Dreadhorde Invasion,Enchantment,"At the beginning of your upkeep, you lose 1 life and amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
 Whenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn.",B,counters; lifegain; pay life; tokens; amass; go-wide; lifelink,WAR,86,Rare,91,,3.5,seed
 Enter the God-Eternals,Sorcery,"Enter the God-Eternals deals 4 damage to target creature and you gain life equal to the damage dealt this way. Target player mills four cards. Amass Zombies 4. (Put four +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)",U/B,counters; mill; lifegain; tokens; burn; amass; go-wide; graveyard,WAR,196,Rare,91,,4.5,seed
+Karn's Bastion,Land,"{T}: Add {C}.
+{4}, {T}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",Colorless,mana; proliferate; counters,WAR,248,Rare,97,,6.0,seed
 "Neheb, Dreadhorde Champion",Legendary Creature — Zombie Minotaur Warrior,"Trample
 Whenever Neheb deals combat damage to a player or planeswalker, you may discard any number of cards. If you do, draw that many cards and add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.",R,Zombie; Minotaur; Warrior; card draw; trample; evasion,WAR,140,Rare,92,,5.5,seed
 Soul Diviner,Creature — Zombie Wizard,"{T}, Remove a counter from an artifact, creature, land, or planeswalker you control: Draw a card.",U/B,Zombie; Wizard; card draw,WAR,218,Rare,91,,3.0,seed
 Eternal Skylord,Creature — Zombie Wizard,"When this creature enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
 Zombie tokens you control have flying.",U,Zombie; Wizard; counters; tokens; etb; amass; go-wide; flying; evasion,WAR,49,Uncommon,91,,2.0,seed
-Evolution Sage,Creature — Elf Druid,"Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Elf; Druid; landfall; proliferate; counters; lands,WAR,159,Uncommon,94,,4.0,seed
+Evolution Sage,Creature — Elf Druid,"Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Elf; Druid; landfall; proliferate; counters; lands,WAR,159,Uncommon,94; 97,,4.0,seed
 Gleaming Overseer,Creature — Zombie Wizard,"When this creature enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. It's also a Zombie. If you don't control an Army, create a 0/0 black Zombie Army creature token first.)
 Zombie tokens you control have hexproof and menace.",U/B,Zombie; Wizard; counters; tokens; etb; amass; go-wide; menace; evasion; hexproof; protection,WAR,198,Uncommon,91,,2.5,seed
 Huatli's Raptor,Creature — Dinosaur,"Vigilance
@@ -1153,6 +1186,9 @@ When this creature enters, if it was bargained, add four mana in any combination
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
 Decadent Dragon // Expensive Taste,Creature — Dragon // Instant — Adventure,"Flying, trample
 Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,5.5,seed
+"Syr Ginger, the Meal Ender",Legendary Artifact Creature — Food Knight,"Syr Ginger has trample, hexproof, and haste as long as an opponent controls a planeswalker.
+Whenever another artifact you control is put into a graveyard from the battlefield, put a +1/+1 counter on Syr Ginger and scry 1.
+{2}, {T}, Sacrifice Syr Ginger: You gain life equal to its power.",Colorless,food; Knight; counters; graveyard; lifegain; sacrifice; scry; artifacts; selection; trample; evasion,WOE,252,Rare,97,,6.5,seed
 Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adventure,"Flying, vigilance // Mill four cards. Then put an instant, sorcery, or Faerie card from among the milled cards into your hand.",U,Faerie; Rogue; Adventure; mill; exile cast; flying; evasion; vigilance; combat; graveyard,WOE,64,Uncommon,,,2.0,seed
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed

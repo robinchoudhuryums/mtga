@@ -1,6 +1,6 @@
 # Rocco pile — analysis (TEMPORARY working doc)
 
-**Status: DRAFTED as deck 97 (Street Feast), 2026-11-05; Builder board `builds/rocco` published.** Owner picks pending. A new Historic Brawl deck (proposed deck 97), commander **Rocco, Street
+**Status: DRAFTED as deck 97 (Street Feast), 2026-11-05; Builder board `builds/rocco` published. The Route E package (22 swaps from the board) was applied 2026-11-06; the board's bench is the open part.** A new Historic Brawl deck (proposed deck 97), commander **Rocco, Street
 Chef** (MAT) 44, `{R}{G}{W}`. The owner's brief: Food first, Dog and Cat subthemes, watch for
 other synergies. Delete this doc once the deck is drafted and its findings are folded into the
 deck file's `#: notes:` block. A scratchpad, not a source of truth — decks/ are.

@@ -62,10 +62,12 @@ Bolg's Company
 Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
+Bosco, Just a Bear
 Brass's Bounty
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
+Bumi's Feast Lecture
 Bumi, Unleashed
 Burnout Bashtronaut
 Burrowguard Mentor
@@ -179,6 +181,7 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Ghoulcaller Gisa
 Giant Cindermaw
+Giant Opportunity
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
@@ -204,7 +207,6 @@ Hecteyes
 Hedge Shredder
 Hei Bai, Forest Guardian
 Hei Bai, Spirit of Balance
-Heliod's Intervention
 Hellrider
 Herald of Eternal Dawn
 Herald of Secret Streams
@@ -279,6 +281,7 @@ Master Pakku
 Master's Councillors
 Mechanical Mobster
 Miasmic Mummy
+Michelangelo, the Heart
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
@@ -351,7 +354,6 @@ Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
 Reckless Velocitaur
-Release the Dogs
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
@@ -361,7 +363,6 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
-Rocco, Cabaretti Caterer
 Rockalanche
 Rustler Rampage
 Salvation Swan

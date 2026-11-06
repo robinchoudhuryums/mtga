@@ -1151,7 +1151,7 @@
    "group": "Real",
    "text": "Alchemy: each end step a graveyard permanent becomes a playable Food. Recursion, but from the graveyard, not exile (no Rocco trigger).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Iroh, Tea Master": {
@@ -1179,14 +1179,14 @@
    "group": "Strong",
    "text": "In the list. Every token we create → +1/+1 counter; each Rocco trigger is a Food, so each is a counter too.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Lita, Little Orphan Amphibian": {
    "group": "Real",
-   "text": "Alliance Food / counter / scry per creature entering.",
+   "text": "In the list (2026-11-06). Alliance Food / counter / scry per creature entering.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Krovod Haunch": {
@@ -1212,9 +1212,9 @@
   },
   "Cat Collector": {
    "group": "Strong",
-   "text": "In the list. Food on entry; first lifegain each of our turns → a Cat token (R3, R5).",
+   "text": "Cut 2026-11-06 (Route E). Food on entry and a Cat on the first lifegain each turn; Ocelot Pride does the Cat half from one mana.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Sidequest: Catch a Fish": {
@@ -1228,7 +1228,7 @@
    "group": "Marginal",
    "text": "Kills power 3+ — ours too, once Rocco's counters land.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Food Coma": {
@@ -1282,9 +1282,9 @@
   },
   "Bumi's Feast Lecture": {
    "group": "Real",
-   "text": "Food, then earthbend twice the Foods — a large hasty land by mid-game.",
+   "text": "In the list (2026-11-06). Food, then earthbend twice the Foods — a large hasty land by mid-game.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Courier of Comestibles": {
@@ -1317,9 +1317,9 @@
   },
   "Michelangelo, the Heart": {
    "group": "Real",
-   "text": "Attack → counter + Food each turn.",
+   "text": "In the list (2026-11-06). Attack → counter + Food each turn.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Pawpatch Formation": {
@@ -1338,9 +1338,9 @@
   },
   "Spider-Ham, Peter Porker": {
    "group": "Strong",
-   "text": "In the list. Food on entry and +1/+1 to other Cats, Dogs, Bears, Birds, Boars, Squirrels… — the one lord covering both tribes (R5).",
+   "text": "Cut 2026-11-06 (Route E). Food on entry and +1/+1 to Cats, Dogs and other animals; Regal Caracal and Feline Sovereign pump the Cats harder.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Tough Cookie": {
@@ -1401,9 +1401,9 @@
   },
   "Giant Opportunity": {
    "group": "Strong",
-   "text": "Re-graded on the owner's note: one card is three Foods, and Peregrin, Tippy-Toe and the doublers each multiply it (Mondrak + both replacements = 10 Foods), or two Foods into a 7/7. A one-shot, so ★★ rather than the repeatable ★★★ engines.",
+   "text": "In the list (2026-11-06). One card is three Foods, and Peregrin, Tippy-Toe and the doublers each multiply it (Mondrak + both replacements = 10 Foods), or two lands into a 7/7. A one-shot, so ★★ rather than the repeatable ★★★ engines.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Heroic Feast": {
@@ -1443,23 +1443,23 @@
   },
   "Spider Food": {
    "group": "Real",
-   "text": "In the list. Artifact / enchantment / flier removal + Food.",
+   "text": "Cut 2026-11-06 (Route E). Artifact / enchantment / flier removal + Food; interaction stays 15 without it.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "The Cabbage Merchant": {
    "group": "Real",
-   "text": "Their noncreature spells give us Food; two Foods tap for any colour.",
+   "text": "In the list (2026-11-06). Their noncreature spells give us Food; two Foods tap for any colour.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Tireless Provisioner": {
    "group": "Strong",
    "text": "In the list. Landfall Food or Treasure; Rocco's exiled lands count (R1).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Bristlebud Farmer": {
@@ -1471,9 +1471,9 @@
   },
   "Elanor Gardner": {
    "group": "Real",
-   "text": "Re-graded on the owner's note: a basic each end step we sacrificed a Food is repeatable ramp, and each land is landfall for Tireless Provisioner and Felidar Retreat.",
+   "text": "In the list (2026-11-06). A basic each end step we sacrificed a Food is repeatable ramp, and each land is landfall for Tireless Provisioner and Felidar Retreat.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Night of the Sweets' Revenge": {
@@ -1506,9 +1506,9 @@
   },
   "Bosco, Just a Bear": {
    "group": "Strong",
-   "text": "Re-graded on the owner's note: the list runs 32 legendary creatures, so the ETB is several Foods (before doublers), and {2}{G}, sac a Food is a repeatable trampling sink.",
+   "text": "In the list (2026-11-06). The list runs about 30 legendary creatures, so the ETB is several Foods (before doublers), and {2}{G}, sac a Food is a repeatable trampling sink.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Galadriel, Gift-Giver": {
@@ -1529,14 +1529,14 @@
    "group": "Real",
    "text": "In the list. Legendary land that makes Food; untapped with a legendary creature (Rocco).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger": {
    "group": "Strong",
    "text": "In the list. 2/1 Cat + transform; the walker makes Cats and pings (red permanent: Rocco). Pool-absent.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Big Spender": {
@@ -1606,7 +1606,7 @@
    "group": "Engine",
    "text": "In the list. Every play from exile is a hasty 1/1 flier — a second Rocco payoff (R1), and each token is a Food under Peregrin / Tippy-Toe.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Mabel, Heir to Cragflame": {
@@ -1641,7 +1641,7 @@
    "group": "Real",
    "text": "Removes Rocco's counters for a draw + Robot each attack (R4).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Toph, the First Metalbender": {
@@ -1688,9 +1688,9 @@
   },
   "Shuri, the Black Panther": {
    "group": "Strong",
-   "text": "In the list. Lifelink 2-drop; attack draws with three artifacts (Foods) (R3).",
+   "text": "Cut 2026-11-06 (Route E). Lifelink 2-drop whose draw needs an attack with three artifacts; Chandra's +2 and Caretaker's Talent carry the draws now.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Iron Spider, Stark Upgrade": {
@@ -1737,9 +1737,9 @@
   },
   "Heliod's Intervention": {
    "group": "Strong",
-   "text": "In the list. Instant artifact/enchantment removal, or gain twice X (a lifegain trigger) (R6).",
+   "text": "Cut 2026-11-06 (Route E). Instant artifact/enchantment removal or a lifegain burst; interaction stays 15 after the package.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Meria, Scholar of Antiquity": {
@@ -1772,16 +1772,16 @@
   },
   "Hungering Puppetbeast": {
    "group": "Real",
-   "text": "Re-graded on the owner's note: a {1} sacrifice outlet for Foods that grows and grants hexproof (protection the list is short on); each sacrifice also fires Biotech Specialist and Krenko.",
+   "text": "In the list (2026-11-06). A {1} sacrifice outlet for Foods that grows and grants hexproof (protection the list is short on); each sacrifice also fires Biotech Specialist and Krenko.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Woodwork Prodigy": {
    "group": "Real",
-   "text": "A Cat that makes a Heartwood every turn it re-prepares. Pool-absent.",
+   "text": "In the list (2026-11-06). A Cat that makes a Heartwood (an artifact mana rock) every turn it re-prepares.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Dragonspark Reactor": {
@@ -1807,9 +1807,9 @@
   },
   "Vision of Love": {
    "group": "Strong",
-   "text": "In the list. Sac a Food: draw two at instant speed.",
+   "text": "Cut 2026-11-06 (Route E). Sac a Food: draw two at instant speed; Caretaker's Talent and Chandra replaced the draw.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Sokenzan Smelter": {
@@ -1849,9 +1849,9 @@
   },
   "Goldspan Dragon": {
    "group": "Strong",
-   "text": "In the list. Treasures make two mana; Bilbo turns every Food into a Treasure too.",
+   "text": "Cut 2026-11-06 (Route E). A Treasure engine in a Food deck; Elanor Gardner and The Cabbage Merchant ramp on the actual plan.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Purphoros, Bronze-Blooded": {
@@ -1891,16 +1891,16 @@
   },
   "Pep, Raucous Raider": {
    "group": "Strong",
-   "text": "In the list. Combat damage exiles their top card for us to play — a cast from exile (R1) — and sac an artifact for three mana.",
+   "text": "Cut 2026-11-06 (Route E). Its impulse needs combat damage; Bard Class gives plays from exile without connecting.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Kwia Vigorbloom": {
    "group": "Strong",
-   "text": "In the list. Lifelink flier; first lifegain each turn makes a Lotus (three mana).",
+   "text": "Cut 2026-11-06 (Route E). Six mana for one Lotus a turn; the package brought cheaper mana.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Mindslaver": {
@@ -1982,9 +1982,9 @@
   },
   "Well of Lost Dreams": {
    "group": "Strong",
-   "text": "In the list. Every lifegain: pay X to draw X — Food cracks become draws (R3).",
+   "text": "Cut 2026-11-06 (Route E). Four mana that does nothing alone; Caretaker's Talent and Chandra draw for less.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Belladonna Took": {
@@ -1996,9 +1996,9 @@
   },
   "Ajani Resolute": {
    "group": "Strong",
-   "text": "In the list. Lifegain adds loyalty; −4 is a Pridemate Cat; −10 a team anthem.",
+   "text": "Cut 2026-11-06 (Route E). Two-mana walker whose value is the −4 Pridemate; Ocelot Pride and Regal Caracal cover the lifegain Cats.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "West Wind Avatar": {
@@ -2033,14 +2033,14 @@
    "group": "Real",
    "text": "Every countered creature has first strike — Rocco counters (R4). Dog.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Generous Pup": {
    "group": "Strong",
    "text": "In the list. A counter on the Pup spreads to every creature — one Rocco trigger, team counters (R4). Dog.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Yoshimaru, Beloved Companion": {
@@ -2054,14 +2054,14 @@
    "group": "Situational",
    "text": "Blink on creature cast — resets Rocco's counters (G-42). Dog.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Release the Dogs": {
    "group": "Real",
-   "text": "In the list. Four Dogs: two extra Foods under Peregrin + Tippy-Toe, eight Dogs under Mondrak.",
+   "text": "Cut 2026-11-06 (Route E). Four Dogs: two extra Foods under Peregrin + Tippy-Toe, eight Dogs under Mondrak — a one-shot the package outbid.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Enduring Courage": {
@@ -2143,9 +2143,9 @@
   },
   "Adeline, Resplendent Cathar": {
    "group": "Strong",
-   "text": "In the list. A Human token every attack — tokens feed Peregrin, Tippy-Toe, Belladonna, Rosie.",
+   "text": "Cut 2026-11-06 (Route E). A Human token every attack; the token engine makes plenty without combat.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Brimaz, King of Oreskos": {
@@ -2173,14 +2173,14 @@
    "group": "Strong",
    "text": "In the list. Landfall: a 2/2 Cat or team counters; Rocco's exiled lands are landfall.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Leonin Warleader": {
    "group": "Strong",
-   "text": "In the list. Two lifelink Cats attacking each swing — tokens and lifegain both.",
+   "text": "Cut 2026-11-06 (Route E). Two lifelink Cats each attack; overlaps Regal Caracal's lifelink Cats.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Qala, Ajani's Pridemate": {
@@ -2192,9 +2192,9 @@
   },
   "Angel of Invention": {
    "group": "Strong",
-   "text": "In the list. Lifelink flier, team anthem, two Servos (artifact tokens).",
+   "text": "Cut 2026-11-06 (Route E). Lifelink flier, team anthem, two Servos; Doubling Season took the slot.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Sally Pride, Lioness Leader": {
@@ -2213,16 +2213,16 @@
   },
   "Undergrowth Leopard": {
    "group": "Real",
-   "text": "In the list. Cat 2-drop that trades for an artifact or enchantment (R6).",
+   "text": "Cut 2026-11-06 (Route E). Cat 2-drop that trades for an artifact or enchantment; interaction stays 15.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Greenhouse Propagator": {
    "group": "Real",
-   "text": "In the list. Cat mana dork; 1 life per creature entering (R3).",
+   "text": "Cut 2026-11-06 (Route E). Cat mana dork; 1 life per creature entering.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Mythweaver Poq": {
@@ -2241,16 +2241,16 @@
   },
   "Ka-Zar of the Savage Land": {
    "group": "Real",
-   "text": "In the list. Lands off the top, and Zabu, a Cat token that grows on landfall.",
+   "text": "Cut 2026-11-06 (Route E). Lands off the top, and Zabu, a Cat token that grows on landfall.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Swiftblade Vindicator": {
    "group": "Situational",
    "text": "Double strike body for Rocco's counters.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Arcbound Shikari": {
@@ -2278,7 +2278,7 @@
    "group": "Strong",
    "text": "In the list. Opponents can't cast spells on our turn; a countered creature connecting draws — Rocco's counters make every creature qualify (R4). Cat.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Drizzt Do'Urden": {
@@ -2290,9 +2290,9 @@
   },
   "Sovereign Okinec Ahau": {
    "group": "Strong",
-   "text": "In the list. Each attack doubles the counters a creature carries above base — Rocco's counters compound (R4). Cat.",
+   "text": "Cut 2026-11-06 (Route E). Each attack doubles counters above base; Doubling Season and the proliferate package grow counters without attacking.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Zar Ojanen, Scion of Efrava": {
@@ -2318,16 +2318,16 @@
   },
   "Rocco, Cabaretti Caterer": {
    "group": "Real",
-   "text": "In the list. X-tutor a creature onto the battlefield; the other Rocco.",
+   "text": "Cut 2026-11-06 (Route E). X-tutor a creature onto the battlefield; the other Rocco.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Doubling Season": {
    "group": "Engine",
-   "text": "Pool sweep 2026-11-05. Doubles every token AND every counter we place: each Rocco trigger becomes two counters and two Foods, and Generous Pup's spread doubles too. Stacks with Mondrak and Parallel Lives.",
+   "text": "In the list (2026-11-06). Doubles every token AND every counter we place: each Rocco trigger becomes two counters and two Foods, and Generous Pup's spread doubles too. Stacks with Mondrak.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Parallel Lives": {
@@ -2341,7 +2341,7 @@
    "group": "Engine",
    "text": "Pool sweep 2026-11-05. Token doubler on a lifelink flier; Warp {1}{W} exiles it at end step and the later cast is FROM EXILE — a Rocco and Pia Nalaar trigger.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -2353,23 +2353,23 @@
   },
   "Caretaker's Talent": {
    "group": "Engine",
-   "text": "Pool sweep 2026-11-05. Once a turn, tokens entering draw a card — every Food creation is a draw, which fixes the deck's thin card advantage; level 3 pumps creature tokens.",
+   "text": "In the list (2026-11-06). Once a turn, tokens entering draw a card — every Food creation is a draw, which fixes the deck's thin card advantage; level 3 pumps creature tokens.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Scalesoul Gnome": {
    "group": "Engine",
-   "text": "Pool sweep 2026-11-05. Every card played from exile conjures a duplicate into our hand — Rocco's exile play each turn becomes a card. A trample-haste 5-drop too.",
+   "text": "In the list (2026-11-06). Every card played from exile conjures a duplicate into our hand — Rocco's exile play each turn becomes a card. A trample-haste 5-drop too.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Quintorius Kand": {
    "group": "Engine",
-   "text": "Pool sweep 2026-11-05. Every spell cast from exile drains 2 and gains 2 (a lifegain trigger for Tippy-Toe, Heroic Feast, Cat Collector); +1 makes 3/2 Spirits.",
+   "text": "In the list (2026-11-06). Every spell cast from exile drains 2 and gains 2 (a lifegain trigger for Tippy-Toe, Heroic Feast, Ocelot Pride); +1 makes 3/2 Spirits.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Arahbo, the First Fang": {
@@ -2383,7 +2383,7 @@
    "group": "Strong",
    "text": "Pool sweep 2026-11-05. Landfall exiles the top card to play — more plays from exile (Rocco, Pia, Quintorius); unplayed cards burn the opponent at end step.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Bloombrute": {
@@ -2395,9 +2395,9 @@
   },
   "Ocelot Pride": {
    "group": "Strong",
-   "text": "Pool sweep 2026-11-05. Lifegain → a Cat each end step; with the city's blessing (ten permanents, easy with Foods) it copies every token that entered this turn — the Foods too.",
+   "text": "In the list (2026-11-06). Lifegain → a Cat each end step; with the city's blessing (ten permanents, easy with Foods) it copies every token that entered this turn — the Foods too.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Trail of Crumbs": {
@@ -2430,9 +2430,9 @@
   },
   "Regal Caracal": {
    "group": "Strong",
-   "text": "Pool sweep 2026-11-05. Cat lord that gives every Cat lifelink — each combat is several lifegain events — and two lifelink Cats on entry.",
+   "text": "In the list (2026-11-06). Cat lord that gives every Cat lifelink — each combat is several lifegain events — and two lifelink Cats on entry.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Annie Flash, the Veteran": {
@@ -2444,9 +2444,9 @@
   },
   "Anointed Procession": {
    "group": "Strong",
-   "text": "Pool sweep 2026-11-05. A third pure token doubler; diminishing once Doubling Season, Parallel Lives and Mondrak are in.",
+   "text": "Pool sweep 2026-11-05. A further pure token doubler; diminishing once Doubling Season and Mondrak are in.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Innkeeper's Talent": {
@@ -2472,9 +2472,9 @@
   },
   "Syr Ginger, the Meal Ender": {
    "group": "Real",
-   "text": "Pool sweep 2026-11-05. A Food artifact creature that grows and scries whenever another artifact (a Food) goes to the graveyard.",
+   "text": "In the list (2026-11-06). A Food artifact creature that grows and scries whenever another artifact (a Food) goes to the graveyard.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Visions of Phyrexia": {
@@ -2488,14 +2488,14 @@
    "group": "Real",
    "text": "Pool sweep 2026-11-05. Attack impulse + grows on every exile from library — Rocco's end-step exile counts.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Bard Class": {
    "group": "Strong",
-   "text": "Re-graded: 34 legendary nonland spells here — every legend enters with a counter, costs {R}{G} less at level 2, and level 3 exiles two to play per legendary spell (more plays from exile for Rocco, Pia, Quintorius).",
+   "text": "In the list (2026-11-06). Over 30 legendary nonland spells here — every legend enters with a counter, costs {R}{G} less at level 2, and level 3 exiles two to play per legendary spell (more plays from exile for Rocco, Pia, Quintorius).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Ginger, Queen of Sweets": {
@@ -2507,9 +2507,9 @@
   },
   "Feline Sovereign": {
    "group": "Real",
-   "text": "Pool sweep 2026-11-05. Cat lord; Cats connecting destroy an artifact or enchantment.",
+   "text": "In the list (2026-11-06). Cat lord; Cats connecting destroy an artifact or enchantment.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Mushroom Watchdogs": {
@@ -2549,16 +2549,16 @@
   },
   "Chandra, Spark Hunter": {
    "group": "Strong",
-   "text": "Leave/proliferate sweep 2026-11-05. +2: sacrifice a Food to draw a card, every turn — repeatable card advantage off the currency; 0 makes Vehicle artifact tokens; the emblem burns on every artifact entering. Owned.",
+   "text": "In the list (2026-11-06). +2: sacrifice a Food to draw a card, every turn — repeatable card advantage off the currency; 0 makes Vehicle artifact tokens; the emblem burns on every artifact entering. Owned.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Experimental Synthesizer": {
    "group": "Real",
    "text": "Leave/proliferate sweep 2026-11-05. {R}: exiles a card to play when it enters AND when it leaves — two plays from exile (Rocco, Pia, Quintorius triggers) — then a Samurai.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Aether Revolt": {
@@ -2579,7 +2579,7 @@
    "group": "Situational",
    "text": "Leave/proliferate sweep 2026-11-05. A Pegasus each end step a permanent left (a Food crack); the adventure blink resets Rocco's counters (G-42).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Blood Aspirant": {
@@ -2591,9 +2591,9 @@
   },
   "Evolution Sage": {
    "group": "Strong",
-   "text": "Leave/proliferate sweep 2026-11-05. Proliferate on every landfall — Rocco's exiled lands, fetches, Tireless Provisioner's lands — each Rocco counter and walker loyalty grows; doubled under Doubling Season.",
+   "text": "In the list (2026-11-06). Proliferate on every landfall — Rocco's exiled lands, fetches, Tireless Provisioner's lands — each Rocco counter and walker loyalty grows; doubled under Doubling Season.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Sword of Truth and Justice": {
@@ -2605,9 +2605,9 @@
   },
   "Karn's Bastion": {
    "group": "Real",
-   "text": "Leave/proliferate sweep 2026-11-05. A land that proliferates for {4}: costs a colour source in a three-colour deck, but takes no spell slot.",
+   "text": "In the list (2026-11-06). A land that proliferates for {4}: costs a colour source in a three-colour deck, but takes no spell slot.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Metastatic Evangel": {
@@ -2619,9 +2619,9 @@
   },
   "Cankerbloom": {
    "group": "Real",
-   "text": "Leave/proliferate sweep 2026-11-05. Interaction AND proliferate: {1}, sac: destroy an artifact or an enchantment, or proliferate. Restores interaction if Spider Food and Undergrowth Leopard go.",
+   "text": "Leave/proliferate sweep 2026-11-05. Interaction AND proliferate: {1}, sac: destroy an artifact or an enchantment, or proliferate. Spider Food and Undergrowth Leopard are cut and interaction is still 15, so it is a spare, not a need.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Huatli's Raptor": {
@@ -2640,9 +2640,9 @@
   },
   "Contagion Engine": {
    "group": "Situational",
-   "text": "Leave/proliferate sweep 2026-11-05. Six mana: −1/−1 on each of their creatures (kills tokens) and proliferate twice a turn.",
+   "text": "In the list (2026-11-06, the owner's pick). Six mana: −1/−1 on each of their creatures (kills tokens) and proliferate twice a turn.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Grateful Apparition": {
@@ -2760,6 +2760,99 @@
     "Well of Lost Dreams",
     "Wicked Wolf",
     "Yoshimaru, Beloved Companion"
+   ],
+   "3f294fd86b98": [
+    "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+    "Ajani, Strength of the Pride",
+    "Bard Class",
+    "Battlefield Forge",
+    "Belladonna Took",
+    "Bilbo, Fellow Conspirator",
+    "Biotech Specialist",
+    "Bosco, Just a Bear",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Brimaz, King of Oreskos",
+    "Brushland",
+    "Bumi's Feast Lecture",
+    "Cabaretti Courtyard",
+    "Caretaker's Talent",
+    "Castle Doom",
+    "Chandra, Spark Hunter",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Contagion Engine",
+    "Copperline Gorge",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Doubling Season",
+    "Dragonspark Reactor",
+    "Elanor Gardner",
+    "Evolution Sage",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Feline Sovereign",
+    "Food Coma",
+    "Forest",
+    "Galvanic Blast",
+    "Generous Pup",
+    "Giant Opportunity",
+    "Gilded Goose",
+    "Haliya, Guided by Light",
+    "Heroic Feast",
+    "Hobbit's Sting",
+    "Hungering Puppetbeast",
+    "Inspiring Vantage",
+    "Jetmir, Nexus of Revels",
+    "Jinnie Fay, Jetmir's Second",
+    "Karn's Bastion",
+    "Karplusan Forest",
+    "Krenko, Baron of Tin Street",
+    "Kutzil, Malamet Exemplar",
+    "Legion Extruder",
+    "Lita, Little Orphan Amphibian",
+    "Lucky the Pizza Dog",
+    "Mana Confluence",
+    "Michelangelo, the Heart",
+    "Mirrex",
+    "Mondrak, Glory Dominus",
+    "Mountain",
+    "Mutagen Man, Living Ooze",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Night of the Sweets' Revenge",
+    "Ocelot Pride",
+    "Pawpatch Formation",
+    "Peregrin Took",
+    "Pia Nalaar, Consul of Revival",
+    "Plains",
+    "Prismatic Vista",
+    "Quintorius Kand",
+    "Ragost, Deft Gastronaut",
+    "Razorverge Thicket",
+    "Regal Caracal",
+    "Rin and Seri, Inseparable",
+    "Rocco, Street Chef",
+    "Rootbound Crag",
+    "Rosie Cotton of South Lane",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Sam, Loyal Attendant",
+    "Sami, Wildcat Captain",
+    "Samwise Gamgee",
+    "Scalesoul Gnome",
+    "Shrapnel Blast",
+    "Stew the Coneys",
+    "Stomping Ground",
+    "Sunbaked Canyon",
+    "Sunpetal Grove",
+    "Syr Ginger, the Meal Ender",
+    "Teething Wurmlet",
+    "Temple Garden",
+    "The Cabbage Merchant",
+    "The Shire",
+    "Tippy-Toe, Terrific Partner",
+    "Tireless Provisioner",
+    "Wicked Wolf",
+    "Woodwork Prodigy // Soul Tether",
+    "Yoshimaru, Beloved Companion"
    ]
   }
  },
@@ -2785,7 +2878,7 @@
   "Resourceful Collector": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Iroh, Tea Master": {
@@ -2809,13 +2902,13 @@
   "Rosie Cotton of South Lane": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Lita, Little Orphan Amphibian": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Krovod Haunch": {
@@ -2839,7 +2932,7 @@
   "Cat Collector": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Sidequest: Catch a Fish": {
@@ -2851,7 +2944,7 @@
   "The Battle of Bywater": {
    "R": {
     "m": "△",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Food Coma": {
@@ -2899,7 +2992,7 @@
   "Bumi's Feast Lecture": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Courier of Comestibles": {
@@ -2929,7 +3022,7 @@
   "Michelangelo, the Heart": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Pawpatch Formation": {
@@ -2947,7 +3040,7 @@
   "Spider-Ham, Peter Porker": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Tough Cookie": {
@@ -3001,7 +3094,7 @@
   "Giant Opportunity": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Heroic Feast": {
@@ -3037,19 +3130,19 @@
   "Spider Food": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "The Cabbage Merchant": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Tireless Provisioner": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Bristlebud Farmer": {
@@ -3061,7 +3154,7 @@
   "Elanor Gardner": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Night of the Sweets' Revenge": {
@@ -3091,7 +3184,7 @@
   "Bosco, Just a Bear": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Galadriel, Gift-Giver": {
@@ -3109,13 +3202,13 @@
   "The Shire": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Big Spender": {
@@ -3175,7 +3268,7 @@
   "Pia Nalaar, Consul of Revival": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Mabel, Heir to Cragflame": {
@@ -3205,7 +3298,7 @@
   "Dyadrine, Synthesis Amalgam": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Toph, the First Metalbender": {
@@ -3247,7 +3340,7 @@
   "Shuri, the Black Panther": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Iron Spider, Stark Upgrade": {
@@ -3289,7 +3382,7 @@
   "Heliod's Intervention": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Meria, Scholar of Antiquity": {
@@ -3319,13 +3412,13 @@
   "Hungering Puppetbeast": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Woodwork Prodigy": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Dragonspark Reactor": {
@@ -3349,7 +3442,7 @@
   "Vision of Love": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Sokenzan Smelter": {
@@ -3385,7 +3478,7 @@
   "Goldspan Dragon": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Purphoros, Bronze-Blooded": {
@@ -3421,13 +3514,13 @@
   "Pep, Raucous Raider": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Kwia Vigorbloom": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Mindslaver": {
@@ -3499,7 +3592,7 @@
   "Well of Lost Dreams": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Belladonna Took": {
@@ -3511,7 +3604,7 @@
   "Ajani Resolute": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "West Wind Avatar": {
@@ -3541,13 +3634,13 @@
   "Ainok Bond-Kin": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Generous Pup": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Yoshimaru, Beloved Companion": {
@@ -3559,13 +3652,13 @@
   "Flickering Hound": {
    "R": {
     "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Release the Dogs": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Enduring Courage": {
@@ -3637,7 +3730,7 @@
   "Adeline, Resplendent Cathar": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Brimaz, King of Oreskos": {
@@ -3661,13 +3754,13 @@
   "Felidar Retreat": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Leonin Warleader": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Qala, Ajani's Pridemate": {
@@ -3679,7 +3772,7 @@
   "Angel of Invention": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Sally Pride, Lioness Leader": {
@@ -3697,13 +3790,13 @@
   "Undergrowth Leopard": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Greenhouse Propagator": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Mythweaver Poq": {
@@ -3721,13 +3814,13 @@
   "Ka-Zar of the Savage Land": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Swiftblade Vindicator": {
    "R": {
     "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Arcbound Shikari": {
@@ -3751,7 +3844,7 @@
   "Kutzil, Malamet Exemplar": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Drizzt Do'Urden": {
@@ -3763,7 +3856,7 @@
   "Sovereign Okinec Ahau": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Zar Ojanen, Scion of Efrava": {
@@ -3787,13 +3880,13 @@
   "Rocco, Cabaretti Caterer": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Doubling Season": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Parallel Lives": {
@@ -3805,7 +3898,7 @@
   "Exalted Sunborn": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -3817,19 +3910,19 @@
   "Caretaker's Talent": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Scalesoul Gnome": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Quintorius Kand": {
    "R": {
     "m": "★★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Arahbo, the First Fang": {
@@ -3841,7 +3934,7 @@
   "Valakut Exploration": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Bloombrute": {
@@ -3853,7 +3946,7 @@
   "Ocelot Pride": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Trail of Crumbs": {
@@ -3883,7 +3976,7 @@
   "Regal Caracal": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Annie Flash, the Veteran": {
@@ -3895,7 +3988,7 @@
   "Anointed Procession": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Innkeeper's Talent": {
@@ -3919,7 +4012,7 @@
   "Syr Ginger, the Meal Ender": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Visions of Phyrexia": {
@@ -3931,13 +4024,13 @@
   "Laelia, the Blade Reforged": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Bard Class": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Ginger, Queen of Sweets": {
@@ -3949,7 +4042,7 @@
   "Feline Sovereign": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Mushroom Watchdogs": {
@@ -3985,13 +4078,13 @@
   "Chandra, Spark Hunter": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Experimental Synthesizer": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Aether Revolt": {
@@ -4009,7 +4102,7 @@
   "Pegasus Guardian // Rescue the Foal": {
    "R": {
     "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Blood Aspirant": {
@@ -4021,7 +4114,7 @@
   "Evolution Sage": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Sword of Truth and Justice": {
@@ -4033,7 +4126,7 @@
   "Karn's Bastion": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Metastatic Evangel": {
@@ -4045,7 +4138,7 @@
   "Cankerbloom": {
    "R": {
     "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Huatli's Raptor": {
@@ -4063,7 +4156,7 @@
   "Contagion Engine": {
    "R": {
     "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "3f294fd86b98"
    }
   },
   "Grateful Apparition": {
