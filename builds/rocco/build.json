@@ -1212,16 +1212,16 @@
   },
   "Cat Collector": {
    "group": "Strong",
-   "text": "Cut 2026-11-06 (Route E). Food on entry and a Cat on the first lifegain each turn; Ocelot Pride does the Cat half from one mana.",
+   "text": "Cut 2026-11-06 (Route E). Food on entry and a Cat on the first lifegain each turn; Regal Caracal and Quintorius carry the lifegain Cats now.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Sidequest: Catch a Fish": {
    "group": "Situational",
-   "text": "Re-graded 2026-11-06. About half the library is creature or artifact (43 creatures), so most upkeeps draw a card and make a Food; the flipped land sacrifices a Food for a counter on every creature, doubled. Legal in Historic Brawl. Owned.",
+   "text": "In the list (2026-11-06, round 2). About half the library is creature or artifact, so most upkeeps draw a card and make a Food; the flipped land sacrifices a Food for a counter on every creature, doubled. Owned.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "The Battle of Bywater": {
@@ -1548,9 +1548,9 @@
   },
   "Legion Extruder": {
    "group": "Strong",
-   "text": "In the list. ETB 2 to any target (interaction); `{2}`, sac a Food: 3/3 Golem.",
+   "text": "Cut 2026-11-06 (round 2). ETB 2 to any target; {2}, sac a Food: 3/3 Golem. The smallest removal, and its Golems compete for the Foods.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "7700a19d253d"
    }
   },
   "Improvised Arsenal": {
@@ -1576,9 +1576,9 @@
   },
   "Tenured Tethermage": {
    "group": "Situational",
-   "text": "Re-graded 2026-11-06 on the owner's note: tapping two Foods (no sacrifice) is two counters, repeatable while untapped artifacts last — four each under Doubling Season. Competes with The Cabbage Merchant and Food cracks for the same untapped Foods; no evasion.",
+   "text": "In the list (2026-11-06, round 2). Tapping two Foods (no sacrifice) is two counters, repeatable while untapped artifacts last — four under Doubling Season; Never Alone would untap the Foods for another round on their turn.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Svella, Ice Shaper": {
@@ -1730,9 +1730,9 @@
   },
   "Galvanic Blast": {
    "group": "Strong",
-   "text": "In the list. `{R}`, 4 damage with three artifacts (Foods) — cheap interaction (R6).",
+   "text": "Cut 2026-11-06 (round 2). {R}, 4 damage with three artifacts at instant speed. Cut for The Wandering Emperor; the main loss is reach (it could hit a planeswalker).",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "7700a19d253d"
    }
   },
   "Heliod's Intervention": {
@@ -1772,9 +1772,9 @@
   },
   "Hungering Puppetbeast": {
    "group": "Real",
-   "text": "In the list (2026-11-06). A {1} sacrifice outlet for Foods that grows and grants hexproof (protection the list is short on); each sacrifice also fires Biotech Specialist and Krenko.",
+   "text": "In the list (2026-11-06). A {1} sacrifice outlet for Foods that grows and grants hexproof (protection the list is short on); each sacrifice also fires Biotech Specialist and Syr Ginger.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Woodwork Prodigy": {
@@ -1800,9 +1800,9 @@
   },
   "Shrapnel Blast": {
    "group": "Strong",
-   "text": "In the list. Sac a Food: 5 to any target at instant speed (R6).",
+   "text": "Cut 2026-11-06 (round 2). Sac a Food: 5 to any target at instant speed. Cut for Innkeeper's Talent.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "7700a19d253d"
    }
   },
   "Vision of Love": {
@@ -1828,9 +1828,9 @@
   },
   "Krenko, Baron of Tin Street": {
    "group": "Strong",
-   "text": "In the list. Every Food sacrificed is an artifact put into a graveyard: {R} for a hasty Goblin token (another Food under Peregrin / Tippy-Toe); {T}, sac an artifact pumps Goblins.",
+   "text": "Cut 2026-11-06 (round 2). Every Food sacrificed is a hasty Goblin for {R}. The owner's cut, for Tenured Tethermage.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "7700a19d253d"
    }
   },
   "Lithobraking": {
@@ -1996,16 +1996,16 @@
   },
   "Ajani Resolute": {
    "group": "Strong",
-   "text": "Cut 2026-11-06 (Route E). Two-mana walker whose value is the −4 Pridemate; Ocelot Pride and Regal Caracal cover the lifegain Cats.",
+   "text": "Cut 2026-11-06 (Route E). Two-mana walker whose value is the −4 Pridemate; Regal Caracal covers the lifegain Cats.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "West Wind Avatar": {
    "group": "Situational",
-   "text": "Re-graded 2026-11-06. Disappear draws every end step a Food was cracked — repeatable card advantage, the thin axis — and enter/attack sacrifices a token for 3 life. Seven mana, cheaper under Sami's affinity. Owned.",
+   "text": "In the list (2026-11-06, round 2). Disappear draws every end step a Food was cracked — repeatable card advantage — and enter/attack sacrifices a token for 3 life. Seven mana, cheaper under Sami. Owned.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Shortcut to Mushrooms": {
@@ -2087,9 +2087,9 @@
   },
   "Jiang Yanggu, Never Alone": {
    "group": "Real",
-   "text": "Mowu (a Dog token) and untaps all tokens at end step.",
+   "text": "Re-graded 2026-11-06: the owner's next add. Mowu is a 3/3 Dog token (a Food under Peregrin / Tippy-Toe), and every token untaps at our end step — Foods tapped for The Cabbage Merchant, Night of the Sweets' Revenge or Tethermage work again on their turn; attacking tokens untap like vigilance.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "7700a19d253d"
    }
   },
   "Mowu, Loyal Companion": {
@@ -2227,9 +2227,9 @@
   },
   "Mythweaver Poq": {
    "group": "Situational",
-   "text": "Re-graded 2026-11-06. Alchemy: once a turn each nontoken land that enters gets a conjured duplicate — ramp and a second landfall for Evolution Sage, Tireless Provisioner, Felidar Retreat; Elanor's basics count. A Cat sized by lands.",
+   "text": "In the list (2026-11-06, round 2). Alchemy: once a turn each nontoken land that enters gets a conjured duplicate — ramp and a second landfall for Evolution Sage, Tireless Provisioner, Felidar Retreat. Took the 37th land's slot.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Keeper of Fables": {
@@ -2367,9 +2367,9 @@
   },
   "Quintorius Kand": {
    "group": "Engine",
-   "text": "In the list (2026-11-06). Every spell cast from exile drains 2 and gains 2 (a lifegain trigger for Tippy-Toe, Heroic Feast, Ocelot Pride); +1 makes 3/2 Spirits.",
+   "text": "In the list (2026-11-06). Every spell cast from exile drains 2 and gains 2 (a lifegain trigger for Tippy-Toe, Heroic Feast, Haliya); +1 makes 3/2 Spirits.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Arahbo, the First Fang": {
@@ -2395,9 +2395,9 @@
   },
   "Ocelot Pride": {
    "group": "Strong",
-   "text": "In the list (2026-11-06). Lifegain → a Cat each end step; with the city's blessing (ten permanents, easy with Foods) it copies every token that entered this turn — the Foods too.",
+   "text": "Cut 2026-11-06 (round 2). Lifegain → a Cat each end step, copying tokens once the city's blessing lands; the owner's cut, for Mythweaver Poq.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Trail of Crumbs": {
@@ -2416,9 +2416,9 @@
   },
   "The Wandering Emperor": {
    "group": "Strong",
-   "text": "Re-graded 2026-11-06. Flash interaction (exile a tapped attacker) on a walker whose −1 is a token every turn — a Food under Peregrin / Tippy-Toe — and whose +1 counter doubles under Doubling Season. Owned.",
+   "text": "In the list (2026-11-06, round 2). Flash removal (exile a tapped attacker) on a walker whose −1 is a token each turn — a Food under Peregrin / Tippy-Toe — and whose +1 counter doubles under Doubling Season. Owned.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Minsc & Boo, Timeless Heroes": {
@@ -2451,9 +2451,9 @@
   },
   "Innkeeper's Talent": {
    "group": "Strong",
-   "text": "Re-graded 2026-11-06. A counter every combat for 2; level 2 gives every countered permanent ward 1 (protection the list is short on); level 3 doubles counters again on top of Doubling Season. The proliferate package makes it better.",
+   "text": "In the list (2026-11-06, round 2). A counter every combat for 2; level 2 gives every countered permanent ward 1; level 3 doubles counters again on top of Doubling Season.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "7700a19d253d"
    }
   },
   "Elder Gargaroth": {
@@ -2853,6 +2853,100 @@
     "Wicked Wolf",
     "Woodwork Prodigy // Soul Tether",
     "Yoshimaru, Beloved Companion"
+   ],
+   "7700a19d253d": [
+    "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+    "Ajani, Strength of the Pride",
+    "Bard Class",
+    "Battlefield Forge",
+    "Belladonna Took",
+    "Bilbo, Fellow Conspirator",
+    "Biotech Specialist",
+    "Bosco, Just a Bear",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Brimaz, King of Oreskos",
+    "Brushland",
+    "Bumi's Feast Lecture",
+    "Cabaretti Courtyard",
+    "Caretaker's Talent",
+    "Castle Doom",
+    "Chandra, Spark Hunter",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Contagion Engine",
+    "Copperline Gorge",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Doubling Season",
+    "Dragonspark Reactor",
+    "Elanor Gardner",
+    "Evolution Sage",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Feline Sovereign",
+    "Food Coma",
+    "Forest",
+    "Generous Pup",
+    "Giant Opportunity",
+    "Gilded Goose",
+    "Haliya, Guided by Light",
+    "Heroic Feast",
+    "Hobbit's Sting",
+    "Hungering Puppetbeast",
+    "Innkeeper's Talent",
+    "Inspiring Vantage",
+    "Jetmir, Nexus of Revels",
+    "Jinnie Fay, Jetmir's Second",
+    "Karn's Bastion",
+    "Karplusan Forest",
+    "Kutzil, Malamet Exemplar",
+    "Lita, Little Orphan Amphibian",
+    "Lucky the Pizza Dog",
+    "Mana Confluence",
+    "Michelangelo, the Heart",
+    "Mirrex",
+    "Mondrak, Glory Dominus",
+    "Mountain",
+    "Mutagen Man, Living Ooze",
+    "Mythweaver Poq",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Night of the Sweets' Revenge",
+    "Pawpatch Formation",
+    "Peregrin Took",
+    "Pia Nalaar, Consul of Revival",
+    "Plains",
+    "Prismatic Vista",
+    "Quintorius Kand",
+    "Ragost, Deft Gastronaut",
+    "Razorverge Thicket",
+    "Regal Caracal",
+    "Rin and Seri, Inseparable",
+    "Rocco, Street Chef",
+    "Rootbound Crag",
+    "Rosie Cotton of South Lane",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Sam, Loyal Attendant",
+    "Sami, Wildcat Captain",
+    "Samwise Gamgee",
+    "Scalesoul Gnome",
+    "Sidequest: Catch a Fish // Cooking Campsite",
+    "Stew the Coneys",
+    "Stomping Ground",
+    "Sunbaked Canyon",
+    "Sunpetal Grove",
+    "Syr Ginger, the Meal Ender",
+    "Teething Wurmlet",
+    "Temple Garden",
+    "Tenured Tethermage",
+    "The Cabbage Merchant",
+    "The Shire",
+    "The Wandering Emperor",
+    "Tippy-Toe, Terrific Partner",
+    "Tireless Provisioner",
+    "West Wind Avatar",
+    "Wicked Wolf",
+    "Woodwork Prodigy // Soul Tether",
+    "Yoshimaru, Beloved Companion"
    ]
   }
  },
@@ -2938,7 +3032,7 @@
   "Sidequest: Catch a Fish": {
    "R": {
     "m": "★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "The Battle of Bywater": {
@@ -3220,7 +3314,7 @@
   "Legion Extruder": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "7700a19d253d"
    }
   },
   "Improvised Arsenal": {
@@ -3244,7 +3338,7 @@
   "Tenured Tethermage": {
    "R": {
     "m": "★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Svella, Ice Shaper": {
@@ -3376,7 +3470,7 @@
   "Galvanic Blast": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "7700a19d253d"
    }
   },
   "Heliod's Intervention": {
@@ -3436,7 +3530,7 @@
   "Shrapnel Blast": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "7700a19d253d"
    }
   },
   "Vision of Love": {
@@ -3460,7 +3554,7 @@
   "Krenko, Baron of Tin Street": {
    "R": {
     "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "graded_at": "7700a19d253d"
    }
   },
   "Lithobraking": {
@@ -3610,7 +3704,7 @@
   "West Wind Avatar": {
    "R": {
     "m": "★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Shortcut to Mushrooms": {
@@ -3681,8 +3775,8 @@
   },
   "Jiang Yanggu, Never Alone": {
    "R": {
-    "m": "★",
-    "graded_at": "6c91e4d3961c"
+    "m": "★★",
+    "graded_at": "7700a19d253d"
    }
   },
   "Mowu, Loyal Companion": {
@@ -3802,7 +3896,7 @@
   "Mythweaver Poq": {
    "R": {
     "m": "★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Keeper of Fables": {
@@ -3946,7 +4040,7 @@
   "Ocelot Pride": {
    "R": {
     "m": "★★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Trail of Crumbs": {
@@ -3964,7 +4058,7 @@
   "The Wandering Emperor": {
    "R": {
     "m": "★★★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Minsc & Boo, Timeless Heroes": {
@@ -3994,7 +4088,7 @@
   "Innkeeper's Talent": {
    "R": {
     "m": "★★★",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "7700a19d253d"
    }
   },
   "Elder Gargaroth": {

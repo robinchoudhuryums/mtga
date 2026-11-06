@@ -53,7 +53,7 @@ At the beginning of combat on your turn, put a +1/+1 counter on target creature 
 {G}: Level 2
 Permanents you control with counters on them have ward {1}.
 {3}{G}: Level 3
-If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.",G,Class; counters; ward; protection,BLB,180,Rare,83; 94,,5.5,seed
+If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.",G,Class; counters; ward; protection,BLB,180,Rare,83; 94; 97,,5.5,seed
 Tender Wildguide,Creature — Possum Druid,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 {T}: Add one mana of any color.
 {T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,4.0,seed
@@ -366,6 +366,8 @@ When Fblthp enters, search your library for up to X basic land cards with differ
 Ghalta the Unstoppable,Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
 Trample
 Other creatures you control have trample.",G,Elder; Dinosaur; cost-reduction; trample; evasion,FRA,260,Uncommon,50,,2.5,seed
+"Jiang Yanggu, Never Alone",Legendary Creature — Human Druid,"When Jiang Yanggu enters, create Mowu, a legendary 3/3 green Dog creature token.
+At the beginning of your end step, untap all tokens you control.",G,Human; Druid; tokens; etb,FRA,261,Uncommon,97,,2.5,seed
 Primal Witchstalker,Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, mill four cards. When you do, return target land card from your graveyard to the battlefield tapped. (To mill four cards, put the top four cards of your library into your graveyard.)",B/G,Wolf; reanimator; graveyard; mill; etb; menace; evasion,FRA,144,Uncommon,83a,,5.0,seed
 "Proft, Consulting Detective",Legendary Creature — Human Detective,"Whenever you scry or surveil, you may pay {2}. If you do, put a +1/+1 counter on Proft and draw a card. (Draw after you scry or surveil.)",U,Human; Detective; counters; card draw; scry,FRA,218,Uncommon,96,,5.5,seed
@@ -1211,6 +1213,8 @@ Deeproot Waters,Enchantment,"Whenever you cast a Merfolk spell, create a 1/1 blu
 "Valgavoth, the Lifeline",Legendary Creature — Insect Angel,"Flying
 Whenever you gain life, creature cards in your hand and graveyard perpetually get +1/+1.
 As long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",W,Insect; Angel; counters; graveyard; lifegain; pump; flying; evasion,YFRA,3,Rare,95,,6.5,seed
+Mythweaver Poq,Legendary Creature — Cat Shaman,"Mythweaver Poq's power and toughness are each equal to the number of lands you control.
+Whenever one or more nontoken lands enter under your control, for each of them, conjure a duplicate of it onto the battlefield. This ability triggers only once each turn.",G,Cat; Shaman; conjure,YLCI,19,Mythic,97,,5.0,seed
 Mycoid Resurrection,Sorcery,"Fathomless descent — Each creature card in your graveyard perpetually gets +X/+X, where X is the number of permanent cards in your graveyard. Then return a creature card from your graveyard to the battlefield.",B/G,reanimator; graveyard; pump; fathomless descent,YLCI,26,Rare,75-historic-brawl,Thranduil package 2026-11-05,5.5,seed
 "Oglor, Devoted Assistant",Legendary Creature — Homunculus,"At the beginning of your upkeep, look at the top two cards of your library, then put one of them into your graveyard.
 Whenever a creature card is put into your graveyard from your library or hand, it perpetually gains ""When this card leaves your graveyard, create a tapped 2/2 black Zombie creature token.""",U,Homunculus; graveyard; tokens; selection,YMID,20,Mythic,91,,5.0,seed

@@ -252,7 +252,6 @@ Klaw, Sonic Subjugator
 Kona, Rescue Beastie
 Koya, Death from Above
 Kraven, Proud Predator
-Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
 Kumena, Tyrant of Orazca
@@ -299,6 +298,7 @@ Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Mysterio, Master of Illusion
+Mythweaver Poq
 Namazu Trader
 Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
