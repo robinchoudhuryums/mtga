@@ -1219,9 +1219,9 @@
   },
   "Sidequest: Catch a Fish": {
    "group": "Situational",
-   "text": "Upkeep card selection that flips to a land; pool-absent (unverified).",
+   "text": "Re-graded 2026-11-06. About half the library is creature or artifact (43 creatures), so most upkeeps draw a card and make a Food; the flipped land sacrifices a Food for a counter on every creature, doubled. Legal in Historic Brawl. Owned.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "The Battle of Bywater": {
@@ -1576,9 +1576,9 @@
   },
   "Tenured Tethermage": {
    "group": "Situational",
-   "text": "Tap two artifacts: two counters.",
+   "text": "Re-graded 2026-11-06 on the owner's note: tapping two Foods (no sacrifice) is two counters, repeatable while untapped artifacts last — four each under Doubling Season. Competes with The Cabbage Merchant and Food cracks for the same untapped Foods; no evasion.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Svella, Ice Shaper": {
@@ -2003,9 +2003,9 @@
   },
   "West Wind Avatar": {
    "group": "Situational",
-   "text": "A 7-mana Cat: sac a Food for 3 life, then draws (disappear).",
+   "text": "Re-graded 2026-11-06. Disappear draws every end step a Food was cracked — repeatable card advantage, the thin axis — and enter/attack sacrifices a token for 3 life. Seven mana, cheaper under Sami's affinity. Owned.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Shortcut to Mushrooms": {
@@ -2227,9 +2227,9 @@
   },
   "Mythweaver Poq": {
    "group": "Situational",
-   "text": "Alchemy: duplicates each land drop; a Cat.",
+   "text": "Re-graded 2026-11-06. Alchemy: once a turn each nontoken land that enters gets a conjured duplicate — ramp and a second landfall for Evolution Sage, Tireless Provisioner, Felidar Retreat; Elanor's basics count. A Cat sized by lands.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Keeper of Fables": {
@@ -2416,9 +2416,9 @@
   },
   "The Wandering Emperor": {
    "group": "Strong",
-   "text": "Pool sweep 2026-11-05. Flash interaction: exile a tapped attacker, make 2/2s, or counter + first strike at instant speed.",
+   "text": "Re-graded 2026-11-06. Flash interaction (exile a tapped attacker) on a walker whose −1 is a token every turn — a Food under Peregrin / Tippy-Toe — and whose +1 counter doubles under Doubling Season. Owned.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Minsc & Boo, Timeless Heroes": {
@@ -2451,9 +2451,9 @@
   },
   "Innkeeper's Talent": {
    "group": "Strong",
-   "text": "Pool sweep 2026-11-05. A counter every combat for 2; level 2 gives countered permanents ward 1, level 3 doubles every counter.",
+   "text": "Re-graded 2026-11-06. A counter every combat for 2; level 2 gives every countered permanent ward 1 (protection the list is short on); level 3 doubles counters again on top of Doubling Season. The proliferate package makes it better.",
    "graded_at": {
-    "97": "6c91e4d3961c"
+    "97": "3f294fd86b98"
    }
   },
   "Elder Gargaroth": {
@@ -2937,8 +2937,8 @@
   },
   "Sidequest: Catch a Fish": {
    "R": {
-    "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "m": "★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "The Battle of Bywater": {
@@ -3243,8 +3243,8 @@
   },
   "Tenured Tethermage": {
    "R": {
-    "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "m": "★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "Svella, Ice Shaper": {
@@ -3609,8 +3609,8 @@
   },
   "West Wind Avatar": {
    "R": {
-    "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "m": "★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "Shortcut to Mushrooms": {
@@ -3801,8 +3801,8 @@
   },
   "Mythweaver Poq": {
    "R": {
-    "m": "◇",
-    "graded_at": "6c91e4d3961c"
+    "m": "★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "Keeper of Fables": {
@@ -3963,8 +3963,8 @@
   },
   "The Wandering Emperor": {
    "R": {
-    "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "m": "★★★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "Minsc & Boo, Timeless Heroes": {
@@ -3993,8 +3993,8 @@
   },
   "Innkeeper's Talent": {
    "R": {
-    "m": "★★",
-    "graded_at": "6c91e4d3961c"
+    "m": "★★★",
+    "graded_at": "3f294fd86b98"
    }
   },
   "Elder Gargaroth": {
