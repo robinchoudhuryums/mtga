@@ -32,8 +32,10 @@
 #: notes: printed avg MV 3.2). Instant-speed answers are thin: Hobbit's Sting, Stew the Coneys,
 #: notes: Pawpatch Formation and The Wandering Emperor (flash).
 #: notes: The bench lives on the Builder board `builds/rocco` with a reason and verdict per card.
-#: notes: Manabase: 36 lands (4 Plains, 4 Forest, 3 Mountain); Mythweaver Poq copies a land each turn and
-#: notes: Sidequest flips into a Plains-type source, so the 37th land became a spell.
+#: notes: Manabase: 36 lands (4 Plains, 5 Forest, 2 Mountain). 2026-11-06: −1 Mountain +1 Forest (green carries
+#: notes: 42 pips to red's 14) and −Mirrex +Reflecting Pool (Mirrex is colourless after its first turn); W/R/G
+#: notes: sources 20/19/20 → 21/19/22, cards below 90% on curve 53 → 43. Mythweaver Poq copies a land each
+#: notes: turn and Sidequest flips into a land, so the 37th land became a spell.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -119,7 +121,7 @@
 1 Command Tower (FRC) 22
 1 The Shire (LTR) 260
 1 Castle Doom (MSH) 263
-1 Mirrex (ONE) 254
+1 Reflecting Pool (FRC) 23
 1 Cabaretti Courtyard (SNC) 249
 1 Sacred Foundry (EOE) 256
 1 Stomping Ground (EOE) 258
@@ -141,6 +143,6 @@
 1 Fabled Passage (BLB) 252
 1 Mana Confluence (EOS) 25
 4 Plains (FRA) 281
-4 Forest (FRA) 289
+5 Forest (FRA) 289
 1 Karn's Bastion (WAR) 248
-3 Mountain (FRA) 287
+2 Mountain (FRA) 287
