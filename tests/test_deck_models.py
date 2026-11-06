@@ -1813,6 +1813,23 @@ class TestTypedBasicFetches:
         assert hide < wilds
 
 
+class TestEntryTurnOnlyColour:
+    """Mirrex makes any colour only the turn it enters; a deck count must not treat it as a
+    five-colour source, and the notes must still say why it is missing (2026-11-06)."""
+
+    MIRREX = ("{T}: Add {C}.\n{T}: Add one mana of any color. Activate only if this land "
+              "entered this turn.\n{3}, {T}: Create a 1/1 colorless Phyrexian Mite artifact "
+              "creature token with toxic 1.")
+
+    def test_mirrex_is_labelled_and_not_counted(self):
+        cd = {"mirrex": {"name": "Mirrex", "type": "Land", "text": self.MIRREX, "colors": ""}}
+        cards = [(1, "Mirrex", "", ""), (5, "Plains", "", "")]
+        src, nl, _t, notes = deck.deck_source_profile(cards, {}, {}, cd)
+        assert nl == 6
+        assert src["W"] == 5 and src["G"] == 0
+        assert (1, "Mirrex") in notes["entry"] and not notes["any"]
+
+
 class TestFetchPoolPressure:
     """A basic fetch is priced on its FIRST search; deck 89 ran 11 basic fetches against 10
     basics with a commander that replays them, and nothing said the basics run out."""

@@ -720,9 +720,8 @@ is protecting.
   into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
   regressions so a swap that worsens the deck self-catches — a SOFT guard, since an
   intentional trade is fine. [G-34]
-- **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
-  strict pips look thin against the deck's actual sources (`△ Pip-intensive`) — the
-  "wants UU but is really a U-splash" problem. **Sources are read
+- **`deck.py mana` also lints color SOURCES, not just pip demand** — `△ Pip-intensive` flags
+  strict pips thin against the deck's sources. **Sources are read
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
   `deck.deck_source_profile`, behind every source figure (`mana`, `consistency`, the
   recommenders, the rationale audit).**
@@ -732,8 +731,8 @@ is protecting.
   Plains, or Island") only for those types (`fetch_types`); residual: a
   NONBASIC typed fetch ("a Forest or Island card") counts as nothing. **`free` MEANT FOUR THINGS
   until 2026-09-04**:
-  choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
-  transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  choose-ONCE-on-entry sets `chosen` (counted for ACCESS, denied BREADTH);
+  transform-gated, GRANTED and extra-tap clauses are out; an entry-turn-only colour (Mirrex) is `entry`, never counted (2026-11-06). **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium): `fast` and `check` (a basic gate, floor 12)
   earn the shockland premium; a SLOWLAND and a board state stay conservative; a fetch with
   no mana of its own (Evolving Wilds) reads tapped (2026-11-02). **A TYPE-NAMED gate ('a Plains or an Island') is read

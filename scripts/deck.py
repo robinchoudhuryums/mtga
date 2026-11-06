@@ -7276,7 +7276,8 @@ _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
                  ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of that it can find)"),
                  ("restricted", "spend-only mana (NOT counted — read the restriction)"),
-                 ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
+                 ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"),
+                 ("entry", "colour only on the turn it enters (NOT counted — it makes {C} after that)"))
 
 
 def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=None):
@@ -7375,6 +7376,10 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
                 notes["any-cost"].append((q, n))
             elif prod["restricted"]:
                 notes["restricted"].append((q, n))
+            elif prod.get("entry"):
+                notes["entry"].append((q, n))
+        elif prod.get("entry"):
+            notes["entry"].append((q, n))
         elif prod["restricted"]:
             notes["restricted"].append((q, n))
         for col in counted:

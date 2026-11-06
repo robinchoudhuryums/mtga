@@ -3130,6 +3130,20 @@ taps for mana itself (the Landscapes, Promising Vein, Urza's Cave) stays None.
 - Hobbit Hole's 11.5 in deck 40, filed as an untapped-dual score, was fixing 8.0 + synergy
   2.0 + scarce-colour 1.5 all along. The real defect was the missing marker.
 
+
+**Entry-turn-only colour (2026-11-06).** Mirrex reads "{T}: Add one mana of any color. Activate
+only if this land entered this turn." — any colour on the turn it is played, {C} for the rest
+of the game. `land_production` filed it `free`, so it counted as a five-colour source in every
+source figure; found checking deck 97's manabase, where it inflated W/R/G by one each. It now
+lands in an `entry` bucket that `deck_source_profile` does not count and labels "colour only on
+the turn it enters". The lookahead in `_ENTRY_TURN_ONLY_RE` is load-bearing: the MSH cycle
+("…entered this turn OR if you control a basic land") is a standing gate G-87 prices, and must
+stay free and gated. Roster diff: 1 of 135 decks (97, the only Mirrex deck), 0 tier floors.
+**Spire of Industry was left `free` deliberately**: its "if you control an artifact" is a
+deck-composition fact, no roster deck runs it, and moving it to `board` would zero it in the
+artifact decks that would play it. Residual: `suggest --lands` still credits it in a deck with
+no artifacts.
+
 ## [G-36] `deck.py consistency <id>` is the PROBABILITY layer `mana` lacks
 
 **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
