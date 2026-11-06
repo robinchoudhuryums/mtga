@@ -12,7 +12,7 @@
 #: archetype: Quintorius Kand and Scalesoul Gnome, and Bard Class turns legendary casts into more exiled cards. Each
 #: archetype: Food then pays three ways: Biotech Specialist (2 damage per artifact sacrificed), Haliya and Teething
 #: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco, Elanor Gardner,
-#: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Contagion Engine and Karn's Bastion. Cats
+#: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Karn's Bastion and Innkeeper's Talent. Cats
 #: archetype: and Dogs are the body layer: Brimaz, Regal Caracal, Feline Sovereign, the Ajanis and Jetmir go wide,
 #: archetype: Generous Pup and Yoshimaru turn Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
 #: archetype: the tribes.
@@ -24,12 +24,12 @@
 #: notes: proliferate layer, with Sword of Truth and Justice dropped for a 37th land.
 #: notes: 2026-11-06 (round 2): −Galvanic Blast, −Shrapnel Blast, −Krenko, −Ocelot Pride, −Legion
 #: notes: Extruder, −1 Plains; +The Wandering Emperor, +Innkeeper's Talent, +Tenured Tethermage, +Mythweaver
-#: notes: Poq, +Sidequest: Catch a Fish, +West Wind Avatar. OPEN: Jiang Yanggu, Never Alone is chosen as
-#: notes: the next add; its cut is the owner's call between Yoshimaru (first pick), Giant Opportunity,
-#: notes: Generous Pup and Food Coma — all measured as keeping the A floor.
+#: notes: Poq, +Sidequest: Catch a Fish, +West Wind Avatar; then −Contagion Engine, +Jiang Yanggu, Never Alone
+#: notes: (Mowu, and every token untaps at end step). Proliferate now rests on Evolution Sage and Karn's
+#: notes: Bastion, with Innkeeper's Talent level 3 doubling counters.
 #: notes: TIER UNSET — the letter is the owner's call. Measured floor after round 2: A (interaction 13,
-#: notes: card advantage 8 against the 100-card A line of 12 and 19; protection 6; board power 111;
-#: notes: printed avg MV 3.23). Instant-speed answers are thin: Hobbit's Sting, Stew the Coneys,
+#: notes: card advantage 8 against the 100-card A line of 12 and 19; protection 6; board power 113;
+#: notes: printed avg MV 3.2). Instant-speed answers are thin: Hobbit's Sting, Stew the Coneys,
 #: notes: Pawpatch Formation and The Wandering Emperor (flash).
 #: notes: The bench lives on the Builder board `builds/rocco` with a reason and verdict per card.
 #: notes: Manabase: 36 lands (4 Plains, 4 Forest, 3 Mountain); Mythweaver Poq copies a land each turn and
@@ -91,7 +91,6 @@
 1 Yoshimaru, Beloved Companion (FRA) 209
 1 Michelangelo, the Heart (TMC) 5
 1 Kutzil, Malamet Exemplar (LCI) 232
-1 Contagion Engine (OTP) 61
 1 Evolution Sage (WAR) 159
 1 Innkeeper's Talent (BLB) 180
 
@@ -104,6 +103,7 @@
 1 Feline Sovereign (M21) 180
 1 Jetmir, Nexus of Revels (SNC) 193
 1 Ajani, Nacatl Pariah // Ajani, Nacatl Avenger (MH3) 237
+1 Jiang Yanggu, Never Alone (FRA) 261
 
 # Interaction
 1 Hobbit's Sting (LTR) 20

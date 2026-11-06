@@ -2087,9 +2087,9 @@
   },
   "Jiang Yanggu, Never Alone": {
    "group": "Real",
-   "text": "Re-graded 2026-11-06: the owner's next add. Mowu is a 3/3 Dog token (a Food under Peregrin / Tippy-Toe), and every token untaps at our end step — Foods tapped for The Cabbage Merchant, Night of the Sweets' Revenge or Tethermage work again on their turn; attacking tokens untap like vigilance.",
+   "text": "In the list (2026-11-06, for Contagion Engine). Mowu is a 3/3 Dog token (a Food under Peregrin / Tippy-Toe), and every token untaps at our end step — Foods tapped for The Cabbage Merchant, Night of the Sweets' Revenge or Tethermage work again on their turn; attacking tokens untap like vigilance.",
    "graded_at": {
-    "97": "7700a19d253d"
+    "97": "f89976d5df29"
    }
   },
   "Mowu, Loyal Companion": {
@@ -2640,9 +2640,9 @@
   },
   "Contagion Engine": {
    "group": "Situational",
-   "text": "In the list (2026-11-06, the owner's pick). Six mana: −1/−1 on each of their creatures (kills tokens) and proliferate twice a turn.",
+   "text": "Cut 2026-11-06 for Jiang Yanggu, Never Alone. Six mana: −1/−1 on each of one opponent's creatures, then {4}, {T}: proliferate twice. Evolution Sage, Karn's Bastion and Innkeeper's Talent cover the counters.",
    "graded_at": {
-    "97": "3f294fd86b98"
+    "97": "f89976d5df29"
    }
   },
   "Grateful Apparition": {
@@ -2895,6 +2895,100 @@
     "Innkeeper's Talent",
     "Inspiring Vantage",
     "Jetmir, Nexus of Revels",
+    "Jinnie Fay, Jetmir's Second",
+    "Karn's Bastion",
+    "Karplusan Forest",
+    "Kutzil, Malamet Exemplar",
+    "Lita, Little Orphan Amphibian",
+    "Lucky the Pizza Dog",
+    "Mana Confluence",
+    "Michelangelo, the Heart",
+    "Mirrex",
+    "Mondrak, Glory Dominus",
+    "Mountain",
+    "Mutagen Man, Living Ooze",
+    "Mythweaver Poq",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Night of the Sweets' Revenge",
+    "Pawpatch Formation",
+    "Peregrin Took",
+    "Pia Nalaar, Consul of Revival",
+    "Plains",
+    "Prismatic Vista",
+    "Quintorius Kand",
+    "Ragost, Deft Gastronaut",
+    "Razorverge Thicket",
+    "Regal Caracal",
+    "Rin and Seri, Inseparable",
+    "Rocco, Street Chef",
+    "Rootbound Crag",
+    "Rosie Cotton of South Lane",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Sam, Loyal Attendant",
+    "Sami, Wildcat Captain",
+    "Samwise Gamgee",
+    "Scalesoul Gnome",
+    "Sidequest: Catch a Fish // Cooking Campsite",
+    "Stew the Coneys",
+    "Stomping Ground",
+    "Sunbaked Canyon",
+    "Sunpetal Grove",
+    "Syr Ginger, the Meal Ender",
+    "Teething Wurmlet",
+    "Temple Garden",
+    "Tenured Tethermage",
+    "The Cabbage Merchant",
+    "The Shire",
+    "The Wandering Emperor",
+    "Tippy-Toe, Terrific Partner",
+    "Tireless Provisioner",
+    "West Wind Avatar",
+    "Wicked Wolf",
+    "Woodwork Prodigy // Soul Tether",
+    "Yoshimaru, Beloved Companion"
+   ],
+   "f89976d5df29": [
+    "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+    "Ajani, Strength of the Pride",
+    "Bard Class",
+    "Battlefield Forge",
+    "Belladonna Took",
+    "Bilbo, Fellow Conspirator",
+    "Biotech Specialist",
+    "Bosco, Just a Bear",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Brimaz, King of Oreskos",
+    "Brushland",
+    "Bumi's Feast Lecture",
+    "Cabaretti Courtyard",
+    "Caretaker's Talent",
+    "Castle Doom",
+    "Chandra, Spark Hunter",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Copperline Gorge",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Doubling Season",
+    "Dragonspark Reactor",
+    "Elanor Gardner",
+    "Evolution Sage",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Feline Sovereign",
+    "Food Coma",
+    "Forest",
+    "Generous Pup",
+    "Giant Opportunity",
+    "Gilded Goose",
+    "Haliya, Guided by Light",
+    "Heroic Feast",
+    "Hobbit's Sting",
+    "Hungering Puppetbeast",
+    "Innkeeper's Talent",
+    "Inspiring Vantage",
+    "Jetmir, Nexus of Revels",
+    "Jiang Yanggu, Never Alone",
     "Jinnie Fay, Jetmir's Second",
     "Karn's Bastion",
     "Karplusan Forest",
@@ -3776,7 +3870,7 @@
   "Jiang Yanggu, Never Alone": {
    "R": {
     "m": "★★",
-    "graded_at": "7700a19d253d"
+    "graded_at": "f89976d5df29"
    }
   },
   "Mowu, Loyal Companion": {
@@ -4250,7 +4344,7 @@
   "Contagion Engine": {
    "R": {
     "m": "◇",
-    "graded_at": "3f294fd86b98"
+    "graded_at": "f89976d5df29"
    }
   },
   "Grateful Apparition": {
