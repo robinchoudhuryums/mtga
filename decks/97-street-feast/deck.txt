@@ -6,7 +6,9 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), NAYA FOOD around Rocco, Street Chef:
 #: archetype: each end step every player exiles their top card and may play it, and every play from exile — by
 #: archetype: ANY player — is our +1/+1 counter and our Food. The engine is what we do with the Foods: Peregrin
-#: archetype: Took and Tippy-Toe add a Food to every token we create, Mondrak and Doubling Season double them, Pia
+#: archetype: Took and Tippy-Toe add a Food to every token we create, Mondrak and Doubling Season double them,
+#: archetype: Ghired, Mirror of the Wilds lets every nontoken creature tap to copy a token that entered this turn
+#: archetype: (each copy is a new token, so Peregrin and Doubling Season apply again), Pia
 #: archetype: Nalaar, Consul of Revival, makes a Thopter for each play from exile; Sam, Loyal Attendant and Mutagen
 #: archetype: Man each take {1} off a Food crack, so with both a crack is free. The exile layer pays again through
 #: archetype: Quintorius Kand and Scalesoul Gnome, and Bard Class turns legendary casts into more exiled cards. Each
@@ -14,7 +16,7 @@
 #: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco, Elanor Gardner,
 #: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Karn's Bastion and Innkeeper's Talent. Cats
 #: archetype: and Dogs are the body layer: Brimaz, Regal Caracal, Feline Sovereign, the Ajanis and Jetmir go wide,
-#: archetype: Generous Pup and Yoshimaru turn Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
+#: archetype: Generous Pup turns Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
 #: archetype: the tribes.
 #: archetype: DISTINCT from deck 21 (Standard WBG Food aristocrats) and deck 88 (Naya Historic Brawl, no Food).
 #: protect: Rocco, Street Chef; Sam, Loyal Attendant; Mutagen Man, Living Ooze; Peregrin Took; Tippy-Toe, Terrific Partner; Mondrak, Glory Dominus; Pia Nalaar, Consul of Revival; Haliya, Guided by Light; Teething Wurmlet; Biotech Specialist
@@ -43,6 +45,9 @@
 #: notes: (noise ±0.8). A 12-swap version adding Temple of Triumph and Terramorphic Expanse measured 52.5%,
 #: notes: so the kept rares (The Shire, Karn's Bastion, Sunbaked Canyon, Prismatic Vista, Inspiring Vantage,
 #: notes: Branchloft Pathway) are where further cuts start costing tempo.
+#: notes: 2026-11-07: Yoshimaru was CUT for Ghired, Mirror of the Wilds (owned). The counter layer keeps
+#: notes: Doubling Season, Innkeeper's Talent and Evolution Sage; Ghired's {R}{G}{W} casts on turn 3 68% of the
+#: notes: time. Next cuts if a slot is needed: West Wind Avatar (the 7-drop), then Feline Sovereign.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -62,6 +67,7 @@
 1 Quintorius Kand (LCI) 238
 1 Scalesoul Gnome (YLCI) 28
 1 Bard Class (AFR) 217
+1 Ghired, Mirror of the Wilds (OTJ) 205
 
 # Food makers and payoffs
 1 Samwise Gamgee (LTR) 222
@@ -97,7 +103,6 @@
 
 # Counters and proliferate
 1 Generous Pup (J25) 4
-1 Yoshimaru, Beloved Companion (FRA) 209
 1 Michelangelo, the Heart (TMC) 5
 1 Kutzil, Malamet Exemplar (LCI) 232
 1 Evolution Sage (WAR) 159
