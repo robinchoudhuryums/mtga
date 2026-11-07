@@ -688,6 +688,23 @@ def cmd_list(_args):
     return 0
 
 
+@_file_memo("POOL_CSV")
+def load_pool_rows():
+    """card-pool.csv's rows, in file order, as READ-ONLY mappings (empty if absent).
+
+    `suggest_scored` re-parsed the whole 16k-row pool on every call, and a roster pass
+    calls it once per deck: the dashboard's craft table read 2.7 million CSV rows to
+    rebuild one page, and every `swap --apply` paid a full read for its ledger row
+    (2026-11-07). Memoized on the file like the other reference tables. Each row is a
+    `MappingProxyType`, so a caller that tries to mutate a shared row raises instead of
+    silently changing what the next deck reads (G-71); copy with `dict(r)` to edit."""
+    import types
+    if not os.path.exists(POOL_CSV):
+        return ()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        return tuple(types.MappingProxyType(r) for r in csv.DictReader(fh))
+
+
 # --- wildcard (crafting) planning ------------------------------------------- #
 @_file_memo("POOL_CSV")
 def load_rarities():
@@ -1420,6 +1437,18 @@ def parse_pips(cost):
     ``{2}{B} // {6}{B}{B}`` read as wanting three black pips when the door you cast
     wants one.
     """
+    strict, hybrid = _parse_pips_cached(cost or "")
+    # Fresh containers per call: callers may mutate the dict / list they are handed,
+    # and the cache below must stay the pure function of `cost` it claims to be (G-71).
+    return dict(strict), list(hybrid)
+
+
+@functools.lru_cache(maxsize=None)
+def _parse_pips_cached(cost):
+    """`parse_pips`' work, keyed on the cost string and returned in IMMUTABLE form.
+    A pure function of `cost` (regex over the front face), so caching it changes no
+    answer; it exists because a roster-wide craft table asks it ~2.3 million times for
+    a few thousand distinct costs — ~15 s of a dashboard rebuild (2026-11-07)."""
     strict, hybrid = {}, []
     for sym in SYMBOL_RE.findall(front_face_cost(cost)):
         colors = set(ch for ch in sym.upper() if ch in "WUBRG")
@@ -1429,7 +1458,7 @@ def parse_pips(cost):
         elif len(colors) == 1:
             (c,) = colors
             strict[c] = strict.get(c, 0) + 1
-    return strict, hybrid
+    return tuple(strict.items()), tuple(hybrid)   # insertion order kept: callers iterate it
 
 
 # The definition lives in lib.primary_type — build_gallery.py needs the same answer and
@@ -6008,8 +6037,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
                 deck_colors |= set(strict) | {x for h in hybrid if len(h) >= 2 for x in h}
 
     # Score every pool card not already in the deck.
-    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
-        pool = list(csv.DictReader(fh))
+    pool = load_pool_rows()
     has_leg = bool(pool) and "Legalities" in pool[0]
     lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
     apply_fmt = bool(lkey) and has_leg
@@ -10352,6 +10380,35 @@ def _undo_last_swap(d, apply):
     return 0
 
 
+def _package_apply(d, raw_pairs):
+    """`swap <id> --package "cut=add" … --apply`: the preview first (it validates every
+    pair against the list as the earlier pairs leave it, and writes nothing), then each
+    pair through `_do_swap` IN ORDER, in this one process.
+
+    It is exactly the sequence of single `--cut/--add --apply` calls it replaces — same
+    function, same per-swap `.bak`, INV-04 re-check and identity refusal, and each
+    ledger row scored against the deck as it stands just before THAT swap — so the
+    ledger cannot differ (2026-11-07). What changes is that the reference tables load
+    once instead of once per pair: 22 separate calls cost ~2.5 minutes. It stops at the
+    first pair that fails and says which pairs landed; `--undo` still reverses ONE swap,
+    the last."""
+    if _package_preview(d, raw_pairs) != 0:
+        eprint("Package not applied: fix the pair the preview stopped on.")
+        return 1
+    pairs = [tuple(lib.normalize_card_name(x) for x in raw.split("=", 1))
+             for raw in raw_pairs]
+    print(f"\nApplying {len(pairs)} swap(s) to deck {d['id']} in order…")
+    for i, (cut, add) in enumerate(pairs, 1):
+        print(f"\n── {i}/{len(pairs)}: −{cut} +{add} ──")
+        if _do_swap(d, cut, add, True) != 0:
+            eprint(f"Stopped at pair {i} (−{cut} +{add}); pairs 1–{i - 1} were applied "
+                   f"and recorded. Nothing after it was attempted.")
+            return 1
+    print(f"\nApplied all {len(pairs)} swap(s). `swap {d['id']} --undo --apply` reverses "
+          "only the last one.")
+    return 0
+
+
 def _package_preview(d, raw_pairs):
     """`swap <id> --package "cut=add" …`: preview SEVERAL swaps as one change — the
     combined quality vector and tier floor, before → after; one legality check on the
@@ -10468,12 +10525,14 @@ def cmd_swap(args):
         clash = [f for f, v in (("--cut", args.cut), ("--add", args.add),
                                 ("--undo", getattr(args, "undo", False)),
                                 ("--section", getattr(args, "section", None)),
-                                ("--keep-section", getattr(args, "keep_section", False)),
-                                ("--apply", args.apply)) if v]
+                                ("--keep-section", getattr(args, "keep_section", False)))
+                 if v]
         if clash:
-            eprint(f"--package is a preview and takes no {', '.join(clash)}: apply the "
-                   "pairs one at a time with --cut/--add --apply.")
+            eprint(f"--package takes no {', '.join(clash)}: it previews (or with --apply "
+                   "applies) its own `cut=add` pairs.")
             return 1
+        if args.apply:
+            return _package_apply(d, args.package)
         return _package_preview(d, args.package)
     if getattr(args, "undo", False):
         if args.cut or args.add or getattr(args, "section", None):
@@ -14851,6 +14910,14 @@ def _filler_castable(cost, ident, declared, lock=None):
         return False
     if not cost:
         return ident <= declared
+    return _filler_castable_cached(cost, frozenset(ident), frozenset(declared))
+
+
+@functools.lru_cache(maxsize=1 << 18)
+def _filler_castable_cached(cost, ident, declared):
+    """`_candidate_castability`'s verdict for frozen inputs — a pure function of the
+    three, cached because `cross_deck_breadth` asks it once per (candidate, deck) pair:
+    ~785k calls per `suggest_scored` over a few thousand distinct triples (2026-11-07)."""
     ok, _note = _candidate_castability(cost, ident, declared)
     return ok
 
@@ -17150,9 +17217,11 @@ def cmd_preflight(args):
         cards, declared, mana, carddata, _uncastable_ok(dmeta))
 
     # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
+    # `--cached` replays the last GREEN run when nothing the gate reads has changed (a
+    # failure is never cached), so preflight after `make postedit` costs nothing extra.
     integ = subprocess.run(
         [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                      "check_all.py"), "--quiet"],
+                                      "check_all.py"), "--quiet", "--cached"],
         capture_output=True, text=True)
     integ_ok = integ.returncode == 0
 
@@ -18383,7 +18452,9 @@ def main():
     p.add_argument("--package", nargs="+", metavar="CUT=ADD",
                    help="preview SEVERAL swaps as one change: the combined vector, tier "
                         "floor and legality, plus each pair's identity and section "
-                        "verdict. Writes nothing and records no ledger row.")
+                        "verdict. Writes nothing and records no ledger row — unless "
+                        "--apply, which then applies the pairs in order, one ledger row "
+                        "each, in one process.")
     p.add_argument("--undo", action="store_true",
                    help="reverse this deck's most recent `swap --apply` (one step) and "
                         "remove its recommendations.csv row; refuses if the file changed "

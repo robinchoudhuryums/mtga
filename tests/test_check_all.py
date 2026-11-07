@@ -314,3 +314,69 @@ class TestPoolLegalitySoft:
         self._pool(tmp_path, [("Sol Ring", "standard;brawl")])
         monkeypatch.setattr(ca, "REPO_ROOT", str(tmp_path))
         assert ca.pool_legality_soft() == []
+
+
+class TestGreenRunCache:
+    """`--cached` (2026-11-07): replay the last green run only while nothing the gate
+    reads has changed. Watched failing both ways: an edit must invalidate, and a failing
+    run must never be stored."""
+
+    def _repo(self, tmp_path, monkeypatch):
+        import subprocess
+        subprocess.run(["git", "init", "-q", str(tmp_path)], check=True)
+        _write(tmp_path / "a.txt", "one\n")
+        subprocess.run(["git", "-C", str(tmp_path), "add", "a.txt"], check=True)
+        subprocess.run(["git", "-C", str(tmp_path), "-c", "user.email=t@t", "-c",
+                        "user.name=t", "commit", "-qm", "x"], check=True)
+        monkeypatch.setattr(ca, "REPO_ROOT", str(tmp_path))
+
+    def test_signature_moves_with_tracked_and_untracked_edits(self, tmp_path, monkeypatch):
+        self._repo(tmp_path, monkeypatch)
+        s0 = ca.tree_signature()
+        assert s0 and ca.tree_signature() == s0          # stable on an unchanged tree
+        _write(tmp_path / "a.txt", "two\n")                # uncommitted tracked edit
+        s1 = ca.tree_signature()
+        assert s1 != s0
+        _write(tmp_path / "new.txt", "x\n")                # untracked file appears
+        s2 = ca.tree_signature()
+        assert s2 != s1
+        _write(tmp_path / "new.txt", "y\n")                # ...and its CONTENT matters
+        assert ca.tree_signature() != s2
+
+    def test_no_git_means_no_signature(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(ca, "REPO_ROOT", str(tmp_path))   # not a repository
+        assert ca.tree_signature() is None
+
+    def _fake_child(self, monkeypatch, rc, calls):
+        import subprocess as sp
+        real = sp.run
+
+        def fake(cmd, *a, **kw):
+            if cmd and cmd[0] == "git":
+                return real(cmd, *a, **kw)
+            calls.append(cmd)
+            path = cmd[cmd.index("--summary-to") + 1]
+            _write(path, "[card-library] 1 cards, 1 decks — integrity: "
+                   + ("OK" if rc == 0 else "1 ISSUE(S)"))
+            return sp.CompletedProcess(cmd, rc, "All invariants hold. ✓\n", "")
+        monkeypatch.setattr(sp, "run", fake)
+
+    def test_a_green_run_replays_and_a_failure_is_never_stored(self, tmp_path, monkeypatch,
+                                                              capsys):
+        repo = tmp_path / "repo"
+        repo.mkdir()
+        self._repo(repo, monkeypatch)
+        monkeypatch.setattr(ca, "GREEN_CACHE", str(tmp_path / "green.json"))
+        calls = []
+        self._fake_child(monkeypatch, 1, calls)
+        assert ca.run_cached(quiet=True) == 1 and ca.run_cached(quiet=True) == 1
+        assert len(calls) == 2                       # a failure is re-proven every time
+        assert not (tmp_path / "green.json").exists()
+        self._fake_child(monkeypatch, 0, calls)
+        assert ca.run_cached(quiet=False) == 0       # full run, stored
+        assert ca.run_cached(quiet=True) == 0        # quiet replay from the same run
+        assert len(calls) == 3
+        assert "integrity: OK" in capsys.readouterr().out
+        _write(repo / "a.txt", "edited\n")           # any edit invalidates
+        assert ca.run_cached(quiet=True) == 0
+        assert len(calls) == 4

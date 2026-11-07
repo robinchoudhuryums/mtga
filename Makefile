@@ -174,10 +174,10 @@ dashboard:
 # `make postedit MAXNEW=40`.
 MAXNEW ?= 8
 postedit:
-	@echo "==> 1/3 build_dashboard.py               (committed snapshot; ~2 min)"
+	@echo "==> 1/3 build_dashboard.py               (committed snapshot; ~45 s)"
 	python3 scripts/build_dashboard.py
 	@echo "==> 2/3 check_all.py                     (invariants + soft sweeps)"
-	python3 scripts/check_all.py
+	python3 scripts/check_all.py --cached
 	@echo "==> 3/3 check_roles.py --update-baseline  (acknowledge what step 2 just reported)"
 	python3 scripts/check_roles.py --update-baseline --max-new $(MAXNEW)
 

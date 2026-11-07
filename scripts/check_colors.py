@@ -35,7 +35,9 @@ SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 _INLINE_PARSE_ALLOW = {
     # parse_pips extracts the colored pips of a single MANA-COST symbol (e.g. "{W}{U}"),
     # not a color-identity cell — there is no "Colorless" string to mishandle.
-    ("deck.py", "parse_pips"),
+    # The parsing lives in `_parse_pips_cached` since 2026-11-07 (parse_pips' body moved
+    # behind an lru_cache); `parse_pips` itself only copies the cached result.
+    ("deck.py", "_parse_pips_cached"),
 }
 
 

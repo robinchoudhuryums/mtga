@@ -389,6 +389,29 @@ def _flex_entries(path):
         return []
 
 
+def _git_info(path, windows):
+    """The git-derived "recently edited" fields for ONE deck, through the same deck.py
+    helpers the CLI uses — only the scheduling around them changed (2026-11-07)."""
+    return {"hist": deckmod.deck_git_history(path, limit=6),
+            "recent_delta": deckmod.deck_recent_card_delta(path),
+            "delta_windows": {k: deckmod.deck_card_delta_since(path, since)
+                              for k, since in windows.items()}}
+
+
+def _prefetch_git(roster, windows, workers=8):
+    """{deck path: _git_info(...)} for the whole roster, run on a thread pool.
+
+    Each deck costs ~9 `git` subprocesses, so the roster's ~1,150 calls were ~40 s of a
+    serial rebuild spent waiting on git. The calls are independent read-only queries
+    whose answers do not depend on order, and the results are keyed by path, so the
+    payload is byte-identical to the serial loop; threads, not processes, because the
+    time is spent blocked in a child process."""
+    from concurrent.futures import ThreadPoolExecutor
+    paths = [d["path"] for d in roster]
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        return dict(zip(paths, ex.map(lambda p: _git_info(p, windows), paths)))
+
+
 def collect():
     """Gather the structured dashboard payload from committed data only."""
     _no_network()
@@ -418,7 +441,9 @@ def collect():
     # Roster-wide page, so it shows the ROSTER: a `#: status: example` placeholder is
     # excluded here exactly as it is from `deck.py audit`, whose scorer this shares —
     # otherwise the triage table leads with the same permanent false positives (F-06).
-    for d in deckmod.roster_decks():
+    _roster = list(deckmod.roster_decks())
+    _git = _prefetch_git(_roster, _win)
+    for d in _roster:
         meta, cards = deckmod.parse_deck_file(d["path"])
         total = sum(q for q, *_ in cards)
         # Counts through the ONE definition (G-70). This was the third surface still
@@ -493,12 +518,11 @@ def collect():
             # uses: last_edited + recent commit subjects (the changelog), and the
             # card-level delta of the most recent edit. Empty/None when git history is
             # unavailable (e.g. a shallow CI checkout — pages.yml sets fetch-depth: 0).
-            "last_edited": (hist[0]["date"] if (hist := deckmod.deck_git_history(d["path"], limit=6)) else None),
+            "last_edited": (hist[0]["date"] if (hist := _git[d["path"]]["hist"]) else None),
             "recent_changes": [{"date": h["date"], "subject": h["subject"]} for h in hist[:5]],
-            "recent_delta": deckmod.deck_recent_card_delta(d["path"]),
+            "recent_delta": _git[d["path"]]["recent_delta"],
             # cumulative net change over each window (for the panel's "since" toggle)
-            "delta_windows": {k: deckmod.deck_card_delta_since(d["path"], since)
-                              for k, since in _win.items()},
+            "delta_windows": _git[d["path"]]["delta_windows"],
         })
 
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).

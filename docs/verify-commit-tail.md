@@ -29,7 +29,11 @@ it mutes the warning on the very run that earns it). It leaves the committed das
 current and the role radar honest. Otherwise run the gate alone:
 
 `python3 scripts/check_all.py` must print **"All invariants hold. ✓"** (exit 0)
-before anything is committed. A hard failure (INV-01…04, ranking sanity) blocks
+before anything is committed. `make postedit` and `deck.py preflight` run it with
+`--cached`, which replays the last GREEN run when nothing it reads has changed (the
+key is the whole working tree plus the date; a failure is never cached), so a gate
+already run in this skill is not paid for twice — `rm .cycle/.check-all-green.json`
+forces a fresh one. A hard failure (INV-01…04, ranking sanity) blocks
 the commit — fix it first. Soft warnings (wishlist target drift, unindexed
 mechanics) do **not** block, but note any that are new.
 

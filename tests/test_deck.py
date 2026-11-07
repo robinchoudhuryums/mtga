@@ -8131,10 +8131,35 @@ class TestSwapPackage:
         _path, NS = self._setup(tmp_path, monkeypatch)
         assert self._pkg(NS, ["Shock"]) == 1
 
-    def test_package_refuses_apply(self, tmp_path, monkeypatch):
+    def test_package_apply_equals_the_single_swaps(self, tmp_path, monkeypatch):
+        """--apply runs each pair through the same `_do_swap` in order (2026-11-07):
+        the file and the ledger must match the single-swap sequence exactly."""
+        pairs = ["Shock=Lava Coil", "Lightning Strike=Lava Coil"]
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, pairs, apply=True) == 0
+        got_file, got_recs = path.read_text(), (tmp_path / "recs.csv").read_text()
+        other = tmp_path / "seq"
+        other.mkdir()
+        path2, NS = self._setup(other, monkeypatch)
+        for p in pairs:
+            cut, add = p.split("=")
+            assert deck.cmd_swap(NS(id="99", cut=cut, add=add, apply=True, undo=False,
+                                    section=None, package=None)) == 0
+        assert path2.read_text() == got_file
+        assert (other / "recs.csv").read_text() == got_recs
+        assert got_recs.count("Lava Coil") == 2
+
+    def test_package_apply_stops_before_writing_on_a_bad_pair(self, tmp_path, monkeypatch):
         path, NS = self._setup(tmp_path, monkeypatch)
         before = path.read_text()
-        assert self._pkg(NS, ["Shock=Lava Coil"], apply=True) == 1
+        assert self._pkg(NS, ["Shock=Lava Coil", "Glassworks=Lava Coil"], apply=True) == 1
+        assert path.read_text() == before          # the preview refused it: nothing ran
+        assert not (tmp_path / "recs.csv").exists()
+
+    def test_package_still_refuses_cut_and_add(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._pkg(NS, ["Shock=Lava Coil"], cut="Shock", apply=True) == 1
         assert path.read_text() == before
 
     def test_identity_verdict_per_pair(self, tmp_path, monkeypatch, capsys):

@@ -344,7 +344,9 @@ is protecting.
   `legal`, before any write or ledger row); and **`swap <id> --undo`** reverses the deck's
   LAST swap — restores that swap's own backup, drops its ledger row — and refuses if
   anything else changed since. **`swap <id> --package "A=B" "C=D"`** previews a whole
-  set as one change (combined vector, floor, legality, per-pair identity) and writes nothing. [G-06]
+  set as one change (combined vector, floor, legality, per-pair identity) and writes nothing;
+  with `--apply` it then applies the pairs IN ORDER through the same single-swap code in one
+  process — identical file and ledger rows, a third of the time (2026-11-07). [G-06]
 - **Triage the roster with `deck.py audit` before full-tuning it** — the cheap, offline
   funnel for "which decks actually need a tune", labelled ★ TUNE / craft / review / ok
   and sortable by `Tier`. It is a SHORTLIST SIGNAL: a flag says "look here", and a
