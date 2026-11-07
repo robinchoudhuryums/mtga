@@ -103,6 +103,12 @@
 #: notes: New Champion, Astonishing Spider-Man, Hulkling, The Immortal Weapons, Mockingbird,
 #: notes: Bobbi Morse, Imperial Cosmographer). Most MSC cards read as unowned in the library;
 #: notes: the owner listed them as their pile, so that is stale catalogue data, not a gap.
+#: notes: 2026-11-07 tune (owner: hit and miss, slow starts lose early): four tapped duals out for owned
+#: notes: untapped ones — −Mystic Monastery +Command Tower, −Swiftwater Cliffs +Spirebluff Canal,
+#: notes: −Wind-Scarred Crag +Clifftop Retreat, −Avengers Hangar +Deserted Beach. Same colours, so no
+#: notes: source count moved; `consistency --tempo` priced tapped lands at 4.8 points a card before
+#: notes: (roster median 2.7) and 3.4 after. The next step is crafting Seachrome Coast, Inspiring Vantage,
+#: notes: Shivan Reef, Battlefield Forge and Sulfur Falls over the Temples and gain lands (1.9).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Director Nick Fury (MSC) 81
@@ -193,7 +199,7 @@
 1 Sunbillow Verge (DFT) 264
 1 Floodfarm Verge (DSK) 259
 1 Gleaming Bastion (MSH) 267
-1 Mystic Monastery (TDM) 262
+1 Command Tower (FRC) 22
 1 Secluded Courtyard (FDN) 267
 1 Starting Town (FIN) 289
 1 Evolving Wilds (ECL) 264
@@ -201,11 +207,11 @@
 1 Temple of Enlightenment (FDN) 698
 1 Temple of Epiphany (FDN) 699
 1 Temple of Triumph (FDN) 705
-1 Swiftwater Cliffs (MOM) 273
+1 Spirebluff Canal (OTJ) 270
 1 Reflecting Pool (FRC) 23
-1 Wind-Scarred Crag (FDN) 271
+1 Clifftop Retreat (DOM) 239
 1 Stark Industries (MSH) 272
-1 Avengers Hangar (MSH) 259
+1 Deserted Beach (FRA) 176
 1 Asgardian Citadel (MSH) 258
 1 Plaza of Heroes (DMU) 252
 5 Plains (FRA) 281
