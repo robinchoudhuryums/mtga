@@ -70,7 +70,7 @@ resolve two answers by hand. Everything else is context for those.
 | 2 | `deck.py resolve <names…>` | pasteable `<qty> Name (SET) #` lines | 0.4s |
 | 3 | `deck.py text NN` | full oracle text of the draft | 0.3s |
 | 3b | `deck.py resolve --check NN` | verify the WRITTEN file's `(SET) #` fields (strict; 11 hand-written numbers shipped wrong before this existed) | 0.4s |
-| 4 | `deck.py legal NN` → `preflight NN` | construction lint → one-call gate | 0.3s → **6.4s** |
+| 4 | `deck.py legal NN` → `preflight NN` | construction lint → one-call gate | 0.3s → **~41s cold, ~0.2s cached** |
 | 5 | `deck.py mana NN` + `consistency NN` | pip demand → cast probabilities | 0.9s |
 | 6 | `deck.py similar NN` | is it a duplicate of an existing deck? | 0.5s |
 | 7 | `deck.py screen NN <rejected pile>` | re-score the pile against the CURRENT plan | ~1s |
@@ -85,8 +85,9 @@ resolve two answers by hand. Everything else is context for those.
 - ⚖ **`screen` must be re-run after any change of plan.** Its whole reason to exist is
   that a pile graded once keeps stale verdicts. Nothing detects staleness — the
   re-run is a discipline, not a check.
-- ⚖ **`preflight` is 6.4s because it runs a full `check_all`.** Fine once per build;
-  it is the wrong thing to put in a loop.
+- ⚖ **`preflight` runs the full `check_all` (~41s) unless nothing changed since its
+  last green run** — `--cached` then replays it (~0.2s; a failure is never cached). Run
+  `make postedit` first and preflight's gate is the replay (2026-11-07).
 
 ## 4. Refine a deck — `/tune-deck` → `/apply-changes`
 
@@ -112,8 +113,10 @@ The longest path, and the one that most needs a map.
 | `cuts` | ranked weakest-fit + full text | 0.8s |
 | `screen` / `flex` | candidate re-score / stale flex lines | ~1s |
 
-**Apply (`/apply-changes`)** — `quality --json` → `swap --apply` → `quality --vs` →
-`preflight` → `tier` → `tier --audit-rationale` → `arena`. `swap` places a type-misfit add
+**Apply (`/apply-changes`)** — `quality --json` → `swap --package … --apply` (all pairs in
+one process; 5 pairs 23s → 9s, identical file and ledger rows) → `quality --vs` → prose fixes
+→ `make postedit` (dashboard ~45s + the gate) → `preflight` (the gate replayed) → `tier` →
+`tier --audit-rationale` → `arena`. `swap` places a type-misfit add
 (a land into the land section) itself since 2026-10-20 (G-05). A misfiled `# section` noticed
 after the write is repaired with **`deck.py move <id> "<card>" --section` — never a
 swap-out/swap-in pair**, which records both halves to recommendations.csv as decisions

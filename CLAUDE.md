@@ -719,7 +719,8 @@ is protecting.
   and **never read one axis discriminating as evidence all five do**. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
-  into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
+  into one READY/BLOCKED verdict; the gate runs `--cached`, so after `make postedit` it
+  replays that green run instead of paying ~40 s again (a failure is never cached). `quality --json` before, `--vs FILE` after, flags
   regressions so a swap that worsens the deck self-catches — a SOFT guard, since an
   intentional trade is fine. [G-34]
 - **`deck.py mana` also lints color SOURCES, not just pip demand** — `△ Pip-intensive` flags
@@ -1083,7 +1084,7 @@ is protecting.
   a Verge that had tied an ungated untapped dual. The checkland gate reads typed nonbasics
   too now, one answer to "do I control a land of type X" (0 roster changes). **Residuals:**
   board-state gates (Spire of
-  Industry's artifact, Mirrex's entered-this-turn, Gemstone Caverns' luck counter) are
+  Industry's artifact, Gemstone Caverns' luck counter) are
   unmodelled and Leyline of the Guildpact is only disclosed (G-35); and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
   quoted before this change may be stale without a warning. [G-87]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
@@ -1734,7 +1735,9 @@ earned it: [C-01]
   **scripts/session_check.sh** + `.claude/settings.json` — the SessionStart hook: runs
   `check_all --quiet` on every session start and the full pytest suite only when the
   HEAD tree of scripts/ tests/ Makefile pytest.ini changed since the last green run
-  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
+  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force); `check_all
+  --cached` keeps its own green-run replay in the gitignored `.cycle/.check-all-green.json`,
+  keyed on the whole working tree plus the date (2026-11-07) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile, scripts/builder.py + scripts/builder_template.html

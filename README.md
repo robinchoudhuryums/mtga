@@ -521,6 +521,7 @@ python3 scripts/deck.py swap 20a --cut A --add B   # preview deltas + FULL oracl
 python3 scripts/deck.py swap 20a --cut A --add B --apply --section Removal   # ...and file the new line under `# Removal` (verbatim; never hand-move a card line)
 python3 scripts/deck.py swap 20a --undo --apply   # reverse this deck's LAST swap and drop its ledger row; refuses if the file changed since
 python3 scripts/deck.py swap 20a --package "A=B" "C=D"   # preview several swaps as ONE change: combined vector, floor, legality; writes nothing
+python3 scripts/deck.py swap 20a --package "A=B" "C=D" --apply   # ...then apply them in order, one process: same .bak / checks / ledger rows as single swaps
 python3 scripts/deck.py apply-flex 20a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 20a  # diff a pasted Arena export against the stored deck
@@ -1116,7 +1117,8 @@ weakest nonland cut candidate per deck. Because copies are fungible, slot a card
 
 `preflight <id>` is the one-call gate the editing skills run before committing: it
 folds `legal` (construction) + owned/buildable + castability + a full `check_all`
-integrity pass into one structured PASS/FAIL block with a **READY / BLOCKED**
+integrity pass (run `--cached`: it replays the last green run when nothing it reads has
+changed, so preflight after `make postedit` is near-instant) into one structured PASS/FAIL block with a **READY / BLOCKED**
 verdict, exiting non-zero only on a hard failure (an illegal deck or broken
 integrity — unowned craft targets on a WIP deck are a WARN, not a block).
 `quality <id>` computes a **deck-quality vector** (buildable · uncastable strays ·
@@ -1601,7 +1603,7 @@ make refresh
 Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
 `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
 (`make postedit` is the separate after-a-DECK-edit tail — rebuild the dashboard,
-run the gate, THEN re-baseline roles — offline and independent of this chain. That order
+run the gate (`check_all.py --cached`), THEN re-baseline roles — offline and independent of this chain. That order
 is load-bearing and used to be the reverse: acknowledging the baseline first consumed the
 warning the gate existed to raise, on the exact workflow the warning was built for. The
 re-baseline step NAMES every zero-role card it acknowledges and refuses a jump over
