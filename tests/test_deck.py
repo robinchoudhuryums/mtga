@@ -8131,10 +8131,35 @@ class TestSwapPackage:
         _path, NS = self._setup(tmp_path, monkeypatch)
         assert self._pkg(NS, ["Shock"]) == 1
 
-    def test_package_refuses_apply(self, tmp_path, monkeypatch):
+    def test_package_apply_equals_the_single_swaps(self, tmp_path, monkeypatch):
+        """--apply runs each pair through the same `_do_swap` in order (2026-11-07):
+        the file and the ledger must match the single-swap sequence exactly."""
+        pairs = ["Shock=Lava Coil", "Lightning Strike=Lava Coil"]
+        path, NS = self._setup(tmp_path, monkeypatch)
+        assert self._pkg(NS, pairs, apply=True) == 0
+        got_file, got_recs = path.read_text(), (tmp_path / "recs.csv").read_text()
+        other = tmp_path / "seq"
+        other.mkdir()
+        path2, NS = self._setup(other, monkeypatch)
+        for p in pairs:
+            cut, add = p.split("=")
+            assert deck.cmd_swap(NS(id="99", cut=cut, add=add, apply=True, undo=False,
+                                    section=None, package=None)) == 0
+        assert path2.read_text() == got_file
+        assert (other / "recs.csv").read_text() == got_recs
+        assert got_recs.count("Lava Coil") == 2
+
+    def test_package_apply_stops_before_writing_on_a_bad_pair(self, tmp_path, monkeypatch):
         path, NS = self._setup(tmp_path, monkeypatch)
         before = path.read_text()
-        assert self._pkg(NS, ["Shock=Lava Coil"], apply=True) == 1
+        assert self._pkg(NS, ["Shock=Lava Coil", "Glassworks=Lava Coil"], apply=True) == 1
+        assert path.read_text() == before          # the preview refused it: nothing ran
+        assert not (tmp_path / "recs.csv").exists()
+
+    def test_package_still_refuses_cut_and_add(self, tmp_path, monkeypatch):
+        path, NS = self._setup(tmp_path, monkeypatch)
+        before = path.read_text()
+        assert self._pkg(NS, ["Shock=Lava Coil"], cut="Shock", apply=True) == 1
         assert path.read_text() == before
 
     def test_identity_verdict_per_pair(self, tmp_path, monkeypatch, capsys):
@@ -8453,3 +8478,131 @@ class TestCardDrawHoles20261102:
     ])
     def test_still_not_card_advantage(self, name, text):
         assert self.CA not in deck.classify_roles(text), name
+
+
+class TestCheckLintReadsLocalCosts:
+    """`deck.py check` passed an EMPTY cost table to its castability lint, so every stray read
+    "cost unknown" while `mana` called the same card "hybrid — paid on-color" (Gangly
+    Stompling {2}{R/G} in GU deck 34, 2026-11-05: 67 of 67 roster strays). It reads the local
+    card-mana.csv now (still offline), and honours `#: uncastable-ok:` as `mana` does."""
+
+    def _run(self, tmp_path, capsys, body):
+        p = tmp_path / "scratch.txt"
+        p.write_text(body, encoding="utf-8")
+        deck.cmd_check(type("A", (), {"id": str(p)})())
+        return capsys.readouterr().out
+
+    def test_a_hybrid_stray_is_labelled_hybrid(self, tmp_path, capsys):
+        out = self._run(tmp_path, capsys, "#: colors: GU\n1 Gangly Stompling (ECL) 226\n")
+        assert "Gangly Stompling — identity has R (hybrid — paid on-color)" in out
+        assert "cost unknown" not in out
+
+    def test_an_uncastable_card_is_still_listed_unless_exempt(self, tmp_path, capsys):
+        line = "1 Captain America, Living Legend (MSH) 210\n"
+        out = self._run(tmp_path, capsys, "#: colors: WGR\n" + line)
+        assert "Captain America, Living Legend — needs U (not castable)" in out
+        out = self._run(tmp_path, capsys,
+                        "#: colors: WGR\n#: uncastable-ok: Captain America, Living Legend\n" + line)
+        assert "stray outside" not in out and "not castable" not in out
+
+
+class TestPowerOnlyShrinkIsNotRemoval:
+    """A "-N/-0" shrink kills nothing: until 2026-11-05 the Removal (spot) pattern matched any
+    "gets -N", so 48 pool cards whose only shrink is to POWER (Oko, Lorwyn Liege's +1,
+    Startle, Jace, the Perfected Mind) counted toward interaction — three decks' counts and
+    two tier floors moved when it was narrowed. NEGATIVE assertions first: a test that only
+    checks the real shrinks still pass would pass a pattern that matches everything."""
+
+    def test_power_only_shrinks_score_no_removal(self):
+        for text in ("Target creature gets -2/-0 until your next turn.",
+                     "Target creature an opponent controls gets -3/-0 until end of turn.",
+                     "Target creature gets -X/-0 until end of turn."):
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_real_shrinks_still_score_removal(self):
+        for text in ("Target creature gets -2/-2 until end of turn.",
+                     "Target creature an opponent controls gets -X/-X until end of turn, where X is 3.",
+                     "Target creature gets -5/-1 until end of turn."):
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+
+class TestRoleHoles20261105:
+    """Six recorded G-67 holes closed 2026-11-05, each pinned on the card's real text plus a
+    NEGATIVE neighbour, since a widened pattern that matches everything passes a positive test."""
+
+    def test_non_type_damage_sweep(self):
+        t = "II — This Saga deals 2 damage to each non-Villain creature and each opponent."
+        assert "Sweeper" in deck.classify_roles(t)                       # Avengers: Under Siege
+        assert "Sweeper" not in deck.classify_roles("This deals 2 damage to each opponent.")
+
+    def test_self_exile_and_each_opposing_creature(self):
+        t = ("0: If you have at least 15 life more than your starting life total, exile Ajani "
+             "and each artifact and creature your opponents control.")
+        assert "Sweeper" in deck.classify_roles(t)                       # Ajani, Strength of the Pride
+        assert "Sweeper" not in deck.classify_roles("Exile Ajani and each card in your graveyard.")
+
+    def test_chosen_opposing_permanents_exiled(self):
+        t = ("I — Starting with you, each player chooses up to one permanent with mana value 3 or "
+             "greater from among permanents your opponents control. Exile those permanents.")
+        assert "Removal (spot)" in deck.classify_roles(t)                # The Legend of Yangchen
+
+    def test_power_damage_to_up_to_one_other_target(self):
+        t = ("Whenever this creature attacks, it deals damage equal to its power to up to one other "
+             "target creature. Excess damage is dealt to that creature's controller instead.")
+        assert "Removal (spot)" in deck.classify_roles(t)                # Ravenous Tyrannosaurus
+        assert "Removal (spot)" not in deck.classify_roles(
+            "It deals damage equal to its power to up to one target player.")
+
+    def test_coloured_pip_cost_reduction(self):
+        t = ("The first instant or sorcery spell you cast each turn costs {U} (or {1}) less to cast "
+             "for each land you control with a flood counter on it.")
+        assert "Cost reduction / cheat" in deck.classify_roles(t)        # Eluge
+        assert "Cost reduction / cheat" not in deck.classify_roles("This spell costs {U} less to cast.")
+
+    def test_triggered_scaling_mana_is_ramp(self):
+        t = ("At the beginning of each player's first main phase, that player may put a +1/+1 counter "
+             "on this creature. If they do, they add {C} for each counter on it.")
+        assert "Ramp / fixing" in deck.classify_roles(t)                 # Cheering Crowd
+
+    def test_proliferate_is_an_engine(self):
+        assert "Payoff / engine" in deck.classify_roles("Tap three untapped Elves you control: Proliferate.")
+
+
+class TestTypedMvGate:
+    """`targets` gained the typed non-creature MV cap (2026-11-05). The negatives are the
+    two shapes the first measurement got wrong: a wipe naming "creature and planeswalker
+    cards", and a "total mana value" the row above already owns."""
+
+    def _gate(self, text):
+        for rx, label, kind in deck._TARGET_GATES:
+            if kind == "type_mv":
+                m = rx.search(text)
+                return m and m.groups()
+        raise AssertionError("no type_mv gate")
+
+    def test_tutor_and_recursion_caps_are_read(self):
+        assert self._gate("−3: Search your library for an artifact card with mana value 1 or less, "
+                          "reveal it, put it into your hand, then shuffle.") == ("artifact", "1")
+        assert self._gate("When this enchantment enters, return target nonland permanent card with "
+                          "mana value 3 or less from your graveyard to the battlefield.") == ("nonland permanent", "3")
+
+    def test_a_wipe_and_a_total_are_not_this_gate(self):
+        assert not self._gate("Exile all creatures and planeswalkers with mana value 3 or less from the "
+                              "battlefield and all creature and planeswalker cards with mana value 3 or "
+                              "less from all graveyards.")
+        assert not self._gate("Put any number of nonland permanent cards with total mana value 4 or less "
+                              "from among them onto the battlefield.")
+        assert not self._gate("Return up to one target artifact, creature, or non-Aura enchantment card "
+                              "with mana value 3 or less from your graveyard to the battlefield.")
+
+
+class TestXSpellIsNotAnEarlyDrop:
+    """An {X} spell books at X = 0 (G-60), so `early_drops` counted {X}{R} as a one-drop;
+    66 roster decks over-read their early game until 2026-11-05 (0 tier floors moved)."""
+
+    def test_x_spell_is_excluded_and_a_real_two_drop_counts(self, tmp_path):
+        p = tmp_path / "x.txt"
+        p.write_text("#: name: X test\n#: format: Standard\n#: colors: R\n"
+                     "1 Hell to Pay (DSK) 140\n1 Shock (FDN) 93\n", encoding="utf-8")
+        vec = deck.deck_quality_vector(deck.find_deck(str(p), allow_path=True))
+        assert vec["early_drops"] == 1

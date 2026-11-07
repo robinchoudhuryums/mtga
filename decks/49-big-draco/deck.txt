@@ -20,7 +20,7 @@
 #: tier:    ever needs closing; it is parked in flex, not maindecked.
 #: tier:    Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads "Dragons
 #: tier:    you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 3.74 with 12 early drops (it was
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 3.74 with 11 early drops (it was
 #: tier:    4.20/9, then 4.03/10, and the 2026-08-27 pass took it here — Dragonmaster Outcast at
 #: tier:    MV 1 and Last Light of Durin's Day at MV 2 in place of two six-drops); against a fast
 #: tier:    start the deck must trade one-for-one with removal it

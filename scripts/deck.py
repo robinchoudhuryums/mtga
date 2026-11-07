@@ -688,6 +688,23 @@ def cmd_list(_args):
     return 0
 
 
+@_file_memo("POOL_CSV")
+def load_pool_rows():
+    """card-pool.csv's rows, in file order, as READ-ONLY mappings (empty if absent).
+
+    `suggest_scored` re-parsed the whole 16k-row pool on every call, and a roster pass
+    calls it once per deck: the dashboard's craft table read 2.7 million CSV rows to
+    rebuild one page, and every `swap --apply` paid a full read for its ledger row
+    (2026-11-07). Memoized on the file like the other reference tables. Each row is a
+    `MappingProxyType`, so a caller that tries to mutate a shared row raises instead of
+    silently changing what the next deck reads (G-71); copy with `dict(r)` to edit."""
+    import types
+    if not os.path.exists(POOL_CSV):
+        return ()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        return tuple(types.MappingProxyType(r) for r in csv.DictReader(fh))
+
+
 # --- wildcard (crafting) planning ------------------------------------------- #
 @_file_memo("POOL_CSV")
 def load_rarities():
@@ -1195,10 +1212,17 @@ def cmd_check(args):
               f"{', '.join(_names[:4])}{'…' if len(_names) > 4 else ''}) — not a craft, "
               f"so not flagged above; `deck.py rotation {d['id']}` lists them all.")
 
-    # Castability lint (offline, identity-only — pass an empty mana dict). Flags
-    # cards whose color identity strays outside the deck's declared colors.
+    # Castability lint. Flags cards whose color identity strays outside the deck's
+    # declared colors. It reads the LOCAL cost table (card-mana.csv — no network, so
+    # `check` stays offline) so a stray explained by a hybrid pip is labelled as one:
+    # with an empty table every stray read "cost unknown" here while `mana` called the
+    # same card "hybrid — paid on-color" (Gangly Stompling {2}{R/G} in GU deck 34).
+    # With costs known, a card that truly cannot be cast moves to the uncastable list,
+    # so both lists are printed — nothing the identity-only read showed disappears.
     declared = _declared_colors(meta)
-    _, off_ident, _, _ = _castability(cards, declared, {}, load_card_data())
+    uncast, off_ident, _, _ = _castability(cards, declared, load_mana(), load_card_data(),
+                                           exempt=_uncastable_ok(meta))
+    off_ident = [(n, why + " (not castable)") for n, why in uncast] + off_ident
     if declared and off_ident:
         cols = "".join(sorted(declared))
         print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
@@ -1413,6 +1437,18 @@ def parse_pips(cost):
     ``{2}{B} // {6}{B}{B}`` read as wanting three black pips when the door you cast
     wants one.
     """
+    strict, hybrid = _parse_pips_cached(cost or "")
+    # Fresh containers per call: callers may mutate the dict / list they are handed,
+    # and the cache below must stay the pure function of `cost` it claims to be (G-71).
+    return dict(strict), list(hybrid)
+
+
+@functools.lru_cache(maxsize=None)
+def _parse_pips_cached(cost):
+    """`parse_pips`' work, keyed on the cost string and returned in IMMUTABLE form.
+    A pure function of `cost` (regex over the front face), so caching it changes no
+    answer; it exists because a roster-wide craft table asks it ~2.3 million times for
+    a few thousand distinct costs — ~15 s of a dashboard rebuild (2026-11-07)."""
     strict, hybrid = {}, []
     for sym in SYMBOL_RE.findall(front_face_cost(cost)):
         colors = set(ch for ch in sym.upper() if ch in "WUBRG")
@@ -1422,7 +1458,7 @@ def parse_pips(cost):
         elif len(colors) == 1:
             (c,) = colors
             strict[c] = strict.get(c, 0) + 1
-    return strict, hybrid
+    return tuple(strict.items()), tuple(hybrid)   # insertion order kept: callers iterate it
 
 
 # The definition lives in lib.primary_type — build_gallery.py needs the same answer and
@@ -2040,6 +2076,9 @@ _ROLE_PATTERNS = {
         # noncreature-answer profile. Anchoring on the anaphor is precise on its own —
         # "destroy/exile the chosen <permanent>" only ever appears in removal text.
         r"(?:destroy|exile) the chosen (?:permanent|creature|card|artifact|enchantment)",
+        # "…chooses up to one permanent … from among permanents your opponents control.
+        # Exile those permanents." (The Legend of Yangchen, chapter I — 2026-11-05).
+        r"permanents? (?:your opponents|an opponent) controls?\. (?:destroy|exile) (?:those|that|the chosen) (?:permanents?|creatures?)",
         # The `(?!(?:player|opponent)\b(?! or planeswalker))` guard mirrors the one the
         # scaling-damage sibling below documents as load-bearing: "deals N damage to
         # target OPPONENT/PLAYER" is reach, not an answer, and this fixed-damage twin
@@ -2092,7 +2131,7 @@ _ROLE_PATTERNS = {
         # Measured against the whole pool: 8 matches, zero false positives — the player
         # guard is kept anyway, since "to up to one target player" is the same reach the
         # sibling patterns exclude.
-        r"deals? damage equal to [^.]{0,80}?to up to \w+ (?:another )?target (?!player|opponent)\w+",
+        r"deals? damage equal to [^.]{0,80}?to up to \w+ (?:an)?(?:other )?target (?!player|opponent)\w+",
         # TARGET-FIRST word order. The two patterns above both assume "equal to X"
         # precedes "to target"; Magic also templates it the other way round, and that
         # half was a whitelist hole (G-67). Triumphant Chomp — "deals damage to target
@@ -2111,9 +2150,12 @@ _ROLE_PATTERNS = {
         # (`x` since 2026-10-23: Lukka, Bound to Ruin's −4, Fire Covenant, Huatli and seven
         # more say "X damage divided" and scored no Removal — 10 pool cards, all removal.)
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
-        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
-        r"target creature (?:an opponent controls )?gets -[0-9x]",
-        r"creature an opponent controls gets -[0-9x]",
+        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol). The TOUGHNESS half
+        # must fall: until 2026-11-05 a bare "-[0-9x]" also matched a POWER-only shrink
+        # ("-2/-0" — Oko, Lorwyn Liege's +1, Startle, Befuddle, Icy Reception: 48 pool
+        # cards), which kills nothing and is a one-turn combat effect, not removal.
+        r"target creature (?:an opponent controls )?gets -[0-9x]+/-(?:[1-9]|x)",
+        r"creature an opponent controls gets -[0-9x]+/-(?:[1-9]|x)",
         # SINGLE-TARGET BOUNCE LEFT THIS BUCKET 2026-10-07 (owner's call). It answers a
         # permanent for a turn and hands the card back, which is the PERMANENCE line the
         # neutralization block below draws — a one-turn tap-down and a stun were already
@@ -2225,7 +2267,14 @@ _ROLE_PATTERNS = {
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? (?:\d+|x) damage to each (?:other )?creature",
+                # `non-<type>` (2026-11-05): "2 damage to each NON-VILLAIN creature and each
+                # opponent" (Avengers: Under Siege) is a one-sided sweep the bare form missed.
+                r"deals? (?:\d+|x) damage to each (?:other )?(?:non-?[a-z]+ )?creature",
+                # "exile Ajani AND EACH artifact and creature your opponents control"
+                # (Ajani, Strength of the Pride's 0): the self-exile names the card first, so
+                # the "exile each …" pattern below never sees its verb (2026-11-05).
+                r"(?:destroy|exile) [^.]{0,30}?\band each [^.]{0,40}?(?:creatures?|permanents?)"
+                r" (?:your opponents control|you don't control)",
                 # ONE-SIDED damage sweep (K-12, 2026-10-01). The symmetric pattern above
                 # needs "damage to each creature" contiguous, so the templating that names
                 # the OPPONENT first — "deals X damage to each opponent and each creature
@@ -2646,6 +2695,9 @@ _ROLE_PATTERNS = {
                        r"(?m)^[^\n:]{0,40}:[^.\n]{0,40}?empower jace (?:\d+|x)\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
+                      # TRIGGERED mana that scales ("they add {C} for each counter on it" —
+                      # Cheering Crowd) has no {T}: cost and scored nothing (2026-11-05).
+                      r"\badds? \{[wubrgc]\}(?:\{[wubrgc]\})* for each",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
                       # ANY-COLOUR MANA. The pattern above requires a literal `{` right
                       # after "add", so it reads "{T}: Add {G}" and misses "{T}: Add one
@@ -2719,6 +2771,10 @@ _ROLE_PATTERNS = {
         # is what the REST of the deck does is a payoff by definition; the doubler AXIS
         # (`doubler_support`) is a separate, deliberately untaken question.
         r"triggers an additional time",
+        # PROLIFERATE (2026-11-05) multiplies every counter the rest of the deck puts down —
+        # the replacement-multiplier argument below, one mechanic over. 70 pool cards, 31 of
+        # which scored no role at all (High Perfect Morcant, Contagion Engine, Thrummingbird).
+        r"\bproliferate\b",
         # REPLACEMENT MULTIPLIERS (2026-10-23): "twice that many … instead" / "that many plus
         # one … instead" — Doubling Season, Hardened Scales, Vorinclex, Parallel Lives,
         # Anointed Procession, Branching Evolution, Ozolith. The same argument as the trigger
@@ -2810,7 +2866,9 @@ _ROLE_PATTERNS = {
         # BS8-29: 263 of 810 hits were a card discounting ITSELF ("this spell costs {1}
         # less to cast for each…", "this ability costs {1} less") — self-pricing, not a
         # cost-reduction engine, and an IMPACT role worth +6 in `cuts`.
-        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{[0-9x]+\} less",
+        # A coloured-pip reduction (Eluge: "costs {U} (or {1}) less") is the same engine;
+        # the numeric-only braces missed it (2026-11-05).
+        r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{(?:[0-9x]+|[wubrgc])\}\s+(?:\(or \{1\}\)\s+)?less",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -5979,8 +6037,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
                 deck_colors |= set(strict) | {x for h in hybrid if len(h) >= 2 for x in h}
 
     # Score every pool card not already in the deck.
-    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
-        pool = list(csv.DictReader(fh))
+    pool = load_pool_rows()
     has_leg = bool(pool) and "Legalities" in pool[0]
     lkey = pool_format_key(fmt)          # BS8-04: the pool key, not the raw name
     apply_fmt = bool(lkey) and has_leg
@@ -7247,7 +7304,8 @@ _SOURCE_KINDS = (("any", "any colour, no extra cost"),
                  ("any-cost", "any colour for an extra mana (counted — a real source from the turn after it lands, a filter on curve)"),
                  ("fetch", "basic-land fetch (counted for each colour the deck runs a basic of that it can find)"),
                  ("restricted", "spend-only mana (NOT counted — read the restriction)"),
-                 ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"))
+                 ("gated", "colour gated on a land TYPE (counted by the chance a land of that type is out by turn three — G-87)"),
+                 ("entry", "colour only on the turn it enters (NOT counted — it makes {C} after that)"))
 
 
 def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=None):
@@ -7346,6 +7404,10 @@ def deck_source_profile(cards, by_key, by_name, carddata, meta=None, deck_meta=N
                 notes["any-cost"].append((q, n))
             elif prod["restricted"]:
                 notes["restricted"].append((q, n))
+            elif prod.get("entry"):
+                notes["entry"].append((q, n))
+        elif prod.get("entry"):
+            notes["entry"].append((q, n))
         elif prod["restricted"]:
             notes["restricted"].append((q, n))
         for col in counted:
@@ -10318,6 +10380,35 @@ def _undo_last_swap(d, apply):
     return 0
 
 
+def _package_apply(d, raw_pairs):
+    """`swap <id> --package "cut=add" … --apply`: the preview first (it validates every
+    pair against the list as the earlier pairs leave it, and writes nothing), then each
+    pair through `_do_swap` IN ORDER, in this one process.
+
+    It is exactly the sequence of single `--cut/--add --apply` calls it replaces — same
+    function, same per-swap `.bak`, INV-04 re-check and identity refusal, and each
+    ledger row scored against the deck as it stands just before THAT swap — so the
+    ledger cannot differ (2026-11-07). What changes is that the reference tables load
+    once instead of once per pair: 22 separate calls cost ~2.5 minutes. It stops at the
+    first pair that fails and says which pairs landed; `--undo` still reverses ONE swap,
+    the last."""
+    if _package_preview(d, raw_pairs) != 0:
+        eprint("Package not applied: fix the pair the preview stopped on.")
+        return 1
+    pairs = [tuple(lib.normalize_card_name(x) for x in raw.split("=", 1))
+             for raw in raw_pairs]
+    print(f"\nApplying {len(pairs)} swap(s) to deck {d['id']} in order…")
+    for i, (cut, add) in enumerate(pairs, 1):
+        print(f"\n── {i}/{len(pairs)}: −{cut} +{add} ──")
+        if _do_swap(d, cut, add, True) != 0:
+            eprint(f"Stopped at pair {i} (−{cut} +{add}); pairs 1–{i - 1} were applied "
+                   f"and recorded. Nothing after it was attempted.")
+            return 1
+    print(f"\nApplied all {len(pairs)} swap(s). `swap {d['id']} --undo --apply` reverses "
+          "only the last one.")
+    return 0
+
+
 def _package_preview(d, raw_pairs):
     """`swap <id> --package "cut=add" …`: preview SEVERAL swaps as one change — the
     combined quality vector and tier floor, before → after; one legality check on the
@@ -10434,12 +10525,14 @@ def cmd_swap(args):
         clash = [f for f, v in (("--cut", args.cut), ("--add", args.add),
                                 ("--undo", getattr(args, "undo", False)),
                                 ("--section", getattr(args, "section", None)),
-                                ("--keep-section", getattr(args, "keep_section", False)),
-                                ("--apply", args.apply)) if v]
+                                ("--keep-section", getattr(args, "keep_section", False)))
+                 if v]
         if clash:
-            eprint(f"--package is a preview and takes no {', '.join(clash)}: apply the "
-                   "pairs one at a time with --cut/--add --apply.")
+            eprint(f"--package takes no {', '.join(clash)}: it previews (or with --apply "
+                   "applies) its own `cut=add` pairs.")
             return 1
+        if args.apply:
+            return _package_apply(d, args.package)
         return _package_preview(d, args.package)
     if getattr(args, "undo", False):
         if args.cut or args.add or getattr(args, "section", None):
@@ -14190,7 +14283,10 @@ def deck_quality_vector(d):
             entry = mana.get(nl)
             if entry and entry[1] is not None:
                 mvs += [entry[1]] * q
-                if entry[1] <= 2:
+                # An {X} spell books at X = 0 (G-60), so a {X}{R} burn spell read as a
+                # one-drop; it is cast late for a real X, not on turn one or two. Front-face
+                # cost, like the MV beside it (2026-11-05).
+                if entry[1] <= 2 and "{x}" not in front_face_cost(entry[0] or "").lower():
                     early += q
                     # A cheap MANA SOURCE is not a cheap THREAT, and `early_drops`
                     # counts them alike — which is how a curve argument gets made from
@@ -14814,6 +14910,14 @@ def _filler_castable(cost, ident, declared, lock=None):
         return False
     if not cost:
         return ident <= declared
+    return _filler_castable_cached(cost, frozenset(ident), frozenset(declared))
+
+
+@functools.lru_cache(maxsize=1 << 18)
+def _filler_castable_cached(cost, ident, declared):
+    """`_candidate_castability`'s verdict for frozen inputs — a pure function of the
+    three, cached because `cross_deck_breadth` asks it once per (candidate, deck) pair:
+    ~785k calls per `suggest_scored` over a few thousand distinct triples (2026-11-07)."""
     ok, _note = _candidate_castability(cost, ident, declared)
     return ok
 
@@ -17113,9 +17217,11 @@ def cmd_preflight(args):
         cards, declared, mana, carddata, _uncastable_ok(dmeta))
 
     # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
+    # `--cached` replays the last GREEN run when nothing the gate reads has changed (a
+    # failure is never cached), so preflight after `make postedit` costs nothing extra.
     integ = subprocess.run(
         [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                      "check_all.py"), "--quiet"],
+                                      "check_all.py"), "--quiet", "--cached"],
         capture_output=True, text=True)
     integ_ok = integ.returncode == 0
 
@@ -17211,6 +17317,17 @@ _TARGET_GATES = [
     (re.compile(r"(?:creature (?:or \w+ )?cards?\b[^.]{0,60}?\b|creatures? you control with )"
                 r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
     (re.compile(r"total mana value (\d+) or less", re.I), "cards totalling MV ≤{0}", "mv"),
+    # The TYPED non-creature cap (2026-11-05): "nonland permanent card with mana value 3 or
+    # less" (Season of the Burrow), "artifact card with mana value N or less" (Tezzeret,
+    # Cruel Captain). The creature gate above is scoped to creature cards on purpose, so
+    # these pool cards (7 in the roster) reported no gate at all. `(?<!or )` leaves a
+    # "creature or planeswalker card" to the creature gate rather than reporting it twice;
+    # `(?<!and )` keeps out Shadows' Verdict's "all creature and planeswalker cards" (a wipe,
+    # 106 false unmet flags in the first measurement); `(?<!total )` leaves "total mana
+    # value" to the row above; `(?<!aura )` refuses half of "non-Aura enchantment card" (Excava).
+    (re.compile(r"(?<!or )(?<!and )(?<!aura )\b((?:nonland |noncreature )?(?:permanent|artifact|enchantment|planeswalker)"
+                r"(?: or (?:artifact|enchantment|planeswalker))?) cards?\b[^.]{0,60}?(?<!total )\bmana value (\d+) or less",
+                re.I), "{0} cards MV ≤{1}", "type_mv"),
     (re.compile(r"sacrifice (?:an artifact or creature|a creature or artifact)", re.I),
      "artifacts + creatures to sacrifice", "sac_ac"),
     (re.compile(r"sacrifice (?:a|another) creature", re.I), "creatures to sacrifice", "sac_c"),
@@ -17493,6 +17610,21 @@ def target_counts(cards, carddata, mana):
             if kind == "mv":
                 hits = [o for o in others if "creature" in o["type"]
                         and o["mv"] is not None and o["mv"] <= num]
+            elif kind == "type_mv":
+                words = groups[0].lower().split()
+                cap = int(groups[1])
+                kinds = [w for w in words if w in ("permanent", "artifact", "enchantment", "planeswalker")]
+
+                def _fits(o, kinds=kinds, words=words):
+                    t = o["type"]
+                    if "nonland" in words and "land" in t.split():
+                        return False
+                    if "noncreature" in words and "creature" in t.split():
+                        return False
+                    if "permanent" in kinds:
+                        return not {"instant", "sorcery"} & set(t.split())
+                    return any(lib.type_matches(t, k) for k in kinds)
+                hits = [o for o in others if _fits(o) and o["mv"] is not None and o["mv"] <= cap]
             elif kind == "sac_ac":
                 hits = [o for o in others
                         if "creature" in o["type"] or "artifact" in o["type"]
@@ -18320,7 +18452,9 @@ def main():
     p.add_argument("--package", nargs="+", metavar="CUT=ADD",
                    help="preview SEVERAL swaps as one change: the combined vector, tier "
                         "floor and legality, plus each pair's identity and section "
-                        "verdict. Writes nothing and records no ledger row.")
+                        "verdict. Writes nothing and records no ledger row — unless "
+                        "--apply, which then applies the pairs in order, one ledger row "
+                        "each, in one process.")
     p.add_argument("--undo", action="store_true",
                    help="reverse this deck's most recent `swap --apply` (one step) and "
                         "remove its recommendations.csv row; refuses if the file changed "

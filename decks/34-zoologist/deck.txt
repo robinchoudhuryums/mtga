@@ -1,8 +1,8 @@
 #: name: Zoologist (changelings are every type)
 #: format: Standard
 #: arena: 34 Delusional Zoologist, 71f9f553-3e74-41a7-9678-cd4421144c53
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads A (interaction 7, card advantage 10,
-#: tier: protection 5). Held at B pending the owner's re-grade: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor reads B (interaction 6, card advantage 10,
+#: tier: protection 5; it read A until Oko, Lorwyn Liege's -2/-0 stopped counting as removal on 2026-11-05). Held at B: still ONE type-COUNT payoff (Zookeeper), but the 2026-10-09
 #: tier: tune added named-type payoffs that changelings satisfy — Beorn (Bears +2/+2, draws two a turn), Spider-Ham (animal
 #: tier: lord), Attuma (Merfolk lord + draw) and Imperious Perfect (Elf lord + tokens) — so losing Zookeeper no longer blanks the board.
 #: tier: Residual weaknesses: a top-heavy curve (9 plays at MV 2 or less) and rainbow-singleton variance. Owned except Hall of Echoes.

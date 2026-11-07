@@ -28,10 +28,16 @@
 #: archetype: draws on every creature entering. DISTINCT from deck 78 (Bant, but Ally trigger-doubling in combat)
 #: archetype: and deck 94 (Simic counters): this one is a value-blink engine.
 #: protect: Galadriel, Light of Valinor; Y'shtola Rhul; Silver Surfer, Cosmic Voyager; Captain Marvel, Shooting Star
+#: tier: A — owner's call, 2026-11-05, matching the metrics floor: the deck has interaction 13 and card advantage
+#: tier: 12, on the A line scaled to 100 cards, so cutting an interaction piece drops the floor to B. What the floor
+#: tier: cannot see: every blink re-fires an enters trigger, and Y'shtola, Silver Surfer, Elesh Norn and Panharmonicon
+#: tier: multiply them, so Galadriel's modes (mana, a team counter, scry-and-draw) pay out several times a turn.
+#: tier: Protection 7 covers the engine. The one clear weakness is the budget manabase: owned stand-ins enter tapped
+#: tier: often enough to cost tempo, and the wishlisted rare duals are the fix.
 #: notes: DRAFTED 2026-10-29 with /draft-deck from the owner's brief (Galadriel commander, blink + scry,
 #: notes: must-include Y'shtola Rhul, Silver Surfer and Captain Marvel). The optimal list, crafts
 #: notes: included; 37 lands, mostly untapped, per the deck 85 slow-start lesson.
-#: notes: TIER UNSET pending the owner's call. The measurable floor reads B at 100 cards (interaction
+#: notes: TIER set to A on 2026-11-05 (see #: tier:). At the draft the floor read B at 100 cards (interaction
 #: notes: 11 +6 unread, card advantage 6 +3 unread) — the classifier counts each enters trigger once,
 #: notes: and this deck's whole plan is re-using them, so it under-reads by design. Closest deck is 27
 #: notes: (W/U blink, Standard 60-card); this one is the Bant Brawl version with Galadriel and scry.

@@ -70,6 +70,15 @@ rebuilds on merge.
 With more than one swap, **preview the set as one change first**:
 `python3 scripts/deck.py swap <id> --package "<cut>=<add>" …` prints the combined vector,
 tier floor and legality, and flags an add outside a commander's identity, writing nothing.
+**Once the pairs are confirmed, apply them the same way: add `--apply` to that command.**
+It re-runs the preview (refusing before any write if a pair no longer fits), then applies
+each pair through the same single-swap code, in order, in one process — the same per-swap
+`.bak`, INV-04 re-check, identity refusal and one ledger row per swap scored against the
+deck just before it, so the result is identical to N separate `--cut/--add --apply`
+calls (measured: 5 pairs 23 s → 9 s). It stops at the first failing pair and names what
+landed; `--undo` still reverses only the last swap. Read each pair's printed preview in
+its output for the section warnings step 3 describes, and fix a misfile with `deck.py
+move`.
 
 For each `−cut / +add`:
 
@@ -148,10 +157,16 @@ For each `−cut / +add`:
 
 ## Stage 4 — Verify
 
-8. `python3 scripts/deck.py preflight <id>` — legal + owned/buildable + castable
-   + integrity in one block. A hard FAIL (illegal / uncastable / broken
-   integrity) must be resolved before committing; unowned craft targets are WARN,
-   not blockers, for a WIP deck.
+8. **`make postedit` FIRST, then `python3 scripts/deck.py preflight <id>`.** postedit
+   rebuilds the dashboard and runs the full gate (`check_all.py --cached`); preflight's
+   own integrity line then REPLAYS that green run instead of a second ~40 s full run,
+   and the commit tail's gate is the same run again. The cache keys on the whole
+   working tree plus the date and never stores a failure, so any later edit (a prose fix
+   from Stage 5, a wishlist row) simply forces one fresh run — correct, only slower, so
+   make the deck and prose edits before this step when you can. preflight is legal +
+   owned/buildable + castable + integrity in one block. A hard FAIL (illegal /
+   uncastable / broken integrity) must be resolved before committing; unowned craft
+   targets are WARN, not blockers, for a WIP deck.
 
 ## Stage 5 — Structured report
 

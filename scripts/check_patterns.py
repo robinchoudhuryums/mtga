@@ -405,7 +405,10 @@ def _pattern_groups():
                  "_FETCH_TYPES_RE",
                  # 2026-10-25: energy / counter costs and Gate-bounded colour. Dead, Aether
                  # Hub, Mirrodin's Core and Plaza of Harmony read as free rainbow lands again.
-                 "_EXTRA_RESOURCE_COST_RE", "_GATE_ONLY_RE"):
+                 "_EXTRA_RESOURCE_COST_RE", "_GATE_ONLY_RE",
+                 # 2026-11-06: a colour usable only the turn the land enters. Dead, Mirrex
+                 # reads as a free five-colour source again in every deck that runs it.
+                 "_ENTRY_TURN_ONLY_RE"):
         out.append((f"lib.{name}", getattr(lib, name), "raw"))
     # `deck.fetch_pool_pressure` (2026-10-23): a card that replays lands from the
     # graveyard. Dead, the disclosure stops naming the cards that deepen the pressure.

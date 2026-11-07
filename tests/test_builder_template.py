@@ -105,7 +105,7 @@ console.log(JSON.stringify({proj: project(input.key), names: parseNames(input.pa
 class TestPageArithmeticMatchesTheModel:
     def test_projection_and_name_parser(self, tmp_path, monkeypatch):
         monkeypatch.setattr(B, "BUILDS_DIR", str(tmp_path / "builds"))
-        src = D.find_deck("96")["path"]
+        src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fixtures", "builder-glarb.txt")
         deck_path = tmp_path / "deck96.txt"
         shutil.copy(src, deck_path)
         text = deck_path.read_text(encoding="utf-8")

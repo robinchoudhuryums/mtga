@@ -1,0 +1,148 @@
+#: name: Street Feast
+#: format: Historic Brawl
+#: colors: WRG
+#: commander: Rocco, Street Chef
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), NAYA FOOD around Rocco, Street Chef:
+#: archetype: each end step every player exiles their top card and may play it, and every play from exile — by
+#: archetype: ANY player — is our +1/+1 counter and our Food. The engine is what we do with the Foods: Peregrin
+#: archetype: Took and Tippy-Toe add a Food to every token we create, Mondrak and Doubling Season double them, Pia
+#: archetype: Nalaar, Consul of Revival, makes a Thopter for each play from exile; Sam, Loyal Attendant and Mutagen
+#: archetype: Man each take {1} off a Food crack, so with both a crack is free. The exile layer pays again through
+#: archetype: Quintorius Kand and Scalesoul Gnome, and Bard Class turns legendary casts into more exiled cards. Each
+#: archetype: Food then pays three ways: Biotech Specialist (2 damage per artifact sacrificed), Haliya and Teething
+#: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco, Elanor Gardner,
+#: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Karn's Bastion and Innkeeper's Talent. Cats
+#: archetype: and Dogs are the body layer: Brimaz, Regal Caracal, Feline Sovereign, the Ajanis and Jetmir go wide,
+#: archetype: Generous Pup and Yoshimaru turn Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
+#: archetype: the tribes.
+#: archetype: DISTINCT from deck 21 (Standard WBG Food aristocrats) and deck 88 (Naya Historic Brawl, no Food).
+#: protect: Rocco, Street Chef; Sam, Loyal Attendant; Mutagen Man, Living Ooze; Peregrin Took; Tippy-Toe, Terrific Partner; Mondrak, Glory Dominus; Pia Nalaar, Consul of Revival; Haliya, Guided by Light; Teething Wurmlet; Biotech Specialist
+#: notes: Drafted 2026-11-05 from the 171-card Rocco pile (.cycle/rocco-pile-analysis.md holds the batch
+#: notes: verdicts). Ownership is information only; the list is the optimal one.
+#: notes: 2026-11-06: 22-for-22 package from the Builder board (Route E): the board's adds plus the
+#: notes: proliferate layer, with Sword of Truth and Justice dropped for a 37th land.
+#: notes: 2026-11-06 (round 2): −Galvanic Blast, −Shrapnel Blast, −Krenko, −Ocelot Pride, −Legion
+#: notes: Extruder, −1 Plains; +The Wandering Emperor, +Innkeeper's Talent, +Tenured Tethermage, +Mythweaver
+#: notes: Poq, +Sidequest: Catch a Fish, +West Wind Avatar; then −Contagion Engine, +Jiang Yanggu, Never Alone
+#: notes: (Mowu, and every token untaps at end step). Proliferate now rests on Evolution Sage and Karn's
+#: notes: Bastion, with Innkeeper's Talent level 3 doubling counters.
+#: notes: TIER UNSET — the letter is the owner's call. Measured floor after round 2: A (interaction 13,
+#: notes: card advantage 8 against the 100-card A line of 12 and 19; protection 6; board power 113;
+#: notes: printed avg MV 3.2). Instant-speed answers are thin: Hobbit's Sting, Stew the Coneys,
+#: notes: Pawpatch Formation and The Wandering Emperor (flash).
+#: notes: The bench lives on the Builder board `builds/rocco` with a reason and verdict per card.
+#: notes: Manabase: 36 lands (4 Plains, 5 Forest, 2 Mountain). 2026-11-06: −1 Mountain +1 Forest (green carries
+#: notes: 42 pips to red's 14) and −Mirrex +Reflecting Pool (Mirrex is colourless after its first turn); W/R/G
+#: notes: sources 20/19/20 → 21/19/22, cards below 90% on curve 53 → 43. Mythweaver Poq copies a land each
+#: notes: turn and Sidequest flips into a land, so the 37th land became a spell.
+
+# Commander
+1 Rocco, Street Chef (MAT) 44
+
+# Engine — token-plus-Food replacements, free cracks, exile payoffs
+1 Ragost, Deft Gastronaut (EOE) 224
+1 Sam, Loyal Attendant (LTC) 7
+1 Peregrin Took (LTR) 181
+1 Tippy-Toe, Terrific Partner (MSC) 734
+1 Pia Nalaar, Consul of Revival (MAT) 42
+1 Mondrak, Glory Dominus (ONE) 23
+1 Biotech Specialist (EOE) 214
+1 Haliya, Guided by Light (EOE) 19
+1 Belladonna Took (HOB) 4
+1 Doubling Season (FDN) 216
+1 Caretaker's Talent (BLB) 6
+1 Quintorius Kand (LCI) 238
+1 Scalesoul Gnome (YLCI) 28
+1 Bard Class (AFR) 217
+
+# Food makers and payoffs
+1 Samwise Gamgee (LTR) 222
+1 Rosie Cotton of South Lane (LTR) 27
+1 Woodwork Prodigy // Soul Tether (FRA) 165
+1 Gilded Goose (ELD) 160
+1 Regal Caracal (FDN) 579
+1 Bilbo, Fellow Conspirator (HOC) 4
+1 Heroic Feast (MSH) 172
+1 Tireless Provisioner (J25) 728
+1 Night of the Sweets' Revenge (WOE) 178
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Teething Wurmlet (BRO) 192
+1 Lucky the Pizza Dog (MSC) 726
+1 Giant Opportunity (ELD) 159
+1 Lita, Little Orphan Amphibian (TMT) 19
+1 Sidequest: Catch a Fish // Cooking Campsite (FIN) 31
+
+# Artifacts and mana
+1 Roxanne, Starfall Savant (OTJ) 228
+1 Sami, Wildcat Captain (EOE) 226
+1 Tenured Tethermage (FRA) 154
+1 The Cabbage Merchant (TLE) 134
+1 Syr Ginger, the Meal Ender (WOE) 252
+1 Mythweaver Poq (YLCI) 19
+
+# Food sinks — counters, ramp and mana
+1 Hungering Puppetbeast (FRA) 107
+1 Elanor Gardner (LTR) 286
+1 Bosco, Just a Bear (TLE) 132
+1 Bumi's Feast Lecture (TLE) 133
+1 West Wind Avatar (TMT) 137
+
+# Counters and proliferate
+1 Generous Pup (J25) 4
+1 Yoshimaru, Beloved Companion (FRA) 209
+1 Michelangelo, the Heart (TMC) 5
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Evolution Sage (WAR) 159
+1 Innkeeper's Talent (BLB) 180
+
+# Cats, Dogs and go-wide
+1 Jinnie Fay, Jetmir's Second (SNC) 195
+1 Rin and Seri, Inseparable (M21) 278
+1 Brimaz, King of Oreskos (J25) 58
+1 Ajani, Strength of the Pride (M20) 2
+1 Felidar Retreat (FDN) 574
+1 Feline Sovereign (M21) 180
+1 Jetmir, Nexus of Revels (SNC) 193
+1 Ajani, Nacatl Pariah // Ajani, Nacatl Avenger (MH3) 237
+1 Jiang Yanggu, Never Alone (FRA) 261
+
+# Interaction
+1 Hobbit's Sting (LTR) 20
+1 Food Coma (WOE) 308
+1 Pawpatch Formation (BLB) 186
+1 Stew the Coneys (LTR) 189
+1 Wicked Wolf (ELD) 181
+1 Dragonspark Reactor (NEO) 137
+1 The Wandering Emperor (NEO) 42
+1 Chandra, Spark Hunter (DFT) 116
+
+# Lands
+1 Command Tower (FRC) 22
+1 The Shire (LTR) 260
+1 Castle Doom (MSH) 263
+1 Reflecting Pool (FRC) 23
+1 Cabaretti Courtyard (SNC) 249
+1 Sacred Foundry (EOE) 256
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Sunbaked Canyon (TLE) 58
+1 Battlefield Forge (BRO) 257
+1 Brushland (BRO) 259
+1 Karplusan Forest (DMU) 250
+1 Inspiring Vantage (OTJ) 269
+1 Razorverge Thicket (ONE) 257
+1 Copperline Gorge (ONE) 249
+1 Needleverge Pathway // Pillarverge Pathway (ZNR) 263
+1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
+1 Clifftop Retreat (DOM) 239
+1 Sunpetal Grove (XLN) 257
+1 Rootbound Crag (XLN) 256
+1 Prismatic Vista (SPG) 38
+1 Fabled Passage (BLB) 252
+1 Mana Confluence (EOS) 25
+4 Plains (FRA) 281
+5 Forest (FRA) 289
+1 Karn's Bastion (WAR) 248
+2 Mountain (FRA) 287

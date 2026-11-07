@@ -1,7 +1,10 @@
 {
  "Abomination of Llanowar": [],
+ "Abrupt Decay": [],
  "Absorbing Man": [],
  "Aclazotz, Deepest Betrayal // Temple of the Dead": [],
+ "Advanced Floral Invocations": [],
+ "Aftermath Analyst": [],
  "Albiorix, Goose Tyrant // Wild Goose Chase": [],
  "Along the Crooked Way": [],
  "Alora, Rogue Companion": [],
@@ -29,6 +32,8 @@
    "y": "2022"
   }
  ],
+ "Ancient Greenwarden": [],
+ "Annihilating Glare": [],
  "Anoint with Affliction": [],
  "Aphelia, Viper Whisperer": [],
  "Arcane Epiphany": [],
@@ -166,6 +171,33 @@
  "Attuned Hunter": [],
  "Augur of Autumn": [],
  "Azula, Ruthless Firebender": [],
+ "Back for More": [
+  {
+   "a": "Daarken",
+   "art": "https://cards.scryfall.io/art_crop/front/3/f/3fc7210c-da23-4cec-9195-4de75587f40f.jpg?1783931029",
+   "cn": "177",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/f/3fc7210c-da23-4cec-9195-4de75587f40f.jpg?1783931029",
+   "r": "U",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Florey",
+   "art": "https://cards.scryfall.io/art_crop/front/f/5/f55e5aca-b6fe-4b2f-9943-568f4d1704ca.jpg?1783911718",
+   "cn": "36",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/5/f55e5aca-b6fe-4b2f-9943-568f4d1704ca.jpg?1783911718",
+   "r": "U",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  }
+ ],
  "Beledros Witherbloom": [
   {
    "a": "Raymond Swanland",
@@ -248,6 +280,7 @@
  ],
  "Black Widow, Daring Operative": [],
  "Bloodchief's Thirst": [],
+ "Blooming Cactusfolk": [],
  "Blooming Marsh": [
   {
    "a": "Adam Paquette",
@@ -540,10 +573,38 @@
  ],
  "Cankerbloom": [],
  "Cantankerous Keepers": [],
+ "Cauldron of Essence": [],
  "Celeborn the Wise": [],
  "Chalk Outline": [],
+ "Champions of the Perfect": [],
  "Chandra, Chill of Compliance": [],
  "Charix, the Raging Isle": [],
+ "Chatterfang, Squirrel General": [
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/3/0/30310d1c-27b5-4d49-95ea-aad530190974.jpg?1783925747",
+   "cn": "552",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/0/30310d1c-27b5-4d49-95ea-aad530190974.jpg?1783925747",
+   "r": "M",
+   "set": "J21",
+   "sn": "Jumpstart: Historic Horizons",
+   "y": "2021"
+  },
+  {
+   "a": "Olivier Bernard",
+   "art": "https://cards.scryfall.io/art_crop/front/2/b/2bb8c103-37c3-4c5f-9b3f-48d8b2292783.jpg?1783910712",
+   "cn": "82",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/b/2bb8c103-37c3-4c5f-9b3f-48d8b2292783.jpg?1783910712",
+   "r": "M",
+   "set": "BLC",
+   "sn": "Bloomburrow Commander",
+   "y": "2024"
+  }
+ ],
  "Chevill, Bane of Monsters": [],
  "Chulane, Teller of Tales": [],
  "Circle of Dreams Druid": [],
@@ -844,6 +905,7 @@
  "Dawnhand Eulogist": [],
  "Deathbloom Ritualist": [],
  "Deathrite Shaman": [],
+ "Deathsprout": [],
  "Deepmuck Desperado": [],
  "Defiler of Dreams": [],
  "Delighted Halfling": [
@@ -873,6 +935,7 @@
   }
  ],
  "Desecrated Tomb": [],
+ "Desperate Plea": [],
  "Dictate of Kruphix": [],
  "Didn't Say Please": [],
  "Dina, Essence Brewer": [],
@@ -904,8 +967,10 @@
   }
  ],
  "Dionus, Elvish Archdruid": [],
+ "Distracted Botanist": [],
  "Doctor Doom": [],
  "Doctor Doom, Unrivaled": [],
+ "Drag to the Roots": [],
  "Dragonlord Silumgar": [],
  "Drana, the Last Bloodchief": [],
  "Dredger's Insight": [],
@@ -1019,6 +1084,7 @@
    "y": "2024"
   }
  ],
+ "Elvish Elegy": [],
  "Elvish Mystic": [
   {
    "a": "Wesley Burt",
@@ -1224,15 +1290,43 @@
    "y": "2026"
   }
  ],
+ "Fiend Artisan": [
+  {
+   "a": "Yigit Koroglu",
+   "art": "https://cards.scryfall.io/art_crop/front/6/c/6cd9d800-6d31-42e2-87d2-772db0ff95ed.jpg?1783931012",
+   "cn": "220",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/c/6cd9d800-6d31-42e2-87d2-772db0ff95ed.jpg?1783931012",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Carl Critchlow",
+   "art": "https://cards.scryfall.io/art_crop/front/5/0/50a31dde-29b0-4c6f-b345-ae3c984cd1c7.jpg?1783908593",
+   "cn": "83",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/0/50a31dde-29b0-4c6f-b345-ae3c984cd1c7.jpg?1783908593",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  }
+ ],
  "Fleet Swallower": [],
  "Flux Channeler": [],
  "Folio of Fancies": [],
  "Fraying Sanity": [],
+ "Freyalise, Skyshroud Partisan": [],
  "Furgul, Quag Nurturer": [],
  "Gadwick, the Wizened": [],
  "Galadriel of Lothlórien": [],
  "Gale, Conduit of the Arcane": [],
  "Gandalf, Friend of the Shire": [],
+ "Garruk, Apex Predator": [],
  "Garruk, Caller of Beasts": [],
  "Garruk, Veiled Butcher": [],
  "Geralf, the Fleshwright": [],
@@ -1294,6 +1388,7 @@
  "Glamdring, Foe-hammer // Gleam of Death": [],
  "Glarb, Calamity's Augur": [],
  "Glimpse the Unthinkable": [],
+ "Glissa Sunslayer": [],
  "Gloom Ripper": [],
  "Go for the Throat": [],
  "God-Eternal Kefnet": [],
@@ -1437,6 +1532,7 @@
    "y": "2021"
   }
  ],
+ "Havengul Lich": [],
  "Heartless Act": [
   {
    "a": "Ryan Pancoast",
@@ -1578,6 +1674,7 @@
  "Insidious Roots": [],
  "Invasion of Ikoria // Zilortha, Apex of Ikoria": [],
  "Invasion of Segovia // Caetus, Sea Tyrant of Segovia": [],
+ "Invasion of Shandalar // Leyline Surge": [],
  "Ioreth of the Healing House": [],
  "Irenicus's Vile Duplication": [],
  "Irma, Part-Time Mutant": [],
@@ -1685,6 +1782,7 @@
  ],
  "Jace, the Perfected Mind": [],
  "Jadzi, Oracle of Arcavios // Journey to the Oracle": [],
+ "Jenova, Ancient Calamity": [],
  "Jidoor, Aristocratic Capital // Overture": [],
  "Jin-Gitaxias // The Great Synthesis": [],
  "Jin-Gitaxias, Core Augur": [
@@ -1871,6 +1969,7 @@
  "Kefnet the Mindful": [],
  "Kels, Fight Fixer": [],
  "Kenrith's Transformation": [],
+ "Killmonger, Scourge of Wakanda": [],
  "Kingpin, Wilson Fisk": [],
  "Kinnan, Bonder Prodigy": [
   {
@@ -1991,9 +2090,11 @@
    "y": "2026"
   }
  ],
+ "Leaf-Leap Guide": [],
  "Legolas, Counter of Kills": [],
  "Leovold, Emissary of Trest": [],
  "Leyline Immersion": [],
+ "Leyline of Transformation": [],
  "Lich's Mastery": [],
  "Liliana of the Dark Realms": [
   {
@@ -2176,6 +2277,7 @@
   }
  ],
  "Mitotic Ultimus": [],
+ "Moon-Vigil Adherents": [],
  "Moonstone, Harsh Mistress": [],
  "Morcant's Eyes": [],
  "Morcant's Loyalist": [],
@@ -2210,6 +2312,7 @@
  ],
  "Multiversal Recruitment": [],
  "Murderous Rider // Swift End": [],
+ "Mycoid Resurrection": [],
  "Mystic Reflection": [],
  "Mystic Remora": [],
  "Mystic Snake": [],
@@ -2521,6 +2624,7 @@
    "y": "2024"
   }
  ],
+ "Perennial Gravewarden": [],
  "Persistent Petitioners": [],
  "Pharaoh Rama-Tut": [],
  "Pharika, God of Affliction": [],
@@ -2605,6 +2709,7 @@
  "Price of Fame": [],
  "Priest of Titania": [],
  "Princess Yue": [],
+ "Professor Dellian Fel": [],
  "Proft's Eidetic Memory": [],
  "Proft, Consulting Detective": [],
  "Prototype X-8": [],
@@ -2722,6 +2827,8 @@
  "Sauron, the Necromancer": [],
  "Saw It Coming": [],
  "Scavenger's Talent": [],
+ "Scrounge for Eternity": [],
+ "See the Unwritten": [],
  "Seizan, Perverter of Truth": [
   {
    "a": "Maji",
@@ -2852,6 +2959,7 @@
  "Shredder, Shadow Master": [],
  "Sidisi, Brood Tyrant": [],
  "Sin, Spira's Punishment": [],
+ "Six": [],
  "Skemfar Avenger": [],
  "Skithiryx, the Blight Dragon": [
   {
@@ -2894,6 +3002,7 @@
    "y": "2025"
   }
  ],
+ "Skyfisher Spider": [],
  "Slimefoot, Thallid Transplant": [],
  "Sméagol, Helpful Guide": [],
  "Sokka's Haiku": [],
@@ -2925,7 +3034,10 @@
   }
  ],
  "Splinter, the Mentor": [],
+ "Squirming Emergence": [],
  "Startled Awake // Persistent Nightmare": [],
+ "Status // Statue": [],
+ "Sultai Charm": [],
  "Sunken Hollow": [],
  "Syr Elenora, the Discerning": [
   {
@@ -3174,6 +3286,7 @@
  "Theorix Charm": [],
  "Thought Collapse": [],
  "Thought Scour": [],
+ "Thranduil's Company": [],
  "Thranduil, Sindarin Liege": [],
  "Thranduil, the Elvenking": [],
  "Thryx, the Sudden Storm": [
@@ -3280,6 +3393,7 @@
  "Trystan's Command": [],
  "Trystan, Callous Cultivator": [],
  "Tui and La, Moon and Ocean": [],
+ "Twilight Diviner": [],
  "Tyvar Kell": [
   {
    "a": "Chris Rallis",
@@ -3307,6 +3421,8 @@
   }
  ],
  "Tyvar the Bellicose": [],
+ "Tyvar's Stand": [],
+ "Tyvar, the Pummeler": [],
  "Uchbenbak, the Great Mistake": [],
  "Ulamog, the Ceaseless Hunger": [],
  "Ultimecia, Time Sorceress": [],
@@ -3405,6 +3521,32 @@
   }
  ],
  "Vesuvan Duplimancy": [],
+ "Victimize": [
+  {
+   "a": "Kekai Kotaki",
+   "art": "https://cards.scryfall.io/art_crop/front/e/7/e7e7cbed-83d7-41e5-b495-9850d631ad56.jpg?1783912751",
+   "cn": "23",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/7/e7e7cbed-83d7-41e5-b495-9850d631ad56.jpg?1783912751",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  },
+  {
+   "a": "Craig J Spearing",
+   "art": "https://cards.scryfall.io/art_crop/front/8/3/83379f7f-3766-43f5-bd5e-e11ef9070ddb.jpg?1783911214",
+   "cn": "278",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/3/83379f7f-3766-43f5-bd5e-e11ef9070ddb.jpg?1783911214",
+   "r": "U",
+   "set": "MH3",
+   "sn": "Modern Horizons 3",
+   "y": "2024"
+  }
+ ],
  "Victor Timely, Wily Tycoon": [],
  "Villainous Wealth": [
   {
@@ -3488,6 +3630,8 @@
    "y": "2018"
   }
  ],
+ "Vraska, Regal Gorgon": [],
+ "Vraska, Relic Seeker": [],
  "Wan Shi Tong, Librarian": [],
  "Wasp, Shrinking Savior": [],
  "Wastewood Verge": [],

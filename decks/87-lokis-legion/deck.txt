@@ -17,7 +17,7 @@
 #: archetype: DISTINCT from deck 11 (Villainous: 60-card mono-black Standard): three colours,
 #: archetype: Historic Brawl, and the Loki copy engine.
 #: tier: A — set by the owner 2026-10-21. The measurable floor reads A at 100 cards: interaction
-#: tier: 13 and card advantage 14 against an A line of 12 and a sum of 19 — interaction one above
+#: tier: 14 and card advantage 14 against an A line of 12 and a sum of 19 — interaction two above
 #: tier: the line (Leader, Super-Genius and Black Cat, Cunning Thief count as card advantage since
 #: tier: 2026-11-02; they scored no role before). The engine is layered: copy targets with enters removal (Elektra,
 #: tier: Ultimo, Shocker), death payoffs for the copy (Kingpin, Liliana, Criminal Enterprise), the

@@ -8,6 +8,7 @@
 # `check_roles.py --update-baseline` to acknowledge the current set.
 Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
+Abomination of Llanowar
 Absorbing Man and Titania
 Accumulate Wisdom
 Aerial Doombot
@@ -40,12 +41,12 @@ Ashroot Animist
 Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
-Avengers: Under Siege
 Azula, Cunning Usurper
 Badgermole
 Ball Lightning
 Baxter Stockman
 Bejeweled Warg
+Bilbo, Fellow Conspirator
 Billowing Shriekmass
 Bioengineered Future
 Biogenic Upgrade
@@ -53,18 +54,20 @@ Biotech Specialist
 Black Widow, Super Spy
 Blasphemous Edict
 Blitzball Shot
-Bloated Contaminator
 Bloodthirsty Conqueror
+Blooming Cactusfolk
 Body of Research
 Boiling Rock Rioter
 Bolg's Company
 Bone-Cairn Butcher
 Boneclub Berserker
 Boneyard Desecrator
+Bosco, Just a Bear
 Brass's Bounty
 Brightspear Zealot
 Broodguard Elite
 Bulk Up
+Bumi's Feast Lecture
 Bumi, Unleashed
 Burnout Bashtronaut
 Burrowguard Mentor
@@ -81,11 +84,10 @@ Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
-Cheering Crowd
+Chatterfang, Squirrel General
 Claim Jumper
 Collector's Vault
 Colossification
-Contagion Dispenser
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -135,7 +137,6 @@ Echo, Perceptive Prodigy
 Eclipsed Merrow
 Eerie Gravestone
 Effortless Master
-Eluge, the Shoreless Sea
 Emeritus of Woe
 Emil, Vastlands Roamer
 Encumbered Reejerey
@@ -180,7 +181,7 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Ghoulcaller Gisa
 Giant Cindermaw
-Giant-Man, Gargantuan Genius
+Giant Opportunity
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
@@ -210,14 +211,12 @@ Hellrider
 Herald of Eternal Dawn
 Herald of Secret Streams
 High Fae Trickster
-High Perfect Morcant
 Honden of Night's Reach
 Honored Knight-Captain
 Hop to It
 Hornet Queen
 Hour of Victory
 How to Start a Riot
-Huatli's Raptor
 Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
@@ -230,7 +229,6 @@ Ingenious Leonin
 Insatiable Skittermaw
 Insurrection
 Interface Ace
-Invasion of Ikoria // Zilortha, Apex of Ikoria
 Involuntary Employment
 Ioreth of the Healing House
 Iroh, Dragon of the West
@@ -239,9 +237,10 @@ Iron Lad, Diverging Destiny
 Ironpaw Aspirant
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
+Jiang Yanggu, Never Alone
+Jinnie Fay, Jetmir's Second
 Joo Dee, One of Many
 K'un-Lun Warrior
-Kagha, Shadow Archdruid
 Kamahl's Druidic Vow
 Kang the Conqueror
 Katara, Water Tribe's Hope
@@ -281,8 +280,8 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
-Merfolk Skydiver
 Miasmic Mummy
+Michelangelo, the Heart
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
@@ -300,6 +299,7 @@ Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Mysterio, Master of Illusion
+Mythweaver Poq
 Namazu Trader
 Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
@@ -327,6 +327,7 @@ Ozai's Cruelty
 Pain 101
 Paradox Surveyor
 Paranormal Analyst
+Peregrin Took
 Perigee Beckoner
 Personify
 Peter Parker
@@ -353,7 +354,6 @@ Raph & Leo, Sibling Rivals
 Raph & Mikey, Troublemakers
 Raphael, the Muscle
 Raphael, the Nightwatcher
-Ravenous Tyrannosaurus
 Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
@@ -364,7 +364,6 @@ Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
 Riverchurn Monument
-Roalesk, Apex Hybrid
 Rockalanche
 Rustler Rampage
 Salvation Swan
@@ -391,6 +390,7 @@ Silver Surfer, Cosmic Voyager
 Silvergill Mentor
 Silverquill, the Disputant
 Simic Ascendancy
+Sinister Cryologist
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator
@@ -464,6 +464,7 @@ Treasure Dredger
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
+Twilight Diviner
 Ty Lee, Artful Acrobat
 Tyvar the Bellicose
 Ultron Drone
@@ -477,7 +478,6 @@ Unstoppable Slasher
 Valentina Allegra de Fontaine
 Vastlands Scavenger // Bind to Life
 Venomized Cat
-Venomous Brutalizer
 Verdant Kraken
 Veteran Ice Climber
 Virulent Silencer

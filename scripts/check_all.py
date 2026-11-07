@@ -305,10 +305,118 @@ def builder_soft():
         return [f"builder check skipped ({e})"]
 
 
+GREEN_CACHE = os.path.join(REPO_ROOT, ".cycle", ".check-all-green.json")
+
+
+def tree_signature():
+    """A fingerprint of EVERYTHING this gate reads, or None if it cannot be taken.
+
+    The gate reads only repo files (no network), and every file it reads is tracked or
+    untracked-but-not-ignored, so the working tree fully determines the result — except
+    for the date, which the rotation, unreleased-pool and collection-freshness sweeps
+    read, so it is part of the key. The tree is HEAD's tree id plus the bytes of every
+    uncommitted change (`git diff HEAD --binary`) plus the content hash of each untracked
+    file. Any edit, committed or not, changes it. None (no git, a git error) means the
+    caller must run the gate for real — a cache that cannot prove it is current is
+    never trusted."""
+    import datetime
+    import hashlib
+    import subprocess
+
+    def git(*a, inp=None):
+        r = subprocess.run(["git", *a], cwd=REPO_ROOT, capture_output=True, input=inp)
+        if r.returncode != 0:
+            raise RuntimeError(r.stderr.decode(errors="replace"))
+        return r.stdout
+    try:
+        h = hashlib.sha256()
+        h.update(git("rev-parse", "HEAD^{tree}"))
+        h.update(git("diff", "HEAD", "--binary"))
+        untracked = git("ls-files", "-o", "--exclude-standard", "-z")
+        h.update(untracked)
+        if untracked.strip(b"\0"):
+            h.update(git("hash-object", "--stdin-paths",
+                         inp=untracked.replace(b"\0", b"\n")))
+        h.update(datetime.date.today().isoformat().encode())
+        h.update(sys.version.encode())
+        return h.hexdigest()
+    except Exception:
+        return None
+
+
+def _load_green():
+    import json
+    try:
+        with open(GREEN_CACHE, encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return {}
+
+
+def run_cached(quiet):
+    """`--cached`: replay the last GREEN run when nothing the gate reads has changed,
+    else run the FULL gate for real (in a child process, so its output can be stored)
+    and remember it only if it passed. A failing run is never cached, so a hard failure
+    is re-proven every time. One stored run answers BOTH modes — `--quiet` computes the
+    same checks and prints only the summary line, which the full child also writes —
+    so `make postedit`'s full run and `preflight`'s quiet one share it. `/apply-changes`
+    used to run the full gate two or three times over an unchanged tree (~40 s each,
+    2026-11-07)."""
+    import json
+    import subprocess
+    import tempfile
+    sig = tree_signature()
+    hit = _load_green() if sig else {}
+    if sig and hit.get("sig") == sig:
+        if quiet:
+            print(hit["summary"])
+        else:
+            sys.stdout.write(hit["stdout"])
+            sys.stderr.write(hit["stderr"])
+            print("(check_all: replayed the last green run — nothing it reads has "
+                  "changed; rm .cycle/.check-all-green.json to force)")
+        return 0
+    fd, summ_path = tempfile.mkstemp(suffix=".txt")
+    os.close(fd)
+    try:
+        r = subprocess.run([sys.executable, os.path.abspath(__file__),
+                            "--summary-to", summ_path],
+                           capture_output=True, text=True, cwd=REPO_ROOT)
+        with open(summ_path, encoding="utf-8") as fh:
+            summary = fh.read().strip()
+    finally:
+        os.remove(summ_path)
+    if quiet:
+        if summary:
+            print(summary)
+        else:                       # it crashed before the summary: show why (BS11-55)
+            sys.stderr.write(r.stderr[-2000:])
+    else:
+        sys.stdout.write(r.stdout)
+        sys.stderr.write(r.stderr)
+    # Re-taken AFTER the run: the gate writes nothing, so an unchanged signature proves
+    # the stored output describes this exact tree; a tree edited mid-run is not stored.
+    if r.returncode == 0 and summary and sig and tree_signature() == sig:
+        try:
+            os.makedirs(os.path.dirname(GREEN_CACHE), exist_ok=True)
+            with open(GREEN_CACHE, "w", encoding="utf-8") as fh:
+                json.dump({"sig": sig, "stdout": r.stdout, "stderr": r.stderr,
+                           "summary": summary}, fh)
+        except OSError:
+            pass
+    return r.returncode
+
+
 def main():
     ap = argparse.ArgumentParser(description="Card-library integrity check.")
     ap.add_argument("--quiet", action="store_true", help="one-line summary only")
+    ap.add_argument("--cached", action="store_true",
+                    help="replay the last green run if nothing the gate reads has "
+                         "changed since (a failure is never cached)")
+    ap.add_argument("--summary-to", metavar="PATH", help=argparse.SUPPRESS)
     args = ap.parse_args()
+    if args.cached:
+        return run_cached(args.quiet)
 
     hard = []
 
@@ -837,18 +945,22 @@ def main():
     except Exception as e:
         soft.append(f"tier floor spread check skipped ({e})")
 
+    state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
+    # Carry the crashed-radar promotion onto the hook path too (Batch C small
+    # leaks): the full output distinguishes "a radar did not run" from an
+    # ordinary warning precisely because a broken radar reads as quiet — and
+    # --quiet, the mode documented as "for hooks" (the one nobody reads
+    # closely), collapsed both into the same soft count.
+    down = sum(1 for s in soft if " skipped (" in s)
+    extra = f", {len(soft)} soft" if soft else ""
+    if down:
+        extra += f" (⚠ {down} RADAR(S) DID NOT RUN)"
+    summary = f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}{extra}"
+    if args.summary_to:             # `--cached`'s child: the quiet line, for replay
+        with open(args.summary_to, "w", encoding="utf-8") as fh:
+            fh.write(summary)
     if args.quiet:
-        state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
-        # Carry the crashed-radar promotion onto the hook path too (Batch C small
-        # leaks): the full output distinguishes "a radar did not run" from an
-        # ordinary warning precisely because a broken radar reads as quiet — and
-        # --quiet, the mode documented as "for hooks" (the one nobody reads
-        # closely), collapsed both into the same soft count.
-        down = sum(1 for s in soft if " skipped (" in s)
-        extra = f", {len(soft)} soft" if soft else ""
-        if down:
-            extra += f" (⚠ {down} RADAR(S) DID NOT RUN)"
-        print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}{extra}")
+        print(summary)
         return 1 if hard else 0
 
     print(f"\n=== Integrity: {ncards} cards, {ndecks} decks ===")

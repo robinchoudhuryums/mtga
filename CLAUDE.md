@@ -172,7 +172,7 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
   rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
   the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
-- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 88 / B 41 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 67% against the 85% alarm; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
+- **A GOOD DECK CAN SIT AT A LOW FLOOR, AND THAT IS THE MODEL WORKING (investigated 2026-09-03, prompted by deck 78 playing above its B).** The floor reads TWO of the eleven terms `deck_quality_vector` produces; **21 of deck 78's 36 nonland cards contribute nothing to it** — 11 payoff/engine plus 10 with no role at all, Doubling Season / Starfield Vocalist / Katara among them, i.e. the entire trigger-doubling thesis. That is not deck-78-specific: the roster's MEDIAN deck has 71% of its nonland cards invisible to the floor (78 is 75%, rank 42 of 115). **A payoff-density term was simulated and DECLINED**: +1 per 4 payoff cards capped at +3 moved 16 decks, cut the C band 9→1 and pushed A to 62% — re-starting the saturation BS8-06 had just fixed — **and left deck 78 at B anyway.** So the answer to "does a well-playing deck mean the rubric is wrong" is no on both halves: the intended remedy is the human letter, which the rubric already lets sit ONE band above the floor. Three things say leave the table alone: the spread is healthy (A 87 / B 43 / C 3, the C band, empty since deck 73 left it, refilled on 2026-10-07 when single-target bounce moved from interaction to the report-only tempo line and took decks 22, 22-brawl, 67 and 68 there — top band 65% against the 85% alarm, after the 2026-11-05 power-only-shrink fix took decks 34 and 96 to B; the 2026-09-22 plan-header pass moved four decks A→B and widened it further, and the 2026-09-29 per-60 scaling moved one more, the 100-card 78-historic-brawl, which a removal add took back to A on 2026-09-30, and deck 55, whose 2026-10-01 swaps raised its curve and moved it A→B until a card-advantage add and a 25th land took it back to A the same day), the record cannot arbitrate (**79 matches, and int+ca correlates with winning at r = −0.03**; nothing clears the ±0.22 noise band, so this is not evidence the floor is wrong, it is evidence the sample sees nothing), and deck 78's 5-2 is one win above the 54% pooled baseline at n=7 against a 20-match floor. **Re-derive the table when `tier_floor_spread` says so; do not re-derive it because a deck outperformed its letter.**
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -344,7 +344,9 @@ is protecting.
   `legal`, before any write or ledger row); and **`swap <id> --undo`** reverses the deck's
   LAST swap — restores that swap's own backup, drops its ledger row — and refuses if
   anything else changed since. **`swap <id> --package "A=B" "C=D"`** previews a whole
-  set as one change (combined vector, floor, legality, per-pair identity) and writes nothing. [G-06]
+  set as one change (combined vector, floor, legality, per-pair identity) and writes nothing;
+  with `--apply` it then applies the pairs IN ORDER through the same single-swap code in one
+  process — identical file and ledger rows, a third of the time (2026-11-07). [G-06]
 - **Triage the roster with `deck.py audit` before full-tuning it** — the cheap, offline
   funnel for "which decks actually need a tune", labelled ★ TUNE / craft / review / ok
   and sortable by `Tier`. It is a SHORTLIST SIGNAL: a flag says "look here", and a
@@ -717,12 +719,12 @@ is protecting.
   and **never read one axis discriminating as evidence all five do**. [G-33]
 - **Before committing a deck edit run `deck.py preflight <id>`, and grade a cut/swap with
   `deck.py quality`.** `preflight` folds legal + owned + castable + a full `check_all`
-  into one READY/BLOCKED verdict. `quality --json` before, `--vs FILE` after, flags
+  into one READY/BLOCKED verdict; the gate runs `--cached`, so after `make postedit` it
+  replays that green run instead of paying ~40 s again (a failure is never cached). `quality --json` before, `--vs FILE` after, flags
   regressions so a swap that worsens the deck self-catches — a SOFT guard, since an
   intentional trade is fine. [G-34]
-- **`deck.py mana` also lints color SOURCES, not just pip demand** — it flags cards whose
-  strict pips look thin against the deck's actual sources (`△ Pip-intensive`) — the
-  "wants UU but is really a U-splash" problem. **Sources are read
+- **`deck.py mana` also lints color SOURCES, not just pip demand** — `△ Pip-intensive` flags
+  strict pips thin against the deck's sources. **Sources are read
   from the land's TEXT through `lib.land_production` (BS8-01) — ONE count,
   `deck.deck_source_profile`, behind every source figure (`mana`, `consistency`, the
   recommenders, the rationale audit).**
@@ -732,15 +734,15 @@ is protecting.
   Plains, or Island") only for those types (`fetch_types`); residual: a
   NONBASIC typed fetch ("a Forest or Island card") counts as nothing. **`free` MEANT FOUR THINGS
   until 2026-09-04**:
-  choose-ONCE-on-entry now sets `chosen` (counted for ACCESS, denied BREADTH);
-  transform-gated, GRANTED and extra-tap clauses are out. **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
+  choose-ONCE-on-entry sets `chosen` (counted for ACCESS, denied BREADTH);
+  transform-gated, GRANTED and extra-tap clauses are out; an entry-turn-only colour (Mirrex) is `entry`, never counted (2026-11-06). **`lib.tapland_kind` is the ONE tapping predicate** (the tempo
   line, `·tapped?`, `_land_value`'s premium): `fast` and `check` (a basic gate, floor 12)
   earn the shockland premium; a SLOWLAND and a board state stay conservative; a fetch with
   no mana of its own (Evolving Wilds) reads tapped (2026-11-02). **A TYPE-NAMED gate ('a Plains or an Island') is read
   against the deck's OWN lands' types (basics and typed nonbasics) since 2026-09-23 — pass
   `basic_types`, or it reads `check` for a deck that cannot meet it.**
   **NONLAND sources are DISCLOSED since 2026-09-18, never counted**: `consistency` prints
-  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**99 of 132 decks**). BOARD-dependent
+  `ⓘ N NONLAND mana source(s) are NOT in the counts above` (**100 of 133 decks**). BOARD-dependent
   colour (Vivid) and creature-GRANTED mana are labelled since 2026-10-06, as is a permanent making EVERY land any colour
   (`land_rainbow_enablers`) and firebending (`combat-only`), both 2026-10-25. IDENTITY is a
   fallback ONLY for a text printing no mana ability (Duskmantle's U/B is an activation COST).
@@ -1038,7 +1040,7 @@ is protecting.
   not "finish" it by feeding `tier_band`. **`_UNPRICED_DISCLOSE_FLOOR = 3` is p75 of its own
   axis, not 1**: across the **68 decks that print an effective figure** the unpriced count
   runs p25 1 / p50 2 / p75 3 / p90 5 / max 12, so a floor of 1 fires on 93% (the G-07
-  saturation shape) against **27 of 68 (40%)** at 3. BOTH figures are registered in
+  saturation shape) against **26 of 68 (38%)** at 3. BOTH figures are registered in
   `figure_drift`, which is what caught the population move when impending joined.
   **Until 2026-11-02 it read keywords from a field `load_card_data` never carries**, so
   every KEYWORD discount (convoke, affinity, improvise, delve) was invisible to it while the
@@ -1058,7 +1060,7 @@ is protecting.
   2026-09-03. `deck_quality_vector` publishes it, `tier_band` ignores it, and a test pins
   that two decks differing only in creature SIZE land in the same band. **THREE THINGS IT
   CANNOT SEE, disclosed rather than guessed at:** a printed `*`/X power is counted APART
-  and never coerced to 0 (G-16), which is no corner case — **77 of 132 decks** hold one,
+  and never coerced to 0 (G-16), which is no corner case — **78 of 133 decks** hold one,
   so a bare sum would under-report on 58% of the roster; TOKENS and other created bodies
   read ZERO, so a card making two 3/3s contributes nothing; and VEHICLES are counted
   apart, not being creatures until crewed. Read the figure as a FLOOR on what the deck can
@@ -1082,7 +1084,7 @@ is protecting.
   a Verge that had tied an ungated untapped dual. The checkland gate reads typed nonbasics
   too now, one answer to "do I control a land of type X" (0 roster changes). **Residuals:**
   board-state gates (Spire of
-  Industry's artifact, Mirrex's entered-this-turn, Gemstone Caverns' luck counter) are
+  Industry's artifact, Gemstone Caverns' luck counter) are
   unmodelled and Leyline of the Guildpact is only disclosed (G-35); and a per-card "N% on curve" in deck prose is unaudited (G-26), so a figure
   quoted before this change may be stale without a warning. [G-87]
 - **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
@@ -1166,8 +1168,8 @@ is protecting.
   "create a token that's a copy" is not counted — what it copies is unknowable. Types come
   from the FRONT face (BS11-70: the whole `A // B` line made a flip-Saga a creature card and
   dropped `Artifact // Land`). **The MV-cap gate reads YOUR creature CARDS since
-  2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. Residual:
-  a typed non-creature card gate ("permanent card with mana value N or less") is unbuilt.
+  2026-10-06** — a bare "mana value N or less" read removal as a reanimation gate. The typed
+  non-creature cap ("nonland permanent / artifact card with mana value N or less") joined 2026-11-05.
   **Third section since 2026-11-02, the LEGEND RULE**: copy effects that keep legendary
   status vs the legendary share of what they copy (`⚠` at ≥67%, 8 of 37 decks).
   **Also since 2026-11-02: mana-spent, "if you control a <creature type>" and "if it wasn't
@@ -1733,7 +1735,9 @@ earned it: [C-01]
   **scripts/session_check.sh** + `.claude/settings.json` — the SessionStart hook: runs
   `check_all --quiet` on every session start and the full pytest suite only when the
   HEAD tree of scripts/ tests/ Makefile pytest.ini changed since the last green run
-  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force) [C-05]
+  (signature in the gitignored `.cycle/.tests-green-sig`; `rm` it to force); `check_all
+  --cached` keeps its own green-run replay in the gitignored `.cycle/.check-all-green.json`,
+  keyed on the whole working tree plus the date (2026-11-07) [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile, scripts/builder.py + scripts/builder_template.html
@@ -2185,7 +2189,7 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`, plus
   `isshin-` (drafted as deck 93; the owner's open notes remain), `zimone-` (deck 94;
   add-backs pending) and `sultai-pile-analysis.md` (decks 75-historic-brawl and 96 — its
-  Builder board `builds/sultai` is where the owner marks picks); read each one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
+  Builder board `builds/sultai` is where the owner marks picks), and `rocco-pile-analysis.md` (drafted as deck 97 on 2026-11-05; its board `builds/rocco` holds the bench); read each one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
   (its bench and sequencing rule are in that deck's `#: notes:`; `git log` holds the rest). `deck89-tooling-plan.md` (a four-batch tooling plan) was completed and
   deleted 2026-10-23; its record is `.cycle/blocks/deck89-batch*.md`. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`

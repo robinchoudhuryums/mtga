@@ -696,6 +696,27 @@ class TestLandProductionExclusions:
             "Colorless")
         assert p["free"] == set() and p["conditional"] == set("WUBRG")
 
+    def test_a_colour_usable_only_on_the_turn_it_enters_is_not_free(self):
+        """Mirrex makes any colour only the turn it enters and {C} after that. It read as
+        a free five-colour source, so deck 97's W/R/G counts were one too high each
+        (2026-11-06). It lands in `entry`, which `deck_source_profile` does not count."""
+        p = lib.land_production(
+            "{T}: Add {C}.\n"
+            "{T}: Add one mana of any color. Activate only if this land entered this turn.\n"
+            "{3}, {T}: Create a 1/1 colorless Phyrexian Mite artifact creature token with "
+            "toxic 1 and \"This token can't block.\"", "Colorless")
+        assert p["free"] == set() and p["entry"] == set("WUBRG")
+        assert p["conditional"] == set() and p["restricted"] == set()
+
+    def test_entered_this_turn_or_a_basic_is_still_a_gated_source(self):
+        """The MSH cycle's "entered this turn OR if you control a basic land" is a standing
+        gate (G-87), not an entry-turn-only colour: it must stay free and gated."""
+        p = lib.land_production(
+            "{T}: Add {C}.\n{T}: Add {G} or {W}. Activate only if this land entered this "
+            "turn or if you control a basic land.", "G/W")
+        assert p["free"] == set("GW") and p["entry"] == set()
+        assert set(p["gated"]) == set("GW")
+
     def test_the_ordinary_cases_are_untouched(self):
         """The guard rails: a plain tri-land, a dual and a fetch must read as before."""
         tri = lib.land_production("This land enters tapped.\n{T}: Add {U}, {R}, or {W}.", "")

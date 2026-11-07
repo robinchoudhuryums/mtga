@@ -1,8 +1,8 @@
 """Builder projects (scripts/builder.py): the data model, its derivation and its CLI.
 
 Every test works on a scratch `builds/` directory and a scratch COPY of a deck file, so the
-repo's own builds and decks are never written (G-88). Deck 96 is used as the source deck
-because it is a real, legal 100-card list; only the copy is edited.
+repo's own builds and decks are never written (G-88). The source deck is a frozen copy of deck
+96 in tests/fixtures/ — a real, legal 100-card list that the Builder board cannot edit.
 """
 import json
 import re
@@ -19,38 +19,20 @@ sys.path.insert(0, os.path.join(REPO, "scripts"))
 import builder as B  # noqa: E402
 import deck as D  # noqa: E402
 
+FIXTURE_DECK = os.path.join(HERE, "fixtures", "builder-glarb.txt")
+
 
 @pytest.fixture
 def scratch(tmp_path, monkeypatch):
-    """A scratch builds/ dir plus a scratch copy of deck 96; returns (deck_path, tmp_path)."""
+    """A scratch builds/ dir plus a scratch copy of the FIXTURE deck; returns (deck_path, tmp_path).
+
+    The fixture (tests/fixtures/builder-glarb.txt) is a frozen copy of deck 96. Until
+    2026-11-05 this copied the LIVE deck 96 and patched it into shape, and the live deck is
+    edited from the Builder board: an owner trim broke 35 tests one day and two the next."""
     monkeypatch.setattr(B, "BUILDS_DIR", str(tmp_path / "builds"))
     monkeypatch.setattr(D, "RECS_CSV", str(tmp_path / "recommendations.csv"))
-    src = D.find_deck("96")["path"]
     dst = tmp_path / "deck96.txt"
-    shutil.copy(src, dst)
-    # The tests below rest on a fixed premise about deck 96: these cards are OUT of it and
-    # Counterspell / Dictate of Kruphix are IN it. The live deck is edited from the Builder
-    # board, so pin the premise here rather than read whatever the deck holds today (the
-    # owner added Krang to Glarb on 2026-11-03 and two tests failed on a sound picks_report).
-    # The IN half is pinned the same way: the owner's 2026-11-03 trim cut both of them, and
-    # 35 tests errored on a fixture that asserted a fact about the live list. Missing ones
-    # are added from the resolver's printing (G-65), never a typed one.
-    out = {"Krang, the All-Powerful", "Murder", "Opt"}
-    lines = dst.read_text(encoding="utf-8").split("\n")
-    lines = [l for l in lines if not any(l.startswith(f"1 {n} (") for n in out)]
-    _m, cards = D.parse_deck_file(str(dst))
-    have = {n for _q, n, _s, _c in cards}
-    idx = D._printing_index()
-    sq = D._squash_index(idx, lambda k: idx[k][0])
-    for n in ("Counterspell", "Dictate of Kruphix"):
-        if n not in have:
-            key, _c = D._resolve_card_name(n, idx, lambda k: idx[k][0], sq)
-            disp, setc, coll = idx[key]
-            lines.append(f"1 {disp} ({setc}) {coll}")
-    dst.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    _m, cards = D.parse_deck_file(str(dst))
-    names = {n for _q, n, _s, _c in cards}
-    assert {"Counterspell", "Dictate of Kruphix"} <= names, "deck 96 no longer runs the fixture's in-deck cards"
+    shutil.copy(FIXTURE_DECK, dst)
     return str(dst), tmp_path
 
 
@@ -59,7 +41,7 @@ def _one_less_island(text):
     today. The owner's 2026-11-03 land package halved deck 96's Islands, and three tests that
     edited a literal Island count failed on a sound check_build."""
     m = re.search(r"^(\d+) Island \(", text, re.M)
-    assert m and int(m.group(1)) > 1, "deck 96 no longer runs two or more Islands"
+    assert m and int(m.group(1)) > 1, "the fixture deck no longer runs two or more Islands"
     return text[:m.start(1)] + str(int(m.group(1)) - 1) + text[m.end(1):]
 
 
@@ -496,7 +478,7 @@ class TestAddDeck:
         with pytest.raises(B.BuildError, match="already in this build"):
             B.add_deck(b, str(other))
         with pytest.raises(B.BuildError, match="already used"):
-            B.add_deck(b, D.find_deck("96")["path"], key="N")
+            B.add_deck(b, FIXTURE_DECK, key="N")
 
 
 class TestPrintingArts:
@@ -922,3 +904,38 @@ class TestPublishPlan:
         (tmp_path / "img" / "lg" / "opt.jpg").unlink()
         (tmp_path / "img" / "lg" / "murder.jpg").write_bytes(b"m")
         assert B.publish_plan(str(tmp_path)) == (["img/lg/murder.jpg", "index.html"], ["img/lg/opt.jpg"])
+
+    def test_manifest_drops_cached_images_the_board_no_longer_uses(self, tmp_path):
+        # The image folder is a cache: a card that left the pile keeps its file on disk.
+        # With the render's manifest, that file is a REMOVAL, not part of the board.
+        (tmp_path / "img" / "lg").mkdir(parents=True)
+        (tmp_path / "index.html").write_text("a")
+        for f in ("opt", "murder"):
+            (tmp_path / "img" / "lg" / f"{f}.jpg").write_bytes(f.encode())
+        B.publish_plan(str(tmp_path), mark=True)
+        data = {"meta": {"decks": [{"key": "A"}], "sprite": None, "arts": None},
+                "cards": [{"n": "Opt", "p": "x", "iA": True, "vd": {}}]}
+        B.write_manifest(str(tmp_path), data, {"Opt": "u", "Ghost": "u"})   # Ghost: no file
+        assert (tmp_path / "img" / "lg" / "murder.jpg").exists()
+        assert B.publish_plan(str(tmp_path)) == ([], ["img/lg/murder.jpg"])
+        assert B.board_capacity(str(tmp_path))[0] == 2
+
+    def test_prunable_is_settled_out_of_every_deck(self):
+        meta = {"decks": [{"key": "A"}, {"key": "B"}]}
+        cards = [{"n": "Out", "p": "x", "vd": {"A": "✗", "B": "✗"}},
+                 {"n": "Half", "p": "x", "vd": {"A": "✗", "B": "★"}},
+                 {"n": "Ungraded", "p": "x", "vd": {"A": "✗"}},
+                 {"n": "Run", "p": "x", "iB": True, "vd": {"A": "✗", "B": "✗"}},
+                 {"n": "DeckOnly", "p": None, "vd": {"A": "✗", "B": "✗"}}]
+        assert B.prunable_cards({"meta": meta, "cards": cards}) == ["Out"]
+
+    def test_cli_refuses_a_board_over_the_cap(self, tmp_path, monkeypatch, capsys):
+        (tmp_path / "img" / "lg").mkdir(parents=True)
+        (tmp_path / "index.html").write_text("a")
+        (tmp_path / "img" / "lg" / "a.jpg").write_bytes(b"a")
+        monkeypatch.setattr(B, "ARTIFACT_FILE_CAP", 1)
+        assert B.main(["publish-plan", str(tmp_path)]) == 2
+        assert "OVER the artifact's file cap" in capsys.readouterr().err
+        monkeypatch.setattr(B, "ARTIFACT_FILE_CAP", 2)
+        assert B.main(["publish-plan", str(tmp_path)]) == 0
+        assert "within 0 file(s)" in capsys.readouterr().err

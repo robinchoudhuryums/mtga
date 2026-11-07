@@ -588,6 +588,15 @@ _EXTRA_RESOURCE_COST_RE = re.compile(
 # that a Gate you control could produce") depends on the board, like Vivid — in a deck
 # with no Gates it adds nothing, so it must not read as a five-colour free source.
 _GATE_ONLY_RE = re.compile(r"\ba gate you control could produce\b", re.I)
+# A colour usable ONLY on the turn the land enters (Mirrex: "{T}: Add one mana of any
+# color. Activate only if this land entered this turn."). From the next turn on the land
+# makes {C} alone, so as a source of a colour it is the land you play THAT turn and
+# nothing after — it was read as a free five-colour source (deck 97, 2026-11-06). The
+# MSH cycle's "…entered this turn OR if you control a basic land" is NOT this: its `or`
+# clause is a standing gate, which `land_gate_types` prices (G-87), hence the lookahead.
+_ENTRY_TURN_ONLY_RE = re.compile(
+    r"\bactivate only if (?:this land|it) entered(?: the battlefield)? this turn\b(?!\s*or\b)",
+    re.I)
 # Production reachable ONLY by turning the permanent face up or transforming it. Branch of
 # Vitu-Ghazi taps for {C} as a land; its "When this land is turned face up, add two mana of
 # any one color" line needs it cast face down for {3} via Disguise first, so as a LAND it
@@ -792,6 +801,11 @@ def land_production(text, colors_cell=None, commander=None):
                    exile (Vivid's "for each color among permanents you control", Meteor
                    Crater, Chrome Mox) — never folded into `free`, so no count moves;
                    the nonland disclosure reports it
+      entry        colours added only by an ability usable on the turn the land ENTERS
+                   ("Activate only if this land entered this turn" — Mirrex). Never in
+                   `free`: from the next turn the land makes {C} alone, so a deck count
+                   must not treat it as a source of those colours; `deck_source_profile`
+                   leaves it out and labels it
       fetch        True when it searches for a BASIC land (Evolving Wilds, Fabled
                    Passage, the Halflingcycling-style riders excluded because they need
                    a creature type)
@@ -827,6 +841,7 @@ def land_production(text, colors_cell=None, commander=None):
     """
     txt = _LAND_REMINDER_RE.sub(" ", text or "")
     free, restricted, conditional, chosen, board = set(), set(), set(), set(), set()
+    entry = set()
     gated, ungated = {}, set()
     any_color = fetch = False
     saw_mana_ability = False
@@ -873,6 +888,9 @@ def land_production(text, colors_cell=None, commander=None):
                 if _CHOSEN_COLOR_RE.search(clause):
                     line_chosen = True
         if not cols:
+            continue
+        if _ENTRY_TURN_ONLY_RE.search(line):
+            entry |= cols
             continue
         if limited:
             restricted |= cols
@@ -921,7 +939,8 @@ def land_production(text, colors_cell=None, commander=None):
     return {"free": free, "restricted": restricted, "conditional": conditional,
             "chosen": chosen, "any": any_color, "fetch": fetch,
             "fetch_types": fetch_types, "gated": gated,
-            "board": board - free - restricted - conditional}
+            "board": board - free - restricted - conditional,
+            "entry": entry - free - restricted - conditional}
 
 
 def land_gate_types(line):
