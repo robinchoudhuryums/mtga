@@ -624,3 +624,19 @@ class TestPersistKeepsReplies:
         assert out["calls"][1:] == [["update", "murder", ["at", "card", "done", "hid", "note", "own", "pair", "picks", "pile", "sug"]],
                                     ["set", "murder", ["at", "card", "done", "hid", "note", "own", "pair", "picks", "pile", "sug"]]]
         assert "reply" not in out["murder"]
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestScriptsParse:
+    """Every inline script must PARSE. The function-level tests below extract single
+    functions, so a duplicate `const` in the big click handler (2026-11-07) blanked the
+    whole page with every one of them green."""
+
+    def test_every_inline_script_parses(self, tmp_path):
+        bodies = re.findall(r"<script>(.*?)</script>", SRC, re.S)
+        assert bodies
+        for i, body in enumerate(bodies):
+            f = tmp_path / f"s{i}.js"
+            f.write_text(body, encoding="utf-8")
+            r = subprocess.run([_NODE, "--check", str(f)], capture_output=True, text=True)
+            assert r.returncode == 0, r.stderr[-800:]

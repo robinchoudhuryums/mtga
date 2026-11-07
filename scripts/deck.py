@@ -1318,17 +1318,14 @@ def _arena_line(q, n, s, c):
     return line
 
 
-def cmd_arena(args):
-    """The Arena import block. A Brawl / Commander deck's `#: commander:` goes under its
-    own `Commander` heading BEFORE `Deck`, the shape Arena itself exports and imports.
-    Printed as the first `Deck` line instead, it imported as an ordinary card and the
-    commander had to be set by hand in the client. The commander stays one of the 100:
-    the Deck section carries the other 99."""
-    d = find_deck(args.id, allow_path=True)
-    if not d:
-        eprint(f"No deck with id {args.id!r}.")
-        return 1
-    meta, cards = parse_deck_file(d["path"])
+def arena_block(path):
+    """The Arena import block for the deck file at `path`, as text. A Brawl / Commander
+    deck's `#: commander:` goes under its own `Commander` heading BEFORE `Deck`, the shape
+    Arena itself exports and imports. Printed as the first `Deck` line instead, it imported
+    as an ordinary card and the commander had to be set by hand in the client. The
+    commander stays one of the 100: the Deck section carries the other 99. One definition
+    for `deck.py arena` and the Builder page's copy button, so the two cannot disagree."""
+    meta, cards = parse_deck_file(path)
     lead = set()
     if normalize_format(meta.get("format")) in _COMMANDER_FORMATS:
         lead = _header_card_keys(meta, "commander")
@@ -1340,13 +1337,20 @@ def cmd_arena(args):
                 body.append(_arena_line(q - 1, n, s, c))
             continue
         body.append(_arena_line(q, n, s, c))
+    out = []
     if head:
-        print("Commander")
-        print("\n".join(head))
-        print()
-    print("Deck")
-    for line in body:
-        print(line)
+        out += ["Commander", *head, ""]
+    out += ["Deck", *body]
+    return "\n".join(out)
+
+
+def cmd_arena(args):
+    """Print the Arena import block (see `arena_block`)."""
+    d = find_deck(args.id, allow_path=True)
+    if not d:
+        eprint(f"No deck with id {args.id!r}.")
+        return 1
+    print(arena_block(d["path"]))
     return 0
 
 

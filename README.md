@@ -1409,7 +1409,9 @@ On the claude.ai board Claude reads your picks directly: `apply` applies only wh
 confirm, moves the settled marks into each card's history (shown under **Your picks**), and
 logs what landed. Claude's replies to your notes appear under the note, and cuts it proposes
 appear as dashed suggestions you Accept or Dismiss. The deck panel counts the cards still to
-cut ("109 / 100 · 9 cuts to go").
+cut ("109 / 100 · 9 cuts to go"). Each deck panel also has **Copy Arena import**: the deck
+file's `deck.py arena` block (commander first) as of the page's build, ready for Arena's
+Import — not your pending picks; if the clipboard is blocked, the block opens selected.
 A card with more than one artwork on Arena shows **Arena printings** in its pane — every
 distinct illustration with its set, collector number, rarity and treatment (showcase,
 borderless …), oldest first. It is view-only: choose the art in Arena. A borderless frame of

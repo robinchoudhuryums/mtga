@@ -170,6 +170,8 @@ details.deck h2{margin:0;font-family:var(--display);font-weight:400;font-size:1.
 .undobtn:disabled{opacity:.45;cursor:default}
 .undobtn:hover:not(:disabled){color:var(--ink);border-color:var(--brass)}
 #toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--panel);border-radius:999px;padding:7px 16px;font-size:.88rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px)}
+.arenacopy{margin:.5rem 0 .25rem}
+.arenatxt{width:100%;box-sizing:border-box;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.4rem}
 /* alternate Arena printings (view-only) */
 details.arts summary{cursor:pointer;color:var(--accent);width:max-content;font-size:.86rem}
 .artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:8px;margin-top:6px}
@@ -948,7 +950,8 @@ function renderDecks(){ const compact=narrow();
       <div class="dmeta">Deck ${esc(d.id)} · commander ${esc(d.cmd)} · ${d.size} cards · read from the deck file ${esc(META.refreshed||"")}</div>
       ${ONE?`<div class="onegrid"><div class="onestat">`:""}<div class="kv"><span>Floor <b>${delta(pr.f0,pr.f1)}</b></span><span>Interaction <b>${delta(pr.i0,pr.i1)}</b>${hidI}</span><span>Card adv. <b>${delta(pr.c0,pr.c1)}</b>${hidC}</span><span>Sources <b>${esc(L.sources)}</b></span><span>Tapped-land cost <b>${esc(L.tapped)}</b></span><span>Avg MV <b>${delta(pr.mv0,pr.mv1)}</b></span>${sizeHTML(k,pr)}<span>Crafts <b>${delta(pr.cr0,pr.cr1)}</b></span><span>Your marks <b>+${a} / −${c}</b></span>${nc?`<span style="color:var(--warn)"><b style="color:var(--warn)">${nc}</b> need${nc>1?"":"s"} a cut</span>`:""}${nconf?`<span style="color:var(--warn)">⚠ <b style="color:var(--warn)">${nconf}</b> conflict${nconf>1?"s":""}</span>`:""}</div>
       ${ONE?nextBandHTML(k,pr.i1,pr.c1):""}
-      <details class="protlist"><summary>Protected cards (${(L.protect||[]).length})</summary><p>${(L.protect||[]).map(esc).join(" · ")}</p></details>${ONE?`</div>${curveHTML(k)}</div>`:""}</details>`; }).join(""); }
+      <details class="protlist"><summary>Protected cards (${(L.protect||[]).length})</summary><p>${(L.protect||[]).map(esc).join(" · ")}</p></details>
+      ${L.arena?`<p class="arenacopy"><button type="button" class="ghost" data-arena="${esc(k)}">Copy Arena import</button> <span class="status" id="arenast-${esc(k)}" aria-live="polite">the deck file as of ${esc(META.refreshed||"this build")}, not your pending picks</span></p><details class="protlist"><summary>Arena import block</summary><textarea class="arenatxt" id="arenatxt-${esc(k)}" readonly rows="8" aria-label="Arena import block for ${esc(d.label)}">${esc(L.arena)}</textarea></details>`:""}${ONE?`</div>${curveHTML(k)}</div>`:""}</details>`; }).join(""); }
 function renderTabs(){ document.getElementById("tabs").innerHTML=PILES.map(p=>`<button class="tab ${p.tone?"pile":""}" role="tab" type="button" data-k="${esc(p.k)}" id="tab-${p.hash}" aria-selected="false" style="--tc:${p.tone||"var(--ink)"}">${esc(p.label)}<span class="n"></span></button>`).join(""); }
 function updateTabCounts(){
   if(ONE){ const sel=document.getElementById("cmppile"); if(sel) [...sel.options].forEach(o=>{ const p=PILEDEFS.find(x=>x.k===o.value); if(p) o.textContent=pileOptLabel(p); }); }
@@ -1201,6 +1204,11 @@ document.addEventListener("click",e=>{
   const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); const c=BYID[j.dataset.jump];
     if(ONE){ CMP.pile="all"; revealCand(c.id); if(c["i"+K1]){ setView("compare",true); inspect(c.id,true); } else { SEL=c.id; ACTIVECOL="L"; setView("compare",true); select(c.id,true,"L"); } return; }
     SEL=c.id; setView(c.p,true); select(c.id,true); return; }
+  const arenaBtn=e.target.closest&&e.target.closest("[data-arena]");
+  if(arenaBtn){ const k=arenaBtn.dataset.arena, txt=(LIVE[k]||{}).arena||"", st=document.getElementById("arenast-"+k);
+    const fallback=()=>{ const ta=document.getElementById("arenatxt-"+k); if(ta){ ta.closest("details").open=true; ta.focus(); ta.select(); }
+      if(st) st.textContent="Copy was blocked here; the block below is selected — copy it by hand."; };
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>{ if(st) st.textContent="Copied — paste it into Arena's Import."; },fallback); return; }
   if(e.target.id==="copy"){ (navigator.clipboard?navigator.clipboard.writeText(copyText()):Promise.reject()).then(()=>document.getElementById("copied").textContent="Copied.",()=>document.getElementById("copied").textContent="Copy was blocked here; select the list above instead."); return; }
 });
 const noteTimer={};

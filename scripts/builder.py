@@ -1308,7 +1308,10 @@ def deck_live(did, tempo=True):
             "avg_mv": vec.get("avg_mv"), "avg_mv_n": vec.get("avg_mv_n"), "lands": lands,
             "list": nonland, "protect": sorted(prot),
             "req": {b: list(D.floor_requirements(vec, b)) for b in ("A", "B", "C")},
-            "keys": sorted({D._ms_key(n) for _q, n, _s, _c in cards})}
+            "keys": sorted({D._ms_key(n) for _q, n, _s, _c in cards}),
+            # the deck file's Arena import block, for the panel's copy button — the list as
+            # it stands when the page was built, never the page's pending picks
+            "arena": D.arena_block(d["path"])}
 
 
 def _printings():
