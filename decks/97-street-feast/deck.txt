@@ -36,6 +36,13 @@
 #: notes: 42 pips to red's 14) and −Mirrex +Reflecting Pool (Mirrex is colourless after its first turn); W/R/G
 #: notes: sources 20/19/20 → 21/19/22, cards below 90% on curve 53 → 43. Mythweaver Poq copies a land each
 #: notes: turn and Sidequest flips into a land, so the 37th land became a spell.
+#: notes: 2026-11-07, owner's call to spend fewer rare wildcards: ten rare duals replaced with owned lands —
+#: notes: three Verges, Training Compound, Gathering Place (both read a basic; the deck runs 11), two
+#: notes: slowlands, Starting Town, Jetmir's Garden and Evolving Wilds. Measured with `consistency --tempo`:
+#: notes: W/R/G sources went 21/19/22 → 21/18/22 and the mean on-curve chance as built went 54.7% → 53.7%
+#: notes: (noise ±0.8). A 12-swap version adding Temple of Triumph and Terramorphic Expanse measured 52.5%,
+#: notes: so the kept rares (The Shire, Karn's Bastion, Sunbaked Canyon, Prismatic Vista, Inspiring Vantage,
+#: notes: Branchloft Pathway) are where further cuts start costing tempo.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -127,20 +134,20 @@
 1 Stomping Ground (EOE) 258
 1 Temple Garden (ECL) 268
 1 Sunbaked Canyon (TLE) 58
-1 Battlefield Forge (BRO) 257
-1 Brushland (BRO) 259
-1 Karplusan Forest (DMU) 250
+1 Sunbillow Verge (DFT) 264
+1 Hushwood Verge (DSK) 261
+1 Thornspire Verge (DSK) 270
 1 Inspiring Vantage (OTJ) 269
-1 Razorverge Thicket (ONE) 257
-1 Copperline Gorge (ONE) 249
-1 Needleverge Pathway // Pillarverge Pathway (ZNR) 263
+1 Gathering Place (MSH) 266
+1 Training Compound (MSH) 275
+1 Starting Town (FIN) 289
 1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
-1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
+1 Jetmir's Garden (SNC) 250
 1 Clifftop Retreat (DOM) 239
-1 Sunpetal Grove (XLN) 257
-1 Rootbound Crag (XLN) 256
+1 Overgrown Farmland (FRA) 185
+1 Rockfall Vale (FRA) 186
 1 Prismatic Vista (SPG) 38
-1 Fabled Passage (BLB) 252
+1 Evolving Wilds (ECL) 264
 1 Mana Confluence (EOS) 25
 4 Plains (FRA) 281
 5 Forest (FRA) 289
