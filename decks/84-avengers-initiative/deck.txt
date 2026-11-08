@@ -9,16 +9,18 @@
 #: archetype: that card into your hand", so every attack is a card. Captain America, Team Leader gives
 #: archetype: each new Hero haste and a counter, Avengers Assemble! draws each end step a Hero
 #: archetype: attacked or entered, and The Mighty Thor, Jane Foster re-buys enters triggers on attack.
-#: archetype: THE IRON LEGION is the second half of the deck, not a splash: 27 artifacts, 9 of them
-#: archetype: Equipment, and most of the artifacts are Heroes (Tony Stark, Iron Man, Modern Marvel,
-#: archetype: Iron Man, Bleeding Edge, Iron Lad, The Vision, Iron Spider, Stark Upgrade, War Machine)
+#: archetype: THE IRON LEGION is the second half of the deck, not a splash: 27 artifacts, 10 of them
+#: archetype: Equipment, and most of the artifacts are Heroes (Iron Man, Modern Marvel, Iron Man,
+#: archetype: Bleeding Edge, Iron Lad, The Vision, Iron Spider, Stark Upgrade, SP//dr)
 #: archetype: so they do not cost Nick Fury's dig its Hero density. The artifact count is a resource:
 #: archetype: Sami, Wildcat Captain gives every spell affinity for artifacts, Shuri, Wakandan Inventor
 #: archetype: discounts them again, Iron Man, Master of Machines and Machinist's Arsenal scale with
 #: archetype: them, and Vraska, Soul of Stone turns each Equipment or other noncreature spell into
 #: archetype: another artifact body. Captain America, First Avenger attaches an Equipment free every
 #: archetype: combat, Captain America, Liberator tutors one, and Wizard's Staff on Nick Fury makes his
-#: archetype: attack dig trigger twice. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
+#: archetype: attack dig trigger twice. Hawkeye, Trick Shot turns every Hero entering into damage equal to
+#: archetype: the Hero count, Tellah makes a Hero token per noncreature spell, Nahiri, Heir of the Ancients
+#: archetype: digs for and arms Equipment, and Frodo attaches a 2- or 3-mana Equipment free. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
 #: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
@@ -109,6 +111,14 @@
 #: notes: source count moved; `consistency --tempo` priced tapped lands at 4.8 points a card before
 #: notes: (roster median 2.7) and 3.4 after. The next step is crafting Seachrome Coast, Inspiring Vantage,
 #: notes: Shivan Reef, Battlefield Forge and Sulfur Falls over the Temples and gain lands (1.9).
+#: notes: 2026-11-08, eleven swaps from the tune (owner's picks; Builder board builds/fury): in Sword of Fire
+#: notes: and Ice, Hawkeye, Trick Shot, Nahiri, Heir of the Ancients, Wraith, Hawkeye, Master Marksman, Frodo,
+#: notes: Matt Murdock, Kilo, Tellah, Gideon Blackblade, Nick Fury, Spymaster; out Wondrous Revival, The
+#: notes: Sentry, War Machine, Donatello, Conqueror's Flail, Iron Man, Titan of Innovation, Mister
+#: notes: Fantastic, Origin of Iron Man, Cid, Two-Handed Axe, Team Transmitter. Revival, The Sentry, Titan
+#: notes: and Origin are benched in the flex block. Interaction 15 -> 18, card advantage 13 -> 14,
+#: notes: protection 11 -> 14, avg MV 3.77 -> 3.66. Lands rechecked after: no owned untapped dual is left,
+#: notes: and moving a basic to Plains measured inside the noise, so the next land step is the craft one.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Director Nick Fury (MSC) 81
@@ -118,7 +128,7 @@
 1 Agent Phil Coulson (MSH) 4
 1 Avengers Assemble! (MSH) 6
 1 The Mighty Thor, Jane Foster (MSH) 222
-1 Wondrous Revival (MSC) 528
+1 Sword of Fire and Ice (MAR) 100
 1 Chronicle of Victory (ECL) 253
 
 # Heroes — the attacking body of the deck
@@ -128,10 +138,11 @@
 1 Blue Marvel, Adam Brashear (MSC) 530
 1 Captain America, Skybound (MSC) 588
 1 Thor, God of Thunder (MSH) 156
-1 Iron Man, Titan of Innovation (MAR) 91
+1 Frodo, Determined Hero (LTR) 289
 1 Captain Marvel, Apex Avenger (MSC) 78
-1 The Sentry, Golden Guardian (MSH) 35
+1 Hawkeye, Trick Shot (MSC) 506
 1 Captain America, Living Legend (MSH) 210
+1 Nick Fury, Spymaster (MSC) 603
 
 # Equipment and artifact Heroes — the Iron Legion and the gear they carry
 1 Captain America, Liberator (MSC) 587
@@ -142,11 +153,11 @@
 1 The Vision (MSH) 255
 1 Captain America, First Avenger (MAR) 88
 1 Wizard's Staff (HOB) 59
-1 Two-Handed Axe // Sweeping Cleave (HBG) 191
+1 Gideon Blackblade (WAR) 13
 1 Buster Sword (FIN) 255
 1 Iron Man Armor (MSH) 248
 1 Vision, Spectral Synthezoid (MSC) 644
-1 War Machine, Legacy of Iron (MSH) 238
+1 Nahiri, Heir of the Ancients (ZNR) 230
 1 Machinist's Arsenal (FIN) 23
 1 Iron Man, Master of Machines (MSH) 216
 1 Iron Man, Tony Stark (MSC) 851
@@ -156,11 +167,11 @@
 1 Vraska, Soul of Stone (FRA) 277
 1 Orcrist, Goblin-cleaver (HOB) 177
 1 The Key to the Vault (OTJ) 54
-1 Cid, Timeless Artificer (FIN) 216
+1 Tellah, Great Sage (FIN) 244
 1 Andúril, Narsil Reforged (HOC) 40
 1 Warrior's Blades (FRA) 163
 1 Alibou, Ancient Witness (MAR) 39
-1 Donatello, Mutant Mechanic (TMT) 36
+1 Wraith, Vicious Vigilante (SPM) 160
 1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Ironheart, Clever Champion (MSH) 60
 
@@ -168,7 +179,7 @@
 1 Captain America, Super-Soldier (MSH) 9
 1 Valorous Stance (FDN) 583
 1 Boros Charm (FDN) 721
-1 Conqueror's Flail (PZA) 15
+1 Hawkeye, Master Marksman (MSH) 130
 1 Hyperion, Supreme Hero (MSC) 599
 
 # Interaction
@@ -181,12 +192,11 @@
 1 Vault Guardsman (MSC) 612
 
 # Card advantage and selection
-1 Mister Fantastic, Reed Richards (MSH) 66
+1 Matt Murdock, Justice Seeker (MSC) 602
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
-1 Origin of Iron Man (MSC) 633
+1 Kilo, Apogee Mind (EOC) 3
 
 # Ramp
-1 Team Transmitter (MSC) 573
 1 Chromatic Lantern (GRN) 233
 1 The Mind Stone (MSH) 21
 
@@ -221,3 +231,7 @@
 
 # Flex — options cut from the list that can come back. See: deck.py flex 84
 #~ -Blue Marvel, Adam Brashear | +Iron Man, Futurist Paragon | CRAFT (R): 6-mana artifact Hero; each combat makes an artifact or creature a 5/5 flier (cut 2026-10-19 for Chronicle of Victory)
+#~ +Wondrous Revival | BENCH (tune 2026-11-08): 6-mana sorcery returning up to three Hero creature cards; a comeback after a sweeper, cut for Sword of Fire and Ice
+#~ +The Sentry, Golden Guardian | BENCH (tune 2026-11-08): 4-mana 5/5 indestructible flier, but gives the opponent an indestructible 5/5 flier; cut for Hawkeye, Trick Shot
+#~ +Iron Man, Titan of Innovation | BENCH (tune 2026-11-08): haste; each attack makes a Treasure and trades a noncreature artifact for one a mana value higher (12 to sacrifice); cut for Frodo
+#~ +Origin of Iron Man | BENCH (tune 2026-11-08): Saga: lock a creature, draw two, put a 5-or-less artifact into play; counts as interaction and card advantage; cut for Kilo

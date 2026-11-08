@@ -248,98 +248,118 @@
    "name": "Galactus, Devourer of Worlds",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Wondrous Revival",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "The Sentry, Golden Guardian",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Iron Man, Titan of Innovation",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Origin of Iron Man",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
   "Hawkeye, Trick Shot": {
    "group": "Engine",
-   "text": "Every Hero entering deals damage equal to your Hero count (32 Heroes): removal and reach off cards you cast anyway. Combos with Tellah's Hero tokens. Proposed for The Sentry.",
+   "text": "IN THE DECK 2026-11-08 (for The Sentry). Every Hero entering deals damage equal to your Hero count; Tellah's Hero tokens trigger it too.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Wraith, Vicious Vigilante": {
    "group": "Strong",
-   "text": "Unblockable double strike 1/1 Hero for 3: Sword of Fire and Ice, Buster Sword and The Key to the Vault each trigger twice a combat. Best lone attacker for Nick Fury, Spymaster. Proposed for Donatello.",
+   "text": "IN THE DECK 2026-11-08 (for Donatello). Unblockable double strike: Sword of Fire and Ice, Buster Sword, The Key to the Vault and SP//dr each trigger twice; the ideal lone attacker for Nick Fury, Spymaster.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Sword of Fire and Ice": {
    "group": "Strong",
-   "text": "+2/+2, protection from red and blue, 2 damage and a card on every hit. MV 3: Liberator tutors it, First Avenger and Frodo attach it free. Proposed for Wondrous Revival.",
+   "text": "IN THE DECK 2026-11-08 (for Wondrous Revival). +2/+2, protection from red and blue, 2 damage and a card per hit; Liberator tutors it, First Avenger and Frodo attach it free.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Nahiri, Heir of the Ancients": {
    "group": "Strong",
-   "text": "+1 makes a 1/1 and attaches an Equipment; −2 digs six for Equipment or Warrior (Frodo); −3 deals twice your Equipment count. Proposed for Iron Man Armor.",
+   "text": "IN THE DECK 2026-11-08 (for War Machine). +1 makes a 1/1 and attaches an Equipment; −2 digs six for Equipment or Frodo (a Warrior); −3 deals twice the Equipment count (10).",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Nick Fury, Spymaster": {
    "group": "Strong",
-   "text": "Attack alone: draw, then put a 3-or-less creature from hand in tapped, attacking and indestructible (Hawkeye MM, Frodo, Kilo, Wraith, Matt Murdock). Nick Fury's dig still triggers. Proposed for Team Transmitter.",
+   "text": "IN THE DECK 2026-11-08 (for Team Transmitter). Attack alone: draw, then put a 3-or-less creature in tapped, attacking and indestructible (Hawkeye MM, Frodo, Kilo, Wraith, Matt Murdock).",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Frodo, Determined Hero": {
    "group": "Strong",
-   "text": "2-drop: on enter or attack, attach an MV 2-3 Equipment free (7 left after the cuts); damage to him prevented on your turn. Halfling, not a Hero. Proposed for Iron Man, Titan of Innovation.",
+   "text": "IN THE DECK 2026-11-08 (for Iron Man, Titan of Innovation). Attaches an MV 2-3 Equipment free on entry and attack (seven in the deck).",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Hawkeye, Master Marksman": {
    "group": "Real",
-   "text": "2-drop Hero, first strike and reach; each tap can buy unblockable, 2 damage or a loot. Living Legend untaps him for a second trigger. Proposed for Conqueror's Flail.",
+   "text": "IN THE DECK 2026-11-08 (for Conqueror's Flail). 2-drop Hero; each tap buys unblockable, 2 damage or a loot, twice with Living Legend.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Kilo, Apogee Mind": {
    "group": "Engine",
-   "text": "Haste; proliferates whenever tapped, twice a turn with Living Legend. Feeds Coulson, Team Leader, Iron Spider and Captain Marvel's counters. Not a Hero. Proposed for Lady Octopus.",
+   "text": "IN THE DECK 2026-11-08 (for Origin of Iron Man). Haste; proliferates whenever tapped, twice a turn with Living Legend.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Tellah, Great Sage": {
    "group": "Engine",
-   "text": "Each noncreature spell makes a 1/1 Hero token (Hawkeye TS ping, Team Leader counter, Avengers Assemble draw); 4+ mana spells draw two. Proposed for Origin of Iron Man.",
+   "text": "IN THE DECK 2026-11-08 (for Cid). A 1/1 Hero token per noncreature spell (Hawkeye TS ping, Team Leader counter, Avengers Assemble draw); 4+ mana spells draw two.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Gideon Blackblade": {
    "group": "Strong",
-   "text": "4/4 indestructible attacker on your turn, so his attack triggers Nick Fury; +1 gives a creature indestructible, lifelink or vigilance. Restores protection. Proposed for Vision, Spectral Synthezoid.",
+   "text": "IN THE DECK 2026-11-08 (for Two-Handed Axe). 4/4 indestructible attacker on your turn; +1 gives indestructible, lifelink or vigilance.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Matt Murdock, Justice Seeker": {
    "group": "Real",
-   "text": "2-drop Hero: {1} each combat puts a counter on a creature, and every creature with a counter has ward 1, which protects Nick Fury once he has one. Proposed for Blue Marvel.",
+   "text": "IN THE DECK 2026-11-08 (for Mister Fantastic). {1} a combat for a counter; every creature with a counter has ward 1, Nick Fury included once he has one.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "The Wandering Emperor": {
    "group": "Strong",
    "text": "Flash planeswalker: −2 exiles a tapped creature, +1 counter and first strike, −1 a 2/2. Not a Hero. Swapped out for Matt Murdock on 2026-11-08.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Daredevil, Man Without Fear": {
    "group": "Strong",
    "text": "Vigilance, haste; on each attack exile the top card, +2/+1 and play it if it is a Hero. A second attack-trigger card engine beside Nick Fury.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "King T'Challa // Black Panther, Hope Enduring": {
@@ -353,7 +373,7 @@
    "group": "Real",
    "text": "Flash Equipment: attaches on entry and gives hexproof and indestructible this turn, so it saves Nick Fury in response. MV 3, so Liberator can tutor it.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Monica Rambeau // Photon, Living Light": {
@@ -388,7 +408,7 @@
    "group": "Real",
    "text": "Battle cry plus two attacking 1/1s each attack. Strong card but not a Hero, so it costs Nick Fury dig density.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Teferi, Hero of Dominaria": {
@@ -402,14 +422,14 @@
    "group": "Situational",
    "text": "+2/+2, protection from white and blue, a counter and proliferate on hits. Sword of Fire and Ice is the better Sword here.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Hero's Heirloom": {
    "group": "Situational",
    "text": "2 mana: +2/+1, and a legendary carrier (almost everything here) gets trample and haste. A Frodo target.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Basri Ket": {
@@ -423,7 +443,7 @@
    "group": "Situational",
    "text": "Lifelink; each attack gives another creature a counter and indestructible. Good, but another WW 5-drop (cut 2026-10-19 for Donatello).",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Black Panther, Most Dangerous": {
@@ -451,7 +471,7 @@
    "group": "Situational",
    "text": "5/4 flying vigilance Hero; web-slinging for {2}{W} re-buys a Liberator or Hawkeye enters trigger.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Night Nurse, Healer of Heroes": {
@@ -493,7 +513,7 @@
    "group": "Marginal",
    "text": "Spice with Gideon or Nahiri (planeswalker becomes a creature); little else here.",
    "graded_at": {
-    "84": "a048443d78fd"
+    "84": "9d96dfac21a7"
    }
   },
   "Sanctuary Warden": {
@@ -564,6 +584,34 @@
    "text": "CRAFT land (rare): U/R, untapped with an Island or Mountain. For Temple of Epiphany.",
    "graded_at": {
     "84": "a048443d78fd"
+   }
+  },
+  "Wondrous Revival": {
+   "group": "Strong",
+   "text": "BENCH (flex line). 6-mana sorcery returning up to three Hero creature cards; the comeback card after a sweeper. Cut 2026-11-08 for Sword of Fire and Ice.",
+   "graded_at": {
+    "84": "9d96dfac21a7"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "group": "Strong",
+   "text": "BENCH (flex line). 4-mana 5/5 indestructible flier, but the opponent gets an indestructible 5/5 flier that must attack. Cut 2026-11-08 for Hawkeye, Trick Shot.",
+   "graded_at": {
+    "84": "9d96dfac21a7"
+   }
+  },
+  "Iron Man, Titan of Innovation": {
+   "group": "Strong",
+   "text": "BENCH (flex line). Haste; each attack makes a Treasure and trades a noncreature artifact for one a mana value higher (12 to sacrifice). Cut 2026-11-08 for Frodo.",
+   "graded_at": {
+    "84": "9d96dfac21a7"
+   }
+  },
+  "Origin of Iron Man": {
+   "group": "Strong",
+   "text": "BENCH (flex line). Saga: lock a creature, draw two, put a 5-or-less artifact into play. Cut 2026-11-08 for Kilo.",
+   "graded_at": {
+    "84": "9d96dfac21a7"
    }
   }
  },
@@ -661,6 +709,99 @@
     "Warrior's Blades",
     "Wizard's Staff",
     "Wondrous Revival"
+   ],
+   "9d96dfac21a7": [
+    "Agent Phil Coulson",
+    "Alibou, Ancient Witness",
+    "Andúril, Narsil Reforged",
+    "Asgardian Citadel",
+    "Avengers Assemble!",
+    "Avengers Tower",
+    "Blue Marvel, Adam Brashear",
+    "Boros Charm",
+    "Buster Sword",
+    "Captain America, First Avenger",
+    "Captain America, Liberator",
+    "Captain America, Living Legend",
+    "Captain America, Skybound",
+    "Captain America, Super-Soldier",
+    "Captain America, Team Leader",
+    "Captain America, Wings of Freedom",
+    "Captain Marvel, Apex Avenger",
+    "Chromatic Lantern",
+    "Chronicle of Victory",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Daily Bugle Building",
+    "Deserted Beach",
+    "Director Nick Fury",
+    "Evolving Wilds",
+    "Floodfarm Verge",
+    "Fractured Identity",
+    "Frodo, Determined Hero",
+    "Gideon Blackblade",
+    "Gleaming Bastion",
+    "Hallowed Fountain",
+    "Hawkeye, Master Marksman",
+    "Hawkeye, Trick Shot",
+    "Hyperion, Supreme Hero",
+    "Iron Lad, Young Avenger",
+    "Iron Man Armor",
+    "Iron Man, Bleeding Edge",
+    "Iron Man, Master of Machines",
+    "Iron Man, Modern Marvel",
+    "Iron Man, Tony Stark",
+    "Iron Spider, Stark Upgrade",
+    "Ironheart, Clever Champion",
+    "Island",
+    "Kilo, Apogee Mind",
+    "Lady Octopus, Inspired Inventor",
+    "Lightning Helix",
+    "Machinist's Arsenal",
+    "Matt Murdock, Justice Seeker",
+    "Mjölnir, Hammer of Thor",
+    "Mountain",
+    "Nahiri, Heir of the Ancients",
+    "Nick Fury, Spymaster",
+    "Orcrist, Goblin-cleaver",
+    "Plains",
+    "Plaza of Heroes",
+    "Reflecting Pool",
+    "Riverpyre Verge",
+    "SP//dr, Piloted by Peni",
+    "Sacred Foundry",
+    "Sami, Wildcat Captain",
+    "Secluded Courtyard",
+    "Shuri, Wakandan Inventor",
+    "Spirebluff Canal",
+    "Stark Industries",
+    "Starting Town",
+    "Steam Vents",
+    "Sunbillow Verge",
+    "Sword of Fire and Ice",
+    "Tellah, Great Sage",
+    "Temple of Enlightenment",
+    "Temple of Epiphany",
+    "Temple of Triumph",
+    "The Key to the Vault",
+    "The Mighty Thor, Jane Foster",
+    "The Mind Stone",
+    "The Super Hero Civil War",
+    "The Vision",
+    "The Vision and Scarlet Witch",
+    "The Wondrous Wasp",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Tony Stark // The Invincible Iron Man",
+    "Uthros, Titanic Godcore",
+    "Valorous Stance",
+    "Vault Guardsman",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vision, Spectral Synthezoid",
+    "Vraska, Soul of Stone",
+    "Warrior's Blades",
+    "Wizard's Staff",
+    "Wraith, Vicious Vigilante"
    ]
   }
  },
@@ -668,271 +809,295 @@
   "Hawkeye, Trick Shot": {
    "F": {
     "m": "★★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Wraith, Vicious Vigilante": {
    "F": {
     "m": "★★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Sword of Fire and Ice": {
    "F": {
     "m": "★★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Nahiri, Heir of the Ancients": {
    "F": {
     "m": "★★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Nick Fury, Spymaster": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Frodo, Determined Hero": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Hawkeye, Master Marksman": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Kilo, Apogee Mind": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Tellah, Great Sage": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Gideon Blackblade": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Matt Murdock, Justice Seeker": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "The Wandering Emperor": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Daredevil, Man Without Fear": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "King T'Challa // Black Panther, Hope Enduring": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Celestial Armor": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Monica Rambeau // Photon, Living Light": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Blacksmith's Talent": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Human Torch, Johnny Storm": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Cayth, Famed Mechanist": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Hero of Bladehold": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Teferi, Hero of Dominaria": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Sword of Truth and Justice": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Hero's Heirloom": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Basri Ket": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Captain America, Steve Rogers": {
    "F": {
     "m": "★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Black Panther, Most Dangerous": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Brigone, Soldier of Meletis": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Nahiri, Storm of Stone": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Amazing Spider-Girl": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Night Nurse, Healer of Heroes": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Embercleave": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Silver Sable, Mercenary Leader": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Falcon, Joaquin Torres": {
    "F": {
     "m": "◇",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Spider-Suit": {
    "F": {
     "m": "△",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Luxior, Giada's Gift": {
    "F": {
     "m": "△",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Sanctuary Warden": {
    "F": {
     "m": "△",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "The Eternal Wanderer": {
    "F": {
     "m": "△",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Doctor Strange, Surgeon": {
    "F": {
     "m": "✗",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Silver Surfer, Galactus's Herald": {
    "F": {
     "m": "△",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Galactus, Devourer of Worlds": {
    "F": {
     "m": "✗",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Seachrome Coast": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Inspiring Vantage": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Shivan Reef": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Battlefield Forge": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
    }
   },
   "Sulfur Falls": {
    "F": {
     "m": "★★",
-    "graded_at": "a048443d78fd"
+    "graded_at": "9d96dfac21a7"
+   }
+  },
+  "Wondrous Revival": {
+   "F": {
+    "m": "★",
+    "graded_at": "9d96dfac21a7"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "F": {
+    "m": "◇",
+    "graded_at": "9d96dfac21a7"
+   }
+  },
+  "Iron Man, Titan of Innovation": {
+   "F": {
+    "m": "★★",
+    "graded_at": "9d96dfac21a7"
+   }
+  },
+  "Origin of Iron Man": {
+   "F": {
+    "m": "★",
+    "graded_at": "9d96dfac21a7"
    }
   }
  }
