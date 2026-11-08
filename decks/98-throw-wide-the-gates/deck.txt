@@ -1,0 +1,133 @@
+#: name: Throw Wide the Gates
+#: format: Historic Brawl
+#: colors: WUB
+#: commander: G'raha Tia, Scion Reborn
+#: plan: control
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER SPELLS-AND-HEROES around G'raha Tia,
+#: archetype: Scion Reborn: "Whenever you cast a noncreature spell, you may pay X life, where X is that spell's mana
+#: archetype: value. If you do, create a 1/1 colorless Hero creature token and put X +1/+1 counters on it. Do this
+#: archetype: only once each turn." Each turn includes the opponent's, so the deck runs instant-speed answers and
+#: archetype: two flash enablers (Leyline of Anticipation, Heliod's back face) to make a Hero on both turns. The
+#: archetype: tokens are Heroes WITH counters, so the payoffs read them: Metropolis Angel and Biorganic Carapace draw,
+#: archetype: Serra Redeemer and Barrensteppe Siege grow them, Quintorius proliferates, Captain America, Super-Soldier
+#: archetype: gives them hexproof, Ephara draws on both upkeeps. Life is the fuel: Y'shtola drains on every MV 3+
+#: archetype: spell and draws off the commander's own payment, Sorin extorts, Doctor Strange doubles every gain, and
+#: archetype: Revenge doubles the life total. An Aura lean (Sram, Pearl-Ear, Skyblade's Boon, removal Auras) is the
+#: archetype: optional direction. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
+#: archetype: Zombie tokens) and deck 43 (Standard Esper): no graveyard plan, the engine is noncreature casting.
+#: protect: G'raha Tia, Scion Reborn; Leyline of Anticipation; Y'shtola, Night's Blessed; Ephara, God of the Polis; Serra Redeemer; Skyblade's Boon; Biorganic Carapace; Metropolis Angel
+#: notes: Drafted 2026-11-08 from the owner's 230-card pile (.cycle/graha-pile-analysis.md holds the framework,
+#: notes: the error list and a graded reason for every card). Ownership is information only; the list is the
+#: notes: optimal one from the pile. G'raha reads the mana value of the spell ON THE STACK: Consecrate is 2,
+#: notes: Consume 4, Revival 2, Revenge 6, Sphinx's Revelation X+3, Invasion of New Phyrexia X+2. Gods
+#: notes: (Ephara) and Heliod's front face are creature spells and give no trigger; Adventure halves (Swift
+#: notes: Spiral, Throw a Line, Giant Secrets) do.
+#: notes: TIER UNSET pending the owner's call. Measured floor at draft: A (interaction 22 with 5 more the
+#: notes: classifier could not tag, card advantage 12, against the 100-card A line of 12 and 19), avg MV
+#: notes: 3.28. Manabase: untapped Esper duals over the taplands and one Swamp moved to Plains (white
+#: notes: carries 64 pips to blue's 25 and black's 18): tapped lands 2.0 -> 0.6 points a card, mean
+#: notes: on-curve as built 47.9% -> 50.8%. The owner may lean further into Auras; the Aura bench (Sram,
+#: notes: Pearl-Ear and Skyblade's Boon are in; Kor Spiritdancer, Danitha, Greater Auramancy, Staggering
+#: notes: Insight are not) is on the Builder board builds/graha with a reason per card.
+
+# Commander (leads from the command zone; also one of the 100)
+1 G'raha Tia, Scion Reborn (FIC) 3
+
+# Flash and noncreature engines — a Hero on the opponent's turn too
+1 Leyline of Anticipation (M20) 64
+1 Heliod, the Radiant Dawn (MOM) 17
+1 Y'shtola, Night's Blessed (FIC) 7
+1 Ephara, God of the Polis (PIO) 305
+1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
+1 Alela, Artful Provocateur (ELD) 324
+1 Sram, Senior Edificer (FCA) 3
+1 Pearl-Ear, Imperial Advisor (MH3) 39
+
+# Interaction — instants first
+1 Absorb (RNA) 151
+1 Anguished Unmaking (OTP) 35
+1 Mortify (FDN) 662
+1 Void Rend (SNC) 230
+1 Ojutai's Command (HA5) 18
+1 Azorius Charm (PIO) 205
+1 Despark (WAR) 190
+1 Fracture (STX) 188
+1 Consecrate // Consume (RNA) 224
+1 Lawmage's Binding (JMP) 453
+1 Detention Sphere (OTP) 43
+1 Pull of the Mist Moon (YDMU) 3
+1 Sheltered by Ghosts (DSK) 30
+1 Petrify (LCI) 30
+1 Nahiri's Binding (ZNR) 29
+1 Rite of Oblivion (MID) 237
+1 Invasion of New Capenna // Holy Frazzle-Cannon (MOM) 238
+1 Archnemesis (MSC) 74
+1 Firja's Retribution (KHM) 210
+1 Spider-Woman, Secret Agent (MSH) 229
+
+# Planeswalkers
+1 Teferi, Hero of Dominaria (DOM) 207
+1 Teferi, Who Slows the Sunset (MID) 245
+1 Kaya, Geist Hunter (VOW) 240
+1 Quintorius, Fate Splitter (YFRA) 26
+
+# Hero, counter and token payoffs
+1 Metropolis Angel (SNC) 203
+1 Biorganic Carapace (SPM) 124
+1 Barrensteppe Siege (TDM) 171
+1 Serra Redeemer (BLB) 387
+1 Dramatic Finale (STX) 180
+1 Baron Bertram Graywater (OTJ) 195
+1 Shaile, Dean of Radiance // Embrose, Dean of Shadow (STX) 158
+1 Ondu Knotmaster // Throw a Line (MH3) 196
+1 Captain America, Wings of Freedom (MSH) 10
+1 Captain America, Super-Soldier (MSH) 9
+1 Abigale, Eloquent First-Year (ECL) 204
+1 The Mighty Thor, Jane Foster (MSH) 222
+1 Invasion of New Phyrexia // Teferi Akosa of Zhalfir (MOM) 239
+1 Aerith Rescue Mission (FIN) 5
+1 History of Benalia (DOM) 21
+1 Friendly Neighborhood (SPM) 8
+1 Invasion of Tolvada // The Broken Sky (MOM) 241
+1 Stormkeld Curator // Giant Secrets (YWOE) 26
+1 Twining Twins // Swift Spiral (WOE) 240
+
+# Auras and Equipment
+1 Skyblade's Boon (J21) 136
+1 Sentinel's Mark (RNA) 20
+1 Gift of Orzhova (PIO) 307
+1 Angelic Destiny (FDN) 565
+1 Light of Promise (M21) 25
+1 Glasswing Grace // Age-Graced Chapel (MH3) 254
+1 Dragoon's Lance (FIN) 17
+1 Halvar, God of Battle // Sword of the Realms (KHM) 15
+
+# Life fuel and card advantage
+1 Sphinx's Revelation (AKR) 262
+1 Sorin of House Markov // Sorin, Ravenous Neonate (MH3) 245
+1 Doctor Strange, Surgeon (MSC) 591
+1 Revival // Revenge (RNA) 228
+
+# Lands (36)
+1 Command Tower (FRC) 22
+1 Plaza of Heroes (DMU) 252
+1 Godless Shrine (EOE) 254
+1 Watery Grave (EOE) 261
+1 Hallowed Fountain (ECL) 265
+1 Floodfarm Verge (DSK) 259
+1 Gloomlake Verge (DSK) 260
+1 Bleachbone Verge (DFT) 250
+1 Starting Town (FIN) 289
+1 Shattered Sanctum (SOS) 260
+1 Deserted Beach (FRA) 176
+1 Isolated Chapel (DOM) 241
+1 Seachrome Coast (ONE) 258
+1 Glacial Fortress (XLN) 255
+1 Concealed Courtyard (OTJ) 268
+1 Reflecting Pool (FRC) 23
+1 Hengegate Pathway // Mistgate Pathway (KHM) 260
+1 Adarkar Wastes (DMU) 243
+1 Caves of Koilos (DMU) 244
+8 Plains (FRA) 281
+5 Island (FRA) 283
+4 Swamp (FRA) 285

@@ -1,0 +1,4264 @@
+{
+ "schema": 1,
+ "title": "G'raha Tia — Throw Wide the Gates",
+ "decks": [
+  {
+   "key": "G",
+   "id": "98",
+   "label": "G'raha"
+  }
+ ],
+ "piles": [
+  {
+   "key": "G",
+   "label": "G'raha's pile",
+   "deck": "G",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Teferi, Hero of Dominaria",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Absorb",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ojutai's Command",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Azorius Charm",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Detention Sphere",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Pull of the Mist Moon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Biorganic Carapace",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Metropolis Angel",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Woman, Secret Agent",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Twining Twins // Swift Spiral",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sorin of House Markov // Sorin, Ravenous Neonate",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Cid, Timeless Artificer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Aven Wind Guide",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Denzilore Fatehold",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Gold-Forged Thopteryx",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Woman, Stunning Savior",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Faithful Mending",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Runic Shot",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Protect the Negotiators",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hindering Light",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Staggering Insight",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Pearl Collector",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Benalish Sleeper",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Rodolf Duskbringer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "King T'Challa // Black Panther, Hope Enduring",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Malcator, Purity Overseer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hylda of the Icy Crown",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sharae of Numbing Depths",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Niko, Light of Hope",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Narset Transcendent",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Xerex // Vertex Paladin",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Errant and Giada",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Superior Spider-Man",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Symbiote Spider-Man",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Senate Guildmage",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Skycat Sovereign",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Will, Scion of Peace",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Lavinia, Azorius Renegade",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kels, Fight Fixer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Shilgengar, Sire of Famine",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Bard the Bowman",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ishai, Ojutai Dragonspeaker",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sun-Spider, Nimble Webber",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Taigam, Ojutai Master",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Who Slows the Sunset",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "War Machine, James Rhodes",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ezrim, Agency Chief",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Quintorius, Fate Splitter",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "SP//dr, Piloted by Peni",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Tura Kennerüd, Skyknight",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Azor, the Lawbringer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Banish into Fable",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Dovin, Architect of Law",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Restricted Office // Lecture Hall",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sphinx's Revelation",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Abigale, Eloquent First-Year",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ayli, Eternal Pilgrim",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Arvad, Weatherlight Smuggler",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Consecrate // Consume",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Cruel Celebrant",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Despark",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Edgar, Ancient Bloodlord",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Elas il-Kor, Sadistic Pilgrim",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Feast of the Victorious Dead",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Fracture",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Frodo, Adventurous Hobbit",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Golden Sidekick",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Head of the Class",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Humiliate",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of New Capenna // Holy Frazzle-Cannon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Killian, Ink Duelist",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Rite of Oblivion",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Revival // Revenge",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sandbender Scavengers",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Syr Vondam, Sunstar Exemplar",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Anguished Unmaking",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Gift of Orzhova",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hardened Tactician",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Indulging Patrician",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kambal, Consul of Allocation",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kambal, Profiteering Mayor",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Karai, Future of the Foot",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kaya, Geist Hunter",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kunoros, Hound of Athreos",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Mortify",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ruthless Lawbringer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Snooping Page",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Tomik, Wielder of Law",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Tymna the Weaver",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Aryel, Knight of Windgrace",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Baron Bertram Graywater",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Barrensteppe Siege",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Drana and Linvala",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Elenda, the Dusk Rose",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Elenda, Saint of Dusk",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ondu Knotmaster // Throw a Line",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Diviner of Fates",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Nimble Larcenist",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Void Rend",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Alela, Artful Provocateur",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Eriette, the Beguiler",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Queza, Augur of Agonies",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Y'shtola, Night's Blessed",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Stormkeld Curator // Giant Secrets",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Lawmage's Binding",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Eagle's Rescue",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Dance of the Manse",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Eriette of the Charmed Apple",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Killian, Decisive Mentor",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Glasswing Grace // Age-Graced Chapel",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Scriv, the Obligator",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Rise to Glory",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Archnemesis",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Coerced to Kill",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Zur, Eternal Schemer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Tameshi, Reality Architect",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Inquisitive Glimmer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ephara, God of the Polis",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Dramatic Finale",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Firja's Retribution",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Neva, Stalked by Nightmares",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Tolvada // The Broken Sky",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Naomi, Pillar of Order",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Athreos, Shroud-Veiled",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Rampage of the Valkyries",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Ethereal Absolution",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Rogue Class",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Saruman of Many Colors",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Obscura Ascendancy",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Hope",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Anticipation",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Transformation",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Black Panther, Most Dangerous",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Wings of Freedom",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hawkeye, Bowslinger",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Quake, Agent of S.H.I.E.L.D.",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Paladin's Arms",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Aerith Rescue Mission",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Mockingbird, Ace Agent",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "White Widow, Free Agent",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Steve Rogers",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Strange, Surgeon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Spectrum",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Wondrous Revival",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Secret Identity",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Wiccan, Rising Magician",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "The Mighty Thor, Jane Foster",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Abigale, Poet Laureate // Heroic Stanza",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Plaza of Heroes",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Dragoon's Lance",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Danitha, Sword of Hope",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "History of Benalia",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Dion, Bahamut's Dominant // Bahamut, Warden of Light",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "The Circle of Loyalty",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Summon: Primal Odin",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Arvad the Cursed",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Adeline, Resplendent Cathar",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Super-Soldier",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Unbowed",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Skybound",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Serra Redeemer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Greater Auramancy",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Kor Spiritdancer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Light-Paws, Emperor's Voice",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Petrify",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sheltered by Ghosts",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sentinel's Mark",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Skyblade's Boon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Spectral Steel",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Sram, Senior Edificer",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Super-Soldier Serum",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Born to Drive",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Danitha Capashen, Paragon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hope Against Hope",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Light of Promise",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "One Last Job",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Pearl-Ear, Imperial Advisor",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Nahiri's Binding",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Pariah",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Angelic Destiny",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Commanding Presence",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Friendly Neighborhood",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Halvar, God of Battle // Sword of the Realms",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Black Widow, Double Agent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Living Legend",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brokers' Safeguard",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hallowed Respite",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Taeko, the Patient Avalanche",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Panicked Bystander // Cackling Culprit",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Battlewise Hoplite",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jubilant Skybonder",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ace Flockbringer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lo and Li, Royal Advisors",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Don & Leo, Problem Solvers",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Gwaihir the Windlord",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Cleric of Life's Bond",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Dark Leo & Shredder",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Fleshtaker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "General's Enforcer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hashaton, Scarab's Fist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Athreos, God of Passage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Nalia de'Arnise",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Silverquill Pledgemage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Seething Skitter-Priest",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Splinter, Radical Rat",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Chromium, the Mutable",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Shattered Seraph",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Ur-Sphinx",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wingbright Thief",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Knights' Charge",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Doom Foretold",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Sentry, Golden Guardian",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Photon, Lady of Light",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Slumbering Keepguard",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Fiendslayer Paladin",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Voracious Vampire",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Marshal of Zhalfir",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Squall, SeeD Mercenary",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brigone, Soldier of Meletis",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lyra, Archangel of Dawn",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Champions of Tyr",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lulu, Forgetful Hollyphant",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Transcendent Envoy",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Acclaimed Contender",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Due Diligence",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Teferi, Hero of Dominaria": {
+   "group": "Strong",
+   "text": "Planeswalker: \"+1: Draw a card… untap up to two lands\" refunds mana for a second spell; \"−3\" tucks any nonland permanent (r1, r9); MV5 trigger is optional (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Absorb": {
+   "group": "Strong",
+   "text": "Instant hard counter plus \"You gain 3 life\", which repays the X=3 Hero it makes on the opponent's turn (r2, r4, r5, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ojutai's Command": {
+   "group": "Strong",
+   "text": "Instant: \"Counter target creature spell\" or \"Draw a card\" plus \"You gain 4 life\", which pays for its own 5/5 Hero; can reanimate a MV≤2 creature (r2, r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Azorius Charm": {
+   "group": "Strong",
+   "text": "Instant MV2: tuck an attacker/blocker on top of its library, or draw, or team lifelink; the lifelink mode turns a Hero swing into life fuel (r2, r4, r5, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Detention Sphere": {
+   "group": "Strong",
+   "text": "Exiles any nonland permanent, and every token sharing its name; MV3 noncreature (r1, r4, r9); sorcery speed only",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Pull of the Mist Moon": {
+   "group": "Strong",
+   "text": "O-ring enchantment, \"exile target nonland permanent\"; the kicker perpetually grants a second O-ring to a card in hand (r1, r4, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Biorganic Carapace": {
+   "group": "Engine",
+   "text": "Equipment, auto-attaches; draws \"a card for each modified creature\" and every Hero token arrives carrying counters, so they are all modified (r1, r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Metropolis Angel": {
+   "group": "Engine",
+   "text": "\"Whenever you attack with one or more creatures with counters on them, draw a card\": every Hero token has counters, so it draws each combat (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Spider-Woman, Secret Agent": {
+   "group": "Strong",
+   "text": "Flash Hero; locks down a creature \"for as long as you control Spider-Woman\", so it is instant-speed interaction (r9); enables Hylda/Sharae taps",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Twining Twins // Swift Spiral": {
+   "group": "Strong",
+   "text": "*Adventure \"Swift Spiral\" is an MV2 instant, a noncreature cast on either turn (r1, r2); it blinks a nontoken creature to save it, then a 4-MV flier",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse": {
+   "group": "Engine",
+   "text": "Back face: \"You may cast spells as though they had flash\", so EVERY noncreature spell can trigger the commander on the opponent's turn (r2); {U/P} costs 2 life (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sorin of House Markov // Sorin, Ravenous Neonate": {
+   "group": "Engine",
+   "text": "Extort on \"Whenever you cast a spell\" drains 1 per spell, which refills the life the commander spends (r5); lifelink plus the commander flips him; −1 burns",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Shaile, Dean of Radiance // Embrose, Dean of Shadow": {
+   "group": "Engine",
+   "text": "Shaile puts a counter on \"each creature that entered… this turn\", which includes the turn's Hero token; Embrose pings 2 and draws when a countered creature dies (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Cid, Timeless Artificer": {
+   "group": "Engine",
+   "text": "\"Artifact creatures and Heroes you control get +1/+1 for each Artificer\", an anthem for every Hero token (r6); any number of copies are legal; cycling",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Aven Wind Guide": {
+   "group": "Engine",
+   "text": "\"Creature tokens you control have flying and vigilance\": every Hero token becomes an evasive attacker that can still block (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Denzilore Fatehold": {
+   "group": "Engine",
+   "text": "Flash flier; \"Whenever you scry or surveil, put a +1/+1 counter on each creature\" grows the Hero tokens (r6), but the scry count in this part is thin (Runic Shot kicker, Niko Shards)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "group": "Real",
+   "text": "2-mana flying lifelink (r5); \"Each legendary permanent you control has ward {2}\" protects the commander",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Spider-Woman, Stunning Savior": {
+   "group": "Real",
+   "text": "2-mana flying Hero with hybrid {W/U}; opposing creatures \"enter tapped\", buying a turn for the life-paying plan",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Faithful Mending": {
+   "group": "Real",
+   "text": "Instant: \"gain 2 life, draw two, then discard two\", and flashback is a second noncreature cast later (r1, r2, r5); card-neutral filtering",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Runic Shot": {
+   "group": "Real",
+   "text": "\"Destroy target tapped creature\": anything that attacked you last turn is still tapped on your turn; MV1 makes only a 2/2 (r4, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Protect the Negotiators": {
+   "group": "Real",
+   "text": "Instant soft counter that taxes \"{1} for each creature you control\", and Hero tokens raise the tax; kicker adds a Soldier (r2, r6, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hindering Light": {
+   "group": "Real",
+   "text": "Instant \"Counter target spell that targets you or a permanent you control. Draw a card.\" protects the commander and the token board (r2)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Staggering Insight": {
+   "group": "Real",
+   "text": "Aura: lifelink plus \"draw a card\" on combat damage; put it on an evasive Hero token for life fuel (r1, r5); aura risk applies",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Pearl Collector": {
+   "group": "Real",
+   "text": "Deathtouch and lifelink; with 4+ life gained it conjures Mox Pearl, an MV0 noncreature cast that makes a free 1/1 Hero (r1, r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Benalish Sleeper": {
+   "group": "Real",
+   "text": "Kicked: \"each player sacrifices a creature\", and a 1/1 Hero token is the cheap sacrifice, so it is a one-sided edict (r6, r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rodolf Duskbringer": {
+   "group": "Real",
+   "text": "Flying, deathtouch, lifelink 6-drop; reanimates MV≤\"life gained this turn\", and the commander's lifelink sets that number (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
+   "group": "Real",
+   "text": "Flying lifelink body (r5); Isilu gives \"nontoken\" creatures persist, so the Hero tokens get nothing; convoke only helps creature spells",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "King T'Challa // Black Panther, Hope Enduring": {
+   "group": "Real",
+   "text": "Flash Hero; \"Whenever a player draws their second card each turn, you draw\", which pairs with the draw spells in this part (Mending, Charm, Teferi)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Malcator, Purity Overseer": {
+   "group": "Real",
+   "text": "3 mana for two bodies (a 3/3 Golem artifact token); Cid pumps artifact creatures; the end-step clause rarely fires",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "group": "Real",
+   "text": "\"Whenever you tap an untapped creature an opponent controls\", pay {1} for a 4/4, team counters or a card; needs the tap package (Spider-Woman SA, Sharae)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sharae of Numbing Depths": {
+   "group": "Real",
+   "text": "ETB tap plus stun counter (tempo interaction); draws \"once each turn\" when you tap their creatures, which overlaps with Hylda",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Niko, Light of Hope": {
+   "group": "Real",
+   "text": "Two Shard enchantment tokens (scry 1, draw); the copy ability can't target tokens' value well. Shards feed Denzilore's scry (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Narset Transcendent": {
+   "group": "Real",
+   "text": "+1 takes \"a noncreature, nonland card\", a hit rate that rises with r3 density; −2 rebound recasts an instant on your upkeep, which uses that turn's trigger (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Invasion of Xerex // Vertex Paladin": {
+   "group": "Situational",
+   "text": "A Battle is a noncreature cast (r1); the ETB bounce is tempo; it flips to a flier sized by \"the number of creatures you control\", which Hero tokens grow",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Errant and Giada": {
+   "group": "Situational",
+   "text": "Flash flier; cast \"spells with flash or flying\" from the top, but instants do not have flash, so it does not reach the noncreature core (r3)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Superior Spider-Man": {
+   "group": "Situational",
+   "text": "Hero clone of \"any creature card in a graveyard\" (either yard); value depends on what has died; creature slot (r3)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Symbiote Spider-Man": {
+   "group": "Situational",
+   "text": "Hybrid Hero; combat-damage dig; Find New Host is an activation, not a cast, but it can put its abilities on a Hero token from the graveyard (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Senate Guildmage": {
+   "group": "Situational",
+   "text": "\"{W},{T}: You gain 2 life\" repays an X=2 Hero every turn (r5) but costs mana and a tap; slow",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Skycat Sovereign": {
+   "group": "Situational",
+   "text": "Flier lord counts \"other creature you control with flying\"; it scales only with Aven Wind Guide making Hero tokens fly (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Will, Scion of Peace": {
+   "group": "Situational",
+   "text": "Sorcery-speed tap: W/U spells cost X less \"where X is the amount of life you gained this turn\"; the commander's lifelink sets X; it needs combat first",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Lavinia, Azorius Renegade": {
+   "group": "Situational",
+   "text": "A hoser against cheated and free spells and the opponent's big noncreature spells; it does not restrict you; meta-dependent (r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kels, Fight Fixer": {
+   "group": "Situational",
+   "text": "Draws \"whenever you sacrifice a creature\", and Hero tokens are fodder, but the sac outlet is only \"{1}, Sacrifice: indestructible\" (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Shilgengar, Sire of Famine": {
+   "group": "Situational",
+   "text": "Sacrifices Hero tokens for Blood; six Blood reanimates the whole yard; slow and grindy, and it eats the board the commander built",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Bard the Bowman": {
+   "group": "Situational",
+   "text": "\"draw your second card each turn\": a counter plus lifelink, which needs a draw spell every turn to fire",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ishai, Ojutai Dragonspeaker": {
+   "group": "Situational",
+   "text": "Flier that grows on opponent spells; partner is irrelevant under G'raha; a plain beater",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sun-Spider, Nimble Webber": {
+   "group": "Situational",
+   "text": "Hero that tutors \"an Aura or Equipment card\" for Biorganic Carapace or Staggering Insight; the value depends on that package's size",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Taigam, Ojutai Master": {
+   "group": "Situational",
+   "text": "Rebound needs \"Taigam attacked this turn\"; the rebound cast lands in YOUR upkeep, which spends that turn's once-each-turn trigger (r1, r2)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Black Widow, Double Agent": {
+   "group": "Marginal",
+   "text": "Deathtouch Hero; \"attacks alone\" grants first strike plus menace, which works against a go-wide Hero-token board (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Living Legend": {
+   "group": "Marginal",
+   "text": "Untaps creatures first tapped \"during your turn\", a team-vigilance effect for Hero tokens; a soft effect on a creature slot (r3)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Brokers' Safeguard": {
+   "group": "Marginal",
+   "text": "Instant MV2 noncreature (r2), but it blinks a creature to protect it, and a blinked Hero TOKEN is exiled and gone; nontoken creatures only",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hallowed Respite": {
+   "group": "Marginal",
+   "text": "A sorcery blink that kills your own Hero tokens and resets their counters; it only taps an opposing creature; flashback is a second cast (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "group": "Marginal",
+   "text": "A looter that untaps on \"a legendary spell\"; the back face costs 6; few legendary noncreature spells in this part",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Taeko, the Patient Avalanche": {
+   "group": "Marginal",
+   "text": "It grows when creatures leave \"if it didn't die\" (blink and bounce); enters tapped; the unblockable clause has a cost",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Panicked Bystander // Cackling Culprit": {
+   "group": "Marginal",
+   "text": "\"gain 1 life\" on each death; small lifegain fuel (r5) but a weak body",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Battlewise Hoplite": {
+   "group": "Marginal",
+   "text": "Heroic needs \"a spell that targets this creature\", and this part has few targeted own-creature spells (Insight, Safeguard)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Jubilant Skybonder": {
+   "group": "Marginal",
+   "text": "Taxes targeting of your fliers by {2}, which helps only if Hero tokens fly (Aven Wind Guide); a weak body",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ace Flockbringer": {
+   "group": "Marginal",
+   "text": "Triggers on \"a creature spell without flying\", which pulls the deck toward creatures, the opposite of r3",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Lo and Li, Royal Advisors": {
+   "group": "Marginal",
+   "text": "Mill grows only Advisors (itself); blind mill is a clock, not interaction (G-62)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Teferi, Who Slows the Sunset": {
+   "group": "Strong",
+   "text": "PW cast = 5/5 Hero for 4 life (r1/r4); \"+1 … You gain 2 life\" refunds half the payment (r5); −2 card selection; sorcery-speed only",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "War Machine, James Rhodes": {
+   "group": "Situational",
+   "text": "Is a Hero but pays off nothing; \"Whenever War Machine attacks, tap up to one target creature\" is a fine evasive 4-drop, creature (r1 no bonus)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "group": "Marginal",
+   "text": "End-step blink of \"a creature you control\" would EXILE a Hero token for good (tokens cease to exist); it's optional (\"up to one\"), but the only good target is your own creature",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ezrim, Agency Chief": {
+   "group": "Situational",
+   "text": "\"investigate twice\" = 2 Clues, and cracking them is not a cast; WWUU 5-drop creature, can gain lifelink by sacrificing an artifact (r5), off-engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Quintorius, Fate Splitter": {
+   "group": "Engine",
+   "text": "6/6 Hero on cast (r1); \"0: Proliferate. You gain 3 life\" grows EVERY Hero token and refills life (r5/r6); −3 makes a token and puts a counter on each creature",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "SP//dr, Piloted by Peni": {
+   "group": "Engine",
+   "text": "\"Whenever a modified creature you control deals combat damage … draw a card\": every Hero token carries counters, so they all count as modified (r6, density from the commander)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Tura Kennerüd, Skyknight": {
+   "group": "Situational",
+   "text": "\"Whenever you cast an instant or sorcery spell, create a 1/1\": stacks with G'raha off the same spells, but it's a 5-drop creature and misses PWs, auras and battles",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Azor, the Lawbringer": {
+   "group": "Situational",
+   "text": "The attack trigger pays {X}{W}{U}{U} for \"gain X life and draw X\" (r5), but it's a 6-MV creature that has to survive to attack; no help to the engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Banish into Fable": {
+   "group": "Real",
+   "text": "Instant bounce + Knight, so it works on the opponent's turn (r2); copies off artifact/enchantment; MV 6 = a 7/7 for 6 life, so usually decline (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dovin, Architect of Law": {
+   "group": "Real",
+   "text": "\"+1: You gain 2 life and draw a card\" is a life+card engine (r5); −1 taps a creature (tempo); 6 MV makes the Hero cost 6 life (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Gwaihir the Windlord": {
+   "group": "Marginal",
+   "text": "6-MV flier; the discount needs two draws in a turn and the Bird clause is dead; nothing for the engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Restricted Office // Lecture Hall": {
+   "group": "Situational",
+   "text": "FIGHTS ENGINE: \"destroy all creatures with power 3 or greater\" kills your own Heroes (the X=3 token from casting it is 4/4); Lecture Hall's unlock is not a cast",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Invasion of New Phyrexia // Teferi Akosa of Zhalfir": {
+   "group": "Engine",
+   "text": "\"create X 2/2 … Knight tokens\": the stack MV is X+2, so X=3 gives 3 Knights + a 6/6 Hero (r4/r6), go-wide; flips into a PW",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sphinx's Revelation": {
+   "group": "Strong",
+   "text": "Instant, so cast it at the opponent's end step for a second token (r2); \"You gain X life\" refunds most of the X+3 payment (r5); card draw too",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Abigale, Eloquent First-Year": {
+   "group": "Engine",
+   "text": "ETB on a Hero token loses nothing (tokens have no text) and gains flying/first strike/LIFELINK counters (r5/r6); a 2-drop lifelink body itself",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ayli, Eternal Pilgrim": {
+   "group": "Engine",
+   "text": "\"Sacrifice another creature: You gain life equal to … toughness\": a spent X+1 Hero refunds the payment (r5); exile mode needs 35 life in Brawl",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Arvad, Weatherlight Smuggler": {
+   "group": "Real",
+   "text": "2-drop deathtouch+lifelink (r5); the perpetual growth needs deaths (sac outlets in this part)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Cleric of Life's Bond": {
+   "group": "Marginal",
+   "text": "\"first time each turn\" gain → +1/+1 counter; a small body, and the Cleric clause is narrow",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Consecrate // Consume": {
+   "group": "Strong",
+   "text": "Consecrate is an INSTANT (MV 2) with gy hate + draw, a 3/3 on the opp's turn (r2/r4); Consume (MV 4) is an edict + \"gain life equal to its power\" (r5/r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dark Leo & Shredder": {
+   "group": "Marginal",
+   "text": "Ninja payoff with no Ninja density; Hero tokens aren't Ninjas",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Cruel Celebrant": {
+   "group": "Situational",
+   "text": "Drain 1 on each death (r5): only as good as the sac-outlet count",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Despark": {
+   "group": "Strong",
+   "text": "Instant exile for \"mana value 4 or greater\" (r9), MV 2, so a 3/3 for 2 on the opp's turn (r2/r4); narrow targets",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Edgar, Ancient Bloodlord": {
+   "group": "Situational",
+   "text": "Gain 1 on each death; the sac outlet can turn spent Heroes into counters; aristocrats glue",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Elas il-Kor, Sadistic Pilgrim": {
+   "group": "Engine",
+   "text": "\"Whenever another creature you control enters, you gain 1 life\": every Hero token refunds 1 (r5); drain on death",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Feast of the Victorious Dead": {
+   "group": "Situational",
+   "text": "Noncreature MV 2 → 3/3 (r1); the end-step gain + counters needs a death that turn (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Fleshtaker": {
+   "group": "Marginal",
+   "text": "Sac outlet: gain 1 + scry 1 per sac; low impact",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Fracture": {
+   "group": "Strong",
+   "text": "Instant \"Destroy target artifact, enchantment, or planeswalker\", MV 2, so a 3/3 on the opp's turn (r2/r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Frodo, Adventurous Hobbit": {
+   "group": "Situational",
+   "text": "\"if you gained 3 or more life this turn\": G'raha's lifelink turns this on; the Ring is slow value",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "General's Enforcer": {
+   "group": "Marginal",
+   "text": "\"Legendary Humans … indestructible\": few targets here; the gy-exile ability makes a token, but it's expensive",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Golden Sidekick": {
+   "group": "Situational",
+   "text": "Flying lifelink 2-drop (r5); the perpetual pump only reaches creature cards in hand, and this deck is spell-heavy",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hashaton, Scarab's Fist": {
+   "group": "Marginal",
+   "text": "Needs \"discard a creature card\": no discard engine here",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Head of the Class": {
+   "group": "Situational",
+   "text": "Spells that target a creature \"cost {W}{B} less\": a cost cut keeps the MV, so the token is unchanged (r4); Repartee grows it",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Humiliate": {
+   "group": "Real",
+   "text": "Sorcery hand attack + \"+1/+1 counter on a creature you control\" (on a Hero, r6); MV 2 → 3/3",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Invasion of New Capenna // Holy Frazzle-Cannon": {
+   "group": "Engine",
+   "text": "Battle removal (sacrifice a spent Hero) (r9); back-face equip puts a counter on \"each other creature … that shares a creature type\": every Hero token (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Killian, Ink Duelist": {
+   "group": "Real",
+   "text": "Lifelink menace 2-drop (r5); \"cost {2} less\" cuts the price, not the MV, so removal makes the same-size Hero for less mana (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rite of Oblivion": {
+   "group": "Strong",
+   "text": "\"sacrifice a nonland permanent\" (a spent 1/1 Hero) to exile any nonland permanent; Flashback is a second CAST → second trigger (r1/r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Revival // Revenge": {
+   "group": "Strong",
+   "text": "Revenge (MV 6): \"Double your life total\" is the biggest life refill here (r5); Revival (MV 2) reanimates MV ≤3",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sandbender Scavengers": {
+   "group": "Situational",
+   "text": "Grows on each sacrifice; the death trigger reanimates; needs a sac density this part only half provides",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Syr Vondam, Sunstar Exemplar": {
+   "group": "Situational",
+   "text": "Counter + gain 1 on each death/exile (r5/r6); at 4+ power its death destroys a nonland permanent",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Anguished Unmaking": {
+   "group": "Strong",
+   "text": "Instant \"Exile target nonland permanent\", MV 3 → 4/4 Hero on either turn (r2/r4/r9); the 3 life is the only cost",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Athreos, God of Passage": {
+   "group": "Marginal",
+   "text": "A God is a creature card off the battlefield, so this is a CREATURE spell (no trigger); returning dead creatures misses tokens; rarely a creature",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Gift of Orzhova": {
+   "group": "Real",
+   "text": "Aura MV 3 → 4/4 Hero (r1), then \"flying and lifelink\" on that Hero turns it into a life engine (r5/r6); aura risk",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hardened Tactician": {
+   "group": "Engine",
+   "text": "\"{1}, Sacrifice a token: Draw a card\": a spent Hero token becomes a card (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Indulging Patrician": {
+   "group": "Real",
+   "text": "Flying lifelink; \"if you gained 3 or more life this turn, each opponent loses 3\": G'raha's lifelink helps hit it (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kambal, Consul of Allocation": {
+   "group": "Situational",
+   "text": "Taxes the OPPONENT's noncreature spells (drain 2) (r5); a matchup card, not engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kambal, Profiteering Mayor": {
+   "group": "Engine",
+   "text": "\"Whenever one or more tokens you control enter, each opponent loses 1 life and you gain 1\": fires off each Hero (r5/r6); copies their tokens",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Karai, Future of the Foot": {
+   "group": "Situational",
+   "text": "Combat-damage recursion; the sneak line wants unblocked attackers; off-engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kaya, Geist Hunter": {
+   "group": "Engine",
+   "text": "PW → 4/4 Hero; \"+1: … +1/+1 counter on up to one target creature token\" (r6); \"−2: … twice that many … tokens\" doubles the next Hero",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kunoros, Hound of Athreos": {
+   "group": "Situational",
+   "text": "Vigilance/menace/lifelink body (r5), but \"can't cast spells from graveyards\" kills your own Rite flashback and Revival/Karai/Sandbender",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Mortify": {
+   "group": "Strong",
+   "text": "Instant \"Destroy target creature or enchantment\", MV 3 → 4/4 Hero, on either turn (r2/r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Nalia de'Arnise": {
+   "group": "Marginal",
+   "text": "Full-party clause: Hero tokens aren't party classes; play-from-top only for 4 classes",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "group": "Real",
+   "text": "\"sacrifice another creature. When you do, destroy target nonland permanent\": a spent Hero buys removal (r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Silverquill Pledgemage": {
+   "group": "Marginal",
+   "text": "Magecraft grants flying or lifelink for the turn; a weak 3-drop body",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Snooping Page": {
+   "group": "Situational",
+   "text": "Repartee unblockable + draw on hit; needs targeted instants/sorceries",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Tomik, Wielder of Law": {
+   "group": "Situational",
+   "text": "Flying vigilance; in 1v1, when they attack with two or more creatures: drain 3 + draw; affinity for planeswalkers",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Tymna the Weaver": {
+   "group": "Real",
+   "text": "Lifelink; \"pay X life … draw X cards\" at most 1 per turn in 1v1, and Hero tokens connecting enable it (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Aryel, Knight of Windgrace": {
+   "group": "Real",
+   "text": "Activated Knight tokens + \"Destroy target creature with power X or less\"; pairs with Invasion of New Phyrexia's Knights",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "group": "Engine",
+   "text": "\"tokens … enter, create a 1/1 … Vampire Rogue … with lifelink\" once per turn: every Hero gives an extra lifelink body (r5/r6); sac → draw",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Barrensteppe Siege": {
+   "group": "Engine",
+   "text": "Abzan \"+1/+1 counter on each creature you control\" every end step grows every Hero token (r6); Mardu edict if tokens trade; MV4 sweet spot (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Drana and Linvala": {
+   "group": "Real",
+   "text": "Flying vigilance body that shuts off opposing creatures' activated abilities and steals them; creature, so no trigger (r1) — graded on hate value",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Elenda, the Dusk Rose": {
+   "group": "Real",
+   "text": "Lifelink (r5) and \"whenever another creature dies, +1/+1 counter\" — chump-blocking Heroes grow her; death leaves lifelink tokens",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Elenda, Saint of Dusk": {
+   "group": "Situational",
+   "text": "Bonus needs \"life total greater than your starting life total\" — fights the X-life payments the deck makes every turn (r5); lifelink only",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ondu Knotmaster // Throw a Line": {
+   "group": "Engine",
+   "text": "Throw a Line is a MV2 sorcery cast = trigger (r1,r4) distributing counters; later a lifelinker that grows when a modified (countered) Hero dies (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Seething Skitter-Priest": {
+   "group": "Marginal",
+   "text": "Mite-on-death grant is perpetual only to creatures present/in hand at ETB, so future Hero tokens miss it; toxic 1 off-plan; creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Splinter, Radical Rat": {
+   "group": "Marginal",
+   "text": "Doubles triggers of NINJA creatures only; the deck has no Ninjas and Heroes aren't Ninjas (r6 count = 0)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Diviner of Fates": {
+   "group": "Situational",
+   "text": "ETB connive + \"seek a card that shares a type\" once per turn on discard; filter body, no engine tie, creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Nimble Larcenist": {
+   "group": "Real",
+   "text": "3-MV flyer whose ETB exiles an artifact/instant/sorcery from their hand — proactive disruption (r9), creature so no trigger",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Void Rend": {
+   "group": "Strong",
+   "text": "Instant \"destroy target nonland permanent\", can't be countered — flexible answer at MV3 that can trigger on their turn (r2,r4,r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Alela, Artful Provocateur": {
+   "group": "Engine",
+   "text": "Flying deathtouch lifelink (r5); \"cast an artifact or enchantment spell → 1/1 flyer\" doubles bodies with G'raha on every enchantment (r1,r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Eriette, the Beguiler": {
+   "group": "Situational",
+   "text": "Steal clause needs Auras on opponents' permanents with MV ≥ target (Lawmage's Binding steals MV≤3); aura-density dependent, lifelink (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Queza, Augur of Agonies": {
+   "group": "Real",
+   "text": "\"Whenever you draw a card… lose 1, you gain 1\" — steady life refill (r5); pairs with Ephara/Y'shtola draws; creature",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Y'shtola, Night's Blessed": {
+   "group": "Engine",
+   "text": "\"Noncreature spell MV 3+ → 2 damage, gain 2\" refunds the X life (r5); paying X≥4 life to G'raha self-triggers her end-step draw (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Chromium, the Mutable": {
+   "group": "Marginal",
+   "text": "Flash uncounterable 7-drop flyer; no engine interaction and 7 MV creature crowds the curve (r1,r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Shattered Seraph": {
+   "group": "Marginal",
+   "text": "{2} exile-from-hand fixing is an activation, not a cast; the later cast is a creature spell (r1); 3 life on ETB only",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "The Ur-Sphinx": {
+   "group": "Marginal",
+   "text": "9-MV creature with no Sphinx density; free casts of milled cards rarely land before the game is decided (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Stormkeld Curator // Giant Secrets": {
+   "group": "Strong",
+   "text": "Giant Secrets is an INSTANT {X}{U}{U}: X=2 is MV4 → 5/5 Hero on their turn + 2 cards (r2,r4); Curator body re-buys auras late",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Lawmage's Binding": {
+   "group": "Strong",
+   "text": "FLASH aura \"can't attack or block, abilities can't be activated\" — instant-speed removal that triggers on their turn (r2,r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Eagle's Rescue": {
+   "group": "Situational",
+   "text": "+2/+2 flying aura at MV4 (r1); graveyard return is an activation onto power ≤1 — only an X=0 Hero qualifies (r6), so recursion rarely live",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dance of the Manse": {
+   "group": "Real",
+   "text": "X counts on the stack: MV X+2 sizes the Hero (r4); returns non-Aura enchantments ≤X — good if the 99 is enchantment-dense",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Eriette of the Charmed Apple": {
+   "group": "Situational",
+   "text": "End-step drain X = Auras you control (r5); Scriv's Contract tokens count; needs aura density the 99 may not have",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Killian, Decisive Mentor": {
+   "group": "Situational",
+   "text": "Enchantment ETB taps+goads (tempo); draw when aura'd creatures attack — needs auras on own attackers; creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Glasswing Grace // Age-Graced Chapel": {
+   "group": "Strong",
+   "text": "MDFC: land when needed, else MV5 aura \"+2/+2, flying and lifelink\" — on a Hero token turns it into a lifelink fuel source (r5,r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Scriv, the Obligator": {
+   "group": "Real",
+   "text": "Flying deathtouch; Contract tokens make their attackers \"lose 2 life\" in 1v1 — drain-style pressure; tokens are Auras for Eriette (r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rise to Glory": {
+   "group": "Situational",
+   "text": "MV5 sorcery reanimating a creature and an Aura (r1); fine value but slow and graveyard-dependent; 5 life for the Hero (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Archnemesis": {
+   "group": "Strong",
+   "text": "MV3 aura on opponent: each attack \"loses 2… you draw a card and gain 2 life\" — Hero attackers make it card + life every turn (r4,r5)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Coerced to Kill": {
+   "group": "Real",
+   "text": "Sorcery-speed steal \"You control enchanted creature\" as a 1/1 deathtouch — removal that adds a blocker (r9); MV5 life cost (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Zur, Eternal Schemer": {
+   "group": "Real",
+   "text": "Enchantment creatures get deathtouch, lifelink, hexproof; {1}{W} animates non-Aura enchantments (MV-sized bodies) — enchantment-deck value",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Tameshi, Reality Architect": {
+   "group": "Situational",
+   "text": "Sorcery activation returns artifact/enchantment ≤X by bouncing a land — slow recursion, not a cast (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Inquisitive Glimmer": {
+   "group": "Situational",
+   "text": "\"Enchantment spells cost {1} less\" — MV is unchanged so the Hero size and X life are the same (r4); pure ramp, creature",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Wingbright Thief": {
+   "group": "Marginal",
+   "text": "2-MV flyer; perpetual \"opponent draws and gains 3\" tax on one of their cards is minor; creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ephara, God of the Polis": {
+   "group": "Engine",
+   "text": "\"Each upkeep, if another creature entered under your control last turn, draw\" — a Hero on each turn (r2) = a card on BOTH upkeeps; indestructible",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Knights' Charge": {
+   "group": "Marginal",
+   "text": "Drain only \"whenever a Knight attacks\" — only Paladin's Arms makes Knights here (r6 count ≈ 1); MV3 trigger is its only value",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Doom Foretold": {
+   "group": "Marginal",
+   "text": "Symmetric \"sacrifices a nonland, nontoken permanent\" each upkeep eats OUR commander/enchantments; Hero tokens don't satisfy it — fights the engine",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dramatic Finale": {
+   "group": "Engine",
+   "text": "\"Creature tokens you control get +1/+1\" = anthem for every Hero (r6); 2/1 flyer on nontoken death; hybrid cost easy (r7)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Firja's Retribution": {
+   "group": "Strong",
+   "text": "MV4 Saga: 4/4 flyer, then a creature-kill tap ability (r9), then double strike — three chapters of value plus the trigger (r1,r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Neva, Stalked by Nightmares": {
+   "group": "Real",
+   "text": "Menace; ETB regrows a creature or enchantment; grows + scry when an enchantment (Sagas, Sieges) leaves — card advantage body",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Invasion of Tolvada // The Broken Sky": {
+   "group": "Engine",
+   "text": "ETB reanimates any nonbattle permanent; flipped \"creature tokens get +1/+0 and have lifelink\" turns every Hero into fuel (r5,r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Naomi, Pillar of Order": {
+   "group": "Situational",
+   "text": "Samurai tokens only \"if you control an artifact and an enchantment\"; MV5 creature (r1) with a condition to count",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "group": "Situational",
+   "text": "Creature SPELL on the stack (no trigger, r1); coin-counter recursion is slow value; devotion 7 unlikely",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rampage of the Valkyries": {
+   "group": "Real",
+   "text": "MV5 enchantment: 4/4 flying vigilance Angel + edict whenever an Angel dies; Firja's Angel also qualifies (r1,r9)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Ethereal Absolution": {
+   "group": "Real",
+   "text": "\"+1/+1 ours, -1/-1 theirs\" anthems every Hero and wipes opposing 1/1s (r6,r9); MV6 = 6 life for the Hero (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Rogue Class": {
+   "group": "Situational",
+   "text": "MV2 cast trigger; levels are activations, not casts (r1); Hero attackers exile/play their cards — slow",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Saruman of Many Colors": {
+   "group": "Real",
+   "text": "\"Second spell each turn\" → free copy of their instant/sorcery/enchantment = a free noncreature cast; ward-discard; 6-drop creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Obscura Ascendancy": {
+   "group": "Situational",
+   "text": "Needs spells at MV 1,2,3,4,5 in sequence for Spirits; MV3 cast trigger itself (r1); Spirit anthem doesn't hit Heroes (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Leyline of Hope": {
+   "group": "Situational",
+   "text": "\"+1 per lifegain\" pads lifelink (r5); the +2/+2 needs 7 over starting life, which X-payments make rare; free on turn 0 skips the cast",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Leyline of Anticipation": {
+   "group": "Engine",
+   "text": "\"Cast spells as though they had flash\" — every noncreature spell can trigger on their turn, doubling tokens per round (r2)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Leyline of Transformation": {
+   "group": "Situational",
+   "text": "Choose Hero: every creature is a Hero for Captain America/Hero payoffs (r6) — value scales with Hero-payoff count, does nothing alone",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Black Panther, Most Dangerous": {
+   "group": "Situational",
+   "text": "Hero; damage-reflection body; power-up {5}{W}{W} team pump is an activation, not a cast (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Wings of Freedom": {
+   "group": "Engine",
+   "text": "\"Each other Hero you control gets +X/+X\" (X = toughness 3) on attack — every G'raha token is a Hero (r6); flying, first strike, ward",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hawkeye, Bowslinger": {
+   "group": "Real",
+   "text": "Hero; \"cast a spell that targets a creature\" → counter + scry — auras and removal fire it (r6)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Quake, Agent of S.H.I.E.L.D.": {
+   "group": "Engine",
+   "text": "Hero; \"whenever you cast a noncreature spell, tap target creature or land\" with NO once-per-turn cap — tempo off every spell (r1,r2)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Paladin's Arms": {
+   "group": "Real",
+   "text": "MV3 cast = G'raha Hero + Job-select Hero (two bodies, r1,r6); +2/+1 ward 1; equip {4} is clunky",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Aerith Rescue Mission": {
+   "group": "Strong",
+   "text": "\"Create three 1/1 colorless Hero tokens\" + G'raha's = 4 Heroes (r6) or tap three + stun (r9); MV4 sweet spot (r4)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Mockingbird, Ace Agent": {
+   "group": "Situational",
+   "text": "Hero, double strike; counters only on spells targeting her — needs own-targeting auras; creature (r1)",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "group": "Marginal",
+   "text": "ETB gives the opponent a 5/5 flying INDESTRUCTIBLE Void — hands them a threat our removal can't kill; Hero tag isn't worth it",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "White Widow, Free Agent": {
+   "group": "Real",
+   "text": "Hero; ETB +1/+1 counters on two creatures (r6) or regrow an artifact/enchantment card — flexible value",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Steve Rogers": {
+   "group": "Situational",
+   "text": "Lifelink (r5) and \"+1/+1 counter on another target creature\" on attack grows a Hero token (r6); a 5-drop creature that adds no trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Doctor Strange, Surgeon": {
+   "group": "Strong",
+   "text": "\"If you would gain life, you gain twice that much\": doubles G'raha's lifelink and every drain (r5). Reaching 35 life gives \"+2/+2 and vigilance\" to a go-wide Hero board (r6).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Doctor Spectrum": {
+   "group": "Real",
+   "text": "The ETB \"+1/+1 counter on each other Hero you control\" scales with the commander's tokens (r6); the \"destroy target enchantment\" mode is a flexible answer (r9).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Photon, Lady of Light": {
+   "group": "Marginal",
+   "text": "Fights the engine: \"exile … then return that card\" kills a Hero TOKEN outright, and blinking a real creature wipes its counters (r6, G-42).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Wondrous Revival": {
+   "group": "Situational",
+   "text": "\"Up to three target Hero creature CARDS\": tokens never reach the yard as cards, so it needs real Heroes (9 in this part). MV 6 means a 7/7 for 6 life (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Secret Identity": {
+   "group": "Real",
+   "text": "1-mana instant that triggers on the opponent's turn (r2). Conceal gives hexproof and saves a pumped token from removal; Reveal makes a 3/4 flyer. Only a small body (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "group": "Real",
+   "text": "\"Whenever you cast a noncreature spell, exile another target nonland, nontoken permanent\" until end step: a blocker or blink every spell, with no once-per-turn cap (r1, r3).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "The Mighty Thor, Jane Foster": {
+   "group": "Strong",
+   "text": "Esper 3-drop flyer. The attack trigger \"exile … nontoken artifact or creature … return tapped\" clears a blocker (r9 tempo), and \"Equipment enters, draw\" pairs with Lance and Sword.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Abigale, Poet Laureate // Heroic Stanza": {
+   "group": "Situational",
+   "text": "Becomes prepared only on a \"creature spell\" cast (G'raha's tokens aren't cast). The copy of the sorcery half (+1/+1 counter, MV 2) does trigger r1, but the deck is noncreature-heavy (r3).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Plaza of Heroes": {
+   "group": "Real",
+   "text": "Its any-colour mana is spendable \"only to cast a legendary spell\" (the commander qualifies, r7), and \"{3},{T}, exile: hexproof and indestructible\" protects G'raha.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Slumbering Keepguard": {
+   "group": "Marginal",
+   "text": "\"Whenever an enchantment you control enters, scry 1\" plus a pump per enchantment: live with this part's aura density, but a 1-drop body that adds no trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dragoon's Lance": {
+   "group": "Strong",
+   "text": "Job select \"create a 1/1 colorless HERO token\": with the commander, one MV-2 spell makes two Hero bodies (r1, r4, r6). Flying on your turn.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Danitha, Sword of Hope": {
+   "group": "Real",
+   "text": "\"Equipment spell or a spell that targets a creature you control, draw a card\", once each turn. Every Aura qualifies, so it draws about once a turn here (r3).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Fiendslayer Paladin": {
+   "group": "Marginal",
+   "text": "First strike and lifelink is modest fuel (r5). Otherwise a vanilla 3-drop creature (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "History of Benalia": {
+   "group": "Strong",
+   "text": "MV-3 noncreature Saga (r1, r4): two 2/2 vigilance Knights plus a Hero token, then \"Knights +2/+1\". Three bodies from one card.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Dion, Bahamut's Dominant // Bahamut, Warden of Light": {
+   "group": "Situational",
+   "text": "ETB 2/2 Knight. The back face's \"+1/+1 counter on each other creature\" stacks on Heroes (r6) and Gigaflare is removal. The {4}{W}{W} transform is slow.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "The Circle of Loyalty": {
+   "group": "Real",
+   "text": "Legendary artifact: \"Creatures you control get +1/+1\" on a token board (r6), and a Knight on each \"legendary spell\" (the commander too). Affinity cuts its cost, not its MV, so X stays 6 (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Voracious Vampire": {
+   "group": "Out",
+   "text": "Its ETB pumps only \"target Vampire you control\"; there is no Vampire spine. A 2/2 menace creature with no trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Marshal of Zhalfir": {
+   "group": "Marginal",
+   "text": "\"Other Knights +1/+1\": Hero tokens aren't Knights unless they hold the Lance. The tap ability is mild tempo.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Summon: Primal Odin": {
+   "group": "Real",
+   "text": "Its Enchantment Creature type makes it a CREATURE spell, so no trigger (r1). Chapter I \"Destroy target creature\" plus chapter III \"Draw two\" is real interaction (r9); the 2 life loss is minor (r5).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Arvad the Cursed": {
+   "group": "Situational",
+   "text": "Deathtouch and lifelink (r5). \"Other legendary creatures +2/+2\" misses Hero tokens (not legendary) unless they carry Super-Soldier Serum.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "group": "Marginal",
+   "text": "\"Attacks alone … double strike\" works against a go-wide Hero board (r6). Recursion of a permanent with MV 3 or less is the upside.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "group": "Real",
+   "text": "\"Power equal to the number of creatures you control\" scales with the commander's tokens (r6), and it makes a 1/1 on each attack. A strong card, but no trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Brigone, Soldier of Meletis": {
+   "group": "Marginal",
+   "text": "Heroic counter plus \"remove a counter: draw\" wants spells that target it. Many Auras do, but it's a 2-drop body.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Super-Soldier": {
+   "group": "Strong",
+   "text": "\"You and other Heroes you control have hexproof\" while it keeps its shield: every commander token is a Hero (r6), and the life total is protected too (r5).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Unbowed": {
+   "group": "Real",
+   "text": "Flash, then \"Soldiers and Heroes you control gain indestructible\": an instant-speed wrath answer for a Hero-token board (r6, r9). It is a creature, so no trigger.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Captain America, Skybound": {
+   "group": "Situational",
+   "text": "Battalion \"+1/+1 counter on each attacking creature\" plus indestructible fits a wide Hero board (r6). A 5-drop with no trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Lyra, Archangel of Dawn": {
+   "group": "Marginal",
+   "text": "\"Whenever you gain life, +1/+1 counter on each ANGEL\": Hero tokens aren't Angels except under Angelic Destiny, so its lifegain hook rarely pays (r5).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Champions of Tyr": {
+   "group": "Marginal",
+   "text": "The one-time boon fires only on a \"creature spell\" cast. The deck wants noncreature density (r3).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Lulu, Forgetful Hollyphant": {
+   "group": "Marginal",
+   "text": "The one-time boon gives flying to a creature SPELL. Tokens aren't cast, so it misses the engine (r1, r3).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Serra Redeemer": {
+   "group": "Strong",
+   "text": "\"Another creature with power 2 or less enters → two +1/+1 counters\": a Hero token enters as a 1/1 before G'raha's counters, so every token gets +2 (r6). Same for the Lance token and Knights.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Greater Auramancy": {
+   "group": "Situational",
+   "text": "Shroud for enchantments and enchanted creatures protects the Aura pile. A cheap trigger (r4), but no effect on the board.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Kor Spiritdancer": {
+   "group": "Situational",
+   "text": "\"Whenever you cast an Aura spell, you may draw\": good only with heavy Aura density (this part has ~17). It's a creature (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Light-Paws, Emperor's Voice": {
+   "group": "Situational",
+   "text": "A cast Aura tutors a second Aura of equal or lower MV onto Light-Paws. It needs the deck built as Auras, and it's a creature (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Petrify": {
+   "group": "Real",
+   "text": "MV-2 Aura removal, \"can't attack or block … activated abilities can't be activated\", plus a 3/3 Hero token (r1, r4, r9). Sorcery speed.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "group": "Strong",
+   "text": "O-Ring \"exile target nonland permanent\" (r9) plus \"lifelink and ward {2}\" on a Hero token (r5, r6), all at MV 2 (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sentinel's Mark": {
+   "group": "Real",
+   "text": "Flash Aura: a noncreature spell on the opponent's turn for a second token per round (r2). \"+1/+2, vigilance\"; main-phase casts add lifelink (r5).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Skyblade's Boon": {
+   "group": "Engine",
+   "text": "\"{2}{W}: Return to hand\", from the battlefield OR the graveyard: a repeatable MV-2 noncreature cast every turn, i.e. a 3/3 Hero each turn (r1, r3, r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Spectral Steel": {
+   "group": "Situational",
+   "text": "\"+2/+2\", and its graveyard ability buys back another Aura or Equipment. A cheap trigger (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Sram, Senior Edificer": {
+   "group": "Strong",
+   "text": "\"Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card\", with no per-turn cap: the card-advantage engine for this part's Aura/Equipment package.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Super-Soldier Serum": {
+   "group": "Situational",
+   "text": "\"+2/+2, first strike, vigilance, legendary Soldier\": makes a Hero token legendary, so Arvad pumps it and Cap Unbowed protects it. Mostly a cheap trigger (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Transcendent Envoy": {
+   "group": "Marginal",
+   "text": "Enchantment Creature: a creature spell. \"Aura spells cost {1} less\" leaves X intact (MV unchanged), but it's a 2/2-ish flyer with no trigger.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Acclaimed Contender": {
+   "group": "Marginal",
+   "text": "Its ETB digs for \"a Knight, Aura, Equipment, or legendary artifact\" but needs another Knight. A creature (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Born to Drive": {
+   "group": "Situational",
+   "text": "\"+1/+1 for each creature\" on a wide board (r6). Channel makes two Pilots, but Channel is an activated ability, not a cast, so no trigger.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Danitha Capashen, Paragon": {
+   "group": "Real",
+   "text": "First strike, vigilance and lifelink (r5). \"Aura and Equipment spells cost {1} less\" speeds up the package without lowering MV, so X is intact (r4).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Due Diligence": {
+   "group": "Marginal",
+   "text": "\"+2/+2, vigilance\" plus a one-turn +2/+2. Vanilla pump at MV 3 that adds only the trigger (r1).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Hope Against Hope": {
+   "group": "Situational",
+   "text": "\"+1/+1 for each creature you control\" scales with the commander's tokens (r6). An aggro Aura that adds a trigger.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Light of Promise": {
+   "group": "Real",
+   "text": "\"Whenever you gain life, put that many +1/+1 counters\": on lifelinked G'raha, or with Doctor Strange doubling, every hit grows it (r5, r6).",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "One Last Job": {
+   "group": "Situational",
+   "text": "Spree reanimation (creature, or Aura/Equipment attached). MV is 3 whatever modes you pay, so a 4/4 token (r4). Sorcery.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Pearl-Ear, Imperial Advisor": {
+   "group": "Strong",
+   "text": "Draws when \"an Aura spell targets a MODIFIED permanent\". Every Hero token carries counters and so counts as modified (r6). Lifelink (r5), plus Aura affinity.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Nahiri's Binding": {
+   "group": "Real",
+   "text": "Pacifism for a \"creature or planeswalker\" with activated abilities locked (r9), plus a 4/4 Hero (r1, r4). Sorcery speed.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Pariah": {
+   "group": "Situational",
+   "text": "\"All damage that would be dealt to you is dealt to enchanted creature\": shields the life budget (r5). Best on an indestructible or large Hero token.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Angelic Destiny": {
+   "group": "Real",
+   "text": "\"+4/+4, flying, first strike\", returns to hand when the creature dies so you can recast it for another trigger (r1). Makes the creature an Angel for Lyra.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Commanding Presence": {
+   "group": "Situational",
+   "text": "\"+2/+2, first strike\" plus a Soldier token on combat damage. MV 4 for a 5/5 Hero (r4), but a mid-power Aura.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Friendly Neighborhood": {
+   "group": "Real",
+   "text": "\"Create three 1/1 … Citizen tokens\" plus a 5/5 Hero: four bodies from one MV-4 noncreature spell (r1, r4, r6). The pump land stays as a mana sink.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  },
+  "Halvar, God of Battle // Sword of the Realms": {
+   "group": "Strong",
+   "text": "Modal DFC: Sword (MV 2, noncreature) for the trigger and recursion (r1, r4), or Halvar for \"enchanted or equipped creatures have double strike\" on the Aura board.",
+   "graded_at": {
+    "98": "de6571e8afda"
+   }
+  }
+ },
+ "snapshots": {
+  "98": {
+   "de6571e8afda": [
+    "Abigale, Eloquent First-Year",
+    "Absorb",
+    "Adarkar Wastes",
+    "Aerith Rescue Mission",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Consecrate // Consume",
+    "Deserted Beach",
+    "Despark",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Dragoon's Lance",
+    "Dramatic Finale",
+    "Ephara, God of the Polis",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Fracture",
+    "Friendly Neighborhood",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Glasswing Grace // Age-Graced Chapel",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "History of Benalia",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Invasion of Tolvada // The Broken Sky",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Metropolis Angel",
+    "Mortify",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Ondu Knotmaster // Throw a Line",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quake, Agent of S.H.I.E.L.D.",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Revival // Revenge",
+    "Rite of Oblivion",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Sphinx's Revelation",
+    "Spider-Woman, Secret Agent",
+    "Sram, Senior Edificer",
+    "Starting Town",
+    "Stormkeld Curator // Giant Secrets",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
+    "The Mighty Thor, Jane Foster",
+    "Twining Twins // Swift Spiral",
+    "Void Rend",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ]
+  }
+ },
+ "verdicts": {
+  "Teferi, Hero of Dominaria": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Absorb": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ojutai's Command": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Azorius Charm": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Detention Sphere": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Pull of the Mist Moon": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Biorganic Carapace": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Metropolis Angel": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Spider-Woman, Secret Agent": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Twining Twins // Swift Spiral": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sorin of House Markov // Sorin, Ravenous Neonate": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Shaile, Dean of Radiance // Embrose, Dean of Shadow": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Cid, Timeless Artificer": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Aven Wind Guide": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Denzilore Fatehold": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Spider-Woman, Stunning Savior": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Faithful Mending": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Runic Shot": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Protect the Negotiators": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hindering Light": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Staggering Insight": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Pearl Collector": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Benalish Sleeper": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rodolf Duskbringer": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "King T'Challa // Black Panther, Hope Enduring": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Malcator, Purity Overseer": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sharae of Numbing Depths": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Niko, Light of Hope": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Narset Transcendent": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Invasion of Xerex // Vertex Paladin": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Errant and Giada": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Superior Spider-Man": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Symbiote Spider-Man": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Senate Guildmage": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Skycat Sovereign": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Will, Scion of Peace": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Lavinia, Azorius Renegade": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kels, Fight Fixer": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Shilgengar, Sire of Famine": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Bard the Bowman": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ishai, Ojutai Dragonspeaker": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sun-Spider, Nimble Webber": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Taigam, Ojutai Master": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Black Widow, Double Agent": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Living Legend": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Brokers' Safeguard": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hallowed Respite": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Taeko, the Patient Avalanche": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Panicked Bystander // Cackling Culprit": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Battlewise Hoplite": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Jubilant Skybonder": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ace Flockbringer": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Lo and Li, Royal Advisors": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Teferi, Who Slows the Sunset": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "War Machine, James Rhodes": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ezrim, Agency Chief": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Quintorius, Fate Splitter": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "SP//dr, Piloted by Peni": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Tura Kennerüd, Skyknight": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Azor, the Lawbringer": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Banish into Fable": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dovin, Architect of Law": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Gwaihir the Windlord": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Restricted Office // Lecture Hall": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Invasion of New Phyrexia // Teferi Akosa of Zhalfir": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sphinx's Revelation": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Abigale, Eloquent First-Year": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ayli, Eternal Pilgrim": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Arvad, Weatherlight Smuggler": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Cleric of Life's Bond": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Consecrate // Consume": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dark Leo & Shredder": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Cruel Celebrant": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Despark": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Edgar, Ancient Bloodlord": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Elas il-Kor, Sadistic Pilgrim": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Feast of the Victorious Dead": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Fleshtaker": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Fracture": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Frodo, Adventurous Hobbit": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "General's Enforcer": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Golden Sidekick": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hashaton, Scarab's Fist": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Head of the Class": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Humiliate": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Invasion of New Capenna // Holy Frazzle-Cannon": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Killian, Ink Duelist": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rite of Oblivion": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Revival // Revenge": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sandbender Scavengers": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Syr Vondam, Sunstar Exemplar": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Anguished Unmaking": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Athreos, God of Passage": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Gift of Orzhova": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hardened Tactician": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Indulging Patrician": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kambal, Consul of Allocation": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kambal, Profiteering Mayor": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Karai, Future of the Foot": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kaya, Geist Hunter": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kunoros, Hound of Athreos": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Mortify": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Nalia de'Arnise": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Silverquill Pledgemage": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Snooping Page": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Tomik, Wielder of Law": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Tymna the Weaver": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Aryel, Knight of Windgrace": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Barrensteppe Siege": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Drana and Linvala": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Elenda, the Dusk Rose": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Elenda, Saint of Dusk": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ondu Knotmaster // Throw a Line": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Seething Skitter-Priest": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Splinter, Radical Rat": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Diviner of Fates": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Nimble Larcenist": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Void Rend": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Alela, Artful Provocateur": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Eriette, the Beguiler": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Queza, Augur of Agonies": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Y'shtola, Night's Blessed": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Chromium, the Mutable": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Shattered Seraph": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "The Ur-Sphinx": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Stormkeld Curator // Giant Secrets": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Lawmage's Binding": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Eagle's Rescue": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dance of the Manse": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Eriette of the Charmed Apple": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Killian, Decisive Mentor": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Glasswing Grace // Age-Graced Chapel": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Scriv, the Obligator": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rise to Glory": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Archnemesis": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Coerced to Kill": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Zur, Eternal Schemer": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Tameshi, Reality Architect": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Inquisitive Glimmer": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Wingbright Thief": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ephara, God of the Polis": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Knights' Charge": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Doom Foretold": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dramatic Finale": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Firja's Retribution": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Neva, Stalked by Nightmares": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Invasion of Tolvada // The Broken Sky": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Naomi, Pillar of Order": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rampage of the Valkyries": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Ethereal Absolution": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Rogue Class": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Saruman of Many Colors": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Obscura Ascendancy": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Leyline of Hope": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Leyline of Anticipation": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Leyline of Transformation": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Black Panther, Most Dangerous": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Wings of Freedom": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hawkeye, Bowslinger": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Quake, Agent of S.H.I.E.L.D.": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Paladin's Arms": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Aerith Rescue Mission": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Mockingbird, Ace Agent": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "White Widow, Free Agent": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Steve Rogers": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Doctor Strange, Surgeon": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Doctor Spectrum": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Photon, Lady of Light": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Wondrous Revival": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Secret Identity": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "The Mighty Thor, Jane Foster": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Abigale, Poet Laureate // Heroic Stanza": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Plaza of Heroes": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Slumbering Keepguard": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dragoon's Lance": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Danitha, Sword of Hope": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Fiendslayer Paladin": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "History of Benalia": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Dion, Bahamut's Dominant // Bahamut, Warden of Light": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "The Circle of Loyalty": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Voracious Vampire": {
+   "G": {
+    "m": "✗",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Marshal of Zhalfir": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Summon: Primal Odin": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Arvad the Cursed": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Brigone, Soldier of Meletis": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Super-Soldier": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Unbowed": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Captain America, Skybound": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Lyra, Archangel of Dawn": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Champions of Tyr": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Lulu, Forgetful Hollyphant": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Serra Redeemer": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Greater Auramancy": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Kor Spiritdancer": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Light-Paws, Emperor's Voice": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Petrify": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sentinel's Mark": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Skyblade's Boon": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Spectral Steel": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Sram, Senior Edificer": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Super-Soldier Serum": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Transcendent Envoy": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Acclaimed Contender": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Born to Drive": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Danitha Capashen, Paragon": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Due Diligence": {
+   "G": {
+    "m": "△",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Hope Against Hope": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Light of Promise": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "One Last Job": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Pearl-Ear, Imperial Advisor": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Nahiri's Binding": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Pariah": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Angelic Destiny": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Commanding Presence": {
+   "G": {
+    "m": "◇",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Friendly Neighborhood": {
+   "G": {
+    "m": "★",
+    "graded_at": "de6571e8afda"
+   }
+  },
+  "Halvar, God of Battle // Sword of the Realms": {
+   "G": {
+    "m": "★★",
+    "graded_at": "de6571e8afda"
+   }
+  }
+ }
+}

@@ -262,6 +262,7 @@ Lake-town Toymaker
 Large Bear
 Lazotep Chancellor
 Leonardo, Big Brother
+Leyline of Anticipation
 Leyline of Mutation
 Leyline of Transformation
 Lifecraft Engine
@@ -301,6 +302,7 @@ Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Mysterio, Master of Illusion
 Mythweaver Poq
+Nahiri's Binding
 Namazu Trader
 Namor, Scourge of the Seas
 Nashi, Searcher in the Dark
@@ -333,6 +335,7 @@ Perigee Beckoner
 Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
+Petrify
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -392,6 +395,7 @@ Silvergill Mentor
 Silverquill, the Disputant
 Simic Ascendancy
 Sinister Cryologist
+Skyblade's Boon
 Skyskipper Duo
 Sledge-Class Seedship
 Slick Imitator

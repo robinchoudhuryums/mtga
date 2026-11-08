@@ -1,6 +1,6 @@
 # G'raha Tia pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck is drafted and the findings are folded into its
+**Status: DRAFTED as deck 98 (Throw Wide the Gates), 2026-11-08; owner deciding the Aura lean.** Builder project `builds/graha`, board https://claude.ai/artifact/XakxYe3Et9JHgUZTao4QjJ. Delete once the deck is drafted and the findings are folded into its
 `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 230-card pile (2026-11-08), saved in the session scratchpad as
@@ -71,6 +71,7 @@ Misreadings the four batches surfaced, so a later pass does not repeat them:
    Lulu): the deck deliberately casts fewer creatures.
 9. **A 0-MV cast makes a token with no counters**, so "modified" / "creature with counters" payoffs
    only count tokens from MV 1+ spells.
+11. **Tool notes from the draft.** `stats` scores no role for Petrify, Nahiri's Binding, Skyblade's Boon, Angelic Destiny and Leyline of Anticipation (interaction 22 "+5 unclassified") — a G-67 hole for removal Auras to fix in a batch. The Builder lists Heliod twice: the deck line stores the front name and the pile the full DFC name, and the deck-only list does not alias them.
 10. **Kaya's −2 token doubling:** the standard ruling for "create a token, then put counters on it"
     under a doubler is that every created token gets the counters. Treat it as working, but confirm in
     play the first time.
