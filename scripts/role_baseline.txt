@@ -167,6 +167,7 @@ Fortune, Loyal Steed
 Frantic Confrontation
 Frantic Strength
 Fraying Sanity
+Frodo, Determined Hero
 Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
@@ -505,6 +506,7 @@ Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
+Wraith, Vicious Vigilante
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
 Zagras, Thief of Heartbeats
