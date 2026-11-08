@@ -22,8 +22,11 @@
 #: archetype: the Hero count, Tellah makes a Hero token per noncreature spell, Nahiri, Heir of the Ancients
 #: archetype: digs for and arms Equipment, and Frodo attaches a 2- or 3-mana Equipment free. DISTINCT from the Avatar Brawl deck (78, Bant): no enters-
 #: archetype: doublers, no lifegain engine; red damage, Hero density and artifacts.
+#: tier: A — owner's call 2026-11-08 after the eleven-swap tune. The measurable floor reads A at 100 cards
+#: tier: (interaction 18, card advantage 14 against the scaled A line of 12 and a sum of 19), with protection 14.
+#: tier: Its one clear weakness is the three-colour manabase: tapped lands cost 3.4 points of on-curve chance a card.
 #: protect: Director Nick Fury; Captain America, Team Leader; Avengers Assemble!; Agent Phil Coulson; Wizard's Staff
-#: notes: TIER UNSET pending the owner's call. The measurable floor reads A at 100 cards
+#: notes: (Tier set to A by the owner 2026-11-08; history below.) The measurable floor read A at 100 cards
 #: notes: (interaction 15 and card advantage 12, against an A line of 12 and a sum of 19),
 #: notes: protection 11, board power 119, avg MV 3.77, 32 Heroes (Nick Fury's dig finds one
 #: notes: about 78% of the time), 27 artifacts. Unplayed. THE COST is the three-colour
