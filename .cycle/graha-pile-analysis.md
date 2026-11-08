@@ -370,4 +370,4 @@ manabase comes from the collection; little acceleration (no mana rocks); few che
 Ephara, Leyline of Anticipation, Heliod, Serra Redeemer, Skyblade's Boon, Biorganic Carapace,
 Metropolis Angel — all scale with the commander's tokens, which no model counts as bodies.
 
-**Next:** owner picks the direction, then  builds the 100 and the Builder board.
+**Next:** owner picks the direction, then `/draft-deck` builds the 100 and the Builder board.
