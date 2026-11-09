@@ -12,8 +12,8 @@
 #: archetype: Serra Redeemer and Barrensteppe Siege grow them, Quintorius proliferates, Captain America, Super-Soldier
 #: archetype: gives them hexproof, Ephara draws on both upkeeps. Life is the fuel: Y'shtola drains on every MV 3+
 #: archetype: spell and draws off the commander's own payment, Sorin extorts, Doctor Strange doubles every gain, and
-#: archetype: Revenge doubles the life total. The second engine is Auras on the Hero tokens: 15 Auras, with Sram,
-#: archetype: Pearl-Ear, Kor Spiritdancer and Danitha drawing off them, Light-Paws tutoring, Eriette draining per Aura. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
+#: archetype: Sphinx's Revelation refills it. The second engine is Auras: 14, on the Hero tokens or, with Eriette, the Beguiler, stealing, with Sram,
+#: archetype: Pearl-Ear, Kor Spiritdancer and Killian, Decisive Mentor drawing off them, Light-Paws tutoring, Eriette draining per Aura. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
 #: archetype: Zombie tokens) and deck 43 (Standard Esper): no graveyard plan, the engine is noncreature casting.
 #: protect: G'raha Tia, Scion Reborn; Leyline of Anticipation; Y'shtola, Night's Blessed; Ephara, God of the Polis; Serra Redeemer; Skyblade's Boon; Biorganic Carapace; Metropolis Angel
 #: notes: Drafted 2026-11-08 from the owner's 230-card pile (.cycle/graha-pile-analysis.md holds the framework,
@@ -48,6 +48,12 @@
 #: notes: noncreature spell adds a counter), −Absorb +Flux Channeler (proliferate per noncreature spell, the same
 #: notes: event as G'raha), −Fracture +Staff of Compleation (life buys mana, proliferate or a card), −Void Rend
 #: notes: +Eriette, the Beguiler (12 of the 15 Auras steal a creature of equal or lower MV). Removal was the surplus.
+#: notes: 2026-11-09 (token round): −Consecrate // Consume +Mondrak, Glory Dominus (doubles every token: two Heroes
+#: notes: per G'raha trigger with the counters on both, two Sigil Angels, Spirits, Faeries, Contracts; x4 with Kaya's
+#: notes: −2), −Danitha, Sword of Hope +Killian, Decisive Mentor, −Friendly Neighborhood +Mesmerizing Dose, −Glasswing
+#: notes: Grace +Killian, Ink Duelist (stacks with Danitha Capashen), −Coerced to Kill +The Circle of Loyalty (anthem
+#: notes: and a Knight per legendary spell, doubled by Mondrak). Kept on the owner's call: Danitha Capashen, Baron,
+#: notes: Spectral Steel; kept on Claude's: Leyline of Anticipation, Sorin, Sphinx's Revelation, Sram, Entity Tracker.
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -57,7 +63,7 @@
 1 Heliod, the Radiant Dawn (MOM) 17
 1 Y'shtola, Night's Blessed (FIC) 7
 1 Ephara, God of the Polis (PIO) 305
-1 Danitha, Sword of Hope (FRA) 196
+1 Killian, Decisive Mentor (SOC) 4
 1 Alela, Artful Provocateur (ELD) 324
 1 Sram, Senior Edificer (FCA) 3
 1 Pearl-Ear, Imperial Advisor (MH3) 39
@@ -72,12 +78,12 @@
 1 Flux Channeler (WAR) 52
 1 Ichormoon Gauntlet (ONE) 56
 1 Eriette, the Beguiler (OTJ) 202
+1 Killian, Ink Duelist (STX) 197
 
 # Interaction — instants first
 1 Anguished Unmaking (OTP) 35
 1 Ojutai's Command (HA5) 18
 1 Azorius Charm (PIO) 205
-1 Consecrate // Consume (RNA) 224
 1 Lawmage's Binding (JMP) 453
 1 Detention Sphere (OTP) 43
 1 Pull of the Mist Moon (YDMU) 3
@@ -88,7 +94,7 @@
 1 Invasion of New Capenna // Holy Frazzle-Cannon (MOM) 238
 1 Archnemesis (MSC) 74
 1 Firja's Retribution (KHM) 210
-1 Coerced to Kill (MKM) 192
+1 Mesmerizing Dose (ONE) 62
 
 # Planeswalkers
 1 Teferi, Hero of Dominaria (DOM) 207
@@ -106,7 +112,8 @@
 1 Captain America, Wings of Freedom (MSH) 10
 1 Captain America, Super-Soldier (MSH) 9
 1 Invasion of New Phyrexia // Teferi Akosa of Zhalfir (MOM) 239
-1 Friendly Neighborhood (SPM) 8
+1 Mondrak, Glory Dominus (ONE) 23
+1 The Circle of Loyalty (ELD) 9
 
 # Auras and Equipment
 1 Skyblade's Boon (J21) 136
@@ -114,7 +121,6 @@
 1 Gift of Orzhova (PIO) 307
 1 Angelic Destiny (FDN) 565
 1 Light of Promise (M21) 25
-1 Glasswing Grace // Age-Graced Chapel (MH3) 254
 1 Spectral Steel (KHM) 30
 1 Halvar, God of Battle // Sword of the Realms (KHM) 15
 1 Staggering Insight (THB) 228

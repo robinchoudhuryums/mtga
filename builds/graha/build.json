@@ -1344,16 +1344,16 @@
   },
   "Spider-Woman, Secret Agent": {
    "group": "Strong",
-   "text": "CUT 2026-11-09 for Coerced to Kill (owner's call). Flash Hero that locks a creature for as long as you control her; instant-speed interaction and the tap enabler for Hylda/Sharae, none of which the deck runs now.",
+   "text": "CUT 2026-11-09 for Coerced to Kill (itself cut later for The Circle of Loyalty). Flash Hero that locks a creature for as long as you control her; instant-speed interaction and the tap enabler for Hylda/Sharae, none of which the deck runs now.",
    "graded_at": {
-    "98": "682d3adeb2cc"
+    "98": "fc0f466d0e92"
    }
   },
   "Twining Twins // Swift Spiral": {
    "group": "Strong",
-   "text": "CUT 2026-11-09 (Aura lean) for Danitha Capashen. *Adventure \"Swift Spiral\" is an MV2 instant, a noncreature cast on either turn (r1, r2); it blinks a nontoken creature to save it, then a 4-MV flier",
+   "text": "CUT 2026-11-09 (Aura lean) for Danitha Capashen. Adventure Swift Spiral is an MV 2 instant, a noncreature cast on either turn; it blinks a nontoken creature to save it, then a 4-MV flier.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "fc0f466d0e92"
    }
   },
   "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse": {
@@ -1603,9 +1603,9 @@
   },
   "Sun-Spider, Nimble Webber": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09 (Eriette, the Beguiler). Tutors an Aura or Equipment, and with Eriette out any Enchant-creature Aura is a steal, so this is a Control Magic on demand (or Coerced to Kill, which steals alone). A Hero with flying on your turn; creature, so no G'raha trigger.",
+   "text": "RE-GRADED ★★ 2026-11-09 (Eriette, the Beguiler). Tutors an Aura or Equipment, and with Eriette out any Enchant-creature Aura is a steal, so this is a Control Magic on demand. A Hero with flying on your turn; creature, so no G'raha trigger.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Taigam, Ojutai Master": {
@@ -1820,9 +1820,9 @@
   },
   "Consecrate // Consume": {
    "group": "Strong",
-   "text": "Consecrate is an INSTANT (MV 2) with gy hate + draw, a 3/3 on the opp's turn (r2/r4); Consume (MV 4) is an edict + \"gain life equal to its power\" (r5/r9)",
+   "text": "CUT 2026-11-09 for Mondrak, Glory Dominus. Consecrate is an instant graveyard exile plus a card; Consume is a sorcery edict on their biggest creature.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "fc0f466d0e92"
    }
   },
   "Dark Leo & Shredder": {
@@ -1932,9 +1932,9 @@
   },
   "Killian, Ink Duelist": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09 (Aura lean). Every Aura spell targets a creature, so 13 Enchant-creature Auras plus Coerced to Kill and the creature removal cost {2} less: Angelic Destiny for {W}{W}, Skyblade's Boon for {W}. MV is unchanged, so G'raha's Hero size and Eriette, the Beguiler's steal cap stay the same. A lifelink menace 2-drop, which the deck is short on. PROPOSED ADD 2026-11-09 for Danitha Capashen, Paragon (package of five).",
+   "text": "IN 2026-11-09 for Glasswing Grace. Every spell that targets a creature costs {2} less (13 Enchant-creature Auras and the creature removal), stacking with Danitha Capashen. MV is unchanged, so G'raha's Hero size and Eriette, the Beguiler's steal cap stay the same. A lifelink menace 2-drop.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Rite of Oblivion": {
@@ -2086,9 +2086,9 @@
   },
   "Aryel, Knight of Windgrace": {
    "group": "Real",
-   "text": "Makes Knights and destroys a creature with power X or less by tapping X Knights. Only worth a slot beside The Circle of Loyalty and Mondrak, which supply the Knights; third in that package.",
+   "text": "Makes Knights and destroys a creature with power X or less by tapping X Knights. The Circle of Loyalty and Mondrak (both in since 2026-11-09) now supply Knights, so she is live, but a third slot for the Knight sideline is a stretch.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Baron Bertram Graywater": {
@@ -2107,9 +2107,9 @@
   },
   "Drana and Linvala": {
    "group": "Strong",
-   "text": "Owner-raised 2026-11-09. 3/3 flying vigilance that shuts off their creatures' activated abilities and lets you use them: a hoser against dorks and ability commanders, a flier otherwise.",
+   "text": "Owner-raised 2026-11-09. 3/3 flying vigilance that shuts off their creatures' activated abilities and lets you use them. Cut options, best first: Teferi, Who Slows the Sunset; Baron Bertram Graywater; Sentinel's Mark.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "fc0f466d0e92"
    }
   },
   "Elenda, the Dusk Rose": {
@@ -2254,16 +2254,16 @@
   },
   "Killian, Decisive Mentor": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09. With 25 enchantments, every Aura cast, Sigil, Hallowed Haunting or Scriv Contract that enters taps and goads an opposing creature. It draws whenever creatures enchanted by your Auras attack, and both your pumped creatures and the ones Eriette, the Beguiler steals carry your Auras. A creature, so no G'raha trigger. PROPOSED ADD 2026-11-09 for Danitha, Sword of Hope (package of five).",
+   "text": "IN 2026-11-09 for Danitha, Sword of Hope. Every Aura cast, Sigil, Hallowed Haunting or Scriv Contract that enters taps and goads an opposing creature; draws whenever creatures enchanted by your Auras attack, stolen ones included. A creature, so no G'raha trigger.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Glasswing Grace // Age-Graced Chapel": {
-   "group": "Strong",
-   "text": "MDFC: land when needed, else MV5 aura \"+2/+2, flying and lifelink\" — on a Hero token turns it into a lifelink fuel source (r5,r6)",
+   "group": "Real",
+   "text": "CUT 2026-11-09 for Killian, Ink Duelist. The one MV-5 steal Aura, and its back face is a tapped land.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "fc0f466d0e92"
    }
   },
   "Scriv, the Obligator": {
@@ -2289,9 +2289,9 @@
   },
   "Coerced to Kill": {
    "group": "Strong",
-   "text": "IN 2026-11-09 for Spider-Woman, Secret Agent. MV-5 Aura that steals a creature as a 1/1 deathtouch blocker by itself (Eriette, the Beguiler adds nothing to it): removal plus a body, and an enchantment cast for G'raha/Sigil/Entity Tracker.",
+   "text": "CUT 2026-11-09 for The Circle of Loyalty. MV-5 Aura that steals a creature alone; Eriette, the Beguiler makes 12 other Auras steals.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Zur, Eternal Schemer": {
@@ -2464,9 +2464,9 @@
   },
   "Quake, Agent of S.H.I.E.L.D.": {
    "group": "Engine",
-   "text": "CUT 2026-11-09 (Aura lean) for Danitha, Sword of Hope. Hero; \"whenever you cast a noncreature spell, tap target creature or land\" with NO once-per-turn cap — tempo off every spell (r1,r2)",
+   "text": "CUT 2026-11-09 (Aura lean) for Danitha, Sword of Hope (since cut too). Hero; whenever you cast a noncreature spell, tap target creature or land, with no once-per-turn cap: tempo off every spell.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "fc0f466d0e92"
    }
   },
   "Paladin's Arms": {
@@ -2590,9 +2590,9 @@
   },
   "Danitha, Sword of Hope": {
    "group": "Real",
-   "text": "IN THE DECK 2026-11-09 (for Quake). Draws once a turn when a spell targets YOUR creature, so the steal Auras on opposing creatures never trigger her. PROPOSED CUT 2026-11-09 for Killian, Decisive Mentor.",
+   "text": "CUT 2026-11-09 for Killian, Decisive Mentor. Draws once a turn when a spell targets YOUR creature, so the steal Auras never trigger her.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Fiendslayer Paladin": {
@@ -2618,9 +2618,9 @@
   },
   "The Circle of Loyalty": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09 (with Mondrak). +1/+1 to every creature on a wide token board, and a 2/2 Knight whenever you cast a legendary spell (24 here, G'raha recasts too), doubled by Mondrak; {3}{W},{T} makes more. A noncreature cast for G'raha (6 MV, so usually decline the life payment). Affinity for Knights barely applies. PROPOSED ADD 2026-11-09 for Coerced to Kill.",
+   "text": "IN 2026-11-09 for Coerced to Kill. +1/+1 to every creature on a doubled token board, and a 2/2 Knight per legendary spell (24 here, G'raha recasts too), doubled by Mondrak; {3}{W},{T} makes more. A noncreature cast for G'raha (6 MV, usually decline the payment).",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Voracious Vampire": {
@@ -2814,9 +2814,9 @@
   },
   "Danitha Capashen, Paragon": {
    "group": "Real",
-   "text": "IN THE DECK 2026-11-09 (for Twining Twins). Auras and Equipment cost {1} less; lifelink first strike vigilance. PROPOSED CUT 2026-11-09 for Killian, Ink Duelist, whose {2} discount covers every creature-targeting spell, removal included.",
+   "text": "IN THE DECK. Auras and Equipment cost {1} less; lifelink first strike vigilance. Kept on the owner's call 2026-11-09; stacks with Killian, Ink Duelist (an Aura up to {3} less).",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Due Diligence": {
@@ -2884,9 +2884,9 @@
   },
   "Friendly Neighborhood": {
    "group": "Real",
-   "text": "Three 1/1 Citizens plus a Hero from one MV-4 enchantment; the pump land stays as a mana sink. Enchants a land, so it can never steal with Eriette, the Beguiler. PROPOSED CUT 2026-11-09 for Mesmerizing Dose.",
+   "text": "CUT 2026-11-09 for Mesmerizing Dose. Three 1/1 Citizens plus a Hero from one MV-4 enchantment; enchants a land, so it never steals.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Halvar, God of Battle // Sword of the Realms": {
@@ -2940,9 +2940,9 @@
   },
   "Starfield Mystic": {
    "group": "Situational",
-   "text": "CRAFT (R). Enchantment spells cost {1} less (Auras and Sagas); redundant with Danitha Capashen for Auras, broader for the rest.",
+   "text": "CRAFT (R). Enchantment spells cost {1} less (Auras and Sagas); overlaps Danitha Capashen and Killian, Ink Duelist for Auras, broader for the rest.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "fc0f466d0e92"
    }
   },
   "With Great Power . . .": {
@@ -2975,9 +2975,9 @@
   },
   "Mesmerizing Dose": {
    "group": "Real",
-   "text": "Enchant creature: taps it and it stays tapped, then proliferate. Interaction plus an enchantment cast for G'raha, Sigil and Entity Tracker. With Eriette, the Beguiler it steals a MV 3 or less creature, which then stays tapped for you. PROPOSED ADD 2026-11-09 for Friendly Neighborhood (package of five).",
+   "text": "IN 2026-11-09 for Friendly Neighborhood. Enchant creature: taps it and it stays tapped, then proliferate; with Eriette, the Beguiler it steals a creature of MV 3 or less, which stays tapped for you. An enchantment cast for G'raha, Sigil and Entity Tracker.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   },
   "Sword of Truth and Justice": {
@@ -3045,9 +3045,9 @@
   },
   "Mondrak, Glory Dominus": {
    "group": "Engine",
-   "text": "Doubles every token you create: two Heroes per G'raha trigger, and the X counters go on both (the effect's 'it' covers every token it made). Also two Angels per enchantment spell from Sigil, two Spirits from Hallowed Haunting, two Faeries from Alela, two Vampires from Baron, two Contracts from Scriv; Kaya's −2 doubles again for x4. Sacrifice two Hero tokens or Faeries for an indestructible counter. 4-mana 4/4 flier. PROPOSED ADD 2026-11-09 for Consecrate // Consume.",
+   "text": "IN 2026-11-09 for Consecrate // Consume. Doubles every token: two Heroes per G'raha trigger with the X counters on both, two Angels per Sigil trigger, two Spirits, Faeries, Vampires, Contracts and Circle Knights; Kaya's −2 doubles again for x4. Sacrifice two spare tokens for an indestructible counter. 4-mana 4/4 flier.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "fc0f466d0e92"
    }
   }
  },
@@ -3490,6 +3490,94 @@
     "Swamp",
     "Teferi, Hero of Dominaria",
     "Teferi, Who Slows the Sunset",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ],
+   "fc0f466d0e92": [
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Archon of the Wild Rose",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Danitha Capashen, Paragon",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Eriette, the Beguiler",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Flux Channeler",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hallowed Haunting",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Ichormoon Gauntlet",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Killian, Decisive Mentor",
+    "Killian, Ink Duelist",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Mesmerizing Dose",
+    "Metropolis Angel",
+    "Mondrak, Glory Dominus",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Rite of Oblivion",
+    "Rodolf Duskbringer",
+    "Scriv, the Obligator",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Sram, Senior Edificer",
+    "Staff of Compleation",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
+    "The Circle of Loyalty",
     "Watery Grave",
     "Y'shtola, Night's Blessed"
    ]
