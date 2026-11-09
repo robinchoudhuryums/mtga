@@ -12,8 +12,8 @@
 #: archetype: Serra Redeemer and Barrensteppe Siege grow them, Quintorius proliferates, Captain America, Super-Soldier
 #: archetype: gives them hexproof, Ephara draws on both upkeeps. Life is the fuel: Y'shtola drains on every MV 3+
 #: archetype: spell and draws off the commander's own payment, Sorin extorts, Doctor Strange doubles every gain, and
-#: archetype: Revenge doubles the life total. An Aura lean (Sram, Pearl-Ear, Skyblade's Boon, removal Auras) is the
-#: archetype: optional direction. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
+#: archetype: Revenge doubles the life total. The second engine is Auras on the Hero tokens: 15 Auras, with Sram,
+#: archetype: Pearl-Ear, Kor Spiritdancer and Danitha drawing off them, Light-Paws tutoring, Eriette draining per Aura. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
 #: archetype: Zombie tokens) and deck 43 (Standard Esper): no graveyard plan, the engine is noncreature casting.
 #: protect: G'raha Tia, Scion Reborn; Leyline of Anticipation; Y'shtola, Night's Blessed; Ephara, God of the Polis; Serra Redeemer; Skyblade's Boon; Biorganic Carapace; Metropolis Angel
 #: notes: Drafted 2026-11-08 from the owner's 230-card pile (.cycle/graha-pile-analysis.md holds the framework,
@@ -29,19 +29,31 @@
 #: notes: on-curve as built 47.9% -> 50.8%. The owner may lean further into Auras; the Aura bench (Sram,
 #: notes: Pearl-Ear and Skyblade's Boon are in; Kor Spiritdancer, Danitha, Greater Auramancy, Staggering
 #: notes: Insight are not) is on the Builder board builds/graha with a reason per card.
+#: notes: 2026-11-09, AURA LEAN (owner's call): in Kor Spiritdancer, Danitha, Sword of Hope, Danitha Capashen,
+#: notes: Eriette of the Charmed Apple, Light-Paws, Staggering Insight, Spectral Steel, Hope Against Hope; out
+#: notes: The Mighty Thor, Jane Foster, Quake, Twining Twins, Stormkeld Curator, Ondu Knotmaster, History of
+#: notes: Benalia, Dragoon's Lance, Invasion of Tolvada. 15 Auras and 8 Aura payoffs (Sram, Pearl-Ear, Kor
+#: notes: Spiritdancer and Danitha, Sword of Hope draw; Danitha Capashen discounts; Light-Paws tutors; Eriette
+#: notes: drains per Aura; Alela makes a flier per enchantment spell). Interaction 22 -> 20 (Thor's and Quake's
+#: notes: taps), card advantage 12 -> 14, avg MV 3.28 -> 3.12. Enchantment creatures give no G'raha trigger
+#: notes: but DO count for enchantment payoffs (Alela) — grade them on that, not on the creature type alone.
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
 
-# Flash and noncreature engines — a Hero on the opponent's turn too
+# Engines — flash, noncreature casts and Aura payoffs
 1 Leyline of Anticipation (M20) 64
 1 Heliod, the Radiant Dawn (MOM) 17
 1 Y'shtola, Night's Blessed (FIC) 7
 1 Ephara, God of the Polis (PIO) 305
-1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
+1 Danitha, Sword of Hope (FRA) 196
 1 Alela, Artful Provocateur (ELD) 324
 1 Sram, Senior Edificer (FCA) 3
 1 Pearl-Ear, Imperial Advisor (MH3) 39
+1 Light-Paws, Emperor's Voice (NEO) 25
+1 Kor Spiritdancer (JMP) 116
+1 Eriette of the Charmed Apple (WOE) 202
+1 Danitha Capashen, Paragon (DOM) 12
 
 # Interaction — instants first
 1 Absorb (RNA) 151
@@ -79,18 +91,12 @@
 1 Dramatic Finale (STX) 180
 1 Baron Bertram Graywater (OTJ) 195
 1 Shaile, Dean of Radiance // Embrose, Dean of Shadow (STX) 158
-1 Ondu Knotmaster // Throw a Line (MH3) 196
 1 Captain America, Wings of Freedom (MSH) 10
 1 Captain America, Super-Soldier (MSH) 9
 1 Abigale, Eloquent First-Year (ECL) 204
-1 The Mighty Thor, Jane Foster (MSH) 222
 1 Invasion of New Phyrexia // Teferi Akosa of Zhalfir (MOM) 239
 1 Aerith Rescue Mission (FIN) 5
-1 History of Benalia (DOM) 21
 1 Friendly Neighborhood (SPM) 8
-1 Invasion of Tolvada // The Broken Sky (MOM) 241
-1 Stormkeld Curator // Giant Secrets (YWOE) 26
-1 Twining Twins // Swift Spiral (WOE) 240
 
 # Auras and Equipment
 1 Skyblade's Boon (J21) 136
@@ -99,8 +105,10 @@
 1 Angelic Destiny (FDN) 565
 1 Light of Promise (M21) 25
 1 Glasswing Grace // Age-Graced Chapel (MH3) 254
-1 Dragoon's Lance (FIN) 17
+1 Spectral Steel (KHM) 30
 1 Halvar, God of Battle // Sword of the Realms (KHM) 15
+1 Staggering Insight (THB) 228
+1 Hope Against Hope (SIR) 33
 
 # Life fuel and card advantage
 1 Sphinx's Revelation (AKR) 262
