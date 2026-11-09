@@ -1392,10 +1392,10 @@
    }
   },
   "Rodolf Duskbringer": {
-   "group": "Real",
-   "text": "Flying, deathtouch, lifelink 6-drop; reanimates MV≤\"life gained this turn\", and the commander's lifelink sets that number (r5)",
+   "group": "Strong",
+   "text": "Owner-raised 2026-11-09. Indestructible whenever you gain life (most turns here, doubled by Doctor Strange); the end step returns a creature with MV up to the life gained. 6 mana.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
@@ -1770,10 +1770,10 @@
    }
   },
   "Despark": {
-   "group": "Strong",
-   "text": "Instant exile for \"mana value 4 or greater\" (r9), MV 2, so a 3/3 for 2 on the opp's turn (r2/r4); narrow targets",
+   "group": "Situational",
+   "text": "CUT 2026-11-09 for Entity Tracker: instant exile limited to MV 4+; the deck keeps 19 interaction.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Edgar, Ancient Bloodlord": {
@@ -2036,10 +2036,10 @@
    }
   },
   "Drana and Linvala": {
-   "group": "Real",
-   "text": "Flying vigilance body that shuts off opposing creatures' activated abilities and steals them; creature, so no trigger (r1) — graded on hate value",
+   "group": "Strong",
+   "text": "Owner-raised 2026-11-09. 3/3 flying vigilance that shuts off their creatures' activated abilities and lets you use them: a hoser against dorks and ability commanders, a flier otherwise.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Elenda, the Dusk Rose": {
@@ -2107,9 +2107,9 @@
   },
   "Eriette, the Beguiler": {
    "group": "Situational",
-   "text": "Steal clause needs Auras on opponents' permanents with MV ≥ target (Lawmage's Binding steals MV≤3); aura-density dependent, lifelink (r5)",
+   "text": "Owner-raised 2026-11-09. Petrify, Lawmage's Binding and Nahiri's Binding (MV 2-3) steal what they lock, Scriv's Contracts steal tokens; the stolen creature keeps the lock, so it is denial plus statics, not an attacker.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Queza, Augur of Agonies": {
@@ -2197,10 +2197,10 @@
    }
   },
   "Scriv, the Obligator": {
-   "group": "Real",
-   "text": "Flying deathtouch; Contract tokens make their attackers \"lose 2 life\" in 1v1 — drain-style pressure; tokens are Auras for Eriette (r5)",
+   "group": "Strong",
+   "text": "Owner-raised 2026-11-09. Each Contract (on enter and every attack) is an Aura you control: with Eriette of the Charmed Apple that creature can't attack you and her drain grows by 1. Flying, deathtouch. Created, not cast: no Sram/Kor/Sigil.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Rise to Glory": {
@@ -2218,10 +2218,10 @@
    }
   },
   "Coerced to Kill": {
-   "group": "Real",
-   "text": "Sorcery-speed steal \"You control enchanted creature\" as a 1/1 deathtouch — removal that adds a blocker (r9); MV5 life cost (r4)",
+   "group": "Strong",
+   "text": "MV-5 Aura that steals a creature as a 1/1 deathtouch blocker: removal that adds a body and counts for Eriette and the Aura draws. Cut option: Spider-Woman, Secret Agent.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Zur, Eternal Schemer": {
@@ -2338,9 +2338,9 @@
   },
   "Saruman of Many Colors": {
    "group": "Real",
-   "text": "\"Second spell each turn\" → free copy of their instant/sorcery/enchantment = a free noncreature cast; ward-discard; 6-drop creature (r1)",
+   "text": "Owner-raised 2026-11-09. Second spell each turn (flash makes it easy) mills them two and casts a free copy of an instant, sorcery or enchantment from their yard; opponent-dependent, 6 mana.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Obscura Ascendancy": {
@@ -2407,10 +2407,10 @@
    }
   },
   "Aerith Rescue Mission": {
-   "group": "Strong",
-   "text": "\"Create three 1/1 colorless Hero tokens\" + G'raha's = 4 Heroes (r6) or tap three + stun (r9); MV4 sweet spot (r4)",
+   "group": "Situational",
+   "text": "CUT 2026-11-09 for Sigil of the Empty Throne: three 1/1 Heroes or a tap-three, outclassed by Sigil as a token engine.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Mockingbird, Ace Agent": {
@@ -2828,9 +2828,9 @@
   },
   "Sigil of the Empty Throne": {
    "group": "Engine",
-   "text": "CRAFT (R). \"Whenever you cast an enchantment spell, create a 4/4 white Angel\": the deck casts 23 enchantments, and Sigil is one itself (a 6/6 Hero via G'raha). Proposed for Aerith Rescue Mission.",
+   "text": "IN THE DECK 2026-11-09 (for Aerith Rescue Mission). A 4/4 flying Angel per enchantment spell; 23 enchantments, Sigil itself one.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Archon of Sun's Grace": {
@@ -2842,30 +2842,30 @@
   },
   "Entity Tracker": {
    "group": "Strong",
-   "text": "CRAFT (R). Flash; \"Whenever an enchantment you control enters … draw a card\", once per enchantment, 23 of them. Proposed for Despark.",
+   "text": "IN THE DECK 2026-11-09 (for Despark). Flash; a card per enchantment that enters.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Hateful Eidolon": {
    "group": "Real",
-   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature (an enchantment spell for Sigil, Archon, Alela, Entity Tracker); draws per Aura when an enchanted creature dies. Proposed for Shaile.",
+   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature: an enchantment spell for Sigil (now in the deck), Alela and Hallowed Haunting, and Entity Tracker (now in the deck) draws when it enters; draws per Aura when an enchanted creature dies. Offered for Shaile, left out by the owner 2026-11-09; first in line if the Aura count grows.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Hallowed Haunting": {
-   "group": "Situational",
-   "text": "SPICE, CRAFT (M). A Spirit token per enchantment spell, growing with Spirit count; with seven enchantments out, the team has flying and vigilance.",
+   "group": "Strong",
+   "text": "A Spirit per enchantment spell (23 here, Sigil's Angel on top), sized by Spirit count; seven enchantments out gives the team flying and vigilance. Cut option: Dramatic Finale.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Archon of the Wild Rose": {
-   "group": "Situational",
-   "text": "SPICE, CRAFT (R). Your enchanted creatures become 4/4 fliers: every Aura'd Hero token is an evasive threat.",
+   "group": "Strong",
+   "text": "Your enchanted creatures become base 4/4 fliers, and a Hero token's counters still add on top: an Aura on a 1-counter token makes a 5/5 flier. Cut option: Abigale.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "7b7a9fb3cc1b"
    }
   },
   "Starfield Mystic": {
@@ -3060,6 +3060,94 @@
     "Void Rend",
     "Watery Grave",
     "Y'shtola, Night's Blessed"
+   ],
+   "7b7a9fb3cc1b": [
+    "Abigale, Eloquent First-Year",
+    "Absorb",
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Consecrate // Consume",
+    "Danitha Capashen, Paragon",
+    "Danitha, Sword of Hope",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Dramatic Finale",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Fracture",
+    "Friendly Neighborhood",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Glasswing Grace // Age-Graced Chapel",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Metropolis Angel",
+    "Mortify",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Revival // Revenge",
+    "Rite of Oblivion",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Spider-Woman, Secret Agent",
+    "Sram, Senior Edificer",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
+    "Void Rend",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
    ]
   }
  },
@@ -3216,8 +3304,8 @@
   },
   "Rodolf Duskbringer": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
@@ -3540,8 +3628,8 @@
   },
   "Despark": {
    "G": {
-    "m": "★★",
-    "graded_at": "de6571e8afda"
+    "m": "◇",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Edgar, Ancient Bloodlord": {
@@ -3768,8 +3856,8 @@
   },
   "Drana and Linvala": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Elenda, the Dusk Rose": {
@@ -3828,8 +3916,8 @@
   },
   "Eriette, the Beguiler": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Queza, Augur of Agonies": {
@@ -3906,8 +3994,8 @@
   },
   "Scriv, the Obligator": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Rise to Glory": {
@@ -3924,8 +4012,8 @@
   },
   "Coerced to Kill": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Zur, Eternal Schemer": {
@@ -4026,8 +4114,8 @@
   },
   "Saruman of Many Colors": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Obscura Ascendancy": {
@@ -4086,8 +4174,8 @@
   },
   "Aerith Rescue Mission": {
    "G": {
-    "m": "★★",
-    "graded_at": "de6571e8afda"
+    "m": "◇",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Mockingbird, Ace Agent": {
@@ -4447,7 +4535,7 @@
   "Sigil of the Empty Throne": {
    "G": {
     "m": "★★★",
-    "graded_at": "4a65698e2c76"
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Archon of Sun's Grace": {
@@ -4459,7 +4547,7 @@
   "Entity Tracker": {
    "G": {
     "m": "★★",
-    "graded_at": "4a65698e2c76"
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Hateful Eidolon": {
@@ -4470,14 +4558,14 @@
   },
   "Hallowed Haunting": {
    "G": {
-    "m": "★",
-    "graded_at": "4a65698e2c76"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Archon of the Wild Rose": {
    "G": {
-    "m": "★",
-    "graded_at": "4a65698e2c76"
+    "m": "★★",
+    "graded_at": "7b7a9fb3cc1b"
    }
   },
   "Starfield Mystic": {
