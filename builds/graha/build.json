@@ -1444,9 +1444,9 @@
   },
   "Pearl Collector": {
    "group": "Real",
-   "text": "Deathtouch and lifelink; with 4+ life gained it conjures Mox Pearl, an MV0 noncreature cast that makes a free 1/1 Hero (r1, r5)",
+   "text": "Deathtouch and lifelink 3-drop; one Mox Pearl after a 4-life turn (a free noncreature cast, a 1/1 Hero); {2}{W} perpetual lifelink. Weaker than Sorin of House Markov, which it was offered for.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Benalish Sleeper": {
@@ -2290,10 +2290,10 @@
    }
   },
   "Zur, Eternal Schemer": {
-   "group": "Real",
-   "text": "Enchantment creatures get deathtouch, lifelink, hexproof; {1}{W} animates non-Aura enchantments (MV-sized bodies) — enchantment-deck value",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. {1}{W}: a non-Aura enchantment becomes a creature with P/T equal to its MV, permanently, and then has deathtouch, lifelink and hexproof: Sigil 5/5, Leyline, Hallowed Haunting and Barrensteppe Siege 4/4s (seven targets), all life fuel. Heliod and Ephara get the same keywords. Don't animate Detention Sphere or Pull of the Mist Moon: if they die, the exiled card returns. A 3-drop flier; offered for Sorin, better for Baron if a slot opens.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Tameshi, Reality Architect": {
@@ -2914,7 +2914,7 @@
   },
   "Hateful Eidolon": {
    "group": "Strong",
-   "text": "RE-GRADED ★★★ 2026-11-09 (Eriette, the Beguiler). A creature you steal with an Aura carries YOUR Aura, so when it dies Eidolon draws a card per Aura on it; on your own enchanted creatures too. 1-drop lifelink Enchantment Creature (the deck is short on early drops): an enchantment spell for Sigil, Alela and Hallowed Haunting, and Entity Tracker draws when it enters. CRAFT (U). Left out once by the owner; first in line now. PROPOSED ADD 2026-11-09 for Spectral Steel (package of five).",
+   "text": "★★★ (Eriette, the Beguiler): draws per Aura when an enchanted creature dies, stolen ones included; a 1-drop lifelink enchantment spell for Sigil, Hallowed Haunting, Alela and Entity Tracker. Proposed for Spectral Steel 2026-11-09; the owner kept Spectral Steel. First in line for the next open slot.",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -4350,8 +4350,8 @@
   },
   "Zur, Eternal Schemer": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Tameshi, Reality Architect": {
