@@ -1278,6 +1278,11 @@
    "name": "Staff of Compleation",
    "pile": "G",
    "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Mondrak, Glory Dominus",
+   "pile": "G",
+   "src": "owner 2026-11-09"
   }
  ],
  "reasons": {
@@ -2081,9 +2086,9 @@
   },
   "Aryel, Knight of Windgrace": {
    "group": "Real",
-   "text": "Activated Knight tokens + \"Destroy target creature with power X or less\"; pairs with Invasion of New Phyrexia's Knights",
+   "text": "Makes Knights and destroys a creature with power X or less by tapping X Knights. Only worth a slot beside The Circle of Loyalty and Mondrak, which supply the Knights; third in that package.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Baron Bertram Graywater": {
@@ -2612,10 +2617,10 @@
    }
   },
   "The Circle of Loyalty": {
-   "group": "Real",
-   "text": "Legendary artifact: \"Creatures you control get +1/+1\" on a token board (r6), and a Knight on each \"legendary spell\" (the commander too). Affinity cuts its cost, not its MV, so X stays 6 (r4).",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09 (with Mondrak). +1/+1 to every creature on a wide token board, and a 2/2 Knight whenever you cast a legendary spell (24 here, G'raha recasts too), doubled by Mondrak; {3}{W},{T} makes more. A noncreature cast for G'raha (6 MV, so usually decline the life payment). Affinity for Knights barely applies. PROPOSED ADD 2026-11-09 for Coerced to Kill.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Voracious Vampire": {
@@ -3034,6 +3039,13 @@
   "Ichor Aberration": {
    "group": "Weak",
    "text": "Grows only when you proliferate; needs proliferate most turns to matter.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "group": "Engine",
+   "text": "Doubles every token you create: two Heroes per G'raha trigger, and the X counters go on both (the effect's 'it' covers every token it made). Also two Angels per enchantment spell from Sigil, two Spirits from Hallowed Haunting, two Faeries from Alela, two Vampires from Baron, two Contracts from Scriv; Kaya's −2 doubles again for x4. Sacrifice two Hero tokens or Faeries for an indestructible counter. 4-mana 4/4 flier. PROPOSED ADD 2026-11-09 for Consecrate // Consume.",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -4626,8 +4638,8 @@
   },
   "The Circle of Loyalty": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Voracious Vampire": {
@@ -4987,6 +4999,12 @@
   "Ichor Aberration": {
    "G": {
     "m": "△",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "G": {
+    "m": "★★★",
     "graded_at": "f5603e8adca6"
    }
   }
