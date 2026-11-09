@@ -44,6 +44,10 @@
 #: notes: Wild Rose; −Dramatic Finale +Hallowed Haunting; −Revival // Revenge +Rodolf Duskbringer; −Spider-Woman,
 #: notes: Secret Agent +Coerced to Kill. Board power 51 → 58 and protection 5 → 6, for one card advantage and three
 #: notes: early drops (avg MV 3.16 → 3.30).
+#: notes: 2026-11-09 (proliferate round): −Mortify +Ichormoon Gauntlet (planeswalkers get 0: Proliferate; each
+#: notes: noncreature spell adds a counter), −Absorb +Flux Channeler (proliferate per noncreature spell, the same
+#: notes: event as G'raha), −Fracture +Staff of Compleation (life buys mana, proliferate or a card), −Void Rend
+#: notes: +Eriette, the Beguiler (12 of the 15 Auras steal a creature of equal or lower MV). Removal was the surplus.
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -65,15 +69,14 @@
 1 Sigil of the Empty Throne (HA2) 3
 1 Hallowed Haunting (VOW) 17
 1 Archon of the Wild Rose (WOE) 1
+1 Flux Channeler (WAR) 52
+1 Ichormoon Gauntlet (ONE) 56
+1 Eriette, the Beguiler (OTJ) 202
 
 # Interaction — instants first
-1 Absorb (RNA) 151
 1 Anguished Unmaking (OTP) 35
-1 Mortify (FDN) 662
-1 Void Rend (SNC) 230
 1 Ojutai's Command (HA5) 18
 1 Azorius Charm (PIO) 205
-1 Fracture (STX) 188
 1 Consecrate // Consume (RNA) 224
 1 Lawmage's Binding (JMP) 453
 1 Detention Sphere (OTP) 43
@@ -122,6 +125,7 @@
 1 Sorin of House Markov // Sorin, Ravenous Neonate (MH3) 245
 1 Doctor Strange, Surgeon (MSC) 591
 1 Rodolf Duskbringer (J25) 482
+1 Staff of Compleation (ONE) 242
 
 # Lands (36)
 1 Command Tower (FRC) 22

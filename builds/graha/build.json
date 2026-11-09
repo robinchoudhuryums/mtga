@@ -1213,6 +1213,71 @@
    "name": "With Great Power . . .",
    "pile": "G",
    "src": "added"
+  },
+  {
+   "name": "Grateful Apparition",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Proud Pack-Rhino",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Mesmerizing Dose",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Lulu, Stern Guardian",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Drown in Ichor",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Yawgmoth, Thran Physician",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Ichor Aberration",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Sword of Truth and Justice",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Karn's Bastion",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Contagion Engine",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Ichormoon Gauntlet",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Flux Channeler",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
+  },
+  {
+   "name": "Staff of Compleation",
+   "pile": "G",
+   "src": "screenshot 2026-11-09"
   }
  ],
  "reasons": {
@@ -1225,9 +1290,9 @@
   },
   "Absorb": {
    "group": "Strong",
-   "text": "Instant hard counter plus \"You gain 3 life\", which repays the X=3 Hero it makes on the opponent's turn (r2, r4, r5, r9)",
+   "text": "CUT 2026-11-09 for Flux Channeler. Instant hard counter plus 3 life, which repays the X=3 Hero it makes on the opponent's turn.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Ojutai's Command": {
@@ -1806,9 +1871,9 @@
   },
   "Fracture": {
    "group": "Strong",
-   "text": "Instant \"Destroy target artifact, enchantment, or planeswalker\", MV 2, so a 3/3 on the opp's turn (r2/r9)",
+   "text": "CUT 2026-11-09 for Staff of Compleation. Instant: destroy an artifact, enchantment or planeswalker (no creatures); a 3/3 Hero on the opponent's turn.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Frodo, Adventurous Hobbit": {
@@ -1967,9 +2032,9 @@
   },
   "Mortify": {
    "group": "Strong",
-   "text": "Instant \"Destroy target creature or enchantment\", MV 3 → 4/4 Hero, on either turn (r2/r9)",
+   "text": "CUT 2026-11-09 for Ichormoon Gauntlet (removal was the surplus). Instant: destroy a creature or enchantment; a 4/4 Hero on either turn.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Nalia de'Arnise": {
@@ -2093,9 +2158,9 @@
   },
   "Void Rend": {
    "group": "Strong",
-   "text": "Instant \"destroy target nonland permanent\", can't be countered — flexible answer at MV3 that can trigger on their turn (r2,r4,r9)",
+   "text": "CUT 2026-11-09 for Eriette, the Beguiler. Uncounterable instant that destroys any nonland permanent; first removal back if interaction is wanted.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Alela, Artful Provocateur": {
@@ -2106,10 +2171,10 @@
    }
   },
   "Eriette, the Beguiler": {
-   "group": "Real",
-   "text": "CRAFT (R). RE-GRADED ★★★ 2026-11-09 on the owner's read: any 'Enchant creature' Aura can go on an opponent's creature, and if the Aura's MV is at least that creature's MV you take it for as long as the Aura stays. 12 of the deck's 15 Auras qualify (five at MV 2, five at MV 3, Angelic Destiny 4, Glasswing Grace 5); the 9 pump Auras become Control Magic plus the pump, the 3 lockdowns already removed the creature. Each steal is still a noncreature enchantment cast (G'raha Hero, Sigil Angel, Entity Tracker card). Eriette must be out when the Aura attaches; the steal outlasts her. Cap: mostly creatures of MV 3 or less. Suggested cut: Fracture.",
+   "group": "Engine",
+   "text": "IN 2026-11-09 for Void Rend. Any 'Enchant creature' Aura cast on an opponent's creature of equal or lower MV steals it for as long as the Aura stays: 12 of the 15 Auras (the 9 pump Auras become Control Magic plus the pump). Each is still an enchantment cast for G'raha, Sigil and Entity Tracker. Scriv's Contract (MV 0) steals a token.",
    "graded_at": {
-    "98": "682d3adeb2cc"
+    "98": "f5603e8adca6"
    }
   },
   "Queza, Augur of Agonies": {
@@ -2149,9 +2214,9 @@
   },
   "Stormkeld Curator // Giant Secrets": {
    "group": "Strong",
-   "text": "CUT 2026-11-09 (Aura lean) for Eriette of the Charmed Apple. Giant Secrets is an INSTANT {X}{U}{U}: X=2 is MV4 → 5/5 Hero on their turn + 2 cards (r2,r4); Curator body re-buys auras late",
+   "text": "CUT 2026-11-09 (Aura lean) for Eriette of the Charmed Apple. Giant Secrets is an instant {X}{U}{U} that conjures X cards (X=2 makes a 5/5 Hero on their turn); the Curator puts Auras from hand or graveyard onto itself, not onto their creatures, so Eriette, the Beguiler adds nothing.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Lawmage's Binding": {
@@ -2198,9 +2263,9 @@
   },
   "Scriv, the Obligator": {
    "group": "Strong",
-   "text": "IN 2026-11-09 for Shaile. Each Contract (on enter and every attack) is an Aura you control: with Eriette of the Charmed Apple that creature can't attack you and her drain grows by 1. Flying, deathtouch. Created, not cast: no Sram/Kor/Sigil.",
+   "text": "IN 2026-11-09. Each Contract (on enter and every attack) is an Aura you control: with Eriette of the Charmed Apple that creature can't attack you and her drain grows by 1, and with Eriette, the Beguiler a Contract (MV 0) on a token steals it, and the Contract then gives your stolen token +2/+0 when it attacks. Flying, deathtouch. Created, not cast: no Sram/Kor/Sigil.",
    "graded_at": {
-    "98": "682d3adeb2cc"
+    "98": "f5603e8adca6"
    }
   },
   "Rise to Glory": {
@@ -2219,9 +2284,9 @@
   },
   "Coerced to Kill": {
    "group": "Strong",
-   "text": "IN 2026-11-09 for Spider-Woman, Secret Agent. MV-5 Aura that steals a creature as a 1/1 deathtouch blocker: removal that adds a body, an enchantment cast for G'raha/Sigil/Entity Tracker, and counts for Eriette of the Charmed Apple.",
+   "text": "IN 2026-11-09 for Spider-Woman, Secret Agent. MV-5 Aura that steals a creature as a 1/1 deathtouch blocker by itself (Eriette, the Beguiler adds nothing to it): removal plus a body, and an enchantment cast for G'raha/Sigil/Entity Tracker.",
    "graded_at": {
-    "98": "682d3adeb2cc"
+    "98": "f5603e8adca6"
    }
   },
   "Zur, Eternal Schemer": {
@@ -2881,6 +2946,97 @@
    "graded_at": {
     "98": "4a65698e2c76"
    }
+  },
+  "Ichormoon Gauntlet": {
+   "group": "Engine",
+   "text": "IN 2026-11-09 for Mortify. Planeswalkers get 0: Proliferate (and −12: extra turn), so each walker grows itself and every Hero token each turn; every noncreature spell adds a counter to a permanent.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Flux Channeler": {
+   "group": "Engine",
+   "text": "IN 2026-11-09 for Absorb. Proliferate on every noncreature spell, the event G'raha triggers on; stack G'raha's trigger on top and the new Hero grows too.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Staff of Compleation": {
+   "group": "Strong",
+   "text": "IN 2026-11-09 for Fracture. Life buys any-colour mana (2), proliferate (3) or a card (4); {5} untaps it. Paying life is a central theme and the deck is full of lifelink.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Mesmerizing Dose": {
+   "group": "Real",
+   "text": "Enchant creature: taps it and it stays tapped, then proliferate. Interaction plus an enchantment cast for G'raha, Sigil and Entity Tracker. With Eriette, the Beguiler it steals a MV 3 or less creature, which then stays tapped for you.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "group": "Real",
+   "text": "+2/+2, protection from white and blue; combat damage gives a +1/+1 counter and proliferates. Strong card, but Equipment gets nothing from Sigil, Entity Tracker or Eriette.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Yawgmoth, Thran Physician": {
+   "group": "Situational",
+   "text": "Sacrificing Hero tokens draws cards and shrinks X/1s, but the tokens carry the deck's counters, and {B}{B} is awkward in three colours.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Proud Pack-Rhino": {
+   "group": "Situational",
+   "text": "ETB shield counter (protect G'raha once) or proliferate; otherwise a vanilla 3/3 for 3.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Grateful Apparition": {
+   "group": "Situational",
+   "text": "A 2-drop flier (the deck is short on early drops) that proliferates on combat damage.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Drown in Ichor": {
+   "group": "Situational",
+   "text": "Sorcery −4/−4 plus proliferate; fine removal in a deck whose removal is now enough rather than surplus.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Lulu, Stern Guardian": {
+   "group": "Situational",
+   "text": "Stun counter on an attacker; {3}{U}: proliferate. Defensive and mana-hungry.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Karn's Bastion": {
+   "group": "Weak",
+   "text": "Colourless land in a three-colour deck; 4 mana to proliferate.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Contagion Engine": {
+   "group": "Weak",
+   "text": "ETB −1/−1 on each creature one player controls (kills tokens and X/1s), {4},{T}: proliferate twice. 6 mana and 4 per use.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
+  },
+  "Ichor Aberration": {
+   "group": "Weak",
+   "text": "Grows only when you proliferate; needs proliferate most turns to matter.",
+   "graded_at": {
+    "98": "f5603e8adca6"
+   }
   }
  },
  "snapshots": {
@@ -3234,6 +3390,94 @@
     "Teferi, Hero of Dominaria",
     "Teferi, Who Slows the Sunset",
     "Void Rend",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ],
+   "f5603e8adca6": [
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Archon of the Wild Rose",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Coerced to Kill",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Consecrate // Consume",
+    "Danitha Capashen, Paragon",
+    "Danitha, Sword of Hope",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Eriette, the Beguiler",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Flux Channeler",
+    "Friendly Neighborhood",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Glasswing Grace // Age-Graced Chapel",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hallowed Haunting",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Ichormoon Gauntlet",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Metropolis Angel",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Rite of Oblivion",
+    "Rodolf Duskbringer",
+    "Scriv, the Obligator",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Sram, Senior Edificer",
+    "Staff of Compleation",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
     "Watery Grave",
     "Y'shtola, Night's Blessed"
    ]
@@ -4666,6 +4910,84 @@
    "G": {
     "m": "◇",
     "graded_at": "4a65698e2c76"
+   }
+  },
+  "Ichormoon Gauntlet": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Flux Channeler": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Staff of Compleation": {
+   "G": {
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Mesmerizing Dose": {
+   "G": {
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "G": {
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Yawgmoth, Thran Physician": {
+   "G": {
+    "m": "★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Proud Pack-Rhino": {
+   "G": {
+    "m": "★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Grateful Apparition": {
+   "G": {
+    "m": "★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Drown in Ichor": {
+   "G": {
+    "m": "★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Lulu, Stern Guardian": {
+   "G": {
+    "m": "★",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Karn's Bastion": {
+   "G": {
+    "m": "◇",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Contagion Engine": {
+   "G": {
+    "m": "◇",
+    "graded_at": "f5603e8adca6"
+   }
+  },
+  "Ichor Aberration": {
+   "G": {
+    "m": "△",
+    "graded_at": "f5603e8adca6"
    }
   }
  }
