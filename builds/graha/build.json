@@ -1927,7 +1927,7 @@
   },
   "Killian, Ink Duelist": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09 (Aura lean). Every Aura spell targets a creature, so 13 Enchant-creature Auras plus Coerced to Kill and the creature removal cost {2} less: Angelic Destiny for {W}{W}, Skyblade's Boon for {W}. MV is unchanged, so G'raha's Hero size and Eriette, the Beguiler's steal cap stay the same. A lifelink menace 2-drop, which the deck is short on.",
+   "text": "RE-GRADED ★★ 2026-11-09 (Aura lean). Every Aura spell targets a creature, so 13 Enchant-creature Auras plus Coerced to Kill and the creature removal cost {2} less: Angelic Destiny for {W}{W}, Skyblade's Boon for {W}. MV is unchanged, so G'raha's Hero size and Eriette, the Beguiler's steal cap stay the same. A lifelink menace 2-drop, which the deck is short on. PROPOSED ADD 2026-11-09 for Danitha Capashen, Paragon (package of five).",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -2087,10 +2087,10 @@
    }
   },
   "Baron Bertram Graywater": {
-   "group": "Engine",
-   "text": "\"tokens … enter, create a 1/1 … Vampire Rogue … with lifelink\" once per turn: every Hero gives an extra lifelink body (r5/r6); sac → draw",
+   "group": "Real",
+   "text": "A lifelink 1/1 Vampire once a turn when tokens enter, and {1}{B}, sacrifice: draw. PROPOSED CUT 2026-11-09 for Rampage of the Valkyries.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Barrensteppe Siege": {
@@ -2249,7 +2249,7 @@
   },
   "Killian, Decisive Mentor": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09. With 25 enchantments, every Aura cast, Sigil, Hallowed Haunting or Scriv Contract that enters taps and goads an opposing creature. It draws whenever creatures enchanted by your Auras attack, and both your pumped creatures and the ones Eriette, the Beguiler steals carry your Auras. A creature, so no G'raha trigger.",
+   "text": "RE-GRADED ★★ 2026-11-09. With 25 enchantments, every Aura cast, Sigil, Hallowed Haunting or Scriv Contract that enters taps and goads an opposing creature. It draws whenever creatures enchanted by your Auras attack, and both your pumped creatures and the ones Eriette, the Beguiler steals carry your Auras. A creature, so no G'raha trigger. PROPOSED ADD 2026-11-09 for Danitha, Sword of Hope (package of five).",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -2382,7 +2382,7 @@
   },
   "Rampage of the Valkyries": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09. MV-5 enchantment: a 4/4 flying vigilance Angel, and every Angel death is an edict. The deck now makes Angels: Sigil of the Empty Throne (one per enchantment spell), Firja's Retribution, Angelic Destiny, Metropolis Angel, Serra Redeemer, Rodolf. An enchantment cast for G'raha, Sigil and Entity Tracker.",
+   "text": "RE-GRADED ★★ 2026-11-09. MV-5 enchantment: a 4/4 flying vigilance Angel, and every Angel death is an edict. The deck now makes Angels: Sigil of the Empty Throne (one per enchantment spell), Firja's Retribution, Angelic Destiny, Metropolis Angel, Serra Redeemer, Rodolf. An enchantment cast for G'raha, Sigil and Entity Tracker. PROPOSED ADD 2026-11-09 for Baron Bertram Graywater (package of five).",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -2584,10 +2584,10 @@
    }
   },
   "Danitha, Sword of Hope": {
-   "group": "Engine",
-   "text": "IN THE DECK 2026-11-09 (for Quake). Draws once a turn when a spell targets your creature: every Aura on a Hero token.",
+   "group": "Real",
+   "text": "IN THE DECK 2026-11-09 (for Quake). Draws once a turn when a spell targets YOUR creature, so the steal Auras on opposing creatures never trigger her. PROPOSED CUT 2026-11-09 for Killian, Decisive Mentor.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Fiendslayer Paladin": {
@@ -2767,9 +2767,9 @@
   },
   "Spectral Steel": {
    "group": "Real",
-   "text": "IN THE DECK 2026-11-09 (for Dragoon's Lance). A 2-mana trigger that later buys back another Aura.",
+   "text": "IN THE DECK 2026-11-09 (for Dragoon's Lance). +2/+2 at MV 2 (steals MV 2 or less with Eriette, the Beguiler) and later buys back another Aura. PROPOSED CUT 2026-11-09 for Hateful Eidolon.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Sram, Senior Edificer": {
@@ -2808,10 +2808,10 @@
    }
   },
   "Danitha Capashen, Paragon": {
-   "group": "Strong",
-   "text": "IN THE DECK 2026-11-09 (for Twining Twins). Auras and Equipment cost {1} less without lowering G'raha's X; lifelink.",
+   "group": "Real",
+   "text": "IN THE DECK 2026-11-09 (for Twining Twins). Auras and Equipment cost {1} less; lifelink first strike vigilance. PROPOSED CUT 2026-11-09 for Killian, Ink Duelist, whose {2} discount covers every creature-targeting spell, removal included.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Due Diligence": {
@@ -2879,9 +2879,9 @@
   },
   "Friendly Neighborhood": {
    "group": "Real",
-   "text": "\"Create three 1/1 … Citizen tokens\" plus a 5/5 Hero: four bodies from one MV-4 noncreature spell (r1, r4, r6). The pump land stays as a mana sink.",
+   "text": "Three 1/1 Citizens plus a Hero from one MV-4 enchantment; the pump land stays as a mana sink. Enchants a land, so it can never steal with Eriette, the Beguiler. PROPOSED CUT 2026-11-09 for Mesmerizing Dose.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Halvar, God of Battle // Sword of the Realms": {
@@ -2914,7 +2914,7 @@
   },
   "Hateful Eidolon": {
    "group": "Strong",
-   "text": "RE-GRADED ★★★ 2026-11-09 (Eriette, the Beguiler). A creature you steal with an Aura carries YOUR Aura, so when it dies Eidolon draws a card per Aura on it; on your own enchanted creatures too. 1-drop lifelink Enchantment Creature (the deck is short on early drops): an enchantment spell for Sigil, Alela and Hallowed Haunting, and Entity Tracker draws when it enters. CRAFT (U). Left out once by the owner; first in line now.",
+   "text": "RE-GRADED ★★★ 2026-11-09 (Eriette, the Beguiler). A creature you steal with an Aura carries YOUR Aura, so when it dies Eidolon draws a card per Aura on it; on your own enchanted creatures too. 1-drop lifelink Enchantment Creature (the deck is short on early drops): an enchantment spell for Sigil, Alela and Hallowed Haunting, and Entity Tracker draws when it enters. CRAFT (U). Left out once by the owner; first in line now. PROPOSED ADD 2026-11-09 for Spectral Steel (package of five).",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -2970,7 +2970,7 @@
   },
   "Mesmerizing Dose": {
    "group": "Real",
-   "text": "Enchant creature: taps it and it stays tapped, then proliferate. Interaction plus an enchantment cast for G'raha, Sigil and Entity Tracker. With Eriette, the Beguiler it steals a MV 3 or less creature, which then stays tapped for you.",
+   "text": "Enchant creature: taps it and it stays tapped, then proliferate. Interaction plus an enchantment cast for G'raha, Sigil and Entity Tracker. With Eriette, the Beguiler it steals a MV 3 or less creature, which then stays tapped for you. PROPOSED ADD 2026-11-09 for Friendly Neighborhood (package of five).",
    "graded_at": {
     "98": "f5603e8adca6"
    }

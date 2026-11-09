@@ -685,7 +685,7 @@ function cutPickerHTML(c){ const p=picks[c.id]||{}, v=p.picks||[];
 function setPair(id,k,cut){ if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
   const p=picks[id]||(picks[id]={picks:[],note:""}); snapshot(id,`${nameOf(id)} replaces ${cut||"nothing"}`);
   const pr=Object.assign({},p.pair||{}); if(cut) pr[k]=cut; else delete pr[k]; p.pair=pr; persist(id);
-  renderDecks(); renderDetail(); if(view==="compare") paintCompareRows(); else rerow(id); updateTabCounts();
+  holdScroll(["window"], ()=>{ renderDecks(); renderDetail(); if(view==="compare") paintCompareRows(); else rerow(id); updateTabCounts(); });
   if(cut) toast(`${nameOf(id)} replaces ${cut} in ${DECKS[k].label}.`); }
 function filterCuts(input){ const q=input.value.trim().toLowerCase(), box=input.closest(".cutpanel"); CUTQ=input.value;
   box.querySelectorAll(".cutopt").forEach(o=>{ o.hidden=!!q&&!o.dataset.q.includes(q); }); }
@@ -729,9 +729,25 @@ function detailHTML(c, inSheet){
     <span class="saved" data-saved="${c.id}" aria-live="polite"></span>${replyHTML(c.id)}
     ${inSheet?"":`<p class="kbd"><span>j</span><span>k</span> move · ${keys} · <span>b</span> bench · <span>o</span> keep out${ONE?"":" (this pile's deck; every deck on a shared pile)"} · <span>n</span> note · <span>p</span> pane · <span>u</span> undo · <span>t</span> theme · <span>/</span> search · <span>z</span> zoom${hasBack(c)?` · <span>f</span> flip`:""}</p>`}`;
 }
-function renderDetail(){ const c=BYID[SEL], x=view==="compare"&&INSPECT?BYID[INSPECT]:null;
-  document.getElementById("detail").innerHTML=detailHTML(c,false)+(x?inspectHTML(x):"");
-  const sh=document.getElementById("sheet"); if(sh.open) document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(BYID[SHEETID||SEL],true)}</div>`; }
+/* A pick re-renders the detail pane / card sheet, and the claude.ai runtime echoes every write
+   back as a snapshot that re-renders the page again. Replacing a scrolled container's content (and
+   destroying the button that had focus) let the browser drop the reader back to the top; WebKit does.
+   So every refresh path holds its scroll positions: restored at once, on the next frame and once more
+   after the browser's own focus-scroll has run. Only the SAME card keeps its place in the pane — a
+   different card still opens at its top. */
+function holdScroll(sels, fn){ const se=document.scrollingElement||document.documentElement;
+  const at=sels.map(s=>{ const e=s==="window"?se:document.querySelector(s); return e?e.scrollTop:null; });
+  fn();
+  const put=()=>sels.forEach((s,i)=>{ const e=s==="window"?se:document.querySelector(s); if(e&&at[i]!=null&&Math.abs(e.scrollTop-at[i])>1) e.scrollTop=at[i]; });
+  put(); requestAnimationFrame(put); setTimeout(put,120); }
+let DETAIL_SHOWN="", SHEET_SHOWN="";
+function renderDetail(){ const c=BYID[SEL], x=view==="compare"&&INSPECT?BYID[INSPECT]:null, sh=document.getElementById("sheet");
+  const dkey=`${c?c.id:""}|${x?x.id:""}`, skey=sh.open?String(SHEETID||SEL||""):"", keep=[];
+  if(dkey===DETAIL_SHOWN) keep.push("#detail","#detail .cutlist"); if(skey&&skey===SHEET_SHOWN) keep.push("#sheet","#sheetbody .cutlist");
+  holdScroll(keep, ()=>{
+    document.getElementById("detail").innerHTML=detailHTML(c,false)+(x?inspectHTML(x):"");
+    if(sh.open) document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(BYID[SHEETID||SEL],true)}</div>`; });
+  DETAIL_SHOWN=dkey; SHEET_SHOWN=skey; }
 const narrow = () => window.matchMedia("(max-width: 1000px)").matches;
 const rowEls = id => [...document.querySelectorAll(`.row[data-row="${id}"]`)];
 const mainEl = (id,col) => document.querySelector(`.rw[data-w="${id}"]${col!=null?`[data-col="${col}"]`:""} .main`) || document.querySelector(`.rw[data-w="${id}"] .main`);
@@ -806,9 +822,9 @@ function paintUndo(){ const b=document.getElementById("undobtn"), u=UNDO[UNDO.le
 function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.hidden=false; clearTimeout(t._t); t._t=setTimeout(()=>{ t.hidden=true; },4000); }
 function undo(){ const u=UNDO.pop(); paintUndo(); if(!u) return; if(!canWrite){ banner("You can view this board but not save picks on it."); return; }
   u.items.forEach(({id,before})=>{ if(before) picks[id]=before; else delete picks[id]; persist(id); });
-  if(u.items.length===1) rerenderAfterPick(u.items[0].id); else { render(); renderDecks(); }
+  if(u.items.length===1) rerenderAfterPick(u.items[0].id); else holdScroll(["window"], ()=>{ render(); renderDecks(); });
   toast(`Undid: ${u.label}${u.items.length>1?` (${u.items.length} cards)`:""}`); }
-function rerenderAfterPick(id){ if(isPileView(view)) refreshRow(id); else { render(); renderDecks(); } }
+function rerenderAfterPick(id){ holdScroll(["window"], ()=>{ if(isPileView(view)) refreshRow(id); else { render(); renderDecks(); } }); }
 
 /* ---------- other views ---------- */
 /* One deck's pending swap package: adds paired with a cut, adds with no cut yet, cuts with no add. */
@@ -1012,7 +1028,7 @@ function paintCompareRows(){ if(view!=="compare") return; const {L,R,all,secs}=c
   if(ONE){ const pool=CARDS.filter(c=>c.p&&cmpPileOk(c,k)&&!c["i"+k]), dn=pool.filter(decidedInPile).length;
     const hid=(all||L).length-L.length; document.getElementById("count").textContent=`${L.length} shown${hid?` (+${hid} collapsed)`:""} · ${dn}/${pool.length} decided`; }
   const fid=ACTIVECOL==="R"&&INSPECT?INSPECT:SEL; if(had&&fid){ const m=mainEl(fid,ACTIVECOL); if(m) m.focus({preventScroll:true}); } }
-function refreshView(id){ if(isPileView(view)) refreshRow(id); else if(view==="compare"){ paintCompareRows(); updateTabCounts(); renderDetail(); renderDecks(); } else { render(); renderDecks(); } }
+function refreshView(id){ holdScroll(["window"], ()=>{ if(isPileView(view)) refreshRow(id); else if(view==="compare"){ paintCompareRows(); updateTabCounts(); renderDetail(); renderDecks(); } else { render(); renderDecks(); } }); }
 function filtered(){ return toolbarFilter(CARDS.filter(c=>c.p===view)); }
 /* The toolbar's filters and sort over a set of board cards: a pile view's pile, or on a one-deck
    build the Compare view's candidate column. The Reason menu lists the reasons present in it. */
@@ -1069,7 +1085,7 @@ function stepZoom(n){ if(ZLIST.length<2) return; ZI=(ZI+n+ZLIST.length)%ZLIST.le
 function openCompare(addId,cutId,from){ const side=(c,label)=>{ const r=reasonOf(c); return `<div class="cmpside"><p class="cmplab">${label}</p><img src="${esc(imgSrc(c,"l"))}" data-fb="${esc(fallbackOf(c))}" alt="${esc(c.n)}" loading="lazy">
   <h3 class="dname" style="font-size:1.1rem">${esc(c.n)} <span class="cost">${pips(c.c)}</span></h3><p class="dtype">${esc(c.t)}</p><div class="rules"><p>${sym(esc(c.x||""))}</p></div>${r?`<p class="reason" style="font-size:.9rem"><span class="seal">${esc(groupLabel(r.g))}</span>${fmt(r.w)}</p>`:""}</div>`; };
   document.getElementById("cmpgrid").innerHTML=side(BYID[addId],"Add")+side(BYID[cutId],"Cut"); const d=document.getElementById("cmp"); d._from=from; if(d.showModal) d.showModal(); }
-function openSheet(id, keepSel){ if(keepSel) SHEETID=id; else { SEL=id; SHEETID=null; } const sh=document.getElementById("sheet"); document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(BYID[id],true)}</div>`; if(!sh.open&&sh.showModal) sh.showModal(); }
+function openSheet(id, keepSel){ if(keepSel) SHEETID=id; else { SEL=id; SHEETID=null; } const sh=document.getElementById("sheet"); document.getElementById("sheetbody").innerHTML=`<div class="detail">${detailHTML(BYID[id],true)}</div>`; if(!sh.open&&sh.showModal) sh.showModal(); if(SHEET_SHOWN!==String(id)) sh.scrollTop=0; SHEET_SHOWN=String(id); }
 
 /* ---------- bulk marks: every shown card still undecided for the chosen deck, one undo step ---------- */
 function paintBulk(){ const sel=document.getElementById("bulkv"); if(!sel) return; const cur=sel.value, pile=PILEDEFS.find(x=>x.k===view);
@@ -1159,12 +1175,12 @@ document.addEventListener("click",e=>{
   const t=e.target.closest(".tab"); if(t){ setView(t.dataset.k,true); return; }
   const pr=e.target.closest("[data-pair]"); if(pr){ pairWith(pr.dataset.pair); return; }
   const co=e.target.closest("[data-cutopen]"); if(co){ const key=co.dataset.cutopen, inSheet=!!co.closest("#sheet"); CUTOPEN=CUTOPEN===key?null:key; CUTQ=""; renderDetail();
-    const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} ${CUTOPEN?`.cutq[data-cutq="${key}"]`:`[data-cutopen="${key}"]`}`); if(again) again.focus(); return; }
+    const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} ${CUTOPEN?`.cutq[data-cutq="${key}"]`:`[data-cutopen="${key}"]`}`); if(again) again.focus({preventScroll:true}); return; }
   const cs=e.target.closest("[data-cutset]"); if(cs){ const [id,k]=cs.dataset.cutset.split("|"), inSheet=!!cs.closest("#sheet"); if(cs.dataset.cut) CUTOPEN=null; setPair(id,k,cs.dataset.cut);
-    const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} [data-cutopen="${id}|${k}"]`); if(again) again.focus(); return; }
+    const again=document.querySelector(`${inSheet?"#sheetbody":"#detail"} [data-cutopen="${id}|${k}"]`); if(again) again.focus({preventScroll:true}); return; }
   if(e.target.closest("[data-inspclose]")){ INSPECT=null; if(ACTIVECOL==="R") ACTIVECOL="L"; paintCompareRows(); renderDetail(); const m=mainEl(SEL,"L"); if(m) m.focus(); return; }
   const vs=e.target.closest("[data-vsec]"); if(vs){ const m=vs.dataset.vsec; if(VCOLL.has(m)) VCOLL.delete(m); else VCOLL.add(m); savePrefs();
-    paintCompareRows(); if(ACTIVECOL!=="R") VISIBLE=COLIDS.L; const again=document.querySelector(`[data-vsec="${CSS.escape(m)}"]`); if(again) again.focus(); return; }
+    paintCompareRows(); if(ACTIVECOL!=="R") VISIBLE=COLIDS.L; const again=document.querySelector(`[data-vsec="${CSS.escape(m)}"]`); if(again) again.focus({preventScroll:true}); return; }
   const pk=e.target.closest("[data-pkgsel]"); if(pk){ const id=pk.dataset.pkgsel; if(ONE) revealCand(id); if(!COLIDS.L.includes(id)){ CMP.pile="all"; CMP.q=""; render(); } select(id,true,"L"); const m=mainEl(id,"L"); if(m) m.focus(); return; }
   const pi=e.target.closest("[data-pkginsp]"); if(pi){ const id=pi.dataset.pkginsp; if(!COLIDS.R.includes(id)){ CMP.q=""; paintCompareRows(); } inspect(id,true); const m=mainEl(id,"R"); if(m) m.focus(); return; }
   const ab=e.target.closest("[data-art]"); if(ab){ openArt(ab.dataset.art, +ab.dataset.ai, ab); return; }
@@ -1172,11 +1188,11 @@ document.addEventListener("click",e=>{
   const sg=e.target.closest(".seg [data-side]"); if(sg){ CMP.side=sg.dataset.side; const cc=document.getElementById("cmpcols"); if(cc) cc.dataset.side=CMP.side;
     document.querySelectorAll(".seg [data-side]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.side===CMP.side))); return; }
   const hb=e.target.closest("[data-hid]"); if(hb){ const id=hb.dataset.hid, role=hb.dataset.role, inSheet=!!hb.closest("#sheet"); toggleHidden(id,role); refreshView(id);
-    const again=document.querySelector(`${inSheet?"#sheet":"#detail"} [data-hid="${id}"][data-role="${role}"]`); if(again) again.focus(); return; }
+    const again=document.querySelector(`${inSheet?"#sheet":"#detail"} [data-hid="${id}"][data-role="${role}"]`); if(again) again.focus({preventScroll:true}); return; }
   const sn=e.target.closest("[data-sugno]"); if(sn){ dismissSug(sn.dataset.sugno, sn.dataset.sv); return; }
   const b=e.target.closest("[data-v]"); if(b){ const id=b.dataset.id, v=b.dataset.v, col=colOf(b);
     const where=b.closest("#sheet")?"#sheet ":b.closest(".detail")?"#detail ":b.closest(".dlist")?".dlist ":`.rw[data-w="${id}"][data-col="${col}"] `; togglePick(id,v); refreshView(id);
-    const again=document.querySelector(`${where}[data-id="${id}"][data-v="${v}"]`); if(again) again.focus(); return; }
+    const again=document.querySelector(`${where}[data-id="${id}"][data-v="${v}"]`); if(again) again.focus({preventScroll:true}); return; }
   if(e.target.closest(".qmore")) return;            // the per-row Bench / Keep out menu opens itself
   const sel=e.target.closest("[data-sel]")||(e.target.closest("[data-row]")&&!e.target.closest("button")?e.target.closest("[data-row]"):null);
   if(sel){ const id=sel.dataset.sel||sel.dataset.row, col=colOf(sel);
@@ -1226,7 +1242,7 @@ document.addEventListener("change",e=>{
   const mv=e.target.closest("[data-move]"); if(mv){ if(mv.value) queueMove(mv.dataset.move, mv.value); return; }
   if(e.target.id==="cmppile"){ CMP.pile=e.target.value; render(); document.getElementById("cmppile").focus(); return; }
   if(e.target.id==="cmpdeck"){ CMP.deck=e.target.value; INSPECT=null; if(ACTIVECOL==="R") ACTIVECOL="L"; render(); document.getElementById("cmpdeck").focus(); return; }
-  const o=e.target.closest("[data-own]"); if(o){ const id=o.dataset.own, inSheet=!!o.closest("#sheet"); setOwn(id,o.value.trim()); refreshView(id); const again=document.querySelector(`${inSheet?"#sheet":"#detail"} [data-own="${id}"]`); if(again) again.focus(); return; }
+  const o=e.target.closest("[data-own]"); if(o){ const id=o.dataset.own, inSheet=!!o.closest("#sheet"); setOwn(id,o.value.trim()); refreshView(id); const again=document.querySelector(`${inSheet?"#sheet":"#detail"} [data-own="${id}"]`); if(again) again.focus({preventScroll:true}); return; }
 });
 document.getElementById("tabs").addEventListener("keydown",e=>{ if(!["ArrowLeft","ArrowRight"].includes(e.key)) return;
   const tabs=[...document.querySelectorAll(".tab")], i=tabs.findIndex(t=>t.dataset.k===view), n=tabs[(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length]; setView(n.dataset.k,true); n.focus(); });
@@ -1294,16 +1310,16 @@ paintThemeBtn(); paintUndo(); applyPane(); renderTabs(); picks=loadLocal(); requ
         replyTo:typeof x.replyTo==="string"?x.replyTo:"", sug:Array.isArray(x.sug)?x.sug.filter(g=>g&&PICKLAB[g.v]):[]}; });
     const local=loadLocal(), migrate=[]; Object.keys(local).forEach(id=>{ if(!next[id]&&nameOf(id)&&((local[id].picks||[]).length||local[id].note)){ next[id]=local[id]; migrate.push(id); } });
     const focusedNote=document.activeElement&&document.activeElement.classList.contains("note");
-    picks=next; if(!focusedNote){ render(); } else { updateTabCounts(); } renderDecks();
+    picks=next; holdScroll(["window"], ()=>{ if(!focusedNote){ render(); } else { updateTabCounts(); } renderDecks(); });
     if(migrate.length){ try{ localStorage.removeItem(LS); }catch(e){} migrate.forEach(persist); }
     if(upg.length&&canWrite) upg.forEach(persist);
   },err=>{ clearTimeout(timer); banner("Saved picks could not be loaded. Reload the page to try again."); });
   db.collection("requests").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(Array.isArray(x.names)) next[d.id]={names:x.names.filter(n=>typeof n==="string").slice(0,300),dest:String(x.dest||""),note:typeof x.note==="string"?x.note:"",at:String(x.at||""),status:String(x.status||"pending"),reply:typeof x.reply==="string"?x.reply:""}; });
-    requests=next; updateTabCounts(); if(view==="add") render(); },()=>{});
+    requests=next; updateTabCounts(); if(view==="add") holdScroll(["window"], render); },()=>{});
   db.collection("log").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{};
       if(Array.isArray(x.lines)) next[d.id]={at:String(x.at||""),lines:x.lines.filter(l=>typeof l==="string").slice(0,300),failed:Array.isArray(x.failed)?x.failed.filter(l=>typeof l==="string"):[]}; });
-    LOGS=next; if(view==="picks") render(); },()=>{});
+    LOGS=next; if(view==="picks") holdScroll(["window"], render); },()=>{});
   db.collection("reasons").onSnapshot(snap=>{ const next={}; snap.docs.forEach(d=>{ const x=d.data()||{}; if(BYID[d.id]&&typeof x.text==="string") next[d.id]={group:typeof x.group==="string"?x.group:"",text:x.text}; });
-    reasons=next; if(isPileView(view)) render(); },()=>{});
+    reasons=next; if(isPileView(view)) holdScroll(["window"], render); },()=>{});
 })();
 </script>

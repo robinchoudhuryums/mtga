@@ -640,3 +640,45 @@ class TestScriptsParse:
             f.write_text(body, encoding="utf-8")
             r = subprocess.run([_NODE, "--check", str(f)], capture_output=True, text=True)
             assert r.returncode == 0, r.stderr[-800:]
+
+
+_HARNESS_HOLD = """
+const fs = require('fs');
+const els = {"#sheet": {scrollTop: 300, isConnected: true}, "#detail": {scrollTop: 120, isConnected: true}};
+const win = {scrollTop: 900};
+const frames = [], timers = [];
+globalThis.document = {scrollingElement: win, documentElement: win, querySelector: s => els[s] || null};
+globalThis.requestAnimationFrame = f => frames.push(f);
+globalThis.setTimeout = f => timers.push(f);
+eval(fs.readFileSync(process.argv[2], 'utf8'));
+const seen = [];
+// the re-render drops everything to the top, as WebKit does when the focused button is replaced
+holdScroll(["window", "#sheet", "#nothing"], () => { win.scrollTop = 0; els["#sheet"].scrollTop = 0; els["#detail"].scrollTop = 0; });
+seen.push([win.scrollTop, els["#sheet"].scrollTop, els["#detail"].scrollTop]);
+// a late focus-scroll after the first restore: the next frame and the timer put it back again
+els["#sheet"].scrollTop = 0; frames.forEach(f => f()); seen.push(els["#sheet"].scrollTop);
+win.scrollTop = 0; timers.forEach(f => f()); seen.push(win.scrollTop);
+console.log(JSON.stringify(seen));
+"""
+
+
+@pytest.mark.skipif(not _NODE, reason="node not installed (CI sets PYTEST_NO_SKIPS, so CI cannot skip)")
+class TestPicksKeepTheScrollPosition:
+    """A pick re-rendered the card sheet / detail pane, and the claude.ai runtime echoes each
+    write back as a snapshot that re-renders the page; the reader was dropped back to the top
+    (owner report 2026-11-09). holdScroll restores what it was asked to hold, and only that."""
+
+    def test_hold_scroll_restores_now_next_frame_and_after_focus(self, tmp_path):
+        js = tmp_path / "fns.js"
+        js.write_text(_extract(["holdScroll"]))
+        h = tmp_path / "h.js"
+        h.write_text(_HARNESS_HOLD)
+        out = json.loads(subprocess.run([_NODE, str(h), str(js)], capture_output=True,
+                                        text=True, check=True).stdout)
+        assert out == [[900, 300, 0], 300, 900]     # #detail was not asked for, so it stays at the top
+
+    def test_every_refresh_path_holds_and_refocus_does_not_scroll(self):
+        for call in ('function refreshView(id){ holdScroll(["window"]', 'function rerenderAfterPick(id){ holdScroll(["window"]',
+                     'picks=next; holdScroll(["window"]', 'keep.push("#sheet","#sheetbody .cutlist")'):
+            assert call in SRC, call
+        assert "again.focus();" not in SRC, "refocus with {preventScroll:true}, or the browser scrolls to the button"
