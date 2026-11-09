@@ -1274,9 +1274,9 @@
   },
   "Spider-Woman, Secret Agent": {
    "group": "Strong",
-   "text": "Flash Hero; locks down a creature \"for as long as you control Spider-Woman\", so it is instant-speed interaction (r9); enables Hylda/Sharae taps",
+   "text": "CUT 2026-11-09 for Coerced to Kill (owner's call). Flash Hero that locks a creature for as long as you control her; instant-speed interaction and the tap enabler for Hylda/Sharae, none of which the deck runs now.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Twining Twins // Swift Spiral": {
@@ -1302,9 +1302,9 @@
   },
   "Shaile, Dean of Radiance // Embrose, Dean of Shadow": {
    "group": "Engine",
-   "text": "Shaile puts a counter on \"each creature that entered… this turn\", which includes the turn's Hero token; Embrose pings 2 and draws when a countered creature dies (r6)",
+   "text": "CUT 2026-11-09 for Scriv, the Obligator. Shaile counters every creature that entered this turn, the Hero token included; Embrose pings and draws when a countered creature dies.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Cid, Timeless Artificer": {
@@ -1393,9 +1393,9 @@
   },
   "Rodolf Duskbringer": {
    "group": "Strong",
-   "text": "Owner-raised 2026-11-09. Indestructible whenever you gain life (most turns here, doubled by Doctor Strange); the end step returns a creature with MV up to the life gained. 6 mana.",
+   "text": "IN 2026-11-09 for Revival // Revenge. Indestructible whenever you gain life (most turns here, doubled by Doctor Strange); the end step returns a creature with MV up to the life gained. 6 mana.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
@@ -1421,9 +1421,9 @@
   },
   "Hylda of the Icy Crown": {
    "group": "Real",
-   "text": "\"Whenever you tap an untapped creature an opponent controls\", pay {1} for a 4/4, team counters or a card; needs the tap package (Spider-Woman SA, Sharae)",
+   "text": "Pays off tapping an opponent's creature ({1}: a 4/4, team counters or a card), and the deck now runs no tapper (Spider-Woman, Secret Agent was cut 2026-11-09, Sharae was never in). Out unless a tap package comes back.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Sharae of Numbing Depths": {
@@ -1722,9 +1722,9 @@
   },
   "Abigale, Eloquent First-Year": {
    "group": "Engine",
-   "text": "ETB on a Hero token loses nothing (tokens have no text) and gains flying/first strike/LIFELINK counters (r5/r6); a 2-drop lifelink body itself",
+   "text": "CUT 2026-11-09 for Archon of the Wild Rose. A 2-drop lifelink body whose ETB gives a Hero token flying, first strike and lifelink counters at no loss.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Ayli, Eternal Pilgrim": {
@@ -1876,9 +1876,9 @@
   },
   "Revival // Revenge": {
    "group": "Strong",
-   "text": "Revenge (MV 6): \"Double your life total\" is the biggest life refill here (r5); Revival (MV 2) reanimates MV ≤3",
+   "text": "CUT 2026-11-09 for Rodolf Duskbringer. Revenge (MV 6) doubles your life total, the biggest refill; Revival (MV 2) reanimates MV 3 or less. Rodolf's end-step return covers the reanimation half.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Sandbender Scavengers": {
@@ -1960,9 +1960,9 @@
   },
   "Kunoros, Hound of Athreos": {
    "group": "Situational",
-   "text": "Vigilance/menace/lifelink body (r5), but \"can't cast spells from graveyards\" kills your own Rite flashback and Revival/Karai/Sandbender",
+   "text": "Vigilance/menace/lifelink body, but 'can't cast spells from graveyards' turns off your own Rite of Oblivion flashback. With Revival // Revenge cut, Rite is the one graveyard cast it blocks.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Mortify": {
@@ -2106,10 +2106,10 @@
    }
   },
   "Eriette, the Beguiler": {
-   "group": "Situational",
-   "text": "Owner-raised 2026-11-09. Petrify, Lawmage's Binding and Nahiri's Binding (MV 2-3) steal what they lock, Scriv's Contracts steal tokens; the stolen creature keeps the lock, so it is denial plus statics, not an attacker.",
+   "group": "Real",
+   "text": "CRAFT (R). RE-GRADED ★★★ 2026-11-09 on the owner's read: any 'Enchant creature' Aura can go on an opponent's creature, and if the Aura's MV is at least that creature's MV you take it for as long as the Aura stays. 12 of the deck's 15 Auras qualify (five at MV 2, five at MV 3, Angelic Destiny 4, Glasswing Grace 5); the 9 pump Auras become Control Magic plus the pump, the 3 lockdowns already removed the creature. Each steal is still a noncreature enchantment cast (G'raha Hero, Sigil Angel, Entity Tracker card). Eriette must be out when the Aura attaches; the steal outlasts her. Cap: mostly creatures of MV 3 or less. Suggested cut: Fracture.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Queza, Augur of Agonies": {
@@ -2198,9 +2198,9 @@
   },
   "Scriv, the Obligator": {
    "group": "Strong",
-   "text": "Owner-raised 2026-11-09. Each Contract (on enter and every attack) is an Aura you control: with Eriette of the Charmed Apple that creature can't attack you and her drain grows by 1. Flying, deathtouch. Created, not cast: no Sram/Kor/Sigil.",
+   "text": "IN 2026-11-09 for Shaile. Each Contract (on enter and every attack) is an Aura you control: with Eriette of the Charmed Apple that creature can't attack you and her drain grows by 1. Flying, deathtouch. Created, not cast: no Sram/Kor/Sigil.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Rise to Glory": {
@@ -2219,9 +2219,9 @@
   },
   "Coerced to Kill": {
    "group": "Strong",
-   "text": "MV-5 Aura that steals a creature as a 1/1 deathtouch blocker: removal that adds a body and counts for Eriette and the Aura draws. Cut option: Spider-Woman, Secret Agent.",
+   "text": "IN 2026-11-09 for Spider-Woman, Secret Agent. MV-5 Aura that steals a creature as a 1/1 deathtouch blocker: removal that adds a body, an enchantment cast for G'raha/Sigil/Entity Tracker, and counts for Eriette of the Charmed Apple.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Zur, Eternal Schemer": {
@@ -2275,9 +2275,9 @@
   },
   "Dramatic Finale": {
    "group": "Engine",
-   "text": "\"Creature tokens you control get +1/+1\" = anthem for every Hero (r6); 2/1 flyer on nontoken death; hybrid cost easy (r7)",
+   "text": "CUT 2026-11-09 for Hallowed Haunting. Creature tokens get +1/+1 (an anthem for every Hero) and a 2/1 flier on nontoken death; Haunting's flying/vigilance at seven enchantments replaces the anthem.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "682d3adeb2cc"
    }
   },
   "Firja's Retribution": {
@@ -2835,9 +2835,9 @@
   },
   "Archon of Sun's Grace": {
    "group": "Engine",
-   "text": "CRAFT (R). Constellation: a 2/2 flying Pegasus per enchantment entering, and Pegasi have lifelink, so every Aura is a body plus life fuel (r5). Proposed for Revival // Revenge.",
+   "text": "CRAFT (R). Constellation: a 2/2 lifelink flying Pegasus per enchantment entering, so every Aura is a body plus life fuel. Offered for Revival // Revenge (now cut for Rodolf) and left out by the owner 2026-11-09.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "682d3adeb2cc"
    }
   },
   "Entity Tracker": {
@@ -2849,23 +2849,23 @@
   },
   "Hateful Eidolon": {
    "group": "Real",
-   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature: an enchantment spell for Sigil (now in the deck), Alela and Hallowed Haunting, and Entity Tracker (now in the deck) draws when it enters; draws per Aura when an enchanted creature dies. Offered for Shaile, left out by the owner 2026-11-09; first in line if the Aura count grows.",
+   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature: an enchantment spell for Sigil, Alela and Hallowed Haunting (all in the deck), and Entity Tracker draws when it enters; draws per Aura when an enchanted creature dies. Left out by the owner 2026-11-09; first in line if the Aura count grows.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Hallowed Haunting": {
    "group": "Strong",
-   "text": "A Spirit per enchantment spell (23 here, Sigil's Angel on top), sized by Spirit count; seven enchantments out gives the team flying and vigilance. Cut option: Dramatic Finale.",
+   "text": "IN 2026-11-09 for Dramatic Finale. A Spirit per enchantment spell, sized by Spirit count; seven enchantments out gives the team flying and vigilance.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Archon of the Wild Rose": {
    "group": "Strong",
-   "text": "Your enchanted creatures become base 4/4 fliers, and a Hero token's counters still add on top: an Aura on a 1-counter token makes a 5/5 flier. Cut option: Abigale.",
+   "text": "IN 2026-11-09 for Abigale. Your enchanted creatures become base 4/4 fliers, and a Hero token's counters still add on top: an Aura on a 1-counter token makes a 5/5 flier.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "682d3adeb2cc"
    }
   },
   "Starfield Mystic": {
@@ -3139,6 +3139,94 @@
     "Spectral Steel",
     "Sphinx's Revelation",
     "Spider-Woman, Secret Agent",
+    "Sram, Senior Edificer",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
+    "Void Rend",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ],
+   "682d3adeb2cc": [
+    "Absorb",
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Archon of the Wild Rose",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Coerced to Kill",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Consecrate // Consume",
+    "Danitha Capashen, Paragon",
+    "Danitha, Sword of Hope",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Fracture",
+    "Friendly Neighborhood",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Glasswing Grace // Age-Graced Chapel",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hallowed Haunting",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Metropolis Angel",
+    "Mortify",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Rite of Oblivion",
+    "Rodolf Duskbringer",
+    "Scriv, the Obligator",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
     "Sram, Senior Edificer",
     "Staggering Insight",
     "Starting Town",
@@ -3916,8 +4004,8 @@
   },
   "Eriette, the Beguiler": {
    "G": {
-    "m": "★",
-    "graded_at": "7b7a9fb3cc1b"
+    "m": "★★★",
+    "graded_at": "682d3adeb2cc"
    }
   },
   "Queza, Augur of Agonies": {

@@ -40,6 +40,10 @@
 #: notes: 2026-11-09: −Aerith Rescue Mission +Sigil of the Empty Throne (a 4/4 flying Angel per enchantment spell;
 #: notes: 23 enchantments, Sigil itself one) and −Despark +Entity Tracker (flash, a card per enchantment that
 #: notes: enters). Archon of Sun's Grace and Hateful Eidolon were offered and left out (owner's call).
+#: notes: 2026-11-09 (Builder round 1): −Shaile +Scriv, the Obligator; −Abigale, Eloquent First-Year +Archon of the
+#: notes: Wild Rose; −Dramatic Finale +Hallowed Haunting; −Revival // Revenge +Rodolf Duskbringer; −Spider-Woman,
+#: notes: Secret Agent +Coerced to Kill. Board power 51 → 58 and protection 5 → 6, for one card advantage and three
+#: notes: early drops (avg MV 3.16 → 3.30).
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -59,6 +63,8 @@
 1 Danitha Capashen, Paragon (DOM) 12
 1 Entity Tracker (DSK) 53
 1 Sigil of the Empty Throne (HA2) 3
+1 Hallowed Haunting (VOW) 17
+1 Archon of the Wild Rose (WOE) 1
 
 # Interaction — instants first
 1 Absorb (RNA) 151
@@ -79,7 +85,7 @@
 1 Invasion of New Capenna // Holy Frazzle-Cannon (MOM) 238
 1 Archnemesis (MSC) 74
 1 Firja's Retribution (KHM) 210
-1 Spider-Woman, Secret Agent (MSH) 229
+1 Coerced to Kill (MKM) 192
 
 # Planeswalkers
 1 Teferi, Hero of Dominaria (DOM) 207
@@ -92,12 +98,10 @@
 1 Biorganic Carapace (SPM) 124
 1 Barrensteppe Siege (TDM) 171
 1 Serra Redeemer (BLB) 387
-1 Dramatic Finale (STX) 180
 1 Baron Bertram Graywater (OTJ) 195
-1 Shaile, Dean of Radiance // Embrose, Dean of Shadow (STX) 158
+1 Scriv, the Obligator (SOC) 9
 1 Captain America, Wings of Freedom (MSH) 10
 1 Captain America, Super-Soldier (MSH) 9
-1 Abigale, Eloquent First-Year (ECL) 204
 1 Invasion of New Phyrexia // Teferi Akosa of Zhalfir (MOM) 239
 1 Friendly Neighborhood (SPM) 8
 
@@ -117,7 +121,7 @@
 1 Sphinx's Revelation (AKR) 262
 1 Sorin of House Markov // Sorin, Ravenous Neonate (MH3) 245
 1 Doctor Strange, Surgeon (MSC) 591
-1 Revival // Revenge (RNA) 228
+1 Rodolf Duskbringer (J25) 482
 
 # Lands (36)
 1 Command Tower (FRC) 22
