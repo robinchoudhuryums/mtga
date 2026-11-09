@@ -1091,7 +1091,7 @@
   },
   {
    "name": "Wingbright Thief",
-   "pile": "N",
+   "pile": "G",
    "src": "added"
   },
   {
@@ -1116,7 +1116,7 @@
   },
   {
    "name": "Slumbering Keepguard",
-   "pile": "N",
+   "pile": "G",
    "src": "added"
   },
   {
@@ -1146,7 +1146,7 @@
   },
   {
    "name": "Lyra, Archangel of Dawn",
-   "pile": "N",
+   "pile": "G",
    "src": "added"
   },
   {
@@ -1161,7 +1161,7 @@
   },
   {
    "name": "Transcendent Envoy",
-   "pile": "N",
+   "pile": "G",
    "src": "added"
   },
   {
@@ -1171,7 +1171,7 @@
   },
   {
    "name": "Due Diligence",
-   "pile": "N",
+   "pile": "G",
    "src": "added"
   },
   {
@@ -1506,10 +1506,10 @@
    }
   },
   "Narset Transcendent": {
-   "group": "Real",
-   "text": "+1 takes \"a noncreature, nonland card\", a hit rate that rises with r3 density; −2 rebound recasts an instant on your upkeep, which uses that turn's trigger (r1)",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. +1 takes a noncreature nonland card, a high hit rate in this deck; with Ichormoon Gauntlet she can instead 0: Proliferate. −2 rebound recasts an instant on your upkeep (a second G'raha trigger window). A fifth walker for the Gauntlet.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Invasion of Xerex // Vertex Paladin": {
@@ -1597,10 +1597,10 @@
    }
   },
   "Sun-Spider, Nimble Webber": {
-   "group": "Real",
-   "text": "Hero that tutors \"an Aura or Equipment card\": with 15 Auras after the Aura lean it finds Light-Paws fodder, Staggering Insight or a removal Aura on demand.",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09 (Eriette, the Beguiler). Tutors an Aura or Equipment, and with Eriette out any Enchant-creature Aura is a steal, so this is a Control Magic on demand (or Coerced to Kill, which steals alone). A Hero with flying on your turn; creature, so no G'raha trigger.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Taigam, Ojutai Master": {
@@ -1744,10 +1744,10 @@
    }
   },
   "Banish into Fable": {
-   "group": "Real",
-   "text": "Instant bounce + Knight, so it works on the opponent's turn (r2); copies off artifact/enchantment; MV 6 = a 7/7 for 6 life, so usually decline (r4)",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. The deck now runs artifacts (Ichormoon Gauntlet, Staff of Compleation, Biorganic Carapace) beside 25 enchantments, so a hand cast often copies twice: three instant-speed bounces and three 2/2 Knights. 6 mana; usually decline G'raha's 6-life payment.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Dovin, Architect of Law": {
@@ -1836,9 +1836,9 @@
   },
   "Despark": {
    "group": "Situational",
-   "text": "CUT 2026-11-09 for Entity Tracker: instant exile limited to MV 4+; the deck keeps 19 interaction.",
+   "text": "CUT 2026-11-09 for Entity Tracker: instant exile limited to MV 4+. Interaction is now 15; Void Rend comes back first.",
    "graded_at": {
-    "98": "7b7a9fb3cc1b"
+    "98": "f5603e8adca6"
    }
   },
   "Edgar, Ancient Bloodlord": {
@@ -1926,10 +1926,10 @@
    }
   },
   "Killian, Ink Duelist": {
-   "group": "Real",
-   "text": "Lifelink menace 2-drop (r5); \"cost {2} less\" cuts the price, not the MV, so removal makes the same-size Hero for less mana (r4)",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09 (Aura lean). Every Aura spell targets a creature, so 13 Enchant-creature Auras plus Coerced to Kill and the creature removal cost {2} less: Angelic Destiny for {W}{W}, Skyblade's Boon for {W}. MV is unchanged, so G'raha's Hero size and Eriette, the Beguiler's steal cap stay the same. A lifelink menace 2-drop, which the deck is short on.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Rite of Oblivion": {
@@ -2158,7 +2158,7 @@
   },
   "Void Rend": {
    "group": "Strong",
-   "text": "CUT 2026-11-09 for Eriette, the Beguiler. Uncounterable instant that destroys any nonland permanent; first removal back if interaction is wanted.",
+   "text": "CUT 2026-11-09 for Eriette, the Beguiler. Uncounterable instant that destroys any nonland permanent. Interaction is 15 now (A needs 12), so this is the first removal back.",
    "graded_at": {
     "98": "f5603e8adca6"
    }
@@ -2227,10 +2227,10 @@
    }
   },
   "Eagle's Rescue": {
-   "group": "Situational",
-   "text": "+2/+2 flying aura at MV4 (r1); graveyard return is an activation onto power ≤1 — only an X=0 Hero qualifies (r6), so recursion rarely live",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Enchant creature, MV 4: with Eriette, the Beguiler it steals a creature of MV 4 or less and gives it +2/+2 and flying. The graveyard return only targets your own power-1-or-less creature.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Dance of the Manse": {
@@ -2248,10 +2248,10 @@
    }
   },
   "Killian, Decisive Mentor": {
-   "group": "Situational",
-   "text": "Enchantment ETB taps+goads (tempo); draw when aura'd creatures attack — needs auras on own attackers; creature (r1)",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. With 25 enchantments, every Aura cast, Sigil, Hallowed Haunting or Scriv Contract that enters taps and goads an opposing creature. It draws whenever creatures enchanted by your Auras attack, and both your pumped creatures and the ones Eriette, the Beguiler steals carry your Auras. A creature, so no G'raha trigger.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Glasswing Grace // Age-Graced Chapel": {
@@ -2304,17 +2304,17 @@
    }
   },
   "Inquisitive Glimmer": {
-   "group": "Situational",
-   "text": "\"Enchantment spells cost {1} less\" — MV is unchanged so the Hero size and X life are the same (r4); pure ramp, creature",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Enchantment spells cost {1} less, and the deck runs 25 enchantments; a 2-drop Enchantment Creature that Sigil, Alela and Hallowed Haunting count. MV is unchanged, so G'raha's Hero size stays the same.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Wingbright Thief": {
-   "group": "Marginal",
-   "text": "2-MV flyer; perpetual \"opponent draws and gains 3\" tax on one of their cards is minor; creature (r1)",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09 (moved out of Doesn't fit). A 2-drop flying Enchantment Creature: an enchantment spell for Sigil and Hallowed Haunting, and Entity Tracker draws when it enters. Its own hand-reveal tax is minor. No G'raha trigger.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Ephara, God of the Polis": {
@@ -2367,10 +2367,10 @@
    }
   },
   "Naomi, Pillar of Order": {
-   "group": "Situational",
-   "text": "Samurai tokens only \"if you control an artifact and an enchantment\"; MV5 creature (r1) with a condition to count",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. The artifact-and-enchantment condition is now nearly always met (Ichormoon Gauntlet, Staff of Compleation, Biorganic Carapace beside 25 enchantments): a 2/2 Samurai on entering and on each attack. A 5-mana creature, so no G'raha trigger.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Athreos, Shroud-Veiled": {
@@ -2381,10 +2381,10 @@
    }
   },
   "Rampage of the Valkyries": {
-   "group": "Real",
-   "text": "MV5 enchantment: 4/4 flying vigilance Angel + edict whenever an Angel dies; Firja's Angel also qualifies (r1,r9)",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. MV-5 enchantment: a 4/4 flying vigilance Angel, and every Angel death is an edict. The deck now makes Angels: Sigil of the Empty Throne (one per enchantment spell), Firja's Retribution, Angelic Destiny, Metropolis Angel, Serra Redeemer, Rodolf. An enchantment cast for G'raha, Sigil and Entity Tracker.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Ethereal Absolution": {
@@ -2549,10 +2549,10 @@
    }
   },
   "The Mighty Thor, Jane Foster": {
-   "group": "Strong",
-   "text": "CUT 2026-11-09 (Aura lean) for Kor Spiritdancer. Esper 3-drop flyer. The attack trigger \"exile … nontoken artifact or creature … return tapped\" clears a blocker (r9 tempo), and \"Equipment enters, draw\" pairs with Lance and Sword.",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Esper 3-drop flier whose attack trigger clears a blocker, but 'Equipment enters, draw' now has one front-face Equipment to read (Biorganic Carapace; Dragoon's Lance and Sword of Truth and Justice are out).",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Abigale, Poet Laureate // Heroic Stanza": {
@@ -2570,10 +2570,10 @@
    }
   },
   "Slumbering Keepguard": {
-   "group": "Marginal",
-   "text": "\"Whenever an enchantment you control enters, scry 1\" plus a pump per enchantment: live with this part's aura density, but a 1-drop body that adds no trigger (r1).",
+   "group": "Situational",
+   "text": "RE-GRADED ◇ 2026-11-09. Scry 1 whenever an enchantment enters and {2}{W}: +1/+1 per enchantment, with 25 enchantments; still a 1-drop body with no G'raha trigger.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Dragoon's Lance": {
@@ -2599,9 +2599,9 @@
   },
   "History of Benalia": {
    "group": "Strong",
-   "text": "CUT 2026-11-09 (Aura lean) for Staggering Insight. MV-3 noncreature Saga (r1, r4): two 2/2 vigilance Knights plus a Hero token, then \"Knights +2/+1\". Three bodies from one card.",
+   "text": "MV-3 Saga (a noncreature enchantment cast for G'raha, Sigil and Entity Tracker): two 2/2 vigilance Knights, then Knights +2/+1. Proliferate now adds lore counters, so Flux Channeler or the Gauntlet's walkers can re-trigger chapter II. CUT 2026-11-09 (Aura lean) for Staggering Insight.",
    "graded_at": {
-    "98": "4a65698e2c76"
+    "98": "f5603e8adca6"
    }
   },
   "Dion, Bahamut's Dominant // Bahamut, Warden of Light": {
@@ -2633,10 +2633,10 @@
    }
   },
   "Summon: Primal Odin": {
-   "group": "Real",
-   "text": "Its Enchantment Creature type makes it a CREATURE spell, so no trigger (r1). Chapter I \"Destroy target creature\" plus chapter III \"Draw two\" is real interaction (r9); the 2 life loss is minor (r5).",
+   "group": "Strong",
+   "text": "RE-GRADED ★★ 2026-11-09. Proliferate (Flux Channeler, the Gauntlet's walkers, Staff) adds lore counters, so chapter I (destroy a creature), II (combat damage wins the game) and III (draw two) arrive faster, even in one turn. Removal plus cards. A creature spell, so no G'raha trigger; 6 mana.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Arvad the Cursed": {
@@ -2689,10 +2689,10 @@
    }
   },
   "Lyra, Archangel of Dawn": {
-   "group": "Marginal",
-   "text": "\"Whenever you gain life, +1/+1 counter on each ANGEL\": Hero tokens aren't Angels except under Angelic Destiny, so its lifegain hook rarely pays (r5).",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09 (moved out of Doesn't fit). The deck now makes Angels: Sigil of the Empty Throne's 4/4s, Angelic Destiny, Metropolis Angel, Serra Redeemer, Rodolf, Firja's Retribution, and Lyra herself. Every lifegain puts a counter on each of them, and proliferate grows them further. A 3-drop flier.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Champions of Tyr": {
@@ -2780,17 +2780,17 @@
    }
   },
   "Super-Soldier Serum": {
-   "group": "Situational",
-   "text": "\"+2/+2, first strike, vigilance, legendary Soldier\": makes a Hero token legendary, so Arvad pumps it and Cap Unbowed protects it. Mostly a cheap trigger (r4).",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Enchant creature, MV 2: with Eriette, the Beguiler it steals a creature of MV 2 or less and gives it +2/+2, first strike and vigilance. Otherwise a cheap Aura that makes a Hero token legendary.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Transcendent Envoy": {
-   "group": "Marginal",
-   "text": "Enchantment Creature: a creature spell. \"Aura spells cost {1} less\" leaves X intact (MV unchanged), but it's a 2/2-ish flyer with no trigger.",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09 (moved out of Doesn't fit). An Enchantment Creature spell is an enchantment spell: Sigil of the Empty Throne makes an Angel and Hallowed Haunting a Spirit, and Entity Tracker draws when it enters. Aura spells cost {1} less; a 2-drop flier, which the deck is short on. No G'raha trigger.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Acclaimed Contender": {
@@ -2801,10 +2801,10 @@
    }
   },
   "Born to Drive": {
-   "group": "Situational",
-   "text": "\"+1/+1 for each creature\" on a wide board (r6). Channel makes two Pilots, but Channel is an activated ability, not a cast, so no trigger.",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Enchant artifact OR creature, MV 3: with Eriette, the Beguiler it can steal an artifact of MV 3 or less too. +1/+1 per creature on a wide board; Channel makes two Pilots but is not a cast.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Danitha Capashen, Paragon": {
@@ -2815,10 +2815,10 @@
    }
   },
   "Due Diligence": {
-   "group": "Marginal",
-   "text": "\"+2/+2, vigilance\" plus a one-turn +2/+2. Vanilla pump at MV 3 that adds only the trigger (r1).",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09 (moved out of Doesn't fit). Enchant creature, MV 3: with Eriette, the Beguiler it steals a creature of MV 3 or less with +2/+2 and vigilance, and gives another of your creatures +2/+2 that turn. An enchantment cast for G'raha, Sigil and Entity Tracker.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Hope Against Hope": {
@@ -2871,10 +2871,10 @@
    }
   },
   "Commanding Presence": {
-   "group": "Situational",
-   "text": "\"+2/+2, first strike\" plus a Soldier token on combat damage. MV 4 for a 5/5 Hero (r4), but a mid-power Aura.",
+   "group": "Real",
+   "text": "RE-GRADED ★ 2026-11-09. Enchant creature, MV 4: with Eriette, the Beguiler it steals a creature of MV 4 or less and gives it +2/+2, first strike and a Soldier per hit. Otherwise a mid-power Aura (a 5/5 Hero for 4 life).",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "f5603e8adca6"
    }
   },
   "Friendly Neighborhood": {
@@ -2913,10 +2913,10 @@
    }
   },
   "Hateful Eidolon": {
-   "group": "Real",
-   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature: an enchantment spell for Sigil, Alela and Hallowed Haunting (all in the deck), and Entity Tracker draws when it enters; draws per Aura when an enchanted creature dies. Left out by the owner 2026-11-09; first in line if the Aura count grows.",
+   "group": "Strong",
+   "text": "RE-GRADED ★★★ 2026-11-09 (Eriette, the Beguiler). A creature you steal with an Aura carries YOUR Aura, so when it dies Eidolon draws a card per Aura on it; on your own enchanted creatures too. 1-drop lifelink Enchantment Creature (the deck is short on early drops): an enchantment spell for Sigil, Alela and Hallowed Haunting, and Entity Tracker draws when it enters. CRAFT (U). Left out once by the owner; first in line now.",
    "graded_at": {
-    "98": "682d3adeb2cc"
+    "98": "f5603e8adca6"
    }
   },
   "Hallowed Haunting": {
@@ -3678,8 +3678,8 @@
   },
   "Narset Transcendent": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Invasion of Xerex // Vertex Paladin": {
@@ -3756,8 +3756,8 @@
   },
   "Sun-Spider, Nimble Webber": {
    "G": {
-    "m": "★",
-    "graded_at": "4a65698e2c76"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Taigam, Ojutai Master": {
@@ -3882,8 +3882,8 @@
   },
   "Banish into Fable": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Dovin, Architect of Law": {
@@ -4038,8 +4038,8 @@
   },
   "Killian, Ink Duelist": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Rite of Oblivion": {
@@ -4296,8 +4296,8 @@
   },
   "Eagle's Rescue": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Dance of the Manse": {
@@ -4314,8 +4314,8 @@
   },
   "Killian, Decisive Mentor": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Glasswing Grace // Age-Graced Chapel": {
@@ -4362,14 +4362,14 @@
   },
   "Inquisitive Glimmer": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Wingbright Thief": {
    "G": {
-    "m": "△",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Ephara, God of the Polis": {
@@ -4416,8 +4416,8 @@
   },
   "Naomi, Pillar of Order": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Athreos, Shroud-Veiled": {
@@ -4428,8 +4428,8 @@
   },
   "Rampage of the Valkyries": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Ethereal Absolution": {
@@ -4572,8 +4572,8 @@
   },
   "The Mighty Thor, Jane Foster": {
    "G": {
-    "m": "★★",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Abigale, Poet Laureate // Heroic Stanza": {
@@ -4590,8 +4590,8 @@
   },
   "Slumbering Keepguard": {
    "G": {
-    "m": "△",
-    "graded_at": "de6571e8afda"
+    "m": "◇",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Dragoon's Lance": {
@@ -4644,8 +4644,8 @@
   },
   "Summon: Primal Odin": {
    "G": {
-    "m": "★",
-    "graded_at": "de6571e8afda"
+    "m": "★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Arvad the Cursed": {
@@ -4692,8 +4692,8 @@
   },
   "Lyra, Archangel of Dawn": {
    "G": {
-    "m": "△",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Champions of Tyr": {
@@ -4770,14 +4770,14 @@
   },
   "Super-Soldier Serum": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Transcendent Envoy": {
    "G": {
-    "m": "△",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Acclaimed Contender": {
@@ -4788,8 +4788,8 @@
   },
   "Born to Drive": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Danitha Capashen, Paragon": {
@@ -4800,8 +4800,8 @@
   },
   "Due Diligence": {
    "G": {
-    "m": "△",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Hope Against Hope": {
@@ -4848,8 +4848,8 @@
   },
   "Commanding Presence": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Friendly Neighborhood": {
@@ -4884,8 +4884,8 @@
   },
   "Hateful Eidolon": {
    "G": {
-    "m": "★★",
-    "graded_at": "4a65698e2c76"
+    "m": "★★★",
+    "graded_at": "f5603e8adca6"
    }
   },
   "Hallowed Haunting": {

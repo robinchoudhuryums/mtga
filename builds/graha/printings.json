@@ -299,6 +299,7 @@
  "Coerced to Kill": [],
  "Commanding Presence": [],
  "Consecrate // Consume": [],
+ "Contagion Engine": [],
  "Cruel Celebrant": [],
  "Dance of the Manse": [],
  "Danitha Capashen, Paragon": [
@@ -393,6 +394,7 @@
  "Dragoon's Lance": [],
  "Dramatic Finale": [],
  "Drana and Linvala": [],
+ "Drown in Ichor": [],
  "Due Diligence": [],
  "Eagle's Rescue": [],
  "Edgar, Ancient Bloodlord": [],
@@ -460,6 +462,7 @@
  "Fiendslayer Paladin": [],
  "Firja's Retribution": [],
  "Fleshtaker": [],
+ "Flux Channeler": [],
  "Fracture": [
   {
    "a": "Miranda Meeks",
@@ -494,6 +497,7 @@
  "Glasswing Grace // Age-Graced Chapel": [],
  "Gold-Forged Thopteryx": [],
  "Golden Sidekick": [],
+ "Grateful Apparition": [],
  "Greater Auramancy": [
   {
    "a": "Chuck Lukacs",
@@ -649,6 +653,8 @@
   }
  ],
  "Hylda of the Icy Crown": [],
+ "Ichor Aberration": [],
+ "Ichormoon Gauntlet": [],
  "Indulging Patrician": [],
  "Inquisitive Glimmer": [],
  "Invasion of New Capenna // Holy Frazzle-Cannon": [],
@@ -688,6 +694,7 @@
  "Kambal, Consul of Allocation": [],
  "Kambal, Profiteering Mayor": [],
  "Karai, Future of the Foot": [],
+ "Karn's Bastion": [],
  "Kaya, Geist Hunter": [
   {
    "a": "Ryan Pancoast",
@@ -807,9 +814,11 @@
  ],
  "Lo and Li, Royal Advisors": [],
  "Lulu, Forgetful Hollyphant": [],
+ "Lulu, Stern Guardian": [],
  "Lyra, Archangel of Dawn": [],
  "Malcator, Purity Overseer": [],
  "Marshal of Zhalfir": [],
+ "Mesmerizing Dose": [],
  "Metropolis Angel": [],
  "Mockingbird, Ace Agent": [],
  "Mortify": [
@@ -931,6 +940,7 @@
   }
  ],
  "Protect the Negotiators": [],
+ "Proud Pack-Rhino": [],
  "Pull of the Mist Moon": [],
  "Quake, Agent of S.H.I.E.L.D.": [],
  "Queza, Augur of Agonies": [
@@ -1100,6 +1110,7 @@
    "y": "2025"
   }
  ],
+ "Staff of Compleation": [],
  "Staggering Insight": [],
  "Starfield Mystic": [],
  "Stormkeld Curator // Giant Secrets": [],
@@ -1107,6 +1118,7 @@
  "Sun-Spider, Nimble Webber": [],
  "Super-Soldier Serum": [],
  "Superior Spider-Man": [],
+ "Sword of Truth and Justice": [],
  "Symbiote Spider-Man": [],
  "Syr Vondam, Sunstar Exemplar": [],
  "Taeko, the Patient Avalanche": [],
@@ -1297,6 +1309,33 @@
  "With Great Power . . .": [],
  "Wondrous Revival": [],
  "Y'shtola, Night's Blessed": [],
+ "Yawgmoth, Thran Physician": [
+  {
+   "a": "Mark Winters",
+   "art": "https://cards.scryfall.io/art_crop/front/f/9/f902a1cd-d04f-4a8c-9aed-a618d0a2e2fa.jpg?1783925786",
+   "cn": "405",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/9/f902a1cd-d04f-4a8c-9aed-a618d0a2e2fa.jpg?1783925786",
+   "r": "M",
+   "set": "J21",
+   "sn": "Jumpstart: Historic Horizons",
+   "y": "2021"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/6/e/6ed83401-0b7e-48c7-b1a4-8e97aec29960.jpg?1783906392",
+   "cn": "11",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/e/6ed83401-0b7e-48c7-b1a4-8e97aec29960.jpg?1783906392",
+   "r": "M",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Zur, Eternal Schemer": [
   {
    "a": "Jesper Ejsing",
