@@ -97,6 +97,8 @@
   }
  ],
  "Archnemesis": [],
+ "Archon of Sun's Grace": [],
+ "Archon of the Wild Rose": [],
  "Arvad the Cursed": [],
  "Arvad, Weatherlight Smuggler": [],
  "Aryel, Knight of Windgrace": [],
@@ -423,6 +425,30 @@
  ],
  "Elenda, Saint of Dusk": [],
  "Elenda, the Dusk Rose": [],
+ "Entity Tracker": [
+  {
+   "a": "Cristi Balanescu",
+   "art": "https://cards.scryfall.io/art_crop/front/a/e/ae54d697-6d06-4af1-a617-8a47a6ab9c01.jpg?1783909496",
+   "cn": "53",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/e/ae54d697-6d06-4af1-a617-8a47a6ab9c01.jpg?1783909496",
+   "r": "R",
+   "set": "DSK",
+   "sn": "Duskmourn: House of Horror",
+   "y": "2024"
+  },
+  {
+   "a": "Cristi Balanescu",
+   "art": "https://cards.scryfall.io/art_crop/front/2/c/2c0a079e-26f4-44ed-859a-f7df4b40a3cd.jpg?1783909418",
+   "cn": "290",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/c/2c0a079e-26f4-44ed-859a-f7df4b40a3cd.jpg?1783909418",
+   "r": "R",
+   "set": "DSK",
+   "sn": "Duskmourn: House of Horror",
+   "y": "2024"
+  }
+ ],
  "Ephara, God of the Polis": [],
  "Eriette of the Charmed Apple": [],
  "Eriette, the Beguiler": [],
@@ -509,6 +535,32 @@
   }
  ],
  "Gwaihir the Windlord": [],
+ "Hallowed Haunting": [
+  {
+   "a": "David Auden Nash",
+   "art": "https://cards.scryfall.io/art_crop/front/6/7/674c0a50-9c37-4c29-84d8-eb3e34f34d37.jpg?1783924918",
+   "cn": "17",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/7/674c0a50-9c37-4c29-84d8-eb3e34f34d37.jpg?1783924918",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Mila Pesic",
+   "art": "https://cards.scryfall.io/art_crop/front/1/9/1948c865-fd0a-423c-9911-44a95a03c71f.jpg?1783909282",
+   "cn": "64",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/9/1948c865-fd0a-423c-9911-44a95a03c71f.jpg?1783909282",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  }
+ ],
  "Hallowed Respite": [],
  "Halvar, God of Battle // Sword of the Realms": [
   {
@@ -538,6 +590,7 @@
  ],
  "Hardened Tactician": [],
  "Hashaton, Scarab's Fist": [],
+ "Hateful Eidolon": [],
  "Hawkeye, Bowslinger": [],
  "Head of the Class": [],
  "Heliod, the Radiant Dawn": [],
@@ -992,6 +1045,7 @@
  ],
  "Sheltered by Ghosts": [],
  "Shilgengar, Sire of Famine": [],
+ "Sigil of the Empty Throne": [],
  "Silverquill Pledgemage": [],
  "Skyblade's Boon": [],
  "Skycat Sovereign": [],
@@ -1047,6 +1101,7 @@
   }
  ],
  "Staggering Insight": [],
+ "Starfield Mystic": [],
  "Stormkeld Curator // Giant Secrets": [],
  "Summon: Primal Odin": [],
  "Sun-Spider, Nimble Webber": [],
@@ -1239,6 +1294,7 @@
  "Wiccan, Rising Magician": [],
  "Will, Scion of Peace": [],
  "Wingbright Thief": [],
+ "With Great Power . . .": [],
  "Wondrous Revival": [],
  "Y'shtola, Night's Blessed": [],
  "Zur, Eternal Schemer": [

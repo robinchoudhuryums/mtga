@@ -1173,6 +1173,46 @@
    "name": "Due Diligence",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Sigil of the Empty Throne",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Archon of Sun's Grace",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Entity Tracker",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hateful Eidolon",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Hallowed Haunting",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Archon of the Wild Rose",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "Starfield Mystic",
+   "pile": "G",
+   "src": "added"
+  },
+  {
+   "name": "With Great Power . . .",
+   "pile": "G",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1241,9 +1281,9 @@
   },
   "Twining Twins // Swift Spiral": {
    "group": "Strong",
-   "text": "*Adventure \"Swift Spiral\" is an MV2 instant, a noncreature cast on either turn (r1, r2); it blinks a nontoken creature to save it, then a 4-MV flier",
+   "text": "CUT 2026-11-09 (Aura lean) for Danitha Capashen. *Adventure \"Swift Spiral\" is an MV2 instant, a noncreature cast on either turn (r1, r2); it blinks a nontoken creature to save it, then a 4-MV flier",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse": {
@@ -1332,9 +1372,9 @@
   },
   "Staggering Insight": {
    "group": "Real",
-   "text": "Aura: lifelink plus \"draw a card\" on combat damage; put it on an evasive Hero token for life fuel (r1, r5); aura risk applies",
+   "text": "IN THE DECK 2026-11-09 (for History of Benalia). Lifelink and a card per hit on a countered Hero token.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Pearl Collector": {
@@ -1492,10 +1532,10 @@
    }
   },
   "Sun-Spider, Nimble Webber": {
-   "group": "Situational",
-   "text": "Hero that tutors \"an Aura or Equipment card\" for Biorganic Carapace or Staggering Insight; the value depends on that package's size",
+   "group": "Real",
+   "text": "Hero that tutors \"an Aura or Equipment card\": with 15 Auras after the Aura lean it finds Light-Paws fodder, Staggering Insight or a removal Aura on demand.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Taigam, Ojutai Master": {
@@ -2018,9 +2058,9 @@
   },
   "Ondu Knotmaster // Throw a Line": {
    "group": "Engine",
-   "text": "Throw a Line is a MV2 sorcery cast = trigger (r1,r4) distributing counters; later a lifelinker that grows when a modified (countered) Hero dies (r6)",
+   "text": "CUT 2026-11-09 (Aura lean) for Light-Paws. Throw a Line is a MV2 sorcery cast = trigger (r1,r4) distributing counters; later a lifelinker that grows when a modified (countered) Hero dies (r6)",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Seething Skitter-Priest": {
@@ -2109,9 +2149,9 @@
   },
   "Stormkeld Curator // Giant Secrets": {
    "group": "Strong",
-   "text": "Giant Secrets is an INSTANT {X}{U}{U}: X=2 is MV4 → 5/5 Hero on their turn + 2 cards (r2,r4); Curator body re-buys auras late",
+   "text": "CUT 2026-11-09 (Aura lean) for Eriette of the Charmed Apple. Giant Secrets is an INSTANT {X}{U}{U}: X=2 is MV4 → 5/5 Hero on their turn + 2 cards (r2,r4); Curator body re-buys auras late",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Lawmage's Binding": {
@@ -2136,10 +2176,10 @@
    }
   },
   "Eriette of the Charmed Apple": {
-   "group": "Situational",
-   "text": "End-step drain X = Auras you control (r5); Scriv's Contract tokens count; needs aura density the 99 may not have",
+   "group": "Strong",
+   "text": "IN THE DECK 2026-11-09 (for Stormkeld Curator). End-step drain equal to Auras you control, removal Auras on their creatures included.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Killian, Decisive Mentor": {
@@ -2256,9 +2296,9 @@
   },
   "Invasion of Tolvada // The Broken Sky": {
    "group": "Engine",
-   "text": "ETB reanimates any nonbattle permanent; flipped \"creature tokens get +1/+0 and have lifelink\" turns every Hero into fuel (r5,r6)",
+   "text": "CUT 2026-11-09 (Aura lean) for Hope Against Hope. ETB reanimates any nonbattle permanent; flipped \"creature tokens get +1/+0 and have lifelink\" turns every Hero into fuel (r5,r6)",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Naomi, Pillar of Order": {
@@ -2354,9 +2394,9 @@
   },
   "Quake, Agent of S.H.I.E.L.D.": {
    "group": "Engine",
-   "text": "Hero; \"whenever you cast a noncreature spell, tap target creature or land\" with NO once-per-turn cap — tempo off every spell (r1,r2)",
+   "text": "CUT 2026-11-09 (Aura lean) for Danitha, Sword of Hope. Hero; \"whenever you cast a noncreature spell, tap target creature or land\" with NO once-per-turn cap — tempo off every spell (r1,r2)",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Paladin's Arms": {
@@ -2445,9 +2485,9 @@
   },
   "The Mighty Thor, Jane Foster": {
    "group": "Strong",
-   "text": "Esper 3-drop flyer. The attack trigger \"exile … nontoken artifact or creature … return tapped\" clears a blocker (r9 tempo), and \"Equipment enters, draw\" pairs with Lance and Sword.",
+   "text": "CUT 2026-11-09 (Aura lean) for Kor Spiritdancer. Esper 3-drop flyer. The attack trigger \"exile … nontoken artifact or creature … return tapped\" clears a blocker (r9 tempo), and \"Equipment enters, draw\" pairs with Lance and Sword.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Abigale, Poet Laureate // Heroic Stanza": {
@@ -2473,16 +2513,16 @@
   },
   "Dragoon's Lance": {
    "group": "Strong",
-   "text": "Job select \"create a 1/1 colorless HERO token\": with the commander, one MV-2 spell makes two Hero bodies (r1, r4, r6). Flying on your turn.",
+   "text": "CUT 2026-11-09 (Aura lean) for Spectral Steel. Job select \"create a 1/1 colorless HERO token\": with the commander, one MV-2 spell makes two Hero bodies (r1, r4, r6). Flying on your turn.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Danitha, Sword of Hope": {
-   "group": "Real",
-   "text": "\"Equipment spell or a spell that targets a creature you control, draw a card\", once each turn. Every Aura qualifies, so it draws about once a turn here (r3).",
+   "group": "Engine",
+   "text": "IN THE DECK 2026-11-09 (for Quake). Draws once a turn when a spell targets your creature: every Aura on a Hero token.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Fiendslayer Paladin": {
@@ -2494,9 +2534,9 @@
   },
   "History of Benalia": {
    "group": "Strong",
-   "text": "MV-3 noncreature Saga (r1, r4): two 2/2 vigilance Knights plus a Hero token, then \"Knights +2/+1\". Three bodies from one card.",
+   "text": "CUT 2026-11-09 (Aura lean) for Staggering Insight. MV-3 noncreature Saga (r1, r4): two 2/2 vigilance Knights plus a Hero token, then \"Knights +2/+1\". Three bodies from one card.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Dion, Bahamut's Dominant // Bahamut, Warden of Light": {
@@ -2619,17 +2659,17 @@
    }
   },
   "Kor Spiritdancer": {
-   "group": "Situational",
-   "text": "\"Whenever you cast an Aura spell, you may draw\": good only with heavy Aura density (this part has ~17). It's a creature (r1).",
+   "group": "Engine",
+   "text": "IN THE DECK 2026-11-09 (Aura lean, for The Mighty Thor). Draws on every Aura cast; with Sram, two cards per Aura.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Light-Paws, Emperor's Voice": {
-   "group": "Situational",
-   "text": "A cast Aura tutors a second Aura of equal or lower MV onto Light-Paws. It needs the deck built as Auras, and it's a creature (r1).",
+   "group": "Strong",
+   "text": "IN THE DECK 2026-11-09 (for Ondu Knotmaster). Each Aura cast puts another Aura of equal or lower MV onto her from the library.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Petrify": {
@@ -2661,10 +2701,10 @@
    }
   },
   "Spectral Steel": {
-   "group": "Situational",
-   "text": "\"+2/+2\", and its graveyard ability buys back another Aura or Equipment. A cheap trigger (r4).",
+   "group": "Real",
+   "text": "IN THE DECK 2026-11-09 (for Dragoon's Lance). A 2-mana trigger that later buys back another Aura.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Sram, Senior Edificer": {
@@ -2703,10 +2743,10 @@
    }
   },
   "Danitha Capashen, Paragon": {
-   "group": "Real",
-   "text": "First strike, vigilance and lifelink (r5). \"Aura and Equipment spells cost {1} less\" speeds up the package without lowering MV, so X is intact (r4).",
+   "group": "Strong",
+   "text": "IN THE DECK 2026-11-09 (for Twining Twins). Auras and Equipment cost {1} less without lowering G'raha's X; lifelink.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Due Diligence": {
@@ -2717,10 +2757,10 @@
    }
   },
   "Hope Against Hope": {
-   "group": "Situational",
-   "text": "\"+1/+1 for each creature you control\" scales with the commander's tokens (r6). An aggro Aura that adds a trigger.",
+   "group": "Real",
+   "text": "IN THE DECK 2026-11-09 (for Invasion of Tolvada). +1/+1 per creature, and G'raha adds one each turn.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "4a65698e2c76"
    }
   },
   "Light of Promise": {
@@ -2784,6 +2824,62 @@
    "text": "Modal DFC: Sword (MV 2, noncreature) for the trigger and recursion (r1, r4), or Halvar for \"enchanted or equipped creatures have double strike\" on the Aura board.",
    "graded_at": {
     "98": "de6571e8afda"
+   }
+  },
+  "Sigil of the Empty Throne": {
+   "group": "Engine",
+   "text": "CRAFT (R). \"Whenever you cast an enchantment spell, create a 4/4 white Angel\": the deck casts 23 enchantments, and Sigil is one itself (a 6/6 Hero via G'raha). Proposed for Aerith Rescue Mission.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Archon of Sun's Grace": {
+   "group": "Engine",
+   "text": "CRAFT (R). Constellation: a 2/2 flying Pegasus per enchantment entering, and Pegasi have lifelink, so every Aura is a body plus life fuel (r5). Proposed for Revival // Revenge.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Entity Tracker": {
+   "group": "Strong",
+   "text": "CRAFT (R). Flash; \"Whenever an enchantment you control enters … draw a card\", once per enchantment, 23 of them. Proposed for Despark.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Hateful Eidolon": {
+   "group": "Real",
+   "text": "CRAFT (U). 1-drop lifelink Enchantment Creature (an enchantment spell for Sigil, Archon, Alela, Entity Tracker); draws per Aura when an enchanted creature dies. Proposed for Shaile.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Hallowed Haunting": {
+   "group": "Situational",
+   "text": "SPICE, CRAFT (M). A Spirit token per enchantment spell, growing with Spirit count; with seven enchantments out, the team has flying and vigilance.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Archon of the Wild Rose": {
+   "group": "Situational",
+   "text": "SPICE, CRAFT (R). Your enchanted creatures become 4/4 fliers: every Aura'd Hero token is an evasive threat.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "Starfield Mystic": {
+   "group": "Situational",
+   "text": "CRAFT (R). Enchantment spells cost {1} less (Auras and Sagas); redundant with Danitha Capashen for Auras, broader for the rest.",
+   "graded_at": {
+    "98": "4a65698e2c76"
+   }
+  },
+  "With Great Power . . .": {
+   "group": "Situational",
+   "text": "CRAFT (R). +2/+2 per Aura and Equipment on the creature, and damage to you goes to it instead: protects the life budget (r5).",
+   "graded_at": {
+    "98": "4a65698e2c76"
    }
   }
  },
@@ -2873,6 +2969,94 @@
     "Teferi, Who Slows the Sunset",
     "The Mighty Thor, Jane Foster",
     "Twining Twins // Swift Spiral",
+    "Void Rend",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ],
+   "4a65698e2c76": [
+    "Abigale, Eloquent First-Year",
+    "Absorb",
+    "Adarkar Wastes",
+    "Aerith Rescue Mission",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Consecrate // Consume",
+    "Danitha Capashen, Paragon",
+    "Danitha, Sword of Hope",
+    "Deserted Beach",
+    "Despark",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Dramatic Finale",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Fracture",
+    "Friendly Neighborhood",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Glasswing Grace // Age-Graced Chapel",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Metropolis Angel",
+    "Mortify",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Revival // Revenge",
+    "Rite of Oblivion",
+    "Seachrome Coast",
+    "Sentinel's Mark",
+    "Serra Redeemer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Spider-Woman, Secret Agent",
+    "Sram, Senior Edificer",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Teferi, Who Slows the Sunset",
     "Void Rend",
     "Watery Grave",
     "Y'shtola, Night's Blessed"
@@ -3152,8 +3336,8 @@
   },
   "Sun-Spider, Nimble Webber": {
    "G": {
-    "m": "◇",
-    "graded_at": "de6571e8afda"
+    "m": "★",
+    "graded_at": "4a65698e2c76"
    }
   },
   "Taigam, Ojutai Master": {
@@ -4258,6 +4442,54 @@
    "G": {
     "m": "★★",
     "graded_at": "de6571e8afda"
+   }
+  },
+  "Sigil of the Empty Throne": {
+   "G": {
+    "m": "★★★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Archon of Sun's Grace": {
+   "G": {
+    "m": "★★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Entity Tracker": {
+   "G": {
+    "m": "★★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Hateful Eidolon": {
+   "G": {
+    "m": "★★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Hallowed Haunting": {
+   "G": {
+    "m": "★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Archon of the Wild Rose": {
+   "G": {
+    "m": "★",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "Starfield Mystic": {
+   "G": {
+    "m": "◇",
+    "graded_at": "4a65698e2c76"
+   }
+  },
+  "With Great Power . . .": {
+   "G": {
+    "m": "◇",
+    "graded_at": "4a65698e2c76"
    }
   }
  }
