@@ -1,0 +1,459 @@
+{
+ "schema": 1,
+ "title": "Feather — One Fell Swoop Brawl",
+ "decks": [
+  {
+   "key": "F",
+   "id": "56-historic-brawl",
+   "label": "Feather"
+  }
+ ],
+ "piles": [
+  {
+   "key": "F",
+   "label": "Feather's pile",
+   "deck": "F",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Sword of Truth and Justice",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Sinew and Steel",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Hearth and Home",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Maul of the Skyclaves",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Bladehold War-Whip",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Kaldra Compleat",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Lightning Bolt",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Abrade",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Chaos Warp",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Fateful Absence",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Collective Inferno",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Aurelia, Exemplar of Justice",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Unleash Fury",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Return the Favor",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sigarda's Aid",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Speedball, New Warrior",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sram, Senior Edificer",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Clash of Titans",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Ephemerate",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Sword of Truth and Justice": {
+   "group": "Real",
+   "text": "+2/+2, protection from white and blue; on a hit a +1/+1 counter and proliferate. The fourth Sword if one underperforms.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Sword of Sinew and Steel": {
+   "group": "Real",
+   "text": "+2/+2, protection from black and red; on a hit destroy a planeswalker and an artifact. Protection from red blanks most burn aimed at the body.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Sword of Hearth and Home": {
+   "group": "Real",
+   "text": "+2/+2, protection from green and white; on a hit blink a creature you own (resets the body's damage) and ramp a basic.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Maul of the Skyclaves": {
+   "group": "Real",
+   "text": "Attaches on entry: +2/+2, flying, first strike. Strong on any body; the Equipment slots went to the Swords.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Bladehold War-Whip": {
+   "group": "Real",
+   "text": "A 2/2 Rebel on entry; equip costs {1} less and equipped creatures have double strike. Cheaper equips for three Swords.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Kaldra Compleat": {
+   "group": "Real",
+   "text": "7 mana: a 5/5 germ with indestructible, haste, first strike, trample; exiles what it hits. Top-end if the curve has room.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Lightning Bolt": {
+   "group": "Real",
+   "text": "1-mana 3 damage; the first removal back if interaction is short.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Abrade": {
+   "group": "Real",
+   "text": "OWNED. 3 damage to a creature or destroy an artifact.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Chaos Warp": {
+   "group": "Real",
+   "text": "Shuffles any permanent away; a red answer to enchantments and planeswalkers.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Fateful Absence": {
+   "group": "Real",
+   "text": "2-mana instant: destroy a creature or planeswalker; they get a Clue.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Collective Inferno": {
+   "group": "Real",
+   "text": "OWNED. Doubles the damage of sources of a chosen type you control: a double-damage Voltron body and doubled Self-Destruct.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Aurelia, Exemplar of Justice": {
+   "group": "Real",
+   "text": "The alternative commander: +2/+0, trample and vigilance on one creature every combat, and a flier. Pure Voltron, but no card flow.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Unleash Fury": {
+   "group": "Situational",
+   "text": "Cut in the draft for Monastery Mentor: doubles power, overlapping Bulk Up.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Return the Favor": {
+   "group": "Situational",
+   "text": "Cut in the draft for Fiery Confluence: a copy/redirect trick, weaker at 100 cards.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Sigarda's Aid": {
+   "group": "Situational",
+   "text": "Cut in the draft for Tome of Legends: flash Equipment and auto-attach; low power on its own.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Speedball, New Warrior": {
+   "group": "Weak",
+   "text": "ILLEGAL under Feather: the {W/U} hybrid puts blue in its colour identity. Boros Reckoner took the slot.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Sram, Senior Edificer": {
+   "group": "Situational",
+   "text": "Draws on Equipment and Aura casts (about nine here); thin for a slot.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Clash of Titans": {
+   "group": "Situational",
+   "text": "5-mana fight Feather returns; The Last Agni Kai does it for 2.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Ephemerate": {
+   "group": "Weak",
+   "text": "OWNED. Feather returns it, but the blink resets the body's counters and Equipment fall off.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  }
+ },
+ "snapshots": {
+  "56-historic-brawl": {
+   "c0bc1b4b7c51": [
+    "Abraded Bluffs",
+    "Agrus Kos, Spirit of Justice",
+    "Akroma's Will",
+    "Battlefield Forge",
+    "Boros Charm",
+    "Boros Reckoner",
+    "Bulk Up",
+    "Chandra's Ignition",
+    "Choreographed Sparks",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Crackling Cyclops",
+    "Crystal Barricade",
+    "Dalkovan Encampment",
+    "Defiant Strike",
+    "Delney, Streetwise Lookout",
+    "Demonic Ruckus",
+    "Embercleave",
+    "Energybending",
+    "Enter the Avatar State",
+    "Feather, the Redeemed",
+    "Ferocification",
+    "Fiery Confluence",
+    "Furycalm Snarl",
+    "Get Lost",
+    "Giver of Runes",
+    "Gods Willing",
+    "Grand Abolisher",
+    "Heroic Reinforcements",
+    "Inspiring Vantage",
+    "Iron Fist, Living Weapon",
+    "Light Up the Stage",
+    "Lightning Greaves",
+    "Lightning Helix",
+    "Loran's Escape",
+    "Luke Cage, Power Man",
+    "Mabel, Heir to Cragflame",
+    "Monastery Mentor",
+    "Mother of Runes",
+    "Mountain",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Pain for All",
+    "Path to Exile",
+    "Plains",
+    "Reckless Impulse",
+    "Red Hulk",
+    "Restoration Magic",
+    "Sacred Foundry",
+    "Seedglaive Mentor",
+    "Self-Destruct",
+    "Shadowspear",
+    "Shelter",
+    "Sheltering Light",
+    "Speed, Young Avenger",
+    "Spinerock Tyrant",
+    "Starting Town",
+    "Stingerback Terror",
+    "Stoneforge Mystic",
+    "Sun-Blessed Peak",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swiftblade Vindicator",
+    "Swiftfoot Boots",
+    "Sword of Body and Mind",
+    "Sword of Fire and Ice",
+    "Sword of Forge and Frontier",
+    "Swords to Plowshares",
+    "Team Avatar",
+    "Team Tactics",
+    "Temple of Triumph",
+    "The Fire Crystal",
+    "The Last Agni Kai",
+    "The Sentry, Golden Guardian",
+    "Titan's Strength",
+    "Tome of Legends",
+    "Unexpected Windfall",
+    "Untimely Malfunction",
+    "Valorous Stance",
+    "War Machine, Legacy of Iron"
+   ]
+  }
+ },
+ "verdicts": {
+  "Sword of Truth and Justice": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Sword of Sinew and Steel": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Sword of Hearth and Home": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Maul of the Skyclaves": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Bladehold War-Whip": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Kaldra Compleat": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Lightning Bolt": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Abrade": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Chaos Warp": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Fateful Absence": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Collective Inferno": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Aurelia, Exemplar of Justice": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Unleash Fury": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Return the Favor": {
+   "F": {
+    "m": "◇",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Sigarda's Aid": {
+   "F": {
+    "m": "◇",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Speedball, New Warrior": {
+   "F": {
+    "m": "✗",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Sram, Senior Edificer": {
+   "F": {
+    "m": "◇",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Clash of Titans": {
+   "F": {
+    "m": "◇",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Ephemerate": {
+   "F": {
+    "m": "△",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  }
+ }
+}

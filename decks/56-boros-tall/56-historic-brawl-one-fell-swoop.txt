@@ -1,0 +1,128 @@
+#: name: One Fell Swoop — Brawl
+#: format: Historic Brawl
+#: colors: RW
+#: based-on: deck.txt
+#: commander: Feather, the Redeemed
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool) built from deck 56's Boros combat-tall plan:
+#: archetype: one protected body wins in a few swings. Feather, the Redeemed leads it because deck 56 is already a pile
+#: archetype: of instants that target your own creature, and Feather returns each of those to hand at the next end step.
+#: archetype: Fifteen cards are Feather's: Self-Destruct and The Last Agni Kai become repeatable removal, Chandra's
+#: archetype: Ignition a repeatable one-sided wipe off one big body, Bulk Up doubles its power every turn,
+#: archetype: and the cantrip tricks (Defiant Strike, Shelter, Gods Willing, Titan's Strength, Sheltering Light) turn into
+#: archetype: card flow, the axis deck 56 lacks. Each recast also re-fires Iron Fist, Seedglaive Mentor and
+#: archetype: Delney's doubled triggers. The 100-card additions are the body's protection (Mother and Giver of Runes,
+#: archetype: Loran's Escape, Lightning Greaves), Equipment (Embercleave, three Swords, Shadowspear, found by Stoneforge
+#: archetype: Mystic), Monastery Mentor, cheap removal and card flow.
+#: archetype: DISTINCT from deck 88 (Naya Historic Brawl, Full Throttle) and deck 85 (Jeskai heroes): mono-target Voltron.
+#: protect: Feather, the Redeemed; Self-Destruct; The Last Agni Kai; Chandra's Ignition; Bulk Up; Crystal Barricade; Swiftfoot Boots; Embercleave; Boros Reckoner; Iron Fist, Living Weapon; Delney, Streetwise Lookout; Grand Abolisher; Mother of Runes; Giver of Runes
+#: notes: Drafted 2026-11-10 from deck 56 (all 34 of its nonland cards carry over; the 2-ofs Bulk Up and Self-Destruct
+#: notes: become singles). Ownership is information only; the list is the optimal one.
+#: notes: Reads the tooling cannot make: Feather only returns a spell that TARGETS a creature you control, so Boros Charm
+#: notes: returns on its double-strike mode only, Restoration Magic only when aimed at your creature, and a flashback cast
+#: notes: of Bulk Up is exiled anyway. Self-Destruct's own damage to the body is survived by The Sentry and Luke Cage and
+#: notes: prevented by Crystal Barricade, so with Feather it is removal every turn.
+#: notes: Draft changes: Speedball, New Warrior is OUT — its {W/U} hybrid puts blue in its identity, illegal under
+#: notes: Feather; Boros Reckoner took the slot (Self-Destruct aimed at it deals the damage twice). Then −Unleash Fury
+#: notes: +Monastery Mentor (a prowess Monk per noncreature spell, and Feather recasts make them every turn), −Return
+#: notes: the Favor +Fiery Confluence, −Sigarda's Aid +Tome of Legends (a card per commander attack).
+#: notes: Bench (screened 2026-11-10): Sword of Truth and Justice / Sinew and Steel / Hearth and Home, Maul of the
+#: notes: Skyclaves, Bladehold War-Whip, Kaldra Compleat, Lightning Bolt, Abrade (owned), Chaos Warp, Fateful Absence,
+#: notes: Collective Inferno (owned; doubles the body's damage), Aurelia, Exemplar of Justice (the alternative commander).
+#: notes: TIER UNSET — the letter is the owner's call. Measured floor B (interaction 12, card advantage 6 against the
+#: notes: 100-card A line of 12 and 19); the counts cannot see Feather returning the cantrips and the removal each turn.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Feather, the Redeemed (WAR) 197
+
+# Tall bodies
+1 The Sentry, Golden Guardian (MSH) 35
+1 Stingerback Terror (OTJ) 147
+1 Crackling Cyclops (FDN) 83
+1 Spinerock Tyrant (ECL) 159
+1 Red Hulk (MSH) 149
+1 Luke Cage, Power Man (MSH) 20
+1 Agrus Kos, Spirit of Justice (MKM) 184
+1 Iron Fist, Living Weapon (MSH) 138
+
+# Bearers, boosters and protectors
+1 Swiftblade Vindicator (FDN) 246
+1 Boros Reckoner (PIO) 208
+1 Seedglaive Mentor (BLB) 231
+1 Delney, Streetwise Lookout (MKM) 12
+1 War Machine, Legacy of Iron (MSH) 238
+1 Mabel, Heir to Cragflame (BLB) 224
+1 Speed, Young Avenger (MSH) 152
+1 Mother of Runes (AA2) 1
+1 Giver of Runes (HA7) 2
+1 Stoneforge Mystic (WWK) 20
+1 Grand Abolisher (BIG) 2
+1 Monastery Mentor (MOM) 28
+
+# Feather's tricks — instants and sorceries that target your creature (returned each end step)
+1 Self-Destruct (FIN) 157
+1 The Last Agni Kai (TLA) 144
+1 Chandra's Ignition (SPG) 89
+1 Bulk Up (SOA) 40
+1 Boros Charm (FDN) 721
+1 Team Tactics (MSH) 155
+1 Enter the Avatar State (TLA) 18
+1 Restoration Magic (FIN) 30
+1 Gods Willing (M20) 19
+1 Defiant Strike (J25) 187
+1 Titan's Strength (J25) 603
+1 Sheltering Light (XLN) 35
+1 Loran's Escape (BRO) 14
+1 Valorous Stance (FDN) 583
+1 Shelter (J21) 133
+
+# Equipment, Auras and evasion
+1 Embercleave (ELD) 120
+1 Sword of Fire and Ice (MAR) 100
+1 Sword of Body and Mind (HA4) 24
+1 Sword of Forge and Frontier (ONE) 244
+1 Shadowspear (THB) 236
+1 Swiftfoot Boots (BRR) 58
+1 Lightning Greaves (MRD) 199
+1 Demonic Ruckus (OTJ) 120
+1 Pain for All (EOE) 151
+1 Ferocification (OTJ) 123
+1 Crystal Barricade (FDN) 7
+
+# Multipliers, card flow and finishers
+1 Team Avatar (TLA) 38
+1 The Fire Crystal (FIN) 135
+1 Choreographed Sparks (SOS) 111
+1 Energybending (TLA) 2
+1 Light Up the Stage (RNA) 107
+1 Reckless Impulse (J25) 589
+1 Unexpected Windfall (AFR) 164
+1 Heroic Reinforcements (FDN) 241
+1 Akroma's Will (SOA) 1
+1 Tome of Legends (ELD) 332
+
+# Interaction
+1 Swords to Plowshares (SPG) 54
+1 Path to Exile (MAR) 47
+1 Get Lost (LCI) 14
+1 Lightning Helix (MKM) 218
+1 Untimely Malfunction (DSK) 161
+1 Fiery Confluence (TLE) 165
+
+# Lands (37)
+1 Command Tower (FRC) 22
+1 Sacred Foundry (EOE) 256
+1 Sunbillow Verge (DFT) 264
+1 Battlefield Forge (BRO) 257
+1 Clifftop Retreat (DOM) 239
+1 Inspiring Vantage (OTJ) 269
+1 Needleverge Pathway // Pillarverge Pathway (ZNR) 263
+1 Sunbaked Canyon (TLE) 58
+1 Starting Town (FIN) 289
+1 Dalkovan Encampment (TDM) 253
+1 Temple of Triumph (FDN) 705
+1 Sun-Blessed Peak (TLA) 280
+1 Abraded Bluffs (OTJ) 251
+1 Furycalm Snarl (STX) 266
+12 Plains (FRA) 281
+11 Mountain (FRA) 287
