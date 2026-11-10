@@ -522,8 +522,8 @@
    }
   },
   "Zada, Hedron Grinder": {
-   "group": "Real",
-   "text": "CRAFT (R). SPICE: a spell that targets only Zada is copied for each other creature you control; with Monastery Mentor Monks and Heroic Reinforcements tokens, one Feather-returned pump hits the whole team.",
+   "group": "Strong",
+   "text": "CRAFT (R). PROPOSED for Team Avatar (owner's pick). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Temur Battle Rage, Titan's Strength or Defiant Strike on Zada hits the whole team (Defiant Strike draws per copy), and Feather returns the original. Bites (Rabid Gnaw, Fall of the Hammer) copy as every creature hitting the SAME target, so aim those elsewhere; Chandra's Ignition on Zada also hits your own creatures. Wants bodies: Monastery Mentor Monks, Heroic Reinforcements.",
    "graded_at": {
     "56-historic-brawl": "c0bc1b4b7c51"
    }
@@ -925,7 +925,7 @@
   },
   "Zada, Hedron Grinder": {
    "F": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "c0bc1b4b7c51"
    }
   },
