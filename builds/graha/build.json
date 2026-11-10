@@ -1477,9 +1477,9 @@
   },
   "King T'Challa // Black Panther, Hope Enduring": {
    "group": "Real",
-   "text": "Flash Hero; \"Whenever a player draws their second card each turn, you draw\", which pairs with the draw spells in this part (Mending, Charm, Teferi)",
+   "text": "Flash Hero; whenever a player draws their second card each turn, you draw. Pairs with the deck's draw (Azorius Charm, Teferi, Hero of Dominaria, Entity Tracker).",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "1ee304e41f98"
    }
   },
   "Malcator, Purity Overseer": {
@@ -1694,9 +1694,9 @@
   },
   "Teferi, Who Slows the Sunset": {
    "group": "Strong",
-   "text": "PW cast = 5/5 Hero for 4 life (r1/r4); \"+1 … You gain 2 life\" refunds half the payment (r5); −2 card selection; sorcery-speed only",
+   "text": "CUT 2026-11-10 for Heliod, God of the Sun; now a #~ flex line. +1 taps/untaps and gains 2, −2 digs; a sixth walker for Ichormoon Gauntlet.",
    "graded_at": {
-    "98": "de6571e8afda"
+    "98": "1ee304e41f98"
    }
   },
   "War Machine, James Rhodes": {
@@ -2296,9 +2296,9 @@
   },
   "Zur, Eternal Schemer": {
    "group": "Strong",
-   "text": "RE-GRADED ★★ 2026-11-09. {1}{W}: a non-Aura enchantment becomes a creature with P/T equal to its MV, permanently, and then has deathtouch, lifelink and hexproof: Sigil 5/5, Leyline, Hallowed Haunting and Barrensteppe Siege 4/4s (seven targets), all life fuel. Heliod and Ephara get the same keywords. Don't animate Detention Sphere or Pull of the Mist Moon: if they die, the exiled card returns. A 3-drop flier; offered for Sorin, better for Baron if a slot opens.",
+   "text": "RE-GRADED ★★ 2026-11-09. {1}{W}: a non-Aura enchantment becomes a creature with P/T equal to its MV, permanently, and then has deathtouch, lifelink and hexproof: Sigil 5/5, Leyline, Hallowed Haunting and Barrensteppe Siege 4/4s, all life fuel. Both Heliods, Ephara and Heliod, God of the Sun's Cleric tokens get the same keywords. Don't animate Detention Sphere or Pull of the Mist Moon. A 3-drop flier; best for Baron if a slot opens.",
    "graded_at": {
-    "98": "f5603e8adca6"
+    "98": "1ee304e41f98"
    }
   },
   "Tameshi, Reality Architect": {
@@ -3666,6 +3666,97 @@
     "Teferi, Hero of Dominaria",
     "Teferi, Who Slows the Sunset",
     "The Circle of Loyalty",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ],
+   "1ee304e41f98": [
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Archon of the Wild Rose",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Caves of Koilos",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Contaminated Landscape",
+    "Danitha Capashen, Paragon",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Drana and Linvala",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Eriette, the Beguiler",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Flux Channeler",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Glacial Fortress",
+    "Gleaming Bastion",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hallowed Haunting",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, God of the Sun",
+    "Heliod, the Radiant Dawn",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hope Against Hope",
+    "Ichormoon Gauntlet",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Isolated Chapel",
+    "Kaya, Geist Hunter",
+    "Killian, Decisive Mentor",
+    "Killian, Ink Duelist",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Mesmerizing Dose",
+    "Metropolis Angel",
+    "Mondrak, Glory Dominus",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Rite of Oblivion",
+    "Rodolf Duskbringer",
+    "Scriv, the Obligator",
+    "Seachrome Coast",
+    "Serra Redeemer",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Sram, Senior Edificer",
+    "Staff of Compleation",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "The Circle of Loyalty",
+    "Undercity Sewers",
     "Watery Grave",
     "Y'shtola, Night's Blessed"
    ]
