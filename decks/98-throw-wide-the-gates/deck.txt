@@ -56,6 +56,11 @@
 #: notes: Spectral Steel; kept on Claude's: Leyline of Anticipation, Sorin, Sphinx's Revelation, Sram, Entity Tracker.
 #: notes: 2026-11-10: −Sentinel's Mark +Drana and Linvala (a flier that shuts off and borrows their creatures' activated
 #: notes: abilities; owner's pick over Teferi, Who Slows the Sunset and Baron).
+#: notes: 2026-11-10 manabase, owned lands only (owner's call): −3 Plains +Gleaming Bastion, +Undercity Sewers, +Contaminated
+#: notes: Landscape. W/U/B sources 24/17/15 → 22/19/17; G'raha on turn 3 60.0% → 64.5%, Mesmerizing Dose 47.5% → 54.2%,
+#: notes: Leyline 53.7% → 60.5%; mean colour access 76.5% → 76.6%, as built with taplands 51.2% → 50.7% (noise ±0.8). The
+#: notes: crafted version (−4 Plains +Darkslick Shores, Prairie Stream, Brightclimb Pathway, Silent Clearing) measured
+#: notes: 78.3% / 51.8% and G'raha 66.8%: the upgrade path. Plaza of Heroes stays (any colour once G'raha is out).
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -155,6 +160,9 @@
 1 Hengegate Pathway // Mistgate Pathway (KHM) 260
 1 Adarkar Wastes (DMU) 243
 1 Caves of Koilos (DMU) 244
-8 Plains (FRA) 281
+5 Plains (FRA) 281
+1 Contaminated Landscape (MH3) 218
+1 Undercity Sewers (PZA) 0
+1 Gleaming Bastion (MSH) 267
 5 Island (FRA) 283
 4 Swamp (FRA) 285
