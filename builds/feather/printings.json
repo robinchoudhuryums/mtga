@@ -49,6 +49,7 @@
   }
  ],
  "Agrus Kos, Spirit of Justice": [],
+ "Akiri, Fearless Voyager": [],
  "Akroma's Will": [
   {
    "a": "Square Enix",
@@ -79,10 +80,73 @@
    "y": "2026"
   }
  ],
+ "Ancestors' Aid": [],
  "Aurelia, Exemplar of Justice": [],
  "Bladehold War-Whip": [],
+ "Blazing Crescendo": [
+  {
+   "a": "Tiffany Turrill",
+   "art": "https://cards.scryfall.io/art_crop/front/d/6/d6bfc16a-2871-40a4-b279-636b80491a06.jpg?1783918035",
+   "cn": "123",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/6/d6bfc16a-2871-40a4-b279-636b80491a06.jpg?1783918035",
+   "r": "C",
+   "set": "ONE",
+   "sn": "Phyrexia: All Will Be One",
+   "y": "2023"
+  },
+  {
+   "a": "Pauline Voss",
+   "art": "https://cards.scryfall.io/art_crop/front/8/4/8447c3d6-8c65-4d3c-81c4-609801602d06.jpg?1783902932",
+   "cn": "125",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/4/8447c3d6-8c65-4d3c-81c4-609801602d06.jpg?1783902932",
+   "r": "C",
+   "set": "MSH",
+   "sn": "Marvel Super Heroes",
+   "y": "2026"
+  },
+  {
+   "a": "Billy Christian",
+   "art": "https://cards.scryfall.io/art_crop/front/8/4/8414a98c-0c79-4884-bc9b-061a6456b392.jpg?1789060147",
+   "cn": "75",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/4/8414a98c-0c79-4884-bc9b-061a6456b392.jpg?1789060147",
+   "r": "C",
+   "set": "FRA",
+   "sn": "Reality Fracture",
+   "y": "2026"
+  }
+ ],
  "Boros Charm": [],
  "Boros Reckoner": [],
+ "Brimaz, King of Oreskos": [],
+ "Bruenor Battlehammer": [
+  {
+   "a": "Wayne Reynolds",
+   "art": "https://cards.scryfall.io/art_crop/front/5/3/53e1eb00-412e-4c25-bc7b-6d074330fd97.jpg?1783926450",
+   "cn": "219",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/3/53e1eb00-412e-4c25-bc7b-6d074330fd97.jpg?1783926450",
+   "r": "U",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Russ Nicholson",
+   "art": "https://cards.scryfall.io/art_crop/front/c/6/c620e7d7-60f8-452b-9563-5624791ae893.jpg?1783926403",
+   "cn": "337",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/6/c620e7d7-60f8-452b-9563-5624791ae893.jpg?1783926403",
+   "r": "U",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  }
+ ],
  "Bulk Up": [
   {
    "a": "Warren Mahy",
@@ -110,6 +174,9 @@
    "y": "2026"
   }
  ],
+ "Castle Ardenvale": [],
+ "Castle Embereth": [],
+ "Champion of the Flame": [],
  "Chandra's Ignition": [],
  "Chaos Warp": [
   {
@@ -212,6 +279,33 @@
  ],
  "Delney, Streetwise Lookout": [],
  "Demonic Ruckus": [],
+ "Dual-Sun Technique": [],
+ "Eiganjo, Seat of the Empire": [
+  {
+   "a": "Julian Kok Joon Wen",
+   "art": "https://cards.scryfall.io/art_crop/front/c/3/c375a022-5b57-496d-a802-e4ea8376e9e4.jpg?1783923818",
+   "cn": "268",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/3/c375a022-5b57-496d-a802-e4ea8376e9e4.jpg?1783923818",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "ZOUNOSE",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7c31c48f-6275-4430-8dc9-05d70c332b7a.jpg?1783923761",
+   "cn": "413",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7c31c48f-6275-4430-8dc9-05d70c332b7a.jpg?1783923761",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Embercleave": [
   {
    "a": "Joe Slucher",
@@ -283,7 +377,35 @@
    "y": "2026"
   }
  ],
+ "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": [
+  {
+   "a": "Joseph Meehan",
+   "art": "https://cards.scryfall.io/art_crop/front/2/4/24c0d87b-0049-4beb-b9cb-6f813b7aa7dc.jpg?1783923875",
+   "cn": "141",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/4/24c0d87b-0049-4beb-b9cb-6f813b7aa7dc.jpg?1783923875",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "akio",
+   "art": "https://cards.scryfall.io/art_crop/front/0/b/0b696cd1-0d72-4df5-bacc-dc77e62f9a13.jpg?1783923787",
+   "cn": "357",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/b/0b696cd1-0d72-4df5-bacc-dc77e62f9a13.jpg?1783923787",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
+ "Fall of the Hammer": [],
  "Fateful Absence": [],
+ "Feat of Resistance": [],
  "Ferocification": [],
  "Fiery Confluence": [
   {
@@ -310,6 +432,7 @@
   }
  ],
  "Get Lost": [],
+ "Giantfall": [],
  "Giver of Runes": [],
  "Gods Willing": [
   {
@@ -353,8 +476,11 @@
  ],
  "Grand Abolisher": [],
  "Heroic Reinforcements": [],
+ "Integrity // Intervention": [],
  "Iron Fist, Living Weapon": [],
  "Kaldra Compleat": [],
+ "Kaya's Onslaught": [],
+ "Laelia, the Blade Reforged": [],
  "Light Up the Stage": [
   {
    "a": "Dmitry Burmak",
@@ -540,9 +666,11 @@
  "Luke Cage, Power Man": [],
  "Mabel, Heir to Cragflame": [],
  "Maul of the Skyclaves": [],
+ "Might of the Meek": [],
  "Monastery Mentor": [],
  "Mother of Runes": [],
  "Pain for All": [],
+ "Panther Pounce": [],
  "Path to Exile": [
   {
    "a": "Torgeir Fjereide",
@@ -623,6 +751,8 @@
    "y": "2026"
   }
  ],
+ "Phalanx Leader": [],
+ "Rabid Gnaw": [],
  "Reckless Impulse": [
   {
    "a": "Mathias Kollros",
@@ -676,6 +806,58 @@
    "y": "2026"
   }
  ],
+ "Reyav, Master Smith": [
+  {
+   "a": "Warren Mahy",
+   "art": "https://cards.scryfall.io/art_crop/front/d/4/d44478d2-20eb-4dba-8008-687a293444f5.jpg?1783916858",
+   "cn": "57",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/4/d44478d2-20eb-4dba-8008-687a293444f5.jpg?1783916858",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Scott Murphy",
+   "art": "https://cards.scryfall.io/art_crop/front/9/c/9c19b9b0-4024-4f01-9a89-72c0d4e3592b.jpg?1783916831",
+   "cn": "122",
+   "fx": [
+    "etched"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/c/9c19b9b0-4024-4f01-9a89-72c0d4e3592b.jpg?1783916831",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
+ "Rogue's Passage": [
+  {
+   "a": "Christine Choi",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2a424ea-ef32-4ac5-8f8c-3ea1839f01d4.jpg?1783909045",
+   "cn": "264",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2a424ea-ef32-4ac5-8f8c-3ea1839f01d4.jpg?1783909045",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "David Frasheski",
+   "art": "https://cards.scryfall.io/art_crop/front/4/4/4493b62b-f354-47ff-9dcf-cc6e29de77c6.jpg?1785497634",
+   "cn": "212",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/4/4493b62b-f354-47ff-9dcf-cc6e29de77c6.jpg?1785497634",
+   "r": "U",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Seedglaive Mentor": [],
  "Self-Destruct": [],
  "Shadowspear": [
@@ -707,7 +889,35 @@
  ],
  "Shelter": [],
  "Sheltering Light": [],
+ "Showdown of the Skalds": [],
  "Sigarda's Aid": [],
+ "Sokenzan, Crucible of Defiance": [
+  {
+   "a": "Lucas Staniec",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aa548dcd-c1dd-492d-a69f-c65dfeef0633.jpg?1783923814",
+   "cn": "276",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aa548dcd-c1dd-492d-a69f-c65dfeef0633.jpg?1783923814",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Nao Miyoshi",
+   "art": "https://cards.scryfall.io/art_crop/front/3/2/327333cc-2cc9-44ba-a0e6-d01329c416a3.jpg?1783923760",
+   "cn": "415",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/2/327333cc-2cc9-44ba-a0e6-d01329c416a3.jpg?1783923760",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
+ "Spectacular Tactics": [],
  "Speed, Young Avenger": [],
  "Speedball, New Warrior": [],
  "Spinerock Tyrant": [],
@@ -780,6 +990,7 @@
    "y": "2024"
   }
  ],
+ "Swift Kick": [],
  "Swiftblade Vindicator": [],
  "Swiftfoot Boots": [
   {
@@ -930,11 +1141,14 @@
  ],
  "Team Avatar": [],
  "Team Tactics": [],
+ "Temur Battle Rage": [],
+ "Tenth District Legionnaire": [],
  "The Fire Crystal": [],
  "The Last Agni Kai": [],
  "The Sentry, Golden Guardian": [],
  "Titan's Strength": [],
  "Tome of Legends": [],
+ "Two-Handed Axe": [],
  "Unexpected Windfall": [
   {
    "a": "Alayna Danner",
@@ -1021,5 +1235,44 @@
    "y": "2025"
   }
  ],
- "War Machine, Legacy of Iron": []
+ "War Machine, Legacy of Iron": [],
+ "Zada, Hedron Grinder": [
+  {
+   "a": "Dominik Mayer",
+   "art": "https://cards.scryfall.io/art_crop/front/8/9/8994524c-b9ff-4ca0-9ff0-2d074911bfe6.jpg?1783916869",
+   "cn": "25",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/9/8994524c-b9ff-4ca0-9ff0-2d074911bfe6.jpg?1783916869",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Chris Rallis",
+   "art": "https://cards.scryfall.io/art_crop/front/a/9/a9673216-eddc-4efd-81d7-d593156ed41b.jpg?1783916847",
+   "cn": "90",
+   "fx": [
+    "etched"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/9/a9673216-eddc-4efd-81d7-d593156ed41b.jpg?1783916847",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Takotto",
+   "art": "https://cards.scryfall.io/art_crop/front/d/5/d582b933-adbe-4706-a3c9-c19b6c52fd72.jpg?1783908847",
+   "cn": "76",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/5/d582b933-adbe-4706-a3c9-c19b6c52fd72.jpg?1783908847",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ]
 }

@@ -42,3 +42,4 @@ tools/mods/*/tsconfig.json
 .cycle/board-rocco/img/
 .cycle/board-fury/img/
 .cycle/board-graha/img/
+.cycle/board-feather/img/
