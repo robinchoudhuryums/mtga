@@ -6810,3 +6810,206 @@ Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berse
 Boiling Rock Rioter,Creature — Human Rogue Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
 Tap an untapped Ally you control: Exile target card from a graveyard.
 Whenever this creature attacks, you may cast an Ally spell from among cards you own exiled with this creature.",B,Human; Rogue; Ally; graveyard; firebending; bending,TLA,87,1
+"Rocco, Street Chef",Legendary Creature — Elf Druid,"At the beginning of your end step, each player exiles the top card of their library. Until your next end step, each player may play the card they exiled this way.
+Whenever a player plays a land from exile or casts a spell from exile, you put a +1/+1 counter on target creature and create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W/R/G,Elf; Druid; counters; lifegain; tokens; food,MAT,44,1
+"Sam, Loyal Attendant",Legendary Creature — Halfling Peasant,"Partner with Frodo, Adventurous Hobbit (When this creature enters, target player may put Frodo into their hand from their library, then shuffle.)
+At the beginning of combat on your turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Activated abilities of Foods you control cost {1} less to activate.",W/G,Halfling; Peasant; food; lifegain; cost-reduction; tokens; etb; partner with; partner,LTC,7,1
+Peregrin Took,Legendary Creature — Halfling Citizen,"If one or more tokens would be created under your control, those tokens plus an additional Food token are created instead. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Sacrifice three Foods: Draw a card.",G,Halfling; Citizen; lifegain; card draw; sacrifice; tokens; food,LTR,181,1
+"Tippy-Toe, Terrific Partner",Legendary Creature — Squirrel Hero,"If you would create one or more tokens, instead create those tokens plus an additional Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+At the beginning of your end step, if you gained life this turn, draw a card.",G,Squirrel; Hero; lifegain; card draw; tokens; food,MSC,734,1
+"Pia Nalaar, Consul of Revival",Legendary Creature — Human Artificer,"Thopters you control have haste.
+Whenever you play a land from exile or cast a spell from exile, create a 1/1 colorless Thopter artifact creature token with flying.",W/R,Human; Artificer; Thopter; tokens; haste; aggro,MAT,42,1
+"Mondrak, Glory Dominus",Legendary Creature — Phyrexian Horror,"If one or more tokens would be created under your control, twice that many of those tokens are created instead.
+{1}{W/P}{W/P}, Sacrifice two other artifacts and/or creatures: Put an indestructible counter on Mondrak. ({W/P} can be paid with either {W} or 2 life.)",W,Phyrexian; Horror; counters; sacrifice; tokens,ONE,23,1
+Caretaker's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever one or more tokens you control enter, draw a card. This ability triggers only once each turn.
+{W}: Level 2
+When this Class becomes level 2, create a token that's a copy of target token you control.
+{3}{W}: Level 3
+Creature tokens you control get +2/+2.",W,Class; card draw; tokens; pump,BLB,6,1
+Bard Class,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Legendary creatures you control enter with an additional +1/+1 counter on them.
+{R}{G}: Level 2
+Legendary spells you cast cost {R}{G} less to cast. This effect reduces only the amount of colored mana you pay.
+{3}{R}{G}: Level 3
+Whenever you cast a legendary spell, exile the top two cards of your library. You may play them this turn.",R/G,Class; counters; impulse,AFR,217,1
+Samwise Gamgee,Legendary Creature — Halfling Peasant,"Whenever another nontoken creature you control enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Sacrifice three Foods: Return target historic card from your graveyard to your hand. (Artifacts, legendaries, and Sagas are historic.)",W/G,Halfling; Peasant; graveyard; lifegain; sacrifice; tokens; food,LTR,222,1
+Rosie Cotton of South Lane,Legendary Creature — Halfling Peasant,"When Rosie Cotton enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Whenever you create a token, put a +1/+1 counter on target creature you control other than Rosie Cotton.",W,Halfling; Peasant; counters; lifegain; tokens; etb; food,LTR,27,1
+Gilded Goose,Creature — Bird,"Flying
+When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{1}{G}, {T}: Create a Food token.
+{T}, Sacrifice a Food: Add one mana of any color.",G,Bird; lifegain; sacrifice; tokens; etb; food; flying; evasion,ELD,160,1
+"Bilbo, Fellow Conspirator",Legendary Creature — Halfling Citizen,"If you would create a Food token, instead create a Food token and a Treasure token.",G,Halfling; Citizen; tokens; food; treasure,HOC,4,1
+Tireless Provisioner,Creature — Elf Scout,"Landfall — Whenever a land you control enters, create a Food token or a Treasure token. (Food is an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."" Treasure is an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Elf; Scout; lifegain; tokens; landfall; food; treasure; lands,J25,728,1
+Night of the Sweets' Revenge,Enchantment,"When this enchantment enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Foods you control have ""{T}: Add {G}.""
+{5}{G}{G}, Sacrifice this enchantment: Creatures you control get +X/+X until end of turn, where X is the number of Foods you control. Activate only as a sorcery.",G,food; lifegain; sacrifice; tokens; mana; etb; pump,WOE,178,1
+Teething Wurmlet,Creature — Wurm,"This creature has deathtouch as long as you control three or more artifacts.
+Whenever an artifact you control enters, you gain 1 life. If this is the first time this ability has resolved this turn, put a +1/+1 counter on this creature.",G,Wurm; counters; lifegain; artifacts; deathtouch; combat; removal,BRO,192,1
+Lucky the Pizza Dog,Legendary Creature — Dog,"Whenever you cast a Cat, Dog, or Hero spell, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+At the beginning of each end step, if you gained life this turn, put a +1/+1 counter on Lucky.",G,Dog; counters; lifegain; tokens; food,MSC,726,1
+Giant Opportunity,Sorcery,"You may sacrifice two Foods. If you do, create a 7/7 green Giant creature token. Otherwise, create three Food tokens. (They're artifacts with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,lifegain; sacrifice; tokens; food,ELD,159,1
+The Cabbage Merchant,Legendary Creature — Human Citizen,"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Whenever a creature deals combat damage to you, sacrifice a Food token.
+Tap two untapped Foods you control: Add one mana of any color.",G,Human; Citizen; food; lifegain; sacrifice; tokens,TLE,134,1
+"Syr Ginger, the Meal Ender",Legendary Artifact Creature — Food Knight,"Syr Ginger has trample, hexproof, and haste as long as an opponent controls a planeswalker.
+Whenever another artifact you control is put into a graveyard from the battlefield, put a +1/+1 counter on Syr Ginger and scry 1.
+{2}, {T}, Sacrifice Syr Ginger: You gain life equal to its power.",Colorless,food; Knight; counters; graveyard; lifegain; sacrifice; scry; artifacts; selection; trample; evasion,WOE,252,1
+Mythweaver Poq,Legendary Creature — Cat Shaman,"Mythweaver Poq's power and toughness are each equal to the number of lands you control.
+Whenever one or more nontoken lands enter under your control, for each of them, conjure a duplicate of it onto the battlefield. This ability triggers only once each turn.",G,Cat; Shaman; conjure,YLCI,19,1
+Elanor Gardner,Legendary Creature — Halfling Scout,"When Elanor enters, create a Food token.
+At the beginning of your end step, if you sacrificed a Food this turn, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.",G,Halfling; Scout; sacrifice; tokens; ramp; etb; food,LTR,286,1
+"Bosco, Just a Bear",Legendary Creature — Bear,"When Bosco enters, create a Food token for each legendary creature you control. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}{G}, Sacrifice a Food: Put two +1/+1 counters on Bosco. He gains trample until end of turn.",G,Bear; counters; lifegain; sacrifice; tokens; etb; food; trample; evasion,TLE,132,1
+Bumi's Feast Lecture,Sorcery — Lesson,"Create a Food token. Then earthbend X, where X is twice the number of Foods you control. (A Food token is an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."" To earthbend X, target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Lesson; food; counters; lifegain; tokens; earthbend; bending,TLE,133,1
+Generous Pup,Creature — Dog,"Vigilance
+Whenever one or more +1/+1 counters are put on this creature, put a +1/+1 counter on each other creature you control. This ability triggers only once each turn.",W,Dog; counters; vigilance; combat,J25,4,1
+"Michelangelo, the Heart",Legendary Creature — Mutant Ninja Turtle,"Trample
+Raid (the Fridge) — At the beginning of your second main phase, if you attacked this turn, put a +1/+1 counter on target creature and create a Food token.
+Partner—Character select (You can have two commanders if both have this ability.)",G,Mutant; Ninja; Turtle; counters; tokens; food; partner; trample; evasion,TMC,5,1
+Evolution Sage,Creature — Elf Druid,"Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",G,Elf; Druid; landfall; proliferate; counters; lands,WAR,159,1
+Innkeeper's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.
+{G}: Level 2
+Permanents you control with counters on them have ward {1}.
+{3}{G}: Level 3
+If you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.",G,Class; counters; ward; protection,BLB,180,1
+"Jinnie Fay, Jetmir's Second",Legendary Creature — Elf Druid,"If you would create one or more tokens, you may instead create that many 2/2 green Cat creature tokens with haste or that many 3/1 green Dog creature tokens with vigilance.",W/R/G,Elf; Druid; tokens,SNC,195,1
+"Rin and Seri, Inseparable",Legendary Creature — Dog Cat,"Whenever you cast a Dog spell, create a 1/1 green Cat creature token.
+Whenever you cast a Cat spell, create a 1/1 white Dog creature token.
+{R}{G}{W}, {T}: Rin and Seri deals damage to any target equal to the number of Dogs you control. You gain life equal to the number of Cats you control.",W/R/G,Dog; Cat; lifegain; tokens; noncombat damage,M21,278,1
+"Ajani, Strength of the Pride",Legendary Planeswalker — Ajani,"+1: You gain life equal to the number of creatures you control plus the number of planeswalkers you control.
+−2: Create a 2/2 white Cat Soldier creature token named Ajani's Pridemate with ""Whenever you gain life, put a +1/+1 counter on this token.""
+0: If you have at least 15 life more than your starting life total, exile Ajani and each artifact and creature your opponents control.",W,Ajani; planeswalker; counters; lifegain; tokens,M20,2,1
+Feline Sovereign,Creature — Cat,"Other Cats you control get +1/+1 and have protection from Dogs.
+Whenever one or more Cats you control deal combat damage to a player, destroy up to one target artifact or enchantment that player controls.",G,Cat; pump,M21,180,1
+"Jetmir, Nexus of Revels",Legendary Creature — Cat Demon,"Creatures you control get +1/+0 and have vigilance as long as you control three or more creatures.
+Creatures you control also get +1/+0 and have trample as long as you control six or more creatures.
+Creatures you control also get +1/+0 and have double strike as long as you control nine or more creatures.",W/R/G,Cat; Demon; pump; trample; evasion; vigilance; combat; double strike; aggro,SNC,193,1
+"Ajani, Nacatl Pariah",Legendary Creature — Cat Warrior // Legendary Planeswalker — Ajani,"When Ajani enters, create a 2/1 white Cat Warrior creature token.
+Whenever one or more other Cats you control die, you may exile Ajani, then return him to the battlefield transformed under his owner's control. // +2: Put a +1/+1 counter on each Cat you control.
+0: Create a 2/1 white Cat Warrior creature token. When you do, if you control a red permanent other than Ajani, he deals damage equal to the number of creatures you control to any target.
+−4: Each opponent chooses an artifact, a creature, an enchantment, and a planeswalker from among the nonland permanents they control, then sacrifices the rest.",W/R,Cat; Warrior; Ajani; planeswalker; counters; sacrifice; tokens; etb; transform,MH3,237,1
+"Jiang Yanggu, Never Alone",Legendary Creature — Human Druid,"When Jiang Yanggu enters, create Mowu, a legendary 3/3 green Dog creature token.
+At the beginning of your end step, untap all tokens you control.",G,Human; Druid; tokens; etb,FRA,261,1
+Hobbit's Sting,Instant,"Hobbit's Sting deals X damage to target creature, where X is the number of creatures you control plus the number of Foods you control.",W,food; burn,LTR,20,1
+Food Coma,Enchantment,"When this enchantment enters, exile target creature an opponent controls until this enchantment leaves the battlefield. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,lifegain; tokens; removal; etb; food,WOE,308,1
+Stew the Coneys,Instant,"Target creature you control deals damage equal to its power to target creature you don't control. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,lifegain; tokens; food; removal,LTR,189,1
+Wicked Wolf,Creature — Wolf,"When this creature enters, it fights up to one target creature you don't control.
+Sacrifice a Food: Put a +1/+1 counter on this creature. It gains indestructible until end of turn. Tap it.",G,Wolf; counters; sacrifice; etb; food; fight; removal; combat; indestructible; resilience,ELD,181,1
+Dragonspark Reactor,Artifact,"Whenever this artifact or another artifact you control enters, put a charge counter on this artifact.
+{4}, Sacrifice this artifact: It deals damage equal to the number of charge counters on it to target player and that much damage to up to one target creature.",R,counters; sacrifice; artifacts,NEO,137,1
+The Shire,Legendary Land,"The Shire enters tapped unless you control a legendary creature.
+{T}: Add {G}.
+{1}{G}, {T}, Tap an untapped creature you control: Create a Food token.",G,tokens; mana; food,LTR,260,1
+Cabaretti Courtyard,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,249,1
+Sunbaked Canyon,Land,"{T}, Pay 1 life: Add {R} or {W}.
+{1}, {T}, Sacrifice this land: Draw a card.",W/R,pay life; card draw; sacrifice,TLE,58,1
+Inspiring Vantage,Land,"This land enters tapped unless you control two or fewer other lands.
+{T}: Add {R} or {W}.",W/R,mana,OTJ,269,1
+Branchloft Pathway,Land // Land,{T}: Add {G}. // {T}: Add {W}.,W/G,mana,ZNR,258,1
+Prismatic Vista,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield, then shuffle.",Colorless,pay life; sacrifice; ramp,SPG,38,1
+Mana Confluence,Land,"{T}, Pay 1 life: Add one mana of any color.",Colorless,pay life,EOS,25,1
+Karn's Bastion,Land,"{T}: Add {C}.
+{4}, {T}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",Colorless,mana; proliferate; counters,WAR,248,1
+"Silver Surfer, Cosmic Voyager",Legendary Creature — Alien Hero,"Flash
+Flying
+When Silver Surfer enters, exile any number of other target permanents you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step. If a land enters this way, it enters tapped.",U,Alien; Hero; etb; blink; flying; evasion; flash; tempo,MSC,639,1
+"Thassa, Deep-Dwelling",Legendary Enchantment Creature — God,"Indestructible
+As long as your devotion to blue is less than five, Thassa isn't a creature.
+At the beginning of your end step, exile up to one other target creature you control, then return that card to the battlefield under your control.
+{3}{U}: Tap another target creature.",U,God; blink; indestructible; resilience,THB,71,1
+Soulherder,Creature — Spirit,"Whenever a creature is exiled from the battlefield, put a +1/+1 counter on this creature.
+At the beginning of your end step, you may exile another target creature you control, then return that card to the battlefield under its owner's control.",W/U,Spirit; counters; blink,J21,718,1
+"Oji, the Exquisite Blade",Legendary Creature — Human Monk,"When Oji enters, you gain 2 life and scry 2.
+Whenever you cast your second spell each turn, exile up to one target creature you control, then return it to the battlefield under its owner's control.",W/U,Human; Monk; lifegain; etb; scry; blink; selection,HBG,246,1
+Flickering Hound,Creature — Dog,"Whenever you cast a creature spell, exile up to one other target creature you control, then return that card to the battlefield under its owner's control.",W,Dog; blink,FRA,7,1
+Panharmonicon,Artifact,"If an artifact or creature entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",Colorless,,KLR,258,1
+"Sigarda, Font of Blessings",Legendary Creature — Angel,"Flying
+Other permanents you control have hexproof.
+You may look at the top card of your library any time.
+You may cast Angel spells and Human spells from the top of your library.",W/G,Angel; card advantage; selection; flying; evasion; hexproof; protection,MAT,47,1
+Ephemerate,Instant,"Exile target creature you control, then return it to the battlefield under its owner's control.
+Rebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)",W,blink; rebound,MAR,44,1
+Serra Paragon,Creature — Angel,"Flying
+Once during each of your turns, you may play a land from your graveyard or cast a permanent spell with mana value 3 or less from your graveyard. If you do, it gains ""When this permanent is put into a graveyard from the battlefield, exile it and you gain 2 life.""",W,Angel; graveyard; lifegain; flying; evasion,DMU,32,1
+Thragtusk,Creature — Beast,"When this creature enters, you gain 5 life.
+When this creature leaves the battlefield, create a 3/3 green Beast creature token.",G,Beast; lifegain; tokens; etb,JMP,436,1
+"Genku, Future Shaper",Legendary Creature — Moonfolk Wizard,"Whenever another nontoken permanent you control leaves the battlefield, choose one that hasn't been chosen this turn. Create a creature token with those characteristics.
+• 2/2 white Fox with vigilance.
+• 1/2 blue Moonfolk with flying.
+• 1/1 black Rat with lifelink.
+{3}{W}{U}: Put a +1/+1 counter on each creature you control.",W/U,Moonfolk; Wizard; counters; lifegain; tokens,MH3,186,1
+"Captain Marvel, Shooting Star",Legendary Creature — Human Kree Hero,"Flying
+Whenever Captain Marvel enters or attacks, exile up to one target creature. That creature's controller gains life equal to its power.
+Whenever a creature other than Captain Marvel is exiled from the battlefield, you gain life equal to its power.",W,Human; Kree; Hero; lifegain; flying; evasion,MSC,589,1
+Knight of Autumn,Creature — Dryad Knight,"When this creature enters, choose one —
+• Put two +1/+1 counters on this creature.
+• Destroy target artifact or enchantment.
+• You gain 4 life.",W/G,Dryad; Knight; counters; lifegain; removal; etb,GRN,183,1
+Titan of Industry,Creature — Elemental,"Reach, trample
+When this creature enters, choose two —
+• Destroy target artifact or enchantment.
+• Target player gains 5 life.
+• Create a 4/4 green Rhino Warrior creature token.
+• Put a shield counter on a creature you control.",G,Elemental; counters; tokens; removal; etb; reach; defense; trample; evasion,SNC,159,1
+"Ob Nixilis, the Ascended",Legendary Creature — Angel,"Flying
+When Ob Nixilis enters, destroy all tapped creatures your opponents control. You gain 1 life for each creature destroyed this way.
+At the beginning of each end step, if you gained life this turn, create a 4/4 white Angel creature token with flying.",W,Angel; lifegain; tokens; etb; flying; evasion,FRC,5,1
+"Arwen, Weaver of Hope",Legendary Creature — Elf Noble,Each other creature you control enters with a number of additional +1/+1 counters on it equal to Arwen's toughness.,G,Elf; Noble; counters,LTC,35,1
+Huatli's Raptor,Creature — Dinosaur,"Vigilance
+When this creature enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/G,Dinosaur; etb; vigilance; combat; proliferate; counters,WAR,200,1
+"Tidus, Yuna's Guardian",Legendary Creature — Human Warrior,"At the beginning of combat on your turn, you may move a counter from target creature you control onto a second target creature you control.
+Cheer — Whenever one or more creatures you control with counters on them deal combat damage to a player, you may draw a card and proliferate. Do this only once each turn.",W/U/G,Human; Warrior; card draw; proliferate; counters,FIC,5,1
+"Arwen, Mortal Queen",Legendary Creature — Elf Noble,"Arwen enters with an indestructible counter on her.
+{1}, Remove an indestructible counter from Arwen: Another target creature gains indestructible until end of turn. Put a +1/+1 counter and a lifelink counter on that creature and a +1/+1 counter and a lifelink counter on Arwen.",W/G,Elf; Noble; counters; lifegain; indestructible; resilience,LTR,193,1
+"Aerith, Last Ancient",Legendary Creature — Human Cleric Druid,"Lifelink
+Raise — At the beginning of your end step, if you gained life this turn, return target creature card from your graveyard to your hand. If you gained 7 or more life this turn, return that card to the battlefield instead.",W/G,Human; Cleric; Druid; graveyard; lifegain; lifelink,FIC,76,1
+"Trelasarra, Moon Dancer",Legendary Creature — Elf Cleric,"Whenever you gain life, put a +1/+1 counter on Trelasarra and scry 1. (Look at the top card of your library. You may put that card on the bottom.)",W/G,Elf; Cleric; counters; lifegain; scry; selection,AFR,236,1
+Righteous Valkyrie,Creature — Angel Cleric,"Flying
+Whenever another Angel or Cleric you control enters, you gain life equal to that creature's toughness.
+As long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.",W,Angel; Cleric; lifegain; pump; flying; evasion,KHM,24,1
+Archangel of Thune,Creature — Angel,"Flying
+Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+Whenever you gain life, put a +1/+1 counter on each creature you control.",W,Angel; counters; lifegain; flying; evasion; lifelink,MAR,41,1
+Soul Warden,Creature — Human Cleric,"Whenever another creature enters, you gain 1 life.",W,Human; Cleric; lifegain,SPG,65,1
+"Shanna, Purifying Blade",Legendary Creature — Human Warrior,"Lifelink
+At the beginning of your end step, you may pay {X}. If you do, draw X cards. X can't be greater than the amount of life you gained this turn.",W/U/G,Human; Warrior; lifegain; card draw; lifelink,DMU,218,1
+Gold-Forged Thopteryx,Artifact Creature — Dinosaur Thopter,"Flying, lifelink
+Each legendary permanent you control has ward {2}. (Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",W/U,Dinosaur; Thopter; lifegain; flying; evasion; lifelink; ward; protection,MAT,31,1
+"Lathiel, the Bounteous Dawn",Legendary Creature — Unicorn,"Lifelink
+At the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.",W/G,Unicorn; counters; lifegain; lifelink,MUL,50,1
+Felidar Sovereign,Creature — Cat Beast,"Vigilance (Attacking doesn't cause this creature to tap.)
+Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+At the beginning of your upkeep, if you have 40 or more life, you win the game.",W,Cat; Beast; lifegain; lifelink; vigilance; combat,J25,198,1
+"Valgavoth, the Lifeline",Legendary Creature — Insect Angel,"Flying
+Whenever you gain life, creature cards in your hand and graveyard perpetually get +1/+1.
+As long as you've gained life this turn, you may cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",W,Insect; Angel; counters; graveyard; lifegain; pump; flying; evasion,YFRA,3,1
+The Book of Exalted Deeds,Legendary Artifact — Book,"At the beginning of your end step, if you gained 3 or more life this turn, create a 3/3 white Angel creature token with flying.
+{W}{W}{W}, {T}, Exile The Book of Exalted Deeds: Put an enlightened counter on target Angel. It gains ""You can't lose the game and your opponents can't win the game."" Activate only as a sorcery.",W,Book; counters; lifegain; tokens,AFR,4,1
+Alert Heedbonder,Creature — Human Scout,"Vigilance
+At the beginning of your end step, you gain 1 life for each creature you control with vigilance.",W/G,Human; Scout; lifegain; vigilance; combat,IKO,218,1
+Dawn of Hope,Enchantment,"Whenever you gain life, you may pay {2}. If you do, draw a card.
+{3}{W}: Create a 1/1 white Soldier creature token with lifelink.",W,lifegain; card draw; tokens,GRN,8,1
+"Huatli, Radiant Champion",Legendary Planeswalker — Huatli,"+1: Put a loyalty counter on Huatli for each creature you control.
+−1: Target creature gets +X/+X until end of turn, where X is the number of creatures you control.
+−8: You get an emblem with ""Whenever a creature you control enters, you may draw a card.""",W/G,Huatli; planeswalker; counters; card draw; pump,RIX,159,1
+Elspeth Resplendent,Legendary Planeswalker — Elspeth,"+1: Choose up to one target creature. Put a +1/+1 counter and a counter from among flying, first strike, lifelink, or vigilance on it.
+−3: Look at the top seven cards of your library. You may put a permanent card with mana value 3 or less from among them onto the battlefield with a shield counter on it. Put the rest on the bottom of your library in a random order.
+−7: Create five 3/3 white Angel creature tokens with flying.",W,Elspeth; planeswalker; counters; lifegain; tokens; selection,SNC,11,1
+"Ajani, the Greathearted",Legendary Planeswalker — Ajani,"Creatures you control have vigilance.
++1: You gain 3 life.
+−2: Put a +1/+1 counter on each creature you control and a loyalty counter on each other planeswalker you control.",W/G,Ajani; planeswalker; counters; lifegain; vigilance; combat,WAR,184,1
+March of Otherworldly Light,Instant,"As an additional cost to cast this spell, you may exile any number of white cards from your hand. This spell costs {2} less to cast for each card exiled this way.
+Exile target artifact, creature, or enchantment with mana value X or less.",W,cost-reduction; removal,NEO,28,1
+Detention Sphere,Enchantment,"When this enchantment enters, you may exile target nonland permanent not named Detention Sphere and all other permanents with the same name as that permanent.
+When this enchantment leaves the battlefield, return the exiled cards to the battlefield under their owner's control.",W/U,removal; etb; blink,OTP,43,1
+Collective Effort,Sorcery,"Escalate—Tap an untapped creature you control. (Pay this cost for each mode chosen beyond the first.)
+Choose one or more —
+• Destroy target creature with power 4 or greater.
+• Destroy target enchantment.
+• Put a +1/+1 counter on each creature target player controls.",W,counters; removal; escalate,SIR,19,1
