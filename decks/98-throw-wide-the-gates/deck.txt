@@ -12,7 +12,7 @@
 #: archetype: Serra Redeemer and Barrensteppe Siege grow them, Quintorius proliferates, Captain America, Super-Soldier
 #: archetype: gives them hexproof, Ephara draws on both upkeeps. Life is the fuel: Y'shtola drains on every MV 3+
 #: archetype: spell and draws off the commander's own payment, Sorin extorts, Doctor Strange doubles every gain, and
-#: archetype: Sphinx's Revelation refills it. The second engine is Auras: 14, on the Hero tokens or, with Eriette, the Beguiler, stealing, with Sram,
+#: archetype: Sphinx's Revelation refills it. The second engine is Auras: 13, on the Hero tokens or, with Eriette, the Beguiler, stealing, with Sram,
 #: archetype: Pearl-Ear, Kor Spiritdancer and Killian, Decisive Mentor drawing off them, Light-Paws tutoring, Eriette draining per Aura. DISTINCT from deck 91 (Esper Brawl, Hashaton reanimating discarded creatures as
 #: archetype: Zombie tokens) and deck 43 (Standard Esper): no graveyard plan, the engine is noncreature casting.
 #: protect: G'raha Tia, Scion Reborn; Leyline of Anticipation; Y'shtola, Night's Blessed; Ephara, God of the Polis; Serra Redeemer; Skyblade's Boon; Biorganic Carapace; Metropolis Angel
@@ -54,6 +54,8 @@
 #: notes: Grace +Killian, Ink Duelist (stacks with Danitha Capashen), −Coerced to Kill +The Circle of Loyalty (anthem
 #: notes: and a Knight per legendary spell, doubled by Mondrak). Kept on the owner's call: Danitha Capashen, Baron,
 #: notes: Spectral Steel; kept on Claude's: Leyline of Anticipation, Sorin, Sphinx's Revelation, Sram, Entity Tracker.
+#: notes: 2026-11-10: −Sentinel's Mark +Drana and Linvala (a flier that shuts off and borrows their creatures' activated
+#: notes: abilities; owner's pick over Teferi, Who Slows the Sunset and Baron).
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -79,6 +81,7 @@
 1 Ichormoon Gauntlet (ONE) 56
 1 Eriette, the Beguiler (OTJ) 202
 1 Killian, Ink Duelist (STX) 197
+1 Drana and Linvala (MOM) 222
 
 # Interaction — instants first
 1 Anguished Unmaking (OTP) 35
@@ -117,7 +120,6 @@
 
 # Auras and Equipment
 1 Skyblade's Boon (J21) 136
-1 Sentinel's Mark (RNA) 20
 1 Gift of Orzhova (PIO) 307
 1 Angelic Destiny (FDN) 565
 1 Light of Promise (M21) 25
