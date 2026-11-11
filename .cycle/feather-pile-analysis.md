@@ -97,6 +97,13 @@ protection 15, board power 76, avg MV 3.03): +Raiyuu −Seedglaive Mentor, +Grea
 +Sif's Spearmaster −Champion of the Flame; after the 11-13 refresh: +Kirk −Spinerock Tyrant,
 +Picard −Boros Charm (Picard ◇; the weakest of the group).
 
+Owner's board round 2 (2026-11-11): cuts Chandra's Ignition, Grand Abolisher, Maul of the Skyclaves,
+Giver of Runes, Delney (plus Red Hulk, Boros Reckoner, Monastery Mentor, Titan's Strength, matching
+the plan); Fiery Confluence kept. Paired: +Response // Resurgence −Chandra's Ignition, +Mishra's
+Command −Grand Abolisher, +Éowyn −Delney, +Jor Kadeen −Giver of Runes, +Chainsaw −Maul. Full set
+measured: floor A, interaction 16, card advantage 8, protection 15, board power 76, avg MV 3.02.
+Combadge (step 2) loses Delney as its cut; Titan's Strength goes to Worf as planned.
+
 Team Tactics re-read: its trample half was not weighed the first time. Still backup (★): it is
 a second Temur Battle Rage under Feather, and both halves are covered.
 
