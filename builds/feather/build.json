@@ -1232,8 +1232,8 @@
    }
   },
   "Team Tactics": {
-   "group": "Weak",
-   "text": "Cut this week: double strike does not stack with Embercleave, Reyav, Temur Battle Rage, Boros Charm and Swiftblade (rule 8).",
+   "group": "Real",
+   "text": "RE-READ 2026-11-11: double strike, plus trample if you tap creatures with total power 1+ (teamwork). It targets a creature, so Feather returns it every turn: a second Temur Battle Rage. Both halves are covered (Temur Battle Rage, Embercleave, Reyav for double strike; Shadowspear, Kaldra, Swiftblade, Embercleave for trample), so it is backup rather than a slot-earner.",
    "graded_at": {
     "56-historic-brawl": "dc436c9202b5"
    }
@@ -2441,7 +2441,7 @@
   },
   "Team Tactics": {
    "F": {
-    "m": "✗",
+    "m": "★",
     "graded_at": "dc436c9202b5"
    }
   },

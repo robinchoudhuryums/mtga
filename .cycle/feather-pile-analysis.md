@@ -84,12 +84,21 @@ Tier 1 package (measured: floor B → A, interaction 12 → 13, card advantage 6
 |---|---|---|
 | Seize the Day | Red Hulk | 6-mana body; an extra combat every turn beats a sixth big body |
 | Raph & Leo (owned) | Boros Reckoner | the Self-Destruct double is a narrow line |
-| Aurelia, the Warleader (owned) | Akroma's Will | both 6-ish finishers; Aurelia repeats |
+| Aurelia, the Warleader (owned) | Monastery Mentor | Akroma's Will kept (owner); Monks are a go-wide side line |
 | Bre of Clan Stoutarm (owned) | Sigarda's Aid | low-power enabler; Bre is card advantage |
 | Furious Rise | Defiant Strike | a card every turn vs. one cantrip |
 | Bionic Blow | Lightning Helix | a returned, scalable bite vs. a one-shot 3 |
 | Thorin, Mountain-king (owned) | Restoration Magic | protection is the deepest axis (17) |
 | Legion Leadership | a Mountain | a land drop that is also a returned power doubler |
+
+Package 2 (owner's list; measured with tier 1: floor A, interaction 13, card advantage 7,
+protection 15, board power 76, avg MV 3.03): +Raiyuu −Seedglaive Mentor, +Great Train Heist
+−Enter the Avatar State, +Response // Resurgence −Fiery Confluence, +Lightning −Agrus Kos,
++Sif's Spearmaster −Champion of the Flame; after the 11-13 refresh: +Kirk −Spinerock Tyrant,
++Picard −Boros Charm (Picard ◇; the weakest of the group).
+
+Team Tactics re-read: its trample half was not weighed the first time. Still backup (★): it is
+a second Temur Battle Rage under Feather, and both halves are covered.
 
 Tier 2 options (◇ cut candidates: Seedglaive Mentor, Spinerock Tyrant, Monastery Mentor,
 Enter the Avatar State, Fiery Confluence, Champion of the Flame): Éowyn, Mishra's Command,
