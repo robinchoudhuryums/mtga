@@ -137,3 +137,18 @@ each pair measured together (floor A, interaction 16 throughout):
 | La'An (step 2) | Mother of Runes (if not used above) | Crystal Barricade; a tapland |
 
 Tapland option: lands already 36 incl. the MDFC, so two land cuts leave 34 + MDFC — not advised.
+
+## 7. Owner's board notes, round 3 (2026-11-11) — re-grades
+
+The owner's carrier argument (a card is better when IT is the built-up body) moved ten verdicts:
+Odric ★→★★, Krenko ◇→★★, Two-Handed Axe ★→★★ (extra combats double the doubled power),
+Erratic Cyclops ◇→★, Loxodon Lifechanter △→★ (+25/+25 at 25 life), Voldaren Thrillseeker ◇→★
+(backup grants the sac-for-power ability to the BODY), Phalanx Leader ◇→★, Balduvian Berserker
+△→◇, Dragonborn Immolator △→◇ (notes only its OWN power), Thunderous Orator △→◇. Held: Fling ◇
+(Self-Destruct returns, Fling doesn't), Esper Sentinel ◇ (only permanent power taxes), Concerted
+Effort ◇ (Odric does it better), Forgehammer △ (needs other things dying), Teyo ◇ (lock-vs-track
+question untested in Arena). Proposed: +Two-Handed Axe −Titan's Strength (owner's marks), which
+moves Worf's step-2 cut elsewhere.
+
+Error added: **the carrier frame.** A body graded in isolation ("a 1/2 for 3") misses that its
+text scales with whatever the deck builds onto it. Grade a creature as the carrier too.

@@ -1148,10 +1148,10 @@
    }
   },
   "Phalanx Leader": {
-   "group": "Situational",
-   "text": "CRAFT (U). Heroic: a +1/+1 counter on each creature you control per targeting spell; the deck is not wide enough to pay it off.",
+   "group": "Real",
+   "text": "CRAFT (U). Heroic: a +1/+1 counter on each creature you control per spell that targets it; spells that only need 'a creature' (Seize the Day's untap) can go to it, Feather returns them, so the team grows every turn. Re-graded 2026-11-11 on the owner's mark.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Integrity // Intervention": {
@@ -1267,10 +1267,10 @@
    }
   },
   "Dragonborn Immolator": {
-   "group": "Weak",
-   "text": "Firebreathing 2/4 with a perpetual boon on death; nothing for one big body.",
+   "group": "Situational",
+   "text": "Its boon notes IMMOLATOR'S OWN power on death, so it only carries power on if it is the built-up body; then Self-Destruct or Fling on it gives the next creature spell (Feather recast included) a perpetual +X/+0. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Zarda, the Power Princess": {
@@ -1386,10 +1386,10 @@
    }
   },
   "Odric, Lunarch Marshal": {
-   "group": "Real",
-   "text": "Shares every keyword your creatures have with the team each combat: the body's flying, double strike, lifelink spread out. A go-wide card, which is not this deck's lean (rule 2).",
+   "group": "Strong",
+   "text": "At EVERY combat the team gains each keyword any of your creatures has: Boots' hexproof, Kaldra's indestructible, Embercleave's double strike and trample, across 28 creatures, re-checked each extra combat. The keywords leave with their source. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Cacophony Scamp": {
@@ -1407,10 +1407,10 @@
    }
   },
   "Thunderous Orator": {
-   "group": "Weak",
-   "text": "Copies keywords onto itself when attacking; a small body.",
+   "group": "Situational",
+   "text": "Copies the big body's keywords (not its power) when it attacks: a cheap second attacker, a 2/2 double-strike flier hits for 4. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Esper Sentinel": {
@@ -1449,10 +1449,10 @@
    }
   },
   "Two-Handed Axe // Sweeping Cleave": {
-   "group": "Real",
-   "text": "OWNED. Bench: Equipment that doubles power on attack, or a double-strike instant Feather can return; double strike is already well covered.",
+   "group": "Strong",
+   "text": "OWNED. Doubles power on EACH attack, so with the extra-combat package the second combat doubles the doubled power; Sweeping Cleave targets your creature (Feather can return the card). Re-graded 2026-11-11: the extra combats changed it.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Concerted Effort": {
@@ -1505,10 +1505,10 @@
    }
   },
   "Loxodon Lifechanter": {
-   "group": "Weak",
-   "text": "6-mana lifegain body; off plan.",
+   "group": "Real",
+   "text": "{5}{W}: +X/+X where X is your life total, at instant speed: +25/+25 at Brawl's 25 life, more with lifelink and Bre. A one-activation kill with trample or flying; 12 mana over two turns is the cost (rule 6). Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Chainsaw": {
@@ -1554,10 +1554,10 @@
    }
   },
   "Erratic Cyclops": {
-   "group": "Situational",
-   "text": "0/8 trampler: +MV power per instant or sorcery. Feather's recasts feed it, but it is a second body plan.",
+   "group": "Real",
+   "text": "0/8 trampler: +MV power per instant/sorcery cast; 19 here and Feather returns the targeting ones, so it grows every turn with no equipment, and 8 toughness survives a Self-Destruct of up to 7. Teyo's +1 makes 8 its base. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Overwhelming Victory": {
@@ -1750,17 +1750,17 @@
    }
   },
   "Balduvian Berserker": {
-   "group": "Weak",
-   "text": "Enlist beater.",
+   "group": "Situational",
+   "text": "Enlist taps the big body so Berserker attacks INSTEAD carrying its power (not its Swords, double strike or evasion); if blocked and killed, that power hits any target. A way past deathtouch/chump boards. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Krenko, Tin Street Kingpin": {
-   "group": "Situational",
-   "text": "Goblin-token engine; go-wide.",
+   "group": "Strong",
+   "text": "As the carrier: each attack adds a counter and Goblins equal to its power (equipment counts), and every extra combat (Seize the Day, Raph & Leo, Aurelia) makes another wave for Team Avatar and Odric. A 1/2 for 3 until equipped. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Kazuul's Fury // Kazuul's Cliffs": {
@@ -1785,10 +1785,10 @@
    }
   },
   "Voldaren Thrillseeker": {
-   "group": "Situational",
-   "text": "Backup 2 counters on the body, then flings itself for its power. A modest pump.",
+   "group": "Real",
+   "text": "Backup 2 puts two PERMANENT counters on the big body and gives it 'sacrifice: damage equal to its power to any target' for the turn; Thrillseeker keeps that ability after. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Combustion Man": {
@@ -2452,8 +2452,8 @@
   },
   "Phalanx Leader": {
    "F": {
-    "m": "◇",
-    "graded_at": "c0bc1b4b7c51"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Integrity // Intervention": {
@@ -2554,8 +2554,8 @@
   },
   "Dragonborn Immolator": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "◇",
+    "graded_at": "fd893e40a662"
    }
   },
   "Zarda, the Power Princess": {
@@ -2656,8 +2656,8 @@
   },
   "Odric, Lunarch Marshal": {
    "F": {
-    "m": "★",
-    "graded_at": "dc436c9202b5"
+    "m": "★★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Cacophony Scamp": {
@@ -2674,8 +2674,8 @@
   },
   "Thunderous Orator": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "◇",
+    "graded_at": "fd893e40a662"
    }
   },
   "Esper Sentinel": {
@@ -2710,8 +2710,8 @@
   },
   "Two-Handed Axe // Sweeping Cleave": {
    "F": {
-    "m": "★",
-    "graded_at": "dc436c9202b5"
+    "m": "★★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Concerted Effort": {
@@ -2758,8 +2758,8 @@
   },
   "Loxodon Lifechanter": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Chainsaw": {
@@ -2800,8 +2800,8 @@
   },
   "Erratic Cyclops": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Overwhelming Victory": {
@@ -2968,14 +2968,14 @@
   },
   "Balduvian Berserker": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "◇",
+    "graded_at": "fd893e40a662"
    }
   },
   "Krenko, Tin Street Kingpin": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Kazuul's Fury // Kazuul's Cliffs": {
@@ -2998,8 +2998,8 @@
   },
   "Voldaren Thrillseeker": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Combustion Man": {
