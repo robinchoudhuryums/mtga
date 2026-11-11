@@ -152,3 +152,17 @@ moves Worf's step-2 cut elsewhere.
 
 Error added: **the carrier frame.** A body graded in isolation ("a 1/2 for 3") misses that its
 text scales with whatever the deck builds onto it. Grade a creature as the carrier too.
+
+## 8. Carrier pass over the whole bench (2026-11-11)
+
+Three lenses applied to every card not in the deck: (a) the CARRIER frame — text that scales with
+the card's own power/toughness is graded as if it is the built-up body; (b) DEATH VALUE — a body
+whose death deals its power (Berserker, Heartfire Hero) or banks it (Immolator) doubles with
+Self-Destruct / Fling / Kazuul's Fury; (c) TEYO LOCK (owner's read, untested in Arena): +1 locks
+toughness as base power, so pump toughness first. Moves: Teyo ◇→★, Erratic Cyclops ★→★★,
+Combustion Man ★→★★, Esper Sentinel / Dragonborn Immolator / Balduvian Berserker / Fling ◇→★,
+Kazuul's Fury, Guardian Scalelord, Regal Bunnicorn, Orcish Siegemaster, Cosmic Sovereign,
+Molten-Core Maestro, Firebending Student ◇→★; Thunderbond Vanguard and Devilish Valet △→◇ (Krenko
+combos). Corrected: Desert Were-Worm's own power is low (~10 Mountain-typed lands of 36, 2-3 in play
+mid-game) — still ★★ because the carrier alone meets its 12-power extra-combat trigger; Sardian
+Cliffstomper stays △ for the same Mountain count.

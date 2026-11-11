@@ -1267,8 +1267,8 @@
    }
   },
   "Dragonborn Immolator": {
-   "group": "Situational",
-   "text": "Its boon notes IMMOLATOR'S OWN power on death, so it only carries power on if it is the built-up body; then Self-Destruct or Fling on it gives the next creature spell (Feather recast included) a perpetual +X/+0. Re-graded 2026-11-11 on the owner's note.",
+   "group": "Real",
+   "text": "CARRIER INSURANCE: if it is the built-up body and dies (removal, Fling, Self-Destruct), its full power goes perpetually onto the next creature spell, Feather's recast included, so removal on the body no longer resets the game. Self-Destruct on it is X damage plus +X perpetual. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
     "56-historic-brawl": "fd893e40a662"
    }
@@ -1288,17 +1288,17 @@
    }
   },
   "Firebending Student": {
-   "group": "Situational",
-   "text": "OWNED. Prowess plus attack mana; a small body, not the one you build.",
+   "group": "Real",
+   "text": "OWNED. Prowess grows it on every Feather spell, and firebending adds R equal to its power on attack: as the carrier, mana for Lunar Frenzy, Response or Temur Battle Rage mid-combat. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Guardian Scalelord": {
-   "group": "Situational",
-   "text": "5-mana flier: backup counter, and attacks return a permanent card with MV up to its power from the graveyard. Value, but the curve is heavy (rule 6).",
+   "group": "Real",
+   "text": "Backup gives the BIG BODY 'when it attacks, return a nonland permanent card with MV up to its power from your graveyard' for the turn, and every extra combat is another return; Scalelord keeps it after as a 3/4 flier. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Hamletback Goliath": {
@@ -1316,10 +1316,10 @@
    }
   },
   "Cosmic Sovereign": {
-   "group": "Situational",
-   "text": "Alchemy 5-mana hasty flier with firebreathing that conjures a hasty creature each combat. Fun, but a second body plan.",
+   "group": "Real",
+   "text": "Alchemy 5-mana hasty flier. As the CARRIER it conjures a random hasty creature with MV equal to its power at the start of combat on your turn, so at 8 power a free 8-drop each combat. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Thorin, Mountain-king": {
@@ -1337,10 +1337,10 @@
    }
   },
   "Orcish Siegemaster": {
-   "group": "Situational",
-   "text": "0/5 that attacks as your greatest power; a second big attacker, no engine.",
+   "group": "Real",
+   "text": "0/5 trample that attacks for the carrier's power as well (+X where X is your greatest power), doubling the damage of one big body; gives Krenko's Goblins trample; base 5 with Teyo. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Swords to Plowshares": {
@@ -1414,10 +1414,10 @@
    }
   },
   "Esper Sentinel": {
-   "group": "Situational",
-   "text": "Draws when an opponent casts their first noncreature spell unless they pay; a 1/1 tax, low impact in Brawl.",
+   "group": "Real",
+   "text": "1-drop CARRIER: equipment and counters are permanent, so on the opponent's turn the tax is 4-8 and they mostly decline. About a card a turn on the short axis (rule 3), from the cheapest body to suit up. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Onward // Victory": {
@@ -1428,10 +1428,10 @@
    }
   },
   "Devilish Valet": {
-   "group": "Weak",
-   "text": "Doubles its own power off creatures entering; a small body.",
+   "group": "Situational",
+   "text": "Doubles its power for EACH other creature entering, so a Krenko wave of N Goblins doubles it N times. A combo with Krenko, a 1/3 without. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Iron Hills": {
@@ -1492,16 +1492,16 @@
   },
   "Heartfire Hero": {
    "group": "Real",
-   "text": "OWNED. 1-drop: +1/+1 counter whenever you first target it each turn (every Feather trick), and dies dealing its power to each opponent. A cheap body that grows into a threat.",
+   "text": "OWNED. 1-drop that gains a counter whenever first targeted each turn (every Feather trick), and dies dealing its power to EACH opponent: Self-Destruct or Fling on it deals the power twice. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Desert Were-Worm": {
    "group": "Real",
-   "text": "OWNED. 0/5 that gets +2/+0 per Mountain (10 plus Sacred Foundry), and attacking with 12+ total power untaps them for an EXTRA COMBAT once a turn. With the Voltron body, two combats. 6 mana (rule 6).",
+   "text": "OWNED. The extra combat (attack with 12+ total power) is met by the carrier alone. Its own power is weak: ~10 Mountain-typed lands in 36 means 2-3 in play mid-game, so 4-6 power. 6 mana (rule 6). Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Loxodon Lifechanter": {
@@ -1527,9 +1527,9 @@
   },
   "Sardian Cliffstomper": {
    "group": "Weak",
-   "text": "Mountain-count beater; not the build-on body.",
+   "text": "Needs four Mountains in play: ~10 of 36 lands are Mountains, so that is a late-game card. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Gornog, the Red Reaper": {
@@ -1554,8 +1554,8 @@
    }
   },
   "Erratic Cyclops": {
-   "group": "Real",
-   "text": "0/8 trampler: +MV power per instant/sorcery cast; 19 here and Feather returns the targeting ones, so it grows every turn with no equipment, and 8 toughness survives a Self-Destruct of up to 7. Teyo's +1 makes 8 its base. Re-graded 2026-11-11 on the owner's note.",
+   "group": "Strong",
+   "text": "0/8 trampler: +MV power per instant/sorcery (19 here, Feather returns the targeting ones), so it grows every turn with no equipment, and 8 toughness survives a Self-Destruct up to 7. With Teyo its base is 8 forever. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
     "56-historic-brawl": "fd893e40a662"
    }
@@ -1701,10 +1701,10 @@
    }
   },
   "Regal Bunnicorn": {
-   "group": "Situational",
-   "text": "Power equals your nonland permanents (Equipment count), a cheap big body; but it isn't protected or evasive.",
+   "group": "Real",
+   "text": "2-mana CARRIER: power and toughness equal your nonland permanents, and every Equipment both pumps it and raises the count. 8/8 or more mid-game for 2. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Brightmare": {
@@ -1722,24 +1722,24 @@
    }
   },
   "Thunderbond Vanguard": {
-   "group": "Weak",
-   "text": "Alchemy token copier; go-wide.",
+   "group": "Situational",
+   "text": "P/T equal your creature count, and every creature TOKEN enters as a copy: with Krenko each Goblin wave becomes copies of Vanguard. Strong with Krenko, narrow without. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Teyo, Aegis Adept": {
-   "group": "Situational",
-   "text": "Alchemy PLANESWALKER: perpetual power-equals-toughness tricks; slow.",
+   "group": "Real",
+   "text": "Alchemy PLANESWALKER. +1 sets a creature's base power to its toughness perpetually; on the owner's read it LOCKS the toughness at resolution, so pump toughness first (Kaldra +5/+5, Frontline Rush, Integrity) and keep it. Erratic Cyclops (0/8), Orcish Siegemaster (0/5) and Loxodon Lifechanter after an activation (+25/+25) become permanent giants. Untested in Arena. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Fling": {
-   "group": "Situational",
-   "text": "Sacrifices your creature for damage; the opposite of protecting one body.",
+   "group": "Real",
+   "text": "With death-value carriers it doubles up: Fling an enlisted Berserker or Heartfire Hero deals the power twice, Fling Immolator banks the power on the next creature. On its own Self-Destruct is better (Feather returns it, the body survives). Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Raubahn, Bull of Ala Mhigo": {
@@ -1750,8 +1750,8 @@
    }
   },
   "Balduvian Berserker": {
-   "group": "Situational",
-   "text": "Enlist taps the big body so Berserker attacks INSTEAD carrying its power (not its Swords, double strike or evasion); if blocked and killed, that power hits any target. A way past deathtouch/chump boards. Re-graded 2026-11-11 on the owner's note.",
+   "group": "Real",
+   "text": "Enlist the big body: Berserker attacks with the combined power. Blocked and killed, that power hits any target; Self-Destruct or Fling on it deals X and then the death trigger deals X again (2X). The body stays home, safe from combat tricks. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
     "56-historic-brawl": "fd893e40a662"
    }
@@ -1764,10 +1764,10 @@
    }
   },
   "Kazuul's Fury // Kazuul's Cliffs": {
-   "group": "Situational",
-   "text": "Modal: a fling (sacrifice your creature) or a tapped Mountain. The land half is the use.",
+   "group": "Real",
+   "text": "A Fling with a land face: the same death-value doubling as Fling, or a tapped Mountain when you need a land. Better than Fling here. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Origin of Thor": {
@@ -1792,10 +1792,10 @@
    }
   },
   "Combustion Man": {
-   "group": "Real",
-   "text": "OWNED. Each attack destroys a permanent unless its controller takes damage equal to his power. They choose, so often just damage.",
+   "group": "Strong",
+   "text": "OWNED. As the CARRIER: each attack destroys a permanent unless they take damage equal to his power, so at 10+ power it is removal every attack, and each extra combat is another. A 4/6 body. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Go Ninja Go": {
@@ -1813,10 +1813,10 @@
    }
   },
   "Molten-Core Maestro": {
-   "group": "Situational",
-   "text": "Grows per instant/sorcery; a second small body.",
+   "group": "Real",
+   "text": "2-drop menace that takes a PERMANENT +1/+1 counter per instant/sorcery; Feather's returns make it grow every turn into a carrier, and 5-mana spells (Bionic Blow X=3) add R equal to its power. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Breaking of the Fellowship": {
@@ -2554,7 +2554,7 @@
   },
   "Dragonborn Immolator": {
    "F": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "fd893e40a662"
    }
   },
@@ -2572,14 +2572,14 @@
   },
   "Firebending Student": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Guardian Scalelord": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Hamletback Goliath": {
@@ -2596,8 +2596,8 @@
   },
   "Cosmic Sovereign": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Thorin, Mountain-king": {
@@ -2614,8 +2614,8 @@
   },
   "Orcish Siegemaster": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Swords to Plowshares": {
@@ -2680,8 +2680,8 @@
   },
   "Esper Sentinel": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Onward // Victory": {
@@ -2692,8 +2692,8 @@
   },
   "Devilish Valet": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "◇",
+    "graded_at": "fd893e40a662"
    }
   },
   "Iron Hills": {
@@ -2747,13 +2747,13 @@
   "Heartfire Hero": {
    "F": {
     "m": "★★",
-    "graded_at": "dc436c9202b5"
+    "graded_at": "fd893e40a662"
    }
   },
   "Desert Were-Worm": {
    "F": {
     "m": "★★",
-    "graded_at": "dc436c9202b5"
+    "graded_at": "fd893e40a662"
    }
   },
   "Loxodon Lifechanter": {
@@ -2777,7 +2777,7 @@
   "Sardian Cliffstomper": {
    "F": {
     "m": "△",
-    "graded_at": "dc436c9202b5"
+    "graded_at": "fd893e40a662"
    }
   },
   "Gornog, the Red Reaper": {
@@ -2800,7 +2800,7 @@
   },
   "Erratic Cyclops": {
    "F": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "fd893e40a662"
    }
   },
@@ -2926,8 +2926,8 @@
   },
   "Regal Bunnicorn": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Brightmare": {
@@ -2944,20 +2944,20 @@
   },
   "Thunderbond Vanguard": {
    "F": {
-    "m": "△",
-    "graded_at": "dc436c9202b5"
+    "m": "◇",
+    "graded_at": "fd893e40a662"
    }
   },
   "Teyo, Aegis Adept": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Fling": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Raubahn, Bull of Ala Mhigo": {
@@ -2968,7 +2968,7 @@
   },
   "Balduvian Berserker": {
    "F": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "fd893e40a662"
    }
   },
@@ -2980,8 +2980,8 @@
   },
   "Kazuul's Fury // Kazuul's Cliffs": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Origin of Thor": {
@@ -3004,8 +3004,8 @@
   },
   "Combustion Man": {
    "F": {
-    "m": "★",
-    "graded_at": "dc436c9202b5"
+    "m": "★★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Go Ninja Go": {
@@ -3022,8 +3022,8 @@
   },
   "Molten-Core Maestro": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Breaking of the Fellowship": {
