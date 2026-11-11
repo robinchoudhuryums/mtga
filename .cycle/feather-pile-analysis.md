@@ -204,3 +204,15 @@ Crescendo; Combadge ★★ (two Communicators for 3 = an unblockable carrier) �
 Legionnaire); Pah-Wraith ★ (7 mana, team +X per differently named land each combat) −Response //
 Resurgence, optional for the curve (~3.2 avg MV with all five). Skipped: La'An (Combadge does
 evasion better), Picard (weakest). Estimated after all: interaction ~14, card adv ~11, floor A.
+
+## 11. Round 3 final proposal (2026-11-11)
+
+Owner keeps Great Train Heist, Sif's Spearmaster, Zada; takes Teyo for Crystal Barricade
+(Barricade to flex; drop it from `#: protect:` when applying). Round 3: Axe −Titan's Strength,
+Raiyuu −Response // Resurgence, Lightning −Aurelia Exemplar, Teyo −Crystal Barricade, Raubahn
+−Reyav, Odric −War-Whip, Krenko −Sword of Truth and Justice, Combustion Man −Spinerock, Cyclops
+−Collective Inferno, Esper Sentinel −Boros Charm, Berserker −Fall of the Hammer, Kazuul's Fury
+−Mountain. Measured: floor A, interaction 16, card adv 9, protection 14, board power 83, avg MV
+3.09, early drops 20, legal. Star Trek: Worf −Tenth District Legionnaire, Exploratory Mission
+−Valorous Stance, Kirk −Blazing Crescendo, Combadge −Chainsaw, Pah-Wraith (optional) −Giantfall
+(interaction ~13 if taken, ~14 without).
