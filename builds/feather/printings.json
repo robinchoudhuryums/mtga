@@ -81,8 +81,80 @@
    "y": "2026"
   }
  ],
+ "Alpine Houndmaster": [],
+ "Alpine Watchdog": [],
+ "Amplifire": [],
+ "Anax, Hardened in the Forge": [
+  {
+   "a": "Eric Deschamps",
+   "art": "https://cards.scryfall.io/art_crop/front/a/0/a07285b4-77c5-4a38-8810-20d7e49593ec.jpg?1783931556",
+   "cn": "125",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/0/a07285b4-77c5-4a38-8810-20d7e49593ec.jpg?1783931556",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/b/a/badac9b4-bfaf-4b02-a48a-ec141393566c.jpg?1783931503",
+   "cn": "264",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/a/badac9b4-bfaf-4b02-a48a-ec141393566c.jpg?1783931503",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  }
+ ],
  "Ancestors' Aid": [],
+ "Argent Dais": [],
+ "Arni, Renowned Champion": [],
  "Aurelia, Exemplar of Justice": [],
+ "Aurelia, the Warleader": [
+  {
+   "a": "Alex Dos Diaz",
+   "art": "https://cards.scryfall.io/art_crop/front/1/e/1e7c2afb-e04e-4012-b8a2-7a7273b52136.jpg?1783916866",
+   "cn": "35",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/e/1e7c2afb-e04e-4012-b8a2-7a7273b52136.jpg?1783916866",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Slawomir Maniak",
+   "art": "https://cards.scryfall.io/art_crop/front/b/c/bc6ffc1c-575b-4116-83c9-d13b29886c35.jpg?1783908915",
+   "cn": "651",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/c/bc6ffc1c-575b-4116-83c9-d13b29886c35.jpg?1783908915",
+   "r": "M",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Mark Bright",
+   "art": "https://cards.scryfall.io/art_crop/front/e/f/ef2efb63-2bc4-4808-9ded-ba93d89dedea.jpg?1783903309",
+   "cn": "86",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/f/ef2efb63-2bc4-4808-9ded-ba93d89dedea.jpg?1783903309",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  }
+ ],
+ "Balduvian Berserker": [],
  "Basri Ket": [
   {
    "a": "Kieran Yanner",
@@ -109,6 +181,8 @@
    "y": "2020"
   }
  ],
+ "Bionic Blow": [],
+ "Bladed Ambassador": [],
  "Bladehold War-Whip": [],
  "Blazing Crescendo": [
   {
@@ -147,6 +221,9 @@
  ],
  "Boros Charm": [],
  "Boros Reckoner": [],
+ "Bre of Clan Stoutarm": [],
+ "Breaking of the Fellowship": [],
+ "Brightmare": [],
  "Brimaz, King of Oreskos": [],
  "Bruenor Battlehammer": [
   {
@@ -201,8 +278,11 @@
    "y": "2026"
   }
  ],
+ "Cacophony Scamp": [],
+ "Candletrap": [],
  "Castle Ardenvale": [],
  "Castle Embereth": [],
+ "Chainsaw": [],
  "Champion of the Flame": [],
  "Chandra's Ignition": [],
  "Chaos Warp": [
@@ -249,9 +329,14 @@
   }
  ],
  "Choreographed Sparks": [],
+ "Churning Reservoir": [],
  "Clash of Titans": [],
  "Collective Inferno": [],
+ "Combustion Man": [],
+ "Concerted Effort": [],
+ "Cosmic Sovereign": [],
  "Crackling Cyclops": [],
+ "Crater's Claws": [],
  "Crystal Barricade": [],
  "Danitha Capashen, Paragon": [
   {
@@ -344,6 +429,11 @@
  ],
  "Delney, Streetwise Lookout": [],
  "Demonic Ruckus": [],
+ "Desert Were-Worm": [],
+ "Devilish Valet": [],
+ "Dragonborn Immolator": [],
+ "Dragonfly Pilot": [],
+ "Dreadhorde Arcanist": [],
  "Dual-Sun Technique": [],
  "Eiganjo, Seat of the Empire": [
   {
@@ -481,6 +571,9 @@
    "y": "2026"
   }
  ],
+ "Erratic Cyclops": [],
+ "Esper Sentinel": [],
+ "Exuberant Fuseling": [],
  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": [
   {
    "a": "Joseph Meehan",
@@ -508,6 +601,7 @@
   }
  ],
  "Fall of the Hammer": [],
+ "Fang, Roku's Companion": [],
  "Fateful Absence": [],
  "Feat of Resistance": [],
  "Ferocification": [],
@@ -535,6 +629,52 @@
    "y": "2025"
   }
  ],
+ "Firebending Student": [],
+ "Fling": [
+  {
+   "a": "Lie Setiawan",
+   "art": "https://cards.scryfall.io/art_crop/front/c/b/cb28fe03-8269-41de-b766-42c3421aeaef.jpg?1783932623",
+   "cn": "126",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/b/cb28fe03-8269-41de-b766-42c3421aeaef.jpg?1783932623",
+   "r": "C",
+   "set": "ELD",
+   "sn": "Throne of Eldraine",
+   "y": "2019"
+  },
+  {
+   "a": "Florey",
+   "art": "https://cards.scryfall.io/art_crop/front/1/c/1cddae19-eb96-475c-9800-17ac57df4c0a.jpg?1783911720",
+   "cn": "24",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/c/1cddae19-eb96-475c-9800-17ac57df4c0a.jpg?1783911720",
+   "r": "U",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  },
+  {
+   "a": "Lucas Graciano",
+   "art": "https://cards.scryfall.io/art_crop/front/a/8/a8beb929-b502-4ed5-940a-d6de233c09a6.jpg?1783908686",
+   "cn": "553",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/8/a8beb929-b502-4ed5-940a-d6de233c09a6.jpg?1783908686",
+   "r": "C",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
+ "Forgehammer Centurion": [],
+ "Free from Flesh": [],
+ "Frontline Rush": [],
+ "Furious Rise": [],
+ "Furnace Skullbomb": [],
+ "Furnace Strider": [],
+ "Gauntlets of Light": [],
  "Get Lost": [],
  "Giantfall": [],
  "Gideon Blackblade": [
@@ -562,6 +702,8 @@
   }
  ],
  "Giver of Runes": [],
+ "Go Ninja Go": [],
+ "Godo, Bandit Warlord": [],
  "Gods Willing": [
   {
    "a": "Mark Winters",
@@ -602,13 +744,49 @@
    "y": "2021"
   }
  ],
+ "Gornog, the Red Reaper": [],
  "Grand Abolisher": [],
+ "Great Train Heist": [],
+ "Guardian Scalelord": [],
+ "Hamletback Goliath": [],
+ "Heartfire Hero": [],
  "Heroic Reinforcements": [],
+ "Huatli, Warrior Poet": [],
+ "Igneous Cur": [],
  "Integrity // Intervention": [],
  "Iron Fist, Living Weapon": [],
+ "Iron Hills": [],
+ "Jor Kadeen, First Goldwarden": [],
  "Kaldra Compleat": [],
  "Kaya's Onslaught": [],
+ "Kazuul's Fury // Kazuul's Cliffs": [],
+ "Krenko, Tin Street Kingpin": [
+  {
+   "a": "Mark Behm",
+   "art": "https://cards.scryfall.io/art_crop/front/3/7/37ed04d3-cfa1-4778-aea6-b4c2c29e6e0a.jpg?1783933423",
+   "cn": "137",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/7/37ed04d3-cfa1-4778-aea6-b4c2c29e6e0a.jpg?1783933423",
+   "r": "R",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Viko Menezes",
+   "art": "https://cards.scryfall.io/art_crop/front/0/c/0c7d8714-a0ef-4ae8-909b-60f3319c646c.jpg?1783908678",
+   "cn": "572",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/c/0c7d8714-a0ef-4ae8-909b-60f3319c646c.jpg?1783908678",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
+ "Kuldotha Cackler": [],
  "Laelia, the Blade Reforged": [],
+ "Legion Leadership // Legion Stronghold": [],
  "Light Up the Stage": [
   {
    "a": "Dmitry Burmak",
@@ -790,12 +968,72 @@
    "y": "2024"
   }
  ],
+ "Lightning, Army of One": [],
  "Loran's Escape": [],
+ "Loxodon Lifechanter": [],
  "Luke Cage, Power Man": [],
+ "Lukka, Coppercoat Outcast": [
+  {
+   "a": "Chris Rallis",
+   "art": "https://cards.scryfall.io/art_crop/front/5/7/5798fdf0-d178-43d9-b821-8f3f654654b4.jpg?1783931048",
+   "cn": "125",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/7/5798fdf0-d178-43d9-b821-8f3f654654b4.jpg?1783931048",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/2/a/2a8f74c3-c552-4331-a47c-e8155841bb27.jpg?1783930991",
+   "cn": "276",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/a/2a8f74c3-c552-4331-a47c-e8155841bb27.jpg?1783930991",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  }
+ ],
+ "Lunar Frenzy": [],
  "Mabel, Heir to Cragflame": [],
+ "Magmatic Sprinter": [],
  "Maul of the Skyclaves": [],
+ "Mephit's Enthusiasm": [],
  "Might of the Meek": [],
+ "Mishra's Command": [],
+ "Molten Monstrosity": [],
+ "Molten-Core Maestro": [],
  "Monastery Mentor": [],
+ "Moraug, Fury of Akoum": [
+  {
+   "a": "Rudy Siswanto",
+   "art": "https://cards.scryfall.io/art_crop/front/c/c/cc5eacd7-aaa7-4720-9794-52e7b098c82c.jpg?1783929359",
+   "cn": "150",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/c/cc5eacd7-aaa7-4720-9794-52e7b098c82c.jpg?1783929359",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  },
+  {
+   "a": "Dominik Mayer",
+   "art": "https://cards.scryfall.io/art_crop/front/a/e/aecfbd48-7da0-4b44-b9a2-d31412f65eb1.jpg?1783929288",
+   "cn": "300",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/e/aecfbd48-7da0-4b44-b9a2-d31412f65eb1.jpg?1783929288",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  }
+ ],
  "Mother of Runes": [],
  "Nahiri, Heir of the Ancients": [
   {
@@ -823,6 +1061,40 @@
    "y": "2020"
   }
  ],
+ "Neheb, Dreadhorde Champion": [],
+ "Neheb, the Eternal": [],
+ "Norn's Wellspring": [],
+ "Odric, Blood-Cursed": [
+  {
+   "a": "Chris Rallis",
+   "art": "https://cards.scryfall.io/art_crop/front/8/1/81a79f5f-a65a-4b43-b58c-cdfa09cc7855.jpg?1783924793",
+   "cn": "243",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/1/81a79f5f-a65a-4b43-b58c-cdfa09cc7855.jpg?1783924793",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Anna Pavleeva",
+   "art": "https://cards.scryfall.io/art_crop/front/7/e/7e8335a9-2880-4e12-8d93-b75a297272dc.jpg?1783924755",
+   "cn": "314",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/e/7e8335a9-2880-4e12-8d93-b75a297272dc.jpg?1783924755",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  }
+ ],
+ "Odric, Lunarch Marshal": [],
+ "Onward // Victory": [],
+ "Orcish Siegemaster": [],
+ "Origin of Thor": [],
+ "Overwhelming Victory": [],
  "Pain for All": [],
  "Panther Pounce": [],
  "Path to Exile": [
@@ -906,7 +1178,36 @@
   }
  ],
  "Phalanx Leader": [],
+ "Priest of Possibility": [],
  "Rabid Gnaw": [],
+ "Raiyuu, Storm's Edge": [
+  {
+   "a": "Heonhwa",
+   "art": "https://cards.scryfall.io/art_crop/front/3/7/37748b74-0eda-4b20-a08f-faa418adb9ff.jpg?1783923831",
+   "cn": "232",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/7/37748b74-0eda-4b20-a08f-faa418adb9ff.jpg?1783923831",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Ichiko Milk Tei",
+   "art": "https://cards.scryfall.io/art_crop/front/1/0/1026485e-3df5-4ac7-baa1-06bff537a506.jpg?1783923796",
+   "cn": "329",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/0/1026485e-3df5-4ac7-baa1-06bff537a506.jpg?1783923796",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
+ "Raph & Leo, Sibling Rivals": [],
+ "Raubahn, Bull of Ala Mhigo": [],
  "Reckless Impulse": [
   {
    "a": "Mathias Kollros",
@@ -932,6 +1233,8 @@
   }
  ],
  "Red Hulk": [],
+ "Regal Bunnicorn": [],
+ "Response // Resurgence": [],
  "Restoration Magic": [],
  "Return the Favor": [
   {
@@ -1012,8 +1315,38 @@
    "y": "2026"
   }
  ],
+ "Sardian Cliffstomper": [],
+ "Savage Beating": [
+  {
+   "a": "Matt Thompson",
+   "art": "https://cards.scryfall.io/art_crop/front/1/b/1b035588-8b99-4d49-bbcd-4d83cc199ef1.jpg?1783905422",
+   "cn": "26",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/b/1b035588-8b99-4d49-bbcd-4d83cc199ef1.jpg?1783905422",
+   "r": "M",
+   "set": "OMB",
+   "sn": "Through the Omenpaths Bonus Sheet",
+   "y": "2025"
+  },
+  {
+   "a": "Todd McFarlane",
+   "art": "https://cards.scryfall.io/art_crop/front/2/9/291ffa45-f395-420f-8862-9a685b65ce69.jpg?1783905384",
+   "cn": "26",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/9/291ffa45-f395-420f-8862-9a685b65ce69.jpg?1783905384",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  }
+ ],
  "Seedglaive Mentor": [],
+ "Seize the Day": [],
  "Self-Destruct": [],
+ "Shadowfax, Lord of Horses": [],
  "Shadowspear": [
   {
    "a": "Yeong-Hao Han",
@@ -1044,6 +1377,7 @@
  "Shelter": [],
  "Sheltering Light": [],
  "Showdown of the Skalds": [],
+ "Sif's Spearmaster": [],
  "Sigarda's Aid": [],
  "Sokenzan, Crucible of Defiance": [
   {
@@ -1297,9 +1631,12 @@
  "Team Tactics": [],
  "Temur Battle Rage": [],
  "Tenth District Legionnaire": [],
+ "Teyo, Aegis Adept": [],
+ "The Akroan War": [],
  "The Fire Crystal": [],
  "The Last Agni Kai": [],
  "The Sentry, Golden Guardian": [],
+ "The Triumph of Anax": [],
  "The Wandering Emperor": [
   {
    "a": "Tommy Arnold",
@@ -1339,9 +1676,13 @@
    "y": "2022"
   }
  ],
+ "Thorin, Mountain-king": [],
+ "Thunderbond Vanguard": [],
+ "Thunderous Orator": [],
  "Titan's Strength": [],
  "Tome of Legends": [],
  "Two-Handed Axe": [],
+ "Two-Handed Axe // Sweeping Cleave": [],
  "Unexpected Windfall": [
   {
    "a": "Alayna Danner",
@@ -1382,6 +1723,8 @@
  ],
  "Unleash Fury": [],
  "Untimely Malfunction": [],
+ "Urabrask's Anointer": [],
+ "Urabrask's Forge": [],
  "Valorous Stance": [
   {
    "a": "Anato Finnstark",
@@ -1428,6 +1771,34 @@
    "y": "2025"
   }
  ],
+ "Velomachus Lorehold": [
+  {
+   "a": "Raymond Swanland",
+   "art": "https://cards.scryfall.io/art_crop/front/0/4/04ea9067-ad50-4c43-ae4d-3f66890cd898.jpg?1783927292",
+   "cn": "245",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/4/04ea9067-ad50-4c43-ae4d-3f66890cd898.jpg?1783927292",
+   "r": "M",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  },
+  {
+   "a": "Karl Kopinski",
+   "art": "https://cards.scryfall.io/art_crop/front/b/7/b7151c4b-4d42-44c1-a6f4-8be29ace1df3.jpg?1783927264",
+   "cn": "283",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/7/b7151c4b-4d42-44c1-a6f4-8be29ace1df3.jpg?1783927264",
+   "r": "M",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  }
+ ],
+ "Vindictive Flamestoker": [],
+ "Voldaren Thrillseeker": [],
  "War Machine, Legacy of Iron": [],
  "Zada, Hedron Grinder": [
   {
@@ -1467,5 +1838,8 @@
    "sn": "Foundations Jumpstart",
    "y": "2024"
   }
- ]
+ ],
+ "Zarda, the Power Princess": [],
+ "Éomer, Marshal of Rohan": [],
+ "Éowyn, Fearless Knight": []
 }
