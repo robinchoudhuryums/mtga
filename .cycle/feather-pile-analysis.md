@@ -1,6 +1,7 @@
 # Feather pile (2026-11-11) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the swaps land and the findings are folded into deck
+**Status: ROUND 2 APPLIED 2026-11-11** (15 swaps). Open: Raiyuu and Lightning await owner
+picks for their alternate cuts; step 2 (Star Trek) waits on the 2026-11-13 pool refresh. Delete once the swaps land and the findings are folded into deck
 56-historic-brawl's `#: notes:`. A scratchpad, not a source of truth — decks/ are.
 
 **Source list:** the owner's 107-line pile (2026-11-11). 4 lands already in the deck; Picard,
@@ -114,3 +115,25 @@ Response // Resurgence. Queued for the 11-13 refresh with step 2: Kirk.
 
 PROTECT (the ranking can't see their value): Seize the Day and Bionic Blow (Feather returns
 them, rule 1), Bre (free spells from lifegain), the step-1 keeps (rule 7).
+
+## 6. Round 2 applied (2026-11-11)
+
+15 swaps landed: +Seize the Day −Red Hulk, +Raph & Leo −Boros Reckoner, +Aurelia the Warleader
+−Monastery Mentor, +Bre −Sigarda's Aid, +Furious Rise −Defiant Strike, +Bionic Blow −Lightning
+Helix, +Thorin −Restoration Magic, +Legion Leadership −Mountain, +Great Train Heist −Enter the
+Avatar State, +Sif's Spearmaster −Champion of the Flame, +Response // Resurgence −Chandra's
+Ignition, +Mishra's Command −Grand Abolisher, +Éowyn −Delney, +Jor Kadeen −Giver of Runes,
++Chainsaw −Maul of the Skyclaves. Live: floor A (tier unset), interaction 16 (+2 unread), card
+advantage 8, protection 15, board power 75, avg MV 3.02, 36 lands (Legion Leadership MDFC),
+keepable 78.4%. Preflight READY.
+
+Owner kept Seedglaive Mentor, Agrus Kos and Iron Fist (their planned cuts). Alternate cuts,
+each pair measured together (floor A, interaction 16 throughout):
+
+| Spot | Primary | Alternates |
+|---|---|---|
+| Raiyuu | Danitha Capashen, Paragon (card adv 8, prot 15, BP 77, MV 3.02) | Mother of Runes (with Blazing Crescendo: CA 7, prot 14, BP 80, MV 3.08); a tapland (Sun-Blessed Peak) |
+| Lightning | Aurelia, Exemplar of Justice | Blazing Crescendo; a tapland (Abraded Bluffs) |
+| La'An (step 2) | Mother of Runes (if not used above) | Crystal Barricade; a tapland |
+
+Tapland option: lands already 36 incl. the MDFC, so two land cuts leave 34 + MDFC — not advised.

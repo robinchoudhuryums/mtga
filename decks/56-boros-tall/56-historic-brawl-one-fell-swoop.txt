@@ -7,13 +7,14 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool) built from deck 56's Boros combat-tall plan:
 #: archetype: one protected body wins in a few swings. Feather, the Redeemed leads it because deck 56 is already a pile
 #: archetype: of instants that target your own creature, and Feather returns each of those to hand at the next end step.
-#: archetype: Self-Destruct, The Last Agni Kai, Rabid Gnaw, Giantfall and Fall of the Hammer become removal every turn,
-#: archetype: Chandra's Ignition a repeatable one-sided wipe, Bulk Up and Temur Battle Rage a doubled, double-striking
-#: archetype: body every turn, and the cantrips (Defiant Strike, Blazing Crescendo) card flow. Zada, Hedron Grinder copies
-#: archetype: a trick aimed at it onto every other creature. The second layer is Equipment: Embercleave, three Swords,
-#: archetype: Shadowspear, Maul of the Skyclaves, Bladehold War-Whip and Kaldra Compleat, found by Stoneforge Mystic, cheapened
-#: archetype: by Danitha Capashen, moved free by Bruenor, turned into double strike by Reyav and into cards by Akiri.
-#: archetype: The Wandering Emperor and Elspeth Resplendent grow the body every turn; Showdown of the Skalds and Laelia refill.
+#: archetype: Self-Destruct, The Last Agni Kai, Rabid Gnaw, Giantfall, Fall of the Hammer, Bionic Blow and Mishra's Command
+#: archetype: become removal every turn, Bulk Up, Legion Leadership and Temur Battle Rage a doubled, double-striking body,
+#: archetype: and Seize the Day an EXTRA COMBAT every turn (with Raph & Leo, Aurelia the Warleader and Great Train Heist).
+#: archetype: Zada, Hedron Grinder copies a trick aimed at it onto every other creature. The second layer is Equipment:
+#: archetype: Embercleave, three Swords, Shadowspear, Chainsaw, Bladehold War-Whip and Kaldra Compleat, found by Stoneforge
+#: archetype: Mystic, attached all at once by Thorin, cheapened by Danitha Capashen, moved free by Bruenor, turned into double
+#: archetype: strike by Reyav and into cards by Akiri and Jor Kadeen; every extra combat re-triggers them. The Wandering
+#: archetype: Emperor and Elspeth Resplendent grow the body; Bre of Clan Stoutarm, Furious Rise, Showdown and Laelia refill.
 #: archetype: DISTINCT from deck 88 (Naya Historic Brawl, Full Throttle) and deck 85 (Jeskai heroes): mono-target Voltron.
 #: protect: Feather, the Redeemed; Self-Destruct; The Last Agni Kai; Chandra's Ignition; Bulk Up; Crystal Barricade; Swiftfoot Boots; Embercleave; Boros Reckoner; Iron Fist, Living Weapon; Delney, Streetwise Lookout; Grand Abolisher; Mother of Runes; Giver of Runes
 #: notes: Drafted 2026-11-10 from deck 56 (all 34 of its nonland cards carry over; the 2-ofs Bulk Up and Self-Destruct
@@ -36,10 +37,21 @@
 #: notes: Avatar, The Fire Crystal, Kaldra, Swiftblade. Swords to Plowshares and Path to Exile out (they give the
 #: notes: opponent life or a land). Optional, not applied: Basri Ket for Titan's Strength; Abrade for an A floor now.
 #: notes: QUEUED for after the 2026-11-13 card-pool refresh (Star Trek set, on Arena before Scryfall's date — G-79):
-#: notes: +Pah-Wraith −Collective Inferno, +La'An Noonien-Singh, Security −Iron Fist, +Exploratory Mission −Valorous
-#: notes: Stance, +Worf, Honor-Bound Warrior −Titan's Strength, +Combadge −Delney, Streetwise Lookout.
-#: notes: TIER UNSET — the letter is the owner's call. Measured floor B (interaction 12, card advantage 6 against the
-#: notes: 100-card A line of 12 and 19); the counts cannot see Feather returning the cantrips and the removal each turn.
+#: notes: +Pah-Wraith −Collective Inferno, +La'An Noonien-Singh, Security −(new cut, Iron Fist kept), +Exploratory Mission −Valorous
+#: notes: Stance, +Worf, Honor-Bound Warrior −Titan's Strength, +Combadge −(new cut, Delney gone).
+#: notes: 2026-11-11 (Builder round 2, from the owner's 101-card pile — .cycle/feather-pile-analysis.md): +Seize the Day
+#: notes: −Red Hulk, +Raph & Leo −Boros Reckoner, +Aurelia, the Warleader −Monastery Mentor, +Bre of Clan Stoutarm
+#: notes: −Sigarda's Aid, +Furious Rise −Defiant Strike, +Bionic Blow −Lightning Helix, +Thorin, Mountain-king −Restoration
+#: notes: Magic, +Legion Leadership −a Mountain, +Great Train Heist −Enter the Avatar State, +Sif's Spearmaster −Champion
+#: notes: of the Flame, +Response // Resurgence −Chandra's Ignition, +Mishra's Command −Grand Abolisher, +Éowyn −Delney,
+#: notes: +Jor Kadeen −Giver of Runes, +Chainsaw −Maul of the Skyclaves. Extra combats (Seize the Day, which Feather
+#: notes: returns, Raph & Leo, Aurelia, Great Train Heist) re-trigger the Swords, Akiri, Jor Kadeen and Pain for All.
+#: notes: Kept on the owner's call: Akroma's Will, Fiery Confluence, Seedglaive Mentor, Agrus Kos, Iron Fist.
+#: notes: Still to place: Raiyuu and Lightning, Army of One (need cuts). Step-2 queue (after the 11-13 refresh) adds
+#: notes: +Kirk −Spinerock Tyrant and +Picard −Boros Charm; Combadge needs a new cut (Delney is gone); La'An's cut
+#: notes: moves off Iron Fist.
+#: notes: TIER UNSET — the letter is the owner's call. Measured floor A (interaction 16, card advantage 8 against the
+#: notes: 100-card A line of 12 and 19).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Feather, the Redeemed (WAR) 197
@@ -48,26 +60,24 @@
 1 The Sentry, Golden Guardian (MSH) 35
 1 Stingerback Terror (OTJ) 147
 1 Spinerock Tyrant (ECL) 159
-1 Red Hulk (MSH) 149
 1 Luke Cage, Power Man (MSH) 20
 1 Agrus Kos, Spirit of Justice (MKM) 184
 1 Iron Fist, Living Weapon (MSH) 138
 1 Laelia, the Blade Reforged (MH3) 281
-1 Champion of the Flame (DOM) 116
+1 Sif's Spearmaster (MSC) 765
+1 Aurelia, the Warleader (FDN) 651
 
 # Bearers, boosters and protectors
 1 Swiftblade Vindicator (FDN) 246
-1 Boros Reckoner (PIO) 208
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Seedglaive Mentor (BLB) 231
-1 Delney, Streetwise Lookout (MKM) 12
+1 Éowyn, Fearless Knight (LTR) 201
 1 Zada, Hedron Grinder (J25) 76
 1 Mabel, Heir to Cragflame (BLB) 224
 1 Reyav, Master Smith (MUL) 57
 1 Mother of Runes (AA2) 1
-1 Giver of Runes (HA7) 2
+1 Jor Kadeen, First Goldwarden (ONE) 203
 1 Stoneforge Mystic (WWK) 20
-1 Grand Abolisher (BIG) 2
-1 Monastery Mentor (MOM) 28
 1 Tenth District Legionnaire (WAR) 222
 1 Danitha Capashen, Paragon (J25) 59
 1 Elspeth Resplendent (SNC) 11
@@ -75,16 +85,14 @@
 1 Akiri, Fearless Voyager (ZNR) 220
 1 Bruenor Battlehammer (AFR) 219
 1 Aurelia, Exemplar of Justice (GRN) 153
+1 Thorin, Mountain-king (HOB) 114
+1 Bre of Clan Stoutarm (ECL) 207
 
 # Feather's tricks — instants and sorceries that target your creature (returned each end step)
 1 Self-Destruct (FIN) 157
 1 The Last Agni Kai (TLA) 144
-1 Chandra's Ignition (SPG) 89
 1 Bulk Up (SOA) 40
 1 Boros Charm (FDN) 721
-1 Enter the Avatar State (TLA) 18
-1 Restoration Magic (FIN) 30
-1 Defiant Strike (J25) 187
 1 Titan's Strength (J25) 603
 1 Valorous Stance (FDN) 583
 1 Temur Battle Rage (EA1) 10
@@ -92,6 +100,9 @@
 1 Rabid Gnaw (BLB) 147
 1 Fall of the Hammer (PIO) 134
 1 Blazing Crescendo (MSH) 125
+1 Seize the Day (MAR) 73
+1 Mishra's Command (BRO) 141
+1 Bionic Blow (MSC) 680
 
 # Equipment, Auras and evasion
 1 Embercleave (ELD) 120
@@ -101,11 +112,10 @@
 1 Shadowspear (THB) 236
 1 Swiftfoot Boots (BRR) 58
 1 Pain for All (EOE) 151
-1 Maul of the Skyclaves (J25) 223
+1 Chainsaw (DSK) 128
 1 Crystal Barricade (FDN) 7
 1 Kaldra Compleat (AA3) 21
 1 Bladehold War-Whip (ONE) 197
-1 Sigarda's Aid (SIR) 43
 
 # Multipliers, card flow and finishers
 1 Team Avatar (TLA) 38
@@ -113,10 +123,12 @@
 1 Akroma's Will (SOA) 1
 1 Showdown of the Skalds (KHM) 229
 1 Collective Inferno (ECL) 132
+1 Furious Rise (M21) 144
+1 Great Train Heist (OTJ) 125
 
 # Interaction
-1 Lightning Helix (MKM) 218
 1 Fiery Confluence (TLE) 165
+1 Response // Resurgence (GRN) 229
 
 # Lands (37)
 1 Command Tower (FRC) 22
@@ -134,5 +146,6 @@
 1 Abraded Bluffs (OTJ) 251
 1 Furycalm Snarl (STX) 266
 12 Plains (FRA) 281
-10 Mountain (FRA) 287
+9 Mountain (FRA) 287
+1 Legion Leadership // Legion Stronghold (MH3) 255
 1 Rogue's Passage (HOC) 212

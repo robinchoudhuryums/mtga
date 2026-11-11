@@ -834,9 +834,9 @@
   },
   "Maul of the Skyclaves": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Ferocification. Attaches on entry: +2/+2, flying, first strike. Strong on any body; the Equipment slots went to the Swords.",
+   "text": "CUT 2026-11-11 (round 2) for Chainsaw. IN 2026-11-11 for Ferocification. Attaches on entry: +2/+2, flying, first strike. Strong on any body; the Equipment slots went to the Swords.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Bladehold War-Whip": {
@@ -899,7 +899,7 @@
    "group": "Situational",
    "text": "Cut in the draft for Monastery Mentor: doubles power, overlapping Bulk Up.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Return the Favor": {
@@ -911,16 +911,16 @@
   },
   "Sigarda's Aid": {
    "group": "Situational",
-   "text": "IN 2026-11-11 for Tome of Legends. Cut in the draft for Tome of Legends: flash Equipment and auto-attach; low power on its own.",
+   "text": "CUT 2026-11-11 (round 2) for Bre of Clan Stoutarm. IN 2026-11-11 for Tome of Legends. Cut in the draft for Tome of Legends: flash Equipment and auto-attach; low power on its own.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Speedball, New Warrior": {
    "group": "Weak",
-   "text": "ILLEGAL under Feather: the {W/U} hybrid puts blue in its colour identity. Boros Reckoner took the slot.",
+   "text": "ILLEGAL under Feather: the {W/U} hybrid puts blue in its colour identity. Boros Reckoner took the slot (itself cut 2026-11-11 for Raph & Leo).",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Sram, Senior Edificer": {
@@ -1023,9 +1023,9 @@
   },
   "Ancestors' Aid": {
    "group": "Real",
-   "text": "OWNED. +2/+0 and first strike plus a Treasure; returned by Feather, a Treasure every turn (ramp into Embercleave and Chandra's Ignition).",
+   "text": "OWNED. +2/+0 and first strike plus a Treasure; returned by Feather, a Treasure every turn (ramp into Embercleave and Aurelia, the Warleader).",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Dual-Sun Technique": {
@@ -1058,16 +1058,16 @@
   },
   "Zada, Hedron Grinder": {
    "group": "Strong",
-   "text": "IN 2026-11-11 for War Machine, Legacy of Iron. CRAFT (R). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Temur Battle Rage or Defiant Strike on Zada hits the whole team (Defiant Strike draws per copy), and Feather returns the original. Aim bites (Rabid Gnaw, Fall of the Hammer) elsewhere, since every copy hits the same target; Chandra's Ignition on Zada also hits your own creatures. Bodies to copy onto: Monastery Mentor Monks, Wandering Emperor Samurai.",
+   "text": "IN 2026-11-11 for War Machine, Legacy of Iron. CRAFT (R). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Legion Leadership or Temur Battle Rage on Zada hits the whole team, and Feather returns the original. Aim bites (Rabid Gnaw, Fall of the Hammer) elsewhere, since every copy hits the same target. Bodies to copy onto: Monastery Mentor Monks, Wandering Emperor Samurai.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Champion of the Flame": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Unexpected Windfall. CRAFT (U). SPICE: trample, +2/+2 per Aura and Equipment attached. A cheap body that gets enormous under two Swords.",
+   "text": "CUT 2026-11-11 (round 2) for Sif's Spearmaster. IN 2026-11-11 for Unexpected Windfall. CRAFT (U). SPICE: trample, +2/+2 per Aura and Equipment attached. A cheap body that gets enormous under two Swords.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
@@ -1170,9 +1170,9 @@
   },
   "Elspeth Resplendent": {
    "group": "Strong",
-   "text": "IN 2026-11-11 for Shelter. OWNED. PLANESWALKER. +1: a +1/+1 counter AND a flying, first strike, lifelink or vigilance COUNTER on your creature, so the body keeps the keyword for good; −3: put a 3-or-less permanent from the top seven onto the battlefield with a shield counter (Stoneforge, Giver of Runes, Tenth District Legionnaire, a Sword).",
+   "text": "IN 2026-11-11 for Shelter. OWNED. PLANESWALKER. +1: a +1/+1 counter AND a flying, first strike, lifelink or vigilance COUNTER on your creature, so the body keeps the keyword for good; −3: put a 3-or-less permanent from the top seven onto the battlefield with a shield counter (Stoneforge, Jor Kadeen, Tenth District Legionnaire, a Sword).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Basri Ket": {
@@ -1205,9 +1205,9 @@
   },
   "Bre of Clan Stoutarm": {
    "group": "Strong",
-   "text": "OWNED. {1}{W},{T}: your big creature gains flying and lifelink; at end step, if you gained life, exile to a nonland card and cast it FREE if its MV is at most the life gained. A lifelinking Voltron body gains 8+ a turn, so this is a free spell every turn: card advantage, the short axis (rule 3).",
+   "text": "IN 2026-11-11 (round 2) for Sigarda's Aid. OWNED. {1}{W},{T}: your big creature gains flying and lifelink; at end step, if you gained life, exile to a nonland card and cast it FREE if its MV is at most the life gained. A lifelinking Voltron body gains 8+ a turn, so this is a free spell every turn: card advantage, the short axis (rule 3).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "The Akroan War": {
@@ -1247,9 +1247,9 @@
   },
   "Furious Rise": {
    "group": "Strong",
-   "text": "End step: if you control a creature with power 4+ (nearly always here), exile the top card and play it until the next one. A 3-mana repeatable card every turn: card advantage, the short axis (rule 3).",
+   "text": "IN 2026-11-11 (round 2) for Defiant Strike. End step: if you control a creature with power 4+ (nearly always here), exile the top card and play it until the next one. A 3-mana repeatable card every turn: card advantage, the short axis (rule 3).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Amplifire": {
@@ -1310,9 +1310,9 @@
   },
   "Bionic Blow": {
    "group": "Strong",
-   "text": "Sorcery {X}{R}{R}: your creature gets +X/+0, then deals damage equal to its power to another creature. It targets your creature, so Feather returns it: a scalable bite every turn (rules 1 and 4).",
+   "text": "IN 2026-11-11 (round 2) for Lightning Helix. Sorcery {X}{R}{R}: your creature gets +X/+0, then deals damage equal to its power to another creature. It targets your creature, so Feather returns it: a scalable bite every turn (rules 1 and 4).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Cosmic Sovereign": {
@@ -1324,9 +1324,9 @@
   },
   "Thorin, Mountain-king": {
    "group": "Strong",
-   "text": "OWNED. Enters and attaches ANY number of your Equipment to one creature at once, then that creature deals damage equal to its power to a creature. Instant Voltron plus removal with nine Equipment (rule 5).",
+   "text": "IN 2026-11-11 (round 2) for Restoration Magic. OWNED. Enters and attaches ANY number of your Equipment to one creature at once, then that creature deals damage equal to its power to a creature. Instant Voltron plus removal with nine Equipment (rule 5).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Fang, Roku's Companion": {
@@ -1359,9 +1359,9 @@
   },
   "Jor Kadeen, First Goldwarden": {
    "group": "Real",
-   "text": "2-drop trampler: +X/+X per equipped creature on attack, then draws if its power is 4+. Card advantage off the Equipment package (rules 3 and 5).",
+   "text": "IN 2026-11-11 (round 2) for Giver of Runes. 2-drop trampler: +X/+X per equipped creature on attack, then draws if its power is 4+. Card advantage off the Equipment package (rules 3 and 5).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Lightning, Army of One": {
@@ -1438,14 +1438,14 @@
    "group": "Situational",
    "text": "OWNED. A tapped Boros dual; its sink counters a Dwarf (Thorin, Bruenor). The deck already runs four taplands.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Legion Leadership // Legion Stronghold": {
    "group": "Strong",
-   "text": "Modal: an instant that doubles a creature's power and gives first strike (aimed at your creature, so Feather returns it every turn), or a tapped Boros land. A Bulk Up that can also be a land drop (rule 1).",
+   "text": "IN 2026-11-11 (round 2) for a Mountain. Modal: an instant that doubles a creature's power and gives first strike (aimed at your creature, so Feather returns it every turn), or a tapped Boros land. A Bulk Up that can also be a land drop (rule 1).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Two-Handed Axe // Sweeping Cleave": {
@@ -1478,9 +1478,9 @@
   },
   "Éowyn, Fearless Knight": {
    "group": "Strong",
-   "text": "Haste 3/4; enters and EXILES an opposing creature with greater power, and your legendary creatures (Feather included) gain protection from its colours. Removal on a body, 4 mana.",
+   "text": "IN 2026-11-11 (round 2) for Delney, Streetwise Lookout. Haste 3/4; enters and EXILES an opposing creature with greater power, and your legendary creatures (Feather included) gain protection from its colours. Removal on a body, 4 mana.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Shadowfax, Lord of Horses": {
@@ -1513,9 +1513,9 @@
   },
   "Chainsaw": {
    "group": "Real",
-   "text": "OWNED. Equipment that deals 3 to a creature on entry, then grows with each creature death. Removal that also feeds Bruenor, Reyav and Akiri (rule 5).",
+   "text": "IN 2026-11-11 (round 2) for Maul of the Skyclaves. OWNED. Equipment that deals 3 to a creature on entry, then grows with each creature death. Removal that also feeds Bruenor, Reyav and Akiri (rule 5).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Mephit's Enthusiasm": {
@@ -1576,9 +1576,9 @@
   },
   "Mishra's Command": {
    "group": "Strong",
-   "text": "{X}{R} sorcery, choose two: X damage to a creature, and +X/+0 and haste on your creature. With the pump mode it targets your creature, so Feather returns it: X removal and pump every turn.",
+   "text": "IN 2026-11-11 (round 2) for Grand Abolisher. {X}{R} sorcery, choose two: X damage to a creature, and +X/+0 and haste on your creature. With the pump mode it targets your creature, so Feather returns it: X removal and pump every turn.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Frontline Rush": {
@@ -1641,7 +1641,7 @@
    "group": "Situational",
    "text": "+2/+2 instant Feather returns, but small next to Bulk Up and Legion Leadership.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Furnace Skullbomb": {
@@ -1779,9 +1779,9 @@
   },
   "Sif's Spearmaster": {
    "group": "Situational",
-   "text": "Pings for its power each turn; a 1/4, so wants pumps it won't get over the main body.",
+   "text": "IN 2026-11-11 (round 2) for Champion of the Flame. Pings for its power each turn; a 1/4, so wants pumps it won't get over the main body.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Voldaren Thrillseeker": {
@@ -1828,9 +1828,9 @@
   },
   "Great Train Heist": {
    "group": "Strong",
-   "text": "OWNED. Spree instant: untap your creatures and take an EXTRA COMBAT, +1/+0 and first strike, Treasure per hit. Extra combat doubles every Sword trigger and Pain for All (cross-batch: extra combats).",
+   "text": "IN 2026-11-11 (round 2) for Enter the Avatar State. OWNED. Spree instant: untap your creatures and take an EXTRA COMBAT, +1/+0 and first strike, Treasure per hit. Extra combat doubles every Sword trigger and Pain for All (cross-batch: extra combats).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Neheb, Dreadhorde Champion": {
@@ -1842,9 +1842,9 @@
   },
   "Seize the Day": {
    "group": "Strong",
-   "text": "Sorcery: untap target creature, then an EXTRA COMBAT and main phase. Aimed at your creature it returns with Feather, so an extra combat EVERY turn, and every combat re-triggers the Swords, Akiri, Jor Kadeen and Pain for All (rule 1).",
+   "text": "IN 2026-11-11 (round 2) for Red Hulk. Sorcery: untap target creature, then an EXTRA COMBAT and main phase. Aimed at your creature it returns with Feather, so an extra combat EVERY turn, and every combat re-triggers the Swords, Akiri, Jor Kadeen and Pain for All (rule 1).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Neheb, the Eternal": {
@@ -1884,16 +1884,16 @@
   },
   "Raph & Leo, Sibling Rivals": {
    "group": "Strong",
-   "text": "OWNED. 3 mana: each first attack untaps one or two attackers and takes an EXTRA COMBAT, every turn. The cheapest repeatable extra combat in the pile.",
+   "text": "IN 2026-11-11 (round 2) for Boros Reckoner. OWNED. 3 mana: each first attack untaps one or two attackers and takes an EXTRA COMBAT, every turn. The cheapest repeatable extra combat in the pile.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Response // Resurgence": {
    "group": "Real",
-   "text": "Response: 2 hybrid mana for 5 damage to an attacking or blocking creature. Resurgence: 5 mana for first strike, vigilance and an extra combat. Both halves fit.",
+   "text": "IN 2026-11-11 (round 2) for Chandra's Ignition. Response: 2 hybrid mana for 5 damage to an attacking or blocking creature. Resurgence: 5 mana for first strike, vigilance and an extra combat. Both halves fit.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Raiyuu, Storm's Edge": {
@@ -1905,9 +1905,9 @@
   },
   "Aurelia, the Warleader": {
    "group": "Strong",
-   "text": "OWNED. 6-mana hasty flier: first attack each turn untaps your creatures and takes an EXTRA COMBAT. A top-end extra-combat engine.",
+   "text": "IN 2026-11-11 (round 2) for Monastery Mentor. OWNED. 6-mana hasty flier: first attack each turn untaps your creatures and takes an EXTRA COMBAT. A top-end extra-combat engine.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   }
  },
@@ -2075,6 +2075,89 @@
     "Titan's Strength",
     "Valorous Stance",
     "Zada, Hedron Grinder"
+   ],
+   "fd893e40a662": [
+    "Abraded Bluffs",
+    "Agrus Kos, Spirit of Justice",
+    "Akiri, Fearless Voyager",
+    "Akroma's Will",
+    "Aurelia, Exemplar of Justice",
+    "Aurelia, the Warleader",
+    "Battlefield Forge",
+    "Bionic Blow",
+    "Bladehold War-Whip",
+    "Blazing Crescendo",
+    "Boros Charm",
+    "Bre of Clan Stoutarm",
+    "Bruenor Battlehammer",
+    "Bulk Up",
+    "Chainsaw",
+    "Clifftop Retreat",
+    "Collective Inferno",
+    "Command Tower",
+    "Crystal Barricade",
+    "Dalkovan Encampment",
+    "Danitha Capashen, Paragon",
+    "Elspeth Resplendent",
+    "Embercleave",
+    "Fall of the Hammer",
+    "Feather, the Redeemed",
+    "Fiery Confluence",
+    "Furious Rise",
+    "Furycalm Snarl",
+    "Giantfall",
+    "Great Train Heist",
+    "Inspiring Vantage",
+    "Iron Fist, Living Weapon",
+    "Jor Kadeen, First Goldwarden",
+    "Kaldra Compleat",
+    "Laelia, the Blade Reforged",
+    "Legion Leadership // Legion Stronghold",
+    "Luke Cage, Power Man",
+    "Mabel, Heir to Cragflame",
+    "Mishra's Command",
+    "Mother of Runes",
+    "Mountain",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Pain for All",
+    "Plains",
+    "Rabid Gnaw",
+    "Raph & Leo, Sibling Rivals",
+    "Response // Resurgence",
+    "Reyav, Master Smith",
+    "Rogue's Passage",
+    "Sacred Foundry",
+    "Seedglaive Mentor",
+    "Seize the Day",
+    "Self-Destruct",
+    "Shadowspear",
+    "Showdown of the Skalds",
+    "Sif's Spearmaster",
+    "Spinerock Tyrant",
+    "Starting Town",
+    "Stingerback Terror",
+    "Stoneforge Mystic",
+    "Sun-Blessed Peak",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swiftblade Vindicator",
+    "Swiftfoot Boots",
+    "Sword of Fire and Ice",
+    "Sword of Forge and Frontier",
+    "Sword of Truth and Justice",
+    "Team Avatar",
+    "Temple of Triumph",
+    "Temur Battle Rage",
+    "Tenth District Legionnaire",
+    "The Fire Crystal",
+    "The Last Agni Kai",
+    "The Sentry, Golden Guardian",
+    "The Wandering Emperor",
+    "Thorin, Mountain-king",
+    "Titan's Strength",
+    "Valorous Stance",
+    "Zada, Hedron Grinder",
+    "Éowyn, Fearless Knight"
    ]
   }
  },
