@@ -39,7 +39,6 @@ Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
 Ashiok, Nightmare Weaver
 Ashroot Animist
-Aurelia, Exemplar of Justice
 Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
@@ -368,7 +367,6 @@ Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
 Retrieve the Esper
-Reyav, Master Smith
 Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints

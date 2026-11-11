@@ -216,3 +216,11 @@ Raiyuu −Response // Resurgence, Lightning −Aurelia Exemplar, Teyo −Crystal
 3.09, early drops 20, legal. Star Trek: Worf −Tenth District Legionnaire, Exploratory Mission
 −Valorous Stance, Kirk −Blazing Crescendo, Combadge −Chainsaw, Pah-Wraith (optional) −Giantfall
 (interaction ~13 if taken, ~14 without).
+
+## 12. Round 3 APPLIED (2026-11-11)
+
+The section 11 package landed (12 swaps). Crystal Barricade is now a `#~` flex line; `#: protect:` was
+pruned of it and of the stale entries (cards cut in earlier rounds), and Danitha was added. Live: floor A,
+interaction 16 (+2 unread), card advantage 9, protection 14, board power 83, avg MV 3.09, 35 lands + 2 MDFC,
+keepable 76.9% (94.7% with Brawl's free mulligan). Preflight READY; rationale audit clean. Picard's cut
+candidates are in the deck notes: Giantfall (instead of Pah-Wraith), Balduvian Berserker, Esper Sentinel.

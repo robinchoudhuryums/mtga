@@ -813,9 +813,9 @@
  "reasons": {
   "Sword of Truth and Justice": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Sword of Body and Mind. +2/+2, protection from white and blue; on a hit a +1/+1 counter and proliferate. The fourth Sword if one underperforms.",
+   "text": "CUT 2026-11-11 (round 3) for Krenko, Tin Street Kingpin. IN 2026-11-11 for Sword of Body and Mind. +2/+2, protection from white and blue; on a hit a +1/+1 counter and proliferate. The fourth Sword if one underperforms.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Sword of Sinew and Steel": {
@@ -841,16 +841,16 @@
   },
   "Bladehold War-Whip": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Gods Willing. Double strike and cheaper equips; the double strike overlaps (see Reyav) and its own equip is {3}{R}{W}. Re-graded 2026-11-11 (carrier pass, in-deck).",
+   "text": "CUT 2026-11-11 (round 3) for Odric, Lunarch Marshal. IN 2026-11-11 for Gods Willing. Double strike and cheaper equips; the double strike overlaps (see Reyav) and its own equip is {3}{R}{W}. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Kaldra Compleat": {
    "group": "Strong",
    "text": "IN 2026-11-11 for Crackling Cyclops. Stoneforge puts it in for {1}{W} and Thorin attaches it free; +5/+5 is PERMANENT power, so it feeds Esper Sentinel's tax, Immolator's boon and Teyo's lock, and Odric shares its indestructible, first strike, trample and haste. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Lightning Bolt": {
@@ -883,16 +883,16 @@
   },
   "Collective Inferno": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Lightning Greaves. OWNED. Doubles the damage of sources of a chosen type you control: a double-damage Voltron body and doubled Self-Destruct.",
+   "text": "CUT 2026-11-11 (round 3) for Erratic Cyclops. IN 2026-11-11 for Lightning Greaves. OWNED. Doubles the damage of sources of a chosen type you control: a double-damage Voltron body and doubled Self-Destruct.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Aurelia, Exemplar of Justice": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Get Lost. The alternative commander: +2/+0, trample and vigilance on one creature every combat, and a flier. Pure Voltron, but no card flow.",
+   "text": "CUT 2026-11-11 (round 3) for Lightning, Army of One. IN 2026-11-11 for Get Lost. The alternative commander: +2/+0, trample and vigilance on one creature every combat, and a flier. Pure Voltron, but no card flow.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Unleash Fury": {
@@ -960,9 +960,9 @@
   },
   "Fall of the Hammer": {
    "group": "Strong",
-   "text": "IN 2026-11-11 for Swords to Plowshares. CRAFT (C). Your creature deals damage equal to its power to another creature: the third repeatable bite.",
+   "text": "CUT 2026-11-11 (round 3) for Balduvian Berserker. IN 2026-11-11 for Swords to Plowshares. CRAFT (C). Your creature deals damage equal to its power to another creature: the third repeatable bite.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Temur Battle Rage": {
@@ -1025,7 +1025,7 @@
    "group": "Real",
    "text": "OWNED. +2/+0 and first strike plus a Treasure; returned by Feather, a Treasure every turn (ramp into Embercleave and Aurelia, the Warleader).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Dual-Sun Technique": {
@@ -1044,9 +1044,9 @@
   },
   "Reyav, Master Smith": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Speed, Young Avenger. Equipped attackers gain double strike; overlaps Embercleave, Agrus Kos, Swiftblade, Temur Battle Rage, Akroma's Will, Sweeping Cleave and Odric's sharing. Re-graded 2026-11-11 (carrier pass, in-deck).",
+   "text": "CUT 2026-11-11 (round 3) for Raubahn, Bull of Ala Mhigo. IN 2026-11-11 for Speed, Young Avenger. Equipped attackers gain double strike; overlaps Embercleave, Agrus Kos, Swiftblade, Temur Battle Rage, Akroma's Will, Sweeping Cleave and Odric's sharing. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Bruenor Battlehammer": {
@@ -1058,9 +1058,9 @@
   },
   "Zada, Hedron Grinder": {
    "group": "Strong",
-   "text": "IN 2026-11-11 for War Machine, Legacy of Iron. CRAFT (R). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Legion Leadership or Temur Battle Rage on Zada hits the whole team, and Feather returns the original. Aim bites (Rabid Gnaw, Fall of the Hammer) elsewhere, since every copy hits the same target. Bodies to copy onto: Monastery Mentor Monks, Wandering Emperor Samurai.",
+   "text": "IN 2026-11-11 for War Machine, Legacy of Iron. CRAFT (R). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Legion Leadership or Temur Battle Rage on Zada hits the whole team, and Feather returns the original. Aim bites (Rabid Gnaw, Giantfall) elsewhere, since every copy hits the same target. Bodies to copy onto: Krenko's Goblins, Wandering Emperor Samurai.",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Champion of the Flame": {
@@ -1121,23 +1121,23 @@
   },
   "Kaya's Onslaught": {
    "group": "Real",
-   "text": "CRAFT (U). +1/+1 and double strike; foretell for {W}. Left out 2026-11-11: double strike does not stack, and Temur Battle Rage, Reyav, Embercleave, Boros Charm and Swiftblade already give it.",
+   "text": "CRAFT (U). +1/+1 and double strike; foretell for {W}. Left out 2026-11-11: double strike does not stack, and Temur Battle Rage, Embercleave, Agrus Kos, Swiftblade, Sweeping Cleave and Odric already give it.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Two-Handed Axe": {
    "group": "Real",
    "text": "OWNED. SPICE: the Adventure half is a double-strike instant that targets your creature, so Feather can return it to hand instead of sending it on an adventure; or cast the Equipment that doubles power on attack.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Swift Kick": {
    "group": "Situational",
-   "text": "CRAFT (C). A 4-mana fight Feather returns; Rabid Gnaw, Giantfall and Fall of the Hammer (all in now) do it for 2.",
+   "text": "CRAFT (C). A 4-mana fight Feather returns; Rabid Gnaw, Giantfall and Bionic Blow (all in now) do it for 2.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Brimaz, King of Oreskos": {
@@ -1177,9 +1177,9 @@
   },
   "Basri Ket": {
    "group": "Strong",
-   "text": "CRAFT (M). PLANESWALKER, 3 mana. +1: a +1/+1 counter and indestructible until end of turn on the body every turn; −2: attacking makes Soldier tokens (bodies for Zada, in now). Optional add for Titan's Strength, not applied.",
+   "text": "CRAFT (M). PLANESWALKER, 3 mana. +1: a +1/+1 counter and indestructible until end of turn on the body every turn; −2: attacking makes Soldier tokens (bodies for Zada, in now). Optional; Titan's Strength went to Two-Handed Axe in round 3.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Ajani, Caller of the Pride": {
@@ -1233,9 +1233,9 @@
   },
   "Team Tactics": {
    "group": "Real",
-   "text": "RE-READ 2026-11-11: double strike, plus trample if you tap creatures with total power 1+ (teamwork). It targets a creature, so Feather returns it every turn: a second Temur Battle Rage. Both halves are covered (Temur Battle Rage, Embercleave, Reyav for double strike; Shadowspear, Kaldra, Swiftblade, Embercleave for trample), so it is backup rather than a slot-earner.",
+   "text": "RE-READ 2026-11-11: double strike, plus trample if you tap creatures with total power 1+ (teamwork). It targets a creature, so Feather returns it every turn: a second Temur Battle Rage. Both halves are covered (Temur Battle Rage, Embercleave, Sweeping Cleave for double strike; Shadowspear, Kaldra, Swiftblade, Embercleave for trample), so it is backup rather than a slot-earner.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Dreadhorde Arcanist": {
@@ -1291,7 +1291,7 @@
    "group": "Real",
    "text": "OWNED. Prowess grows it on every Feather spell, and firebending adds R equal to its power on attack: as the carrier, mana for Lunar Frenzy, Response or Temur Battle Rage mid-combat. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Guardian Scalelord": {
@@ -1312,7 +1312,7 @@
    "group": "Strong",
    "text": "IN 2026-11-11 (round 2) for Lightning Helix. Sorcery {X}{R}{R}: your creature gets +X/+0, then deals damage equal to its power to another creature. It targets your creature, so Feather returns it: a scalable bite every turn (rules 1 and 4).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Cosmic Sovereign": {
@@ -1340,7 +1340,7 @@
    "group": "Real",
    "text": "0/5 trample that attacks for the carrier's power as well (+X where X is your greatest power), doubling the damage of one big body; gives Krenko's Goblins trample; base 5 with Teyo. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Swords to Plowshares": {
@@ -1366,9 +1366,9 @@
   },
   "Lightning, Army of One": {
    "group": "Real",
-   "text": "OWNED. First strike, trample, lifelink; when it hits a player, all damage to them and their permanents is doubled until your next turn. Its first-strike hit doubles the big body's regular combat damage the same turn.",
+   "text": "IN 2026-11-11 (round 3) for Aurelia, Exemplar of Justice. OWNED. First strike, trample, lifelink; when it hits a player, all damage to them and their permanents is doubled until your next turn. Its first-strike hit doubles the big body's regular combat damage the same turn.",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Candletrap": {
@@ -1387,9 +1387,9 @@
   },
   "Odric, Lunarch Marshal": {
    "group": "Strong",
-   "text": "At EVERY combat the team gains each keyword any of your creatures has: Boots' hexproof, Kaldra's indestructible, Embercleave's double strike and trample, across 28 creatures, re-checked each extra combat. The keywords leave with their source. Re-graded 2026-11-11 on the owner's note.",
+   "text": "IN 2026-11-11 (round 3) for Bladehold War-Whip. At EVERY combat the team gains each keyword any of your creatures has: Boots' hexproof, Kaldra's indestructible, Embercleave's double strike and trample, across 28 creatures, re-checked each extra combat. The keywords leave with their source. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Cacophony Scamp": {
@@ -1415,9 +1415,9 @@
   },
   "Esper Sentinel": {
    "group": "Real",
-   "text": "1-drop CARRIER: equipment and counters are permanent, so on the opponent's turn the tax is 4-8 and they mostly decline. About a card a turn on the short axis (rule 3), from the cheapest body to suit up. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for Boros Charm. 1-drop CARRIER: equipment and counters are permanent, so on the opponent's turn the tax is 4-8 and they mostly decline. About a card a turn on the short axis (rule 3), from the cheapest body to suit up. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Onward // Victory": {
@@ -1431,7 +1431,7 @@
    "group": "Situational",
    "text": "Doubles its power for EACH other creature entering, so a Krenko wave of N Goblins doubles it N times. A combo with Krenko, a 1/3 without. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Iron Hills": {
@@ -1450,9 +1450,9 @@
   },
   "Two-Handed Axe // Sweeping Cleave": {
    "group": "Strong",
-   "text": "OWNED. Doubles power on EACH attack, so with the extra-combat package the second combat doubles the doubled power; Sweeping Cleave targets your creature (Feather can return the card). Re-graded 2026-11-11: the extra combats changed it.",
+   "text": "IN 2026-11-11 (round 3) for Titan's Strength. OWNED. Doubles power on EACH attack, so with the extra-combat package the second combat doubles the doubled power; Sweeping Cleave targets your creature (Feather can return the card). Re-graded 2026-11-11: the extra combats changed it.",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Concerted Effort": {
@@ -1513,9 +1513,9 @@
   },
   "Chainsaw": {
    "group": "Real",
-   "text": "IN 2026-11-11 (round 2) for Maul of the Skyclaves. OWNED. Equipment that deals 3 to a creature on entry, then grows with each creature death. Removal that also feeds Bruenor, Reyav and Akiri (rule 5).",
+   "text": "IN 2026-11-11 (round 2) for Maul of the Skyclaves. OWNED. Equipment that deals 3 to a creature on entry, then grows with each creature death. Removal that also feeds Bruenor, Raubahn and Akiri (rule 5).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Mephit's Enthusiasm": {
@@ -1555,9 +1555,9 @@
   },
   "Erratic Cyclops": {
    "group": "Strong",
-   "text": "0/8 trampler: +MV power per instant/sorcery (19 here, Feather returns the targeting ones), so it grows every turn with no equipment, and 8 toughness survives a Self-Destruct up to 7. With Teyo its base is 8 forever. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for Collective Inferno. 0/8 trampler: +MV power per instant/sorcery (19 here, Feather returns the targeting ones), so it grows every turn with no equipment, and 8 toughness survives a Self-Destruct up to 7. With Teyo its base is 8 forever. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Overwhelming Victory": {
@@ -1725,14 +1725,14 @@
    "group": "Situational",
    "text": "P/T equal your creature count, and every creature TOKEN enters as a copy: with Krenko each Goblin wave becomes copies of Vanguard. Strong with Krenko, narrow without. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Teyo, Aegis Adept": {
    "group": "Real",
-   "text": "Alchemy PLANESWALKER. +1 sets a creature's base power to its toughness perpetually; on the owner's read it LOCKS the toughness at resolution, so pump toughness first (Kaldra +5/+5, Frontline Rush, Integrity) and keep it. Erratic Cyclops (0/8), Orcish Siegemaster (0/5) and Loxodon Lifechanter after an activation (+25/+25) become permanent giants. Untested in Arena. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for Crystal Barricade. Alchemy PLANESWALKER. +1 sets a creature's base power to its toughness perpetually; on the owner's read it LOCKS the toughness at resolution, so pump toughness first (Kaldra +5/+5, Frontline Rush, Integrity) and keep it. Erratic Cyclops (0/8), Orcish Siegemaster (0/5) and Loxodon Lifechanter after an activation (+25/+25) become permanent giants. Untested in Arena. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Fling": {
@@ -1744,30 +1744,30 @@
   },
   "Raubahn, Bull of Ala Mhigo": {
    "group": "Real",
-   "text": "2-drop with ward (pay life equal to its power); each attack attaches an Equipment to an attacking creature for free. Equip mana saved every turn (rule 5).",
+   "text": "IN 2026-11-11 (round 3) for Reyav, Master Smith. 2-drop with ward (pay life equal to its power); each attack attaches an Equipment to an attacking creature for free. Equip mana saved every turn (rule 5).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Balduvian Berserker": {
    "group": "Real",
-   "text": "Enlist the big body: Berserker attacks with the combined power. Blocked and killed, that power hits any target; Self-Destruct or Fling on it deals X and then the death trigger deals X again (2X). The body stays home, safe from combat tricks. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for Fall of the Hammer. Enlist the big body: Berserker attacks with the combined power. Blocked and killed, that power hits any target; Self-Destruct or Fling on it deals X and then the death trigger deals X again (2X). The body stays home, safe from combat tricks. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Krenko, Tin Street Kingpin": {
    "group": "Strong",
-   "text": "As the carrier: each attack adds a counter and Goblins equal to its power (equipment counts), and every extra combat (Seize the Day, Raph & Leo, Aurelia) makes another wave for Team Avatar and Odric. A 1/2 for 3 until equipped. Re-graded 2026-11-11 on the owner's note.",
+   "text": "IN 2026-11-11 (round 3) for Sword of Truth and Justice. As the carrier: each attack adds a counter and Goblins equal to its power (equipment counts), and every extra combat (Seize the Day, Raph & Leo, Aurelia) makes another wave for Team Avatar and Odric. A 1/2 for 3 until equipped. Re-graded 2026-11-11 on the owner's note.",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Kazuul's Fury // Kazuul's Cliffs": {
    "group": "Real",
-   "text": "A Fling with a land face: the same death-value doubling as Fling, or a tapped Mountain when you need a land. Better than Fling here. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for a Mountain. A Fling with a land face: the same death-value doubling as Fling, or a tapped Mountain when you need a land. Better than Fling here. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Origin of Thor": {
@@ -1781,7 +1781,7 @@
    "group": "Real",
    "text": "IN 2026-11-11 (round 2) for Champion of the Flame. As the CARRIER, {T}: damage equal to its power to an opponent, and every untap (Raph & Leo, Aurelia, Seize the Day, Great Train Heist) is another shot; 1/4, so base 4 with Teyo. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Voldaren Thrillseeker": {
@@ -1793,9 +1793,9 @@
   },
   "Combustion Man": {
    "group": "Strong",
-   "text": "OWNED. As the CARRIER: each attack destroys a permanent unless they take damage equal to his power, so at 10+ power it is removal every attack, and each extra combat is another. A 4/6 body. Re-graded 2026-11-11 (carrier pass).",
+   "text": "IN 2026-11-11 (round 3) for Spinerock Tyrant. OWNED. As the CARRIER: each attack destroys a permanent unless they take damage equal to his power, so at 10+ power it is removal every attack, and each extra combat is another. A 4/6 body. Re-graded 2026-11-11 (carrier pass).",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Go Ninja Go": {
@@ -1891,16 +1891,16 @@
   },
   "Response // Resurgence": {
    "group": "Real",
-   "text": "IN 2026-11-11 (round 2) for Chandra's Ignition. Response: 2 hybrid mana for 5 damage to an attacking or blocking creature. Resurgence: 5 mana for first strike, vigilance and an extra combat. Both halves fit.",
+   "text": "CUT 2026-11-11 (round 3) for Raiyuu, Storm's Edge. IN 2026-11-11 (round 2) for Chandra's Ignition. Response: 2 hybrid mana for 5 damage to an attacking or blocking creature. Resurgence: 5 mana for first strike, vigilance and an extra combat. Both halves fit.",
    "graded_at": {
-    "56-historic-brawl": "fd893e40a662"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Raiyuu, Storm's Edge": {
    "group": "Real",
-   "text": "First strike; a Samurai or Warrior attacking ALONE untaps and takes an extra combat once a turn. Raiyuu and Laelia (Warrior) qualify; it fits the attack-alone line (Team Avatar).",
+   "text": "IN 2026-11-11 (round 3) for Response // Resurgence. First strike; a Samurai or Warrior attacking ALONE untaps and takes an extra combat once a turn. Raiyuu and Laelia (Warrior) qualify; it fits the attack-alone line (Team Avatar).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "843be8bee13d"
    }
   },
   "Aurelia, the Warleader": {
@@ -2155,6 +2155,90 @@
     "The Wandering Emperor",
     "Thorin, Mountain-king",
     "Titan's Strength",
+    "Valorous Stance",
+    "Zada, Hedron Grinder",
+    "Éowyn, Fearless Knight"
+   ],
+   "843be8bee13d": [
+    "Abraded Bluffs",
+    "Agrus Kos, Spirit of Justice",
+    "Akiri, Fearless Voyager",
+    "Akroma's Will",
+    "Aurelia, the Warleader",
+    "Balduvian Berserker",
+    "Battlefield Forge",
+    "Bionic Blow",
+    "Blazing Crescendo",
+    "Bre of Clan Stoutarm",
+    "Bruenor Battlehammer",
+    "Bulk Up",
+    "Chainsaw",
+    "Clifftop Retreat",
+    "Combustion Man",
+    "Command Tower",
+    "Dalkovan Encampment",
+    "Danitha Capashen, Paragon",
+    "Elspeth Resplendent",
+    "Embercleave",
+    "Erratic Cyclops",
+    "Esper Sentinel",
+    "Feather, the Redeemed",
+    "Fiery Confluence",
+    "Furious Rise",
+    "Furycalm Snarl",
+    "Giantfall",
+    "Great Train Heist",
+    "Inspiring Vantage",
+    "Iron Fist, Living Weapon",
+    "Jor Kadeen, First Goldwarden",
+    "Kaldra Compleat",
+    "Kazuul's Fury // Kazuul's Cliffs",
+    "Krenko, Tin Street Kingpin",
+    "Laelia, the Blade Reforged",
+    "Legion Leadership // Legion Stronghold",
+    "Lightning, Army of One",
+    "Luke Cage, Power Man",
+    "Mabel, Heir to Cragflame",
+    "Mishra's Command",
+    "Mother of Runes",
+    "Mountain",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Odric, Lunarch Marshal",
+    "Pain for All",
+    "Plains",
+    "Rabid Gnaw",
+    "Raiyuu, Storm's Edge",
+    "Raph & Leo, Sibling Rivals",
+    "Raubahn, Bull of Ala Mhigo",
+    "Rogue's Passage",
+    "Sacred Foundry",
+    "Seedglaive Mentor",
+    "Seize the Day",
+    "Self-Destruct",
+    "Shadowspear",
+    "Showdown of the Skalds",
+    "Sif's Spearmaster",
+    "Starting Town",
+    "Stingerback Terror",
+    "Stoneforge Mystic",
+    "Sun-Blessed Peak",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swiftblade Vindicator",
+    "Swiftfoot Boots",
+    "Sword of Fire and Ice",
+    "Sword of Forge and Frontier",
+    "Team Avatar",
+    "Temple of Triumph",
+    "Temur Battle Rage",
+    "Tenth District Legionnaire",
+    "Teyo, Aegis Adept",
+    "The Fire Crystal",
+    "The Last Agni Kai",
+    "The Sentry, Golden Guardian",
+    "The Wandering Emperor",
+    "Thorin, Mountain-king",
+    "Two-Handed Axe // Sweeping Cleave",
     "Valorous Stance",
     "Zada, Hedron Grinder",
     "Éowyn, Fearless Knight"
