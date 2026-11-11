@@ -39,6 +39,7 @@ Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
 Ashiok, Nightmare Weaver
 Ashroot Animist
+Aurelia, Exemplar of Justice
 Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
@@ -84,6 +85,7 @@ Captain Mar-Vell, Space-Born
 Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
+Champion of the Flame
 Charging Strifeknight
 Chatterfang, Squirrel General
 Claim Jumper
@@ -367,6 +369,7 @@ Resentful Revelation
 Resolute Reinforcements
 Restorative Technique
 Retrieve the Esper
+Reyav, Master Smith
 Rhovanion Rampager
 Rise of the Dark Realms
 Rise of the Varmints
@@ -436,6 +439,7 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
+Temur Battle Rage
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer

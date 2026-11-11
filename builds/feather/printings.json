@@ -253,6 +253,44 @@
  "Collective Inferno": [],
  "Crackling Cyclops": [],
  "Crystal Barricade": [],
+ "Danitha Capashen, Paragon": [
+  {
+   "a": "Chris Rallis",
+   "art": "https://cards.scryfall.io/art_crop/front/b/2/b2a2b53c-0bf2-4d3d-91c2-57a484ae4f6b.jpg?1783935047",
+   "cn": "12",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/2/b2a2b53c-0bf2-4d3d-91c2-57a484ae4f6b.jpg?1783935047",
+   "r": "U",
+   "set": "DOM",
+   "sn": "Dominaria",
+   "y": "2018"
+  },
+  {
+   "a": "Kuregure",
+   "art": "https://cards.scryfall.io/art_crop/front/2/1/21b78c55-20cf-4a65-b50b-2f8093465646.jpg?1783908852",
+   "cn": "59",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/1/21b78c55-20cf-4a65-b50b-2f8093465646.jpg?1783908852",
+   "r": "U",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  },
+  {
+   "a": "Square Enix",
+   "art": "https://cards.scryfall.io/art_crop/front/2/1/210ff924-215e-4ae8-8706-5af3891c6605.jpg?1783906389",
+   "cn": "22",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/1/210ff924-215e-4ae8-8706-5af3891c6605.jpg?1783906389",
+   "r": "U",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Defiant Strike": [
   {
    "a": "Anastasia Ovchinnikova",

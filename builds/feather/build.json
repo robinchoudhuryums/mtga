@@ -308,9 +308,9 @@
  "reasons": {
   "Sword of Truth and Justice": {
    "group": "Real",
-   "text": "+2/+2, protection from white and blue; on a hit a +1/+1 counter and proliferate. The fourth Sword if one underperforms.",
+   "text": "IN 2026-11-11 for Sword of Body and Mind. +2/+2, protection from white and blue; on a hit a +1/+1 counter and proliferate. The fourth Sword if one underperforms.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Sword of Sinew and Steel": {
@@ -329,23 +329,23 @@
   },
   "Maul of the Skyclaves": {
    "group": "Real",
-   "text": "Attaches on entry: +2/+2, flying, first strike. Strong on any body; the Equipment slots went to the Swords.",
+   "text": "IN 2026-11-11 for Ferocification. Attaches on entry: +2/+2, flying, first strike. Strong on any body; the Equipment slots went to the Swords.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Bladehold War-Whip": {
    "group": "Real",
-   "text": "A 2/2 Rebel on entry; equip costs {1} less and equipped creatures have double strike. Cheaper equips for three Swords.",
+   "text": "IN 2026-11-11 for Gods Willing. A 2/2 Rebel on entry; equip costs {1} less and equipped creatures have double strike. Cheaper equips for three Swords.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Kaldra Compleat": {
    "group": "Real",
-   "text": "7 mana: a 5/5 germ with indestructible, haste, first strike, trample; exiles what it hits. Top-end if the curve has room.",
+   "text": "IN 2026-11-11 for Crackling Cyclops. 7 mana: a 5/5 germ with indestructible, haste, first strike, trample; exiles what it hits. Top-end if the curve has room.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Lightning Bolt": {
@@ -378,16 +378,16 @@
   },
   "Collective Inferno": {
    "group": "Real",
-   "text": "OWNED. Doubles the damage of sources of a chosen type you control: a double-damage Voltron body and doubled Self-Destruct.",
+   "text": "IN 2026-11-11 for Lightning Greaves. OWNED. Doubles the damage of sources of a chosen type you control: a double-damage Voltron body and doubled Self-Destruct.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Aurelia, Exemplar of Justice": {
    "group": "Real",
-   "text": "The alternative commander: +2/+0, trample and vigilance on one creature every combat, and a flier. Pure Voltron, but no card flow.",
+   "text": "IN 2026-11-11 for Get Lost. The alternative commander: +2/+0, trample and vigilance on one creature every combat, and a flier. Pure Voltron, but no card flow.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Unleash Fury": {
@@ -406,9 +406,9 @@
   },
   "Sigarda's Aid": {
    "group": "Situational",
-   "text": "Cut in the draft for Tome of Legends: flash Equipment and auto-attach; low power on its own.",
+   "text": "IN 2026-11-11 for Tome of Legends. Cut in the draft for Tome of Legends: flash Equipment and auto-attach; low power on its own.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Speedball, New Warrior": {
@@ -441,79 +441,79 @@
   },
   "Rabid Gnaw": {
    "group": "Strong",
-   "text": "OWNED. Your creature gets +1/+0, then deals damage equal to its power to a creature you don't control: a 2-mana bite Feather returns every end step, so removal every turn off the deck's one big body. PROPOSED for Lightning Greaves.",
+   "text": "IN 2026-11-11 for Path to Exile. OWNED. Your creature gets +1/+0, then deals damage equal to its power to a creature you don't control: a 2-mana bite Feather returns every end step, so removal every turn off the deck's one big body.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Giantfall": {
    "group": "Strong",
-   "text": "OWNED. Your creature deals damage equal to its power to their creature, or destroy an artifact. Feather returns the bite mode (it targets your creature); a second repeatable removal spell. PROPOSED for Energybending.",
+   "text": "IN 2026-11-11 for Light Up the Stage. OWNED. Your creature deals damage equal to its power to their creature, or destroy an artifact. Feather returns the bite mode (it targets your creature); a second repeatable removal spell.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Fall of the Hammer": {
    "group": "Strong",
-   "text": "CRAFT (C). Your creature deals damage equal to its power to another creature: the third repeatable bite. PROPOSED for Choreographed Sparks.",
+   "text": "IN 2026-11-11 for Swords to Plowshares. CRAFT (C). Your creature deals damage equal to its power to another creature: the third repeatable bite.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Temur Battle Rage": {
    "group": "Strong",
-   "text": "CRAFT (C). Double strike, plus trample with a 4-power creature out (nearly always here). Feather returns it, so the body swings with double strike and trample every turn. PROPOSED for Pain for All.",
+   "text": "IN 2026-11-11 for Choreographed Sparks. CRAFT (C). Double strike, plus trample with a 4-power creature out (nearly always here). Feather returns it, so the body swings with double strike and trample every turn.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Might of the Meek": {
    "group": "Strong",
-   "text": "OWNED. {R}: trample and draw a card; Feather makes it a 1-mana draw every turn. PROPOSED for Crackling Cyclops.",
+   "text": "OWNED. {R}: trample and draw a card; Feather makes it a 1-mana draw every turn. Not taken in round 1; first cantrip back if card flow is short.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Rogue's Passage": {
    "group": "Strong",
-   "text": "OWNED. A land: {4},{T}: target creature can't be blocked. The Voltron finisher that costs no spell slot. PROPOSED for a Mountain.",
+   "text": "IN 2026-11-11 for a Mountain. OWNED. A land: {4},{T}: target creature can't be blocked. The Voltron finisher that costs no spell slot.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Laelia, the Blade Reforged": {
    "group": "Strong",
-   "text": "OWNED. Haste; each attack exiles the top card to play this turn, and she grows whenever cards are exiled from your library or graveyard. A body that draws and gets bigger; strong carrier for the Swords. PROPOSED for Mabel, Heir to Cragflame.",
+   "text": "IN 2026-11-11 for Demonic Ruckus. OWNED. Haste; each attack exiles the top card to play this turn, and she grows whenever cards are exiled from your library or graveyard. A body that draws and gets bigger; strong carrier for the Swords.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Akiri, Fearless Voyager": {
    "group": "Strong",
-   "text": "CRAFT (R). Draw a card whenever you attack with an equipped creature; {W}: move an Equipment to make a creature indestructible. Card flow from the Equipment package. PROPOSED for Ferocification.",
+   "text": "IN 2026-11-11 for Energybending. CRAFT (R). Draw a card whenever you attack with an equipped creature; {W}: move an Equipment to make a creature indestructible. Card flow from the Equipment package.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Tenth District Legionnaire": {
    "group": "Strong",
-   "text": "CRAFT (U). A 2-mana haste body that gets a +1/+1 counter and scry 1 for every spell that targets it; Feather's tricks hit it every turn. SPICE: the body you build up. PROPOSED for Speed, Young Avenger.",
+   "text": "IN 2026-11-11 for Team Tactics. CRAFT (U). A 2-mana haste body that gets a +1/+1 counter and scry 1 for every spell that targets it; Feather's tricks hit it every turn. SPICE: the body you build up.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Showdown of the Skalds": {
    "group": "Strong",
-   "text": "CRAFT (R). Saga: exile the top four and play them until chapter III; chapters II and III put a +1/+1 counter on a creature whenever you cast a spell. Card advantage the deck lacks. PROPOSED for Demonic Ruckus.",
+   "text": "IN 2026-11-11 for Loran's Escape. CRAFT (R). Saga: exile the top four and play them until chapter III; chapters II and III put a +1/+1 counter on a creature whenever you cast a spell. Card advantage the deck lacks.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Blazing Crescendo": {
    "group": "Strong",
-   "text": "OWNED. +3/+1 and exile the top card to play through next turn; returned by Feather, an impulse draw every turn.",
+   "text": "IN 2026-11-11 for Heroic Reinforcements. OWNED. +3/+1 and exile the top card to play through next turn; returned by Feather, an impulse draw every turn.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Ancestors' Aid": {
@@ -525,9 +525,9 @@
   },
   "Dual-Sun Technique": {
    "group": "Real",
-   "text": "OWNED. Double strike, and a card if the creature has a +1/+1 counter (Tenth District Legionnaire, Laelia, Showdown counters).",
+   "text": "OWNED. Double strike, and a card if the creature has a +1/+1 counter (Tenth District Legionnaire, Laelia, Elspeth Resplendent and The Wandering Emperor all put counters on now). Overlaps the deck's other double strike.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Panther Pounce": {
@@ -539,37 +539,37 @@
   },
   "Reyav, Master Smith": {
    "group": "Real",
-   "text": "CRAFT (U). Equipped or enchanted attackers gain double strike: every Sword trigger twice. Overlaps the double-strike tricks.",
+   "text": "IN 2026-11-11 for Speed, Young Avenger. CRAFT (U). Equipped or enchanted attackers gain double strike: every Sword trigger twice. Overlaps the double-strike tricks.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Bruenor Battlehammer": {
    "group": "Real",
-   "text": "CRAFT (U). +2/+0 per Equipment on each creature and the first equip each turn is free: moves three Swords around without mana.",
+   "text": "IN 2026-11-11 for Reckless Impulse. CRAFT (U). +2/+0 per Equipment on each creature and the first equip each turn is free: moves three Swords around without mana.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Zada, Hedron Grinder": {
    "group": "Strong",
-   "text": "CRAFT (R). PROPOSED for Team Avatar (owner's pick). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Temur Battle Rage, Titan's Strength or Defiant Strike on Zada hits the whole team (Defiant Strike draws per copy), and Feather returns the original. Bites (Rabid Gnaw, Fall of the Hammer) copy as every creature hitting the SAME target, so aim those elsewhere; Chandra's Ignition on Zada also hits your own creatures. Wants bodies: Monastery Mentor Monks, Heroic Reinforcements.",
+   "text": "IN 2026-11-11 for War Machine, Legacy of Iron. CRAFT (R). A spell that targets only Zada is copied for each other creature you control: Bulk Up, Temur Battle Rage or Defiant Strike on Zada hits the whole team (Defiant Strike draws per copy), and Feather returns the original. Aim bites (Rabid Gnaw, Fall of the Hammer) elsewhere, since every copy hits the same target; Chandra's Ignition on Zada also hits your own creatures. Bodies to copy onto: Monastery Mentor Monks, Wandering Emperor Samurai.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Champion of the Flame": {
    "group": "Real",
-   "text": "CRAFT (U). SPICE: trample, +2/+2 per Aura and Equipment attached. A cheap body that gets enormous under two Swords.",
+   "text": "IN 2026-11-11 for Unexpected Windfall. CRAFT (U). SPICE: trample, +2/+2 per Aura and Equipment attached. A cheap body that gets enormous under two Swords.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
    "group": "Real",
-   "text": "CRAFT (R). A Goblin that makes Treasure, a rummage chapter, then a copy machine (copy Laelia or Tenth District Legionnaire). Value, but not a Feather card.",
+   "text": "CRAFT (R). A Goblin that makes Treasure, a rummage chapter, then a copy machine (copy Laelia or Tenth District Legionnaire, both in the deck now). Value, but not a Feather card.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Castle Embereth": {
@@ -616,9 +616,9 @@
   },
   "Kaya's Onslaught": {
    "group": "Real",
-   "text": "CRAFT (U). +1/+1 and double strike; foretell for {W}. Overlaps Temur Battle Rage.",
+   "text": "CRAFT (U). +1/+1 and double strike; foretell for {W}. Left out 2026-11-11: double strike does not stack, and Temur Battle Rage, Reyav, Embercleave, Boros Charm and Swiftblade already give it.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Two-Handed Axe": {
@@ -630,9 +630,9 @@
   },
   "Swift Kick": {
    "group": "Situational",
-   "text": "CRAFT (C). A 4-mana fight Feather returns; Rabid Gnaw, Giantfall and Fall of the Hammer do it for 2.",
+   "text": "CRAFT (C). A 4-mana fight Feather returns; Rabid Gnaw, Giantfall and Fall of the Hammer (all in now) do it for 2.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Brimaz, King of Oreskos": {
@@ -658,23 +658,23 @@
   },
   "The Wandering Emperor": {
    "group": "Strong",
-   "text": "OWNED. PLANESWALKER. Flash, and the turn she enters her abilities work at instant speed. +1: a +1/+1 counter and first strike on your creature (grows the body every turn); −1: a 2/2 vigilance Samurai (a body for Zada); −2: exile a tapped creature. Growth, protection-by-ambush and removal in one card.",
+   "text": "IN 2026-11-11 for Untimely Malfunction. OWNED. PLANESWALKER. Flash, and the turn she enters her abilities work at instant speed. +1: a +1/+1 counter and first strike on your creature (grows the body every turn); −1: a 2/2 vigilance Samurai (a body for Zada); −2: exile a tapped creature. Growth, protection-by-ambush and removal in one card.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Elspeth Resplendent": {
    "group": "Strong",
-   "text": "OWNED. PLANESWALKER. +1: a +1/+1 counter AND a flying, first strike, lifelink or vigilance COUNTER on your creature, so the body keeps the keyword for good; −3: put a 3-or-less permanent from the top seven onto the battlefield with a shield counter (Stoneforge, Giver of Runes, Tenth District Legionnaire, a Sword).",
+   "text": "IN 2026-11-11 for Shelter. OWNED. PLANESWALKER. +1: a +1/+1 counter AND a flying, first strike, lifelink or vigilance COUNTER on your creature, so the body keeps the keyword for good; −3: put a 3-or-less permanent from the top seven onto the battlefield with a shield counter (Stoneforge, Giver of Runes, Tenth District Legionnaire, a Sword).",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Basri Ket": {
    "group": "Strong",
-   "text": "CRAFT (M). PLANESWALKER, 3 mana. +1: a +1/+1 counter and indestructible until end of turn: growth plus protection every turn. −2: attacking makes Soldier tokens (bodies for Zada).",
+   "text": "CRAFT (M). PLANESWALKER, 3 mana. +1: a +1/+1 counter and indestructible until end of turn on the body every turn; −2: attacking makes Soldier tokens (bodies for Zada, in now). Optional add for Titan's Strength, not applied.",
    "graded_at": {
-    "56-historic-brawl": "c0bc1b4b7c51"
+    "56-historic-brawl": "dc436c9202b5"
    }
   },
   "Ajani, Caller of the Pride": {
@@ -781,6 +781,88 @@
     "Untimely Malfunction",
     "Valorous Stance",
     "War Machine, Legacy of Iron"
+   ],
+   "dc436c9202b5": [
+    "Abraded Bluffs",
+    "Agrus Kos, Spirit of Justice",
+    "Akiri, Fearless Voyager",
+    "Akroma's Will",
+    "Aurelia, Exemplar of Justice",
+    "Battlefield Forge",
+    "Bladehold War-Whip",
+    "Blazing Crescendo",
+    "Boros Charm",
+    "Boros Reckoner",
+    "Bruenor Battlehammer",
+    "Bulk Up",
+    "Champion of the Flame",
+    "Chandra's Ignition",
+    "Clifftop Retreat",
+    "Collective Inferno",
+    "Command Tower",
+    "Crystal Barricade",
+    "Dalkovan Encampment",
+    "Danitha Capashen, Paragon",
+    "Defiant Strike",
+    "Delney, Streetwise Lookout",
+    "Elspeth Resplendent",
+    "Embercleave",
+    "Enter the Avatar State",
+    "Fall of the Hammer",
+    "Feather, the Redeemed",
+    "Fiery Confluence",
+    "Furycalm Snarl",
+    "Giantfall",
+    "Giver of Runes",
+    "Grand Abolisher",
+    "Inspiring Vantage",
+    "Iron Fist, Living Weapon",
+    "Kaldra Compleat",
+    "Laelia, the Blade Reforged",
+    "Lightning Helix",
+    "Luke Cage, Power Man",
+    "Mabel, Heir to Cragflame",
+    "Maul of the Skyclaves",
+    "Monastery Mentor",
+    "Mother of Runes",
+    "Mountain",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Pain for All",
+    "Plains",
+    "Rabid Gnaw",
+    "Red Hulk",
+    "Restoration Magic",
+    "Reyav, Master Smith",
+    "Rogue's Passage",
+    "Sacred Foundry",
+    "Seedglaive Mentor",
+    "Self-Destruct",
+    "Shadowspear",
+    "Showdown of the Skalds",
+    "Sigarda's Aid",
+    "Spinerock Tyrant",
+    "Starting Town",
+    "Stingerback Terror",
+    "Stoneforge Mystic",
+    "Sun-Blessed Peak",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swiftblade Vindicator",
+    "Swiftfoot Boots",
+    "Sword of Fire and Ice",
+    "Sword of Forge and Frontier",
+    "Sword of Truth and Justice",
+    "Team Avatar",
+    "Temple of Triumph",
+    "Temur Battle Rage",
+    "Tenth District Legionnaire",
+    "The Fire Crystal",
+    "The Last Agni Kai",
+    "The Sentry, Golden Guardian",
+    "The Wandering Emperor",
+    "Titan's Strength",
+    "Valorous Stance",
+    "Zada, Hedron Grinder"
    ]
   }
  },
