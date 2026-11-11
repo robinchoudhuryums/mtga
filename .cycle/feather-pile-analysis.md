@@ -166,3 +166,25 @@ Molten-Core Maestro, Firebending Student ◇→★; Thunderbond Vanguard and Dev
 combos). Corrected: Desert Were-Worm's own power is low (~10 Mountain-typed lands of 36, 2-3 in play
 mid-game) — still ★★ because the carrier alone meets its 12-power extra-combat trigger; Sardian
 Cliffstomper stays △ for the same Mountain count.
+
+## 9. In-deck carrier pass + round 3 package (2026-11-11, PROPOSED)
+
+In-deck re-grades: Sif's Spearmaster ◇→★ (tap for its power; untaps repeat it), Kaldra ★→★★
+(permanent +5/+5 feeds Sentinel/Immolator/Teyo; Stoneforge and Thorin cheat it), Reyav and
+Bladehold War-Whip ★★→★ (double strike now covered seven ways plus Odric). Unrated originals
+that the frame confirms: Iron Fist (a carrier that taps for its power after every Feather spell,
+again after each untap), Agrus Kos (extra combats turn suspect into exile in one turn),
+Swiftblade (double strike + trample built in). Crystal Barricade conflicts with Pain for All
+(it prevents the Self-Destruct damage Pain needs).
+
+Package (12, measured together): +Two-Handed Axe −Titan's Strength, +Raiyuu −Danitha, +Lightning
+−Aurelia Exemplar, +Teyo −Crystal Barricade, +Raubahn −Reyav, +Odric −Bladehold War-Whip,
++Krenko −Sword of Truth and Justice, +Combustion Man −Spinerock Tyrant, +Erratic Cyclops
+−Collective Inferno, +Esper Sentinel −Boros Charm, +Balduvian Berserker −Mother of Runes
+(optional), +Kazuul's Fury −Mountain (optional). Result: floor A, interaction 16→18, card adv
+8→9, protection 15→13, board power 75→80, avg MV 3.02→3.09, early drops 24→21, legal. Kazuul's
+for a Mountain: keepable 78.4→76.9% (the tool counts it as a spell; true cost is smaller).
+Maybes benched: Siegemaster (best of them, Krenko combo), Maestro, Scalelord, Cosmic Sovereign.
+Step 2 consequence: Spinerock, Inferno, Boros Charm, Titan's Strength and Mother of Runes were
+Kirk / Pah-Wraith / Picard / Worf / La'An's cuts; only Exploratory Mission (−Valorous Stance)
+keeps its cut.

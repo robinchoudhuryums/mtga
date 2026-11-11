@@ -841,16 +841,16 @@
   },
   "Bladehold War-Whip": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Gods Willing. A 2/2 Rebel on entry; equip costs {1} less and equipped creatures have double strike. Cheaper equips for three Swords.",
+   "text": "IN 2026-11-11 for Gods Willing. Double strike and cheaper equips; the double strike overlaps (see Reyav) and its own equip is {3}{R}{W}. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Kaldra Compleat": {
-   "group": "Real",
-   "text": "IN 2026-11-11 for Crackling Cyclops. 7 mana: a 5/5 germ with indestructible, haste, first strike, trample; exiles what it hits. Top-end if the curve has room.",
+   "group": "Strong",
+   "text": "IN 2026-11-11 for Crackling Cyclops. Stoneforge puts it in for {1}{W} and Thorin attaches it free; +5/+5 is PERMANENT power, so it feeds Esper Sentinel's tax, Immolator's boon and Teyo's lock, and Odric shares its indestructible, first strike, trample and haste. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Lightning Bolt": {
@@ -1044,9 +1044,9 @@
   },
   "Reyav, Master Smith": {
    "group": "Real",
-   "text": "IN 2026-11-11 for Speed, Young Avenger. CRAFT (U). Equipped or enchanted attackers gain double strike: every Sword trigger twice. Overlaps the double-strike tricks.",
+   "text": "IN 2026-11-11 for Speed, Young Avenger. Equipped attackers gain double strike; overlaps Embercleave, Agrus Kos, Swiftblade, Temur Battle Rage, Akroma's Will, Sweeping Cleave and Odric's sharing. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
-    "56-historic-brawl": "dc436c9202b5"
+    "56-historic-brawl": "fd893e40a662"
    }
   },
   "Bruenor Battlehammer": {
@@ -1778,8 +1778,8 @@
    }
   },
   "Sif's Spearmaster": {
-   "group": "Situational",
-   "text": "IN 2026-11-11 (round 2) for Champion of the Flame. Pings for its power each turn; a 1/4, so wants pumps it won't get over the main body.",
+   "group": "Real",
+   "text": "IN 2026-11-11 (round 2) for Champion of the Flame. As the CARRIER, {T}: damage equal to its power to an opponent, and every untap (Raph & Leo, Aurelia, Seize the Day, Great Train Heist) is another shot; 1/4, so base 4 with Teyo. Re-graded 2026-11-11 (carrier pass, in-deck).",
    "graded_at": {
     "56-historic-brawl": "fd893e40a662"
    }
@@ -2188,14 +2188,14 @@
   },
   "Bladehold War-Whip": {
    "F": {
-    "m": "★★",
-    "graded_at": "c0bc1b4b7c51"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Kaldra Compleat": {
    "F": {
-    "m": "★",
-    "graded_at": "c0bc1b4b7c51"
+    "m": "★★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Lightning Bolt": {
@@ -2362,8 +2362,8 @@
   },
   "Reyav, Master Smith": {
    "F": {
-    "m": "★★",
-    "graded_at": "c0bc1b4b7c51"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Bruenor Battlehammer": {
@@ -2992,8 +2992,8 @@
   },
   "Sif's Spearmaster": {
    "F": {
-    "m": "◇",
-    "graded_at": "dc436c9202b5"
+    "m": "★",
+    "graded_at": "fd893e40a662"
    }
   },
   "Voldaren Thrillseeker": {
