@@ -188,3 +188,19 @@ Maybes benched: Siegemaster (best of them, Krenko combo), Maestro, Scalelord, Co
 Step 2 consequence: Spinerock, Inferno, Boros Charm, Titan's Strength and Mother of Runes were
 Kirk / Pah-Wraith / Picard / Worf / La'An's cuts; only Exploratory Mission (−Valorous Stance)
 keeps its cut.
+
+## 10. Round 3 revised + Star Trek re-scope (2026-11-11, PROPOSED)
+
+Owner keeps Danitha and Mother of Runes. Correction: Crystal Barricade is protected for a reason
+(prevents noncombat damage to your other creatures: one-sided Self-Destruct and Fiery Confluence),
+so it stays too. Revised: +Raiyuu −Great Train Heist, +Berserker −Fall of the Hammer, +Teyo
+−Chainsaw; the other nine pairs unchanged. Measured: floor A, interaction 16, card adv 9,
+protection 15, board power 83, avg MV 3.11, early drops 20, legal.
+
+Star Trek (after the 11-13 refresh), carrier frame: Worf, Honor-Bound Warrior ★★★ (2-drop that
+doubles its power on every attack at 8+ total power, free counters by tapping Equipment) −Sif's
+Spearmaster; Exploratory Mission ★★ −Valorous Stance; Kirk ★★ (impulse on every attack) −Blazing
+Crescendo; Combadge ★★ (two Communicators for 3 = an unblockable carrier) −Zada (alt Tenth District
+Legionnaire); Pah-Wraith ★ (7 mana, team +X per differently named land each combat) −Response //
+Resurgence, optional for the curve (~3.2 avg MV with all five). Skipped: La'An (Combadge does
+evasion better), Picard (weakest). Estimated after all: interaction ~14, card adv ~11, floor A.
