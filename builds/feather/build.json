@@ -273,6 +273,36 @@
    "name": "Integrity // Intervention",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "The Wandering Emperor",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth Resplendent",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Basri Ket",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Ajani, Caller of the Pride",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Gideon Blackblade",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Nahiri, Heir of the Ancients",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -622,6 +652,48 @@
   "Integrity // Intervention": {
    "group": "Situational",
    "text": "CRAFT (U). Integrity (+2/+2 for one hybrid mana) returns with Feather; Intervention is 3 damage and 3 life. Fine, unexceptional.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "The Wandering Emperor": {
+   "group": "Strong",
+   "text": "OWNED. PLANESWALKER. Flash, and the turn she enters her abilities work at instant speed. +1: a +1/+1 counter and first strike on your creature (grows the body every turn); −1: a 2/2 vigilance Samurai (a body for Zada); −2: exile a tapped creature. Growth, protection-by-ambush and removal in one card.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Elspeth Resplendent": {
+   "group": "Strong",
+   "text": "OWNED. PLANESWALKER. +1: a +1/+1 counter AND a flying, first strike, lifelink or vigilance COUNTER on your creature, so the body keeps the keyword for good; −3: put a 3-or-less permanent from the top seven onto the battlefield with a shield counter (Stoneforge, Giver of Runes, Tenth District Legionnaire, a Sword).",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Basri Ket": {
+   "group": "Strong",
+   "text": "CRAFT (M). PLANESWALKER, 3 mana. +1: a +1/+1 counter and indestructible until end of turn: growth plus protection every turn. −2: attacking makes Soldier tokens (bodies for Zada).",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Ajani, Caller of the Pride": {
+   "group": "Real",
+   "text": "OWNED. PLANESWALKER, 3 mana. +1: a +1/+1 counter on a creature; −3: flying and double strike for the turn, a finisher on the big body.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Gideon Blackblade": {
+   "group": "Real",
+   "text": "OWNED. PLANESWALKER, 3 mana. A 4/4 indestructible attacker on your turn; +1: another creature gains vigilance, lifelink or indestructible. Protection rather than growth.",
+   "graded_at": {
+    "56-historic-brawl": "c0bc1b4b7c51"
+   }
+  },
+  "Nahiri, Heir of the Ancients": {
+   "group": "Real",
+   "text": "CRAFT (M). PLANESWALKER. +1: a 1/1 Kor Warrior and attach an Equipment to it; −2: find an Equipment in the top six. Supports the Equipment build; no direct pump.",
    "graded_at": {
     "56-historic-brawl": "c0bc1b4b7c51"
    }
@@ -1010,6 +1082,42 @@
   "Integrity // Intervention": {
    "F": {
     "m": "◇",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "The Wandering Emperor": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Elspeth Resplendent": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Basri Ket": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Ajani, Caller of the Pride": {
+   "F": {
+    "m": "★★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Gideon Blackblade": {
+   "F": {
+    "m": "★",
+    "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Nahiri, Heir of the Ancients": {
+   "F": {
+    "m": "★",
     "graded_at": "c0bc1b4b7c51"
    }
   }

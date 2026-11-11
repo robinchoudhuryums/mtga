@@ -49,6 +49,7 @@
   }
  ],
  "Agrus Kos, Spirit of Justice": [],
+ "Ajani, Caller of the Pride": [],
  "Akiri, Fearless Voyager": [],
  "Akroma's Will": [
   {
@@ -82,6 +83,32 @@
  ],
  "Ancestors' Aid": [],
  "Aurelia, Exemplar of Justice": [],
+ "Basri Ket": [
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "cn": "7",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  },
+  {
+   "a": "Jehan Choo",
+   "art": "https://cards.scryfall.io/art_crop/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "cn": "280",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  }
+ ],
  "Bladehold War-Whip": [],
  "Blazing Crescendo": [
   {
@@ -306,6 +333,45 @@
    "y": "2022"
   }
  ],
+ "Elspeth Resplendent": [
+  {
+   "a": "Anna Steinbauer",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7c606af0-f3d1-44a4-b24e-ee1263569b1f.jpg?1783923158",
+   "cn": "11",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7c606af0-f3d1-44a4-b24e-ee1263569b1f.jpg?1783923158",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Tom Roberts",
+   "art": "https://cards.scryfall.io/art_crop/front/6/6/66d75499-1be8-42a0-8520-9cd8adbd0ca3.jpg?1783923042",
+   "cn": "282",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/6/66d75499-1be8-42a0-8520-9cd8adbd0ca3.jpg?1783923042",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Krharts",
+   "art": "https://cards.scryfall.io/art_crop/front/1/a/1a883eb5-2666-487b-b8c8-fd8ad12afaeb.jpg?1783923016",
+   "cn": "341",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/a/1a883eb5-2666-487b-b8c8-fd8ad12afaeb.jpg?1783923016",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Embercleave": [
   {
    "a": "Joe Slucher",
@@ -433,6 +499,30 @@
  ],
  "Get Lost": [],
  "Giantfall": [],
+ "Gideon Blackblade": [
+  {
+   "a": "Viktor Titov",
+   "art": "https://cards.scryfall.io/art_crop/front/3/9/39d51c5e-26cb-4276-a676-fabfef866248.jpg?1783933482",
+   "cn": "13",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/9/39d51c5e-26cb-4276-a676-fabfef866248.jpg?1783933482",
+   "r": "M",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Tada",
+   "art": "https://cards.scryfall.io/art_crop/front/b/9/b9581ba4-8b7a-410c-9a7d-d4a976880435.jpg?1783933480",
+   "cn": "13★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/9/b9581ba4-8b7a-410c-9a7d-d4a976880435.jpg?1783933480",
+   "r": "M",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
  "Giver of Runes": [],
  "Gods Willing": [
   {
@@ -669,6 +759,32 @@
  "Might of the Meek": [],
  "Monastery Mentor": [],
  "Mother of Runes": [],
+ "Nahiri, Heir of the Ancients": [
+  {
+   "a": "Anna Steinbauer",
+   "art": "https://cards.scryfall.io/art_crop/front/4/0/408be425-b8a6-4c03-b2a6-7ff7bd6555e0.jpg?1783929322",
+   "cn": "230",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/0/408be425-b8a6-4c03-b2a6-7ff7bd6555e0.jpg?1783929322",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  },
+  {
+   "a": "David Rapoza",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d90ad3d-8d88-470b-897e-2f64376f7f43.jpg?1783929295",
+   "cn": "282",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d90ad3d-8d88-470b-897e-2f64376f7f43.jpg?1783929295",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  }
+ ],
  "Pain for All": [],
  "Panther Pounce": [],
  "Path to Exile": [
@@ -1146,6 +1262,45 @@
  "The Fire Crystal": [],
  "The Last Agni Kai": [],
  "The Sentry, Golden Guardian": [],
+ "The Wandering Emperor": [
+  {
+   "a": "Tommy Arnold",
+   "art": "https://cards.scryfall.io/art_crop/front/f/a/fab2d8a9-ab4c-4225-a570-22636293c17d.jpg?1783923909",
+   "cn": "42",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/a/fab2d8a9-ab4c-4225-a570-22636293c17d.jpg?1783923909",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Terada Katsuya",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/71327818-2784-4fde-8e19-ef8677694a5f.jpg?1783923805",
+   "cn": "303",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/1/71327818-2784-4fde-8e19-ef8677694a5f.jpg?1783923805",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Hisashi Momose",
+   "art": "https://cards.scryfall.io/art_crop/front/b/9/b92aafa5-9a21-4564-8b33-dab414cd5dca.jpg?1783923800",
+   "cn": "316",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/9/b92aafa5-9a21-4564-8b33-dab414cd5dca.jpg?1783923800",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Titan's Strength": [],
  "Tome of Legends": [],
  "Two-Handed Axe": [],
