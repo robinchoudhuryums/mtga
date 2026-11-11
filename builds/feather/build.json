@@ -1202,6 +1202,713 @@
    "graded_at": {
     "56-historic-brawl": "c0bc1b4b7c51"
    }
+  },
+  "Bre of Clan Stoutarm": {
+   "group": "Strong",
+   "text": "OWNED. {1}{W},{T}: your big creature gains flying and lifelink; at end step, if you gained life, exile to a nonland card and cast it FREE if its MV is at most the life gained. A lifelinking Voltron body gains 8+ a turn, so this is a free spell every turn: card advantage, the short axis (rule 3).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "The Akroan War": {
+   "group": "Real",
+   "text": "Saga: steal their best creature, force their team to attack into your board, then every tapped creature hurts itself. Interaction that also adds a body (rule 2 on the stolen creature).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Anax, Hardened in the Forge": {
+   "group": "Weak",
+   "text": "Power equals devotion to red and makes tokens on deaths: neither grows the one body (rule 2).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Huatli, Warrior Poet": {
+   "group": "Real",
+   "text": "PLANESWALKER. +2 gains life equal to your greatest power (huge with the Voltron body, and it turns on Bre), 0 makes a 3/3 trampler, −X splits damage and stops blockers. 5 mana (rule 6).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Team Tactics": {
+   "group": "Weak",
+   "text": "Cut this week: double strike does not stack with Embercleave, Reyav, Temur Battle Rage, Boros Charm and Swiftblade (rule 8).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "group": "Situational",
+   "text": "Recasts an instant or sorcery from the graveyard on attack, but Feather already returns the targeting ones to hand; only the one-shots (Akroma's Will, Fiery Confluence) reach the yard.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Furious Rise": {
+   "group": "Strong",
+   "text": "End step: if you control a creature with power 4+ (nearly always here), exile the top card and play it until the next one. A 3-mana repeatable card every turn: card advantage, the short axis (rule 3).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Amplifire": {
+   "group": "Weak",
+   "text": "Random size from the next creature in the library; not a body you build on.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Molten Monstrosity": {
+   "group": "Situational",
+   "text": "Costs X less where X is your greatest power: a 5/5 trampler for 2-4 mana once the body is big. A body, not an engine.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Dragonborn Immolator": {
+   "group": "Weak",
+   "text": "Firebreathing 2/4 with a perpetual boon on death; nothing for one big body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Zarda, the Power Princess": {
+   "group": "Situational",
+   "text": "Other Heroes get exalted (attacking alone grows the attacker); only a few Heroes here (The Sentry, Luke Cage, Iron Fist). Fits Team Avatar's attack-alone line, thin elsewhere.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Priest of Possibility": {
+   "group": "Situational",
+   "text": "Alchemy: perpetual keywords seen in the top seven. A random 2-drop body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Firebending Student": {
+   "group": "Situational",
+   "text": "OWNED. Prowess plus attack mana; a small body, not the one you build.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Guardian Scalelord": {
+   "group": "Situational",
+   "text": "5-mana flier: backup counter, and attacks return a permanent card with MV up to its power from the graveyard. Value, but the curve is heavy (rule 6).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Hamletback Goliath": {
+   "group": "Weak",
+   "text": "7 mana; grows off other creatures entering, which this deck makes few of.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Bionic Blow": {
+   "group": "Strong",
+   "text": "Sorcery {X}{R}{R}: your creature gets +X/+0, then deals damage equal to its power to another creature. It targets your creature, so Feather returns it: a scalable bite every turn (rules 1 and 4).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Cosmic Sovereign": {
+   "group": "Situational",
+   "text": "Alchemy 5-mana hasty flier with firebreathing that conjures a hasty creature each combat. Fun, but a second body plan.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Thorin, Mountain-king": {
+   "group": "Strong",
+   "text": "OWNED. Enters and attaches ANY number of your Equipment to one creature at once, then that creature deals damage equal to its power to a creature. Instant Voltron plus removal with nine Equipment (rule 5).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Fang, Roku's Companion": {
+   "group": "Real",
+   "text": "4/4 flier; each attack gives another LEGENDARY creature +4/+0, and Feather is legendary, as are many bodies here. Comes back once as a Spirit.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Orcish Siegemaster": {
+   "group": "Situational",
+   "text": "0/5 that attacks as your greatest power; a second big attacker, no engine.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Swords to Plowshares": {
+   "group": "Weak",
+   "text": "Out by the owner's rule: it gives the opponent life (rule 4).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Dragonfly Pilot": {
+   "group": "Weak",
+   "text": "Alchemy 1-drop that conjures an Equipment; low impact.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Jor Kadeen, First Goldwarden": {
+   "group": "Real",
+   "text": "2-drop trampler: +X/+X per equipped creature on attack, then draws if its power is 4+. Card advantage off the Equipment package (rules 3 and 5).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Lightning, Army of One": {
+   "group": "Real",
+   "text": "OWNED. First strike, trample, lifelink; when it hits a player, all damage to them and their permanents is doubled until your next turn. Its first-strike hit doubles the big body's regular combat damage the same turn.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Candletrap": {
+   "group": "Situational",
+   "text": "1-mana Aura: a creature can't deal combat damage, later exiled with coven. Cheap interaction, not returned by Feather.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Arni, Renowned Champion": {
+   "group": "Weak",
+   "text": "Pumps itself off creatures entering; the deck doesn't make many.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Odric, Lunarch Marshal": {
+   "group": "Real",
+   "text": "Shares every keyword your creatures have with the team each combat: the body's flying, double strike, lifelink spread out. A go-wide card, which is not this deck's lean (rule 2).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Cacophony Scamp": {
+   "group": "Weak",
+   "text": "A 1-drop that proliferates or pings; nothing to build on.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Odric, Blood-Cursed": {
+   "group": "Situational",
+   "text": "Blood tokens per keyword among your creatures (rummaging); a 3-mana body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Thunderous Orator": {
+   "group": "Weak",
+   "text": "Copies keywords onto itself when attacking; a small body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Esper Sentinel": {
+   "group": "Situational",
+   "text": "Draws when an opponent casts their first noncreature spell unless they pay; a 1/1 tax, low impact in Brawl.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Onward // Victory": {
+   "group": "Real",
+   "text": "Onward targets your creature and doubles its power, so Feather returns the whole card (the Aftermath half never gets used). A second Bulk Up.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Devilish Valet": {
+   "group": "Weak",
+   "text": "Doubles its own power off creatures entering; a small body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Iron Hills": {
+   "group": "Situational",
+   "text": "OWNED. A tapped Boros dual; its sink counters a Dwarf (Thorin, Bruenor). The deck already runs four taplands.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Legion Leadership // Legion Stronghold": {
+   "group": "Strong",
+   "text": "Modal: an instant that doubles a creature's power and gives first strike (aimed at your creature, so Feather returns it every turn), or a tapped Boros land. A Bulk Up that can also be a land drop (rule 1).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Two-Handed Axe // Sweeping Cleave": {
+   "group": "Real",
+   "text": "OWNED. Bench: Equipment that doubles power on attack, or a double-strike instant Feather can return; double strike is already well covered.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Concerted Effort": {
+   "group": "Situational",
+   "text": "Spreads the team's keywords at each upkeep; a go-wide card (rule 2).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Crater's Claws": {
+   "group": "Real",
+   "text": "X damage to any target, +2 with a 4-power creature. A one-shot (it doesn't target your creature, rule 1), but flexible reach.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Lukka, Coppercoat Outcast": {
+   "group": "Situational",
+   "text": "PLANESWALKER, 5 mana: +1 impulse for creatures only, −2 polymorph, −7 each creature hits each opponent for its power. Slow for what it does here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Éowyn, Fearless Knight": {
+   "group": "Strong",
+   "text": "Haste 3/4; enters and EXILES an opposing creature with greater power, and your legendary creatures (Feather included) gain protection from its colours. Removal on a body, 4 mana.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Shadowfax, Lord of Horses": {
+   "group": "Situational",
+   "text": "Cheats a smaller creature in tapped and attacking; not a one-body card.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Heartfire Hero": {
+   "group": "Real",
+   "text": "OWNED. 1-drop: +1/+1 counter whenever you first target it each turn (every Feather trick), and dies dealing its power to each opponent. A cheap body that grows into a threat.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Desert Were-Worm": {
+   "group": "Real",
+   "text": "OWNED. 0/5 that gets +2/+0 per Mountain (10 plus Sacred Foundry), and attacking with 12+ total power untaps them for an EXTRA COMBAT once a turn. With the Voltron body, two combats. 6 mana (rule 6).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "group": "Weak",
+   "text": "6-mana lifegain body; off plan.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Chainsaw": {
+   "group": "Real",
+   "text": "OWNED. Equipment that deals 3 to a creature on entry, then grows with each creature death. Removal that also feeds Bruenor, Reyav and Akiri (rule 5).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Mephit's Enthusiasm": {
+   "group": "Real",
+   "text": "4 damage to a creature or planeswalker; a one-shot (rule 1).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Sardian Cliffstomper": {
+   "group": "Weak",
+   "text": "Mountain-count beater; not the build-on body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Gornog, the Red Reaper": {
+   "group": "Weak",
+   "text": "Warrior payoff; few Warriors here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Kuldotha Cackler": {
+   "group": "Weak",
+   "text": "Oil-counter attacker; no oil here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "The Triumph of Anax": {
+   "group": "Situational",
+   "text": "Saga: three turns of trample and +X/+0 on a creature, then a fight. Slow.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Erratic Cyclops": {
+   "group": "Situational",
+   "text": "0/8 trampler: +MV power per instant or sorcery. Feather's recasts feed it, but it is a second body plan.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Overwhelming Victory": {
+   "group": "Real",
+   "text": "5-mana instant: 5 to a creature, excess becomes team pump and trample. A one-shot.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Lunar Frenzy": {
+   "group": "Real",
+   "text": "{X}{R} instant: +X/+0, first strike and trample on your creature; Feather returns it, so a mana sink every turn (rule 1).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Mishra's Command": {
+   "group": "Strong",
+   "text": "{X}{R} sorcery, choose two: X damage to a creature, and +X/+0 and haste on your creature. With the pump mode it targets your creature, so Feather returns it: X removal and pump every turn.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Frontline Rush": {
+   "group": "Real",
+   "text": "OWNED. Instant: two Goblins, or +X/+X on your creature where X is your creature count; the pump mode returns with Feather.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Alpine Houndmaster": {
+   "group": "Weak",
+   "text": "Dog package; go-wide.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Alpine Watchdog": {
+   "group": "Weak",
+   "text": "Vanilla 2-drop.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Igneous Cur": {
+   "group": "Weak",
+   "text": "Firebreathing 2-drop.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Bladed Ambassador": {
+   "group": "Weak",
+   "text": "Oil 3/1.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Churning Reservoir": {
+   "group": "Weak",
+   "text": "Oil engine with no oil payoffs here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Norn's Wellspring": {
+   "group": "Weak",
+   "text": "Draws off creature deaths; few deaths here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Exuberant Fuseling": {
+   "group": "Weak",
+   "text": "Oil 1-drop.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Free from Flesh": {
+   "group": "Situational",
+   "text": "+2/+2 instant Feather returns, but small next to Bulk Up and Legion Leadership.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Furnace Skullbomb": {
+   "group": "Weak",
+   "text": "Cycles for {1}; filler.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Vindictive Flamestoker": {
+   "group": "Situational",
+   "text": "Gains oil per noncreature spell, then refills your hand cheaply. Feather's recasts feed it; a niche refill.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Forgehammer Centurion": {
+   "group": "Weak",
+   "text": "Oil attacker.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Urabrask's Forge": {
+   "group": "Situational",
+   "text": "A growing hasty token every combat; a second threat stream, not the body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Magmatic Sprinter": {
+   "group": "Weak",
+   "text": "Oil tempo body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Urabrask's Anointer": {
+   "group": "Weak",
+   "text": "Oil-count burn on entry; no oil here.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Furnace Strider": {
+   "group": "Weak",
+   "text": "Oil haste-granter; Boots, Embercleave and Fire Crystal cover haste.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Argent Dais": {
+   "group": "Situational",
+   "text": "Exiles any nonland permanent, but its controller draws two: opponent-benefit removal (rule 4).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Regal Bunnicorn": {
+   "group": "Situational",
+   "text": "Power equals your nonland permanents (Equipment count), a cheap big body; but it isn't protected or evasive.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Brightmare": {
+   "group": "Weak",
+   "text": "Tap a creature and gain life; filler.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Gauntlets of Light": {
+   "group": "Situational",
+   "text": "Toughness assigns damage, plus pseudo-vigilance; good only on The Sentry or Luke Cage.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Thunderbond Vanguard": {
+   "group": "Weak",
+   "text": "Alchemy token copier; go-wide.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "group": "Situational",
+   "text": "Alchemy PLANESWALKER: perpetual power-equals-toughness tricks; slow.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Fling": {
+   "group": "Situational",
+   "text": "Sacrifices your creature for damage; the opposite of protecting one body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Raubahn, Bull of Ala Mhigo": {
+   "group": "Real",
+   "text": "2-drop with ward (pay life equal to its power); each attack attaches an Equipment to an attacking creature for free. Equip mana saved every turn (rule 5).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Balduvian Berserker": {
+   "group": "Weak",
+   "text": "Enlist beater.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Krenko, Tin Street Kingpin": {
+   "group": "Situational",
+   "text": "Goblin-token engine; go-wide.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Kazuul's Fury // Kazuul's Cliffs": {
+   "group": "Situational",
+   "text": "Modal: a fling (sacrifice your creature) or a tapped Mountain. The land half is the use.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Origin of Thor": {
+   "group": "Real",
+   "text": "OWNED. Saga: rummage two, then counters on your creature per spell cast that turn, then that creature deals its power to EACH opponent. A Voltron finisher with card flow.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Sif's Spearmaster": {
+   "group": "Situational",
+   "text": "Pings for its power each turn; a 1/4, so wants pumps it won't get over the main body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Voldaren Thrillseeker": {
+   "group": "Situational",
+   "text": "Backup 2 counters on the body, then flings itself for its power. A modest pump.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Combustion Man": {
+   "group": "Real",
+   "text": "OWNED. Each attack destroys a permanent unless its controller takes damage equal to his power. They choose, so often just damage.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Go Ninja Go": {
+   "group": "Real",
+   "text": "OWNED. Damage equal to your greatest power to their creature (a one-shot), or blink your creature, which resets its counters and drops Equipment. Cut from deck 56 for that reason.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Velomachus Lorehold": {
+   "group": "Real",
+   "text": "7-mana flier: each attack casts a free instant or sorcery from the top seven. Strong, but the top end is full (rule 6).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Molten-Core Maestro": {
+   "group": "Situational",
+   "text": "Grows per instant/sorcery; a second small body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Breaking of the Fellowship": {
+   "group": "Situational",
+   "text": "Their creature hits another of theirs; one-shot removal needing two targets.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Great Train Heist": {
+   "group": "Strong",
+   "text": "OWNED. Spree instant: untap your creatures and take an EXTRA COMBAT, +1/+0 and first strike, Treasure per hit. Extra combat doubles every Sword trigger and Pain for All (cross-batch: extra combats).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Neheb, Dreadhorde Champion": {
+   "group": "Situational",
+   "text": "Rummage-for-mana trampler; a second body.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Seize the Day": {
+   "group": "Strong",
+   "text": "Sorcery: untap target creature, then an EXTRA COMBAT and main phase. Aimed at your creature it returns with Feather, so an extra combat EVERY turn, and every combat re-triggers the Swords, Akiri, Jor Kadeen and Pain for All (rule 1).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Neheb, the Eternal": {
+   "group": "Weak",
+   "text": "Afflict and postcombat mana; off plan.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Éomer, Marshal of Rohan": {
+   "group": "Situational",
+   "text": "Extra combat only when an attacking legend dies; awkward.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Savage Beating": {
+   "group": "Real",
+   "text": "Instant during combat: team double strike, or untap and an EXTRA COMBAT, or both entwined. Doesn't target (no Feather return); 5-7 mana.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Godo, Bandit Warlord": {
+   "group": "Real",
+   "text": "6 mana: fetches an Equipment onto the battlefield; its extra combat only untaps Samurai.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Moraug, Fury of Akoum": {
+   "group": "Real",
+   "text": "6 mana: a land drop in your main phase is an extra combat. Strong, but a second engine at the top of the curve.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Raph & Leo, Sibling Rivals": {
+   "group": "Strong",
+   "text": "OWNED. 3 mana: each first attack untaps one or two attackers and takes an EXTRA COMBAT, every turn. The cheapest repeatable extra combat in the pile.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Response // Resurgence": {
+   "group": "Real",
+   "text": "Response: 2 hybrid mana for 5 damage to an attacking or blocking creature. Resurgence: 5 mana for first strike, vigilance and an extra combat. Both halves fit.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Raiyuu, Storm's Edge": {
+   "group": "Real",
+   "text": "First strike; a Samurai or Warrior attacking ALONE untaps and takes an extra combat once a turn. Raiyuu and Laelia (Warrior) qualify; it fits the attack-alone line (Team Avatar).",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
+  },
+  "Aurelia, the Warleader": {
+   "group": "Strong",
+   "text": "OWNED. 6-mana hasty flier: first attack each turn untaps your creatures and takes an EXTRA COMBAT. A top-end extra-combat engine.",
+   "graded_at": {
+    "56-historic-brawl": "dc436c9202b5"
+   }
   }
  },
  "snapshots": {
@@ -1706,6 +2413,612 @@
    "F": {
     "m": "★",
     "graded_at": "c0bc1b4b7c51"
+   }
+  },
+  "Bre of Clan Stoutarm": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "The Akroan War": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Anax, Hardened in the Forge": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Huatli, Warrior Poet": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Team Tactics": {
+   "F": {
+    "m": "✗",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Furious Rise": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Amplifire": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Molten Monstrosity": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Dragonborn Immolator": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Zarda, the Power Princess": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Priest of Possibility": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Firebending Student": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Guardian Scalelord": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Hamletback Goliath": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Bionic Blow": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Cosmic Sovereign": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Thorin, Mountain-king": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Fang, Roku's Companion": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Orcish Siegemaster": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Swords to Plowshares": {
+   "F": {
+    "m": "✗",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Dragonfly Pilot": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Jor Kadeen, First Goldwarden": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Lightning, Army of One": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Candletrap": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Arni, Renowned Champion": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Odric, Lunarch Marshal": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Cacophony Scamp": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Odric, Blood-Cursed": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Thunderous Orator": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Esper Sentinel": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Onward // Victory": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Devilish Valet": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Iron Hills": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Legion Leadership // Legion Stronghold": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Two-Handed Axe // Sweeping Cleave": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Concerted Effort": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Crater's Claws": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Lukka, Coppercoat Outcast": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Éowyn, Fearless Knight": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Shadowfax, Lord of Horses": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Heartfire Hero": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Desert Were-Worm": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Chainsaw": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Mephit's Enthusiasm": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Sardian Cliffstomper": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Gornog, the Red Reaper": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Kuldotha Cackler": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "The Triumph of Anax": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Erratic Cyclops": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Overwhelming Victory": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Lunar Frenzy": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Mishra's Command": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Frontline Rush": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Alpine Houndmaster": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Alpine Watchdog": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Igneous Cur": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Bladed Ambassador": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Churning Reservoir": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Norn's Wellspring": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Exuberant Fuseling": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Free from Flesh": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Furnace Skullbomb": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Vindictive Flamestoker": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Forgehammer Centurion": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Urabrask's Forge": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Magmatic Sprinter": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Urabrask's Anointer": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Furnace Strider": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Argent Dais": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Regal Bunnicorn": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Brightmare": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Gauntlets of Light": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Thunderbond Vanguard": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Fling": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Raubahn, Bull of Ala Mhigo": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Balduvian Berserker": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Krenko, Tin Street Kingpin": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Kazuul's Fury // Kazuul's Cliffs": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Origin of Thor": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Sif's Spearmaster": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Voldaren Thrillseeker": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Combustion Man": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Go Ninja Go": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Velomachus Lorehold": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Molten-Core Maestro": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Breaking of the Fellowship": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Great Train Heist": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Neheb, Dreadhorde Champion": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Seize the Day": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Neheb, the Eternal": {
+   "F": {
+    "m": "△",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Éomer, Marshal of Rohan": {
+   "F": {
+    "m": "◇",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Savage Beating": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Godo, Bandit Warlord": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Moraug, Fury of Akoum": {
+   "F": {
+    "m": "★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Raph & Leo, Sibling Rivals": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Response // Resurgence": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Raiyuu, Storm's Edge": {
+   "F": {
+    "m": "★★",
+    "graded_at": "dc436c9202b5"
+   }
+  },
+  "Aurelia, the Warleader": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "dc436c9202b5"
    }
   }
  }

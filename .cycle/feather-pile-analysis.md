@@ -41,16 +41,60 @@ on the body, and "attacks alone" vs go-wide polarity.
 
 ## 2. Standing error list
 
-(none yet)
+1. A spell that targets ANY creature (not "you control") still returns with Feather when you
+   aim it at your own creature: Seize the Day ("untap target creature"), Legion Leadership,
+   Onward. Read the target clause, not the wording "you control".
+2. A modal spell returns if the mode you chose targets your creature (Mishra's Command with the
+   pump mode, Giantfall's bite). Go Ninja Go returns only on its blink mode, which resets the body.
+3. Extra-combat cards that don't target (Savage Beating, Great Train Heist, Resurgence) are
+   one-shots; the repeatable ones are Seize the Day (Feather) and the creatures (Raph & Leo,
+   Aurelia the Warleader, Raiyuu, Desert Were-Worm).
 
 ## 3. Cross-batch observations
 
-(none yet)
+- **Extra combats are a real sub-theme in this pile** (Seize the Day, Raph & Leo, Aurelia the
+  Warleader, Raiyuu, Great Train Heist, Savage Beating, Response // Resurgence, Desert Were-Worm,
+  Moraug, Godo). Each extra combat re-triggers the three Swords, Akiri, Pain for All, Laelia and
+  Jor Kadeen, so it multiplies the Equipment engine rather than competing with it. Not a variant
+  signal: it slots into this deck.
+- **Lifegain becomes card advantage** through Bre of Clan Stoutarm (free spell up to the life
+  gained) — the deck already has lifelink on the body (Elspeth counters, Shadowspear, Lightning).
+- Oil / Phyrexian cards (ONE block) and Dog / token packages are a different deck; all ✗/△.
+- Star Trek: Kirk ★★ (impulse draw on attack at 8+ power) and Picard ◇ queue with step 2.
 
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
 
+Per-card reasons and stars live on the Builder project (pile F). Summary of 101 graded:
+- ★★★ (8): Seize the Day, Raph & Leo (owned), Aurelia the Warleader (owned), Bre of Clan
+  Stoutarm (owned), Thorin Mountain-king (owned), Furious Rise, Bionic Blow, Legion Leadership.
+- ★★ (22): Éowyn, Mishra's Command, Great Train Heist (owned), Jor Kadeen, Lightning (owned),
+  Fang, Heartfire Hero (owned), Chainsaw (owned), Desert Were-Worm (owned), Origin of Thor
+  (owned), Frontline Rush (owned), Lunar Frenzy, Raubahn, Savage Beating, Response // Resurgence,
+  Raiyuu, The Akroan War, Huatli, Onward // Victory; queued: Kirk.
+- The rest ★ / ◇ / △ / ✗ (oil, Dogs, go-wide, opponent-benefit removal, 7-drops).
+
 ## 5. Consolidated plan (live)
 
-(after batch 1)
+Tier 1 package (measured: floor B → A, interaction 12 → 13, card advantage 6 → 7, protection
+17 → 15, board power 74 → 77, avg MV 2.92 → 3.03, legal):
+
+| Add | Cut | Why the cut |
+|---|---|---|
+| Seize the Day | Red Hulk | 6-mana body; an extra combat every turn beats a sixth big body |
+| Raph & Leo (owned) | Boros Reckoner | the Self-Destruct double is a narrow line |
+| Aurelia, the Warleader (owned) | Akroma's Will | both 6-ish finishers; Aurelia repeats |
+| Bre of Clan Stoutarm (owned) | Sigarda's Aid | low-power enabler; Bre is card advantage |
+| Furious Rise | Defiant Strike | a card every turn vs. one cantrip |
+| Bionic Blow | Lightning Helix | a returned, scalable bite vs. a one-shot 3 |
+| Thorin, Mountain-king (owned) | Restoration Magic | protection is the deepest axis (17) |
+| Legion Leadership | a Mountain | a land drop that is also a returned power doubler |
+
+Tier 2 options (◇ cut candidates: Seedglaive Mentor, Spinerock Tyrant, Monastery Mentor,
+Enter the Avatar State, Fiery Confluence, Champion of the Flame): Éowyn, Mishra's Command,
+Great Train Heist, Jor Kadeen, Lightning, Heartfire Hero, Chainsaw, Desert Were-Worm, Raiyuu,
+Response // Resurgence. Queued for the 11-13 refresh with step 2: Kirk.
+
+PROTECT (the ranking can't see their value): Seize the Day and Bionic Blow (Feather returns
+them, rule 1), Bre (free spells from lifegain), the step-1 keeps (rule 7).
