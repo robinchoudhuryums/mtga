@@ -540,3 +540,18 @@ Deck
 4 Forest
 3 Plains
 ```
+
+## 10. Deck C v4 — STAGED, supersedes v3 (2026-11-12, owner-confirmed)
+
+Owner's screenshot batch graded (Kellan Joins Up, Enterprise-A, Helga, Stable Wormhole, Mr. Spock, Make It
+So, Urban Retreat, Aang at the Crossroads, Warp Speed, Final Frontier, Saurian Explorer, Temporal Anomaly,
+Jean-Luc Picard Luminary — the last NOT Standard-legal and needs {R}: it belongs to the Sisko Brawl deck).
+Applied: +Kellan Joins Up −Bristly Bill (≈22 legendary creatures: nearly every creature spell puts a counter
+on the whole team, doubled by M'Benga); +U.S.S. Enterprise-A −Amok Time (three Officers = three 3/3s with
+Holo-Engineer; Geordi now doubles its station counters); +Helga, Skittish Seer −Melkotian Adjudicator (owner
+agreed; Helga draws off ~8 four-plus creature spells); +Urban Retreat −Risa (all three colours; G/W are the
+plentiful colours, so the G/W dual goes).
+Owner's MUST-ADD: Stable Wormhole; also wants Warp Speed and Mr. Spock — cut candidates offered in chat
+(pending): see the reply of 2026-11-12. Interaction is now thin: 70,000 Light-Years, Vigorbloom Charm,
+Malfunctioning Holodeck (+ Shields Up! protection) — do not cut those for the three adds.
+The import block lives in this file's section 9 history; the current one is regenerated in chat.
