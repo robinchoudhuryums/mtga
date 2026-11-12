@@ -53,6 +53,9 @@
 #: notes: Cyclops −Collective Inferno, +Esper Sentinel −Boros Charm, +Balduvian Berserker −Fall of the Hammer, +Kazuul's
 #: notes: Fury −a Mountain. Kept on the owner's call: Danitha Capashen, Mother of Runes, Great Train Heist, Sif's
 #: notes: Spearmaster, Zada. Teyo's +1 is read as LOCKING the toughness at resolution (owner's read; untested in Arena).
+#: notes: 2026-11-12 manabase: −2 Plains, +1 Mountain, +Fire Nation Palace (untapped with a basic; firebending 4 pays
+#: notes: for combat tricks and a flashed Embercleave). Red was short (52 R pips vs 33 W, 21 R vs 26 W sources): now
+#: notes: W 24 / R 23, cast-on-curve shortfall 334 → 278. Next step if red still lags after the Star Trek adds: Sundown Pass.
 #: notes: QUEUED for after the 2026-11-13 card-pool refresh (Star Trek set, on Arena before Scryfall's date — G-79):
 #: notes: +Worf, Honor-Bound Warrior −Tenth District Legionnaire, +Exploratory Mission −Valorous Stance, +Kirk,
 #: notes: Enterprising Captain −Blazing Crescendo, +Combadge −Chainsaw, +Picard, Leading by Example −Showdown of the
@@ -155,8 +158,9 @@
 1 Sun-Blessed Peak (TLA) 280
 1 Abraded Bluffs (OTJ) 251
 1 Furycalm Snarl (STX) 266
-12 Plains (FRA) 281
-8 Mountain (FRA) 287
+10 Plains (FRA) 281
+1 Fire Nation Palace (TLA) 268
+9 Mountain (FRA) 287
 1 Kazuul's Fury // Kazuul's Cliffs (ZNR) 146
 1 Legion Leadership // Legion Stronghold (MH3) 255
 1 Rogue's Passage (HOC) 212
