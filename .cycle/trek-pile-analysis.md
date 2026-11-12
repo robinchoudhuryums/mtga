@@ -643,3 +643,4 @@ To keep A AND take Deep Space 9: keep Coordinated Maneuver and give DS9 its own 
 weakest-ranked card in `cuts`, measured separately). Alternate cuts offered: Spectacular Tactics → Picard Leading by
 Example / Shields Up! / Jadzia Dax; Saavik → Syndicate Liquidators / Dr. Beverly Crusher; Dawnsire → Dominion
 Saboteur / Dominion Supervisor.
+2026-11-12: +Spectacular Tactics −Shields Up! applied (owner).

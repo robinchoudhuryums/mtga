@@ -198,6 +198,41 @@
    "name": "Xindi Surveyors",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Dawnsire, Sunstar Dreadnought",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Deep Space 9",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "The Seriema",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "U.S.S. Enterprise-D, Galaxy-Class",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Class-F Shuttlecraft",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sledge-Class Seedship",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Shields Up!",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -259,9 +294,9 @@
   },
   "Spectacular Tactics": {
    "group": "Strong",
-   "text": "OWNED. A counter + hexproof, or destroy a power-4+ creature. The cheapest way to lift interaction from 3 to 4 (tier floor C to B).",
+   "text": "IN 2026-11-12 for Shields Up!. OWNED. A counter + hexproof, or destroy a power-4+ creature. The cheapest way to lift interaction from 3 to 4 (tier floor C to B).",
    "graded_at": {
-    "99": "120708b64c5f"
+    "99": "8e5c7f53e815"
    }
   },
   "Felidar Retreat": {
@@ -445,6 +480,55 @@
    "graded_at": {
     "99": "61addeca03f8"
    }
+  },
+  "Dawnsire, Sunstar Dreadnought": {
+   "group": "Strong",
+   "text": "Colourless; counts as REMOVAL: at 10+ charge counters every attack deals 100 to a creature or planeswalker. Countered creatures fill the station in one or two taps. Proposed for David and Carol Marcus.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Deep Space 9": {
+   "group": "Situational",
+   "text": "9 mana: free permanents from the top four every upkeep, +3/+3 to the team at 9 counters. Rok-Tahk, Starfleet Academy and Helga can pay for it; spice. Proposed for Dominion Saboteur (keeps the A floor).",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "The Seriema": {
+   "group": "Strong",
+   "text": "Tutors a legendary creature (M'Benga, Sarek, Helga, Jett); your other tapped legends are indestructible; a 5/5 flier at 7.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "U.S.S. Enterprise-D, Galaxy-Class": {
+   "group": "Strong",
+   "text": "Counts as card advantage: a card to play every turn you charge it; a 4/5 flier at 7.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Class-F Shuttlecraft": {
+   "group": "Real",
+   "text": "Any-colour mana rock (Spock's UU) and a 2/4 flier at 6.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Sledge-Class Seedship": {
+   "group": "Situational",
+   "text": "Once a 7-counter flier, each attack puts a creature from hand onto the battlefield.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Shields Up!": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Spectacular Tactics (which protects with hexproof + a counter, or kills a 4-power creature).",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
   }
  },
  "snapshots": {
@@ -537,6 +621,58 @@
     "Seven of Nine, Unassimilated",
     "Shields Up!",
     "Sickbay",
+    "Stable Wormhole",
+    "Starfleet Academy",
+    "Subspace Anomaly",
+    "Support Mission",
+    "Syndicate Liquidators",
+    "Temple Garden",
+    "Test of Conviction",
+    "The Doctor, EMH",
+    "The Inner Light",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Urban Retreat",
+    "Vigorbloom Charm",
+    "Vulcan",
+    "Warp Speed",
+    "Worf, Honor-Bound Warrior"
+   ],
+   "8e5c7f53e815": [
+    "70,000 Light-Years from Home",
+    "Abuelo, Ancestral Echo",
+    "Brad Boimler, Eager Ensign",
+    "Breeding Pool",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "D'Vana Tendi, Optimistic Ensign",
+    "David and Carol Marcus, Creators",
+    "Deanna Troi, Psychic Counsel",
+    "Dominion Saboteur",
+    "Dominion Supervisor",
+    "Don & Leo, Problem Solvers",
+    "Dr. Beverly Crusher",
+    "Dr. Joseph M'Benga",
+    "Earth, Sector 001",
+    "Federation Outpost",
+    "Forest",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Holo-Engineer",
+    "Jadzia Dax, Living Legacy",
+    "Jett Reno, Problem Solver",
+    "Kellan Joins Up",
+    "Malfunctioning Holodeck",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Phlox, Unorthodox Doctor",
+    "Picard, Leading by Example",
+    "Plains",
+    "Q Continuum",
+    "Rok-Tahk, Budding Scientist",
+    "Sarek, Federation Ambassador",
+    "Seven of Nine, Unassimilated",
+    "Sickbay",
+    "Spectacular Tactics",
     "Stable Wormhole",
     "Starfleet Academy",
     "Subspace Anomaly",
@@ -764,6 +900,48 @@
    "F": {
     "m": "★",
     "graded_at": "61addeca03f8"
+   }
+  },
+  "Dawnsire, Sunstar Dreadnought": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Deep Space 9": {
+   "F": {
+    "m": "◇",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "The Seriema": {
+   "F": {
+    "m": "★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "U.S.S. Enterprise-D, Galaxy-Class": {
+   "F": {
+    "m": "★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Class-F Shuttlecraft": {
+   "F": {
+    "m": "★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Sledge-Class Seedship": {
+   "F": {
+    "m": "◇",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Shields Up!": {
+   "F": {
+    "m": "★",
+    "graded_at": "8e5c7f53e815"
    }
   }
  }

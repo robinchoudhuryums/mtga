@@ -100,6 +100,7 @@
  ],
  "Captain Pike, Fullness of Time": [],
  "Charming Prince": [],
+ "Class-F Shuttlecraft": [],
  "Common Goal": [],
  "Coordinated Maneuver": [],
  "D'Vana Tendi, Optimistic Ensign": [],
@@ -129,6 +130,7 @@
    "y": "2026"
   }
  ],
+ "Dawnsire, Sunstar Dreadnought": [],
  "Deanna Troi, Psychic Counsel": [
   {
    "a": "Lie Setiawan",
@@ -150,6 +152,35 @@
    ],
    "im": "https://cards.scryfall.io/normal/front/4/c/4c8ee48d-d0bc-4b5c-ab82-066cd8bbf317.jpg?1793100657",
    "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
+ "Deep Space 9": [
+  {
+   "a": "Paolo Puggioni",
+   "art": "https://cards.scryfall.io/art_crop/front/4/7/473aab2f-cfc2-430b-b785-4b6a491bcd28.jpg?1792508974",
+   "cn": "479",
+   "fx": [
+    "extended art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/7/473aab2f-cfc2-430b-b785-4b6a491bcd28.jpg?1792508974",
+   "r": "M",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Scott Okumura",
+   "art": "https://cards.scryfall.io/art_crop/front/6/5/65585609-563d-47e9-92b8-d4b65baa95bd.jpg?1792509174",
+   "cn": "556",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/5/65585609-563d-47e9-92b8-d4b65baa95bd.jpg?1792509174",
+   "r": "M",
    "set": "TRK",
    "sn": "Star Trek",
    "y": "2026"
@@ -545,6 +576,7 @@
  ],
  "Shields Up!": [],
  "Sickbay": [],
+ "Sledge-Class Seedship": [],
  "Spectacular Tactics": [],
  "Stable Wormhole": [],
  "Support Mission": [],
@@ -555,6 +587,7 @@
  "Test of Priorities": [],
  "The Doctor, EMH": [],
  "The Inner Light": [],
+ "The Seriema": [],
  "The Traveler": [],
  "U.S.S. Enterprise-A, Free Spirit": [
   {
@@ -580,6 +613,33 @@
    ],
    "im": "https://cards.scryfall.io/normal/front/b/1/b162c8cd-865d-40a8-9bc1-e11702ac27d2.jpg?1792509147",
    "r": "M",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
+ "U.S.S. Enterprise-D, Galaxy-Class": [
+  {
+   "a": "Pablo Mendoza",
+   "art": "https://cards.scryfall.io/art_crop/front/0/5/057a4413-6a17-491e-bfd7-6cd427b1a442.jpg?1784078038",
+   "cn": "273",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/5/057a4413-6a17-491e-bfd7-6cd427b1a442.jpg?1784078038",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Scott Okumura",
+   "art": "https://cards.scryfall.io/art_crop/front/c/b/cb823267-b230-40f3-a1eb-140657df2b1e.jpg?1784078589",
+   "cn": "557",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/b/cb823267-b230-40f3-a1eb-140657df2b1e.jpg?1784078589",
+   "r": "R",
    "set": "TRK",
    "sn": "Star Trek",
    "y": "2026"
