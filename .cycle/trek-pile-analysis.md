@@ -619,3 +619,22 @@ maybes are on the board as suggestions: Test of Priorities −Brad Boimler, Don 
 +Spectacular Tactics −Brad Boimler, +Common Goal −Worf, +Coordinated Maneuver −David and Carol Marcus, +Saavik
 −The Inner Light → interaction 3→7, card advantage 8→7, floor C→A, legal. The first two alone reach B (int 5).
 Test of Priorities and Jake Sisko set aside: their slots are better spent on interaction.
+
+### Spacecraft batch (owner's screenshot + three asks, 2026-11-12), graded for deck 99
+Station taps another creature for counters equal to its power: this deck's countered creatures fill a station in one
+or two taps, Jett Reno draws whenever she is tapped at 4+ power (station taps her), Brad Boimler adds one to the
+charge counters, D'Vana untaps a creature to station again, Holo-Engineer's 3/3s station too. Cost: a station tap
+is a creature not attacking. Spacecraft carry no creature types (nothing for Sarek).
+| Card | Verdict | Read |
+|---|---|---|
+| Dawnsire, Sunstar Dreadnought {5} | ★★★ | counts as REMOVAL: at 10+ counters every attack deals 100 to a creature or planeswalker; colourless |
+| The Seriema {1}{W}{W} | ★★ | tutors a legendary creature (M'Benga, Sarek, Helga, Jett...); tapped legends are indestructible; 5/5 flier at 7 |
+| U.S.S. Enterprise-D {3} | ★★ | counts as CARD ADVANTAGE: a card to play every turn you charge it; 4/5 flier at 7 |
+| Class-F Shuttlecraft {3} | ★ | any-colour rock (helps Spock's UU) and a 2/4 flier at 6 |
+| Sledge-Class Seedship {2}{G} | ◇ | puts a creature from hand onto the battlefield on attack, once it flies at 7 |
+| U.S.S. Cerritos {5} | ◇ | two Officers; Enterprise-A does it better |
+| The Eternity Elevator {5} | ◇ | three colourless mana; 20 counters is a lot even here |
+| Wurmwall Sweeper {2} | ◇ | surveil 2, a 2/2 flier at 4 |
+| Deep Space 9 {9} | ◇ spice | free permanents every upkeep and +3/+3 at 9 counters, at 9 mana |
+A-floor package v2 measured: +Spectacular Tactics −Worf, +Saavik −The Inner Light, +Dawnsire −David and Carol Marcus,
++Coordinated Maneuver −Brad Boimler → interaction 7, card advantage 7, floor A, avg MV 3.38, legal.
