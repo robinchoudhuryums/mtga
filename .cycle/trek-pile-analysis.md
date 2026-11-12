@@ -484,3 +484,59 @@ the better of the two, the swap if Subspace Anomaly is ever cut) and Unexplored 
 fetch, worse than any dual here). Edge of Eternities Planets: Evendo (G; station 12 makes G per creature) is
 the only one worth a look and enters tapped — bench. NOTE: every Anomaly's New Planet token becomes a 3/3
 Illusion while Holo-Engineer is out (a body instead of the land).
+
+**Arena import block for v3 (2026-11-12, before the deck file exists; set codes only where the owner's own Arena export gave them, the rest name-only):**
+
+```
+Deck
+1 Sarek, Federation Ambassador (TRK) 251
+1 Syndicate Liquidators (TRK) 218
+1 Holo-Engineer
+1 Rok-Tahk, Budding Scientist (TRK) 211
+1 Jadzia Dax, Living Legacy (TRK) 204
+1 Replicator
+1 Captain Jean-Luc Picard (TRK) 7
+1 Picard, Leading by Example (TRK) 29
+1 David and Carol Marcus, Creators (TRK) 193
+1 Sickbay
+1 MACO Strike Team
+1 Phlox, Unorthodox Doctor (TRK) 250
+1 Scotty, Miracle Worker (TRK) 79
+1 Worf, Honor-Bound Warrior (TRK) 256
+1 Neelix, Moral Support (TRK) 209
+1 Lt. Cmdr. Geordi La Forge (TRK) 70
+1 Seven of Nine, Unassimilated (TRK) 80
+1 The Inner Light (TRK) 241
+1 Xindi Surveyors
+1 Dr. Beverly Crusher (TRK) 13
+1 Brad Boimler, Eager Ensign (TRK) 5
+1 Melkotian Adjudicator
+1 Dominion Supervisor
+1 Malfunctioning Holodeck (TRK) 22
+1 Captain Jonathan Archer
+1 Deanna Troi, Psychic Counsel
+1 Dr. Joseph M'Benga (TRK) 196
+1 Captain Kathryn Janeway (TRK) 187
+1 Bristly Bill, Spine Sower
+1 Support Mission
+1 Sylvia Tilly, Joy of Discovery (TRK) 217
+1 Shields Up! (TRK) 35
+1 Captain Pike, Fullness of Time
+1 Amok Time
+1 70,000 Light-Years from Home
+1 Vigorbloom Charm
+1 The Doctor, EMH (TRK) 234
+1 Starfleet Academy
+1 Subspace Anomaly (TRK) 300
+1 Q Continuum (TRK) 290
+1 Federation Outpost
+1 Ni'Var Science Academy
+4 Temple Garden (TRK) 301
+2 Hallowed Fountain (TRK) 286
+2 Breeding Pool (TRK) 279
+1 Risa
+1 Vulcan
+1 Earth, Sector 001 (TRK) 281
+4 Forest
+3 Plains
+```
