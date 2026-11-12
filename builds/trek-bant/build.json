@@ -438,9 +438,9 @@
   },
   "Make It So": {
    "group": "Real",
-   "text": "Modal sorcery: draw two plus an Officer (a 3/3 with Holo-Engineer), or untap a permanent and draw two. Four cards with Mr. Spock.",
+   "text": "{3}{U} modal sorcery: draw two plus an Officer (a 3/3 with Holo-Engineer), or untap and draw two. Four cards with Mr. Spock; card advantage is the thin axis now. RE-GRADED ★→★★.",
    "graded_at": {
-    "99": "120708b64c5f"
+    "99": "2b5aa39b039e"
    }
   },
   "Aang, at the Crossroads": {
@@ -479,10 +479,10 @@
    }
   },
   "Neelix, Moral Support": {
-   "group": "Situational",
-   "text": "CUT 2026-11-12 for Warp Speed. A Food and a counter whenever you gain life.",
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Warp Speed. A 2-drop that gains a counter whenever you gain life: with Sickbay's per-creature lifegain, Crusher's double trigger and M'Benga, it grows four counters a time. RE-GRADED ◇→★.",
    "graded_at": {
-    "99": "120708b64c5f"
+    "99": "2b5aa39b039e"
    }
   },
   "Scotty, Miracle Worker": {
@@ -550,7 +550,7 @@
   },
   "The Traveler": {
    "group": "Real",
-   "text": "{G}{U} reach, vigilance; power equals your differently named lands (14 here, so 4-6 by mid-game) — the only cheap blocker for fliers. Proposed for Jadzia Dax.",
+   "text": "{G}{U} reach, vigilance; power equals your differently named lands (14 here, 4-6 by mid-game). The only cheap creature that can block fliers. RE-GRADED ★→★★.",
    "graded_at": {
     "99": "2b5aa39b039e"
    }
@@ -564,9 +564,9 @@
   },
   "Coordinated Maneuver": {
    "group": "Strong",
-   "text": "OWNED. {1}{W} instant: damage equal to your creature count (Officers and 3/3 Illusions count) to a creature or planeswalker, or destroy an enchantment. A-floor package: for David and Carol Marcus.",
+   "text": "OWNED. {1}{W} instant: damage equal to your CREATURE COUNT to a creature or planeswalker, or destroy an enchantment. Troubling Tribbles double every upkeep, so the number climbs fast; also a noncreature answer. RE-GRADED ★★→★★★.",
    "graded_at": {
-    "99": "61addeca03f8"
+    "99": "2b5aa39b039e"
    }
   },
   "Xindi Surveyors": {
@@ -655,9 +655,9 @@
   },
   "David and Carol Marcus, Creators": {
    "group": "Real",
-   "text": "CUT 2026-11-12 for Dawnsire. A 1/3 that makes a New Planet land token (a 3/3 while Holo-Engineer is out).",
+   "text": "CUT 2026-11-12 for Dawnsire. Now Replicator is in, it copies their New Planet every turn (an extra any-colour land), and they are a legendary creature for Kellan. RE-GRADED ★→★★.",
    "graded_at": {
-    "99": "d83ceac05ac9"
+    "99": "2b5aa39b039e"
    }
   },
   "The Inner Light": {
@@ -697,23 +697,23 @@
   },
   "Exemplar of Light": {
    "group": "Strong",
-   "text": "OWNED. {2}{W}{W} flier: each lifegain puts a counter on it (Crusher doubles the trigger, M'Benga doubles the counters), and counters on it draw a card once a turn. Card advantage the deck is short on.",
+   "text": "OWNED. {2}{W}{W} FLIER: each lifegain puts a counter on it (Crusher doubles the trigger, M'Benga doubles the counters) and a counter landing draws a card once a turn. Fills two gaps at once: card advantage and a body that blocks fliers. RE-GRADED ★★→★★★.",
    "graded_at": {
-    "99": "a0bbe1bd1660"
+    "99": "2b5aa39b039e"
    }
   },
   "Bloombrute": {
    "group": "Strong",
-   "text": "OWNED. {2}{G}{W}: draw a card when you gain life (once a turn); late, gives a creature trample and lifelink. Card advantage off the deck's 11 lifegain sources.",
+   "text": "OWNED. {2}{G}{W}: draws a card when you gain life (once a turn). Sickbay gains life whenever ANY creature enters (Tribbles every upkeep, Officers, Illusions), so it draws almost every turn — two cards with Mr. Spock. The best fix for card advantage, now 6. RE-GRADED 2026-11-12 ★★→★★★.",
    "graded_at": {
-    "99": "a0bbe1bd1660"
+    "99": "2b5aa39b039e"
    }
   },
   "Heroic Feast": {
-   "group": "Real",
-   "text": "OWNED. {2}{G}: a Food, and each lifegain puts a counter on up to that many of your creatures — Crusher makes it fire twice, M'Benga doubles each counter.",
+   "group": "Strong",
+   "text": "OWNED. {2}{G}: a Food, then each lifegain puts a counter on up to that many creatures. Sickbay makes a lifegain for every creature entering (Tribbles each upkeep), Crusher doubles the trigger, M'Benga each counter. RE-GRADED ★→★★.",
    "graded_at": {
-    "99": "a0bbe1bd1660"
+    "99": "2b5aa39b039e"
    }
   },
   "Aerith Gainsborough": {
@@ -753,7 +753,7 @@
   },
   "Pawpatch Formation": {
    "group": "Strong",
-   "text": "OWNED. {1}{G} instant, modal: destroy a creature with flying, destroy an enchantment, or draw a card and make a Food. Plugs the flier gap and the noncreature gap at once. Proposed for Dominion Saboteur.",
+   "text": "OWNED. {1}{G} instant, modal: destroy a creature with flying, destroy an enchantment, or draw a card and make a Food. Covers the flier gap and adds a third answer to noncreature permanents. RE-GRADED ★★→★★★.",
    "graded_at": {
     "99": "2b5aa39b039e"
    }
@@ -1223,8 +1223,8 @@
   },
   "Make It So": {
    "F": {
-    "m": "★",
-    "graded_at": "120708b64c5f"
+    "m": "★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Aang, at the Crossroads": {
@@ -1259,8 +1259,8 @@
   },
   "Neelix, Moral Support": {
    "F": {
-    "m": "◇",
-    "graded_at": "120708b64c5f"
+    "m": "★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Scotty, Miracle Worker": {
@@ -1319,8 +1319,8 @@
   },
   "The Traveler": {
    "F": {
-    "m": "★",
-    "graded_at": "120708b64c5f"
+    "m": "★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Common Goal": {
@@ -1331,8 +1331,8 @@
   },
   "Coordinated Maneuver": {
    "F": {
-    "m": "★★",
-    "graded_at": "61addeca03f8"
+    "m": "★★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Xindi Surveyors": {
@@ -1409,8 +1409,8 @@
   },
   "David and Carol Marcus, Creators": {
    "F": {
-    "m": "★",
-    "graded_at": "d83ceac05ac9"
+    "m": "★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "The Inner Light": {
@@ -1445,20 +1445,20 @@
   },
   "Exemplar of Light": {
    "F": {
-    "m": "★★",
-    "graded_at": "a0bbe1bd1660"
+    "m": "★★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Bloombrute": {
    "F": {
-    "m": "★★",
-    "graded_at": "a0bbe1bd1660"
+    "m": "★★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Heroic Feast": {
    "F": {
-    "m": "★",
-    "graded_at": "a0bbe1bd1660"
+    "m": "★★",
+    "graded_at": "2b5aa39b039e"
    }
   },
   "Aerith Gainsborough": {
@@ -1493,7 +1493,7 @@
   },
   "Pawpatch Formation": {
    "F": {
-    "m": "★★",
+    "m": "★★★",
     "graded_at": "2b5aa39b039e"
    }
   }
