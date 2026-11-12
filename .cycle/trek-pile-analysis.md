@@ -325,7 +325,7 @@ Crusher, Brad Boimler, Melkotian Adjudicator, Dominion Supervisor. All Standard-
 - **Interaction gap**: the list has none. In colours: Saavik, Set Phasers to . . ., Malfunctioning Holodeck,
   Consider the Prime Directive, U.S.S. Excelsior, Shields Up! (protection).
 
-## 7. Deck C draft v1 — STAGED (write as deck 99 after the 2026-11-13 refresh)
+## 7. Deck C draft v1 (superseded by v2 in section 8 — kept for the reasoning)
 
 Owner 2026-11-12: Captain Jean-Luc Picard AND Picard, Leading by Example; Seven of Nine, Unassimilated;
 then "every nonland card at ONE copy, fill with fits, upgrades and spice". Standard, 60 cards, Bant,
@@ -372,3 +372,60 @@ Wesley Crusher, Dr. Leonard "Bones" McCoy, Culber and Stamets, Cold-Blooded Crew
 Sylvia Tilly, Captain Pike (few land names at 60), Shields Up!, Pure Energy, Type-2 Phaser, I'm a Doctor.
 SPICE, offered with a warning: Kobayashi Maru Scenario — three good upkeeps (bounce, draw two, two
 Officers), then the fourth mode is "you lose the game"; nothing in the list removes your own enchantment.
+
+## 8. Deck C draft v2 — STAGED, the list to write as deck 99 after the 2026-11-13 refresh
+
+Owner 2026-11-12: Support Mission for sure; likely Sylvia Tilly, Shields Up!, Captain Pike; maybe Wesley
+Crusher; asked about 70,000 Light-Years from Home, Antagonist Incorporator, Dr. McCoy Surly Surgeon, Q
+Continuum, Captain Jonathan Archer, Hologram Janeway, Amok Time, Forever Joined, Warp Core, Captain
+Kathryn Janeway, Common Goal.
+
+Changes from v1 (nonland stays singleton, 37 + 23 lands):
+| In | Out | Why |
+|---|---|---|
+| Support Mission | Hoshi Sato | owner's pick; every creature enters with a counter (two with M'Benga), an enchantment that survives creature removal; Hoshi was a 5-drop |
+| Sylvia Tilly | Test of Conviction | a counter EVERY combat for {1} (repeatable) over a one-shot |
+| Shields Up! | Constable Odo | 2-mana hexproof + indestructible + a counter, protects Sarek / M'Benga; Odo was a 5-drop |
+| Captain Pike | The Doctor, EMH | 3-mana body sized by land names (~4-5 mid-game, Q Continuum adds one) that plays lands off the top: card advantage; The Doctor was a 5-drop |
+| Amok Time | Saavik | a fight that SCALES with counters, then 3 life, then a creature back; Saavik needed an attacking/blocking target |
+| Common Goal | Set Phasers to . . . | 2 mana: one or two of your creatures deal their power to a creature; counters make it a kill spell |
+| Q Continuum | 1 Forest | free upgrade: untapped with two lands, a pump or surveil, and another land name |
+Curve fix: the four 5-drops cut (Hoshi, Odo, The Doctor, Saavik) leave Liquidators, Sickbay, The Inner Light and
+Rok-Tahk as the top end.
+
+Final staged v2 nonland (37, one each): Sarek, Federation Ambassador · Syndicate Liquidators · Holo-Engineer ·
+Rok-Tahk, Budding Scientist · Jadzia Dax, Living Legacy · Replicator · Captain Jean-Luc Picard · Picard, Leading
+by Example · David and Carol Marcus, Creators · Sickbay · MACO Strike Team · Phlox, Unorthodox Doctor · Scotty,
+Miracle Worker · Worf, Honor-Bound Warrior · Neelix, Moral Support · Lt. Cmdr. Geordi La Forge · Seven of Nine,
+Unassimilated · The Inner Light · Xindi Surveyors · Dr. Beverly Crusher · Brad Boimler, Eager Ensign · Melkotian
+Adjudicator · Dominion Supervisor · Malfunctioning Holodeck · Subcommander T'Pol · Captain Jonathan Archer ·
+Deanna Troi, Psychic Counsel · Dr. Joseph M'Benga · Captain Kathryn Janeway · Bristly Bill, Spine Sower ·
+Command Decision · Support Mission · Sylvia Tilly, Joy of Discovery · Shields Up! · Captain Pike, Fullness of
+Time · Amok Time · Common Goal.
+Lands (23): Starfleet Academy · Subspace Anomaly · Q Continuum · 4 Temple Garden · 2 Hallowed Fountain · 2 Breeding
+Pool · Risa · Vulcan · Earth, Sector 001 · 4 Forest · 4 Plains · 1 Island.
+Interaction (6): Malfunctioning Holodeck, T'Pol, Command Decision, Amok Time, Common Goal, Shields Up! (protection).
+
+Verdicts on the owner's questions (deck C):
+| Card | Verdict | Read |
+|---|---|---|
+| 70,000 Light-Years from Home | ✗ by the owner's rule | exile, but its controller searches a basic land into hand: the Path to Exile pattern the owner ruled out. Owner's call if a land to HAND is acceptable |
+| Antagonist Incorporator | ◇ | it is a Borg, so it adds nothing to the Federation count, and only artifact creatures get its token ability (Holo-Engineer's 3/3s, Seven of Nine, Replicator copies) |
+| Dr. McCoy, Surly Surgeon | ★ bench | a counter, then countered creatures shrug off destroy (lose the counters instead); 4 mana WW |
+| Q Continuum | ★★ in | see above |
+| Captain Jonathan Archer | ★★ already in | {G},{T}: +X/+X where X is your creature types — a repeatable pump that grows with the deck |
+| Hologram Janeway | ◇ bench | a counter per attack at 8+ total power; an artifact Illusion Officer |
+| Amok Time | ★★ in | see above |
+| Forever Joined | UNREAD | not in the card database or the saved TRK data, and Scryfall was down (503); grade after the refresh |
+| Warp Core | ✗ | its charge counters go on Spacecraft, and the deck has none; otherwise a 2-mana basic-land tutor |
+| Captain Kathryn Janeway | ★★ already in | explores on every creature; extra land drop |
+| Common Goal | ★★ in | see above |
+| Wesley Crusher | ★ bench (maybe) | flash, choose two (counter a noncreature spell, bounce a 2-drop, unblockable, loot); the natural swap is for T'Pol |
+
+Flags carried to the file's notes: Geordi (no charge counters); Scotty ({1}{U}{U} on ~7 blue sources; two
+sorceries to beam up: Command Decision, Common Goal); Melkotian (dilemmas: Command Decision, T'Pol, Q Continuum's
+untapped entry, Culber-style ETBs — thin); three colourless/utility lands; Holo-Engineer vs David and Carol
+Marcus's land token.
+Bench to screen after the refresh: Wesley Crusher, Dr. McCoy Surly Surgeon, Hologram Janeway, Emergency Medical
+Hologram, Dr. Leonard "Bones" McCoy, Culber and Stamets, Cold-Blooded Crew, Hoshi Sato, Constable Odo, Saavik,
+The Doctor EMH, Test of Conviction, Set Phasers to . . ., Antagonist Incorporator, Forever Joined (unread).
