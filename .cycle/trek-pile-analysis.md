@@ -680,3 +680,19 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
 2026-11-12: +Troubling Tribbles −Abuelo applied. Lands unchanged (W14/U13/G15; Spock 70%). Interaction 7: 3 instant-speed, 2 answer noncreature permanents; fliers answered by removal only — no flying/reach blockers. Proposed: +Pawpatch Formation −Dominion Saboteur, +The Traveler −Jadzia (interaction 8, early drops 11, avg MV 3.49).
 2026-11-12: bench re-graded against the current list — up: Bloombrute, Exemplar of Light, Pawpatch Formation, Coordinated Maneuver (★★★); Heroic Feast, The Traveler, David and Carol Marcus, Make It So (★★); Neelix (★). Drivers: Sickbay lifegain per creature, Tribbles, card advantage at 6, the flier gap, two noncreature answers.
 2026-11-12: all-three packages measured (Bloombrute, Heroic Feast, D&C): C = +Bloombrute −Saboteur, +Feast −Jadzia, +D&C −Rok-Tahk → card adv 7, early 9, avg MV 3.49; A = +Bloombrute −Helga, +Feast −Jadzia, +D&C −Saboteur → 6 / 9 / 3.57; D = +Bloombrute −Saboteur, +Feast −Warp Speed, +D&C −Rok-Tahk → 6 / 10 / 3.46. All A, legal.
+
+- 2026-11-12: **Deck 100 drafted** — `decks/100-resistance-is-futile/deck.txt`, "Resistance Is Futile — Borg",
+  Historic Brawl, commander Locutus of Borg (WUB), 100 cards (34 creatures, 8 Spacecraft, 19 spells and
+  artifacts, 38 lands). Checks: resolve --check OK, legal OK, preflight READY, metrics floor A (interaction 15,
+  card advantage 6, board power 86, average MV 3.52), keepable 81.2% (96.5% counting the free mulligan),
+  sources W 21 / U 21 / B 22, shares at most 1 card with any other deck. Weak spot: the WW cards (Tempered
+  Steel, The Seriema) cast on turn 3 only 60% of the time. Tier letter left for the owner. Bench of 26 graded cards in
+  Builder `builds/trek-borg`, board https://claude.ai/artifact/SEWP7enbuaTvr3nBk4mDDy. Empress Galina is
+  not on Arena (not in the pool), so it was skipped. Arcane Sanctum is not on Arena either; Obscura Storefront
+  replaces it. The Sisko Brawl deck is still to do (after the 11-13 refresh).
+- 2026-11-12 classifier gaps (G-67, recorded only): Battle of Wolf 359 ("All nonartifact creatures get -X/-X
+  … X is the number of artifact creatures you control") scores no Sweeper role, and Collation Trimatrix ("Tap
+  three untapped artifact creatures you control: You draw a card") scores no card advantage, because the cost is a tap of
+  other creatures, not {T}. Both would raise deck 100's figures, which already clear A. Also: the pool override
+  added a card named "Seven of Nine", so decks 45a / 48 / 54b now flag their prose "Seven of Nine" as a
+  stale card citation. That is noise, and it should clear when the 11-13 refresh restores the standard pool (re-check then).

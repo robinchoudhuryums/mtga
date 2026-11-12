@@ -1,0 +1,598 @@
+{
+ "schema": 1,
+ "title": "Resistance Is Futile — Borg (Historic Brawl)",
+ "decks": [
+  {
+   "key": "L",
+   "id": "100",
+   "label": "Locutus"
+  }
+ ],
+ "piles": [
+  {
+   "key": "L",
+   "label": "Locutus's pile",
+   "deck": "L",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Brokers' Safeguard",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Engineered Explosives",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "U.S.S. Enterprise-D, Galaxy-Class",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Set Phasers to . . .",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Romulan Bird-of-Prey",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Oberth-Class Starship",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Entropic Battlecruiser",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Deep Space 9",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "H.M.S. Bounty, Unlikely Timeship",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Hologram Janeway",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Seven of Nine, Unassimilated",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Noctis, Prince of Lucis",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Dominion Saboteur",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Georgiou, Terran Emperor",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Gul Dukat, Colonial Prefect",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "The Measure of a Man",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Test of Priorities",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Hemmer, Fixing What Is Broken",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Live Long and Prosper",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Adagia, Windswept Bastion",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Susur Secundi, Void Altar",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Lost Jitte",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Excalibur II",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Workshop Elders",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Salvation Engine",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Unctus, Grand Metatect",
+   "pile": "L",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "U.S.S. Enterprise-D, Galaxy-Class": {
+   "group": "Real",
+   "text": "A card to play each turn you charge it; 4/5 flier at 7. Fine, but the Spacecraft slots went to ones that interact.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Romulan Bird-of-Prey": {
+   "group": "Situational",
+   "text": "2-mana hexproof ship, flier at 8; charges off noncreature spells, which the deck has few of.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Oberth-Class Starship": {
+   "group": "Situational",
+   "text": "Plains fetch on a 2-mana ship, flier at 6.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Entropic Battlecruiser": {
+   "group": "Situational",
+   "text": "Discard drain; a 3/10 deathtouch flier at 8.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Deep Space 9": {
+   "group": "Situational",
+   "text": "9 mana: free permanents each upkeep, +3/+3 at 9 counters. No big ramp engine here.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "H.M.S. Bounty, Unlikely Timeship": {
+   "group": "Situational",
+   "text": "Whale tutor and extra turn; no Whale worth it in Esper.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Hologram Janeway": {
+   "group": "Real",
+   "text": "Artifact creature that adds counters when you attack with 8+ power; a filler artifact body.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Seven of Nine, Unassimilated": {
+   "group": "Real",
+   "text": "Artifact creature that draws each turn; the discard applies until five differently named lands.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Noctis, Prince of Lucis": {
+   "group": "Strong",
+   "text": "Casts artifacts from the graveyard for 3 extra life (finality counter); strong recursion, and the Standard Brawl commander option.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Dominion Saboteur": {
+   "group": "Real",
+   "text": "Copies a creature or a charged Spacecraft with its counters.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Georgiou, Terran Emperor": {
+   "group": "Situational",
+   "text": "A card a turn for 3 life; risky.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Gul Dukat, Colonial Prefect": {
+   "group": "Situational",
+   "text": "7-mana menace drain.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "The Measure of a Man": {
+   "group": "Real",
+   "text": "Temporary exile + Clue, or blink your own enter trigger.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Set Phasers to . . .": {
+   "group": "Real",
+   "text": "1-mana stun, or 3 to an attacker.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Test of Priorities": {
+   "group": "Real",
+   "text": "Instant: draw, or blink a creature to dodge removal.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Hemmer, Fixing What Is Broken": {
+   "group": "Real",
+   "text": "Spacecraft hexproof on your turn; loots whenever tapped (station taps it).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Live Long and Prosper": {
+   "group": "Situational",
+   "text": "7 mana: double your life and draw a hand.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Adagia, Windswept Bastion": {
+   "group": "Real",
+   "text": "W Planet; at 12 counters copies an artifact (Borg Cube, Conquest Mission).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Susur Secundi, Void Altar": {
+   "group": "Situational",
+   "text": "B Planet; card draw by sacrifice at 12.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Lost Jitte": {
+   "group": "Real",
+   "text": "Equip 1; counters for can't-block, +1/+1 or untapping lands.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Engineered Explosives": {
+   "group": "Situational",
+   "text": "Sunburst sweeper; symmetric.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Excalibur II": {
+   "group": "Situational",
+   "text": "Grows with lifegain (Locutus, Bio-Asset Allocator).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Workshop Elders": {
+   "group": "Real",
+   "text": "7 mana: artifact creatures fly; animates a noncreature artifact each combat.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Salvation Engine": {
+   "group": "Real",
+   "text": "OWNED. +2/+2 anthem Vehicle that returns an artifact each attack; crew 6.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Unctus, Grand Metatect": {
+   "group": "Real",
+   "text": "+1/+1 to other artifact creatures; loots for blue creatures that tap.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  },
+  "Brokers' Safeguard": {
+   "group": "Situational",
+   "text": "Protects only a NONartifact creature — little here.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7"
+   }
+  }
+ },
+ "snapshots": {
+  "100": {
+   "5fb30fd6b8b7": [
+    "Adarkar Wastes",
+    "Ancient Den",
+    "Anguished Unmaking",
+    "Antagonist Incorporator",
+    "Arcane Signet",
+    "Assault Drone",
+    "Assembly Specialist",
+    "Badgey, Malicious Glitch",
+    "Battle of Wolf 359",
+    "Bio-Asset Allocator",
+    "Borg Cube",
+    "Borg Queen, Perfection Manifest",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Caves of Koilos",
+    "Chief of the Foundry",
+    "Clearwater Pathway // Murkwater Pathway",
+    "Collation Trimatrix",
+    "Collective Drone",
+    "Command Subadjunct",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Conquest Mission",
+    "Consider the Prime Directive",
+    "Crystalline Entity",
+    "Cyberdrive Awakener",
+    "Darkslick Shores",
+    "Data, New Life",
+    "Dawnsire, Sunstar Dreadnought",
+    "Death Is Irrelevant",
+    "Deserted Beach",
+    "Drowned Catacomb",
+    "Fabled Passage",
+    "Fatal Push",
+    "Flare of Fortitude",
+    "Free Borg Revolutionaries",
+    "Glacial Fortress",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hive Mind Coprocessor",
+    "In the Pale Moonlight",
+    "Infernal Grasp",
+    "Island",
+    "Isolated Chapel",
+    "Lieutenant Commander Data",
+    "Lita, Mechanical Engineer",
+    "Locutus of Borg",
+    "Locutus, the One Who Speaks",
+    "Lt. Cmdr. Geordi La Forge",
+    "Make Disappear",
+    "Malfunctioning Holodeck",
+    "Mind Stone",
+    "Mirror Universe Intrusion",
+    "Mr. Spock, Science Officer",
+    "Obscura Storefront",
+    "Organic Avulsion Unit",
+    "Overflow Submatrix",
+    "Plains",
+    "Primary Unimatrix Adjunct",
+    "Raffine's Tower",
+    "Rutherford, Upgraded Ensign",
+    "Seachrome Coast",
+    "Seat of the Synod",
+    "Seven of Nine",
+    "Sharding Sphinx",
+    "Shattered Sanctum",
+    "Sheoldred's Edict",
+    "Sheoldred, the Apocalypse",
+    "Shields Up!",
+    "Shipwreck Marsh",
+    "Spock, Logical Choice",
+    "Steel Overseer",
+    "Susurian Dirgecraft",
+    "Swamp",
+    "Synthesizer Labship",
+    "Tempered Steel",
+    "Tenacious Drone",
+    "The Borg Queen",
+    "The Seriema",
+    "The Unicomplex",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "U.S.S. Excelsior, Cutting Edge",
+    "U.S.S. Reliant, From Hell's Heart",
+    "Underground River",
+    "Urza, Prince of Kroog",
+    "Uthros, Titanic Godcore",
+    "Vanishing Verse",
+    "Vault of Whispers",
+    "Vexing Drone",
+    "Warp Core",
+    "Watery Grave",
+    "Zefram Cochrane, Warp Pioneer"
+   ]
+  }
+ },
+ "verdicts": {
+  "U.S.S. Enterprise-D, Galaxy-Class": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Romulan Bird-of-Prey": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Oberth-Class Starship": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Entropic Battlecruiser": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Deep Space 9": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "H.M.S. Bounty, Unlikely Timeship": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Hologram Janeway": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Seven of Nine, Unassimilated": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Noctis, Prince of Lucis": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Dominion Saboteur": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Georgiou, Terran Emperor": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Gul Dukat, Colonial Prefect": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "The Measure of a Man": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Set Phasers to . . .": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Test of Priorities": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Hemmer, Fixing What Is Broken": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Live Long and Prosper": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Adagia, Windswept Bastion": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Susur Secundi, Void Altar": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Lost Jitte": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Engineered Explosives": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Excalibur II": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Workshop Elders": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Salvation Engine": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Unctus, Grand Metatect": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  },
+  "Brokers' Safeguard": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   }
+  }
+ }
+}

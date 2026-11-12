@@ -39,12 +39,14 @@ Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
 Ashiok, Nightmare Weaver
 Ashroot Animist
+Assembly Specialist
 Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
 Azula, Cunning Usurper
 Badgermole
 Ball Lightning
+Battle of Wolf 359
 Baxter Stockman
 Bejeweled Warg
 Bilbo, Fellow Conspirator
@@ -87,8 +89,11 @@ Cephalid Inkmage
 Charging Strifeknight
 Chatterfang, Squirrel General
 Claim Jumper
+Collation Trimatrix
+Collective Drone
 Collector's Vault
 Colossification
+Command Subadjunct
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
@@ -99,6 +104,7 @@ Cryogen Relic
 Crypt Feaster
 Cuboid Colony
 Cut Your Losses
+Cyberdrive Awakener
 Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
@@ -274,6 +280,7 @@ Leyline of Transformation
 Lifecraft Engine
 Light-Paws, Emperor's Voice
 Lilysplash Mentor
+Lita, Mechanical Engineer
 Little Bear
 Living Brain, Mechanical Marvel
 Loki Laufeyson
@@ -327,6 +334,7 @@ Okoye, Dora Milaje Leader
 Omnipresence
 Omniscience
 Omnivorous Flytrap
+Organic Avulsion Unit
 Ori, Keeper of Songs
 Origin of the Avengers
 Orphans of the Wheat
@@ -347,6 +355,7 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
+Primary Unimatrix Adjunct
 Primo, the Unbounded
 Prophet of the Planeswalker
 Psychic Whorl
@@ -424,6 +433,7 @@ Starfield Shepherd
 Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
+Steel Overseer
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
@@ -438,11 +448,13 @@ Sunpearl Kirin
 Super-Soldier Serum
 Sweettooth Witch
 Swiftblade Vindicator
+Synthesizer Labship
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
 Temur Battle Rage
+Tenacious Drone
 Tenured Tethermage
 Terrapact Intimidator
 Tetsuko Umezawa, Pursuer
@@ -522,10 +534,10 @@ Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
-Worf, Honor-Bound Warrior
 Wraith, Vicious Vigilante
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
 Zagras, Thief of Heartbeats
+Zefram Cochrane, Warp Pioneer
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
