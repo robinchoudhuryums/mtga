@@ -75,7 +75,8 @@
 1 Q Continuum (TRK) 290
 1 Federation Outpost (TRK) 282
 1 Ni'Var Science Academy (TRK) 287
-4 Temple Garden (ECL) 268
+3 Temple Garden (ECL) 268
+1 Overgrown Farmland (FRA) 185
 3 Hallowed Fountain (ECL) 265
 4 Breeding Pool (EOE) 251
 1 Urban Retreat (SPM) 187
