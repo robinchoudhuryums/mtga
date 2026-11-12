@@ -233,6 +233,26 @@
    "name": "Shields Up!",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Bite Down",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Stasis Snare",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sheltered by Ghosts",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Felling Blow",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -526,6 +546,34 @@
   "Shields Up!": {
    "group": "Real",
    "text": "CUT 2026-11-12 for Spectacular Tactics (which protects with hexproof + a counter, or kills a 4-power creature).",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Bite Down": {
+   "group": "Strong",
+   "text": "OWNED. {1}{G} INSTANT: your creature deals damage equal to its power to a creature or planeswalker. The counters make it a kill spell at instant speed. Proposed for D'Vana Tendi.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Stasis Snare": {
+   "group": "Strong",
+   "text": "OWNED. {1}{W}{W} flash: exiles any creature an opponent controls for as long as it stays. Unconditional, instant-speed.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "group": "Strong",
+   "text": "OWNED. {1}{W} Aura on your creature: exiles ANY nonland permanent of theirs (artifacts, enchantments, planeswalkers too) while it stays, and gives your creature +1/+0, lifelink (Crusher, Sickbay) and ward 2.",
+   "graded_at": {
+    "99": "8e5c7f53e815"
+   }
+  },
+  "Felling Blow": {
+   "group": "Real",
+   "text": "OWNED. {2}{G} sorcery: a +1/+1 counter (two with M'Benga), then your creature deals its power to theirs.",
    "graded_at": {
     "99": "8e5c7f53e815"
    }
@@ -939,6 +987,30 @@
    }
   },
   "Shields Up!": {
+   "F": {
+    "m": "★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Bite Down": {
+   "F": {
+    "m": "★★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Stasis Snare": {
+   "F": {
+    "m": "★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "F": {
+    "m": "★★",
+    "graded_at": "8e5c7f53e815"
+   }
+  },
+  "Felling Blow": {
    "F": {
     "m": "★",
     "graded_at": "8e5c7f53e815"

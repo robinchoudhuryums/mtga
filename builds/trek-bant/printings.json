@@ -3,6 +3,7 @@
  "Aang, at the Crossroads": [],
  "Abuelo, Ancestral Echo": [],
  "Amok Time": [],
+ "Bite Down": [],
  "Brad Boimler, Eager Ensign": [],
  "Bristly Bill, Spine Sower": [],
  "Captain Jean-Luc Picard": [
@@ -296,6 +297,7 @@
    "y": "2020"
   }
  ],
+ "Felling Blow": [],
  "Gaseous Anomaly": [],
  "Ghost of Illyria": [],
  "Helga, Skittish Seer": [],
@@ -574,11 +576,36 @@
    "y": "2026"
   }
  ],
+ "Sheltered by Ghosts": [],
  "Shields Up!": [],
  "Sickbay": [],
  "Sledge-Class Seedship": [],
  "Spectacular Tactics": [],
  "Stable Wormhole": [],
+ "Stasis Snare": [
+  {
+   "a": "Jason Felix",
+   "art": "https://cards.scryfall.io/art_crop/front/c/e/ce41e348-44c2-47f8-8e7d-da2e4d16d648.jpg?1783908938",
+   "cn": "581",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/e/ce41e348-44c2-47f8-8e7d-da2e4d16d648.jpg?1783908938",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Andrew Mar",
+   "art": "https://cards.scryfall.io/art_crop/front/c/c/ccb4f3f4-7524-4796-8197-75b987ed582d.jpg?1783908426",
+   "cn": "37",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/c/ccb4f3f4-7524-4796-8197-75b987ed582d.jpg?1783908426",
+   "r": "U",
+   "set": "PIO",
+   "sn": "Pioneer Masters",
+   "y": "2024"
+  }
+ ],
  "Support Mission": [],
  "Sylvia Tilly, Joy of Discovery": [],
  "Syndicate Liquidators": [],

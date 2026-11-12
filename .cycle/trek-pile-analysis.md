@@ -649,3 +649,9 @@ bench Felidar Retreat, Replicator, Test of Priorities, Enterprise-D. Measured: f
 avg MV 3.54. Adding Coordinated Maneuver −Brad Boimler → A (int 7, card adv 6). Alternative keeping Helga: DS9 −Brad,
 Coordinated Maneuver −Picard LbE → A (int 7, card adv 7, avg MV 3.57). Replies posted on the board (Saboteur copies
 Spacecraft with counters; Replicator copies New Planets, but Holo-Engineer turns copies into 3/3s).
+Interaction search 2026-11-12 (better than Coordinated Maneuver, all OWNED): Bite Down ({1}{G} instant bite, creature
+or planeswalker), Stasis Snare ({1}{W}{W} flash exile), Sheltered by Ghosts ({1}{W} Aura: exile ANY nonland
+permanent + lifelink/ward on yours), Felling Blow ({2}{G} counter + bite). Excluded by the owner's rule: Prophesied End
+(they draw unless it was attacking), Stroke of Midnight / Crib Swap (they get a 1/1). Owner's marks now cut D'Vana and
+Picard LbE too. Measured: +Dawnsire −D&C Marcus, +Saavik −Inner Light, +Bite Down −D'Vana, +DS9 −Picard LbE → A
+(int 7, card adv 7, Helga kept); with Helga ALSO cut for Stasis Snare → see chat.
