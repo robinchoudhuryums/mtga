@@ -36,7 +36,7 @@
 1 Worf, Honor-Bound Warrior (TRK) 256
 1 Dominion Saboteur (TRK) 54
 1 Seven of Nine, Unassimilated (TRK) 80
-1 Xindi Surveyors (TRK) 225
+1 Don & Leo, Problem Solvers (TMT) 143
 1 Dr. Beverly Crusher (TRK) 13
 1 Brad Boimler, Eager Ensign (TRK) 5
 1 Helga, Skittish Seer (BLB) 217

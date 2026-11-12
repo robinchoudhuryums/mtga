@@ -615,3 +615,7 @@ Builder project builds/trek-bant, board https://claude.ai/artifact/1eekQNYt2Jxtb
 cards with reasons/verdicts). Owner keeps Seven of Nine and Sickbay, maybe David and Carol Marcus; the three
 maybes are on the board as suggestions: Test of Priorities −Brad Boimler, Don & Leo −The Inner Light, Jake Sisko
 −Xindi Surveyors.
+2026-11-12: +Don & Leo −Xindi Surveyors applied. A-floor package proposed (on the board as suggestions), measured:
++Spectacular Tactics −Brad Boimler, +Common Goal −Worf, +Coordinated Maneuver −David and Carol Marcus, +Saavik
+−The Inner Light → interaction 3→7, card advantage 8→7, floor C→A, legal. The first two alone reach B (int 5).
+Test of Priorities and Jake Sisko set aside: their slots are better spent on interaction.

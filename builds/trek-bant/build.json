@@ -183,6 +183,21 @@
    "name": "The Traveler",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Common Goal",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Coordinated Maneuver",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Xindi Surveyors",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -195,9 +210,9 @@
   },
   "Don & Leo, Problem Solvers": {
    "group": "Strong",
-   "text": "OWNED. A free blink of an artifact AND a creature every end step: Enterprise-A makes three more Officers each turn. 5 mana.",
+   "text": "IN 2026-11-12 for Xindi Surveyors. OWNED. A free blink of an artifact AND a creature every end step: Enterprise-A makes three more Officers each turn. 5 mana.",
    "graded_at": {
-    "99": "120708b64c5f"
+    "99": "61addeca03f8"
    }
   },
   "Jake Sisko, War Correspondent": {
@@ -409,6 +424,27 @@
    "graded_at": {
     "99": "120708b64c5f"
    }
+  },
+  "Common Goal": {
+   "group": "Strong",
+   "text": "{1}{G}: one or two of your creatures each deal damage equal to their power to an opposing creature — the counters make it a kill spell. A-floor package: for Worf.",
+   "graded_at": {
+    "99": "61addeca03f8"
+   }
+  },
+  "Coordinated Maneuver": {
+   "group": "Strong",
+   "text": "OWNED. {1}{W} instant: damage equal to your creature count (Officers and 3/3 Illusions count) to a creature or planeswalker, or destroy an enchantment. A-floor package: for David and Carol Marcus.",
+   "graded_at": {
+    "99": "61addeca03f8"
+   }
+  },
+  "Xindi Surveyors": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Don & Leo. 3-mana 3/2 that gains a counter on each landfall.",
+   "graded_at": {
+    "99": "61addeca03f8"
+   }
   }
  },
  "snapshots": {
@@ -464,6 +500,58 @@
     "Warp Speed",
     "Worf, Honor-Bound Warrior",
     "Xindi Surveyors"
+   ],
+   "61addeca03f8": [
+    "70,000 Light-Years from Home",
+    "Abuelo, Ancestral Echo",
+    "Brad Boimler, Eager Ensign",
+    "Breeding Pool",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "D'Vana Tendi, Optimistic Ensign",
+    "David and Carol Marcus, Creators",
+    "Deanna Troi, Psychic Counsel",
+    "Dominion Saboteur",
+    "Dominion Supervisor",
+    "Don & Leo, Problem Solvers",
+    "Dr. Beverly Crusher",
+    "Dr. Joseph M'Benga",
+    "Earth, Sector 001",
+    "Federation Outpost",
+    "Forest",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Holo-Engineer",
+    "Jadzia Dax, Living Legacy",
+    "Jett Reno, Problem Solver",
+    "Kellan Joins Up",
+    "Malfunctioning Holodeck",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Phlox, Unorthodox Doctor",
+    "Picard, Leading by Example",
+    "Plains",
+    "Q Continuum",
+    "Rok-Tahk, Budding Scientist",
+    "Sarek, Federation Ambassador",
+    "Seven of Nine, Unassimilated",
+    "Shields Up!",
+    "Sickbay",
+    "Stable Wormhole",
+    "Starfleet Academy",
+    "Subspace Anomaly",
+    "Support Mission",
+    "Syndicate Liquidators",
+    "Temple Garden",
+    "Test of Conviction",
+    "The Doctor, EMH",
+    "The Inner Light",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Urban Retreat",
+    "Vigorbloom Charm",
+    "Vulcan",
+    "Warp Speed",
+    "Worf, Honor-Bound Warrior"
    ]
   }
  },
@@ -658,6 +746,24 @@
    "F": {
     "m": "★",
     "graded_at": "120708b64c5f"
+   }
+  },
+  "Common Goal": {
+   "F": {
+    "m": "★★",
+    "graded_at": "61addeca03f8"
+   }
+  },
+  "Coordinated Maneuver": {
+   "F": {
+    "m": "★★",
+    "graded_at": "61addeca03f8"
+   }
+  },
+  "Xindi Surveyors": {
+   "F": {
+    "m": "★",
+    "graded_at": "61addeca03f8"
    }
   }
  }
