@@ -84,3 +84,7 @@
 1 Earth, Sector 001 (TRK) 281
 2 Forest (TRK) 325
 2 Plains (TRK) 317
+
+#~ +Bloombrute | draws on lifegain (Sickbay makes one per creature); package 1: for Dominion Saboteur (alt Helga)
+#~ +Heroic Feast | lifegain → counters, doubled by Crusher and M'Benga; for Jadzia Dax (alt Warp Speed)
+#~ +David and Carol Marcus, Creators | Replicator copies its New Planet each turn; for Rok-Tahk (alt Dominion Saboteur)
