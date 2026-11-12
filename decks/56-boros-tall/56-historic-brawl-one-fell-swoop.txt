@@ -55,11 +55,11 @@
 #: notes: Spearmaster, Zada. Teyo's +1 is read as LOCKING the toughness at resolution (owner's read; untested in Arena).
 #: notes: QUEUED for after the 2026-11-13 card-pool refresh (Star Trek set, on Arena before Scryfall's date — G-79):
 #: notes: +Worf, Honor-Bound Warrior −Tenth District Legionnaire, +Exploratory Mission −Valorous Stance, +Kirk,
-#: notes: Enterprising Captain −Blazing Crescendo, +Combadge −Chainsaw; optional +Pah-Wraith −Giantfall; Picard, Leading
-#: notes: by Example at the owner's option (see below). La'An skipped: Combadge does evasion better.
-#: notes: Picard (◇, the weakest Star Trek add): {1},{T} gives ANOTHER creature +X/+X where X is Picard's own power, at
-#: notes: sorcery speed, so it pumps the carrier by 2 unless Picard is the one wearing Equipment. If taken, cut candidates in
-#: notes: order: Giantfall (take Picard INSTEAD of Pah-Wraith; a 2-drop eases the curve), Balduvian Berserker, Esper Sentinel.
+#: notes: Enterprising Captain −Blazing Crescendo, +Combadge −Chainsaw, +Picard, Leading by Example −Showdown of the
+#: notes: Skalds (owner's call 2026-11-12: a 2-drop for a 4-drop; costs one card-advantage piece); optional +Pah-Wraith
+#: notes: −Giantfall. La'An skipped: Combadge does evasion better.
+#: notes: Picard: {1},{T} gives ANOTHER creature +X/+X (X = Picard's power) at sorcery speed, so he is as good as the
+#: notes: counters on him; Seize the Day untaps him and Teyo's +1 can lock the toughness he adds.
 #: notes: TIER UNSET — the letter is the owner's call. Measured floor A (interaction 16, card advantage 9 against the
 #: notes: 100-card A line of 12 and 19).
 
