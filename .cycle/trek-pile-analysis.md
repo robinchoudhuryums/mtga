@@ -290,8 +290,9 @@ Sisko**. Core: Infinite Guideline Station, Captain Jean-Luc Picard, Enterprise-A
 Janeway, Seven of Nine, Jett Reno, The Caretaker, Riku, Rok-Tahk, Golos, Karn, Kenrith, Sisay, JL Picard
 Luminary, the modal cards (Set Phasers, Test of Conviction / Priorities, Consider the Prime Directive,
 Make It So, Drill Too Deep, Hull Breach, Federation Field Medic), the ten shocks and the Planets.
-The pile holds only ~12 modal cards, so the draft must find 15+ more modal spells in the pool before this
-is worth building (rule 4) — measure that first.
+The pile holds only ~12 modal cards, but MEASURED 2026-11-12: the pool already has 533 Historic-Brawl-legal
+modal cards (choose one/two/three, choose one or more, Spree), 135 of them owned — Sisko's dilemma supply is not
+the constraint. (For deck A: 96 WUB artifact-creature cards in the pool beyond this pile, 15 owned.)
 
 PROTECT (what `cuts` cannot see): Borg Cube's affinity counts artifact CREATURES (a stationed
 Spacecraft counts, an unstationed one does not); Battle of Wolf 359 and Crystalline Entity are
