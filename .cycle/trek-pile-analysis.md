@@ -297,3 +297,30 @@ the constraint. (For deck A: 96 WUB artifact-creature cards in the pool beyond t
 PROTECT (what `cuts` cannot see): Borg Cube's affinity counts artifact CREATURES (a stationed
 Spacecraft counts, an unstationed one does not); Battle of Wolf 359 and Crystalline Entity are
 one-sided only while the board is artifact creatures; Badgey / Hemmer / Jett Reno fire on station taps.
+
+## 6. Deck C — Standard Bant (GWU) "Federation", owner's list (2026-11-12)
+
+Owner's 23: Sarek, Syndicate Liquidators, Holo-Engineer, Rok-Tahk, Jadzia Dax, Replicator, Picard (read as
+Captain Jean-Luc Picard — Picard, Steadfast Captain is Historic-only), David and Carol Marcus, Sickbay, MACO
+Strike Team, Phlox, Subspace Anomaly, Scotty, Worf (R/W hybrid, paid with W), Neelix, Geordi La Forge,
+Seven of Nine (Unassimilated — the UB one is off-colour), The Inner Light, Xindi Surveyors, Dr. Beverly
+Crusher, Brad Boimler, Melkotian Adjudicator, Dominion Supervisor. All Standard-legal.
+
+- **Spine: FEDERATION (creature-type diversity).** Sarek draws per five creature types among non-Borg
+  creatures; the list's creatures carry ~19 distinct types (Vulcan, Advisor, Orion, Pirate, Human, Artificer,
+  Brikar, Scientist, Trill, Officer, Soldier, Denobulan, Doctor, Klingon, Warrior, Talaxian, Xindi,
+  Melkotian, Vorta) plus Illusion / Officer tokens. The other Standard Federation cards are all in these
+  colours: Captain Jonathan Archer, Hoshi Sato, Saavik (flash removal), Starfleet Academy (land). That spine
+  is what keeps it distinct from the roster's five Standard Bant decks (19 tokens, 65 Spiders, 67 cast from
+  exile, 68 wide counters, 78 Allies).
+- **Second layer: +1/+1 counters → cards**: Phlox, Dominion Supervisor (trample), Jadzia, Xindi, Liquidators,
+  Brad, Neelix, Crusher, Sickbay.
+- **Weak in THIS list, by count (G-61):** Geordi doubles CHARGE counters and the list has 0 charge-counter
+  cards; Scotty gives beam me up to instants/sorceries and the list has 0; Melkotian Adjudicator grows per
+  dilemma and the list has 0 modal cards; Seven of Nine Unassimilated wants 5+ differently named lands, few
+  in a 60-card deck with basics.
+- **Holo-Engineer replaces EVERY token** you would create with a 3/3 Illusion artifact creature: Officers
+  (Picard, MACO, Subspace Anomaly) and Neelix's / Replicator's Food become 3/3s (upside), but David and Carol
+  Marcus's New Planet LAND token also becomes a 3/3 instead of a land (a real conflict, minor).
+- **Interaction gap**: the list has none. In colours: Saavik, Set Phasers to . . ., Malfunctioning Holodeck,
+  Consider the Prime Directive, U.S.S. Excelsior, Shields Up! (protection).
