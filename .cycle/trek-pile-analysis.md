@@ -638,3 +638,8 @@ is a creature not attacking. Spacecraft carry no creature types (nothing for Sar
 | Deep Space 9 {9} | ◇ spice | free permanents every upkeep and +3/+3 at 9 counters, at 9 mana |
 A-floor package v2 measured: +Spectacular Tactics −Worf, +Saavik −The Inner Light, +Dawnsire −David and Carol Marcus,
 +Coordinated Maneuver −Brad Boimler → interaction 7, card advantage 7, floor A, avg MV 3.38, legal.
+Deep Space 9 in place of Coordinated Maneuver (measured): interaction 6, floor B (one short of A), avg MV 3.57.
+To keep A AND take Deep Space 9: keep Coordinated Maneuver and give DS9 its own slot (−Dominion Saboteur, the
+weakest-ranked card in `cuts`, measured separately). Alternate cuts offered: Spectacular Tactics → Picard Leading by
+Example / Shields Up! / Jadzia Dax; Saavik → Syndicate Liquidators / Dr. Beverly Crusher; Dawnsire → Dominion
+Saboteur / Dominion Supervisor.
