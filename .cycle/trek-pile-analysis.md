@@ -660,3 +660,17 @@ Picard LbE too. Measured: +Dawnsire −D&C Marcus, +Saavik −Inner Light, +Bite
 2026-11-12: +Replicator −Worf (owner). David and Carol Marcus re-add measured: for Brad / Syndicate Liquidators / Dominion Supervisor all keep A.
 2026-11-12: Kwia Vigorbloom graded ★★ (owned). Owner keeps Liquidators/Brad/Dominion Supervisor; D&C alternates offered: Jadzia Dax, Dr. Beverly Crusher, Dominion Saboteur. Measured +D&C −Jadzia, +Kwia −Crusher: A, int 7, card adv 7, avg MV 3.65.
 2026-11-12: Crusher payoffs graded (Exemplar of Light, Bloombrute, Heroic Feast, Aerith, Drogskol Reaver). Test of Conviction for Kwia or D&C: A holds, card adv 7→6.
+
+### Full re-read of deck 99 + candidates (2026-11-12) — what changed
+1. Sickbay gains 1 life for EVERY creature entering (tokens too): it is the lifegain engine, so Crusher's payoffs
+   (Heroic Feast, Bloombrute, Aerith, Kwia) trigger far more often than "11 lifegain sources" implied.
+2. Holo-Engineer replaces EVERY token: Replicator's Food, Heroic Feast's Food and Kwia's Lotus become 3/3 Illusions
+   while it is out (each then enters → Sickbay life, Support Mission/Deanna counters, Janeway explore).
+3. Test of Conviction's draw mode gives the OPPONENT a card (target opponent draws one, you draw two) — earlier
+   described as just "draw two".
+4. Seven of Nine is better than flagged: 14 differently named lands in the deck (plus New Planet), so her discard
+   stops applying by mid-game.
+5. Dawnsire's 100-damage trigger needs 10 counters; it only becomes a creature at 20. Saavik hits only an attacking
+   or blocking creature. Abuelo / Don & Leo blinking a legendary creature re-triggers Kellan.
+Proposed: +Kwia −Rok-Tahk, +Bloombrute −Helga, +Heroic Feast −Jadzia Dax, +Aerith −Test of Conviction, +D&C −Dominion
+Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, legal.
