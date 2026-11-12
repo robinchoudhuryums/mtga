@@ -555,3 +555,30 @@ Owner's MUST-ADD: Stable Wormhole; also wants Warp Speed and Mr. Spock — cut c
 (pending): see the reply of 2026-11-12. Interaction is now thin: 70,000 Light-Years, Vigorbloom Charm,
 Malfunctioning Holodeck (+ Shields Up! protection) — do not cut those for the three adds.
 The import block lives in this file's section 9 history; the current one is regenerated in chat.
+
+**v4 + owner's swaps (2026-11-12):** +Stable Wormhole −Replicator, +Warp Speed −Neelix, +Mr. Spock −Scotty.
+Current staged import block: regenerated in chat (and in the scratch file deck99-import.txt).
+
+### Blink / beam me up survey (owner asked: the deck has many ETBs)
+What a re-entry re-triggers here: Kellan Joins Up (legendary enters → a counter on every creature), Support
+Mission and Deanna Troi (enters with a counter), Janeway (explores), M'Benga doubles all of it — plus the
+card's own ETB (The Doctor, Holo-Engineer, Rok-Tahk/Murf, Archer/Porthos, Tilly, David and Carol Marcus,
+Enterprise-A's three Officers, Malfunctioning Holodeck re-targets). Beam me up (return your creature to hand
+as a cost) ALSO re-triggers the CAST payoffs: Captain Picard (an Officer per creature spell) and Helga (a card
+per 4+ creature). CAUTION (G-42): a blink resets the blinked creature's +1/+1 counters — blink a fresh ETB
+creature, not the grown threat; Deanna/Support Mission/Kellan give some back on re-entry.
+| Card | Cost | Read |
+|---|---|---|
+| Abuelo, Ancestral Echo | {1}{W}{U} | ★★★ repeatable blink of a creature OR ARTIFACT (Enterprise-A = three more Officers); flying, ward 2 |
+| Ghost of Illyria (TRK) | {3}{W} | ★★ flier; ETB blinks any nonland permanent (Enterprise-A, Holodeck, even Kellan Joins Up) |
+| Test of Priorities (TRK) | {1}{U} instant | ★★ modal: surveil 2 + draw, or blink your creature — also dodges removal |
+| Don & Leo, Problem Solvers | {3}{W/U}{W/U} (owned) | ★★ free blink of an artifact AND a creature every end step |
+| Miles O'Brien (TRK) | {2}{W} | ★★ returns your creature/artifact to hand, then draws at end step whenever a permanent came back to hand that turn — the beam-me-up engine |
+| Energize (TRK) | {1}{U} | ★ bounces THEIR creature (interaction), beam me up {3}{U} |
+| Pure Energy / Open Communications / There's Coffee in that Nebula / Final Frontier / Adversary by Algorithm (TRK) | 1-3 | ◇ beam me up spells; each recast returns your creature for a re-cast |
+| Ennis, Debate Moderator | {1}{W} (owned) | ★ 2-drop blink on ETB |
+| Charming Prince | {1}{W} | ★ modal ETB: blink / scry 2 / 3 life |
+| Salvation Swan | {3}{W} (owned) | ◇ flash blink (+ flying counter), Birds only repeat it |
+| Kykar, Elrond | — | ◇ |
+Note: Scotty (cut today) gives EVERY instant/sorcery in the graveyard beam me up — only worth bringing back
+if the beam-me-up route is taken.
