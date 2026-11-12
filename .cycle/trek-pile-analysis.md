@@ -582,3 +582,14 @@ creature, not the grown threat; Deanna/Support Mission/Kellan give some back on 
 | Kykar, Elrond | — | ◇ |
 Note: Scotty (cut today) gives EVERY instant/sorcery in the graveyard beam me up — only worth bringing back
 if the beam-me-up route is taken.
+
+### Owner's next batch (2026-11-12) — graded against the current staged list
+| Card | Verdict | Read |
+|---|---|---|
+| Jett Reno, Problem Solver {1}{U} | ★★ | with Deanna + Support Mission + M'Benga she enters a 5/6, so every tap draws a card — and taps come from attacking, stationing Enterprise-A, Worf's tap-two, D'Vana's untap |
+| Test of Conviction {1}{W} | ★★ | a counter on every creature (doubled) or draw two (four with Mr. Spock); modal |
+| D'Vana Tendi {1}{G/U}{G/U} | ★★ | {T}: untap another permanent — Helga taps for X mana twice, Rok-Tahk's creatures, Starfleet Academy, or Jett Reno for another card; a 2/4 for 3 |
+| Dominion Saboteur {4}{U} | ★★ | clones a creature OR artifact and copies its COUNTERS: your biggest creature, or Enterprise-A (three more Officers, charge counters kept); not legendary, so no Kellan trigger |
+| Jake Sisko {1}{G} | ★ | landfall life (Crusher, Sickbay) and a Clue on the second land a turn — Janeway, Pike and Stable Wormhole make that reachable |
+| The Traveler {G}{U} | ★ | a 2-mana Captain Pike without the land-from-top; reach, vigilance |
+| Gaseous Anomaly | ◇ | a THIRD colourless land; only as a swap for Subspace Anomaly (draw two vs two Officers) |
