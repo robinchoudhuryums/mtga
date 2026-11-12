@@ -8,7 +8,7 @@
 #: archetype: whole team whenever a legendary creature enters — about 20 here), Dr. M'Benga doubles every counter and gives
 #: archetype: countered creatures hexproof, Phlox draws when one connects, Dominion Supervisor gives them trample.
 #: archetype: Holo-Engineer turns every token (Enterprise-A's Officers, Captain Picard's Officers, Stable Wormhole's planets)
-#: archetype: into a 3/3 artifact creature; Abuelo re-runs the enter triggers. Jett Reno, Helga and Mr. Spock are
+#: archetype: into a 3/3 artifact creature; Don & Leo re-runs the enter triggers every end step. Jett Reno, Helga and Mr. Spock are
 #: archetype: the draw loop. DISTINCT from the roster's Bant decks (19 tokens, 65 Spiders, 67 cast from exile, 68 wide
 #: archetype: counters, 78 Allies): the spine is creature-type diversity, not a tribe.
 #: protect: Sarek, Federation Ambassador; Kellan Joins Up; Dr. Joseph M'Benga; Holo-Engineer; Phlox, Unorthodox Doctor
@@ -45,7 +45,7 @@
 1 Brad Boimler, Eager Ensign (TRK) 5
 1 Helga, Skittish Seer (BLB) 217
 1 Dominion Supervisor (TRK) 195
-1 Abuelo, Ancestral Echo (LCI) 219
+1 Troubling Tribbles (TRK) 41
 1 Deanna Troi, Psychic Counsel (TRK) 11
 1 Dr. Joseph M'Benga (TRK) 196
 1 Captain Kathryn Janeway (TRK) 187
