@@ -325,36 +325,50 @@ Crusher, Brad Boimler, Melkotian Adjudicator, Dominion Supervisor. All Standard-
 - **Interaction gap**: the list has none. In colours: Saavik, Set Phasers to . . ., Malfunctioning Holodeck,
   Consider the Prime Directive, U.S.S. Excelsior, Shields Up! (protection).
 
-## 7. Deck C draft v0 — STAGED (write as deck 99 after the 2026-11-13 refresh)
+## 7. Deck C draft v1 — STAGED (write as deck 99 after the 2026-11-13 refresh)
 
-Owner confirmed 2026-11-12: Captain Jean-Luc Picard AND Picard, Leading by Example (counters), and Seven
-of Nine, Unassimilated. Standard, 60 cards, Bant. Name: "Final Frontier" (owner may rename).
+Owner 2026-11-12: Captain Jean-Luc Picard AND Picard, Leading by Example; Seven of Nine, Unassimilated;
+then "every nonland card at ONE copy, fill with fits, upgrades and spice". Standard, 60 cards, Bant,
+nonland singleton. Name: "Final Frontier" (owner may rename).
 Plan: a creature-TYPE toolbox (Federation) that grows with +1/+1 counters and turns them into cards.
 Sarek draws per five creature types among non-Borg creatures; Phlox draws when a countered creature
-connects; Dominion Supervisor gives countered creatures trample; Deanna Troi, Picard, Crusher, Sickbay,
-Xindi, Liquidators, Jadzia, Brad and Neelix make the counters. Holo-Engineer turns every token (Officers,
-Food, Porthos, Murf) into a 3/3 artifact creature.
+connects; Dominion Supervisor gives countered creatures trample; Dr. M'Benga doubles every counter and
+gives countered creatures hexproof. Holo-Engineer turns every token into a 3/3 artifact creature.
 
-Owner's 24 (30 copies): 2 Sarek, Federation Ambassador · 1 Syndicate Liquidators · 2 Holo-Engineer ·
-1 Rok-Tahk, Budding Scientist · 1 Jadzia Dax, Living Legacy · 1 Replicator · 2 Captain Jean-Luc Picard ·
-1 Picard, Leading by Example · 1 David and Carol Marcus, Creators · 1 Sickbay · 2 MACO Strike Team ·
-2 Phlox, Unorthodox Doctor · 1 Scotty, Miracle Worker · 1 Worf, Honor-Bound Warrior · 1 Neelix, Moral
-Support · 1 Lt. Cmdr. Geordi La Forge · 1 Seven of Nine, Unassimilated · 1 The Inner Light · 2 Xindi
-Surveyors · 1 Dr. Beverly Crusher · 1 Brad Boimler, Eager Ensign · 1 Melkotian Adjudicator ·
-2 Dominion Supervisor.
-Added (7): 1 Saavik, Stoic Student (flash Federation removal) · 2 Set Phasers to . . . · 1 Malfunctioning
-Holodeck · 1 Subcommander T'Pol (flash, modal stun) · 1 Captain Jonathan Archer (Federation pump) ·
-1 Deanna Troi, Psychic Counsel (every other creature enters with a +1/+1 counter).
+Owner's 24 (1 each): Sarek, Federation Ambassador · Syndicate Liquidators · Holo-Engineer · Rok-Tahk,
+Budding Scientist · Jadzia Dax, Living Legacy · Replicator · Captain Jean-Luc Picard · Picard, Leading by
+Example · David and Carol Marcus, Creators · Sickbay · MACO Strike Team · Phlox, Unorthodox Doctor ·
+Scotty, Miracle Worker · Worf, Honor-Bound Warrior · Neelix, Moral Support · Lt. Cmdr. Geordi La Forge ·
+Seven of Nine, Unassimilated · The Inner Light · Xindi Surveyors · Dr. Beverly Crusher · Brad Boimler,
+Eager Ensign · Melkotian Adjudicator · Dominion Supervisor.
+Draft adds (6, from v0): Saavik, Stoic Student · Set Phasers to . . . · Malfunctioning Holodeck ·
+Subcommander T'Pol · Captain Jonathan Archer · Deanna Troi, Psychic Counsel.
+Fill (8, v1):
+- Dr. Joseph M'Benga — UPGRADE: doubles every +1/+1 counter (Deanna, Crusher, Picard LbE, Sickbay, Xindi,
+  Liquidators, Brad all double) and gives countered creatures hexproof: the deck's protection.
+- Captain Kathryn Janeway — FIT: every creature that enters explores (a counter or a land), plus an extra
+  land drop that feeds Xindi and Liquidators' landfall. Human Officer.
+- Bristly Bill, Spine Sower — FIT: landfall counters, and {3}{G}{G} doubles every counter on the team.
+- The Doctor, EMH — FIT: a counter, then another on each countered creature; adds Illusion to the types.
+- Command Decision — interaction: kills a 4+ power creature or draws; modal, so it feeds Melkotian.
+- Constable Odo — interaction: two stun counters or two Clues; modal; adds Shapeshifter and Detective.
+- Hoshi Sato, Exolinguist — Federation payoff: digs as many cards as you have creature types.
+- Test of Conviction — a counter on every creature or draw two; modal.
 Lands (23): 1 Starfleet Academy · 1 Subspace Anomaly · 4 Temple Garden · 2 Hallowed Fountain · 2 Breeding
-Pool · 1 Risa · 1 Vulcan · 1 Earth, Sector 001 · 5 Forest · 4 Plains · 1 Island.
+Pool · 1 Risa · 1 Vulcan · 1 Earth, Sector 001 · 5 Forest · 4 Plains · 1 Island. (Re-check with
+`consistency` once written: the fill raised green — M'Benga GG, Bristly — and white.)
+Total 37 nonland + 23 lands = 60.
 
 Flags to carry into the file's notes (owner's cards kept, not dropped):
 - Geordi: no charge counters in the list (doubles nothing) — a 3/2 Human Artificer for the type count.
-- Scotty: {1}{U}{U} on ~7 blue sources, and only 4 instants/sorceries (Set Phasers ×2, plus the modal
-  creatures don't count) for beam me up.
-- Melkotian Adjudicator: dilemma support is now real — Set Phasers, T'Pol, plus modal ETBs — but thin.
+- Scotty: {1}{U}{U} on ~7 blue sources; beam me up works on instants/sorceries (Set Phasers, Command
+  Decision, Test of Conviction — three).
+- Melkotian Adjudicator: dilemma support — Set Phasers, Command Decision, Test of Conviction, T'Pol, Odo.
 - Two colourless lands (Starfleet Academy, Subspace Anomaly) in a three-colour deck: watch `consistency`.
 - Holo-Engineer turns David and Carol Marcus's New Planet land token into a 3/3 instead of a land.
-Bench (screen after the refresh): Hoshi Sato, Command Decision, Wesley Crusher, Constable Odo, Culber and
-Stamets, Support Mission, Emergency Medical Hologram, Dr. M'Benga, The Doctor EMH, Test of Conviction,
-Pure Energy, Shields Up!, Kobayashi Maru Scenario, Rabid Bite / Longstalk Brawl (bites).
+- Curve: seven 5-drops plus Rok-Tahk; ramp is Jadzia, David and Carol Marcus, Janeway, Rok-Tahk.
+Bench (screen after the refresh): Support Mission (a second Deanna Troi), Emergency Medical Hologram,
+Wesley Crusher, Dr. Leonard "Bones" McCoy, Culber and Stamets, Cold-Blooded Crew, Dr. McCoy Surly Surgeon,
+Sylvia Tilly, Captain Pike (few land names at 60), Shields Up!, Pure Energy, Type-2 Phaser, I'm a Doctor.
+SPICE, offered with a warning: Kobayashi Maru Scenario — three good upkeeps (bounce, draw two, two
+Officers), then the fourth mode is "you lose the game"; nothing in the list removes your own enchantment.
