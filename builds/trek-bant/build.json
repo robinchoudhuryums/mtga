@@ -278,6 +278,11 @@
    "name": "Worf, Honor-Bound Warrior",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Kwia Vigorbloom",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -634,6 +639,13 @@
   "Worf, Honor-Bound Warrior": {
    "group": "Situational",
    "text": "CUT 2026-11-12 for Replicator. A 1/1 for 2 that doubles its power when your attackers total 8+.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "group": "Strong",
+   "text": "OWNED. 6-mana flying, vigilance, lifelink, ward 2 legendary (Kellan trigger; Elder Sphinx adds two creature types). Once a turn when you gain life (11 sources here) it makes a Lotus (sac for three mana of one colour) — ramp to Deep Space 9, and Replicator can copy it. While Holo-Engineer is out the Lotus becomes a 3/3 instead. Proposed for Dr. Beverly Crusher.",
    "graded_at": {
     "99": "a0bbe1bd1660"
    }
@@ -1208,6 +1220,12 @@
   "Worf, Honor-Bound Warrior": {
    "F": {
     "m": "◇",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "F": {
+    "m": "★★",
     "graded_at": "a0bbe1bd1660"
    }
   }
