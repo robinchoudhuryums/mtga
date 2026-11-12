@@ -429,3 +429,45 @@ Marcus's land token.
 Bench to screen after the refresh: Wesley Crusher, Dr. McCoy Surly Surgeon, Hologram Janeway, Emergency Medical
 Hologram, Dr. Leonard "Bones" McCoy, Culber and Stamets, Cold-Blooded Crew, Hoshi Sato, Constable Odo, Saavik,
 The Doctor EMH, Test of Conviction, Set Phasers to . . ., Antagonist Incorporator, Forever Joined (unread).
+
+## 9. Deck C draft v3 — STAGED, supersedes v2 (2026-11-12)
+
+Owner: The Doctor, EMH back in; Set Phasers and Saavik are maybes; 70,000 Light-Years from Home is OK (a
+land to HAND is better for us than Path's land to battlefield — the owner's rule is satisfied). Gray and
+Adira, Forever Joined read: {2}{U/R}{U/R} Trill Human Officer 2/3 — at the beginning of combat, if you cast a
+noncreature spell this turn, copy a creature you control (not legendary, haste, sacrificed at end step).
+◇ here: blue-heavy hybrid on ~7 sources, ~12 noncreature spells, and Holo-Engineer REPLACES the copy with a
+plain 3/3 Illusion. Bench.
+
+Modal search (owner: "best modal cards, in or out of the Star Trek set"), Standard, Bant — 115 in the pool,
+26 in TRK. A modal PERMANENT is worth more here than a modal spell: every trigger is another dilemma for
+Melkotian Adjudicator. Best fits, ranked:
+| Card | Cost | Read |
+|---|---|---|
+| Vigorbloom Charm | {G}{W} instant | protect a permanent / draw + 3 life / a counter then fight — every mode is live |
+| Felidar Retreat | {3}{W} | every land: a 2/2 (a 3/3 with Holo-Engineer) or a counter on every creature; Janeway and Pike add lands |
+| Federation Outpost | land (W) | untapped with two lands; 2 life or surveil — a modal land, another land name |
+| Ni'Var Science Academy | land (U) | the same, flying or surveil |
+| Spectacular Tactics | {1}{W} instant (owned) | a counter + hexproof, or destroy a power-4+ creature |
+| Pawpatch Formation | {1}{G} instant (owned) | kill a flier / an enchantment / draw + Food (a 3/3 with Holo-Engineer) |
+| Sylvan Scavenging | {1}{G}{G} (owned) | every end step a counter or a 3/3 |
+| Trash the Town | {G} spree (owned) | two counters, trample, draw two on damage |
+| Cosmogrand Zenith | {2}{W} (owned ×2) | second spell each turn: two 1/1s or a counter on every creature |
+| Consider the Prime Directive | {2}{U} instant | counter unless they pay 3, or stun + draw |
+| Archdruid's Charm | {G}{G}{G} | tutor a creature/land, or a counter + bite; GGG is hard in three colours |
+
+v3 changes from v2:
+| In | Out | Why |
+|---|---|---|
+| 70,000 Light-Years from Home | Command Decision | exiles ANY creature or Spacecraft for 2, against Command Decision's power-4+ limit |
+| Vigorbloom Charm | Common Goal | an instant with three live modes (protection, cards, a counter + fight) over a sorcery bite |
+| The Doctor, EMH | Subcommander T'Pol | owner's call; T'Pol's stun is the weakest interaction left |
+| Federation Outpost | 1 Plains | free: a modal land, another name for Pike and Seven of Nine |
+| Ni'Var Science Academy | 1 Island | the same, blue |
+OPTIONAL (owner's maybes), each needs a cut: Felidar Retreat (strongest modal fit — for Sylvia Tilly or Bristly
+Bill), Spectacular Tactics (better than Set Phasers — for Amok Time), Saavik (for Shields Up! or Amok Time).
+Interaction in v3: 70,000 Light-Years, Vigorbloom Charm, Malfunctioning Holodeck, Amok Time, Shields Up!
+(protection). Melkotian's dilemmas: Vigorbloom, Q Continuum, Federation Outpost, Ni'Var (untapped entries),
+plus Felidar Retreat if taken.
+Lands (23): Starfleet Academy · Subspace Anomaly · Q Continuum · Federation Outpost · Ni'Var Science Academy ·
+4 Temple Garden · 2 Hallowed Fountain · 2 Breeding Pool · Risa · Vulcan · Earth, Sector 001 · 4 Forest · 3 Plains.
