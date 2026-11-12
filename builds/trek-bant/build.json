@@ -283,6 +283,31 @@
    "name": "Kwia Vigorbloom",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Exemplar of Light",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Bloombrute",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Heroic Feast",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Aerith Gainsborough",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Drogskol Reaver",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -646,6 +671,41 @@
   "Kwia Vigorbloom": {
    "group": "Strong",
    "text": "OWNED. 6-mana flying, vigilance, lifelink, ward 2 legendary (Kellan trigger; Elder Sphinx adds two creature types). Once a turn when you gain life (11 sources here) it makes a Lotus (sac for three mana of one colour) — ramp to Deep Space 9, and Replicator can copy it. While Holo-Engineer is out the Lotus becomes a 3/3 instead. Proposed for Dr. Beverly Crusher.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Exemplar of Light": {
+   "group": "Strong",
+   "text": "OWNED. {2}{W}{W} flier: each lifegain puts a counter on it (Crusher doubles the trigger, M'Benga doubles the counters), and counters on it draw a card once a turn. Card advantage the deck is short on.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Bloombrute": {
+   "group": "Strong",
+   "text": "OWNED. {2}{G}{W}: draw a card when you gain life (once a turn); late, gives a creature trample and lifelink. Card advantage off the deck's 11 lifegain sources.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Heroic Feast": {
+   "group": "Real",
+   "text": "OWNED. {2}{G}: a Food, and each lifegain puts a counter on up to that many of your creatures — Crusher makes it fire twice, M'Benga doubles each counter.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Aerith Gainsborough": {
+   "group": "Real",
+   "text": "OWNED. {2}{W} lifelink 3-drop that grows on every lifegain (doubled by Crusher); when it dies its counters go on EACH legendary creature you control (about 20 here).",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
+   }
+  },
+  "Drogskol Reaver": {
+   "group": "Real",
+   "text": "{5}{W}{U} flying, double strike, lifelink: draws a card per lifegain, so each combat is two cards — four with Crusher. Top-heavy at 7.",
    "graded_at": {
     "99": "a0bbe1bd1660"
    }
@@ -1226,6 +1286,36 @@
   "Kwia Vigorbloom": {
    "F": {
     "m": "★★",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Exemplar of Light": {
+   "F": {
+    "m": "★★",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Bloombrute": {
+   "F": {
+    "m": "★★",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Heroic Feast": {
+   "F": {
+    "m": "★",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Aerith Gainsborough": {
+   "F": {
+    "m": "★",
+    "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Drogskol Reaver": {
+   "F": {
+    "m": "★",
     "graded_at": "a0bbe1bd1660"
    }
   }

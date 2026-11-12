@@ -659,3 +659,4 @@ Picard LbE too. Measured: +Dawnsire −D&C Marcus, +Saavik −Inner Light, +Bite
 2026-11-12: +Overgrown Farmland −1 Temple Garden (owner owns one Farmland, was a Temple Garden short).
 2026-11-12: +Replicator −Worf (owner). David and Carol Marcus re-add measured: for Brad / Syndicate Liquidators / Dominion Supervisor all keep A.
 2026-11-12: Kwia Vigorbloom graded ★★ (owned). Owner keeps Liquidators/Brad/Dominion Supervisor; D&C alternates offered: Jadzia Dax, Dr. Beverly Crusher, Dominion Saboteur. Measured +D&C −Jadzia, +Kwia −Crusher: A, int 7, card adv 7, avg MV 3.65.
+2026-11-12: Crusher payoffs graded (Exemplar of Light, Bloombrute, Heroic Feast, Aerith, Drogskol Reaver). Test of Conviction for Kwia or D&C: A holds, card adv 7→6.
