@@ -91,6 +91,7 @@
   }
  ],
  "Antagonist Incorporator": [],
+ "Anthropological Mission": [],
  "Arcane Signet": [
   {
    "a": "Dan Murayama Scott",
@@ -177,6 +178,7 @@
  ],
  "Borg Queen, Perfection Manifest": [],
  "Boros Charm": [],
+ "Brad Boimler, Eager Ensign": [],
  "Bringer of the White Dawn": [],
  "Brokers' Safeguard": [],
  "Captain James T. Kirk": [
@@ -442,6 +444,32 @@
  "Crystalline Entity": [],
  "Cyberdrive Awakener": [],
  "Data, New Life": [],
+ "David and Carol Marcus, Creators": [
+  {
+   "a": "KarrahE",
+   "art": "https://cards.scryfall.io/art_crop/front/5/5/55d21155-647e-4892-b349-86b8d4e6d9b9.jpg?1793188281",
+   "cn": "193",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/5/55d21155-647e-4892-b349-86b8d4e6d9b9.jpg?1793188281",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Jason Raish",
+   "art": "https://cards.scryfall.io/art_crop/front/4/3/43091ed3-a412-48b4-8794-62c0a279e4b2.jpg?1793188053",
+   "cn": "420",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/3/43091ed3-a412-48b4-8794-62c0a279e4b2.jpg?1793188053",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Dawnsire, Sunstar Dreadnought": [],
  "Deadly Plot": [],
  "Death Is Irrelevant": [
@@ -934,10 +962,51 @@
  ],
  "Infinite Guideline Station": [],
  "Insatiable Avarice": [],
+ "Isshin, Two Heavens as One": [
+  {
+   "a": "Ryan Pancoast",
+   "art": "https://cards.scryfall.io/art_crop/front/a/0/a062a004-984e-4b62-960c-af7288f7a3e9.jpg?1783923833",
+   "cn": "224",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/0/a062a004-984e-4b62-960c-af7288f7a3e9.jpg?1783923833",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Yamada Rokkaku",
+   "art": "https://cards.scryfall.io/art_crop/front/1/b/1bf8b008-3a7c-4b6d-8c18-263a576f0d64.jpg?1783923796",
+   "cn": "328",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/b/1bf8b008-3a7c-4b6d-8c18-263a576f0d64.jpg?1783923796",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Tetsuya Nomura",
+   "art": "https://cards.scryfall.io/art_crop/front/a/3/a3baaf97-171a-40c0-a1dc-74ae05db0e25.jpg?1783906378",
+   "cn": "54",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/3/a3baaf97-171a-40c0-a1dc-74ae05db0e25.jpg?1783906378",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Izzet Charm": [],
  "Jean-Luc Picard, Luminary": [],
  "Jeskai Charm": [],
  "Jett Reno, Problem Solver": [],
+ "Jhoira, Weatherlight Captain": [],
  "Kenrith, the Returned King": [
   {
    "a": "Kieran Yanner",
@@ -1198,6 +1267,7 @@
  "Malfunctioning Holodeck": [],
  "Mardu Charm": [],
  "Melkotian Adjudicator": [],
+ "Mikaeus, the Lunarch": [],
  "Mind Stone": [],
  "Mirror Universe Intrusion": [
   {
@@ -1401,6 +1471,7 @@
  ],
  "Retreat to Kazandu": [],
  "Riku of Many Paths": [],
+ "Rimefire Torque": [],
  "Rok-Tahk, Budding Scientist": [],
  "Romulan Bird-of-Prey": [],
  "Rutherford, Upgraded Ensign": [],
@@ -1429,6 +1500,7 @@
    "y": "2025"
   }
  ],
+ "Sarcophagus, Ship of the Dead": [],
  "Sarek, Federation Ambassador": [
   {
    "a": "Darren Tan",
@@ -1450,6 +1522,32 @@
    ],
    "im": "https://cards.scryfall.io/normal/front/2/5/25e552e6-43e0-4a1f-b17f-a41569182e11.jpg?1793273890",
    "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
+ "Scotty, Miracle Worker": [
+  {
+   "a": "Sam Kennedy",
+   "art": "https://cards.scryfall.io/art_crop/front/4/2/42f77f9e-5e56-45ac-aa93-36353c92bca9.jpg?1793013054",
+   "cn": "79",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/2/42f77f9e-5e56-45ac-aa93-36353c92bca9.jpg?1793013054",
+   "r": "M",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Marc Aspinall",
+   "art": "https://cards.scryfall.io/art_crop/front/d/9/d97123d6-8420-4400-8d6c-a3ed5c84ad5d.jpg?1793013112",
+   "cn": "413",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/9/d97123d6-8420-4400-8d6c-a3ed5c84ad5d.jpg?1793013112",
+   "r": "M",
    "set": "TRK",
    "sn": "Star Trek",
    "y": "2026"
@@ -1623,6 +1721,7 @@
  "Sune's Intervention": [],
  "Susur Secundi, Void Altar": [],
  "Susurian Dirgecraft": [],
+ "Suus Mahna Practitioner": [],
  "Sylvan Scavenging": [],
  "Synthesizer Labship": [],
  "Tal Shiar Operative": [],
@@ -1752,6 +1851,7 @@
    "y": "2026"
   }
  ],
+ "U.S.S. Voyager, Lone Wanderer": [],
  "Unctus, Grand Metatect": [],
  "Unfortunate Accident": [],
  "Urza, Prince of Kroog": [

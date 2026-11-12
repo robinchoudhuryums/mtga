@@ -63,7 +63,7 @@
   },
   {
    "name": "Romulan Bird-of-Prey",
-   "pile": "S",
+   "pile": "B",
    "src": "added"
   },
   {
@@ -393,7 +393,7 @@
   },
   {
    "name": "Sarek, Federation Ambassador",
-   "pile": "N",
+   "pile": "S",
    "src": "added"
   },
   {
@@ -430,6 +430,61 @@
    "name": "Impossible Choice",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Scotty, Miracle Worker",
+   "pile": "B",
+   "src": "added"
+  },
+  {
+   "name": "Isshin, Two Heavens as One",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Rimefire Torque",
+   "pile": "B",
+   "src": "added"
+  },
+  {
+   "name": "Anthropological Mission",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Suus Mahna Practitioner",
+   "pile": "B",
+   "src": "added"
+  },
+  {
+   "name": "Sarcophagus, Ship of the Dead",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Mikaeus, the Lunarch",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "U.S.S. Voyager, Lone Wanderer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "David and Carol Marcus, Creators",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Jhoira, Weatherlight Captain",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Brad Boimler, Eager Ensign",
+   "pile": "L",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -443,7 +498,7 @@
   },
   "Romulan Bird-of-Prey": {
    "group": "Real",
-   "text": "2-mana hexproof ship that charges itself (2 counters) per noncreature spell. Sisko runs ~30 noncreature spells, so it flies by turn 5-6; Borg has few.",
+   "text": "Re-read 2026-11-12, Borg UPGRADED. Two charge counters per noncreature spell while it is not a creature. Borg's 19 noncreature spells also get it to 8 (and it then counts as an artifact creature for Borg). Sisko: about 30.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -994,8 +1049,8 @@
    }
   },
   "Sarek, Federation Ambassador": {
-   "group": "Marginal",
-   "text": "Needs five creature TYPES among creatures; Officer tokens are all one type.",
+   "group": "Real",
+   "text": "Re-read 2026-11-12, CORRECTED. The earlier note said Officer tokens give only one type, but Sarek counts TYPES across all your non-Borg creatures, and Sisko's nontoken creatures carry many (Human, Officer, Cardassian, Rogue, Romulan, Spy, Artificer, Elemental, Kavu, Elf…). Four or five creatures on board reach 10 types, so 2 cards a combat. Green-white-blue, not legal in Borg.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -1052,6 +1107,94 @@
   "Impossible Choice": {
    "group": "Out",
    "text": "Owner's removal rule: the kill mode gives the opponent two Officers.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Scotty, Miracle Worker": {
+   "group": "Strong",
+   "text": "Re-read 2026-11-12, UPGRADED. During your main phase every instant and sorcery in your graveyard can be recast for its mana cost by returning another creature to hand. Sisko: return an Officer token (it is replaced at end step) to recast a charm or command, and each recast is a NEW dilemma, so a new Officer. About 30 of the deck's spells qualify. Borg: about 13 removal spells to recast, returning a Borg token.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Isshin, Two Heavens as One": {
+   "group": "Strong",
+   "text": "Re-read 2026-11-12, UPGRADED. Attack triggers trigger twice. Sisko runs five modal attack triggers (Captain James T. Kirk, Tal Shiar Operative, Elder Gargaroth, Territorial Kavu, Warren Warleader): each one becomes TWO dilemmas, so two Officers. Red-white-black identity, so not legal in Borg.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Rimefire Torque": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12, UPGRADED. Choose a creature type: a charge counter per permanent of that type entering; remove three to copy your next instant or sorcery that turn. Sisko names Officer (several enter every end step); Borg names Borg (Locutus and the token makers). Roughly a copy per turn in either deck. A copy keeps its modes but is not cast, so it is not a dilemma.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Anthropological Mission": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12, UPGRADED. A loot per noncreature spell, then a pure draw once it has three quest counters. Sisko casts about 32 noncreature spells, so it is a card a spell by turn 6. Borg has about 19.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Suus Mahna Practitioner": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12. The tap ability costs {4}{U} minus one per differently named land. Both decks run 30+ land names, so it is a repeatable {U} tapper by turn 5. An Officer for Sisko.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sarcophagus, Ship of the Dead": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12, UPGRADED. +1/+0 to your other creatures even before it is a creature: an anthem for Sisko's Officer tokens, stacking with Captain Picard. Red, not legal in Borg.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Mikaeus, the Lunarch": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12, UPGRADED. Taps to put a +1/+1 counter on each other creature: in Sisko that grows the whole Officer swarm each turn.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "U.S.S. Voyager, Lone Wanderer": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12. Puts two lands onto the battlefield on entry: ramp, and two Felidar Retreat triggers, so two dilemmas. Green, not legal in Borg.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "David and Carol Marcus, Creators": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12. A body plus an any-colour New Planet land token. The token entering triggers Felidar Retreat (a dilemma). Green, not legal in Borg.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Jhoira, Weatherlight Captain": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12. Draws per historic spell. Sisko casts about 22 legendaries, artifacts and Sagas. Blue-red, not legal in Borg (where every artifact would draw).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Brad Boimler, Eager Ensign": {
+   "group": "Real",
+   "text": "Re-read 2026-11-12, UPGRADED for Borg. Tapping him to station adds one extra charge counter (the counters land while he is tapped), and +1/+1 counters likewise. A 2-mana station booster beside Zefram and Warp Core.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -1273,7 +1416,7 @@
   },
   "Romulan Bird-of-Prey": {
    "L": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {
@@ -1967,7 +2110,7 @@
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {
-    "m": "△",
+    "m": "★",
     "graded_at": "5bc9c38778e6"
    }
   },
@@ -2038,6 +2181,116 @@
    },
    "S": {
     "m": "✗",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Scotty, Miracle Worker": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Isshin, Two Heavens as One": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Rimefire Torque": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Anthropological Mission": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Suus Mahna Practitioner": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sarcophagus, Ship of the Dead": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Mikaeus, the Lunarch": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "U.S.S. Voyager, Lone Wanderer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "David and Carol Marcus, Creators": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Jhoira, Weatherlight Captain": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Brad Boimler, Eager Ensign": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
     "graded_at": "5bc9c38778e6"
    }
   }

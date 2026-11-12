@@ -707,3 +707,12 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   on-curve, tapland cost 6.0 → 4.1 points a card). Spells shared with deck 100: only Seven of Nine and Enterprise-A. The
   trek-borg Builder now holds BOTH decks (L = 100, S = 101) with piles L / S / Either / Neither so the owner can split cards for
   variety; board https://claude.ai/artifact/SEWP7enbuaTvr3nBk4mDDy (v2). Tier letter left for the owner.
+- 2026-11-12 full re-read of the 132 cards left out of decks 100/101 (whole pile + board bench). Changed grades:
+  Sisko UP — Scotty (◇→★★: recast a graveyard charm by bouncing an Officer token, a fresh dilemma each time), Isshin (◇→★★:
+  doubles five modal attack triggers), Rimefire Torque naming Officer (◇→★), Anthropological Mission (◇→★), Sarek (△→★: the
+  earlier "Officers are one type" read was WRONG, it counts types across all non-Borg creatures), Suus Mahna (★, a {U} tapper
+  with 30+ land names), Sarcophagus (◇→★, +1/+0 to Officers), Mikaeus (◇→★), Voyager / David and Carol (★, Felidar triggers),
+  Jhoira (★). Borg UP — Rimefire Torque naming Borg (◇→★), Scotty (★), Romulan Bird-of-Prey (◇→★), Brad Boimler (◇→★: +1
+  charge counter when tapped to station), Suus Mahna (★). Unchanged: Kobayashi Maru / Demonic Pact (lose-the-game mode),
+  Impossible Choice (removal rule), Expropriate (a vote is not a mode). Hull Breach and All Good Things . . . are not in the
+  Arena pool. Board v3 carries the new reasons.
