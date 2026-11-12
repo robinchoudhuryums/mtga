@@ -8,7 +8,7 @@
 #: archetype: whole team whenever a legendary creature enters — about 20 here), Dr. M'Benga doubles every counter and gives
 #: archetype: countered creatures hexproof, Phlox draws when one connects, Dominion Supervisor gives them trample.
 #: archetype: Holo-Engineer turns every token (Enterprise-A's Officers, Captain Picard's Officers, Stable Wormhole's planets)
-#: archetype: into a 3/3 artifact creature; Abuelo re-runs the enter triggers. Jett Reno, D'Vana Tendi and Mr. Spock are
+#: archetype: into a 3/3 artifact creature; Abuelo re-runs the enter triggers. Jett Reno, Helga and Mr. Spock are
 #: archetype: the draw loop. DISTINCT from the roster's Bant decks (19 tokens, 65 Spiders, 67 cast from exile, 68 wide
 #: archetype: counters, 78 Allies): the spine is creature-type diversity, not a tribe.
 #: protect: Sarek, Federation Ambassador; Kellan Joins Up; Dr. Joseph M'Benga; Holo-Engineer; Phlox, Unorthodox Doctor
@@ -16,6 +16,13 @@
 #: notes: 24-card core, then nonland singleton, then the owner's picks across five rounds. Ownership is information only.
 #: notes: Built before the TRK release date under a one-day OVERRIDE (owner's call): build_pool.py --query with
 #: notes: set:trk/trc/sds added to the date bound; the 2026-11-13 refresh replaces it.
+#: notes: 2026-11-12 A-floor round: +Dawnsire −David and Carol Marcus, +Saavik −The Inner Light, +Sheltered by Ghosts
+#: notes: −D'Vana Tendi, +Deep Space 9 −Picard, Leading by Example (after +Spectacular Tactics −Shields Up! and +Don & Leo
+#: notes: −Xindi Surveyors). Interaction 3 → 7; Dawnsire and Deep Space 9 are charged by tapping the countered creatures
+#: notes: (Jett Reno draws when tapped, Brad adds a counter); Dominion Saboteur copies a charged Spacecraft with its counters.
+#: notes: 2026-11-12 manabase: −2 Forest, −1 Plains, +2 Breeding Pool, +1 Hallowed Fountain — blue was 10 sources against
+#: notes: Mr. Spock's {U}{U} (53% on curve); now W 14 / U 13 / G 15, summed cast-on-curve shortfall 170 → 109. Warp Speed
+#: notes: lets the shocks enter untapped without paying life. Keepable 82.5% stays low for 23 lands: a 24th is the next lever.
 #: notes: Flags: Holo-Engineer REPLACES every token — David and Carol Marcus's, Subspace Anomaly's and Stable Wormhole's
 #: notes: land tokens become 3/3 Illusions while it is out (a body instead of the land). Removal is thin (70,000
 #: notes: Light-Years, Vigorbloom Charm, Malfunctioning Holodeck; Shields Up! protects). A blink resets the blinked
@@ -28,8 +35,6 @@
 1 Rok-Tahk, Budding Scientist (TRK) 211
 1 Jadzia Dax, Living Legacy (TRK) 204
 1 Captain Jean-Luc Picard (TRK) 7
-1 Picard, Leading by Example (TRK) 29
-1 David and Carol Marcus, Creators (TRK) 193
 1 Jett Reno, Problem Solver (TRK) 67
 1 Phlox, Unorthodox Doctor (TRK) 250
 1 Mr. Spock, Science Officer (TRK) 74
@@ -45,14 +50,13 @@
 1 Deanna Troi, Psychic Counsel (TRK) 11
 1 Dr. Joseph M'Benga (TRK) 196
 1 Captain Kathryn Janeway (TRK) 187
-1 D'Vana Tendi, Optimistic Ensign (TRK) 236
 1 The Doctor, EMH (TRK) 234
 
 # Spells, enchantments and artifacts
 1 Stable Wormhole (TRK) 215
 1 Sickbay (TRK) 268
 1 Warp Speed (TRK) 223
-1 The Inner Light (TRK) 241
+1 Saavik, Stoic Student (TRK) 33
 1 Malfunctioning Holodeck (TRK) 22
 1 Kellan Joins Up (OTJ) 212
 1 Support Mission (TRK) 216
@@ -61,6 +65,9 @@
 1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
 1 70,000 Light-Years from Home (TRK) 1
 1 Vigorbloom Charm (FRA) 160
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
+1 Sheltered by Ghosts (DSK) 30
+1 Deep Space 9 (TRK) 263
 
 # Lands
 1 Starfleet Academy (TRK) 297
@@ -69,10 +76,10 @@
 1 Federation Outpost (TRK) 282
 1 Ni'Var Science Academy (TRK) 287
 4 Temple Garden (ECL) 268
-2 Hallowed Fountain (ECL) 265
-2 Breeding Pool (EOE) 251
+3 Hallowed Fountain (ECL) 265
+4 Breeding Pool (EOE) 251
 1 Urban Retreat (SPM) 187
 1 Vulcan (TRK) 305
 1 Earth, Sector 001 (TRK) 281
-4 Forest (TRK) 325
-3 Plains (TRK) 317
+2 Forest (TRK) 325
+2 Plains (TRK) 317
