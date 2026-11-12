@@ -83,6 +83,7 @@ Caparocti Sunborn
 Captain America, First Avenger
 Captain America, Living Legend
 Captain Mar-Vell, Space-Born
+Captain Sisay
 Casey Jones, Jury-Rig Justiciar
 Central Elevator // Promising Stairs
 Cephalid Inkmage
@@ -449,6 +450,7 @@ Super-Soldier Serum
 Sweettooth Witch
 Swiftblade Vindicator
 Synthesizer Labship
+Tal Shiar Operative
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -457,6 +459,8 @@ Temur Battle Rage
 Tenacious Drone
 Tenured Tethermage
 Terrapact Intimidator
+Territorial Kavu
+Test of Priorities
 Tetsuko Umezawa, Pursuer
 The Ancient One
 The Boulder, Ready to Rumble
@@ -496,6 +500,7 @@ Triceraton Commander
 Twilight Diviner
 Ty Lee, Artful Acrobat
 Tyvar the Bellicose
+U.S.S. Cerritos, Following Up
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium

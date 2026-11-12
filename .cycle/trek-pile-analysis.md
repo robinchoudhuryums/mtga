@@ -696,3 +696,14 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   other creatures, not {T}. Both would raise deck 100's figures, which already clear A. Also: the pool override
   added a card named "Seven of Nine", so decks 45a / 48 / 54b now flag their prose "Seven of Nine" as a
   stale card citation. That is noise, and it should clear when the 11-13 refresh restores the standard pool (re-check then).
+- 2026-11-12: **Deck 101 drafted** — `decks/101-the-emissary/deck.txt`, "The Emissary — Sisko", Historic Brawl, commander
+  Captain Benjamin Sisko (WUBRG): dilemmas and Officers. Repeating mode engines (Felidar Retreat, Glorious Sunrise, Black Market
+  Connections, Dreamshackle Geist, Kirk, Tal Shiar Operative, Elder Gargaroth, Hullbreaker Horror, Galadriel, Fantastic Four,
+  Gala Greeters, Territorial Kavu, Warren Warleader, Cosmogrand Zenith) plus modal interaction (charms, commands, Spree,
+  Sublime Epiphany, Casualties of War). preflight READY, floor A (interaction 24, card advantage 17, per 60: 14.4 / 10.2),
+  keepable 79.9% (95.9% with the free mulligan), sources W 18 / U 19 / B 18 / R 19 / G 21. Draft swaps for five-colour
+  castability: Gala Greeters for Silverback Elder (GGG 42% T5), Deadly Plot for Vraska's Final Mercy (BB 47% T2), Territorial
+  Kavu for Tectonic Giant (RR); four pathways replaced three KTK tri-lands + The World Tree (tempo sim: 42.4% vs 41.2% average
+  on-curve, tapland cost 6.0 → 4.1 points a card). Spells shared with deck 100: only Seven of Nine and Enterprise-A. The
+  trek-borg Builder now holds BOTH decks (L = 100, S = 101) with piles L / S / Either / Neither so the owner can split cards for
+  variety; board https://claude.ai/artifact/SEWP7enbuaTvr3nBk4mDDy (v2). Tier letter left for the owner.

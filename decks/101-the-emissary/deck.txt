@@ -1,0 +1,132 @@
+#: name: The Emissary — Sisko
+#: format: Historic Brawl
+#: colors: WUBRG
+#: commander: Captain Benjamin Sisko
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR DILEMMAS AND OFFICERS around Captain
+#: archetype: Benjamin Sisko: every time you choose a mode for a spell OR an ability you face a dilemma, and Sisko makes a 1/1
+#: archetype: red Officer per dilemma at your end step. The deck runs two kinds of dilemma: modal interaction (the charms and
+#: archetype: commands, Spree, Sublime Epiphany, Casualties of War) and REPEATING mode engines that fire every turn without a
+#: archetype: card (Felidar Retreat per land, Glorious Sunrise and Dreamshackle Geist each combat, Black Market Connections each
+#: archetype: main phase, Kirk and Tal Shiar Operative on attack, Elder Gargaroth, Hullbreaker Horror, Silverback Elder,
+#: archetype: Galadriel, The Fantastic Four, Q Continuum). Payoffs read the dilemma (Jett Reno, Seven of Nine, Melkotian
+#: archetype: Adjudicator, Elim Garak, Obsidian Order Operative, The Caretaker, Riku) or the Officers (Captain Jean-Luc Picard's
+#: archetype: anthem, Janeway Endgame, Academy Instructor). DISTINCT from the roster's five-colour decks (17 Spectrum, 35 ninjas,
+#: archetype: 76 Dragons, 90 Spirit World) and from deck 100 (Borg artifacts): its engine is choosing modes, not a tribe or bombs.
+#: protect: Captain Benjamin Sisko; Felidar Retreat; Glorious Sunrise; Black Market Connections; Captain Jean-Luc Picard; Jett Reno, Problem Solver; Seven of Nine
+#: notes: Drafted 2026-11-12 from the Star Trek pile (.cycle/trek-pile-analysis.md section 5, deck R) under the owner's one-day
+#: notes: pool override. Ownership is information only; the list is the optimal one. Owner's removal rule honoured: Impossible
+#: notes: Choice (gives the opponent two Officers) and Kobayashi Maru Scenario / Demonic Pact (a "you lose the game" mode) are
+#: notes: left out. A mode is a dilemma; a TARGET is not, so "choose up to one target creature" (Agrus Kos, Aurelia) does not
+#: notes: count. Sisko counts dilemmas when his end-step trigger resolves, so stack an end-step mode (Abiding Grace-style) first.
+#: notes: Built alongside deck 100: the owner splits shared cards between the two on the trek-borg Builder board.
+
+# Commander
+1 Captain Benjamin Sisko (TRK) 6
+
+# Creatures
+1 Jett Reno, Problem Solver (TRK) 67
+1 Seven of Nine (TRK) 252
+1 Melkotian Adjudicator (TRK) 73
+1 Elim Garak, Simple Tailor (TRK) 106
+1 Obsidian Order Operative (TRK) 120
+1 The Caretaker (TRK) 47
+1 Riku of Many Paths (OTJ) 227
+1 Captain Jean-Luc Picard (TRK) 7
+1 Captain Janeway, Endgame (TRC) 84
+1 Academy Instructor (TRK) 137
+1 Excalbian Gamemaster (TRK) 16
+1 Captain James T. Kirk (TRK) 142
+1 Tal Shiar Operative (TRK) 131
+1 Elder Gargaroth (M21) 179
+1 Hullbreaker Horror (VOW) 63
+1 Territorial Kavu (J21) 724
+1 Gala Greeters (SNC) 148
+1 Galadriel, Light of Valinor (HOC) 32
+1 The Fantastic Four (MSC) 741
+1 Warren Warleader (BLB) 38
+1 Cosmogrand Zenith (EOE) 9
+1 Dreamshackle Geist (VOW) 58
+1 Captain Kathryn Janeway (TRK) 187
+1 Rok-Tahk, Budding Scientist (TRK) 211
+1 Golos, Tireless Pilgrim (M20) 226
+1 Kenrith, the Returned King (ELD) 303
+1 Jean-Luc Picard, Luminary (TRC) 3
+1 Captain Sisay (TLE) 47
+1 Kykar, Zephyr Awakener (FDN) 122
+
+# Spacecraft
+1 Infinite Guideline Station (EOE) 219
+1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
+1 U.S.S. Cerritos, Following Up (TRK) 272
+
+# Spells, enchantments and artifacts
+1 Felidar Retreat (FDN) 574
+1 Glorious Sunrise (VOW) 200
+1 Black Market Connections (HBG) 145
+1 Set Phasers to . . . (TRK) 34
+1 Unfortunate Accident (OTJ) 111
+1 Izzet Charm (EA3) 11
+1 Molten Collapse (LCI) 234
+1 Kolaghan's Command (HA5) 20
+1 Dromoka's Command (HA5) 22
+1 Abzan Charm (KTK) 161
+1 Mardu Charm (KTK) 186
+1 Sultai Charm (KTK) 204
+1 Temur Charm (KTK) 208
+1 Jeskai Charm (KTK) 181
+1 Casualties of War (WAR) 187
+1 Silumgar's Command (HA5) 19
+1 Sublime Epiphany (M21) 74
+1 Three Steps Ahead (OTJ) 75
+1 Live or Die (DSK) 107
+1 The Wrath of Khan (TRK) 181
+1 Battle Menu (FIN) 9
+1 Deadly Plot (FDN) 520
+1 Abrade (FDN) 188
+1 Boros Charm (FDN) 721
+1 Vigorbloom Charm (FRA) 160
+1 Make It So (TRK) 71
+1 Test of Priorities (TRK) 85
+1 Test of Conviction (TRK) 39
+1 Arcane Signet (FRC) 20
+1 Weather Maker (TMT) 182
+
+# Lands
+1 Command Tower (FRC) 22
+1 Mana Confluence (EOS) 25
+1 Reflecting Pool (FRC) 23
+1 Hallowed Fountain (ECL) 265
+1 Watery Grave (EOE) 261
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Godless Shrine (EOE) 254
+1 Steam Vents (ECL) 267
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Sacred Foundry (EOE) 256
+1 Raugrin Triome (IKO) 251
+1 Savai Triome (IKO) 253
+1 Zagoth Triome (IKO) 259
+1 Ketria Triome (IKO) 250
+1 Indatha Triome (IKO) 248
+1 Spara's Headquarters (SNC) 257
+1 Ziatora's Proving Ground (SNC) 261
+1 Xander's Lounge (SNC) 260
+1 Jetmir's Garden (SNC) 250
+1 Raffine's Tower (SNC) 254
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+1 Q Continuum (TRK) 290
+1 Ni'Var Science Academy (TRK) 287
+1 Subspace Anomaly (TRK) 300
+1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
+1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Plains (TRK) 317
+1 Island (TRK) 319
+1 Swamp (TRK) 321
+1 Mountain (TRK) 323
+1 Forest (TRK) 325

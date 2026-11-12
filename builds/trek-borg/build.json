@@ -1,11 +1,16 @@
 {
  "schema": 1,
- "title": "Resistance Is Futile — Borg (Historic Brawl)",
+ "title": "Star Trek Brawl — Borg (deck 100) & Sisko (deck 101)",
  "decks": [
   {
    "key": "L",
    "id": "100",
    "label": "Locutus"
+  },
+  {
+   "key": "S",
+   "id": "101",
+   "label": "Sisko"
   }
  ],
  "piles": [
@@ -13,70 +18,82 @@
    "key": "L",
    "label": "Locutus's pile",
    "deck": "L",
+   "intro": "Cards that fit the Borg deck better. Locutus makes a Borg token whenever an artifact creature connects, and the anthems, Borg Cube's affinity and the one-sided sweepers all count ARTIFACT CREATURES, so a card has to add to that count or pay off per artifact creature."
+  },
+  {
+   "key": "S",
+   "label": "Sisko's pile",
+   "deck": "S",
+   "intro": "Cards that fit the Sisko deck better. Sisko makes an Officer for every dilemma you face (each time you choose a mode for a spell or ability), so the best cards here make you choose modes every turn, or pay off per dilemma or per Officer."
+  },
+  {
+   "key": "B",
+   "label": "Either deck",
+   "deck": null,
    "intro": ""
   },
   {
    "key": "N",
-   "label": "Doesn't fit",
+   "label": "Fits neither",
    "deck": null,
-   "intro": ""
+   "intro": "Cards that fit neither deck, each with the reason. Listed so nothing is silently dropped."
   }
  ],
  "groups": {},
  "cards": [
   {
    "name": "Brokers' Safeguard",
-   "pile": "L",
+   "pile": "S",
    "src": "added"
   },
   {
    "name": "Engineered Explosives",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "U.S.S. Enterprise-D, Galaxy-Class",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
    "name": "Set Phasers to . . .",
-   "pile": "L",
+   "pile": "S",
    "src": "added"
   },
   {
    "name": "Romulan Bird-of-Prey",
-   "pile": "L",
+   "pile": "S",
    "src": "added"
   },
   {
    "name": "Oberth-Class Starship",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Entropic Battlecruiser",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Deep Space 9",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "H.M.S. Bounty, Unlikely Timeship",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Hologram Janeway",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
    "name": "Seven of Nine, Unassimilated",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
@@ -86,27 +103,27 @@
   },
   {
    "name": "Dominion Saboteur",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
    "name": "Georgiou, Terran Emperor",
-   "pile": "L",
+   "pile": "S",
    "src": "added"
   },
   {
    "name": "Gul Dukat, Colonial Prefect",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "The Measure of a Man",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
    "name": "Test of Priorities",
-   "pile": "L",
+   "pile": "S",
    "src": "added"
   },
   {
@@ -116,7 +133,7 @@
   },
   {
    "name": "Live Long and Prosper",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -126,17 +143,17 @@
   },
   {
    "name": "Susur Secundi, Void Altar",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Lost Jitte",
-   "pile": "L",
+   "pile": "B",
    "src": "added"
   },
   {
    "name": "Excalibur II",
-   "pile": "L",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -153,189 +170,891 @@
    "name": "Unctus, Grand Metatect",
    "pile": "L",
    "src": "added"
+  },
+  {
+   "name": "Mr. Spock, Science Officer",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Consider the Prime Directive",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Malfunctioning Holodeck",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Sheoldred, the Apocalypse",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Shields Up!",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Flare of Fortitude",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Mirror Universe Intrusion",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "U.S.S. Excelsior, Cutting Edge",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Susurian Dirgecraft",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Jett Reno, Problem Solver",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Three Steps Ahead",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Sublime Epiphany",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Silumgar's Command",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Black Market Connections",
+   "pile": "B",
+   "src": "outside"
+  },
+  {
+   "name": "Silverback Elder",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Vraska's Final Mercy",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Tectonic Giant",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Ojutai Exemplars",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Operations Officer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Kirk, Commanding Officer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Kirk, Enterprising Captain",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Collective Brutality",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Collective Defiance",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Insatiable Avarice",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Scavenging",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Retreat to Kazandu",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Abiding Grace",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Sune's Intervention",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Silent Hallcreeper",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Smuggler's Surprise",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Gabriel Lorca, Mirror Menace",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Loot, the Key to Everything",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Federation Field Medic",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Drill Too Deep",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Archenemy's Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Drown in the Loch",
+   "pile": "B",
+   "src": "added"
+  },
+  {
+   "name": "Orzhov Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Final Showdown",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Golgari Charm",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Gix's Command",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sandsteppe Citadel",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Frontier Bivouac",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Nomad Outpost",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "The World Tree",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Sarek, Federation Ambassador",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Bringer of the White Dawn",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Chamber Sentry",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Haunted Screen",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Expropriate",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kobayashi Maru Scenario",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Demonic Pact",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Impossible Choice",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
   "U.S.S. Enterprise-D, Galaxy-Class": {
    "group": "Real",
-   "text": "A card to play each turn you charge it; 4/5 flier at 7. Fine, but the Spacecraft slots went to ones that interact.",
+   "text": "A card to play each turn you charge it; 4/5 flier at 7. Borg: Spacecraft slots went to ones that interact. Sisko: Captain Picard's seven-Officer tap puts it in with 7 counters, i.e. already a creature.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Romulan Bird-of-Prey": {
-   "group": "Situational",
-   "text": "2-mana hexproof ship, flier at 8; charges off noncreature spells, which the deck has few of.",
+   "group": "Real",
+   "text": "2-mana hexproof ship that charges itself (2 counters) per noncreature spell. Sisko runs ~30 noncreature spells, so it flies by turn 5-6; Borg has few.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Oberth-Class Starship": {
    "group": "Situational",
-   "text": "Plains fetch on a 2-mana ship, flier at 6.",
+   "text": "Plains fetch on a 2-mana ship, flier at 6. Too little in either deck.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Entropic Battlecruiser": {
    "group": "Situational",
-   "text": "Discard drain; a 3/10 deathtouch flier at 8.",
+   "text": "Discard drain; a 3/10 deathtouch flier at 8. Slow in both.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Deep Space 9": {
    "group": "Situational",
-   "text": "9 mana: free permanents each upkeep, +3/+3 at 9 counters. No big ramp engine here.",
+   "text": "9 mana: free permanents each upkeep, +3/+3 at 9 counters. Neither deck has the ramp for it.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "H.M.S. Bounty, Unlikely Timeship": {
    "group": "Situational",
-   "text": "Whale tutor and extra turn; no Whale worth it in Esper.",
+   "text": "Whale tutor and extra turn; no Whale worth it in either deck.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Hologram Janeway": {
    "group": "Real",
-   "text": "Artifact creature that adds counters when you attack with 8+ power; a filler artifact body.",
+   "text": "An artifact creature (Borg count) AND an Officer (Sisko's free-cast count). Counter on attack at 8+ power.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Seven of Nine, Unassimilated": {
-   "group": "Real",
-   "text": "Artifact creature that draws each turn; the discard applies until five differently named lands.",
+   "group": "Strong",
+   "text": "Draws every turn; the discard stops at five differently named lands. Sisko's singleton five-colour manabase has 30+ names, so it is a free card a turn, and she is an Officer. In Borg she is also an artifact creature.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Noctis, Prince of Lucis": {
    "group": "Strong",
-   "text": "Casts artifacts from the graveyard for 3 extra life (finality counter); strong recursion, and the Standard Brawl commander option.",
+   "text": "Casts artifacts from the graveyard for 3 extra life (finality counter); strong recursion in the artifact deck, little in Sisko.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Dominion Saboteur": {
    "group": "Real",
-   "text": "Copies a creature or a charged Spacecraft with its counters.",
+   "text": "Copies a creature or a charged Spacecraft with its counters. Fine in either.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Georgiou, Terran Emperor": {
    "group": "Situational",
-   "text": "A card a turn for 3 life; risky.",
+   "text": "A card a turn for 3 life. In Sisko the downside is an upside: at 0 life she makes ten Officers, and Sisko's free-cast reads Officers. Risky if she dies.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Gul Dukat, Colonial Prefect": {
    "group": "Situational",
    "text": "7-mana menace drain.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "The Measure of a Man": {
    "group": "Real",
-   "text": "Temporary exile + Clue, or blink your own enter trigger.",
+   "text": "Saga, NOT modal (no dilemma): temporary exile + Clue, or blink your own enter trigger.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Set Phasers to . . .": {
    "group": "Real",
-   "text": "1-mana stun, or 3 to an attacker.",
+   "text": "IN deck 101. 1-mana modal (a dilemma) stun or 3 to an attacker.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Test of Priorities": {
    "group": "Real",
-   "text": "Instant: draw, or blink a creature to dodge removal.",
+   "text": "IN deck 101. Modal instant: draw, or blink a creature to dodge removal; a dilemma either way.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Hemmer, Fixing What Is Broken": {
    "group": "Real",
-   "text": "Spacecraft hexproof on your turn; loots whenever tapped (station taps it).",
+   "text": "Spacecraft hexproof on your turn; loots whenever tapped (station taps it). Borg runs 8 Spacecraft, Sisko 3.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Live Long and Prosper": {
    "group": "Situational",
    "text": "7 mana: double your life and draw a hand.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Adagia, Windswept Bastion": {
    "group": "Real",
    "text": "W Planet; at 12 counters copies an artifact (Borg Cube, Conquest Mission).",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Susur Secundi, Void Altar": {
    "group": "Situational",
    "text": "B Planet; card draw by sacrifice at 12.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Lost Jitte": {
-   "group": "Real",
-   "text": "Equip 1; counters for can't-block, +1/+1 or untapping lands.",
+   "group": "Strong",
+   "text": "Equip 1. Each counter removed is a MODAL activation (untap a land / can't block / +1/+1), so in Sisko every counter is a dilemma and an Officer. Fine in Borg on an evasive drone.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Engineered Explosives": {
    "group": "Situational",
-   "text": "Sunburst sweeper; symmetric.",
+   "text": "Sunburst sweeper; symmetric, and it kills Sisko's own Officers.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Excalibur II": {
    "group": "Situational",
-   "text": "Grows with lifegain (Locutus, Bio-Asset Allocator).",
+   "text": "Grows with lifegain; neither deck gains enough.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Workshop Elders": {
    "group": "Real",
    "text": "7 mana: artifact creatures fly; animates a noncreature artifact each combat.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Salvation Engine": {
    "group": "Real",
    "text": "OWNED. +2/+2 anthem Vehicle that returns an artifact each attack; crew 6.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Unctus, Grand Metatect": {
    "group": "Real",
    "text": "+1/+1 to other artifact creatures; loots for blue creatures that tap.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   },
   "Brokers' Safeguard": {
-   "group": "Situational",
-   "text": "Protects only a NONartifact creature — little here.",
+   "group": "Real",
+   "text": "Protects only a NONartifact creature: little in Borg, but in Sisko it blinks Sisko or Picard with a permanent shield counter.",
    "graded_at": {
-    "100": "5fb30fd6b8b7"
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Mr. Spock, Science Officer": {
+   "group": "Strong",
+   "text": "IN deck 100. Every draw becomes two: in Sisko that doubles Seven of Nine's per-dilemma draw, Make It So and the Tests. Pick a home for variety.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Consider the Prime Directive": {
+   "group": "Strong",
+   "text": "IN deck 100. Modal counter or stun-and-draw; a dilemma in Sisko.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Malfunctioning Holodeck": {
+   "group": "Strong",
+   "text": "IN deck 100. Ward-2 O-ring that answers any nonland permanent.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sheoldred, the Apocalypse": {
+   "group": "Strong",
+   "text": "IN deck 100. Drains per opposing draw, gains per your draw. Fine in either.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Shields Up!": {
+   "group": "Real",
+   "text": "IN deck 100. Hexproof + indestructible on an artifact or creature.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Flare of Fortitude": {
+   "group": "Real",
+   "text": "IN deck 100. Free turn of protection for the team.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Mirror Universe Intrusion": {
+   "group": "Real",
+   "text": "IN deck 100. Copies their best creature.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "U.S.S. Excelsior, Cutting Edge": {
+   "group": "Real",
+   "text": "IN deck 100. ETB destroys a tapped creature; flier when stationed.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Susurian Dirgecraft": {
+   "group": "Real",
+   "text": "IN deck 100. ETB edict; flier at 7.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Jett Reno, Problem Solver": {
+   "group": "Strong",
+   "text": "IN deck 101. A counter per dilemma; draws when tapped at power 4+. In Borg, station taps her every turn.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Three Steps Ahead": {
+   "group": "Real",
+   "text": "IN deck 101. Spree counter / copy an artifact or creature / loot. Copying Borg Cube or a Queen is strong in Borg.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sublime Epiphany": {
+   "group": "Real",
+   "text": "IN deck 101. Choose-one-or-more counter, bounce, copy, draw.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Silumgar's Command": {
+   "group": "Real",
+   "text": "IN deck 101. Two of counter / bounce / -3/-3 / kill a planeswalker. Esper-castable.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Black Market Connections": {
+   "group": "Strong",
+   "text": "IN deck 101. Choose one or more each main phase: in Sisko a dilemma every turn. In Borg just card flow (its Shapeshifters are not artifacts).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Silverback Elder": {
+   "group": "Real",
+   "text": "A dilemma per creature spell, plus land ramp or artifact/enchantment removal. Cut for {G}{G}{G}: 42% on turn 5 in five colours. Gala Greeters took the slot.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Vraska's Final Mercy": {
+   "group": "Real",
+   "text": "Kill spell, modal. {B}{B} cast on turn 2 only 47% of the time; Deadly Plot took the slot.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Tectonic Giant": {
+   "group": "Real",
+   "text": "Modal trigger on each attack. {R}{R} on turn 4 is 60%; Territorial Kavu (domain, also modal on attack) took the slot.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Ojutai Exemplars": {
+   "group": "Real",
+   "text": "A dilemma per noncreature spell (tap / first strike + lifelink / blink). {W}{W}.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Operations Officer": {
+   "group": "Real",
+   "text": "An Officer that draws on entry and grows on attack.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Kirk, Commanding Officer": {
+   "group": "Real",
+   "text": "Officer; impulse card each attack at 8+ power; sacrifices to kill an artifact or enchantment.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Kirk, Enterprising Captain": {
+   "group": "Situational",
+   "text": "Officer, menace; impulse at 8+ power. Weaker than Captain James T. Kirk.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Collective Brutality": {
+   "group": "Real",
+   "text": "Escalate modal: -2/-2, take an instant/sorcery, drain 2. One dilemma per cast.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Collective Defiance": {
+   "group": "Real",
+   "text": "Escalate modal burn: 4 to a creature, 3 to the opponent, wheel a hand. {R}{R}.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Insatiable Avarice": {
+   "group": "Real",
+   "text": "Spree tutor-to-top or draw three; a dilemma.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sylvan Scavenging": {
+   "group": "Situational",
+   "text": "OWNED. End-step modal (counter or a 3/3). One dilemma a turn; slower than Felidar Retreat.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Retreat to Kazandu": {
+   "group": "Situational",
+   "text": "Landfall modal: counter or 2 life. A dilemma per land, but weaker than Felidar Retreat.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Abiding Grace": {
+   "group": "Situational",
+   "text": "End-step modal: 1 life or return a 1-drop. Stack it before Sisko's trigger.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sune's Intervention": {
+   "group": "Situational",
+   "text": "6-mana choose-one-or-more: two Knights, seek, artifact/enchantment removal.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Silent Hallcreeper": {
+   "group": "Situational",
+   "text": "OWNED. Unblockable; modal on each hit.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Smuggler's Surprise": {
+   "group": "Situational",
+   "text": "Spree: dig, cheat two creatures in, or protect big creatures.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Gabriel Lorca, Mirror Menace": {
+   "group": "Situational",
+   "text": "Officer that returns from the graveyard per dilemma for {B}.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Loot, the Key to Everything": {
+   "group": "Situational",
+   "text": "Exiles cards per card type on the board each upkeep.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Federation Field Medic": {
+   "group": "Situational",
+   "text": "Modal ETB body; low impact.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Drill Too Deep": {
+   "group": "Situational",
+   "text": "Modal: five charge counters or destroy an artifact.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Archenemy's Charm": {
+   "group": "Situational",
+   "text": "Modal exile / recursion. {B}{B}{B} in five colours.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Drown in the Loch": {
+   "group": "Situational",
+   "text": "Modal counter or kill, scaled by THEIR graveyard; slow in 1v1.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Orzhov Charm": {
+   "group": "Situational",
+   "text": "Modal: bounce your own, kill (lose life), return a 1-drop.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Final Showdown": {
+   "group": "Situational",
+   "text": "OWNED. Spree; the wipe mode kills Sisko's Officers too.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Golgari Charm": {
+   "group": "Marginal",
+   "text": "-1/-1 to all kills Sisko's own Officers.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Gix's Command": {
+   "group": "Marginal",
+   "text": "Destroys each creature with power 2 or less: Sisko's Officers.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sandsteppe Citadel": {
+   "group": "Situational",
+   "text": "Tapped tri-land. Untapped pathways measured better: 42.4% vs 41.2% average on-curve chance.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Frontier Bivouac": {
+   "group": "Situational",
+   "text": "Tapped tri-land; replaced by a pathway (see Sandsteppe Citadel).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Nomad Outpost": {
+   "group": "Situational",
+   "text": "Tapped tri-land; replaced by a pathway.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "The World Tree": {
+   "group": "Situational",
+   "text": "Tapped G land, any colour at six lands. Replaced by a pathway.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Sarek, Federation Ambassador": {
+   "group": "Marginal",
+   "text": "Needs five creature TYPES among creatures; Officer tokens are all one type.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Bringer of the White Dawn": {
+   "group": "Situational",
+   "text": "WUBRG alt cost; returns an artifact each upkeep.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Chamber Sentry": {
+   "group": "Situational",
+   "text": "Sunburst body that pings.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Haunted Screen": {
+   "group": "Situational",
+   "text": "Five-colour rock that pays life.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Expropriate": {
+   "group": "Out",
+   "text": "Council's dilemma is a VOTE, not a mode choice, so it makes no Officer. 9 mana.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Kobayashi Maru Scenario": {
+   "group": "Out",
+   "text": "One mode is 'You lose the game' and each mode can be chosen only once: the fourth upkeep loses.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Demonic Pact": {
+   "group": "Out",
+   "text": "Same lose-the-game mode as Kobayashi Maru.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Impossible Choice": {
+   "group": "Out",
+   "text": "Owner's removal rule: the kill mode gives the opponent two Officers.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
    }
   }
  },
@@ -435,6 +1154,110 @@
     "Watery Grave",
     "Zefram Cochrane, Warp Pioneer"
    ]
+  },
+  "101": {
+   "5bc9c38778e6": [
+    "Abrade",
+    "Abzan Charm",
+    "Academy Instructor",
+    "Arcane Signet",
+    "Battle Menu",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Boros Charm",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Captain Benjamin Sisko",
+    "Captain James T. Kirk",
+    "Captain Janeway, Endgame",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Captain Sisay",
+    "Casualties of War",
+    "Command Tower",
+    "Cosmogrand Zenith",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deadly Plot",
+    "Dreamshackle Geist",
+    "Dromoka's Command",
+    "Elder Gargaroth",
+    "Elim Garak, Simple Tailor",
+    "Excalbian Gamemaster",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Forest",
+    "Gala Greeters",
+    "Galadriel, Light of Valinor",
+    "Glorious Sunrise",
+    "Godless Shrine",
+    "Golos, Tireless Pilgrim",
+    "Hallowed Fountain",
+    "Hullbreaker Horror",
+    "Indatha Triome",
+    "Infinite Guideline Station",
+    "Island",
+    "Izzet Charm",
+    "Jean-Luc Picard, Luminary",
+    "Jeskai Charm",
+    "Jetmir's Garden",
+    "Jett Reno, Problem Solver",
+    "Kenrith, the Returned King",
+    "Ketria Triome",
+    "Kolaghan's Command",
+    "Kykar, Zephyr Awakener",
+    "Live or Die",
+    "Make It So",
+    "Mana Confluence",
+    "Mardu Charm",
+    "Melkotian Adjudicator",
+    "Molten Collapse",
+    "Mountain",
+    "Ni'Var Science Academy",
+    "Obsidian Order Operative",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Q Continuum",
+    "Raffine's Tower",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riku of Many Paths",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Rok-Tahk, Budding Scientist",
+    "Sacred Foundry",
+    "Savai Triome",
+    "Set Phasers to . . .",
+    "Seven of Nine",
+    "Silumgar's Command",
+    "Spara's Headquarters",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Subspace Anomaly",
+    "Sultai Charm",
+    "Swamp",
+    "Tal Shiar Operative",
+    "Temple Garden",
+    "Temur Charm",
+    "Territorial Kavu",
+    "Test of Conviction",
+    "Test of Priorities",
+    "The Caretaker",
+    "The Fantastic Four",
+    "The Wrath of Khan",
+    "Three Steps Ahead",
+    "U.S.S. Cerritos, Following Up",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Unfortunate Accident",
+    "Vigorbloom Charm",
+    "Warren Warleader",
+    "Watery Grave",
+    "Weather Maker",
+    "Xander's Lounge",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ]
   }
  },
  "verdicts": {
@@ -442,156 +1265,780 @@
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Romulan Bird-of-Prey": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Oberth-Class Starship": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Entropic Battlecruiser": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Deep Space 9": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "H.M.S. Bounty, Unlikely Timeship": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Hologram Janeway": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Seven of Nine, Unassimilated": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Noctis, Prince of Lucis": {
    "L": {
     "m": "★★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Dominion Saboteur": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Georgiou, Terran Emperor": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Gul Dukat, Colonial Prefect": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "The Measure of a Man": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Set Phasers to . . .": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Test of Priorities": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Hemmer, Fixing What Is Broken": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Live Long and Prosper": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Adagia, Windswept Bastion": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Susur Secundi, Void Altar": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Lost Jitte": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Engineered Explosives": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Excalibur II": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Workshop Elders": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Salvation Engine": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Unctus, Grand Metatect": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
    }
   },
   "Brokers' Safeguard": {
    "L": {
     "m": "◇",
     "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Mr. Spock, Science Officer": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Consider the Prime Directive": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Malfunctioning Holodeck": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sheoldred, the Apocalypse": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Shields Up!": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Flare of Fortitude": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Mirror Universe Intrusion": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "U.S.S. Excelsior, Cutting Edge": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Susurian Dirgecraft": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Jett Reno, Problem Solver": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Three Steps Ahead": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sublime Epiphany": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Silumgar's Command": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Black Market Connections": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Silverback Elder": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Vraska's Final Mercy": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Tectonic Giant": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Ojutai Exemplars": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Operations Officer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Kirk, Commanding Officer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Kirk, Enterprising Captain": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Collective Brutality": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Collective Defiance": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Insatiable Avarice": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sylvan Scavenging": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Retreat to Kazandu": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Abiding Grace": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sune's Intervention": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Silent Hallcreeper": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Smuggler's Surprise": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Gabriel Lorca, Mirror Menace": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Loot, the Key to Everything": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Federation Field Medic": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Drill Too Deep": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Archenemy's Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Drown in the Loch": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Orzhov Charm": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Final Showdown": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "△",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Golgari Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "△",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Gix's Command": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "△",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sandsteppe Citadel": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Frontier Bivouac": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Nomad Outpost": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "The World Tree": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Sarek, Federation Ambassador": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "△",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Bringer of the White Dawn": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Chamber Sentry": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Haunted Screen": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Expropriate": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "✗",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Kobayashi Maru Scenario": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "✗",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Demonic Pact": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "✗",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Impossible Choice": {
+   "L": {
+    "m": "✗",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "✗",
+    "graded_at": "5bc9c38778e6"
    }
   }
  }
