@@ -471,3 +471,16 @@ Interaction in v3: 70,000 Light-Years, Vigorbloom Charm, Malfunctioning Holodeck
 plus Felidar Retreat if taken.
 Lands (23): Starfleet Academy · Subspace Anomaly · Q Continuum · Federation Outpost · Ni'Var Science Academy ·
 4 Temple Garden · 2 Hallowed Fountain · 2 Breeding Pool · Risa · Vulcan · Earth, Sector 001 · 4 Forest · 3 Plains.
+
+**v3 CONFIRMED by the owner (2026-11-12)** — write v2 + the section-9 changes; the section-9 optionals stay
+optional unless confirmed. Owner owns Starfleet Academy (information only).
+
+Star Trek land survey (all 17 TRK lands in Bant identity): v3 already runs every one that improves the deck —
+Federation Outpost, Ni'Var Science Academy, Q Continuum (modal untapped lands), Risa, Vulcan, Earth Sector 001
+(Planets: each ETB gains 1 life, which grows Neelix and Crusher and feeds Sickbay), the three shocks, Starfleet
+Academy and Subspace Anomaly. Left out, on purpose: Gaseous Anomaly and Temporal Anomaly (colourless; a THIRD
+colourless land in a three-colour deck costs more than their late sacrifice ability buys — Temporal Anomaly is
+the better of the two, the swap if Subspace Anomaly is ever cut) and Unexplored Territory (a colourless basic
+fetch, worse than any dual here). Edge of Eternities Planets: Evendo (G; station 12 makes G per creature) is
+the only one worth a look and enters tapped — bench. NOTE: every Anomaly's New Planet token becomes a 3/3
+Illusion while Holo-Engineer is out (a body instead of the land).
