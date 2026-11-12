@@ -38,7 +38,6 @@
 1 Jett Reno, Problem Solver (TRK) 67
 1 Phlox, Unorthodox Doctor (TRK) 250
 1 Mr. Spock, Science Officer (TRK) 74
-1 Worf, Honor-Bound Warrior (TRK) 256
 1 Dominion Saboteur (TRK) 54
 1 Seven of Nine, Unassimilated (TRK) 80
 1 Don & Leo, Problem Solvers (TMT) 143
@@ -68,6 +67,7 @@
 1 Dawnsire, Sunstar Dreadnought (EOE) 238
 1 Sheltered by Ghosts (DSK) 30
 1 Deep Space 9 (TRK) 263
+1 Replicator (TRK) 267
 
 # Lands
 1 Starfleet Academy (TRK) 297

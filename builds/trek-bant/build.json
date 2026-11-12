@@ -273,6 +273,11 @@
    "name": "Picard, Leading by Example",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Worf, Honor-Bound Warrior",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -417,10 +422,10 @@
    }
   },
   "Replicator": {
-   "group": "Situational",
-   "text": "CUT 2026-11-12 for Stable Wormhole. Copies a token (a 3/3 with Holo-Engineer) and makes a Food.",
+   "group": "Real",
+   "text": "IN 2026-11-12 for Worf. Each copy is a creature entering: a 3/3 with Holo-Engineer, about a 7/7 after Deanna, Support Mission and M'Benga; without Holo-Engineer it copies New Planets (an extra land a turn). Copies a token (a 3/3 with Holo-Engineer) and makes a Food.",
    "graded_at": {
-    "99": "120708b64c5f"
+    "99": "a0bbe1bd1660"
    }
   },
   "Neelix, Moral Support": {
@@ -624,6 +629,13 @@
    "text": "CUT 2026-11-12 for Deep Space 9. {1},{T}: another creature gets +X/+X equal to his power.",
    "graded_at": {
     "99": "d83ceac05ac9"
+   }
+  },
+  "Worf, Honor-Bound Warrior": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Replicator. A 1/1 for 2 that doubles its power when your attackers total 8+.",
+   "graded_at": {
+    "99": "a0bbe1bd1660"
    }
   }
  },
@@ -836,6 +848,59 @@
     "Vulcan",
     "Warp Speed",
     "Worf, Honor-Bound Warrior"
+   ],
+   "a0bbe1bd1660": [
+    "70,000 Light-Years from Home",
+    "Abuelo, Ancestral Echo",
+    "Brad Boimler, Eager Ensign",
+    "Breeding Pool",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Dawnsire, Sunstar Dreadnought",
+    "Deanna Troi, Psychic Counsel",
+    "Deep Space 9",
+    "Dominion Saboteur",
+    "Dominion Supervisor",
+    "Don & Leo, Problem Solvers",
+    "Dr. Beverly Crusher",
+    "Dr. Joseph M'Benga",
+    "Earth, Sector 001",
+    "Federation Outpost",
+    "Forest",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Holo-Engineer",
+    "Jadzia Dax, Living Legacy",
+    "Jett Reno, Problem Solver",
+    "Kellan Joins Up",
+    "Malfunctioning Holodeck",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Overgrown Farmland",
+    "Phlox, Unorthodox Doctor",
+    "Plains",
+    "Q Continuum",
+    "Replicator",
+    "Rok-Tahk, Budding Scientist",
+    "Saavik, Stoic Student",
+    "Sarek, Federation Ambassador",
+    "Seven of Nine, Unassimilated",
+    "Sheltered by Ghosts",
+    "Sickbay",
+    "Spectacular Tactics",
+    "Stable Wormhole",
+    "Starfleet Academy",
+    "Subspace Anomaly",
+    "Support Mission",
+    "Syndicate Liquidators",
+    "Temple Garden",
+    "Test of Conviction",
+    "The Doctor, EMH",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Urban Retreat",
+    "Vigorbloom Charm",
+    "Vulcan",
+    "Warp Speed"
    ]
   }
  },
@@ -962,8 +1027,8 @@
   },
   "Replicator": {
    "F": {
-    "m": "◇",
-    "graded_at": "120708b64c5f"
+    "m": "★",
+    "graded_at": "a0bbe1bd1660"
    }
   },
   "Neelix, Moral Support": {
@@ -1138,6 +1203,12 @@
    "F": {
     "m": "★",
     "graded_at": "d83ceac05ac9"
+   }
+  },
+  "Worf, Honor-Bound Warrior": {
+   "F": {
+    "m": "◇",
+    "graded_at": "a0bbe1bd1660"
    }
   }
  }

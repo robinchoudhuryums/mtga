@@ -657,3 +657,4 @@ Picard LbE too. Measured: +Dawnsire −D&C Marcus, +Saavik −Inner Light, +Bite
 (int 7, card adv 7, Helga kept); with Helga ALSO cut for Stasis Snare → see chat.
 2026-11-12: applied +Dawnsire −D&C Marcus, +Saavik −Inner Light, +Sheltered by Ghosts −D'Vana, +DS9 −Picard LbE (Helga kept); lands −2 Forest −1 Plains +2 Breeding Pool +1 Hallowed Fountain (U 10→13). Floor A.
 2026-11-12: +Overgrown Farmland −1 Temple Garden (owner owns one Farmland, was a Temple Garden short).
+2026-11-12: +Replicator −Worf (owner). David and Carol Marcus re-add measured: for Brad / Syndicate Liquidators / Dominion Supervisor all keep A.
