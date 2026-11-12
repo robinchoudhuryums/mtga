@@ -644,3 +644,8 @@ weakest-ranked card in `cuts`, measured separately). Alternate cuts offered: Spe
 Example / Shields Up! / Jadzia Dax; Saavik → Syndicate Liquidators / Dr. Beverly Crusher; Dawnsire → Dominion
 Saboteur / Dominion Supervisor.
 2026-11-12: +Spectacular Tactics −Shields Up! applied (owner).
+Board marks 2026-11-12 (owner): +Dawnsire, +Saavik, +Deep Space 9; −David and Carol Marcus, −The Inner Light, −Helga;
+bench Felidar Retreat, Replicator, Test of Priorities, Enterprise-D. Measured: floor B, interaction 6, card adv 6,
+avg MV 3.54. Adding Coordinated Maneuver −Brad Boimler → A (int 7, card adv 6). Alternative keeping Helga: DS9 −Brad,
+Coordinated Maneuver −Picard LbE → A (int 7, card adv 7, avg MV 3.57). Replies posted on the board (Saboteur copies
+Spacecraft with counters; Replicator copies New Planets, but Holo-Engineer turns copies into 3/3s).
