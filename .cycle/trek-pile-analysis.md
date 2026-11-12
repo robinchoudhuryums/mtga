@@ -593,3 +593,11 @@ if the beam-me-up route is taken.
 | Jake Sisko {1}{G} | ★ | landfall life (Crusher, Sickbay) and a Clue on the second land a turn — Janeway, Pike and Stable Wormhole make that reachable |
 | The Traveler {G}{U} | ★ | a 2-mana Captain Pike without the land-from-top; reach, vigilance |
 | Gaseous Anomaly | ◇ | a THIRD colourless land; only as a swap for Subspace Anomaly (draw two vs two Officers) |
+
+### Swap package proposed 2026-11-12 (owner offered cuts: Captain Pike, Sylvia Tilly, Geordi, MACO, Archer)
+Core (5 for 5): +Jett Reno −MACO Strike Team · +D'Vana Tendi −Sylvia Tilly · +Abuelo, Ancestral Echo −Captain
+Jonathan Archer · +Dominion Saboteur −Lt. Cmdr. Geordi La Forge · +Test of Conviction −Captain Pike.
+Maybes (each needs a cut beyond the offered five): +Test of Priorities −Seven of Nine, Unassimilated ·
++Don & Leo, Problem Solvers −Sickbay · +Jake Sisko −David and Carol Marcus.
+Watch: removal stays at three (70,000 Light-Years, Vigorbloom, Holodeck); blue demand rises (Jett, Abuelo,
+Saboteur, Spock UU, Test of Priorities) — check blue sources in consistency, a Forest→Island may be needed.
