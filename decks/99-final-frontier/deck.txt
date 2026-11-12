@@ -50,6 +50,7 @@
 1 Dr. Joseph M'Benga (TRK) 196
 1 Captain Kathryn Janeway (TRK) 187
 1 The Doctor, EMH (TRK) 234
+1 Aerith Gainsborough (FIN) 4
 
 # Spells, enchantments and artifacts
 1 Stable Wormhole (TRK) 215
@@ -60,7 +61,6 @@
 1 Kellan Joins Up (OTJ) 212
 1 Support Mission (TRK) 216
 1 Spectacular Tactics (SPM) 15
-1 Test of Conviction (TRK) 39
 1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
 1 70,000 Light-Years from Home (TRK) 1
 1 Vigorbloom Charm (FRA) 160

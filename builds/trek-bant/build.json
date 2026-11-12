@@ -308,6 +308,16 @@
    "name": "Drogskol Reaver",
    "pile": "F",
    "src": "added"
+  },
+  {
+   "name": "Test of Conviction",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Troubling Tribbles",
+   "pile": "F",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -698,9 +708,9 @@
   },
   "Aerith Gainsborough": {
    "group": "Real",
-   "text": "OWNED. {2}{W} lifelink 3-drop that grows on every lifegain (doubled by Crusher); when it dies its counters go on EACH legendary creature you control (about 20 here).",
+   "text": "IN 2026-11-12 for Test of Conviction. OWNED. {2}{W} lifelink 3-drop that grows on every lifegain (doubled by Crusher); when it dies its counters go on EACH legendary creature you control (about 20 here).",
    "graded_at": {
-    "99": "a0bbe1bd1660"
+    "99": "d27155290c7b"
    }
   },
   "Drogskol Reaver": {
@@ -708,6 +718,20 @@
    "text": "{5}{W}{U} flying, double strike, lifelink: draws a card per lifegain, so each combat is two cards — four with Crusher. Top-heavy at 7.",
    "graded_at": {
     "99": "a0bbe1bd1660"
+   }
+  },
+  "Test of Conviction": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Aerith. A counter on every creature, or you draw two while the opponent draws one.",
+   "graded_at": {
+    "99": "d27155290c7b"
+   }
+  },
+  "Troubling Tribbles": {
+   "group": "Real",
+   "text": "{2}{W} 0/1 that can't block; each upkeep it copies itself, and every copy does too. Here each copy enters with Deanna and Support Mission counters (doubled) and gains life through Sickbay. While Holo-Engineer is out the copies are 3/3s and stop doubling.",
+   "graded_at": {
+    "99": "d27155290c7b"
    }
   }
  },
@@ -967,6 +991,59 @@
     "Syndicate Liquidators",
     "Temple Garden",
     "Test of Conviction",
+    "The Doctor, EMH",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Urban Retreat",
+    "Vigorbloom Charm",
+    "Vulcan",
+    "Warp Speed"
+   ],
+   "d27155290c7b": [
+    "70,000 Light-Years from Home",
+    "Abuelo, Ancestral Echo",
+    "Aerith Gainsborough",
+    "Brad Boimler, Eager Ensign",
+    "Breeding Pool",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Dawnsire, Sunstar Dreadnought",
+    "Deanna Troi, Psychic Counsel",
+    "Deep Space 9",
+    "Dominion Saboteur",
+    "Dominion Supervisor",
+    "Don & Leo, Problem Solvers",
+    "Dr. Beverly Crusher",
+    "Dr. Joseph M'Benga",
+    "Earth, Sector 001",
+    "Federation Outpost",
+    "Forest",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Holo-Engineer",
+    "Jadzia Dax, Living Legacy",
+    "Jett Reno, Problem Solver",
+    "Kellan Joins Up",
+    "Malfunctioning Holodeck",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Overgrown Farmland",
+    "Phlox, Unorthodox Doctor",
+    "Plains",
+    "Q Continuum",
+    "Replicator",
+    "Rok-Tahk, Budding Scientist",
+    "Saavik, Stoic Student",
+    "Sarek, Federation Ambassador",
+    "Seven of Nine, Unassimilated",
+    "Sheltered by Ghosts",
+    "Sickbay",
+    "Spectacular Tactics",
+    "Stable Wormhole",
+    "Starfleet Academy",
+    "Subspace Anomaly",
+    "Support Mission",
+    "Syndicate Liquidators",
+    "Temple Garden",
     "The Doctor, EMH",
     "U.S.S. Enterprise-A, Free Spirit",
     "Urban Retreat",
@@ -1317,6 +1394,18 @@
    "F": {
     "m": "★",
     "graded_at": "a0bbe1bd1660"
+   }
+  },
+  "Test of Conviction": {
+   "F": {
+    "m": "★",
+    "graded_at": "d27155290c7b"
+   }
+  },
+  "Troubling Tribbles": {
+   "F": {
+    "m": "★★",
+    "graded_at": "d27155290c7b"
    }
   }
  }

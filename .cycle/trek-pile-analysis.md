@@ -676,3 +676,4 @@ Proposed: +Kwia −Rok-Tahk, +Bloombrute −Helga, +Heroic Feast −Jadzia Dax, 
 Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, legal.
 2026-11-12: owner wants ONE swap for Test of Conviction. Ranked: 1 Bloombrute (keeps card adv 7, avg MV 3.59), 2 Aerith (card adv 6, 3.57), 3 Heroic Feast (6, 3.57), 4 Kwia (6, 3.65, WW 6-drop, Lotus blank while Holo-Engineer is out). All keep A.
 2026-11-12: Tribbles vs Aerith for Test of Conviction — Aerith alone; both: Aerith −Test, Tribbles −Dominion Saboteur (A, card adv 6, avg MV 3.51) / −Jadzia (early drops 9) / −Helga (card adv 5).
+2026-11-12: +Aerith −Test of Conviction applied (A, card adv 6). Tribbles for Jett Reno advised against (Jett is an uncounted draw engine; early drops 10→9).

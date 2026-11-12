@@ -622,6 +622,32 @@
  "The Inner Light": [],
  "The Seriema": [],
  "The Traveler": [],
+ "Troubling Tribbles": [
+  {
+   "a": "Filipe Pagliuso",
+   "art": "https://cards.scryfall.io/art_crop/front/0/a/0af3e535-83e6-422b-85c5-39d830cb072c.jpg?1792508160",
+   "cn": "41",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/a/0af3e535-83e6-422b-85c5-39d830cb072c.jpg?1792508160",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Jason Raish",
+   "art": "https://cards.scryfall.io/art_crop/front/1/3/1337f7ed-da1c-4fdd-9ad7-6f33fa5492bf.jpg?1792508789",
+   "cn": "408",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/3/1337f7ed-da1c-4fdd-9ad7-6f33fa5492bf.jpg?1792508789",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "U.S.S. Enterprise-A, Free Spirit": [
   {
    "a": "Evan Shipard",
