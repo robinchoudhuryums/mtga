@@ -601,3 +601,17 @@ Maybes (each needs a cut beyond the offered five): +Test of Priorities −Seven 
 +Don & Leo, Problem Solvers −Sickbay · +Jake Sisko −David and Carol Marcus.
 Watch: removal stays at three (70,000 Light-Years, Vigorbloom, Holodeck); blue demand rises (Jett, Abuelo,
 Saboteur, Spock UU, Test of Priorities) — check blue sources in consistency, a Forest→Island may be needed.
+
+## 11. Deck 99 WRITTEN 2026-11-12 (owner's override) — Builder board live
+
+Owner authorised a one-day override of the release-date bound: `build_pool.py --query "game:arena (date<=now or
+set:trk or set:trc or set:sds)"`, then build_mana.py --pool and tag_synergies.py --merge. The 2026-11-13
+`make refresh REFETCH=1` restores the standard query. Deck 99 = the staged list + the five swaps (+Jett Reno
+−MACO, +D'Vana −Tilly, +Abuelo −Archer, +Dominion Saboteur −Geordi, +Test of Conviction −Pike). Preflight READY,
+legal, every printing known. Measured: interaction 3, card advantage 8, protection 7, board power 52, avg MV
+3.27, keepable 82.5% (low for 23 lands), W 14 / U 10 / G 15 sources; tier floor C (interaction 3; one more
+removal → B). similar: 0 shared cards with any deck (overlap is the generic counters theme; Federation has no tag).
+Builder project builds/trek-bant, board https://claude.ai/artifact/1eekQNYt2Jxtb3fh4wRSVu (pile F = 32 bench
+cards with reasons/verdicts). Owner keeps Seven of Nine and Sickbay, maybe David and Carol Marcus; the three
+maybes are on the board as suggestions: Test of Priorities −Brad Boimler, Don & Leo −The Inner Light, Jake Sisko
+−Xindi Surveyors.

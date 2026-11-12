@@ -1,0 +1,78 @@
+#: name: Final Frontier
+#: format: Standard
+#: colors: GWU
+#: plan: midrange
+#: archetype: Bant (G/W/U) Star Trek FEDERATION toolbox: a deck of many different creature TYPES (Sarek draws a card per
+#: archetype: five types; Hoshi-style Federation payoffs read the same count) that grows with +1/+1 COUNTERS and turns them
+#: archetype: into cards. Deanna Troi, Support Mission and Kellan Joins Up put counters on whatever enters (Kellan on the
+#: archetype: whole team whenever a legendary creature enters — about 20 here), Dr. M'Benga doubles every counter and gives
+#: archetype: countered creatures hexproof, Phlox draws when one connects, Dominion Supervisor gives them trample.
+#: archetype: Holo-Engineer turns every token (Enterprise-A's Officers, Captain Picard's Officers, Stable Wormhole's planets)
+#: archetype: into a 3/3 artifact creature; Abuelo re-runs the enter triggers. Jett Reno, D'Vana Tendi and Mr. Spock are
+#: archetype: the draw loop. DISTINCT from the roster's Bant decks (19 tokens, 65 Spiders, 67 cast from exile, 68 wide
+#: archetype: counters, 78 Allies): the spine is creature-type diversity, not a tribe.
+#: protect: Sarek, Federation Ambassador; Kellan Joins Up; Dr. Joseph M'Benga; Holo-Engineer; Phlox, Unorthodox Doctor
+#: notes: Drafted 2026-11-12 from the owner's Star Trek pile (.cycle/trek-pile-analysis.md sections 6-10): the owner's
+#: notes: 24-card core, then nonland singleton, then the owner's picks across five rounds. Ownership is information only.
+#: notes: Built before the TRK release date under a one-day OVERRIDE (owner's call): build_pool.py --query with
+#: notes: set:trk/trc/sds added to the date bound; the 2026-11-13 refresh replaces it.
+#: notes: Flags: Holo-Engineer REPLACES every token — David and Carol Marcus's, Subspace Anomaly's and Stable Wormhole's
+#: notes: land tokens become 3/3 Illusions while it is out (a body instead of the land). Removal is thin (70,000
+#: notes: Light-Years, Vigorbloom Charm, Malfunctioning Holodeck; Shields Up! protects). A blink resets the blinked
+#: notes: creature's counters (G-42): blink a fresh enter-trigger creature, not the grown one.
+
+# Creatures
+1 Sarek, Federation Ambassador (TRK) 251
+1 Syndicate Liquidators (TRK) 218
+1 Holo-Engineer (TRK) 201
+1 Rok-Tahk, Budding Scientist (TRK) 211
+1 Jadzia Dax, Living Legacy (TRK) 204
+1 Captain Jean-Luc Picard (TRK) 7
+1 Picard, Leading by Example (TRK) 29
+1 David and Carol Marcus, Creators (TRK) 193
+1 Jett Reno, Problem Solver (TRK) 67
+1 Phlox, Unorthodox Doctor (TRK) 250
+1 Mr. Spock, Science Officer (TRK) 74
+1 Worf, Honor-Bound Warrior (TRK) 256
+1 Dominion Saboteur (TRK) 54
+1 Seven of Nine, Unassimilated (TRK) 80
+1 Xindi Surveyors (TRK) 225
+1 Dr. Beverly Crusher (TRK) 13
+1 Brad Boimler, Eager Ensign (TRK) 5
+1 Helga, Skittish Seer (BLB) 217
+1 Dominion Supervisor (TRK) 195
+1 Abuelo, Ancestral Echo (LCI) 219
+1 Deanna Troi, Psychic Counsel (TRK) 11
+1 Dr. Joseph M'Benga (TRK) 196
+1 Captain Kathryn Janeway (TRK) 187
+1 D'Vana Tendi, Optimistic Ensign (TRK) 236
+1 The Doctor, EMH (TRK) 234
+
+# Spells, enchantments and artifacts
+1 Stable Wormhole (TRK) 215
+1 Sickbay (TRK) 268
+1 Warp Speed (TRK) 223
+1 The Inner Light (TRK) 241
+1 Malfunctioning Holodeck (TRK) 22
+1 Kellan Joins Up (OTJ) 212
+1 Support Mission (TRK) 216
+1 Shields Up! (TRK) 35
+1 Test of Conviction (TRK) 39
+1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
+1 70,000 Light-Years from Home (TRK) 1
+1 Vigorbloom Charm (FRA) 160
+
+# Lands
+1 Starfleet Academy (TRK) 297
+1 Subspace Anomaly (TRK) 300
+1 Q Continuum (TRK) 290
+1 Federation Outpost (TRK) 282
+1 Ni'Var Science Academy (TRK) 287
+4 Temple Garden (ECL) 268
+2 Hallowed Fountain (ECL) 265
+2 Breeding Pool (EOE) 251
+1 Urban Retreat (SPM) 187
+1 Vulcan (TRK) 305
+1 Earth, Sector 001 (TRK) 281
+4 Forest (TRK) 325
+3 Plains (TRK) 317

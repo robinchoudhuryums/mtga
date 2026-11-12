@@ -99,6 +99,7 @@ Cryogen Relic
 Crypt Feaster
 Cuboid Colony
 Cut Your Losses
+D'Vana Tendi, Optimistic Ensign
 Daemogoth Titan
 Daggerfang Duo
 Dalkovan Packbeasts
@@ -106,6 +107,7 @@ Daredevil, Fearless Fighter
 Dark Confidant
 Darkstar Augur
 Daydream
+Deanna Troi, Psychic Counsel
 Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
@@ -113,6 +115,7 @@ Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
 Diligent Zookeeper
+Dominion Supervisor
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, the Brains
@@ -213,6 +216,7 @@ Hellrider
 Herald of Eternal Dawn
 Herald of Secret Streams
 High Fae Trickster
+Holo-Engineer
 Honden of Night's Reach
 Honored Knight-Captain
 Hop to It
@@ -238,6 +242,7 @@ Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
+Jadzia Dax, Living Legacy
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Jiang Yanggu, Never Alone
@@ -339,6 +344,7 @@ Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
 Petrify
+Picard, Leading by Example
 Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
@@ -445,6 +451,7 @@ Tetsuko Umezawa, Pursuer
 The Ancient One
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
+The Doctor, EMH
 The Final Days
 The Infamous Cruelclaw
 The Kingpin of Crime
@@ -517,6 +524,7 @@ Wisecrack
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
+Worf, Honor-Bound Warrior
 Wraith, Vicious Vigilante
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul

@@ -6107,11 +6107,6 @@ Ghalta the Unstoppable,{8}{G},9,Trample
 "Saheeli, Jewel of Avishkar",{2}{U}{R},4,
 "Vraska, the Cutting Glare",{B}{B}{G},3,Treasure;Deathtouch
 "Karn, Argent Defender",{2},2,
-Plains,,0,
-Island,,0,
-Swamp,,0,
-Mountain,,0,
-Forest,,0,
 "Omnath, Locus of the Void",{7},7,Landfall
 "Avacyn, Angel of Horror",{5}{B}{B}{B},8,Deathtouch;Flying
 "Jhoira, Weatherlight Corsair",{4}{B}{B},6,
@@ -7781,7 +7776,6 @@ Pathmaker Initiate,{1}{R},2,
 Pigment Storm,{3}{R}{R},5,
 Play with Fire,{R},1,Scry
 Pyrophobia,{1}{R},2,
-Reckless Impulse,{1}{R},2,
 Renegade Tactics,{R},1,
 Resistance Skywarden,{3}{R}{R},5,Reach;Menace
 Roil Eruption,{1}{R},2,Kicker
@@ -14435,7 +14429,6 @@ Match the Odds,{2}{G},3,
 Seismic Tutelage,{3}{G},4,Enchant;Double
 Hog-Monkey Rampage,{1}{R/G},2,Fight
 Mechanical Glider,{1},1,Equip
-Run Amok,{1}{R},2,
 Explore,{1}{G},2,
 Flawless Maneuver,{2}{W},3,
 Deadly Rollick,{3}{B},4,
@@ -14496,6 +14489,357 @@ Escape Tunnel,,0,
 Foot Headquarters,,0,
 Northampton Farm,,0,
 TCRI Building,,0,
+The Borg Queen,{4}{W}{U}{B},7,Assimilate
+Commander Spock,{2}{G}{W}{U},5,Strange new worlds
+"Jean-Luc Picard, Luminary",{1}{U}{R}{W},4,Seek;Seek out
+"Worf, Defiant Commander",{2}{R}{W}{B},5,Battlefront
+"Data, Exploring Humanity",{4}{U},5,Seek;Seek out;Discover
+Battle of Wolf 359,{3}{B}{B},5,
+"Grilka, Widowed Warrior",{5}{R},6,Treasure
+"Captain Janeway, Endgame",{1}{U}{R}{W},4,
+"Captain Kirk, Boldly Going",{1}{G}{W}{U},4,Vigilance
+Commander William Riker,{1}{R}{W},3,Vigilance;Haste
+"Kor, Cause of Vengeance",{1}{R}{W}{B},4,
+Locutus of Borg,{1}{W}{U}{B},4,Lifelink
+"McCoy, Not a Bricklayer",{3}{G}{W},5,
+Starship Enterprise,{5},5,Station;Landfall
+Evasive Maneuvers,{W},1,
+Head of Security,{1}{W},2,First strike
+Shuttle Crew,{2}{W},3,Flying
+Sickbay Orderly,{2}{W},3,Lifelink
+Starfleet Crew,{1}{W},2,
+"Will Riker, Assuming Command",{4}{W},5,
+"Worf, Chief Tactical Officer",{2}{W},3,Vigilance
+Cryogenic Stasis,{1}{U},2,
+Exocomp,{2}{U},3,Flying
+Kolinahr Priest,{2}{U},3,Flash
+"La Forge, Perceptive Engineer",{1}{U},2,Vigilance
+"Pelia, Immortal Innovator",{3}{U},4,
+"T'Pol, Vulcan Representative",{4}{U},5,
+"Badgey, Malicious Glitch",{3}{B},4,
+Ceti Eel,{3}{B},4,Mill
+Defense Force Aggressor,{R},1,
+Direct Hit,{2}{R},3,
+Gin'tak Charge,{R},1,
+"Kruge, Genesis Seeker",{2}{R},3,
+Mek'leth Berserker,{3}{R},4,Menace
+Warship Flight Crew,{1}{R},2,
+Gorn Captain,{3}{G},4,Trample
+Gumato,{4}{G},5,Vigilance
+Talarian Hook Spider,{1}{G},2,Reach
+Disruptor Pistol,{2},2,
+Operations Officer,{3}{W},4,Lifelink
+"Picard, Steadfast Captain",{4}{W}{W},6,
+"Spock, Logical Choice",{3}{U}{U},5,Vigilance
+"Trelane, Squire of Gothos",{5}{U},6,Vigilance;Ward
+Bio-Asset Allocator,{3}{B}{B},5,
+"Borg Queen, Perfection Manifest",{4}{B}{B},6,Assimilate
+"Kirk, Enterprising Captain",{3}{R},4,Menace
+Klingon Strike Force,{3}{R}{R},5,Haste;Trample
+"Benjamin Sisko, Besieged",{4}{G}{G},6,
+Tenacious Tosk,{3}{G},4,
+Run Amok,{1}{R},2,
+"70,000 Light-Years from Home",{1}{W},2,
+Andromedan Automatons,{2}{W},3,
+Antagonist Incorporator,{1}{W},2,
+Assembly Specialist,{1}{W},2,
+"Brad Boimler, Eager Ensign",{1}{W},2,Lifelink
+Captain Benjamin Sisko,{1}{W},2,
+Captain Jean-Luc Picard,{2}{W},3,
+Command Decision,{1}{W},2,
+Command Subadjunct,{W},1,
+Conquest Mission,{2}{W},3,
+"Deanna Troi, Psychic Counsel",{1}{W},2,
+DOT-7 Repair Squad,{3}{W},4,Flying
+Dr. Beverly Crusher,{2}{W},3,
+"Dr. McCoy, Surly Surgeon",{2}{W}{W},4,Heal
+Emergency Medical Hologram,{W},1,
+Excalbian Gamemaster,{5}{W},6,Strange new worlds
+Federation Field Medic,{3}{W},4,Vigilance
+Federation Resupply,{1}{W},2,Beam me up
+Free Borg Revolutionaries,{3}{W}{W},5,Landcycling;Basic landcycling;Typecycling;Cycling
+Ghost of Illyria,{3}{W},4,Flying
+Hologram Janeway,{2}{W},3,
+Malfunctioning Holodeck,{2}{W},3,Ward
+The Measure of a Man,{2}{W},3,Investigate
+"Miles O'Brien, Transporter Ops",{2}{W},3,
+The Needs of the Many,{1}{W},2,
+Oberth-Class Starship,{1}{W},2,Station
+Peace in Our Time,{3}{W},4,
+Pet Sehlat,{2}{W},3,
+"Picard, Leading by Example",{1}{W},2,
+Primary Unimatrix Adjunct,{3}{W},4,
+Pure Energy,{1}{W},2,Beam me up
+"Rutherford, Upgraded Ensign",{2}{W},3,
+"Saavik, Stoic Student",{4}{W},5,Federation;Flash
+Set Phasers to . . .,{W},1,Kill;Stun
+Shields Up!,{1}{W},2,
+Shuttle Ace,{4}{W},5,
+"Sulu, Space Swashbuckler",{1}{W},2,First strike
+Tactical Officer,{1}{W},2,
+Test of Conviction,{1}{W},2,Battle Stations;Begin Negotiations
+There's Coffee in that Nebula,{1}{W},2,Beam me up
+Troubling Tribbles,{2}{W},3,
+"Una Chin-Riley, Number One",{4}{W},5,
+"U.S.S. Enterprise-A, Free Spirit",{3}{W}{W},5,Station;Ward
+"U.S.S. Excelsior, Cutting Edge",{3}{W},4,Station
+Vexing Drone,{1}{W},2,
+Anthropological Mission,{2}{U},3,
+The Caretaker,{5}{U},6,Vigilance;Face a dilemma;Ward
+Cetacean Ops,{3}{U},4,Ward
+Cloak and Phaser,{8}{U},9,Strange new worlds
+Cloistered Telepath,{1}{U},2,Flash
+Consider the Prime Directive,{2}{U},3,Observe;Interfere
+"Data, New Life",{1}{U},2,
+Deep Space Scan,{4}{U}{U},6,Strange new worlds
+Dominion Saboteur,{4}{U},5,
+Emergency Holographic Crew,{3}{U},4,Surveil
+Energize,{1}{U},2,Beam me up
+Ensign Pavel Chekov,{3}{U},4,Strange new worlds
+Enterprise NX-01,{3}{U},4,Station
+Federation Probe,{U},1,Flying;Surveil
+Guidance Failure,{3}{U},4,
+"Gwyndala, the Progeny",{1}{U},2,
+Highly Illogical,{1}{U},2,Kicker
+"H.M.S. Bounty, Unlikely Timeship",{4}{U},5,Station
+"Hoshi Sato, Exolinguist",{4}{U},5,Federation
+Humpback Whales,{4}{U}{U},6,Vigilance;Landcycling;Basic landcycling;Ward;Typecycling;Cycling
+Interstellar Effigy,{4}{U},5,
+"Jett Reno, Problem Solver",{1}{U},2,Surveil;Face a dilemma
+Kobayashi Maru Scenario,{1}{U}{U},3,Sensors;Abandon Ship;Hail;Transport
+Lieutenant Commander Data,{2}{U},3,
+Lt. Cmdr. Geordi La Forge,{2}{U},3,
+Make It So,{3}{U},4,
+Marooned,{U},1,Enchant
+Melkotian Adjudicator,{2}{U},3,Flying;Vigilance;Face a dilemma
+"Mr. Spock, Science Officer",{2}{U}{U},4,
+"Nyota Uhura, Communications",{2}{U},3,Open a Channel;Hailing Frequencies
+Open Communications,{U},1,Beam me up
+Romulan Bird-of-Prey,{1}{U},2,Station;Cloaking Device
+Rules of Acquisition,{3}{U}{U},5,Follow the 3rd Rule;Follow the 98th Rule
+"Scotty, Miracle Worker",{1}{U}{U},3,
+"Seven of Nine, Unassimilated",{1}{U},2,
+Starfleet Spanner Jockey,{1}{U},2,Defender
+Subcommander T'Pol,{2}{U},3,Flash
+Suurok-Class Science Vessel,{2}{U},3,Station
+Suus Mahna Practitioner,{2}{U},3,Strange new worlds
+Test of Priorities,{1}{U},2,Surveil;Power to Engines;Power to Life Support
+Those Old Scientists,{2}{U},3,
+"V'Ger, the Intruder",{6}{U},7,Flying
+Vulcan Mind-Meld,{U},1,
+"Wesley Crusher, Starfleet Cadet",{2}{U}{U},4,Flash
+"Zefram Cochrane, Warp Pioneer",{2}{U},3,
+"Armus, Skin of Evil",{5}{B}{B},7,Menace
+Assault Drone,{3}{B},4,
+Automated Warfare System,{2}{B},3,Flying
+Bat'leth,{2}{B},3,Equip
+Battle-Scarred Survivalist,{1}{B},2,Menace
+Blastoneuron,{3}{B},4,Flying
+Cha'DIch Investigator,{4}{B},5,
+Collation Trimatrix,{B},1,
+Collective Drone,{1}{B},2,
+Commander Raffi Musiker,{2}{B},3,Investigate
+D'Ghor Bloodletter,{2}{B},3,
+Death Is Irrelevant,{6}{B}{B},8,Assimilate
+The Destruction of Praxis,{3}{B}{B},5,Strange new worlds
+De-evolve,{1}{B},2,Enchant;Threshold
+Eject the Warp Core,{1}{B},2,Kicker
+"Elim Garak, Simple Tailor",{2}{B},3,Face a dilemma;Menace
+Fugitive Listener,{2}{B},3,
+"Gabriel Lorca, Mirror Menace",{4}{B},5,Face a dilemma;Menace
+"General Chang, Cold Warrior",{B},1,
+"Georgiou, Terran Emperor",{4}{B}{B},6,
+A Good Day to Die,{B},1,
+Grand Nagus Zek,{2}{B},3,Treasure
+"Gul Dukat, Colonial Prefect",{4}{B}{B}{B},7,Menace
+"He's Dead, Jim",{3}{B},4,Surveil
+Hive Mind Coprocessor,{4}{B},5,
+Impossible Choice,{2}{B},3,Surgical Separation;Remain Fused
+In the Pale Moonlight,{3}{B}{B},5,Investigate
+"Kai Winn, Faithless Leader",{1}{B},2,
+"Khan, Vengeful Heart",{2}{B}{B},4,
+Obsidian Order Operative,{3}{B},4,Face a dilemma
+Organic Avulsion Unit,{2}{B},3,
+Overflow Submatrix,{2}{B},3,
+Pattern Buffer Preservation,{1}{B},2,Beam me up
+Relentless Drednok,{B},1,Lifelink
+Resistance Is Futile,{1}{B},2,
+Rogue Artificial Intelligence,{4}{B}{B},6,Surveil;Landcycling;Basic landcycling;Typecycling;Cycling
+Salt Vampire,{1}{B},2,Lifelink
+"Sela, Tal Shiar Paradox",{3}{B},4,
+Storied Veteran,{B},1,
+Stray from History,{2}{B},3,Rewrite the Past;Repair the Timeline
+Tal Shiar Operative,{1}{B},2,Surveil
+Tell Me What You See,{1}{B},2,Surveil;Face a dilemma
+Tenacious Drone,{1}{B},2,
+Test of Loyalty,{B},1,"Of the Obsidian Order;Plain, Simple Garak"
+"U.S.S. Reliant, From Hell's Heart",{2}{B}{B},4,Station
+Vengeance Mission,{2}{B},3,
+Academy Instructor,{2}{R},3,
+"Beckett Mariner, Impetuous Ensign",{1}{R},2,Reckless Behavior;First strike
+Boarding Action,{1}{R},2,Beam me up
+Brazen Bluff,{R}{R},2,
+Cantankerous Captain,{2}{R},3,
+Captain James T. Kirk,{2}{R},3,
+Captain Michael Burnham,{2}{R},3,Trample;Landfall
+Captain's Tutelage,{1}{R},2,Enchant;Flash
+D-7 Battle Cruiser,{1}{R},2,Station
+Dahar Master,{3}{R},4,
+Dominion Infiltration,{X}{R}{R}{R},3,
+Encounter the Unknown,{1}{R}{R},3,Come in Peace;Shoot to Kill
+"Erica Ortegas, Plucky Pilot",{3}{R},4,Haste
+Exploratory Mission,{2}{R}{R},4,Landfall
+Genesis Effect,{4}{R},5,
+Horta,{4}{R}{R},6,Landcycling;Trample;Basic landcycling;Typecycling;Cycling
+Infinite Diversity,{7}{R}{R},9,Federation
+Khaaaaaaaaaaaannn!,{X}{R},1,
+"Khan, Despot by Design",{4}{R},5,Trample
+"La'An Noonien-Singh, Security",{2}{R}{R},4,
+"Lwaxana Troi, Charming Guest",{1}{R},2,
+Munitions Enthusiast,{1}{R},2,Trample
+The Naked Time,{1}{R},2,
+Pah-Wraith,{5}{R}{R},7,First strike;Haste;Strange new worlds
+Perils of the Past,{1}{R},2,Destroy the Relic;Use the Relic
+Planetary Bombardment,{R},1,
+Planetary Patrol,{1}{R},2,Landfall
+Plasma Cascade,{2}{R},3,
+"Q, Stacking the Deck",{2}{R}{R},4,
+"Quark, Humble Proprietor",{2}{R},3,Treasure
+Ravenous Cosmozoan,{5}{R},6,Flying;Haste
+Reckless Impulse,{1}{R},2,
+Red Alert!,{2}{R},3,
+"Sarcophagus, Ship of the Dead",{2}{R},3,Station
+Savvy Profiteer,{1}{R},2,Treasure
+Silicate Surveyor,{4}{R},5,Reach
+Starfleet Security,{R},1,Investigate;Haste
+Tal Shiar Analyst,{2}{R},3,
+Targ Wrangler,{2}{R},3,Menace
+"Tasha Yar, Out of Time",{1}{R},2,Haste
+Test of Identity,{1}{R},2,I Am Klingon;I Am Starfleet
+Transporter Malfunction,{1}{R},2,Beam me up
+"Will Riker, First in the Field",{3}{R},4,
+"Worf, Intelligence Contractor",{2}{R},3,
+The Wrath of Khan,{2}{R},3,
+Adversary by Algorithm,{2}{G},3,Beam me up
+Amok Time,{2}{G},3,Fight
+Astute Terraformer,{1}{G},2,Strange new worlds
+Branching Timeline,{6}{G}{G},8,Strange new worlds
+Captain Jonathan Archer,{2}{G},3,Federation
+Captain Kathryn Janeway,{3}{G},4,Explore
+"Captain Pike, Fullness of Time",{1}{G}{G},3,Strange new worlds
+Cold-Blooded Crew,{4}{G}{G},6,Landcycling;Basic landcycling;Typecycling;Cycling
+Common Goal,{1}{G},2,
+"Culber and Stamets, Star-Crossed",{3}{G},4,
+Dathon and Picard at El-Adrel,{2}{G},3,"Temba, His Arms Wide;Shaka, When the Walls Fell"
+"David and Carol Marcus, Creators",{2}{G},3,
+Dominion Assault Force,{3}{G},4,Surveil;Vigilance
+Dominion Supervisor,{2}{G},3,
+Dr. Joseph M'Benga,{2}{G}{G},4,
+"Dr. Leonard ""Bones"" McCoy",{1}{G}{G},3,Flash
+Final Frontier,{2}{G},3,Beam me up
+First Contact,{1}{G},2,Mill
+Genesis Device,{2}{G},3,
+Holo-Engineer,{2}{G}{G},4,
+Hologram Stalker,{4}{G}{G},6,
+"I'm a Doctor, Not a . . .",{G},1,
+"Jadzia Dax, Living Legacy",{1}{G},2,Transfer Symbiont
+"Jake Sisko, War Correspondent",{1}{G},2,Investigate;Landfall
+MACO Strike Team,{G},1,
+Moopsy,{G},1,Deathtouch
+Mugato,{3}{G}{G},5,Reach;Vigilance;Deathtouch
+"Neelix, Moral Support",{1}{G},2,Food
+Photosynthetic Physician,{4}{G},5,Reach
+"Rok-Tahk, Budding Scientist",{4}{G}{G},6,
+"Saru, Unthreatened",{2}{G},3,Flash
+Saurian Explorer,{3}{G},4,Landfall
+Species 8472,{4}{G}{G},6,Strange new worlds
+Stable Wormhole,{2}{G},3,
+Support Mission,{2}{G},3,
+"Sylvia Tilly, Joy of Discovery",{2}{G},3,Surveil
+Syndicate Liquidators,{4}{G},5,Trample;Landfall
+Temporal Conqueror,{2}{G},3,Treasure;Mill
+Test of Courage,{G},1,Obliterate the Transwarp Network;Alter the Past
+"U.S.S. Discovery, at Black Alert",{3}{G}{G},5,Station;Discover
+"U.S.S. Voyager, Lone Wanderer",{3}{G},4,Station
+Warp Speed,{2}{G},3,Strange new worlds
+Xenobotanist,{1}{G},2,
+Xindi Surveyors,{2}{G},3,Landfall
+All Good Things...,{3}{G}{U},5,
+Borg Cube,{5}{W}{B},7,Assimilate;Affinity;Station
+The City on the Edge of Forever,{3}{W}{B},5,
+"Cleveland Booker, Empath",{2}{R/G}{R/G},4,Landfall
+Constable Odo,{3}{W/U}{W/U},5,Investigate
+"Dal R'El, Augment Orphan",{1}{R}{G},3,Landfall
+"Daniels, Temporal Agent",{2}{B/G}{B/G},4,
+"Dathon, His Heart Open",{G}{U}{R},3,
+"The Doctor, EMH",{3}{G/W}{G/W},5,
+The Duras Sisters,{B/R}{B/R},2,
+"D'Vana Tendi, Optimistic Ensign",{1}{G/U}{G/U},3,Surveil
+"Gowron, Eager for Battle",{2}{B}{R},4,
+"Gray and Adira, Forever Joined",{2}{U/R}{U/R},4,
+"Hemmer, Fixing What Is Broken",{W}{U},2,
+Hit It!,{1}{R}{G},3,
+The Inner Light,{3}{G}{W},5,Treasure
+"Kira Nerys, Firebrand",{1}{R}{W},3,Trample
+"Kirk, Commanding Officer",{1}{R}{W},3,
+Live Long and Prosper,{5}{W}{U},7,Double
+"Locutus, the One Who Speaks",{W}{B},2,
+"Lore, Positronic Provocateur",{1}{U/B}{U/B},3,Surveil
+"L'Rell, Fierce Visionary",{1}{B}{R},3,Surveil
+Mirror Universe Intrusion,{1}{U}{B},3,Kicker
+"Nog, Ambitious Cadet",{B}{G},2,Surveil;Menace
+"Phlox, Unorthodox Doctor",{2}{G}{W},4,Trample
+"Sarek, Federation Ambassador",{1}{G}{W}{U},4,Federation
+Seven of Nine,{2}{U}{B},4,Face a dilemma
+"Spock, Always Your Friend",{U}{R},2,
+The Traveler,{G}{U},2,Reach;Vigilance;Strange new worlds
+"Vash, Freelance Archaeologist",{1}{B}{G},3,Surveil
+"Worf, Honor-Bound Warrior",{R/W}{R/W},2,Double
+Year of Hell,{1}{U}{R},3,
+"Zero, Incorporeal Sensate",{1}{W/B}{W/B},3,Lifelink
+Class-F Shuttlecraft,{3},3,Station
+Combadge,{3},3,Equip
+Crystalline Entity,{8},8,Flying
+Cybernetic Specialist,{2},2,Surveil
+Deep Space 9,{9},9,Station
+Engineered Explosives,{X},0,Sunburst
+The Holodeck,{7},7,
+Isolinear Processor,{2},2,
+Replicator,{2},2,Food
+Sickbay,{5},5,
+"Tea, Earl Grey, Hot",{2},2,
+Tricorder,{1},1,Surveil;Equip
+Type-2 Phaser,{2},2,Equip
+"U.S.S. Cerritos, Following Up",{5},5,Station
+"U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
+Warp Core,{2},2,
+Andoria,,0,
+Artificial Anomaly,,0,
+Bajor,,0,
+Cardassia Prime,,0,
+"Earth, Sector 001",,0,
+Federation Outpost,,0,Surveil
+Ferenginar,,0,
+Gaseous Anomaly,,0,
+Ni'Var Science Academy,,0,Surveil
+Orion,,0,
+Q Continuum,,0,Surveil
+Qo'noS,,0,
+Quark's Bar,,0,Surveil
+Risa,,0,
+Romulus,,0,
+Spatial Anomaly,,0,
+Starfleet Academy,,0,Federation
+Subspace Anomaly,,0,
+Temporal Anomaly,,0,Mill
+Unexplored Territory,,0,
+The Unicomplex,,0,Surveil
+Vulcan,,0,
+Plains,,0,
+Island,,0,
+Swamp,,0,
+Mountain,,0,
+Forest,,0,
 Magmaw,{3}{R}{R},5,
 "Leovold, Emissary of Trest",{B}{G}{U},3,
 Ancient Tomb,,0,

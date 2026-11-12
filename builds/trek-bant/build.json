@@ -1,0 +1,664 @@
+{
+ "schema": 1,
+ "title": "Final Frontier — Bant Federation (Standard)",
+ "decks": [
+  {
+   "key": "F",
+   "id": "99",
+   "label": "Final"
+  }
+ ],
+ "piles": [
+  {
+   "key": "F",
+   "label": "Final's pile",
+   "deck": "F",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Test of Priorities",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Don & Leo, Problem Solvers",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Jake Sisko, War Correspondent",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Ghost of Illyria",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Miles O'Brien, Transporter Ops",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Energize",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Ennis, Debate Moderator",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Charming Prince",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Spectacular Tactics",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Felidar Retreat",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Saavik, Stoic Student",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Set Phasers to . . .",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Wesley Crusher, Starfleet Cadet",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Dr. McCoy, Surly Surgeon",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Hologram Janeway",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Make It So",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Aang, at the Crossroads",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Temporal Anomaly",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Gaseous Anomaly",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Dominion Assault Force",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Replicator",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Neelix, Moral Support",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Scotty, Miracle Worker",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Bristly Bill, Spine Sower",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Amok Time",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Melkotian Adjudicator",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Captain Pike, Fullness of Time",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Sylvia Tilly, Joy of Discovery",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Lt. Cmdr. Geordi La Forge",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "MACO Strike Team",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "Captain Jonathan Archer",
+   "pile": "F",
+   "src": "added"
+  },
+  {
+   "name": "The Traveler",
+   "pile": "F",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Test of Priorities": {
+   "group": "Strong",
+   "text": "Instant, modal: surveil 2 and draw, or blink your creature in response to removal (it returns at end step, re-triggering Kellan, Support Mission, Deanna and Janeway). Cheap protection the deck lacks.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "group": "Strong",
+   "text": "OWNED. A free blink of an artifact AND a creature every end step: Enterprise-A makes three more Officers each turn. 5 mana.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Jake Sisko, War Correspondent": {
+   "group": "Real",
+   "text": "Landfall life (Crusher counters, Sickbay) and a Clue on the second land a turn; Janeway's extra land and Stable Wormhole make that reachable.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Ghost of Illyria": {
+   "group": "Strong",
+   "text": "Flier; its ETB blinks any nonland permanent you control — Enterprise-A, Malfunctioning Holodeck (new target), even Kellan Joins Up.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Miles O'Brien, Transporter Ops": {
+   "group": "Strong",
+   "text": "Returns your creature or artifact to hand (re-cast for Captain Picard's Officer and Helga's card) and draws at end step whenever a permanent came back to hand that turn.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Energize": {
+   "group": "Real",
+   "text": "Bounces THEIR creature (removal the deck is short on); beam me up {3}{U} recasts it by returning one of yours.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Ennis, Debate Moderator": {
+   "group": "Real",
+   "text": "OWNED. 2-drop that blinks a creature on entry and grows when cards are exiled.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Charming Prince": {
+   "group": "Real",
+   "text": "Modal 2-drop: blink a creature, scry 2 or 3 life.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Spectacular Tactics": {
+   "group": "Strong",
+   "text": "OWNED. A counter + hexproof, or destroy a power-4+ creature. The cheapest way to lift interaction from 3 to 4 (tier floor C to B).",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Felidar Retreat": {
+   "group": "Strong",
+   "text": "Every land: a 2/2 (a 3/3 with Holo-Engineer) or a counter on every creature; Stable Wormhole and Janeway add lands. Modal each time.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Saavik, Stoic Student": {
+   "group": "Real",
+   "text": "Flash; deals damage equal to your creature types to an attacking or blocking creature. Removal that grows with the Federation count.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Set Phasers to . . .": {
+   "group": "Real",
+   "text": "1 mana: stun a creature or 3 damage to an attacker.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Wesley Crusher, Starfleet Cadet": {
+   "group": "Real",
+   "text": "Flash, choose two: counter a noncreature spell (tax 2), bounce a 2-drop, unblockable, or loot.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Dr. McCoy, Surly Surgeon": {
+   "group": "Real",
+   "text": "A counter, then countered creatures shrug off destroy (lose their counters instead). WW at 4.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Hologram Janeway": {
+   "group": "Situational",
+   "text": "A counter per attack once your attackers total 8+ power.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Make It So": {
+   "group": "Real",
+   "text": "Modal sorcery: draw two plus an Officer (a 3/3 with Holo-Engineer), or untap a permanent and draw two. Four cards with Mr. Spock.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Aang, at the Crossroads": {
+   "group": "Real",
+   "text": "OWNED. 5-mana flier; digs a 4-or-less creature onto the battlefield. The top end is already full.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Temporal Anomaly": {
+   "group": "Situational",
+   "text": "Colourless land; late: mill four, keep a permanent, make a New Planet. Only as a swap for Subspace Anomaly.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Gaseous Anomaly": {
+   "group": "Situational",
+   "text": "Colourless land; late: draw two and a New Planet. A third colourless land costs colour; only for Subspace Anomaly.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Dominion Assault Force": {
+   "group": "Situational",
+   "text": "4-mana 4/4 vigilance, modal ETB (graveyard hate or surveil).",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Replicator": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Stable Wormhole. Copies a token (a 3/3 with Holo-Engineer) and makes a Food.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Neelix, Moral Support": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Warp Speed. A Food and a counter whenever you gain life.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Scotty, Miracle Worker": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Mr. Spock. Gives every instant/sorcery in the graveyard beam me up; only worth it with more spells.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Bristly Bill, Spine Sower": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Kellan Joins Up. Landfall counters; {3}{G}{G} doubles every counter.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Amok Time": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Enterprise-A. A fight that scales with counters, then 3 life, then a creature back.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Melkotian Adjudicator": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Helga. Grows per dilemma; few modal cards left.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Captain Pike, Fullness of Time": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Test of Conviction. Size = land names; plays lands off the top.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Sylvia Tilly, Joy of Discovery": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for D'Vana Tendi. A counter every combat for {1}.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Lt. Cmdr. Geordi La Forge": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Dominion Saboteur. Doubles charge counters — only Enterprise-A uses them.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "MACO Strike Team": {
+   "group": "Situational",
+   "text": "CUT 2026-11-12 for Jett Reno. 1-drop; an Officer when an opponent targets your creature.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "Captain Jonathan Archer": {
+   "group": "Real",
+   "text": "CUT 2026-11-12 for Abuelo. {G},{T}: +X/+X where X is your creature types; Porthos token.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  },
+  "The Traveler": {
+   "group": "Real",
+   "text": "2-mana Captain Pike without the land-from-top; reach, vigilance.",
+   "graded_at": {
+    "99": "120708b64c5f"
+   }
+  }
+ },
+ "snapshots": {
+  "99": {
+   "120708b64c5f": [
+    "70,000 Light-Years from Home",
+    "Abuelo, Ancestral Echo",
+    "Brad Boimler, Eager Ensign",
+    "Breeding Pool",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "D'Vana Tendi, Optimistic Ensign",
+    "David and Carol Marcus, Creators",
+    "Deanna Troi, Psychic Counsel",
+    "Dominion Saboteur",
+    "Dominion Supervisor",
+    "Dr. Beverly Crusher",
+    "Dr. Joseph M'Benga",
+    "Earth, Sector 001",
+    "Federation Outpost",
+    "Forest",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Holo-Engineer",
+    "Jadzia Dax, Living Legacy",
+    "Jett Reno, Problem Solver",
+    "Kellan Joins Up",
+    "Malfunctioning Holodeck",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Phlox, Unorthodox Doctor",
+    "Picard, Leading by Example",
+    "Plains",
+    "Q Continuum",
+    "Rok-Tahk, Budding Scientist",
+    "Sarek, Federation Ambassador",
+    "Seven of Nine, Unassimilated",
+    "Shields Up!",
+    "Sickbay",
+    "Stable Wormhole",
+    "Starfleet Academy",
+    "Subspace Anomaly",
+    "Support Mission",
+    "Syndicate Liquidators",
+    "Temple Garden",
+    "Test of Conviction",
+    "The Doctor, EMH",
+    "The Inner Light",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Urban Retreat",
+    "Vigorbloom Charm",
+    "Vulcan",
+    "Warp Speed",
+    "Worf, Honor-Bound Warrior",
+    "Xindi Surveyors"
+   ]
+  }
+ },
+ "verdicts": {
+  "Test of Priorities": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Jake Sisko, War Correspondent": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Ghost of Illyria": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Miles O'Brien, Transporter Ops": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Energize": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Ennis, Debate Moderator": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Charming Prince": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Spectacular Tactics": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Felidar Retreat": {
+   "F": {
+    "m": "★★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Saavik, Stoic Student": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Set Phasers to . . .": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Wesley Crusher, Starfleet Cadet": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Dr. McCoy, Surly Surgeon": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Hologram Janeway": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Make It So": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Aang, at the Crossroads": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Temporal Anomaly": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Gaseous Anomaly": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Dominion Assault Force": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Replicator": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Neelix, Moral Support": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Scotty, Miracle Worker": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Bristly Bill, Spine Sower": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Amok Time": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Melkotian Adjudicator": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Captain Pike, Fullness of Time": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Sylvia Tilly, Joy of Discovery": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Lt. Cmdr. Geordi La Forge": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "MACO Strike Team": {
+   "F": {
+    "m": "◇",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "Captain Jonathan Archer": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  },
+  "The Traveler": {
+   "F": {
+    "m": "★",
+    "graded_at": "120708b64c5f"
+   }
+  }
+ }
+}
