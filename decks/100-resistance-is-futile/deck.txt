@@ -6,8 +6,8 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER BORG ARTIFACT CREATURES around Locutus of Borg:
 #: archetype: every artifact creature that connects makes a 1/1 Borg token, so the commander alone turns a board into more
 #: archetype: board. The number that matters is ARTIFACT CREATURES: Borg Cube gets cheaper per artifact creature and steals
-#: archetype: what it exiles (assimilate); The Borg Queen, Perfection Manifest, Tempered Steel, Iron Man, Cid, Chief of the
-#: archetype: Foundry and the other Locutus are anthems, and Deanna Troi, Mikaeus and Iron Spider add +1/+1 counters to the
+#: archetype: what it exiles (assimilate); The Borg Queen, Perfection Manifest, Iron Man, Cid, Chrome Dome and the other
+#: archetype: Locutus are anthems, Iron Man, Bleeding Edge copies an artifact spell each turn, and Deanna Troi, Mikaeus and Iron Spider add +1/+1 counters to the
 #: archetype: whole team; Primary Unimatrix Adjunct gives double strike, Organic Avulsion
 #: archetype: Unit menace, Cyberdrive Awakener flying; Hive Mind Coprocessor and Collation Trimatrix draw. Battle of Wolf 359
 #: archetype: and Crystalline Entity are one-sided sweepers while the board is artifact creatures. Spacecraft become artifact
