@@ -79,7 +79,7 @@
 1 Flare of Fortitude (MH3) 26
 1 Malfunctioning Holodeck (TRK) 22
 1 Kaito, Dancing Shadow (ONE) 204
-1 Tempered Steel (HA3) 4
+1 Iron Man, Bleeding Edge (MSC) 626
 1 Infernal Grasp (MID) 107
 1 Vanishing Verse (STX) 244
 1 Anguished Unmaking (OTP) 35
@@ -92,6 +92,7 @@
 1 Test of Conviction (TRK) 39
 1 Test of Priorities (TRK) 85
 1 Tezzeret, Master of the Bridge (WAR) 275
+1 Weather Maker (TMT) 182
 
 # Lands
 1 Command Tower (FRC) 22
@@ -122,5 +123,5 @@
 1 Uthros, Titanic Godcore (EOE) 260
 1 Fabled Passage (BLB) 252
 3 Plains (TRK) 317
-3 Island (TRK) 319
+2 Island (TRK) 319
 3 Swamp (TRK) 321
