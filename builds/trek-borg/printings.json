@@ -1246,6 +1246,43 @@
   }
  ],
  "Haunt the Network": [],
+ "Haunted Ridge": [
+  {
+   "a": "Jonas De Ro",
+   "art": "https://cards.scryfall.io/art_crop/front/b/2/b200e822-be36-4e59-bd0e-9d0188a68df8.jpg?1783925543",
+   "cn": "263",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/2/b200e822-be36-4e59-bd0e-9d0188a68df8.jpg?1783925543",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Piotr Dura",
+   "art": "https://cards.scryfall.io/art_crop/front/9/1/91f67a64-b97d-473a-be9d-c8044ff86605.jpg?1783925536",
+   "cn": "282",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/1/91f67a64-b97d-473a-be9d-c8044ff86605.jpg?1783925536",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Wayne Wu",
+   "art": "https://cards.scryfall.io/art_crop/front/a/4/a4e4966b-8963-4fac-a8bf-e778e063c7dd.jpg?1788878241",
+   "cn": "180",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/4/a4e4966b-8963-4fac-a8bf-e778e063c7dd.jpg?1788878241",
+   "r": "R",
+   "set": "FRA",
+   "sn": "Reality Fracture",
+   "y": "2026"
+  }
+ ],
  "Haunted Screen": [],
  "Hemmer, Fixing What Is Broken": [],
  "Hive Mind Coprocessor": [],

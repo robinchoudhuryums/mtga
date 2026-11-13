@@ -890,6 +890,11 @@
    "name": "Spatial Anomaly",
    "pile": "S",
    "src": "added"
+  },
+  {
+   "name": "Haunted Ridge",
+   "pile": "S",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2252,6 +2257,14 @@
     "100": "113389f32e5c",
     "101": "29792de3e8e6"
    }
+  },
+  "Haunted Ridge": {
+   "group": "Real",
+   "text": "OWNED (owner, 2026-11-13). Black-red land, untapped once you control two other lands. Best as a 38th land in place of Kenrith: average on-curve 43.8% → 45.4%, keepable 79.9% → 81.2%. Replacing a tapped tri-land with it measured slightly worse (-0.2 to -0.3: it makes two colours, not three).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "a8ae53112148"
+   }
   }
  },
  "snapshots": {
@@ -2845,6 +2858,108 @@
     "Unfortunate Accident",
     "Vigorbloom Charm",
     "Warren Warleader",
+    "Watery Grave",
+    "Weather Maker",
+    "Xander's Lounge",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "a8ae53112148": [
+    "Academy Instructor",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Brokers Charm",
+    "Cabaretti Charm",
+    "Captain Benjamin Sisko",
+    "Captain James T. Kirk",
+    "Captain Janeway, Endgame",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Casualties of War",
+    "Cayth, Famed Mechanist",
+    "Collective Effort",
+    "Command Tower",
+    "Consider the Prime Directive",
+    "Cosmogrand Zenith",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Dominion Saboteur",
+    "Dromoka's Command",
+    "Elder Gargaroth",
+    "Elim Garak, Simple Tailor",
+    "Elven Raft-Steerer",
+    "Excalbian Gamemaster",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Forest",
+    "Gala Greeters",
+    "Galadriel, Light of Valinor",
+    "Ghalta and Mavren",
+    "Glissa Sunslayer",
+    "Godless Shrine",
+    "Golos, Tireless Pilgrim",
+    "Hallowed Fountain",
+    "Indatha Triome",
+    "Infinite Guideline Station",
+    "Inscription of Abundance",
+    "Island",
+    "Isshin, Two Heavens as One",
+    "Jean-Luc Picard, Luminary",
+    "Jetmir's Garden",
+    "Jett Reno, Problem Solver",
+    "Kenrith, the Returned King",
+    "Ketria Triome",
+    "Kykar, Zephyr Awakener",
+    "Maestros Charm",
+    "Make It So",
+    "Mana Confluence",
+    "Melkotian Adjudicator",
+    "Mountain",
+    "Mr. Spock, Science Officer",
+    "Ni'Var Science Academy",
+    "Oltec Matterweaver",
+    "Operations Officer",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Q Continuum",
+    "Raffine's Tower",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riku of Many Paths",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riveteers Charm",
+    "Rok-Tahk, Budding Scientist",
+    "Sacred Foundry",
+    "Sarek, Federation Ambassador",
+    "Savai Triome",
+    "Scotty, Miracle Worker",
+    "Set Phasers to . . .",
+    "Seven of Nine",
+    "Seven of Nine, Unassimilated",
+    "Sheoldred, the Apocalypse",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Subspace Anomaly",
+    "Sultai Charm",
+    "Swamp",
+    "Tal Shiar Operative",
+    "Temple Garden",
+    "Territorial Kavu",
+    "Test of Conviction",
+    "Test of Priorities",
+    "The Caretaker",
+    "The Fantastic Four",
+    "The Vision",
+    "Three Steps Ahead",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "U.S.S. Enterprise-D, Galaxy-Class",
+    "Umezawa's Jitte",
+    "Vigorbloom Charm",
     "Watery Grave",
     "Weather Maker",
     "Xander's Lounge",
@@ -4552,6 +4667,16 @@
    "S": {
     "m": "★",
     "graded_at": "29792de3e8e6"
+   }
+  },
+  "Haunted Ridge": {
+   "S": {
+    "m": "★",
+    "graded_at": "a8ae53112148"
+   },
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
    }
   }
  }
