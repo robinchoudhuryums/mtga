@@ -17,7 +17,7 @@
 #: archetype: reason; Sinister Cryologist and Weftstalker Ardent are here on their bodies,
 #: archetype: not their warp. Same trap as grading a card by the half you want.
 #: archetype: MAYHEM IS THE SPINE: "cast this from your graveyard if you DISCARDED it this
-#: archetype: turn." Seven owned mayhem cards plus a discard package to switch them on, and
+#: archetype: turn." It runs seven owned mayhem cards plus a discard package to switch them on, and
 #: archetype: Ultimate Green Goblin does both halves by itself (upkeep: discard a card, make
 #: archetype: a Treasure — which is discard outlet, mayhem enabler and ramp in one line).
 #: archetype: NORMAN OSBORN IS THE PAYOFF and the deck's one craft target. His back face

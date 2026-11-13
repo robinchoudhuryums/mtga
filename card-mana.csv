@@ -840,7 +840,7 @@ Hidetsugu's Second Rite,{3}{R},4,
 Kav Landseeker,{3}{R},4,Menace
 Kindle the Inner Flame,{3}{R},4,Behold;Flashback
 "Krenko, Mob Boss",{2}{R}{R},4,
-"Mjölnir, Hammer of Thor",{3}{R},4,Double
+"Mjölnir, Hammer of Thor",{3}{R},4,Equip;Double
 Nibelheim Aflame,{2}{R}{R},4,Flashback
 Orbital Plunge,{3}{R},4,
 "Raphael, Ninja Destroyer",{2}{R}{R},4,Enrage
@@ -10799,7 +10799,7 @@ Case of the Burning Masks,{1}{R}{R},3,Solved
 Case of the Crimson Pulse,{2}{R},3,Solved
 Caught Red-Handed,{4}{R},5,Suspect
 The Chase Is On,{2}{R},3,Investigate
-Concealed Weapon,{1}{R},2,Disguise;Equip
+Concealed Weapon,{1}{R},2,Equip;Disguise
 Connecting the Dots,{1}{R},2,
 Convenient Target,{R},1,Suspect;Enchant
 Cornered Crook,{4}{R},5,
@@ -16208,7 +16208,7 @@ Cathartic Operation,{3}{U}{B},5,Seek
 Emperor Apatzec Intli IV,{R}{G}{W},3,Seek
 "Grenzo, Crooked Jailer",{4}{B}{R},6,Heist
 Intruder's Inquisition,{B}{R},2,
-"Nashi, Illusion Gadgeteer",{1}{B}{G}{U},4,Menace;Ward;Flash;Conjure
+"Nashi, Illusion Gadgeteer",{1}{B}{G}{U},4,Menace;Ward;Conjure
 Silent Extraction,{G}{U},2,Seek;Threshold
 Teysa of the Ghost Council,{2}{W}{B},4,Intensity
 Triumphant Getaway,{1}{U}{B}{R},4,Flash;Heist

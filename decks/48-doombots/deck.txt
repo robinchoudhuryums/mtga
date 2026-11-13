@@ -50,7 +50,7 @@
 #: archetype: deck exists: a pool search for a literal Robot lord ("Robots you control get…")
 #: archetype: returns ZERO cards in all of Standard, which is why an earlier pass declined this
 #: archetype: archetype outright. The lords are real, they just never name the type — you name
-#: archetype: it. Seven of them are in here.
+#: archetype: it; seven of them are in here.
 #: archetype: LEYLINE OF TRANSFORMATION IS THE KEYSTONE and it is easy to under-read: "creatures
 #: archetype: you control are the chosen type in addition to their other types" makes EVERY
 #: archetype: creature you control a Robot, including Shuri, Tony Stark and Baxter Stockman who

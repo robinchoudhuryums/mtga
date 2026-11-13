@@ -1677,7 +1677,7 @@ Flashback—{1}{R}, Behold three Elementals. (You may cast this card from your g
 "Mjölnir, Hammer of Thor",Legendary Artifact — Equipment,"When Mjölnir enters, it deals 4 damage to up to one target creature.
 Double all damage equipped creature would deal.
 Equip worthy {1} (A creature is worthy if it's a legendary non-Villain that's red and/or white.)
-{2}{R}, Discard this card: It deals 2 damage to each creature.",R,equipment; burn; etb; double,MSH,146,1
+{2}{R}, Discard this card: It deals 2 damage to each creature.",R,equipment; burn; etb; double; equip,MSH,146,1
 Nibelheim Aflame,Sorcery,"Choose target creature you control. It deals damage equal to its power to each other creature. If this spell was cast from a graveyard, discard your hand and draw four cards.
 Flashback {5}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; card draw; flashback; recursion; spellslinger,FIN,146,1
 Orbital Plunge,Sorcery,"Orbital Plunge deals 6 damage to target creature. If excess damage was dealt this way, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,sacrifice; tokens; burn; ramp,EOE,149,1

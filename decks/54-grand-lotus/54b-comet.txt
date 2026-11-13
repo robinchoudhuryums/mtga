@@ -38,7 +38,7 @@
 #: archetype: fives and is red by definition, so X is large and the pips are free. Then
 #: archetype: every damage source you control deals X more: firebending attackers, the burn
 #: archetype: instants, Thor, Spider-Man 2099's end-step shot and Ovika's token swarm.
-#: archetype: THE ATTACK IS THE DRAW STEP. Seven creatures turn combat into cards or spells:
+#: archetype: THE ATTACK IS THE DRAW STEP. A full seven creatures turn combat into cards or spells:
 #: archetype: Bilbo, Thief in the Night casts a graveyard spell on ATTACK (firebending mana pays)
 #: archetype: and makes every spell cast from outside the hand {1} cheaper;
 #: archetype: Sphinx of Forgotten Lore and The Dawning Archaic grant and free-cast on
