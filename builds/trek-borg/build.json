@@ -2246,8 +2246,8 @@
    }
   },
   "Spatial Anomaly": {
-   "group": "Situational",
-   "text": "Colourless land; {4}{R}, sacrifice: 2 damage to a creature and a New Planet (a landfall trigger). A colourless land hurts a five-colour manabase; Subspace Anomaly already fills this slot.",
+   "group": "Real",
+   "text": "RE-RATED on the owner's read. Colourless early (a cost in five colours), but later {4}{R}, sacrifice: 2 damage to a creature AND an any-colour New Planet. That is removal plus a fixed land, and the Planet entering is a landfall trigger (Felidar Retreat, Elven Raft-Steerer: a dilemma). With Warp Speed out the Planet should enter untapped. Best in place of a tapped tri-land or a non-modal card, not a basic (the fetches need basics).",
    "graded_at": {
     "100": "113389f32e5c",
     "101": "29792de3e8e6"
@@ -4550,7 +4550,7 @@
     "graded_at": "113389f32e5c"
    },
    "S": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "29792de3e8e6"
    }
   }
