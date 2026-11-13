@@ -645,6 +645,11 @@
    "name": "Deadeye Plunderers",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Iron Spider, Stark Upgrade",
+   "pile": "L",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1611,6 +1616,14 @@
   "Deadeye Plunderers": {
    "group": "Situational",
    "text": "Added by owner. +1/+1 per artifact but not itself an artifact creature; Treasure for 4 mana.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Iron Spider, Stark Upgrade": {
+   "group": "Strong",
+   "text": "OWNED (in decks 26, 47, 65, 84). {3} colourless legendary artifact creature: {T}: a +1/+1 counter on each artifact creature AND Vehicle (a second Steel Overseer that also reaches Support Skyforge and Salvation Engine); {2}, remove two counters from among artifacts: draw a card, a sink for Deanna / Mikaeus / Steel Overseer counters. Legendary, so Gold-Forged Thopteryx gives it ward. Proposed for Spock, Logical Choice (5 mana for a tap-to-draw).",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -3023,6 +3036,16 @@
   "Deadeye Plunderers": {
    "L": {
     "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Iron Spider, Stark Upgrade": {
+   "L": {
+    "m": "★★★",
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {

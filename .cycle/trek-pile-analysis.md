@@ -727,3 +727,4 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Malcator −Sharding Sphinx, Support Skyforge −Mirror Universe Intrusion. Preview: floor A, interaction 15→14, card
   advantage 6→8, protection 6→9, avg MV 3.52 unchanged. Sen Triplets is NOT in the pool (Scryfall lists no Arena printing),
   so resolve and the Builder cannot write it yet. Board v5.
+- 2026-11-13 Iron Spider (owned) graded ★★★ for deck 100, proposed for Spock, Logical Choice. The 12 proposed swaps are on the trek-borg board as Claude suggestions (picks docs, sug only, nothing applied).
