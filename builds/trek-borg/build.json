@@ -870,6 +870,26 @@
    "name": "Dina, Flesh Sower",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Stable Wormhole",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Warp Speed",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Vv'viza, Orbital Overseer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Spatial Anomaly",
+   "pile": "S",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2196,6 +2216,38 @@
   "Dina, Flesh Sower": {
    "group": "Marginal",
    "text": "Not modal; a lifegain grower. Nothing in the deck reads it.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Stable Wormhole": {
+   "group": "Strong",
+   "text": "Your must-add. {2}{G}: an any-colour New Planet land every time you attack. Each land entering triggers Felidar Retreat and Elven Raft-Steerer, so every attack is one or two more dilemmas, plus ramp toward Sisko's 7-mana activation.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Warp Speed": {
+   "group": "Strong",
+   "text": "{2}{G}: your lands enter untapped (the deck runs 14 tapped lands, costing about 4 points of on-curve chance per card), tutors a basic or Planet, and with 30+ land names sacrifices to draw two for about {U}{U}. Untapped also means Q Continuum and Ni'Var Science Academy always get their modal entry trigger. The tempo simulation cannot see an enchantment, so its gain is not in the numbers.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Vv'viza, Orbital Overseer": {
+   "group": "Real",
+   "text": "{1}{G}{W}{U} flying vigilance: conjures a Planet land onto the battlefield (a landfall trigger) and makes a flying Lander artifact creature every attack. Value and ramp, but not modal.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Spatial Anomaly": {
+   "group": "Situational",
+   "text": "Colourless land; {4}{R}, sacrifice: 2 damage to a creature and a New Planet (a landfall trigger). A colourless land hurts a five-colour manabase; Subspace Anomaly already fills this slot.",
    "graded_at": {
     "100": "113389f32e5c",
     "101": "29792de3e8e6"
@@ -4459,6 +4511,46 @@
    },
    "S": {
     "m": "△",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Stable Wormhole": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Warp Speed": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Vv'viza, Orbital Overseer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Spatial Anomaly": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
     "graded_at": "29792de3e8e6"
    }
   }
