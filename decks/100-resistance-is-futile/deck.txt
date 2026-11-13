@@ -3,6 +3,7 @@
 #: colors: WUB
 #: commander: Locutus of Borg
 #: plan: midrange
+#: tier: A — owner-graded 2026-11-13, at the metrics floor (interaction 14 and card advantage 7 against the 100-card A bar of 12 and a sum of 19). Strengths: one-sided sweepers while the board is artifact creatures, a deep anthem and evasion layer, and a commander that turns every connecting artifact creature into another body. Weakest axis: card advantage, which leans on the commander and the Coprocessor/Trimatrix draw.
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER BORG ARTIFACT CREATURES around Locutus of Borg:
 #: archetype: every artifact creature that connects makes a 1/1 Borg token, so the commander alone turns a board into more
 #: archetype: board. The number that matters is ARTIFACT CREATURES: Borg Cube gets cheaper per artifact creature and steals
@@ -121,7 +122,7 @@
 1 Vault of Whispers (J25) 780
 1 The Unicomplex (TRK) 304
 1 Uthros, Titanic Godcore (EOE) 260
-1 Daily Bugle Building (SPM) 179
+1 Gaseous Anomaly (TRK) 284
 3 Plains (TRK) 317
 2 Island (TRK) 319
 3 Swamp (TRK) 321

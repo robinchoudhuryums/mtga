@@ -3,6 +3,7 @@
 #: colors: WUBRG
 #: commander: Captain Benjamin Sisko
 #: plan: midrange
+#: tier: A — owner-graded 2026-11-13, at the metrics floor (interaction 15 and card advantage 24 against the 100-card A bar of 12 and a sum of 19). Strengths: repeatable dilemma engines that make Officers every turn without spending a card, modal interaction that doubles as a dilemma, and Scotty recursion. Weakest axis: a five-colour manabase in a deck with many coloured pips.
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR DILEMMAS AND OFFICERS around Captain
 #: archetype: Benjamin Sisko: every time you choose a mode for a spell OR an ability you face a dilemma, and Sisko makes a 1/1
 #: archetype: red Officer per dilemma at your end step. The deck runs two kinds of dilemma: modal interaction (the charms and
