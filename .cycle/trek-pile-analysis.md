@@ -750,3 +750,9 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Rebuilding the Past" is the Secret Lair name of Silas Renn, Seeker Adept: Scryfall shows no Arena printing and not
   Historic-Brawl legal, so it cannot be added. Board fix: an `update` with pair {} does NOT clear a pair (merge); use
   {"L": {"__delete__": true}}.
+- 2026-11-13 deck 100: APPLIED Support Skyforge −Chief of the Foundry. Pending: Bleeding Edge (cut options Cyberdrive
+  Awakener, Bio-Asset Allocator, Tempered Steel, Overflow Submatrix, Lita) and Weather Maker (Flare, an Island, Reliant,
+  Salvation Engine). Deck 101 owner board marks: 15 adds, 6 cuts (5 of them modal interaction + Glorious Sunrise, which is
+  in #: protect), 8 bench. Proposed 9 NON-modal cuts to balance (Golos, Kenrith, Captain Sisay, JL Picard Luminary, Cerritos,
+  Rok-Tahk, Infinite Guideline Station, Weather Maker, Melkotian Adjudicator): legal 100, floor A, interaction 24→19, card
+  advantage 17, avg MV 3.48→3.32, modal sources 37→33. Not applied.
