@@ -99,29 +99,29 @@
 1 Hallowed Fountain (ECL) 265
 1 Godless Shrine (EOE) 254
 1 Watery Grave (EOE) 261
-1 Raffine's Tower (SNC) 254
+1 Capital City (FIN) 274
 1 Obscura Storefront (SNC) 252
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Brightclimb Pathway // Grimclimb Pathway (ZNR) 259
-1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
-1 Seachrome Coast (ONE) 258
-1 Concealed Courtyard (OTJ) 268
-1 Darkslick Shores (ONE) 250
-1 Glacial Fortress (XLN) 255
-1 Isolated Chapel (DOM) 241
-1 Drowned Catacomb (XLN) 253
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Silence (FDN) 704
+1 Undercity Sewers (PZA) 0
+1 Starting Town (FIN) 289
+1 Plaza of Heroes (DMU) 252
+1 Gloomlake Verge (DSK) 260
+1 Gleaming Bastion (MSH) 267
+1 Castle Doom (MSH) 263
+1 Hidden Lair (MSH) 269
 1 Deserted Beach (FRA) 176
 1 Shattered Sanctum (SOS) 260
-1 Shipwreck Marsh (FRA) 189
-1 Adarkar Wastes (DMU) 243
-1 Caves of Koilos (DMU) 244
-1 Underground River (BRO) 267
+1 Secluded Courtyard (FDN) 267
+1 Floodfarm Verge (DSK) 259
+1 Bleachbone Verge (DFT) 250
+1 Mana Confluence (EOS) 25
 1 Seat of the Synod (J25) 773
 1 Ancient Den (AA2) 23
 1 Vault of Whispers (J25) 780
 1 The Unicomplex (TRK) 304
 1 Uthros, Titanic Godcore (EOE) 260
-1 Fabled Passage (BLB) 252
+1 Daily Bugle Building (SPM) 179
 3 Plains (TRK) 317
 2 Island (TRK) 319
 3 Swamp (TRK) 321
