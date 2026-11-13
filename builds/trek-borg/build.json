@@ -800,6 +800,76 @@
    "name": "Quark's Bar",
    "pile": "S",
    "src": "added"
+  },
+  {
+   "name": "Glissa Sunslayer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Ghalta and Mavren",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Season of the Bold",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Hollowmurk Siege",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Frostcliff Siege",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Titanium Man",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Graviton, Fundamental Force",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Gandalf the Grey",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Sauron, Dino Devotee",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Galadriel, Gift-Giver",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Appa, Loyal Sky Bison",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "V'Ger, the Intruder",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Genku, Future Shaper",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Dina, Flesh Sower",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1149,10 +1219,10 @@
   },
   "Ojutai Exemplars": {
    "group": "Real",
-   "text": "A dilemma per noncreature spell (tap / first strike + lifelink / blink). {W}{W}.",
+   "text": "{2}{W}{W}: a dilemma per noncreature spell; its tap mode also triggers Hylda.",
    "graded_at": {
-    "100": "5fb30fd6b8b7",
-    "101": "5bc9c38778e6"
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
    }
   },
   "Operations Officer": {
@@ -1236,11 +1306,11 @@
    }
   },
   "Silent Hallcreeper": {
-   "group": "Situational",
-   "text": "OWNED. Unblockable; modal on each hit.",
+   "group": "Strong",
+   "text": "OWNED. Unblockable 2-drop: each hit is a modal trigger (three different modes, then it stops). Its real job here is carrying Umezawa's Jitte: two counters every turn, unblocked.",
    "graded_at": {
-    "100": "5fb30fd6b8b7",
-    "101": "5bc9c38778e6"
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
    }
   },
   "Smuggler's Surprise": {
@@ -2018,6 +2088,118 @@
     "100": "113389f32e5c",
     "101": "82d25e8383aa"
    }
+  },
+  "Glissa Sunslayer": {
+   "group": "Strong",
+   "text": "{1}{B}{G} first strike + deathtouch, so it rarely dies in combat and is hard to block; each hit is a modal trigger (draw, kill an enchantment, or strip counters). A cheap repeatable dilemma.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Ghalta and Mavren": {
+   "group": "Strong",
+   "text": "Whenever you attack, choose one: an X/X trampling Dinosaur (X = biggest other attacker) or X lifelink Vampires (X = other attackers; the Officers count). Isshin doubles it. Heavy: {3}{G}{G}{W}{W}.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Season of the Bold": {
+   "group": "Real",
+   "text": "OWNED. {3}{R}{R} pawprint modal: Treasure, impulse two, or 2 damage to a creature on every spell you cast until your next turn's end. One dilemma per cast; the damage mode is a turn of repeated removal.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Hollowmurk Siege": {
+   "group": "Real",
+   "text": "{B}{G}. Choosing Sultai or Abzan as it enters is NOT a modal choice (no dilemma). Sultai mode draws a card the first time each turn a counter goes on your creature: Jett Reno and Melkotian Adjudicator get one per dilemma, so it is a cheap draw engine.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Frostcliff Siege": {
+   "group": "Situational",
+   "text": "{1}{U}{R}. The Jeskai/Temur choice is not a mode (no dilemma). Jeskai draws whenever your creatures connect, Temur gives haste + trample.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Titanium Man": {
+   "group": "Real",
+   "text": "{2}{B}{B} artifact creature: each attack is a modal trigger (fly or 1 damage to any target).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Graviton, Fundamental Force": {
+   "group": "Real",
+   "text": "OWNED. Your second draw each turn is a modal trigger (fly or tap); Seven of Nine draws per dilemma, so it fires most turns, and the tap feeds Hylda.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Gandalf the Grey": {
+   "group": "Real",
+   "text": "{3}{U}{R}: each instant or sorcery is a dilemma (tap/untap, 3 to each opponent, copy the spell); the fourth time it goes to the top of your library.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Sauron, Dino Devotee": {
+   "group": "Real",
+   "text": "{3}{G}{G} flier; enter and attack are modal triggers (3 life, or make another creature a 5/5).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Galadriel, Gift-Giver": {
+   "group": "Real",
+   "text": "{3}{G}{G}; enter and attack are modal triggers (counter, Food or Treasure).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Appa, Loyal Sky Bison": {
+   "group": "Real",
+   "text": "OWNED. {4}{W}{W} flier; enter and attack are modal triggers (flying, or airbend your own permanent to recast its entry trigger).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "V'Ger, the Intruder": {
+   "group": "Situational",
+   "text": "{6}{U} flying artifact creature; enter and attack are modal triggers. Too expensive for what it does.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Genku, Future Shaper": {
+   "group": "Situational",
+   "text": "OWNED. Modal tokens only when a NONtoken permanent of yours leaves play, which this deck rarely does.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
+  },
+  "Dina, Flesh Sower": {
+   "group": "Marginal",
+   "text": "Not modal; a lifegain grower. Nothing in the deck reads it.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "29792de3e8e6"
+   }
   }
  },
  "snapshots": {
@@ -2514,6 +2696,108 @@
     "Xander's Lounge",
     "Zagoth Triome",
     "Ziatora's Proving Ground"
+   ],
+   "29792de3e8e6": [
+    "Abzan Charm",
+    "Academy Instructor",
+    "Arcane Signet",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Boros Charm",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Brokers Charm",
+    "Cabaretti Charm",
+    "Captain Benjamin Sisko",
+    "Captain James T. Kirk",
+    "Captain Janeway, Endgame",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Casualties of War",
+    "Cayth, Famed Mechanist",
+    "Command Tower",
+    "Cosmogrand Zenith",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deadly Plot",
+    "Dreamshackle Geist",
+    "Dromoka's Command",
+    "Elder Gargaroth",
+    "Elim Garak, Simple Tailor",
+    "Excalbian Gamemaster",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Forest",
+    "Gala Greeters",
+    "Galadriel, Light of Valinor",
+    "Glorious Sunrise",
+    "Godless Shrine",
+    "Golos, Tireless Pilgrim",
+    "Hallowed Fountain",
+    "Hullbreaker Horror",
+    "Indatha Triome",
+    "Infinite Guideline Station",
+    "Inscription of Abundance",
+    "Island",
+    "Jean-Luc Picard, Luminary",
+    "Jetmir's Garden",
+    "Jett Reno, Problem Solver",
+    "Kenrith, the Returned King",
+    "Ketria Triome",
+    "Kolaghan's Command",
+    "Kykar, Zephyr Awakener",
+    "Live or Die",
+    "Maestros Charm",
+    "Make It So",
+    "Mana Confluence",
+    "Mardu Charm",
+    "Melkotian Adjudicator",
+    "Molten Collapse",
+    "Mountain",
+    "Ni'Var Science Academy",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Q Continuum",
+    "Raffine's Tower",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riku of Many Paths",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riveteers Charm",
+    "Rok-Tahk, Budding Scientist",
+    "Sacred Foundry",
+    "Savai Triome",
+    "Set Phasers to . . .",
+    "Seven of Nine",
+    "Silumgar's Command",
+    "Spara's Headquarters",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Subspace Anomaly",
+    "Sultai Charm",
+    "Swamp",
+    "Tal Shiar Operative",
+    "Temple Garden",
+    "Territorial Kavu",
+    "Test of Conviction",
+    "Test of Priorities",
+    "The Caretaker",
+    "The Fantastic Four",
+    "The Vision",
+    "The Wrath of Khan",
+    "Three Steps Ahead",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Umezawa's Jitte",
+    "Unfortunate Accident",
+    "Vigorbloom Charm",
+    "Warren Warleader",
+    "Watery Grave",
+    "Weather Maker",
+    "Xander's Lounge",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
    ]
   }
  },
@@ -2951,11 +3235,11 @@
   "Ojutai Exemplars": {
    "L": {
     "m": "✗",
-    "graded_at": "5fb30fd6b8b7"
+    "graded_at": "113389f32e5c"
    },
    "S": {
     "m": "★",
-    "graded_at": "5bc9c38778e6"
+    "graded_at": "29792de3e8e6"
    }
   },
   "Operations Officer": {
@@ -3060,12 +3344,12 @@
   },
   "Silent Hallcreeper": {
    "L": {
-    "m": "✗",
-    "graded_at": "5fb30fd6b8b7"
+    "m": "◇",
+    "graded_at": "113389f32e5c"
    },
    "S": {
-    "m": "◇",
-    "graded_at": "5bc9c38778e6"
+    "m": "★★",
+    "graded_at": "29792de3e8e6"
    }
   },
   "Smuggler's Surprise": {
@@ -4036,6 +4320,146 @@
    "S": {
     "m": "◇",
     "graded_at": "82d25e8383aa"
+   }
+  },
+  "Glissa Sunslayer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Ghalta and Mavren": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Season of the Bold": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Hollowmurk Siege": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Frostcliff Siege": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Titanium Man": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Graviton, Fundamental Force": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Gandalf the Grey": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Sauron, Dino Devotee": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Galadriel, Gift-Giver": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Appa, Loyal Sky Bison": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "V'Ger, the Intruder": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Genku, Future Shaper": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "29792de3e8e6"
+   }
+  },
+  "Dina, Flesh Sower": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "△",
+    "graded_at": "29792de3e8e6"
    }
   }
  }

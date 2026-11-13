@@ -94,6 +94,7 @@
  ],
  "Antagonist Incorporator": [],
  "Anthropological Mission": [],
+ "Appa, Loyal Sky Bison": [],
  "Arcane Signet": [
   {
    "a": "Dan Murayama Scott",
@@ -797,6 +798,7 @@
   }
  ],
  "Demonic Pact": [],
+ "Dina, Flesh Sower": [],
  "Doctor Doom": [],
  "Dominion Saboteur": [
   {
@@ -1020,6 +1022,7 @@
    "y": "2025"
   }
  ],
+ "Frostcliff Siege": [],
  "Gabriel Lorca, Mirror Menace": [],
  "Gala Greeters": [
   {
@@ -1177,13 +1180,42 @@
    "y": "2022"
   }
  ],
+ "Galadriel, Gift-Giver": [],
  "Galadriel, Light of Valinor": [],
+ "Gandalf the Grey": [],
+ "Genku, Future Shaper": [],
  "Georgiou, Terran Emperor": [],
+ "Ghalta and Mavren": [
+  {
+   "a": "Zezhou Chen",
+   "art": "https://cards.scryfall.io/art_crop/front/a/9/a9ec900f-1e31-4440-a75a-20b256734d5b.jpg?1783916955",
+   "cn": "225",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/9/a9ec900f-1e31-4440-a75a-20b256734d5b.jpg?1783916955",
+   "r": "R",
+   "set": "MOM",
+   "sn": "March of the Machine",
+   "y": "2023"
+  },
+  {
+   "a": "Betty Jiang",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7ccb21e9-5169-4934-83c3-78ac00e5ffc7.jpg?1783916879",
+   "cn": "386",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7ccb21e9-5169-4934-83c3-78ac00e5ffc7.jpg?1783916879",
+   "r": "R",
+   "set": "MOM",
+   "sn": "March of the Machine",
+   "y": "2023"
+  }
+ ],
  "Gix's Command": [],
+ "Glissa Sunslayer": [],
  "Glorious Sunrise": [],
  "Gold-Forged Thopteryx": [],
  "Golgari Charm": [],
  "Golos, Tireless Pilgrim": [],
+ "Graviton, Fundamental Force": [],
  "Great Train Heist": [],
  "Gul Dukat, Colonial Prefect": [],
  "H.M.S. Bounty, Unlikely Timeship": [
@@ -1217,6 +1249,7 @@
  "Haunted Screen": [],
  "Hemmer, Fixing What Is Broken": [],
  "Hive Mind Coprocessor": [],
+ "Hollowmurk Siege": [],
  "Hologram Janeway": [],
  "Hullbreaker Horror": [],
  "Hylda of the Icy Crown": [],
@@ -2080,6 +2113,7 @@
    "y": "2026"
   }
  ],
+ "Sauron, Dino Devotee": [],
  "Scotty, Miracle Worker": [
   {
    "a": "Sam Kennedy",
@@ -2106,6 +2140,7 @@
    "y": "2026"
   }
  ],
+ "Season of the Bold": [],
  "Set Phasers to . . .": [],
  "Seven of Nine": [
   {
@@ -2326,6 +2361,7 @@
   }
  ],
  "Tidus, Blitzball Star": [],
+ "Titanium Man": [],
  "U.S.S. Cerritos, Following Up": [],
  "U.S.S. Enterprise-A, Free Spirit": [
   {
@@ -2467,6 +2503,7 @@
    "y": "2022"
   }
  ],
+ "V'Ger, the Intruder": [],
  "Vanishing Verse": [
   {
    "a": "Chris Seaman",
