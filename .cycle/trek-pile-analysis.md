@@ -733,3 +733,8 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   the red Iron Men are off-identity. Measured the picks + 13 cut candidates + In the Pale Moonlight + 2 basics: legal 100,
   floor A, interaction 13, card advantage 6 (A sum 19 exactly). Variant keeping Hive Mind Coprocessor, adding Modern Marvel,
   dropping Tidus and Richlau: card advantage 8, floor A. Cut candidates written as board suggestions.
+- 2026-11-13 owner: keep Tidus, drop Richlau, cut Urza for an Iron Man (Modern Marvel). Final proposed deck 100 package = 25
+  pairs (list in the scratch pkg100 and on the board as pairs): floor A, interaction 15→13, card advantage 6→8, protection
+  6→8, board power 86→88, avg MV 3.52→3.59, lands 38→36, keepable 78.4% (95.3% with the free mulligan), W20/U21/B21.
+  Steel Overseer is the extra cut (Iron Spider covers it). Board: every add paired; Richlau's add mark removed at the
+  owner's request. NOT applied.
