@@ -728,3 +728,8 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   advantage 6→8, protection 6→9, avg MV 3.52 unchanged. Sen Triplets is NOT in the pool (Scryfall lists no Arena printing),
   so resolve and the Builder cannot write it yet. Board v5.
 - 2026-11-13 Iron Spider (owned) graded ★★★ for deck 100, proposed for Spock, Logical Choice. The 12 proposed swaps are on the trek-borg board as Claude suggestions (picks docs, sug only, nothing applied).
+- 2026-11-13 owner board picks for deck 100: 25 adds, 9 cuts (incl. Urza, Prince of Kroog). Iron Man alternatives read:
+  Bleeding Edge (owned) ★★★ beside Modern Marvel, Futurist Paragon ★★, War Machine James Rhodes / Rescue / Origin of Iron Man ★;
+  the red Iron Men are off-identity. Measured the picks + 13 cut candidates + In the Pale Moonlight + 2 basics: legal 100,
+  floor A, interaction 13, card advantage 6 (A sum 19 exactly). Variant keeping Hive Mind Coprocessor, adding Modern Marvel,
+  dropping Tidus and Richlau: card advantage 8, floor A. Cut candidates written as board suggestions.

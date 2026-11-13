@@ -650,6 +650,31 @@
    "name": "Iron Spider, Stark Upgrade",
    "pile": "L",
    "src": "added"
+  },
+  {
+   "name": "Iron Man, Bleeding Edge",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Iron Man, Futurist Paragon",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "War Machine, James Rhodes",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Rescue, Pepper Potts",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Origin of Iron Man",
+   "pile": "L",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1624,6 +1649,46 @@
   "Iron Spider, Stark Upgrade": {
    "group": "Strong",
    "text": "OWNED (in decks 26, 47, 65, 84). {3} colourless legendary artifact creature: {T}: a +1/+1 counter on each artifact creature AND Vehicle (a second Steel Overseer that also reaches Support Skyforge and Salvation Engine); {2}, remove two counters from among artifacts: draw a card, a sink for Deanna / Mikaeus / Steel Overseer counters. Legendary, so Gold-Forged Thopteryx gives it ward. Proposed for Spock, Logical Choice (5 mana for a tap-to-draw).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Bleeding Edge": {
+   "group": "Strong",
+   "text": "OWNED. {3}{U}{U} flier: once a turn, copy an artifact spell you cast (the copy is a non-legendary token). Copies an artifact creature, Borg Cube or a Spacecraft every turn: as strong as Modern Marvel, but board growth instead of anthem + cards. Run it BESIDE Modern Marvel rather than instead of it.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Futurist Paragon": {
+   "group": "Strong",
+   "text": "{4}{U}{U} flier: each combat a target artifact or creature becomes a 5/5 flying artifact creature with no end date, so every Borg token or unstationed Spacecraft is upgraded for good.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "War Machine, James Rhodes": {
+   "group": "Real",
+   "text": "{3}{W/U} hybrid flying artifact creature that taps a creature each attack. Solid, below Modern Marvel.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Rescue, Pepper Potts": {
+   "group": "Real",
+   "text": "{1}{U} flash flying artifact creature; returns another of your artifacts or creatures to hand (re-use The Borg Queen or Malcator's entry) and grows if it was an artifact.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Origin of Iron Man": {
+   "group": "Real",
+   "text": "OWNED. Saga: locks a creature while it lasts, draws two, then puts an artifact of MV 5 or less from hand onto the battlefield.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -3046,6 +3111,56 @@
   "Iron Spider, Stark Upgrade": {
    "L": {
     "m": "★★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Bleeding Edge": {
+   "L": {
+    "m": "★★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Futurist Paragon": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "War Machine, James Rhodes": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Rescue, Pepper Potts": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Origin of Iron Man": {
+   "L": {
+    "m": "★",
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {
