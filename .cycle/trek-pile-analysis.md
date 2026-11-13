@@ -738,3 +738,8 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   6→8, board power 86→88, avg MV 3.52→3.59, lands 38→36, keepable 78.4% (95.3% with the free mulligan), W20/U21/B21.
   Steel Overseer is the extra cut (Iron Spider covers it). Board: every add paired; Richlau's add mark removed at the
   owner's request. NOT applied.
+- 2026-11-13 APPLIED 20 swaps to deck 100 (owner kept Data New Life, Mirror Universe Intrusion, Zefram, Organic Avulsion Unit,
+  Command Subadjunct). Preflight READY, floor A, interaction 15→13, card advantage 6→8. Six adds still need cuts (Chrome Dome,
+  Support Skyforge, Brad Boimler, Haunt the Network, Mendicant Core, Iron Man Bleeding Edge); suggested Assembly Specialist,
+  Flare of Fortitude, Lita, Shields Up!, Rutherford, Collective Drone (holds interaction 13 / card advantage 8, protection 8→6;
+  Lita + Rutherford are Artificers, so Cid weakens). Alternates on the board. Board settled (applied marks → done).
