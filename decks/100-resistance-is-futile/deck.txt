@@ -6,11 +6,12 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER BORG ARTIFACT CREATURES around Locutus of Borg:
 #: archetype: every artifact creature that connects makes a 1/1 Borg token, so the commander alone turns a board into more
 #: archetype: board. The number that matters is ARTIFACT CREATURES: Borg Cube gets cheaper per artifact creature and steals
-#: archetype: what it exiles (assimilate); The Borg Queen, Perfection Manifest, Urza, Tempered Steel, Assault Drone, Chief of
-#: archetype: the Foundry and the other Locutus are anthems; Primary Unimatrix Adjunct gives double strike, Organic Avulsion
+#: archetype: what it exiles (assimilate); The Borg Queen, Perfection Manifest, Tempered Steel, Iron Man, Cid, Chief of the
+#: archetype: Foundry and the other Locutus are anthems, and Deanna Troi, Mikaeus and Iron Spider add +1/+1 counters to the
+#: archetype: whole team; Primary Unimatrix Adjunct gives double strike, Organic Avulsion
 #: archetype: Unit menace, Cyberdrive Awakener flying; Hive Mind Coprocessor and Collation Trimatrix draw. Battle of Wolf 359
 #: archetype: and Crystalline Entity are one-sided sweepers while the board is artifact creatures. Spacecraft become artifact
-#: archetype: creatures once stationed (Geordi doubles the counters, Zefram adds two, Warp Core and Synthesizer Labship help).
+#: archetype: creatures once stationed (Geordi doubles the counters, Zefram adds two). Winter gives every artifact ward.
 #: archetype: DISTINCT from the roster's Esper decks (43 hand-size control, 91 discard zombies, 98 spells and heroes).
 #: protect: Locutus of Borg; Borg Cube; The Borg Queen; Battle of Wolf 359; Crystalline Entity; Conquest Mission
 #: notes: Drafted 2026-11-12 from the Star Trek pile (.cycle/trek-pile-analysis.md section 5, deck A), a day before the TRK
@@ -30,42 +31,43 @@
 1 Primary Unimatrix Adjunct (TRK) 30
 1 Command Subadjunct (TRK) 9
 1 Assembly Specialist (TRK) 4
-1 Vexing Drone (TRK) 45
-1 Free Borg Revolutionaries (TRK) 19
+1 Gold-Forged Thopteryx (MAT) 31
+1 Tidus, Blitzball Star (FIN) 246
 1 Collation Trimatrix (TRK) 98
 1 Collective Drone (TRK) 99
-1 Tenacious Drone (TRK) 133
+1 Deanna Troi, Psychic Counsel (TRK) 11
 1 Hive Mind Coprocessor (TRK) 115
 1 Organic Avulsion Unit (TRK) 121
 1 Overflow Submatrix (TRK) 122
 1 Bio-Asset Allocator (TRC) 196
-1 Assault Drone (TRK) 92
+1 Cid, Timeless Artificer (FIN) 216
 1 Locutus, the One Who Speaks (TRK) 245
 1 Crystalline Entity (TRK) 261
-1 Seven of Nine (TRK) 252
+1 Alela, Artful Provocateur (ELD) 324
 1 Lieutenant Commander Data (TRK) 69
 1 Data, New Life (TRK) 52
-1 Badgey, Malicious Glitch (TRC) 152
-1 Steel Overseer (M20) 239
+1 Doctor Doom (MSH) 95
+1 Kappa Cannoneer (MH3) 270
 1 Chief of the Foundry (J25) 747
-1 Urza, Prince of Kroog (BRO) 226
+1 Iron Man, Modern Marvel (MSC) 830
 1 Cyberdrive Awakener (MAR) 53
 1 Zefram Cochrane, Warp Pioneer (TRK) 90
 1 Lt. Cmdr. Geordi La Forge (TRK) 70
 1 Rutherford, Upgraded Ensign (TRK) 32
 1 Mr. Spock, Science Officer (TRK) 74
-1 Spock, Logical Choice (TRC) 194
+1 Iron Spider, Stark Upgrade (SPM) 166
 1 Sheoldred, the Apocalypse (DMU) 107
 1 Lita, Mechanical Engineer (TLE) 4
-1 Sharding Sphinx (JMP) 176
+1 Malcator, Purity Overseer (ONE) 208
+1 Noctis, Prince of Lucis (FIN) 235
+1 Winter, Cursed Rider (DFT) 228
+1 Mikaeus, the Lunarch (J25) 225
 
 # Spacecraft
 1 Borg Cube (TRK) 227
-1 Synthesizer Labship (EOE) 81
-1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
+1 Salvation Engine (DFT) 27
 1 U.S.S. Excelsior, Cutting Edge (TRK) 44
 1 Susurian Dirgecraft (EOE) 117
-1 The Seriema (EOE) 35
 1 U.S.S. Reliant, From Hell's Heart (TRK) 135
 1 Dawnsire, Sunstar Dreadnought (EOE) 238
 
@@ -76,19 +78,20 @@
 1 Shields Up! (TRK) 35
 1 Flare of Fortitude (MH3) 26
 1 Malfunctioning Holodeck (TRK) 22
-1 In the Pale Moonlight (TRK) 117
+1 Kaito, Dancing Shadow (ONE) 204
 1 Tempered Steel (HA3) 4
 1 Infernal Grasp (MID) 107
 1 Vanishing Verse (STX) 244
 1 Anguished Unmaking (OTP) 35
-1 Fatal Push (FCA) 9
+1 Resistance Is Futile (TRK) 125
 1 Sheoldred's Edict (ONE) 108
-1 Make Disappear (SNC) 49
 1 Mirror Universe Intrusion (TRK) 248
 1 Arcane Signet (FRC) 20
-1 Mind Stone (HA1) 19
-1 Warp Core (TRK) 274
+1 Replicator (TRK) 267
 1 Consider the Prime Directive (TRK) 51
+1 Test of Conviction (TRK) 39
+1 Test of Priorities (TRK) 85
+1 Tezzeret, Master of the Bridge (WAR) 275
 
 # Lands
 1 Command Tower (FRC) 22
@@ -118,6 +121,6 @@
 1 The Unicomplex (TRK) 304
 1 Uthros, Titanic Godcore (EOE) 260
 1 Fabled Passage (BLB) 252
-4 Plains (TRK) 317
+3 Plains (TRK) 317
 3 Island (TRK) 319
-4 Swamp (TRK) 321
+3 Swamp (TRK) 321

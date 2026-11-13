@@ -292,6 +292,7 @@ Magitek Armor
 Mai, Jaded Edge
 Mai, Scornful Striker
 Malboro
+Malcator, Purity Overseer
 Mardu Devotee
 Masked Meower
 Master Pakku
@@ -299,6 +300,7 @@ Master's Councillors
 Mechanical Mobster
 Miasmic Mummy
 Michelangelo, the Heart
+Mikaeus, the Lunarch
 Mind Transfer Protocol
 Miner's Guidewing
 Mirkwood Pathmaker
@@ -434,7 +436,6 @@ Starfield Shepherd
 Stargaze
 Stark Industries Executive
 Starry-Eyed Skyrider
-Steel Overseer
 Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
@@ -449,14 +450,12 @@ Sunpearl Kirin
 Super-Soldier Serum
 Sweettooth Witch
 Swiftblade Vindicator
-Synthesizer Labship
 Tal Shiar Operative
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
 Temur Battle Rage
-Tenacious Drone
 Tenured Tethermage
 Terrapact Intimidator
 Territorial Kavu
