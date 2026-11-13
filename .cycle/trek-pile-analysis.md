@@ -721,3 +721,9 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Stone. Package preview: floor A, interaction 15 (held), card advantage 6→9, protection 6→8, avg MV 3.52→3.69. Spice:
   Krang Utrom Warlord (owned), Virulent Silencer (owned), Karn's Bastion (costs ~1.4 on-curve points as a land), Alela,
   Monoist Circuit-Feeder. All on the trek-borg board (v4).
+- 2026-11-13 owner added 24 cards for deck 100; all read in full. Proposed 11-swap package (NOT applied): Resistance Is
+  Futile −Fatal Push, Winter −Make Disappear, Iron Man −Free Borg Revolutionaries, Gold-Forged Thopteryx −Vexing Drone,
+  Deanna Troi −Tenacious Drone, Doctor Doom −Badgey, Chrome Dome −Data New Life, Cid −Assault Drone, Mikaeus −Mind Stone,
+  Malcator −Sharding Sphinx, Support Skyforge −Mirror Universe Intrusion. Preview: floor A, interaction 15→14, card
+  advantage 6→8, protection 6→9, avg MV 3.52 unchanged. Sen Triplets is NOT in the pool (Scryfall lists no Arena printing),
+  so resolve and the Builder cannot write it yet. Board v5.

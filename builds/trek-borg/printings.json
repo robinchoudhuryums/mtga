@@ -148,6 +148,7 @@
  "Assault Drone": [],
  "Assembly Specialist": [],
  "Badgey, Malicious Glitch": [],
+ "Banish into Fable": [],
  "Battle Menu": [],
  "Battle of Wolf 359": [],
  "Bio-Asset Allocator": [],
@@ -345,9 +346,177 @@
   }
  ],
  "Casualties of War": [],
+ "Cephalopod Sentry": [],
  "Chamber Sentry": [],
  "Chief of the Foundry": [],
  "Chrome Dome": [],
+ "Cid, Timeless Artificer": [
+  {
+   "a": "Lius Lasahido",
+   "art": "https://cards.scryfall.io/art_crop/front/7/f/7fb99393-d2b6-40a6-8de7-317efdc4c50b.jpg?1783906575",
+   "cn": "216",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/f/7fb99393-d2b6-40a6-8de7-317efdc4c50b.jpg?1783906575",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Gal Or",
+   "art": "https://cards.scryfall.io/art_crop/front/a/3/a3e8d94e-050b-4571-ae12-1e80e6b63611.jpg?1783906500",
+   "cn": "407",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/3/a3e8d94e-050b-4571-ae12-1e80e6b63611.jpg?1783906500",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Lee Woo-chul",
+   "art": "https://cards.scryfall.io/art_crop/front/a/9/a9801368-263b-4515-9027-4f1827e7214c.jpg?1783906498",
+   "cn": "408",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/9/a9801368-263b-4515-9027-4f1827e7214c.jpg?1783906498",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Narendra Bintara Adi",
+   "art": "https://cards.scryfall.io/art_crop/front/2/b/2bbab097-acb3-480d-a433-e4f81dde62e4.jpg?1783906498",
+   "cn": "409",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/b/2bbab097-acb3-480d-a433-e4f81dde62e4.jpg?1783906498",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Alexander Mokhov",
+   "art": "https://cards.scryfall.io/art_crop/front/f/c/fc4d240f-8920-4f8d-82a2-4cd4da93d6fb.jpg?1783906498",
+   "cn": "410",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/c/fc4d240f-8920-4f8d-82a2-4cd4da93d6fb.jpg?1783906498",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Nijihayashi",
+   "art": "https://cards.scryfall.io/art_crop/front/8/2/8200a5e1-0c8b-45a4-b468-03e5067e9f81.jpg?1783906497",
+   "cn": "411",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/2/8200a5e1-0c8b-45a4-b468-03e5067e9f81.jpg?1783906497",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "David Astruga",
+   "art": "https://cards.scryfall.io/art_crop/front/5/a/5a9b1404-3061-4979-81eb-e056bc212205.jpg?1783906497",
+   "cn": "412",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/a/5a9b1404-3061-4979-81eb-e056bc212205.jpg?1783906497",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Jake Murray",
+   "art": "https://cards.scryfall.io/art_crop/front/c/c/cc027995-3d7c-4283-9e0e-eaef5727f2b8.jpg?1790864341",
+   "cn": "413",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/c/cc027995-3d7c-4283-9e0e-eaef5727f2b8.jpg?1790864341",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Kevin Glint",
+   "art": "https://cards.scryfall.io/art_crop/front/4/b/4bd892ea-b5bc-4b57-b317-741113381b50.jpg?1783906497",
+   "cn": "414",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/b/4bd892ea-b5bc-4b57-b317-741113381b50.jpg?1783906497",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Nurikabe",
+   "art": "https://cards.scryfall.io/art_crop/front/b/6/b6776f23-5f5b-4f0a-a00c-1ca8f03ffc5f.jpg?1783906496",
+   "cn": "415",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/6/b6776f23-5f5b-4f0a-a00c-1ca8f03ffc5f.jpg?1783906496",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "David Astruga",
+   "art": "https://cards.scryfall.io/art_crop/front/e/5/e564eda2-36dd-4f44-b84b-d0c18a9bdb1e.jpg?1783906496",
+   "cn": "416",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/5/e564eda2-36dd-4f44-b84b-d0c18a9bdb1e.jpg?1783906496",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Arif Wijaya",
+   "art": "https://cards.scryfall.io/art_crop/front/3/9/3952bbbb-6fe4-4d13-8825-e93df1d048e9.jpg?1783906495",
+   "cn": "417",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/9/3952bbbb-6fe4-4d13-8825-e93df1d048e9.jpg?1783906495",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Russell Dongjun Lu",
+   "art": "https://cards.scryfall.io/art_crop/front/0/1/0148fa7c-b6d6-458c-8cdd-a6c4e6dd4e59.jpg?1785650681",
+   "cn": "418",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/1/0148fa7c-b6d6-458c-8cdd-a6c4e6dd4e59.jpg?1785650681",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Jason Kiantoro",
+   "art": "https://cards.scryfall.io/art_crop/front/7/d/7d8b2dfc-ecaf-403b-932f-a5efc8b713e6.jpg?1783906493",
+   "cn": "419",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/d/7d8b2dfc-ecaf-403b-932f-a5efc8b713e6.jpg?1783906493",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  },
+  {
+   "a": "Magali Villeneuve",
+   "art": "https://cards.scryfall.io/art_crop/front/2/c/2c1b48ba-b158-4b9d-802c-5cbfdf96dca5.jpg?1783906493",
+   "cn": "420",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/c/2c1b48ba-b158-4b9d-802c-5cbfdf96dca5.jpg?1783906493",
+   "r": "U",
+   "set": "FIN",
+   "sn": "Final Fantasy",
+   "y": "2025"
+  }
+ ],
  "Collation Trimatrix": [],
  "Collective Brutality": [],
  "Collective Defiance": [
@@ -475,7 +644,34 @@
   }
  ],
  "Dawnsire, Sunstar Dreadnought": [],
+ "Deadeye Plunderers": [],
  "Deadly Plot": [],
+ "Deanna Troi, Psychic Counsel": [
+  {
+   "a": "Lie Setiawan",
+   "art": "https://cards.scryfall.io/art_crop/front/1/a/1a027761-84e7-4cbf-a629-ae9bd3d8467b.jpg?1793100632",
+   "cn": "11",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/a/1a027761-84e7-4cbf-a629-ae9bd3d8467b.jpg?1793100632",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Eglė Mosakaitė",
+   "art": "https://cards.scryfall.io/art_crop/front/4/c/4c8ee48d-d0bc-4b5c-ab82-066cd8bbf317.jpg?1793100657",
+   "cn": "365",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/c/4c8ee48d-d0bc-4b5c-ab82-066cd8bbf317.jpg?1793100657",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Death Is Irrelevant": [
   {
    "a": "Narendra Bintara Adi",
@@ -901,6 +1097,7 @@
  "Georgiou, Terran Emperor": [],
  "Gix's Command": [],
  "Glorious Sunrise": [],
+ "Gold-Forged Thopteryx": [],
  "Golgari Charm": [],
  "Golos, Tireless Pilgrim": [],
  "Gul Dukat, Colonial Prefect": [],
@@ -931,6 +1128,7 @@
    "y": "2026"
   }
  ],
+ "Haunt the Network": [],
  "Haunted Screen": [],
  "Hemmer, Fixing What Is Broken": [],
  "Hive Mind Coprocessor": [],
@@ -1013,6 +1211,7 @@
  "Jeskai Charm": [],
  "Jett Reno, Problem Solver": [],
  "Jhoira, Weatherlight Captain": [],
+ "Kaito, Dancing Shadow": [],
  "Kappa Cannoneer": [],
  "Karn's Bastion": [],
  "Kenrith, the Returned King": [
@@ -1273,9 +1472,11 @@
  ],
  "Make Disappear": [],
  "Make It So": [],
+ "Malcator, Purity Overseer": [],
  "Malfunctioning Holodeck": [],
  "Mardu Charm": [],
  "Melkotian Adjudicator": [],
+ "Mendicant Core, Guidelight": [],
  "Mikaeus, the Lunarch": [],
  "Mind Stone": [],
  "Mirror Universe Intrusion": [
@@ -1479,12 +1680,79 @@
    "y": "2026"
   }
  ],
+ "Replicator": [
+  {
+   "a": "William Phifer",
+   "art": "https://cards.scryfall.io/art_crop/front/a/e/ae846f45-d87b-47d4-87f6-2d9aa19c3c40.jpg?1792508444",
+   "cn": "267",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/e/ae846f45-d87b-47d4-87f6-2d9aa19c3c40.jpg?1792508444",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Vilhelmas Banys",
+   "art": "https://cards.scryfall.io/art_crop/front/9/8/98308586-5ac3-4130-878b-d235b9e1343c.jpg?1792509099",
+   "cn": "525",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/8/98308586-5ac3-4130-878b-d235b9e1343c.jpg?1792509099",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
+ "Resistance Is Futile": [
+  {
+   "a": "Matt Stewart",
+   "art": "https://cards.scryfall.io/art_crop/front/8/1/81d88257-466d-4729-862f-591885b3d875.jpg?1785981518",
+   "cn": "125",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/1/81d88257-466d-4729-862f-591885b3d875.jpg?1785981518",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Gal Or",
+   "art": "https://cards.scryfall.io/art_crop/front/a/0/a092e283-24d5-47ec-a9cf-7d589a3121a4.jpg?1792508637",
+   "cn": "338",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/0/a092e283-24d5-47ec-a9cf-7d589a3121a4.jpg?1792508637",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Jurijus Chitrovas",
+   "art": "https://cards.scryfall.io/art_crop/front/e/6/e6707e65-388b-4579-8c8d-77307b8208c1.jpg?1792508754",
+   "cn": "378",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/6/e6707e65-388b-4579-8c8d-77307b8208c1.jpg?1792508754",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Retreat to Kazandu": [],
+ "Richlau, Headmaster": [],
  "Riku of Many Paths": [],
  "Rimefire Torque": [],
  "Rok-Tahk, Budding Scientist": [],
  "Romulan Bird-of-Prey": [],
  "Rutherford, Upgraded Ensign": [],
+ "SP//dr, Piloted by Peni": [],
  "Salvation Engine": [],
  "Sandsteppe Citadel": [
   {
@@ -1729,6 +1997,7 @@
  ],
  "Sultai Charm": [],
  "Sune's Intervention": [],
+ "Support Skyforge": [],
  "Susur Secundi, Void Altar": [],
  "Susurian Dirgecraft": [],
  "Suus Mahna Practitioner": [],
@@ -1742,6 +2011,7 @@
  "Territorial Kavu": [],
  "Test of Conviction": [],
  "Test of Priorities": [],
+ "Tezzeret, Master of the Bridge": [],
  "The Borg Queen": [],
  "The Caretaker": [],
  "The Fantastic Four": [],
@@ -1777,6 +2047,7 @@
    "y": "2026"
   }
  ],
+ "Tidus, Blitzball Star": [],
  "U.S.S. Cerritos, Following Up": [],
  "U.S.S. Enterprise-A, Free Spirit": [
   {
@@ -1925,6 +2196,8 @@
  "Warp Core": [],
  "Warren Warleader": [],
  "Weather Maker": [],
+ "Winter, Cursed Rider": [],
  "Workshop Elders": [],
+ "Y'shtola, Night's Blessed": [],
  "Zefram Cochrane, Warp Pioneer": []
 }

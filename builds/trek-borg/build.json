@@ -463,7 +463,7 @@
   },
   {
    "name": "Mikaeus, the Lunarch",
-   "pile": "S",
+   "pile": "L",
    "src": "added"
   },
   {
@@ -544,6 +544,106 @@
   {
    "name": "Monoist Circuit-Feeder",
    "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Resistance Is Futile",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Winter, Cursed Rider",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Deanna Troi, Psychic Counsel",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Gold-Forged Thopteryx",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Malcator, Purity Overseer",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Cid, Timeless Artificer",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Support Skyforge",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Cephalopod Sentry",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Tezzeret, Master of the Bridge",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Test of Conviction",
+   "pile": "B",
+   "src": "added"
+  },
+  {
+   "name": "Replicator",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Y'shtola, Night's Blessed",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Kaito, Dancing Shadow",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Haunt the Network",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Mendicant Core, Guidelight",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Tidus, Blitzball Star",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "SP//dr, Piloted by Peni",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Banish into Fable",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Richlau, Headmaster",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Deadeye Plunderers",
+   "pile": "N",
    "src": "added"
   }
  ],
@@ -1221,8 +1321,8 @@
    }
   },
   "Mikaeus, the Lunarch": {
-   "group": "Real",
-   "text": "Re-read 2026-11-12, UPGRADED. Taps to put a +1/+1 counter on each other creature: in Sisko that grows the whole Officer swarm each turn.",
+   "group": "Strong",
+   "text": "Added by owner. {T}, remove a counter: +1/+1 counter on each other creature, every turn. A permanent anthem on a wide board. Proposed for Mind Stone.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -1341,8 +1441,8 @@
    }
   },
   "Alela, Artful Provocateur": {
-   "group": "Situational",
-   "text": "SPICE. Flying deathtouch lifelink; a 1/1 flying Faerie per artifact spell, and +1/+0 to your fliers. The Faeries are not artifacts.",
+   "group": "Real",
+   "text": "SPICE. Flying deathtouch lifelink; a 1/1 flying Faerie per artifact spell; +1/+0 to fliers. The Faeries are not artifacts.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -1351,6 +1451,166 @@
   "Monoist Circuit-Feeder": {
    "group": "Real",
    "text": "6-mana flying artifact creature: on entry, -0/-X to an opposing creature where X is your artifact count (usually lethal).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Resistance Is Futile": {
+   "group": "Strong",
+   "text": "Added by owner 2026-11-13. {1}{B}: destroy a NONartifact creature, or return an artifact creature card with MV 3 or less to the battlefield. Cheap removal whose fail case is recursion. Proposed for Fatal Push (MV 2 or less without revolt).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Winter, Cursed Rider": {
+   "group": "Strong",
+   "text": "Added by owner. {U}{B}: every artifact you control gets 'Ward—Pay 2 life'; exhaust gives each other NONartifact creature -X/-X (X = artifact cards exiled from your graveyard), a one-sided sweeper here. Proposed for Make Disappear.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Deanna Troi, Psychic Counsel": {
+   "group": "Strong",
+   "text": "Added by owner. {1}{W}: other creatures enter with an extra +1/+1 counter, so every Borg token is a 2/2 and Lt. Cmdr. Data and Steel Overseer have counters to use. Proposed for Tenacious Drone.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "group": "Strong",
+   "text": "Added by owner, OWNED. 2-mana flying lifelink artifact creature; every legendary permanent you control gets ward {2} (Locutus, both Queens, Data, Seven, Spock, Urza…). Proposed for Vexing Drone.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Malcator, Purity Overseer": {
+   "group": "Strong",
+   "text": "Added by owner. A 3/3 Golem artifact creature on entry, and another each end step that three or more artifacts entered (Borg tokens count). Proposed for Sharding Sphinx.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Cid, Timeless Artificer": {
+   "group": "Strong",
+   "text": "Added by owner, OWNED. Artifact creatures get +1/+1 per Artificer you control and in your graveyard: Cid, Urza, Geordi, Rutherford and Lita are Artificers. Proposed for Assault Drone (+1/+0 only).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Support Skyforge": {
+   "group": "Strong",
+   "text": "Added by owner. Four 1/1 Servo artifact creatures on entry, and a flying crew-4 Vehicle that drafts a card each attack. Proposed for Mirror Universe Intrusion.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Cephalopod Sentry": {
+   "group": "Real",
+   "text": "Added by owner. 4-mana flying artifact creature, power equal to your artifact count (often 8+).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Tezzeret, Master of the Bridge": {
+   "group": "Real",
+   "text": "Added by owner. Creature spells get affinity for artifacts; +2 drains X = artifacts; -3 returns an artifact. 6 mana.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Test of Conviction": {
+   "group": "Real",
+   "text": "Added by owner. Modal: a +1/+1 counter on each creature (strong on a wide board), or you draw two and the opponent draws one.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Replicator": {
+   "group": "Real",
+   "text": "Added by owner. Food, then {2},{T}: copy a token each turn (a Borg token, a Doombot, a Golem).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Y'shtola, Night's Blessed": {
+   "group": "Real",
+   "text": "Added by owner. Drains 2 per noncreature spell of MV 3+ (about 15 here, the Spacecraft included); draws at end step if any player lost 4+ life.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Kaito, Dancing Shadow": {
+   "group": "Real",
+   "text": "Added by owner. Planeswalker: a deathtouch Drone artifact creature token, a lock-down +1 or a card each turn.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Haunt the Network": {
+   "group": "Real",
+   "text": "Added by owner. Two Thopter artifact creatures, then a drain equal to your artifact count: a finisher.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Mendicant Core, Guidelight": {
+   "group": "Real",
+   "text": "Added by owner. 2-mana artifact creature, power = artifacts; at max speed copies each artifact spell for {1}. Speed needs damage on your turn, which Locutus provides.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Tidus, Blitzball Star": {
+   "group": "Situational",
+   "text": "Added by owner. A counter per artifact entering, taps a blocker on attack. Not an artifact creature.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "SP//dr, Piloted by Peni": {
+   "group": "Situational",
+   "text": "Added by owner, OWNED. 5-mana artifact creature: draws when a modified creature connects. Good only beside Deanna / Mikaeus / Steel Overseer.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Banish into Fable": {
+   "group": "Situational",
+   "text": "Added by owner. 6-mana instant bounce, copied once for controlling an artifact: two bounces and two Knights. Tempo, not removal.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Richlau, Headmaster": {
+   "group": "Situational",
+   "text": "Added by owner. End step: an artifact from your graveyard goes second from the top, cheaper and +2/+2. Slow card flow.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Deadeye Plunderers": {
+   "group": "Situational",
+   "text": "Added by owner. +1/+1 per artifact but not itself an artifact creature; Treasure for 4 mana.",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -2402,7 +2662,7 @@
   },
   "Mikaeus, the Lunarch": {
    "L": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {
@@ -2563,6 +2823,206 @@
   "Monoist Circuit-Feeder": {
    "L": {
     "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Resistance Is Futile": {
+   "L": {
+    "m": "★★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Winter, Cursed Rider": {
+   "L": {
+    "m": "★★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Deanna Troi, Psychic Counsel": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Malcator, Purity Overseer": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Cid, Timeless Artificer": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Support Skyforge": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Cephalopod Sentry": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Tezzeret, Master of the Bridge": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Test of Conviction": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Replicator": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Y'shtola, Night's Blessed": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Kaito, Dancing Shadow": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Haunt the Network": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Mendicant Core, Guidelight": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Tidus, Blitzball Star": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "SP//dr, Piloted by Peni": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Banish into Fable": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Richlau, Headmaster": {
+   "L": {
+    "m": "◇",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Deadeye Plunderers": {
+   "L": {
+    "m": "◇",
     "graded_at": "5fb30fd6b8b7"
    },
    "S": {
