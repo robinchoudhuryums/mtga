@@ -6,14 +6,15 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR DILEMMAS AND OFFICERS around Captain
 #: archetype: Benjamin Sisko: every time you choose a mode for a spell OR an ability you face a dilemma, and Sisko makes a 1/1
 #: archetype: red Officer per dilemma at your end step. The deck runs two kinds of dilemma: modal interaction (the charms and
-#: archetype: commands, Spree, Sublime Epiphany, Casualties of War) and REPEATING mode engines that fire every turn without a
-#: archetype: card (Felidar Retreat per land, Glorious Sunrise and Dreamshackle Geist each combat, Black Market Connections each
-#: archetype: main phase, Kirk and Tal Shiar Operative on attack, Elder Gargaroth, Hullbreaker Horror, Gala Greeters, Umezawa's Jitte,
-#: archetype: Galadriel, The Fantastic Four, Q Continuum). Payoffs read the dilemma (Jett Reno, Seven of Nine, Melkotian
-#: archetype: Adjudicator, Elim Garak, The Caretaker, Riku) or the Officers (Captain Jean-Luc Picard's
+#: archetype: commands, Spree, Collective Effort, Casualties of War; Scotty recasts them from the graveyard) and REPEATING mode
+#: archetype: engines that fire every turn without a card (Felidar Retreat and Elven Raft-Steerer per land, with Stable Wormhole
+#: archetype: making a land every attack; Black Market Connections each main phase; Kirk, Tal Shiar Operative, Ghalta and Mavren
+#: archetype: on attack, doubled by Isshin; Glissa Sunslayer and Umezawa's Jitte on damage; Oltec, The Vision and Cayth; Elder
+#: archetype: Gargaroth, Gala Greeters, Galadriel, The Fantastic Four, Q Continuum). Payoffs read the dilemma (Jett Reno, Seven of
+#: archetype: Nine, Melkotian Adjudicator, Elim Garak, The Caretaker, Riku) or the Officers (Captain Jean-Luc Picard's
 #: archetype: anthem, Janeway Endgame, Academy Instructor). DISTINCT from the roster's five-colour decks (17 Spectrum, 35 ninjas,
 #: archetype: 76 Dragons, 90 Spirit World) and from deck 100 (Borg artifacts): its engine is choosing modes, not a tribe or bombs.
-#: protect: Captain Benjamin Sisko; Felidar Retreat; Glorious Sunrise; Black Market Connections; Captain Jean-Luc Picard; Jett Reno, Problem Solver; Seven of Nine
+#: protect: Captain Benjamin Sisko; Felidar Retreat; Black Market Connections; Captain Jean-Luc Picard; Jett Reno, Problem Solver; Seven of Nine
 #: notes: Drafted 2026-11-12 from the Star Trek pile (.cycle/trek-pile-analysis.md section 5, deck R) under the owner's one-day
 #: notes: pool override. Ownership is information only; the list is the optimal one. Owner's removal rule honoured: Impossible
 #: notes: Choice (gives the opponent two Officers) and Kobayashi Maru Scenario / Demonic Pact (a "you lose the game" mode) are
@@ -38,14 +39,14 @@
 1 Captain James T. Kirk (TRK) 142
 1 Tal Shiar Operative (TRK) 131
 1 Elder Gargaroth (M21) 179
-1 Hullbreaker Horror (VOW) 63
+1 Dominion Saboteur (TRK) 54
 1 Territorial Kavu (J21) 724
 1 Gala Greeters (SNC) 148
 1 Galadriel, Light of Valinor (HOC) 32
 1 The Fantastic Four (MSC) 741
-1 Warren Warleader (BLB) 38
+1 Ghalta and Mavren (MOM) 225
 1 Cosmogrand Zenith (EOE) 9
-1 Dreamshackle Geist (VOW) 58
+1 Elven Raft-Steerer (HOB) 37
 1 Captain Kathryn Janeway (TRK) 187
 1 Rok-Tahk, Budding Scientist (TRK) 211
 1 Golos, Tireless Pilgrim (M20) 226
@@ -54,41 +55,41 @@
 1 Cayth, Famed Mechanist (M3C) 6
 1 Kykar, Zephyr Awakener (FDN) 122
 1 The Vision (MSH) 255
+1 Seven of Nine, Unassimilated (TRK) 80
+1 Glissa Sunslayer (ONE) 202
+1 Scotty, Miracle Worker (TRK) 79
+1 Sarek, Federation Ambassador (TRK) 251
+1 Isshin, Two Heavens as One (NEO) 224
+1 Mr. Spock, Science Officer (TRK) 74
+1 Oltec Matterweaver (BIG) 3
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Operations Officer (TRC) 192
 
 # Spacecraft
 1 Infinite Guideline Station (EOE) 219
 1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
+1 U.S.S. Enterprise-D, Galaxy-Class (TRK) 273
 
 # Spells, enchantments and artifacts
 1 Felidar Retreat (FDN) 574
-1 Glorious Sunrise (VOW) 200
+1 Stable Wormhole (TRK) 215
 1 Black Market Connections (HBG) 145
 1 Set Phasers to . . . (TRK) 34
-1 Unfortunate Accident (OTJ) 111
 1 Maestros Charm (SNC) 199
-1 Molten Collapse (LCI) 234
-1 Kolaghan's Command (HA5) 20
 1 Dromoka's Command (HA5) 22
-1 Abzan Charm (KTK) 161
-1 Mardu Charm (KTK) 186
 1 Sultai Charm (KTK) 204
 1 Inscription of Abundance (ZNR) 186
 1 Brokers Charm (SNC) 171
 1 Casualties of War (WAR) 187
-1 Silumgar's Command (HA5) 19
-1 Sublime Epiphany (M21) 74
+1 Consider the Prime Directive (TRK) 51
 1 Three Steps Ahead (OTJ) 75
-1 Live or Die (DSK) 107
-1 The Wrath of Khan (TRK) 181
 1 Cabaretti Charm (SNC) 173
-1 Deadly Plot (FDN) 520
 1 Riveteers Charm (SNC) 217
-1 Boros Charm (FDN) 721
+1 Collective Effort (SIR) 19
 1 Vigorbloom Charm (FRA) 160
 1 Make It So (TRK) 71
 1 Test of Priorities (TRK) 85
 1 Test of Conviction (TRK) 39
-1 Arcane Signet (FRC) 20
 1 Weather Maker (TMT) 182
 1 Umezawa's Jitte (PZA) 19
 
