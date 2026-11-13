@@ -743,3 +743,10 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Support Skyforge, Brad Boimler, Haunt the Network, Mendicant Core, Iron Man Bleeding Edge); suggested Assembly Specialist,
   Flare of Fortitude, Lita, Shields Up!, Rutherford, Collective Drone (holds interaction 13 / card advantage 8, protection 8→6;
   Lita + Rutherford are Artificers, so Cid weakens). Alternates on the board. Board settled (applied marks → done).
+- 2026-11-13 APPLIED 4 more to deck 100: Chrome Dome −Assembly Specialist, Haunt the Network −Shields Up!, Brad Boimler −Lt.
+  Cmdr. Data, Mendicant Core −Rutherford (interaction 13, card advantage 8→7, READY). Still pending: Support Skyforge
+  (suggest −Chief of the Foundry, alt −Flare of Fortitude) and Iron Man Bleeding Edge (suggest −Cyberdrive Awakener, alt
+  −Bio-Asset Allocator). Weather Maker (owned) graded ★ for Borg, proposed for Flare (interaction 13→14). "Rutherford,
+  Rebuilding the Past" is the Secret Lair name of Silas Renn, Seeker Adept: Scryfall shows no Arena printing and not
+  Historic-Brawl legal, so it cannot be added. Board fix: an `update` with pair {} does NOT clear a pair (merge); use
+  {"L": {"__delete__": true}}.

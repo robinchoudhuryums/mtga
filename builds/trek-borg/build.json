@@ -675,6 +675,11 @@
    "name": "Origin of Iron Man",
    "pile": "L",
    "src": "added"
+  },
+  {
+   "name": "Weather Maker",
+   "pile": "B",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1693,6 +1698,14 @@
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
    }
+  },
+  "Weather Maker": {
+   "group": "Real",
+   "text": "OWNED, IN deck 101. 3-mana any-colour rock; a charge counter per land, and three counters shoot 3 damage at any target. Borg: the only rock beside Arcane Signet since Mind Stone left, plus slow repeatable removal (interaction 13 → 14); proposed for Flare of Fortitude. Sisko: fixing.",
+   "graded_at": {
+    "100": "aa770b748ce8",
+    "101": "5bc9c38778e6"
+   }
   }
  },
  "snapshots": {
@@ -1789,6 +1802,102 @@
     "Vexing Drone",
     "Warp Core",
     "Watery Grave",
+    "Zefram Cochrane, Warp Pioneer"
+   ],
+   "aa770b748ce8": [
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Ancient Den",
+    "Anguished Unmaking",
+    "Antagonist Incorporator",
+    "Arcane Signet",
+    "Battle of Wolf 359",
+    "Bio-Asset Allocator",
+    "Borg Cube",
+    "Borg Queen, Perfection Manifest",
+    "Brad Boimler, Eager Ensign",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Caves of Koilos",
+    "Chief of the Foundry",
+    "Chrome Dome",
+    "Cid, Timeless Artificer",
+    "Clearwater Pathway // Murkwater Pathway",
+    "Collation Trimatrix",
+    "Collective Drone",
+    "Command Subadjunct",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Conquest Mission",
+    "Consider the Prime Directive",
+    "Crystalline Entity",
+    "Cyberdrive Awakener",
+    "Darkslick Shores",
+    "Data, New Life",
+    "Dawnsire, Sunstar Dreadnought",
+    "Deanna Troi, Psychic Counsel",
+    "Death Is Irrelevant",
+    "Deserted Beach",
+    "Doctor Doom",
+    "Drowned Catacomb",
+    "Fabled Passage",
+    "Flare of Fortitude",
+    "Glacial Fortress",
+    "Godless Shrine",
+    "Gold-Forged Thopteryx",
+    "Hallowed Fountain",
+    "Haunt the Network",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hive Mind Coprocessor",
+    "Infernal Grasp",
+    "Iron Man, Modern Marvel",
+    "Iron Spider, Stark Upgrade",
+    "Island",
+    "Isolated Chapel",
+    "Kaito, Dancing Shadow",
+    "Kappa Cannoneer",
+    "Lita, Mechanical Engineer",
+    "Locutus of Borg",
+    "Locutus, the One Who Speaks",
+    "Lt. Cmdr. Geordi La Forge",
+    "Malcator, Purity Overseer",
+    "Malfunctioning Holodeck",
+    "Mendicant Core, Guidelight",
+    "Mikaeus, the Lunarch",
+    "Mirror Universe Intrusion",
+    "Mr. Spock, Science Officer",
+    "Noctis, Prince of Lucis",
+    "Obscura Storefront",
+    "Organic Avulsion Unit",
+    "Overflow Submatrix",
+    "Plains",
+    "Primary Unimatrix Adjunct",
+    "Raffine's Tower",
+    "Replicator",
+    "Resistance Is Futile",
+    "Salvation Engine",
+    "Seachrome Coast",
+    "Seat of the Synod",
+    "Shattered Sanctum",
+    "Sheoldred's Edict",
+    "Sheoldred, the Apocalypse",
+    "Shipwreck Marsh",
+    "Susurian Dirgecraft",
+    "Swamp",
+    "Tempered Steel",
+    "Test of Conviction",
+    "Test of Priorities",
+    "Tezzeret, Master of the Bridge",
+    "The Borg Queen",
+    "The Unicomplex",
+    "Tidus, Blitzball Star",
+    "U.S.S. Excelsior, Cutting Edge",
+    "U.S.S. Reliant, From Hell's Heart",
+    "Underground River",
+    "Uthros, Titanic Godcore",
+    "Vanishing Verse",
+    "Vault of Whispers",
+    "Watery Grave",
+    "Winter, Cursed Rider",
     "Zefram Cochrane, Warp Pioneer"
    ]
   },
@@ -3165,6 +3274,16 @@
    },
    "S": {
     "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Weather Maker": {
+   "L": {
+    "m": "★",
+    "graded_at": "aa770b748ce8"
+   },
+   "S": {
+    "m": "★",
     "graded_at": "5bc9c38778e6"
    }
   }
