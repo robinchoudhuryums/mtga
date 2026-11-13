@@ -763,3 +763,11 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Charm, Inscription of Abundance −Temur Charm, Umezawa's Jitte −Obsidian Order Operative, The Vision −Excalbian Gamemaster,
   Oltec Matterweaver instead of Bringer, Elven Raft-Steerer −Captain Kathryn Janeway (alts Hylda, Cayth). With the board
   marks + 9 balancing cuts: modal cards 35→39, interaction 20, card advantage 17→20, avg MV 3.17, floor A (scratch d101-b3).
+- 2026-11-13 deck 101 APPLIED: Maestros −Izzet, Riveteers −Abrade, Cabaretti −Battle Menu, Brokers −Jeskai, Inscription of
+  Abundance −Temur Charm, Umezawa's Jitte −Obsidian Order Operative (READY, interaction 25, card advantage 19, no regressions).
+  Owner keeps Excalbian Gamemaster and Captain Kathryn Janeway. Engine cuts PROPOSED: The Vision −Golos, Elven Raft-Steerer
+  −Rok-Tahk, Hylda −Kenrith, Cayth −JL Picard Luminary, Oltec −Captain Sisay (preview: floor A, interaction 25, card advantage
+  18, avg MV 3.38). Spree/escalate sweep: Requisition Raid, Explosive Derailment, Rush of Dread, Collective Effort (★★),
+  Tell Me What You See, Artistic Refusal, Artful Takedown (★), Great Train Heist (spice). Modal lands: the TRK cycle
+  (Federation Outpost W, Quark's Bar R, The Unicomplex B) — replacing basics or fetches costs 0.4-1.1 points of on-curve
+  chance because the fetches lose targets. The owner's 15-add / 6-cut board marks for 101 are still unapplied.

@@ -750,6 +750,56 @@
    "name": "Reflecting Pool",
    "pile": "L",
    "src": "added"
+  },
+  {
+   "name": "Requisition Raid",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Explosive Derailment",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Rush of Dread",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Collective Effort",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Tell Me What You See",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Artistic Refusal",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Artful Takedown",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Great Train Heist",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Federation Outpost",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Quark's Bar",
+   "pile": "S",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1888,6 +1938,86 @@
     "100": "113389f32e5c",
     "101": "5bc9c38778e6"
    }
+  },
+  "Requisition Raid": {
+   "group": "Strong",
+   "text": "{W} Spree: +{1} destroy an artifact, +{1} destroy an enchantment, +{1} a +1/+1 counter on each of your creatures (the Officer swarm). Cheap, flexible, one dilemma per cast.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Explosive Derailment": {
+   "group": "Strong",
+   "text": "{R} Spree instant: +{2} 4 damage to a creature, +{2} destroy an artifact.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Rush of Dread": {
+   "group": "Strong",
+   "text": "{1}{B}{B} Spree: they sacrifice HALF their creatures, discard half their hand and/or lose half their life. A one-sided board answer.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Collective Effort": {
+   "group": "Strong",
+   "text": "{1}{W}{W}, escalate by TAPPING a creature (Officers pay it): destroy a power-4+ creature, an enchantment, and a +1/+1 counter on each of your creatures.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Tell Me What You See": {
+   "group": "Real",
+   "text": "{1}{B} enchantment: on entry they let you draw or lose 4 life; whenever you face a dilemma you may return it to hand and recast it, so it repeats every turn.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Artistic Refusal": {
+   "group": "Real",
+   "text": "Convoke (tap Officers to pay): counter a spell and/or draw two, discard one.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Artful Takedown": {
+   "group": "Real",
+   "text": "{2}{U}{B} instant: tap a creature and/or -2/-4. The tap mode feeds Hylda.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Great Train Heist": {
+   "group": "Situational",
+   "text": "SPICE. {R} Spree: an extra combat (Kirk, Tal Shiar, Elder Gargaroth, Territorial Kavu, Warren Warleader attack again; Isshin doubles them), first strike, Treasures.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Federation Outpost": {
+   "group": "Real",
+   "text": "Modal land (W): enters untapped with two other lands and then you choose gain 2 or surveil 1, a dilemma. Tested for Fabled Passage: costs ~0.4 points of average on-curve chance.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
+  },
+  "Quark's Bar": {
+   "group": "Situational",
+   "text": "Modal land (R): 1 damage to each opponent or surveil 1 on an untapped entry. Replacing the Mountain cost ~1 point of on-curve chance (fetch targets).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "82d25e8383aa"
+   }
   }
  },
  "snapshots": {
@@ -2274,6 +2404,108 @@
     "Three Steps Ahead",
     "U.S.S. Cerritos, Following Up",
     "U.S.S. Enterprise-A, Free Spirit",
+    "Unfortunate Accident",
+    "Vigorbloom Charm",
+    "Warren Warleader",
+    "Watery Grave",
+    "Weather Maker",
+    "Xander's Lounge",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "82d25e8383aa": [
+    "Abzan Charm",
+    "Academy Instructor",
+    "Arcane Signet",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Boros Charm",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Brokers Charm",
+    "Cabaretti Charm",
+    "Captain Benjamin Sisko",
+    "Captain James T. Kirk",
+    "Captain Janeway, Endgame",
+    "Captain Jean-Luc Picard",
+    "Captain Kathryn Janeway",
+    "Captain Sisay",
+    "Casualties of War",
+    "Command Tower",
+    "Cosmogrand Zenith",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deadly Plot",
+    "Dreamshackle Geist",
+    "Dromoka's Command",
+    "Elder Gargaroth",
+    "Elim Garak, Simple Tailor",
+    "Excalbian Gamemaster",
+    "Fabled Passage",
+    "Felidar Retreat",
+    "Forest",
+    "Gala Greeters",
+    "Galadriel, Light of Valinor",
+    "Glorious Sunrise",
+    "Godless Shrine",
+    "Golos, Tireless Pilgrim",
+    "Hallowed Fountain",
+    "Hullbreaker Horror",
+    "Indatha Triome",
+    "Infinite Guideline Station",
+    "Inscription of Abundance",
+    "Island",
+    "Jean-Luc Picard, Luminary",
+    "Jetmir's Garden",
+    "Jett Reno, Problem Solver",
+    "Kenrith, the Returned King",
+    "Ketria Triome",
+    "Kolaghan's Command",
+    "Kykar, Zephyr Awakener",
+    "Live or Die",
+    "Maestros Charm",
+    "Make It So",
+    "Mana Confluence",
+    "Mardu Charm",
+    "Melkotian Adjudicator",
+    "Molten Collapse",
+    "Mountain",
+    "Ni'Var Science Academy",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Q Continuum",
+    "Raffine's Tower",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riku of Many Paths",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riveteers Charm",
+    "Rok-Tahk, Budding Scientist",
+    "Sacred Foundry",
+    "Savai Triome",
+    "Set Phasers to . . .",
+    "Seven of Nine",
+    "Silumgar's Command",
+    "Spara's Headquarters",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Subspace Anomaly",
+    "Sultai Charm",
+    "Swamp",
+    "Tal Shiar Operative",
+    "Temple Garden",
+    "Territorial Kavu",
+    "Test of Conviction",
+    "Test of Priorities",
+    "The Caretaker",
+    "The Fantastic Four",
+    "The Wrath of Khan",
+    "Three Steps Ahead",
+    "U.S.S. Cerritos, Following Up",
+    "U.S.S. Enterprise-A, Free Spirit",
+    "Umezawa's Jitte",
     "Unfortunate Accident",
     "Vigorbloom Charm",
     "Warren Warleader",
@@ -3704,6 +3936,106 @@
    "S": {
     "m": "★",
     "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Requisition Raid": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Explosive Derailment": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Rush of Dread": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Collective Effort": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Tell Me What You See": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Artistic Refusal": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Artful Takedown": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Great Train Heist": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Federation Outpost": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "82d25e8383aa"
+   }
+  },
+  "Quark's Bar": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "82d25e8383aa"
    }
   }
  }

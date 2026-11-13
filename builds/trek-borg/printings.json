@@ -145,6 +145,8 @@
  ],
  "Arcbound Condor": [],
  "Archenemy's Charm": [],
+ "Artful Takedown": [],
+ "Artistic Refusal": [],
  "Assault Drone": [],
  "Assembly Specialist": [],
  "Badgey, Malicious Glitch": [],
@@ -600,6 +602,7 @@
   }
  ],
  "Collective Drone": [],
+ "Collective Effort": [],
  "Command Subadjunct": [
   {
    "a": "Alex Negrea",
@@ -882,6 +885,7 @@
   }
  ],
  "Excalibur II": [],
+ "Explosive Derailment": [],
  "Expropriate": [],
  "Fatal Push": [
   {
@@ -911,6 +915,32 @@
   }
  ],
  "Federation Field Medic": [],
+ "Federation Outpost": [
+  {
+   "a": "Edouard",
+   "art": "https://cards.scryfall.io/art_crop/front/0/2/02e368bd-ece8-4201-8d1a-4c5287d5cfee.jpg?1792632946",
+   "cn": "282",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/2/02e368bd-ece8-4201-8d1a-4c5287d5cfee.jpg?1792632946",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Paulius Daščioras",
+   "art": "https://cards.scryfall.io/art_crop/front/8/5/85859d4c-c90c-48f4-bac0-75fcccf1b1f4.jpg?1792550928",
+   "cn": "332",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/5/85859d4c-c90c-48f4-bac0-75fcccf1b1f4.jpg?1792550928",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Felidar Retreat": [
   {
    "a": "Ralph Horsley",
@@ -1154,6 +1184,7 @@
  "Gold-Forged Thopteryx": [],
  "Golgari Charm": [],
  "Golos, Tireless Pilgrim": [],
+ "Great Train Heist": [],
  "Gul Dukat, Colonial Prefect": [],
  "H.M.S. Bounty, Unlikely Timeship": [
   {
@@ -1793,6 +1824,45 @@
    "y": "2026"
   }
  ],
+ "Quark's Bar": [
+  {
+   "a": "Robin Olausson",
+   "art": "https://cards.scryfall.io/art_crop/front/8/4/8422ee4a-9845-429d-bda8-74852168dcba.jpg?1792632965",
+   "cn": "292",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/4/8422ee4a-9845-429d-bda8-74852168dcba.jpg?1792632965",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Vlad Petruchik",
+   "art": "https://cards.scryfall.io/art_crop/front/b/8/b846d3f5-7937-4282-9fa3-95b2f134676b.jpg?1793360162",
+   "cn": "335",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/8/b846d3f5-7937-4282-9fa3-95b2f134676b.jpg?1793360162",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Marija Tiurina",
+   "art": "https://cards.scryfall.io/art_crop/front/a/c/ac124e83-bb99-4bf0-ac06-364d77771e81.jpg?1792508673",
+   "cn": "350",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/c/ac124e83-bb99-4bf0-ac06-364d77771e81.jpg?1792508673",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Reflecting Pool": [
   {
    "a": "Fred Fields",
@@ -1853,6 +1923,33 @@
    "r": "R",
    "set": "TRK",
    "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
+ "Requisition Raid": [
+  {
+   "a": "Viko Menezes",
+   "art": "https://cards.scryfall.io/art_crop/front/1/5/154e9ba9-0d0e-4b0e-acf2-f66a993cf3a2.jpg?1783911852",
+   "cn": "26",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/5/154e9ba9-0d0e-4b0e-acf2-f66a993cf3a2.jpg?1783911852",
+   "r": "U",
+   "set": "OTJ",
+   "sn": "Outlaws of Thunder Junction",
+   "y": "2024"
+  },
+  {
+   "a": "Matthew G. Lewis",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d9efae9-365d-46c8-be92-d4a3038f0414.jpg?1783903930",
+   "cn": "10",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d9efae9-365d-46c8-be92-d4a3038f0414.jpg?1783903930",
+   "r": "U",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
    "y": "2026"
   }
  ],
@@ -1928,6 +2025,7 @@
  ],
  "Rok-Tahk, Budding Scientist": [],
  "Romulan Bird-of-Prey": [],
+ "Rush of Dread": [],
  "Rutherford, Upgraded Ensign": [],
  "SP//dr, Piloted by Peni": [],
  "Salvation Engine": [],
@@ -2183,6 +2281,7 @@
  "Synthesizer Labship": [],
  "Tal Shiar Operative": [],
  "Tectonic Giant": [],
+ "Tell Me What You See": [],
  "Tempered Steel": [],
  "Temur Charm": [],
  "Tenacious Drone": [],
