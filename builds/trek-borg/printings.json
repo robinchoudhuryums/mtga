@@ -184,7 +184,59 @@
  "Boros Charm": [],
  "Brad Boimler, Eager Ensign": [],
  "Bringer of the White Dawn": [],
+ "Brokers Charm": [
+  {
+   "a": "Steve Argyle",
+   "art": "https://cards.scryfall.io/art_crop/front/7/4/74c9c315-1cf4-468e-a74a-b5f3be4a63a1.jpg?1783923094",
+   "cn": "171",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/4/74c9c315-1cf4-468e-a74a-b5f3be4a63a1.jpg?1783923094",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Jérémie Solomon",
+   "art": "https://cards.scryfall.io/art_crop/front/0/a/0aac0943-6c9a-4c65-9d17-3ca0f2ba2340.jpg?1783923035",
+   "cn": "298",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/a/0aac0943-6c9a-4c65-9d17-3ca0f2ba2340.jpg?1783923035",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Brokers' Safeguard": [],
+ "Cabaretti Charm": [
+  {
+   "a": "Steve Argyle",
+   "art": "https://cards.scryfall.io/art_crop/front/0/8/08f33c8a-8e93-4296-964b-da132a854b3b.jpg?1783923091",
+   "cn": "173",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/8/08f33c8a-8e93-4296-964b-da132a854b3b.jpg?1783923091",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Jérémie Solomon",
+   "art": "https://cards.scryfall.io/art_crop/front/e/b/eb456da8-6a20-4d5e-9587-e8661ced525b.jpg?1783923034",
+   "cn": "300",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/b/eb456da8-6a20-4d5e-9587-e8661ced525b.jpg?1783923034",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Captain James T. Kirk": [
   {
    "a": "Jason Pastrana",
@@ -346,6 +398,7 @@
   }
  ],
  "Casualties of War": [],
+ "Cayth, Famed Mechanist": [],
  "Cephalopod Sentry": [],
  "Chamber Sentry": [],
  "Chief of the Foundry": [],
@@ -799,6 +852,7 @@
  ],
  "Elder Gargaroth": [],
  "Elim Garak, Simple Tailor": [],
+ "Elven Raft-Steerer": [],
  "Engineered Explosives": [],
  "Entropic Battlecruiser": [],
  "Excalbian Gamemaster": [
@@ -1134,6 +1188,7 @@
  "Hive Mind Coprocessor": [],
  "Hologram Janeway": [],
  "Hullbreaker Horror": [],
+ "Hylda of the Icy Crown": [],
  "Impossible Choice": [],
  "In the Pale Moonlight": [],
  "Infernal Grasp": [
@@ -1165,6 +1220,7 @@
  ],
  "Infinite Guideline Station": [],
  "Insatiable Avarice": [],
+ "Inscription of Abundance": [],
  "Iron Man, Bleeding Edge": [],
  "Iron Man, Futurist Paragon": [],
  "Iron Man, Modern Marvel": [],
@@ -1473,10 +1529,62 @@
    "y": "2026"
   }
  ],
+ "Maestros Charm": [
+  {
+   "a": "Steve Argyle",
+   "art": "https://cards.scryfall.io/art_crop/front/3/d/3dcdedb6-3c24-4a29-b9b9-27cc47d8ee56.jpg?1783923080",
+   "cn": "199",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/d/3dcdedb6-3c24-4a29-b9b9-27cc47d8ee56.jpg?1783923080",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Jérémie Solomon",
+   "art": "https://cards.scryfall.io/art_crop/front/3/b/3b3e1bec-67d2-43fd-b799-b7c12b94d1f0.jpg?1783923027",
+   "cn": "317",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/b/3b3e1bec-67d2-43fd-b799-b7c12b94d1f0.jpg?1783923027",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Make Disappear": [],
  "Make It So": [],
  "Malcator, Purity Overseer": [],
  "Malfunctioning Holodeck": [],
+ "Mana Confluence": [
+  {
+   "a": "Richard Wright",
+   "art": "https://cards.scryfall.io/art_crop/front/d/8/d80f82c0-e13c-4bac-bcb3-e1766e2d8d69.jpg?1783918555",
+   "cn": "22",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/8/d80f82c0-e13c-4bac-bcb3-e1766e2d8d69.jpg?1783918555",
+   "r": "R",
+   "set": "EA2",
+   "sn": "Explorer Anthology 2",
+   "y": "2022"
+  },
+  {
+   "a": "Sam Burley",
+   "art": "https://cards.scryfall.io/art_crop/front/a/3/a374b6ef-bd75-4eae-ac7a-09332b0a653d.jpg?1783905857",
+   "cn": "25",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/3/a374b6ef-bd75-4eae-ac7a-09332b0a653d.jpg?1783905857",
+   "r": "M",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  }
+ ],
  "Mardu Charm": [],
  "Melkotian Adjudicator": [],
  "Mendicant Core, Guidelight": [],
@@ -1603,6 +1711,7 @@
  "Oberth-Class Starship": [],
  "Obsidian Order Operative": [],
  "Ojutai Exemplars": [],
+ "Oltec Matterweaver": [],
  "Operations Officer": [],
  "Organic Avulsion Unit": [
   {
@@ -1684,6 +1793,43 @@
    "y": "2026"
   }
  ],
+ "Reflecting Pool": [
+  {
+   "a": "Fred Fields",
+   "art": "https://cards.scryfall.io/art_crop/front/3/d/3d03dc37-03fb-47b2-aa25-60a85d0d94dd.jpg?1783942705",
+   "cn": "278",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/d/3d03dc37-03fb-47b2-aa25-60a85d0d94dd.jpg?1783942705",
+   "r": "R",
+   "set": "SHM",
+   "sn": "Shadowmoor",
+   "y": "2008"
+  },
+  {
+   "a": "Craig Elliott",
+   "art": "https://cards.scryfall.io/art_crop/front/2/b/2b4e8ad6-7a60-43d6-a402-c91284993c14.jpg?1783905854",
+   "cn": "36",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/b/2b4e8ad6-7a60-43d6-a402-c91284993c14.jpg?1783905854",
+   "r": "M",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  },
+  {
+   "a": "Marco Gorlei",
+   "art": "https://cards.scryfall.io/art_crop/front/c/b/cbc4281a-b70d-4f96-b309-38e986484829.jpg?1789644471",
+   "cn": "23",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/b/cbc4281a-b70d-4f96-b309-38e986484829.jpg?1789644471",
+   "r": "R",
+   "set": "FRC",
+   "sn": "Reality Fracture Commander",
+   "y": "2026"
+  }
+ ],
  "Replicator": [
   {
    "a": "William Phifer",
@@ -1754,6 +1900,32 @@
  "Richlau, Headmaster": [],
  "Riku of Many Paths": [],
  "Rimefire Torque": [],
+ "Riveteers Charm": [
+  {
+   "a": "Steve Argyle",
+   "art": "https://cards.scryfall.io/art_crop/front/7/8/784a5915-bc42-49d6-8a1b-45da7749f03a.jpg?1783923074",
+   "cn": "217",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/8/784a5915-bc42-49d6-8a1b-45da7749f03a.jpg?1783923074",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Jérémie Solomon",
+   "art": "https://cards.scryfall.io/art_crop/front/3/c/3ca0eb05-95d2-4eba-a3de-0e08739459a3.jpg?1783923021",
+   "cn": "331",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/c/3ca0eb05-95d2-4eba-a3de-0e08739459a3.jpg?1783923021",
+   "r": "U",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Rok-Tahk, Budding Scientist": [],
  "Romulan Bird-of-Prey": [],
  "Rutherford, Upgraded Ensign": [],
@@ -1974,6 +2146,7 @@
  "Silumgar's Command": [],
  "Silverback Elder": [],
  "Smuggler's Surprise": [],
+ "Spire of Industry": [],
  "Spock, Logical Choice": [],
  "Steel Overseer": [],
  "Sublime Epiphany": [
@@ -2022,6 +2195,7 @@
  "The Fantastic Four": [],
  "The Measure of a Man": [],
  "The Seriema": [],
+ "The Vision": [],
  "The World Tree": [],
  "The Wrath of Khan": [],
  "Thought Monitor": [],
@@ -2139,6 +2313,33 @@
   }
  ],
  "U.S.S. Voyager, Lone Wanderer": [],
+ "Umezawa's Jitte": [
+  {
+   "a": "Christopher Moeller",
+   "art": "https://cards.scryfall.io/art_crop/front/e/7/e7cd4813-7794-448d-baca-6f894f749392.jpg?1783905553",
+   "cn": "23",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/7/e7cd4813-7794-448d-baca-6f894f749392.jpg?1783905553",
+   "r": "R",
+   "set": "AA3",
+   "sn": "Arena Anthology 3",
+   "y": "2025"
+  },
+  {
+   "a": "Peter Laird",
+   "art": "https://cards.scryfall.io/art_crop/front/4/d/4ddaccfb-52e5-4448-8273-797cff31db2b.jpg?1783904177",
+   "cn": "19",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/d/4ddaccfb-52e5-4448-8273-797cff31db2b.jpg?1783904177",
+   "r": "M",
+   "set": "PZA",
+   "sn": "Teenage Mutant Ninja Turtles Source Material",
+   "y": "2026"
+  }
+ ],
  "Unctus, Grand Metatect": [],
  "Unfortunate Accident": [],
  "Urza, Prince of Kroog": [

@@ -756,3 +756,10 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   in #: protect), 8 bench. Proposed 9 NON-modal cuts to balance (Golos, Kenrith, Captain Sisay, JL Picard Luminary, Cerritos,
   Rok-Tahk, Infinite Guideline Station, Weather Maker, Melkotian Adjudicator): legal 100, floor A, interaction 24→19, card
   advantage 17, avg MV 3.48→3.32, modal sources 37→33. Not applied.
+- 2026-11-13 deck 100 APPLIED Bleeding Edge −Tempered Steel, Weather Maker −Island (35 lands + 2 rocks). Land fix PROPOSED:
+  Spire of Industry −Obscura Storefront, Mana Confluence −Raffine's Tower, Reflecting Pool −Flare of Fortitude: average
+  on-curve 47.8%→52.7%, keepable 76.9%→78.4%, W21/U21/B22 (scratch l100C). Deck 101 modal upgrades PROPOSED on top of the
+  board marks: Maestros Charm −Izzet Charm, Riveteers Charm −Abrade, Cabaretti Charm −Battle Menu, Brokers Charm −Jeskai
+  Charm, Inscription of Abundance −Temur Charm, Umezawa's Jitte −Obsidian Order Operative, The Vision −Excalbian Gamemaster,
+  Oltec Matterweaver instead of Bringer, Elven Raft-Steerer −Captain Kathryn Janeway (alts Hylda, Cayth). With the board
+  marks + 9 balancing cuts: modal cards 35→39, interaction 20, card advantage 17→20, avg MV 3.17, floor A (scratch d101-b3).

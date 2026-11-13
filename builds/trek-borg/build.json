@@ -680,6 +680,76 @@
    "name": "Weather Maker",
    "pile": "B",
    "src": "added"
+  },
+  {
+   "name": "Umezawa's Jitte",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "The Vision",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Oltec Matterweaver",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Elven Raft-Steerer",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Maestros Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Riveteers Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Cabaretti Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Brokers Charm",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Inscription of Abundance",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Hylda of the Icy Crown",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Cayth, Famed Mechanist",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Spire of Industry",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Mana Confluence",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Reflecting Pool",
+   "pile": "L",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1706,6 +1776,118 @@
     "100": "aa770b748ce8",
     "101": "5bc9c38778e6"
    }
+  },
+  "Umezawa's Jitte": {
+   "group": "Strong",
+   "text": "Two charge counters per combat-damage hit, and EVERY counter removed is a modal activation (+2/+2, -1/-1 to any creature, or 2 life), so each hit is two dilemmas, two Officers and repeatable removal. Equip {2}. Proposed for Obsidian Order Operative.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "The Vision": {
+   "group": "Strong",
+   "text": "{4} colourless 4/4 flying vigilance artifact creature: each noncreature spell is a dilemma (up to three a turn), one mode draws a card. Proposed for Excalbian Gamemaster.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Oltec Matterweaver": {
+   "group": "Strong",
+   "text": "{2}{W}: every creature spell you cast is a dilemma that also makes a Gnome or copies an artifact token. Proposed instead of Bringer of the White Dawn (your add).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Elven Raft-Steerer": {
+   "group": "Real",
+   "text": "{2}{U}: landfall modal, tap their creature or untap yours. A dilemma per land drop (two with Felidar Retreat) and repeatable tempo. Proposed for Captain Kathryn Janeway.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Maestros Charm": {
+   "group": "Strong",
+   "text": "{U}{B}{R} instant: 5 damage to a creature or planeswalker, drain 3, or dig five. Upgrade on Izzet Charm (2 damage).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Riveteers Charm": {
+   "group": "Strong",
+   "text": "{B}{R}{G} instant: they sacrifice their BIGGEST creature or planeswalker, or impulse three cards, or exile a graveyard. Upgrade on Abrade.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Cabaretti Charm": {
+   "group": "Strong",
+   "text": "{R}{G}{W} instant: damage equal to your creature count (Officers count), a team pump, or two tokens. Upgrade on Battle Menu.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Brokers Charm": {
+   "group": "Strong",
+   "text": "{G}{W}{U} instant: bite, enchantment removal, or draw two. Upgrade on Jeskai Charm.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Inscription of Abundance": {
+   "group": "Real",
+   "text": "{1}{G} instant; kicked, choose ANY number: two counters, life, and a fight (Riku pays per mode). Upgrade on Temur Charm.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "group": "Real",
+   "text": "Whenever you tap an opposing creature, pay {1}: a 4/4, team counters or scry-draw (a modal trigger). Tappers here: Dreamshackle Geist, Set Phasers, Consider the Prime Directive, Elven Raft-Steerer. Alternate repeatable.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Cayth, Famed Mechanist": {
+   "group": "Real",
+   "text": "{2},{T}: populate (copy an Officer token) or proliferate, a dilemma every turn; fabricate on your nontoken creatures. Alternate repeatable.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Spire of Industry": {
+   "group": "Real",
+   "text": "Land fix for deck 100: untapped, any colour for 1 life while you control an artifact (always here). Proposed for Obscura Storefront (tapped).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Mana Confluence": {
+   "group": "Real",
+   "text": "Land fix for deck 100: untapped, any colour for 1 life. Proposed for Raffine's Tower (tapped).",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Reflecting Pool": {
+   "group": "Real",
+   "text": "OWNED. Land fix for deck 100: untapped, any colour your other lands make; brings the deck back to 36 lands. Proposed for Flare of Fortitude.",
+   "graded_at": {
+    "100": "113389f32e5c",
+    "101": "5bc9c38778e6"
+   }
   }
  },
  "snapshots": {
@@ -1897,6 +2079,103 @@
     "Vanishing Verse",
     "Vault of Whispers",
     "Watery Grave",
+    "Winter, Cursed Rider",
+    "Zefram Cochrane, Warp Pioneer"
+   ],
+   "113389f32e5c": [
+    "Adarkar Wastes",
+    "Alela, Artful Provocateur",
+    "Ancient Den",
+    "Anguished Unmaking",
+    "Antagonist Incorporator",
+    "Arcane Signet",
+    "Battle of Wolf 359",
+    "Bio-Asset Allocator",
+    "Borg Cube",
+    "Borg Queen, Perfection Manifest",
+    "Brad Boimler, Eager Ensign",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Caves of Koilos",
+    "Chrome Dome",
+    "Cid, Timeless Artificer",
+    "Clearwater Pathway // Murkwater Pathway",
+    "Collation Trimatrix",
+    "Collective Drone",
+    "Command Subadjunct",
+    "Command Tower",
+    "Concealed Courtyard",
+    "Conquest Mission",
+    "Consider the Prime Directive",
+    "Crystalline Entity",
+    "Cyberdrive Awakener",
+    "Darkslick Shores",
+    "Data, New Life",
+    "Dawnsire, Sunstar Dreadnought",
+    "Deanna Troi, Psychic Counsel",
+    "Death Is Irrelevant",
+    "Deserted Beach",
+    "Doctor Doom",
+    "Drowned Catacomb",
+    "Fabled Passage",
+    "Flare of Fortitude",
+    "Glacial Fortress",
+    "Godless Shrine",
+    "Gold-Forged Thopteryx",
+    "Hallowed Fountain",
+    "Haunt the Network",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hive Mind Coprocessor",
+    "Infernal Grasp",
+    "Iron Man, Bleeding Edge",
+    "Iron Man, Modern Marvel",
+    "Iron Spider, Stark Upgrade",
+    "Island",
+    "Isolated Chapel",
+    "Kaito, Dancing Shadow",
+    "Kappa Cannoneer",
+    "Lita, Mechanical Engineer",
+    "Locutus of Borg",
+    "Locutus, the One Who Speaks",
+    "Lt. Cmdr. Geordi La Forge",
+    "Malcator, Purity Overseer",
+    "Malfunctioning Holodeck",
+    "Mendicant Core, Guidelight",
+    "Mikaeus, the Lunarch",
+    "Mirror Universe Intrusion",
+    "Mr. Spock, Science Officer",
+    "Noctis, Prince of Lucis",
+    "Obscura Storefront",
+    "Organic Avulsion Unit",
+    "Overflow Submatrix",
+    "Plains",
+    "Primary Unimatrix Adjunct",
+    "Raffine's Tower",
+    "Replicator",
+    "Resistance Is Futile",
+    "Salvation Engine",
+    "Seachrome Coast",
+    "Seat of the Synod",
+    "Shattered Sanctum",
+    "Sheoldred's Edict",
+    "Sheoldred, the Apocalypse",
+    "Shipwreck Marsh",
+    "Support Skyforge",
+    "Susurian Dirgecraft",
+    "Swamp",
+    "Test of Conviction",
+    "Test of Priorities",
+    "Tezzeret, Master of the Bridge",
+    "The Borg Queen",
+    "The Unicomplex",
+    "Tidus, Blitzball Star",
+    "U.S.S. Excelsior, Cutting Edge",
+    "U.S.S. Reliant, From Hell's Heart",
+    "Underground River",
+    "Uthros, Titanic Godcore",
+    "Vanishing Verse",
+    "Vault of Whispers",
+    "Watery Grave",
+    "Weather Maker",
     "Winter, Cursed Rider",
     "Zefram Cochrane, Warp Pioneer"
    ]
@@ -3281,6 +3560,146 @@
    "L": {
     "m": "★",
     "graded_at": "aa770b748ce8"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Umezawa's Jitte": {
+   "L": {
+    "m": "★",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "The Vision": {
+   "L": {
+    "m": "◇",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Oltec Matterweaver": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Elven Raft-Steerer": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Maestros Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Riveteers Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Cabaretti Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Brokers Charm": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Inscription of Abundance": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Cayth, Famed Mechanist": {
+   "L": {
+    "m": "✗",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Spire of Industry": {
+   "L": {
+    "m": "★",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Mana Confluence": {
+   "L": {
+    "m": "★",
+    "graded_at": "113389f32e5c"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Reflecting Pool": {
+   "L": {
+    "m": "★",
+    "graded_at": "113389f32e5c"
    },
    "S": {
     "m": "★",
