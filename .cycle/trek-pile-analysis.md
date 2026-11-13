@@ -771,3 +771,4 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   Tell Me What You See, Artistic Refusal, Artful Takedown (★), Great Train Heist (spice). Modal lands: the TRK cycle
   (Federation Outpost W, Quark's Bar R, The Unicomplex B) — replacing basics or fetches costs 0.4-1.1 points of on-curve
   chance because the fetches lose targets. The owner's 15-add / 6-cut board marks for 101 are still unapplied.
+- 2026-11-13 12:00 scheduled run: make refresh REFETCH=1 restored the standard pool query (pool unchanged: 16,433 cards, 311 TRK, 52 TRC); decks 99/100/101 READY, floor A; deck 56 Star Trek swaps applied (Pah-Wraith −Giantfall still open); boards re-rendered; 'Seven' prose false positives in 45a/48/54b reworded.
