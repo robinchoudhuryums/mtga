@@ -51,13 +51,13 @@
 1 Golos, Tireless Pilgrim (M20) 226
 1 Kenrith, the Returned King (ELD) 303
 1 Jean-Luc Picard, Luminary (TRC) 3
-1 Captain Sisay (TLE) 47
+1 Cayth, Famed Mechanist (M3C) 6
 1 Kykar, Zephyr Awakener (FDN) 122
+1 The Vision (MSH) 255
 
 # Spacecraft
 1 Infinite Guideline Station (EOE) 219
 1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
-1 U.S.S. Cerritos, Following Up (TRK) 272
 
 # Spells, enchantments and artifacts
 1 Felidar Retreat (FDN) 574
