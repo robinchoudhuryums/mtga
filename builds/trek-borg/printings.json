@@ -52,6 +52,8 @@
  "Abzan Charm": [],
  "Academy Instructor": [],
  "Adagia, Windswept Bastion": [],
+ "Alela, Artful Provocateur": [],
+ "Angel of Invention": [],
  "Anguished Unmaking": [
   {
    "a": "Wesley Burt",
@@ -141,6 +143,7 @@
    "y": "2026"
   }
  ],
+ "Arcbound Condor": [],
  "Archenemy's Charm": [],
  "Assault Drone": [],
  "Assembly Specialist": [],
@@ -344,6 +347,7 @@
  "Casualties of War": [],
  "Chamber Sentry": [],
  "Chief of the Foundry": [],
+ "Chrome Dome": [],
  "Collation Trimatrix": [],
  "Collective Brutality": [],
  "Collective Defiance": [
@@ -541,6 +545,7 @@
   }
  ],
  "Demonic Pact": [],
+ "Doctor Doom": [],
  "Dominion Saboteur": [
   {
    "a": "Alex Negrea",
@@ -962,6 +967,7 @@
  ],
  "Infinite Guideline Station": [],
  "Insatiable Avarice": [],
+ "Iron Man, Modern Marvel": [],
  "Isshin, Two Heavens as One": [
   {
    "a": "Ryan Pancoast",
@@ -1007,6 +1013,8 @@
  "Jeskai Charm": [],
  "Jett Reno, Problem Solver": [],
  "Jhoira, Weatherlight Captain": [],
+ "Kappa Cannoneer": [],
+ "Karn's Bastion": [],
  "Kenrith, the Returned King": [
   {
    "a": "Kieran Yanner",
@@ -1101,6 +1109,7 @@
   }
  ],
  "Kolaghan's Command": [],
+ "Krang, Utrom Warlord": [],
  "Kykar, Zephyr Awakener": [],
  "Lieutenant Commander Data": [
   {
@@ -1309,6 +1318,7 @@
   }
  ],
  "Molten Collapse": [],
+ "Monoist Circuit-Feeder": [],
  "Mr. Spock, Science Officer": [
   {
    "a": "Colin Boyer",
@@ -1739,6 +1749,7 @@
  "The Seriema": [],
  "The World Tree": [],
  "The Wrath of Khan": [],
+ "Thought Monitor": [],
  "Three Steps Ahead": [
   {
    "a": "Francisco Miyara",
@@ -1909,6 +1920,7 @@
  ],
  "Vexing Drone": [],
  "Vigorbloom Charm": [],
+ "Virulent Silencer": [],
  "Vraska's Final Mercy": [],
  "Warp Core": [],
  "Warren Warleader": [],

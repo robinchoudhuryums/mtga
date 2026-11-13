@@ -485,6 +485,66 @@
    "name": "Brad Boimler, Eager Ensign",
    "pile": "L",
    "src": "added"
+  },
+  {
+   "name": "Iron Man, Modern Marvel",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Doom",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Chrome Dome",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Arcbound Condor",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Kappa Cannoneer",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Thought Monitor",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Angel of Invention",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Krang, Utrom Warlord",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Virulent Silencer",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Karn's Bastion",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Alela, Artful Provocateur",
+   "pile": "L",
+   "src": "added"
+  },
+  {
+   "name": "Monoist Circuit-Feeder",
+   "pile": "L",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1195,6 +1255,102 @@
   "Brad Boimler, Eager Ensign": {
    "group": "Real",
    "text": "Re-read 2026-11-12, UPGRADED for Borg. Tapping him to station adds one extra charge counter (the counters land while he is tapped), and +1/+1 counters likewise. A 2-mana station booster beside Zefram and Warp Core.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Modern Marvel": {
+   "group": "Strong",
+   "text": "OWNED. Flier; other artifact creatures +1/+1; draws a card each attack while you control another artifact creature. Proposed for Free Borg Revolutionaries.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Doctor Doom": {
+   "group": "Strong",
+   "text": "OWNED. Two 3/3 Doombot artifact creature tokens on entry, a card every end step, and indestructible while you control an artifact creature. Proposed for Badgey.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Chrome Dome": {
+   "group": "Strong",
+   "text": "OWNED. 2-mana artifact creature: other artifact creatures +1/+0, and {5} copies an artifact for a turn (Borg Cube, a Queen). Proposed for Data, New Life.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Arcbound Condor": {
+   "group": "Strong",
+   "text": "Flying artifact creature, modular 3; -1/-1 to an opposing creature whenever another artifact enters (every Borg token). Repeatable removal, so it replaces Make Disappear without dropping interaction.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Kappa Cannoneer": {
+   "group": "Strong",
+   "text": "Improvise, ward 4; a +1/+1 counter and unblockable whenever another artifact enters. Proposed for Lita (her end-step untap is redundant with Command Subadjunct's vigilance).",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Thought Monitor": {
+   "group": "Real",
+   "text": "Affinity for artifacts: often {U} or {1}{U} here; a 2/2 flying artifact creature that draws two. Proposed for Mind Stone.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Angel of Invention": {
+   "group": "Real",
+   "text": "+1/+1 to all your other creatures plus two Servo artifact creatures or a 4/3 flying lifelink; {3}{W}{W}. An option if you want a fourth anthem.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Krang, Utrom Warlord": {
+   "group": "Situational",
+   "text": "SPICE, OWNED. 9 mana, but every artifact creature gains flying, trample, indestructible and haste: one swing ends the game. Proposed for Sharding Sphinx.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Virulent Silencer": {
+   "group": "Situational",
+   "text": "SPICE, OWNED. Two poison per hit by a NONTOKEN artifact creature: a second clock. Borg tokens do not count.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Karn's Bastion": {
+   "group": "Situational",
+   "text": "SPICE. Land: {4},{T}: proliferate, adding charge counters to every Spacecraft and +1/+1 counters to Steel Overseer and Kappa Cannoneer. Colourless: it cost about 1.4 points of average on-curve chance when tested for a Swamp.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Alela, Artful Provocateur": {
+   "group": "Situational",
+   "text": "SPICE. Flying deathtouch lifelink; a 1/1 flying Faerie per artifact spell, and +1/+0 to your fliers. The Faeries are not artifacts.",
+   "graded_at": {
+    "100": "5fb30fd6b8b7",
+    "101": "5bc9c38778e6"
+   }
+  },
+  "Monoist Circuit-Feeder": {
+   "group": "Real",
+   "text": "6-mana flying artifact creature: on entry, -0/-X to an opposing creature where X is your artifact count (usually lethal).",
    "graded_at": {
     "100": "5fb30fd6b8b7",
     "101": "5bc9c38778e6"
@@ -2285,6 +2441,126 @@
    }
   },
   "Brad Boimler, Eager Ensign": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Iron Man, Modern Marvel": {
+   "L": {
+    "m": "★★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Doctor Doom": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Chrome Dome": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Arcbound Condor": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Kappa Cannoneer": {
+   "L": {
+    "m": "★★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Thought Monitor": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Angel of Invention": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Krang, Utrom Warlord": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Virulent Silencer": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Karn's Bastion": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "★",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Alela, Artful Provocateur": {
+   "L": {
+    "m": "★",
+    "graded_at": "5fb30fd6b8b7"
+   },
+   "S": {
+    "m": "◇",
+    "graded_at": "5bc9c38778e6"
+   }
+  },
+  "Monoist Circuit-Feeder": {
    "L": {
     "m": "★",
     "graded_at": "5fb30fd6b8b7"

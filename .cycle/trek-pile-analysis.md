@@ -716,3 +716,8 @@ Saboteur → A, interaction 7, card advantage 6, avg MV 3.57, early drops 9, leg
   charge counter when tapped to station), Suus Mahna (★). Unchanged: Kobayashi Maru / Demonic Pact (lose-the-game mode),
   Impossible Choice (removal rule), Expropriate (a vote is not a mode). Hull Breach and All Good Things . . . are not in the
   Arena pool. Board v3 carries the new reasons.
+- 2026-11-13 deck 100 fits/upgrades pass (proposed, NOT applied): owned Iron Man −Free Borg Revolutionaries, Doctor Doom
+  −Badgey, Chrome Dome −Data New Life; crafts Arcbound Condor −Make Disappear, Kappa Cannoneer −Lita, Thought Monitor −Mind
+  Stone. Package preview: floor A, interaction 15 (held), card advantage 6→9, protection 6→8, avg MV 3.52→3.69. Spice:
+  Krang Utrom Warlord (owned), Virulent Silencer (owned), Karn's Bastion (costs ~1.4 on-curve points as a land), Alela,
+  Monoist Circuit-Feeder. All on the trek-borg board (v4).
