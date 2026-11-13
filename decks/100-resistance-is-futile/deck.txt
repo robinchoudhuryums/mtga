@@ -48,7 +48,7 @@
 1 Data, New Life (TRK) 52
 1 Doctor Doom (MSH) 95
 1 Kappa Cannoneer (MH3) 270
-1 Chief of the Foundry (J25) 747
+1 Support Skyforge (YDFT) 26
 1 Iron Man, Modern Marvel (MSC) 830
 1 Cyberdrive Awakener (MAR) 53
 1 Zefram Cochrane, Warp Pioneer (TRK) 90
