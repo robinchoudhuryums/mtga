@@ -198,6 +198,70 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Kellan, the Kid | ★★ | every non-hand cast (Unifier, Nico, Capstone, Golos) also casts a permanent from hand free (R4) |
 | Tamiyo, Field Researcher | ◇ | the −7 emblem is a long way off |
 
+### Batch 5 (cards 125–154)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Gandalf, Party Guest | ◇ | free instants/sorceries, scaled by legendary Wizards |
+| Narset, Enlightened Exile | ◇ | graveyard spell copies |
+| Commander Spock | ★★ | ETB and attack cast the top card free if its MV ≤ differently named lands — a singleton manabase makes that high (R4) |
+| Narset, Enlightened Master | ★★ | MV 6 for WUBRG; each attack casts noncreature spells from the top four free |
+| Buster Sword | ★ | damage-scaled free cast |
+| Glamdring | ◇ | instants/sorceries only |
+| Cosmic Cube | ★★ | each attack casts from the top six, capped by the biggest attacker's power — the Eldrazi make that 7+ |
+| Planetarium of Wan Shi Tong | ★★ | MV 6 for WUBRG; scry casts the top card free once a turn |
+| Teyo, Aegis Adept | △ | off-plan |
+| Lukka, Coppercoat Outcast | ★★ | −2 turns a creature into a bigger one from the library (R4) |
+| Ashiok, Sculptor of Fears | ★ | MV 6 for WUBRG; −5 reanimates |
+| Akul the Unrepentant | ◇ | needs three sacrifices |
+| Nissa of Shadowed Boughs | ★ | −5 puts a creature with MV ≤ lands onto the battlefield |
+| Raph & Mikey, Troublemakers | ★★ | MV 7 for WUBRG; each attack puts a creature from the library onto the battlefield attacking |
+| Kinnan, Bonder Prodigy | ★★ | doubles rock and dork mana (Timeless Lotus makes six); {5}{G}{U} puts a non-Human creature onto the battlefield |
+| Nissa, Steward of Elements | ◇ | X walker, X = 0 under the alt cost (R2) |
+| Rocco, Cabaretti Caterer | ◇ | X = 0 under the alt cost (R2); fine cast normally |
+| Aang, at the Crossroads | ★ | puts an MV ≤4 creature from the top five onto the battlefield |
+| Stable Wormhole | ★ | an any-colour Planet per attack (R3) |
+| Artificial Anomaly | ◇ | colourless land until sacrificed |
+| Robber of the Rich | △ | small |
+| Chandra, Hope's Beacon | ★ | MV 6 for WUBRG; +2 adds two mana of any colours, −X is removal |
+| Goldspan Dragon | ★★ | Treasures make two mana of one colour (R3) |
+| Rogue Class | ◇ | slow |
+| King Narfi's Betrayal | ◇ | slow |
+| Galazeth Prismari | ◇ | instant/sorcery mana |
+| Insidious Roots | △ | off-plan |
+| Helga, Skittish Seer | ★ | draws on every MV 4+ creature |
+| Vraska, Soul of Stone | ★ | a Treasure per noncreature spell (R3) |
+| Great Divide Guide | ★★★ | 2 mana: every land and Ally taps for any colour (R3) |
+
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+**Draft 100 (proposed, not yet a deck file):** 62 nonland + 37 lands + Jodah. Scratch-measured:
+legal for Historic Brawl, floor A (interaction 12 against the 100-card bar of 12, card advantage
+17), 41 legends of 62 nonland, 22 cards at MV 6+, keepable 79.9% (95.9% with the free mulligan),
+sources W19 U19 B19 R20 G22.
+
+- **Fixing (14):** Timeless Lotus, Great Divide Guide, Prismatic Omen, Leyline of the Guildpact,
+  Haunted Screen, Esika, Oracle of the Alpha, Iridescent Tiger, Goldspan Dragon, Kinnan,
+  Widespread Thieving, Golos, Omnath, Karolina Dean.
+- **Alt-cost redundancy (3):** Leyline of Mutation, Bringer of the Green Dawn, Bringer of the Black Dawn.
+- **Bombs for WUBRG (12):** Ulamog, Emrakul, Omniscience, Improvisation Capstone, Cruel Ultimatum,
+  Nicol Bolas God-Pharaoh, Sauron Lord of the Rings, Nissa Leyline Tamer, Lord Xander, Herigast,
+  Bane of Bala Ged, Ramos.
+- **Free-cast engines (14):** Jodah the Unifier, Maelstrom Archangel, Invasion of Alara, Anticausal
+  Vestige, Jace Multiverse Architect, Jacob Hauken, Jin-Gitaxias, Nico Minoru, Neera, Kellan,
+  Commander Spock, Narset Enlightened Master, Planetarium of Wan Shi Tong, Cosmic Cube.
+- **Into play (3):** Lukka, Raph & Mikey, Olivia.
+- **Interaction (6):** Kaya the Inexorable, Vona de Iedo, Nicol Bolas Dragon-God, Nicol Bolas the
+  Ravager, Thanos, Breya.
+- **Flow and glue (10):** Rona, Wizard Class, Kefka, Goro-Goro and Satoru, Kenrith, Chandra Hope's
+  Beacon, Unexpected Results, Djeru and Hazoret, Sauron the Dark Lord, Vraska Soul of Stone.
+- **Lands (37):** deck 101's owned-heavy five-colour manabase with The World Tree, Crystal Quarry
+  and Artificial Anomaly in for Q Continuum, Ni'Var Science Academy and Subspace Anomaly.
+
+**Known gaps:** all 12 interaction pieces are sorcery-speed (0 instant); the pile has no counter or
+instant removal. The modelled cast-on-curve (33.9%) prices PRINTED costs and cannot see the alt
+cost (R1) — not a meaningful figure for this deck.
+
+**Bench (★ not in the 62):** Crystal Quarry and The World Tree are in as lands; Pensive Professor,
+Glamorous Outlaw, Bard, The Key to the Vault, Yue, Buster Sword, Ashiok, Nissa of Shadowed Boughs,
+Aang, Stable Wormhole, Helga, Obeka, Saruman, Loot, Prismatic Undercurrents, Thanos alternatives.
