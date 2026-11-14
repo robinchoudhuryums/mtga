@@ -233,6 +233,45 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Vraska, Soul of Stone | ★ | a Treasure per noncreature spell (R3) |
 | Great Divide Guide | ★★★ | 2 mana: every land and Ally taps for any colour (R3) |
 
+### Round 2 (owner's notes, 2026-11-14) — re-grades and outside-pile finds
+
+Re-graded on the owner's notes:
+- **The Key to the Vault ◇→★★, Buster Sword ★→★★:** an equipped flier (Jodah himself is a 4/3 flier)
+  connects most turns; Buster Sword on Jodah is 7 damage, so a free spell of MV ≤ 7 plus a draw (R4).
+- **Yue, the Moon Spirit ★→★★:** waterbend {5} is GENERIC and creatures/artifacts help pay, so it is a
+  repeatable free noncreature cast that does not need five colours (R3, R4).
+- **Stable Wormhole ★→★★:** an any-colour land every attack, and the deck now has an attack package.
+- **Door to Nothingness ◇→★★:** WWUUBBRRGG is reachable from ten any-colour lands (Prismatic Omen,
+  Leyline of the Guildpact, Great Divide Guide), Timeless Lotus plus five, Ramos alone, or anything
+  with Chromatic Orrery. No card in the pool reduces a COLOURED activation cost (Zirda and Training
+  Grounds reduce generic only), so the route is making the colours, not discounting them.
+
+Outside the pile (pool, Historic Brawl legal):
+- **Sunbird's Invocation ★★★** — every spell cast from hand reveals cards equal to its PRINTED mana
+  value and casts one free: Ulamog for WUBRG reveals ten.
+- **Chromatic Orrery ★★★** — "spend mana as though it were mana of any color": WUBRG and Door's
+  WWUUBBRRGG become payable with any mana; taps for five; draws per colour.
+- **One with the Multiverse ★★★** — MV 8 for WUBRG; play from the top and one free spell a turn.
+- **Etali, Primal Conqueror ★★** — MV 7 for WUBRG; ETB casts a free spell from each library.
+- **Leyline of Anticipation ★★** — flash on everything, so every alt-cost bomb is instant speed.
+- **Lithoform Engine ★, Roaming Throne ★ (Wizard), Echoes of Eternity ◇, Bring to Light ◇** — trigger
+  copiers and a converge tutor; bench.
+- **Fires of Invention ✗** — it caps us at two spells a turn and only on our turn, which breaks the
+  free-cast chains (the G-42 shape: a cheat card that fights the engine).
+- **Instant interaction:** Sublime Epiphany ★★★ (MV 6 for WUBRG, counters spells and abilities),
+  Jeskai Revelation ★★ (MV 7 for WUBRG), Cryptic Command ★★, Hero's Downfall ★★, Anguished Unmaking
+  ★★, Teferi, Time Raveler ★★ (opponents only at sorcery speed, which protects our big turns);
+  bench: Glen Elendra's Answer, The End, Infernal Grasp, Kolaghan's Command, Gale's Redirection.
+- **Rejected on the removal rule (R7):** An Offer You Can't Refuse (gives Treasures), Assassin's Trophy
+  (gives a land).
+
+**Draft v2 (scratch):** +16 (the five above from the pile, Sunbird's Invocation, Chromatic Orrery, One
+with the Multiverse, Etali Primal Conqueror, Leyline of Anticipation, and the six interaction cards),
+−16 (Djeru and Hazoret, Sauron the Dark Lord, Unexpected Results, Goro-Goro and Satoru, Kenrith,
+Breya, Vraska Soul of Stone, Karolina Dean, Wizard Class, Kefka, Chandra Hope's Beacon, Thanos, Bane
+of Bala Ged, Bringer of the Black Dawn, Nicol Bolas the Ravager, Herigast). Legal; floor A;
+interaction 13 (5 instant, 8 can hit a noncreature permanent); card advantage 14.
+
 ## 5. Consolidated plan (live)
 
 **Draft 100 (proposed, not yet a deck file):** 62 nonland + 37 lands + Jodah. Scratch-measured:
