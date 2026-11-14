@@ -44,6 +44,7 @@ batch verdicts below become its reasons then.
 
 ## 3. Cross-batch observations
 
+- Upkeep cheats (The Prismatic Bridge, Bringer of the Green Dawn) multiply with Obeka's extra upkeep steps.
 - Batch 1 already shows a double-each-colour subtheme: Door to Nothingness needs
   WWUUBBRRGG, which Ramos (remove five counters) and Esper Terra's chapter IV both make exactly.
   A spice line, not a plan.
@@ -86,6 +87,41 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Terra, Magical Adept | ◇ | chapter IV makes WWUUBBRRGG; slow |
 | Bringer of the Green Dawn | ★★ | carries its own WUBRG alt cost (R6); a 3/3 every upkeep |
 | Leyline of Mutation | ★★ | the commander's ability on an enchantment (R6); free from the opening hand |
+
+### Batch 2 (cards 31–60)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Esika, God of the Tree | ★★★ | taps for any colour and gives every other legend that ability (R3, R5); the back face, The Prismatic Bridge, is a WUBRG upkeep cheat that puts a creature or walker onto the battlefield (R4) |
+| Widespread Thieving | ★★ | a Treasure per multicoloured spell (R3); pay WUBRG to play the hideaway card free |
+| Najeela, the Blade-Blossom | ◇ | WUBRG extra combats; the Warrior half is off-plan |
+| Kenrith, the Returned King | ★ | legend with five activations, reanimation {4}{B} and draw {3}{U} among them |
+| Leonardo, the Balance | △ | token plan |
+| Lone Rider | △ | lifegain transform, off-plan |
+| Extricator of Sin | △ | off-plan |
+| Eldrazi Displacer | △ | needs {C} specifically |
+| Gisela, the Broken Blade | △ | a flying body without Bruna |
+| Wharf Infiltrator | △ | discard engine, off-plan |
+| Corrupted Shapeshifter | △ | filler |
+| Idol of False Gods | △ | Eldrazi tokens, off-plan |
+| Glaring Fleshraker | ✗ | needs {C} and colourless spells |
+| Anticausal Vestige | ★★ | warp {4}: it is exiled at end step, so it LEAVES — draw, then put a permanent with MV ≤ lands from hand onto the battlefield (R4); recast later |
+| Bane of Bala Ged | ★★ | MV 7 for WUBRG (R1); each attack exiles two of their permanents |
+| Herigast, Erupting Nullkite | ★★ | MV 9 for WUBRG; cast trigger refills the hand; every creature gets emerge |
+| Ulamog, the Defiler | ★★★ | MV 10 for WUBRG; cast trigger exiles half their library, then enters huge with annihilator (R1) |
+| Emrakul, the World Anew | ★★★ | MV 12 for WUBRG; cast trigger steals every creature they have (R1). Leaving sacrifices our creatures: protect it |
+| Wizard Class | ★ | 1-mana enchantment that draws two at level 2 (R8) |
+| Goro-Goro and Satoru | ★ | {1}{R}: haste for the cheated bombs; Dragons when new creatures connect |
+| Maestros Diabolist | △ | small attacker |
+| Marchesa, Dealer of Death | △ | crime card selection |
+| Spelldrain Assassin | ◇ | casualty for an instant or sorcery |
+| Cormela, Glamour Thief | △ | spell-only mana |
+| Fire Lord Azula | ◇ | copies spells cast while she attacks (instant speed only) |
+| Doctor Doom, King of Latveria | △ | Villain connive |
+| Mai and Zuko | ◇ | flash for artifacts and Allies |
+| Nicol Bolas, the Ravager | ★★ | 4-mana flier with discard; the walker side removes and reanimates (BRU legend) |
+| Obeka, Splitter of Seconds | ★ | extra upkeeps replay upkeep cheats (Prismatic Bridge, Bringer of the Green Dawn) — spice |
+| Saruman, the White Hand | ★ | amass equal to a noncreature spell's printed MV: a cheated big spell makes a big Army |
 
 ## 5. Consolidated plan (live)
 
