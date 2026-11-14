@@ -25,6 +25,9 @@
 #: notes: Sunken Hollow -> Island, Underground River -> Swamp, Raffine's Tower -> Scoured Barrens.
 #: notes: Tempo sim 51.5 -> 47.8 on curve (tapped-land cost 2.5 -> 3.5); Great Arashin City was left
 #: notes: out (it exiles creature cards from the graveyard). The rares stay wishlisted for 91.
+#: notes: LANDS 2026-11-14: Mana Confluence, Prismatic Vista and Reflecting Pool (all owned, untapped) in
+#: notes: for Tranquil Cove, Soured Springs and Scoured Barrens. Tempo sim 47.8 -> 49.9 on curve (tapped-land
+#: notes: cost 3.5 -> 1.9). Arena calls this deck "Brawl 53 The Deathless".
 #: notes: DRAFTED 2026-10-25 from the owner's 118-card pile out of deck 53
 #: notes: (.cycle/91-hashaton-pile-analysis.md, four batches and two revision passes) plus outside
 #: notes: outlets: Psychic Frog, Archfiend of Ifnir (since cut), Miasmic Mummy, Liliana of the Veil (and, at
@@ -163,12 +166,12 @@
 
 # Lands (36)
 1 Command Tower (FRC) 22
-1 Scoured Barrens (M21) 250
+1 Reflecting Pool (FRC) 23
 1 Watery Grave (EOE) 261
 1 Godless Shrine (EOE) 254
 1 Hallowed Fountain (ECL) 265
 1 Dismal Backwater (FDN) 261
-1 Soured Springs (OTJ) 264
+1 Prismatic Vista (SPG) 38
 1 Gloomlake Verge (DSK) 260
 1 Undercity Sewers (PZA) 0
 1 Hidden Lair (MSH) 269
@@ -177,7 +180,7 @@
 1 Dalkovan Encampment (TDM) 253
 1 Temple of Silence (FDN) 704
 1 Bleachbone Verge (DFT) 250
-1 Tranquil Cove (TDM) 270
+1 Mana Confluence (EOS) 25
 1 Realm of Koh (TLA) 276
 1 Floodfarm Verge (DSK) 259
 1 Contaminated Landscape (MH3) 218
