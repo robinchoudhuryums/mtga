@@ -7013,3 +7013,7 @@ Choose one or more —
 • Destroy target creature with power 4 or greater.
 • Destroy target enchantment.
 • Put a +1/+1 counter on each creature target player controls.",W,counters; removal; escalate,SIR,19,1
+Woodland Cemetery,Land,"This land enters tapped unless you control a Swamp or a Forest.
+{T}: Add {B} or {G}.",B/G,mana,DOM,248,1
+"Jidoor, Aristocratic Capital",Land — Town // Sorcery — Adventure,"This land enters tapped.
+{T}: Add {U}. // Target opponent mills half their library, rounded down. (Then exile this card. You may play the land later from exile.)",U,Town; Adventure; mill; exile cast; mana; graveyard,FIN,284,1

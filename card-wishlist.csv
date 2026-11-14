@@ -132,8 +132,6 @@ Look at the top X cards of your library. You may put any number of land and/or l
 {T}: Add an amount of {G} equal to Marwyn's power.",G,Elf; Druid; counters; mana,DOM,172,Rare,75-historic-brawl,,5.5,seed
 Sulfur Falls,Land,"This land enters tapped unless you control an Island or a Mountain.
 {T}: Add {U} or {R}.",U/R,mana,DOM,247,Rare,85,,4.0,seed
-Woodland Cemetery,Land,"This land enters tapped unless you control a Swamp or a Forest.
-{T}: Add {B} or {G}.",B/G,mana,DOM,248,Rare,75-historic-brawl; 96,,4.0,seed
 Yawgmoth's Vile Offering,Legendary Sorcery,"(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)
 Put up to one target creature or planeswalker card from a graveyard onto the battlefield under your control. Destroy up to one target creature or planeswalker. Exile Yawgmoth's Vile Offering.",B,reanimator; graveyard,DOM,114,Rare,75-historic-brawl; 96,,7.0,seed
 Song of Freyalise,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -293,8 +291,6 @@ Flashback {3}{G} (You may cast this card from your graveyard for its flashback c
 I — Reveal the top card of your library. If it's a permanent card, put it into your hand.
 II — Add {G}{G}.
 III — Other creatures you control get +2/+2 and gain trample until end of turn.",G,Saga; Elemental; counters; reanimator; graveyard; lifegain; sacrifice; saga; pump; surveil; transform; flashback; recursion; spellslinger,FIN,185,Rare,13,"Flex / second wave for 13: surveil 2 bins lands for Sandman/Lumra/Mole Man, flashback gives two casts, Saga side is conditional card advantage -> {G}{G} -> team pump. VALUE, not interaction, and 6 mana across two casts — deck 13's Rare goes to The Earth Crystal first.",6,hand
-"Jidoor, Aristocratic Capital // Overture",Land — Town // Sorcery — Adventure,"This land enters tapped.
-{T}: Add {U}. // Target opponent mills half their library, rounded down. (Then exile this card. You may play the land later from exile.)",U,Town; Adventure; mill; exile cast; mana; graveyard,FIN,284,Rare,96,,4.0,seed
 "Jill, Shiva's Dominant // Shiva, Warden of Ice",Legendary Creature — Human Noble Warrior // Legendary Enchantment Creature — Saga Elemental,"When Jill enters, return up to one other target nonland permanent to its owner's hand.
 {3}{U}{U}, {T}: Exile Jill, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
 I, II — Mesmerize — Target creature can't be blocked this turn.
