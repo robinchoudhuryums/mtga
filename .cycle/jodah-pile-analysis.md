@@ -44,6 +44,7 @@ batch verdicts below become its reasons then.
 
 ## 3. Cross-batch observations
 
+- A FREE-CAST CHAIN is surfacing: Kellan, the Kid and Nico Minoru reward casts from anywhere but the hand, which is exactly what the Unifier, Nico, Capstone, Golos and Neera produce.
 - Upkeep cheats (The Prismatic Bridge, Bringer of the Green Dawn) multiply with Obeka's extra upkeep steps.
 - Batch 1 already shows a double-each-colour subtheme: Door to Nothingness needs
   WWUUBBRRGG, which Ramos (remove five counters) and Esper Terra's chapter IV both make exactly.
@@ -159,6 +160,43 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Grand Nagus Zek | ◇ | Treasures need deaths |
 | Lo and Li, Twin Tutors | △ | Noble/Lesson tutor |
 | Loot, Exuberant Explorer | ★ | extra land drop; puts a creature with MV ≤ lands onto the battlefield |
+
+### Batch 4 (cards 93–124)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Baron Bertram Graywater | △ | token plan |
+| Indulging Patrician | △ | lifegain plan |
+| Bard, King of Dale | ★ | MV 6 for WUBRG; doubles extra draws and tokens |
+| Falkenrath Aristocrat | △ | aggro body |
+| Raphael, Fiendish Savior | △ | Devil tribal |
+| Olivia, Crimson Bride | ★★ | MV 6 for WUBRG; each attack reanimates a creature, kept while Olivia (a legendary Vampire) stays (R4) |
+| Buxton, Decorated Host | ◇ | needs tapped creatures |
+| The Key to the Vault | ★ | combat damage digs and casts a card free (R4) |
+| Jacob Hauken, Inspector | ★★ | looter now; transformed, casts a card from its exile free each turn (R4) |
+| Malcolm, Alluring Scoundrel | △ | slow free cast |
+| Tempest Trapper | △ | spell-only mana |
+| Reenact the Crime | ◇ | narrow |
+| The Conundrum of Bowls | ◇ | slow |
+| Yue, the Moon Spirit | ★ | waterbend {5}: cast a noncreature spell from hand free — creatures and artifacts help pay |
+| Jin-Gitaxias | ★★ | draws on noncreature MV 3+; the Saga's chapter III casts any number of spells free (R4) |
+| Omnispell Adept | ◇ | instants and sorceries only |
+| Omniscience | ★★★ | MV 10 for WUBRG, then every spell from hand is free (R1, R4) |
+| Brazen Bluff | ◇ | conditional |
+| Nico Minoru, Runaway | ★★ | {2}{R}, discard: cast the top nonland card free, repeatable; pings on every non-hand cast (R4) |
+| Improvisation Capstone | ★★★ | MV 7 for WUBRG; free casts from the top, and paradigm repeats it free every first main phase (R1, R4) |
+| Descendants' Path | ◇ | needs shared creature types |
+| Fight Rigging | ◇ | hideaway released by a power-7 creature (the Eldrazi qualify) |
+| World War Hulk | ◇ | one free red/green creature |
+| Omnipresence | ◇ | MV 8 for WUBRG; free casts capped by creature count |
+| Kaya the Inexorable | ★★ | −3 exiles a nonland permanent (R7 clean); the emblem casts legends free |
+| Neera, Wild Mage | ★★ | once a turn, swap a cast for a free cast off the top (R4) |
+| Bre of Clan Stoutarm | ◇ | needs lifegain |
+| Djeru and Hazoret | ★ | attacks cast a legendary creature from the top six free (R4, R5) |
+| Kasmina, Enigma Sage | ◇ | walker support |
+| Unexpected Results | ★ | free cast of the top card; in a deck of bombs the hit rate is high |
+| Kellan, the Kid | ★★ | every non-hand cast (Unifier, Nico, Capstone, Golos) also casts a permanent from hand free (R4) |
+| Tamiyo, Field Researcher | ◇ | the −7 emblem is a long way off |
 
 ## 5. Consolidated plan (live)
 
