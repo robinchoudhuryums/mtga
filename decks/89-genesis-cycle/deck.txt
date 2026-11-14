@@ -7,7 +7,7 @@
 #: archetype: around Szarel, Genesis Shepherd: she lets us play lands from the graveyard and puts
 #: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
 #: archetype: permanent on our turn. So every land that sacrifices itself (11 basic fetches, the
-#: archetype: Memorials, Hidden caves, the sacrifice-to-draw duals, Skemfar Elderhall, Ghost Quarter,
+#: archetype: three Star Trek Anomalies, Hidden caves, the sacrifice-to-draw duals, Skemfar Elderhall,
 #: archetype: Ifnir Deadlands) is a spell we replay every turn, and the land outlets (Gitrog, Zuran Orb,
 #: archetype: Korvold, She-Hulk, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
@@ -132,6 +132,13 @@
 #: notes: Verdant Catacombs, Wooded Foothills, Bloodstained Mire for the three basic fetches, Nurturing
 #: notes: Peatland for Foggy Bottom Swamp, Prismatic Vista for Hobbit Hole; every common swap was <=+0.7.
 #: notes: Owner kept the commons; the five are wishlisted for 89.
+#: notes: STAR TREK 2026-11-14 (owner's picks): Temporal / Artificial / Spatial Anomaly in for Memorial
+#: notes: to Unity, Memorial to Folly and Ghost Quarter (the Ghost Quarter land kill above was CUT then:
+#: notes: it lets the opponent fetch a basic). Each Anomaly enters untapped, sacrifices itself for a Szarel
+#: notes: trigger plus an any-colour New Planet, and is replayed from the graveyard. Genesis Device in for
+#: notes: Rhonas's Monument (sacrifices any number of lands, Planets included, for that many land cards);
+#: notes: Stable Wormhole in for Infernal Grasp (a Planet per attack for landfall, Lotus Field, Korvold and
+#: notes: the Anomaly activations). Warp Speed would fix the taplands but is off-identity ({U}{U} ability).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Szarel, Genesis Shepherd (EOC) 4
@@ -197,8 +204,8 @@
 # Noncreature — removal, Sagas and engines
 1 Infectious Bite (ONE) 172
 1 Overkill (FIN) 109
-1 Infernal Grasp (MID) 107
-1 Rhonas's Monument (AKR) 279
+1 Stable Wormhole (TRK) 215
+1 Genesis Device (TRK) 200
 1 Casualties of War (WAR) 187
 1 Origin of Black Widow (MSC) 664
 1 Binding the Old Gods (KHM) 206
@@ -225,10 +232,10 @@
 1 Shire Terrace (LTR) 261
 1 Promising Vein (LCI) 279
 1 Omashu City (TLA) 275
-1 Ghost Quarter (DIS) 173
+1 Spatial Anomaly (TRK) 296
 1 Boiling Rock Prison (TLA) 267
-1 Memorial to Folly (DOM) 242
-1 Memorial to Unity (DOM) 245
+1 Artificial Anomaly (TRK) 276
+1 Temporal Anomaly (TRK) 302
 1 Hidden Necropolis (LCI) 275
 1 Hidden Nursery (LCI) 276
 1 Skemfar Elderhall (KHM) 268
