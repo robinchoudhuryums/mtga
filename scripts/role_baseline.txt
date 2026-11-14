@@ -123,6 +123,7 @@ Dominion Supervisor
 Don & Leo, Problem Solvers
 Donatello, Mutant Mechanic
 Donatello, the Brains
+Door to Nothingness
 Dori, Bearer of Friends
 Dracogenesis
 Draconautics Engineer
@@ -242,6 +243,7 @@ Insurrection
 Interface Ace
 Involuntary Employment
 Ioreth of the Healing House
+Iridescent Tiger
 Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
@@ -251,6 +253,7 @@ Jeong Jeong, the Deserter
 Jeskai Brushmaster
 Jiang Yanggu, Never Alone
 Jinnie Fay, Jetmir's Second
+Jodah, Archmage Eternal
 Joo Dee, One of Many
 K'un-Lun Warrior
 Kamahl's Druidic Vow
@@ -335,6 +338,7 @@ Okoye, Dora Milaje Leader
 Omnipresence
 Omniscience
 Omnivorous Flytrap
+Oracle of the Alpha
 Organic Avulsion Unit
 Ori, Keeper of Songs
 Origin of the Avengers

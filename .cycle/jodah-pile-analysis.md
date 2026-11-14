@@ -1,7 +1,7 @@
 # Jodah pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck is drafted and the findings are folded into its
-`#: notes:` block. A scratchpad, not a source of truth — decks/ are.
+**Status: DRAFTED as deck 102 (2026-11-14); board https://claude.ai/artifact/T72nagEionydDJoJJeccw2 (builds/jodah) holds the bench.** Delete once the owner's picks land and the findings are folded into deck 102's `#: notes:`.
+A scratchpad, not a source of truth — decks/ are.
 
 **Target:** a NEW Historic Brawl deck (deck 102), commander **Jodah, Archmage Eternal**
 (`{1}{U}{R}{W}`, 4/3 flier, identity WUBRG: "You may pay {W}{U}{B}{R}{G} rather than pay the
@@ -13,7 +13,7 @@ all are Historic Brawl legal. Not deduplicated against other decks: this is a ne
 copy in another deck is no reason to skip a card (copies are shared). Ownership is information
 only (the library reads 0 for ~100 of these; the paste is the owner's own list).
 
-**Builder project:** deferred until deck 102 exists (`builder.py new` needs a deck file); the
+**Builder project:** builds/jodah (deck key J = 102); every card carries its reason and verdict there.
 batch verdicts below become its reasons then.
 
 ## 1. The decision framework

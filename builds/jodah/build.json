@@ -1,0 +1,3306 @@
+{
+ "schema": 1,
+ "title": "Jodah — Archmage Eternal pile",
+ "decks": [
+  {
+   "key": "J",
+   "id": "102",
+   "label": "Jodah"
+  }
+ ],
+ "piles": [
+  {
+   "key": "J",
+   "label": "Jodah's pile",
+   "deck": "J",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The World Tree",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Crystal Quarry",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Meeting of the Five",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Wizard's Staff",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Flux Channeler",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Gogo, Master of Mimicry",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Oracle of the Alpha",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tazri, Beacon of Unity",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Timeless Lotus",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Ramos, Dragon Engine",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Providence of Night",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omnath, Locus of All",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Maelstrom Archangel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jodah, the Unifier",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Alara // Awaken the Maelstrom",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Infinite Guideline Station",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Golos, Tireless Pilgrim",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Door to Nothingness",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Chromanticore",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of the Guildpact",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Marshals' Pathcruiser",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Haunted Screen",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nissa, Leyline Tamer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Norman Osborn // Green Goblin",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Thanos, the Mad Titan",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tam, the Possibility",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Terra, Magical Adept // Esper Terra",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bringer of the Green Dawn",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Mutation",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Esika, God of the Tree // The Prismatic Bridge",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Widespread Thieving",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Najeela, the Blade-Blossom",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kenrith, the Returned King",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leonardo, the Balance",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lone Rider // It That Rides as One",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Extricator of Sin // Extricator of Flesh",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Eldrazi Displacer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Gisela, the Broken Blade",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wharf Infiltrator",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Corrupted Shapeshifter",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Idol of False Gods",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Glaring Fleshraker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Anticausal Vestige",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bane of Bala Ged",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Herigast, Erupting Nullkite",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Ulamog, the Defiler",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Emrakul, the World Anew",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Wizard Class",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Goro-Goro and Satoru",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Maestros Diabolist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Marchesa, Dealer of Death",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Spelldrain Assassin",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cormela, Glamour Thief",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Fire Lord Azula",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Doom, King of Latveria",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Mai and Zuko",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nicol Bolas, the Ravager // Nicol Bolas, the Arisen",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Obeka, Splitter of Seconds",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Saruman, the White Hand",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Evelyn, the Covetous",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Inalla, Archmage Ritualist",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kefka, Court Mage // Kefka, Ruler of Ruin",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nicol Bolas, Dragon-God",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glamorous Outlaw",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sauron, the Dark Lord",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Lord Xander, the Collector",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cruel Ultimatum",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nicol Bolas, God-Pharaoh",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sauron, Lord of the Rings",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Pensive Professor",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Crypt of the Eternals",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Breya, Etherium Shaper",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Relic of Sauron",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jace, Multiverse Architect",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bringer of the Black Dawn",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Iridescent Tiger",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Karolina Dean, Runaway",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tome of the Infinite",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Prismatic Omen",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Prismatic Undercurrents",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Vona de Iedo, the Antifex",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Change the Narrative",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Bloodbile Swarm",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Dáin, Lord of the Iron Hills",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ashe, Princess of Dalmasca",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rosa, Resolute White Mage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Princess Yue",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Elrond, Moon-Reader",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Grand Nagus Zek",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Lo and Li, Twin Tutors",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Loot, Exuberant Explorer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Baron Bertram Graywater",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Indulging Patrician",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Bard, King of Dale",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Falkenrath Aristocrat",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Raphael, Fiendish Savior",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Olivia, Crimson Bride",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Buxton, Decorated Host",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Key to the Vault",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jacob Hauken, Inspector // Hauken's Insight",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Malcolm, Alluring Scoundrel",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tempest Trapper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Reenact the Crime",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Conundrum of Bowls",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Yue, the Moon Spirit",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jin-Gitaxias // The Great Synthesis",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omnispell Adept",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omniscience",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Brazen Bluff",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nico Minoru, Runaway",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Improvisation Capstone",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Descendants' Path",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Fight Rigging",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "World War Hulk",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omnipresence",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kaya the Inexorable",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Neera, Wild Mage",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bre of Clan Stoutarm",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Djeru and Hazoret",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kasmina, Enigma Sage",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Unexpected Results",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kellan, the Kid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tamiyo, Field Researcher",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Gandalf, Party Guest",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Narset, Enlightened Exile",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Commander Spock",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Narset, Enlightened Master",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Buster Sword",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glamdring",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cosmic Cube",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Planetarium of Wan Shi Tong",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Teyo, Aegis Adept",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lukka, Coppercoat Outcast",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Ashiok, Sculptor of Fears",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Akul the Unrepentant",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nissa of Shadowed Boughs",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Raph & Mikey, Troublemakers",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kinnan, Bonder Prodigy",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Nissa, Steward of Elements",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Rocco, Cabaretti Caterer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Aang, at the Crossroads // Aang, Destined Savior",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Stable Wormhole",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Artificial Anomaly",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Robber of the Rich",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Chandra, Hope's Beacon",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Goldspan Dragon",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Rogue Class",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "King Narfi's Betrayal",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Galazeth Prismari",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Insidious Roots",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Helga, Skittish Seer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Soul of Stone",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Great Divide Guide",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sunbird's Invocation",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Chromatic Orrery",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "One with the Multiverse",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Etali, Primal Conqueror // Etali, Primal Sickness",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Anticipation",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sublime Epiphany",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jeskai Revelation",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cryptic Command",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Hero's Downfall",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Anguished Unmaking",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Time Raveler",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Lithoform Engine",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Roaming Throne",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Echoes of Eternity",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bring to Light",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glen Elendra's Answer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The End",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Infernal Grasp",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kolaghan's Command",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Gale's Redirection",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Fires of Invention",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Etali, Primal Storm",
+   "pile": "J",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "group": "In deck",
+   "text": "2-mana legendary looter that untaps on each legendary cast (R5, R8)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "The World Tree": {
+   "group": "In deck",
+   "text": "at six lands every land taps for any colour (R3); enters tapped",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Crystal Quarry": {
+   "group": "In deck",
+   "text": "{5}: WUBRG — a guaranteed Jodah cast from six lands (R3); colourless otherwise",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Meeting of the Five": {
+   "group": "Pile",
+   "text": "MV 8 for WUBRG, but only casts exactly-three-colour spells; count them first",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Wizard's Staff": {
+   "group": "Pile",
+   "text": "doubles Jodah the Unifier's cascade (a Wizard, equip {1}); narrow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Flux Channeler": {
+   "group": "Pile",
+   "text": "proliferate needs walkers/counters",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Gogo, Master of Mimicry": {
+   "group": "Pile",
+   "text": "copies the Unifier's cascade trigger X times; mana-hungry",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Oracle of the Alpha": {
+   "group": "In deck",
+   "text": "conjures the Power Nine: five Moxen are fixing, Black Lotus is a Jodah cast (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Tazri, Beacon of Unity": {
+   "group": "Pile",
+   "text": "party discount, little for this plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Timeless Lotus": {
+   "group": "In deck",
+   "text": "taps for exactly WUBRG every turn — one Jodah cast per turn from one card (R1, R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Ramos, Dragon Engine": {
+   "group": "In deck",
+   "text": "MV 6 for WUBRG; a five-colour cast adds five counters; ten mana once a turn",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Providence of Night": {
+   "group": "Pile",
+   "text": "copies hybrid-cost spells only",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Omnath, Locus of All": {
+   "group": "In deck",
+   "text": "card per turn, plus mana from 3+-pip cards, which this pile is full of",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Maelstrom Archangel": {
+   "group": "In deck",
+   "text": "flying 5/5; combat damage casts a spell from hand free (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Jodah, the Unifier": {
+   "group": "In deck",
+   "text": "legendary cascade plus a legend anthem — the second cheat layer (R4, R5)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Invasion of Alara // Awaken the Maelstrom": {
+   "group": "In deck",
+   "text": "free cast of an MV ≤4 card plus one to hand; the back face is a five-mode bomb",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Infinite Guideline Station": {
+   "group": "Pile",
+   "text": "Robots per multicoloured permanent; station 12 is slow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Golos, Tireless Pilgrim": {
+   "group": "In deck",
+   "text": "fetches any land; late, plays the top three free (R3, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Door to Nothingness": {
+   "group": "In deck",
+   "text": "The alternate win: WWUUBBRRGG from ten any-colour lands, Timeless Lotus plus five, Ramos, or anything under Chromatic Orrery.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Chromanticore": {
+   "group": "Pile",
+   "text": "4/4 with five keywords; bestow cannot use the alt cost (R2)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Leyline of the Guildpact": {
+   "group": "In deck",
+   "text": "every land is every basic type — all lands tap for any colour (R3); free from the opening hand",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Marshals' Pathcruiser": {
+   "group": "Pile",
+   "text": "basic to hand, then a vehicle",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Haunted Screen": {
+   "group": "In deck",
+   "text": "3-mana rock for any colour (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nissa, Leyline Tamer": {
+   "group": "In deck",
+   "text": "MV 7 for WUBRG; landfall draws and puts a creature onto the battlefield (R1, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Norman Osborn // Green Goblin": {
+   "group": "Pile",
+   "text": "graveyard casting is off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Thanos, the Mad Titan": {
+   "group": "Pile",
+   "text": "3-mana deathtouch lifelink; power-up is a parity sweeper (hits ours too)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Tam, the Possibility": {
+   "group": "Pile",
+   "text": "needs planeswalkers",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Terra, Magical Adept // Esper Terra": {
+   "group": "Pile",
+   "text": "chapter IV makes WWUUBBRRGG; slow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bringer of the Green Dawn": {
+   "group": "In deck",
+   "text": "carries its own WUBRG alt cost (R6); a 3/3 every upkeep",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Leyline of Mutation": {
+   "group": "In deck",
+   "text": "the commander's ability on an enchantment (R6); free from the opening hand",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Esika, God of the Tree // The Prismatic Bridge": {
+   "group": "In deck",
+   "text": "taps for any colour and gives every other legend that ability (R3, R5); the back face, The Prismatic Bridge, is a WUBRG upkeep cheat that puts a creature or walker onto the battlefield (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Widespread Thieving": {
+   "group": "In deck",
+   "text": "a Treasure per multicoloured spell (R3); pay WUBRG to play the hideaway card free",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Najeela, the Blade-Blossom": {
+   "group": "Pile",
+   "text": "WUBRG extra combats; the Warrior half is off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kenrith, the Returned King": {
+   "group": "Pile",
+   "text": "legend with five activations, reanimation {4}{B} and draw {3}{U} among them",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Leonardo, the Balance": {
+   "group": "Pile",
+   "text": "token plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Lone Rider // It That Rides as One": {
+   "group": "Pile",
+   "text": "lifegain transform, off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Extricator of Sin // Extricator of Flesh": {
+   "group": "Pile",
+   "text": "off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Eldrazi Displacer": {
+   "group": "Pile",
+   "text": "needs {C} specifically",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Gisela, the Broken Blade": {
+   "group": "Pile",
+   "text": "a flying body without Bruna",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Wharf Infiltrator": {
+   "group": "Pile",
+   "text": "discard engine, off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Corrupted Shapeshifter": {
+   "group": "Pile",
+   "text": "filler",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Idol of False Gods": {
+   "group": "Pile",
+   "text": "Eldrazi tokens, off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Glaring Fleshraker": {
+   "group": "Pile",
+   "text": "needs {C} and colourless spells",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Anticausal Vestige": {
+   "group": "In deck",
+   "text": "warp {4}: it is exiled at end step, so it LEAVES — draw, then put a permanent with MV ≤ lands from hand onto the battlefield (R4); recast later",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bane of Bala Ged": {
+   "group": "Pile",
+   "text": "MV 7 for WUBRG (R1); each attack exiles two of their permanents",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Herigast, Erupting Nullkite": {
+   "group": "Pile",
+   "text": "MV 9 for WUBRG; cast trigger refills the hand; every creature gets emerge",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Ulamog, the Defiler": {
+   "group": "In deck",
+   "text": "MV 10 for WUBRG; cast trigger exiles half their library, then enters huge with annihilator (R1)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Emrakul, the World Anew": {
+   "group": "In deck",
+   "text": "MV 12 for WUBRG; cast trigger steals every creature they have (R1). Leaving sacrifices our creatures: protect it",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Wizard Class": {
+   "group": "Pile",
+   "text": "1-mana enchantment that draws two at level 2 (R8)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Goro-Goro and Satoru": {
+   "group": "Pile",
+   "text": "{1}{R}: haste for the cheated bombs; Dragons when new creatures connect",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Maestros Diabolist": {
+   "group": "Pile",
+   "text": "small attacker",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Marchesa, Dealer of Death": {
+   "group": "Pile",
+   "text": "crime card selection",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Spelldrain Assassin": {
+   "group": "Pile",
+   "text": "casualty for an instant or sorcery",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Cormela, Glamour Thief": {
+   "group": "Pile",
+   "text": "spell-only mana",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Fire Lord Azula": {
+   "group": "Pile",
+   "text": "copies spells cast while she attacks (instant speed only)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Doctor Doom, King of Latveria": {
+   "group": "Pile",
+   "text": "Villain connive",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Mai and Zuko": {
+   "group": "Pile",
+   "text": "flash for artifacts and Allies",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, the Ravager // Nicol Bolas, the Arisen": {
+   "group": "Pile",
+   "text": "4-mana flier with discard; the walker side removes and reanimates (BRU legend)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Obeka, Splitter of Seconds": {
+   "group": "Pile",
+   "text": "extra upkeeps replay upkeep cheats (Prismatic Bridge, Bringer of the Green Dawn) — spice",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Saruman, the White Hand": {
+   "group": "Pile",
+   "text": "amass equal to a noncreature spell's printed MV: a cheated big spell makes a big Army",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Evelyn, the Covetous": {
+   "group": "Pile",
+   "text": "Vampire engine",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Inalla, Archmage Ritualist": {
+   "group": "Pile",
+   "text": "Wizard copies; Jodah, the Unifier and Rona are Wizards, but the payoff wants five",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kefka, Court Mage // Kefka, Ruler of Ruin": {
+   "group": "Pile",
+   "text": "legend; ETB/attack discard into draws",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, Dragon-God": {
+   "group": "In deck",
+   "text": "walker with draw and −3 removal (BRU)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Glamorous Outlaw": {
+   "group": "Pile",
+   "text": "MV 6 for WUBRG; can sit exiled as a UBR land fixer",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Sauron, the Dark Lord": {
+   "group": "Pile",
+   "text": "MV 6 7/6, ward that costs them a legend",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Lord Xander, the Collector": {
+   "group": "In deck",
+   "text": "MV 7 for WUBRG; discard half, mill half, and sacrifice half when it dies (R1)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Cruel Ultimatum": {
+   "group": "In deck",
+   "text": "{U}{U}{B}{B}{B}{R}{R} becomes WUBRG — the alt cost turns an uncastable card into a 5-mana blowout (R1)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, God-Pharaoh": {
+   "group": "In deck",
+   "text": "MV 7 walker for WUBRG; +2 casts their card free, −4 deals 7 (R1, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Sauron, Lord of the Rings": {
+   "group": "In deck",
+   "text": "MV 8 for WUBRG; the cast trigger amasses 5 and reanimates a creature (R1, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Pensive Professor": {
+   "group": "Pile",
+   "text": "every WUBRG cast spends 5, so it grows and draws (increment)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Crypt of the Eternals": {
+   "group": "Pile",
+   "text": "UBR filter land, colourless otherwise",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Breya, Etherium Shaper": {
+   "group": "Pile",
+   "text": "4-colour legend, two fliers, removal modes",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Relic of Sauron": {
+   "group": "Pile",
+   "text": "UBR rock",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Jace, Multiverse Architect": {
+   "group": "In deck",
+   "text": "+1 draw two; −3 puts a creature or walker onto the battlefield (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bringer of the Black Dawn": {
+   "group": "Pile",
+   "text": "own WUBRG alt cost (R6); upkeep tutor to the top",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Iridescent Tiger": {
+   "group": "In deck",
+   "text": "when cast, adds WUBRG — cast it, then cast a Jodah spell with the refund (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Karolina Dean, Runaway": {
+   "group": "Pile",
+   "text": "WUBRG every first main phase, not for spells from hand: recasts the commander, pays activations (Golos, Kenrith)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Tome of the Infinite": {
+   "group": "Pile",
+   "text": "random conjures",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Prismatic Omen": {
+   "group": "In deck",
+   "text": "2 mana: every land is every basic type, so all lands tap for any colour (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Prismatic Undercurrents": {
+   "group": "Pile",
+   "text": "basics to hand plus an extra land drop",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Vona de Iedo, the Antifex": {
+   "group": "In deck",
+   "text": "ETB destroys a nonland permanent (R7 clean)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Change the Narrative": {
+   "group": "Pile",
+   "text": "random walkers",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "The Bloodbile Swarm": {
+   "group": "Pile",
+   "text": "off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Dáin, Lord of the Iron Hills": {
+   "group": "Pile",
+   "text": "small",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Ashe, Princess of Dalmasca": {
+   "group": "Pile",
+   "text": "artifact dig",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Rosa, Resolute White Mage": {
+   "group": "Pile",
+   "text": "small",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Princess Yue": {
+   "group": "Pile",
+   "text": "scry body",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Elrond, Moon-Reader": {
+   "group": "Pile",
+   "text": "ability draws",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Grand Nagus Zek": {
+   "group": "Pile",
+   "text": "Treasures need deaths",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Lo and Li, Twin Tutors": {
+   "group": "Pile",
+   "text": "Noble/Lesson tutor",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Loot, Exuberant Explorer": {
+   "group": "Pile",
+   "text": "extra land drop; puts a creature with MV ≤ lands onto the battlefield",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "group": "Pile",
+   "text": "token plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Indulging Patrician": {
+   "group": "Pile",
+   "text": "lifegain plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bard, King of Dale": {
+   "group": "Pile",
+   "text": "MV 6 for WUBRG; doubles extra draws and tokens",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Falkenrath Aristocrat": {
+   "group": "Pile",
+   "text": "aggro body",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Raphael, Fiendish Savior": {
+   "group": "Pile",
+   "text": "Devil tribal",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Olivia, Crimson Bride": {
+   "group": "In deck",
+   "text": "MV 6 for WUBRG; each attack reanimates a creature, kept while Olivia (a legendary Vampire) stays (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Buxton, Decorated Host": {
+   "group": "Pile",
+   "text": "needs tapped creatures",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "The Key to the Vault": {
+   "group": "In deck",
+   "text": "An equipped flier (Jodah is a 4/3 flier) connects most turns: look at that many cards, cast one free.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "group": "In deck",
+   "text": "looter now; transformed, casts a card from its exile free each turn (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "group": "Pile",
+   "text": "slow free cast",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Tempest Trapper": {
+   "group": "Pile",
+   "text": "spell-only mana",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Reenact the Crime": {
+   "group": "Pile",
+   "text": "narrow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "The Conundrum of Bowls": {
+   "group": "Pile",
+   "text": "slow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "group": "In deck",
+   "text": "Waterbend {5} is generic and creatures/artifacts help pay: a repeatable free noncreature cast that needs no colours.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Jin-Gitaxias // The Great Synthesis": {
+   "group": "Pile",
+   "text": "draws on noncreature MV 3+; the Saga's chapter III casts any number of spells free (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Omnispell Adept": {
+   "group": "Pile",
+   "text": "instants and sorceries only",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Omniscience": {
+   "group": "In deck",
+   "text": "MV 10 for WUBRG, then every spell from hand is free (R1, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Brazen Bluff": {
+   "group": "Pile",
+   "text": "conditional",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nico Minoru, Runaway": {
+   "group": "In deck",
+   "text": "{2}{R}, discard: cast the top nonland card free, repeatable; pings on every non-hand cast (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Improvisation Capstone": {
+   "group": "In deck",
+   "text": "MV 7 for WUBRG; free casts from the top, and paradigm repeats it free every first main phase (R1, R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Descendants' Path": {
+   "group": "Pile",
+   "text": "needs shared creature types",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Fight Rigging": {
+   "group": "Pile",
+   "text": "hideaway released by a power-7 creature (the Eldrazi qualify)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "World War Hulk": {
+   "group": "Pile",
+   "text": "one free red/green creature",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Omnipresence": {
+   "group": "Pile",
+   "text": "MV 8 for WUBRG; free casts capped by creature count",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kaya the Inexorable": {
+   "group": "In deck",
+   "text": "−3 exiles a nonland permanent (R7 clean); the emblem casts legends free",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Neera, Wild Mage": {
+   "group": "In deck",
+   "text": "once a turn, swap a cast for a free cast off the top (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bre of Clan Stoutarm": {
+   "group": "Pile",
+   "text": "needs lifegain",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Djeru and Hazoret": {
+   "group": "Pile",
+   "text": "attacks cast a legendary creature from the top six free (R4, R5)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kasmina, Enigma Sage": {
+   "group": "Pile",
+   "text": "walker support",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Unexpected Results": {
+   "group": "Pile",
+   "text": "free cast of the top card; in a deck of bombs the hit rate is high",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kellan, the Kid": {
+   "group": "In deck",
+   "text": "every non-hand cast (Unifier, Nico, Capstone, Golos) also casts a permanent from hand free (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Tamiyo, Field Researcher": {
+   "group": "Pile",
+   "text": "the −7 emblem is a long way off",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Gandalf, Party Guest": {
+   "group": "Pile",
+   "text": "free instants/sorceries, scaled by legendary Wizards",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Narset, Enlightened Exile": {
+   "group": "Pile",
+   "text": "graveyard spell copies",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Commander Spock": {
+   "group": "In deck",
+   "text": "ETB and attack cast the top card free if its MV ≤ differently named lands — a singleton manabase makes that high (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Narset, Enlightened Master": {
+   "group": "In deck",
+   "text": "MV 6 for WUBRG; each attack casts noncreature spells from the top four free",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Buster Sword": {
+   "group": "In deck",
+   "text": "On Jodah it is 7 damage: draw, then cast a spell of MV 7 or less free.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Glamdring": {
+   "group": "Pile",
+   "text": "instants/sorceries only",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Cosmic Cube": {
+   "group": "In deck",
+   "text": "each attack casts from the top six, capped by the biggest attacker's power — the Eldrazi make that 7+",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "group": "In deck",
+   "text": "MV 6 for WUBRG; scry casts the top card free once a turn",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "group": "Pile",
+   "text": "off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Lukka, Coppercoat Outcast": {
+   "group": "In deck",
+   "text": "−2 turns a creature into a bigger one from the library (R4)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Ashiok, Sculptor of Fears": {
+   "group": "Pile",
+   "text": "MV 6 for WUBRG; −5 reanimates",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Akul the Unrepentant": {
+   "group": "Pile",
+   "text": "needs three sacrifices",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nissa of Shadowed Boughs": {
+   "group": "Pile",
+   "text": "−5 puts a creature with MV ≤ lands onto the battlefield",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Raph & Mikey, Troublemakers": {
+   "group": "In deck",
+   "text": "MV 7 for WUBRG; each attack puts a creature from the library onto the battlefield attacking",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kinnan, Bonder Prodigy": {
+   "group": "In deck",
+   "text": "doubles rock and dork mana (Timeless Lotus makes six); {5}{G}{U} puts a non-Human creature onto the battlefield",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Nissa, Steward of Elements": {
+   "group": "Pile",
+   "text": "X walker, X = 0 under the alt cost (R2)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Rocco, Cabaretti Caterer": {
+   "group": "Pile",
+   "text": "X = 0 under the alt cost (R2); fine cast normally",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Aang, at the Crossroads // Aang, Destined Savior": {
+   "group": "Pile",
+   "text": "puts an MV ≤4 creature from the top five onto the battlefield",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Stable Wormhole": {
+   "group": "In deck",
+   "text": "An any-colour land every attack, and the deck has an attack package.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Artificial Anomaly": {
+   "group": "In deck",
+   "text": "colourless land until sacrificed",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Robber of the Rich": {
+   "group": "Pile",
+   "text": "small",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Chandra, Hope's Beacon": {
+   "group": "Pile",
+   "text": "MV 6 for WUBRG; +2 adds two mana of any colours, −X is removal",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Goldspan Dragon": {
+   "group": "In deck",
+   "text": "Treasures make two mana of one colour (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Rogue Class": {
+   "group": "Pile",
+   "text": "slow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "King Narfi's Betrayal": {
+   "group": "Pile",
+   "text": "slow",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Galazeth Prismari": {
+   "group": "Pile",
+   "text": "instant/sorcery mana",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Insidious Roots": {
+   "group": "Pile",
+   "text": "off-plan",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Helga, Skittish Seer": {
+   "group": "Pile",
+   "text": "draws on every MV 4+ creature",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Vraska, Soul of Stone": {
+   "group": "Pile",
+   "text": "a Treasure per noncreature spell (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Great Divide Guide": {
+   "group": "In deck",
+   "text": "2 mana: every land and Ally taps for any colour (R3)",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Sunbird's Invocation": {
+   "group": "In deck",
+   "text": "Every spell cast from hand reveals cards equal to its PRINTED mana value and casts one free: Ulamog for WUBRG reveals ten.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Chromatic Orrery": {
+   "group": "In deck",
+   "text": "Spend mana as though it were any colour: WUBRG and Door's WWUUBBRRGG payable with any mana; taps for five; draws per colour.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "One with the Multiverse": {
+   "group": "In deck",
+   "text": "MV 8 for WUBRG; play from the top of the library and cast one spell free each turn.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Etali, Primal Conqueror // Etali, Primal Sickness": {
+   "group": "Outside pile",
+   "text": "MV 7 for WUBRG; on entering casts a free spell from each library.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Leyline of Anticipation": {
+   "group": "In deck",
+   "text": "Flash on everything, so every alt-cost bomb is instant speed.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Sublime Epiphany": {
+   "group": "In deck",
+   "text": "MV 6 instant for WUBRG: counters a spell AND an ability, bounces, copies, draws.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Jeskai Revelation": {
+   "group": "In deck",
+   "text": "MV 7 instant for WUBRG: bounce, 4 damage, two Monks, draw two, gain 4.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Cryptic Command": {
+   "group": "In deck",
+   "text": "Counter plus bounce, tap-down or draw.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Hero's Downfall": {
+   "group": "In deck",
+   "text": "Instant: destroy a creature or planeswalker.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Anguished Unmaking": {
+   "group": "In deck",
+   "text": "Instant: exile any nonland permanent.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Teferi, Time Raveler": {
+   "group": "In deck",
+   "text": "Opponents cast only at sorcery speed, protecting the big turns; −3 bounces and draws.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Lithoform Engine": {
+   "group": "Outside pile",
+   "text": "Copies a trigger (Unifier cascade, Ulamog's cast trigger) or a spell; bench.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Roaming Throne": {
+   "group": "Outside pile",
+   "text": "Naming Wizard doubles Jodah, the Unifier's and Rona's triggers; bench.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Echoes of Eternity": {
+   "group": "Outside pile",
+   "text": "Doubles the colourless Eldrazi's cast triggers and copies colourless spells; its {C} cost is payable as WUBRG; bench.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Bring to Light": {
+   "group": "Outside pile",
+   "text": "Paid as WUBRG it converges five: tutor a MV 5 or less card and cast it free; bench.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Glen Elendra's Answer": {
+   "group": "Outside pile",
+   "text": "Uncounterable mass counter; bench interaction.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "The End": {
+   "group": "Outside pile",
+   "text": "Instant creature/planeswalker exile; bench interaction.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Infernal Grasp": {
+   "group": "Outside pile",
+   "text": "2-mana instant kill; bench interaction.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kolaghan's Command": {
+   "group": "Outside pile",
+   "text": "Flexible instant; bench interaction.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Gale's Redirection": {
+   "group": "Outside pile",
+   "text": "Exiles a spell, sometimes cast it ourselves; bench.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Fires of Invention": {
+   "group": "Outside pile",
+   "text": "Caps us at two spells a turn on our turn only, which breaks the free-cast chains (a cheat card that fights the engine).",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Etali, Primal Storm": {
+   "group": "Outside pile",
+   "text": "Attacks cast the top card of each library free; owned alternative to Primal Conqueror.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  }
+ },
+ "snapshots": {
+  "102": {
+   "b0616d28935a": [
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Bringer of the Green Dawn",
+    "Buster Sword",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cosmic Cube",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Haunted Screen",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Iridescent Tiger",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jin-Gitaxias",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Anticipation",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Oracle of the Alpha",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raffine's Tower",
+    "Ramos, Dragon Engine",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ]
+  }
+ },
+ "verdicts": {
+  "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "The World Tree": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Crystal Quarry": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Meeting of the Five": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Wizard's Staff": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Flux Channeler": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Gogo, Master of Mimicry": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Oracle of the Alpha": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Tazri, Beacon of Unity": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Timeless Lotus": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Ramos, Dragon Engine": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Providence of Night": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Omnath, Locus of All": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Maelstrom Archangel": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jodah, the Unifier": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Invasion of Alara // Awaken the Maelstrom": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Infinite Guideline Station": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Golos, Tireless Pilgrim": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Door to Nothingness": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Chromanticore": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Leyline of the Guildpact": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Marshals' Pathcruiser": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Haunted Screen": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nissa, Leyline Tamer": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Norman Osborn // Green Goblin": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Thanos, the Mad Titan": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Tam, the Possibility": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Terra, Magical Adept // Esper Terra": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bringer of the Green Dawn": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Leyline of Mutation": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Esika, God of the Tree // The Prismatic Bridge": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Widespread Thieving": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Najeela, the Blade-Blossom": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kenrith, the Returned King": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Leonardo, the Balance": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Lone Rider // It That Rides as One": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Extricator of Sin // Extricator of Flesh": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Eldrazi Displacer": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Gisela, the Broken Blade": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Wharf Infiltrator": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Corrupted Shapeshifter": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Idol of False Gods": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Glaring Fleshraker": {
+   "J": {
+    "m": "✗",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Anticausal Vestige": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bane of Bala Ged": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Herigast, Erupting Nullkite": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Ulamog, the Defiler": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Emrakul, the World Anew": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Wizard Class": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Goro-Goro and Satoru": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Maestros Diabolist": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Marchesa, Dealer of Death": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Spelldrain Assassin": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Cormela, Glamour Thief": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Fire Lord Azula": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Doctor Doom, King of Latveria": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Mai and Zuko": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, the Ravager // Nicol Bolas, the Arisen": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Obeka, Splitter of Seconds": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Saruman, the White Hand": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Evelyn, the Covetous": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Inalla, Archmage Ritualist": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kefka, Court Mage // Kefka, Ruler of Ruin": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, Dragon-God": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Glamorous Outlaw": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Sauron, the Dark Lord": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Lord Xander, the Collector": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Cruel Ultimatum": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nicol Bolas, God-Pharaoh": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Sauron, Lord of the Rings": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Pensive Professor": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Crypt of the Eternals": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Breya, Etherium Shaper": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Relic of Sauron": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jace, Multiverse Architect": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bringer of the Black Dawn": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Iridescent Tiger": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Karolina Dean, Runaway": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Tome of the Infinite": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Prismatic Omen": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Prismatic Undercurrents": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Vona de Iedo, the Antifex": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Change the Narrative": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "The Bloodbile Swarm": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Dáin, Lord of the Iron Hills": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Ashe, Princess of Dalmasca": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Rosa, Resolute White Mage": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Princess Yue": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Elrond, Moon-Reader": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Grand Nagus Zek": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Lo and Li, Twin Tutors": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Loot, Exuberant Explorer": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Indulging Patrician": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bard, King of Dale": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Falkenrath Aristocrat": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Raphael, Fiendish Savior": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Olivia, Crimson Bride": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Buxton, Decorated Host": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "The Key to the Vault": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Tempest Trapper": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Reenact the Crime": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "The Conundrum of Bowls": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jin-Gitaxias // The Great Synthesis": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Omnispell Adept": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Omniscience": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Brazen Bluff": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nico Minoru, Runaway": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Improvisation Capstone": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Descendants' Path": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Fight Rigging": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "World War Hulk": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Omnipresence": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kaya the Inexorable": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Neera, Wild Mage": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bre of Clan Stoutarm": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Djeru and Hazoret": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kasmina, Enigma Sage": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Unexpected Results": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kellan, the Kid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Tamiyo, Field Researcher": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Gandalf, Party Guest": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Narset, Enlightened Exile": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Commander Spock": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Narset, Enlightened Master": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Buster Sword": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Glamdring": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Cosmic Cube": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Lukka, Coppercoat Outcast": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Ashiok, Sculptor of Fears": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Akul the Unrepentant": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nissa of Shadowed Boughs": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Raph & Mikey, Troublemakers": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kinnan, Bonder Prodigy": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Nissa, Steward of Elements": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Rocco, Cabaretti Caterer": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Aang, at the Crossroads // Aang, Destined Savior": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Stable Wormhole": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Artificial Anomaly": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Robber of the Rich": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Chandra, Hope's Beacon": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Goldspan Dragon": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Rogue Class": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "King Narfi's Betrayal": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Galazeth Prismari": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Insidious Roots": {
+   "J": {
+    "m": "△",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Helga, Skittish Seer": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Vraska, Soul of Stone": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Great Divide Guide": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Sunbird's Invocation": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Chromatic Orrery": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "One with the Multiverse": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Etali, Primal Conqueror // Etali, Primal Sickness": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Leyline of Anticipation": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Sublime Epiphany": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jeskai Revelation": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Cryptic Command": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Hero's Downfall": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Anguished Unmaking": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Teferi, Time Raveler": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Lithoform Engine": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Roaming Throne": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Echoes of Eternity": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Bring to Light": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Glen Elendra's Answer": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "The End": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Infernal Grasp": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kolaghan's Command": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Gale's Redirection": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Fires of Invention": {
+   "J": {
+    "m": "✗",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Etali, Primal Storm": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  }
+ }
+}
