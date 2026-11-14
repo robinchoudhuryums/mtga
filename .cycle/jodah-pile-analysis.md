@@ -123,6 +123,43 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Obeka, Splitter of Seconds | ★ | extra upkeeps replay upkeep cheats (Prismatic Bridge, Bringer of the Green Dawn) — spice |
 | Saruman, the White Hand | ★ | amass equal to a noncreature spell's printed MV: a cheated big spell makes a big Army |
 
+### Batch 3 (cards 61–92)
+
+| Card | Verdict | Note |
+|---|---|---|
+| Evelyn, the Covetous | △ | Vampire engine |
+| Inalla, Archmage Ritualist | ◇ | Wizard copies; Jodah, the Unifier and Rona are Wizards, but the payoff wants five |
+| Kefka, Court Mage | ★ | legend; ETB/attack discard into draws |
+| Nicol Bolas, Dragon-God | ★★ | walker with draw and −3 removal (BRU) |
+| Glamorous Outlaw | ★ | MV 6 for WUBRG; can sit exiled as a UBR land fixer |
+| Sauron, the Dark Lord | ★ | MV 6 7/6, ward that costs them a legend |
+| Lord Xander, the Collector | ★★ | MV 7 for WUBRG; discard half, mill half, and sacrifice half when it dies (R1) |
+| Cruel Ultimatum | ★★★ | {U}{U}{B}{B}{B}{R}{R} becomes WUBRG — the alt cost turns an uncastable card into a 5-mana blowout (R1) |
+| Nicol Bolas, God-Pharaoh | ★★★ | MV 7 walker for WUBRG; +2 casts their card free, −4 deals 7 (R1, R4) |
+| Sauron, Lord of the Rings | ★★★ | MV 8 for WUBRG; the cast trigger amasses 5 and reanimates a creature (R1, R4) |
+| Pensive Professor | ★ | every WUBRG cast spends 5, so it grows and draws (increment) |
+| Crypt of the Eternals | ◇ | UBR filter land, colourless otherwise |
+| Breya, Etherium Shaper | ★ | 4-colour legend, two fliers, removal modes |
+| Relic of Sauron | ◇ | UBR rock |
+| Jace, Multiverse Architect | ★★ | +1 draw two; −3 puts a creature or walker onto the battlefield (R4) |
+| Bringer of the Black Dawn | ★★ | own WUBRG alt cost (R6); upkeep tutor to the top |
+| Iridescent Tiger | ★★ | when cast, adds WUBRG — cast it, then cast a Jodah spell with the refund (R3) |
+| Karolina Dean, Runaway | ★ | WUBRG every first main phase, not for spells from hand: recasts the commander, pays activations (Golos, Kenrith) |
+| Tome of the Infinite | ◇ | random conjures |
+| Prismatic Omen | ★★★ | 2 mana: every land is every basic type, so all lands tap for any colour (R3) |
+| Prismatic Undercurrents | ★ | basics to hand plus an extra land drop |
+| Vona de Iedo, the Antifex | ★★ | ETB destroys a nonland permanent (R7 clean) |
+| Change the Narrative | ◇ | random walkers |
+| The Bloodbile Swarm | △ | off-plan |
+| Dáin, Lord of the Iron Hills | △ | small |
+| Ashe, Princess of Dalmasca | △ | artifact dig |
+| Rosa, Resolute White Mage | △ | small |
+| Princess Yue | △ | scry body |
+| Elrond, Moon-Reader | ◇ | ability draws |
+| Grand Nagus Zek | ◇ | Treasures need deaths |
+| Lo and Li, Twin Tutors | △ | Noble/Lesson tutor |
+| Loot, Exuberant Explorer | ★ | extra land drop; puts a creature with MV ≤ lands onto the battlefield |
+
 ## 5. Consolidated plan (live)
 
 (after the last batch)
