@@ -2739,7 +2739,7 @@
   },
   "Transdimensional Bovine": {
    "group": "Owner's screenshots",
-   "text": "Prospective add (owner unsure of the cut). Owned 0/4 flier that taps for two mana of one colour: a blocker and double ramp. Cut options: Widespread Thieving (inconsistent Treasures), Stable Wormhole (needs attacks).",
+   "text": "Prospective add. Owned 0/4 flier that taps for two mana of one colour: a blocker and double ramp. If Black Market Connections takes Widespread Thieving's slot, cut options become Stable Wormhole (needs attacks) or Kinnan.",
    "graded_at": {
     "102": "a7f047666cc1"
    }
@@ -2907,14 +2907,14 @@
   },
   "Black Market Connections": {
    "group": "Treasure",
-   "text": "Owned. Each first main phase, pick any of: a Treasure (1 life), a card (2 life), a 3/2 changeling (3 life). Ramp, card draw and blockers from one 3-mana card; Doubling Season doubles the Treasure and the token, Goldspan makes the Treasure worth two.",
+   "text": "Owned. Proposed in for Widespread Thieving (owner's idea): every first main phase, a Treasure (1 life), a card (2 life) and/or a 3/2 changeling (3 life), with no setup, where Thieving needs multicoloured spells and many bombs are colourless or mono. Doubling Season doubles the Treasure and token; Goldspan makes the Treasure two mana.",
    "graded_at": {
     "102": "a7f047666cc1"
    }
   },
   "Glóin, Dwarf Emissary": {
    "group": "Treasure",
-   "text": "Legendary 3-drop: a Treasure on the first historic spell each turn (39+ historic cards here), and it can sacrifice a Treasure to goad an attacker.",
+   "text": "Legendary 3-drop: a Treasure on the first historic spell each turn (39+ historic here). Cut options: Jacob Hauken (slow 2-mana looter, my pick), Planetarium of Wan Shi Tong, Anticausal Vestige.",
    "graded_at": {
     "102": "a7f047666cc1"
    }
