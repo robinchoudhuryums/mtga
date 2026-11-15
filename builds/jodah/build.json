@@ -1047,10 +1047,10 @@
    }
   },
   "Ramos, Dragon Engine": {
-   "group": "In deck",
-   "text": "MV 6 for WUBRG; a five-colour cast adds five counters; ten mana once a turn",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Akul: slow ten-mana engine; Door to Nothingness keeps its other enablers.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "0ba0e806f41f"
    }
   },
   "Providence of Night": {
@@ -1131,10 +1131,10 @@
    }
   },
   "Haunted Screen": {
-   "group": "In deck",
-   "text": "3-mana rock for any colour (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Warp Speed: a 3-mana any-colour rock; Warp Speed fixes through its basic search and untapped lands instead.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "0ba0e806f41f"
    }
   },
   "Nissa, Leyline Tamer": {
@@ -1509,10 +1509,10 @@
    }
   },
   "Iridescent Tiger": {
-   "group": "In deck",
-   "text": "when cast, adds WUBRG — cast it, then cast a Jodah spell with the refund (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Doubling Season: its WUBRG refund is a one-turn burst.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "0ba0e806f41f"
    }
   },
   "Karolina Dean, Runaway": {
@@ -1922,10 +1922,10 @@
    }
   },
   "Akul the Unrepentant": {
-   "group": "Pile",
-   "text": "Owner's note: the body is the draw — a 5/5 flying trampler for {B}{B}{R}{R} (or WUBRG) is the best carrier for Buster Sword and The Key to the Vault. The cheat is rarely live: three other creatures to sacrifice, few tokens, and putting a bomb in skips its cast trigger.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Ramos. A 4-mana 5/5 flying trampler to carry Buster Sword and The Key to the Vault; the sacrifice-three cheat is a bonus.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "0ba0e806f41f"
    }
   },
   "Nissa of Shadowed Boughs": {
@@ -2209,10 +2209,10 @@
    }
   },
   "Warp Speed": {
-   "group": "Outside pile",
-   "text": "3-mana fixer and tempo card: lands enter untapped, so the 11 taplands, the shocklands without paying life, Stable Wormhole's and Artificial Anomaly's Planets and Golos's fetched land all come in ready; the enters trigger finds a basic. Strange new worlds draws two for {7}{U}{U} minus each differently named land (37 names in a singleton manabase). Measured ceiling: tapped lands cost 3.1 points of on-curve chance per card, recovered only while it is out.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Haunted Screen. Lands enter untapped (taplands, shocklands without life, Planets, Golos's land); the enters trigger finds a basic; Strange new worlds draws two for {7}{U}{U} minus each differently named land.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "0ba0e806f41f"
    }
   },
   "Jhoira, Weatherlight Captain": {
@@ -2287,16 +2287,16 @@
   },
   "Replicator": {
    "group": "Outside pile",
-   "text": "{2},{T}: a tapped copy of a token you control. The useful targets here are Stable Wormhole's any-colour Planets (an extra land a turn) and Treasures from Widespread Thieving or Goldspan Dragon (two mana each under Goldspan). Only ~4 cards make tokens, so it idles without them.",
+   "text": "Better after Doubling Season: each activation makes TWO tapped copies, so copying a Stable Wormhole Planet is two any-colour lands a turn for {2}; Treasures from Widespread Thieving and Goldspan double too. Still idle until a token exists (about five cards make one).",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "0ba0e806f41f"
    }
   },
   "Doubling Season": {
-   "group": "Outside pile",
-   "text": "Owned. Planeswalkers enter with double loyalty: Nicol Bolas, God-Pharaoh at 14 can use −12 (exile every nonland permanent they control) the turn it lands; Kaya at 10 takes the −7 emblem (a free legendary cast every upkeep) at once; Lukka, Jace and Teferi go straight to their big abilities. Also doubles Planets, Treasures, Sauron's amass and Ramos's counters.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Iridescent Tiger. Walkers enter with double loyalty: Nicol Bolas, God-Pharaoh at 14 can −12 at once, Kaya at 10 takes the −7 emblem (free legendary cast each upkeep); doubles Planets, Treasures and amass.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "0ba0e806f41f"
    }
   },
   "Vorinclex, Monstrous Raider": {
@@ -2506,6 +2506,108 @@
     "Timeless Lotus",
     "Ulamog, the Defiler",
     "Vona de Iedo, the Antifex",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "0ba0e806f41f": [
+    "Akul the Unrepentant",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Bringer of the Green Dawn",
+    "Buster Sword",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cosmic Cube",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jin-Gitaxias",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Oracle of the Alpha",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
     "Watery Grave",
     "Widespread Thieving",
     "Xander's Lounge",

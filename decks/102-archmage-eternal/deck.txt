@@ -14,7 +14,7 @@
 #: archetype: Invocation reveals a spell's printed mana value, Kellan and Nico Minoru reward casts from anywhere but
 #: archetype: the hand, and an attack package (Buster Sword and The Key to the Vault on a flier, Cosmic Cube,
 #: archetype: Narset) casts off the top. Door to Nothingness is the alternate win: WWUUBBRRGG from ten any-colour
-#: archetype: lands, Timeless Lotus plus five, Ramos, or anything under Chromatic Orrery. DISTINCT from the
+#: archetype: lands, Timeless Lotus plus five, or anything under Chromatic Orrery. DISTINCT from the
 #: archetype: roster's five-colour decks (17 Spectrum, 76 Dragons, 90 Spirit World, 101 Sisko dilemmas): its
 #: archetype: engine is paying the same five mana for any card.
 #: protect: Jodah, the Unifier; Timeless Lotus; Prismatic Omen; Leyline of the Guildpact; Great Divide Guide; Leyline of Mutation; Chromatic Orrery; Sunbird's Invocation; Door to Nothingness
@@ -25,6 +25,10 @@
 #: notes: cast-on-curve prices PRINTED costs and cannot see the alt cost, so read it as meaningless here.
 #: notes: Under the alt cost an X spell has X = 0, and bestow, warp and other alternative costs cannot be
 #: notes: combined with it.
+#: notes: 2026-11-15 (owner's picks): Raff Capashen for Leyline of Anticipation; Warp Speed for Haunted
+#: notes: Screen; Doubling Season for Iridescent Tiger (planeswalkers enter with double loyalty: God-Pharaoh can
+#: notes: use its -12 and Kaya her -7 the turn they land); Akul the Unrepentant for Ramos (a 4-mana flying
+#: notes: trampler to carry Buster Sword and The Key to the Vault).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -34,10 +38,9 @@
 1 Great Divide Guide (TLA) 181
 1 Prismatic Omen (SHM) 126
 1 Leyline of the Guildpact (MKM) 217
-1 Haunted Screen (DSK) 250
+1 Warp Speed (TRK) 223
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
 1 Oracle of the Alpha (MBC) 64
-1 Iridescent Tiger (TDM) 109
 1 Goldspan Dragon (KHM) 139
 1 Kinnan, Bonder Prodigy (IKO) 192
 1 Widespread Thieving (SNC) 130
@@ -60,9 +63,10 @@
 1 Sauron, Lord of the Rings (LTC) 4
 1 Nissa, Leyline Tamer (FRC) 2
 1 Lord Xander, the Collector (SNC) 197
-1 Ramos, Dragon Engine (FDN) 678
+1 Akul the Unrepentant (OTJ) 189
 1 One with the Multiverse (BRO) 59
 1 Etali, Primal Conqueror // Etali, Primal Sickness (MOM) 137
+1 Doubling Season (FDN) 216
 
 # Free-cast engines — the second cheat layer
 1 Jodah, the Unifier (DMU) 203
