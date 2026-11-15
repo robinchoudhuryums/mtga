@@ -1326,7 +1326,7 @@
   },
   "Wizard's Staff": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: doubles the equipped creature's triggers. Equip {1} on a Wizard — Jodah, the Unifier (two cascades per legendary cast), Raff, Gogo; {3} on others — Kellan (two free casts), Narset (eight cards), Raph & Mikey, Olivia.",
+   "text": "Package 2026-11-15: in for Chromatic Orrery (a 7-mana fixer the deck no longer needs; Door to Nothingness keeps Timeless Lotus and the any-colour lands).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -1340,7 +1340,7 @@
   },
   "Gogo, Master of Mimicry": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: {X}{X},{T} copies a triggered or activated ability X times. Targets here: Jodah, the Unifier's cascade, Sunbird's Invocation, Ulamog's cast trigger, Etali's entry, Golos's play-three, Kellan's free cast, and planeswalker loyalty abilities (a second God-Pharaoh −4). Mana abilities can't be copied.",
+   "text": "Package 2026-11-15: in for Prismatic Omen (the most redundant land-fixer).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -1984,7 +1984,7 @@
   },
   "Buxton, Decorated Host": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: MV 6 for WUBRG (or convoke). Each end step with a tapped creature it puts a nonland permanent with MV ≤ your tapped creatures onto the battlefield — creatures tapped for mana stay tapped, so the mana creatures (and Enduring Vitality) feed it a free permanent every turn.",
+   "text": "Package 2026-11-15: in for Neera, Wild Mage. Free permanent each end step from the tapped mana creatures.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2159,7 +2159,7 @@
   },
   "Tamiyo, Field Researcher": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 1 with Doubling Season (8 loyalty, −7 at once: cast spells from hand free). Proposed in for The Key to the Vault.",
+   "text": "Package 2026-11-15: in for Jace, Multiverse Architect (walker overlap; Tamiyo with Doubling Season is a second Omniscience).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2565,7 +2565,7 @@
   },
   "Kethis, the Hidden Hand": {
    "group": "Legendary / historic",
-   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★ with Karolina Dean: exile two legends from the graveyard and every legendary card there is castable this turn; Jodah's WUBRG alt cost works from the graveyard and Karolina's free WUBRG can pay it, so a legend comes back every turn. Legendary spells also cost {1} less.",
+   "text": "Package 2026-11-15: in for Warp Speed (untapped lands matter less with this many mana creatures). With Karolina, a legend back from the graveyard every turn.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2684,7 +2684,7 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Re-evaluated 2026-11-15 — tier 1. Proposed in for Buster Sword (Akul and the fliers lose their sword, but Tamiyo and the free-cast engines cover that role).",
+   "text": "Package 2026-11-15: in for Savai Triome (a tapped three-colour land), taking the deck to 35 lands plus ~13 other mana sources; keepable 76.9% / 94.7% with the free mulligan.",
    "graded_at": {
     "102": "75432feb4028"
    }
