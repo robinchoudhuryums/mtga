@@ -1104,9 +1104,9 @@
   },
   "Door to Nothingness": {
    "group": "In deck",
-   "text": "The alternate win: WWUUBBRRGG from ten any-colour lands, Timeless Lotus plus five, Ramos, or anything under Chromatic Orrery.",
+   "text": "The alternate win: WWUUBBRRGG from ten any-colour lands (Prismatic Omen, Leyline of the Guildpact, Great Divide Guide), Timeless Lotus plus five, or any mana under Chromatic Orrery.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "0ba0e806f41f"
    }
   },
   "Chromanticore": {
@@ -2301,9 +2301,9 @@
   },
   "Vorinclex, Monstrous Raider": {
    "group": "Outside pile",
-   "text": "MV 6 for WUBRG: the loyalty-doubling half of Doubling Season on a 6/6 trample haste body (and halves the opponent's counters). Second copy of the effect.",
+   "text": "MV 6 for WUBRG: doubles counters (walker loyalty included) on a 6/6 trample haste body and halves the opponent's. A second copy of the effect beside Doubling Season, which is now in the deck; bench.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "0ba0e806f41f"
    }
   }
  },
