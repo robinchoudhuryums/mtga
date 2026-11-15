@@ -1,0 +1,169 @@
+1 Captain Benjamin Sisko (TRK) 6
+1 Borg Cube (TRK) 227
+1 The Eternity Elevator (EOE) 241
+1 Weather Maker (TMT) 182
+1 Warp Core (TRK) 274
+1 U.S.S. Enterprise-D, Galaxy-Class (TRK) 273
+1 Zefram Cochrane, Warp Pioneer (TRK) 90
+1 Lt. Cmdr. Geordi La Forge (TRK) 70
+1 Captain Jean-Luc Picard (TRK) 7
+1 Romulan Bird-of-Prey (TRK) 77
+1 Drill Too Deep (EOE) 133
+1 Systems Override (EOE) 161
+1 Sarcophagus, Ship of the Dead (TRK) 170
+1 Gardenize (FRA) 103
+1 Excalibur II (FIN) 257
+1 Engineered Explosives (TRK) 264
+1 Lost Jitte (BIG) 23
+1 Rimefire Torque (ECL) 65
+1 In the Pale Moonlight (TRK) 117
+1 Artificial Anomaly (TRK) 276
+1 Spatial Anomaly (TRK) 296
+1 Oberth-Class Starship (TRK) 26
+1 The Seriema (EOE) 35
+1 U.S.S. Enterprise-A, Free Spirit (TRK) 43
+1 U.S.S. Excelsior, Cutting Edge (TRK) 44
+1 Adagia, Windswept Bastion (EOE) 250
+1 Synthesizer Labship (EOE) 81
+1 H.M.S. Bounty, Unlikely Timeship (TRK) 63
+1 Uthros, Titanic Godcore (EOE) 260
+1 Susur Secundi, Void Altar (EOE) 259
+1 Entropic Battlecruiser (EOE) 99
+1 Susurian Dirgecraft (EOE) 117
+1 Sledge-Class Seedship (EOE) 208
+1 U.S.S. Voyager, Lone Wanderer (TRK) 222
+1 Larval Scoutlander (EOE) 194
+1 Evendo, Waking Haven (EOE) 253
+1 Infinite Guideline Station (EOE) 219
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
+1 Deep Space 9 (TRK) 263
+1 Command Subadjunct (TRK) 9
+1 Set Phasers to . . . (TRK) 34
+1 Antagonist Incorporator (TRK) 3
+1 Sisay, Weatherlight Captain (SDS) 4
+1 Brad Boimler, Eager Ensign (TRK) 5
+1 Picard, Leading by Example (TRK) 29
+1 Pure Energy (TRK) 31
+1 Shields Up! (TRK) 35
+1 Tactical Officer (TRK) 38
+1 Test of Conviction (TRK) 39
+1 Dr. Beverly Crusher (TRK) 13
+1 Conquest Mission (TRK) 10
+1 Hologram Janeway (TRK) 21
+1 Malfunctioning Holodeck (TRK) 22
+1 Rutherford, Upgraded Ensign (TRK) 32
+1 The Measure of a Man (TRK) 23
+1 Federation Field Medic (TRK) 17
+1 Dr. McCoy, Surly Surgeon (TRK) 14
+1 Peace in Our Time (TRK) 27
+1 Primary Unimatrix Adjunct (TRK) 30
+1 Shuttle Ace (TRK) 36
+1 Una Chin-Riley, Number One (TRK) 42
+1 Excalbian Gamemaster (TRK) 16
+2 Subspace Anomaly (TRK) 300
+1 Data, New Life (TRK) 52
+1 Seven of Nine, Unassimilated (TRK) 80
+1 Jett Reno, Problem Solver (TRK) 67
+1 Test of Priorities (TRK) 85
+1 Anthropological Mission (TRK) 46
+1 Consider the Prime Directive (TRK) 51
+1 Lieutenant Commander Data (TRK) 69
+1 Scotty, Miracle Worker (TRK) 79
+1 Suus Mahna Practitioner (TRK) 84
+1 Cetacean Ops (TRK) 48
+1 Flare of Fortitude (SDS) 2
+1 Operations Officer (TRC) 192
+1 Kenrith, the Returned King (SDS) 3
+1 Picard, Steadfast Captain (TRC) 193
+1 Mikaeus, the Lunarch (SDS) 1
+1 Ensign Pavel Chekov (TRK) 57
+1 Make It So (TRK) 71
+1 Mr. Spock, Science Officer (TRK) 74
+1 Dominion Saboteur (TRK) 54
+1 Empress Galina (SDS) 6
+1 Spock, Logical Choice (TRC) 194
+1 The Caretaker (TRK) 47
+1 Gaseous Anomaly (TRK) 284
+1 Collation Trimatrix (TRK) 98
+1 Tal Shiar Operative (TRK) 131
+1 Grand Nagus Zek (TRK) 112
+1 Overflow Submatrix (TRK) 122
+1 Organic Avulsion Unit (TRK) 121
+1 Badgey, Malicious Glitch (TRC) 152
+1 Blastoneuron (TRK) 96
+1 Sela, Tal Shiar Paradox (TRK) 128
+1 Sheoldred, the Apocalypse (SDS) 11
+1 U.S.S. Reliant, From Hell's Heart (TRK) 135
+1 Bio-Asset Allocator (TRC) 196
+1 Battle of Wolf 359 (TRC) 57
+1 Drivnod, Carnage Dominus (SDS) 10
+1 Hive Mind Coprocessor (TRK) 115
+1 Georgiou, Terran Emperor (TRK) 110
+1 Borg Queen, Perfection Manifest (TRC) 197
+1 Gul Dukat, Colonial Prefect (TRK) 113
+1 Death Is Irrelevant (TRK) 102
+1 The Unicomplex (TRK) 304
+1 Brazen Bluff (TRK) 140
+1 Savvy Profiteer (TRK) 171
+1 The Wrath of Khan (TRK) 181
+1 Exploratory Mission (TRK) 150
+1 Kirk, Enterprising Captain (TRC) 198
+1 La'An Noonien-Singh, Security (TRK) 156
+1 Grilka, Widowed Warrior (TRC) 70
+1 Infinite Diversity (TRK) 153
+1 Bristly Bill, Spine Sower (SDS) 15
+1 Jadzia Dax, Living Legacy (TRK) 204
+1 Jake Sisko, War Correspondent (TRK) 205
+1 Neelix, Moral Support (TRK) 209
+1 David and Carol Marcus, Creators (TRK) 193
+1 Loot, Exuberant Explorer (SDS) 13
+1 Rishkar, Peema Renegade (SDS) 14
+1 Captain Kathryn Janeway (TRK) 187
+1 Sylvia Tilly, Joy of Discovery (TRK) 217
+1 Dr. Joseph M'Benga (TRK) 196
+1 Syndicate Liquidators (TRK) 218
+1 Species 8472 (TRK) 214
+1 Rok-Tahk, Budding Scientist (TRK) 211
+1 Q Continuum (TRK) 290
+1 Hemmer, Fixing What Is Broken (TRK) 239
+1 Live Long and Prosper (TRK) 244
+1 Hallowed Fountain (TRK) 286
+1 Godless Shrine (TRK) 285
+1 Mirror Universe Intrusion (TRK) 248
+1 Seven of Nine (TRK) 252
+1 Jhoira, Weatherlight Captain (SDS) 21
+1 Steam Vents (TRK) 298
+1 Gowron, Eager for Battle (TRK) 237
+1 Prosper, Tome-Bound (SDS) 24
+1 Blood Crypt (TRK) 278
+1 Qo'noS (TRK) 291
+1 Vash, Freelance Archaeologist (TRK) 255
+1 Ferenginar (TRK) 283
+1 Hull Breach (SDS) 18
+1 Overgrown Tomb (TRK) 289
+1 Hit It! (TRK) 240
+1 Orion (TRK) 288
+1 Stomping Ground (TRK) 299
+1 Cleveland Booker, Empath (TRK) 229
+1 Worf, Honor-Bound Warrior (TRK) 256
+1 Phlox, Unorthodox Doctor (TRK) 250
+1 The Doctor, EMH (TRK) 234
+1 The Inner Light (TRK) 241
+1 Temple Garden (TRK) 301
+1 Tatyova, Benthic Druid (SDS) 17
+1 All Good Things . . . (TRK) 226
+1 Breeding Pool (TRK) 279
+1 Earth, Sector 001 (TRK) 281
+1 Locutus of Borg (TRC) 97
+1 The Borg Queen (TRC) 1
+1 Isshin, Two Heavens as One (SDS) 19
+1 Sarek, Federation Ambassador (TRK) 251
+1 Riku of Many Paths (SDS) 23
+1 Jean-Luc Picard, Luminary (TRC) 3
+1 Crystalline Entity (TRK) 261
+1 Bringer of the White Dawn (5DN) 7
+1 Noctis, Prince of Lucis (FIN) 235
+1 Chamber Sentry (JMP) 461
+1 Karn, Gilded Guardian (FRA) 272
+1 Haunted Screen (DSK) 250
+1 Golos, Tireless Pilgrim (M20) 226

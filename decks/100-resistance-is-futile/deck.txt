@@ -1,0 +1,128 @@
+#: name: Resistance Is Futile — Borg
+#: format: Historic Brawl
+#: colors: WUB
+#: commander: Locutus of Borg
+#: plan: midrange
+#: tier: A — owner-graded 2026-11-13, at the metrics floor (interaction 14 and card advantage 7 against the 100-card A bar of 12 and a sum of 19). Strengths: one-sided sweepers while the board is artifact creatures, a deep anthem and evasion layer, and a commander that turns every connecting artifact creature into another body. Weakest axis: card advantage, which leans on the commander and the Coprocessor/Trimatrix draw.
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ESPER BORG ARTIFACT CREATURES around Locutus of Borg:
+#: archetype: every artifact creature that connects makes a 1/1 Borg token, so the commander alone turns a board into more
+#: archetype: board. The number that matters is ARTIFACT CREATURES: Borg Cube gets cheaper per artifact creature and steals
+#: archetype: what it exiles (assimilate); The Borg Queen, Perfection Manifest, Iron Man, Cid, Chrome Dome and the other
+#: archetype: Locutus are anthems, Iron Man, Bleeding Edge copies an artifact spell each turn, and Deanna Troi, Mikaeus and Iron Spider add +1/+1 counters to the
+#: archetype: whole team; Primary Unimatrix Adjunct gives double strike, Organic Avulsion
+#: archetype: Unit menace, Cyberdrive Awakener flying; Hive Mind Coprocessor and Collation Trimatrix draw. Battle of Wolf 359
+#: archetype: and Crystalline Entity are one-sided sweepers while the board is artifact creatures. Spacecraft become artifact
+#: archetype: creatures once stationed (Geordi doubles the counters, Zefram adds two). Winter gives every artifact ward.
+#: archetype: DISTINCT from the roster's Esper decks (43 hand-size control, 91 discard zombies, 98 spells and heroes).
+#: protect: Locutus of Borg; Borg Cube; The Borg Queen; Battle of Wolf 359; Crystalline Entity; Conquest Mission
+#: notes: Drafted 2026-11-12 from the Star Trek pile (.cycle/trek-pile-analysis.md section 5, deck A), a day before the TRK
+#: notes: release date under the owner's one-day pool override. Ownership is information only; the list is the optimal one.
+#: notes: Owner's removal rule honoured: no removal that gives the opponent life or a land.
+#: notes: Station reminder: a Spacecraft is an artifact creature only at its station number; until then it counts for
+#: notes: Conquest Mission (a nontoken artifact entering) but not for affinity or the anthems. Assimilate makes a stolen
+#: notes: creature a Borg artifact creature.
+
+# Commander
+1 Locutus of Borg (TRC) 97
+
+# Artifact creatures and creatures
+1 The Borg Queen (TRC) 1
+1 Borg Queen, Perfection Manifest (TRC) 197
+1 Antagonist Incorporator (TRK) 3
+1 Primary Unimatrix Adjunct (TRK) 30
+1 Command Subadjunct (TRK) 9
+1 Chrome Dome (TMT) 172
+1 Gold-Forged Thopteryx (MAT) 31
+1 Tidus, Blitzball Star (FIN) 246
+1 Collation Trimatrix (TRK) 98
+1 Collective Drone (TRK) 99
+1 Deanna Troi, Psychic Counsel (TRK) 11
+1 Hive Mind Coprocessor (TRK) 115
+1 Organic Avulsion Unit (TRK) 121
+1 Overflow Submatrix (TRK) 122
+1 Bio-Asset Allocator (TRC) 196
+1 Cid, Timeless Artificer (FIN) 216
+1 Locutus, the One Who Speaks (TRK) 245
+1 Crystalline Entity (TRK) 261
+1 Alela, Artful Provocateur (ELD) 324
+1 Brad Boimler, Eager Ensign (TRK) 5
+1 Data, New Life (TRK) 52
+1 Doctor Doom (MSH) 95
+1 Kappa Cannoneer (MH3) 270
+1 Support Skyforge (YDFT) 26
+1 Iron Man, Modern Marvel (MSC) 830
+1 Cyberdrive Awakener (MAR) 53
+1 Zefram Cochrane, Warp Pioneer (TRK) 90
+1 Lt. Cmdr. Geordi La Forge (TRK) 70
+1 Mendicant Core, Guidelight (DFT) 213
+1 Mr. Spock, Science Officer (TRK) 74
+1 Iron Spider, Stark Upgrade (SPM) 166
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Lita, Mechanical Engineer (TLE) 4
+1 Malcator, Purity Overseer (ONE) 208
+1 Noctis, Prince of Lucis (FIN) 235
+1 Winter, Cursed Rider (DFT) 228
+1 Mikaeus, the Lunarch (J25) 225
+
+# Spacecraft
+1 Borg Cube (TRK) 227
+1 Salvation Engine (DFT) 27
+1 U.S.S. Excelsior, Cutting Edge (TRK) 44
+1 Susurian Dirgecraft (EOE) 117
+1 U.S.S. Reliant, From Hell's Heart (TRK) 135
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
+
+# Spells, enchantments and artifacts
+1 Conquest Mission (TRK) 10
+1 Death Is Irrelevant (TRK) 102
+1 Battle of Wolf 359 (TRC) 57
+1 Haunt the Network (DFT) 207
+1 Flare of Fortitude (MH3) 26
+1 Malfunctioning Holodeck (TRK) 22
+1 Kaito, Dancing Shadow (ONE) 204
+1 Iron Man, Bleeding Edge (MSC) 626
+1 Infernal Grasp (MID) 107
+1 Vanishing Verse (STX) 244
+1 Anguished Unmaking (OTP) 35
+1 Resistance Is Futile (TRK) 125
+1 Sheoldred's Edict (ONE) 108
+1 Mirror Universe Intrusion (TRK) 248
+1 Arcane Signet (FRC) 20
+1 Replicator (TRK) 267
+1 Consider the Prime Directive (TRK) 51
+1 Test of Conviction (TRK) 39
+1 Test of Priorities (TRK) 85
+1 Tezzeret, Master of the Bridge (WAR) 275
+1 Weather Maker (TMT) 182
+
+# Lands
+1 Command Tower (FRC) 22
+1 Hallowed Fountain (ECL) 265
+1 Godless Shrine (EOE) 254
+1 Watery Grave (EOE) 261
+1 Capital City (FIN) 274
+1 Obscura Storefront (SNC) 252
+1 Temple of Enlightenment (FDN) 698
+1 Temple of Silence (FDN) 704
+1 Undercity Sewers (PZA) 0
+1 Starting Town (FIN) 289
+1 Plaza of Heroes (DMU) 252
+1 Gloomlake Verge (DSK) 260
+1 Gleaming Bastion (MSH) 267
+1 Castle Doom (MSH) 263
+1 Hidden Lair (MSH) 269
+1 Deserted Beach (FRA) 176
+1 Shattered Sanctum (SOS) 260
+1 Secluded Courtyard (FDN) 267
+1 Floodfarm Verge (DSK) 259
+1 Bleachbone Verge (DFT) 250
+1 Mana Confluence (EOS) 25
+1 Seat of the Synod (J25) 773
+1 Ancient Den (AA2) 23
+1 Vault of Whispers (J25) 780
+1 The Unicomplex (TRK) 304
+1 Uthros, Titanic Godcore (EOE) 260
+1 Gaseous Anomaly (TRK) 284
+3 Plains (TRK) 317
+2 Island (TRK) 319
+3 Swamp (TRK) 321

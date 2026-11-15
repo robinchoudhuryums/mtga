@@ -340,6 +340,15 @@ class TestRender:
         assert data["meta"]["img"] == "remote" and data["meta"]["target"] == "pages"
         assert data["cards"][0]["im"].startswith("https://cards.scryfall.io/normal/")
 
+    def test_page_carries_each_decks_arena_block_and_its_copy_button(self, scratch, monkeypatch):
+        deck_path, tmp = scratch
+        self._fake_urls(monkeypatch)
+        B.save_build("t", _new(deck_path))
+        r = B.render("t", "pages", str(tmp / "out"), tempo=False, images=False)
+        s, data = self._data(r["page"])
+        assert data["meta"]["live"]["G"]["arena"] == B._deck().arena_block(deck_path)
+        assert "data-arena=" in s and "Copy Arena import" in s
+
     def test_artifact_render_uses_local_files(self, scratch, monkeypatch):
         deck_path, tmp = scratch
         self._fake_urls(monkeypatch)
@@ -885,6 +894,13 @@ class TestDeckTarget:
         deck_path, _ = scratch
         L = B.deck_live(deck_path, tempo=False)
         assert L["target"] == 100 and L["exact"] is True
+
+    def test_live_figures_carry_the_arena_import_block(self, scratch):
+        """The panel's copy button reads `arena`, which is `deck.py arena`'s own text."""
+        deck_path, _ = scratch
+        L = B.deck_live(deck_path, tempo=False)
+        assert L["arena"] == B._deck().arena_block(deck_path)
+        assert "\nDeck\n" in "\n" + L["arena"] + "\n"
 
 
 class TestPublishPlan:

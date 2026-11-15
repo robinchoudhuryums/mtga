@@ -1,0 +1,149 @@
+#: name: Archmage Eternal — Jodah
+#: format: Historic Brawl
+#: colors: WUBRG
+#: commander: Jodah, Archmage Eternal
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR CHEAT around Jodah,
+#: archetype: Archmage Eternal: "You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast",
+#: archetype: so every card costs at most one mana of each colour and the deck plays the biggest spells in the
+#: archetype: format for five: Ulamog, Emrakul, Omniscience, Improvisation Capstone, Cruel Ultimatum, the Nicol
+#: archetype: Bolas walker and Sauron, Lord of the Rings. Five colours every turn is the real constraint, so the
+#: archetype: fixing is the spine: Prismatic Omen, Leyline of the Guildpact and Great Divide Guide make every land
+#: archetype: tap for any colour, Timeless Lotus taps for exactly WUBRG, and Chromatic Orrery lets any mana pay
+#: archetype: for any colour. A second layer casts for free: Jodah, the Unifier cascades into legends, Sunbird's
+#: archetype: Invocation reveals a spell's printed mana value, Kellan and Nico Minoru reward casts from anywhere but
+#: archetype: the hand, and an attack package (Buster Sword and The Key to the Vault on a flier, Cosmic Cube,
+#: archetype: Narset) casts off the top. Door to Nothingness is the alternate win: WWUUBBRRGG from ten any-colour
+#: archetype: lands, Timeless Lotus plus five, or anything under Chromatic Orrery. DISTINCT from the
+#: archetype: roster's five-colour decks (17 Spectrum, 76 Dragons, 90 Spirit World, 101 Sisko dilemmas): its
+#: archetype: engine is paying the same five mana for any card.
+#: protect: Jodah, the Unifier; Timeless Lotus; Prismatic Omen; Leyline of the Guildpact; Great Divide Guide; Leyline of Mutation; Chromatic Orrery; Sunbird's Invocation; Door to Nothingness
+#: notes: Drafted 2026-11-14 from the owner's Jodah pile (.cycle/jodah-pile-analysis.md; board builds/jodah).
+#: notes: Ownership is information only; the list is the optimal one. Owner's removal rule honoured: An Offer
+#: notes: You Can't Refuse (gives Treasures) and Assassin's Trophy (gives a land) were left out. Fires of
+#: notes: Invention was rejected because its two-spells-a-turn cap breaks the free-cast chains. The modelled
+#: notes: cast-on-curve prices PRINTED costs and cannot see the alt cost, so read it as meaningless here.
+#: notes: Under the alt cost an X spell has X = 0, and bestow, warp and other alternative costs cannot be
+#: notes: combined with it.
+#: notes: 2026-11-15 (owner's picks): Raff Capashen for Leyline of Anticipation; Warp Speed for Haunted
+#: notes: Screen; Doubling Season for Iridescent Tiger (planeswalkers enter with double loyalty: God-Pharaoh can
+#: notes: use its -12 and Kaya her -7 the turn they land); Akul the Unrepentant for Ramos (a 4-mana flying
+#: notes: trampler to carry Buster Sword and The Key to the Vault).
+
+# Commander (leads from the command zone; also one of the 100)
+1 Jodah, Archmage Eternal (DOM) 198
+
+# Fixing and ramp — every colour, every turn (the alt cost needs WUBRG)
+1 Timeless Lotus (DMU) 239
+1 Great Divide Guide (TLA) 181
+1 Prismatic Omen (SHM) 126
+1 Leyline of the Guildpact (MKM) 217
+1 Warp Speed (TRK) 223
+1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
+1 Oracle of the Alpha (MBC) 64
+1 Goldspan Dragon (KHM) 139
+1 Kinnan, Bonder Prodigy (IKO) 192
+1 Widespread Thieving (SNC) 130
+1 Golos, Tireless Pilgrim (M20) 226
+1 Omnath, Locus of All (MOM) 249
+1 Chromatic Orrery (M21) 228
+1 Stable Wormhole (TRK) 215
+
+# Alt-cost backup — keeps WUBRG casting alive without the commander
+1 Leyline of Mutation (DSK) 188
+1 Bringer of the Green Dawn (AA4) 21
+
+# Bombs — printed cost 6+, paid as WUBRG
+1 Ulamog, the Defiler (MH3) 15
+1 Emrakul, the World Anew (MH3) 6
+1 Omniscience (FDN) 161
+1 Improvisation Capstone (SOS) 120
+1 Cruel Ultimatum (OTP) 40
+1 Nicol Bolas, God-Pharaoh (AKR) 247
+1 Sauron, Lord of the Rings (LTC) 4
+1 Nissa, Leyline Tamer (FRC) 2
+1 Lord Xander, the Collector (SNC) 197
+1 Akul the Unrepentant (OTJ) 189
+1 One with the Multiverse (BRO) 59
+1 Etali, Primal Conqueror // Etali, Primal Sickness (MOM) 137
+1 Doubling Season (FDN) 216
+
+# Free-cast engines — the second cheat layer
+1 Jodah, the Unifier (DMU) 203
+1 Maelstrom Archangel (JMP) 454
+1 Invasion of Alara // Awaken the Maelstrom (MOM) 230
+1 Anticausal Vestige (EOE) 1
+1 Jace, Multiverse Architect (FRC) 1
+1 Jacob Hauken, Inspector // Hauken's Insight (VOW) 65
+1 Jin-Gitaxias (MOM) 65
+1 Nico Minoru, Runaway (MSC) 700
+1 Neera, Wild Mage (HBG) 245
+1 Kellan, the Kid (OTJ) 213
+1 Commander Spock (TRC) 2
+1 Narset, Enlightened Master (KTK) 190
+1 Planetarium of Wan Shi Tong (TLA) 259
+1 Cosmic Cube (MSH) 245
+1 Sunbird's Invocation (XLN) 165
+1 Yue, the Moon Spirit (TLA) 83
+1 The Key to the Vault (OTJ) 54
+1 Buster Sword (FIN) 255
+1 Raff Capashen, Ship's Mage (DOM) 202
+
+# Into play
+1 Lukka, Coppercoat Outcast (IKO) 125
+1 Raph & Mikey, Troublemakers (TMT) 167
+1 Olivia, Crimson Bride (VOW) 245
+
+# Interaction
+1 Sublime Epiphany (M21) 74
+1 Jeskai Revelation (TDM) 196
+1 Cryptic Command (IMA) 48
+1 Hero's Downfall (FDN) 175
+1 Anguished Unmaking (OTP) 35
+1 Teferi, Time Raveler (WAR) 221
+1 Kaya the Inexorable (KHM) 218
+1 Vona de Iedo, the Antifex (YOTJ) 28
+1 Nicol Bolas, Dragon-God (WAR) 207
+
+# Card flow and the alternate win
+1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
+1 Door to Nothingness (BRR) 14
+
+# Lands (37)
+1 Command Tower (FRC) 22
+1 Mana Confluence (EOS) 25
+1 Reflecting Pool (FRC) 23
+1 Hallowed Fountain (ECL) 265
+1 Watery Grave (EOE) 261
+1 Blood Crypt (ECL) 262
+1 Stomping Ground (EOE) 258
+1 Temple Garden (ECL) 268
+1 Godless Shrine (EOE) 254
+1 Steam Vents (ECL) 267
+1 Overgrown Tomb (ECL) 266
+1 Breeding Pool (EOE) 251
+1 Sacred Foundry (EOE) 256
+1 Raugrin Triome (IKO) 251
+1 Savai Triome (IKO) 253
+1 Zagoth Triome (IKO) 259
+1 Ketria Triome (IKO) 250
+1 Indatha Triome (IKO) 248
+1 Spara's Headquarters (SNC) 257
+1 Ziatora's Proving Ground (SNC) 261
+1 Xander's Lounge (SNC) 260
+1 Jetmir's Garden (SNC) 250
+1 Raffine's Tower (SNC) 254
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+1 The World Tree (KHM) 275
+1 Crystal Quarry (EOS) 10
+1 Artificial Anomaly (TRK) 276
+1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
+1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
+1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Plains (TRK) 317
+1 Island (TRK) 319
+1 Swamp (TRK) 321
+1 Mountain (TRK) 323
+1 Forest (TRK) 325

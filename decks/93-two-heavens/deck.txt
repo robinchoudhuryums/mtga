@@ -89,6 +89,7 @@
 1 Outlaws' Merriment (ELD) 198
 1 Kinscaer Sentry (ECL) 22
 1 Zurgo Stormrender (TDC) 10
+1 Kira Nerys, Firebrand (TRK) 242
 
 # Damage engines — attack triggers and noncombat pings
 1 Far Fortune, End Boss (DFT) 203
@@ -148,7 +149,6 @@
 1 Bitter Triumph (SOA) 26
 1 Hero's Downfall (FDN) 175
 1 Long Goodbye (MKM) 92
-1 Skewer the Critics (RNA) 115
 1 Dictate of Erebos (PIO) 91
 1 Nowhere to Run (DSK) 111
 1 All-Fates Stalker (EOE) 3

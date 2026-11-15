@@ -2591,3 +2591,235 @@ Date,Deck,Source,Cut,Add,Cut Rank,Cut Of,Cut Protected,Add Surfaced,Add Rank,Add
 2026-11-06,97,swap,Contagion Engine,"Jiang Yanggu, Never Alone",10,54,no,no,985,8110
 2026-11-06,97,swap,Mountain,Forest,,54,no,no,,8110
 2026-11-06,97,swap,Mirrex,Reflecting Pool,,54,no,no,,8110
+2026-11-07,97,swap,Brushland,Hushwood Verge,,54,no,no,,8110
+2026-11-07,97,swap,Karplusan Forest,Thornspire Verge,,54,no,no,,8110
+2026-11-07,97,swap,Battlefield Forge,Sunbillow Verge,,54,no,no,,8110
+2026-11-07,97,swap,Copperline Gorge,Training Compound,,54,no,no,,8110
+2026-11-07,97,swap,Razorverge Thicket,Gathering Place,,54,no,no,,8110
+2026-11-07,97,swap,Rootbound Crag,Rockfall Vale,,54,no,no,,8110
+2026-11-07,97,swap,Sunpetal Grove,Overgrown Farmland,,54,no,no,,8110
+2026-11-07,97,swap,Needleverge Pathway // Pillarverge Pathway,Starting Town,,54,no,no,,8110
+2026-11-07,97,swap,Cragcrown Pathway // Timbercrown Pathway,Jetmir's Garden,,54,no,no,,8110
+2026-11-07,97,swap,Fabled Passage,Evolving Wilds,,54,no,no,,8110
+2026-11-07,97,swap,"Yoshimaru, Beloved Companion","Ghired, Mirror of the Wilds",7,54,no,no,1389,8110
+2026-11-07,84,swap,Mystic Monastery,Command Tower,,59,no,no,,8095
+2026-11-07,84,swap,Swiftwater Cliffs,Spirebluff Canal,,59,no,no,,8095
+2026-11-07,84,swap,Wind-Scarred Crag,Clifftop Retreat,,59,no,no,,8095
+2026-11-07,84,swap,Avengers Hangar,Deserted Beach,,59,no,no,,8095
+2026-11-08,84,swap,Wondrous Revival,Sword of Fire and Ice,1,59,no,no,1072,8095
+2026-11-08,84,swap,"The Sentry, Golden Guardian","Hawkeye, Trick Shot",57,59,no,no,244,8094
+2026-11-08,84,swap,"War Machine, Legacy of Iron","Nahiri, Heir of the Ancients",44,59,no,no,3458,8094
+2026-11-08,84,swap,"Donatello, Mutant Mechanic","Wraith, Vicious Vigilante",6,59,no,no,592,8098
+2026-11-08,84,swap,Conqueror's Flail,"Hawkeye, Master Marksman",10,59,no,no,87,8093
+2026-11-08,84,swap,"Iron Man, Titan of Innovation","Frodo, Determined Hero",51,59,no,no,6217,8093
+2026-11-08,84,swap,"Mister Fantastic, Reed Richards","Matt Murdock, Justice Seeker",34,59,no,no,472,8094
+2026-11-08,84,swap,Origin of Iron Man,"Kilo, Apogee Mind",4,59,no,no,3842,8094
+2026-11-08,84,swap,"Cid, Timeless Artificer","Tellah, Great Sage",38,59,no,no,767,8094
+2026-11-08,84,swap,Two-Handed Axe // Sweeping Cleave,Gideon Blackblade,19,59,no,no,1277,8094
+2026-11-08,84,swap,Team Transmitter,"Nick Fury, Spymaster",9,59,no,no,33,8086
+2026-11-09,98,swap,"The Mighty Thor, Jane Foster",Kor Spiritdancer,42,56,no,no,2468,8065
+2026-11-09,98,swap,History of Benalia,Staggering Insight,19,56,no,no,86,8065
+2026-11-09,98,swap,Twining Twins,"Danitha Capashen, Paragon",41,56,no,no,511,8065
+2026-11-09,98,swap,Stormkeld Curator,Eriette of the Charmed Apple,21,56,no,no,2093,8065
+2026-11-09,98,swap,Ondu Knotmaster,"Light-Paws, Emperor's Voice",31,56,no,no,7898,8057
+2026-11-09,98,swap,Dragoon's Lance,Spectral Steel,36,56,no,no,1588,8044
+2026-11-09,98,swap,Invasion of Tolvada,Hope Against Hope,53,56,no,no,1206,8044
+2026-11-09,98,swap,"Quake, Agent of S.H.I.E.L.D.","Danitha, Sword of Hope",9,56,no,no,1107,8044
+2026-11-09,98,swap,Aerith Rescue Mission,Sigil of the Empty Throne,7,56,no,no,6073,8044
+2026-11-09,98,swap,Despark,Entity Tracker,4,56,no,no,2408,8044
+2026-11-09,98,swap,"Shaile, Dean of Radiance // Embrose, Dean of Shadow","Scriv, the Obligator",51,56,no,no,91,8047
+2026-11-09,98,swap,"Abigale, Eloquent First-Year",Archon of the Wild Rose,52,56,no,no,6245,8046
+2026-11-09,98,swap,Dramatic Finale,Hallowed Haunting,16,56,no,no,1215,8044
+2026-11-09,98,swap,Revival // Revenge,Rodolf Duskbringer,6,56,no,yes,6,8052
+2026-11-09,98,swap,"Spider-Woman, Secret Agent",Coerced to Kill,16,56,no,no,514,8051
+2026-11-09,98,swap,Mortify,Ichormoon Gauntlet,3,56,no,no,5407,8051
+2026-11-09,98,swap,Absorb,Flux Channeler,13,56,no,no,4795,8051
+2026-11-09,98,swap,Fracture,Staff of Compleation,2,56,no,no,1396,8051
+2026-11-09,98,swap,Void Rend,"Eriette, the Beguiler",2,56,no,no,2234,8051
+2026-11-09,98,swap,Consecrate // Consume,"Mondrak, Glory Dominus",27,56,no,no,3413,8051
+2026-11-09,98,swap,"Danitha, Sword of Hope","Killian, Decisive Mentor",37,56,no,no,2416,8057
+2026-11-09,98,swap,Friendly Neighborhood,Mesmerizing Dose,37,56,no,no,1084,8057
+2026-11-09,98,swap,Glasswing Grace // Age-Graced Chapel,"Killian, Ink Duelist",54,56,no,no,450,8057
+2026-11-09,98,swap,Coerced to Kill,The Circle of Loyalty,31,56,no,no,1421,8057
+2026-11-10,98,swap,Sentinel's Mark,Drana and Linvala,54,56,no,no,1682,8057
+2026-11-10,98,swap,Plains,Gleaming Bastion,,56,no,no,,8060
+2026-11-10,98,swap,Plains,Undercity Sewers,,56,no,no,,8060
+2026-11-10,98,swap,Plains,Contaminated Landscape,,56,no,no,,8060
+2026-11-10,98,swap,"Teferi, Who Slows the Sunset","Heliod, God of the Sun",29,56,no,no,2688,8060
+2026-11-10,56-historic-brawl,swap,"Speedball, New Warrior",Boros Reckoner,,49,yes,no,3013,5495
+2026-11-10,56-historic-brawl,swap,Unleash Fury,Monastery Mentor,1,49,no,no,968,5495
+2026-11-10,56-historic-brawl,swap,Return the Favor,Fiery Confluence,5,49,no,no,1946,5495
+2026-11-10,56-historic-brawl,swap,Sigarda's Aid,Tome of Legends,7,49,no,no,4024,5492
+2026-11-11,56-historic-brawl,swap,Energybending,"Akiri, Fearless Voyager",20,49,no,no,594,5492
+2026-11-11,56-historic-brawl,swap,Get Lost,"Aurelia, Exemplar of Justice",20,49,no,yes,20,5492
+2026-11-11,56-historic-brawl,swap,Gods Willing,Bladehold War-Whip,5,49,no,no,106,5492
+2026-11-11,56-historic-brawl,swap,Heroic Reinforcements,Blazing Crescendo,24,49,no,no,3189,5492
+2026-11-11,56-historic-brawl,swap,Reckless Impulse,Bruenor Battlehammer,1,49,no,no,2030,5492
+2026-11-11,56-historic-brawl,swap,Sword of Body and Mind,Sword of Truth and Justice,35,49,no,no,793,5496
+2026-11-11,56-historic-brawl,swap,Unexpected Windfall,Champion of the Flame,7,49,no,no,935,5496
+2026-11-11,56-historic-brawl,swap,Mountain,Rogue's Passage,,49,no,no,,5496
+2026-11-11,56-historic-brawl,swap,Lightning Greaves,Collective Inferno,22,49,no,no,4110,5496
+2026-11-11,56-historic-brawl,swap,Crackling Cyclops,Kaldra Compleat,19,49,no,yes,1,5496
+2026-11-11,56-historic-brawl,swap,Path to Exile,Rabid Gnaw,3,49,no,no,2568,5493
+2026-11-11,56-historic-brawl,swap,Demonic Ruckus,"Laelia, the Blade Reforged",41,49,no,no,1034,5493
+2026-11-11,56-historic-brawl,swap,Ferocification,Maul of the Skyclaves,32,49,no,no,79,5493
+2026-11-11,56-historic-brawl,swap,"Speed, Young Avenger","Reyav, Master Smith",21,49,no,no,1859,5493
+2026-11-11,56-historic-brawl,swap,Loran's Escape,Showdown of the Skalds,19,49,no,no,3200,5491
+2026-11-11,56-historic-brawl,swap,Tome of Legends,Sigarda's Aid,7,49,no,no,4104,5492
+2026-11-11,56-historic-brawl,swap,Choreographed Sparks,Temur Battle Rage,14,49,no,no,501,5492
+2026-11-11,56-historic-brawl,swap,Team Tactics,Tenth District Legionnaire,39,49,no,no,1173,5485
+2026-11-11,56-historic-brawl,swap,"War Machine, Legacy of Iron","Zada, Hedron Grinder",30,49,no,no,4802,5485
+2026-11-11,56-historic-brawl,swap,Light Up the Stage,Giantfall,2,49,no,no,4911,5499
+2026-11-11,56-historic-brawl,swap,Untimely Malfunction,The Wandering Emperor,3,49,no,no,270,5499
+2026-11-11,56-historic-brawl,swap,Shelter,Elspeth Resplendent,1,49,no,no,2001,5502
+2026-11-11,56-historic-brawl,swap,Sheltering Light,"Danitha Capashen, Paragon",13,49,no,no,464,5502
+2026-11-11,56-historic-brawl,swap,Swords to Plowshares,Fall of the Hammer,8,49,no,no,,5502
+2026-11-11,56-historic-brawl,swap,Red Hulk,Seize the Day,37,49,no,no,4778,5503
+2026-11-11,56-historic-brawl,swap,Boros Reckoner,"Raph & Leo, Sibling Rivals",,49,yes,no,,5499
+2026-11-11,56-historic-brawl,swap,Monastery Mentor,"Aurelia, the Warleader",27,50,no,no,117,5499
+2026-11-11,56-historic-brawl,swap,Sigarda's Aid,Bre of Clan Stoutarm,7,50,no,no,929,5499
+2026-11-11,56-historic-brawl,swap,Defiant Strike,Furious Rise,10,50,no,no,5051,5503
+2026-11-11,56-historic-brawl,swap,Lightning Helix,Bionic Blow,10,50,no,no,3980,5503
+2026-11-11,56-historic-brawl,swap,Restoration Magic,"Thorin, Mountain-king",19,50,no,no,738,5503
+2026-11-11,56-historic-brawl,swap,Mountain,Legion Leadership // Legion Stronghold,,50,no,no,1583,5503
+2026-11-11,56-historic-brawl,swap,Enter the Avatar State,Great Train Heist,41,51,no,no,377,5502
+2026-11-11,56-historic-brawl,swap,Champion of the Flame,Sif's Spearmaster,31,51,no,no,5278,5504
+2026-11-11,56-historic-brawl,swap,Chandra's Ignition,Response // Resurgence,,51,yes,no,1569,5504
+2026-11-11,56-historic-brawl,swap,Grand Abolisher,Mishra's Command,,52,yes,no,311,5503
+2026-11-11,56-historic-brawl,swap,"Delney, Streetwise Lookout","Éowyn, Fearless Knight",,53,yes,no,622,5503
+2026-11-11,56-historic-brawl,swap,Giver of Runes,"Jor Kadeen, First Goldwarden",,54,yes,no,932,5501
+2026-11-11,56-historic-brawl,swap,Maul of the Skyclaves,Chainsaw,51,55,no,no,289,5501
+2026-11-11,56-historic-brawl,swap,Titan's Strength,Two-Handed Axe // Sweeping Cleave,13,55,no,no,332,5501
+2026-11-11,56-historic-brawl,swap,Response // Resurgence,"Raiyuu, Storm's Edge",19,55,no,no,2279,5501
+2026-11-11,56-historic-brawl,swap,"Aurelia, Exemplar of Justice","Lightning, Army of One",53,55,no,no,124,5501
+2026-11-11,56-historic-brawl,swap,Crystal Barricade,"Teyo, Aegis Adept",,55,yes,no,2394,5501
+2026-11-11,56-historic-brawl,swap,"Reyav, Master Smith","Raubahn, Bull of Ala Mhigo",27,56,no,no,2185,5495
+2026-11-11,56-historic-brawl,swap,Bladehold War-Whip,"Odric, Lunarch Marshal",51,56,no,no,835,5495
+2026-11-11,56-historic-brawl,swap,Sword of Truth and Justice,"Krenko, Tin Street Kingpin",29,56,no,no,3641,5495
+2026-11-11,56-historic-brawl,swap,Spinerock Tyrant,Combustion Man,38,56,no,no,2925,5495
+2026-11-11,56-historic-brawl,swap,Collective Inferno,Erratic Cyclops,12,56,no,no,1243,5496
+2026-11-11,56-historic-brawl,swap,Boros Charm,Esper Sentinel,40,56,no,no,1598,5498
+2026-11-11,56-historic-brawl,swap,Fall of the Hammer,Balduvian Berserker,1,56,no,no,4800,5498
+2026-11-11,56-historic-brawl,swap,Mountain,Kazuul's Fury // Kazuul's Cliffs,,56,no,no,2559,5500
+2026-11-12,56-historic-brawl,swap,Plains,Mountain,,56,no,no,,5499
+2026-11-12,56-historic-brawl,swap,Plains,Fire Nation Palace,,56,no,no,,5499
+2026-11-12,99,swap,Xindi Surveyors,"Don & Leo, Problem Solvers",19,32,no,no,2655,2825
+2026-11-12,99,swap,Shields Up!,Spectacular Tactics,11,32,no,no,663,2828
+2026-11-12,99,swap,"David and Carol Marcus, Creators","Dawnsire, Sunstar Dreadnought",24,32,no,no,815,2828
+2026-11-12,99,swap,The Inner Light,"Saavik, Stoic Student",25,32,no,no,1220,2832
+2026-11-12,99,swap,"D'Vana Tendi, Optimistic Ensign",Sheltered by Ghosts,5,32,no,no,587,2832
+2026-11-12,99,swap,"Picard, Leading by Example",Deep Space 9,5,32,no,no,98,2844
+2026-11-12,99,swap,Forest,Breeding Pool,,32,no,no,,2844
+2026-11-12,99,swap,Forest,Breeding Pool,,32,no,no,,2844
+2026-11-12,99,swap,Plains,Hallowed Fountain,,32,no,no,,2844
+2026-11-12,99,swap,Temple Garden,Overgrown Farmland,,32,no,no,,2844
+2026-11-12,99,swap,"Worf, Honor-Bound Warrior",Replicator,11,32,no,no,861,2844
+2026-11-12,99,swap,Test of Conviction,Aerith Gainsborough,10,32,no,no,241,2844
+2026-11-12,99,swap,"Abuelo, Ancestral Echo",Troubling Tribbles,4,32,no,no,2286,2845
+2026-11-13,100,swap,Fatal Push,Resistance Is Futile,4,56,no,no,3487,8036
+2026-11-13,100,swap,Make Disappear,"Winter, Cursed Rider",1,56,no,no,331,8036
+2026-11-13,100,swap,"Urza, Prince of Kroog","Iron Man, Modern Marvel",45,56,no,no,24,8040
+2026-11-13,100,swap,Vexing Drone,Gold-Forged Thopteryx,14,56,no,no,3026,8041
+2026-11-13,100,swap,Tenacious Drone,"Deanna Troi, Psychic Counsel",12,56,no,no,4050,8047
+2026-11-13,100,swap,"Badgey, Malicious Glitch",Doctor Doom,9,56,no,yes,2,8048
+2026-11-13,100,swap,Assault Drone,"Cid, Timeless Artificer",37,56,no,no,774,8036
+2026-11-13,100,swap,Mind Stone,"Mikaeus, the Lunarch",24,56,no,no,2206,8036
+2026-11-13,100,swap,Sharding Sphinx,"Malcator, Purity Overseer",37,56,no,no,787,8040
+2026-11-13,100,swap,"Spock, Logical Choice","Iron Spider, Stark Upgrade",24,56,no,no,101,8051
+2026-11-13,100,swap,Free Borg Revolutionaries,"Tidus, Blitzball Star",39,56,no,no,309,8063
+2026-11-13,100,swap,Steel Overseer,Kappa Cannoneer,35,56,no,no,26,8073
+2026-11-13,100,swap,Seven of Nine,"Alela, Artful Provocateur",19,56,no,yes,10,8078
+2026-11-13,100,swap,"U.S.S. Enterprise-A, Free Spirit","Noctis, Prince of Lucis",53,56,no,no,393,8078
+2026-11-13,100,swap,The Seriema,"Tezzeret, Master of the Bridge",52,56,no,no,124,8078
+2026-11-13,100,swap,In the Pale Moonlight,"Kaito, Dancing Shadow",12,56,no,no,867,8082
+2026-11-13,100,swap,Warp Core,Replicator,7,56,no,no,2723,8135
+2026-11-13,100,swap,Synthesizer Labship,Salvation Engine,46,56,no,no,164,8135
+2026-11-13,100,swap,Plains,Test of Conviction,,56,no,no,2544,8135
+2026-11-13,100,swap,Swamp,Test of Priorities,,57,no,no,5066,8134
+2026-11-13,100,swap,Assembly Specialist,Chrome Dome,15,58,no,no,431,8152
+2026-11-13,100,swap,Shields Up!,Haunt the Network,13,58,no,no,481,8156
+2026-11-13,100,swap,Lieutenant Commander Data,"Brad Boimler, Eager Ensign",26,58,no,no,990,8156
+2026-11-13,100,swap,"Rutherford, Upgraded Ensign","Mendicant Core, Guidelight",26,58,no,no,1980,8157
+2026-11-13,100,swap,Chief of the Foundry,Support Skyforge,23,58,no,no,1237,8157
+2026-11-13,100,swap,Tempered Steel,"Iron Man, Bleeding Edge",20,58,no,no,202,8160
+2026-11-13,100,swap,Island,Weather Maker,,58,no,no,427,8160
+2026-11-13,101,swap,Izzet Charm,Maestros Charm,26,56,no,no,4974,14840
+2026-11-13,101,swap,Abrade,Riveteers Charm,6,56,no,no,5973,14840
+2026-11-13,101,swap,Battle Menu,Cabaretti Charm,38,56,no,no,3713,14840
+2026-11-13,101,swap,Jeskai Charm,Brokers Charm,11,56,no,no,2304,14840
+2026-11-13,101,swap,Temur Charm,Inscription of Abundance,22,56,no,no,2501,14840
+2026-11-13,101,swap,Obsidian Order Operative,Umezawa's Jitte,20,56,no,no,4225,14840
+2026-11-13,56-historic-brawl,swap,Tenth District Legionnaire,"Worf, Honor-Bound Warrior",41,56,no,no,4348,5621
+2026-11-13,56-historic-brawl,swap,Valorous Stance,Exploratory Mission,13,56,no,no,4854,5623
+2026-11-13,56-historic-brawl,swap,Blazing Crescendo,"Kirk, Enterprising Captain",14,56,no,no,1857,5624
+2026-11-13,56-historic-brawl,swap,Chainsaw,Combadge,47,56,no,no,3779,5624
+2026-11-13,56-historic-brawl,swap,Showdown of the Skalds,"Picard, Leading by Example",12,56,no,no,2731,5624
+2026-11-13,101,swap,"U.S.S. Cerritos, Following Up",The Vision,28,56,no,no,366,14856
+2026-11-13,101,swap,Captain Sisay,"Cayth, Famed Mechanist",4,56,no,no,2035,14860
+2026-11-13,101,swap,Boros Charm,Collective Effort,9,57,no,no,6581,14863
+2026-11-13,101,swap,Sublime Epiphany,Consider the Prime Directive,11,57,no,no,3156,14863
+2026-11-13,101,swap,Hullbreaker Horror,Dominion Saboteur,2,57,no,no,,14863
+2026-11-13,101,swap,Dreamshackle Geist,Elven Raft-Steerer,2,57,no,no,13553,14840
+2026-11-13,101,swap,Warren Warleader,Ghalta and Mavren,20,57,no,no,3222,14833
+2026-11-13,101,swap,Molten Collapse,Glissa Sunslayer,7,57,no,no,808,14856
+2026-11-13,101,swap,Mardu Charm,"Isshin, Two Heavens as One",8,57,no,no,12179,14881
+2026-11-13,101,swap,Silumgar's Command,"Mr. Spock, Science Officer",6,57,no,no,2948,14881
+2026-11-13,101,swap,Live or Die,Oltec Matterweaver,12,57,no,no,5793,14829
+2026-11-13,101,swap,Deadly Plot,Operations Officer,9,57,no,no,146,14829
+2026-11-13,101,swap,Abzan Charm,"Sarek, Federation Ambassador",43,57,no,no,1353,14829
+2026-11-13,101,swap,Kolaghan's Command,"Scotty, Miracle Worker",8,57,no,no,7663,14829
+2026-11-13,101,swap,Unfortunate Accident,"Seven of Nine, Unassimilated",24,57,no,no,1714,14846
+2026-11-13,101,swap,The Wrath of Khan,"Sheoldred, the Apocalypse",25,57,no,no,877,14846
+2026-11-13,101,swap,Glorious Sunrise,Stable Wormhole,55,57,no,no,2154,14833
+2026-11-13,101,swap,Arcane Signet,"U.S.S. Enterprise-D, Galaxy-Class",7,57,no,no,7225,14833
+2026-11-13,101,swap,Cabaretti Charm,Warp Speed,15,57,no,no,2957,14833
+2026-11-13,100,swap,Adarkar Wastes,Floodfarm Verge,,59,no,no,,8162
+2026-11-13,100,swap,Glacial Fortress,Gleaming Bastion,,59,no,no,,8162
+2026-11-13,100,swap,Hengegate Pathway // Mistgate Pathway,Temple of Enlightenment,,59,no,no,,8162
+2026-11-13,100,swap,Seachrome Coast,Starting Town,,59,no,no,,8162
+2026-11-13,100,swap,Brightclimb Pathway // Grimclimb Pathway,Temple of Silence,,59,no,no,,8162
+2026-11-13,100,swap,Caves of Koilos,Bleachbone Verge,,59,no,no,,8162
+2026-11-13,100,swap,Concealed Courtyard,Plaza of Heroes,,59,no,no,,8162
+2026-11-13,100,swap,Isolated Chapel,Castle Doom,,59,no,no,,8162
+2026-11-13,100,swap,Clearwater Pathway // Murkwater Pathway,Undercity Sewers,,59,no,no,,8162
+2026-11-13,100,swap,Darkslick Shores,Gloomlake Verge,,59,no,no,,8162
+2026-11-13,100,swap,Drowned Catacomb,Hidden Lair,,59,no,no,,8162
+2026-11-13,100,swap,Shipwreck Marsh,Secluded Courtyard,,59,no,no,,8162
+2026-11-13,100,swap,Underground River,Mana Confluence,,59,no,no,,8162
+2026-11-13,100,swap,Raffine's Tower,Capital City,,59,no,no,,8162
+2026-11-13,100,swap,Fabled Passage,Daily Bugle Building,,59,no,no,,8162
+2026-11-13,100,swap,Daily Bugle Building,Gaseous Anomaly,,59,no,no,,8162
+2026-11-13,93,swap,Skewer the Critics,"Kira Nerys, Firebrand",5,52,no,no,5207,8474
+2026-11-14,96,swap,Underground River,Hidden Lair,,55,no,no,,8208
+2026-11-14,96,swap,Llanowar Wastes,Wastewood Verge,,55,no,no,,8208
+2026-11-14,96,swap,Clearwater Pathway // Murkwater Pathway,Mana Confluence,,55,no,no,,8208
+2026-11-14,96,swap,Darkbore Pathway // Slitherbore Pathway,Prismatic Vista,,55,no,no,,8208
+2026-11-14,96,swap,Barkchannel Pathway // Tidechannel Pathway,Reflecting Pool,,55,no,no,,8222
+2026-11-14,96,swap,Waterlogged Grove,Starting Town,,55,no,no,,8222
+2026-11-14,96,swap,Underground Mortuary,Surveillance Room,,55,no,no,,8222
+2026-11-14,96,swap,Hedge Maze,Conduit Pylons,,55,no,no,,8222
+2026-11-14,96,swap,Zagoth Triome,Opulent Palace,,55,no,no,,8222
+2026-11-14,96,swap,Restless Reef,Serpent's Pass,,55,no,no,,8222
+2026-11-14,96,swap,Hinterland Harbor,Temple of Mystery,,55,no,no,,8222
+2026-11-14,96,swap,Darkslick Shores,Dismal Backwater,,55,no,no,,8222
+2026-11-14,96,swap,Blooming Marsh,Temple of Malady,,55,no,no,,8222
+2026-11-14,96,swap,Drowned Catacomb,Swamp,,55,no,no,,8222
+2026-11-14,96,swap,Sunken Hollow,Island,,55,no,no,,8222
+2026-11-14,96,swap,Botanical Sanctum,Forest,,55,no,no,,8222
+2026-11-14,96,swap,Yavimaya Coast,Island,,55,no,no,,8222
+2026-11-14,89,swap,Memorial to Unity,Temporal Anomaly,,53,no,no,,8328
+2026-11-14,89,swap,Memorial to Folly,Artificial Anomaly,,53,no,no,,8328
+2026-11-14,89,swap,Ghost Quarter,Spatial Anomaly,,53,no,no,,8328
+2026-11-14,89,swap,Rhonas's Monument,Genesis Device,9,53,no,no,1372,8328
+2026-11-14,89,swap,Infernal Grasp,Stable Wormhole,4,53,no,no,2130,8328
+2026-11-14,89,swap,Evolving Wilds,Prismatic Vista,,53,no,no,,8328
+2026-11-14,89,swap,Foggy Bottom Swamp,Wastewood Verge,,53,no,no,,8328
+2026-11-14,89,swap,Boiling Rock Prison,Blazemire Verge,,53,no,no,,8328
+2026-11-14,89,swap,Omashu City,Thornspire Verge,,53,no,no,,8328
+2026-11-14,91,swap,Tranquil Cove,Mana Confluence,,53,no,no,,8156
+2026-11-14,91,swap,Soured Springs,Prismatic Vista,,53,no,no,,8156
+2026-11-14,91,swap,Scoured Barrens,Reflecting Pool,,53,no,no,,8156
+2026-11-15,102,swap,Leyline of Anticipation,"Raff Capashen, Ship's Mage",1,54,no,no,3370,14919
+2026-11-15,102,swap,Haunted Screen,Warp Speed,47,54,no,no,1099,14918
+2026-11-15,102,swap,Iridescent Tiger,Doubling Season,2,54,no,no,9583,14918
+2026-11-15,102,swap,"Ramos, Dragon Engine",Akul the Unrepentant,25,54,no,no,2886,14907

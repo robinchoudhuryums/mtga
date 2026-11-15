@@ -1,0 +1,311 @@
+{
+ "schema": 1,
+ "title": "Szarel — Genesis Cycle Brawl",
+ "decks": [
+  {
+   "key": "S",
+   "id": "89",
+   "label": "Szarel"
+  }
+ ],
+ "piles": [
+  {
+   "key": "S",
+   "label": "Szarel's pile",
+   "deck": "S",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Temporal Anomaly",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Artificial Anomaly",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Spatial Anomaly",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Genesis Device",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Stable Wormhole",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Final Frontier",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Genesis Effect",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "David and Carol Marcus, Creators",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Unexplored Territory",
+   "pile": "S",
+   "src": "added"
+  },
+  {
+   "name": "Warp Speed",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Temporal Anomaly": {
+   "group": "Recommended",
+   "text": "Untapped land that sacrifices itself ({3}{G}): a Szarel trigger, mill four and take a permanent from them (more lands in the yard to replay), and a New Planet that taps for any colour. Szarel replays it next turn. Proposed in for Memorial to Unity.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Artificial Anomaly": {
+   "group": "Recommended",
+   "text": "Same engine as Temporal: {3}{B}, sacrifice for drain 2 plus a New Planet, then replay it from the graveyard. Proposed in for Memorial to Folly.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Spatial Anomaly": {
+   "group": "Recommended",
+   "text": "Same engine: {4}{R}, sacrifice for 2 damage to a creature plus a New Planet; repeatable removal every turn through Szarel. Proposed in for Ghost Quarter (which also hands the opponent a basic).",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Genesis Device": {
+   "group": "Recommended",
+   "text": "Enters and puts a basic or Planet onto the battlefield; later {3}{G}{G}, sacrifice it and any number of lands (each nontoken one a Szarel trigger) and search that many lands. Planet tokens count, so tokens become real land cards; fetch Riveteers Overlook / Maestros Theater for more triggers. Cut candidates: Rhonas's Monument (my pick), Overkill, Casualties of War, Daemogoth Titan.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Stable Wormhole": {
+   "group": "Recommended",
+   "text": "Whenever you attack, a tapped any-colour Planet. Tokens do not trigger Szarel, but they feed landfall (Evolution Sage, Bristly Bill, Nissa), Genesis Device, Lotus Field's sacrifice two lands, Korvold's draws and the Anomaly / cave activations. Cut candidates: Casualties of War (my pick), Infectious Bite, Daemogoth Titan.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Final Frontier": {
+   "group": "Considered",
+   "text": "Ramp that fetches a basic or Planet, recastable with Beam me up. Fine, but no Szarel trigger and the deck already has more fetches (11) than basics (10).",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Genesis Effect": {
+   "group": "Considered",
+   "text": "6 damage instant removal; destroys a land you control (destroy, not sacrifice, so no Szarel trigger) which Szarel can replay, plus a New Planet. Real removal if a removal slot opens.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "David and Carol Marcus, Creators": {
+   "group": "Considered",
+   "text": "Body that makes a tapped Planet on entry. Small; no sacrifice.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Unexplored Territory": {
+   "group": "Considered",
+   "text": "Third copy of the {1}-sacrifice basic fetch (Shire Terrace, Promising Vein). Skip: fetches already outnumber basics.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  },
+  "Warp Speed": {
+   "group": "Not legal",
+   "text": "Illegal here: the Strange new worlds ability costs {U}{U}, so blue is in its colour identity and the commander is B/G/R. Its 'Lands you control enter untapped' would otherwise fix this deck's 11.2-point tapped-land cost.",
+   "graded_at": {
+    "89": "c8249b75f7e5"
+   }
+  }
+ },
+ "snapshots": {
+  "89": {
+   "c8249b75f7e5": [
+    "Ancient Greenwarden",
+    "Azusa, Lost but Seeking",
+    "Binding the Old Gods",
+    "Bloated Contaminator",
+    "Blood Crypt",
+    "Boiling Rock Prison",
+    "Bontu the Glorified",
+    "Bristly Bill, Spine Sower",
+    "Bushmaster, Coiled Henchman",
+    "Casualties of War",
+    "Command Tower",
+    "Daemogoth Titan",
+    "Dina, Essence Brewer",
+    "Doubling Season",
+    "Dryad of the Ilysian Grove",
+    "Eddie Brock // Venom, Lethal Protector",
+    "Elven Passage",
+    "Escape Tunnel",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Fanatic of Rhonas",
+    "Foggy Bottom Swamp",
+    "Forest",
+    "Fynn, the Fangbearer",
+    "Garruk Relentless // Garruk, the Veil-Cursed",
+    "Garruk, Cursed Huntsman",
+    "Ghost Quarter",
+    "Glissa Sunslayer",
+    "Grist, Voracious Larva // Grist, the Plague Swarm",
+    "Hardened Scales",
+    "Hearthhull, the Worldseed",
+    "Hidden Necropolis",
+    "Hidden Nursery",
+    "Hidetsugu, Devouring Chaos",
+    "Hobbit Hole",
+    "Honest Rutstein",
+    "Hornet Queen",
+    "Ifnir Deadlands",
+    "Infectious Bite",
+    "Infernal Grasp",
+    "Jenova, Ancient Calamity",
+    "Killmonger, Scourge of Wakanda",
+    "Kodama of the West Tree",
+    "Korvold, Fae-Cursed King",
+    "Kura, the Boundless Sky",
+    "Long Feng, Grand Secretariat",
+    "Lotus Field",
+    "Lukka, Bound to Ruin",
+    "Maestros Theater",
+    "Mayhem Devil",
+    "Memorial to Folly",
+    "Memorial to Unity",
+    "Mountain",
+    "Necrogen Rotpriest",
+    "Nissa of Shadowed Boughs",
+    "Omashu City",
+    "Origin of Black Widow",
+    "Overgrown Tomb",
+    "Overkill",
+    "Pizza Face, Gastromancer",
+    "Polukranos, Unchained",
+    "Promising Vein",
+    "Rhonas the Indomitable",
+    "Rhonas's Monument",
+    "Riveteers Overlook",
+    "Seedship Broodtender",
+    "She-Hulk, Jennifer Walters",
+    "Shire Terrace",
+    "Skemfar Elderhall",
+    "Stomping Ground",
+    "Swamp",
+    "Szarel, Genesis Shepherd",
+    "Tectonic Split",
+    "Terramorphic Expanse",
+    "The Gitrog Monster",
+    "The Hunter Maze",
+    "The Serpent Society",
+    "Titania, Protector of Argoth",
+    "Triumph of the Hordes",
+    "Twisted Landscape",
+    "Tyrranax Rex",
+    "Tyvar, Jubilant Brawler",
+    "Unforgiving One",
+    "Venomous Brutalizer",
+    "Vibrant Cityscape",
+    "Vorinclex, Monstrous Raider",
+    "Vraska Joins Up",
+    "Vraska, Betrayal's Sting",
+    "Way of the Necromancer",
+    "Way of the Paradox",
+    "White Widow, Yelena Belova",
+    "Zopandrel, Hunger Dominus",
+    "Zuran Orb"
+   ]
+  }
+ },
+ "verdicts": {
+  "Temporal Anomaly": {
+   "S": {
+    "m": "★★★",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Artificial Anomaly": {
+   "S": {
+    "m": "★★",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Spatial Anomaly": {
+   "S": {
+    "m": "★★",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Genesis Device": {
+   "S": {
+    "m": "★★★",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Stable Wormhole": {
+   "S": {
+    "m": "★★",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Final Frontier": {
+   "S": {
+    "m": "△",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Genesis Effect": {
+   "S": {
+    "m": "◇",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "David and Carol Marcus, Creators": {
+   "S": {
+    "m": "△",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Unexplored Territory": {
+   "S": {
+    "m": "✗",
+    "graded_at": "c8249b75f7e5"
+   }
+  },
+  "Warp Speed": {
+   "S": {
+    "m": "✗",
+    "graded_at": "c8249b75f7e5"
+   }
+  }
+ }
+}

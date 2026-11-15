@@ -119,31 +119,27 @@
 1 Watery Grave (EOE) 261
 1 Overgrown Tomb (ECL) 266
 1 Breeding Pool (EOE) 251
-1 Drowned Catacomb (XLN) 253
 1 Woodland Cemetery (DOM) 248
-1 Hinterland Harbor (DOM) 240
-1 Darkslick Shores (ONE) 250
-1 Blooming Marsh (OTJ) 266
-1 Botanical Sanctum (OTJ) 267
-1 Underground River (BRO) 267
-1 Llanowar Wastes (BRO) 264
-1 Yavimaya Coast (DMU) 261
-1 Zagoth Triome (IKO) 259
-1 Clearwater Pathway // Murkwater Pathway (ZNR) 260
-1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Temple of Mystery (FDN) 702
+1 Dismal Backwater (FDN) 261
+1 Temple of Malady (FDN) 700
+1 Hidden Lair (MSH) 269
+1 Wastewood Verge (DFT) 268
+1 Opulent Palace (TDM) 264
+1 Mana Confluence (EOS) 25
+1 Prismatic Vista (SPG) 38
 1 Undercity Sewers (PZA) 0
-1 Underground Mortuary (MKM) 271
-1 Hedge Maze (MKM) 262
+1 Surveillance Room (MSH) 274
+1 Conduit Pylons (OTJ) 254
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
-1 Restless Reef (LCI) 282
-1 Sunken Hollow (EA3) 23
-4 Island (FRA) 283
+1 Serpent's Pass (TLA) 279
+6 Island (FRA) 283
 1 Gloomlake Verge (DSK) 260
 1 Willowrush Verge (DFT) 270
-1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
-1 Waterlogged Grove (HA7) 25
-4 Swamp (FRA) 285
-2 Forest (FRA) 289
+1 Reflecting Pool (FRC) 23
+1 Starting Town (FIN) 289
+5 Swamp (FRA) 285
+3 Forest (FRA) 289
 
 #~ +Arwen's Gift | BENCH (builder sultai): benched on the board
 #~ +Drowned Secrets | BENCH (builder sultai): benched on the board
