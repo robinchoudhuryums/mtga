@@ -1606,7 +1606,7 @@
   },
   "Bane of Bala Ged": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 3. Another MV 7 for WUBRG; exiles two permanents per attack. The top end is full.",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Each attack makes the defender exile two permanents of their choice, but the classifier counts no role and it needs to attack; another MV 7.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -1837,7 +1837,7 @@
   },
   "Karolina Dean, Runaway": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 2. WUBRG every first main phase for anything but casting from hand: Jodah from the command zone, Golos, One with the Multiverse's top-of-library casts, Door to Nothingness, Black Market Connections' life is unaffected.",
+   "text": "Re-evaluated 2026-11-15 — tier 2: WUBRG every first main phase for non-hand casts and abilities (Jodah's recast, Golos, One with the Multiverse, Door to Nothingness). Proposed in for Lukka, Coppercoat Outcast (its −2 overlaps Jace, Multiverse Architect's −3).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2159,7 +2159,7 @@
   },
   "Tamiyo, Field Researcher": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 1 with Doubling Season: she enters with 8 loyalty and can −7 at once for the emblem 'cast spells from your hand without paying their mana costs' — a second Omniscience. Without the doubler she needs three turns of +1. Her −2 also taps down two permanents (tempo).",
+   "text": "Re-evaluated 2026-11-15 — tier 1 with Doubling Season (8 loyalty, −7 at once: cast spells from hand free). Proposed in for The Key to the Vault.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2411,7 +2411,7 @@
   },
   "Sublime Epiphany": {
    "group": "In deck",
-   "text": "Re-evaluated 2026-11-15 — owner marked CUT. It is one of 13 interaction pieces (counter a spell AND an ability); cutting it with Jeskai Revelation and Invasion of Alara takes interaction to 10 and the floor from A to B.",
+   "text": "Owner marked CUT; recommended to KEEP: with Invasion of Alara and Jeskai Revelation gone it is what holds interaction at 12 and the floor at A (counters a spell and an ability).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2684,7 +2684,7 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Re-evaluated 2026-11-15 — tier 1. 3-mana 2/3 deathtouch lifelink that taps for any colour: ramp, the best blocking dork, and life against Mana Confluence and Black Market Connections.",
+   "text": "Re-evaluated 2026-11-15 — tier 1. Proposed in for Buster Sword (Akul and the fliers lose their sword, but Tamiyo and the free-cast engines cover that role).",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2992,9 +2992,9 @@
   },
   "Grim Hireling": {
    "group": "Treasure",
-   "text": "Two Treasures whenever creatures connect; sacrifices Treasures as removal. Needs combat damage.",
+   "text": "Re-evaluated 2026-11-15 — the best interaction among the owner's picks: {B}, sacrifice X Treasures: target creature gets -X/-X (sorcery speed), fed by Black Market Connections, Provisioner, Goldspan and Doubling Season; two Treasures whenever creatures connect. Proposed in for Jeskai Revelation, keeping Sublime Epiphany so interaction stays 12 (floor A).",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "75432feb4028"
    }
   },
   "Jolene, Plundering Pugilist": {
