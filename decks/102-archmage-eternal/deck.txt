@@ -50,7 +50,9 @@
 #: notes: Master of Mimicry for Prismatic Omen (Gogo copies an activated or triggered ability X times). Interaction
 #: notes: holds at 12 (floor A), with Vitality, Prowler and Karolina as creature mana.
 #: notes: 2026-11-15 (owner's picks): Tamiyo, Field Researcher for Jetmir's Garden (34 lands; with Doubling Season
-#: notes: she can use her -7 on arrival) and Buxton for Raff Capashen. Wizard's Staff benched; Kethis still on the board.
+#: notes: she can use her -7 on arrival) and Buxton for Raff Capashen. Wizard's Staff benched.
+#: notes: 2026-11-15: Kethis for Goldspan Dragon (benched). Karolina's WUBRG can't cast from hand but pays Jodah's
+#: notes: alt cost for a legend Kethis lets you play from the graveyard.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -61,7 +63,6 @@
 1 Leyline of the Guildpact (MKM) 217
 1 Warp Speed (TRK) 223
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
-1 Goldspan Dragon (KHM) 139
 1 Kinnan, Bonder Prodigy (IKO) 192
 1 Golos, Tireless Pilgrim (M20) 226
 1 Omnath, Locus of All (MOM) 249
@@ -112,6 +113,7 @@
 1 Buster Sword (FIN) 255
 1 Gogo, Master of Mimicry (FIN) 54
 1 Tamiyo, Field Researcher (BLC) 100
+1 Kethis, the Hidden Hand (M20) 211
 
 # Into play
 1 Raph & Mikey, Troublemakers (TMT) 167
@@ -171,3 +173,4 @@
 1 Forest (TRK) 325
 
 #~ +Wizard's Staff | BENCH (builder jodah): doubles Jodah, the Unifier's cascade for equip {1}; benched 2026-11-15 for Tamiyo
+#~ +Goldspan Dragon | BENCH (builder jodah): hasty flier for Buster Sword; Treasures make two mana; cut 2026-11-15 for Kethis
