@@ -1273,6 +1273,11 @@
    "name": "Prosperous Innkeeper",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Saint Elenda",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2706,9 +2711,9 @@
   },
   "Tireless Provisioner": {
    "group": "Early ramp",
-   "text": "Owned. 3/2 for 3 that makes a Treasure (any colour) each land drop.",
+   "text": "Owned. 3/2 for 3: a Food (3 life) or a Treasure (any colour) on every land drop. Proposed in for Planetarium of Wan Shi Tong.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Dryad of the Ilysian Grove": {
@@ -2986,7 +2991,7 @@
   },
   "Ancient Cornucopia": {
    "group": "Lifegain + mana",
-   "text": "Owned. 3-mana rock for any colour that gains 1 life per colour of the first coloured spell you cast each turn — 3 to 5 life off the multicolour legends. Directly offsets Mana Confluence, the shocklands and Black Market Connections.",
+   "text": "Owned. 3-mana rock for any colour; the first coloured spell each turn gains 1 life per colour. Proposed in for Stable Wormhole (an any-colour land, but only when you attack).",
    "graded_at": {
     "102": "a7f047666cc1"
    }
@@ -3022,6 +3027,13 @@
   "Prosperous Innkeeper": {
    "group": "Lifegain + mana",
    "text": "2-mana 1/1: a Treasure on entering and 1 life whenever another creature enters.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Saint Elenda": {
+   "group": "Lifegain + mana",
+   "text": "MV 7 for WUBRG: lifelink, conjures a spellbook card and casts it free this turn, and each end step after you gained life makes an X/X Avatar. Proposed in for Raph & Mikey (another MV 7 top-end creature).",
    "graded_at": {
     "102": "a7f047666cc1"
    }
@@ -5037,6 +5049,12 @@
    }
   },
   "Prosperous Innkeeper": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Saint Elenda": {
    "J": {
     "m": "★",
     "graded_at": "a7f047666cc1"
