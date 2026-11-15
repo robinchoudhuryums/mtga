@@ -40,12 +40,87 @@
   }
  ],
  "Anticausal Vestige": [],
+ "Arcane Signet": [
+  {
+   "a": "Dan Murayama Scott",
+   "art": "https://cards.scryfall.io/art_crop/front/8/4/84128e98-87d6-4c2f-909b-9435a7833e63.jpg?1783932545",
+   "cn": "331",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/4/84128e98-87d6-4c2f-909b-9435a7833e63.jpg?1783932545",
+   "r": "C",
+   "set": "ELD",
+   "sn": "Throne of Eldraine",
+   "y": "2019"
+  },
+  {
+   "a": "Randy Gallegos",
+   "art": "https://cards.scryfall.io/art_crop/front/4/e/4e92354d-c203-41e1-822d-8263fadd9eb3.jpg?1783915904",
+   "cn": "273",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/e/4e92354d-c203-41e1-822d-8263fadd9eb3.jpg?1783915904",
+   "r": "C",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Shane Beresford",
+   "art": "https://cards.scryfall.io/art_crop/front/8/9/89ac0b50-8c64-46b0-b670-cd2321153502.jpg?1783904750",
+   "cn": "315",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/9/89ac0b50-8c64-46b0-b670-cd2321153502.jpg?1783904750",
+   "r": "R",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  },
+  {
+   "a": "Josu Solano",
+   "art": "https://cards.scryfall.io/art_crop/front/c/6/c6b6117c-faab-4bbb-b851-07bd8061ef03.jpg?1789644435",
+   "cn": "20",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/6/c6b6117c-faab-4bbb-b851-07bd8061ef03.jpg?1789644435",
+   "r": "U",
+   "set": "FRC",
+   "sn": "Reality Fracture Commander",
+   "y": "2026"
+  }
+ ],
  "Artificial Anomaly": [],
  "Ashe, Princess of Dalmasca": [],
  "Ashiok, Sculptor of Fears": [],
  "Bane of Bala Ged": [],
  "Bard, King of Dale": [],
  "Baron Bertram Graywater": [],
+ "Birds of Paradise": [
+  {
+   "a": "Ben Wootten",
+   "art": "https://cards.scryfall.io/art_crop/front/4/5/45835349-99c3-4071-95d1-7191110bfd9f.jpg?1786423921",
+   "cn": "235",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/5/45835349-99c3-4071-95d1-7191110bfd9f.jpg?1786423921",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Javier Charro",
+   "art": "https://cards.scryfall.io/art_crop/front/4/c/4c72e177-d95d-41df-91b3-4e489175b6aa.jpg?1783910712",
+   "cn": "81",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/c/4c72e177-d95d-41df-91b3-4e489175b6aa.jpg?1783910712",
+   "r": "R",
+   "set": "BLC",
+   "sn": "Bloomburrow Commander",
+   "y": "2024"
+  }
+ ],
  "Brazen Bluff": [],
  "Bre of Clan Stoutarm": [],
  "Breya, Etherium Shaper": [],
@@ -83,6 +158,66 @@
  "Chandra, Hope's Beacon": [],
  "Change the Narrative": [],
  "Chromanticore": [],
+ "Chromatic Lantern": [
+  {
+   "a": "Jung Park",
+   "art": "https://cards.scryfall.io/art_crop/front/e/a/ea123356-3055-4e42-b816-ac3c4e9087d1.jpg?1783934108",
+   "cn": "233",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/a/ea123356-3055-4e42-b816-ac3c4e9087d1.jpg?1783934108",
+   "r": "R",
+   "set": "GRN",
+   "sn": "Guilds of Ravnica",
+   "y": "2018"
+  },
+  {
+   "a": "Ben Hill",
+   "art": "https://cards.scryfall.io/art_crop/front/0/d/0de8874b-478a-4b8c-928e-862e52e43aa3.jpg?1783919767",
+   "cn": "73",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/d/0de8874b-478a-4b8c-928e-862e52e43aa3.jpg?1783919767",
+   "r": "R",
+   "set": "BRR",
+   "sn": "The Brothers' War Retro Artifacts",
+   "y": "2022"
+  },
+  {
+   "a": "Ignis Bruno",
+   "art": "https://cards.scryfall.io/art_crop/front/c/f/cf2fac9f-6749-4ca2-93c9-0dc068a220ec.jpg?1783915902",
+   "cn": "275",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/f/cf2fac9f-6749-4ca2-93c9-0dc068a220ec.jpg?1783915902",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Leon Tukker",
+   "art": "https://cards.scryfall.io/art_crop/front/e/8/e8c3839e-eb11-48ce-91e0-7ae2aecb6157.jpg?1783908822",
+   "cn": "151",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/8/e8c3839e-eb11-48ce-91e0-7ae2aecb6157.jpg?1783908822",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  },
+  {
+   "a": "Kiyoshi Arai",
+   "art": "https://cards.scryfall.io/art_crop/front/d/1/d170adf6-eb5e-4094-9917-3b68be92e8b9.jpg?1783906376",
+   "cn": "61",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/1/d170adf6-eb5e-4094-9917-3b68be92e8b9.jpg?1783906376",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Chromatic Orrery": [],
  "Commander Spock": [],
  "Cormela, Glamour Thief": [
@@ -154,6 +289,32 @@
   }
  ],
  "Crystal Quarry": [],
+ "Delighted Halfling": [
+  {
+   "a": "Inka Schulz",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "cn": "158",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Heather Hudson",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "cn": "25",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Descendants' Path": [],
  "Djeru and Hazoret": [],
  "Doctor Doom, King of Latveria": [],
@@ -322,6 +483,33 @@
  ],
  "Extricator of Sin // Extricator of Flesh": [],
  "Falkenrath Aristocrat": [],
+ "Farseek": [
+  {
+   "a": "Yusuke Mogi",
+   "art": "https://cards.scryfall.io/art_crop/front/f/3/f36f237f-6b44-4513-ba5d-fe6b4936f78e.jpg?1783906380",
+   "cn": "45",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/3/f36f237f-6b44-4513-ba5d-fe6b4936f78e.jpg?1783906380",
+   "r": "U",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  },
+  {
+   "a": "Rimas Valeikis",
+   "art": "https://cards.scryfall.io/art_crop/front/5/9/598f6334-4baf-4f9a-a70c-0cc1e8af68c9.jpg?1783903006",
+   "cn": "815",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/9/598f6334-4baf-4f9a-a70c-0cc1e8af68c9.jpg?1783903006",
+   "r": "C",
+   "set": "MSC",
+   "sn": "Marvel Super Heroes Commander",
+   "y": "2026"
+  }
+ ],
  "Fight Rigging": [],
  "Fire Lord Azula": [],
  "Fires of Invention": [],
@@ -1016,6 +1204,32 @@
    "set": "NEO",
    "sn": "Kamigawa: Neon Dynasty",
    "y": "2022"
+  }
+ ],
+ "Paradise Druid": [
+  {
+   "a": "Nils Hamm",
+   "art": "https://cards.scryfall.io/art_crop/front/8/7/87cb35f0-1703-48cb-9384-f530a9a94ba4.jpg?1783908628",
+   "cn": "698",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/7/87cb35f0-1703-48cb-9384-f530a9a94ba4.jpg?1783908628",
+   "r": "U",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  },
+  {
+   "a": "Alex Dos Diaz",
+   "art": "https://cards.scryfall.io/art_crop/front/f/a/fa8f7b06-48cc-4b89-a3f8-27179aec9fc0.jpg?1783908595",
+   "cn": "80",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/a/fa8f7b06-48cc-4b89-a3f8-27179aec9fc0.jpg?1783908595",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
   }
  ],
  "Pensive Professor": [],

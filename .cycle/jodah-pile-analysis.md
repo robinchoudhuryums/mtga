@@ -272,6 +272,16 @@ Breya, Vraska Soul of Stone, Karolina Dean, Wizard Class, Kefka, Chandra Hope's 
 of Bala Ged, Bringer of the Black Dawn, Nicol Bolas the Ravager, Herigast). Legal; floor A;
 interaction 13 (5 instant, 8 can hit a noncreature permanent); card advantage 14.
 
+### Round 3 (2026-11-15) — the slow start
+
+Owner's games: the plan is strong once it runs but slow to start. Measured with a draw simulation
+(37 lands of 99, on the play): five mana by turn 4 ~4%, by turn 5 ~42%, because the only early
+mana source is Esika. Adding Chromatic Lantern, Arcane Signet, Birds of Paradise, Paradise Druid and
+Farseek raises that to ~25% by turn 4 and ~56% by turn 5 (three of them: ~17% / ~50%). The fix is
+cheap mana that also fixes; the dorks double as early blockers. Proposed cuts: Rona, Jin-Gitaxias,
+Commander Spock, Narset Enlightened Master, Bringer of the Green Dawn. The consistency model does not
+count nonland mana sources, so its on-curve figure cannot show this.
+
 ## 5. Consolidated plan (live)
 
 **Draft 100 (proposed, not yet a deck file):** 62 nonland + 37 lands + Jodah. Scratch-measured:

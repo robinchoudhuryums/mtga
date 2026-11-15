@@ -973,6 +973,36 @@
    "name": "Vorinclex, Monstrous Raider",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Chromatic Lantern",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Arcane Signet",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Birds of Paradise",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Paradise Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Farseek",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2302,6 +2332,48 @@
   "Vorinclex, Monstrous Raider": {
    "group": "Outside pile",
    "text": "MV 6 for WUBRG: doubles counters (walker loyalty included) on a 6/6 trample haste body and halves the opponent's. A second copy of the effect beside Doubling Season, which is now in the deck; bench.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Chromatic Lantern": {
+   "group": "Early ramp",
+   "text": "Owned. 3-mana rock for any colour that also makes every land tap for any colour — ramp and fixing in one card. Measured: the deck reaches five mana by turn 5 only ~42% of the time with almost no early ramp.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Arcane Signet": {
+   "group": "Early ramp",
+   "text": "2-mana rock for any colour in Jodah's identity (all five). The cheapest pure acceleration toward the turn-4 WUBRG cast.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Birds of Paradise": {
+   "group": "Early ramp",
+   "text": "1-mana flying dork for any colour; online turn 2, an early blocker against fliers, and Kinnan doubles it.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Paradise Druid": {
+   "group": "Early ramp",
+   "text": "2-mana dork for any colour, hexproof while untapped; Kinnan doubles it.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Farseek": {
+   "group": "Early ramp",
+   "text": "2 mana: fetch a Plains, Island, Swamp or Mountain card — the shocklands and Triomes carry those types — onto the battlefield (tapped; untapped with Warp Speed).",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Early ramp",
+   "text": "2-mana dork; any colour for legendary spells (most of the bombs) and makes them uncounterable; {C} otherwise.",
    "graded_at": {
     "102": "0ba0e806f41f"
    }
@@ -3756,6 +3828,42 @@
    "J": {
     "m": "★★",
     "graded_at": "5fe9e1f29579"
+   }
+  },
+  "Chromatic Lantern": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Arcane Signet": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Birds of Paradise": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Paradise Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Farseek": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Delighted Halfling": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
    }
   }
  }
