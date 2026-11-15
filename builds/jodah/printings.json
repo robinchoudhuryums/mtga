@@ -181,6 +181,60 @@
    "y": "2022"
   }
  ],
+ "Doubling Season": [
+  {
+   "a": "Eva Eskelinen",
+   "art": "https://cards.scryfall.io/art_crop/front/c/7/c7d7db76-0a0c-444f-96f1-559838450549.jpg?1783914920",
+   "cn": "52",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/7/c7d7db76-0a0c-444f-96f1-559838450549.jpg?1783914920",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "Kemonomichi",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d545e9d-3b8e-44f5-8b4e-d8573ecc5819.jpg?1783914909",
+   "cn": "81",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d545e9d-3b8e-44f5-8b4e-d8573ecc5819.jpg?1783914909",
+   "r": "M",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "Chuck Lukacs",
+   "art": "https://cards.scryfall.io/art_crop/front/f/2/f2c4f80e-84a0-463b-82c3-5c6503809351.jpg?1783909062",
+   "cn": "216",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/2/f2c4f80e-84a0-463b-82c3-5c6503809351.jpg?1783909062",
+   "r": "M",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Kevin Eastman",
+   "art": "https://cards.scryfall.io/art_crop/front/8/c/8c2d6fde-5c3b-48c3-828c-832f00570824.jpg?1783904178",
+   "cn": "11",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/c/8c2d6fde-5c3b-48c3-828c-832f00570824.jpg?1783904178",
+   "r": "M",
+   "set": "PZA",
+   "sn": "Teenage Mutant Ninja Turtles Source Material",
+   "y": "2026"
+  }
+ ],
  "Dáin, Lord of the Iron Hills": [],
  "Echoes of Eternity": [],
  "Eiganjo, Seat of the Empire": [
@@ -1076,6 +1130,32 @@
    "y": "2026"
   }
  ],
+ "Replicator": [
+  {
+   "a": "William Phifer",
+   "art": "https://cards.scryfall.io/art_crop/front/a/e/ae846f45-d87b-47d4-87f6-2d9aa19c3c40.jpg?1792508444",
+   "cn": "267",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/e/ae846f45-d87b-47d4-87f6-2d9aa19c3c40.jpg?1792508444",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Vilhelmas Banys",
+   "art": "https://cards.scryfall.io/art_crop/front/9/8/98308586-5ac3-4130-878b-d235b9e1343c.jpg?1792509099",
+   "cn": "525",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/8/98308586-5ac3-4130-878b-d235b9e1343c.jpg?1792509099",
+   "r": "R",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Roaming Throne": [
   {
    "a": "Cristi Balanescu",
@@ -1318,6 +1398,34 @@
  "Ulamog, the Defiler": [],
  "Unexpected Results": [],
  "Vona de Iedo, the Antifex": [],
+ "Vorinclex, Monstrous Raider": [
+  {
+   "a": "Richard Luong",
+   "art": "https://cards.scryfall.io/art_crop/front/f/6/f6db03ef-db89-43c4-89b4-d48e0620e101.jpg?1783928146",
+   "cn": "320",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/6/f6db03ef-db89-43c4-89b4-d48e0620e101.jpg?1783928146",
+   "r": "M",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Daarken",
+   "art": "https://cards.scryfall.io/art_crop/front/d/d/dd4b4019-b73d-4be3-991e-2deb811ee675.jpg?1783928140",
+   "cn": "333",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/d/dd4b4019-b73d-4be3-991e-2deb811ee675.jpg?1783928140",
+   "r": "M",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  }
+ ],
  "Vraska, Soul of Stone": [],
  "Warp Speed": [
   {

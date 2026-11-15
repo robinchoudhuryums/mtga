@@ -958,6 +958,21 @@
    "name": "Teshar, Ancestor's Apostle",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Replicator",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Doubling Season",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Vorinclex, Monstrous Raider",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2268,6 +2283,27 @@
    "text": "Reanimates MV 3 or less creatures on historic casts; the deck has few worth returning.",
    "graded_at": {
     "102": "b0616d28935a"
+   }
+  },
+  "Replicator": {
+   "group": "Outside pile",
+   "text": "{2},{T}: a tapped copy of a token you control. The useful targets here are Stable Wormhole's any-colour Planets (an extra land a turn) and Treasures from Widespread Thieving or Goldspan Dragon (two mana each under Goldspan). Only ~4 cards make tokens, so it idles without them.",
+   "graded_at": {
+    "102": "5fe9e1f29579"
+   }
+  },
+  "Doubling Season": {
+   "group": "Outside pile",
+   "text": "Owned. Planeswalkers enter with double loyalty: Nicol Bolas, God-Pharaoh at 14 can use −12 (exile every nonland permanent they control) the turn it lands; Kaya at 10 takes the −7 emblem (a free legendary cast every upkeep) at once; Lukka, Jace and Teferi go straight to their big abilities. Also doubles Planets, Treasures, Sauron's amass and Ramos's counters.",
+   "graded_at": {
+    "102": "5fe9e1f29579"
+   }
+  },
+  "Vorinclex, Monstrous Raider": {
+   "group": "Outside pile",
+   "text": "MV 6 for WUBRG: the loyalty-doubling half of Doubling Season on a 6/6 trample haste body (and halves the opponent's counters). Second copy of the effect.",
+   "graded_at": {
+    "102": "5fe9e1f29579"
    }
   }
  },
@@ -3600,6 +3636,24 @@
    "J": {
     "m": "△",
     "graded_at": "b0616d28935a"
+   }
+  },
+  "Replicator": {
+   "J": {
+    "m": "★",
+    "graded_at": "5fe9e1f29579"
+   }
+  },
+  "Doubling Season": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "5fe9e1f29579"
+   }
+  },
+  "Vorinclex, Monstrous Raider": {
+   "J": {
+    "m": "★★",
+    "graded_at": "5fe9e1f29579"
    }
   }
  }
