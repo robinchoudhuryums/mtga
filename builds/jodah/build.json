@@ -1326,9 +1326,9 @@
   },
   "Wizard's Staff": {
    "group": "Pile",
-   "text": "doubles Jodah the Unifier's cascade (a Wizard, equip {1}); narrow",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Equip Wizard {1}: doubles the equipped creature's triggers — Jodah, the Unifier's cascade twice — but Jodah himself has no trigger.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Flux Channeler": {
@@ -1368,9 +1368,9 @@
   },
   "Ramos, Dragon Engine": {
    "group": "Pile",
-   "text": "CUT 2026-11-15 for Akul: slow ten-mana engine; Door to Nothingness keeps its other enablers.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. Doubling Season now makes each five-colour cast put TEN counters on it, so its ten-mana ability is live every turn; a Door to Nothingness enabler.",
    "graded_at": {
-    "102": "0ba0e806f41f"
+    "102": "75432feb4028"
    }
   },
   "Providence of Night": {
@@ -1403,9 +1403,9 @@
   },
   "Invasion of Alara // Awaken the Maelstrom": {
    "group": "In deck",
-   "text": "free cast of an MV ≤4 card plus one to hand; the back face is a five-mode bomb",
+   "text": "Re-evaluated 2026-11-15 — owner marked CUT: free MV ≤4 cast on entering; the back face's destroy counts as interaction.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Infinite Guideline Station": {
@@ -1606,9 +1606,9 @@
   },
   "Bane of Bala Ged": {
    "group": "Pile",
-   "text": "MV 7 for WUBRG (R1); each attack exiles two of their permanents",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Another MV 7 for WUBRG; exiles two permanents per attack. The top end is full.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Herigast, Erupting Nullkite": {
@@ -1641,9 +1641,9 @@
   },
   "Goro-Goro and Satoru": {
    "group": "Pile",
-   "text": "Owner's note: {1}{R} haste lets Ulamog's annihilator, Emrakul's stolen board, Raph & Mikey, Narset and the equipment carriers attack the turn they arrive, and new creatures connecting make 5/5 Dragons. Three mana in a top-heavy deck.",
+   "text": "Re-evaluated 2026-11-15 — bench, worth promoting: {1}{R} haste lets cheated bombs attack at once, and connecting new creatures make 5/5 Dragons.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "75432feb4028"
    }
   },
   "Maestros Diabolist": {
@@ -1837,7 +1837,7 @@
   },
   "Karolina Dean, Runaway": {
    "group": "Pile",
-   "text": "Owner's note: the WUBRG can't cast from hand, but this deck spends a lot outside it — One with the Multiverse's top-of-library casts, recasting Jodah from the command zone, Golos ({2}WUBRG), Nico, Path/Pizza-style sacrifice abilities, half of Door to Nothingness.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. WUBRG every first main phase for anything but casting from hand: Jodah from the command zone, Golos, One with the Multiverse's top-of-library casts, Door to Nothingness, Black Market Connections' life is unaffected.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2145,9 +2145,9 @@
   },
   "Unexpected Results": {
    "group": "Pile",
-   "text": "Owner's note: about 62% of the library is nonland averaging MV 5+, so 4 mana usually casts a bomb free; a land goes onto the battlefield and the card returns to hand to try again. Free casts also trigger Kellan and Nico.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. 4 mana: shuffle and cast the top card free (about 60% nonland, averaging MV 5+), or a land plus the card back to hand; triggers Kellan and Nico.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "75432feb4028"
    }
   },
   "Kellan, the Kid": {
@@ -2159,9 +2159,9 @@
   },
   "Tamiyo, Field Researcher": {
    "group": "Pile",
-   "text": "the −7 emblem is a long way off",
+   "text": "Re-evaluated 2026-11-15 — tier 1 with Doubling Season: she enters with 8 loyalty and can −7 at once for the emblem 'cast spells from your hand without paying their mana costs' — a second Omniscience. Without the doubler she needs three turns of +1. Her −2 also taps down two permanents (tempo).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Gandalf, Party Guest": {
@@ -2208,9 +2208,9 @@
   },
   "Cosmic Cube": {
    "group": "Pile",
-   "text": "CUT 2026-11-15 for Bard Class: its attack trigger is slow to start.",
+   "text": "Re-evaluated 2026-11-15 — tier 3. CUT 2026-11-15 for Bard Class; attack-gated free casts, slower than the engines in the deck.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "75432feb4028"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -2250,9 +2250,9 @@
   },
   "Nissa of Shadowed Boughs": {
    "group": "Pile",
-   "text": "Owner's note: starts at 4 loyalty; +1 and a land drop a turn reach −5 two turns after landing and can repeat every couple of turns, from hand or graveyard, for a creature with MV ≤ lands.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. With Doubling Season she enters at 8 loyalty and can −5 at once (a creature with MV ≤ lands from hand or graveyard, plus counters); landfall grows her.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "75432feb4028"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -2411,16 +2411,16 @@
   },
   "Sublime Epiphany": {
    "group": "In deck",
-   "text": "MV 6 instant for WUBRG: counters a spell AND an ability, bounces, copies, draws.",
+   "text": "Re-evaluated 2026-11-15 — owner marked CUT. It is one of 13 interaction pieces (counter a spell AND an ability); cutting it with Jeskai Revelation and Invasion of Alara takes interaction to 10 and the floor from A to B.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Jeskai Revelation": {
    "group": "In deck",
-   "text": "MV 7 instant for WUBRG: bounce, 4 damage, two Monks, draw two, gain 4.",
+   "text": "Re-evaluated 2026-11-15 — owner marked CUT: MV 7 instant (bounce, 4 damage, draw two, gain 4) for WUBRG. A cheap instant answer keeps the interaction count (The End, Infernal Grasp, The Last Agni Kai).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Cryptic Command": {
@@ -2537,16 +2537,16 @@
   },
   "Jhoira, Weatherlight Captain": {
    "group": "Legendary / historic",
-   "text": "Draws on every historic spell (artifact, legendary, Saga): 39 of the deck's 63 nonland cards are historic, so most casts — free casts included — draw a card.",
+   "text": "Re-evaluated 2026-11-15 — bench, but worth promoting: draws on every historic spell (40+ here), the strongest card-advantage add available.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Plaza of Heroes": {
    "group": "Legendary / historic",
-   "text": "Owned land: any colour for a legendary spell (most of the bombs are legends, and WUBRG alt casts count), any colour among legendary permanents, and {3} exile: hexproof and indestructible for Jodah. Replaces a tapland or one of the unowned rares.",
+   "text": "Re-evaluated 2026-11-15 — tier 1 (land). Owned. Any colour for legendary spells (most bombs) and among legendary permanents; {3}, exile: hexproof and indestructible for Jodah. Replaces a tapped three-colour land (Raffine's Tower, possibly unowned).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Raff Capashen, Ship's Mage": {
@@ -2572,9 +2572,9 @@
   },
   "Otawara, Soaring City": {
    "group": "Legendary / historic",
-   "text": "Untapped legendary land; channel bounces an artifact, creature, enchantment or walker at instant speed for {3}{U} minus one per legendary creature (25 here). One colour only — a swap for a tapland, weighed against losing colours.",
+   "text": "Re-evaluated 2026-11-15 — tier 1 (land). Untapped legendary land; channel bounces an artifact, creature, enchantment or walker at instant speed for {3}{U} minus 1 per legendary creature. Counted as tempo, not interaction. Replaces a tapped three-colour land.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -2621,9 +2621,9 @@
   },
   "Vorinclex, Monstrous Raider": {
    "group": "Outside pile",
-   "text": "MV 6 for WUBRG: doubles counters (walker loyalty included) on a 6/6 trample haste body and halves the opponent's. A second copy of the effect beside Doubling Season, which is now in the deck; bench.",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Doubles counters (walker loyalty included) on a 6/6 trample haste body — a second Doubling Season effect, so mostly redundant.",
    "graded_at": {
-    "102": "0ba0e806f41f"
+    "102": "75432feb4028"
    }
   },
   "Chromatic Lantern": {
@@ -2670,7 +2670,7 @@
   },
   "Enduring Vitality": {
    "group": "Early ramp",
-   "text": "Owned. Prospective add. Every creature taps for any colour and it returns as an enchantment. Cut options: Prismatic Omen (the most redundant land-fixer now), Raffine's Tower (tapped three-colour land, possibly unowned), Lukka. Artificial Anomaly is no longer suggested: it taps for any colour under the land-fixers and sacrifices for drain 2 plus a Planet.",
+   "text": "Re-evaluated 2026-11-15 — tier 1. Every creature taps for any colour (Saint Elenda's Avatars, Black Market Connections' 3/2s, Provisioner, Prowler, the cheated bombs) and it returns as an enchantment when it dies. The best remaining mana add.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2684,7 +2684,7 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour — the defensive and life-gaining dork, a turn slower than Incubation Druid. Cut options: The Key to the Vault, Raffine's Tower (tapped, possibly unowned).",
+   "text": "Re-evaluated 2026-11-15 — tier 1. 3-mana 2/3 deathtouch lifelink that taps for any colour: ramp, the best blocking dork, and life against Mana Confluence and Black Market Connections.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2698,9 +2698,9 @@
   },
   "Yuna, Grand Summoner": {
    "group": "Early ramp",
-   "text": "Owned. Legendary 1/5 that taps for any colour (the next creature cast gets two counters): a real blocker plus ramp, and a legend.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. Owned legend 1/5 that taps for any colour — ramp and a real blocker — but four mana for a dork.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "75432feb4028"
    }
   },
   "Path to the World Tree": {
@@ -2726,16 +2726,16 @@
   },
   "Tireless Provisioner": {
    "group": "Early ramp",
-   "text": "Owned. Prospective add: a Food or Treasure every land drop. Cut options: Lukka (its −2 overlaps Jace, Multiverse Architect's −3), Jace, Multiverse Architect, Kinnan.",
+   "text": "Re-evaluated 2026-11-15 — tier 1. Owned. A Food (3 life) or a Treasure every land drop from turn 3; Doubling Season doubles them.",
    "graded_at": {
-    "102": "f173dc49bb79"
+    "102": "75432feb4028"
    }
   },
   "Dryad of the Ilysian Grove": {
    "group": "Early ramp",
-   "text": "2/4 for 3: an extra land drop, and every land is every basic type (fixing like Prismatic Omen).",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Extra land drop plus every land every type — fixing the deck already has five times over.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "75432feb4028"
    }
   },
   "Cultivate": {
@@ -2789,16 +2789,16 @@
   },
   "Transdimensional Bovine": {
    "group": "Owner's screenshots",
-   "text": "Prospective add. Owned 0/4 flier that taps for two mana of one colour: a blocker and double ramp. Enduring Vitality does more in the same slot; cut options if wanted: The Key to the Vault, Raffine's Tower.",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Owned 0/4 flier that taps for two mana of one colour; the deck's ramp is now deep, so it is mostly a blocker.",
    "graded_at": {
     "102": "75432feb4028"
    }
   },
   "Leyline Immersion": {
    "group": "Owner's screenshots",
-   "text": "Aura for a legendary creature: ward 2 and taps for five mana in any colours for spells — a WUBRG cast every turn — but an aura on a creature risks losing two cards to one removal.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. On a legendary creature (Selvala, Esika, Kinnan): taps for five mana in any colours for spells — a WUBRG cast every turn — plus ward 2. Two-for-one risk.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "75432feb4028"
    }
   },
   "Greenhouse // Rickety Gazebo": {
@@ -2922,9 +2922,9 @@
   },
   "Paradigm Shifter": {
    "group": "Owner's screenshots",
-   "text": "2/2 Wizard for 3 that taps for two mana of any colours (instants and sorceries only) and conjures a Paradigm spell — Restoration Seminar returns a nonland permanent from the graveyard and, after the first cast, recasts itself free every first main phase.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. 2/2 Wizard for 3 that taps for two mana (instants/sorceries) and conjures a Paradigm spell; Restoration Seminar recurs a permanent free every first main phase.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "75432feb4028"
    }
   },
   "Kalain, Reclusive Painter": {
@@ -2964,9 +2964,9 @@
   },
   "Glóin, Dwarf Emissary": {
    "group": "Treasure",
-   "text": "Prospective add, proposed in for The Key to the Vault (Buster Sword remains the equipment): a Treasure on the first historic spell each turn.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. A Treasure on the first historic spell each turn (40+ historic here); Doubling Season makes it two. Enduring Vitality covers the same need harder.",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "75432feb4028"
    }
   },
   "Big Score": {
@@ -3922,8 +3922,8 @@
   },
   "Wizard's Staff": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Flux Channeler": {
@@ -3959,7 +3959,7 @@
   "Ramos, Dragon Engine": {
    "J": {
     "m": "★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Providence of Night": {
@@ -4162,8 +4162,8 @@
   },
   "Bane of Bala Ged": {
    "J": {
-    "m": "★★",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Herigast, Erupting Nullkite": {
@@ -4193,7 +4193,7 @@
   "Goro-Goro and Satoru": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Maestros Diabolist": {
@@ -4361,7 +4361,7 @@
   "Karolina Dean, Runaway": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Tome of the Infinite": {
@@ -4625,7 +4625,7 @@
   "Unexpected Results": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Kellan, the Kid": {
@@ -4636,8 +4636,8 @@
   },
   "Tamiyo, Field Researcher": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Gandalf, Party Guest": {
@@ -4678,8 +4678,8 @@
   },
   "Cosmic Cube": {
    "J": {
-    "m": "★★",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -4715,7 +4715,7 @@
   "Nissa of Shadowed Boughs": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -4960,14 +4960,14 @@
   },
   "Jhoira, Weatherlight Captain": {
    "J": {
-    "m": "★★★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Plaza of Heroes": {
    "J": {
     "m": "★★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Raff Capashen, Ship's Mage": {
@@ -4991,7 +4991,7 @@
   "Otawara, Soaring City": {
    "J": {
     "m": "★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -5032,8 +5032,8 @@
   },
   "Vorinclex, Monstrous Raider": {
    "J": {
-    "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Chromatic Lantern": {
@@ -5075,7 +5075,7 @@
   "Enduring Vitality": {
    "J": {
     "m": "★★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "Selvala, Heart of the Wilds": {
@@ -5086,8 +5086,8 @@
   },
   "Leyline Prowler": {
    "J": {
-    "m": "★★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Great Forest Druid": {
@@ -5099,7 +5099,7 @@
   "Yuna, Grand Summoner": {
    "J": {
     "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "Path to the World Tree": {
@@ -5123,13 +5123,13 @@
   "Tireless Provisioner": {
    "J": {
     "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "Dryad of the Ilysian Grove": {
    "J": {
-    "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Cultivate": {
@@ -5176,14 +5176,14 @@
   },
   "Transdimensional Bovine": {
    "J": {
-    "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Leyline Immersion": {
    "J": {
     "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "Greenhouse // Rickety Gazebo": {
@@ -5291,7 +5291,7 @@
   "Paradigm Shifter": {
    "J": {
     "m": "★★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "Kalain, Reclusive Painter": {
@@ -5327,7 +5327,7 @@
   "Glóin, Dwarf Emissary": {
    "J": {
     "m": "★★",
-    "graded_at": "a7f047666cc1"
+    "graded_at": "75432feb4028"
    }
   },
   "Big Score": {
