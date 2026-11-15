@@ -1243,6 +1243,36 @@
    "name": "Jolene, Plundering Pugilist",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Ancient Cornucopia",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Heaped Harvest",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omni-Cheese Pizza",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Oasis Gardener",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Hot Dog Cart",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Prosperous Innkeeper",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2634,7 +2664,7 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Prospective add (owner unsure of the cut). 2/3 deathtouch lifelink that taps for any colour — the best blocker among the mana creatures. Cut options: Jacob Hauken (slow looter), Planetarium, Anticausal Vestige.",
+   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour: the best blocker among the mana creatures, and its lifelink offsets life payments. Cut options: Planetarium, Anticausal Vestige (Jacob Hauken if Glóin doesn't take it).",
    "graded_at": {
     "102": "a7f047666cc1"
    }
@@ -2950,6 +2980,48 @@
   "Jolene, Plundering Pugilist": {
    "group": "Treasure",
    "text": "Owned legend. A Treasure whenever a power-4+ creature attacks; pings with spare Treasures. Needs the big attackers out first.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Ancient Cornucopia": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3-mana rock for any colour that gains 1 life per colour of the first coloured spell you cast each turn — 3 to 5 life off the multicolour legends. Directly offsets Mana Confluence, the shocklands and Black Market Connections.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Heaped Harvest": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3 mana: a basic onto the battlefield when it enters AND when sacrificed ({2}: gain 3 life) — two lands of ramp and 3 life.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Omni-Cheese Pizza": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 2 mana: draws a card on entering; later sacrifice for one mana of any colour or 3 life. A cantrip that fixes or heals.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Oasis Gardener": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3-mana artifact creature: gain 2 on entering, taps for any colour. A rock that also blocks.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Hot Dog Cart": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3-mana rock for any colour that also leaves a Food (3 life).",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "group": "Lifegain + mana",
+   "text": "2-mana 1/1: a Treasure on entering and 1 life whenever another creature enters.",
    "graded_at": {
     "102": "a7f047666cc1"
    }
@@ -4931,6 +5003,42 @@
   "Jolene, Plundering Pugilist": {
    "J": {
     "m": "◇",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Ancient Cornucopia": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Heaped Harvest": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Omni-Cheese Pizza": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Oasis Gardener": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Hot Dog Cart": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "J": {
+    "m": "★",
     "graded_at": "a7f047666cc1"
    }
   }
