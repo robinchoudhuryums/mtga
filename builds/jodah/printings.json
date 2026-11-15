@@ -183,6 +183,32 @@
  ],
  "Dáin, Lord of the Iron Hills": [],
  "Echoes of Eternity": [],
+ "Eiganjo, Seat of the Empire": [
+  {
+   "a": "Julian Kok Joon Wen",
+   "art": "https://cards.scryfall.io/art_crop/front/c/3/c375a022-5b57-496d-a802-e4ea8376e9e4.jpg?1783923818",
+   "cn": "268",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/3/c375a022-5b57-496d-a802-e4ea8376e9e4.jpg?1783923818",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "ZOUNOSE",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7c31c48f-6275-4430-8dc9-05d70c332b7a.jpg?1783923761",
+   "cn": "413",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7c31c48f-6275-4430-8dc9-05d70c332b7a.jpg?1783923761",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Eldrazi Displacer": [],
  "Elrond, Moon-Reader": [],
  "Emrakul, the World Anew": [],
@@ -415,6 +441,7 @@
   }
  ],
  "Jeskai Revelation": [],
+ "Jhoira, Weatherlight Captain": [],
  "Jin-Gitaxias": [],
  "Jin-Gitaxias // The Great Synthesis": [],
  "Jodah, the Unifier": [
@@ -552,6 +579,7 @@
    "y": "2025"
   }
  ],
+ "Kethis, the Hidden Hand": [],
  "King Narfi's Betrayal": [],
  "Kinnan, Bonder Prodigy": [
   {
@@ -699,6 +727,32 @@
  "Marchesa, Dealer of Death": [],
  "Marshals' Pathcruiser": [],
  "Meeting of the Five": [],
+ "Mirror Box": [
+  {
+   "a": "Néstor Ossandón Leal",
+   "art": "https://cards.scryfall.io/art_crop/front/d/5/d507daa3-3f16-4ab1-81ea-794e5bb488fc.jpg?1783923824",
+   "cn": "250",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/5/d507daa3-3f16-4ab1-81ea-794e5bb488fc.jpg?1783923824",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Mid",
+   "art": "https://cards.scryfall.io/art_crop/front/4/b/4bf676a6-8ccb-4908-9e49-ccb4a319d588.jpg?1783923765",
+   "cn": "403",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/b/4bf676a6-8ccb-4908-9e49-ccb4a319d588.jpg?1783923765",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Najeela, the Blade-Blossom": [
   {
    "a": "Tetsuya Nomura",
@@ -884,8 +938,60 @@
  "Omnispell Adept": [],
  "One with the Multiverse": [],
  "Oracle of the Alpha": [],
+ "Otawara, Soaring City": [
+  {
+   "a": "Alayna Danner",
+   "art": "https://cards.scryfall.io/art_crop/front/4/8/486d7edc-d983-41f0-8b78-c99aecd72996.jpg?1783923816",
+   "cn": "271",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/8/486d7edc-d983-41f0-8b78-c99aecd72996.jpg?1783923816",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Yuta Shimpo",
+   "art": "https://cards.scryfall.io/art_crop/front/9/e/9e99599e-c594-42c6-b9e3-4dbb8e982f88.jpg?1783923760",
+   "cn": "414",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/e/9e99599e-c594-42c6-b9e3-4dbb8e982f88.jpg?1783923760",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Pensive Professor": [],
  "Planetarium of Wan Shi Tong": [],
+ "Plaza of Heroes": [
+  {
+   "a": "Gabor Szikszai",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "cn": "252",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "r": "R",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "John Thacker",
+   "art": "https://cards.scryfall.io/art_crop/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "cn": "33",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "r": "M",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  }
+ ],
  "Princess Yue": [],
  "Prismatic Omen": [
   {
@@ -916,6 +1022,7 @@
  ],
  "Prismatic Undercurrents": [],
  "Providence of Night": [],
+ "Raff Capashen, Ship's Mage": [],
  "Ramos, Dragon Engine": [
   {
    "a": "Joseph Meehan",
@@ -1081,6 +1188,32 @@
   }
  ],
  "Sunbird's Invocation": [],
+ "Takenuma, Abandoned Mire": [
+  {
+   "a": "Sam Burley",
+   "art": "https://cards.scryfall.io/art_crop/front/4/9/499037cc-a577-41cb-8ca2-5e117945634f.jpg?1783923812",
+   "cn": "278",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/9/499037cc-a577-41cb-8ca2-5e117945634f.jpg?1783923812",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Nao Miyoshi",
+   "art": "https://cards.scryfall.io/art_crop/front/7/b/7bc98705-77c2-47b6-b41c-3e41578700e8.jpg?1783923759",
+   "cn": "416",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/b/7bc98705-77c2-47b6-b41c-3e41578700e8.jpg?1783923759",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Tam, the Possibility": [],
  "Tamiyo, Field Researcher": [
   {
@@ -1148,6 +1281,7 @@
  ],
  "Tempest Trapper": [],
  "Terra, Magical Adept // Esper Terra": [],
+ "Teshar, Ancestor's Apostle": [],
  "Teyo, Aegis Adept": [],
  "Thanos, the Mad Titan": [],
  "The Bloodbile Swarm": [],
@@ -1178,6 +1312,7 @@
   }
  ],
  "The World Tree": [],
+ "Thran Temporal Gateway": [],
  "Timeless Lotus": [],
  "Tome of the Infinite": [],
  "Ulamog, the Defiler": [],

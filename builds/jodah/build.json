@@ -908,6 +908,56 @@
    "name": "Warp Speed",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Jhoira, Weatherlight Captain",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Plaza of Heroes",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Raff Capashen, Ship's Mage",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Thran Temporal Gateway",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kethis, the Hidden Hand",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Otawara, Soaring City",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Takenuma, Abandoned Mire",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Eiganjo, Seat of the Empire",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Mirror Box",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Teshar, Ancestor's Apostle",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2149,6 +2199,76 @@
    "graded_at": {
     "102": "b0616d28935a"
    }
+  },
+  "Jhoira, Weatherlight Captain": {
+   "group": "Legendary / historic",
+   "text": "Draws on every historic spell (artifact, legendary, Saga): 39 of the deck's 63 nonland cards are historic, so most casts — free casts included — draw a card.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Plaza of Heroes": {
+   "group": "Legendary / historic",
+   "text": "Owned land: any colour for a legendary spell (most of the bombs are legends, and WUBRG alt casts count), any colour among legendary permanents, and {3} exile: hexproof and indestructible for Jodah. Replaces a tapland or one of the unowned rares.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Raff Capashen, Ship's Mage": {
+   "group": "Legendary / historic",
+   "text": "Flash flier that gives every historic spell flash, so the legendary bombs become instant speed; overlaps Leyline of Anticipation, which covers everything.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Thran Temporal Gateway": {
+   "group": "Legendary / historic",
+   "text": "{4},{T}: put a historic permanent from hand onto the battlefield at any time, no cast needed — but a put-into-play skips cast triggers (Ulamog, Emrakul, Sauron), so it suits ETB legends (Etali, Lord Xander, Nissa).",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Kethis, the Hidden Hand": {
+   "group": "Legendary / historic",
+   "text": "Legendary spells cost {1} less (helps the hard-cast legends), and exiling two legends from the graveyard lets the rest be replayed this turn.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Otawara, Soaring City": {
+   "group": "Legendary / historic",
+   "text": "Untapped legendary land; channel bounces an artifact, creature, enchantment or walker at instant speed for {3}{U} minus one per legendary creature (25 here). One colour only — a swap for a tapland, weighed against losing colours.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Takenuma, Abandoned Mire": {
+   "group": "Legendary / historic",
+   "text": "Untapped legendary land; channel mills three and regrows a creature or walker, cheaper per legendary creature.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Eiganjo, Seat of the Empire": {
+   "group": "Legendary / historic",
+   "text": "Untapped legendary land; channel deals 4 to an attacker or blocker, cheaper per legendary creature.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Mirror Box": {
+   "group": "Legendary / historic",
+   "text": "Turns off the legend rule (Sublime Epiphany copies of legends) and pumps legends; narrow.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
+  },
+  "Teshar, Ancestor's Apostle": {
+   "group": "Legendary / historic",
+   "text": "Reanimates MV 3 or less creatures on historic casts; the deck has few worth returning.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
   }
  },
  "snapshots": {
@@ -3317,6 +3437,66 @@
   "Warp Speed": {
    "J": {
     "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Jhoira, Weatherlight Captain": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Plaza of Heroes": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Raff Capashen, Ship's Mage": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Thran Temporal Gateway": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Kethis, the Hidden Hand": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Otawara, Soaring City": {
+   "J": {
+    "m": "★★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Takenuma, Abandoned Mire": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Eiganjo, Seat of the Empire": {
+   "J": {
+    "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Mirror Box": {
+   "J": {
+    "m": "◇",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Teshar, Ancestor's Apostle": {
+   "J": {
+    "m": "△",
     "graded_at": "b0616d28935a"
    }
   }
