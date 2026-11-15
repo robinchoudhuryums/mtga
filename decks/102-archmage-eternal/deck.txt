@@ -48,8 +48,9 @@
 #: notes: Grim Hireling for Sublime Epiphany, Goro-Goro and Satoru for Teferi, Time Raveler, Karolina Dean for Lukka,
 #: notes: Leyline Prowler for Savai Triome, Plaza of Heroes for Raffine's Tower, Otawara for Zagoth Triome, Gogo,
 #: notes: Master of Mimicry for Prismatic Omen (Gogo copies an activated or triggered ability X times). Interaction
-#: notes: holds at 12 (floor A); 35 lands now, with Vitality, Prowler and Karolina as creature mana. Tamiyo, Buxton,
-#: notes: Kethis and Wizard's Staff stay on the board as adds awaiting cuts.
+#: notes: holds at 12 (floor A), with Vitality, Prowler and Karolina as creature mana.
+#: notes: 2026-11-15 (owner's picks): Tamiyo, Field Researcher for Jetmir's Garden (34 lands; with Doubling Season
+#: notes: she can use her -7 on arrival) and Buxton for Raff Capashen. Wizard's Staff benched; Kethis still on the board.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -109,13 +110,14 @@
 1 Sunbird's Invocation (XLN) 165
 1 The Key to the Vault (OTJ) 54
 1 Buster Sword (FIN) 255
-1 Raff Capashen, Ship's Mage (DOM) 202
 1 Gogo, Master of Mimicry (FIN) 54
+1 Tamiyo, Field Researcher (BLC) 100
 
 # Into play
 1 Raph & Mikey, Troublemakers (TMT) 167
 1 Olivia, Crimson Bride (VOW) 245
 1 Goro-Goro and Satoru (MOC) 445
+1 Buxton, Decorated Host (YBLB) 21
 
 # Interaction
 1 Grim Hireling (HBG) 158
@@ -132,7 +134,7 @@
 1 Door to Nothingness (BRR) 14
 1 Black Market Connections (HBG) 145
 
-# Lands (35)
+# Lands (34)
 1 Command Tower (FRC) 22
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
@@ -153,7 +155,6 @@
 1 Spara's Headquarters (SNC) 257
 1 Ziatora's Proving Ground (SNC) 261
 1 Xander's Lounge (SNC) 260
-1 Jetmir's Garden (SNC) 250
 1 Plaza of Heroes (DMU) 252
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
@@ -168,3 +169,5 @@
 1 Swamp (TRK) 321
 1 Mountain (TRK) 323
 1 Forest (TRK) 325
+
+#~ +Wizard's Staff | BENCH (builder jodah): doubles Jodah, the Unifier's cascade for equip {1}; benched 2026-11-15 for Tamiyo

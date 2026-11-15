@@ -1330,10 +1330,10 @@
    }
   },
   "Wizard's Staff": {
-   "group": "Pile",
-   "text": "Package 2026-11-15: in for Chromatic Orrery (a 7-mana fixer the deck no longer needs; Door to Nothingness keeps Timeless Lotus and the any-colour lands).",
+   "group": "Bench",
+   "text": "BENCHED 2026-11-15 for Tamiyo: best on Jodah, the Unifier (two cascades per legend) but needs him in play.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "b0f65e1f92c7"
    }
   },
   "Flux Channeler": {
@@ -1988,10 +1988,10 @@
    }
   },
   "Buxton, Decorated Host": {
-   "group": "Pile",
-   "text": "Package 2026-11-15: in for Neera, Wild Mage. Free permanent each end step from the tapped mana creatures.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Raff Capashen: each end step, a free permanent onto the battlefield with mana value up to the number of tapped creatures.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "b0f65e1f92c7"
    }
   },
   "The Key to the Vault": {
@@ -2163,10 +2163,10 @@
    }
   },
   "Tamiyo, Field Researcher": {
-   "group": "Pile",
-   "text": "Package 2026-11-15: in for Jace, Multiverse Architect (walker overlap; Tamiyo with Doubling Season is a second Omniscience).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jetmir's Garden: with Doubling Season she uses her −7 on arrival (draw three, free casts from hand); −2 taps two blockers or mana permanents.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "b0f65e1f92c7"
    }
   },
   "Gandalf, Party Guest": {
@@ -2555,10 +2555,10 @@
    }
   },
   "Raff Capashen, Ship's Mage": {
-   "group": "In deck",
-   "text": "IN 2026-11-15 for Leyline of Anticipation (owner's call): a legendary Wizard flash flier that gives every historic spell flash — most of the bombs are legends, and it feeds Jodah, the Unifier and Wizard's Staff-style Wizard synergies.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Buxton (owner's pick): lost instant-speed legendary casts and one flier for the equipment.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "b0f65e1f92c7"
    }
   },
   "Thran Temporal Gateway": {
@@ -2570,9 +2570,9 @@
   },
   "Kethis, the Hidden Hand": {
    "group": "Legendary / historic",
-   "text": "Package 2026-11-15: in for Warp Speed (untapped lands matter less with this many mana creatures). With Karolina, a legend back from the graveyard every turn.",
+   "text": "Pending 2026-11-15. Cut options: Etali, Goldspan Dragon, One with the Multiverse. Karolina's free WUBRG (not for spells from hand) pays Jodah's alt cost for a legend cast from the graveyard.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "b0f65e1f92c7"
    }
   },
   "Otawara, Soaring City": {
@@ -3994,6 +3994,108 @@
     "Stomping Ground",
     "Sunbird's Invocation",
     "Swamp",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The Last Agni Kai",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Ziatora's Proving Ground"
+   ],
+   "b0f65e1f92c7": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Buxton, Decorated Host",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Enduring Vitality",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Gogo, Master of Mimicry",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Goro-Goro and Satoru",
+    "Great Divide Guide",
+    "Grim Hireling",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Karolina Dean, Runaway",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline Prowler",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Otawara, Soaring City",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Tamiyo, Field Researcher",
     "Temple Garden",
     "The Key to the Vault",
     "The Last Agni Kai",
