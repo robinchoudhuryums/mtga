@@ -1326,23 +1326,23 @@
   },
   "Wizard's Staff": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 3. Equip Wizard {1}: doubles the equipped creature's triggers — Jodah, the Unifier's cascade twice — but Jodah himself has no trigger.",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: doubles the equipped creature's triggers. Equip {1} on a Wizard — Jodah, the Unifier (two cascades per legendary cast), Raff, Gogo; {3} on others — Kellan (two free casts), Narset (eight cards), Raph & Mikey, Olivia.",
    "graded_at": {
     "102": "75432feb4028"
    }
   },
   "Flux Channeler": {
    "group": "Pile",
-   "text": "proliferate needs walkers/counters",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: proliferate on each noncreature spell adds loyalty to the six walkers (and Doubling Season doubles it), but a 3-mana 2/2.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Gogo, Master of Mimicry": {
    "group": "Pile",
-   "text": "copies the Unifier's cascade trigger X times; mana-hungry",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: {X}{X},{T} copies a triggered or activated ability X times. Targets here: Jodah, the Unifier's cascade, Sunbird's Invocation, Ulamog's cast trigger, Etali's entry, Golos's play-three, Kellan's free cast, and planeswalker loyalty abilities (a second God-Pharaoh −4). Mana abilities can't be copied.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Oracle of the Alpha": {
@@ -1809,9 +1809,9 @@
   },
   "Relic of Sauron": {
    "group": "Pile",
-   "text": "UBR rock",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: 4-mana rock for two of U/B/R plus a loot; colour-limited.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Jace, Multiverse Architect": {
@@ -1921,9 +1921,9 @@
   },
   "Grand Nagus Zek": {
    "group": "Pile",
-   "text": "Treasures need deaths",
+   "text": "Re-evaluated 2026-11-15 (bench) — stays ★: a Treasure when another creature dies (once a turn); the Treasure makers added don't make it trigger more, only grow it.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Lo and Li, Twin Tutors": {
@@ -1984,9 +1984,9 @@
   },
   "Buxton, Decorated Host": {
    "group": "Pile",
-   "text": "needs tapped creatures",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: MV 6 for WUBRG (or convoke). Each end step with a tapped creature it puts a nonland permanent with MV ≤ your tapped creatures onto the battlefield — creatures tapped for mana stay tapped, so the mana creatures (and Enduring Vitality) feed it a free permanent every turn.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "The Key to the Vault": {
@@ -2103,9 +2103,9 @@
   },
   "Omnipresence": {
    "group": "Pile",
-   "text": "MV 8 for WUBRG; free casts capped by creature count",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★: MV 8 for WUBRG; free casts of spells with MV ≤ your creature count, and the mana creatures and tokens push that to 6–8.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Kaya the Inexorable": {
@@ -2145,7 +2145,7 @@
   },
   "Unexpected Results": {
    "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 2. 4 mana: shuffle and cast the top card free (about 60% nonland, averaging MV 5+), or a land plus the card back to hand; triggers Kellan and Nico.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: 4-mana free cast off the top, or a land and a retry.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2271,9 +2271,9 @@
   },
   "Nissa, Steward of Elements": {
    "group": "Pile",
-   "text": "X walker, X = 0 under the alt cost (R2)",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: X = 0 through the alt cost; hard-cast for X it can put creatures with MV ≤ loyalty onto the battlefield.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Rocco, Cabaretti Caterer": {
@@ -2537,7 +2537,7 @@
   },
   "Jhoira, Weatherlight Captain": {
    "group": "Legendary / historic",
-   "text": "Re-evaluated 2026-11-15 — bench, but worth promoting: draws on every historic spell (40+ here), the strongest card-advantage add available.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: draws on every historic spell (40+ here); the best card-advantage option, and the package takes card advantage to 14.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2558,16 +2558,16 @@
   },
   "Thran Temporal Gateway": {
    "group": "Legendary / historic",
-   "text": "{4},{T}: put a historic permanent from hand onto the battlefield at any time, no cast needed — but a put-into-play skips cast triggers (Ulamog, Emrakul, Sauron), so it suits ETB legends (Etali, Lord Xander, Nissa).",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★: {4},{T} puts a historic permanent from hand onto the battlefield at instant speed. It skips cast triggers (Ulamog, Emrakul, Sauron) but suits entry triggers (Etali, Lord Xander, Nissa) and legends at end of turn.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Kethis, the Hidden Hand": {
    "group": "Legendary / historic",
-   "text": "Legendary spells cost {1} less (helps the hard-cast legends), and exiling two legends from the graveyard lets the rest be replayed this turn.",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★ with Karolina Dean: exile two legends from the graveyard and every legendary card there is castable this turn; Jodah's WUBRG alt cost works from the graveyard and Karolina's free WUBRG can pay it, so a legend comes back every turn. Legendary spells also cost {1} less.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Otawara, Soaring City": {
@@ -2789,7 +2789,7 @@
   },
   "Transdimensional Bovine": {
    "group": "Owner's screenshots",
-   "text": "Re-evaluated 2026-11-15 — tier 3. Owned 0/4 flier that taps for two mana of one colour; the deck's ramp is now deep, so it is mostly a blocker.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★: owned flying 0/4 that taps for two mana; a blocker now that ramp is deep.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2894,9 +2894,9 @@
   },
   "The Last Agni Kai": {
    "group": "Owner's screenshots",
-   "text": "Owned. Instant removal (your creature fights theirs) plus red mana equal to the excess damage, kept through the turn: with Akul, Emrakul or the Eldrazi it kills and ramps. Interaction first, ramp second.",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: owned instant removal (a fight) that also makes red mana from excess damage. With the owner cutting Sublime Epiphany, Jeskai Revelation and Teferi, it and Grim Hireling keep interaction at 12 and the floor at A.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "75432feb4028"
    }
   },
   "Open the Omenpaths": {
@@ -2964,7 +2964,7 @@
   },
   "Glóin, Dwarf Emissary": {
    "group": "Treasure",
-   "text": "Re-evaluated 2026-11-15 — tier 2. A Treasure on the first historic spell each turn (40+ historic here); Doubling Season makes it two. Enduring Vitality covers the same need harder.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: a Treasure on the first historic spell each turn.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -2992,7 +2992,7 @@
   },
   "Grim Hireling": {
    "group": "Treasure",
-   "text": "Re-evaluated 2026-11-15 — the best interaction among the owner's picks: {B}, sacrifice X Treasures: target creature gets -X/-X (sorcery speed), fed by Black Market Connections, Provisioner, Goldspan and Doubling Season; two Treasures whenever creatures connect. Proposed in for Jeskai Revelation, keeping Sublime Epiphany so interaction stays 12 (floor A).",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: Treasure-fed −X/−X removal plus two Treasures when creatures connect. In the package for Sublime Epiphany.",
    "graded_at": {
     "102": "75432feb4028"
    }
@@ -3922,20 +3922,20 @@
   },
   "Wizard's Staff": {
    "J": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "75432feb4028"
    }
   },
   "Flux Channeler": {
    "J": {
-    "m": "△",
-    "graded_at": "b0616d28935a"
+    "m": "◇",
+    "graded_at": "75432feb4028"
    }
   },
   "Gogo, Master of Mimicry": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Oracle of the Alpha": {
@@ -3965,7 +3965,7 @@
   "Providence of Night": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omnath, Locus of All": {
@@ -4043,7 +4043,7 @@
   "Norman Osborn // Green Goblin": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Thanos, the Mad Titan": {
@@ -4091,7 +4091,7 @@
   "Najeela, the Blade-Blossom": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Kenrith, the Returned King": {
@@ -4103,13 +4103,13 @@
   "Leonardo, the Balance": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Lone Rider // It That Rides as One": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Extricator of Sin // Extricator of Flesh": {
@@ -4133,7 +4133,7 @@
   "Wharf Infiltrator": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Corrupted Shapeshifter": {
@@ -4199,7 +4199,7 @@
   "Maestros Diabolist": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Marchesa, Dealer of Death": {
@@ -4217,7 +4217,7 @@
   "Cormela, Glamour Thief": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Fire Lord Azula": {
@@ -4246,8 +4246,8 @@
   },
   "Obeka, Splitter of Seconds": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "◇",
+    "graded_at": "75432feb4028"
    }
   },
   "Saruman, the White Hand": {
@@ -4259,7 +4259,7 @@
   "Evelyn, the Covetous": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Inalla, Archmage Ritualist": {
@@ -4337,7 +4337,7 @@
   "Relic of Sauron": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Jace, Multiverse Architect": {
@@ -4432,14 +4432,14 @@
   },
   "Grand Nagus Zek": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Lo and Li, Twin Tutors": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Loot, Exuberant Explorer": {
@@ -4451,7 +4451,7 @@
   "Baron Bertram Graywater": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Indulging Patrician": {
@@ -4475,7 +4475,7 @@
   "Raphael, Fiendish Savior": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Olivia, Crimson Bride": {
@@ -4486,8 +4486,8 @@
   },
   "Buxton, Decorated Host": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "The Key to the Vault": {
@@ -4505,7 +4505,7 @@
   "Malcolm, Alluring Scoundrel": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Tempest Trapper": {
@@ -4517,7 +4517,7 @@
   "Reenact the Crime": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "The Conundrum of Bowls": {
@@ -4541,7 +4541,7 @@
   "Omnispell Adept": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omniscience": {
@@ -4553,7 +4553,7 @@
   "Brazen Bluff": {
    "J": {
     "m": "△",
-    "graded_at": "d526869441f6"
+    "graded_at": "75432feb4028"
    }
   },
   "Nico Minoru, Runaway": {
@@ -4583,13 +4583,13 @@
   "World War Hulk": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omnipresence": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Kaya the Inexorable": {
@@ -4649,7 +4649,7 @@
   "Narset, Enlightened Exile": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Commander Spock": {
@@ -4691,7 +4691,7 @@
   "Teyo, Aegis Adept": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Lukka, Coppercoat Outcast": {
@@ -4733,13 +4733,13 @@
   "Nissa, Steward of Elements": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Rocco, Cabaretti Caterer": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Aang, at the Crossroads // Aang, Destined Savior": {
@@ -4805,7 +4805,7 @@
   "Helga, Skittish Seer": {
    "J": {
     "m": "★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Vraska, Soul of Stone": {
@@ -4979,13 +4979,13 @@
   "Thran Temporal Gateway": {
    "J": {
     "m": "★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Kethis, the Hidden Hand": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Otawara, Soaring City": {
@@ -5021,7 +5021,7 @@
   "Replicator": {
    "J": {
     "m": "★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Doubling Season": {
@@ -5219,7 +5219,7 @@
   "Great Hall of the Citadel": {
    "J": {
     "m": "★",
-    "graded_at": "2cf7aeb7ef2a"
+    "graded_at": "75432feb4028"
    }
   },
   "The Mycosynth Gardens": {
@@ -5266,8 +5266,8 @@
   },
   "The Last Agni Kai": {
    "J": {
-    "m": "★",
-    "graded_at": "2cf7aeb7ef2a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Open the Omenpaths": {
@@ -5350,14 +5350,14 @@
   },
   "Grim Hireling": {
    "J": {
-    "m": "◇",
-    "graded_at": "a7f047666cc1"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Jolene, Plundering Pugilist": {
    "J": {
     "m": "◇",
-    "graded_at": "a7f047666cc1"
+    "graded_at": "75432feb4028"
    }
   },
   "Ancient Cornucopia": {
