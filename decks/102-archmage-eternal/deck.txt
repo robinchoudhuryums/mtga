@@ -35,6 +35,9 @@
 #: notes: the Green Dawn, Bard Class for Cosmic Cube (level 2 makes a legendary alt-cost cast {W}{U}{B}), Buried in
 #: notes: the Garden for Oracle of the Alpha (exile removal plus an extra mana of any colour). Leyline Prowler and
 #: notes: Transdimensional Bovine are on the board as prospective adds.
+#: notes: 2026-11-15: Black Market Connections for Widespread Thieving (a Treasure, a card or a 3/2 every turn,
+#: notes: no multicolour spell needed) and Ancient Cornucopia for Jacob Hauken (any-colour rock that gains 1 life per
+#: notes: colour of the first coloured spell each turn, offsetting Mana Confluence and Black Market Connections).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -48,12 +51,12 @@
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
 1 Goldspan Dragon (KHM) 139
 1 Kinnan, Bonder Prodigy (IKO) 192
-1 Widespread Thieving (SNC) 130
 1 Golos, Tireless Pilgrim (M20) 226
 1 Omnath, Locus of All (MOM) 249
 1 Chromatic Orrery (M21) 228
 1 Stable Wormhole (TRK) 215
 1 Chromatic Lantern (GRN) 233
+1 Ancient Cornucopia (BIG) 16
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
@@ -80,7 +83,6 @@
 1 Invasion of Alara // Awaken the Maelstrom (MOM) 230
 1 Anticausal Vestige (EOE) 1
 1 Jace, Multiverse Architect (FRC) 1
-1 Jacob Hauken, Inspector // Hauken's Insight (VOW) 65
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Nico Minoru, Runaway (MSC) 700
 1 Neera, Wild Mage (HBG) 245
@@ -114,6 +116,7 @@
 
 # Card flow and the alternate win
 1 Door to Nothingness (BRR) 14
+1 Black Market Connections (HBG) 145
 
 # Lands (37)
 1 Command Tower (FRC) 22

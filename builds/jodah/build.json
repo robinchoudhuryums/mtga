@@ -1499,10 +1499,10 @@
    }
   },
   "Widespread Thieving": {
-   "group": "In deck",
-   "text": "a Treasure per multicoloured spell (R3); pay WUBRG to play the hideaway card free",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Black Market Connections: its Treasures need multicoloured spells.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Najeela, the Blade-Blossom": {
@@ -1982,10 +1982,10 @@
    }
   },
   "Jacob Hauken, Inspector // Hauken's Insight": {
-   "group": "In deck",
-   "text": "looter now; transformed, casts a card from its exile free each turn (R4)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Ancient Cornucopia: a slow looter.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Malcolm, Alluring Scoundrel": {
@@ -2669,9 +2669,9 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour: the best blocker among the mana creatures, and its lifelink offsets life payments. Cut options: Planetarium, Anticausal Vestige (Jacob Hauken if Glóin doesn't take it).",
+   "text": "Prospective add. Proposed in for Artificial Anomaly: a colourless land swapped for a mana creature that taps for any colour, blocks with deathtouch and gains life. With ~10 mana pieces the deck can run 36 lands.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Great Forest Druid": {
@@ -2711,9 +2711,9 @@
   },
   "Tireless Provisioner": {
    "group": "Early ramp",
-   "text": "Owned. 3/2 for 3: a Food (3 life) or a Treasure (any colour) on every land drop. Proposed in for Planetarium of Wan Shi Tong.",
+   "text": "Owned. Prospective add, proposed in for Olivia, Crimson Bride (6 mana, value only on attack). A Food or Treasure every land drop from turn 3.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Dryad of the Ilysian Grove": {
@@ -2774,9 +2774,9 @@
   },
   "Transdimensional Bovine": {
    "group": "Owner's screenshots",
-   "text": "Prospective add. Owned 0/4 flier that taps for two mana of one colour: a blocker and double ramp. If Black Market Connections takes Widespread Thieving's slot, cut options become Stable Wormhole (needs attacks) or Kinnan.",
+   "text": "Prospective add. Proposed in for Crystal Quarry: a colourless land (WUBRG only for {5}) swapped for a 0/4 flier that taps for two mana. Taking both lands leaves 35, keepable 78.0% / 95.2% with the free mulligan (from 79.9% / 95.9%).",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Leyline Immersion": {
@@ -2941,17 +2941,17 @@
    }
   },
   "Black Market Connections": {
-   "group": "Treasure",
-   "text": "Owned. Proposed in for Widespread Thieving (owner's idea): every first main phase, a Treasure (1 life), a card (2 life) and/or a 3/2 changeling (3 life), with no setup, where Thieving needs multicoloured spells and many bombs are colourless or mono. Doubling Season doubles the Treasure and token; Goldspan makes the Treasure two mana.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Widespread Thieving: a Treasure, a card and/or a 3/2 every first main phase, paid in life.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Glóin, Dwarf Emissary": {
    "group": "Treasure",
-   "text": "Legendary 3-drop: a Treasure on the first historic spell each turn (39+ historic here). Cut options: Jacob Hauken (slow 2-mana looter, my pick), Planetarium of Wan Shi Tong, Anticausal Vestige.",
+   "text": "Prospective add, proposed in for The Key to the Vault (Buster Sword remains the equipment): a Treasure on the first historic spell each turn.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Big Score": {
@@ -2990,10 +2990,10 @@
    }
   },
   "Ancient Cornucopia": {
-   "group": "Lifegain + mana",
-   "text": "Owned. 3-mana rock for any colour; the first coloured spell each turn gains 1 life per colour. Proposed in for Stable Wormhole (an any-colour land, but only when you attack).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jacob Hauken: any-colour rock; the first coloured spell each turn gains 1 life per colour.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   },
   "Heaped Harvest": {
@@ -3033,9 +3033,9 @@
   },
   "Saint Elenda": {
    "group": "Lifegain + mana",
-   "text": "MV 7 for WUBRG: lifelink, conjures a spellbook card and casts it free this turn, and each end step after you gained life makes an X/X Avatar. Proposed in for Raph & Mikey (another MV 7 top-end creature).",
+   "text": "Prospective add, proposed in for Anticausal Vestige (another 6-7 drop): lifelink, a free conjured spell, and Avatars after lifegain.",
    "graded_at": {
-    "102": "a7f047666cc1"
+    "102": "d526869441f6"
    }
   }
  },
@@ -3546,6 +3546,108 @@
     "Warp Speed",
     "Watery Grave",
     "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "d526869441f6": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
     "Xander's Lounge",
     "Yue, the Moon Spirit",
     "Zagoth Triome",
