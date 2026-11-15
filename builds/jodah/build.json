@@ -1158,6 +1158,56 @@
    "name": "Tazri, Stalwart Survivor",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Photon, Mighty Marvel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Last Agni Kai",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Open the Omenpaths",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Manamorphose",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glittering Stockpile",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Paradigm Shifter",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kalain, Reclusive Painter",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kolvori, God of Kinship // The Ringhart Crest",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Chaos Warp",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Crackle with Power",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2746,6 +2796,76 @@
   "Tazri, Stalwart Survivor": {
    "group": "Owner's screenshots",
    "text": "Its mana only pays creature activated abilities, which this deck barely uses.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Photon, Mighty Marvel": {
+   "group": "Owner's screenshots",
+   "text": "Owned. 2/4 flier for 4: combat damage adds that much mana of ONE colour and it keeps until end of turn — post-combat ramp, bigger with Buster Sword (+3). One colour, so it pays printed costs or anything under Chromatic Orrery, not WUBRG on its own.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "The Last Agni Kai": {
+   "group": "Owner's screenshots",
+   "text": "Owned. Instant removal (your creature fights theirs) plus red mana equal to the excess damage, kept through the turn: with Akul, Emrakul or the Eldrazi it kills and ramps. Interaction first, ramp second.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Open the Omenpaths": {
+   "group": "Owner's screenshots",
+   "text": "Instant ritual: three mana for two of one colour plus two of another (creature or enchantment spells only). A one-shot +1 that also fixes two colours.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Manamorphose": {
+   "group": "Owner's screenshots",
+   "text": "Free cantrip that turns two mana into any two colours: fixing that replaces itself, no net ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Glittering Stockpile": {
+   "group": "Owner's screenshots",
+   "text": "3-mana Treasure artifact: taps for red each turn and builds stash counters, then sacrifices for that many mana of one colour. Slow burst ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Paradigm Shifter": {
+   "group": "Owner's screenshots",
+   "text": "2/2 Wizard for 3 that taps for two mana of any colours (instants and sorceries only) and conjures a Paradigm spell — Restoration Seminar returns a nonland permanent from the graveyard and, after the first cast, recasts itself free every first main phase.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 2-drop that makes a Treasure (any colour) on entering; creatures cast with Treasure mana enter bigger. One-shot fixing, a body and a legend.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Kolvori, God of Kinship // The Ringhart Crest": {
+   "group": "Owner's screenshots",
+   "text": "Modal: early, The Ringhart Crest is a 2-mana rock for green that casts legendary creatures; late, Kolvori digs six cards for a legendary creature and is a 6/6 with three legends.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Chaos Warp": {
+   "group": "Owner's screenshots",
+   "text": "Instant answer to any permanent, but the opponent may put the card they reveal onto the battlefield — that can benefit them (removal rule).",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Crackle with Power": {
+   "group": "Owner's screenshots",
+   "text": "X spell: X = 0 under the alt cost; hard-cast for five it deals 5. A late finisher, not ramp.",
    "graded_at": {
     "102": "2cf7aeb7ef2a"
    }
@@ -4523,6 +4643,66 @@
   "Tazri, Stalwart Survivor": {
    "J": {
     "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Photon, Mighty Marvel": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "The Last Agni Kai": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Open the Omenpaths": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Manamorphose": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Glittering Stockpile": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Paradigm Shifter": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Kolvori, God of Kinship // The Ringhart Crest": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Chaos Warp": {
+   "J": {
+    "m": "△",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Crackle with Power": {
+   "J": {
+    "m": "△",
     "graded_at": "2cf7aeb7ef2a"
    }
   }

@@ -212,6 +212,49 @@
  "Buxton, Decorated Host": [],
  "Chandra, Hope's Beacon": [],
  "Change the Narrative": [],
+ "Chaos Warp": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d0a3996-5a03-481b-9bda-15c6f6e5f9c4.jpg?1783927431",
+   "cn": "36",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d0a3996-5a03-481b-9bda-15c6f6e5f9c4.jpg?1783927431",
+   "r": "M",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Hisashi Momose",
+   "art": "https://cards.scryfall.io/art_crop/front/8/c/8cbb63b8-9c7f-411a-a1bf-6c9cccdc6307.jpg?1783927408",
+   "cn": "99",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/c/8cbb63b8-9c7f-411a-a1bf-6c9cccdc6307.jpg?1783927408",
+   "r": "M",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Joe Quesada & Danny Miki",
+   "art": "https://cards.scryfall.io/art_crop/front/2/a/2a6c3d3b-93ec-43df-a0cd-ea12ab047d51.jpg?1783903314",
+   "cn": "69",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/a/2a6c3d3b-93ec-43df-a0cd-ea12ab047d51.jpg?1783903314",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  }
+ ],
  "Chromanticore": [],
  "Chromatic Lantern": [
   {
@@ -303,6 +346,47 @@
  ],
  "Corrupted Shapeshifter": [],
  "Cosmic Cube": [],
+ "Crackle with Power": [
+  {
+   "a": "Micah Epstein",
+   "art": "https://cards.scryfall.io/art_crop/front/d/e/de547f52-3798-4b3a-947d-24873251204b.jpg?1783927356",
+   "cn": "95",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/e/de547f52-3798-4b3a-947d-24873251204b.jpg?1783927356",
+   "r": "M",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  },
+  {
+   "a": "Mark A. Nelson",
+   "art": "https://cards.scryfall.io/art_crop/front/d/7/d7cdccd8-13c0-49ab-9fc9-554e7897e782.jpg?1783911721",
+   "cn": "22",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/7/d7cdccd8-13c0-49ab-9fc9-554e7897e782.jpg?1783911721",
+   "r": "M",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  },
+  {
+   "a": "Lenka Šimečková",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d4e121d-c46c-4028-9582-3bb9c1621cbb.jpg?1783903921",
+   "cn": "42",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d4e121d-c46c-4028-9582-3bb9c1621cbb.jpg?1783903921",
+   "r": "M",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  }
+ ],
  "Cruel Ultimatum": [],
  "Crypt of the Eternals": [],
  "Cryptic Command": [
@@ -737,6 +821,7 @@
  ],
  "Glaring Fleshraker": [],
  "Glen Elendra's Answer": [],
+ "Glittering Stockpile": [],
  "Gogo, Master of Mimicry": [],
  "Goldspan Dragon": [],
  "Golos, Tireless Pilgrim": [],
@@ -872,6 +957,32 @@
    "y": "2025"
   }
  ],
+ "Kalain, Reclusive Painter": [
+  {
+   "a": "Justine Cruz",
+   "art": "https://cards.scryfall.io/art_crop/front/e/4/e45e9552-7737-4c61-89b0-5a3bec3c8f34.jpg?1783926447",
+   "cn": "225",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/4/e45e9552-7737-4c61-89b0-5a3bec3c8f34.jpg?1783926447",
+   "r": "U",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Jeff Dee",
+   "art": "https://cards.scryfall.io/art_crop/front/5/d/5df8cb7c-ad05-473b-9deb-7ce56c6799b8.jpg?1783926402",
+   "cn": "342",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/d/5df8cb7c-ad05-473b-9deb-7ce56c6799b8.jpg?1783926402",
+   "r": "U",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  }
+ ],
  "Karolina Dean, Runaway": [],
  "Kasmina, Enigma Sage": [
   {
@@ -997,6 +1108,32 @@
   }
  ],
  "Kolaghan's Command": [],
+ "Kolvori, God of Kinship // The Ringhart Crest": [
+  {
+   "a": "Grzegorz Rutkowski",
+   "art": "https://cards.scryfall.io/art_crop/front/b/7/b76bed98-30b1-4572-b36c-684ada06826c.jpg?1783928215",
+   "cn": "181",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/7/b76bed98-30b1-4572-b36c-684ada06826c.jpg?1783928215",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Dibujante Nocturno",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aabe2c58-620a-4caa-880f-326676422fe7.jpg?1783928151",
+   "cn": "318",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aabe2c58-620a-4caa-880f-326676422fe7.jpg?1783928151",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  }
+ ],
  "Leonardo, the Balance": [],
  "Leyline Immersion": [],
  "Leyline Prowler": [],
@@ -1115,6 +1252,32 @@
  "Mai and Zuko": [],
  "Malcolm, Alluring Scoundrel": [],
  "Mana Flare": [],
+ "Manamorphose": [
+  {
+   "a": "Adam Paquette",
+   "art": "https://cards.scryfall.io/art_crop/front/f/a/faf9070e-14be-4ce5-a19a-6addc79359c1.jpg?1783930129",
+   "cn": "208",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/a/faf9070e-14be-4ce5-a19a-6addc79359c1.jpg?1783930129",
+   "r": "U",
+   "set": "2XM",
+   "sn": "Double Masters",
+   "y": "2020"
+  },
+  {
+   "a": "Harry Conway",
+   "art": "https://cards.scryfall.io/art_crop/front/f/b/fbbc184e-e74f-4f9d-87d2-b19973d84fbb.jpg?1783904334",
+   "cn": "142",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/b/fbbc184e-e74f-4f9d-87d2-b19973d84fbb.jpg?1783904334",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2026"
+  }
+ ],
  "Marchesa, Dealer of Death": [],
  "Marshals' Pathcruiser": [],
  "Meeting of the Five": [],
@@ -1328,6 +1491,7 @@
  ],
  "Omnispell Adept": [],
  "One with the Multiverse": [],
+ "Open the Omenpaths": [],
  "Oracle of the Alpha": [],
  "Otawara, Soaring City": [
   {
@@ -1356,6 +1520,7 @@
   }
  ],
  "Outcaster Trailblazer": [],
+ "Paradigm Shifter": [],
  "Paradise Druid": [
   {
    "a": "Nils Hamm",
@@ -1385,6 +1550,7 @@
  "Path to the World Tree": [],
  "Pensive Professor": [],
  "Phial of Galadriel": [],
+ "Photon, Mighty Marvel": [],
  "Planetarium of Wan Shi Tong": [],
  "Plaza of Heroes": [
   {
@@ -1760,6 +1926,7 @@
    "y": "2024"
   }
  ],
+ "The Last Agni Kai": [],
  "The Mycosynth Gardens": [],
  "The World Tree": [],
  "Thran Temporal Gateway": [],

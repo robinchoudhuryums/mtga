@@ -40,7 +40,7 @@ batch verdicts below become its reasons then.
 
 ## 2. Standing error list
 
-- (none yet)
+- 2026-11-15: ten of the owner's screenshot cards were dismissed as "off-plan" by category; several make or fix mana (Photon, The Last Agni Kai, Paradigm Shifter, Kalain, Kolvori's Ringhart Crest). Grade each from its text — the rule-6 error this skill warns about.
 
 ## 3. Cross-batch observations
 
