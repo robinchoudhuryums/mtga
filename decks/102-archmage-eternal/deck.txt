@@ -38,6 +38,9 @@
 #: notes: 2026-11-15: Black Market Connections for Widespread Thieving (a Treasure, a card or a 3/2 every turn,
 #: notes: no multicolour spell needed) and Ancient Cornucopia for Jacob Hauken (any-colour rock that gains 1 life per
 #: notes: colour of the first coloured spell each turn, offsetting Mana Confluence and Black Market Connections).
+#: notes: 2026-11-15: Wrenn and Realmbreaker for Crystal Quarry (every land taps for any colour, a 3/3 land blocker
+#: notes: each turn; 36 lands now) and Saint Elenda for Anticausal Vestige (lifelink, a free conjured spell, an Avatar
+#: notes: each end step after lifegain — Ancient Cornucopia supplies the life).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -57,6 +60,7 @@
 1 Stable Wormhole (TRK) 215
 1 Chromatic Lantern (GRN) 233
 1 Ancient Cornucopia (BIG) 16
+1 Wrenn and Realmbreaker (MOM) 217
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
@@ -81,7 +85,7 @@
 1 Jodah, the Unifier (DMU) 203
 1 Maelstrom Archangel (JMP) 454
 1 Invasion of Alara // Awaken the Maelstrom (MOM) 230
-1 Anticausal Vestige (EOE) 1
+1 Saint Elenda (YOTJ) 4
 1 Jace, Multiverse Architect (FRC) 1
 1 Selvala, Heart of the Wilds (JMP) 429
 1 Nico Minoru, Runaway (MSC) 700
@@ -118,7 +122,7 @@
 1 Door to Nothingness (BRR) 14
 1 Black Market Connections (HBG) 145
 
-# Lands (37)
+# Lands (36)
 1 Command Tower (FRC) 22
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
@@ -145,7 +149,6 @@
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
 1 The World Tree (KHM) 275
-1 Crystal Quarry (EOS) 10
 1 Artificial Anomaly (TRK) 276
 1 Branchloft Pathway // Boulderloft Pathway (ZNR) 258
 1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264

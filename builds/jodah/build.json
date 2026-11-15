@@ -1311,10 +1311,10 @@
    }
   },
   "Crystal Quarry": {
-   "group": "In deck",
-   "text": "{5}: WUBRG — a guaranteed Jodah cast from six lands (R3); colourless otherwise",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Wrenn and Realmbreaker: colourless unless you pay {5}.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "f173dc49bb79"
    }
   },
   "Meeting of the Five": {
@@ -1598,10 +1598,10 @@
    }
   },
   "Anticausal Vestige": {
-   "group": "In deck",
-   "text": "warp {4}: it is exiled at end step, so it LEAVES — draw, then put a permanent with MV ≤ lands from hand onto the battlefield (R4); recast later",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Saint Elenda.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "f173dc49bb79"
    }
   },
   "Bane of Bala Ged": {
@@ -2670,9 +2670,9 @@
   },
   "Enduring Vitality": {
    "group": "Early ramp",
-   "text": "Owned. 3/3 vigilance; every creature taps for any colour (Saint Elenda's Avatars, Provisioner, Glóin and the token makers all become mana) and it returns as an enchantment when it dies. Better than Transdimensional Bovine or Glóin in this deck.",
+   "text": "Owned. Prospective add. Every creature taps for any colour and it returns as an enchantment. Cut options: Artificial Anomaly (colourless land, 35 lands after), Prismatic Omen (Wrenn now does its job), Lukka.",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "f173dc49bb79"
    }
   },
   "Selvala, Heart of the Wilds": {
@@ -2684,9 +2684,9 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Prospective add. Proposed in for Artificial Anomaly: a colourless land swapped for a mana creature that taps for any colour, blocks with deathtouch and gains life. With ~10 mana pieces the deck can run 36 lands.",
+   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour. Cut options: The Key to the Vault (Buster Sword stays), Yue, Raffine's Tower (a tapped three-colour land).",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "f173dc49bb79"
    }
   },
   "Great Forest Druid": {
@@ -2726,9 +2726,9 @@
   },
   "Tireless Provisioner": {
    "group": "Early ramp",
-   "text": "Owned. Prospective add, proposed in for Olivia, Crimson Bride (6 mana, value only on attack). A Food or Treasure every land drop from turn 3.",
+   "text": "Owned. Prospective add: a Food or Treasure every land drop. Cut options: Lukka (its −2 overlaps Jace, Multiverse Architect's −3), Jace, Multiverse Architect, Kinnan.",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "f173dc49bb79"
    }
   },
   "Dryad of the Ilysian Grove": {
@@ -3047,17 +3047,17 @@
    }
   },
   "Saint Elenda": {
-   "group": "Lifegain + mana",
-   "text": "MV 7 for WUBRG: lifelink, a free conjured spell, and an X/X Avatar at each end step you gained life — Ancient Cornucopia supplies that life every turn. With Enduring Vitality or Elven Chorus each Avatar is also a mana source. Proposed in for Anticausal Vestige.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Anticausal Vestige: lifelink, a free conjured spell, and an X/X Avatar each end step you gained life (Ancient Cornucopia supplies it).",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "f173dc49bb79"
    }
   },
   "Wrenn and Realmbreaker": {
-   "group": "Early ramp",
-   "text": "Owned. 3-mana walker: every land taps for any colour; +1 turns a land into a 3/3 hexproof vigilant haste blocker each turn; −2 mills three and keeps a permanent. Doubling Season starts it at 14 loyalty. A strict improvement on Prismatic Omen's job, which it could replace.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Crystal Quarry: every land taps for any colour; +1 makes a 3/3 hexproof land blocker each turn; −2 digs for a permanent.",
    "graded_at": {
-    "102": "d526869441f6"
+    "102": "f173dc49bb79"
    }
   },
   "Incubation Druid": {
@@ -3684,6 +3684,108 @@
     "Vona de Iedo, the Antifex",
     "Warp Speed",
     "Watery Grave",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "f173dc49bb79": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
     "Xander's Lounge",
     "Yue, the Moon Spirit",
     "Zagoth Triome",
