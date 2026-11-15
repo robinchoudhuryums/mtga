@@ -1278,6 +1278,21 @@
    "name": "Saint Elenda",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Incubation Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Wrenn and Realmbreaker",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Elven Chorus",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2046,9 +2061,9 @@
   },
   "Brazen Bluff": {
    "group": "Pile",
-   "text": "conditional",
+   "text": "Needs an opponent's noncreature spell to target, and the opponent can just exile it to deny the free cast.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Nico Minoru, Runaway": {
@@ -2067,9 +2082,9 @@
   },
   "Descendants' Path": {
    "group": "Pile",
-   "text": "needs shared creature types",
+   "text": "Free creature casts in upkeep only when the top card shares a type with your creatures; this deck's creature types are scattered, so it whiffs often.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Fight Rigging": {
@@ -2312,9 +2327,9 @@
   },
   "Rogue Class": {
    "group": "Pile",
-   "text": "slow",
+   "text": "Needs combat damage, and the any-colour casting only comes at level 3 ({U}{B}, then {1}{U}{B}, then {2}{U}{B}). Slow.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "King Narfi's Betrayal": {
@@ -2655,9 +2670,9 @@
   },
   "Enduring Vitality": {
    "group": "Early ramp",
-   "text": "Owned. A 3/3 vigilance body that gives EVERY creature 'tap: add any colour' — each creature becomes a mana source, and Kinnan doubles them. When it dies it returns as an enchantment and keeps the effect.",
+   "text": "Owned. 3/3 vigilance; every creature taps for any colour (Saint Elenda's Avatars, Provisioner, Glóin and the token makers all become mana) and it returns as an enchantment when it dies. Better than Transdimensional Bovine or Glóin in this deck.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "d526869441f6"
    }
   },
   "Selvala, Heart of the Wilds": {
@@ -3033,7 +3048,28 @@
   },
   "Saint Elenda": {
    "group": "Lifegain + mana",
-   "text": "Prospective add, proposed in for Anticausal Vestige (another 6-7 drop): lifelink, a free conjured spell, and Avatars after lifegain.",
+   "text": "MV 7 for WUBRG: lifelink, a free conjured spell, and an X/X Avatar at each end step you gained life — Ancient Cornucopia supplies that life every turn. With Enduring Vitality or Elven Chorus each Avatar is also a mana source. Proposed in for Anticausal Vestige.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Wrenn and Realmbreaker": {
+   "group": "Early ramp",
+   "text": "Owned. 3-mana walker: every land taps for any colour; +1 turns a land into a 3/3 hexproof vigilant haste blocker each turn; −2 mills three and keeps a permanent. Doubling Season starts it at 14 loyalty. A strict improvement on Prismatic Omen's job, which it could replace.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Incubation Druid": {
+   "group": "Early ramp",
+   "text": "2-mana dork for any type your lands make (every colour here); adapted ({3}{G}{G}) it makes three mana. A strong early dork; no blocker.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Elven Chorus": {
+   "group": "Early ramp",
+   "text": "4-mana enchantment: every creature taps for any colour, and you can cast creatures from the top of the library. Enduring Vitality's mana effect plus card advantage, but no body.",
    "graded_at": {
     "102": "d526869441f6"
    }
@@ -4312,8 +4348,8 @@
   },
   "Brazen Bluff": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "△",
+    "graded_at": "d526869441f6"
    }
   },
   "Nico Minoru, Runaway": {
@@ -4331,7 +4367,7 @@
   "Descendants' Path": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "d526869441f6"
    }
   },
   "Fight Rigging": {
@@ -4540,8 +4576,8 @@
   },
   "Rogue Class": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "△",
+    "graded_at": "d526869441f6"
    }
   },
   "King Narfi's Betrayal": {
@@ -5158,8 +5194,26 @@
   },
   "Saint Elenda": {
    "J": {
-    "m": "★",
-    "graded_at": "a7f047666cc1"
+    "m": "★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Wrenn and Realmbreaker": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Incubation Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Elven Chorus": {
+   "J": {
+    "m": "★★",
+    "graded_at": "d526869441f6"
    }
   }
  }

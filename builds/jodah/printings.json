@@ -687,6 +687,32 @@
  ],
  "Eldrazi Displacer": [],
  "Elrond, Moon-Reader": [],
+ "Elven Chorus": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "cn": "160",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Stephen L. Walsh",
+   "art": "https://cards.scryfall.io/art_crop/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Emergent Sequence": [],
  "Emrakul, the World Anew": [],
  "Enduring Vitality": [],
@@ -910,6 +936,7 @@
  "Idol of False Gods": [],
  "Improvisation Capstone": [],
  "Inalla, Archmage Ritualist": [],
+ "Incubation Druid": [],
  "Indulging Patrician": [],
  "Infernal Grasp": [
   {
@@ -2148,6 +2175,7 @@
  "Wizard Class": [],
  "Wizard's Staff": [],
  "World War Hulk": [],
+ "Wrenn and Realmbreaker": [],
  "Yue, the Moon Spirit": [],
  "Yuna, Grand Summoner": []
 }
