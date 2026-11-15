@@ -12,7 +12,7 @@
 #: archetype: tap for any colour, Timeless Lotus taps for exactly WUBRG, and Chromatic Orrery lets any mana pay
 #: archetype: for any colour. A second layer casts for free: Jodah, the Unifier cascades into legends, Sunbird's
 #: archetype: Invocation reveals a spell's printed mana value, Kellan and Nico Minoru reward casts from anywhere but
-#: archetype: the hand, and an attack package (Buster Sword and The Key to the Vault on a flier, Cosmic Cube,
+#: archetype: the hand, and an attack package (Buster Sword and The Key to the Vault on a flier, Akul,
 #: archetype: Narset) casts off the top. Door to Nothingness is the alternate win: WWUUBBRRGG from ten any-colour
 #: archetype: lands, Timeless Lotus plus five, or anything under Chromatic Orrery. DISTINCT from the
 #: archetype: roster's five-colour decks (17 Spectrum, 76 Dragons, 90 Spirit World, 101 Sisko dilemmas): its
@@ -31,6 +31,10 @@
 #: notes: trampler to carry Buster Sword and The Key to the Vault).
 #: notes: 2026-11-15: Chromatic Lantern for Rona (owner's call). The deck was slow to start: by simulation it
 #: notes: reached five mana by turn 5 only ~42% of the time with Esika as its only early mana source.
+#: notes: 2026-11-15 early-mana package (owner's picks): Selvala for Jin-Gitaxias, Faeburrow Elder for Bringer of
+#: notes: the Green Dawn, Bard Class for Cosmic Cube (level 2 makes a legendary alt-cost cast {W}{U}{B}), Buried in
+#: notes: the Garden for Oracle of the Alpha (exile removal plus an extra mana of any colour). Leyline Prowler and
+#: notes: Transdimensional Bovine are on the board as prospective adds.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -42,7 +46,6 @@
 1 Leyline of the Guildpact (MKM) 217
 1 Warp Speed (TRK) 223
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
-1 Oracle of the Alpha (MBC) 64
 1 Goldspan Dragon (KHM) 139
 1 Kinnan, Bonder Prodigy (IKO) 192
 1 Widespread Thieving (SNC) 130
@@ -54,7 +57,7 @@
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
-1 Bringer of the Green Dawn (AA4) 21
+1 Faeburrow Elder (ELD) 190
 
 # Bombs — printed cost 6+, paid as WUBRG
 1 Ulamog, the Defiler (MH3) 15
@@ -78,14 +81,14 @@
 1 Anticausal Vestige (EOE) 1
 1 Jace, Multiverse Architect (FRC) 1
 1 Jacob Hauken, Inspector // Hauken's Insight (VOW) 65
-1 Jin-Gitaxias (MOM) 65
+1 Selvala, Heart of the Wilds (JMP) 429
 1 Nico Minoru, Runaway (MSC) 700
 1 Neera, Wild Mage (HBG) 245
 1 Kellan, the Kid (OTJ) 213
 1 Commander Spock (TRC) 2
 1 Narset, Enlightened Master (KTK) 190
 1 Planetarium of Wan Shi Tong (TLA) 259
-1 Cosmic Cube (MSH) 245
+1 Bard Class (AFR) 217
 1 Sunbird's Invocation (XLN) 165
 1 Yue, the Moon Spirit (TLA) 83
 1 The Key to the Vault (OTJ) 54
@@ -107,6 +110,7 @@
 1 Kaya the Inexorable (KHM) 218
 1 Vona de Iedo, the Antifex (YOTJ) 28
 1 Nicol Bolas, Dragon-God (WAR) 207
+1 Buried in the Garden (MKM) 191
 
 # Card flow and the alternate win
 1 Door to Nothingness (BRR) 14

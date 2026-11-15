@@ -97,6 +97,44 @@
  "Bard Class": [],
  "Bard, King of Dale": [],
  "Baron Bertram Graywater": [],
+ "Big Score": [
+  {
+   "a": "Gaboleps",
+   "art": "https://cards.scryfall.io/art_crop/front/3/9/39d1578f-e2cf-4b93-8204-ed5434feb183.jpg?1783923123",
+   "cn": "102",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/9/39d1578f-e2cf-4b93-8204-ed5434feb183.jpg?1783923123",
+   "r": "C",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Zuzanna Wużyk",
+   "art": "https://cards.scryfall.io/art_crop/front/c/7/c7b698a1-dff1-413f-ba4f-0298c686999a.jpg?1783903923",
+   "cn": "38",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/7/c7b698a1-dff1-413f-ba4f-0298c686999a.jpg?1783903923",
+   "r": "R",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  },
+  {
+   "a": "Jurijus Chitrovas",
+   "art": "https://cards.scryfall.io/art_crop/front/3/3/3383a939-4ab3-4546-9995-6c65cd3f4441.jpg?1783903010",
+   "cn": "802",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/3/3383a939-4ab3-4546-9995-6c65cd3f4441.jpg?1783903010",
+   "r": "C",
+   "set": "MSC",
+   "sn": "Marvel Super Heroes Commander",
+   "y": "2026"
+  }
+ ],
  "Birds of Paradise": [
   {
    "a": "Ben Wootten",
@@ -123,6 +161,7 @@
    "y": "2024"
   }
  ],
+ "Black Market Connections": [],
  "Bloom Tender": [
   {
    "a": "Julie Dillon",
@@ -508,6 +547,7 @@
    "y": "2021"
   }
  ],
+ "Death to Our Enemies": [],
  "Delighted Halfling": [
   {
    "a": "Inka Schulz",
@@ -705,6 +745,32 @@
  ],
  "Everything Pizza": [],
  "Extricator of Sin // Extricator of Flesh": [],
+ "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": [
+  {
+   "a": "Joseph Meehan",
+   "art": "https://cards.scryfall.io/art_crop/front/2/4/24c0d87b-0049-4beb-b9cb-6f813b7aa7dc.jpg?1783923875",
+   "cn": "141",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/4/24c0d87b-0049-4beb-b9cb-6f813b7aa7dc.jpg?1783923875",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "akio",
+   "art": "https://cards.scryfall.io/art_crop/front/0/b/0b696cd1-0d72-4df5-bacc-dc77e62f9a13.jpg?1783923787",
+   "cn": "357",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/b/0b696cd1-0d72-4df5-bacc-dc77e62f9a13.jpg?1783923787",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Faeburrow Elder": [],
  "Falkenrath Aristocrat": [],
  "Farseek": [
@@ -822,6 +888,7 @@
  "Glaring Fleshraker": [],
  "Glen Elendra's Answer": [],
  "Glittering Stockpile": [],
+ "Glóin, Dwarf Emissary": [],
  "Gogo, Master of Mimicry": [],
  "Goldspan Dragon": [],
  "Golos, Tireless Pilgrim": [],
@@ -831,6 +898,7 @@
  "Great Forest Druid": [],
  "Great Hall of the Citadel": [],
  "Greenhouse // Rickety Gazebo": [],
+ "Grim Hireling": [],
  "Gwenna, Eyes of Gaea": [],
  "Haunted Screen": [],
  "Helga, Skittish Seer": [],
@@ -957,6 +1025,7 @@
    "y": "2025"
   }
  ],
+ "Jolene, Plundering Pugilist": [],
  "Kalain, Reclusive Painter": [
   {
    "a": "Justine Cruz",

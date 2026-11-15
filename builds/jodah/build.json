@@ -1208,6 +1208,41 @@
    "name": "Crackle with Power",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Black Market Connections",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glóin, Dwarf Emissary",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Big Score",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Death to Our Enemies",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Grim Hireling",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jolene, Plundering Pugilist",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1261,10 +1296,10 @@
    }
   },
   "Oracle of the Alpha": {
-   "group": "In deck",
-   "text": "conjures the Power Nine: five Moxen are fixing, Black Lotus is a Jodah cast (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Buried in the Garden: the Moxen shuffle into 99 cards and arrive late.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Tazri, Beacon of Unity": {
@@ -1408,10 +1443,10 @@
    }
   },
   "Bringer of the Green Dawn": {
-   "group": "In deck",
-   "text": "carries its own WUBRG alt cost (R6); a 3/3 every upkeep",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Faeburrow Elder: Leyline of Mutation already backs up the alt cost.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Leyline of Mutation": {
@@ -1955,9 +1990,9 @@
   },
   "Jin-Gitaxias // The Great Synthesis": {
    "group": "Pile",
-   "text": "draws on noncreature MV 3+; the Saga's chapter III casts any number of spells free (R4)",
+   "text": "CUT 2026-11-15 for Selvala: its free-cast Saga needs seven cards in hand.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Omnispell Adept": {
@@ -2122,10 +2157,10 @@
    }
   },
   "Cosmic Cube": {
-   "group": "In deck",
-   "text": "each attack casts from the top six, capped by the biggest attacker's power — the Eldrazi make that 7+",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Bard Class: its attack trigger is slow to start.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -2591,17 +2626,17 @@
    }
   },
   "Selvala, Heart of the Wilds": {
-   "group": "Early ramp",
-   "text": "{G},{T}: add X mana of any colours, X = your biggest creature's power (Akul 5, Bane 7, Emrakul 12). Legendary for the Unifier and Raff. Its draw trigger is symmetric: an opponent playing a new biggest creature draws too.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jin-Gitaxias. {G},{T}: X mana of any colours, X = your biggest creature's power. Legendary. Its draw trigger is symmetric.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "2/3 deathtouch lifelink for 3 that taps for any colour: the best blocker among the mana creatures.",
+   "text": "Prospective add (owner unsure of the cut). 2/3 deathtouch lifelink that taps for any colour — the best blocker among the mana creatures. Cut options: Jacob Hauken (slow looter), Planetarium, Anticausal Vestige.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Great Forest Druid": {
@@ -2675,10 +2710,10 @@
    }
   },
   "Faeburrow Elder": {
-   "group": "Owner's screenshots",
-   "text": "3 mana: taps for one mana of EACH colour among your permanents (Jodah alone is white, blue and red), so often a whole WUBRG cast from one creature; a vigilant body that grows with your colours.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Bringer of the Green Dawn. Taps for one mana of each colour among your permanents — often most of WUBRG from one creature.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Bloom Tender": {
@@ -2689,24 +2724,24 @@
    }
   },
   "Bard Class": {
-   "group": "Owner's screenshots",
-   "text": "Owned. Level 2 makes legendary spells cost {R}{G} less, and that applies to Jodah's alt cost: a legendary bomb for {W}{U}{B}. Level 1 adds a counter to legends; level 3 exiles two cards to play on each legendary cast.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Cosmic Cube. Level 2: legendary spells cost {R}{G} less, so a legendary alt-cost cast is {W}{U}{B}.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Buried in the Garden": {
-   "group": "Owner's screenshots",
-   "text": "Owned. Removal and ramp in one: exile a nonland permanent they control, and the enchanted land adds an extra mana of any colour. Removal rule safe.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Oracle of the Alpha. Exiles a nonland permanent they control; the enchanted land adds an extra mana of any colour.",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Transdimensional Bovine": {
    "group": "Owner's screenshots",
-   "text": "Owned. 0/4 flier for 3 that taps for two mana of one colour: a blocker and double ramp, though only one colour at a time.",
+   "text": "Prospective add (owner unsure of the cut). Owned 0/4 flier that taps for two mana of one colour: a blocker and double ramp. Cut options: Widespread Thieving (inconsistent Treasures), Stable Wormhole (needs attacks).",
    "graded_at": {
-    "102": "2cf7aeb7ef2a"
+    "102": "a7f047666cc1"
    }
   },
   "Leyline Immersion": {
@@ -2868,6 +2903,55 @@
    "text": "X spell: X = 0 under the alt cost; hard-cast for five it deals 5. A late finisher, not ramp.",
    "graded_at": {
     "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Black Market Connections": {
+   "group": "Treasure",
+   "text": "Owned. Each first main phase, pick any of: a Treasure (1 life), a card (2 life), a 3/2 changeling (3 life). Ramp, card draw and blockers from one 3-mana card; Doubling Season doubles the Treasure and the token, Goldspan makes the Treasure worth two.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "group": "Treasure",
+   "text": "Legendary 3-drop: a Treasure on the first historic spell each turn (39+ historic cards here), and it can sacrifice a Treasure to goad an attacker.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Big Score": {
+   "group": "Treasure",
+   "text": "Instant: discard a card, draw two, make two Treasures. Filtering plus a two-mana burst.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
+   "group": "Treasure",
+   "text": "3-mana Saga: a Goblin that makes a Treasure each attack, a two-card rummage, then a copier for NONlegendary creatures (few here).",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Death to Our Enemies": {
+   "group": "Treasure",
+   "text": "Owned. A tapped Treasure on each noncreature spell; after four, 7 damage split between two targets. About half the deck is noncreature.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Grim Hireling": {
+   "group": "Treasure",
+   "text": "Two Treasures whenever creatures connect; sacrifices Treasures as removal. Needs combat damage.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Jolene, Plundering Pugilist": {
+   "group": "Treasure",
+   "text": "Owned legend. A Treasure whenever a power-4+ creature attacks; pings with spare Treasures. Needs the big attackers out first.",
+   "graded_at": {
+    "102": "a7f047666cc1"
    }
   }
  },
@@ -3259,6 +3343,108 @@
     "Sacred Foundry",
     "Sauron, Lord of the Rings",
     "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "a7f047666cc1": [
+    "Akul the Unrepentant",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
     "Spara's Headquarters",
     "Stable Wormhole",
     "Steam Vents",
@@ -4704,6 +4890,48 @@
    "J": {
     "m": "△",
     "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Black Market Connections": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Big Score": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Death to Our Enemies": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Grim Hireling": {
+   "J": {
+    "m": "◇",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Jolene, Plundering Pugilist": {
+   "J": {
+    "m": "◇",
+    "graded_at": "a7f047666cc1"
    }
   }
  }
