@@ -3,6 +3,10 @@
 #: colors: WUBRG
 #: commander: Jodah, Archmage Eternal
 #: plan: midrange
+#: tier: A — owner-graded 2026-11-15, at the metrics floor (interaction 12 and card advantage 16 against the 100-card A bar
+#: tier: of 12 and a sum of 19). Strengths: Jodah's WUBRG alt cost puts the format's biggest spells (Ulamog, Emrakul,
+#: tier: Omniscience, Cruel Ultimatum) on turn five, with a second free-cast layer behind it. Weakness: it needs all five
+#: tier: colours every turn and starts slowly, so it leans on its mana creatures and rocks.
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), FIVE-COLOUR CHEAT around Jodah,
 #: archetype: Archmage Eternal: "You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast",
 #: archetype: so every card costs at most one mana of each colour and the deck plays the biggest spells in the
