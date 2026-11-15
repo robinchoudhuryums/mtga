@@ -8,6 +8,7 @@ double
 eerie
 empower jace
 enchant
+escalate
 exert
 ferocious
 food
@@ -16,6 +17,8 @@ hexproof from
 jump
 meld
 partner
+partner with
+rebound
 survival
 tiered
 transform
