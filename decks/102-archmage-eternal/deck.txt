@@ -41,6 +41,9 @@
 #: notes: 2026-11-15: Wrenn and Realmbreaker for Crystal Quarry (every land taps for any colour, a 3/3 land blocker
 #: notes: each turn; 36 lands now) and Saint Elenda for Anticausal Vestige (lifelink, a free conjured spell, an Avatar
 #: notes: each end step after lifegain — Ancient Cornucopia supplies the life).
+#: notes: 2026-11-15: Incubation Druid for Yue (owner's call: the better of Druid and Leyline Prowler for the slow
+#: notes: start; a 2-drop, online a turn earlier). Artificial Anomaly stays: under Wrenn, Great Divide Guide, Leyline of
+#: notes: the Guildpact or Chromatic Lantern it taps for any colour, and it sacrifices for drain 2 plus an any-colour Planet.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -61,6 +64,7 @@
 1 Chromatic Lantern (GRN) 233
 1 Ancient Cornucopia (BIG) 16
 1 Wrenn and Realmbreaker (MOM) 217
+1 Incubation Druid (RNA) 131
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
@@ -96,7 +100,6 @@
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Bard Class (AFR) 217
 1 Sunbird's Invocation (XLN) 165
-1 Yue, the Moon Spirit (TLA) 83
 1 The Key to the Vault (OTJ) 54
 1 Buster Sword (FIN) 255
 1 Raff Capashen, Ship's Mage (DOM) 202

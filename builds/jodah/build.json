@@ -2032,10 +2032,10 @@
    }
   },
   "Yue, the Moon Spirit": {
-   "group": "In deck",
-   "text": "Waterbend {5} is generic and creatures/artifacts help pay: a repeatable free noncreature cast that needs no colours.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Incubation Druid: {5} per free cast, among many free-cast engines.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Jin-Gitaxias // The Great Synthesis": {
@@ -2670,9 +2670,9 @@
   },
   "Enduring Vitality": {
    "group": "Early ramp",
-   "text": "Owned. Prospective add. Every creature taps for any colour and it returns as an enchantment. Cut options: Artificial Anomaly (colourless land, 35 lands after), Prismatic Omen (Wrenn now does its job), Lukka.",
+   "text": "Owned. Prospective add. Every creature taps for any colour and it returns as an enchantment. Cut options: Prismatic Omen (the most redundant land-fixer now), Raffine's Tower (tapped three-colour land, possibly unowned), Lukka. Artificial Anomaly is no longer suggested: it taps for any colour under the land-fixers and sacrifices for drain 2 plus a Planet.",
    "graded_at": {
-    "102": "f173dc49bb79"
+    "102": "75432feb4028"
    }
   },
   "Selvala, Heart of the Wilds": {
@@ -2684,9 +2684,9 @@
   },
   "Leyline Prowler": {
    "group": "Early ramp",
-   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour. Cut options: The Key to the Vault (Buster Sword stays), Yue, Raffine's Tower (a tapped three-colour land).",
+   "text": "Prospective add. 2/3 deathtouch lifelink that taps for any colour — the defensive and life-gaining dork, a turn slower than Incubation Druid. Cut options: The Key to the Vault, Raffine's Tower (tapped, possibly unowned).",
    "graded_at": {
-    "102": "f173dc49bb79"
+    "102": "75432feb4028"
    }
   },
   "Great Forest Druid": {
@@ -3061,10 +3061,10 @@
    }
   },
   "Incubation Druid": {
-   "group": "Early ramp",
-   "text": "Prospective add. 2-mana dork for any colour your lands make; adapted it makes three. Cut options: Yue, the Moon Spirit (my pick: {5} per free cast, and the deck has many free-cast engines), Prismatic Omen (if Artificial Anomaly goes for Enduring Vitality), Raffine's Tower (34 lands: keepable 75.2% / 93.9% with the free mulligan).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Yue: a 2-mana dork for any colour your lands make (three mana once adapted). Chosen over Leyline Prowler for speed: five mana by turn 4 rises to ~27.5% against ~26.8% with Prowler.",
    "graded_at": {
-    "102": "f173dc49bb79"
+    "102": "75432feb4028"
    }
   },
   "Elven Chorus": {
@@ -3788,6 +3788,108 @@
     "Wrenn and Realmbreaker",
     "Xander's Lounge",
     "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "75432feb4028": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
     "Zagoth Triome",
     "Ziatora's Proving Ground"
    ]
