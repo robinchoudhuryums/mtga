@@ -8,7 +8,7 @@
 #: archetype: so every card costs at most one mana of each colour and the deck plays the biggest spells in the
 #: archetype: format for five: Ulamog, Emrakul, Omniscience, Improvisation Capstone, Cruel Ultimatum, the Nicol
 #: archetype: Bolas walker and Sauron, Lord of the Rings. Five colours every turn is the real constraint, so the
-#: archetype: fixing is the spine: Prismatic Omen, Leyline of the Guildpact and Great Divide Guide make every land
+#: archetype: fixing is the spine: Chromatic Lantern, Leyline of the Guildpact and Great Divide Guide make every land
 #: archetype: tap for any colour, Timeless Lotus taps for exactly WUBRG, and Chromatic Orrery lets any mana pay
 #: archetype: for any colour. A second layer casts for free: Jodah, the Unifier cascades into legends, Sunbird's
 #: archetype: Invocation reveals a spell's printed mana value, Kellan and Nico Minoru reward casts from anywhere but
@@ -17,7 +17,7 @@
 #: archetype: lands, Timeless Lotus plus five, or anything under Chromatic Orrery. DISTINCT from the
 #: archetype: roster's five-colour decks (17 Spectrum, 76 Dragons, 90 Spirit World, 101 Sisko dilemmas): its
 #: archetype: engine is paying the same five mana for any card.
-#: protect: Jodah, the Unifier; Timeless Lotus; Prismatic Omen; Leyline of the Guildpact; Great Divide Guide; Leyline of Mutation; Chromatic Orrery; Sunbird's Invocation; Door to Nothingness
+#: protect: Jodah, the Unifier; Timeless Lotus; Leyline of the Guildpact; Great Divide Guide; Leyline of Mutation; Chromatic Orrery; Sunbird's Invocation; Door to Nothingness
 #: notes: Drafted 2026-11-14 from the owner's Jodah pile (.cycle/jodah-pile-analysis.md; board builds/jodah).
 #: notes: Ownership is information only; the list is the optimal one. Owner's removal rule honoured: An Offer
 #: notes: You Can't Refuse (gives Treasures) and Assassin's Trophy (gives a land) were left out. Fires of
@@ -44,6 +44,12 @@
 #: notes: 2026-11-15: Incubation Druid for Yue (owner's call: the better of Druid and Leyline Prowler for the slow
 #: notes: start; a 2-drop, online a turn earlier). Artificial Anomaly stays: under Wrenn, Great Divide Guide, Leyline of
 #: notes: the Guildpact or Chromatic Lantern it taps for any colour, and it sacrifices for drain 2 plus an any-colour Planet.
+#: notes: 2026-11-15 (owner's picks): Enduring Vitality for Invasion of Alara, The Last Agni Kai for Jeskai Revelation,
+#: notes: Grim Hireling for Sublime Epiphany, Goro-Goro and Satoru for Teferi, Time Raveler, Karolina Dean for Lukka,
+#: notes: Leyline Prowler for Savai Triome, Plaza of Heroes for Raffine's Tower, Otawara for Zagoth Triome, Gogo,
+#: notes: Master of Mimicry for Prismatic Omen (Gogo copies an activated or triggered ability X times). Interaction
+#: notes: holds at 12 (floor A); 35 lands now, with Vitality, Prowler and Karolina as creature mana. Tamiyo, Buxton,
+#: notes: Kethis and Wizard's Staff stay on the board as adds awaiting cuts.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -51,7 +57,6 @@
 # Fixing and ramp — every colour, every turn (the alt cost needs WUBRG)
 1 Timeless Lotus (DMU) 239
 1 Great Divide Guide (TLA) 181
-1 Prismatic Omen (SHM) 126
 1 Leyline of the Guildpact (MKM) 217
 1 Warp Speed (TRK) 223
 1 Esika, God of the Tree // The Prismatic Bridge (KHM) 168
@@ -65,6 +70,9 @@
 1 Ancient Cornucopia (BIG) 16
 1 Wrenn and Realmbreaker (MOM) 217
 1 Incubation Druid (RNA) 131
+1 Enduring Vitality (DSK) 176
+1 Karolina Dean, Runaway (MSC) 694
+1 Leyline Prowler (WAR) 202
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
@@ -88,7 +96,6 @@
 # Free-cast engines — the second cheat layer
 1 Jodah, the Unifier (DMU) 203
 1 Maelstrom Archangel (JMP) 454
-1 Invasion of Alara // Awaken the Maelstrom (MOM) 230
 1 Saint Elenda (YOTJ) 4
 1 Jace, Multiverse Architect (FRC) 1
 1 Selvala, Heart of the Wilds (JMP) 429
@@ -103,19 +110,19 @@
 1 The Key to the Vault (OTJ) 54
 1 Buster Sword (FIN) 255
 1 Raff Capashen, Ship's Mage (DOM) 202
+1 Gogo, Master of Mimicry (FIN) 54
 
 # Into play
-1 Lukka, Coppercoat Outcast (IKO) 125
 1 Raph & Mikey, Troublemakers (TMT) 167
 1 Olivia, Crimson Bride (VOW) 245
+1 Goro-Goro and Satoru (MOC) 445
 
 # Interaction
-1 Sublime Epiphany (M21) 74
-1 Jeskai Revelation (TDM) 196
+1 Grim Hireling (HBG) 158
+1 The Last Agni Kai (TLA) 144
 1 Cryptic Command (IMA) 48
 1 Hero's Downfall (FDN) 175
 1 Anguished Unmaking (OTP) 35
-1 Teferi, Time Raveler (WAR) 221
 1 Kaya the Inexorable (KHM) 218
 1 Vona de Iedo, the Antifex (YOTJ) 28
 1 Nicol Bolas, Dragon-God (WAR) 207
@@ -125,7 +132,7 @@
 1 Door to Nothingness (BRR) 14
 1 Black Market Connections (HBG) 145
 
-# Lands (36)
+# Lands (35)
 1 Command Tower (FRC) 22
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
@@ -140,15 +147,14 @@
 1 Breeding Pool (EOE) 251
 1 Sacred Foundry (EOE) 256
 1 Raugrin Triome (IKO) 251
-1 Savai Triome (IKO) 253
-1 Zagoth Triome (IKO) 259
+1 Otawara, Soaring City (NEO) 271
 1 Ketria Triome (IKO) 250
 1 Indatha Triome (IKO) 248
 1 Spara's Headquarters (SNC) 257
 1 Ziatora's Proving Ground (SNC) 261
 1 Xander's Lounge (SNC) 260
 1 Jetmir's Garden (SNC) 250
-1 Raffine's Tower (SNC) 254
+1 Plaza of Heroes (DMU) 252
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
 1 The World Tree (KHM) 275

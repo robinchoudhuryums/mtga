@@ -314,3 +314,14 @@ cost (R1) — not a meaningful figure for this deck.
 **Bench (★ not in the 62):** Crystal Quarry and The World Tree are in as lands; Pensive Professor,
 Glamorous Outlaw, Bard, The Key to the Vault, Yue, Buster Sword, Ashiok, Nissa of Shadowed Boughs,
 Aang, Stable Wormhole, Helga, Obeka, Saruman, Loot, Prismatic Undercurrents, Thanos alternatives.
+
+### Round 4 (2026-11-15) — applied, and alternate cuts for the held four
+Applied: Vitality/Invasion of Alara, Last Agni Kai/Jeskai Revelation, Grim Hireling/Sublime Epiphany,
+Goro-Goro/Teferi, Karolina/Lukka, Leyline Prowler/Savai Triome, Plaza of Heroes/Raffine's Tower,
+Otawara/Zagoth Triome, Gogo/Prismatic Omen. Floor A, interaction 12, 35 lands.
+Owner keeps Jace, Neera, Warp Speed, Chromatic Orrery. Proposed alternates (package previews at floor A,
+interaction 12, card advantage 14 → 16):
+- Tamiyo: Etali (first) · One with the Multiverse · Nissa, Leyline Tamer
+- Buxton: Nico Minoru (first) · Etali · Kellan
+- Kethis: Goldspan Dragon (first) · Kellan · Nico Minoru
+- Wizard's Staff: Jetmir's Garden (first; 34 lands, keepable 76.9% → 75.2%) · Indatha Triome · Kellan

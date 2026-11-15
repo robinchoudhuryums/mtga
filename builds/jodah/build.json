@@ -1344,10 +1344,10 @@
    }
   },
   "Gogo, Master of Mimicry": {
-   "group": "Pile",
-   "text": "Package 2026-11-15: in for Prismatic Omen (the most redundant land-fixer).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Prismatic Omen: copies an activated or triggered ability X times, including from noncreature sources.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Oracle of the Alpha": {
@@ -1407,10 +1407,10 @@
    }
   },
   "Invasion of Alara // Awaken the Maelstrom": {
-   "group": "In deck",
-   "text": "Re-evaluated 2026-11-15 — owner marked CUT: free MV ≤4 cast on entering; the back face's destroy counts as interaction.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Enduring Vitality: 5-mana cascade battle; the slow start needed mana more.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Infinite Guideline Station": {
@@ -1645,10 +1645,10 @@
    }
   },
   "Goro-Goro and Satoru": {
-   "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — bench, worth promoting: {1}{R} haste lets cheated bombs attack at once, and connecting new creatures make 5/5 Dragons.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Teferi, Time Raveler: hasty Dragons off legends that entered this turn, and the cheated bombs attack at once.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Maestros Diabolist": {
@@ -1841,10 +1841,10 @@
    }
   },
   "Karolina Dean, Runaway": {
-   "group": "Pile",
-   "text": "Re-evaluated 2026-11-15 — tier 2: WUBRG every first main phase for non-hand casts and abilities (Jodah's recast, Golos, One with the Multiverse, Door to Nothingness). Proposed in for Lukka, Coppercoat Outcast (its −2 overlaps Jace, Multiverse Architect's −3).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Lukka: an early body that makes mana.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Tome of the Infinite": {
@@ -1855,10 +1855,10 @@
    }
   },
   "Prismatic Omen": {
-   "group": "In deck",
-   "text": "2 mana: every land is every basic type, so all lands tap for any colour (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Gogo: the fixer most covered by other cards (Lantern, Leyline of the Guildpact, Great Divide Guide, Wrenn).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Prismatic Undercurrents": {
@@ -2233,10 +2233,10 @@
    }
   },
   "Lukka, Coppercoat Outcast": {
-   "group": "In deck",
-   "text": "−2 turns a creature into a bigger one from the library (R4)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Karolina Dean (owner's pick).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Ashiok, Sculptor of Fears": {
@@ -2415,17 +2415,17 @@
    }
   },
   "Sublime Epiphany": {
-   "group": "In deck",
-   "text": "Owner marked CUT; recommended to KEEP: with Invasion of Alara and Jeskai Revelation gone it is what holds interaction at 12 and the floor at A (counters a spell and an ability).",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Grim Hireling: Grim Hireling's removal is reusable.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Jeskai Revelation": {
-   "group": "In deck",
-   "text": "Re-evaluated 2026-11-15 — owner marked CUT: MV 7 instant (bounce, 4 damage, draw two, gain 4) for WUBRG. A cheap instant answer keeps the interaction count (The End, Infernal Grasp, The Last Agni Kai).",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for The Last Agni Kai: Jodah pays only 5 for it, but cheap interaction does more early.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Cryptic Command": {
@@ -2450,10 +2450,10 @@
    }
   },
   "Teferi, Time Raveler": {
-   "group": "In deck",
-   "text": "Opponents cast only at sorcery speed, protecting the big turns; −3 bounces and draws.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Goro-Goro and Satoru (owner's pick).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Lithoform Engine": {
@@ -2548,10 +2548,10 @@
    }
   },
   "Plaza of Heroes": {
-   "group": "Legendary / historic",
-   "text": "Re-evaluated 2026-11-15 — tier 1 (land). Owned. Any colour for legendary spells (most bombs) and among legendary permanents; {3}, exile: hexproof and indestructible for Jodah. Replaces a tapped three-colour land (Raffine's Tower, possibly unowned).",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Raffine's Tower: untapped, any colour for legendary spells.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Raff Capashen, Ship's Mage": {
@@ -2576,10 +2576,10 @@
    }
   },
   "Otawara, Soaring City": {
-   "group": "Legendary / historic",
-   "text": "Re-evaluated 2026-11-15 — tier 1 (land). Untapped legendary land; channel bounces an artifact, creature, enchantment or walker at instant speed for {3}{U} minus 1 per legendary creature. Counted as tempo, not interaction. Replaces a tapped three-colour land.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Zagoth Triome: untapped blue land with a bounce channel ability.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -2674,10 +2674,10 @@
    }
   },
   "Enduring Vitality": {
-   "group": "Early ramp",
-   "text": "Re-evaluated 2026-11-15 — tier 1. Every creature taps for any colour (Saint Elenda's Avatars, Black Market Connections' 3/2s, Provisioner, Prowler, the cheated bombs) and it returns as an enchantment when it dies. The best remaining mana add.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Invasion of Alara: every creature taps for any colour, and it comes back as an enchantment when it dies.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Selvala, Heart of the Wilds": {
@@ -2688,10 +2688,10 @@
    }
   },
   "Leyline Prowler": {
-   "group": "Early ramp",
-   "text": "Package 2026-11-15: in for Savai Triome (a tapped three-colour land), taking the deck to 35 lands plus ~13 other mana sources; keepable 76.9% / 94.7% with the free mulligan.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Savai Triome: a 4-mana deathtouch lifelink dork for any colour, replacing a tapped land (35 lands now).",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Great Forest Druid": {
@@ -2898,10 +2898,10 @@
    }
   },
   "The Last Agni Kai": {
-   "group": "Owner's screenshots",
-   "text": "Re-evaluated 2026-11-15 (bench) — up to ★★: owned instant removal (a fight) that also makes red mana from excess damage. With the owner cutting Sublime Epiphany, Jeskai Revelation and Teferi, it and Grim Hireling keep interaction at 12 and the floor at A.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jeskai Revelation: cheap removal (fight-style) that also makes red mana; keeps interaction at 12.",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Open the Omenpaths": {
@@ -2996,10 +2996,10 @@
    }
   },
   "Grim Hireling": {
-   "group": "Treasure",
-   "text": "Re-evaluated 2026-11-15 (bench) — ★★: Treasure-fed −X/−X removal plus two Treasures when creatures connect. In the package for Sublime Epiphany.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Sublime Epiphany: Treasures on combat damage, and it spends Treasures to shrink or kill a creature (interaction).",
    "graded_at": {
-    "102": "75432feb4028"
+    "102": "de43e8ae91cc"
    }
   },
   "Jolene, Plundering Pugilist": {
@@ -3903,6 +3903,108 @@
     "Wrenn and Realmbreaker",
     "Xander's Lounge",
     "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "de43e8ae91cc": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Enduring Vitality",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Gogo, Master of Mimicry",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Goro-Goro and Satoru",
+    "Great Divide Guide",
+    "Grim Hireling",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Karolina Dean, Runaway",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline Prowler",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Otawara, Soaring City",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The Last Agni Kai",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
     "Ziatora's Proving Ground"
    ]
   }
