@@ -1293,6 +1293,11 @@
    "name": "Elven Chorus",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Echo, Perceptive Prodigy",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -3072,6 +3077,13 @@
    "text": "4-mana enchantment: every creature taps for any colour, and you can cast creatures from the top of the library. Enduring Vitality's mana effect plus card advantage, but no body.",
    "graded_at": {
     "102": "d526869441f6"
+   }
+  },
+  "Echo, Perceptive Prodigy": {
+   "group": "Legendary / historic",
+   "text": "Owned legend. {1},{T}: copy one activated or triggered ability from a CREATURE source — cheaper than Gogo for a single copy (Unifier cascade, Kellan, Etali, Golos, Buxton, Saint Elenda). Gogo stays ahead: it copies X times for {X}{X} and also copies non-creature sources — Sunbird's Invocation, Black Market Connections, Bard Class and planeswalker loyalty abilities.",
+   "graded_at": {
+    "102": "75432feb4028"
    }
   }
  },
@@ -5418,6 +5430,12 @@
    "J": {
     "m": "★★",
     "graded_at": "d526869441f6"
+   }
+  },
+  "Echo, Perceptive Prodigy": {
+   "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   }
  }
