@@ -1068,6 +1068,96 @@
    "name": "Phial of Galadriel",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Faeburrow Elder",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bloom Tender",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bard Class",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Buried in the Garden",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Transdimensional Bovine",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline Immersion",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Greenhouse // Rickety Gazebo",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Inga and Esika",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Gwenna, Eyes of Gaea",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Zendikar // Awakened Skyclave",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Animal Attendant",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Great Hall of the Citadel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Mycosynth Gardens",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Vorinclex, Voice of Hunger",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Emergent Sequence",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Mana Flare",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Culling Ritual",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tazri, Stalwart Survivor",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2530,6 +2620,132 @@
   "Phial of Galadriel": {
    "group": "Early ramp",
    "text": "3-mana legendary rock for any colour; its other lines rarely matter here.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Faeburrow Elder": {
+   "group": "Owner's screenshots",
+   "text": "3 mana: taps for one mana of EACH colour among your permanents (Jodah alone is white, blue and red), so often a whole WUBRG cast from one creature; a vigilant body that grows with your colours.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Bloom Tender": {
+   "group": "Owner's screenshots",
+   "text": "Owned. 2-mana version of Faeburrow's mana: one of each colour among your permanents. Fragile 1/1.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Bard Class": {
+   "group": "Owner's screenshots",
+   "text": "Owned. Level 2 makes legendary spells cost {R}{G} less, and that applies to Jodah's alt cost: a legendary bomb for {W}{U}{B}. Level 1 adds a counter to legends; level 3 exiles two cards to play on each legendary cast.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Buried in the Garden": {
+   "group": "Owner's screenshots",
+   "text": "Owned. Removal and ramp in one: exile a nonland permanent they control, and the enchanted land adds an extra mana of any colour. Removal rule safe.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Transdimensional Bovine": {
+   "group": "Owner's screenshots",
+   "text": "Owned. 0/4 flier for 3 that taps for two mana of one colour: a blocker and double ramp, though only one colour at a time.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Leyline Immersion": {
+   "group": "Owner's screenshots",
+   "text": "Aura for a legendary creature: ward 2 and taps for five mana in any colours for spells — a WUBRG cast every turn — but an aura on a creature risks losing two cards to one removal.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Greenhouse // Rickety Gazebo": {
+   "group": "Owner's screenshots",
+   "text": "Owned Room. Greenhouse ({2}{G}) makes every land tap for any colour, like Prismatic Omen; unlocking Gazebo later mills four and returns two permanents.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Inga and Esika": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 4/4: every creature taps for any colour, but only for creature spells; draws when three creature mana pays for one. Enduring Vitality does the unrestricted version.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Gwenna, Eyes of Gaea": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 2/3: two mana of any colours, creature spells and creature abilities only; untaps on each power-5+ creature cast.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Invasion of Zendikar // Awakened Skyclave": {
+   "group": "Owner's screenshots",
+   "text": "4 mana: two basics onto the battlefield; flipped, a 4/4 land creature that taps for any colour.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Animal Attendant": {
+   "group": "Owner's screenshots",
+   "text": "2-mana 2/2 that taps for any colour: a sturdier body than Birds of Paradise, no flying.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Hall of the Citadel": {
+   "group": "Owner's screenshots",
+   "text": "Land: {1},{T} makes two mana in any colours for legendary spells — net ramp for most of the bombs, colourless otherwise.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "The Mycosynth Gardens": {
+   "group": "Owner's screenshots",
+   "text": "Land: {1} filters to any colour; later it can become a copy of an artifact — a second Timeless Lotus (X = 5) or Chromatic Lantern (X = 3).",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "group": "Owner's screenshots",
+   "text": "MV 8 for WUBRG: doubles your land mana and keeps their tapped lands tapped. A bomb, not early ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Emergent Sequence": {
+   "group": "Owner's screenshots",
+   "text": "2 mana: a basic onto the battlefield that is also a creature. Ramp plus a small body.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Mana Flare": {
+   "group": "Owner's screenshots",
+   "text": "Symmetric: the opponent's lands make double mana too, which helps them as much as us.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Culling Ritual": {
+   "group": "Owner's screenshots",
+   "text": "Destroys every nonland permanent with MV 2 or less — including our own rocks and mana creatures.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Tazri, Stalwart Survivor": {
+   "group": "Owner's screenshots",
+   "text": "Its mana only pays creature activated abilities, which this deck barely uses.",
    "graded_at": {
     "102": "2cf7aeb7ef2a"
    }
@@ -4199,6 +4415,114 @@
   "Phial of Galadriel": {
    "J": {
     "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Faeburrow Elder": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Bloom Tender": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Bard Class": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Buried in the Garden": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Transdimensional Bovine": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Leyline Immersion": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Greenhouse // Rickety Gazebo": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Inga and Esika": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Gwenna, Eyes of Gaea": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Invasion of Zendikar // Awakened Skyclave": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Animal Attendant": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Hall of the Citadel": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "The Mycosynth Gardens": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Emergent Sequence": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Mana Flare": {
+   "J": {
+    "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Culling Ritual": {
+   "J": {
+    "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Tazri, Stalwart Survivor": {
+   "J": {
+    "m": "✗",
     "graded_at": "2cf7aeb7ef2a"
    }
   }

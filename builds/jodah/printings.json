@@ -39,6 +39,7 @@
    "y": "2024"
   }
  ],
+ "Animal Attendant": [],
  "Anticausal Vestige": [],
  "Arcane Signet": [
   {
@@ -93,6 +94,7 @@
  "Ashe, Princess of Dalmasca": [],
  "Ashiok, Sculptor of Fears": [],
  "Bane of Bala Ged": [],
+ "Bard Class": [],
  "Bard, King of Dale": [],
  "Baron Bertram Graywater": [],
  "Birds of Paradise": [
@@ -119,6 +121,32 @@
    "set": "BLC",
    "sn": "Bloomburrow Commander",
    "y": "2024"
+  }
+ ],
+ "Bloom Tender": [
+  {
+   "a": "Julie Dillon",
+   "art": "https://cards.scryfall.io/art_crop/front/e/f/ef1b78d9-8f09-4d67-ac6b-45204e525b35.jpg?1783908595",
+   "cn": "79",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/f/ef1b78d9-8f09-4d67-ac6b-45204e525b35.jpg?1783908595",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  },
+  {
+   "a": "Nils Hamm",
+   "art": "https://cards.scryfall.io/art_crop/front/b/a/ba86688d-18f0-4b5c-a797-42bf125a6c9f.jpg?1783904436",
+   "cn": "166",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/a/ba86688d-18f0-4b5c-a797-42bf125a6c9f.jpg?1783904436",
+   "r": "M",
+   "set": "ECL",
+   "sn": "Lorwyn Eclipsed",
+   "y": "2026"
   }
  ],
  "Brazen Bluff": [],
@@ -153,6 +181,33 @@
  ],
  "Bringer of the Black Dawn": [],
  "Bringer of the Green Dawn": [],
+ "Buried in the Garden": [
+  {
+   "a": "Tom Babbey",
+   "art": "https://cards.scryfall.io/art_crop/front/7/e/7e144609-e1f6-4bdc-8d14-b735ef4140d3.jpg?1783912854",
+   "cn": "191",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/e/7e144609-e1f6-4bdc-8d14-b735ef4140d3.jpg?1783912854",
+   "r": "U",
+   "set": "MKM",
+   "sn": "Murders at Karlov Manor",
+   "y": "2024"
+  },
+  {
+   "a": "Justine Mara Andersen",
+   "art": "https://cards.scryfall.io/art_crop/front/5/0/507073ca-4f97-4fcb-b570-233f096bf0fd.jpg?1783911715",
+   "cn": "38",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/0/507073ca-4f97-4fcb-b570-233f096bf0fd.jpg?1783911715",
+   "r": "U",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  }
+ ],
  "Buster Sword": [],
  "Buxton, Decorated Host": [],
  "Chandra, Hope's Beacon": [],
@@ -289,6 +344,33 @@
   }
  ],
  "Crystal Quarry": [],
+ "Culling Ritual": [
+  {
+   "a": "Lorenzo Mastroianni",
+   "art": "https://cards.scryfall.io/art_crop/front/8/f/8f6f91d3-cc07-4a42-99a0-5fb83b29cc25.jpg?1783927321",
+   "cn": "172",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/f/8f6f91d3-cc07-4a42-99a0-5fb83b29cc25.jpg?1783927321",
+   "r": "R",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  },
+  {
+   "a": "Lenka Šimečková",
+   "art": "https://cards.scryfall.io/art_crop/front/2/b/2bcd7858-7ae6-4419-bc58-a5c133c97577.jpg?1783903915",
+   "cn": "62",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/b/2bcd7858-7ae6-4419-bc58-a5c133c97577.jpg?1783903915",
+   "r": "R",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  }
+ ],
  "Cultivate": [
   {
    "a": "Anthony Palumbo",
@@ -480,6 +562,7 @@
  ],
  "Eldrazi Displacer": [],
  "Elrond, Moon-Reader": [],
+ "Emergent Sequence": [],
  "Emrakul, the World Anew": [],
  "Enduring Vitality": [],
  "Esika, God of the Tree // The Prismatic Bridge": [
@@ -538,6 +621,7 @@
  ],
  "Everything Pizza": [],
  "Extricator of Sin // Extricator of Flesh": [],
+ "Faeburrow Elder": [],
  "Falkenrath Aristocrat": [],
  "Farseek": [
   {
@@ -660,6 +744,9 @@
  "Grand Nagus Zek": [],
  "Great Divide Guide": [],
  "Great Forest Druid": [],
+ "Great Hall of the Citadel": [],
+ "Greenhouse // Rickety Gazebo": [],
+ "Gwenna, Eyes of Gaea": [],
  "Haunted Screen": [],
  "Helga, Skittish Seer": [],
  "Herigast, Erupting Nullkite": [],
@@ -696,8 +783,10 @@
   }
  ],
  "Infinite Guideline Station": [],
+ "Inga and Esika": [],
  "Insidious Roots": [],
  "Invasion of Alara // Awaken the Maelstrom": [],
+ "Invasion of Zendikar // Awakened Skyclave": [],
  "Iridescent Tiger": [],
  "Jace, Multiverse Architect": [],
  "Jacob Hauken, Inspector // Hauken's Insight": [
@@ -909,6 +998,7 @@
  ],
  "Kolaghan's Command": [],
  "Leonardo, the Balance": [],
+ "Leyline Immersion": [],
  "Leyline Prowler": [],
  "Leyline of Anticipation": [
   {
@@ -1024,6 +1114,7 @@
  ],
  "Mai and Zuko": [],
  "Malcolm, Alluring Scoundrel": [],
+ "Mana Flare": [],
  "Marchesa, Dealer of Death": [],
  "Marshals' Pathcruiser": [],
  "Meeting of the Five": [],
@@ -1599,6 +1690,7 @@
   }
  ],
  "Tazri, Beacon of Unity": [],
+ "Tazri, Stalwart Survivor": [],
  "Teferi, Time Raveler": [
   {
    "a": "Chris Rallis",
@@ -1668,6 +1760,7 @@
    "y": "2024"
   }
  ],
+ "The Mycosynth Gardens": [],
  "The World Tree": [],
  "Thran Temporal Gateway": [],
  "Timeless Lotus": [],
@@ -1696,6 +1789,7 @@
   }
  ],
  "Tome of the Infinite": [],
+ "Transdimensional Bovine": [],
  "Ulamog, the Defiler": [],
  "Unexpected Results": [],
  "Vona de Iedo, the Antifex": [],
@@ -1725,6 +1819,35 @@
    "set": "KHM",
    "sn": "Kaldheim",
    "y": "2021"
+  }
+ ],
+ "Vorinclex, Voice of Hunger": [
+  {
+   "a": "JungShan",
+   "art": "https://cards.scryfall.io/art_crop/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "cn": "29",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Karl Kopinski",
+   "art": "https://cards.scryfall.io/art_crop/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "cn": "94",
+   "fx": [
+    "etched"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
   }
  ],
  "Vraska, Soul of Stone": [],
