@@ -1003,6 +1003,71 @@
    "name": "Delighted Halfling",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Enduring Vitality",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Selvala, Heart of the Wilds",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline Prowler",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Great Forest Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Yuna, Grand Summoner",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Path to the World Tree",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Everything Pizza",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Outcaster Trailblazer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tireless Provisioner",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Dryad of the Ilysian Grove",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cultivate",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Caryatid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Phial of Galadriel",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2337,10 +2402,10 @@
    }
   },
   "Chromatic Lantern": {
-   "group": "Early ramp",
-   "text": "Owned. 3-mana rock for any colour that also makes every land tap for any colour — ramp and fixing in one card. Measured: the deck reaches five mana by turn 5 only ~42% of the time with almost no early ramp.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Rona: 3-mana rock for any colour that makes every land tap for any colour. The deck reached five mana by turn 5 only ~42% of the time with almost no early ramp.",
    "graded_at": {
-    "102": "0ba0e806f41f"
+    "102": "2cf7aeb7ef2a"
    }
   },
   "Arcane Signet": {
@@ -2376,6 +2441,97 @@
    "text": "2-mana dork; any colour for legendary spells (most of the bombs) and makes them uncounterable; {C} otherwise.",
    "graded_at": {
     "102": "0ba0e806f41f"
+   }
+  },
+  "Enduring Vitality": {
+   "group": "Early ramp",
+   "text": "Owned. A 3/3 vigilance body that gives EVERY creature 'tap: add any colour' — each creature becomes a mana source, and Kinnan doubles them. When it dies it returns as an enchantment and keeps the effect.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "group": "Early ramp",
+   "text": "{G},{T}: add X mana of any colours, X = your biggest creature's power (Akul 5, Bane 7, Emrakul 12). Legendary for the Unifier and Raff. Its draw trigger is symmetric: an opponent playing a new biggest creature draws too.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Leyline Prowler": {
+   "group": "Early ramp",
+   "text": "2/3 deathtouch lifelink for 3 that taps for any colour: the best blocker among the mana creatures.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Forest Druid": {
+   "group": "Early ramp",
+   "text": "Owned. 2-mana 0/4 that taps for any colour: an early blocker that ramps.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "group": "Early ramp",
+   "text": "Owned. Legendary 1/5 that taps for any colour (the next creature cast gets two counters): a real blocker plus ramp, and a legend.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Path to the World Tree": {
+   "group": "Early ramp",
+   "text": "2 mana: a basic to hand now; late, {2}{W}{U}{B}{R}{G} and sacrifice to draw two, drain 2, deal 2 to a creature and make a 2/2.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Everything Pizza": {
+   "group": "Early ramp",
+   "text": "Owned. 2 mana: a basic to hand now; late, {2}{W}{U}{B}{R}{G} and sacrifice for a draw, a discard, 3 damage and three counters.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "group": "Early ramp",
+   "text": "Owned. 3 mana 4/2 that adds one mana as it enters (so it costs 2) and draws on every power-4+ creature entering — most of the deck's bombs.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Tireless Provisioner": {
+   "group": "Early ramp",
+   "text": "Owned. 3/2 for 3 that makes a Treasure (any colour) each land drop.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "group": "Early ramp",
+   "text": "2/4 for 3: an extra land drop, and every land is every basic type (fixing like Prismatic Omen).",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Cultivate": {
+   "group": "Early ramp",
+   "text": "3 mana: one basic onto the battlefield tapped, one to hand. Ramp plus a land drop; no body.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Sylvan Caryatid": {
+   "group": "Early ramp",
+   "text": "2-mana 0/3 hexproof defender that taps for any colour: a blocker that survives removal.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Phial of Galadriel": {
+   "group": "Early ramp",
+   "text": "3-mana legendary rock for any colour; its other lines rarely matter here.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
    }
   }
  },
@@ -2662,6 +2818,108 @@
     "Reflecting Pool",
     "Riverglide Pathway // Lavaglide Pathway",
     "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "2cf7aeb7ef2a": [
+    "Akul the Unrepentant",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Bringer of the Green Dawn",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cosmic Cube",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jin-Gitaxias",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Oracle of the Alpha",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
     "Sacred Foundry",
     "Sauron, Lord of the Rings",
     "Savai Triome",
@@ -3864,6 +4122,84 @@
    "J": {
     "m": "★★",
     "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Enduring Vitality": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Leyline Prowler": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Forest Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Path to the World Tree": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Everything Pizza": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Tireless Provisioner": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Cultivate": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Sylvan Caryatid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Phial of Galadriel": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
    }
   }
  }

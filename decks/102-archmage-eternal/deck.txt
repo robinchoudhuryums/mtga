@@ -29,6 +29,8 @@
 #: notes: Screen; Doubling Season for Iridescent Tiger (planeswalkers enter with double loyalty: God-Pharaoh can
 #: notes: use its -12 and Kaya her -7 the turn they land); Akul the Unrepentant for Ramos (a 4-mana flying
 #: notes: trampler to carry Buster Sword and The Key to the Vault).
+#: notes: 2026-11-15: Chromatic Lantern for Rona (owner's call). The deck was slow to start: by simulation it
+#: notes: reached five mana by turn 5 only ~42% of the time with Esika as its only early mana source.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Jodah, Archmage Eternal (DOM) 198
@@ -48,6 +50,7 @@
 1 Omnath, Locus of All (MOM) 249
 1 Chromatic Orrery (M21) 228
 1 Stable Wormhole (TRK) 215
+1 Chromatic Lantern (GRN) 233
 
 # Alt-cost backup — keeps WUBRG casting alive without the commander
 1 Leyline of Mutation (DSK) 188
@@ -106,7 +109,6 @@
 1 Nicol Bolas, Dragon-God (WAR) 207
 
 # Card flow and the alternate win
-1 Rona, Herald of Invasion // Rona, Tolarian Obliterator (MOM) 75
 1 Door to Nothingness (BRR) 14
 
 # Lands (37)
