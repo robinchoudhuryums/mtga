@@ -83,7 +83,7 @@
 1 Yue, the Moon Spirit (TLA) 83
 1 The Key to the Vault (OTJ) 54
 1 Buster Sword (FIN) 255
-1 Leyline of Anticipation (M20) 64
+1 Raff Capashen, Ship's Mage (DOM) 202
 
 # Into play
 1 Lukka, Coppercoat Outcast (IKO) 125

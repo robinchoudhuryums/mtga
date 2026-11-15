@@ -1306,9 +1306,9 @@
   },
   "Goro-Goro and Satoru": {
    "group": "Pile",
-   "text": "{1}{R}: haste for the cheated bombs; Dragons when new creatures connect",
+   "text": "Owner's note: {1}{R} haste lets Ulamog's annihilator, Emrakul's stolen board, Raph & Mikey, Narset and the equipment carriers attack the turn they arrive, and new creatures connecting make 5/5 Dragons. Three mana in a top-heavy deck.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Maestros Diabolist": {
@@ -1502,9 +1502,9 @@
   },
   "Karolina Dean, Runaway": {
    "group": "Pile",
-   "text": "WUBRG every first main phase, not for spells from hand: recasts the commander, pays activations (Golos, Kenrith)",
+   "text": "Owner's note: the WUBRG can't cast from hand, but this deck spends a lot outside it — One with the Multiverse's top-of-library casts, recasting Jodah from the command zone, Golos ({2}WUBRG), Nico, Yue's waterbend, Widespread Thieving's WUBRG, half of Door to Nothingness.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Tome of the Infinite": {
@@ -1810,9 +1810,9 @@
   },
   "Unexpected Results": {
    "group": "Pile",
-   "text": "free cast of the top card; in a deck of bombs the hit rate is high",
+   "text": "Owner's note: about 62% of the library is nonland averaging MV 5+, so 4 mana usually casts a bomb free; a land goes onto the battlefield and the card returns to hand to try again. Free casts also trigger Kellan and Nico.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Kellan, the Kid": {
@@ -1908,16 +1908,16 @@
   },
   "Akul the Unrepentant": {
    "group": "Pile",
-   "text": "needs three sacrifices",
+   "text": "Owner's note: the body is the draw — a 5/5 flying trampler for {B}{B}{R}{R} (or WUBRG) is the best carrier for Buster Sword and The Key to the Vault. The cheat is rarely live: three other creatures to sacrifice, few tokens, and putting a bomb in skips its cast trigger.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Nissa of Shadowed Boughs": {
    "group": "Pile",
-   "text": "−5 puts a creature with MV ≤ lands onto the battlefield",
+   "text": "Owner's note: starts at 4 loyalty; +1 and a land drop a turn reach −5 two turns after landing and can repeat every couple of turns, from hand or graveyard, for a creature with MV ≤ lands.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -2068,10 +2068,10 @@
    }
   },
   "Leyline of Anticipation": {
-   "group": "In deck",
-   "text": "Flash on everything, so every alt-cost bomb is instant speed.",
+   "group": "Outside pile",
+   "text": "CUT 2026-11-15 for Raff Capashen, which covers the legendary spells and is itself a legendary Wizard. Leyline still covers non-legendary spells (Omniscience, Cruel Ultimatum, the interaction) and can start in play.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Sublime Epiphany": {
@@ -2215,10 +2215,10 @@
    }
   },
   "Raff Capashen, Ship's Mage": {
-   "group": "Legendary / historic",
-   "text": "Flash flier that gives every historic spell flash, so the legendary bombs become instant speed; overlaps Leyline of Anticipation, which covers everything.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Leyline of Anticipation (owner's call): a legendary Wizard flash flier that gives every historic spell flash — most of the bombs are legends, and it feeds Jodah, the Unifier and Wizard's Staff-style Wizard synergies.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "5fe9e1f29579"
    }
   },
   "Thran Temporal Gateway": {
@@ -2344,6 +2344,108 @@
     "Planetarium of Wan Shi Tong",
     "Prismatic Omen",
     "Prismatic Vista",
+    "Raffine's Tower",
+    "Ramos, Dragon Engine",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "5fe9e1f29579": [
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Bringer of the Green Dawn",
+    "Buster Sword",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cosmic Cube",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Haunted Screen",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Iridescent Tiger",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jin-Gitaxias",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Oracle of the Alpha",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
     "Raffine's Tower",
     "Ramos, Dragon Engine",
     "Raph & Mikey, Troublemakers",
@@ -2674,8 +2776,8 @@
   },
   "Goro-Goro and Satoru": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Maestros Diabolist": {
@@ -2842,8 +2944,8 @@
   },
   "Karolina Dean, Runaway": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Tome of the Infinite": {
@@ -3106,8 +3208,8 @@
   },
   "Unexpected Results": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Kellan, the Kid": {
@@ -3190,14 +3292,14 @@
   },
   "Akul the Unrepentant": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Nissa of Shadowed Boughs": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -3328,8 +3430,8 @@
   },
   "Leyline of Anticipation": {
    "J": {
-    "m": "★★",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Sublime Epiphany": {
@@ -3455,7 +3557,7 @@
   "Raff Capashen, Ship's Mage": {
    "J": {
     "m": "★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "5fe9e1f29579"
    }
   },
   "Thran Temporal Gateway": {
