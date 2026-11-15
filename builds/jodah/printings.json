@@ -1184,6 +1184,32 @@
  "Unexpected Results": [],
  "Vona de Iedo, the Antifex": [],
  "Vraska, Soul of Stone": [],
+ "Warp Speed": [
+  {
+   "a": "Raymond Swanland",
+   "art": "https://cards.scryfall.io/art_crop/front/f/d/fdb5b940-9f62-47ad-8e80-5996daad0c9b.jpg?1793188026",
+   "cn": "223",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/d/fdb5b940-9f62-47ad-8e80-5996daad0c9b.jpg?1793188026",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  },
+  {
+   "a": "Maxim Ruabtsev",
+   "art": "https://cards.scryfall.io/art_crop/front/e/c/ecbad54f-1258-48aa-be7b-a889ed99c1b6.jpg?1793188028",
+   "cn": "387",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/c/ecbad54f-1258-48aa-be7b-a889ed99c1b6.jpg?1793188028",
+   "r": "U",
+   "set": "TRK",
+   "sn": "Star Trek",
+   "y": "2026"
+  }
+ ],
  "Wharf Infiltrator": [],
  "Widespread Thieving": [],
  "Wizard Class": [],

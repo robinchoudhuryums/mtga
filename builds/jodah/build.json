@@ -903,6 +903,11 @@
    "name": "Etali, Primal Storm",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Warp Speed",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2137,6 +2142,13 @@
    "graded_at": {
     "102": "b0616d28935a"
    }
+  },
+  "Warp Speed": {
+   "group": "Outside pile",
+   "text": "3-mana fixer and tempo card: lands enter untapped, so the 11 taplands, the shocklands without paying life, Stable Wormhole's and Artificial Anomaly's Planets and Golos's fetched land all come in ready; the enters trigger finds a basic. Strange new worlds draws two for {7}{U}{U} minus each differently named land (37 names in a singleton manabase). Measured ceiling: tapped lands cost 3.1 points of on-curve chance per card, recovered only while it is out.",
+   "graded_at": {
+    "102": "b0616d28935a"
+   }
   }
  },
  "snapshots": {
@@ -3299,6 +3311,12 @@
   "Etali, Primal Storm": {
    "J": {
     "m": "★",
+    "graded_at": "b0616d28935a"
+   }
+  },
+  "Warp Speed": {
+   "J": {
+    "m": "★★",
     "graded_at": "b0616d28935a"
    }
   }
