@@ -3273,6 +3273,10 @@ Artificial Anomaly,,0,
 Riverglide Pathway // Lavaglide Pathway,,0,
 Cragcrown Pathway // Timbercrown Pathway,,0,
 Darkbore Pathway // Slitherbore Pathway,,0,
+"Frodo, Determined Hero",{1}{W},2,
+"Nick Fury, Spymaster",{4}{W},5,First strike
+"Nahiri, Heir of the Ancients",{2}{R}{W},4,
+"Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5475,7 +5479,6 @@ Knights' Charge,{1}{W}{B},3,
 Tome of Legends,{2},2,
 "Hearthhull, the Worldseed",{1}{B}{R}{G},4,Station
 "Inspirit, Flagship Vessel",{U}{R}{W},3,Station
-"Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
 "Szarel, Genesis Shepherd",{2}{B}{R}{G},5,Flying
 Astelli Reclaimer,{3}{W}{W},5,Flying;Warp
 Auxiliary Boosters,{4}{W},5,Equip
@@ -9472,7 +9475,6 @@ Ringwraiths,{4}{B}{B},6,
 Assault on Osgiliath,{X}{R}{R}{R},3,Amass
 "Aragorn and Arwen, Wed",{4}{G}{W},6,Vigilance
 "Sauron, the Lidless Eye",{3}{B}{R},5,
-"Frodo, Determined Hero",{1}{W},2,
 "Gandalf, White Rider",{3}{W},4,Vigilance;Scry
 "Gollum, Scheming Guide",{1}{B},2,
 "Witch-king, Bringer of Ruin",{4}{B}{B},6,Flying
@@ -11305,7 +11307,6 @@ Heroic Teamwork,{2}{W},3,Teamwork
 The Howling Commandos,{1}{W},2,
 Hyperion's Atomic Vision,{1}{W},2,Behold;Scry
 Infinity Formula,{2}{W},3,Equip
-"Nick Fury, Spymaster",{4}{W},5,First strike
 "Nighthawk, Dark Defender",{1}{W},2,Flying
 Origin of Captain America,{2}{W},3,
 "Photon, Lady of Light",{3}{W},4,Flying
@@ -16531,7 +16532,6 @@ Kargan Warleader,{1}{R}{W},3,
 Lullmage's Familiar,{1}{G}{U},3,
 Moss-Pit Skeleton,{B}{G},2,Kicker
 Murasa Rootgrazer,{G}{W},2,Vigilance
-"Nahiri, Heir of the Ancients",{2}{R}{W},4,
 Nissa of Shadowed Boughs,{2}{B}{G},4,Landfall
 "Omnath, Locus of Creation",{R}{G}{W}{U},4,Landfall
 "Orah, Skyclave Hierophant",{2}{W}{B},4,Lifelink

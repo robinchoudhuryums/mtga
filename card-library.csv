@@ -7122,3 +7122,12 @@ Artificial Anomaly,Land,"{T}: Add {C}.
 Riverglide Pathway // Lavaglide Pathway,Land // Land,{T}: Add {U}. // {T}: Add {R}.,U/R,mana,ZNR,264,1
 Cragcrown Pathway // Timbercrown Pathway,Land // Land,{T}: Add {R}. // {T}: Add {G}.,R/G,mana,ZNR,261,1
 Darkbore Pathway // Slitherbore Pathway,Land // Land,{T}: Add {B}. // {T}: Add {G}.,B/G,mana,KHM,254,1
+"Frodo, Determined Hero",Legendary Creature — Halfling Warrior,"Whenever Frodo enters or attacks, you may attach target Equipment you control with mana value 2 or 3 to Frodo.
+During your turn, prevent all damage that would be dealt to Frodo.",W,Halfling; Warrior; equipment,LTR,289,1
+"Nick Fury, Spymaster",Legendary Creature — Human Spy Hero,"First strike
+Whenever a creature you control attacks alone, draw a card. Then you may put a creature card with mana value 3 or less from your hand onto the battlefield. It enters tapped and attacking and gains indestructible until end of turn.",W,Human; Spy; Hero; card draw; first strike; combat; indestructible; resilience,MSC,603,1
+"Nahiri, Heir of the Ancients",Legendary Planeswalker — Nahiri,"+1: Create a 1/1 white Kor Warrior creature token. You may attach an Equipment you control to it.
+−2: Look at the top six cards of your library. You may reveal a Warrior or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+−3: Nahiri deals damage to target creature or planeswalker equal to twice the number of Equipment you control.",W/R,Nahiri; equipment; planeswalker; tokens; selection,ZNR,230,1
+"Kilo, Apogee Mind",Legendary Artifact Creature — Robot Artificer,"Haste
+Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/U/R,Robot; Artificer; haste; aggro; proliferate; counters,EOC,3,1
