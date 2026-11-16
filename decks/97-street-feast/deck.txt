@@ -13,7 +13,7 @@
 #: archetype: Man each take {1} off a Food crack, so with both a crack is free. The exile layer pays again through
 #: archetype: Quintorius Kand and Scalesoul Gnome, and Bard Class turns legendary casts into more exiled cards. Each
 #: archetype: Food then pays three ways: Biotech Specialist (2 damage per artifact sacrificed), Haliya and Teething
-#: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco, Elanor Gardner,
+#: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco,
 #: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Karn's Bastion and Innkeeper's Talent. Cats
 #: archetype: and Dogs are the body layer: Brimaz, Regal Caracal, Feline Sovereign, the Ajanis and Jetmir go wide,
 #: archetype: Generous Pup turns Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
@@ -48,6 +48,8 @@
 #: notes: 2026-11-07: Yoshimaru was CUT for Ghired, Mirror of the Wilds (owned). The counter layer keeps
 #: notes: Doubling Season, Innkeeper's Talent and Evolution Sage; Ghired's {R}{G}{W} casts on turn 3 68% of the
 #: notes: time. Next cuts if a slot is needed: West Wind Avatar (the 7-drop), then Feline Sovereign.
+#: notes: 2026-11-16: Stable Wormhole for Elanor Gardner (owner's pick): an any-colour land token every attack, and Peregrin
+#: notes: Took adds a Food to each one; Elanor's basic needed a Food sacrificed that turn.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -96,7 +98,7 @@
 
 # Food sinks — counters, ramp and mana
 1 Hungering Puppetbeast (FRA) 107
-1 Elanor Gardner (LTR) 286
+1 Stable Wormhole (TRK) 215
 1 Bosco, Just a Bear (TLE) 132
 1 Bumi's Feast Lecture (TLE) 133
 1 West Wind Avatar (TMT) 137
