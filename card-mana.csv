@@ -3319,6 +3319,57 @@ Prototype X-8,{8}{U}{B},10,Conjure
 Tyvar Kell,{2}{G}{G},4,
 Tyvar's Stand,{X}{G},1,
 Tyvar the Bellicose,{2}{B}{G},4,
+Captain Benjamin Sisko,{1}{W},2,
+"Jett Reno, Problem Solver",{1}{U},2,Surveil;Face a dilemma
+Seven of Nine,{2}{U}{B},4,Face a dilemma
+Melkotian Adjudicator,{2}{U},3,Flying;Vigilance;Face a dilemma
+"Elim Garak, Simple Tailor",{2}{B},3,Face a dilemma;Menace
+The Caretaker,{5}{U},6,Vigilance;Face a dilemma;Ward
+Riku of Many Paths,{G}{U}{R},3,
+Captain Jean-Luc Picard,{2}{W},3,
+"Captain Janeway, Endgame",{1}{U}{R}{W},4,
+Academy Instructor,{2}{R},3,
+Excalbian Gamemaster,{5}{W},6,Strange new worlds
+Captain James T. Kirk,{2}{R},3,
+Tal Shiar Operative,{1}{B},2,Surveil
+Elder Gargaroth,{3}{G}{G},5,Reach;Vigilance;Trample
+Dominion Saboteur,{4}{U},5,
+Territorial Kavu,{R}{G},2,Domain
+Gala Greeters,{1}{G},2,Alliance;Treasure
+Ghalta and Mavren,{3}{G}{G}{W}{W},7,Trample
+Captain Kathryn Janeway,{3}{G},4,Explore
+"Rok-Tahk, Budding Scientist",{4}{G}{G},6,
+"Kenrith, the Returned King",{4}{W},5,
+"Jean-Luc Picard, Luminary",{1}{U}{R}{W},4,Seek;Seek out
+"Cayth, Famed Mechanist",{1}{U}{R}{W},4,Proliferate;Fabricate;Populate
+"Kykar, Zephyr Awakener",{2}{W}{U},4,Flying
+"Seven of Nine, Unassimilated",{1}{U},2,
+"Scotty, Miracle Worker",{1}{U}{U},3,
+"Sarek, Federation Ambassador",{1}{G}{W}{U},4,Federation
+"Isshin, Two Heavens as One",{R}{W}{B},3,
+"Mr. Spock, Science Officer",{2}{U}{U},4,
+Operations Officer,{3}{W},4,Lifelink
+"U.S.S. Enterprise-A, Free Spirit",{3}{W}{W},5,Station;Ward
+"U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
+Set Phasers to . . .,{W},1,Kill;Stun
+Maestros Charm,{U}{B}{R},3,
+Dromoka's Command,{G}{W},2,Fight
+Sultai Charm,{B}{G}{U},3,
+Inscription of Abundance,{1}{G},2,Fight;Kicker
+Brokers Charm,{G}{W}{U},3,
+Casualties of War,{2}{B}{B}{G}{G},6,
+Consider the Prime Directive,{2}{U},3,Observe;Interfere
+Riveteers Charm,{B}{R}{G},3,
+Make It So,{3}{U},4,
+Test of Priorities,{1}{U},2,Surveil;Power to Engines;Power to Life Support
+Test of Conviction,{1}{W},2,Battle Stations;Begin Negotiations
+Umezawa's Jitte,{2},2,Equip
+Savai Triome,,0,Cycling
+Zagoth Triome,,0,Cycling
+Raffine's Tower,,0,Cycling
+Q Continuum,,0,Surveil
+Ni'Var Science Academy,,0,Surveil
+Subspace Anomaly,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5487,7 +5538,6 @@ Idyllic Grange,,0,
 Mystic Sanctuary,,0,
 Tournament Grounds,,0,
 Witch's Cottage,,0,
-"Kenrith, the Returned King",{4}{W},5,
 "Rowan, Fearless Sparkmage",{3}{R}{R},5,
 Garrison Griffin,{2}{W},3,Flying
 Rowan's Battleguard,{3}{R},4,First strike
@@ -5703,7 +5753,6 @@ Preposterous Proportions,{5}{G}{G},7,
 Spinner of Souls,{2}{G},3,Reach
 Dreadwing Scavenger,{1}{U}{B},3,Flying;Threshold
 "Koma, World-Eater",{3}{G}{G}{U}{U},7,Trample;Ward
-"Kykar, Zephyr Awakener",{2}{W}{U},4,Flying
 Banner of Kinship,{5},5,
 Leyline Axe,{4},4,Equip
 Quick-Draw Katana,{2},2,Equip
@@ -6473,7 +6522,6 @@ Ojutai's Command,{2}{W}{U},4,
 Silumgar's Command,{3}{U}{B},5,
 Kolaghan's Command,{1}{B}{R},3,
 Atarka's Command,{R}{G},2,
-Dromoka's Command,{G}{W},2,Fight
 Grisly Salvage,{B}{G},2,
 Relic of Progenitus,{1},1,
 Phyrexian Metamorph,{3}{U/P},4,
@@ -7029,8 +7077,6 @@ Sleeper Dart,{2},2,
 Springjaw Trap,{1},1,Flash
 Zagoth Crystal,{3},3,Cycling
 Bonders' Enclave,,0,
-Savai Triome,,0,Cycling
-Zagoth Triome,,0,Cycling
 "Zilortha, Strength Incarnate",{3}{R}{G},5,Trample
 Mana Drain,{U}{U},2,
 Gnaw to the Bone,{2}{G},3,Flashback
@@ -7318,7 +7364,6 @@ Ruination Rioter,{R}{G},2,
 Shambleshark,{G}{U},2,Evolve;Flash
 Sterling Grove,{G}{W},2,
 Storm God's Oracle,{1}{U}{R},3,
-Territorial Kavu,{R}{G},2,Domain
 Thundering Djinn,{3}{U}{R},5,Flying
 Wavesifter,{3}{G}{U},5,Flying;Investigate;Evoke
 Ravenous Squirrel,{B/G},1,
@@ -8991,7 +9036,6 @@ Sagu Mauler,{4}{G}{U},6,Morph;Hexproof;Trample
 Savage Knuckleblade,{G}{U}{R},3,
 Siege Rhino,{1}{W}{B}{G},4,Trample
 "Sorin, Solemn Visitor",{2}{W}{B},4,
-Sultai Charm,{B}{G}{U},3,
 Sultai Soothsayer,{2}{B}{G}{U},5,
 Surrak Dragonclaw,{2}{G}{U}{R},5,Flash
 Temur Ascendancy,{G}{U}{R},3,
@@ -10028,7 +10072,6 @@ Volcanic Salvo,{10}{R}{R},12,
 Burlfist Oak,{2}{G}{G},4,
 Canopy Stalker,{3}{G},4,
 Cultivate,{2}{G},3,
-Elder Gargaroth,{3}{G}{G},5,Reach;Vigilance;Trample
 Fungal Rebirth,{2}{G},3,
 "Garruk, Unleashed",{2}{G}{G},4,
 Garruk's Gorehorn,{4}{G},5,
@@ -10097,7 +10140,6 @@ Disa the Restless,{2}{B}{R}{G},5,
 "Satya, Aetherflux Genius",{1}{U}{R}{W},4,Haste;Menace
 "Ulalek, Fused Atrocity",{C/W}{C/U}{C/B}{C/R}{C/G},5,Devoid
 "Azlask, the Swelling Scourge",{3},3,
-"Cayth, Famed Mechanist",{1}{U}{R}{W},4,Proliferate;Fabricate;Populate
 "Coram, the Undertaker",{1}{B}{R}{G},4,Mill
 "Jyoti, Moag Ancient",{2}{G}{U},4,
 Comeuppance,{3}{W},4,
@@ -11181,7 +11223,6 @@ Djeru and Hazoret,{2}{R}{R}{W},5,
 Drana and Linvala,{1}{W}{W}{B},4,Flying;Vigilance
 Elvish Vatkeeper,{1}{B}{G},3,Incubate;Transform;Double
 Errant and Giada,{1}{W}{U},3,Flying;Flash
-Ghalta and Mavren,{3}{G}{G}{W}{W},7,Trample
 "Glissa, Herald of Predation",{3}{B}{G},5,Incubate;Transform
 Halo Forager,{1}{U}{B},3,Flying
 Hidetsugu and Kairi,{2}{U}{U}{B},5,Flying
@@ -11708,7 +11749,6 @@ Gloomshrieker,{1}{B}{G},3,Menace
 Hidetsugu Consumes All // Vessel of the All-Consuming,{1}{B}{R},3,Transform;Trample
 "Hinata, Dawn-Crowned",{1}{U}{R}{W},4,Flying;Trample
 Invigorating Hot Spring,{1}{R}{G},3,
-"Isshin, Two Heavens as One",{R}{W}{B},3,
 Jukai Naturalist,{G}{W},2,Lifelink
 Kaito Shizuki,{1}{U}{B},3,
 The Kami War // O-Kagachi Made Manifest,{1}{W}{U}{B}{R}{G},6,Flying;Transform;Trample
@@ -12105,7 +12145,6 @@ Make Your Own Luck,{3}{G}{U},5,Plot
 "Obeka, Splitter of Seconds",{1}{U}{B}{R},4,Menace
 Pillage the Bog,{B}{G},2,Plot
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample
-Riku of Many Paths,{G}{U}{R},3,
 Seraphic Steed,{G}{W},2,Lifelink;Saddle;First strike
 Slick Sequence,{U}{R},2,
 "Vial Smasher, Gleeful Grenadier",{B}{R},2,
@@ -12459,7 +12498,6 @@ Waves of Aggression,{3}{R/W}{R/W},5,Retrace
 Arcbound Ravager,{2},2,Modular
 Metallic Mimic,{2},2,
 Sword of Sinew and Steel,{3},3,Equip
-Umezawa's Jitte,{2},2,Equip
 "Duskmantle, House of Shadow",,0,Mill
 Baffling End,{1}{W},2,
 Bishop of Binding,{3}{W},4,
@@ -13268,7 +13306,6 @@ Elegant Entourage,{3}{G},4,Alliance
 Evolving Door,{2}{G},3,
 Fight Rigging,{2}{G},3,Hideaway
 Freelance Muscle,{4}{G},5,
-Gala Greeters,{1}{G},2,Alliance;Treasure
 Glittermonger,{3}{G},4,Treasure
 Jewel Thief,{2}{G},3,Vigilance;Treasure;Trample
 Luxurious Libation,{X}{G},1,
@@ -13286,7 +13323,6 @@ Aven Heartstabber,{U}{B},2,Flying;Mill
 Black Market Tycoon,{R}{G},2,Treasure
 Body Dropper,{B}{R},2,
 Brazen Upstart,{R}{G}{W},3,Vigilance
-Brokers Charm,{G}{W}{U},3,
 Cabaretti Ascendancy,{R}{G}{W},3,
 Cabaretti Charm,{R}{G}{W},3,
 Celestial Regulator,{1}{W}{U},3,Flying
@@ -13311,7 +13347,6 @@ Incandescent Aria,{R}{G}{W},3,
 Jetmir's Fixer,{R}{G},2,
 "Lagrella, the Magpie",{G}{W}{U},3,
 Maestros Ascendancy,{U}{B}{R},3,
-Maestros Charm,{U}{B}{R},3,
 Maestros Diabolist,{U}{B}{R},3,Haste;Deathtouch
 Masked Bandits,{3}{B}{R}{G},6,Vigilance;Menace
 Meeting of the Five,{3}{W}{U}{B}{R}{G},8,
@@ -13329,7 +13364,6 @@ Park Heights Pegasus,{G}{W},2,Flying;Trample
 Rakish Revelers,{2}{R}{G}{W},5,
 "Rigo, Streetwise Mentor",{G/W}{W}{W/U},3,
 Riveteers Ascendancy,{B}{R}{G},3,
-Riveteers Charm,{B}{R}{G},3,
 "Rocco, Cabaretti Caterer",{X}{R}{G}{W},3,
 Scheming Fence,{W}{U},2,
 Security Rhox,{2}{R}{G},4,
@@ -13362,7 +13396,6 @@ Botanical Plaza,,0,
 Maestros Theater,,0,
 Obscura Storefront,,0,
 Racers' Ring,,0,
-Raffine's Tower,,0,Cycling
 Riveteers Overlook,,0,
 Skybridge Towers,,0,
 Tramway Station,,0,
@@ -14509,12 +14542,10 @@ Foot Headquarters,,0,
 Northampton Farm,,0,
 TCRI Building,,0,
 The Borg Queen,{4}{W}{U}{B},7,Assimilate
-"Jean-Luc Picard, Luminary",{1}{U}{R}{W},4,Seek;Seek out
 "Worf, Defiant Commander",{2}{R}{W}{B},5,Battlefront
 "Data, Exploring Humanity",{4}{U},5,Seek;Seek out;Discover
 Battle of Wolf 359,{3}{B}{B},5,
 "Grilka, Widowed Warrior",{5}{R},6,Treasure
-"Captain Janeway, Endgame",{1}{U}{R}{W},4,
 "Captain Kirk, Boldly Going",{1}{G}{W}{U},4,Vigilance
 Commander William Riker,{1}{R}{W},3,Vigilance;Haste
 "Kor, Cause of Vengeance",{1}{R}{W}{B},4,
@@ -14546,7 +14577,6 @@ Gorn Captain,{3}{G},4,Trample
 Gumato,{4}{G},5,Vigilance
 Talarian Hook Spider,{1}{G},2,Reach
 Disruptor Pistol,{2},2,
-Operations Officer,{3}{W},4,Lifelink
 "Picard, Steadfast Captain",{4}{W}{W},6,
 "Spock, Logical Choice",{3}{U}{U},5,Vigilance
 "Trelane, Squire of Gothos",{5}{U},6,Vigilance;Ward
@@ -14562,8 +14592,6 @@ Andromedan Automatons,{2}{W},3,
 Antagonist Incorporator,{1}{W},2,
 Assembly Specialist,{1}{W},2,
 "Brad Boimler, Eager Ensign",{1}{W},2,Lifelink
-Captain Benjamin Sisko,{1}{W},2,
-Captain Jean-Luc Picard,{2}{W},3,
 Command Decision,{1}{W},2,
 Command Subadjunct,{W},1,
 Conquest Mission,{2}{W},3,
@@ -14572,7 +14600,6 @@ DOT-7 Repair Squad,{3}{W},4,Flying
 Dr. Beverly Crusher,{2}{W},3,
 "Dr. McCoy, Surly Surgeon",{2}{W}{W},4,Heal
 Emergency Medical Hologram,{W},1,
-Excalbian Gamemaster,{5}{W},6,Strange new worlds
 Federation Field Medic,{3}{W},4,Vigilance
 Federation Resupply,{1}{W},2,Beam me up
 Free Borg Revolutionaries,{3}{W}{W},5,Landcycling;Basic landcycling;Typecycling;Cycling
@@ -14590,27 +14617,21 @@ Primary Unimatrix Adjunct,{3}{W},4,
 Pure Energy,{1}{W},2,Beam me up
 "Rutherford, Upgraded Ensign",{2}{W},3,
 "Saavik, Stoic Student",{4}{W},5,Federation;Flash
-Set Phasers to . . .,{W},1,Kill;Stun
 Shields Up!,{1}{W},2,
 Shuttle Ace,{4}{W},5,
 "Sulu, Space Swashbuckler",{1}{W},2,First strike
 Tactical Officer,{1}{W},2,
-Test of Conviction,{1}{W},2,Battle Stations;Begin Negotiations
 There's Coffee in that Nebula,{1}{W},2,Beam me up
 Troubling Tribbles,{2}{W},3,
 "Una Chin-Riley, Number One",{4}{W},5,
-"U.S.S. Enterprise-A, Free Spirit",{3}{W}{W},5,Station;Ward
 "U.S.S. Excelsior, Cutting Edge",{3}{W},4,Station
 Vexing Drone,{1}{W},2,
 Anthropological Mission,{2}{U},3,
-The Caretaker,{5}{U},6,Vigilance;Face a dilemma;Ward
 Cetacean Ops,{3}{U},4,Ward
 Cloak and Phaser,{8}{U},9,Strange new worlds
 Cloistered Telepath,{1}{U},2,Flash
-Consider the Prime Directive,{2}{U},3,Observe;Interfere
 "Data, New Life",{1}{U},2,
 Deep Space Scan,{4}{U}{U},6,Strange new worlds
-Dominion Saboteur,{4}{U},5,
 Emergency Holographic Crew,{3}{U},4,Surveil
 Energize,{1}{U},2,Beam me up
 Ensign Pavel Chekov,{3}{U},4,Strange new worlds
@@ -14623,25 +14644,18 @@ Highly Illogical,{1}{U},2,Kicker
 "Hoshi Sato, Exolinguist",{4}{U},5,Federation
 Humpback Whales,{4}{U}{U},6,Vigilance;Landcycling;Basic landcycling;Ward;Typecycling;Cycling
 Interstellar Effigy,{4}{U},5,
-"Jett Reno, Problem Solver",{1}{U},2,Surveil;Face a dilemma
 Kobayashi Maru Scenario,{1}{U}{U},3,Sensors;Abandon Ship;Hail;Transport
 Lieutenant Commander Data,{2}{U},3,
 Lt. Cmdr. Geordi La Forge,{2}{U},3,
-Make It So,{3}{U},4,
 Marooned,{U},1,Enchant
-Melkotian Adjudicator,{2}{U},3,Flying;Vigilance;Face a dilemma
-"Mr. Spock, Science Officer",{2}{U}{U},4,
 "Nyota Uhura, Communications",{2}{U},3,Open a Channel;Hailing Frequencies
 Open Communications,{U},1,Beam me up
 Romulan Bird-of-Prey,{1}{U},2,Station;Cloaking Device
 Rules of Acquisition,{3}{U}{U},5,Follow the 3rd Rule;Follow the 98th Rule
-"Scotty, Miracle Worker",{1}{U}{U},3,
-"Seven of Nine, Unassimilated",{1}{U},2,
 Starfleet Spanner Jockey,{1}{U},2,Defender
 Subcommander T'Pol,{2}{U},3,Flash
 Suurok-Class Science Vessel,{2}{U},3,Station
 Suus Mahna Practitioner,{2}{U},3,Strange new worlds
-Test of Priorities,{1}{U},2,Surveil;Power to Engines;Power to Life Support
 Those Old Scientists,{2}{U},3,
 "V'Ger, the Intruder",{6}{U},7,Flying
 Vulcan Mind-Meld,{U},1,
@@ -14662,7 +14676,6 @@ Death Is Irrelevant,{6}{B}{B},8,Assimilate
 The Destruction of Praxis,{3}{B}{B},5,Strange new worlds
 De-evolve,{1}{B},2,Enchant;Threshold
 Eject the Warp Core,{1}{B},2,Kicker
-"Elim Garak, Simple Tailor",{2}{B},3,Face a dilemma;Menace
 Fugitive Listener,{2}{B},3,
 "Gabriel Lorca, Mirror Menace",{4}{B},5,Face a dilemma;Menace
 "General Chang, Cold Warrior",{B},1,
@@ -14687,18 +14700,15 @@ Salt Vampire,{1}{B},2,Lifelink
 "Sela, Tal Shiar Paradox",{3}{B},4,
 Storied Veteran,{B},1,
 Stray from History,{2}{B},3,Rewrite the Past;Repair the Timeline
-Tal Shiar Operative,{1}{B},2,Surveil
 Tell Me What You See,{1}{B},2,Surveil;Face a dilemma
 Tenacious Drone,{1}{B},2,
 Test of Loyalty,{B},1,"Of the Obsidian Order;Plain, Simple Garak"
 "U.S.S. Reliant, From Hell's Heart",{2}{B}{B},4,Station
 Vengeance Mission,{2}{B},3,
-Academy Instructor,{2}{R},3,
 "Beckett Mariner, Impetuous Ensign",{1}{R},2,Reckless Behavior;First strike
 Boarding Action,{1}{R},2,Beam me up
 Brazen Bluff,{R}{R},2,
 Cantankerous Captain,{2}{R},3,
-Captain James T. Kirk,{2}{R},3,
 Captain Michael Burnham,{2}{R},3,Trample;Landfall
 Captain's Tutelage,{1}{R},2,Enchant;Flash
 D-7 Battle Cruiser,{1}{R},2,Station
@@ -14743,7 +14753,6 @@ Amok Time,{2}{G},3,Fight
 Astute Terraformer,{1}{G},2,Strange new worlds
 Branching Timeline,{6}{G}{G},8,Strange new worlds
 Captain Jonathan Archer,{2}{G},3,Federation
-Captain Kathryn Janeway,{3}{G},4,Explore
 "Captain Pike, Fullness of Time",{1}{G}{G},3,Strange new worlds
 Cold-Blooded Crew,{4}{G}{G},6,Landcycling;Basic landcycling;Typecycling;Cycling
 Common Goal,{1}{G},2,
@@ -14767,7 +14776,6 @@ Moopsy,{G},1,Deathtouch
 Mugato,{3}{G}{G},5,Reach;Vigilance;Deathtouch
 "Neelix, Moral Support",{1}{G},2,Food
 Photosynthetic Physician,{4}{G},5,Reach
-"Rok-Tahk, Budding Scientist",{4}{G}{G},6,
 "Saru, Unthreatened",{2}{G},3,Flash
 Saurian Explorer,{3}{G},4,Landfall
 Species 8472,{4}{G}{G},6,Strange new worlds
@@ -14805,8 +14813,6 @@ Live Long and Prosper,{5}{W}{U},7,Double
 Mirror Universe Intrusion,{1}{U}{B},3,Kicker
 "Nog, Ambitious Cadet",{B}{G},2,Surveil;Menace
 "Phlox, Unorthodox Doctor",{2}{G}{W},4,Trample
-"Sarek, Federation Ambassador",{1}{G}{W}{U},4,Federation
-Seven of Nine,{2}{U}{B},4,Face a dilemma
 "Spock, Always Your Friend",{U}{R},2,
 The Traveler,{G}{U},2,Reach;Vigilance;Strange new worlds
 "Vash, Freelance Archaeologist",{1}{B}{G},3,Surveil
@@ -14827,7 +14833,6 @@ Sickbay,{5},5,
 Tricorder,{1},1,Surveil;Equip
 Type-2 Phaser,{2},2,Equip
 "U.S.S. Cerritos, Following Up",{5},5,Station
-"U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
 Warp Core,{2},2,
 Andoria,,0,
 Bajor,,0,
@@ -14836,16 +14841,13 @@ Cardassia Prime,,0,
 Federation Outpost,,0,Surveil
 Ferenginar,,0,
 Gaseous Anomaly,,0,
-Ni'Var Science Academy,,0,Surveil
 Orion,,0,
-Q Continuum,,0,Surveil
 Qo'noS,,0,
 Quark's Bar,,0,Surveil
 Risa,,0,
 Romulus,,0,
 Spatial Anomaly,,0,
 Starfleet Academy,,0,Federation
-Subspace Anomaly,,0,
 Temporal Anomaly,,0,Mill
 Unexplored Territory,,0,
 The Unicomplex,,0,Surveil
@@ -15238,7 +15240,6 @@ Vivien's Arkbow,{1}{G},2,
 Vivien's Grizzly,{2}{G},3,
 Wardscale Crocodile,{4}{G},5,Hexproof
 Angrath's Rampage,{B}{R},2,
-Casualties of War,{2}{B}{B}{G}{G},6,
 Cruel Celebrant,{W}{B},2,
 Deathsprout,{1}{B}{B}{G},4,
 Despark,{W}{B},2,
@@ -16495,7 +16496,6 @@ Wayward Guide-Beast,{R},1,Haste;Trample
 Bala Ged Recovery // Bala Ged Sanctuary,{2}{G},3,
 Cragplate Baloth,{5}{G}{G},7,Hexproof;Haste;Kicker
 Dauntless Survivor,{1}{G},2,
-Inscription of Abundance,{1}{G},2,Fight;Kicker
 Iridescent Hornbeetle,{4}{G},5,
 Joraga Visionary,{3}{G},4,
 Kazandu Mammoth // Kazandu Valley,{1}{G}{G},3,Landfall

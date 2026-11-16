@@ -7232,3 +7232,162 @@ Tyvar Kell,Legendary Planeswalker — Tyvar,"Elves you control have ""{T}: Add {
 Tyvar's Stand,Instant,"Target creature you control gets +X/+X and gains hexproof and indestructible until end of turn. (It can't be the target of spells or abilities your opponents control. Damage and effects that say ""destroy"" don't destroy it.)",G,pump; hexproof; protection; indestructible; resilience,ONE,190,1
 Tyvar the Bellicose,Legendary Creature — Elf Warrior,"Whenever one or more Elves you control attack, they gain deathtouch until end of turn.
 Each creature you control has ""Whenever a mana ability of this creature resolves, put a number of +1/+1 counters on it equal to the amount of mana this creature produced. This ability triggers only once each turn.""",B/G,Elf; Warrior; counters; deathtouch; combat; removal,MAT,48,1
+Captain Benjamin Sisko,Legendary Creature — Human Officer,"At the beginning of your end step, create a 1/1 red Officer creature token for each dilemma you've faced this turn.
+{2}{W}{U}{B}{R}{G}, {T}: Exile the top five cards of your library. You may cast any number of spells with mana value less than or equal to the number of Officers you control from among those cards without paying their mana costs.",W/U/B/R/G,Human; Officer; tokens,TRK,6,1
+"Jett Reno, Problem Solver",Legendary Creature — Human Artificer,"Whenever Jett Reno becomes tapped, surveil 1. If her power is 4 or greater, instead draw a card.
+Whenever you face a dilemma, put a +1/+1 counter on Jett Reno. (You face a dilemma as you choose one or more modes for a spell or ability.)",U,Human; Artificer; counters; card draw; surveil; graveyard; face a dilemma,TRK,67,1
+Seven of Nine,Legendary Artifact Creature — Human Scientist,"Whenever you face a dilemma, draw a card. (You face a dilemma as you choose one or more modes for a spell or ability.)",U/B,Human; Scientist; card draw; face a dilemma,TRK,252,1
+Melkotian Adjudicator,Creature — Melkotian Advisor,"Flying, vigilance
+Whenever you face a dilemma, put a +1/+1 counter on this creature. (You face a dilemma as you choose one or more modes for a spell or ability.)",U,Melkotian; Advisor; counters; flying; evasion; vigilance; combat; face a dilemma,TRK,73,1
+"Elim Garak, Simple Tailor",Legendary Creature — Cardassian Rogue,"Menace
+Whenever you face a dilemma, each opponent loses 2 life and you gain 2 life. (You face a dilemma as you choose one or more modes for a spell or ability.)",B,Cardassian; Rogue; lifegain; face a dilemma; menace; evasion,TRK,106,1
+The Caretaker,Legendary Creature — Elemental,"Vigilance, ward {2}
+At the beginning of each end step, if you faced a dilemma this turn, target opponent exiles cards from the top of their library until they exile a nonland card. You may cast that card without paying its mana cost. (You face a dilemma as you choose one or more modes for a spell or ability.)",U,Elemental; heist; vigilance; combat; face a dilemma; ward; protection,TRK,47,1
+Riku of Many Paths,Legendary Creature — Human Wizard,"Whenever you cast a modal spell, choose up to X, where X is the number of times you chose a mode for that spell —
+• Exile the top card of your library. Until the end of your next turn, you may play it.
+• Put a +1/+1 counter on Riku. It gains trample until end of turn.
+• Create a 1/1 blue Bird creature token with flying.",U/R/G,Human; Wizard; counters; tokens; impulse; trample; evasion,OTJ,227,1
+Captain Jean-Luc Picard,Legendary Creature — Human Officer,"Other creatures you control get +1/+1.
+Whenever you cast a creature or Spacecraft spell, create a 1/1 red Officer creature token.
+Tap seven untapped Officers you control: Search your library for a Spacecraft card, put it onto the battlefield with seven charge counters on it, then shuffle.",W,Human; Officer; tokens; pump,TRK,7,1
+"Captain Janeway, Endgame",Legendary Creature — Human Officer,"Whenever one or more Officers you control deal combat damage to a player, you draw a card and create a 1/1 red Officer creature token.
+{2}, Tap an untapped creature you control: Captain Janeway can't be blocked this turn.",W/U/R,Human; Officer; card draw; tokens,TRC,84,1
+Academy Instructor,Creature — Bolian Officer,"This creature gets +1/+0 for each Officer token you control.
+Whenever you cast a noncreature spell, create a 1/1 red Officer creature token.",R,Bolian; Officer; tokens; pump; spellslinger,TRK,137,1
+Excalbian Gamemaster,Creature — Excalbian,"Strange new worlds — When this creature enters, create X 1/1 red Officer creature tokens, where X is the number of differently named lands you control.
+Whenever this creature or another creature you control dies, put a +1/+1 counter on target creature you control.",W,Excalbian; counters; tokens; etb; strange new worlds,TRK,16,1
+Captain James T. Kirk,Legendary Creature — Human Officer,"Whenever Captain Kirk enters or attacks, choose one. If you have no cards in hand, choose one or more instead.
+• Discard a card, then draw a card.
+• Create a 1/1 red Officer creature token.
+• Creatures you control get +1/+0 until end of turn.",R,Human; Officer; card draw; tokens; pump,TRK,142,1
+Tal Shiar Operative,Creature — Romulan Officer Spy,"Whenever this creature attacks, choose one —
+• Target creature you control gains deathtouch until end of turn.
+• Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B,Romulan; Officer; Spy; graveyard; selection; surveil; deathtouch; combat; removal,TRK,131,1
+Elder Gargaroth,Creature — Beast,"Reach, vigilance, trample
+Whenever this creature attacks or blocks, choose one —
+• Create a 3/3 green Beast creature token.
+• You gain 3 life.
+• Draw a card.",G,Beast; lifegain; card draw; tokens; reach; defense; vigilance; combat; trample; evasion,M21,179,1
+Dominion Saboteur,Creature — Shapeshifter,"You may have this creature enter as a copy of any artifact or creature on the battlefield, except it isn't legendary. If you do, it enters with additional counters on it equal to the same number and kinds of counters the copied permanent has on it.",U,Shapeshifter,TRK,54,1
+Territorial Kavu,Creature — Kavu,"Domain — Territorial Kavu's power and toughness are each equal to the number of basic land types among lands you control.
+Whenever this creature attacks, choose one —
+• Discard a card. If you do, draw a card.
+• Exile up to one target card from a graveyard.",R/G,Kavu; graveyard; card draw; domain; lands,J21,724,1
+Gala Greeters,Creature — Elf Druid,"Alliance — Whenever another creature you control enters, choose one that hasn't been chosen this turn —
+• Put a +1/+1 counter on this creature.
+• Create a tapped Treasure token.
+• You gain 2 life.",G,Elf; Druid; counters; lifegain; tokens; treasure; alliance; aggro; value,SNC,148,1
+Ghalta and Mavren,Legendary Creature — Dinosaur Vampire,"Trample
+Whenever you attack, choose one —
+• Create a tapped and attacking X/X green Dinosaur creature token with trample, where X is the greatest power among other attacking creatures.
+• Create X 1/1 white Vampire creature tokens with lifelink, where X is the number of other attacking creatures.",W/G,Dinosaur; Vampire; lifegain; tokens; trample; evasion,MOM,225,1
+Captain Kathryn Janeway,Legendary Creature — Human Officer,"You may play an additional land on each of your turns.
+Whenever Captain Janeway or another creature you control enters, that creature explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)",G,Human; Officer; counters; graveyard; explore; selection,TRK,187,1
+"Rok-Tahk, Budding Scientist",Legendary Creature — Brikar Scientist,"Creatures you control have ""{T}: Add {G}{G}.""
+When Rok-Tahk enters, create Murf, a legendary 0/1 green Ooze Slug creature token with indestructible.",G,Brikar; Scientist; tokens; mana; etb,TRK,211,1
+"Kenrith, the Returned King",Legendary Creature — Human Noble,"{R}: All creatures gain trample and haste until end of turn.
+{1}{G}: Put a +1/+1 counter on target creature.
+{2}{W}: Target player gains 5 life.
+{3}{U}: Target player draws a card.
+{4}{B}: Put target creature card from a graveyard onto the battlefield under its owner's control.",W/U/B/R/G,Human; Noble; counters; reanimator; graveyard; trample; evasion; haste; aggro,ELD,303,1
+"Jean-Luc Picard, Luminary",Legendary Creature — Human Officer,"Whenever another historic permanent you control with mana value 3 or greater enters, draw a card. (Artifacts, legendaries, and Sagas are historic.)
+Seek out — Whenever you draw your second card each turn, put a +1/+1 counter on up to one other target creature and two charge counters on up to one target Spacecraft.",W/U/R,Human; Officer; counters; card draw; seek; seek out,TRC,3,1
+"Cayth, Famed Mechanist",Legendary Creature — Dwarf Artificer,"Fabricate 1 (When this creature enters, put a +1/+1 counter on it or create a 1/1 colorless Servo artifact creature token.)
+Other nontoken creatures you control have fabricate 1.
+{2}, {T}: Choose one —
+• Populate.
+• Proliferate.",W/U/R,Dwarf; Artificer; counters; tokens; etb; proliferate; fabricate; populate; go-wide,M3C,6,1
+"Kykar, Zephyr Awakener",Legendary Creature — Bird Wizard,"Flying
+Whenever you cast a noncreature spell, choose one —
+• Exile another target creature you control. Return that card to the battlefield under its owner's control at the beginning of the next end step.
+• Create a 1/1 white Spirit creature token with flying.",W/U,Bird; Wizard; tokens; blink; spellslinger; flying; evasion,FDN,122,1
+"Seven of Nine, Unassimilated",Legendary Artifact Creature — Human Officer,"At the beginning of your first main phase, draw a card. Then discard a card unless you control five or more differently named lands.
+{6}{U}: Seven of Nine's base power and toughness become 7/9. Activate only if you control seven or more differently named lands.",U,Human; Officer; card draw,TRK,80,1
+"Scotty, Miracle Worker",Legendary Creature — Human Artificer,"During your main phase, each card in your graveyard has beam me up. The beam me up cost is equal to that spell's mana cost. Scotty can't be beamed up to cast a spell this way. (Only instant and sorcery spells can be cast this way. You may cast a card from your graveyard for its beam me up cost if you also return another creature you control to its owner's hand. Then exile that spell.)",U,Human; Artificer; graveyard; bounce; spellslinger,TRK,79,1
+"Sarek, Federation Ambassador",Legendary Creature — Vulcan Advisor,"Federation — At the beginning of combat on your turn, draw a card for every five creature types among non-Borg creatures you control. If you draw three or more cards this way, put two +1/+1 counters on each creature you control.",W/U/G,Vulcan; Advisor; Borg; counters; card draw; federation,TRK,251,1
+"Isshin, Two Heavens as One",Legendary Creature — Human Samurai,"If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",W/B/R,Human; Samurai,NEO,224,1
+"Mr. Spock, Science Officer",Legendary Creature — Vulcan Human Scientist,"If you would draw a card, draw two cards instead.",U,Vulcan; Human; Scientist; card draw,TRK,74,1
+Operations Officer,Creature — Human Officer,"Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+When this creature enters, draw a card.
+Whenever this creature attacks, put a +1/+1 counter on it.",W,Human; Officer; counters; lifegain; card draw; etb; lifelink,TRC,192,1
+"U.S.S. Enterprise-A, Free Spirit",Legendary Artifact — Spacecraft,"Ward {2}
+When U.S.S. Enterprise-A enters, create three 1/1 red Officer creature tokens.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 6+.)
+6+ | Flying, lifelink",W,Spacecraft; lifegain; tokens; station; counters; artifacts; ward; protection,TRK,43,1
+"U.S.S. Enterprise-D, Galaxy-Class",Legendary Artifact — Spacecraft,"Whenever one or more charge counters are put on U.S.S. Enterprise-D for the first time each turn, exile the top card of your library. You may play that card this turn.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying, vigilance",Colorless,Spacecraft; impulse; station; counters; artifacts,TRK,273,1
+Set Phasers to . . .,Instant,"Choose one —
+• Stun — Tap target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+• Kill — This spell deals 3 damage to target attacking creature.",W,counters; burn,TRK,34,1
+Maestros Charm,Instant,"Choose one —
+• Look at the top five cards of your library. Put one of those cards into your hand and the rest into your graveyard.
+• Each opponent loses 3 life and you gain 3 life.
+• Maestros Charm deals 5 damage to target creature or planeswalker.",U/B/R,graveyard; lifegain; burn; selection,SNC,199,1
+Dromoka's Command,Instant,"Choose two —
+• Prevent all damage target instant or sorcery spell would deal this turn.
+• Target player sacrifices an enchantment of their choice.
+• Put a +1/+1 counter on target creature.
+• Target creature you control fights target creature you don't control.",W/G,counters; sacrifice; fight; removal; combat,HA5,22,1
+Sultai Charm,Instant,"Choose one —
+• Destroy target monocolored creature.
+• Destroy target artifact or enchantment.
+• Draw two cards, then discard a card.",U/B/G,card draw; removal,KTK,204,1
+Inscription of Abundance,Instant,"Kicker {2}{G}
+Choose one. If this spell was kicked, choose any number instead.
+• Put two +1/+1 counters on target creature.
+• Target player gains X life, where X is the greatest power among creatures they control.
+• Target creature you control fights target creature you don't control.",G,counters; fight; removal; combat; kicker; value,ZNR,186,1
+Brokers Charm,Instant,"Choose one —
+• Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to target creature or planeswalker an opponent controls.
+• Destroy target enchantment.
+• Draw two cards.",W/U/G,card draw; removal; pump,SNC,171,1
+Casualties of War,Sorcery,"Choose one or more —
+• Destroy target artifact.
+• Destroy target creature.
+• Destroy target enchantment.
+• Destroy target land.
+• Destroy target planeswalker.",B/G,removal,WAR,187,1
+Consider the Prime Directive,Instant,"Choose one —
+• Interfere — Counter target spell unless its controller pays {3}.
+• Observe — Tap up to one target creature and put a stun counter on it. Draw a card. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,counters; counterspell; card draw,TRK,51,1
+Riveteers Charm,Instant,"Choose one —
+• Target opponent sacrifices a creature or planeswalker they control with the greatest mana value among creatures and planeswalkers they control.
+• Exile the top three cards of your library. Until your next end step, you may play those cards.
+• Exile target player's graveyard.",B/R/G,graveyard; sacrifice; removal; impulse,SNC,217,1
+Make It So,Sorcery,"Choose one —
+• Untap target permanent you control. Target player draws two cards.
+• Create a 1/1 red Officer creature token and draw two cards.",U,card draw; tokens,TRK,71,1
+Test of Priorities,Instant,"Choose one —
+• Power to Engines — Surveil 2, then draw a card.
+• Power to Life Support — Exile target creature you control. Return that card to the battlefield under its owner's control at the beginning of the next end step.",U,card draw; blink; surveil; graveyard,TRK,85,1
+Test of Conviction,Sorcery,"Choose one —
+• Battle Stations — Put a +1/+1 counter on each creature you control.
+• Begin Negotiations — Target opponent draws a card. You draw two cards.",W,counters; card draw,TRK,39,1
+Umezawa's Jitte,Legendary Artifact — Equipment,"Whenever equipped creature deals combat damage, put two charge counters on Umezawa's Jitte.
+Remove a charge counter from Umezawa's Jitte: Choose one —
+• Equipped creature gets +2/+2 until end of turn.
+• Target creature gets -1/-1 until end of turn.
+• You gain 2 life.
+Equip {2}",Colorless,equipment; lifegain; pump; removal; equip,PZA,19,1
+Savai Triome,Land — Mountain Plains Swamp,"({T}: Add {R}, {W}, or {B}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",W/B/R,Mountain; Plains; Swamp; card draw; mana; cycling,IKO,253,1
+Zagoth Triome,Land — Swamp Forest Island,"({T}: Add {B}, {G}, or {U}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",U/B/G,Swamp; Forest; Island; card draw; mana; cycling,IKO,259,1
+Raffine's Tower,Land — Plains Island Swamp,"({T}: Add {W}, {U}, or {B}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",W/U/B,Plains; Island; Swamp; card draw; mana; cycling,SNC,254,1
+Q Continuum,Land,"This land enters tapped unless you control two or more other lands.
+When this land enters untapped, choose one —
+• Target creature gets +1/+1 and gains vigilance until end of turn.
+• Surveil 1.
+{T}: Add {G}.",G,mana; etb; pump; surveil; graveyard; vigilance; combat,TRK,290,1
+Ni'Var Science Academy,Land,"This land enters tapped unless you control two or more other lands.
+When this land enters untapped, choose one —
+• Target creature gains flying until end of turn.
+• Surveil 1.
+{T}: Add {U}.",U,mana; etb; surveil; graveyard; flying; evasion,TRK,287,1
+Subspace Anomaly,Land,"{T}: Add {C}.
+{4}{W}, {T}, Sacrifice this land: Create two 1/1 red Officer creature tokens. Create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color.""",W,sacrifice; tokens; mana; ramp,TRK,300,1
