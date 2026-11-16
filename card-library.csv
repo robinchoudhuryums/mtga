@@ -7017,3 +7017,108 @@ Woodland Cemetery,Land,"This land enters tapped unless you control a Swamp or a 
 {T}: Add {B} or {G}.",B/G,mana,DOM,248,1
 "Jidoor, Aristocratic Capital",Land — Town // Sorcery — Adventure,"This land enters tapped.
 {T}: Add {U}. // Target opponent mills half their library, rounded down. (Then exile this card. You may play the land later from exile.)",U,Town; Adventure; mill; exile cast; mana; graveyard,FIN,284,1
+"Jodah, Archmage Eternal",Legendary Creature — Human Wizard,"Flying
+You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast.",W/U/B/R/G,Human; Wizard; flying; evasion,DOM,198,1
+Timeless Lotus,Legendary Artifact,"Timeless Lotus enters tapped.
+{T}: Add {W}{U}{B}{R}{G}.",W/U/B/R/G,mana,DMU,239,1
+Warp Speed,Enchantment,"Lands you control enter untapped.
+When this enchantment enters, search your library for a basic land card or Planet card, reveal it, put it into your hand, then shuffle.
+Strange new worlds — {7}{U}{U}, Sacrifice this enchantment: Draw two cards. This ability costs {X} less to activate, where X is the number of differently named lands you control.",U/G,cost-reduction; card draw; sacrifice; ramp; etb; strange new worlds,TRK,223,1
+"Esika, God of the Tree // The Prismatic Bridge",Legendary Creature — God // Legendary Enchantment,"Vigilance
+{T}: Add one mana of any color.
+Other legendary creatures you control have vigilance and ""{T}: Add one mana of any color."" // At the beginning of your upkeep, reveal cards from the top of your library until you reveal a creature or planeswalker card. Put that card onto the battlefield and the rest on the bottom of your library in a random order.",W/U/B/R/G,God; mana; vigilance; combat,KHM,168,1
+"Kinnan, Bonder Prodigy",Legendary Creature — Human Druid,"Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced.
+{5}{G}{U}: Look at the top five cards of your library. You may put a non-Human creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",U/G,Human; Druid; selection,IKO,192,1
+Chromatic Orrery,Legendary Artifact,"You may spend mana as though it were mana of any color.
+{T}: Add {C}{C}{C}{C}{C}.
+{5}, {T}: Draw a card for each color among permanents you control.",Colorless,card draw; ramp; mana,M21,228,1
+Stable Wormhole,Enchantment,"Whenever you attack, create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color.""",G,tokens; mana; ramp,TRK,215,1
+Incubation Druid,Creature — Elf Druid,"{T}: Add one mana of any type that a land you control could produce. If this creature has a +1/+1 counter on it, add three mana of that type instead.
+{3}{G}{G}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)",G,Elf; Druid; counters; mana; adapt,RNA,131,1
+"Karolina Dean, Runaway",Legendary Creature — Alien Hero,"Flying
+At the beginning of your first main phase, add {W}{U}{B}{R}{G}. This mana can't be spent to cast spells from your hand.",W/U/B/R/G,Alien; Hero; flying; evasion,MSC,694,1
+Leyline Prowler,Creature — Nightmare Beast,"Deathtouch, lifelink
+{T}: Add one mana of any color.",B/G,Nightmare; Beast; lifegain; mana; lifelink; deathtouch; combat; removal,WAR,202,1
+Faeburrow Elder,Creature — Treefolk Druid,"Vigilance
+This creature gets +1/+1 for each color among permanents you control.
+{T}: For each color among permanents you control, add one mana of that color.",W/G,Treefolk; Druid; pump; vigilance; combat,ELD,190,1
+"Ulamog, the Defiler",Legendary Creature — Eldrazi,"When you cast this spell, target opponent exiles the top half of their library, rounded up.
+Ward—Sacrifice two permanents.
+Ulamog enters with a number of +1/+1 counters on it equal to the greatest mana value among cards in exile.
+Ulamog has annihilator X, where X is the number of +1/+1 counters on it.",Colorless,Eldrazi; counters; sacrifice; ward; protection,MH3,15,1
+"Emrakul, the World Anew",Legendary Creature — Eldrazi,"When you cast this spell, gain control of all creatures target player controls.
+Flying, protection from spells and from permanents that were cast this turn
+When Emrakul leaves the battlefield, sacrifice all creatures you control.
+Madness—Pay six {C}.",Colorless,Eldrazi; sacrifice; theft; flying; evasion; madness; protection,MH3,6,1
+Cruel Ultimatum,Sorcery,"Target opponent sacrifices a creature of their choice, discards three cards, then loses 5 life. You return a creature card from your graveyard to your hand, draw three cards, then gain 5 life.",U/B/R,graveyard; lifegain; card draw; sacrifice; discard,OTP,40,1
+"Nicol Bolas, God-Pharaoh",Legendary Planeswalker — Bolas,"+2: Target opponent exiles cards from the top of their library until they exile a nonland card. Until end of turn, you may cast that card without paying its mana cost.
++1: Each opponent exiles two cards from their hand.
+−4: Nicol Bolas deals 7 damage to target opponent, creature an opponent controls, or planeswalker an opponent controls.
+−12: Exile each nonland permanent your opponents control.",U/B/R,Bolas; planeswalker; heist; burn; noncombat damage,AKR,247,1
+"Sauron, Lord of the Rings",Legendary Creature — Avatar Horror,"When you cast this spell, amass Orcs 5, mill five cards, then return a creature card from your graveyard to the battlefield.
+Trample
+Whenever a commander an opponent controls dies, the Ring tempts you.",U/B/R,Avatar; Horror; reanimator; graveyard; mill; amass; tokens; go-wide; trample; evasion,LTC,4,1
+"Lord Xander, the Collector",Legendary Creature — Vampire Demon Noble,"When Lord Xander enters, target opponent discards half the cards in their hand, rounded down.
+Whenever Lord Xander attacks, defending player mills half their library, rounded down.
+When Lord Xander dies, target opponent sacrifices half the nonland permanents they control of their choice, rounded down.",U/B/R,Vampire; Demon; Noble; mill; sacrifice; etb; discard; graveyard,SNC,197,1
+Akul the Unrepentant,Legendary Creature — Scorpion Dragon Rogue,"Flying, trample
+Sacrifice three other creatures: You may put a creature card from your hand onto the battlefield. Activate only as a sorcery and only once each turn.",B/R,Scorpion; Dragon; Rogue; sacrifice; flying; evasion; trample,OTJ,189,1
+One with the Multiverse,Enchantment,"You may look at the top card of your library any time.
+You may play lands and cast spells from the top of your library.
+Once during each of your turns, you may cast a spell from your hand or the top of your library without paying its mana cost.",U,card advantage; selection,BRO,59,1
+"Etali, Primal Conqueror // Etali, Primal Sickness",Legendary Creature — Elder Dinosaur // Legendary Creature — Phyrexian Elder Dinosaur,"Trample
+When Etali enters, each player exiles cards from the top of their library until they exile a nonland card. You may cast any number of spells from among the nonland cards exiled this way without paying their mana costs.
+{9}{G/P}: Transform Etali. Activate only as a sorcery. // Trample, indestructible
+Whenever Etali deals combat damage to a player, they get that many poison counters. (A player with ten or more poison counters loses the game.)",R/G,Elder; Dinosaur; Phyrexian; heist; etb; indestructible; resilience; transform; trample; evasion,MOM,137,1
+Maelstrom Archangel,Creature — Angel,"Flying
+Whenever this creature deals combat damage to a player, you may cast a spell from your hand without paying its mana cost.",W/U/B/R/G,Angel; flying; evasion,JMP,454,1
+Saint Elenda,Legendary Creature — Vampire Cleric,"Lifelink
+When Saint Elenda enters, conjure a card of your choice from Saint Elenda's spellbook into your hand. You may cast that card this turn without paying its mana cost.
+At the beginning of your end step, if you gained life this turn, create an X/X white Avatar creature token, where X is the amount of life you gained this turn.",W,Vampire; Cleric; lifegain; tokens; etb; lifelink; conjure,YOTJ,4,1
+"Selvala, Heart of the Wilds",Legendary Creature — Elf Scout,"Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power.
+{G}, {T}: Add X mana in any combination of colors, where X is the greatest power among creatures you control.",G,Elf; Scout; card draw; mana,JMP,429,1
+"Neera, Wild Mage",Legendary Creature — Human Elf Shaman,"Whenever you cast a spell, you may put it on the bottom of its owner's library. If you do, reveal cards from the top of your library until you reveal a nonland card. You may cast that card without paying its mana cost. Then put all revealed cards not cast this way on the bottom of your library in a random order. This ability triggers only once each turn.",U/R,Human; Elf; Shaman; card advantage,HBG,245,1
+Commander Spock,Legendary Creature — Vulcan Human Scientist,"Strange new worlds — Whenever Commander Spock enters or attacks, reveal the top card of your library. You may cast that card without paying its mana cost if that spell's mana value is equal to or less than the number of differently named lands you control. If it's a land card, you may put it onto the battlefield tapped. If that card is still on top of your library, draw a card.",W/U/G,Vulcan; Human; Scientist; card draw; strange new worlds,TRC,2,1
+"Narset, Enlightened Master",Legendary Creature — Human Monk,"First strike, hexproof
+Whenever Narset attacks, exile the top four cards of your library. Until end of turn, you may cast noncreature spells from among those cards without paying their mana costs.",W/U/R,Human; Monk; hexproof; protection; first strike; combat,KTK,190,1
+Sunbird's Invocation,Enchantment,"Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order.",R,,XLN,165,1
+"Kethis, the Hidden Hand",Legendary Creature — Elf Advisor,"Legendary spells you cast cost {1} less to cast.
+Exile two legendary cards from your graveyard: Until end of turn, each legendary card in your graveyard gains ""You may play this card from your graveyard.""",W/B/G,Elf; Advisor; graveyard; cost-reduction,M20,211,1
+"Olivia, Crimson Bride",Legendary Creature — Vampire Noble,"Flying, haste
+Whenever Olivia attacks, return target creature card from your graveyard to the battlefield tapped and attacking. It gains ""When you don't control a legendary Vampire, exile this creature.""",B/R,Vampire; Noble; reanimator; graveyard; flying; evasion; haste; aggro,VOW,245,1
+Goro-Goro and Satoru,Legendary Creature — Goblin Human,"Whenever one or more creatures you control that entered this turn deal combat damage to a player, create a 5/5 red Dragon Spirit creature token with flying.
+{1}{R}: Creatures you control gain haste until end of turn.",U/B/R,Goblin; Human; tokens; haste; aggro,MOC,445,1
+"Buxton, Decorated Host",Legendary Creature — Rabbit Noble,"Convoke
+At the beginning of your end step, if you control a tapped creature, seek a nonland permanent card with mana value X or less, where X is the number of tapped creatures you control. Put that card onto the battlefield.",W/G,Rabbit; Noble; seek; card draw; convoke; go-wide,YBLB,21,1
+Grim Hireling,Creature — Tiefling Rogue,"Whenever one or more creatures you control deal combat damage to a player, create two Treasure tokens.
+{B}, Sacrifice X Treasures: Target creature gets -X/-X until end of turn. Activate only as a sorcery.",B,Tiefling; Rogue; sacrifice; tokens; treasure; removal,HBG,158,1
+Cryptic Command,Instant,"Choose two —
+• Counter target spell.
+• Return target permanent to its owner's hand.
+• Tap all creatures your opponents control.
+• Draw a card.",U,counterspell; card draw; bounce,IMA,48,1
+Anguished Unmaking,Instant,Exile target nonland permanent. You lose 3 life.,W/B,pay life; removal,OTP,35,1
+"Vona de Iedo, the Antifex",Legendary Creature — Vampire Cleric Knight,"Menace
+When Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains prismatic.",W/B,Vampire; Cleric; Knight; removal; etb; menace; evasion; conjure,YOTJ,28,1
+Door to Nothingness,Artifact,"This artifact enters tapped.
+{W}{W}{U}{U}{B}{B}{R}{R}{G}{G}, {T}, Sacrifice this artifact: Target player loses the game.",W/U/B/R/G,sacrifice,BRR,14,1
+Raugrin Triome,Land — Island Mountain Plains,"({T}: Add {U}, {R}, or {W}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",W/U/R,Island; Mountain; Plains; card draw; mana; cycling,IKO,251,1
+"Otawara, Soaring City",Legendary Land,"{T}: Add {U}.
+Channel — {3}{U}, Discard this card: Return target artifact, creature, enchantment, or planeswalker to its owner's hand. This ability costs {1} less to activate for each legendary creature you control.",U,cost-reduction; mana; bounce; channel; card advantage,NEO,271,1
+Indatha Triome,Land — Plains Swamp Forest,"({T}: Add {W}, {B}, or {G}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",W/B/G,Plains; Swamp; Forest; card draw; mana; cycling,IKO,248,1
+Ziatora's Proving Ground,Land — Swamp Mountain Forest,"({T}: Add {B}, {R}, or {G}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",B/R/G,Swamp; Mountain; Forest; card draw; mana; cycling,SNC,261,1
+Xander's Lounge,Land — Island Swamp Mountain,"({T}: Add {U}, {B}, or {R}.)
+This land enters tapped.
+Cycling {3} ({3}, Discard this card: Draw a card.)",U/B/R,Island; Swamp; Mountain; card draw; mana; cycling,SNC,260,1
+Fabled Passage,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. Then if you control four or more lands, untap that land.",Colorless,sacrifice; ramp,BLB,252,1
+Artificial Anomaly,Land,"{T}: Add {C}.
+{3}{B}, {T}, Sacrifice this land: Each opponent loses 2 life and you gain 2 life. Create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color.""",B,lifegain; sacrifice; tokens; mana; ramp,TRK,276,1
+Riverglide Pathway // Lavaglide Pathway,Land // Land,{T}: Add {U}. // {T}: Add {R}.,U/R,mana,ZNR,264,1
+Cragcrown Pathway // Timbercrown Pathway,Land // Land,{T}: Add {R}. // {T}: Add {G}.,R/G,mana,ZNR,261,1
+Darkbore Pathway // Slitherbore Pathway,Land // Land,{T}: Add {B}. // {T}: Add {G}.,B/G,mana,KHM,254,1
