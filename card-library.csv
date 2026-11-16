@@ -7131,3 +7131,104 @@ Whenever a creature you control attacks alone, draw a card. Then you may put a c
 −3: Nahiri deals damage to target creature or planeswalker equal to twice the number of Equipment you control.",W/R,Nahiri; equipment; planeswalker; tokens; selection,ZNR,230,1
 "Kilo, Apogee Mind",Legendary Artifact Creature — Robot Artificer,"Haste
 Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",W/U/R,Robot; Artificer; haste; aggro; proliferate; counters,EOC,3,1
+Priest of Titania,Creature — Elf Druid,{T}: Add {G} for each Elf on the battlefield.,G,Elf; Druid; mana,MH3,286,1
+Circle of Dreams Druid,Creature — Elf Druid,{T}: Add {G} for each creature you control.,G,Elf; Druid; mana,AFR,176,1
+"Marwyn, the Nurturer",Legendary Creature — Elf Druid,"Whenever another Elf you control enters, put a +1/+1 counter on Marwyn.
+{T}: Add an amount of {G} equal to Marwyn's power.",G,Elf; Druid; counters; mana,DOM,172,1
+Fauna Shaman,Creature — Elf Shaman,"{G}, {T}, Discard a creature card: Search your library for a creature card, reveal it, put it into your hand, then shuffle.",G,Elf; Shaman,BRO,179,1
+Annihilating Glare,Sorcery,"As an additional cost to cast this spell, pay {4} or sacrifice an artifact or creature.
+Destroy target creature or planeswalker.",B,sacrifice; removal,ONE,80,1
+Voice of the Woods,Creature — Elf,Tap five untapped Elves you control: Create a 7/7 green Elemental creature token with trample. (It can deal excess combat damage to the player or planeswalker it's attacking.),G,Elf; tokens,J25,738,1
+"Dionus, Elvish Archdruid",Legendary Creature — Elf Druid,"Elves you control have ""Whenever this creature becomes tapped during your turn, untap it and put a +1/+1 counter on it. This ability triggers only once each turn.""",G,Elf; Druid; counters,J25,52,1
+Ioreth of the Healing House,Legendary Creature — Human Cleric,"{T}: Untap another target permanent.
+{T}: Untap two other target legendary creatures.",U,Human; Cleric,LTR,56,1
+Fiend Artisan,Creature — Nightmare,"This creature gets +1/+1 for each creature card in your graveyard.
+{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle. Activate only as a sorcery.",B/G,Nightmare; graveyard; sacrifice; pump,IKO,220,1
+"Freyalise, Skyshroud Partisan",Legendary Planeswalker — Freyalise,"+1: Untap up to one target Elf. That Elf and a random Elf creature card in your hand perpetually get +1/+1.
+−1: Seek an Elf card.
+−6: Conjure a card named Regal Force onto the battlefield.",G,Freyalise; planeswalker; pump; seek; card draw; conjure,J21,26,1
+Glissa Sunslayer,Legendary Creature — Phyrexian Zombie Elf,"First strike, deathtouch
+Whenever Glissa Sunslayer deals combat damage to a player, choose one —
+• You draw a card and lose 1 life.
+• Destroy target enchantment.
+• Remove up to three counters from target permanent.",B/G,Phyrexian; Zombie; Elf; pay life; card draw; removal; first strike; combat; deathtouch,ONE,202,1
+"Izoni, Thousand-Eyed",Legendary Creature — Elf Shaman,"Undergrowth — When Izoni enters, create a 1/1 black and green Insect creature token for each creature card in your graveyard.
+{B}{G}, Sacrifice another creature: You gain 1 life and draw a card.",B/G,Elf; Shaman; graveyard; lifegain; card draw; sacrifice; tokens; etb; undergrowth,GRN,180,1
+"Eladamri, Korvecdal",Legendary Creature — Elf Warrior,"You may look at the top card of your library any time.
+You may cast creature spells from the top of your library.
+{G}, {T}, Tap two untapped creatures you control: Reveal a card from your hand or the top card of your library. If you reveal a creature card this way, put it onto the battlefield. Activate only during your turn.",G,Elf; Warrior; card advantage; selection,MH3,149,1
+Abomination of Llanowar,Legendary Creature — Elf Horror,"Vigilance; menace (This creature can't be blocked except by two or more creatures.)
+Abomination of Llanowar's power and toughness are each equal to the number of Elves you control plus the number of Elf cards in your graveyard.",B/G,Elf; Horror; graveyard; vigilance; combat; menace; evasion,HA4,20,1
+Harald Unites the Elves,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Mill three cards. You may put an Elf or Tyvar card from your graveyard onto the battlefield.
+II — Put a +1/+1 counter on each Elf you control.
+III — Whenever an Elf you control attacks this turn, target creature an opponent controls gets -1/-1 until end of turn.",B/G,saga; counters; reanimator; graveyard; mill; removal,KHM,213,1
+Blooming Cactusfolk,Creature — Plant Druid,"Trample
+At the beginning of your end step, nonland cards in your hand perpetually gain ""This spell costs {1} less to cast.""",G,Plant; Druid; cost-reduction; trample; evasion,YOTJ,16,1
+"Teval, the Balanced Scale",Legendary Creature — Spirit Dragon,"Flying
+Whenever Teval attacks, mill three cards. Then you may return a land card from your graveyard to the battlefield tapped.
+Whenever one or more cards leave your graveyard, create a 2/2 black Zombie Druid creature token.",U/B/G,Spirit; Dragon; reanimator; graveyard; mill; tokens; flying; evasion,TDC,8,1
+"Muldrotha, the Gravetide",Legendary Creature — Elemental Avatar,"During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard. (If a card has multiple permanent types, choose one as you play it.)",U/B/G,Elemental; Avatar; graveyard,FDN,243,1
+Oasis of Renewal,Legendary Enchantment,"When Oasis of Renewal enters and whenever a land card leaves your graveyard, seek a land card. This ability triggers only once each turn.
+When Oasis of Renewal enters and whenever a nonland card leaves your graveyard, seek a nonland card. This ability triggers only once each turn.",U/B/G,graveyard; etb; seek; card draw,YTDM,24,1
+Insidious Roots,Enchantment,"Creature tokens you control have ""{T}: Add one mana of any color.""
+Whenever one or more creature cards leave your graveyard, create a 0/1 green Plant creature token, then put a +1/+1 counter on each Plant you control.",B/G,counters; graveyard; tokens; mana,MKM,208,1
+Kamahl's Druidic Vow,Legendary Sorcery,"(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)
+Look at the top X cards of your library. You may put any number of land and/or legendary permanent cards with mana value X or less from among them onto the battlefield. Put the rest into your graveyard.",G,graveyard; selection,DOM,166,1
+"Yarok, the Desecrated",Legendary Creature — Elemental Horror,"Deathtouch, lifelink
+If a permanent entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",U/B/G,Elemental; Horror; lifegain; lifelink; deathtouch; combat; removal,M20,220,1
+"Sidisi, Brood Tyrant",Legendary Creature — Snake Shaman,"Whenever Sidisi enters or attacks, mill three cards.
+Whenever one or more creature cards are put into your graveyard from your library, create a 2/2 black Zombie creature token.",U/B/G,Snake; Shaman; graveyard; mill; tokens,KTK,199y,1
+Wrenn and Seven,Legendary Planeswalker — Wrenn,"+1: Reveal the top four cards of your library. Put all land cards revealed this way into your hand and the rest into your graveyard.
+0: Put any number of land cards from your hand onto the battlefield tapped.
+−3: Create a green Treefolk creature token with reach and ""This token's power and toughness are each equal to the number of lands you control.""
+−8: Return all permanent cards from your graveyard to your hand. You get an emblem with ""You have no maximum hand size.""",G,Wrenn; planeswalker; graveyard; tokens,MID,208,1
+"Yawgmoth, Thran Physician",Legendary Creature — Human Cleric,"Protection from Humans
+Pay 1 life, Sacrifice another creature: Put a -1/-1 counter on up to one target creature and draw a card.
+{B}{B}, Discard a card: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B,Human; Cleric; counters; card draw; sacrifice; protection; proliferate,FCA,11,1
+"Kotis, Sibsig Champion",Legendary Creature — Zombie Warrior,"Once during each of your turns, you may cast a creature spell from your graveyard by exiling three other cards from your graveyard in addition to paying its other costs.
+Whenever one or more creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put two +1/+1 counters on Kotis.",U/B/G,Zombie; Warrior; counters; graveyard,TDC,5,1
+Advanced Floral Invocations,Enchantment — Class,"Landfall — Whenever a land you control enters, mill two cards.
+{B/G}: Level 2
+Whenever a land you control enters, creature cards in your graveyard perpetually get +1/+1.
+{4}{B/G}{B/G}: Level 3
+You may play lands and cast creature spells from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it.",B/G,Class; counters; graveyard; mill; landfall; pump; lands,YSOS,13,1
+Twilight Diviner,Creature — Elf Cleric,"When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+Whenever one or more other creatures you control enter, if they entered or were cast from a graveyard, create a token that's a copy of one of them. This ability triggers only once each turn.",B,Elf; Cleric; graveyard; tokens; etb; selection; surveil,ECL,122,1
+Mycoid Resurrection,Sorcery,"Fathomless descent — Each creature card in your graveyard perpetually gets +X/+X, where X is the number of permanent cards in your graveyard. Then return a creature card from your graveyard to the battlefield.",B/G,reanimator; graveyard; pump; fathomless descent,YLCI,26,1
+Ancient Greenwarden,Creature — Elemental,"Reach (This creature can block creatures with flying.)
+You may play lands from your graveyard.
+If a land entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",G,Elemental; graveyard; reach; defense,ZNR,178,1
+Yawgmoth's Vile Offering,Legendary Sorcery,"(You may cast a legendary sorcery only if you control a legendary creature or planeswalker.)
+Put up to one target creature or planeswalker card from a graveyard onto the battlefield under your control. Destroy up to one target creature or planeswalker. Exile Yawgmoth's Vile Offering.",B,reanimator; graveyard,DOM,114,1
+Sheoldred // The True Scriptures,Legendary Creature — Phyrexian Praetor // Enchantment — Saga,"Menace
+When Sheoldred enters, each opponent sacrifices a nontoken creature or planeswalker of their choice.
+{4}{B}: Exile Sheoldred, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery and only if an opponent has eight or more cards in their graveyard. // (As this Saga enters and after your draw step, add a lore counter.)
+I — For each opponent, destroy up to one target creature or planeswalker that player controls.
+II — Each opponent discards three cards, then mills three cards.
+III — Put all creature cards from all graveyards onto the battlefield under your control. Exile this Saga, then return it to the battlefield (front face up).",B,Phyrexian; Praetor; saga; graveyard; mill; sacrifice; etb; transform; menace; evasion,MOM,125,1
+"Vraska, Golgari Queen",Legendary Planeswalker — Vraska,"+2: You may sacrifice another permanent. If you do, you gain 1 life and draw a card.
+−3: Destroy target nonland permanent with mana value 3 or less.
+−9: You get an emblem with ""Whenever a creature you control deals combat damage to a player, that player loses the game.""",B/G,Vraska; planeswalker; lifegain; card draw; sacrifice; removal,GRN,213,1
+Skyfisher Spider,Creature — Spider,"Reach
+When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.
+When this creature dies, you may gain 1 life for each creature card in your graveyard. If you do, exile this card from your graveyard.",B/G,Spider; graveyard; lifegain; sacrifice; removal; etb; reach; defense,BRO,221,1
+Assassin's Trophy,Instant,"Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it onto the battlefield, then shuffle.",B/G,removal,MKM,187,1
+Fatal Push,Instant,"Destroy target creature if it has mana value 2 or less.
+Revolt — Destroy that creature if it has mana value 4 or less instead if a permanent left the battlefield under your control this turn.",B,removal; revolt,FCA,9,1
+Prototype X-8,Legendary Artifact Creature — Robot Octopus,"This spell costs {2} less to cast for each creature card in your graveyard.
+Whenever another creature you control enters, if you cast it, sacrifice it. Conjure a duplicate of it onto the battlefield. The duplicate perpetually becomes a Robot artifact in addition to its other types.",U/B,Robot; Octopus; graveyard; cost-reduction; sacrifice; conjure,YEOE,24,1
+"Rona, Herald of Invasion // Rona, Tolarian Obliterator",Legendary Creature — Human Wizard // Legendary Creature — Phyrexian Wizard,"Whenever you cast a legendary spell, untap Rona.
+{T}: Draw a card, then discard a card.
+{5}{B/P}: Transform Rona. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.) // Trample
+Whenever a source deals damage to Rona, that source's controller exiles a card from their hand at random. If it's a land card, you may put it onto the battlefield under your control. Otherwise, you may cast it without paying its mana cost.",U/B,Human; Wizard; Phyrexian; heist; card draw; transform; trample; evasion,MOM,75,1
+"Chatterfang, Squirrel General",Legendary Creature — Squirrel Warrior,"Forestwalk (This creature can't be blocked as long as defending player controls a Forest.)
+If one or more tokens would be created under your control, those tokens plus that many 1/1 green Squirrel creature tokens are created instead.
+{B}, Sacrifice X Squirrels: Target creature gets +X/-X until end of turn.",B/G,Squirrel; Warrior; sacrifice; tokens; pump; removal; landwalk,BLC,82,1
+Tyvar Kell,Legendary Planeswalker — Tyvar,"Elves you control have ""{T}: Add {B}.""
++1: Put a +1/+1 counter on up to one target Elf. Untap it. It gains deathtouch until end of turn.
+0: Create a 1/1 green Elf Warrior creature token.
+−6: You get an emblem with ""Whenever you cast an Elf spell, it gains haste until end of turn and you draw two cards.""",B/G,Tyvar; Elf; planeswalker; counters; card draw; tokens; mana; deathtouch; combat; removal; haste; aggro,KHM,198,1
+Tyvar's Stand,Instant,"Target creature you control gets +X/+X and gains hexproof and indestructible until end of turn. (It can't be the target of spells or abilities your opponents control. Damage and effects that say ""destroy"" don't destroy it.)",G,pump; hexproof; protection; indestructible; resilience,ONE,190,1
+Tyvar the Bellicose,Legendary Creature — Elf Warrior,"Whenever one or more Elves you control attack, they gain deathtouch until end of turn.
+Each creature you control has ""Whenever a mana ability of this creature resolves, put a number of +1/+1 counters on it equal to the amount of mana this creature produced. This ability triggers only once each turn.""",B/G,Elf; Warrior; counters; deathtouch; combat; removal,MAT,48,1
