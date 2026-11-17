@@ -9027,6 +9027,15 @@ alone; that is a G-67 widening needing its own measured pass, not a follow-on fi
 
 ## [G-89] A Builder page is template + data, and the reason is the only thing stored
 
+The first board typed the derived figures (floors, interaction, sources) into its data, and they
+went stale at the first swap; that is why only the reason is stored.
+
+**Image budget (2026-11-17).** The pack-pile board graded 116 cards against 18 decks, and the
+page carries every deck card too: 995 cards against a 511-file artifact cap, one large image
+each. `image_budget` ships the pile first, then commanders, then deck cards a reason names (the
+suggested cuts), then the rest by name; a card left out is marked `nl` and the page shows it as
+text. Alternate-art sheets are capped at `ART_SHEET_RESERVE` and filled pile-first.
+
 **Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
 and 96) was first reviewed on a hand-built claude.ai board whose page held every figure
 directly: each deck's interaction, card advantage, sources, crafts and the `cuts` ranks of

@@ -1631,6 +1631,42 @@ def _sprite(out_dir, slugs):
     return {"src": "img/thumbs.jpg", "cols": SPRITE_COLS, "rows": rows, "i": {s: i for i, s in enumerate(have)}}
 
 
+# A board grading a pile against many decks carries every deck card too (2026-11-17: 18 decks,
+# 995 cards), and each large image is one file against the 511-file cap. The pile is what the
+# page is for, so when everything will not fit the budget ships, in order: the pile, the
+# commanders (the deck panels' portraits), the deck cards a reason NAMES (the suggested cuts),
+# then the rest by name. A card left out is marked `nl` and shown as text only.
+ART_SHEET_RESERVE = 12       # alternate-art sheets (60 cells each) kept free under the cap
+
+
+def image_budget(data, build, urls, backs, cmds=None, cap=None):
+    """The names whose large image (and back face) an artifact render ships, within `cap`
+    files (default ARTIFACT_FILE_CAP less the page, the thumbnail sprite and
+    ART_SHEET_RESERVE). Everything when it fits."""
+    cap = (ARTIFACT_FILE_CAP - 2 - ART_SHEET_RESERVE) if cap is None else cap
+    names = [n for n in dict.fromkeys([c["n"] for c in data["cards"]] + list((cmds or {}).values()))
+             if n in urls]
+    if len(names) + sum(1 for n in names if n in backs) <= cap:
+        return set(names)
+    text = " ".join((r or {}).get("text", "") for r in (build.get("reasons") or {}).values()).lower()
+    pile = {c["n"] for c in data["cards"] if c.get("p") is not None}
+    cmd = set((cmds or {}).values())
+
+    def rank(n):
+        if n in pile:
+            return 0
+        if n in cmd:
+            return 1
+        return 2 if n.split(" // ")[0].lower() in text else 3
+    ship, used = set(), 0
+    for n in sorted(names, key=lambda n: (rank(n), n)):
+        cost = 1 + (1 if n in backs else 0)
+        if used + cost <= cap:
+            ship.add(n)
+            used += cost
+    return ship
+
+
 def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name="index.html",
            fetch=True, home=None):
     """Write `out_dir/index.html` for a build: the template with the derived data inlined.
@@ -1650,10 +1686,30 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     cmds = {k: v.get("cmd") for k, v in meta["live"].items() if v.get("cmd")}
     urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
                       fetch=fetch and (images or target == "pages"))
-    arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
     backs = back_image_urls(slug, [c["n"] for c in data["cards"]],
                             fetch=fetch and (images or target == "pages"),
                             two_faced=[c["n"] for c in data["cards"] if " // " in (c.get("t") or "")])
+    all_urls = dict(urls)
+    ship = None
+    if target == "artifact" and images:
+        ship = image_budget(data, b, urls, backs, cmds)
+        if len(ship) < len(urls):
+            urls = {n: u for n, u in urls.items() if n in ship}
+            backs = {n: u for n, u in backs.items() if n in ship}
+            for c in data["cards"]:
+                if c["n"] not in ship:
+                    c["nl"] = 1         # no large image shipped: the page shows text only
+    arts = printing_arts(slug, [c["n"] for c in data["cards"] if ship is None or c["n"] in ship],
+                         fetch=fetch)
+    if ship is not None:
+        room = ART_SHEET_RESERVE * ART_PER_SHEET     # alternate arts are extras: pile first
+        pile = {c["n"] for c in data["cards"] if c.get("p") is not None}
+        kept = {}
+        for n in sorted(arts, key=lambda n: (n not in pile, n)):
+            k = sum(1 for p in arts[n] if p.get("art"))
+            if k <= room:
+                kept[n], room = arts[n], room - k
+        arts = kept
     for c in data["cards"]:
         if arts.get(c["n"]):
             c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
@@ -1703,7 +1759,8 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     atomic_write(out, lambda fh: fh.write(page), backup=False)
     return {"page": out, "cards": len(data["cards"]), "images": len(urls),
             "fetched": got, "image_errors": missing,
-            "no_image": sorted(set(c["n"] for c in data["cards"]) - set(urls))}
+            "no_image": sorted(set(c["n"] for c in data["cards"]) - set(all_urls)),
+            "over_budget": sorted(set(all_urls) - set(urls))}
 
 
 # ---------------------------------------------------------------- Pages site
@@ -2133,6 +2190,9 @@ def main(argv=None):
                   f"{r['images']} image URLs" + (f", {r['fetched']} images on disk" if args.target == "artifact" and not args.no_images else ""))
             if r["no_image"]:
                 print(f"  no image found for: {'; '.join(r['no_image'])}")
+            if r.get("over_budget"):
+                print(f"  {len(r['over_budget'])} deck card(s) shown as text only: the board is at "
+                      f"its {ARTIFACT_FILE_CAP}-file cap (pile cards ship first)")
             if r["image_errors"]:
                 print(f"  {r['image_errors']} image download(s) failed (see above)")
         elif args.cmd == "derive":

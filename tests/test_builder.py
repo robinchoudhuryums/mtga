@@ -955,3 +955,32 @@ class TestPublishPlan:
         monkeypatch.setattr(B, "ARTIFACT_FILE_CAP", 2)
         assert B.main(["publish-plan", str(tmp_path)]) == 0
         assert "within 0 file(s)" in capsys.readouterr().err
+
+
+class TestImageBudget:
+    """A many-deck board cannot ship one large image per card under the 511-file cap, so the
+    budget keeps the pile, then commanders, then deck cards a reason names (2026-11-17)."""
+
+    def _data(self, n_deck):
+        cards = [{"n": f"Pile {i}", "p": "A"} for i in range(3)]
+        cards += [{"n": f"Deck {i:03d}", "p": None} for i in range(n_deck)]
+        return {"cards": cards}
+
+    def test_everything_ships_when_it_fits(self):
+        data = self._data(5)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        assert B.image_budget(data, {}, urls, {}, cap=20) == set(urls)
+
+    def test_pile_then_commander_then_named_cut_then_the_rest(self):
+        data = self._data(10)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        urls["Boss"] = "u"
+        build = {"reasons": {"Pile 0": {"text": "Cut: Deck 007 (weaker)."}}}
+        ship = B.image_budget(data, build, urls, {}, cmds={"A": "Boss"}, cap=6)
+        assert ship == {"Pile 0", "Pile 1", "Pile 2", "Boss", "Deck 007", "Deck 000"}
+
+    def test_a_back_face_costs_a_second_file(self):
+        data = self._data(4)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        ship = B.image_budget(data, {}, urls, {"Pile 0": "b"}, cap=4)
+        assert ship == {"Pile 0", "Pile 1", "Pile 2"}

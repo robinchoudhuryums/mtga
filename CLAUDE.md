@@ -1443,8 +1443,7 @@ is protecting.
   graded against decks lives in `builds/<slug>/build.json` (decks, piles, placements,
   reasons, verdicts) and renders through `scripts/builder.py` + `scripts/builder_template.html`;
   oracle text, owned counts, roles, each deck's floor / interaction / sources and `cuts` ranks
-  are DERIVED at render. The first board typed those figures in and they went stale at the
-  first swap. **A reason or VERDICT star is graded against a deck VERSION** (`graded_at`, a
+  are DERIVED at render. **A reason or VERDICT star is graded against a deck VERSION** (`graded_at`, a
   list hash); `builder.py check` and a soft `check_all` line call it stale only when a card
   that entered or left the deck is its own card or is NAMED in its reason (2026-11-04: any
   change had flagged all 426). Re-read it, never re-stamp. **The theme-fit grade is
@@ -1460,7 +1459,7 @@ is protecting.
   page AND its changed images, then `--mark`), since index.html alone left new cards blank. A
   ONE-DECK build opens on Compare with verdict sections; Copy as text stays deck-named
   (`FULLLAB`). **Alternate printings are VIEW-ONLY**: a deck line keeps the pool's printing
-  (G-65). `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
+  (G-65). A board past the 511-file cap ships large images pile-first (`image_budget`); the rest show as text. `/pile-analysis` Stage 6 owns publishing and the request queue. [G-89]
 
 ## Known Issues
 

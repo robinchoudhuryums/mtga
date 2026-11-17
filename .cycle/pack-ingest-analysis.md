@@ -2,7 +2,9 @@
 
 **Status: ALL BATCHES DONE (2026-11-17) — awaiting the owner's picks.** Batch 5 checked the weaker matches into the decks that still have unowned cards, keeping only removal-for-removal and ramp-for-ramp stand-ins. A running record of the swap suggestions that
 surface while the 582 cards from the 2026-11-17 pack ingest are checked against the decks.
-Nothing here is applied; the owner picks, then `/apply-changes` writes. Delete this doc once
+Nothing here is applied; the owner picks, then `/apply-changes` writes. **Board:** `builds/packs`
+(claude.ai: https://claude.ai/artifact/638mHcvufoHVmAdvEro28N) — the same suggestions as a Builder
+page, each owned-for-unowned cut marked as a suggestion; mark picks there. Delete this doc once
 the picks are applied or dropped. Decks are the source of truth, not this file.
 
 **Source:** the pack-opening CSV (637 lines, 721 cards), ingested in commit 4941a2c
