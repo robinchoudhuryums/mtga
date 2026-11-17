@@ -1826,9 +1826,10 @@ def render_swaps(slug, out_dir, images=True, fetch=True):
             u = urls.get(n)
             if not u:
                 continue
-            rel = f"img/{c['id']}.jpg"
+            # One LARGE image per card serves both the thumbnail and the full-size view.
+            rel = f"img/lg/{c['id']}.jpg"
             try:
-                _fetch_image(u, os.path.join(out_dir, rel), (488, 680))
+                _fetch_image(u.replace("/normal/", "/large/"), os.path.join(out_dir, rel), LARGE)
                 c["img"] = rel
                 got += 1
             except Exception as e:

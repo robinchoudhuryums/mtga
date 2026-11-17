@@ -2,11 +2,11 @@
 
 **Status: ALL BATCHES DONE (2026-11-17) — awaiting the owner's picks.** Batch 5 checked the weaker matches into the decks that still have unowned cards, keeping only removal-for-removal and ramp-for-ramp stand-ins. A running record of the swap suggestions that
 surface while the 582 cards from the 2026-11-17 pack ingest are checked against the decks.
-Nothing here is applied; the owner picks, then `/apply-changes` writes. **Board:** `builds/packs`
-(claude.ai: https://claude.ai/artifact/638mHcvufoHVmAdvEro28N) — the same suggestions as a Builder
-page, each owned-for-unowned cut marked as a suggestion. **Swap page (preferred):** `builds/packs/swaps.json`
+Nothing here is applied; the owner picks, then `/apply-changes` writes. **Swap page:** `builds/packs/swaps.json`
 (claude.ai: https://claude.ai/artifact/MMRD297vEaQmD8FyX3Miyk) — the 29 upgrade / sidegrade / spice pairs only,
-each candidate beside the card it would replace; mark Swap / Maybe / Keep there. Delete this doc once
+each candidate beside the card it would replace (click a card for full size); mark Swap / Maybe / Keep there.
+The 18-deck Builder board for `builds/packs` was deleted 2026-11-17 at the owner's request; the swap page
+replaces it, and `builds/packs/build.json` stays as its data. Delete this doc once
 the picks are applied or dropped. Decks are the source of truth, not this file.
 
 **Source:** the pack-opening CSV (637 lines, 721 cards), ingested in commit 4941a2c

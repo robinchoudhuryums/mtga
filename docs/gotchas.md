@@ -9042,7 +9042,9 @@ swap page reads `builds/<slug>/swaps.json` (each pair: deck, add, cut, verdict, 
 cut was a checked pairing) and shows each candidate beside the one deck card it would replace; text,
 cost, type and owned counts are derived at render like the full board's, and a cut the deck no longer
 runs is refused. Picks live in the artifact's `swaps` collection (`{pick, note}` per pair id), and
-Copy picks prints `deck.py swap <id> --package` lines.
+Copy picks prints `deck.py swap <id> --package` lines. Each card ships ONE 672 px image
+(`img/lg/<id>.jpg`) that serves as both the thumbnail and the click-to-enlarge view, a modal
+`<dialog>` that closes on Escape, a click or its close button and returns focus to the opener.
 
 **Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
 and 96) was first reviewed on a hand-built claude.ai board whose page held every figure
