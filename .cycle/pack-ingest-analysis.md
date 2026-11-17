@@ -1,6 +1,6 @@
 # Pack ingest 2026-11-17 — where the new cards fit (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 4 of 5 done (batches 1-3 re-checked against unowned cards). Batch 5 = weaker matches into unfinished decks.** A running record of the swap suggestions that
+**Status: ALL BATCHES DONE (2026-11-17) — awaiting the owner's picks.** Batch 5 checked the weaker matches into the decks that still have unowned cards, keeping only removal-for-removal and ramp-for-ramp stand-ins. A running record of the swap suggestions that
 surface while the 582 cards from the 2026-11-17 pack ingest are checked against the decks.
 Nothing here is applied; the owner picks, then `/apply-changes` writes. Delete this doc once
 the picks are applied or dropped. Decks are the source of truth, not this file.
@@ -46,6 +46,7 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | 38 Armory | Combadge | role-player | Equipment that copies itself when cast (two for 3); a creature wearing one can't be blocked while another wears the other. Equip {2}. | Shrike Force | 3 |
 | 48 Doombots | Pinnacle Emissary | sidegrade | As in 26: a Robot that turns artifact spells into flying Drones. | UNOWNED: Mm'menon, Uthros Exile (an artifact-enters payoff; Leyline makes either a Robot) | 3 |
 | 55 Mardu Waves | L'Rell, Fierce Visionary | role-player | A hasty 2/1 Klingon token at every combat (sacrificed at end step), plus a sacrifice outlet that surveils. | owned deck: confirm with `cuts 55` | 4 |
+| 56 Historic Brawl | Craterous Stomp | sidegrade | Instant: 3 damage to an opponent's creature; their other creatures can't block Giants or Warriors that turn. | UNOWNED: Mishra's Command (X-cost modal sorcery) | 5 |
 | 56 Historic Brawl | Forging the Tyrite Sword | sidegrade | Two Treasures, then chapter III tutors any Equipment (Embercleave, Kaldra) to hand. | UNOWNED: Stoneforge Mystic (also an Equipment tutor; it also cheats one in) | 4 |
 | 56 Historic Brawl | Meteoric Mace | spice | Cascade on cast plus +4/+0 and trample; much weaker than Embercleave, but owned. | UNOWNED: Embercleave (a stand-in until it is crafted) | 3 |
 | 56 Historic Brawl | Spectral Steel | role-player | +2/+2 Aura that later returns an Aura or Equipment from the graveyard to hand. | UNOWNED: Shadowspear (a stand-in; much weaker) | 4 |
@@ -59,20 +60,26 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | 85 Ghost-Spider | Ghitu Journeymage | role-player | 2 damage to each opponent on entering if you control another Wizard; deck runs 7 Wizards. | Torbran | 1 |
 | 85 Ghost-Spider | Soul-Scar Mage | role-player | Prowess; your noncombat damage to their creatures becomes -1/-1 counters. | Torbran | 1 |
 | 85 Ghost-Spider | Unstable Amulet | role-player | 1 damage to each opponent whenever you cast a spell from outside your hand, plus energy-fuelled impulse draw; Gwen's exile plays trigger it. | Torbran | 2 |
+| 88 Full Throttle | **Bouncer's Beatdown** | upgrade | Instant: damage equal to your greatest power (Samut makes that huge) to a creature or planeswalker, exiling it if it would die. | UNOWNED: Hulk's Thunderclap (a sorcery bite) | 5 |
 | 88 Full Throttle | Hydra's Growth | flavour | An Aura that doubles the creature's +1/+1 counters every upkeep; a fast-growing threat for Samut. | UNOWNED: Gamma Grotesque (a counters card in a power deck) | 3 |
+| 88 Full Throttle | Kami of Whispered Hopes | sidegrade | Taps for mana equal to its power (Samut's +X/+0 counts) and adds an extra counter whenever counters go on. | UNOWNED: Back-Alley Gardener (land ramp off creatures entering) | 5 |
 | 91 Scarab's Fist | **Narfi, Betrayer King** | sidegrade | Other Zombies get +1/+1, and the deck runs 22 Zombies. (Its snow recursion is dead here.) | UNOWNED: Eternal Skylord (also a 5-drop; flying for Zombie tokens instead of +1/+1 for all Zombies) | 2 |
 | 91 Scarab's Fist | **Sidisi, Undead Vizier** | upgrade | A Zombie with deathtouch; exploit (sacrifice a creature, e.g. a token) to tutor any card. | UNOWNED: Fallen Shinobi (5-drop needing an unblocked attacker) | 2 |
 | 91 Scarab's Fist | Master of Waves | skip | Its devotion-to-blue tokens are thin in Esper; it is a Merfolk, so deck 94 may want it instead (not matched there). | — | 2 |
 | 91 Scarab's Fist | Patchwork Crawler | skip | Exiles creature cards from your graveyard, which fights recursion. | — | 2 |
+| 91 Scarab's Fist | Umbral Juke | sidegrade | Instant: target player sacrifices a creature or planeswalker, or make a 2/1 flier. | UNOWNED: Never // Return (sorcery destroy, Zombie later) | 5 |
 | 91 Scarab's Fist | Warren Soultrader | flavour | Pay 1 life, sacrifice another creature: a Treasure. A Zombie Wizard sacrifice outlet. | as above | 1 |
+| 92 Phoenix King | **The Wrath of Khan** | upgrade | 3-mana Saga: 4 damage to a creature, then you take control of it for combat; later chapters add value. | UNOWNED: Overwhelming Victory (5-mana instant, 5 damage) | 5 |
 | 92 Phoenix King | Emperor of Bones | upgrade | Exiles a card from a graveyard each combat; adapt {1}{B} brings an exiled creature back hasty for the turn, and every extra combat is another exile. | UNOWNED: Archpriest of Shadows (5-mana reanimation that needs combat damage first) | 3 |
 | 92 Phoenix King | Witch-king of Angmar | role-player | 5-mana flier; when creatures hit you, the opponent sacrifices one of them; discard a card for indestructible. | UNOWNED: Yathan Tombguard (draws only off creatures with counters, which the deck rarely makes) | 3 |
 | 93 Two Heavens | Switchgrass Grazer | role-player | Haste; 1 damage to any target whenever it attacks, which Isshin doubles. | no unowned card it clearly beats (Nadier's Nightblade and Professional Face-Breaker both fit better) | 2 |
 | 94 Paradox Sculptor | **Shapers of Nature** | upgrade | A Merfolk that puts +1/+1 counters ({3}{G}) and turns a counter into a card ({2}{U}); Zimone doubles counters. | UNOWNED: Nadir Kraken (not a Merfolk; also its stored printing is flagged unverified) | 2 |
+| 94 Paradox Sculptor | Emergent Sequence | sidegrade | Fetch a basic; it becomes a land creature with +1/+1 counters, which Zimone then doubles. | UNOWNED: Song of Freyalise (two turns of creature mana, then a counter each) | 5 |
 | 95 Light of Valinor | Ghost of Illyria | role-player | Flier that blinks your own nonland permanent until end step; a second Galadriel entry. | Panharmonicon | 2 |
 | 96 Drowned Library | **Tamiyo, Compleated Sage** | sidegrade | +1 locks down a creature; −X copies a permanent card from your graveyard (thin in an opponent-mill deck). A walker to hold the board. | UNOWNED: Nissa, Voice of Zendikar (also a non-mill walker) | 1 |
 | 96 Drowned Library | Cauldron's Gift | skip | Mills you four; deck 96 must not deck itself. | — | 2 |
 | 96 Drowned Library | Cemetery Tampering | skip | Mills you three every upkeep; the wrong library for this deck. | — | 2 |
+| 96 Drowned Library | Garruk, Cursed Huntsman | spice | 6-mana walker: two 2/2 Wolves each turn, or −3 destroy a creature and draw. | UNOWNED: Ob Nixilis Reignited (a stand-in; Ob's +1 draw is a mill under the Tutelages, so Ob stays the better card) | 5 |
 | 96 Drowned Library | Mesmeric Orb | flavour | Every untap mills that permanent's controller: the opponent untaps more, but it is symmetric. | Lithoform Engine | 3 |
 | 96 Drowned Library | Sweet Oblivion | role-player | {1}{U}: target player (the opponent) mills four; escape recasts it. On plan. | no unowned card it clearly beats (Master's Councillors and Cut Your Losses both mill harder) | 3 |
 | 96 Drowned Library | Vivien, Monsters' Advocate | skip | Casting creatures off the top duplicates Glarb, and the deck plays few creatures. | — | 3 |
@@ -80,11 +87,16 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | 97 Street Feast | **Feasting Troll King** | upgrade | Three Foods when cast from hand; returns from the graveyard by sacrificing three Foods. {G}{G}{G}{G}. | Mythweaver Poq | 1 |
 | 97 Street Feast | Meriadoc Brandybuck | role-player | A Food whenever your Halflings attack; the deck runs 6 Halflings. | Mythweaver Poq | 1 |
 | 97 Street Feast | Siege-Gang Commander | role-player | Three Goblin tokens (Peregrin Took adds a Food to each); sacrifice a Goblin for 2 damage. | Mythweaver Poq | 1 |
+| 98 Throw Wide the Gates | Dramatic Accusation | sidegrade | 3-mana Aura: tap the creature and keep it tapped; {U}{U} shuffles it away. A noncreature spell for G'raha. | UNOWNED: Lawmage's Binding (flash, also stops activated abilities) | 5 |
+| 98 Throw Wide the Gates | Unable to Scream | sidegrade | 1-mana Aura: the creature loses all abilities and becomes a 0/2. A cheap noncreature spell for G'raha. | UNOWNED: Mesmerizing Dose (3 mana; its proliferate also grows Hero tokens) | 5 |
 | 100 Resistance Is Futile | **Assembly Specialist** | upgrade | 2 mana for two Borg artifact creatures, feeding Collation Trimatrix's tap-three draw and Borg Cube's affinity. | UNOWNED: Tidus, Blitzball Star (not an artifact creature, so it feeds none of the deck's counts) | 3 |
+| 100 Resistance Is Futile | **Bronze Walrus** | upgrade | A 3-mana artifact CREATURE that taps for any colour and scries 2; it counts for Borg Cube and Collation Trimatrix. | UNOWNED: Arcane Signet (a rock that counts for neither) | 5 |
+| 100 Resistance Is Futile | Class-F Shuttlecraft | role-player | A 3-mana Spacecraft that taps for any colour; stationed to 6 it is a flying artifact creature. | UNOWNED: Arcane Signet, if Bronze Walrus is not taken | 5 |
 | 100 Resistance Is Futile | Free Borg Revolutionaries | role-player | A Borg artifact creature that pumps the team on entering; basic landcycling {2} early. | no unowned card it clearly beats; Winter at most | 3 |
 | 100 Resistance Is Futile | Jin-Gitaxias, Progress Tyrant | role-player | 7 mana: copies your first artifact, instant or sorcery each turn, and counters the opponent's first. Top-heavy. | UNOWNED: Kappa Cannoneer (another 6-mana blue artifact payoff) | 4 |
 | 100 Resistance Is Futile | Machinist's Dismissal | sidegrade | Counter a noncreature spell, {1} cheaper per artifact you control or hold; instant-speed interaction the deck lacks. | UNOWNED: Haunt the Network (same 5 mana; a sorcery drain where this is instant interaction) | 3 |
 | 100 Resistance Is Futile | Squadron Carrier | role-player | Spacecraft gain "exhaust {W}: conjure a Starfighter Pilot"; stationed 10+, your creatures fly. | Sheoldred's Edict | 2 |
+| 100 Resistance Is Futile | Umbral Juke | sidegrade | Instant edict (creature or planeswalker), or a 2/1 flier. | UNOWNED: Sheoldred's Edict (2-mana instant edict) | 5 |
 | 100 Resistance Is Futile | Vexing Drone | role-player | A 2-mana Borg artifact creature that taps a blocker on entering. | UNOWNED: Winter, Cursed Rider (not an artifact creature) | 4 |
 
 ## 4. Skips (graded, no home)
@@ -120,3 +132,7 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | Year of Hell | 26b, 37a | Symmetric draw and 2 damage to each player. |
 | Federation Resupply | 65, 68 | Tutors Auras/Equipment/Spacecraft, which neither deck is built on. |
 | Rediscover the Way, Ghost of Illyria, Collation Trimatrix, Machinist's Dismissal, Hologram Janeway, Una Chin-Riley, Pinnacle Emissary | 57, 41, 42, 84, 101, 26a | Low-fit tag matches. |
+| Impossible Choice | any | Its removal mode gives the opponent two 1/1 Officers (your removal rule). |
+| Fuel Tank Feaster, Bronze Walrus, Kami of Whispered Hopes | 89 | Deck 89's unowned ramp (Azusa, Kodama, Dryad) plays extra lands; a mana creature is not a substitute. |
+| Sleep with the Fishes, Stab Wound, Swallow Whole | 98, 100 | Weaker than the paired removal above, or conditional (Swallow Whole needs a tapped target). |
+| Card-advantage pairings into 96 and 98 | 96, 98 | Matched on the card-draw role only; none replaces a specific unowned card (planeswalkers, Sphinx's Revelation, the deck's commander-synergy draw). |
