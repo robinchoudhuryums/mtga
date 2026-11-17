@@ -1,6 +1,6 @@
 # Pack ingest 2026-11-17 — where the new cards fit (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 3 of ~5 done; batches 1-3 re-checked against unowned cards.** A running record of the swap suggestions that
+**Status: IN PROGRESS — batch 4 of 5 done (batches 1-3 re-checked against unowned cards). Batch 5 = weaker matches into unfinished decks.** A running record of the swap suggestions that
 surface while the 582 cards from the 2026-11-17 pack ingest are checked against the decks.
 Nothing here is applied; the owner picks, then `/apply-changes` writes. Delete this doc once
 the picks are applied or dropped. Decks are the source of truth, not this file.
@@ -45,7 +45,13 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | 38 Armory | **Bat'leth** | upgrade | Equipment with removal: on entering, an opponent's creature gets -2/-2; then +2/+0. Orzhov Equipment, Standard-legal. | Shrike Force | 1 |
 | 38 Armory | Combadge | role-player | Equipment that copies itself when cast (two for 3); a creature wearing one can't be blocked while another wears the other. Equip {2}. | Shrike Force | 3 |
 | 48 Doombots | Pinnacle Emissary | sidegrade | As in 26: a Robot that turns artifact spells into flying Drones. | UNOWNED: Mm'menon, Uthros Exile (an artifact-enters payoff; Leyline makes either a Robot) | 3 |
+| 55 Mardu Waves | L'Rell, Fierce Visionary | role-player | A hasty 2/1 Klingon token at every combat (sacrificed at end step), plus a sacrifice outlet that surveils. | owned deck: confirm with `cuts 55` | 4 |
+| 56 Historic Brawl | Forging the Tyrite Sword | sidegrade | Two Treasures, then chapter III tutors any Equipment (Embercleave, Kaldra) to hand. | UNOWNED: Stoneforge Mystic (also an Equipment tutor; it also cheats one in) | 4 |
 | 56 Historic Brawl | Meteoric Mace | spice | Cascade on cast plus +4/+0 and trample; much weaker than Embercleave, but owned. | UNOWNED: Embercleave (a stand-in until it is crafted) | 3 |
+| 56 Historic Brawl | Spectral Steel | role-player | +2/+2 Aura that later returns an Aura or Equipment from the graveyard to hand. | UNOWNED: Shadowspear (a stand-in; much weaker) | 4 |
+| 56 Historic Brawl | Storm-Kiln Artist | sidegrade | A Treasure for every instant you cast on your own creature; +1/+0 per artifact. | UNOWNED: Erratic Cyclops (also rewards casting instants) | 4 |
+| 56 Historic Brawl | Stormforged Armor | spice | Equip by paying 3 life; the creature conjures an attacking Ball Lightning on every attack. | UNOWNED: Kaldra Compleat (a stand-in until it is crafted) | 4 |
+| 74 Iron Hills Forge | Combadge | role-player | Two Equipment for 3 (it copies itself), so two bodies of equip-trigger fodder; equip {2}. | owned deck: confirm with `cuts 74` | 4 |
 | 75 Historic Brawl | Elvish Elegy | role-player | {B/G}: mill three, permanent +1/+1 to graveyard creatures, an Elf or land to hand. | Leyline of Transformation | 1 |
 | 75 Historic Brawl | Perennial Gravewarden | role-player | 2-mana Elf that returns from the graveyard on a turn a creature entered and one died. | Leyline of Transformation | 1 |
 | 85 Ghost-Spider | Concert Kaboomist | flavour | Damage to an opponent equal to noncreature spells cast since your last turn. | Torbran | 2 |
@@ -76,8 +82,10 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | 97 Street Feast | Siege-Gang Commander | role-player | Three Goblin tokens (Peregrin Took adds a Food to each); sacrifice a Goblin for 2 damage. | Mythweaver Poq | 1 |
 | 100 Resistance Is Futile | **Assembly Specialist** | upgrade | 2 mana for two Borg artifact creatures, feeding Collation Trimatrix's tap-three draw and Borg Cube's affinity. | UNOWNED: Tidus, Blitzball Star (not an artifact creature, so it feeds none of the deck's counts) | 3 |
 | 100 Resistance Is Futile | Free Borg Revolutionaries | role-player | A Borg artifact creature that pumps the team on entering; basic landcycling {2} early. | no unowned card it clearly beats; Winter at most | 3 |
+| 100 Resistance Is Futile | Jin-Gitaxias, Progress Tyrant | role-player | 7 mana: copies your first artifact, instant or sorcery each turn, and counters the opponent's first. Top-heavy. | UNOWNED: Kappa Cannoneer (another 6-mana blue artifact payoff) | 4 |
 | 100 Resistance Is Futile | Machinist's Dismissal | sidegrade | Counter a noncreature spell, {1} cheaper per artifact you control or hold; instant-speed interaction the deck lacks. | UNOWNED: Haunt the Network (same 5 mana; a sorcery drain where this is instant interaction) | 3 |
 | 100 Resistance Is Futile | Squadron Carrier | role-player | Spacecraft gain "exhaust {W}: conjure a Starfighter Pilot"; stationed 10+, your creatures fly. | Sheoldred's Edict | 2 |
+| 100 Resistance Is Futile | Vexing Drone | role-player | A 2-mana Borg artifact creature that taps a blocker on entering. | UNOWNED: Winter, Cursed Rider (not an artifact creature) | 4 |
 
 ## 4. Skips (graded, no home)
 
@@ -101,3 +109,14 @@ the picks are applied or dropped. Decks are the source of truth, not this file.
 | Leyline Tyrant | 85 | A Dragon payoff in a deck with few Dragons. |
 | Mindless Conscription | 93 | Triggers on your third card drawn each turn, which the deck rarely reaches. |
 | Raking Claws, Chittering Skullspeaker, Pact Weapon, Free Borg Revolutionaries, Reconnaissance Mission, Resolute Rejection, Shefet Monitor | 101 | Cycling or pay-life matches only. |
+| Fangs of Kalonia | 88 | Doubles +1/+1 counters; deck 88 scales on power, not counters. |
+| Soul-Scar Mage, Fiery Inscription, Masterpiece Vault | 56 Historic Brawl | Off the one-protected-attacker plan, or random value. |
+| Winota, Joiner of Forces; Glory-Bound Initiate; Battershield Warrior; Kargan Warleader; Thunderbond Vanguard | 85 | Matched on Warrior only. |
+| Boreal Outrider, Bramblearmor Brawler | 78 Historic Brawl | Matched on Warrior only. |
+| Tempest Trapper, Atmosphere Surgeon, Raff Weatherlight Stalwart, Geistchanneler, Merfolk Trickster, Reflective Rimekin, Phyrexian Censor | 91 | Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells. |
+| Primary Unimatrix Adjunct, Antagonist Incorporator, Command Subadjunct | 74 | Already in deck 100; Borg artifacts are off-tribe in the Dwarf deck. |
+| Sunset Saboteur | 44, 44a | Its attack puts a +1/+1 counter on an OPPONENT's creature (your removal rule). |
+| Tetsuko Umezawa, Fugitive | 44 | Needs creatures with power or toughness 1 or less. |
+| Year of Hell | 26b, 37a | Symmetric draw and 2 damage to each player. |
+| Federation Resupply | 65, 68 | Tutors Auras/Equipment/Spacecraft, which neither deck is built on. |
+| Rediscover the Way, Ghost of Illyria, Collation Trimatrix, Machinist's Dismissal, Hologram Janeway, Una Chin-Riley, Pinnacle Emissary | 57, 41, 42, 84, 101, 26a | Low-fit tag matches. |
