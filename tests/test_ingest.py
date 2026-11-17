@@ -1203,6 +1203,9 @@ class TestEnchantmentsThemeAndKeywordTriage:
 
     def test_the_triaged_keywords_left_the_baseline(self):
         import os
-        base = open(os.path.join(os.path.dirname(ts.__file__), "keyword_baseline.txt"), encoding="utf-8").read().split()
+        # one entry per line: entries can be multi-word ("seek out"), so a whitespace split
+        # would read its first word as a separate keyword
+        lines = open(os.path.join(os.path.dirname(ts.__file__), "keyword_baseline.txt"), encoding="utf-8")
+        base = [l.strip() for l in lines if l.strip() and not l.startswith("#")]
         assert not {"constellation", "battalion", "seek"} & set(base)
         assert {"ascend", "conjure", "partner"} <= set(base)     # still deliberately unthemed
