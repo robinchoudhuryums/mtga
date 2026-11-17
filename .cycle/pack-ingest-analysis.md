@@ -4,7 +4,9 @@
 surface while the 582 cards from the 2026-11-17 pack ingest are checked against the decks.
 Nothing here is applied; the owner picks, then `/apply-changes` writes. **Board:** `builds/packs`
 (claude.ai: https://claude.ai/artifact/638mHcvufoHVmAdvEro28N) — the same suggestions as a Builder
-page, each owned-for-unowned cut marked as a suggestion; mark picks there. Delete this doc once
+page, each owned-for-unowned cut marked as a suggestion. **Swap page (preferred):** `builds/packs/swaps.json`
+(claude.ai: https://claude.ai/artifact/MMRD297vEaQmD8FyX3Miyk) — the 29 upgrade / sidegrade / spice pairs only,
+each candidate beside the card it would replace; mark Swap / Maybe / Keep there. Delete this doc once
 the picks are applied or dropped. Decks are the source of truth, not this file.
 
 **Source:** the pack-opening CSV (637 lines, 721 cards), ingested in commit 4941a2c

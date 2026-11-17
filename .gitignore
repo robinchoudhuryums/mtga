@@ -44,3 +44,4 @@ tools/mods/*/tsconfig.json
 .cycle/board-graha/img/
 .cycle/board-feather/img/
 .cycle/board-packs/img/
+.cycle/board-swaps/img/

@@ -9036,6 +9036,14 @@ each. `image_budget` ships the pile first, then commanders, then deck cards a re
 suggested cuts), then the rest by name; a card left out is marked `nl` and the page shows it as
 text. Alternate-art sheets are capped at `ART_SHEET_RESERVE` and filled pile-first.
 
+**The pairs-only page (`builder.py swaps <slug> --out <dir>`, 2026-11-17).** When the question is
+"this card or that one" rather than "where does this fit", the full board's decklists are noise. The
+swap page reads `builds/<slug>/swaps.json` (each pair: deck, add, cut, verdict, reason, whether the
+cut was a checked pairing) and shows each candidate beside the one deck card it would replace; text,
+cost, type and owned counts are derived at render like the full board's, and a cut the deck no longer
+runs is refused. Picks live in the artifact's `swaps` collection (`{pick, note}` per pair id), and
+Copy picks prints `deck.py swap <id> --package` lines.
+
 **Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
 and 96) was first reviewed on a hand-built claude.ai board whose page held every figure
 directly: each deck's interaction, card advantage, sources, crafts and the `cuts` ranks of

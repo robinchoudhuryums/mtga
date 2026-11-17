@@ -1,0 +1,296 @@
+{
+ "title": "Pack Swaps",
+ "intro": "Cards opened in packs, each beside the deck card it could replace. Upgrades, sidegrades and spice picks only.",
+ "swaps": [
+  {
+   "id": "38-bat-leth",
+   "deck": "38",
+   "add": "Bat'leth",
+   "cut": "Shrike Force",
+   "verdict": "upgrade",
+   "why": "Equipment with removal: on entering, an opponent's creature gets -2/-2; then +2/+0. Orzhov Equipment, Standard-legal.",
+   "cut_note": "",
+   "confirmed": false
+  },
+  {
+   "id": "48-pinnacle-emissary",
+   "deck": "48",
+   "add": "Pinnacle Emissary",
+   "cut": "Mm'menon, Uthros Exile",
+   "verdict": "sidegrade",
+   "why": "As in 26: a Robot that turns artifact spells into flying Drones.",
+   "cut_note": "an artifact-enters payoff; Leyline makes either a Robot",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-craterous-stomp",
+   "deck": "56-historic-brawl",
+   "add": "Craterous Stomp",
+   "cut": "Mishra's Command",
+   "verdict": "sidegrade",
+   "why": "Instant: 3 damage to an opponent's creature; their other creatures can't block Giants or Warriors that turn.",
+   "cut_note": "X-cost modal sorcery",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-forging-the-tyrite-sword",
+   "deck": "56-historic-brawl",
+   "add": "Forging the Tyrite Sword",
+   "cut": "Stoneforge Mystic",
+   "verdict": "sidegrade",
+   "why": "Two Treasures, then chapter III tutors any Equipment (Embercleave, Kaldra) to hand.",
+   "cut_note": "also an Equipment tutor; it also cheats one in",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-storm-kiln-artist",
+   "deck": "56-historic-brawl",
+   "add": "Storm-Kiln Artist",
+   "cut": "Erratic Cyclops",
+   "verdict": "sidegrade",
+   "why": "A Treasure for every instant you cast on your own creature; +1/+0 per artifact.",
+   "cut_note": "also rewards casting instants",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-meteoric-mace",
+   "deck": "56-historic-brawl",
+   "add": "Meteoric Mace",
+   "cut": "Embercleave",
+   "verdict": "spice",
+   "why": "Cascade on cast plus +4/+0 and trample; much weaker than Embercleave, but owned.",
+   "cut_note": "a stand-in until it is crafted",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-stormforged-armor",
+   "deck": "56-historic-brawl",
+   "add": "Stormforged Armor",
+   "cut": "Kaldra Compleat",
+   "verdict": "spice",
+   "why": "Equip by paying 3 life; the creature conjures an attacking Ball Lightning on every attack.",
+   "cut_note": "a stand-in until it is crafted",
+   "confirmed": true
+  },
+  {
+   "id": "85-concert-kaboomist",
+   "deck": "85",
+   "add": "Concert Kaboomist",
+   "cut": "Torbran, Thane of Red Fell",
+   "verdict": "spice",
+   "why": "Damage to an opponent equal to noncreature spells cast since your last turn.",
+   "cut_note": "",
+   "confirmed": false
+  },
+  {
+   "id": "85-fiery-inscription",
+   "deck": "85",
+   "add": "Fiery Inscription",
+   "cut": "Torbran, Thane of Red Fell",
+   "verdict": "spice",
+   "why": "2 damage to each opponent per instant or sorcery you cast; worth it only with a high spell count.",
+   "cut_note": "",
+   "confirmed": false
+  },
+  {
+   "id": "88-bouncer-s-beatdown",
+   "deck": "88",
+   "add": "Bouncer's Beatdown",
+   "cut": "Hulk's Thunderclap",
+   "verdict": "upgrade",
+   "why": "Instant: damage equal to your greatest power (Samut makes that huge) to a creature or planeswalker, exiling it if it would die.",
+   "cut_note": "a sorcery bite",
+   "confirmed": true
+  },
+  {
+   "id": "88-kami-of-whispered-hopes",
+   "deck": "88",
+   "add": "Kami of Whispered Hopes",
+   "cut": "Back-Alley Gardener",
+   "verdict": "sidegrade",
+   "why": "Taps for mana equal to its power (Samut's +X/+0 counts) and adds an extra counter whenever counters go on.",
+   "cut_note": "land ramp off creatures entering",
+   "confirmed": true
+  },
+  {
+   "id": "88-hydra-s-growth",
+   "deck": "88",
+   "add": "Hydra's Growth",
+   "cut": "Gamma Grotesque",
+   "verdict": "spice",
+   "why": "An Aura that doubles the creature's +1/+1 counters every upkeep; a fast-growing threat for Samut.",
+   "cut_note": "a counters card in a power deck",
+   "confirmed": true
+  },
+  {
+   "id": "91-sidisi-undead-vizier",
+   "deck": "91",
+   "add": "Sidisi, Undead Vizier",
+   "cut": "Fallen Shinobi",
+   "verdict": "upgrade",
+   "why": "A Zombie with deathtouch; exploit (sacrifice a creature, e.g. a token) to tutor any card.",
+   "cut_note": "5-drop needing an unblocked attacker",
+   "confirmed": true
+  },
+  {
+   "id": "91-narfi-betrayer-king",
+   "deck": "91",
+   "add": "Narfi, Betrayer King",
+   "cut": "Eternal Skylord",
+   "verdict": "sidegrade",
+   "why": "Other Zombies get +1/+1, and the deck runs 22 Zombies. (Its snow recursion is dead here.)",
+   "cut_note": "also a 5-drop; flying for Zombie tokens instead of +1/+1 for all Zombies",
+   "confirmed": true
+  },
+  {
+   "id": "91-umbral-juke",
+   "deck": "91",
+   "add": "Umbral Juke",
+   "cut": "Never // Return",
+   "verdict": "sidegrade",
+   "why": "Instant: target player sacrifices a creature or planeswalker, or make a 2/1 flier.",
+   "cut_note": "sorcery destroy, Zombie later",
+   "confirmed": true
+  },
+  {
+   "id": "92-emperor-of-bones",
+   "deck": "92",
+   "add": "Emperor of Bones",
+   "cut": "Archpriest of Shadows",
+   "verdict": "upgrade",
+   "why": "Exiles a card from a graveyard each combat; adapt {1}{B} brings an exiled creature back hasty for the turn, and every extra combat is another exile.",
+   "cut_note": "5-mana reanimation that needs combat damage first",
+   "confirmed": true
+  },
+  {
+   "id": "92-the-wrath-of-khan",
+   "deck": "92",
+   "add": "The Wrath of Khan",
+   "cut": "Overwhelming Victory",
+   "verdict": "upgrade",
+   "why": "3-mana Saga: 4 damage to a creature, then you take control of it for combat; later chapters add value.",
+   "cut_note": "5-mana instant, 5 damage",
+   "confirmed": true
+  },
+  {
+   "id": "94-shapers-of-nature",
+   "deck": "94",
+   "add": "Shapers of Nature",
+   "cut": "Nadir Kraken",
+   "verdict": "upgrade",
+   "why": "A Merfolk that puts +1/+1 counters ({3}{G}) and turns a counter into a card ({2}{U}); Zimone doubles counters.",
+   "cut_note": "not a Merfolk; also its stored printing is flagged unverified",
+   "confirmed": true
+  },
+  {
+   "id": "94-emergent-sequence",
+   "deck": "94",
+   "add": "Emergent Sequence",
+   "cut": "Song of Freyalise",
+   "verdict": "sidegrade",
+   "why": "Fetch a basic; it becomes a land creature with +1/+1 counters, which Zimone then doubles.",
+   "cut_note": "two turns of creature mana, then a counter each",
+   "confirmed": true
+  },
+  {
+   "id": "96-tamiyo-compleated-sage",
+   "deck": "96",
+   "add": "Tamiyo, Compleated Sage",
+   "cut": "Nissa, Voice of Zendikar",
+   "verdict": "sidegrade",
+   "why": "+1 locks down a creature; −X copies a permanent card from your graveyard (thin in an opponent-mill deck). A walker to hold the board.",
+   "cut_note": "also a non-mill walker",
+   "confirmed": true
+  },
+  {
+   "id": "96-garruk-cursed-huntsman",
+   "deck": "96",
+   "add": "Garruk, Cursed Huntsman",
+   "cut": "Ob Nixilis Reignited",
+   "verdict": "spice",
+   "why": "6-mana walker: two 2/2 Wolves each turn, or −3 destroy a creature and draw.",
+   "cut_note": "a stand-in; Ob's +1 draw is a mill under the Tutelages, so Ob stays the better card",
+   "confirmed": true
+  },
+  {
+   "id": "96-mesmeric-orb",
+   "deck": "96",
+   "add": "Mesmeric Orb",
+   "cut": "Lithoform Engine",
+   "verdict": "spice",
+   "why": "Every untap mills that permanent's controller: the opponent untaps more, but it is symmetric.",
+   "cut_note": "",
+   "confirmed": false
+  },
+  {
+   "id": "97-feasting-troll-king",
+   "deck": "97",
+   "add": "Feasting Troll King",
+   "cut": "Mythweaver Poq",
+   "verdict": "upgrade",
+   "why": "Three Foods when cast from hand; returns from the graveyard by sacrificing three Foods. {G}{G}{G}{G}.",
+   "cut_note": "",
+   "confirmed": false
+  },
+  {
+   "id": "98-dramatic-accusation",
+   "deck": "98",
+   "add": "Dramatic Accusation",
+   "cut": "Lawmage's Binding",
+   "verdict": "sidegrade",
+   "why": "3-mana Aura: tap the creature and keep it tapped; {U}{U} shuffles it away. A noncreature spell for G'raha.",
+   "cut_note": "flash, also stops activated abilities",
+   "confirmed": true
+  },
+  {
+   "id": "98-unable-to-scream",
+   "deck": "98",
+   "add": "Unable to Scream",
+   "cut": "Mesmerizing Dose",
+   "verdict": "sidegrade",
+   "why": "1-mana Aura: the creature loses all abilities and becomes a 0/2. A cheap noncreature spell for G'raha.",
+   "cut_note": "3 mana; its proliferate also grows Hero tokens",
+   "confirmed": true
+  },
+  {
+   "id": "100-assembly-specialist",
+   "deck": "100",
+   "add": "Assembly Specialist",
+   "cut": "Tidus, Blitzball Star",
+   "verdict": "upgrade",
+   "why": "2 mana for two Borg artifact creatures, feeding Collation Trimatrix's tap-three draw and Borg Cube's affinity.",
+   "cut_note": "not an artifact creature, so it feeds none of the deck's counts",
+   "confirmed": true
+  },
+  {
+   "id": "100-bronze-walrus",
+   "deck": "100",
+   "add": "Bronze Walrus",
+   "cut": "Arcane Signet",
+   "verdict": "upgrade",
+   "why": "A 3-mana artifact CREATURE that taps for any colour and scries 2; it counts for Borg Cube and Collation Trimatrix.",
+   "cut_note": "a rock that counts for neither",
+   "confirmed": true
+  },
+  {
+   "id": "100-machinist-s-dismissal",
+   "deck": "100",
+   "add": "Machinist's Dismissal",
+   "cut": "Haunt the Network",
+   "verdict": "sidegrade",
+   "why": "Counter a noncreature spell, {1} cheaper per artifact you control or hold; instant-speed interaction the deck lacks.",
+   "cut_note": "same 5 mana; a sorcery drain where this is instant interaction",
+   "confirmed": true
+  },
+  {
+   "id": "100-umbral-juke",
+   "deck": "100",
+   "add": "Umbral Juke",
+   "cut": "Sheoldred's Edict",
+   "verdict": "sidegrade",
+   "why": "Instant edict (creature or planeswalker), or a 2/1 flier.",
+   "cut_note": "2-mana instant edict",
+   "confirmed": true
+  }
+ ]
+}

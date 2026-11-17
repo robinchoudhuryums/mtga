@@ -984,3 +984,29 @@ class TestImageBudget:
         urls = {c["n"]: "u" for c in data["cards"]}
         ship = B.image_budget(data, {}, urls, {"Pile 0": "b"}, cap=4)
         assert ship == {"Pile 0", "Pile 1", "Pile 2"}
+
+
+class TestSwapBoard:
+    """The pairs-only page (`builder.py swaps`): each candidate beside the one deck card it
+    would replace, derived from builds/<slug>/swaps.json (2026-11-17)."""
+
+    def test_repo_swap_board_renders_offline(self, tmp_path):
+        if not os.path.exists(B.swaps_path("packs")):
+            pytest.skip("no packs swap board")
+        r = B.render_swaps("packs", str(tmp_path), images=False)
+        page = open(r["page"], encoding="utf-8").read()
+        assert r["swaps"] >= 1 and '"swaps"' in page and "__DATA__" not in page
+        data = B.swap_board_data("packs")
+        for s in data["swaps"]:
+            assert s["add"] in data["cards"] and s["cut"] in data["cards"]
+            assert s["deck"] in data["decks"]
+
+    def test_a_cut_the_deck_does_not_run_is_refused(self, tmp_path, monkeypatch):
+        spec = {"swaps": [{"id": "x", "deck": "100", "add": "Bronze Walrus",
+                           "cut": "Lightning Bolt", "verdict": "upgrade", "why": "", "cut_note": "",
+                           "confirmed": True}]}
+        p = tmp_path / "swaps.json"
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
+        with pytest.raises(B.BuildError, match="does not run Lightning Bolt"):
+            B.swap_board_data("whatever")
