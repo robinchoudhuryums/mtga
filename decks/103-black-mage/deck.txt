@@ -19,8 +19,8 @@
 #: archetype: spells are chosen to COMPOUND rather than cantrip: Artist's Talent adds 2 to every Vivi ping, Wizard Class
 #: archetype: turns every Niv-Mizzet draw into a counter on Vivi, Curiosity on Parun or Torch draws on every ping, Fiery
 #: archetype: Inscription and Culmination of Studies hit the opponent for extra draws, and Flux Channeler / Volt Charge
-#: archetype: proliferate into Pensive Professor draws. Three counterspells (Counterspell, Wizard's Retort, Three Steps
-#: archetype: Ahead) protect Vivi through a big turn; Ajani Unrelenting makes a Wizard token every turn, and Talrand
+#: archetype: proliferate into Pensive Professor draws. Four counterspells (Counterspell, Wizard's Retort, Three Steps
+#: archetype: Ahead, Glen Elendra's Answer) protect Vivi through a big turn; Ajani Unrelenting makes a Wizard token every turn, and Talrand
 #: archetype: and Irencrag Pyromancer turn the spell count into fliers and damage.
 #: archetype: A creature payoff layer (Gray and Adira copying a Niv-Mizzet, Shark Typhoon, Vision) trades some Vivi
 #: archetype: growth for board presence — the owner's call in round 5.
