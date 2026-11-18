@@ -339,6 +339,7 @@
    "y": "2018"
   }
  ],
+ "Flux Channeler": [],
  "Fractal Anomaly": [],
  "Galazeth Prismari": [
   {
@@ -408,13 +409,42 @@
    "y": "2026"
   }
  ],
+ "Hall of Storm Giants": [
+  {
+   "a": "Johannes Voss",
+   "art": "https://cards.scryfall.io/art_crop/front/b/f/bf8f052d-8840-4905-a807-9a305f4fd8f7.jpg?1783926434",
+   "cn": "257",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/f/bf8f052d-8840-4905-a807-9a305f4fd8f7.jpg?1783926434",
+   "r": "R",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Alex Stone",
+   "art": "https://cards.scryfall.io/art_crop/front/d/9/d959ee0b-9fb1-4e32-ad45-f04cdd5c678a.jpg?1783926397",
+   "cn": "354",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/9/d959ee0b-9fb1-4e32-ad45-f04cdd5c678a.jpg?1783926397",
+   "r": "R",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  }
+ ],
+ "Harmonic Prodigy": [],
  "Heated Argument": [],
  "High Fae Trickster": [],
+ "Human Torch, Johnny Storm": [],
  "Illuminating Lash": [],
  "Improbable Alliance": [],
  "Improvisation Capstone": [],
  "Indris, the Hydrostatic Surge": [],
  "Invasion of Kaladesh": [],
+ "Irencrag Pyromancer": [],
  "Iroh's Demonstration": [],
  "Izzet Charm": [],
  "Izzet Guildgate": [
@@ -622,6 +652,7 @@
  ],
  "Lilah, Undefeated Slickshot": [],
  "Loki Laufeyson": [],
+ "Lwaxana Troi, Charming Guest": [],
  "Malcolm, the Eyes": [],
  "Melek, Reforged Researcher": [],
  "Memory Lapse": [
@@ -722,11 +753,38 @@
    "y": "2022"
   }
  ],
+ "Naru Meha, Master Wizard": [],
  "Neera, Wild Mage": [],
  "Nibelheim Aflame": [],
  "Niv-Mizzet, Parun": [],
  "Niv-Mizzet, Visionary": [],
  "Orbital Plunge": [],
+ "Otawara, Soaring City": [
+  {
+   "a": "Alayna Danner",
+   "art": "https://cards.scryfall.io/art_crop/front/4/8/486d7edc-d983-41f0-8b78-c99aecd72996.jpg?1783923816",
+   "cn": "271",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/8/486d7edc-d983-41f0-8b78-c99aecd72996.jpg?1783923816",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Yuta Shimpo",
+   "art": "https://cards.scryfall.io/art_crop/front/9/e/9e99599e-c594-42c6-b9e3-4dbb8e982f88.jpg?1783923760",
+   "cn": "414",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/e/9e99599e-c594-42c6-b9e3-4dbb8e982f88.jpg?1783923760",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Ovika, Enigma Goliath": [],
  "Paradigm Shifter": [],
  "Planetarium of Wan Shi Tong": [],
@@ -761,12 +819,65 @@
  ],
  "Rapturous Moment": [],
  "Resonating Lute": [],
+ "Roaming Throne": [
+  {
+   "a": "Cristi Balanescu",
+   "art": "https://cards.scryfall.io/art_crop/front/3/2/32fd8b7c-baf3-4d3d-be6f-044a917b11a0.jpg?1783913723",
+   "cn": "258",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/2/32fd8b7c-baf3-4d3d-be6f-044a917b11a0.jpg?1783913723",
+   "r": "R",
+   "set": "LCI",
+   "sn": "The Lost Caverns of Ixalan",
+   "y": "2023"
+  },
+  {
+   "a": "Alex Ross",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d3c06a5-a0b2-47a2-a583-d579c24a44c9.jpg?1783903305",
+   "cn": "99",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d3c06a5-a0b2-47a2-a583-d579c24a44c9.jpg?1783903305",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  }
+ ],
  "Role Reversal": [],
  "Rootha, Mastering the Moment": [],
  "Saheeli, Jewel of Avishkar": [],
  "Sanar, Unfinished Genius // Wild Idea": [],
  "Shark Typhoon": [],
  "Slick Sequence": [],
+ "Sokenzan, Crucible of Defiance": [
+  {
+   "a": "Lucas Staniec",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aa548dcd-c1dd-492d-a69f-c65dfeef0633.jpg?1783923814",
+   "cn": "276",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aa548dcd-c1dd-492d-a69f-c65dfeef0633.jpg?1783923814",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Nao Miyoshi",
+   "art": "https://cards.scryfall.io/art_crop/front/3/2/327333cc-2cc9-44ba-a0e6-d01329c416a3.jpg?1783923760",
+   "cn": "415",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/2/327333cc-2cc9-44ba-a0e6-d01329c416a3.jpg?1783923760",
+   "r": "R",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  }
+ ],
  "Solstice Revelations": [],
  "Sorcerer Class": [],
  "Spectacle Mage": [],
@@ -804,6 +915,44 @@
  "Stormchaser Mage": [],
  "Sunbird's Invocation": [],
  "Swan Song": [],
+ "Swiftfoot Boots": [
+  {
+   "a": "Svetlin Velinov",
+   "art": "https://cards.scryfall.io/art_crop/front/e/5/e5a412b9-5cab-486f-a0d3-3f73b33b93ca.jpg?1783919730",
+   "cn": "121",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/5/e5a412b9-5cab-486f-a0d3-3f73b33b93ca.jpg?1783919730",
+   "r": "U",
+   "set": "BRR",
+   "sn": "The Brothers' War Retro Artifacts",
+   "y": "2022"
+  },
+  {
+   "a": "Svetlin Velinov",
+   "art": "https://cards.scryfall.io/art_crop/front/4/1/41040541-b129-4cf4-9411-09b1d9d32c19.jpg?1783909047",
+   "cn": "258",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/1/41040541-b129-4cf4-9411-09b1d9d32c19.jpg?1783909047",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Barbara Rosiak",
+   "art": "https://cards.scryfall.io/art_crop/front/a/f/aff074f2-6ad9-4c0c-88e2-fc622772d2a1.jpg?1783904750",
+   "cn": "317",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/f/aff074f2-6ad9-4c0c-88e2-fc622772d2a1.jpg?1783904750",
+   "r": "R",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
  "Swiftwater Cliffs": [
   {
    "a": "Eytan Zana",
@@ -928,6 +1077,7 @@
  "Vibrant Outburst": [],
  "Victor Timely, Wily Tycoon": [],
  "Vision, Spectral Synthezoid": [],
+ "Volt Charge": [],
  "Wanda's Vision": [],
  "Wiccan, Rising Magician": [],
  "Wisdom of Ages": [
@@ -954,5 +1104,7 @@
    "y": "2026"
   }
  ],
+ "Wizard Class": [],
+ "Wizard's Staff": [],
  "Zaffai and the Tempests": []
 }

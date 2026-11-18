@@ -413,6 +413,76 @@
    "name": "Swan Song",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Wizard's Staff",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Harmonic Prodigy",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Human Torch, Johnny Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Otawara, Soaring City",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sokenzan, Crucible of Defiance",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Flux Channeler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wizard Class",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Swiftfoot Boots",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Naru Meha, Master Wizard",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Irencrag Pyromancer",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Roaming Throne",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Volt Charge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lwaxana Troi, Charming Guest",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Hall of Storm Giants",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -958,6 +1028,104 @@
   "Twinned Vision": {
    "group": "Cut in round 5",
    "text": "Cut for Kraum: three cards once against Kraum's draw on every two-spell turn.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Wizard's Staff": {
+   "group": "Tier 1 (round 6)",
+   "text": "Vivi is a Wizard, so it equips for {1}: her trigger fires twice per noncreature spell — two counters, two damage, two Niv-Mizzet, Visionary draws. On either Niv it doubles that Niv's own trigger. Itself a 2-mana noncreature cast. Suggested cut: Ral, Storm Conduit (your mark).",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Harmonic Prodigy": {
+   "group": "Tier 1 (round 6)",
+   "text": "Every other Wizard's triggers fire twice: Vivi, both Niv-Mizzets, Archmage of Runes, Tellah, Gandalf, Goliath Daydreamer — 11 Wizards. A 2-drop with prowess. Stacks with Wizard's Staff (three Vivi triggers). Suggested cut: Expressive Iteration (your mark).",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Human Torch, Johnny Storm": {
+   "group": "Tier 1 (round 6)",
+   "text": "A second two-card kill: with another Hero out, every card drawn pings the opponent, and Niv-Mizzet, Visionary draws on every ping — a loop to 25. Heroes here: The Scarlet Witch, Vision and Scarlet Witch, Vision, Spectral Synthezoid. Owned. Suggested cut: Prismari Charm (your mark).",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Otawara, Soaring City": {
+   "group": "Tier 1 (round 6)",
+   "text": "A blue source that channels into bounce, {1} cheaper per legendary creature (the deck runs about 15). Owned. Replaces one Island.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Sokenzan, Crucible of Defiance": {
+   "group": "Tier 1 (round 6)",
+   "text": "A red source that channels into two hasty 1/1s, cheaper per legendary creature. Replaces one Mountain.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Flux Channeler": {
+   "group": "Tier 2 (round 6)",
+   "text": "A Wizard: every noncreature spell proliferates — another counter on Vivi (more mana), Kraum, Fractal Anomaly, Primal Amulet and the planeswalkers. Harmonic Prodigy doubles it. Cut idea: Charred Foyer or Melek.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Wizard Class": {
+   "group": "Tier 2 (round 6)",
+   "text": "1 mana; level 2 draws two; level 3 puts a +1/+1 counter on a creature for every card you draw — on Vivi, Niv-Mizzet's draws turn into mana. Cut idea: Wanda's Vision.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Swiftfoot Boots": {
+   "group": "Tier 2 (round 6)",
+   "text": "Hexproof for Vivi for {1} — the deck's protection reads 2-3. Owned. Cut idea: Charred Foyer.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Naru Meha, Master Wizard": {
+   "group": "Tier 2 (round 6)",
+   "text": "Flash; copies an instant/sorcery on entry, and other Wizards get +1/+1 — Vivi taps for one more. Cut idea: Melek.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Irencrag Pyromancer": {
+   "group": "Tier 2 (round 6)",
+   "text": "A Wizard that deals 3 to any target on your second draw each turn; to the face, that is three Niv-Mizzet draws. Cut idea: Wanda's Vision.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Roaming Throne": {
+   "group": "Tier 2 (round 6)",
+   "text": "Name Wizard: another doubler for every Wizard's triggers, on a 4/4 ward 2 artifact. Redundant with Harmonic Prodigy, stacks with it. Cut idea: Melek.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Volt Charge": {
+   "group": "Tier 2 (round 6)",
+   "text": "3 damage to any target and a proliferate (Vivi +1): an instant that backfills the interaction the round-6 cuts take out. Cut idea: Charred Foyer.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Lwaxana Troi, Charming Guest": {
+   "group": "Tier 2 (round 6)",
+   "text": "Owned. {2},{T}, stay tapped: one creature's triggers fire twice — on Vivi, a cheap but fragile doubler. Behind Wizard's Staff and Harmonic Prodigy.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Hall of Storm Giants": {
+   "group": "Tier 2 (round 6)",
+   "text": "A blue land that becomes a 7/7 ward 3; enters tapped once you have two other lands. For an Island.",
    "graded_at": {
     "103": "33a071a68a39"
    }
@@ -1746,6 +1914,90 @@
    }
   },
   "Twinned Vision": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Wizard's Staff": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Harmonic Prodigy": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Human Torch, Johnny Storm": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Otawara, Soaring City": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Sokenzan, Crucible of Defiance": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Flux Channeler": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Wizard Class": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Swiftfoot Boots": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Naru Meha, Master Wizard": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Irencrag Pyromancer": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Roaming Throne": {
+   "V": {
+    "m": "★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Volt Charge": {
+   "V": {
+    "m": "★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Lwaxana Troi, Charming Guest": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Hall of Storm Giants": {
    "V": {
     "m": "◇",
     "graded_at": "33a071a68a39"

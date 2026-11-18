@@ -277,6 +277,19 @@ Kraum / Twinned Vision. Measured: floor A, interaction 16, card advantage 13, av
 spells 39 → 33 and creatures 25 → 31, legal. **Error on my side:** Swan Song gives the opponent a 2/2
 flier — the owner's no-benefit-to-the-opponent removal rule, which I missed when proposing it; their cut is right.
 
+**Round 6 proposal (2026-11-18, NOT applied).** Owner's new cut marks: Expressive Iteration, Prismari Charm,
+Ral, Storm Conduit, Prismari, the Inspiration (accepted for Academy Instructor). Theme search (Wizards,
+trigger doublers, draw payoffs, proliferate, protection equipment, X payoffs, utility lands).
+- Tier 1: Wizard's Staff (owned; Vivi is a Wizard, equip {1}, her trigger fires twice) for Ral, Storm
+  Conduit; Harmonic Prodigy (every other Wizard's triggers twice — 11 Wizards) for Expressive Iteration;
+  **Human Torch, Johnny Storm (owned) — a SECOND two-card kill with Niv-Mizzet, Visionary** (draw → ping →
+  draw, needs another Hero: 3 in the deck) for Prismari Charm; Otawara for an Island, Sokenzan for a
+  Mountain. Measured with Academy Instructor / Prismari: floor A, interaction 15, avg MV 3.74, legal.
+- Tier 2 (cuts open): Flux Channeler (proliferate per noncreature spell — Vivi +1), Wizard Class (a counter
+  per draw at level 3), Swiftfoot Boots (owned; hexproof for Vivi), Naru Meha (Wizards +1/+1 = Vivi +1 mana),
+  Irencrag Pyromancer, Roaming Throne (name Wizard), Volt Charge, Lwaxana Troi (owned), Hall of Storm Giants.
+  All on the board with reasons.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
