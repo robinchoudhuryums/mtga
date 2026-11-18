@@ -317,8 +317,16 @@ tokens; its −3 is an emergency button only); Ovika stays. 18 swaps, measured: 
 advantage 15, avg MV 3.77 (3.74 with Pensive Professor / Gray and Adira instead of / Stormcatch), legal. Open:
 the Pensive cut, Wanda's Vision (for Capstone; alt Culmination), the three maybes.
 
+**Round 8 re-grade (2026-11-18, against the round-7 list):** UP — Flux Channeler ★★→★★★ and Volt Charge ★→★★
+(proliferate now draws through Pensive Professor and grows Ajani's loyalty), Command the Stage (Ajani's Cadets are
+Wizards to put counters on), Wizard's Retort and Teferi, Mage of Zhalfir ◇→★★ (protection reads 2 with
+Jin-Gitaxias gone), Naru Meha (Cadets are Wizards). DOWN — Proft's Eidetic Memory (Wizard Class already turns a
+draw into a Vivi counter), Improvisation Capstone ★★→★ and Planetarium ★★→★ (Sunbird and Surtland fill the free-cast
+top end; 12 cards at MV 6+). UNCHANGED — Curiosity, Thor GoT, Iron Lad, Talrand, Irencrag, Chandra Torch.
+Stormcatch Mentor is the first card back if the early game runs thin.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
-refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
-free-cast engine).
+refund on every instant/sorcery); Arcane Bombardment (the free-cast engine). Stormcatch Mentor left the
+list in round 7 and the header with it.
 
 **Bench** (the 33 pile cards not in the draft): kept with reasons on the Builder board.

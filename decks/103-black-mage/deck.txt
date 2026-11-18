@@ -21,7 +21,7 @@
 #: archetype: A creature payoff layer (Gray and Adira copying a Niv-Mizzet, Rootha, Shark Typhoon, Vision) trades
 #: archetype: some Vivi growth for board presence — the owner's call in round 5.
 #: archetype: DRAFTED from the owner's pile (2026-11-18), then filled with outside spells and untapped duals.
-#: protect: Vivi Ornitier; Niv-Mizzet, Visionary; Niv-Mizzet, Parun; Electro, Assaulting Battery; Stormcatch Mentor; Arcane Bombardment
+#: protect: Vivi Ornitier; Niv-Mizzet, Visionary; Niv-Mizzet, Parun; Electro, Assaulting Battery; Arcane Bombardment
 #: notes: 2026-11-18 round 2 (owner's picks, 24 swaps): outside spells in — counterspells (Counterspell, Swan Song,
 #: notes: Izzet Charm, Memory Lapse, Three Steps Ahead), compounding draw/burn (Asgardian Inspiration, Fractal Anomaly,
 #: notes: Twinned Vision, Slick Sequence, Prismari Charm, Illuminating Lash, Expressive Iteration, Glacial Dragonhunt),

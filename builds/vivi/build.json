@@ -968,17 +968,17 @@
    }
   },
   "Improvisation Capstone": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. Free casts off the top, then a free copy of itself every first main. Suggested cut: Wanda's Vision (one free cast on the second spell).",
+   "group": "Pending package",
+   "text": "Down from ★★: Sunbird's Invocation and Surtland Elementalist now fill the free-cast role at the top end, and the deck already holds 12 cards at MV 6+. Proposed cut if kept: Wanda's Vision or Culmination of Studies.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Planetarium of Wan Shi Tong": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. {1},{T}: scry 2, then cast the top card free once a turn. Suggested cut: Charred Foyer (plays the top card, but you pay for it).",
+   "group": "Pending package",
+   "text": "Down from ★★: a 6-drop in a top end of 12, and its natural cut (Charred Foyer) is a card the owner keeps.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Sunbird's Invocation": {
@@ -1059,8 +1059,8 @@
    }
   },
   "Teferi, Mage of Zhalfir": {
-   "group": "Cut in round 5",
-   "text": "Cut in round 5. Opponents act only at sorcery speed — with Jin-Gitaxias now gone too, the strongest protection option on the bench. {U}{U}{U}.",
+   "group": "Protection",
+   "text": "Up from ◇: with Jin-Gitaxias gone, the deck's protection reads 2; opponents acting only at sorcery speed shields a Vivi turn. {U}{U}{U}.",
    "graded_at": {
     "103": "5411fe891270"
    }
@@ -1108,10 +1108,10 @@
    }
   },
   "Flux Channeler": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. A Wizard that proliferates on every noncreature spell — another counter on Vivi each time, and Harmonic Prodigy doubles it. Suggested cut: Melek.",
+   "group": "Pending package",
+   "text": "Up from ★★ (round 7): Pensive Professor is in now, so every proliferate also draws a card (Pensive draws when it gets a counter, and Harmonic Prodigy doubles both). Still grows Vivi, Ajani and Chandra loyalty, and Primal Amulet's charge. Proposed cut: Tempest Trapper.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Wizard Class": {
@@ -1129,10 +1129,10 @@
    }
   },
   "Naru Meha, Master Wizard": {
-   "group": "Tier 2 (round 6)",
-   "text": "Flash; copies an instant/sorcery on entry, and other Wizards get +1/+1 — Vivi taps for one more. Cut idea: Melek.",
+   "group": "Wizard payoffs",
+   "text": "Up a notch: other Wizards get +1/+1, which now includes Ajani's Cadet tokens and Vivi (one more mana).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Irencrag Pyromancer": {
@@ -1150,10 +1150,10 @@
    }
   },
   "Volt Charge": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. Instant 3 damage and a proliferate (Vivi +1). Suggested cut: Illuminating Lash (sorcery 3 damage and a one-time draw).",
+   "group": "Pending package",
+   "text": "Up from ★: its proliferate now also draws through Pensive Professor. Instant 3 damage. Proposed cut: Illuminating Lash.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Lwaxana Troi, Charming Guest": {
@@ -1221,7 +1221,7 @@
   },
   "Stormcatch Mentor": {
    "group": "Cut in round 7",
-   "text": "Cut for Pensive Professor (owner's pick): an instant/sorcery reducer the deck now has three of (Primal Amulet, Archmage, Artist's Talent level 2). First back in if the early game feels thin.",
+   "text": "Cut in round 7 for Pensive Professor. With 20 cards at MV 2 or less, the first card back if the early game feels thin.",
    "graded_at": {
     "103": "5411fe891270"
    }
@@ -2089,14 +2089,14 @@
   },
   "Improvisation Capstone": {
    "V": {
-    "m": "★★",
-    "graded_at": "719b1d410edc"
+    "m": "★",
+    "graded_at": "5411fe891270"
    }
   },
   "Planetarium of Wan Shi Tong": {
    "V": {
-    "m": "★★",
-    "graded_at": "719b1d410edc"
+    "m": "★",
+    "graded_at": "5411fe891270"
    }
   },
   "Sunbird's Invocation": {
@@ -2167,7 +2167,7 @@
   },
   "Teferi, Mage of Zhalfir": {
    "V": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "5411fe891270"
    }
   },
@@ -2209,8 +2209,8 @@
   },
   "Flux Channeler": {
    "V": {
-    "m": "★★",
-    "graded_at": "719b1d410edc"
+    "m": "★★★",
+    "graded_at": "5411fe891270"
    }
   },
   "Wizard Class": {
@@ -2228,7 +2228,7 @@
   "Naru Meha, Master Wizard": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "5411fe891270"
    }
   },
   "Irencrag Pyromancer": {
@@ -2246,7 +2246,7 @@
   "Volt Charge": {
    "V": {
     "m": "★★",
-    "graded_at": "719b1d410edc"
+    "graded_at": "5411fe891270"
    }
   },
   "Lwaxana Troi, Charming Guest": {
@@ -2305,7 +2305,7 @@
   },
   "Stormcatch Mentor": {
    "V": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "5411fe891270"
    }
   }
