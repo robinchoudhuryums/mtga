@@ -183,7 +183,6 @@ Frodo, Determined Hero
 Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
-Galvanic Iteration
 Gangly Stompling
 Gas Guzzler
 Gastal Raider
@@ -399,7 +398,6 @@ Rustler Rampage
 Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
-Sanar, Unfinished Genius // Wild Idea
 Sandstorm Salvager
 Savage Beating
 Savage Land Dinosaur

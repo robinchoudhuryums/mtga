@@ -523,14 +523,64 @@
    "name": "Stormcatch Mentor",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Galvanic Iteration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Izzet Charm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Illuminating Lash",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tempest Trapper",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Solstice Revelations",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Primal Amulet // Primal Wellspring",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Nibelheim Aflame",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sanar, Unfinished Genius // Wild Idea",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Ral, Crackling Wit",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Slick Sequence",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
   "The Scarlet Witch": {
    "group": "In the deck (round 5)",
-   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Nibelheim Aflame, Artistic Process and the X spells cast big. A creature spell, so no Vivi trigger.",
+   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Improvisation Capstone, Artistic Process and the X spells cast big. A creature spell, so no Vivi trigger.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "High Fae Trickster": {
@@ -611,17 +661,17 @@
    }
   },
   "Galazeth Prismari": {
-   "group": "In the deck (round 5)",
-   "text": "In since round 5 (owner's pick). A 3/4 flier with a Treasure; artifacts tap for instant/sorcery mana. Only about four artifacts here (Primal Amulet, Resonating Lute, The Vision and Scarlet Witch, Treasures).",
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Irencrag Pyromancer (owner's mark). Its artifact mana had few artifacts to work with here.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "Rootha, Mastering the Moment": {
-   "group": "In the deck (round 5)",
-   "text": "In since round 5 (owner's pick). An X/X hasty flier each combat after an instant/sorcery, X the biggest MV cast that turn: big after an X spell or Mizzix's Mastery.",
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Talrand. Rootha's token needs a big spell that turn; Talrand makes a flier on every instant/sorcery.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "Najal, the Storm Runner": {
@@ -639,10 +689,10 @@
    }
   },
   "Neera, Wild Mage": {
-   "group": "In the deck (round 5)",
-   "text": "In since round 5 (owner's pick). Once a turn, trades a spell you cast for a random free one — two casts, two Vivi triggers.",
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Proft's Eidetic Memory. A random free spell once a turn; Proft's draws and grows a creature every turn.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "Vision, Spectral Synthezoid": {
@@ -759,9 +809,9 @@
   },
   "Heated Argument": {
    "group": "Cut in round 2",
-   "text": "Cut for Slick Sequence: 5 mana for 6 damage, where the cheaper spells grow Vivi sooner. Back in if the deck needs a big single-target answer.",
+   "text": "Cut in round 2: 5 mana for 6 damage, where the cheaper spells grow Vivi sooner. Back in if the deck needs a big single-target answer.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "18368a1682c4"
    }
   },
   "Orbital Plunge": {
@@ -780,9 +830,9 @@
   },
   "Storm of Saruman": {
    "group": "Cut in round 2",
-   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); Galvanic Iteration and Chandra cover copying now.",
+   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); Chandra, Hope's Beacon covers copying now.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Lightning Strike": {
@@ -843,9 +893,9 @@
   },
   "Wiccan, Rising Magician": {
    "group": "Cut in round 2",
-   "text": "Cut for Izzet Charm: tempo on a 5-mana creature.",
+   "text": "Cut in round 2: tempo on a 5-mana creature.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "18368a1682c4"
    }
   },
   "Professor Zei, Anthropologist": {
@@ -857,16 +907,16 @@
   },
   "Tolarian Terror": {
    "group": "Cut in round 2",
-   "text": "Cut for Illuminating Lash: a body, not a spell; the yard fills slowly in 100 cards.",
+   "text": "Cut in round 2: a body, not a spell; the yard fills slowly in 100 cards.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "18368a1682c4"
    }
   },
   "Victor Timely, Wily Tycoon": {
    "group": "Cut in round 2",
-   "text": "Cut for Galvanic Iteration: recasts one spell, but is a creature spell (no Vivi trigger).",
+   "text": "Cut in round 2: recasts one spell, but is a creature spell (no Vivi trigger).",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "18368a1682c4"
    }
   },
   "Emeritus of Conflict": {
@@ -955,30 +1005,30 @@
   },
   "Abstract Paintmage": {
    "group": "Cut in round 4",
-   "text": "Cut for Primal Amulet: a once-a-turn ritual on a creature; the Amulet discounts every instant/sorcery and flips into a copy-land.",
+   "text": "Cut in round 4: a once-a-turn ritual on a creature.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "18368a1682c4"
    }
   },
   "Guttersnipe": {
    "group": "Candidates",
-   "text": "2 damage to the opponent on every instant/sorcery = two Niv-Mizzet draws. Needs a cut: Ral, Crackling Wit (grows on spells but slow) or Melek; Paradigm Shifter was dismissed by the owner and Saheeli is gone.",
+   "text": "2 damage to the opponent on every instant/sorcery = two Niv-Mizzet draws. Overlaps Irencrag and Talrand as a spell payoff; needs a cut (Melek is the owner's keep).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "Improvisation Capstone": {
-   "group": "Pending package",
-   "text": "Down from ★★: Sunbird's Invocation and Surtland Elementalist now fill the free-cast role at the top end, and the deck already holds 12 cards at MV 6+. Proposed cut if kept: Wanda's Vision or Culmination of Studies.",
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Solstice Revelations. Free-casts a pile of spells, then recasts itself free every first main phase; each free cast is a Vivi trigger. Adds to a crowded top end.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Planetarium of Wan Shi Tong": {
-   "group": "Pending package",
-   "text": "Down from ★★: a 6-drop in a top end of 12, and its natural cut (Charred Foyer) is a card the owner keeps.",
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Primal Amulet. Its own {1},{T}: scry 2 turns on a free cast each turn; Temple of Epiphany is the only other scry source. A 6-drop.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Sunbird's Invocation": {
@@ -1018,16 +1068,16 @@
   },
   "Memory Lapse": {
    "group": "Cut in round 5",
-   "text": "Cut in round 5 for Gray and Adira. A soft counter; Wizard's Retort is the better cheap counter if one comes back.",
+   "text": "Cut in round 5 for Gray and Adira. A soft counter; Wizard's Retort is in now.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Asgardian Inspiration": {
    "group": "Cut in round 5",
-   "text": "Cut for Rootha: a 1-mana impulse that costs {2} each time it returns — slow.",
+   "text": "Cut in round 5: a 1-mana impulse that costs {2} each time it returns — slow.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "18368a1682c4"
    }
   },
   "Expansion // Explosion": {
@@ -1046,9 +1096,9 @@
   },
   "Firemind's Research": {
    "group": "Cut in round 5",
-   "text": "Cut in round 5 for Galazeth Prismari. Charge counters into cards or 5 damage — slow beside the deck's draw engines.",
+   "text": "Cut in round 5. Charge counters into cards or 5 damage — slow beside the deck's draw engines.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Saheeli, Jewel of Avishkar": {
@@ -1108,10 +1158,10 @@
    }
   },
   "Flux Channeler": {
-   "group": "Pending package",
-   "text": "Up from ★★ (round 7): Pensive Professor is in now, so every proliferate also draws a card (Pensive draws when it gets a counter, and Harmonic Prodigy doubles both). Still grows Vivi, Ajani and Chandra loyalty, and Primal Amulet's charge. Proposed cut: Tempest Trapper.",
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Tempest Trapper. Each noncreature spell proliferates: Vivi's counters, Ajani and Chandra loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Wizard Class": {
@@ -1136,10 +1186,10 @@
    }
   },
   "Irencrag Pyromancer": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. A Wizard (Harmonic Prodigy doubles it) that deals 3 on your second draw each turn. Suggested cut: Slick Sequence (2 damage once).",
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Galazeth Prismari. A Wizard (Harmonic Prodigy doubles it) that deals 3 on your second draw each turn.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "18368a1682c4"
    }
   },
   "Roaming Throne": {
@@ -1150,10 +1200,10 @@
    }
   },
   "Volt Charge": {
-   "group": "Pending package",
-   "text": "Up from ★: its proliferate now also draws through Pensive Professor. Instant 3 damage. Proposed cut: Illuminating Lash.",
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Illuminating Lash. Instant 3 damage plus a proliferate, which draws through Pensive Professor.",
    "graded_at": {
-    "103": "5411fe891270"
+    "103": "18368a1682c4"
    }
   },
   "Lwaxana Troi, Charming Guest": {
@@ -1224,6 +1274,76 @@
    "text": "Cut in round 7 for Pensive Professor. With 20 cards at MV 2 or less, the first card back if the early game feels thin.",
    "graded_at": {
     "103": "5411fe891270"
+   }
+  },
+  "Galvanic Iteration": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Curiosity (owner's mark). A copy, not a cast, so no Vivi trigger.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Izzet Charm": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Wizard's Retort (owner's mark). Retort counters anything and is often {U}{U} with Wizards out.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Illuminating Lash": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Volt Charge (owner's mark).",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Tempest Trapper": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Flux Channeler. Its mana only casts instants and sorceries, and its third-spell trigger rarely fires before Vivi is out.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Solstice Revelations": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Improvisation Capstone (owner's mark). Free only below the Mountains you control; 13 of about 38 lands are Mountains.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Primal Amulet // Primal Wellspring": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Planetarium (owner's mark). Melek, Archmage of Runes, Artist's Talent and Iron Lad still reduce costs.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Nibelheim Aflame": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Thor, God of Thunder.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Sanar, Unfinished Genius // Wild Idea": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Iron Lad, Young Avenger: a second Hero for the Human Torch loop and a noncreature cost reducer.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Ral, Crackling Wit": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Chandra, Torch of Defiance.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Slick Sequence": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Command the Stage.",
+   "graded_at": {
+    "103": "18368a1682c4"
    }
   }
  },
@@ -1705,6 +1825,87 @@
     "Wandering Fumarole",
     "Wizard Class",
     "Wizard's Staff"
+   ],
+   "18368a1682c4": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Planetarium of Wan Shi Tong",
+    "Proft's Eidetic Memory",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
    ]
   }
  },
@@ -1712,7 +1913,7 @@
   "The Scarlet Witch": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "18368a1682c4"
    }
   },
   "High Fae Trickster": {
@@ -1783,14 +1984,14 @@
   },
   "Galazeth Prismari": {
    "V": {
-    "m": "★★",
-    "graded_at": "33a071a68a39"
+    "m": "◇",
+    "graded_at": "18368a1682c4"
    }
   },
   "Rootha, Mastering the Moment": {
    "V": {
-    "m": "★★",
-    "graded_at": "33a071a68a39"
+    "m": "◇",
+    "graded_at": "18368a1682c4"
    }
   },
   "Najal, the Storm Runner": {
@@ -1807,8 +2008,8 @@
   },
   "Neera, Wild Mage": {
    "V": {
-    "m": "★★",
-    "graded_at": "33a071a68a39"
+    "m": "◇",
+    "graded_at": "18368a1682c4"
    }
   },
   "Vision, Spectral Synthezoid": {
@@ -1910,7 +2111,7 @@
   "Heated Argument": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "18368a1682c4"
    }
   },
   "Orbital Plunge": {
@@ -1928,7 +2129,7 @@
   "Storm of Saruman": {
    "V": {
     "m": "◇",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Lightning Strike": {
@@ -1982,7 +2183,7 @@
   "Wiccan, Rising Magician": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "18368a1682c4"
    }
   },
   "Professor Zei, Anthropologist": {
@@ -1994,13 +2195,13 @@
   "Tolarian Terror": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "18368a1682c4"
    }
   },
   "Victor Timely, Wily Tycoon": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "18368a1682c4"
    }
   },
   "Emeritus of Conflict": {
@@ -2078,25 +2279,25 @@
   "Abstract Paintmage": {
    "V": {
     "m": "◇",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "18368a1682c4"
    }
   },
   "Guttersnipe": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "18368a1682c4"
    }
   },
   "Improvisation Capstone": {
    "V": {
     "m": "★",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Planetarium of Wan Shi Tong": {
    "V": {
     "m": "★",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Sunbird's Invocation": {
@@ -2132,13 +2333,13 @@
   "Memory Lapse": {
    "V": {
     "m": "◇",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Asgardian Inspiration": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "18368a1682c4"
    }
   },
   "Expansion // Explosion": {
@@ -2156,7 +2357,7 @@
   "Firemind's Research": {
    "V": {
     "m": "◇",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Saheeli, Jewel of Avishkar": {
@@ -2210,7 +2411,7 @@
   "Flux Channeler": {
    "V": {
     "m": "★★★",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Wizard Class": {
@@ -2234,7 +2435,7 @@
   "Irencrag Pyromancer": {
    "V": {
     "m": "★★",
-    "graded_at": "719b1d410edc"
+    "graded_at": "18368a1682c4"
    }
   },
   "Roaming Throne": {
@@ -2246,7 +2447,7 @@
   "Volt Charge": {
    "V": {
     "m": "★★",
-    "graded_at": "5411fe891270"
+    "graded_at": "18368a1682c4"
    }
   },
   "Lwaxana Troi, Charming Guest": {
@@ -2307,6 +2508,66 @@
    "V": {
     "m": "★",
     "graded_at": "5411fe891270"
+   }
+  },
+  "Galvanic Iteration": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Izzet Charm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Illuminating Lash": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Tempest Trapper": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Solstice Revelations": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Primal Amulet // Primal Wellspring": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Nibelheim Aflame": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Sanar, Unfinished Genius // Wild Idea": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Ral, Crackling Wit": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Slick Sequence": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
    }
   }
  }

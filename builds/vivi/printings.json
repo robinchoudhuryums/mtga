@@ -110,8 +110,33 @@
  ],
  "Captain Storm, Cosmium Raider": [],
  "Chandra, Hope's Beacon": [],
+ "Chandra, Torch of Defiance": [
+  {
+   "a": "Magali Villeneuve",
+   "art": "https://cards.scryfall.io/art_crop/front/e/e/ee245203-d10a-493b-841c-66c1eb1f89dc.jpg?1783928999",
+   "cn": "117",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/e/ee245203-d10a-493b-841c-66c1eb1f89dc.jpg?1783928999",
+   "r": "M",
+   "set": "KLR",
+   "sn": "Kaladesh Remastered",
+   "y": "2020"
+  },
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/4/0/40cb22c8-cb03-45c9-bb0e-b8cabdcc43cd.jpg?1788329325",
+   "cn": "244",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/0/40cb22c8-cb03-45c9-bb0e-b8cabdcc43cd.jpg?1788329325",
+   "r": "M",
+   "set": "FRA",
+   "sn": "Reality Fracture",
+   "y": "2026"
+  }
+ ],
  "Charred Foyer // Warped Space": [],
  "Colorstorm Stallion": [],
+ "Command the Stage": [],
  "Counterspell": [
   {
    "a": "Olena Richards",
@@ -236,6 +261,33 @@
   }
  ],
  "Culmination of Studies": [],
+ "Curiosity": [
+  {
+   "a": "Igor Kieryluk",
+   "art": "https://cards.scryfall.io/art_crop/front/c/5/c5a0be10-c20f-4ac0-89a5-1770ecf48aad.jpg?1783930457",
+   "cn": "147",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/5/c5a0be10-c20f-4ac0-89a5-1770ecf48aad.jpg?1783930457",
+   "r": "U",
+   "set": "JMP",
+   "sn": "Jumpstart",
+   "y": "2020"
+  },
+  {
+   "a": "Abigail Larson",
+   "art": "https://cards.scryfall.io/art_crop/front/9/6/96056dc1-b989-4c87-8ad9-7a9dd99dd7fc.jpg?1783914931",
+   "cn": "17",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/6/96056dc1-b989-4c87-8ad9-7a9dd99dd7fc.jpg?1783914931",
+   "r": "U",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Don & Raph, Hard Science": [],
  "Dragonfly Swarm": [],
  "Dreadhorde Arcanist": [],
@@ -447,6 +499,7 @@
  "Invasion of Kaladesh": [],
  "Irencrag Pyromancer": [],
  "Iroh's Demonstration": [],
+ "Iron Lad, Young Avenger": [],
  "Izzet Charm": [],
  "Izzet Guildgate": [
   {
@@ -794,6 +847,7 @@
  "Prismari Charm": [],
  "Prismari, the Inspiration": [],
  "Professor Zei, Anthropologist": [],
+ "Proft's Eidetic Memory": [],
  "Ral, Crackling Wit": [],
  "Ral, Storm Conduit": [
   {
@@ -1035,6 +1089,7 @@
    "y": "2025"
   }
  ],
+ "Talrand, Sky Summoner": [],
  "Teferi, Mage of Zhalfir": [],
  "Tellah, Great Sage": [],
  "Tempest Angler": [],
@@ -1044,6 +1099,7 @@
  "The Locust God": [],
  "The Scarlet Witch": [],
  "The Vision and Scarlet Witch": [],
+ "Thor, God of Thunder": [],
  "Thousand-Year Storm": [],
  "Three Steps Ahead": [
   {
@@ -1108,6 +1164,7 @@
   }
  ],
  "Wizard Class": [],
+ "Wizard's Retort": [],
  "Wizard's Staff": [],
  "Zaffai and the Tempests": []
 }

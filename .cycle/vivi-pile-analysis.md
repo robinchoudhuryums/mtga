@@ -325,6 +325,13 @@ draw into a Vivi counter), Improvisation Capstone ★★→★ and Planetarium �
 top end; 12 cards at MV 6+). UNCHANGED — Curiosity, Thor GoT, Iron Lad, Talrand, Irencrag, Chandra Torch.
 Stormcatch Mentor is the first card back if the early game runs thin.
 
+**Round 8 APPLIED (2026-11-18):** 13 swaps — Curiosity / Galvanic Iteration, Wizard's Retort / Izzet Charm,
+Volt Charge / Illuminating Lash, Irencrag / Galazeth, Flux Channeler / Tempest Trapper, Improvisation Capstone /
+Solstice Revelations, Planetarium / Primal Amulet, Thor GoT / Nibelheim, Iron Lad, Young Avenger / Sanar, Chandra
+Torch / Ral CW, Command the Stage / Slick Sequence, Proft's / Neera, Talrand / Rootha. Glacial Dragonhunt kept over
+the owner's cut mark (its mark is still open on the board). Measured: floor A, interaction 16, card advantage 15,
+avg MV 3.83, early drops 14, legal, preflight READY.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Arcane Bombardment (the free-cast engine). Stormcatch Mentor left the
 list in round 7 and the header with it.
