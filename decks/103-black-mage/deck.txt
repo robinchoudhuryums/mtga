@@ -12,9 +12,11 @@
 #: archetype: the opponent is dead. Free casts and recasts (Baral, Zaffai, Arcane Bombardment, Wanda's Vision,
 #: archetype: As Foretold, Epic Experiment, flashback) each count as another cast. Copies made by Thousand-Year
 #: archetype: Storm, Galvanic Iteration and Chandra are NOT casts and do not grow Vivi; they multiply burn and draw.
-#: archetype: The cheap spells are chosen to COMPOUND rather than cantrip: Asgardian Inspiration returns whenever
-#: archetype: Vivi pings, Fractal Anomaly grows with every Niv-Mizzet draw, Prismari Charm and Culmination of
-#: archetype: Studies hit the opponent for extra draws. Five counterspells protect Vivi through a big turn.
+#: archetype: The cheap spells are chosen to COMPOUND rather than cantrip: Artist's Talent adds 2 to every Vivi
+#: archetype: ping, Fractal Anomaly grows with every Niv-Mizzet draw, Prismari Charm and Culmination of Studies hit
+#: archetype: the opponent for extra draws. Four counterspells and Jin-Gitaxias, Progress Tyrant protect Vivi through a big turn.
+#: archetype: A creature payoff layer (Gray and Adira copying a Niv-Mizzet, Rootha, Shark Typhoon, Vision) trades
+#: archetype: some Vivi growth for board presence — the owner's call in round 5.
 #: archetype: DRAFTED from the owner's pile (2026-11-18), then filled with outside spells and untapped duals.
 #: protect: Vivi Ornitier; Niv-Mizzet, Visionary; Niv-Mizzet, Parun; Electro, Assaulting Battery; Stormcatch Mentor; Arcane Bombardment
 #: notes: 2026-11-18 round 2 (owner's picks, 24 swaps): outside spells in — counterspells (Counterspell, Swan Song,
@@ -31,6 +33,11 @@
 #: notes: Skywhale (Guttersnipe waits for another cut) and held the spice round (Improvisation Capstone,
 #: notes: Planetarium of Wan Shi Tong, Sunbird's Invocation, Shark Typhoon); those, Jin-Gitaxias, Progress Tyrant
 #: notes: and Kraum are on the builds/vivi board with suggested cuts.
+#: notes: 2026-11-18 round 5 (owner's board picks, 9 swaps): Gray and Adira, Neera, Rootha, The Scarlet Witch,
+#: notes: Vision, Spectral Synthezoid, Galazeth Prismari, Shark Typhoon, Jin-Gitaxias and Kraum in for Memory Lapse,
+#: notes: Swan Song (it gives the opponent a 2/2 — the owner's no-benefit removal rule), Asgardian Inspiration,
+#: notes: Expansion // Explosion, Zaffai, Firemind's Research, Saheeli, Teferi and Twinned Vision. Academy
+#: notes: Instructor is still marked on the board with no cut (suggested: Prismari, the Inspiration).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Vivi Ornitier (FIN) 248
@@ -44,10 +51,12 @@
 1 Prismari, the Inspiration (SOS) 212
 1 Gandalf the Grey (LTR) 207
 1 Tellah, Great Sage (FIN) 244
-1 Saheeli, Jewel of Avishkar (FRA) 275
+1 Shark Typhoon (IKO) 67
 1 The Vision and Scarlet Witch (MSC) 707
 1 Keranos, God of Storms (PIO) 311
 1 Fractal Anomaly (SOS) 50
+1 Gray and Adira, Forever Joined (TRK) 238
+1 Rootha, Mastering the Moment (SOC) 8
 
 # Cost reduction and spell mana
 1 Stormcatch Mentor (BLB) 234
@@ -59,10 +68,12 @@
 1 Resonating Lute (SOS) 221
 1 As Foretold (WOT) 14
 1 Archmage of Runes (FDN) 30
+1 The Scarlet Witch (MSH) 151
+1 Galazeth Prismari (STX) 189
 
 # Free casts and recasts — each one is another Vivi trigger
 1 Baral and Kari Zev (MOM) 218
-1 Zaffai and the Tempests (SOS) 246
+1 Vision, Spectral Synthezoid (MSC) 644
 1 Arcane Bombardment (SNC) 101
 1 Wanda's Vision (MSC) 708
 1 Charred Foyer // Warped Space (DSK) 129
@@ -71,10 +82,10 @@
 1 Solstice Revelations (TLA) 153
 1 Epic Experiment (PIO) 223
 1 Mizzix's Mastery (FCA) 41
+1 Neera, Wild Mage (HBG) 245
 
 # Copy engines
 1 Thousand-Year Storm (FDN) 248
-1 Expansion // Explosion (GRN) 224
 1 Chandra, Hope's Beacon (MOM) 134
 1 Loki Laufeyson (MSH) 143
 1 Galvanic Iteration (MID) 224
@@ -83,19 +94,15 @@
 1 Sanar, Unfinished Genius // Wild Idea (SOS) 223
 1 Indris, the Hydrostatic Surge (YBLB) 25
 1 Artist's Talent (BLB) 124
-1 Firemind's Research (GRN) 171
 1 Ral, Crackling Wit (BLB) 230
 1 Expressive Iteration (STX) 186
 1 Sorcerer Class (AFR) 233
-1 Asgardian Inspiration (MSC) 678
-1 Twinned Vision (FRA) 157
+1 Kraum, Violent Cacophony (OTJ) 214
 1 Culmination of Studies (STX) 173
 
 # Protection and counterspells — keep Vivi alive through a big turn
-1 Teferi, Mage of Zhalfir (FCA) 32
-1 Swan Song (HA3) 9
+1 Jin-Gitaxias, Progress Tyrant (NEO) 59
 1 Counterspell (MAR) 52
-1 Memory Lapse (STA) 16
 1 Izzet Charm (EA3) 11
 1 Three Steps Ahead (OTJ) 75
 1 Glen Elendra's Answer (ECL) 52
@@ -126,3 +133,5 @@
 12 Island (TRK) 319
 1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
 13 Mountain (TRK) 323
+
+#~ +Jacob Hauken, Inspector // Hauken's Insight | BENCH (builder vivi): benched on the board

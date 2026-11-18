@@ -368,14 +368,59 @@
    "name": "Kraum, Violent Cacophony",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Memory Lapse",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Asgardian Inspiration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Expansion // Explosion",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Zaffai and the Tempests",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firemind's Research",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Saheeli, Jewel of Avishkar",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Mage of Zhalfir",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Twinned Vision",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Swan Song",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
   "The Scarlet Witch": {
-   "group": "Scarlet Witch",
-   "text": "Discounts MV 4+ instants/sorceries by her power; the draft keeps only ~8 such spells, so she is a 3-mana 2/3 most turns.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Nibelheim Aflame, Artistic Process and the X spells cast big. A creature spell, so no Vivi trigger.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "High Fae Trickster": {
@@ -449,24 +494,24 @@
    }
   },
   "Gray and Adira, Forever Joined": {
-   "group": "Copy",
-   "text": "A hasty token copy each combat; best on Niv-Mizzet, Visionary (doubles its draws). First in if a creature slot opens.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). After a noncreature spell, a hasty token copy of a creature each combat: a copy of Niv-Mizzet, Visionary doubles its draws, a copy of Niv-Mizzet, Parun doubles the combo. Never copy Vivi (the copy has no counters).",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Galazeth Prismari": {
-   "group": "Spell mana",
-   "text": "Artifacts tap for instant mana, but the draft has two artifacts.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). A 3/4 flier with a Treasure; artifacts tap for instant/sorcery mana. Only about four artifacts here (Primal Amulet, Resonating Lute, The Vision and Scarlet Witch, Treasures).",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Rootha, Mastering the Moment": {
-   "group": "Tokens",
-   "text": "X/X flier each combat after an instant/sorcery; Saheeli and Tellah already make bodies per spell.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). An X/X hasty flier each combat after an instant/sorcery, X the biggest MV cast that turn: big after an X spell or Mizzix's Mastery.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Najal, the Storm Runner": {
@@ -484,24 +529,24 @@
    }
   },
   "Neera, Wild Mage": {
-   "group": "Free casts",
-   "text": "Trades a cast spell for a random free one once a turn; the draft has steadier free-cast engines.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). Once a turn, trades a spell you cast for a random free one — two casts, two Vivi triggers.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Vision, Spectral Synthezoid": {
-   "group": "Free casts",
-   "text": "A free noncreature spell each turn on an 8-mana body; Zaffai does it for 7.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick), replacing Zaffai: a free noncreature spell from hand each turn, wider than Zaffai's instants/sorceries.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Academy Instructor": {
-   "group": "Tokens",
-   "text": "An Officer per noncreature spell; Saheeli's flying Thopters are better.",
+   "group": "Candidates",
+   "text": "Owner's add, still unpaired. An Officer token per noncreature spell, growing itself. Suggested cut: Prismari, the Inspiration (the top of the curve is crowded with Jin-Gitaxias, Vision and Ovika, and Prismari's storm copies are not casts); or Melek.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "33a071a68a39"
    }
   },
   "Enraged Flamecaster": {
@@ -625,9 +670,9 @@
   },
   "Storm of Saruman": {
    "group": "Cut in round 2",
-   "text": "Cut for Expansion // Explosion: copies are not casts (R3), and 6 mana is a lot for a copy engine beside Thousand-Year Storm and Galvanic Iteration.",
+   "text": "Cut in round 2 for Expansion // Explosion, itself since cut. Still a 6-mana copy engine (copies, not casts) beside Thousand-Year Storm, Galvanic Iteration and Jin-Gitaxias.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "33a071a68a39"
    }
   },
   "Lightning Strike": {
@@ -653,9 +698,9 @@
   },
   "Sprite Dragon": {
    "group": "Cut in round 2",
-   "text": "Cut for Asgardian Inspiration: a creature spell; first back in if a cheap threat is wanted.",
+   "text": "Cut in round 2. A cheap creature that grows on every noncreature spell; with the curve now 3.8, the one to bring back if the early game feels empty.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "33a071a68a39"
    }
   },
   "Tempest Angler": {
@@ -667,9 +712,9 @@
   },
   "Kaza, Roil Chaser": {
    "group": "Cut in round 2",
-   "text": "Cut for Twinned Vision: cost reduction keyed on Wizards, on a creature spell.",
+   "text": "Cut in round 2. Discounts the next instant/sorcery by the Wizard count (about eight Wizards now, Vivi included).",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "33a071a68a39"
    }
   },
   "Malcolm, the Eyes": {
@@ -681,9 +726,9 @@
   },
   "The Locust God": {
    "group": "Cut in round 2",
-   "text": "Cut for Memory Lapse: strong beside Niv-Mizzet but a 6-mana creature spell; a counterspell protects the combo instead.",
+   "text": "Cut in round 2. A hasty flying Insect per card drawn — strong beside Niv-Mizzet, but a 6-mana creature in a top end that is already crowded.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "33a071a68a39"
    }
   },
   "Wiccan, Rising Magician": {
@@ -723,9 +768,9 @@
   },
   "Invasion of Kaladesh": {
    "group": "Cut in round 2",
-   "text": "Cut for Swan Song: the Thopter is the whole value; the Vehicle back needs artifacts.",
+   "text": "Cut in round 2. The Thopter is the whole value; the Vehicle back needs artifacts.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "33a071a68a39"
    }
   },
   "Izzet Guildgate": {
@@ -807,16 +852,16 @@
   },
   "Guttersnipe": {
    "group": "Candidates",
-   "text": "2 damage to the opponent on every instant/sorcery, which Niv-Mizzet, Visionary turns into two cards. The owner kept Spectacular Skywhale; suggested cuts: Paradigm Shifter (a 3-drop dork; its spellbook card is a one-time value), or Saheeli, Jewel of Avishkar.",
+   "text": "2 damage to the opponent on every instant/sorcery = two Niv-Mizzet draws. Needs a cut: Ral, Crackling Wit (grows on spells but slow) or Melek; Paradigm Shifter was dismissed by the owner and Saheeli is gone.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
    }
   },
   "Improvisation Capstone": {
    "group": "Candidates",
-   "text": "Free casts off the top until MV 4+, then (paradigm) a free copy of itself every first main phase: a repeating engine Vivi's mana pays for once. Suggested cut: Wanda's Vision (a free cast on the second spell, which Capstone does in bulk); or Zaffai and the Tempests.",
+   "text": "Free casts off the top, then a free copy of itself every first main. Suggested cut: Wanda's Vision (one free cast on the second spell); Zaffai has already gone to Vision.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -828,30 +873,93 @@
   },
   "Sunbird's Invocation": {
    "group": "Candidates",
-   "text": "Every spell cast from hand cascades into a free one (a second Vivi trigger). Suggested cut: Zaffai and the Tempests (one free hand cast a turn, on a 7-drop); or Wanda's Vision.",
+   "text": "Every spell cast from hand cascades into a free one. Suggested cut: Wanda's Vision (shared with Capstone) or Prismari (shared with Academy Instructor).",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
    }
   },
   "Shark Typhoon": {
-   "group": "Candidates",
-   "text": "An X/X flying Shark per noncreature spell, sized by its mana value; can be cycled for a card instead. Suggested cut: Saheeli, Jewel of Avishkar (a 1/1 Thopter per noncreature spell — the same job, smaller). Ovika does Shark's job too, if you would rather keep Saheeli.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick), replacing Saheeli: an X/X flying Shark per noncreature spell, X its mana value; cycles for a card when you need one.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
    }
   },
   "Jin-Gitaxias, Progress Tyrant": {
-   "group": "Candidates",
-   "text": "Copies your first artifact/instant/sorcery each turn and counters the opponent's first one each turn: protection and a copy engine in one card. Suggested cut: Teferi, Mage of Zhalfir (also stops instant-speed answers, at {U}{U}{U}); or Melek, or Prismari, the Inspiration (the other 7-drop copy engine).",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5, replacing Teferi: copies your first artifact/instant/sorcery each turn and counters the opponent's first.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
    }
   },
   "Kraum, Violent Cacophony": {
-   "group": "Candidates",
-   "text": "A flier that draws and grows on your second spell every turn — repeatable card flow. Suggested cut: Twinned Vision (two casts, three cards, once); or Firemind's Research, or Expressive Iteration.",
+   "group": "In the deck (round 5)",
+   "text": "In since round 5, replacing Twinned Vision: a flier that draws and grows on your second spell every turn.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "33a071a68a39"
+   }
+  },
+  "Swan Song": {
+   "group": "Cut in round 5",
+   "text": "Cut by the owner: it gives the opponent a 2/2 flier, against the owner's rule on removal that helps the opponent.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Memory Lapse": {
+   "group": "Cut in round 5",
+   "text": "Cut for Gray and Adira: a soft counter (the spell comes back next draw); four hard counters and Jin-Gitaxias remain.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Asgardian Inspiration": {
+   "group": "Cut in round 5",
+   "text": "Cut for Rootha: a 1-mana impulse that costs {2} each time it returns — slow.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Expansion // Explosion": {
+   "group": "Cut in round 5",
+   "text": "Cut for The Scarlet Witch by the owner's choice. Still the best late sink here: X to the face draws X with Niv-Mizzet, Visionary. First back in if a spell slot opens.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Zaffai and the Tempests": {
+   "group": "Cut in round 5",
+   "text": "Cut for Vision, Spectral Synthezoid: the same free cast from hand each turn, limited to instants and sorceries.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Firemind's Research": {
+   "group": "Cut in round 5",
+   "text": "Cut for Galazeth Prismari: charge counters into cards or 5 damage — slow.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Saheeli, Jewel of Avishkar": {
+   "group": "Cut in round 5",
+   "text": "Cut for Shark Typhoon: 1/1 hasty flying Thopters per noncreature spell, where Shark makes an X/X.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Teferi, Mage of Zhalfir": {
+   "group": "Cut in round 5",
+   "text": "Cut for Jin-Gitaxias, Progress Tyrant: both deny instant-speed answers; Jin also copies a spell each turn. Teferi needs {U}{U}{U}.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Twinned Vision": {
+   "group": "Cut in round 5",
+   "text": "Cut for Kraum: three cards once against Kraum's draw on every two-spell turn.",
+   "graded_at": {
+    "103": "33a071a68a39"
    }
   }
  },
@@ -1092,14 +1200,93 @@
     "Wanda's Vision",
     "Wandering Fumarole",
     "Zaffai and the Tempests"
+   ],
+   "33a071a68a39": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Fractal Anomaly",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Jin-Gitaxias, Progress Tyrant",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Ral, Storm Conduit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole"
    ]
   }
  },
  "verdicts": {
   "The Scarlet Witch": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "High Fae Trickster": {
@@ -1164,20 +1351,20 @@
   },
   "Gray and Adira, Forever Joined": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "Galazeth Prismari": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "Rootha, Mastering the Moment": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "Najal, the Storm Runner": {
@@ -1194,20 +1381,20 @@
   },
   "Neera, Wild Mage": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "Vision, Spectral Synthezoid": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★★",
+    "graded_at": "33a071a68a39"
    }
   },
   "Academy Instructor": {
    "V": {
     "m": "◇",
-    "graded_at": "84e00893450c"
+    "graded_at": "33a071a68a39"
    }
   },
   "Enraged Flamecaster": {
@@ -1315,7 +1502,7 @@
   "Storm of Saruman": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "33a071a68a39"
    }
   },
   "Lightning Strike": {
@@ -1339,7 +1526,7 @@
   "Sprite Dragon": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "33a071a68a39"
    }
   },
   "Tempest Angler": {
@@ -1351,7 +1538,7 @@
   "Kaza, Roil Chaser": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "33a071a68a39"
    }
   },
   "Malcolm, the Eyes": {
@@ -1363,7 +1550,7 @@
   "The Locust God": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "33a071a68a39"
    }
   },
   "Wiccan, Rising Magician": {
@@ -1399,7 +1586,7 @@
   "Invasion of Kaladesh": {
    "V": {
     "m": "△",
-    "graded_at": "845b603af10b"
+    "graded_at": "33a071a68a39"
    }
   },
   "Izzet Guildgate": {
@@ -1471,13 +1658,13 @@
   "Guttersnipe": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
    }
   },
   "Improvisation Capstone": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -1489,25 +1676,79 @@
   "Sunbird's Invocation": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
    }
   },
   "Shark Typhoon": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
    }
   },
   "Jin-Gitaxias, Progress Tyrant": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
    }
   },
   "Kraum, Violent Cacophony": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Swan Song": {
+   "V": {
+    "m": "✗",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Memory Lapse": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Asgardian Inspiration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Expansion // Explosion": {
+   "V": {
+    "m": "★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Zaffai and the Tempests": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Firemind's Research": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Saheeli, Jewel of Avishkar": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Teferi, Mage of Zhalfir": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Twinned Vision": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
    }
   }
  }
