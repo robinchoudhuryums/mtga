@@ -311,6 +311,12 @@ Professor / Stormcatch Mentor (variant: / Gray and Adira — early drops 15 not 
 Surtland / Ovika. Measured: floor A, interaction 16, card advantage 14, legal. Maybes: Blue Marvel / The Scarlet
 Witch, Oracle / Glacial Dragonhunt, Ruric Thar / Kraum (all 21: floor A, interaction 15, avg MV 3.83, early 13).
 
+**Round 7 update (owner, 2026-11-18, NOT applied):** Surtland Elementalist / Prismari, the Inspiration;
+Thor, Guardian of Midgard dropped; Ajani Unrelenting / Jin-Gitaxias, Progress Tyrant (Ajani's Cadets are Wizard
+tokens; its −3 is an emergency button only); Ovika stays. 18 swaps, measured: floor A, interaction 16, card
+advantage 15, avg MV 3.77 (3.74 with Pensive Professor / Gray and Adira instead of / Stormcatch), legal. Open:
+the Pensive cut, Wanda's Vision (for Capstone; alt Culmination), the three maybes.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
