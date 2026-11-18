@@ -96,6 +96,7 @@ Collector's Vault
 Colossification
 Command Subadjunct
 Corrupt Court Official
+Crackle with Power
 Craterclaw Colossus
 Craterhoof Behemoth
 Crow of Dark Tidings
@@ -156,7 +157,9 @@ Enigma Drake
 Entropic Battlecruiser
 Entrust the Spark
 Ephemerate
+Epic Experiment
 Eternal Skylord
+Expressive Iteration
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
@@ -175,6 +178,7 @@ Fog Bank
 Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortune, Loyal Steed
+Fractal Anomaly
 Frantic Confrontation
 Frantic Strength
 Fraying Sanity
@@ -182,6 +186,7 @@ Frodo, Determined Hero
 Frontier Seeker
 Fynn, the Fangbearer
 Galuf's Final Act
+Galvanic Iteration
 Gangly Stompling
 Gas Guzzler
 Gastal Raider
@@ -244,7 +249,6 @@ Ingenious Leonin
 Insatiable Skittermaw
 Insurrection
 Interface Ace
-Invasion of Kaladesh
 Involuntary Employment
 Ioreth of the Healing House
 Iroh, Dragon of the West

@@ -188,6 +188,121 @@
    "name": "Katara, Waterbending Master",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Heated Argument",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Orbital Plunge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Role Reversal",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Storm of Saruman",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lightning Strike",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rapturous Moment",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Elemental Mascot",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sprite Dragon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tempest Angler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Kaza, Roil Chaser",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Malcolm, the Eyes",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "The Locust God",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wiccan, Rising Magician",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Professor Zei, Anthropologist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tolarian Terror",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Victor Timely, Wily Tycoon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Emeritus of Conflict",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Kaladesh",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Izzet Guildgate",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Swiftwater Cliffs",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Stark Industries",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Baron, Airship Kingdom",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Airship Engine Room",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -221,9 +336,9 @@
   },
   "Dragonfly Swarm": {
    "group": "Graveyard bodies",
-   "text": "Flier sized by noncreature cards in the yard; benched for Enigma Drake-class bodies the draft already has (Tolarian Terror, Melek).",
+   "text": "Flier sized by the noncreature cards in the yard. With ~40 noncreature spells now in the list it grows faster than when first graded; a strong pick if a creature slot opens.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "845b603af10b"
    }
   },
   "Enigma Drake": {
@@ -249,9 +364,9 @@
   },
   "Stormchaser Mage": {
    "group": "Prowess",
-   "text": "2-drop prowess flier; Sprite Dragon and Tempest Angler grow permanently instead.",
+   "text": "2-drop prowess flier with haste. The cheap creature threats were cut in round 2, so this is the one to bring back if the early board feels empty.",
    "graded_at": {
-    "103": "84e00893450c"
+    "103": "845b603af10b"
    }
   },
   "Lilah, Undefeated Slickshot": {
@@ -421,6 +536,167 @@
    "graded_at": {
     "103": "84e00893450c"
    }
+  },
+  "Heated Argument": {
+   "group": "Cut in round 2",
+   "text": "Cut for Slick Sequence: 5 mana for 6 damage, where the cheaper spells grow Vivi sooner. Back in if the deck needs a big single-target answer.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Orbital Plunge": {
+   "group": "Cut in round 2",
+   "text": "Cut for Prismari Charm: a 4-mana sorcery that only kills a creature; the charm's modes do more per mana.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Role Reversal": {
+   "group": "Cut in round 2",
+   "text": "Cut for Counterspell: {U}{U}{R} sorcery-speed steal; a counterspell protects Vivi instead.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Storm of Saruman": {
+   "group": "Cut in round 2",
+   "text": "Cut for Expansion // Explosion: copies are not casts (R3), and 6 mana is a lot for a copy engine beside Thousand-Year Storm and Galvanic Iteration.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Lightning Strike": {
+   "group": "Cut in round 2",
+   "text": "Cut for Glacial Dragonhunt: plain burn; the owner wanted spells that do a second thing.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Rapturous Moment": {
+   "group": "Cut in round 2",
+   "text": "Cut for Epic Experiment: card flow plus mana, where Epic Experiment turns the same mana into several free casts.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Elemental Mascot": {
+   "group": "Cut in round 2",
+   "text": "Cut for Crackle with Power: a creature (no Vivi trigger) whose impulse draw needs 5+ mana spells.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Sprite Dragon": {
+   "group": "Cut in round 2",
+   "text": "Cut for Asgardian Inspiration: a creature spell; first back in if a cheap threat is wanted.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Tempest Angler": {
+   "group": "Cut in round 2",
+   "text": "Cut for Fractal Anomaly: a creature spell; Fractal Anomaly grows with draws instead.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Kaza, Roil Chaser": {
+   "group": "Cut in round 2",
+   "text": "Cut for Twinned Vision: cost reduction keyed on Wizards, on a creature spell.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Malcolm, the Eyes": {
+   "group": "Cut in round 2",
+   "text": "Cut for Expressive Iteration: Clues on the second spell, on a creature spell.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "The Locust God": {
+   "group": "Cut in round 2",
+   "text": "Cut for Memory Lapse: strong beside Niv-Mizzet but a 6-mana creature spell; a counterspell protects the combo instead.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "group": "Cut in round 2",
+   "text": "Cut for Izzet Charm: tempo on a 5-mana creature.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Professor Zei, Anthropologist": {
+   "group": "Cut in round 2",
+   "text": "Cut for Three Steps Ahead: a looter creature; the spree spell counters, copies or draws.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Tolarian Terror": {
+   "group": "Cut in round 2",
+   "text": "Cut for Illuminating Lash: a body, not a spell; the yard fills slowly in 100 cards.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "group": "Cut in round 2",
+   "text": "Cut for Galvanic Iteration: recasts one spell, but is a creature spell (no Vivi trigger).",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Emeritus of Conflict": {
+   "group": "Cut in round 2",
+   "text": "Cut for Culmination of Studies: its Bolt copy needs a 3-spell turn first.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Invasion of Kaladesh": {
+   "group": "Cut in round 2",
+   "text": "Cut for Swan Song: the Thopter is the whole value; the Vehicle back needs artifacts.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Izzet Guildgate": {
+   "group": "Tapped lands",
+   "text": "Replaced by Steam Vents: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Swiftwater Cliffs": {
+   "group": "Tapped lands",
+   "text": "Replaced by Spirebluff Canal: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Stark Industries": {
+   "group": "Tapped lands",
+   "text": "Replaced by Fiery Islet: always enters tapped (1 life on entry).",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Baron, Airship Kingdom": {
+   "group": "Tapped lands",
+   "text": "Replaced by Shivan Reef: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Airship Engine Room": {
+   "group": "Tapped lands",
+   "text": "Replaced by Sulfur Falls: always enters tapped; its sacrifice-to-draw costs 4.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
   }
  },
  "snapshots": {
@@ -502,6 +778,85 @@
     "Wiccan, Rising Magician",
     "Wisdom of Ages",
     "Zaffai and the Tempests"
+   ],
+   "845b603af10b": [
+    "Abandon Attachments",
+    "Abstract Paintmage",
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Artistic Process",
+    "As Foretold",
+    "Asgardian Inspiration",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Colorstorm Stallion",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expansion // Explosion",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Firemind's Research",
+    "Fractal Anomaly",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Goliath Daydreamer",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Memory Lapse",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Swan Song",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Tome Blast",
+    "Twinned Vision",
+    "Vibrant Outburst",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wisdom of Ages",
+    "Zaffai and the Tempests"
    ]
   }
  },
@@ -532,8 +887,8 @@
   },
   "Dragonfly Swarm": {
    "V": {
-    "m": "◇",
-    "graded_at": "84e00893450c"
+    "m": "★",
+    "graded_at": "845b603af10b"
    }
   },
   "Enigma Drake": {
@@ -557,7 +912,7 @@
   "Stormchaser Mage": {
    "V": {
     "m": "◇",
-    "graded_at": "84e00893450c"
+    "graded_at": "845b603af10b"
    }
   },
   "Lilah, Undefeated Slickshot": {
@@ -702,6 +1057,144 @@
    "V": {
     "m": "✗",
     "graded_at": "84e00893450c"
+   }
+  },
+  "Heated Argument": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Orbital Plunge": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Role Reversal": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Storm of Saruman": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Lightning Strike": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Rapturous Moment": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Elemental Mascot": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Sprite Dragon": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Tempest Angler": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Kaza, Roil Chaser": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Malcolm, the Eyes": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "The Locust God": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Professor Zei, Anthropologist": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Tolarian Terror": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Emeritus of Conflict": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Invasion of Kaladesh": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Izzet Guildgate": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Swiftwater Cliffs": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Stark Industries": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Baron, Airship Kingdom": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Airship Engine Room": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
    }
   }
  }

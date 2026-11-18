@@ -1,6 +1,6 @@
 # Vivi Ornitier pile — analysis (TEMPORARY working doc)
 
-**Status: FIRST DRAFT WRITTEN (deck 103) — awaiting the owner's decisions in §5.** Building a NEW Izzet (UR) Historic Brawl deck around Vivi
+**Status: ROUND 2 APPLIED (2026-11-18) — deck 103 holds the owner's 24-swap package; the bench is on the board. Delete this doc once the owner signs off.** Building a NEW Izzet (UR) Historic Brawl deck around Vivi
 Ornitier from the owner's pile. Delete once the deck is drafted and the findings are folded into
 its `#: notes:` block. A scratchpad, not a source of truth — decks/ are.
 
@@ -52,6 +52,10 @@ noncreature spell, put a +1/+1 counter on Vivi and it deals 1 damage to each opp
   Genius (prepared tutor), Teferi, Mage of Zhalfir (sorcery-speed lock: protection) all score ZERO
   roles. `make postedit` acknowledged them in role_baseline.txt; Invasion of Kaladesh's zero is
   fair. None of them moves deck 103's floor (it already clears A).
+- **Round 2 added five more zero-role cards** (acknowledged by `make postedit`): Crackle with Power
+  (a real hole — "five times X damage to each of up to X targets" is removal), Epic Experiment (free
+  casts: cheat), Expressive Iteration (impulse draw: card advantage), Fractal Anomaly (a token sized by
+  draws), Galvanic Iteration (copy). Fix with the round-1 four in one pattern batch.
 
 ## 3. Cross-batch observations
 - **Two-card combo (batch 3):** Niv-Mizzet, Parun + Niv-Mizzet, Visionary loop draw ↔ ping until the
@@ -238,6 +242,11 @@ Brainstorm, Lightning Bolt, Burst Lightning, Galvanic Discharge, Make Disappear.
 interaction 20, card advantage 17 (15 before), avg MV 3.55, legal. Alternates if wanted: Epic
 Experiment (X: cast every cheap instant/sorcery among the top X free), Culmination of Studies,
 Arcane Infusion, Glacial Dragonhunt, Galvanic Iteration.
+
+**Round 3 (owner, 2026-11-18): the four alternates slot in** — Glacial Dragonhunt for Lightning
+Strike, Epic Experiment for Rapturous Moment, Galvanic Iteration for Victor Timely, Culmination of
+Studies for Emeritus of Conflict. **APPLIED** with the revision-2 package as one 24-swap round: floor A,
+interaction 19, card advantage 16, avg MV 3.45, legal, quality guard clean, rationale current.
 
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
