@@ -300,6 +300,17 @@ Measured: floor A, interaction 15 → 16, avg MV 3.80 → 3.65, central themes 1
 Wizards 12 → 14, Heroes 4 → 7, legal. Left out (owner-marked): Academy Instructor, Planetarium, Improvisation
 Capstone — curve and overlap; first alternates: Reed Richards, Talrand, Pensive Professor, Thor, Guardian of Midgard.
 
+**Round 7 revised (owner, 2026-11-18, NOT applied).** Thor, Asgard's Avenger out (Thor, Guardian of Midgard
+takes Prismari's slot); As Foretold and Baral and Kari Zev kept; Academy Instructor, Improvisation Capstone,
+Talrand, Pensive Professor and Surtland Elementalist in; Oracle of the Alpha, Ruric Thar, Blue Marvel as maybes.
+Core 18: Curiosity / Galvanic Iteration, Thor GoT / Nibelheim, Iron Lad / Sanar, Wizard's Retort / Izzet Charm,
+Thor GoM / Prismari, Chandra Torch / Ral CW, Command the Stage / Slick Sequence, Volt Charge / Illuminating Lash,
+Sunbird / Thousand-Year Storm, Wizard Class / Indris, Flux Channeler / Tempest Trapper, Irencrag / Galazeth,
+Proft's / Neera, Academy Instructor / Fractal Anomaly, Capstone / Wanda's Vision, Talrand / Rootha, Pensive
+Professor / Stormcatch Mentor (variant: / Gray and Adira — early drops 15 not 14, avg MV 3.72 not 3.75),
+Surtland / Ovika. Measured: floor A, interaction 16, card advantage 14, legal. Maybes: Blue Marvel / The Scarlet
+Witch, Oracle / Glacial Dragonhunt, Ruric Thar / Kraum (all 21: floor A, interaction 15, avg MV 3.83, early 13).
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
