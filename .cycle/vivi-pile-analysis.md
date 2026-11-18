@@ -202,6 +202,31 @@ Standard Izzet lists.
 3. **Niv-Mizzet, Parun at {U}{U}{U}{R}{R}{R}** casts on turn 5 only 19% of the time with 22 U / 21 R
    sources. It is half the combo, so better lands matter more here than anywhere.
 
+**Owner's answer to 1 (2026-11-18): yes — the pile is a starting point; outside spells are in.**
+
+**Proposed package (23 swaps, measured with `swap --package` and a scratch copy; NOT applied):**
+- **Six counterspells** (protect Vivi — R4 — and interaction): Counterspell, Swan Song, Izzet Charm,
+  Memory Lapse, Make Disappear, Three Steps Ahead.
+- **Six one-mana-ish cantrips** (fuel — R1/R2: each is a Vivi counter and a Niv-Mizzet draw for one
+  mana): Opt, Consider, Preordain, Ponder, Brainstorm, Expressive Iteration.
+- **Three cheap burn spells**: Lightning Bolt, Burst Lightning, Galvanic Discharge.
+- **Two Vivi-mana sinks** (R2): Crackle with Power (5×X damage to X targets), Expansion // Explosion
+  (X damage and draw X).
+- **Cut for them** (the weakest 17): Invasion of Kaladesh, Heated Argument, Orbital Plunge, Storm of
+  Saruman, Role Reversal (the five weak noncreature cards — replaced by cheaper versions of the same
+  job) and twelve creatures that don't grow Vivi: Elemental Mascot, Sprite Dragon, Tempest Angler,
+  Loki, Kaza, Malcolm, Goliath Daydreamer, The Locust God, Keranos (a creature spell on the stack,
+  so no Vivi trigger), Wiccan, Professor Zei, Tolarian Terror.
+- **Lands**: Steam Vents, Spirebluff Canal, Fiery Islet, Shivan Reef, Sulfur Falls for Izzet
+  Guildgate, Swiftwater Cliffs, Stark Industries, Baron, Airship Engine Room; Riverglide Pathway
+  for one Island.
+- **Measured result**: floor A (interaction 15 → 20; card advantage 15 — cantrips are card-neutral
+  to the classifier); avg MV 3.98 → 3.38; noncreature spells 27 → 39, creatures 37 → 25; legal.
+  P(a tapped land among the first three drops) 50% → 17%. Protection reads 6 → 3 because the
+  model does not count counterspells, which are the real protection here.
+- **Craft cost (information only):** 15 of the 23 adds are unowned — 1 mythic (Counterspell),
+  6 rare, 2 uncommon, 6 common.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
