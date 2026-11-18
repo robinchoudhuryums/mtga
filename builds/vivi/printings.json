@@ -4,7 +4,9 @@
  "Academy Instructor": [],
  "Airship Engine Room": [],
  "Arcane Bombardment": [],
+ "Archmage of Runes": [],
  "Arius, Flyby Trawler": [],
+ "Artist's Talent": [],
  "Artistic Process": [],
  "As Foretold": [
   {
@@ -367,13 +369,50 @@
  "Galvanic Iteration": [],
  "Gandalf the Grey": [],
  "Glacial Dragonhunt": [],
+ "Glen Elendra's Answer": [],
  "Glóin, Dwarf Emissary": [],
  "Goliath Daydreamer": [],
  "Gray and Adira, Forever Joined": [],
+ "Guttersnipe": [
+  {
+   "a": "Mathias Kollros",
+   "art": "https://cards.scryfall.io/art_crop/front/b/b/bbc0f3e7-a287-4624-8266-ca617448fcaa.jpg?1783934550",
+   "cn": "145",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/b/bbc0f3e7-a287-4624-8266-ca617448fcaa.jpg?1783934550",
+   "r": "U",
+   "set": "M19",
+   "sn": "Core Set 2019",
+   "y": "2018"
+  },
+  {
+   "a": "Andrey Kuzinskiy",
+   "art": "https://cards.scryfall.io/art_crop/front/d/d/dde674d6-f4e7-410b-acf0-34021290576d.jpg?1783908892",
+   "cn": "716",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/d/dde674d6-f4e7-410b-acf0-34021290576d.jpg?1783908892",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Simon Dominic",
+   "art": "https://cards.scryfall.io/art_crop/front/f/6/f6bb1ffc-2251-4655-b8f9-4c8047dd5d5f.jpg?1785497556",
+   "cn": "196",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/6/f6bb1ffc-2251-4655-b8f9-4c8047dd5d5f.jpg?1785497556",
+   "r": "U",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Heated Argument": [],
  "High Fae Trickster": [],
  "Illuminating Lash": [],
  "Improbable Alliance": [],
+ "Improvisation Capstone": [],
  "Indris, the Hydrostatic Surge": [],
  "Invasion of Kaladesh": [],
  "Iroh's Demonstration": [],
@@ -467,9 +506,51 @@
    "y": "2022"
   }
  ],
+ "Jin-Gitaxias, Progress Tyrant": [
+  {
+   "a": "Chase Stone",
+   "art": "https://cards.scryfall.io/art_crop/front/8/8/8855ca31-842e-4962-a5f0-163a3f833784.jpg?1783923804",
+   "cn": "307",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/8/8855ca31-842e-4962-a5f0-163a3f833784.jpg?1783923804",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Ai Nanahira",
+   "art": "https://cards.scryfall.io/art_crop/front/0/1/01985566-275b-4bf0-8667-c81eb95ad70c.jpg?1783923775",
+   "cn": "371",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/1/01985566-275b-4bf0-8667-c81eb95ad70c.jpg?1783923775",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Richard Whitters",
+   "art": "https://cards.scryfall.io/art_crop/front/8/c/8c395a69-b60d-4510-b04b-86b59ed2b158.jpg?1783918180",
+   "cn": "513",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/c/8c395a69-b60d-4510-b04b-86b59ed2b158.jpg?1783918180",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2023"
+  }
+ ],
  "Katara, Waterbending Master": [],
  "Kaza, Roil Chaser": [],
  "Keranos, God of Storms": [],
+ "Kraum, Violent Cacophony": [],
  "Kylox, Visionary Inventor": [],
  "Lightning Strike": [
   {
@@ -572,6 +653,49 @@
    "y": "2021"
   }
  ],
+ "Mizzix's Mastery": [
+  {
+   "a": "Olena Richards",
+   "art": "https://cards.scryfall.io/art_crop/front/8/9/89978bd5-8222-4052-9625-3a5db81baa27.jpg?1783927429",
+   "cn": "43",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/9/89978bd5-8222-4052-9625-3a5db81baa27.jpg?1783927429",
+   "r": "M",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Hiro Suda",
+   "art": "https://cards.scryfall.io/art_crop/front/6/3/63e25534-2bc3-4813-ae63-63cadfe36df6.jpg?1783927406",
+   "cn": "106",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/3/63e25534-2bc3-4813-ae63-63cadfe36df6.jpg?1783927406",
+   "r": "M",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Toshitaka Matsuda",
+   "art": "https://cards.scryfall.io/art_crop/front/8/a/8a139398-4d42-4715-8a5a-c446bf665a2e.jpg?1783906381",
+   "cn": "41",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/a/8a139398-4d42-4715-8a5a-c446bf665a2e.jpg?1783906381",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Najal, the Storm Runner": [
   {
    "a": "PINDURSKI",
@@ -605,16 +729,43 @@
  "Orbital Plunge": [],
  "Ovika, Enigma Goliath": [],
  "Paradigm Shifter": [],
+ "Planetarium of Wan Shi Tong": [],
+ "Primal Amulet // Primal Wellspring": [],
  "Prismari Charm": [],
  "Prismari, the Inspiration": [],
  "Professor Zei, Anthropologist": [],
  "Ral, Crackling Wit": [],
+ "Ral, Storm Conduit": [
+  {
+   "a": "Wesley Burt",
+   "art": "https://cards.scryfall.io/art_crop/front/6/7/678ce3bf-152d-45ca-87ae-ad46c921328b.jpg?1783933390",
+   "cn": "211",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/7/678ce3bf-152d-45ca-87ae-ad46c921328b.jpg?1783933390",
+   "r": "R",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Naochika Morishita",
+   "art": "https://cards.scryfall.io/art_crop/front/6/a/6ad09cd7-52c3-4c13-919c-e113b6dc3419.jpg?1783933389",
+   "cn": "211★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/a/6ad09cd7-52c3-4c13-919c-e113b6dc3419.jpg?1783933389",
+   "r": "R",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
  "Rapturous Moment": [],
  "Resonating Lute": [],
  "Role Reversal": [],
  "Rootha, Mastering the Moment": [],
  "Saheeli, Jewel of Avishkar": [],
  "Sanar, Unfinished Genius // Wild Idea": [],
+ "Shark Typhoon": [],
  "Slick Sequence": [],
  "Solstice Revelations": [],
  "Sorcerer Class": [],
@@ -651,6 +802,7 @@
  "Storm of Saruman": [],
  "Stormcatch Mentor": [],
  "Stormchaser Mage": [],
+ "Sunbird's Invocation": [],
  "Swan Song": [],
  "Swiftwater Cliffs": [
   {

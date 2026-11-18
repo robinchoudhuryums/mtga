@@ -303,6 +303,71 @@
    "name": "Airship Engine Room",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Abandon Attachments",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wisdom of Ages",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Colorstorm Stallion",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Vibrant Outburst",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tome Blast",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Abstract Paintmage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Guttersnipe",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Improvisation Capstone",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Planetarium of Wan Shi Tong",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sunbird's Invocation",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Shark Typhoon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Jin-Gitaxias, Progress Tyrant",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Kraum, Violent Cacophony",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -697,6 +762,97 @@
    "graded_at": {
     "103": "845b603af10b"
    }
+  },
+  "Abandon Attachments": {
+   "group": "Cut in round 4",
+   "text": "Cut for Artist's Talent: a one-shot discard-1-draw-2; Artist's Talent does the same swap on every noncreature spell and grows into a cost reducer and a damage amplifier.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Wisdom of Ages": {
+   "group": "Cut in round 4",
+   "text": "Cut for Mizzix's Mastery: returns the yard to hand for {U}{U}{U} 7; the Mastery casts the yard instead, each spell a Vivi trigger.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Colorstorm Stallion": {
+   "group": "Cut in round 4",
+   "text": "Cut for Archmage of Runes: a creature (no Vivi trigger) whose copy needs 5+ mana spells; Archmage discounts and draws on every instant/sorcery.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Vibrant Outburst": {
+   "group": "Cut in round 4",
+   "text": "Cut for Ral, Storm Conduit: plain 3 damage; Ral pings on every cast or copy.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Tome Blast": {
+   "group": "Cut in round 4",
+   "text": "Cut for Glen Elendra's Answer: 2 damage twice; the deck wanted an uncounterable shield for its big turn more.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Abstract Paintmage": {
+   "group": "Cut in round 4",
+   "text": "Cut for Primal Amulet: a once-a-turn ritual on a creature; the Amulet discounts every instant/sorcery and flips into a copy-land.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Guttersnipe": {
+   "group": "Candidates",
+   "text": "2 damage to the opponent on every instant/sorcery, which Niv-Mizzet, Visionary turns into two cards. The owner kept Spectacular Skywhale; suggested cuts: Paradigm Shifter (a 3-drop dork; its spellbook card is a one-time value), or Saheeli, Jewel of Avishkar.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Improvisation Capstone": {
+   "group": "Candidates",
+   "text": "Free casts off the top until MV 4+, then (paradigm) a free copy of itself every first main phase: a repeating engine Vivi's mana pays for once. Suggested cut: Wanda's Vision (a free cast on the second spell, which Capstone does in bulk); or Zaffai and the Tempests.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "group": "Candidates",
+   "text": "{1},{T}: scry 2, then cast the top card free — a free spell every turn from its own ability, more with Temple of Epiphany and Prismari Charm's surveil. Suggested cut: Charred Foyer (plays the top card each upkeep, but you pay for it); or Expressive Iteration.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Sunbird's Invocation": {
+   "group": "Candidates",
+   "text": "Every spell cast from hand cascades into a free one (a second Vivi trigger). Suggested cut: Zaffai and the Tempests (one free hand cast a turn, on a 7-drop); or Wanda's Vision.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Shark Typhoon": {
+   "group": "Candidates",
+   "text": "An X/X flying Shark per noncreature spell, sized by its mana value; can be cycled for a card instead. Suggested cut: Saheeli, Jewel of Avishkar (a 1/1 Thopter per noncreature spell — the same job, smaller). Ovika does Shark's job too, if you would rather keep Saheeli.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "group": "Candidates",
+   "text": "Copies your first artifact/instant/sorcery each turn and counters the opponent's first one each turn: protection and a copy engine in one card. Suggested cut: Teferi, Mage of Zhalfir (also stops instant-speed answers, at {U}{U}{U}); or Melek, or Prismari, the Inspiration (the other 7-drop copy engine).",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Kraum, Violent Cacophony": {
+   "group": "Candidates",
+   "text": "A flier that draws and grows on your second spell every turn — repeatable card flow. Suggested cut: Twinned Vision (two casts, three cards, once); or Firemind's Research, or Expressive Iteration.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
   }
  },
  "snapshots": {
@@ -856,6 +1012,85 @@
     "Wanda's Vision",
     "Wandering Fumarole",
     "Wisdom of Ages",
+    "Zaffai and the Tempests"
+   ],
+   "8e993e2e7c30": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Asgardian Inspiration",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expansion // Explosion",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Firemind's Research",
+    "Fractal Anomaly",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Memory Lapse",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Ral, Storm Conduit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Swan Song",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Twinned Vision",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
     "Zaffai and the Tempests"
    ]
   }
@@ -1195,6 +1430,84 @@
    "V": {
     "m": "△",
     "graded_at": "845b603af10b"
+   }
+  },
+  "Abandon Attachments": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Wisdom of Ages": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Colorstorm Stallion": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Vibrant Outburst": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Tome Blast": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Abstract Paintmage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Guttersnipe": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Improvisation Capstone": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Sunbird's Invocation": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Shark Typhoon": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Kraum, Violent Cacophony": {
+   "V": {
+    "m": "★★",
+    "graded_at": "8e993e2e7c30"
    }
   }
  }

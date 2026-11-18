@@ -248,7 +248,7 @@ Strike, Epic Experiment for Rapturous Moment, Galvanic Iteration for Victor Time
 Studies for Emeritus of Conflict. **APPLIED** with the revision-2 package as one 24-swap round: floor A,
 interaction 19, card advantage 16, avg MV 3.45, legal, quality guard clean, rationale current.
 
-**Round 4 proposal (2026-11-18, owner asked for more fits/upgrades/spice; NOT applied).** Searched the
+**Round 4 (2026-11-18): six upgrades APPLIED** (all but Guttersnipe-for-Skywhale); the owner held the spice picks and Guttersnipe for other cuts, and added Jin-Gitaxias and Kraum as candidates — all seven sit on the board with dashed add suggestions and dashed cut suggestions on Paradigm Shifter, Saheeli, Wanda's Vision, Zaffai, Charred Foyer, Teferi, Twinned Vision and Firemind's Research. The owner's own board marks (7 adds, 1 bench, Memory Lapse cut) are untouched and still unpaired. **Original proposal:** Searched the
 Historic Brawl UR pool for cast-payoffs, face pings (Niv draws), free casts/copies, reducers and
 protection (~600 hits), read ~50 in full.
 - Upgrades: Artist's Talent for Abandon Attachments (loots every noncreature spell; level 3 adds +2 to

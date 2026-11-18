@@ -25,6 +25,12 @@
 #: notes: Riverglide Pathway) for five tapped lands and an Island. The owner kept Goliath Daydreamer, Keranos and Loki,
 #: notes: and turned down plain cantrips and burn (Opt, Consider, Preordain, Ponder, Brainstorm, Lightning Bolt) as
 #: notes: too one-note. The 18 pile cards cut this round sit on the builds/vivi bench with reasons.
+#: notes: 2026-11-18 round 4 (owner's picks, 6 swaps): Artist's Talent, Mizzix's Mastery, Archmage of Runes,
+#: notes: Ral, Storm Conduit, Glen Elendra's Answer and Primal Amulet in for Abandon Attachments, Wisdom of Ages,
+#: notes: Colorstorm Stallion, Vibrant Outburst, Tome Blast and Abstract Paintmage. The owner kept Spectacular
+#: notes: Skywhale (Guttersnipe waits for another cut) and held the spice round (Improvisation Capstone,
+#: notes: Planetarium of Wan Shi Tong, Sunbird's Invocation, Shark Typhoon); those, Jin-Gitaxias, Progress Tyrant
+#: notes: and Kraum are on the builds/vivi board with suggested cuts.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Vivi Ornitier (FIN) 248
@@ -34,7 +40,6 @@
 1 Niv-Mizzet, Parun (GRN) 192
 1 Electro, Assaulting Battery (SPM) 76
 1 Spectacular Skywhale (SOS) 229
-1 Colorstorm Stallion (SOS) 180
 1 Ovika, Enigma Goliath (FDN) 663
 1 Prismari, the Inspiration (SOS) 212
 1 Gandalf the Grey (LTR) 207
@@ -48,11 +53,12 @@
 1 Stormcatch Mentor (BLB) 234
 1 Melek, Reforged Researcher (MKM) 430
 1 The Emperor of Palamecia (FIN) 219
-1 Abstract Paintmage (SOS) 171
+1 Primal Amulet // Primal Wellspring (XLN) 243
 1 Paradigm Shifter (YSOS) 23
 1 Tempest Trapper (YBLB) 8
 1 Resonating Lute (SOS) 221
 1 As Foretold (WOT) 14
+1 Archmage of Runes (FDN) 30
 
 # Free casts and recasts — each one is another Vivi trigger
 1 Baral and Kari Zev (MOM) 218
@@ -64,6 +70,7 @@
 1 Goliath Daydreamer (ECL) 143
 1 Solstice Revelations (TLA) 153
 1 Epic Experiment (PIO) 223
+1 Mizzix's Mastery (FCA) 41
 
 # Copy engines
 1 Thousand-Year Storm (FDN) 248
@@ -75,8 +82,7 @@
 # Card flow and tutors
 1 Sanar, Unfinished Genius // Wild Idea (SOS) 223
 1 Indris, the Hydrostatic Surge (YBLB) 25
-1 Abandon Attachments (TLA) 205
-1 Wisdom of Ages (SOS) 71
+1 Artist's Talent (BLB) 124
 1 Firemind's Research (GRN) 171
 1 Ral, Crackling Wit (BLB) 230
 1 Expressive Iteration (STX) 186
@@ -92,12 +98,12 @@
 1 Memory Lapse (STA) 16
 1 Izzet Charm (EA3) 11
 1 Three Steps Ahead (OTJ) 75
+1 Glen Elendra's Answer (ECL) 52
 
 # Interaction and burn
 1 Thunder Magic (FIN) 165
 1 Glacial Dragonhunt (TDM) 188
-1 Vibrant Outburst (SOS) 240
-1 Tome Blast (SOS) 135
+1 Ral, Storm Conduit (WAR) 211
 1 Iroh's Demonstration (TLA) 141
 1 Nibelheim Aflame (FIN) 146
 1 Prismari Charm (SOS) 211
