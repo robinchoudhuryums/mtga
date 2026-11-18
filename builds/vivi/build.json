@@ -573,6 +573,21 @@
    "name": "Slick Sequence",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Kayla's Kindling",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Oracle of the Alpha",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spellchain Scatter",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -668,8 +683,8 @@
    }
   },
   "Rootha, Mastering the Moment": {
-   "group": "Cut in round 8",
-   "text": "Cut in round 8 for Talrand. Rootha's token needs a big spell that turn; Talrand makes a flier on every instant/sorcery.",
+   "group": "Round 9 package",
+   "text": "Back in (owner), for The Dawning Archaic (10 mana, discounted only by instants/sorceries in the yard, and it must attack). An X/X hasty flier each combat after an instant/sorcery.",
    "graded_at": {
     "103": "18368a1682c4"
    }
@@ -689,8 +704,8 @@
    }
   },
   "Neera, Wild Mage": {
-   "group": "Cut in round 8",
-   "text": "Cut in round 8 for Proft's Eidetic Memory. A random free spell once a turn; Proft's draws and grows a creature every turn.",
+   "group": "Round 9 package",
+   "text": "Back in (owner), for Proft's Eidetic Memory (it overlaps Wizard Class). Once a turn, trades a spell for a random free one.",
    "graded_at": {
     "103": "18368a1682c4"
    }
@@ -1298,8 +1313,8 @@
    }
   },
   "Tempest Trapper": {
-   "group": "Cut in round 8",
-   "text": "Cut in round 8 for Flux Channeler. Its mana only casts instants and sorceries, and its third-spell trigger rarely fires before Vivi is out.",
+   "group": "Round 9 package",
+   "text": "Back in (owner), for Resonating Lute. Both make instant/sorcery-only mana; Trapper is 3 mana and a Wizard, the Lute 4 mana with a draw that needs seven cards in hand.",
    "graded_at": {
     "103": "18368a1682c4"
    }
@@ -1333,8 +1348,8 @@
    }
   },
   "Ral, Crackling Wit": {
-   "group": "Cut in round 8",
-   "text": "Cut in round 8 for Chandra, Torch of Defiance.",
+   "group": "Round 9 package",
+   "text": "Back in (owner), for Glacial Dragonhunt (the owner's cut mark). Grows a loyalty on every noncreature spell; +1 makes prowess Otters, −3 draws.",
    "graded_at": {
     "103": "18368a1682c4"
    }
@@ -1342,6 +1357,27 @@
   "Slick Sequence": {
    "group": "Cut in round 8",
    "text": "Cut in round 8 for Command the Stage.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Kayla's Kindling": {
+   "group": "Round 9 package",
+   "text": "Proposed for Wanda's Vision (alt: Artistic Process). Every upkeep, draft one of three from its spellbook and cast it that turn: 9 of 15 are red instants/sorceries (Lightning Bolt, Abrade, Electrodominance, Volcanic Fallout, Crackle with Power…), the rest Guttersnipe, Young Pyromancer, Dualcaster Mage and others. A free cast every turn with no two-spell condition, plus 2 damage on entry.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Oracle of the Alpha": {
+   "group": "Round 9 package",
+   "text": "Proposed for The Vision and Scarlet Witch (alt: Spectacular Skywhale). A 3-mana flying Wizard (Harmonic Prodigy, Wizard's Staff) that shuffles the Power Nine in: Ancestral Recall, Time Walk and Timetwister, plus Lotus and five Moxen, all noncreature casts for Vivi.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Spellchain Scatter": {
+   "group": "Round 9 package",
+   "text": "Proposed for Crackle with Power (alt: Culmination of Studies). {R}: your next instant or sorcery this turn conjures a copy of itself into your hand; kicked ({U}) you keep it. One cheap spell becomes two casts. Kayla's Kindling can still draft Crackle.",
    "graded_at": {
     "103": "18368a1682c4"
    }
@@ -1990,7 +2026,7 @@
   },
   "Rootha, Mastering the Moment": {
    "V": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "18368a1682c4"
    }
   },
@@ -2530,7 +2566,7 @@
   },
   "Tempest Trapper": {
    "V": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "18368a1682c4"
    }
   },
@@ -2560,13 +2596,31 @@
   },
   "Ral, Crackling Wit": {
    "V": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "18368a1682c4"
    }
   },
   "Slick Sequence": {
    "V": {
     "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Kayla's Kindling": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Oracle of the Alpha": {
+   "V": {
+    "m": "★★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Spellchain Scatter": {
+   "V": {
+    "m": "★★★",
     "graded_at": "18368a1682c4"
    }
   }

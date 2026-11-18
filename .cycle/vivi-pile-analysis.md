@@ -332,6 +332,16 @@ Torch / Ral CW, Command the Stage / Slick Sequence, Proft's / Neera, Talrand / R
 the owner's cut mark (its mark is still open on the board). Measured: floor A, interaction 16, card advantage 15,
 avg MV 3.83, early drops 14, legal, preflight READY.
 
+**Round 9 PROPOSED (2026-11-18, on the board as dashed suggestions, NOT applied):** owner keeps Tempest Trapper,
+Ral, Crackling Wit, Neera, Rootha and Ovika; adds Kayla's Kindling, Oracle of the Alpha, Spellchain Scatter. Pairs:
+Trapper / Resonating Lute, Ral / Glacial Dragonhunt (owner's mark), Neera / Proft's, Rootha / The Dawning Archaic,
+Kindling / Wanda's Vision (alt Artistic Process), Spellchain / Crackle with Power (alt Culmination of Studies),
+Oracle / The Vision and Scarlet Witch (alt Spectacular Skywhale). Measured: floor A, interaction 16, card advantage
+15, protection 2, early drops 13, avg MV 3.78, central themes 15, legal. Spellbooks (Scryfall `spellbook:` search):
+Kindling 9/15 red instants/sorceries; Key to the Archive 5/15 castable; Charged Conjuration Grapeshot / Galvanic
+Relay / Empty the Warrens; Mystical Archive 10/25 castable; Tome of the Infinite 4/10; Tibalt, Remnants of Beleren,
+Tireless Angler, Experimental Pilot no instants/sorceries.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Arcane Bombardment (the free-cast engine). Stormcatch Mentor left the
 list in round 7 and the header with it.
