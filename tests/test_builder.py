@@ -1010,3 +1010,26 @@ class TestSwapBoard:
         monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
         with pytest.raises(B.BuildError, match="does not run Lightning Bolt"):
             B.swap_board_data("whatever")
+
+    def test_each_pair_offers_other_cuts_with_their_effect(self, scratch, monkeypatch):
+        """Pick a different cut (2026-11-17): every pair carries the deck's weakest-fit cards
+        from the `deck.py cuts` ranking (never its own cut or add) and, for its cut and each
+        of those, what the swap does to the deck — so the page shows each choice's effect."""
+        deck_path, tmp = scratch
+        real = D.find_deck
+        monkeypatch.setattr(D, "find_deck", lambda i, **k: {"id": "96", "path": deck_path,
+                            "name": "Glarb"} if i == "96" else real(i, **k))
+        spec = {"swaps": [{"id": "96-x", "deck": "96", "add": "Lightning Bolt",
+                           "cut": "Bruvac the Grandiloquent", "verdict": "spice", "why": "",
+                           "cut_note": "", "confirmed": False}]}
+        p = tmp / "swaps.json"
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
+        sw = B.swap_board_data("t")["swaps"][0]
+        ranked = [r[1] for r in D.rank_cut_candidates({"id": "96", "path": deck_path})[0]]
+        want = [n for n in ranked if n not in ("Bruvac the Grandiloquent", "Lightning Bolt")]
+        assert sw["alts"] == want[:B.SWAP_ALT_CUTS]
+        assert set(sw["delta"]) == {"Bruvac the Grandiloquent", *sw["alts"]}
+        for d in sw["delta"].values():
+            assert len(d["floor"]) == 2 and all(b in "SABCD" for b in d["floor"])
+            assert all(k == "floor" or (k in B._DELTA_KEYS and d[k][0] != d[k][1]) for k in d)

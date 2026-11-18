@@ -9045,6 +9045,13 @@ runs is refused. Picks live in the artifact's `swaps` collection (`{pick, note}`
 Copy picks prints `deck.py swap <id> --package` lines. Each card ships ONE 672 px image
 (`img/lg/<id>.jpg`) that serves as both the thumbnail and the click-to-enlarge view, a modal
 `<dialog>` that closes on Escape, a click or its close button and returns focus to the opener.
+Each pair also offers OTHER CUTS (`alts`: the deck's five weakest-fit cards from
+`rank_cut_candidates`, the `deck.py cuts` ranking) and shows what the swap does to the deck for
+each choice (`delta`: tier floor plus the changed quality-vector figures, from the same
+`_swap_edit_lines` + `deck_quality_vector` path `swap --package` previews with). The record is
+`{pick, note, cut}` from the page plus `reply`, which Claude writes with an ArtifactData
+`update`; the page writes only its own fields (`update` once a record exists), so a reply is
+never erased. A Swap or Keep folds the pair to one line, reopened with a click.
 
 **Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
 and 96) was first reviewed on a hand-built claude.ai board whose page held every figure

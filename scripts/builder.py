@@ -1775,9 +1775,42 @@ def swaps_path(slug):
     return os.path.join(os.path.dirname(build_path(slug)), "swaps.json")
 
 
+SWAP_ALT_CUTS = 5          # the deck's weakest-fit cards offered as other cuts per pair
+_DELTA_KEYS = ("interaction", "card_advantage", "protection", "avg_mv", "board_power",
+               "early_drops", "central_themes")
+
+
+def _swap_delta(D, rec, before, cut, add):
+    """What one swap does to the deck: {"floor": [before, after], key: [before, after]} for
+    the `_DELTA_KEYS` that changed, from the same primitives `swap --package` previews
+    with (`_swap_edit_lines` on the raw lines, `deck_quality_vector` on a temp copy)."""
+    import tempfile
+    with open(rec["path"], encoding="utf-8") as fh:
+        lines = fh.read().rstrip("\n").split("\n")
+    disp, st, cn = D._printing_of(add)
+    lines = D._swap_edit_lines(lines, cut, disp, (st, cn))
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines) + "\n")
+        after = D.deck_quality_vector({"id": rec["id"], "path": tmp, "name": rec.get("name")})
+    finally:
+        os.remove(tmp)
+    out = {"floor": [D.tier_band(before), D.tier_band(after)]}
+    for k in _DELTA_KEYS:
+        if before.get(k) != after.get(k):
+            out[k] = [before.get(k), after.get(k)]
+    return out
+
+
 def swap_board_data(slug):
     """The swap page's data: {title, intro, decks, cards, swaps}. Raises BuildError for a
-    pair naming a card the deck does not run (the cut) or one with no pool row."""
+    pair naming a card the deck does not run (the cut) or one with no pool row.
+
+    Each pair also carries `alts` (the deck's `SWAP_ALT_CUTS` weakest-fit cards from
+    `rank_cut_candidates`, the ranking `deck.py cuts` prints, minus the pair's own cut and
+    add) and `delta` ({cut: what the swap does to the deck}) for its cut and every alt, so
+    the page can offer another cut and show each choice's effect without running anything."""
     import deck as D
     try:
         spec = json.load(open(swaps_path(slug), encoding="utf-8"))
@@ -1786,8 +1819,24 @@ def swap_board_data(slug):
     # The shared, front-face-aliased loaders (G-63): keys are LOWERCASED names.
     pool, mana = D.load_card_data(), D.load_mana()
     _, _, byq = D.load_collection()
-    decks, cards, problems = {}, {}, []
+    decks, cards, problems, ranked, before = {}, {}, [], {}, {}
+
+    def card_row(n, tag):
+        if n in cards:
+            return True
+        r = pool.get(n.lower())
+        if not r:
+            problems.append(f"{tag}: {n} has no card data")
+            return False
+        have, found = D.owned(byq, n)
+        cards[n] = {"n": r.get("name") or n, "c": (mana.get(n.lower()) or ("", 0))[0],
+                    "t": r.get("type", ""), "o": r.get("text", ""),
+                    "own": have if found else 0, "id": image_slug(n)}
+        return True
+
+    swaps = []
     for sw in spec["swaps"]:
+        sw = dict(sw)
         rec = D.find_deck(sw["deck"])
         if not rec:
             problems.append(f"{sw['id']}: no deck {sw['deck']}")
@@ -1796,22 +1845,27 @@ def swap_board_data(slug):
         decks.setdefault(sw["deck"], {"name": meta.get("name") or rec["name"]})
         if sw["cut"] not in {n for _q, n, _s, _c in lines}:
             problems.append(f"{sw['id']}: deck {sw['deck']} does not run {sw['cut']}")
-        for n in (sw["add"], sw["cut"]):
-            if n in cards:
-                continue
-            r = pool.get(n.lower())
-            if not r:
-                problems.append(f"{sw['id']}: {n} has no card data")
-                continue
-            have, found = D.owned(byq, n)
-            cards[n] = {"n": r.get("name") or n, "c": (mana.get(n.lower()) or ("", 0))[0],
-                        "t": r.get("type", ""), "o": r.get("text", ""),
-                        "own": have if found else 0, "id": image_slug(n)}
+            continue
+        if not (card_row(sw["add"], sw["id"]) and card_row(sw["cut"], sw["id"])):
+            continue
+        if sw["deck"] not in ranked:
+            ranked[sw["deck"]] = [row[1] for row in D.rank_cut_candidates(rec)[0]]
+            before[sw["deck"]] = D.deck_quality_vector(rec)
+        skip = {sw["cut"], sw["add"]}
+        sw["alts"] = []
+        for n in ranked[sw["deck"]]:
+            if len(sw["alts"]) >= SWAP_ALT_CUTS:
+                break
+            if n not in skip and card_row(n, sw["id"]):
+                sw["alts"].append(n)
+        sw["delta"] = {c: _swap_delta(D, rec, before[sw["deck"]], c, sw["add"])
+                       for c in [sw["cut"], *sw["alts"]]}
+        swaps.append(sw)
     if problems:
         raise BuildError("swaps.json: " + "; ".join(problems))
     order = sorted(decks, key=lambda d: (int(re.match(r"\d+", d).group()) if re.match(r"\d+", d) else 9999, d))
     return {"title": spec.get("title") or slug, "intro": spec.get("intro", ""),
-            "decks": {d: decks[d] for d in order}, "cards": cards, "swaps": spec["swaps"]}
+            "decks": {d: decks[d] for d in order}, "cards": cards, "swaps": swaps}
 
 
 def render_swaps(slug, out_dir, images=True, fetch=True):

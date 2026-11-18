@@ -95,6 +95,25 @@ section.deck h2 small{font-family:var(--ui);font-size:.85rem;color:var(--muted);
 .act .seg button[data-v="swap"][aria-pressed="true"]{background:color-mix(in srgb,var(--good) 18%,var(--panel))}
 .note{flex:1 1 220px;min-width:0;background:var(--raise);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
 .empty{color:var(--muted);font-style:italic;font-family:var(--read)}
+.cutrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:.86rem}
+.cutrow label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.cutrow select{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:4px 8px;max-width:100%;min-width:0;color:var(--ink)}
+.delta{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin:0;font-size:.82rem;color:var(--muted)}
+.delta .dk{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-right:2px}
+.delta span.d{border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.delta span.up{border-color:color-mix(in srgb,var(--good) 55%,var(--line));color:var(--good)}
+.delta span.down{border-color:color-mix(in srgb,var(--warn) 55%,var(--line));color:var(--warn)}
+.reply{margin:0;padding:8px 10px;border-left:3px solid var(--accent);background:var(--raise);border-radius:0 6px 6px 0;font-family:var(--read);font-size:.92rem;white-space:pre-line}
+.reply b{font-family:var(--ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-right:6px}
+.pair.folded{padding:0}
+.fold{all:unset;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;width:100%;padding:10px 14px;cursor:pointer;border-radius:8px}
+.fold:focus-visible,.foldbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fold .fk{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.pair[data-pick="swap"] .fold .fk{color:var(--good)}
+.fold .fn{font-family:var(--read);min-width:0;overflow-wrap:anywhere}
+.fold .fm{font-size:.8rem;color:var(--muted)}
+.fold .fo{margin-left:auto;font-size:.8rem;color:var(--accent)}
+.foldbtn{background:none;border:1px solid var(--line);border-radius:6px;padding:5px 11px;cursor:pointer;color:var(--muted);font-size:.84rem}
 
 .pip{display:inline-flex;align-items:center;justify-content:center;min-width:1.25em;height:1.25em;padding:0 .2em;border-radius:999px;font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--pip-ink);background:var(--pC);vertical-align:.1em;margin-right:1px}
 .pip.W{background:var(--pW)} .pip.U{background:var(--pU)} .pip.B{background:var(--pB)} .pip.R{background:var(--pR)} .pip.G{background:var(--pG)}
@@ -157,6 +176,20 @@ function pips(cost){
 }
 const VLAB = {upgrade: "Upgrade", sidegrade: "Sidegrade", spice: "Spice"};
 
+const SWAP_BY = Object.fromEntries(SWAPS.map(s => [s.id, s]));
+const OPEN = new Set();      // decided pairs the owner reopened this visit
+const DLAB = {interaction: "Interaction", card_advantage: "Card advantage", protection: "Protection",
+  avg_mv: "Avg MV", board_power: "Board power", early_drops: "Early drops", central_themes: "Themes"};
+const LOWER_IS_BETTER = {avg_mv: true};
+const BANDS = "SABCD";
+
+/* The cut this pair would make: the owner's choice when it is one of the offered cards, else the suggested one. */
+function cutOf(s){
+  const c = (PICKS[s.id] || {}).cut;
+  return c && (c === s.cut || (s.alts || []).includes(c)) ? c : s.cut;
+}
+const folded = s => { const p = (PICKS[s.id] || {}).pick; return (p === "swap" || p === "keep") && !OPEN.has(s.id); };
+
 function side(name, role){
   const c = CARDS[name] || {n: name};
   const own = c.own > 0 ? `<span class="own">Owned ×${c.own}</span>` : `<span class="own no">Not owned${role === "out" ? " — one less craft if replaced" : ""}</span>`;
@@ -168,16 +201,55 @@ function side(name, role){
     <p class="ot">${esc(c.o || "")}</p>${own}</div></div>`;
 }
 
+function deltaHTML(d){
+  if (!d) return "";
+  const [fb, fa] = d.floor;
+  const fc = fb === fa ? "" : (BANDS.indexOf(fa) < BANDS.indexOf(fb) ? " up" : " down");
+  const chips = [`<span class="d${fc}">Tier floor ${esc(fb)}${fb === fa ? "" : " → " + esc(fa)}</span>`];
+  Object.keys(DLAB).forEach(k => {
+    if (!d[k]) return;
+    const [b, a] = d[k], better = LOWER_IS_BETTER[k] ? a < b : a > b;
+    const cls = k === "avg_mv" ? "" : (better ? " up" : " down");
+    chips.push(`<span class="d${cls}">${DLAB[k]} ${esc(b)} → ${esc(a)}</span>`);
+  });
+  if (chips.length === 1) chips.push(`<span>no other measured change</span>`);
+  return `<p class="delta"><span class="dk">If swapped</span>${chips.join("")}</p>`;
+}
+
 function pairHTML(s){
-  const p = PICKS[s.id] || {};
+  const p = PICKS[s.id] || {}, cut = cutOf(s), chosen = cut !== s.cut;
+  const note = p.note ? " · your note" : "", reply = p.reply ? " · Claude replied" : "";
+  if (folded(s)) {
+    return `<article class="pair folded" id="p-${s.id}" data-pick="${esc(p.pick)}">
+      <button type="button" class="fold" data-unfold="${s.id}" aria-expanded="false">
+        <span class="fk">${p.pick === "swap" ? "✓ Swap" : "Kept"}</span>
+        <span class="fn">${p.pick === "swap" ? `${esc(s.add)} for ${esc(cut)}` : `${esc(cut)} stays; ${esc(s.add)} not added`}</span>
+        <span class="fm">${VLAB[s.verdict]}${note}${reply}</span><span class="fo">Reopen</span></button>
+    </article>`;
+  }
   const btn = (v, label) => `<button type="button" data-id="${s.id}" data-v="${v}" aria-pressed="${p.pick === v}">${label}</button>`;
+  const opts = [`<option value="${esc(s.cut)}"${chosen ? "" : " selected"}>${esc(s.cut)} (suggested)</option>`]
+    .concat((s.alts || []).length ? [`<optgroup label="Weakest fit in this deck">` + s.alts.map(a =>
+      `<option value="${esc(a)}"${a === cut ? " selected" : ""}>${esc(a)}${(CARDS[a] || {}).own > 0 ? "" : " (not owned)"}</option>`).join("") + `</optgroup>`] : []);
+  const decided = p.pick === "swap" || p.pick === "keep";
   return `<article class="pair" id="p-${s.id}" data-pick="${esc(p.pick || "")}">
-    <div class="duel">${side(s.add, "in")}<div class="arrow"><span class="arw" aria-hidden="true">→</span><span class="vd ${s.verdict}">${VLAB[s.verdict]}</span></div>${side(s.cut, "out")}</div>
-    <p class="why">${esc(s.why)}${s.cut_note ? ` <em>Replaces it because: ${esc(s.cut_note)}.</em>` : ""}</p>
-    ${s.confirmed ? "" : `<p class="unconf">The cut is the fit tool's weakest-fit guess for this deck, not a checked pairing. Pick another cut if this one matters.</p>`}
+    <div class="duel">${side(s.add, "in")}<div class="arrow"><span class="arw" aria-hidden="true">→</span><span class="vd ${s.verdict}">${VLAB[s.verdict]}</span></div>${side(cut, "out")}</div>
+    <div class="cutrow"><label for="c-${s.id}">Card to cut</label><select id="c-${s.id}" data-cut="${s.id}">${opts.join("")}</select></div>
+    ${deltaHTML((s.delta || {})[cut])}
+    <p class="why">${esc(s.why)}${!chosen && s.cut_note ? ` <em>Replaces it because: ${esc(s.cut_note)}.</em>` : ""}${chosen ? ` <em>You picked a different cut; the reason above was written for ${esc(s.cut)}.</em>` : ""}</p>
+    ${s.confirmed || chosen ? "" : `<p class="unconf">The suggested cut is the fit tool's weakest-fit guess for this deck, not a checked pairing. Use “Card to cut” if another card should go.</p>`}
     <div class="act"><span class="seg" role="group" aria-label="Decision for ${esc(s.add)}">${btn("swap", "Swap")}${btn("maybe", "Maybe")}${btn("keep", "Keep current")}</span>
-      <input class="note" id="n-${s.id}" data-id="${s.id}" placeholder="Note for Claude (optional)" value="${esc(p.note || "")}" aria-label="Note on ${esc(s.add)}"></div>
+      <input class="note" id="n-${s.id}" data-id="${s.id}" placeholder="Note for Claude (optional)" value="${esc(p.note || "")}" aria-label="Note on ${esc(s.add)}">
+      ${decided ? `<button type="button" class="foldbtn" data-fold="${s.id}">Fold</button>` : ""}</div>
+    ${p.reply ? `<p class="reply"><b>Claude</b>${esc(p.reply)}</p>` : ""}
   </article>`;
+}
+
+/* Redraw one pair in place, then put focus on `sel` inside it (if given). */
+function redraw(id, sel){
+  const art = document.getElementById("p-" + id); if (!art) return;
+  art.outerHTML = pairHTML(SWAP_BY[id]);
+  if (sel) { const el = document.getElementById("p-" + id).querySelector(sel); if (el) el.focus(); }
 }
 
 function visible(s){
@@ -203,7 +275,7 @@ function render(){
 function tally(){
   const n = k => SWAPS.filter(s => (PICKS[s.id] || {}).pick === k).length;
   const open = SWAPS.length - n("swap") - n("maybe") - n("keep");
-  const crafts = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "swap" && !((CARDS[s.cut] || {}).own > 0)).length;
+  const crafts = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "swap" && !((CARDS[cutOf(s)] || {}).own > 0)).length;
   document.getElementById("tally").innerHTML =
     `<span><b>${SWAPS.length}</b> swaps in <b>${Object.keys(DECKS).length}</b> decks</span><span><b>${n("swap")}</b> to swap</span><span><b>${n("maybe")}</b> maybe</span><span><b>${n("keep")}</b> kept</span><span><b>${open}</b> undecided</span><span><b>${crafts}</b> craft${crafts === 1 ? "" : "s"} saved by your swaps</span>`;
 }
@@ -225,11 +297,21 @@ function filters(){
   });
 }
 
-/* Picks live in the artifact's database (Claude reads them back); in a view without it, in this browser only. */
-async function save(id){
-  const body = {pick: (PICKS[id] || {}).pick || "", note: (PICKS[id] || {}).note || ""};
-  if (db) { try { await db.collection("swaps").doc(id).set(body); return; } catch (e) { setStore("Your last pick could not be saved: " + (e && e.message || e) + ". It is kept on this page until you reload.", true); return; } }
-  try { localStorage.setItem("pack-swaps", JSON.stringify(PICKS)); } catch (e) {}
+/* Picks live in the artifact's database (Claude reads them back, and writes `reply` beside
+   them); in a view without it, in this browser only. The page writes only its own fields
+   (`update` once a record exists), so a reply Claude wrote is never erased, and writes to one
+   record go one at a time. */
+const EXISTS = new Set(), CHAIN = {};
+function save(id){
+  const p = PICKS[id] || {}, body = {pick: p.pick || "", note: p.note || "", cut: p.cut || ""};
+  if (!db) { try { localStorage.setItem("pack-swaps", JSON.stringify(PICKS)); } catch (e) {} return; }
+  CHAIN[id] = (CHAIN[id] || Promise.resolve()).then(async () => {
+    const ref = db.collection("swaps").doc(id);
+    try {
+      if (EXISTS.has(id)) { try { await ref.update(body); } catch (e) { await ref.set(body); } }
+      else { await ref.set(body); EXISTS.add(id); }
+    } catch (e) { setStore("Your last pick could not be saved: " + (e && e.message || e) + ". It is kept on this page until you reload.", true); }
+  });
 }
 function setStore(t, warn){ const el = document.getElementById("store"); el.textContent = t; el.classList.toggle("warn", !!warn); }
 
@@ -244,19 +326,28 @@ function openZoom(btn){
   ZOOM.querySelector(".zclose").focus();
 }
 ZOOM.addEventListener("click", () => ZOOM.open && (ZOOM.close ? ZOOM.close() : ZOOM.removeAttribute("open")));
-ZOOM.addEventListener("close", () => { if (zoomFrom) zoomFrom.focus(); zoomFrom = null; });
+ZOOM.addEventListener("close", () => { if (zoomFrom && document.contains(zoomFrom)) zoomFrom.focus(); zoomFrom = null; });
 
 document.getElementById("list").addEventListener("click", e => {
   const z = e.target.closest("button.zoom"); if (z) { openZoom(z); return; }
+  const u = e.target.closest("[data-unfold]");
+  if (u) { OPEN.add(u.dataset.unfold); redraw(u.dataset.unfold, ".act .seg button"); return; }
+  const f = e.target.closest("[data-fold]");
+  if (f) { OPEN.delete(f.dataset.fold); redraw(f.dataset.fold, ".fold"); return; }
   const b = e.target.closest("button[data-id]"); if (!b) return;
   const id = b.dataset.id, v = b.dataset.v, cur = PICKS[id] || {};
   PICKS[id] = {...cur, pick: cur.pick === v ? "" : v};
-  const art = document.getElementById("p-" + id);
-  art.dataset.pick = PICKS[id].pick;
-  art.querySelectorAll(".act .seg button").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.v === PICKS[id].pick)));
+  OPEN.delete(id);     // a fresh Swap / Keep folds the pair away
+  redraw(id, folded(SWAP_BY[id]) ? ".fold" : `button[data-v="${v}"]`);
   tally(); save(id);
 });
 document.getElementById("list").addEventListener("change", e => {
+  const sel = e.target.closest("select[data-cut]");
+  if (sel) {
+    const id = sel.dataset.cut, s = SWAP_BY[id];
+    PICKS[id] = {...(PICKS[id] || {}), cut: sel.value === s.cut ? "" : sel.value};
+    redraw(id, "select[data-cut]"); tally(); save(id); return;
+  }
   const el = e.target.closest("input.note"); if (!el) return;
   const id = el.dataset.id; PICKS[id] = {...(PICKS[id] || {}), note: el.value.trim()}; save(id);
 });
@@ -264,8 +355,8 @@ document.getElementById("list").addEventListener("change", e => {
 document.getElementById("copy").addEventListener("click", () => {
   const lines = [], byDeck = {};
   SWAPS.forEach(s => { const p = PICKS[s.id] || {}; if (p.pick === "swap") (byDeck[s.deck] ||= []).push(s); });
-  Object.entries(byDeck).forEach(([d, ss]) => lines.push(`python3 scripts/deck.py swap ${d} --package ` + ss.map(s => `"${s.cut}=${s.add}"`).join(" ")));
-  const maybe = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "maybe").map(s => `# maybe: deck ${s.deck} ${s.add} for ${s.cut}`);
+  Object.entries(byDeck).forEach(([d, ss]) => lines.push(`python3 scripts/deck.py swap ${d} --package ` + ss.map(s => `"${cutOf(s)}=${s.add}"`).join(" ")));
+  const maybe = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "maybe").map(s => `# maybe: deck ${s.deck} ${s.add} for ${cutOf(s)}`);
   const notes = SWAPS.filter(s => (PICKS[s.id] || {}).note).map(s => `# note (${s.deck} ${s.add}): ${PICKS[s.id].note}`);
   const text = [...lines, ...maybe, ...notes].join("\n") || "# no swaps picked yet";
   const box = document.getElementById("copybox"); box.value = text; box.hidden = false;
@@ -289,12 +380,21 @@ filters(); render();
   db = window.claude && window.claude.use ? await window.claude.use("db") : null;
   if (!db) { local = true; setStore("Picks are kept in this browser only. Use Copy picks to send them to Claude."); render(); return; }
   const timer = setTimeout(() => setStore("Your saved picks can't be reached yet; new picks are kept on this page.", true), 10000);
+  let first = true;
   db.collection("swaps").onSnapshot(snap => {
     if (!snap.metadata || !snap.metadata.fromCache) clearTimeout(timer);
-    snap.docs.forEach(d => { const v = d.data(); if (v) PICKS[d.id] = {pick: v.pick || "", note: v.note || ""}; });
-    setStore("Picks save as you make them; Claude reads them from here.");
-    const active = document.activeElement && document.activeElement.classList.contains("note");
-    if (!active) render(); else tally();
+    const changed = [];
+    snap.docs.forEach(d => {
+      const v = d.data(); if (!v) return;
+      EXISTS.add(d.id);
+      const next = {pick: v.pick || "", note: v.note || "", cut: v.cut || "", reply: v.reply || ""};
+      if (JSON.stringify(next) !== JSON.stringify(PICKS[d.id] || {})) { PICKS[d.id] = next; changed.push(d.id); }
+    });
+    setStore("Picks save as you make them; Claude reads them from here, and replies under your notes.");
+    if (first) { first = false; render(); return; }
+    // Redraw only records someone else changed, and never the one being typed in.
+    changed.forEach(id => { const art = document.getElementById("p-" + id); if (art && !art.contains(document.activeElement)) redraw(id); });
+    tally();
   }, err => { clearTimeout(timer); setStore("Saved picks are unavailable (" + (err && err.code || "error") + "); new picks are kept on this page.", true); });
 })();
 </script>
