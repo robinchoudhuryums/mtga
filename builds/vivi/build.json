@@ -483,6 +483,21 @@
    "name": "Hall of Storm Giants",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Ral, Storm Conduit",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Expressive Iteration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Prismari Charm",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -613,10 +628,10 @@
    }
   },
   "Academy Instructor": {
-   "group": "Candidates",
-   "text": "Owner's add, still unpaired. An Officer token per noncreature spell, growing itself. Suggested cut: Prismari, the Inspiration (the top of the curve is crowded with Jin-Gitaxias, Vision and Ovika, and Prismari's storm copies are not casts); or Melek.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. An Officer per noncreature spell, growing itself. Suggested cut: Prismari, the Inspiration (owner-marked).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Enraged Flamecaster": {
@@ -726,9 +741,9 @@
   },
   "Orbital Plunge": {
    "group": "Cut in round 2",
-   "text": "Cut for Prismari Charm: a 4-mana sorcery that only kills a creature; the charm's modes do more per mana.",
+   "text": "Cut in round 2. A 4-mana sorcery that only kills a creature (6 damage, a Lander on excess); the deck's burn now does a second thing.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "719b1d410edc"
    }
   },
   "Role Reversal": {
@@ -789,9 +804,9 @@
   },
   "Malcolm, the Eyes": {
    "group": "Cut in round 2",
-   "text": "Cut for Expressive Iteration: Clues on the second spell, on a creature spell.",
+   "text": "Cut in round 2. A flier that investigates on your second spell each turn; a creature spell, so no Vivi trigger.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "719b1d410edc"
    }
   },
   "The Locust God": {
@@ -901,9 +916,9 @@
   },
   "Vibrant Outburst": {
    "group": "Cut in round 4",
-   "text": "Cut for Ral, Storm Conduit: plain 3 damage; Ral pings on every cast or copy.",
+   "text": "Cut in round 4. Plain 3 damage plus a tap; the deck has since moved to burn that does a second thing.",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "719b1d410edc"
    }
   },
   "Tome Blast": {
@@ -928,24 +943,24 @@
    }
   },
   "Improvisation Capstone": {
-   "group": "Candidates",
-   "text": "Free casts off the top, then a free copy of itself every first main. Suggested cut: Wanda's Vision (one free cast on the second spell); Zaffai has already gone to Vision.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. Free casts off the top, then a free copy of itself every first main. Suggested cut: Wanda's Vision (one free cast on the second spell).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Planetarium of Wan Shi Tong": {
-   "group": "Candidates",
-   "text": "{1},{T}: scry 2, then cast the top card free — a free spell every turn from its own ability, more with Temple of Epiphany and Prismari Charm's surveil. Suggested cut: Charred Foyer (plays the top card each upkeep, but you pay for it); or Expressive Iteration.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. {1},{T}: scry 2, then cast the top card free once a turn. Suggested cut: Charred Foyer (plays the top card, but you pay for it).",
    "graded_at": {
-    "103": "8e993e2e7c30"
+    "103": "719b1d410edc"
    }
   },
   "Sunbird's Invocation": {
-   "group": "Candidates",
-   "text": "Every spell cast from hand cascades into a free one. Suggested cut: Wanda's Vision (shared with Capstone) or Prismari (shared with Academy Instructor).",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. Every spell from hand cascades into a free one — a cast, so Vivi triggers. Suggested cut: Thousand-Year Storm (its copies are not casts and do not grow Vivi; same 6 mana).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Shark Typhoon": {
@@ -1033,52 +1048,52 @@
    }
   },
   "Wizard's Staff": {
-   "group": "Tier 1 (round 6)",
-   "text": "Vivi is a Wizard, so it equips for {1}: her trigger fires twice per noncreature spell — two counters, two damage, two Niv-Mizzet, Visionary draws. On either Niv it doubles that Niv's own trigger. Itself a 2-mana noncreature cast. Suggested cut: Ral, Storm Conduit (your mark).",
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. Equip Wizard {1}: on Vivi her trigger fires twice per noncreature spell (two counters, two damage, two Niv-Mizzet, Visionary draws); on either Niv it doubles that Niv's trigger.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Harmonic Prodigy": {
-   "group": "Tier 1 (round 6)",
-   "text": "Every other Wizard's triggers fire twice: Vivi, both Niv-Mizzets, Archmage of Runes, Tellah, Gandalf, Goliath Daydreamer — 11 Wizards. A 2-drop with prowess. Stacks with Wizard's Staff (three Vivi triggers). Suggested cut: Expressive Iteration (your mark).",
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. Every other Wizard's triggers fire twice — Vivi, both Nivs, Archmage, Tellah, Gandalf. Stacks with Wizard's Staff.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Human Torch, Johnny Storm": {
-   "group": "Tier 1 (round 6)",
-   "text": "A second two-card kill: with another Hero out, every card drawn pings the opponent, and Niv-Mizzet, Visionary draws on every ping — a loop to 25. Heroes here: The Scarlet Witch, Vision and Scarlet Witch, Vision, Spectral Synthezoid. Owned. Suggested cut: Prismari Charm (your mark).",
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. With another Hero out (The Scarlet Witch, Vision and Scarlet Witch, Vision, Spectral Synthezoid), each draw pings the opponent and Niv-Mizzet, Visionary draws per ping: a second two-card kill.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Otawara, Soaring City": {
-   "group": "Tier 1 (round 6)",
-   "text": "A blue source that channels into bounce, {1} cheaper per legendary creature (the deck runs about 15). Owned. Replaces one Island.",
+   "group": "In the deck (round 6)",
+   "text": "In since round 6, for an Island: a blue source that channels into bounce, cheaper per legendary creature.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Sokenzan, Crucible of Defiance": {
-   "group": "Tier 1 (round 6)",
-   "text": "A red source that channels into two hasty 1/1s, cheaper per legendary creature. Replaces one Mountain.",
+   "group": "In the deck (round 6)",
+   "text": "In since round 6, for a Mountain: a red source that channels into two hasty 1/1s.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Flux Channeler": {
-   "group": "Tier 2 (round 6)",
-   "text": "A Wizard: every noncreature spell proliferates — another counter on Vivi (more mana), Kraum, Fractal Anomaly, Primal Amulet and the planeswalkers. Harmonic Prodigy doubles it. Cut idea: Charred Foyer or Melek.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. A Wizard that proliferates on every noncreature spell — another counter on Vivi each time, and Harmonic Prodigy doubles it. Suggested cut: Melek.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Wizard Class": {
-   "group": "Tier 2 (round 6)",
-   "text": "1 mana; level 2 draws two; level 3 puts a +1/+1 counter on a creature for every card you draw — on Vivi, Niv-Mizzet's draws turn into mana. Cut idea: Wanda's Vision.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. 1 mana; level 2 draws two; level 3 puts a +1/+1 counter on a creature per card drawn — on Vivi, draws become mana. Suggested cut: Indris (its draw-per-spell is what Archmage of Runes already does, for 6).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Swiftfoot Boots": {
@@ -1096,31 +1111,31 @@
    }
   },
   "Irencrag Pyromancer": {
-   "group": "Tier 2 (round 6)",
-   "text": "A Wizard that deals 3 to any target on your second draw each turn; to the face, that is three Niv-Mizzet draws. Cut idea: Wanda's Vision.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. A Wizard (Harmonic Prodigy doubles it) that deals 3 on your second draw each turn. Suggested cut: Slick Sequence (2 damage once).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Roaming Throne": {
-   "group": "Tier 2 (round 6)",
-   "text": "Name Wizard: another doubler for every Wizard's triggers, on a 4/4 ward 2 artifact. Redundant with Harmonic Prodigy, stacks with it. Cut idea: Melek.",
+   "group": "Owner's adds (round 7)",
+   "text": "Name Wizard: a third trigger doubler beside Harmonic Prodigy and Wizard's Staff. Not marked; a cut would be needed.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Volt Charge": {
-   "group": "Tier 2 (round 6)",
-   "text": "3 damage to any target and a proliferate (Vivi +1): an instant that backfills the interaction the round-6 cuts take out. Cut idea: Charred Foyer.",
+   "group": "Owner's adds (round 7)",
+   "text": "Owner's add. Instant 3 damage and a proliferate (Vivi +1). Suggested cut: Illuminating Lash (sorcery 3 damage and a one-time draw).",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Lwaxana Troi, Charming Guest": {
-   "group": "Tier 2 (round 6)",
-   "text": "Owned. {2},{T}, stay tapped: one creature's triggers fire twice — on Vivi, a cheap but fragile doubler. Behind Wizard's Staff and Harmonic Prodigy.",
+   "group": "Owner benched",
+   "text": "Benched by the owner. {2},{T}, stay tapped: one creature's triggers fire twice; behind Wizard's Staff and Harmonic Prodigy.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "719b1d410edc"
    }
   },
   "Hall of Storm Giants": {
@@ -1128,6 +1143,27 @@
    "text": "A blue land that becomes a 7/7 ward 3; enters tapped once you have two other lands. For an Island.",
    "graded_at": {
     "103": "33a071a68a39"
+   }
+  },
+  "Ral, Storm Conduit": {
+   "group": "Cut in round 6",
+   "text": "Cut for Wizard's Staff (owner's mark): pings on every cast or copy, but the Staff doubles Vivi's own ping and draws.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Expressive Iteration": {
+   "group": "Cut in round 6",
+   "text": "Cut for Harmonic Prodigy (owner's mark): a cheap impulse spell; one of the 1–2 mana noncreature spells that grow Vivi early.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Prismari Charm": {
+   "group": "Cut in round 6",
+   "text": "Cut for Human Torch (owner's mark): a flexible 2-mana charm; its two 1-damage pings drew two with Niv-Mizzet.",
+   "graded_at": {
+    "103": "719b1d410edc"
    }
   }
  },
@@ -1447,6 +1483,87 @@
     "Vivi Ornitier",
     "Wanda's Vision",
     "Wandering Fumarole"
+   ],
+   "719b1d410edc": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Fractal Anomaly",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Jin-Gitaxias, Progress Tyrant",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Sokenzan, Crucible of Defiance",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard's Staff"
    ]
   }
  },
@@ -1562,7 +1679,7 @@
   "Academy Instructor": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Enraged Flamecaster": {
@@ -1658,7 +1775,7 @@
   "Orbital Plunge": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "719b1d410edc"
    }
   },
   "Role Reversal": {
@@ -1712,7 +1829,7 @@
   "Malcolm, the Eyes": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "719b1d410edc"
    }
   },
   "The Locust God": {
@@ -1808,7 +1925,7 @@
   "Vibrant Outburst": {
    "V": {
     "m": "◇",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "719b1d410edc"
    }
   },
   "Tome Blast": {
@@ -1832,19 +1949,19 @@
   "Improvisation Capstone": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Planetarium of Wan Shi Tong": {
    "V": {
     "m": "★★",
-    "graded_at": "8e993e2e7c30"
+    "graded_at": "719b1d410edc"
    }
   },
   "Sunbird's Invocation": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Shark Typhoon": {
@@ -1922,43 +2039,43 @@
   "Wizard's Staff": {
    "V": {
     "m": "★★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Harmonic Prodigy": {
    "V": {
     "m": "★★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Human Torch, Johnny Storm": {
    "V": {
     "m": "★★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Otawara, Soaring City": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Sokenzan, Crucible of Defiance": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Flux Channeler": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Wizard Class": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Swiftfoot Boots": {
@@ -1976,31 +2093,49 @@
   "Irencrag Pyromancer": {
    "V": {
     "m": "★★",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Roaming Throne": {
    "V": {
-    "m": "★",
-    "graded_at": "33a071a68a39"
+    "m": "◇",
+    "graded_at": "719b1d410edc"
    }
   },
   "Volt Charge": {
    "V": {
-    "m": "★",
-    "graded_at": "33a071a68a39"
+    "m": "★★",
+    "graded_at": "719b1d410edc"
    }
   },
   "Lwaxana Troi, Charming Guest": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "719b1d410edc"
    }
   },
   "Hall of Storm Giants": {
    "V": {
     "m": "◇",
     "graded_at": "33a071a68a39"
+   }
+  },
+  "Ral, Storm Conduit": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Expressive Iteration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Prismari Charm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
    }
   }
  }

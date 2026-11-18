@@ -277,7 +277,7 @@ Kraum / Twinned Vision. Measured: floor A, interaction 16, card advantage 13, av
 spells 39 → 33 and creatures 25 → 31, legal. **Error on my side:** Swan Song gives the opponent a 2/2
 flier — the owner's no-benefit-to-the-opponent removal rule, which I missed when proposing it; their cut is right.
 
-**Round 6 proposal (2026-11-18, NOT applied).** Owner's new cut marks: Expressive Iteration, Prismari Charm,
+**Round 6 tier 1 APPLIED (2026-11-18)**: Wizard's Staff, Harmonic Prodigy, Human Torch, Otawara, Sokenzan; Lwaxana Troi and Najal benched. **Round 7 proposal (NOT applied)** for the owner's eight marked adds: Academy Instructor / Prismari the Inspiration, Planetarium / Charred Foyer, Improvisation Capstone / Wanda's Vision, Sunbird's Invocation / Thousand-Year Storm, Volt Charge / Illuminating Lash, Flux Channeler / Melek, Wizard Class / Indris, Irencrag Pyromancer / Slick Sequence — measured floor A, interaction 15, card advantage 12, avg MV 3.72, legal. **Original round-6 proposal:** Owner's new cut marks: Expressive Iteration, Prismari Charm,
 Ral, Storm Conduit, Prismari, the Inspiration (accepted for Academy Instructor). Theme search (Wizards,
 trigger doublers, draw payoffs, proliferate, protection equipment, X payoffs, utility lands).
 - Tier 1: Wizard's Staff (owned; Vivi is a Wizard, equip {1}, her trigger fires twice) for Ral, Storm
