@@ -248,6 +248,25 @@ Strike, Epic Experiment for Rapturous Moment, Galvanic Iteration for Victor Time
 Studies for Emeritus of Conflict. **APPLIED** with the revision-2 package as one 24-swap round: floor A,
 interaction 19, card advantage 16, avg MV 3.45, legal, quality guard clean, rationale current.
 
+**Round 4 proposal (2026-11-18, owner asked for more fits/upgrades/spice; NOT applied).** Searched the
+Historic Brawl UR pool for cast-payoffs, face pings (Niv draws), free casts/copies, reducers and
+protection (~600 hits), read ~50 in full.
+- Upgrades: Artist's Talent for Abandon Attachments (loots every noncreature spell; level 3 adds +2 to
+  every noncombat damage, so each Vivi ping deals 3 and Niv draws 3); Mizzix's Mastery for Wisdom of
+  Ages (overload casts every instant/sorcery in the yard free — every one a Vivi trigger; R not UUU);
+  Archmage of Runes for Colorstorm Stallion (reducer + a draw per instant/sorcery); Ral, Storm Conduit
+  for Vibrant Outburst (pings on every cast AND copy); Glen Elendra's Answer for Tome Blast (uncounterable
+  counter-everything: the big-turn shield); Guttersnipe for Spectacular Skywhale (2 to the face per
+  instant/sorcery = two Niv draws); Primal Amulet for Abstract Paintmage (reducer that flips into a land
+  whose mana copies the spell). Measured: floor A, interaction 19, avg MV 3.49, legal.
+- Spice: Improvisation Capstone for Artistic Process (free casts, then a free copy of itself every
+  first main); Planetarium of Wan Shi Tong for Solstice Revelations (a free card off every scry/surveil);
+  Sunbird's Invocation for The Dawning Archaic (each hand-cast spell cascades); Shark Typhoon for Ovika
+  (same effect, cycling-flexible). With both: floor A, interaction 18, legal.
+- Also strong, not paired: Jin-Gitaxias, Progress Tyrant (owned), Stella Lee, Thermo-Alchemist,
+  Ral, Monsoon Mage, Kraum (owned), Harnesser of Storms (owned). Rejected: Psychosis Crawler (life
+  LOSS is not damage, so no Niv loop).
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
