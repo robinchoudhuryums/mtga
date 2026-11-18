@@ -227,6 +227,18 @@ Standard Izzet lists.
 - **Craft cost (information only):** 15 of the 23 adds are unowned — 1 mythic (Counterspell),
   6 rare, 2 uncommon, 6 common.
 
+**Revision 2 (owner, 2026-11-18): plain cantrips and burn are "boring"; keep Goliath Daydreamer,
+Keranos and Loki.** So 14 spell swaps, not 17, and the draw/burn slots go to cards that compound:
+Asgardian Inspiration (returns to hand whenever Vivi pings — a loop), Fractal Anomaly (an X/X where
+X = cards drawn this turn; Niv-Mizzet, Visionary makes it big), Twinned Vision (flashback draws two:
+two casts), Slick Sequence (draws if another spell was cast this turn), Prismari Charm (two 1-damage
+pings = two Niv draws, or bounce, or surveil-draw), Illuminating Lash (3 damage and a boon that draws
+on the next noncreature spell), Expressive Iteration kept. Dropped: Opt, Consider, Preordain, Ponder,
+Brainstorm, Lightning Bolt, Burst Lightning, Galvanic Discharge, Make Disappear. Measured: floor A,
+interaction 20, card advantage 17 (15 before), avg MV 3.55, legal. Alternates if wanted: Epic
+Experiment (X: cast every cheap instant/sorcery among the top X free), Culmination of Studies,
+Arcane Infusion, Glacial Dragonhunt, Galvanic Iteration.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
