@@ -2188,7 +2188,7 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   `86-fantastic-four-`, `fra-bant-`, `fra-bur-` and `fra-rgu-pile-analysis.md`, plus
   `isshin-` (drafted as deck 93; the owner's open notes remain), `zimone-` (deck 94;
   add-backs pending) and `sultai-pile-analysis.md` (decks 75-historic-brawl and 96 — its
-  Builder board `builds/sultai` is where the owner marks picks), and `rocco-pile-analysis.md` (drafted as deck 97 on 2026-11-05; its board `builds/rocco` holds the bench), and `pack-ingest-analysis.md` (homes for the 582 cards from the 2026-11-17 pack ingest, filled batch by batch); read each one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
+  Builder board `builds/sultai` is where the owner marks picks), and `rocco-pile-analysis.md` (drafted as deck 97 on 2026-11-05; its board `builds/rocco` holds the bench), and `pack-ingest-analysis.md` (homes for the 582 cards from the 2026-11-17 pack ingest, filled batch by batch), and `vivi-pile-analysis.md` (the pile behind deck 103, drafted 2026-11-18; its board `builds/vivi` holds the bench); read each one's `Status:` line. `91-hashaton-` and `ozai-` were drafted into decks 91 and 92 and deleted 2026-10-25
   (its bench and sequencing rule are in that deck's `#: notes:`; `git log` holds the rest). `deck89-tooling-plan.md` (a four-batch tooling plan) was completed and
   deleted 2026-10-23; its record is `.cycle/blocks/deck89-batch*.md`. `89-szarel-` was folded into deck 89 and deleted
   2026-10-23. `60-redline-pile-analysis.md`

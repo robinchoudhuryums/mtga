@@ -12,6 +12,7 @@ another deck runs is still a candidate here. Ownership is information only (Play
 40 of the 107 are unowned.
 
 **Builder project:** `builds/vivi` (deck 103), holding the 33 bench cards with reasons.
+Board: https://claude.ai/artifact/UAJaJmXDnduGibXkYJLZBd
 
 **Slot budget:** 100 cards = Vivi + 99. At ~35 lands (9 nonbasic + ~26 basics) that leaves ~64
 spell slots, so ~33 of the 97 nonland candidates are cut. Lands are revisited once the spell
