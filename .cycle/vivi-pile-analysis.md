@@ -311,7 +311,7 @@ Professor / Stormcatch Mentor (variant: / Gray and Adira — early drops 15 not 
 Surtland / Ovika. Measured: floor A, interaction 16, card advantage 14, legal. Maybes: Blue Marvel / The Scarlet
 Witch, Oracle / Glacial Dragonhunt, Ruric Thar / Kraum (all 21: floor A, interaction 15, avg MV 3.83, early 13).
 
-**Round 7 update (owner, 2026-11-18, NOT applied):** Surtland Elementalist / Prismari, the Inspiration;
+**Round 7 PARTLY APPLIED (2026-11-18):** Surtland / Prismari, Sunbird / Thousand-Year Storm, Wizard Class / Indris, Academy Instructor / Fractal Anomaly, Pensive Professor / Stormcatch Mentor, Ajani / Jin-Gitaxias. Still under consideration: Curiosity, Thor, God of Thunder, Iron Lad, Wizard's Retort, Chandra Torch, Command the Stage, Volt Charge, Flux Channeler, Irencrag, Proft's, Improvisation Capstone, Talrand (+ maybes). **Round 7 update (owner, earlier):** Surtland Elementalist / Prismari, the Inspiration;
 Thor, Guardian of Midgard dropped; Ajani Unrelenting / Jin-Gitaxias, Progress Tyrant (Ajani's Cadets are Wizard
 tokens; its −3 is an emergency button only); Ovika stays. 18 swaps, measured: floor A, interaction 16, card
 advantage 15, avg MV 3.77 (3.74 with Pensive Professor / Gray and Adira instead of / Stormcatch), legal. Open:

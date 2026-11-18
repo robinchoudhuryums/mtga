@@ -498,6 +498,31 @@
    "name": "Prismari Charm",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Prismari, the Inspiration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thousand-Year Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Indris, the Hydrostatic Surge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Fractal Anomaly",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Stormcatch Mentor",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -628,10 +653,10 @@
    }
   },
   "Academy Instructor": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. An Officer per noncreature spell, growing itself. Suggested cut: Prismari, the Inspiration (owner-marked).",
+   "group": "In the deck (round 7)",
+   "text": "In since round 7 (owner's pick), for Fractal Anomaly: an Officer token per noncreature spell, and Instructor grows with each one.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Enraged Flamecaster": {
@@ -755,9 +780,9 @@
   },
   "Storm of Saruman": {
    "group": "Cut in round 2",
-   "text": "Cut in round 2 for Expansion // Explosion, itself since cut. Still a 6-mana copy engine (copies, not casts) beside Thousand-Year Storm, Galvanic Iteration and Jin-Gitaxias.",
+   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); Galvanic Iteration and Chandra cover copying now.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Lightning Strike": {
@@ -790,9 +815,9 @@
   },
   "Tempest Angler": {
    "group": "Cut in round 2",
-   "text": "Cut for Fractal Anomaly: a creature spell; Fractal Anomaly grows with draws instead.",
+   "text": "Cut in round 2. A cheap creature that grows on every noncreature spell; a candidate if the early game needs a body.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "5411fe891270"
    }
   },
   "Kaza, Roil Chaser": {
@@ -957,10 +982,10 @@
    }
   },
   "Sunbird's Invocation": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. Every spell from hand cascades into a free one — a cast, so Vivi triggers. Suggested cut: Thousand-Year Storm (its copies are not casts and do not grow Vivi; same 6 mana).",
+   "group": "In the deck (round 7)",
+   "text": "In since round 7, for Thousand-Year Storm: every spell from hand cascades into a free one — a cast, so Vivi triggers.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Shark Typhoon": {
@@ -971,10 +996,10 @@
    }
   },
   "Jin-Gitaxias, Progress Tyrant": {
-   "group": "In the deck (round 5)",
-   "text": "In since round 5, replacing Teferi: copies your first artifact/instant/sorcery each turn and counters the opponent's first.",
+   "group": "Cut in round 7",
+   "text": "Cut for Ajani Unrelenting (owner's pick): gives up the once-a-turn counter on the opponent's spells and the copy for Ajani's Wizard tokens and refill.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Kraum, Violent Cacophony": {
@@ -993,9 +1018,9 @@
   },
   "Memory Lapse": {
    "group": "Cut in round 5",
-   "text": "Cut for Gray and Adira: a soft counter (the spell comes back next draw); four hard counters and Jin-Gitaxias remain.",
+   "text": "Cut in round 5 for Gray and Adira. A soft counter; Wizard's Retort is the better cheap counter if one comes back.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Asgardian Inspiration": {
@@ -1021,9 +1046,9 @@
   },
   "Firemind's Research": {
    "group": "Cut in round 5",
-   "text": "Cut for Galazeth Prismari: charge counters into cards or 5 damage — slow.",
+   "text": "Cut in round 5 for Galazeth Prismari. Charge counters into cards or 5 damage — slow beside the deck's draw engines.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Saheeli, Jewel of Avishkar": {
@@ -1035,9 +1060,9 @@
   },
   "Teferi, Mage of Zhalfir": {
    "group": "Cut in round 5",
-   "text": "Cut for Jin-Gitaxias, Progress Tyrant: both deny instant-speed answers; Jin also copies a spell each turn. Teferi needs {U}{U}{U}.",
+   "text": "Cut in round 5. Opponents act only at sorcery speed — with Jin-Gitaxias now gone too, the strongest protection option on the bench. {U}{U}{U}.",
    "graded_at": {
-    "103": "33a071a68a39"
+    "103": "5411fe891270"
    }
   },
   "Twinned Vision": {
@@ -1090,10 +1115,10 @@
    }
   },
   "Wizard Class": {
-   "group": "Owner's adds (round 7)",
-   "text": "Owner's add. 1 mana; level 2 draws two; level 3 puts a +1/+1 counter on a creature per card drawn — on Vivi, draws become mana. Suggested cut: Indris (its draw-per-spell is what Archmage of Runes already does, for 6).",
+   "group": "In the deck (round 7)",
+   "text": "In since round 7, for Indris: level 3 puts a +1/+1 counter on a creature per card drawn — on Vivi, Niv-Mizzet's draws become mana.",
    "graded_at": {
-    "103": "719b1d410edc"
+    "103": "5411fe891270"
    }
   },
   "Swiftfoot Boots": {
@@ -1164,6 +1189,41 @@
    "text": "Cut for Human Torch (owner's mark): a flexible 2-mana charm; its two 1-damage pings drew two with Niv-Mizzet.",
    "graded_at": {
     "103": "719b1d410edc"
+   }
+  },
+  "Prismari, the Inspiration": {
+   "group": "Cut in round 7",
+   "text": "Cut for Surtland Elementalist (owner's pick): a 7-drop whose storm copies are not casts, so they never grew Vivi.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Thousand-Year Storm": {
+   "group": "Cut in round 7",
+   "text": "Cut for Sunbird's Invocation: same 6 mana, but its copies are not casts; Sunbird's free spells are.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Indris, the Hydrostatic Surge": {
+   "group": "Cut in round 7",
+   "text": "Cut for Wizard Class: draw-per-instant/sorcery for 6, which Archmage of Runes does for 5.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Fractal Anomaly": {
+   "group": "Cut in round 7",
+   "text": "Cut for Academy Instructor (owner's pick): a 1-mana token sized by draws; Instructor makes a token on every noncreature spell.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Stormcatch Mentor": {
+   "group": "Cut in round 7",
+   "text": "Cut for Pensive Professor (owner's pick): an instant/sorcery reducer the deck now has three of (Primal Amulet, Archmage, Artist's Talent level 2). First back in if the early game feels thin.",
+   "graded_at": {
+    "103": "5411fe891270"
    }
   }
  },
@@ -1564,6 +1624,87 @@
     "Wanda's Vision",
     "Wandering Fumarole",
     "Wizard's Staff"
+   ],
+   "5411fe891270": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Illuminating Lash",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Primal Amulet // Primal Wellspring",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Sokenzan, Crucible of Defiance",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Staff"
    ]
   }
  },
@@ -1678,8 +1819,8 @@
   },
   "Academy Instructor": {
    "V": {
-    "m": "◇",
-    "graded_at": "719b1d410edc"
+    "m": "★★",
+    "graded_at": "5411fe891270"
    }
   },
   "Enraged Flamecaster": {
@@ -1787,7 +1928,7 @@
   "Storm of Saruman": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "5411fe891270"
    }
   },
   "Lightning Strike": {
@@ -1817,7 +1958,7 @@
   "Tempest Angler": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "5411fe891270"
    }
   },
   "Kaza, Roil Chaser": {
@@ -1961,7 +2102,7 @@
   "Sunbird's Invocation": {
    "V": {
     "m": "★★",
-    "graded_at": "719b1d410edc"
+    "graded_at": "5411fe891270"
    }
   },
   "Shark Typhoon": {
@@ -1972,8 +2113,8 @@
   },
   "Jin-Gitaxias, Progress Tyrant": {
    "V": {
-    "m": "★★",
-    "graded_at": "33a071a68a39"
+    "m": "◇",
+    "graded_at": "5411fe891270"
    }
   },
   "Kraum, Violent Cacophony": {
@@ -1991,7 +2132,7 @@
   "Memory Lapse": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "5411fe891270"
    }
   },
   "Asgardian Inspiration": {
@@ -2015,7 +2156,7 @@
   "Firemind's Research": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "5411fe891270"
    }
   },
   "Saheeli, Jewel of Avishkar": {
@@ -2027,7 +2168,7 @@
   "Teferi, Mage of Zhalfir": {
    "V": {
     "m": "◇",
-    "graded_at": "33a071a68a39"
+    "graded_at": "5411fe891270"
    }
   },
   "Twinned Vision": {
@@ -2075,7 +2216,7 @@
   "Wizard Class": {
    "V": {
     "m": "★★",
-    "graded_at": "719b1d410edc"
+    "graded_at": "5411fe891270"
    }
   },
   "Swiftfoot Boots": {
@@ -2136,6 +2277,36 @@
    "V": {
     "m": "◇",
     "graded_at": "719b1d410edc"
+   }
+  },
+  "Prismari, the Inspiration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Thousand-Year Storm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Indris, the Hydrostatic Surge": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Fractal Anomaly": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Stormcatch Mentor": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
    }
   }
  }
