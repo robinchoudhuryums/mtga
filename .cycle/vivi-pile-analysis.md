@@ -290,6 +290,16 @@ trigger doublers, draw payoffs, proliferate, protection equipment, X payoffs, ut
   Irencrag Pyromancer, Roaming Throne (name Wizard), Volt Charge, Lwaxana Troi (owned), Hall of Storm Giants.
   All on the board with reasons.
 
+**Round 7 holistic package (2026-11-18, NOT applied).** Built as one change from every card under consideration,
+keeping Melek, Charred Foyer, Wanda's Vision and the earlier owner keeps. 13 swaps: Curiosity / As Foretold,
+Thor, God of Thunder / Nibelheim Aflame, Iron Lad / Sanar, Wizard's Retort / Izzet Charm, Thor, Asgard's Avenger /
+Prismari, the Inspiration, Chandra, Torch of Defiance / Ral, Crackling Wit, Command the Stage / Slick Sequence,
+Volt Charge / Illuminating Lash, Sunbird's Invocation / Thousand-Year Storm, Wizard Class / Indris, Flux
+Channeler / Baral and Kari Zev, Irencrag Pyromancer / Galazeth Prismari, Proft's Eidetic Memory / Neera.
+Measured: floor A, interaction 15 → 16, avg MV 3.80 → 3.65, central themes 14 → 15, noncreature 32 → 33,
+Wizards 12 → 14, Heroes 4 → 7, legal. Left out (owner-marked): Academy Instructor, Planetarium, Improvisation
+Capstone — curve and overlap; first alternates: Reed Richards, Talrand, Pensive Professor, Thor, Guardian of Midgard.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
