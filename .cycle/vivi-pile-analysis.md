@@ -267,6 +267,16 @@ protection (~600 hits), read ~50 in full.
   Ral, Monsoon Mage, Kraum (owned), Harnesser of Storms (owned). Rejected: Psychosis Crawler (life
   LOSS is not damage, so no Niv loop).
 
+**Board review (2026-11-18, round 5 — NOT applied).** Owner's marks: adds Academy Instructor, Galazeth
+Prismari, Gray and Adira, Neera, Rootha, The Scarlet Witch, Vision, Spectral Synthezoid; cuts Memory Lapse,
+Swan Song, Expansion // Explosion, Asgardian Inspiration, plus Teferi and Twinned Vision (accepted from my
+suggestions); bench Jacob Hauken; dismissed the Paradigm Shifter cut. Proposed pairing: Gray and Adira /
+Memory Lapse, Neera / Swan Song, Rootha / Asgardian, Scarlet Witch / Expansion, Vision Synthezoid / Zaffai,
+Galazeth / Firemind's Research, Academy Instructor / Saheeli (I'd skip Instructor), Jin-Gitaxias / Teferi,
+Kraum / Twinned Vision. Measured: floor A, interaction 16, card advantage 13, avg MV 3.77, noncreature
+spells 39 → 33 and creatures 25 → 31, legal. **Error on my side:** Swan Song gives the opponent a 2/2
+flier — the owner's no-benefit-to-the-opponent removal rule, which I missed when proposing it; their cut is right.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Stormcatch Mentor (cost reduction); Arcane Bombardment (the
 free-cast engine).
