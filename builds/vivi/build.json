@@ -1,0 +1,708 @@
+{
+ "schema": 1,
+ "title": "Vivi pile",
+ "decks": [
+  {
+   "key": "V",
+   "id": "103",
+   "label": "Vivi"
+  }
+ ],
+ "piles": [
+  {
+   "key": "V",
+   "label": "Vivi's pile",
+   "deck": "V",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "The Scarlet Witch",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "High Fae Trickster",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firebending Student",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Balmor, Battlemage Captain",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dragonfly Swarm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Enigma Drake",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Arius, Flyby Trawler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Man 2099",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Stormchaser Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lilah, Undefeated Slickshot",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spectacle Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Gray and Adira, Forever Joined",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Galazeth Prismari",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rootha, Mastering the Moment",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Najal, the Storm Runner",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thundering Djinn",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Neera, Wild Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Vision, Spectral Synthezoid",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Academy Instructor",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Enraged Flamecaster",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Jacob Hauken, Inspector // Hauken's Insight",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dreadhorde Arcanist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firebender Ascension",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Fevered Visions",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Improbable Alliance",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Don & Raph, Hard Science",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kylox, Visionary Inventor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Glóin, Dwarf Emissary",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Captain Storm, Cosmium Raider",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jhoira, Ageless Innovator",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Breeches, the Blastmaker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brudiclad, Telchor Engineer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Katara, Waterbending Master",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "The Scarlet Witch": {
+   "group": "Scarlet Witch",
+   "text": "Discounts MV 4+ instants/sorceries by her power; the draft keeps only ~8 such spells, so she is a 3-mana 2/3 most turns.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "High Fae Trickster": {
+   "group": "Flash",
+   "text": "Flash for everything, but a spell flashed on the opponent's turn can't use Vivi's mana (R2). A 4/2 flash flier otherwise.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Firebending Student": {
+   "group": "Attackers",
+   "text": "Prowess plus attack mana; the draft is not built to attack with small creatures.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Balmor, Battlemage Captain": {
+   "group": "Go-wide",
+   "text": "Team pump per spell; the draft is not wide.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Dragonfly Swarm": {
+   "group": "Graveyard bodies",
+   "text": "Flier sized by noncreature cards in the yard; benched for Enigma Drake-class bodies the draft already has (Tolarian Terror, Melek).",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Enigma Drake": {
+   "group": "Graveyard bodies",
+   "text": "Flier sized by instants/sorceries in the yard; a 100-card yard fills slowly.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Arius, Flyby Trawler": {
+   "group": "Attackers",
+   "text": "Attack-driven seek; little discard to grow it.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Spider-Man 2099": {
+   "group": "Recast",
+   "text": "Double strike and end-step burn after a non-hand cast; turn-4 lockout and a narrow trigger.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Stormchaser Mage": {
+   "group": "Prowess",
+   "text": "2-drop prowess flier; Sprite Dragon and Tempest Angler grow permanently instead.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Lilah, Undefeated Slickshot": {
+   "group": "Recast",
+   "text": "Plots multicolored instants/sorceries; the draft holds only ~4 multicolored ones.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Spectacle Mage": {
+   "group": "Cost reduction",
+   "text": "Discounts MV 5+ instants/sorceries by 1; few such spells.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Gray and Adira, Forever Joined": {
+   "group": "Copy",
+   "text": "A hasty token copy each combat; best on Niv-Mizzet, Visionary (doubles its draws). First in if a creature slot opens.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Galazeth Prismari": {
+   "group": "Spell mana",
+   "text": "Artifacts tap for instant mana, but the draft has two artifacts.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Rootha, Mastering the Moment": {
+   "group": "Tokens",
+   "text": "X/X flier each combat after an instant/sorcery; Saheeli and Tellah already make bodies per spell.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Najal, the Storm Runner": {
+   "group": "Flash",
+   "text": "Flash sorceries lose Vivi's mana (R2); attack-gated copy.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Thundering Djinn": {
+   "group": "Draw payoff",
+   "text": "Attack damage = cards drawn this turn: strong beside Niv-Mizzet, weak alone.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Neera, Wild Mage": {
+   "group": "Free casts",
+   "text": "Trades a cast spell for a random free one once a turn; the draft has steadier free-cast engines.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "group": "Free casts",
+   "text": "A free noncreature spell each turn on an 8-mana body; Zaffai does it for 7.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Academy Instructor": {
+   "group": "Tokens",
+   "text": "An Officer per noncreature spell; Saheeli's flying Thopters are better.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Enraged Flamecaster": {
+   "group": "Burn",
+   "text": "2 damage per MV 4+ spell; Fiery Inscription triggers on every instant/sorcery.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "group": "Card flow",
+   "text": "Slow card flow; the free-cast back costs 6 to reach.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "group": "Recast",
+   "text": "Attack-recast capped by its 1 power.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Firebender Ascension": {
+   "group": "Noncreature",
+   "text": "A cheap noncreature cast with a 2/2, but it copies ATTACK triggers the deck lacks. First in if more cheap noncreature spells are wanted from the pile.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Fevered Visions": {
+   "group": "Noncreature",
+   "text": "A noncreature cast that draws for both players (G-42 shape: it feeds the opponent too).",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Improbable Alliance": {
+   "group": "Noncreature",
+   "text": "Needs a second draw each turn; its loot costs 6.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Don & Raph, Hard Science": {
+   "group": "Artifacts",
+   "text": "Affinity for artifacts on attack; two artifacts in the deck.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Kylox, Visionary Inventor": {
+   "group": "Artifacts",
+   "text": "Sacrifices your creatures to free-cast; 7 mana.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "group": "Artifacts",
+   "text": "Historic-spell Treasures; few historic spells.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Captain Storm, Cosmium Raider": {
+   "group": "Artifacts",
+   "text": "Artifact/Pirate payoff; the deck has neither.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Jhoira, Ageless Innovator": {
+   "group": "Artifacts",
+   "text": "Artifact cheat; the deck has almost no artifacts.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Breeches, the Blastmaker": {
+   "group": "Artifacts",
+   "text": "Needs an artifact to sacrifice.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Brudiclad, Telchor Engineer": {
+   "group": "Artifacts",
+   "text": "Token/artifact card.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "group": "Opponent's turn",
+   "text": "Wants spells on the opponent's turn, when Vivi's mana can't be used (R2).",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  }
+ },
+ "snapshots": {
+  "103": {
+   "84e00893450c": [
+    "Abandon Attachments",
+    "Abstract Paintmage",
+    "Agna Qel'a",
+    "Airship Engine Room",
+    "Arcane Bombardment",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Baron, Airship Kingdom",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Colorstorm Stallion",
+    "Electro, Assaulting Battery",
+    "Elemental Mascot",
+    "Emeritus of Conflict",
+    "Fiery Inscription",
+    "Firemind's Research",
+    "Gandalf the Grey",
+    "Goliath Daydreamer",
+    "Heated Argument",
+    "Indris, the Hydrostatic Surge",
+    "Invasion of Kaladesh",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Guildgate",
+    "Kaza, Roil Chaser",
+    "Keranos, God of Storms",
+    "Lightning Strike",
+    "Loki Laufeyson",
+    "Malcolm, the Eyes",
+    "Melek, Reforged Researcher",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Orbital Plunge",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Prismari, the Inspiration",
+    "Professor Zei, Anthropologist",
+    "Ral, Crackling Wit",
+    "Rapturous Moment",
+    "Resonating Lute",
+    "Riverpyre Verge",
+    "Role Reversal",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Sprite Dragon",
+    "Stark Industries",
+    "Storm of Saruman",
+    "Stormcatch Mentor",
+    "Swiftwater Cliffs",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Angler",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Locust God",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Thunder Magic",
+    "Tolarian Terror",
+    "Tome Blast",
+    "Vibrant Outburst",
+    "Victor Timely, Wily Tycoon",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wiccan, Rising Magician",
+    "Wisdom of Ages",
+    "Zaffai and the Tempests"
+   ]
+  }
+ },
+ "verdicts": {
+  "The Scarlet Witch": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "High Fae Trickster": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Firebending Student": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Balmor, Battlemage Captain": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Dragonfly Swarm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Enigma Drake": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Arius, Flyby Trawler": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Spider-Man 2099": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Stormchaser Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Lilah, Undefeated Slickshot": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Spectacle Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Gray and Adira, Forever Joined": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Galazeth Prismari": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Rootha, Mastering the Moment": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Najal, the Storm Runner": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Thundering Djinn": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Neera, Wild Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Academy Instructor": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Enraged Flamecaster": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Firebender Ascension": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Fevered Visions": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Improbable Alliance": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Don & Raph, Hard Science": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Kylox, Visionary Inventor": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Captain Storm, Cosmium Raider": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Jhoira, Ageless Innovator": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Breeches, the Blastmaker": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Brudiclad, Telchor Engineer": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  }
+ }
+}

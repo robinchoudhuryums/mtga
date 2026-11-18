@@ -10,6 +10,7 @@ Aang, at the Crossroads
 Aang, at the Crossroads // Aang, Destined Savior
 Abomination of Llanowar
 Absorbing Man and Titania
+Abstract Paintmage
 Accumulate Wisdom
 Aerial Doombot
 Aerid Konstrari
@@ -37,6 +38,7 @@ Armament Dragon
 Army of the Damned
 Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
+As Foretold
 Ashiok, Nightmare Weaver
 Ashroot Animist
 Aurelia, the Warleader
@@ -242,6 +244,7 @@ Ingenious Leonin
 Insatiable Skittermaw
 Insurrection
 Interface Ace
+Invasion of Kaladesh
 Involuntary Employment
 Ioreth of the Healing House
 Iroh, Dragon of the West
@@ -395,6 +398,7 @@ Rustler Rampage
 Salvation Swan
 Samut, Hazoret's Champion
 Sanar, Innovative First-Year
+Sanar, Unfinished Genius // Wild Idea
 Sandstorm Salvager
 Savage Beating
 Savage Land Dinosaur
@@ -459,6 +463,7 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
+Teferi, Mage of Zhalfir
 Temur Battle Rage
 Tenured Tethermage
 Terrapact Intimidator
