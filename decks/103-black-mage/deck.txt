@@ -63,7 +63,12 @@
 #: notes: Neera, Wild Mage and Tempest Trapper in for Artistic Process, Spectacular Skywhale, Glacial Dragonhunt, Loki
 #: notes: Laufeyson, Planetarium of Wan Shi Tong and Resonating Lute. Interaction 16 -> 15 (Artistic Process and
 #: notes: Dragonhunt out); the Kindling's spellbook drafts Lightning Bolt, Abrade, Volcanic Fallout and Electrodominance.
-#: notes: Rootha still wants a cut (The Dawning Archaic is a keep). Avg MV 3.83 -> 3.82.
+#: notes: Avg MV 3.83 -> 3.82.
+#: notes: Round 10 (owner, 2026-11-19): Ashling, Flame Dancer, Giant's Amulet and Rootha in for Crackle with Power,
+#: notes: Proft's Eidetic Memory and Chandra, Torch of Defiance (Human Torch kept as the second combo route; The Dawning
+#: notes: Archaic kept). Ashling is a Shaman, so Harmonic Prodigy doubles her magecraft; equip the Amulet to Vivi for
+#: notes: hexproof while untapped (her mana ability is {0}, not a tap). Card advantage 15 -> 14, interaction 15,
+#: notes: protection 2 -> 3. Thryx, the Sudden Storm (for The Scarlet Witch) is still open.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Vivi Ornitier (FIN) 248
@@ -109,7 +114,7 @@
 1 Improvisation Capstone (SOS) 120
 1 Epic Experiment (PIO) 223
 1 Mizzix's Mastery (FCA) 41
-1 Proft's Eidetic Memory (MKM) 67
+1 Giant's Amulet (KHM) 59
 1 Surtland Elementalist (KHM) 375
 1 Sunbird's Invocation (XLN) 165
 
@@ -122,7 +127,7 @@
 1 Iron Lad, Young Avenger (MSC) 569
 1 Wizard Class (AFR) 81
 1 Artist's Talent (BLB) 124
-1 Chandra, Torch of Defiance (FRA) 244
+1 Rootha, Mastering the Moment (SOC) 8
 1 Sorcerer Class (AFR) 233
 1 Kraum, Violent Cacophony (OTJ) 214
 1 Culmination of Studies (STX) 173
@@ -143,7 +148,7 @@
 1 Command the Stage (FRA) 77
 1 Kayla's Kindling (YBRO) 9
 1 Fiery Inscription (LTR) 126
-1 Crackle with Power (STX) 95
+1 Ashling, Flame Dancer (MH3) 115
 1 Volt Charge (ONE) 155
 
 # Lands (35)

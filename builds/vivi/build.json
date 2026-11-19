@@ -653,6 +653,21 @@
    "name": "Dragonmaster Outcast",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Crackle with Power",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Proft's Eidetic Memory",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Chandra, Torch of Defiance",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -748,10 +763,10 @@
    }
   },
   "Rootha, Mastering the Moment": {
-   "group": "Round 10 candidates",
-   "text": "Owner wants it back; The Dawning Archaic is a keep. Cut candidates: The Vision and Scarlet Witch (another 4-mana spell-payoff body), Gray and Adira, Culmination of Studies.",
+   "group": "In the deck (round 10)",
+   "text": "Back in round 10 (owner), for Chandra, Torch of Defiance. An X/X hasty flier each combat after an instant/sorcery, X the biggest MV cast that turn.",
    "graded_at": {
-    "103": "59e45536d994"
+    "103": "58dbf5992aff"
    }
   },
   "Najal, the Storm Runner": {
@@ -910,9 +925,9 @@
   },
   "Storm of Saruman": {
    "group": "Cut in round 2",
-   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); Chandra, Hope's Beacon covers copying now.",
+   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); the copying now comes from Chandra, Hope's Beacon and Arcane Bombardment.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "58dbf5992aff"
    }
   },
   "Lightning Strike": {
@@ -931,9 +946,9 @@
   },
   "Elemental Mascot": {
    "group": "Cut in round 2",
-   "text": "Cut for Crackle with Power: a creature (no Vivi trigger) whose impulse draw needs 5+ mana spells.",
+   "text": "Cut in round 2: a creature (no Vivi trigger) whose impulse draw needs 5+ mana spells.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "58dbf5992aff"
    }
   },
   "Sprite Dragon": {
@@ -1239,9 +1254,9 @@
   },
   "Flux Channeler": {
    "group": "In the deck (round 8)",
-   "text": "In since round 8 (owner's add). Each noncreature spell proliferates: Vivi's counters, Ajani, Ral and Chandra loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
+   "text": "In since round 8 (owner's add). Each noncreature spell proliferates: Vivi's counters, Ajani, Ral and Chandra, Hope's Beacon loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
    "graded_at": {
-    "103": "59e45536d994"
+    "103": "58dbf5992aff"
    }
   },
   "Wizard Class": {
@@ -1448,24 +1463,24 @@
    }
   },
   "Ashling, Flame Dancer": {
-   "group": "Round 10 candidates",
-   "text": "Magecraft: rummage on each instant/sorcery cast or copy; the second each turn deals 2 to each opponent and each of their creatures (noncombat: Niv-Mizzet draws), the third adds {R}{R}{R}{R}. A Shaman, so Harmonic Prodigy doubles it. Cut candidates: Crackle with Power (Kindling can draft it), Fiery Inscription, Wanda's Vision.",
+   "group": "In the deck (round 10)",
+   "text": "In since round 10 (owner's add), for Crackle with Power. Magecraft rummage; the second each turn deals 2 to each opponent and each of their creatures, the third adds {R}{R}{R}{R}. A Shaman, so Harmonic Prodigy doubles it.",
    "graded_at": {
-    "103": "59e45536d994"
+    "103": "58dbf5992aff"
    }
   },
   "Giant's Amulet": {
-   "group": "Round 10 candidates",
-   "text": "{U} artifact (a Vivi trigger); pay {3}{U} for a 4/4 Giant Wizard token. Equip {2} on Vivi: hexproof while untapped, and Vivi's mana ability is {0}, not a tap. The deck's protection reads 2. Cut candidates: Proft's Eidetic Memory, Culmination of Studies.",
+   "group": "In the deck (round 10)",
+   "text": "In since round 10 (owner's add), for Proft's Eidetic Memory. Equip {2} on Vivi: hexproof while untapped (her mana ability is {0}, not a tap). Pay {3}{U} on entry for a 4/4 Giant Wizard token.",
    "graded_at": {
-    "103": "59e45536d994"
+    "103": "58dbf5992aff"
    }
   },
   "Thryx, the Sudden Storm": {
    "group": "Round 10 candidates",
-   "text": "Flash flier; spells of MV 5+ cost {1} less and can't be countered (about 13 here). Cut candidates: The Scarlet Witch (the other big-spell discount), Wanda's Vision, Shark Typhoon.",
+   "text": "Still open. Flash flier; spells of MV 5+ cost {1} less and can't be countered. Cut candidates: The Scarlet Witch (the other big-spell discount), Wanda's Vision, Shark Typhoon.",
    "graded_at": {
-    "103": "59e45536d994"
+    "103": "58dbf5992aff"
    }
   },
   "Rimewall Protector": {
@@ -1536,6 +1551,27 @@
    "text": "Cut in round 9 for Tempest Trapper: overlapping instant/sorcery-only mana.",
    "graded_at": {
     "103": "59e45536d994"
+   }
+  },
+  "Crackle with Power": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Ashling (owner's mark). Kayla's Kindling can still draft it.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Giant's Amulet (owner's mark): it overlapped Wizard Class.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Rootha (owner's pick, keeping Human Torch). Took its −3 removal and +1 card advantage with it.",
+   "graded_at": {
+    "103": "58dbf5992aff"
    }
   }
  },
@@ -2179,6 +2215,87 @@
     "Wizard Class",
     "Wizard's Retort",
     "Wizard's Staff"
+   ],
+   "58dbf5992aff": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "As Foretold",
+    "Ashling, Flame Dancer",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Giant's Amulet",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Kayla's Kindling",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Oracle of the Alpha",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Ral, Crackling Wit",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spellchain Scatter",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
    ]
   }
  },
@@ -2264,7 +2381,7 @@
   "Rootha, Mastering the Moment": {
    "V": {
     "m": "★",
-    "graded_at": "59e45536d994"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Najal, the Storm Runner": {
@@ -2402,7 +2519,7 @@
   "Storm of Saruman": {
    "V": {
     "m": "◇",
-    "graded_at": "18368a1682c4"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Lightning Strike": {
@@ -2420,7 +2537,7 @@
   "Elemental Mascot": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Sprite Dragon": {
@@ -2684,7 +2801,7 @@
   "Flux Channeler": {
    "V": {
     "m": "★★★",
-    "graded_at": "59e45536d994"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Wizard Class": {
@@ -2864,19 +2981,19 @@
   "Ashling, Flame Dancer": {
    "V": {
     "m": "★★★",
-    "graded_at": "59e45536d994"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Giant's Amulet": {
    "V": {
     "m": "★★★",
-    "graded_at": "59e45536d994"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Thryx, the Sudden Storm": {
    "V": {
     "m": "★★",
-    "graded_at": "59e45536d994"
+    "graded_at": "58dbf5992aff"
    }
   },
   "Rimewall Protector": {
@@ -2937,6 +3054,24 @@
    "V": {
     "m": "△",
     "graded_at": "59e45536d994"
+   }
+  },
+  "Crackle with Power": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "V": {
+    "m": "★",
+    "graded_at": "58dbf5992aff"
    }
   }
  }

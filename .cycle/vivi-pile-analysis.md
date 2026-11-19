@@ -350,6 +350,10 @@ Ashling / Crackle with Power (alts Fiery Inscription, Wanda's Vision); Giant's A
 Thryx / The Scarlet Witch (alts Wanda's Vision, Shark Typhoon). All four primaries measured together: floor A,
 interaction 16, protection 3, early drops 13, avg MV 3.86, legal.
 
+**Round 10 APPLIED (2026-11-19):** Ashling, Flame Dancer / Crackle with Power, Giant's Amulet / Proft's Eidetic
+Memory, Rootha / Chandra, Torch of Defiance (owner kept Human Torch as the second combo route). Interaction 15, card
+advantage 15 -> 14, protection 2 -> 3, avg MV 3.83, preflight READY. Thryx / The Scarlet Witch still open.
+
 **Protect list** (value the cut ranking can't see): Vivi; both Niv-Mizzets (the combo); Electro (a
 refund on every instant/sorcery); Arcane Bombardment (the free-cast engine). Stormcatch Mentor left the
 list in round 7 and the header with it.
