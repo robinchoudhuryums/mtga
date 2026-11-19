@@ -78,6 +78,9 @@
 #: notes: 2026-11-19: Namor, Scourge of the Seas in for Vizier of the Menagerie. Namor is a 4/4 (triggers the
 #: notes: commander) and a Mutant, flies, and makes a creature connive each combat (a card, and a counter the
 #: notes: multipliers grow). Card advantage 12 → 11 (Vizier's top-of-library creature casting).
+#: notes: 2026-11-19: Baxter, Fly in the Ointment in for Earth's Mightiest Heroes. Mana value 4 (triggers the
+#: notes: commander), a Mutant, grows on each draw, and gives every creature with a counter flying when it
+#: notes: enters or attacks: a team evasion finisher in a counters deck.
 
 # Commander (leads from the command zone; also one of the 100)
 1 The Fantastic Four (MSC) 741
@@ -120,6 +123,7 @@
 1 Sally Pride, Lioness Leader (TMT) 24
 1 Giant-Man, Gargantuan Genius (MSC) 722
 1 Raph & Mikey, Troublemakers (TMT) 167
+1 Baxter, Fly in the Ointment (TMC) 10
 
 # Support Heroes — card flow, mana and protection
 1 Bruce Banner (MSH) 49
@@ -147,7 +151,6 @@
 1 Origin of Metalbending (TLA) 187
 1 Rally the Monastery (TDM) 19
 1 Heroic Intervention (M21) 188
-1 Earth's Mightiest Heroes (MSH) 165
 1 The Wandering Emperor (NEO) 42
 1 Parallel Lives (MAR) 36
 1 Tamiyo, Field Researcher (BLC) 100
