@@ -69,6 +69,11 @@
 #: notes: Archaic kept). Ashling is a Shaman, so Harmonic Prodigy doubles her magecraft; equip the Amulet to Vivi for
 #: notes: hexproof while untapped (her mana ability is {0}, not a tap). Card advantage 15 -> 14, interaction 15,
 #: notes: protection 2 -> 3. Thryx, the Sudden Storm (for The Scarlet Witch) is still open.
+#: notes: Lands (owner, 2026-11-19): Temple of Epiphany -> Command Tower, Wandering Fumarole -> Frostboil Snarl, one
+#: notes: Island -> Stormcarved Coast, one Mountain -> Mana Confluence. Sources 22/22 -> 23/23; cards below 90% on curve
+#: notes: 47 -> 40. The tools read Frostboil Snarl as always tapped; it enters untapped when you reveal an Island or
+#: notes: Mountain. Still 35 lands: a fourth land by turn four is 48.8% (36 lands: 51.7%), the first thing to raise if
+#: notes: the deck stumbles on mana.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Vivi Ornitier (FIN) 248
@@ -159,12 +164,14 @@
 1 Riverpyre Verge (DFT) 260
 1 Fiery Islet (HA7) 21
 1 Spirebluff Canal (OTJ) 270
-1 Temple of Epiphany (FDN) 699
-1 Wandering Fumarole (EOS) 45
-11 Island (TRK) 319
+1 Command Tower (FRC) 22
+1 Frostboil Snarl (STX) 265
+10 Island (TRK) 319
+1 Stormcarved Coast (SOS) 263
 1 Otawara, Soaring City (NEO) 271
 1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
-12 Mountain (TRK) 323
+11 Mountain (TRK) 323
+1 Mana Confluence (EOS) 25
 1 Sokenzan, Crucible of Defiance (NEO) 276
 
 #~ +Jacob Hauken, Inspector // Hauken's Insight | BENCH (builder vivi): benched on the board
