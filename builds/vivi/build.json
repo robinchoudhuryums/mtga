@@ -588,14 +588,79 @@
    "name": "Spellchain Scatter",
    "pile": "V",
    "src": "added"
+  },
+  {
+   "name": "Artistic Process",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spectacular Skywhale",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Glacial Dragonhunt",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Loki Laufeyson",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Resonating Lute",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Ashling, Flame Dancer",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Giant's Amulet",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thryx, the Sudden Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rimewall Protector",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Storm-Kiln Artist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Efreet Flamepainter",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Erratic Cyclops",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dragonmaster Outcast",
+   "pile": "V",
+   "src": "added"
   }
  ],
  "reasons": {
   "The Scarlet Witch": {
    "group": "In the deck (round 5)",
-   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Improvisation Capstone, Artistic Process and the X spells cast big. A creature spell, so no Vivi trigger.",
+   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Improvisation Capstone and the X spells cast big. A creature spell, so no Vivi trigger. Cut candidate for Thryx, the Sudden Storm (the other big-spell discount).",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "High Fae Trickster": {
@@ -683,10 +748,10 @@
    }
   },
   "Rootha, Mastering the Moment": {
-   "group": "Round 9 package",
-   "text": "Back in (owner), for The Dawning Archaic (10 mana, discounted only by instants/sorceries in the yard, and it must attack). An X/X hasty flier each combat after an instant/sorcery.",
+   "group": "Round 10 candidates",
+   "text": "Owner wants it back; The Dawning Archaic is a keep. Cut candidates: The Vision and Scarlet Witch (another 4-mana spell-payoff body), Gray and Adira, Culmination of Studies.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Najal, the Storm Runner": {
@@ -704,10 +769,10 @@
    }
   },
   "Neera, Wild Mage": {
-   "group": "Round 9 package",
-   "text": "Back in (owner), for Proft's Eidetic Memory (it overlaps Wizard Class). Once a turn, trades a spell for a random free one.",
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Planetarium of Wan Shi Tong. Once a turn, trades a spell for a random free one.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Vision, Spectral Synthezoid": {
@@ -852,9 +917,9 @@
   },
   "Lightning Strike": {
    "group": "Cut in round 2",
-   "text": "Cut for Glacial Dragonhunt: plain burn; the owner wanted spells that do a second thing.",
+   "text": "Cut in round 2: plain burn; the owner wanted spells that do a second thing.",
    "graded_at": {
-    "103": "845b603af10b"
+    "103": "59e45536d994"
    }
   },
   "Rapturous Moment": {
@@ -1040,10 +1105,10 @@
    }
   },
   "Planetarium of Wan Shi Tong": {
-   "group": "In the deck (round 8)",
-   "text": "In since round 8 (owner's add), for Primal Amulet. Its own {1},{T}: scry 2 turns on a free cast each turn; Temple of Epiphany is the only other scry source. A 6-drop.",
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Neera (owner's mark): a 6-drop with almost no other scry to trigger it.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Sunbird's Invocation": {
@@ -1174,9 +1239,9 @@
   },
   "Flux Channeler": {
    "group": "In the deck (round 8)",
-   "text": "In since round 8 (owner's add), for Tempest Trapper. Each noncreature spell proliferates: Vivi's counters, Ajani and Chandra loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
+   "text": "In since round 8 (owner's add). Each noncreature spell proliferates: Vivi's counters, Ajani, Ral and Chandra loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Wizard Class": {
@@ -1313,10 +1378,10 @@
    }
   },
   "Tempest Trapper": {
-   "group": "Round 9 package",
-   "text": "Back in (owner), for Resonating Lute. Both make instant/sorcery-only mana; Trapper is 3 mana and a Wizard, the Lute 4 mana with a draw that needs seven cards in hand.",
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Resonating Lute. Instant/sorcery-only mana on a 3-mana Wizard.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Solstice Revelations": {
@@ -1348,10 +1413,10 @@
    }
   },
   "Ral, Crackling Wit": {
-   "group": "Round 9 package",
-   "text": "Back in (owner), for Glacial Dragonhunt (the owner's cut mark). Grows a loyalty on every noncreature spell; +1 makes prowess Otters, −3 draws.",
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Glacial Dragonhunt. Gains loyalty on every noncreature spell; +1 makes prowess Otters, −3 draws.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Slick Sequence": {
@@ -1362,24 +1427,115 @@
    }
   },
   "Kayla's Kindling": {
-   "group": "Round 9 package",
-   "text": "Proposed for Wanda's Vision (alt: Artistic Process). Every upkeep, draft one of three from its spellbook and cast it that turn: 9 of 15 are red instants/sorceries (Lightning Bolt, Abrade, Electrodominance, Volcanic Fallout, Crackle with Power…), the rest Guttersnipe, Young Pyromancer, Dualcaster Mage and others. A free cast every turn with no two-spell condition, plus 2 damage on entry.",
+   "group": "In the deck (round 9)",
+   "text": "In since round 9 (owner's add), for Artistic Process. Every upkeep, draft one of three from its spellbook (9 of 15 red instants/sorceries: Lightning Bolt, Abrade, Volcanic Fallout, Electrodominance…) and cast it that turn; 2 damage on entry.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Oracle of the Alpha": {
-   "group": "Round 9 package",
-   "text": "Proposed for The Vision and Scarlet Witch (alt: Spectacular Skywhale). A 3-mana flying Wizard (Harmonic Prodigy, Wizard's Staff) that shuffles the Power Nine in: Ancestral Recall, Time Walk and Timetwister, plus Lotus and five Moxen, all noncreature casts for Vivi.",
+   "group": "In the deck (round 9)",
+   "text": "In since round 9 (owner's add), for Spectacular Skywhale. A flying Wizard that shuffles the Power Nine in, all noncreature casts for Vivi.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
    }
   },
   "Spellchain Scatter": {
-   "group": "Round 9 package",
-   "text": "Proposed for Crackle with Power (alt: Culmination of Studies). {R}: your next instant or sorcery this turn conjures a copy of itself into your hand; kicked ({U}) you keep it. One cheap spell becomes two casts. Kayla's Kindling can still draft Crackle.",
+   "group": "In the deck (round 9)",
+   "text": "In since round 9, for Loki Laufeyson. Your next instant or sorcery conjures a copy of itself (kicked, you keep it); the copy is a real cast, so it triggers Vivi.",
    "graded_at": {
-    "103": "18368a1682c4"
+    "103": "59e45536d994"
+   }
+  },
+  "Ashling, Flame Dancer": {
+   "group": "Round 10 candidates",
+   "text": "Magecraft: rummage on each instant/sorcery cast or copy; the second each turn deals 2 to each opponent and each of their creatures (noncombat: Niv-Mizzet draws), the third adds {R}{R}{R}{R}. A Shaman, so Harmonic Prodigy doubles it. Cut candidates: Crackle with Power (Kindling can draft it), Fiery Inscription, Wanda's Vision.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Giant's Amulet": {
+   "group": "Round 10 candidates",
+   "text": "{U} artifact (a Vivi trigger); pay {3}{U} for a 4/4 Giant Wizard token. Equip {2} on Vivi: hexproof while untapped, and Vivi's mana ability is {0}, not a tap. The deck's protection reads 2. Cut candidates: Proft's Eidetic Memory, Culmination of Studies.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "group": "Round 10 candidates",
+   "text": "Flash flier; spells of MV 5+ cost {1} less and can't be countered (about 13 here). Cut candidates: The Scarlet Witch (the other big-spell discount), Wanda's Vision, Shark Typhoon.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Rimewall Protector": {
+   "group": "Round 10 candidates",
+   "text": "Giant Wizard with ward {1}; on entry every other Giant/Wizard you control or hold perpetually gains ward {1}, Vivi included for the rest of the game.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "group": "Round 10 candidates",
+   "text": "A Treasure per instant/sorcery (Harmonic Prodigy doubles it); Vivi already supplies the mana.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Efreet Flamepainter": {
+   "group": "Round 10 candidates",
+   "text": "Double strike; recasts an instant/sorcery from the graveyard on combat damage. Needs to connect as a 1/4; Goliath Daydreamer covers the job.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Erratic Cyclops": {
+   "group": "Round 10 candidates",
+   "text": "Spell-pumped trampler, the role Spectacular Skywhale held before it was cut.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Dragonmaster Outcast": {
+   "group": "Round 10 candidates",
+   "text": "A 5/5 Dragon each upkeep at six lands; a creature spell (no Vivi trigger) and fragile.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Artistic Process": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Kayla's Kindling (owner's mark); the Kindling drafts removal.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Spectacular Skywhale": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Oracle of the Alpha (owner's mark).",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Glacial Dragonhunt": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Ral, Crackling Wit (owner's mark). Cheap removal; back in if the early game runs thin.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Loki Laufeyson": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Spellchain Scatter (owner's mark). Loki's copy is not a cast.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Resonating Lute": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Tempest Trapper: overlapping instant/sorcery-only mana.",
+   "graded_at": {
+    "103": "59e45536d994"
    }
   }
  },
@@ -1942,6 +2098,87 @@
     "Wizard Class",
     "Wizard's Retort",
     "Wizard's Staff"
+   ],
+   "59e45536d994": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Kayla's Kindling",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Oracle of the Alpha",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Proft's Eidetic Memory",
+    "Ral, Crackling Wit",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spellchain Scatter",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
    ]
   }
  },
@@ -1949,7 +2186,7 @@
   "The Scarlet Witch": {
    "V": {
     "m": "★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "High Fae Trickster": {
@@ -2027,7 +2264,7 @@
   "Rootha, Mastering the Moment": {
    "V": {
     "m": "★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Najal, the Storm Runner": {
@@ -2045,7 +2282,7 @@
   "Neera, Wild Mage": {
    "V": {
     "m": "◇",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Vision, Spectral Synthezoid": {
@@ -2171,7 +2408,7 @@
   "Lightning Strike": {
    "V": {
     "m": "◇",
-    "graded_at": "845b603af10b"
+    "graded_at": "59e45536d994"
    }
   },
   "Rapturous Moment": {
@@ -2332,8 +2569,8 @@
   },
   "Planetarium of Wan Shi Tong": {
    "V": {
-    "m": "★",
-    "graded_at": "18368a1682c4"
+    "m": "◇",
+    "graded_at": "59e45536d994"
    }
   },
   "Sunbird's Invocation": {
@@ -2447,7 +2684,7 @@
   "Flux Channeler": {
    "V": {
     "m": "★★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Wizard Class": {
@@ -2567,7 +2804,7 @@
   "Tempest Trapper": {
    "V": {
     "m": "★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Solstice Revelations": {
@@ -2597,7 +2834,7 @@
   "Ral, Crackling Wit": {
    "V": {
     "m": "★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Slick Sequence": {
@@ -2609,19 +2846,97 @@
   "Kayla's Kindling": {
    "V": {
     "m": "★★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Oracle of the Alpha": {
    "V": {
     "m": "★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
    }
   },
   "Spellchain Scatter": {
    "V": {
     "m": "★★★",
-    "graded_at": "18368a1682c4"
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Ashling, Flame Dancer": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Giant's Amulet": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Rimewall Protector": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "V": {
+    "m": "★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Efreet Flamepainter": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Erratic Cyclops": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Dragonmaster Outcast": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Artistic Process": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Spectacular Skywhale": {
+   "V": {
+    "m": "△",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Glacial Dragonhunt": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Loki Laufeyson": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Resonating Lute": {
+   "V": {
+    "m": "△",
+    "graded_at": "59e45536d994"
    }
   }
  }

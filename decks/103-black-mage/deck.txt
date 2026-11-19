@@ -14,7 +14,7 @@
 #: archetype: triggers fire again; Iron Lad, Young Avenger is a second Hero for the Torch loop and makes noncreature
 #: archetype: spells cost {1} less. Free casts and recasts (Baral, Vision, Spectral Synthezoid, Arcane Bombardment,
 #: archetype: Wanda's Vision, As Foretold, Epic Experiment, Mizzix's Mastery, Sunbird's Invocation, Surtland
-#: archetype: Elementalist, Improvisation Capstone, Planetarium of Wan Shi Tong) each count as another cast. Copies
+#: archetype: Elementalist, Improvisation Capstone, Neera, Kayla's Kindling's daily draft) each count as another cast. Copies
 #: archetype: made by Chandra, Hope's Beacon are NOT casts and do not grow Vivi; they multiply burn and draw. The cheap
 #: archetype: spells are chosen to COMPOUND rather than cantrip: Artist's Talent adds 2 to every Vivi ping, Wizard Class
 #: archetype: turns every Niv-Mizzet draw into a counter on Vivi, Curiosity on Parun or Torch draws on every ping, Fiery
@@ -58,7 +58,12 @@
 #: notes: Illuminating Lash, Galazeth Prismari, Tempest Trapper, Solstice Revelations, Primal Amulet, Nibelheim Aflame,
 #: notes: Sanar, Ral, Crackling Wit, Slick Sequence, Neera and Rootha. Glacial Dragonhunt kept over the owner's cut
 #: notes: mark (cheap removal; early drops 14, not 13). Curve: avg MV 3.75 -> 3.83. If the early game runs thin, the
-#: notes: first card back is Stormcatch Mentor, for Proft's Eidetic Memory or Planetarium.
+#: notes: first card back is Stormcatch Mentor, for Proft's Eidetic Memory.
+#: notes: Round 9 (owner, 2026-11-19): Kayla's Kindling, Oracle of the Alpha, Ral, Crackling Wit, Spellchain Scatter,
+#: notes: Neera, Wild Mage and Tempest Trapper in for Artistic Process, Spectacular Skywhale, Glacial Dragonhunt, Loki
+#: notes: Laufeyson, Planetarium of Wan Shi Tong and Resonating Lute. Interaction 16 -> 15 (Artistic Process and
+#: notes: Dragonhunt out); the Kindling's spellbook drafts Lightning Bolt, Abrade, Volcanic Fallout and Electrodominance.
+#: notes: Rootha still wants a cut (The Dawning Archaic is a keep). Avg MV 3.83 -> 3.82.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Vivi Ornitier (FIN) 248
@@ -67,7 +72,7 @@
 1 Niv-Mizzet, Visionary (FDN) 123
 1 Niv-Mizzet, Parun (GRN) 192
 1 Electro, Assaulting Battery (SPM) 76
-1 Spectacular Skywhale (SOS) 229
+1 Oracle of the Alpha (MBC) 64
 1 Ovika, Enigma Goliath (FDN) 663
 1 Gandalf the Grey (LTR) 207
 1 Tellah, Great Sage (FIN) 244
@@ -84,10 +89,10 @@
 # Cost reduction and spell mana
 1 Melek, Reforged Researcher (MKM) 430
 1 The Emperor of Palamecia (FIN) 219
-1 Planetarium of Wan Shi Tong (TLA) 259
+1 Neera, Wild Mage (HBG) 245
 1 Paradigm Shifter (YSOS) 23
 1 Flux Channeler (WAR) 52
-1 Resonating Lute (SOS) 221
+1 Tempest Trapper (YBLB) 8
 1 As Foretold (WOT) 14
 1 Archmage of Runes (FDN) 30
 1 The Scarlet Witch (MSH) 151
@@ -110,7 +115,7 @@
 
 # Copy engines
 1 Chandra, Hope's Beacon (MOM) 134
-1 Loki Laufeyson (MSH) 143
+1 Spellchain Scatter (YDMU) 15
 1 Curiosity (JMP) 147
 
 # Card flow and tutors
@@ -132,11 +137,11 @@
 
 # Interaction and burn
 1 Thunder Magic (FIN) 165
-1 Glacial Dragonhunt (TDM) 188
+1 Ral, Crackling Wit (BLB) 230
 1 Iroh's Demonstration (TLA) 141
 1 Thor, God of Thunder (MSH) 156
 1 Command the Stage (FRA) 77
-1 Artistic Process (SOS) 108
+1 Kayla's Kindling (YBRO) 9
 1 Fiery Inscription (LTR) 126
 1 Crackle with Power (STX) 95
 1 Volt Charge (ONE) 155

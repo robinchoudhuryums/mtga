@@ -50,6 +50,7 @@
   }
  ],
  "Asgardian Inspiration": [],
+ "Ashling, Flame Dancer": [],
  "Balmor, Battlemage Captain": [
   {
    "a": "Bram Sels",
@@ -290,13 +291,16 @@
  ],
  "Don & Raph, Hard Science": [],
  "Dragonfly Swarm": [],
+ "Dragonmaster Outcast": [],
  "Dreadhorde Arcanist": [],
+ "Efreet Flamepainter": [],
  "Electro, Assaulting Battery": [],
  "Elemental Mascot": [],
  "Emeritus of Conflict": [],
  "Enigma Drake": [],
  "Enraged Flamecaster": [],
  "Epic Experiment": [],
+ "Erratic Cyclops": [],
  "Expansion // Explosion": [],
  "Expressive Iteration": [
   {
@@ -422,6 +426,7 @@
  ],
  "Galvanic Iteration": [],
  "Gandalf the Grey": [],
+ "Giant's Amulet": [],
  "Glacial Dragonhunt": [],
  "Glen Elendra's Answer": [],
  "Glóin, Dwarf Emissary": [],
@@ -877,6 +882,7 @@
  ],
  "Rapturous Moment": [],
  "Resonating Lute": [],
+ "Rimewall Protector": [],
  "Roaming Throne": [
   {
    "a": "Cristi Balanescu",
@@ -970,6 +976,7 @@
  ],
  "Stark Industries": [],
  "Storm of Saruman": [],
+ "Storm-Kiln Artist": [],
  "Stormcatch Mentor": [],
  "Stormchaser Mage": [],
  "Sunbird's Invocation": [],
@@ -1129,6 +1136,30 @@
    "set": "MAR",
    "sn": "Marvel Universe",
    "y": "2026"
+  }
+ ],
+ "Thryx, the Sudden Storm": [
+  {
+   "a": "Mathias Kollros",
+   "art": "https://cards.scryfall.io/art_crop/front/4/2/4238b089-c6d8-4e4b-b6a1-a0f89e3b4968.jpg?1783931574",
+   "cn": "76",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/2/4238b089-c6d8-4e4b-b6a1-a0f89e3b4968.jpg?1783931574",
+   "r": "R",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Moopic",
+   "art": "https://cards.scryfall.io/art_crop/front/f/5/f5f1809c-fadb-4974-ae94-292e5d97afb8.jpg?1783908850",
+   "cn": "65",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/5/f5f1809c-fadb-4974-ae94-292e5d97afb8.jpg?1783908850",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
   }
  ],
  "Thunder Magic": [],
