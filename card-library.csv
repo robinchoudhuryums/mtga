@@ -8598,3 +8598,147 @@ Whenever Éomer attacks, if you control a creature with the greatest power among
 "La'An Noonien-Singh, Security",Legendary Creature — Human Soldier,"Whenever you attack while creatures you control have total power 8 or greater, target creature can't block this turn.",R,Human; Soldier,TRK,156,1
 "Nyota Uhura, Communications",Legendary Creature — Human Officer,"Hailing Frequencies — As Nyota Uhura enters, choose a number between 0 and 10.
 Open a Channel — Whenever an opponent casts a spell with mana value equal to the chosen number, you draw a card.",U,Human; Officer; card draw,TRK,75,1
+"Niv-Mizzet, Parun",Legendary Creature — Dragon Wizard,"This spell can't be countered.
+Flying
+Whenever you draw a card, Niv-Mizzet deals 1 damage to any target.
+Whenever a player casts an instant or sorcery spell, you draw a card.",U/R,Dragon; Wizard; card draw; burn; noncombat damage; flying; evasion,GRN,192,1
+Oracle of the Alpha,Creature — Bird Wizard,"Flying
+When Oracle of the Alpha enters the battlefield, conjure the Power Nine into your library, then shuffle.
+Whenever Oracle of the Alpha attacks, scry 1.",U,Bird; Wizard; etb; scry; selection; flying; evasion; conjure,MBC,64,1
+Gandalf the Grey,Legendary Creature — Avatar Wizard,"Whenever you cast an instant or sorcery spell, choose one that hasn't been chosen —
+• You may tap or untap target permanent.
+• Gandalf deals 3 damage to each opponent.
+• Copy target instant or sorcery spell you control. You may choose new targets for the copy.
+• Put Gandalf on top of its owner's library.",U/R,Avatar; Wizard; burn; spellslinger; noncombat damage; spell copy,LTR,207,1
+Shark Typhoon,Enchantment,"Whenever you cast a noncreature spell, create an X/X blue Shark creature token with flying, where X is that spell's mana value.
+Cycling {X}{1}{U} ({X}{1}{U}, Discard this card: Draw a card.)
+When you cycle this card, create an X/X blue Shark creature token with flying.",U,card draw; tokens; spellslinger; cycling,IKO,67,1
+"Keranos, God of Storms",Legendary Enchantment Creature — God,"Indestructible
+As long as your devotion to blue and red is less than seven, Keranos isn't a creature.
+Reveal the first card you draw on each of your turns. Whenever you reveal a land card this way, draw a card. Whenever you reveal a nonland card this way, Keranos deals 3 damage to any target.",U/R,God; card draw; burn; noncombat damage; indestructible; resilience,PIO,311,1
+"Talrand, Sky Summoner",Legendary Creature — Merfolk Wizard,"Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying.",U,Merfolk; Wizard; tokens; spellslinger,JMP,181,1
+Harmonic Prodigy,Creature — Human Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+If a triggered ability of a Shaman or another Wizard you control triggers, that ability triggers an additional time.",R,Human; Wizard; pump; spellslinger; prowess; tempo,J21,466,1
+Flux Channeler,Creature — Human Wizard,"Whenever you cast a noncreature spell, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,Human; Wizard; spellslinger; proliferate; counters,WAR,52,1
+Irencrag Pyromancer,Creature — Human Wizard,"Whenever you draw your second card each turn, this creature deals 3 damage to any target.",R,Human; Wizard; burn; noncombat damage,ELD,128,1
+Arcane Bombardment,Enchantment,"Whenever you cast your first instant or sorcery spell each turn, exile an instant or sorcery card at random from your graveyard. Then copy each card exiled with this enchantment. You may cast any number of the copies without paying their mana costs.",R,graveyard,SNC,101,1
+Wanda's Vision,Enchantment,"Whenever you cast your second spell each turn, exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost.",R,card advantage,MSC,708,1
+Epic Experiment,Sorcery,Exile the top X cards of your library. You may cast instant and sorcery spells with mana value X or less from among them without paying their mana costs. Then put all cards exiled this way that weren't cast into your graveyard.,U/R,graveyard; spellslinger,PIO,223,1
+Mizzix's Mastery,Sorcery,"Exile target card that's an instant or sorcery from your graveyard. For each card exiled this way, copy it, and you may cast the copy without paying its mana cost. Exile Mizzix's Mastery.
+Overload {5}{R}{R}{R} (You may cast this spell for its overload cost. If you do, change ""target"" in its text to ""each."")",R,graveyard; overload; spellslinger,FCA,41,1
+Giant's Amulet,Artifact — Equipment,"When this Equipment enters, you may pay {3}{U}. If you do, create a 4/4 blue Giant Wizard creature token, then attach this Equipment to it.
+Equipped creature gets +0/+1 and has ""This creature has hexproof as long as it's untapped.""(It can't be the target of spells or abilities your opponents control.)
+Equip {2}",U,equipment; tokens; etb; pump; equip; hexproof; protection,KHM,59,1
+Surtland Elementalist,Creature — Giant Wizard,"As an additional cost to cast this spell, reveal a Giant card from your hand or pay {2}.
+Whenever this creature attacks, you may cast an instant or sorcery spell from your hand without paying its mana cost.",U,Giant; Wizard,KHM,375,1
+"Chandra, Hope's Beacon",Legendary Planeswalker — Chandra,"Whenever you cast an instant or sorcery spell, copy it. You may choose new targets for the copy. This ability triggers only once each turn.
++2: Add two mana in any combination of colors.
++1: Exile the top five cards of your library. Until the end of your next turn, you may cast an instant or sorcery spell from among those exiled cards.
+−X: Chandra deals X damage to each of up to two targets.",R,Chandra; planeswalker; burn; spellslinger,MOM,134,1
+Spellchain Scatter,Instant,"Kicker {U}
+When you next cast an instant or sorcery spell this turn, conjure a duplicate of that spell into your hand. If this spell wasn't kicked, discard the duplicate at the beginning of your next end step.",U/R,conjure; kicker; value,YDMU,15,1
+Curiosity,Enchantment — Aura,"Enchant creature
+Whenever enchanted creature deals damage to an opponent, you may draw a card.",U,aura; card draw; enchant,JMP,147,1
+Wizard Class,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+You have no maximum hand size.
+{2}{U}: Level 2
+When this Class becomes level 2, draw two cards.
+{4}{U}: Level 3
+Whenever you draw a card, put a +1/+1 counter on target creature you control.",U,Class; counters; card draw,AFR,81,1
+"Rootha, Mastering the Moment",Legendary Creature — Orc Sorcerer,"At the beginning of combat on your turn, if you've cast an instant or sorcery spell this turn, create an X/X blue and red Elemental creature token with flying and haste, where X is the greatest mana value among instant and sorcery spells you've cast this turn.",U/R,Orc; Sorcerer; tokens; spellslinger,SOC,8,1
+Sorcerer Class,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, draw two cards, then discard two cards.
+{U}{R}: Level 2
+Creatures you control have ""{T}: Add {U} or {R}. Spend this mana only to cast an instant or sorcery spell or to gain a Class level.""
+{3}{U}{R}: Level 3
+Whenever you cast an instant or sorcery spell, that spell deals damage to each opponent equal to the number of instant and sorcery spells you've cast this turn.",U/R,Class; card draw; mana; etb; spellslinger; noncombat damage,AFR,233,1
+Culmination of Studies,Sorcery,"Exile the top X cards of your library. For each land card exiled this way, create a Treasure token. For each blue card exiled this way, draw a card. For each red card exiled this way, Culmination of Studies deals 1 damage to each opponent.",U/R,card draw; tokens; burn; treasure,STX,173,1
+Counterspell,Instant,Counter target spell.,U,counterspell,MAR,52,1
+Wizard's Retort,Instant,"This spell costs {1} less to cast if you control a Wizard.
+Counter target spell.",U,counterspell; cost-reduction,JMP,198,1
+Kayla's Kindling,Enchantment,"When Kayla's Kindling enters, it deals 2 damage to any target.
+At the beginning of your upkeep, draft a card from Kayla's Kindling's spellbook and exile it. Until end of turn, you may cast that card.",R,burn; etb; noncombat damage; draft from a spellbook,YBRO,9,1
+"Ashling, Flame Dancer",Legendary Creature — Elemental Shaman,"You don't lose unspent red mana as steps and phases end.
+Magecraft — Whenever you cast or copy an instant or sorcery spell, discard a card, then draw a card. If this is the second time this ability has resolved this turn, Ashling deals 2 damage to each opponent and each creature they control. If it's the third time, add {R}{R}{R}{R}.",R,Elemental; Shaman; card draw; burn; noncombat damage; magecraft; spellslinger,MH3,115,1
+Volt Charge,Instant,"Volt Charge deals 3 damage to any target. Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",R,burn; proliferate; counters,ONE,155,1
+Sulfur Falls,Land,"This land enters tapped unless you control an Island or a Mountain.
+{T}: Add {U} or {R}.",U/R,mana,DOM,247,1
+Shivan Reef,Land,"{T}: Add {C}.
+{T}: Add {U} or {R}. This land deals 1 damage to you.",U/R,mana,DMU,255,1
+Fiery Islet,Land,"{T}, Pay 1 life: Add {U} or {R}.
+{1}, {T}, Sacrifice this land: Draw a card.",U/R,pay life; card draw; sacrifice,HA7,21,1
+Frostboil Snarl,Land,"As this land enters, you may reveal an Island or Mountain card from your hand. If you don't, this land enters tapped.
+{T}: Add {U} or {R}.",U/R,mana,STX,265,1
+Stormcarved Coast,Land,"This land enters tapped unless you control two or more other lands.
+{T}: Add {U} or {R}.",U/R,mana,SOS,263,1
+"Sokenzan, Crucible of Defiance",Legendary Land,"{T}: Add {R}.
+Channel — {3}{R}, Discard this card: Create two 1/1 colorless Spirit creature tokens. They gain haste until end of turn. This ability costs {1} less to activate for each legendary creature you control.",R,cost-reduction; tokens; mana; channel; card advantage; haste; aggro,NEO,276,1
+Branching Evolution,Enchantment,"If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.",G,counters,MH3,285,1
+"Xolatoyac, the Smiling Flood",Legendary Creature — Salamander Serpent,"Whenever Xolatoyac enters or attacks, put a flood counter on target land. That land is an Island in addition to its other types for as long as it has a flood counter on it.
+At the beginning of your end step, untap each permanent you control with a counter on it.",U/G,Salamander; Serpent; counters,LCC,8,1
+"Adrix and Nev, Twincasters",Legendary Creature — Merfolk Wizard,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+If one or more tokens would be created under your control, twice that many of those tokens are created instead.",U/G,Merfolk; Wizard; tokens; ward; protection,SPG,156,1
+Inexorable Tide,Enchantment,"Whenever you cast a spell, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,proliferate; counters,HA2,6,1
+Simic Ascendancy,Enchantment,"{1}{G}{U}: Put a +1/+1 counter on target creature you control.
+Whenever one or more +1/+1 counters are put on a creature you control, put that many growth counters on this enchantment.
+At the beginning of your upkeep, if this enchantment has twenty or more growth counters on it, you win the game.",U/G,counters,RNA,207,1
+Herald of Secret Streams,Creature — Merfolk Warrior,Creatures you control with +1/+1 counters on them can't be blocked.,U,Merfolk; Warrior; counters,XLN,59,1
+"Primo, the Unbounded",Legendary Creature — Fractal Wolf,"Trample
+Primo enters with twice X +1/+1 counters on it.
+Whenever one or more creatures you control with base power 0 deal combat damage to a player, create a 0/0 green and blue Fractal creature token. Put a number of +1/+1 counters on it equal to the damage dealt.",U/G,Fractal; Wolf; counters; tokens; trample; evasion,SOC,6,1
+Contagion Dispenser,Artifact,"When Contagion Dispenser enters, proliferate.
+Whenever you proliferate during your turn, draft a card from Contagion Dispenser's spellbook. This ability triggers only once each turn.",U/G,etb; draft from a spellbook; proliferate; counters,YONE,19,1
+"Tekuthal, Inquiry Dominus",Legendary Creature — Phyrexian Horror,"Flying
+If you would proliferate, proliferate twice instead.
+{1}{U/P}{U/P}, Remove three counters from among other artifacts, creatures, and planeswalkers you control: Put an indestructible counter on Tekuthal. ({U/P} can be paid with either {U} or 2 life.)",U,Phyrexian; Horror; counters; flying; evasion; proliferate,ONE,71,1
+Voracious Hydra,Creature — Hydra,"Trample
+This creature enters with X +1/+1 counters on it.
+When this creature enters, choose one —
+• Double the number of +1/+1 counters on this creature.
+• This creature fights target creature you don't control.",G,Hydra; counters; etb; trample; evasion; fight; removal; combat; double,M20,200,1
+Double Major,Instant,"Copy target creature spell you control, except it isn't legendary if the spell is legendary. (A copy of a creature spell becomes a token.)",U/G,,STX,179,1
+Merfolk Skydiver,Creature — Merfolk Mutant,"Flying
+When this creature enters, put a +1/+1 counter on target creature you control.
+{3}{G}{U}: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U/G,Merfolk; Mutant; counters; etb; flying; evasion; proliferate,WAR,205,1
+"Ezuri, Claw of Progress",Legendary Creature — Phyrexian Elf Warrior,"Whenever a creature you control with power 2 or less enters, you get an experience counter.
+At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is the number of experience counters you have.",U/G,Phyrexian; Elf; Warrior; counters,MUL,38,1
+Nadir Kraken,Creature — Kraken,"Whenever you draw a card, you may pay {1}. If you do, put a +1/+1 counter on this creature and create a 1/1 blue Tentacle creature token.",U,Kraken; counters; card draw; tokens,THB,55,1
+"Krang, the All-Powerful",Legendary Artifact Creature — Utrom Robot,"If a player drawing a card causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
+Whenever a player draws their second card each turn, put a +1/+1 counter on Krang.",U,Utrom; Robot; counters,TMC,13,1
+"Baxter, Fly in the Ointment",Legendary Creature — Insect Mutant Scientist,"Whenever Baxter enters or attacks, each creature you control with a counter on it gains flying until end of turn.
+Whenever you draw a card, put a +1/+1 counter on Baxter.",U,Insect; Mutant; Scientist; counters; card draw; flying; evasion,TMC,10,1
+"Kiora, the Crashing Wave",Legendary Planeswalker — Kiora,"+1: Until your next turn, prevent all damage that would be dealt to and dealt by target permanent an opponent controls.
+−1: Draw a card. You may play an additional land this turn.
+−5: You get an emblem with ""At the beginning of your end step, create a 9/9 blue Kraken creature token.""",U/G,Kiora; planeswalker; card draw; tokens,PIO,354,1
+"Tishana, Voice of Thunder",Legendary Creature — Merfolk Shaman,"Tishana's power and toughness are each equal to the number of cards in your hand.
+You have no maximum hand size.
+When Tishana enters, draw a card for each creature you control.",U/G,Merfolk; Shaman; card draw; etb,XLN,230,1
+Silverback Elder,Creature — Ape Shaman,"Whenever you cast a creature spell, choose one —
+• Destroy target artifact or enchantment.
+• Look at the top five cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.
+• You gain 4 life.",G,Ape; Shaman; lifegain; removal; selection,DMU,177,1
+Song of Freyalise,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I, II — Until your next turn, creatures you control gain ""{T}: Add one mana of any color.""
+III — Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn.",G,saga; counters; mana; trample; evasion; vigilance; combat; indestructible; resilience,DOM,179,1
+Smuggler's Surprise,Instant,"Spree (Choose one or more additional costs.)
++ {2} — Mill four cards. You may put up to two creature and/or land cards from among the milled cards into your hand.
++ {4}{G} — You may put up to two creature cards from your hand onto the battlefield.
++ {1} — Creatures you control with power 4 or greater gain hexproof and indestructible until end of turn.",G,mill; spree; value; graveyard; hexproof; protection; indestructible; resilience,OTJ,180,1
+"Namor, Scourge of the Seas",Legendary Creature — Mutant Merfolk Villain,"Flying
+Each other Merfolk you control with a +1/+1 counter on it has flying.
+At the beginning of combat on your turn, target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U,Mutant; Merfolk; Villain; counters; card draw; flying; evasion; connive; graveyard,MSC,631,1
+Daughter of the Deep,Creature — Merfolk Noble,"Whenever you draw your second card each turn, create a 1/1 blue Merfolk creature token.
+{U}, {T}: Target Merfolk can't be blocked this turn.",U,Merfolk; Noble; tokens,MSC,618,1
+Svyelun of Sea and Sky,Legendary Creature — Merfolk God,"Svyelun has indestructible as long as you control at least two other Merfolk.
+Whenever Svyelun attacks, draw a card.
+Other Merfolk you control have ward {1}. (Whenever another Merfolk you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)",U,Merfolk; God; card draw; indestructible; resilience; ward; protection,J21,259,1
+Deeproot Waters,Enchantment,"Whenever you cast a Merfolk spell, create a 1/1 blue Merfolk creature token with hexproof. (A creature with hexproof can't be the target of spells or abilities your opponents control.)",U,tokens,XLN,51,1
+Kiora's Follower,Creature — Merfolk,{T}: Untap another target permanent.,U/G,Merfolk,PIO,228,1
+The Watcher in the Water,Legendary Creature — Kraken,"The Watcher in the Water enters tapped with nine stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Whenever you draw a card during an opponent's turn, create a 1/1 blue Tentacle creature token.
+Whenever a Tentacle you control dies, untap up to one target Kraken and put a stun counter on up to one target nonland permanent.",U,Kraken; counters; card draw; tokens,LTR,75,1
+Signature Slam,Instant,"Put a +1/+1 counter on target creature you control, then each modified creature you control deals damage equal to its power to target creature you don't control. (Equipment, Auras you control, and counters are modifications.)",G,counters; removal,MH3,168,1
+Reject Imperfection,Instant,"Counter target spell. If that spell's mana value was 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",U,counterspell; proliferate; counters,ONE,67,1
+"Vivien, Arkbow Ranger",Legendary Planeswalker — Vivien,"+1: Distribute two +1/+1 counters among up to two target creatures. They gain trample until end of turn.
+−3: Target creature you control deals damage equal to its power to target creature or planeswalker.
+−5: You may reveal a creature card you own from outside the game and put it into your hand.",G,Vivien; planeswalker; counters; removal; trample; evasion,M20,199,1
