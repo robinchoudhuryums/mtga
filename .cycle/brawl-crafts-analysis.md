@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96, 92 and 91 done; 98, 89 to go.**
+**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96, 92, 91 and 98 done; 89 to go.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -314,3 +314,54 @@ creature card), Army of the Damned (M; thirteen Zombies — a finisher nothing o
 
 **If every replacement is taken:** 10 mythics and 3 rares (#1–13), down from 18M 15R. With the
 fallbacks for #12–13: 8 mythics and 3 rares. The three craft-later cards add 2M 1R.
+
+## Deck 98 — Throw Wide the Gates (G'raha Tia, Esper spells-and-Heroes + Auras) — 15M 15R missing
+
+Engine: every noncreature spell (once a turn, on either player's turn) becomes a Hero token with
+X counters for X life; lifegain refuels it. Second engine: 13 Auras with draw-per-Aura payoffs.
+The owned pool covers the SPELLS half well (flash enablers, proliferate, X draw spells, lifegain
+payoffs) and the AURA half poorly — there is no owned Sram, Kor Spiritdancer or Pearl-Ear
+equivalent, so the Aura-draw crafts are where the priority sits.
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | G'raha Tia, Scion Reborn | M | The commander. | none |
+| 2 | Y'shtola, Night's Blessed | M | Protected. 2 to each opponent and 2 life per MV 3+ noncreature spell, and a card at end step. | Enduring Tenacity (owned R) — drains on lifegain |
+| 3 | Ephara, God of the Polis | M | Protected. A card on BOTH upkeeps, since a Hero enters every turn. | none |
+| 4 | Sram, Senior Edificer | R | The cheapest card-per-Aura engine; nothing owned draws on Aura casts. | none |
+| 5 | Eriette of the Charmed Apple | M | Drains per Aura every end step, and enchanted creatures cannot attack you. | none |
+| 6 | Sigil of the Empty Throne | R | A 4/4 flying Angel per enchantment cast. | none owned |
+| 7 | Killian, Decisive Mentor | M | Goad per enchantment entering, a card when enchanted creatures attack. | none |
+
+**Craft later — the same jobs as #4 and #6, a second copy of the engine:** Kor Spiritdancer (R),
+Pearl-Ear, Imperial Advisor (R), Hallowed Haunting (M), Halvar, God of Battle (M; double strike
+for every enchanted creature, nothing owned does it).
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 8 | Leyline of Anticipation | R | **Valley Floodcaller** (R) | PROTECTED. Noncreature spells with flash — exactly the half G'raha needs — on a flash body. Loses the free turn-0 start. High Fae Trickster (owned R) does all spells. Equal. |
+| 9 | Light-Paws, Emperor's Voice | R | **Sun-Spider, Nimble Webber** (U) | An Aura tutor on entry. Light-Paws chains Auras onto the battlefield every cast. Weaker; Federation Resupply (owned R) is a second tutor. |
+| 10 | Entity Tracker | R | **Uncover the Moon-Letters** (R) | Draws X per noncreature spell (discard two). Different trigger, more cards. Reasonable exchange. |
+| 11 | Archnemesis | R | **Curiosity** (U) | Still an Aura (keeps the Aura count), draws on damage. Loses the drain. Reasonable exchange. |
+| 12 | Archon of the Wild Rose | R | **Heliod, Sun-Crowned** (M) | Different job: every life gained puts a counter on a Hero, and grants lifelink. Reasonable exchange. |
+| 13 | Barrensteppe Siege | R | **Inexorable Tide** (R) | Proliferate on every spell grows every Hero. Better here. |
+| 14 | Teferi, Hero of Dominaria | M | **Kaya the Inexorable** (M) | Exile any nonland permanent; protection for a Hero. Loses Teferi's draw and untap. Reasonable exchange. |
+| 15 | Kaya, Geist Hunter | M | **Elspeth Resplendent** (M) | Counters plus flying or lifelink on a Hero each turn, and a free permanent. Better. |
+| 16 | Invasion of New Phyrexia | M | **Finale of Revelation** (M) | An X noncreature spell: G'raha makes an X-counter Hero and you draw X. Equal or better. |
+| 17 | Sphinx's Revelation | M | **Mind Spring** (R) | Draw X. Loses instant speed and the life. Reasonable exchange. |
+| 18 | Ojutai's Command | R | **Reject Imperfection** (U) | Counterspell that proliferates. Loses the modes. Equal. |
+| 19 | Sorin of House Markov | M | **Enduring Tenacity** (R) | Lifegain becomes a drain. Better, if not used for #2. |
+| 20 | Doctor Strange, Surgeon | R | **The Wind Crystal** (R) | Doubles lifegain and discounts white spells. Better. |
+| 21 | Rodolf Duskbringer | R | **Exemplar of Light** (R) | A flier that grows on lifegain and draws. Loses the reanimation. Equal. |
+| 22 | Drana and Linvala | R | **Archangel of Thune** (M) | Flying lifelink; every lifegain grows the team. Better here. |
+| 23 | Scriv, the Obligator | M | **Lich's Mastery** (R) is too risky; use **Dawn of Hope** (R) | A card per lifegain, and lifelink tokens. Loses the Contract Auras. Reasonable exchange. |
+| 24 | Eriette, the Beguiler | R | **Imprisoned in the Moon** (U) | Eriette steals with Auras; the owned Aura answers them instead (and counts as an Aura). Reasonable exchange. |
+| 25 | The Circle of Loyalty | M | **Bard's Company** (R) | A team anthem with conditional flash. Loses the Knight per legendary spell. Reasonable exchange. |
+| 26 | Staff of Compleation | M | **Karn's Bastion** (R) | Proliferate from a land slot. Loses the draw and mana modes. Reasonable exchange. |
+
+**If every replacement is taken:** 5 mythics and 2 rares to craft (#1–7), down from 15M 15R. The
+craft-later list adds 2M 2R. With Enduring Tenacity standing in for #2: 4M 2R.
