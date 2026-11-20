@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96, 92, 91 and 98 done; 89 to go.**
+**Status: ALL EIGHT DECKS DONE (2026-11-20). The roster-wide craft order is the Builder board `builds/brawl-crafts`. Awaiting owner picks.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -365,3 +365,57 @@ for every enchanted creature, nothing owned does it).
 
 **If every replacement is taken:** 5 mythics and 2 rares to craft (#1–7), down from 15M 15R. The
 craft-later list adds 2M 2R. With Enduring Tenacity standing in for #2: 4M 2R.
+
+## Deck 89 — Genesis Cycle (Szarel, Genesis Shepherd, Jund land sacrifice + poison) — 21M 12R missing
+
+Engine: Szarel replays lands from the graveyard and grows a creature on every nontoken sacrifice
+on your turn, so self-sacrificing lands are spells every turn. Poison is the second clock
+(Bushmaster, Fynn, Vorinclex with Vraska's −9). The owned Jund pool is rich in extra land drops,
+graveyard-land recursion and counter doublers, so most crafts here have owned stand-ins.
+**Shared with an earlier deck:** Vraska, Betrayal's Sting (96 — replaceable there, a combo piece here).
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | Szarel, Genesis Shepherd | M | The commander. | none |
+| 2 | The Gitrog Monster | M | Protected. A card per land to the graveyard, an extra land drop, an upkeep land sacrifice that triggers Szarel. | none |
+| 3 | Vorinclex, Monstrous Raider | M | Protected. Doubles every counter AND poison; halves theirs. | Doubling Season (owned M) — counters only, no poison |
+| 4 | Titania, Protector of Argoth | M | A 5/3 for every land sacrificed. The land engine's biggest payoff. | none |
+| 5 | Korvold, Fae-Cursed King | M | A card and a counter per sacrifice. | none at that rate |
+| 6 | Vraska, Betrayal's Sting | M | With Vorinclex, −9 is 18 poison: the deck's combo finish. Also wanted by deck 96 (replaceable there). | none |
+| 7 | Azusa, Lost but Seeking | R | Protected. Two extra land drops a turn. | Icetill Explorer (owned R) — one extra, plus lands from the graveyard |
+
+**Craft later — unique, but secondary:** Zopandrel (M; doubles the team every combat), Bloated
+Contaminator (R; toxic plus proliferate on a 3-drop), Triumph of the Hordes (M; the infect finisher),
+Tectonic Split (R; sacrificing half your lands is a Szarel trigger per land, then triple mana),
+Lotus Field (R; sacrifices two lands on entry — two Szarel triggers).
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 8 | Hardened Scales | R | **Branching Evolution** (R) | Doubles +1/+1 counters instead of +1. Better. |
+| 9 | Fanatic of Rhonas | R | **Kami of Whispered Hopes** (U) | Taps for mana equal to its power and adds a counter to every counter placement. Better. |
+| 10 | Dryad of the Ilysian Grove | R | **Captain Kathryn Janeway** (M) | An extra land drop on a body. Loses the every-basic-type fixing. Equal. |
+| 11 | Kodama of the West Tree | M | **Loot, Exuberant Explorer** (R) | An extra land drop and a creature dig. Loses trample for modified creatures. Reasonable exchange. |
+| 12 | Grist, Voracious Larva | M | **Undergrowth Recon** (M) | Different job: a land from the graveyard every upkeep, which Szarel turns into a sacrifice loop. Better here. |
+| 13 | Kura, the Boundless Sky | M | **World Shaper** (R) | Returns ALL land cards from the graveyard when it dies. Equal. |
+| 14 | Hornet Queen | M | **Rampaging Baloths** (R) | A 4/4 on every land drop, and the deck replays lands every turn. Reasonable exchange. |
+| 15 | Tyrranax Rex | M | **Etali, Primal Conqueror** (R) | A 7-drop that casts their cards and transforms. Loses toxic 4 and ward. Reasonable exchange. |
+| 16 | Rhonas the Indomitable | M | **Lumra, Bellow of the Woods** (M) | A huge body that grows with lands. Loses indestructible deathtouch. Reasonable exchange. |
+| 17 | Daemogoth Titan | R | **Summon: Titan** (R) | A big body that also mills and returns lands. Equal. |
+| 18 | Polukranos, Unchained | M | **Vivien, Arkbow Ranger** (M) | Counters, trample and a bite every other turn. Equal. |
+| 19 | Garruk Relentless | M | **Garruk, Cursed Huntsman** (M) | Two Wolves a turn, removal plus a card. Better. |
+| 20 | Lukka, Bound to Ruin | M | **Wrenn and Seven** (M) | Lands to hand, ramp, a huge Treefolk. Better here. |
+| 21 | Nissa of Shadowed Boughs | M | **Vivien Reid** (M) | Card selection and removal. Loses the land animation and reanimation. Reasonable exchange. |
+| 22 | Tyvar, Jubilant Brawler | R | **Professor Dellian Fel** (M) | Draw, life, removal. Loses haste-activation and recursion. Reasonable exchange. |
+| 23 | Dina, Essence Brewer | M | **The Sackville-Bagginses** (R) | Sacrifice for a card and a Treasure. Equal. |
+| 24 | Hidetsugu, Devouring Chaos | R | **Yawgmoth, Thran Physician** (M) | Sacrifice outlet that draws and kills, and proliferates (poison). Better. |
+| 25 | Bontu the Glorified | M | **Juri, Master of the Revue** (U) | Grows per sacrifice and burns when it dies. Reasonable exchange. |
+| 26 | Hearthhull, the Worldseed | M | **Redrock Sentinel** (U) | Sacrifice a land: a card and a Treasure. Equal as an outlet. |
+| 27 | Genesis Device | R | **Cycle of Renewal** (C) | Sacrifice a land for two basics (a Szarel trigger). Equal. |
+| 28 | Vraska Joins Up | R | **Venom Connoisseur** (U) | Deathtouch on entries. Loses the team deathtouch counters and the draw. Weak exchange. |
+
+**If every replacement is taken:** 6 mythics and 1 rare (#1–7), down from 21M 12R; Vraska is
+already counted for deck 96 only if crafted there. With Icetill Explorer for Azusa: 6M 0R.
