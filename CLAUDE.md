@@ -705,10 +705,9 @@ is protecting.
   The active branch ("IT CREATES twice that many") needs that LITERAL phrase, since a
   plus-N replacement is templated identically (Doc Samson is +1), and excludes an
   OPPONENT clause so Vorinclex's halving is not your doubler.
-  **KNOWN GAP: it parses a POWER scope and nothing else**, so a TYPE-scoped doubler
-  (Splinter's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
-  against a correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound
-  until that is fixed.
+  **TYPE SCOPE CLOSED 2026-11-20** (`doubler_type_scope`): a tribal doubler counts only its
+  tribe (Splinter 27 → 12 in deck 20; Harmonic Prodigy KEY 11 → 2 decks). Residual: the
+  `triggers` floor was calibrated on unscoped counts, so scoped support reads below it.
   **GAP 2 CLOSED 2026-10-01: a doubler can double MORE THAN ONE axis** (Doubling Season
   was priced as tokens only). **`doubler_best`** prices it on the axis THIS deck feeds most
   — density above each axis's floor, the MAX since one card can feed two — for `✱`,

@@ -12883,15 +12883,17 @@ def doubler_best(text, cards, carddata):
     differ (triggers' is 20). Ties keep `_DOUBLER_AXES` order. The MAX, not a sum: one
     card can feed two axes ("create a 1/1 token with a +1/+1 counter on it"), so a sum
     would count it twice, and both boosts are capped well below what a sum would reach.
-    The doubler's own power scope (`doubler_restriction`) applies on every axis.
+    The doubler's own power scope (`doubler_restriction`) and type scope
+    (`doubler_type_scope`) apply on every axis.
     """
     axes = doubler_axes(text)
     if not axes:
         return None, 0
     restrict = doubler_restriction(text)
+    scope = doubler_type_scope(text)
     best = None
     for ax in axes:
-        sup = doubler_support(ax, cards, carddata, restrict)
+        sup = doubler_support(ax, cards, carddata, restrict, scope)
         key = sup - doubler_calib(ax)[0]
         if best is None or key > best[0]:
             best = (key, ax, sup)
@@ -12912,7 +12914,61 @@ def doubler_restriction(text):
     return int(m.group(1)) if m else None
 
 
-def doubler_support(axis, cards, carddata, max_power=None):
+# A TYPE-scoped doubler (G-33's known gap, closed 2026-11-20): Harmonic Prodigy doubles
+# triggers "of a Shaman or another Wizard you control", Katara those of an Ally, Twinflame
+# Travelers another Elemental's, Naban a Wizard entering, Splinter a "Ninja creature".
+# Counted against the whole deck,
+# Harmonic Prodigy read KEY in about ten decks with no Wizard plan at all. Two templatings:
+# "triggered ability of (a|an|another) X [or (a|an|another) Y] you control" and
+# "If a(n) X you control entering". A scope naming a non-subtype ("a land or Bird") is left
+# unrestricted rather than half-read — Traveling Chocobo's landfall half is a real axis.
+_DOUBLER_TYPE_RES = (
+    re.compile(r"triggered abilit(?:y|ies) of (?:a |an |another )?([A-Z][a-z]+)"
+               r"(?: or (?:a |an |another )?([A-Z][a-z]+))?(?: creatures?)? you control"),
+    re.compile(r"\bIf (?:a |an )?([A-Z][a-z]+)(?: or (?:a |an )?([A-Z][a-z]+))? "
+               r"you control entering"),
+)
+
+
+def doubler_type_scope(text):
+    """The subtypes a doubler's effect is limited to, as a sorted tuple, or None.
+
+    Every captured word must be a real subtype (`tag_synergies._TRIBE_VOCAB`), else None:
+    a partial scope would undercount, and unrestricted is the documented old behaviour."""
+    try:
+        from tag_synergies import _TRIBE_VOCAB
+    except Exception:                                   # pragma: no cover
+        return None
+    t = _REMINDER_RE.sub(" ", text or "")
+    for rx in _DOUBLER_TYPE_RES:
+        m = rx.search(t)
+        if m:
+            words = [w for w in m.groups() if w]
+            if words and all(w in _TRIBE_VOCAB for w in words):
+                return tuple(sorted(set(words)))
+            return None
+    return None
+
+
+def _has_any_subtype(cd, types):
+    """True when the card's type line carries one of `types`, or it is a changeling and
+    one of them is a creature type (G-59: a changeling RECEIVES every tribal effect)."""
+    tl = cd.get("type") or ""
+    sub = tl.split("—", 1)[1] if "—" in tl else ""
+    words = set(re.findall(r"[A-Za-z]+", sub))
+    if words & set(types):
+        return True
+    if "Creature" in tl and re.search(r"\bchangeling\b|is every creature type",
+                                      cd.get("text") or "", re.I):
+        try:
+            from tag_synergies import _CREATURE_TYPES
+        except Exception:                               # pragma: no cover
+            return False
+        return any(t in _CREATURE_TYPES for t in types)
+    return False
+
+
+def doubler_support(axis, cards, carddata, max_power=None, types=None):
     """How many copies in the deck FEED that axis — the magnitude a doubler multiplies.
 
     `max_power` restricts the count to creatures at or below that printed power, for a
@@ -12931,6 +12987,8 @@ def doubler_support(axis, cards, carddata, max_power=None):
             continue
         cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
         if not cd or not feed.search(cd.get("text") or ""):
+            continue
+        if types and not _has_any_subtype(cd, types):
             continue
         if max_power is not None:
             if "Creature" not in (cd.get("type") or ""):
@@ -13006,11 +13064,50 @@ def _fixer_rate(text, mv=None):
     t = _REMINDER_RE.sub(" ", text or "")
     if _FIXER_BROAD_RE.search(t):
         return 1.0
-    if not _FIXER_SINGLE_RE.search(t):
+    m = _FIXER_SINGLE_RE.search(t)
+    if not m:
         return 0.0
+    # Price the ABILITY that delivers the fixing, not just the card (2026-11-20). Gaseous
+    # Anomaly is a land (MV 0) whose any-colour source is a Planet token made by a
+    # "{5}{U}, {T}, Sacrifice this land:" ability, so it rated 1.0 and was promoted to KEY
+    # in 4–5 colour decks as if it tapped for any colour itself. The activation cost on the
+    # line holding the match is what you pay for that mana; take the larger of the two.
+    act = _fixer_activation_mv(t, m.start())
+    if act is not None and (mv is None or act > mv):
+        mv = act
     if mv is None or mv <= _FIXER_SINGLE_PAR:
         return 1.0
     return max(_FIXER_RATE_FLOOR, _FIXER_SINGLE_PAR / float(mv))
+
+
+_FIXER_SYMBOL_RE = re.compile(r"\{([^}]+)\}")
+
+
+def _fixer_activation_mv(text, pos):
+    """Mana in the activation cost of the ability line holding offset `pos`, or None.
+
+    The cost is the text before the line's FIRST colon, and only when that span holds a
+    mana symbol — a static line ("Lands you control have …") has no cost of its own. {T},
+    {Q}, {E} and {X} cost no mana; a number is its value; any other symbol (a colour, a
+    hybrid, a Phyrexian pip) is one."""
+    start = text.rfind("\n", 0, pos) + 1
+    line = text[start:]
+    colon = line.find(":")
+    if colon < 0 or start + colon > pos:
+        return None
+    cost = line[:colon]
+    if '"' in cost:                     # the colon belongs to a QUOTED granted ability
+        return None
+    syms = _FIXER_SYMBOL_RE.findall(cost)
+    if not syms:
+        return None
+    total = 0
+    for sym in syms:
+        u = sym.upper()
+        if u in ("T", "Q", "E", "X"):
+            continue
+        total += int(u) if u.isdigit() else 1
+    return total
 
 
 def _is_color_fixer(ctags, text):

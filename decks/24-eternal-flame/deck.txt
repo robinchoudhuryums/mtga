@@ -109,7 +109,7 @@ Deck
 1 Dedicated Commons (FRA) 175
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 24
-#~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: 16 R sources for 42 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
+#~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: 17 R sources for 42 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
 #~ note: applied — Chandra, Torch of Defiance in for Lightning Strike.
 #~ note: A-track curve-lowering applied — -Sozin's Comet/+Clockwork Percussionist, -Sami/+Kellan, -Brass's Bounty/+Zuko, -Thor Odinson/+Ennis (exile-grows). Kept Raph & Leo for now (Mardu Devotee parked above).
 #~ note: applied — Tomik, Izzet Sparkmage in for Clockwork Percussionist.

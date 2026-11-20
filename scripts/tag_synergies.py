@@ -643,7 +643,8 @@ _NON_TRIBE_WORDS = {
 
 # The REAL subtype vocabulary a tribal capture must resolve into (BS11-75). Scryfall's
 # catalogs (creature-types / land-types / artifact-types / enchantment-types, fetched
-# 2026-10-02), single-word entries only, since the captures below are single words.
+# 2026-10-02; the 21 Star Trek types the TRC ingest surfaced were added 2026-11-20),
+# single-word entries only, since the captures below are single words.
 # Without it the payoff regexes singularised by chopping an `s`, which INVENTED types —
 # Elves -> "Elve" (19 pool tags), Werewolves -> "Werewolve", Heroes -> "Heroe", Allies ->
 # "Allie" — 97 tags on 38 non-types, plus junk capitals ("Equipped", "Nontoken", "Then"),
@@ -685,10 +686,12 @@ _CREATURE_TYPES = frozenset("""
     Troll Turtle Tyranid Unicorn Urzan Utrom Vampire Varmint Vedalken Villain Volver
     Vorta Vulcan Wall Walrus Warlock Warrior Weasel Weird Werewolf Whale Wizard Wolf
     Wolverine Wombat Worm Wraith Wurm Xindi Yeti Zombie Zubera
+    Aenar Android Bajoran Betazoid Bolian Brikar Cardassian Denobulan Excalbian Ferengi
+    Hirogen Illyrian Kwejian Medusan Melkotian Romulan Talaxian Tamarian Tribble Trill
 """.split())
 _OTHER_SUBTYPES = frozenset("""
     Attraction Aura Background Blood Bobblehead Book Cartouche Case Cave Class Cloud
-    Clue Contraption Curse Desert Equipment Food Forest Fortification Gate Gold
+    Clue Communicator Contraption Curse Desert Equipment Food Forest Fortification Gate Gold
     Incubator Infinity Island Junk Lair Locus Map Mine Mountain Plains Plan Planet
     Powerstone Role Room Rune Saga Shard Shrine Spacecraft Sphere Stone Swamp Terminus
     Tower Town Treasure Vehicle
@@ -702,7 +705,7 @@ _TRIBE_VOCAB = _CREATURE_TYPES | _OTHER_SUBTYPES
 # singular reference, not this template.
 _INVARIANT_PLURAL_TRIBES = frozenset({
     "Merfolk", "Kithkin", "Moonfolk", "Treefolk", "Eldrazi", "Samurai", "Kor", "Djinn",
-    "Efreet", "Fish", "Sheep", "Jellyfish"}) & _TRIBE_VOCAB
+    "Efreet", "Fish", "Sheep", "Jellyfish", "Ferengi", "Hirogen", "Aenar"}) & _TRIBE_VOCAB
 _IRREGULAR_PLURALS = {"Mice": "Mouse", "Oxen": "Ox"}
 
 

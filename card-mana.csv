@@ -7298,7 +7298,6 @@ Catti-brie of Mithral Hall,{G}{W},2,Reach;First strike
 "Mazzy, Truesword Paladin",{1}{R}{G}{W},4,
 "Miirym, Sentinel Wyrm",{3}{G}{U}{R},6,Flying;Ward
 Nalia de'Arnise,{1}{W}{B},3,
-"Prosper, Tome-Bound",{2}{B}{R},4,Treasure;Deathtouch
 "Raggadragga, Goreguts Boss",{2}{R}{G},4,
 "Raphael, Fiendish Savior",{3}{B}{R},5,Flying
 Thrakkus the Butcher,{3}{R}{G},5,Trample;Double
@@ -12459,7 +12458,6 @@ Magmatic Insight,{R},1,
 Evolutionary Leap,{1}{G},2,
 "Gonti, Canny Acquisitor",{2}{B}{G}{U},5,
 "Olivia, Opulent Outlaw",{1}{R}{W}{B},4,Flying;Lifelink;Treasure
-"Stella Lee, Wild Card",{1}{U}{R},3,
 "Yuma, Proud Protector",{5}{R}{G}{W},8,
 Claim Jumper,{2}{W},3,Vigilance
 Dust Animus,{1}{W},2,Flying;Plot
@@ -13250,6 +13248,19 @@ Domri's Nodorog,{3}{R}{G},5,Trample
 The Haunt of Hightower,{4}{B}{B},6,Flying;Lifelink
 Worldspine Wurm,{8}{G}{G}{G},11,Trample
 Brain Freeze,{1}{U},2,Storm;Mill
+"Sisay, Weatherlight Captain",{2}{W},3,
+"Thada Adel, Acquisitor",{1}{U}{U},3,Landwalk;Islandwalk
+Empress Galina,{3}{U}{U},5,
+Arcum Dagsson,{3}{U},4,
+Decree of Pain,{6}{B}{B},8,Cycling
+Sen Triplets,{2}{W}{U}{B},5,
+Hull Breach,{R}{G},2,
+Captain Sisay,{2}{G}{W},4,
+"Prosper, Tome-Bound",{2}{B}{R},4,Treasure;Deathtouch
+"Stella Lee, Wild Card",{1}{U}{R},3,
+"Minamo, School at Water's Edge",,0,
+Talon Gates of Madara,,0,
+"Shizo, Death's Storehouse",,0,
 Greater Auramancy,{1}{W},2,
 Faerie Macabre,{1}{B}{B},3,Flying
 Polluted Bonds,{3}{B}{B},5,
@@ -14642,7 +14653,6 @@ Elemental Bond,{2}{G},3,
 Heartbeat of Spring,{2}{G},3,
 Rites of Flourishing,{2}{G},3,
 Taunting Challenge,{1}{G}{G},3,
-Captain Sisay,{2}{G}{W},4,
 Eladamri's Call,{G}{W},2,
 Fevered Visions,{1}{U}{R},3,
 Rhys the Redeemed,{G/W},1,

@@ -92,6 +92,9 @@ _EXCLUDED = {
     ("deck", "FORMAT_VARIANT_RE"): "deck-id/format syntax, not card text",
     ("deck", "_DECK_MARKER_RE"): "Arena paste `Deck` marker, not card text",
     ("deck", "SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
+    ("deck", "_FIXER_SYMBOL_RE"): ("mana-symbol syntax ({5}{U}) inside an activation cost "
+                                   "_fixer_rate already located; pinned by "
+                                   "TestFixerActivationCost"),
     ("lib", "_MANA_SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
     ("lib", "_EXTRA_MANA_COST_RE"): ("runs against the COST half of one ability line "
                                      "(before the colon) inside `land_production`, never "
@@ -365,6 +368,11 @@ def _pattern_groups():
     # one; if the enters-with feeder dies, Deanna Troi stops reading as a counters feeder.
     for name in ("_PLUS_ONE_COUNTER_RE", "_PLUS_TOKEN_RE", "_COUNTER_FEED_EXTRA_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
+    # The TYPE-scoped doubler scope (2026-11-20, G-33). Reminder-stripped text in original
+    # case. Fails quietly back to the OLD behaviour: if a pattern dies, Harmonic Prodigy /
+    # Splinter / Katara are counted against the whole deck again and read KEY everywhere.
+    for i, rx in enumerate(deck._DOUBLER_TYPE_RES):
+        out.append((f"deck._DOUBLER_TYPE_RES[{i}]", rx, "raw"))
     # The two SUPPRESSION patterns behind the proposed-add gate. Both run on
     # reminder-stripped oracle text in its original case, so the raw corpus is what they
     # see. They fail in OPPOSITE directions and both directions are quiet: if either dies,

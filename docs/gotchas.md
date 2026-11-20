@@ -2505,8 +2505,13 @@ after (`suggest-homes` per card, new-home rows only):
 lane working, and a premium answer that is an UPGRADE rather than a need is a power read
 this model does not make. Deanna Troi and Mikaeus miss deck 95, which has ZERO counter
 multipliers: the hand pick rested on BLINK (an enters-with counter re-applies on every
-flicker), an interaction no lane reads. The rainbow-fixer overlay still promotes Gaseous
-Anomaly in 4- and 5-colour decks off its Planet token; that overlay predates this change.
+flicker), an interaction no lane reads. **CLOSED 2026-11-20:** the rainbow-fixer overlay
+promoted Gaseous Anomaly in 4- and 5-colour decks off its Planet token. `_fixer_rate` now
+prices the ACTIVATION COST on the line that delivers the any-colour mana
+(`_fixer_activation_mv`), so a land whose rainbow source sits behind "{5}{U}, {T},
+Sacrifice this land:" rates 0.33, not 1.0. Pool diff: exactly six cards moved, all of them
+New Planet makers (the five Anomaly lands and Saurian Explorer's {6} ability); Gaseous
+Anomaly's KEY homes fell 10 → 2, and the two that remain are theme matches.
 
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
@@ -2605,6 +2610,20 @@ in a deck that fields few of its tribe, which is the case `suggest-homes` exists
 judge. Read a `✱ multiplier` figure on a type-scoped doubler as an upper bound until
 this is fixed; the fix is a second scope pattern feeding the same filter, not a second
 model.
+
+**CLOSED 2026-11-20, exactly that way.** `doubler_type_scope` reads two templatings —
+"triggered ability of (a|an|another) X [or … Y] [creature] you control" and "If a(n) X you
+control entering" — and `doubler_best` passes the result to `doubler_support`'s new
+`types=` filter (a changeling counts toward a creature type, G-59). Every captured word must
+be a real subtype or the scope is dropped, so Traveling Chocobo's "a land or Bird" stays
+unrestricted rather than half-read. Seven pool doublers now carry a scope (Harmonic
+Prodigy, Splinter, Katara, Twinflame Travelers, Naban, Bifur, Sanctum of All). Deck 20's
+Splinter reads **12**, the figure above. `suggest-homes` KEY: Harmonic Prodigy 11 → 2,
+Katara 8 → 3, Twinflame Travelers 9 → 0, Splinter 2 → 1, and every remaining KEY is a deck
+that already runs the card; `cuts` in decks 20/24/46/78/103 is byte-identical. **Residual:**
+the `triggers` floor (20) was calibrated on UNSCOPED counts, so a scoped doubler in its own
+deck now reads below it (Splinter 12, Katara 17, Harmonic Prodigy 19) — re-derive that
+floor for scoped doublers if a tribal doubler's home starts reading wrong.
 
 ### The bounded term that was bounded to a CONSTANT (fixed 2026-09-03)
 

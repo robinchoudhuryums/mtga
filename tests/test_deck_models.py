@@ -2023,3 +2023,58 @@ class TestHomesLanes:
         assert len(rows) <= deck._NEEDS_LANE_K
         assert ids[0] == "d0"                                 # fewest interaction first
         assert all(counts[i] - aline <= deck._NEEDS_INT_HEADROOM for i in ids)
+
+
+class TestFixerActivationCost:
+    """2026-11-20: the rainbow-fixer rate prices the ability that delivers the mana."""
+
+    GASEOUS = ('{T}: Add {C}.\n{5}{U}, {T}, Sacrifice this land: Draw two cards. Create a '
+               'tapped Planet land token named New Planet with "{T}: Add one mana of any color."')
+
+    def test_planet_maker_land_is_priced_by_its_activation(self):
+        assert deck._fixer_rate(self.GASEOUS, 0) == pytest.approx(2.0 / 6)
+
+    def test_a_tap_for_any_colour_land_stays_full(self):
+        assert deck._fixer_rate("{T}: Add one mana of any color.", 0) == 1.0
+
+    def test_a_static_grant_has_no_cost_of_its_own(self):
+        t = 'Lands you control have "{T}: Add one mana of any color."'
+        assert deck._fixer_activation_mv(t, t.find("Add")) is None
+
+    def test_card_mv_wins_when_higher(self):
+        # a {1}-activated rainbow source on a 4-drop is still priced at 4
+        assert deck._fixer_rate("{1}, {T}: Add one mana of any color.", 4) == 0.5
+
+
+class TestDoublerTypeScope:
+    """2026-11-20: G-33's known gap — a TYPE-scoped doubler counts only its tribe."""
+
+    def test_reads_the_two_type_templatings(self):
+        assert deck.doubler_type_scope(
+            "If a triggered ability of a Shaman or another Wizard you control triggers, "
+            "that ability triggers an additional time.") == ("Shaman", "Wizard")
+        assert deck.doubler_type_scope(
+            "If a triggered ability of a Ninja creature you control triggers, that ability "
+            "triggers an additional time.") == ("Ninja",)
+        assert deck.doubler_type_scope(
+            "If a Wizard you control entering causes a triggered ability of a permanent you "
+            "control to trigger, that ability triggers an additional time.") == ("Wizard",)
+
+    def test_non_subtype_scope_stays_unrestricted(self):
+        # Traveling Chocobo: "a land or Bird" — half-reading it would drop the landfall axis
+        assert deck.doubler_type_scope(
+            "If a land or Bird you control entering the battlefield causes a triggered "
+            "ability of a permanent you control to trigger, that ability triggers an "
+            "additional time.") is None
+        assert deck.doubler_type_scope("twice that many of those tokens") is None
+
+    def test_support_counts_only_the_scoped_tribe_and_changelings(self):
+        trig = "Whenever this creature attacks, draw a card."
+        cd = {
+            "ninja a": {"type": "Creature — Human Ninja", "text": trig},
+            "rogue b": {"type": "Creature — Human Rogue", "text": trig},
+            "shifter c": {"type": "Creature — Shapeshifter", "text": "Changeling\n" + trig},
+        }
+        cards = [(1, "Ninja A", "X", "1"), (2, "Rogue B", "X", "2"), (1, "Shifter C", "X", "3")]
+        assert deck.doubler_support("triggers", cards, cd) == 4
+        assert deck.doubler_support("triggers", cards, cd, types=("Ninja",)) == 2
