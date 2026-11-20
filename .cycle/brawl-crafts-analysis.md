@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl and 96 done; 92, 91, 98, 89 to go.**
+**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96 and 92 done; 91, 98, 89 to go.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -202,3 +202,59 @@ YOU are the one who decks out — insurance in a deck that draws this much).
 
 **If every replacement is taken:** 4 mythics and 3 rares to craft (#1–7), plus the two optional
 rares — down from 18M 10R.
+
+## Deck 92 — Phoenix King (Ozai, the Phoenix King, Rakdos firebending) — 16M 18R missing
+
+Engine: under Ozai, unspent mana becomes red instead of emptying, so firebending, Treasure and
+spare mana accumulate; at six unspent Ozai has flying and indestructible. Extra combats re-fire
+firebending and combat-damage payoffs; red sinks spend the pile. The owned Rakdos pool is deep
+in firebending bodies, Treasure makers and X-damage sinks, so most crafts here are replaceable.
+**Shared with earlier decks** (count once): Smellerbee (93), Professional Face-Breaker (93),
+Embercleave and Fiery Confluence (56-historic-brawl), Rakdos, the Muscle (93).
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | Avatar Roku, Firebender | M | Protected. Six red on ANY player's attack, which Ozai keeps. No owned card comes close. | none |
+| 2 | Fire Nation Turret | R | Protected. Firebending 2 every combat and the 50-counter sink that turns stored mana into a kill. | none |
+| 3 | Fire Lord Ozai | M | Protected. Sacrifice for red on attack, and a {6} impulse sink every turn. | none |
+| 4 | Aggravated Assault | R | A REPEATABLE extra combat for {3}{R}{R}: with Ozai's stored mana it is several combats a turn, each re-firing firebending. | Genji Glove (owned R) — one extra combat |
+| 5 | Smellerbee, Rebel Fighter | R | Protected. Haste plus an attack-scaled hand refill. Also craft-first in deck 93. | Samut, Hazoret's Champion is not in Rakdos identity; none |
+| 6 | Embercleave | M | Flash it in mid-combat with stored mana. Also craft-first in deck 56-historic-brawl. | Genji Glove (owned R), if not used for #4 |
+| 7 | Moraug, Fury of Akoum | M | An extra combat on every main-phase land drop. | Full Throttle (owned R) — two combats, one-shot |
+| 8 | Fiery Confluence | R | Also craft-first in deck 56-historic-brawl. | none as flexible |
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 9 | Goldspan Dragon | M | **Smaug the Magnificent** (M) | Flying haste, a Treasure every upkeep, and damage per Treasure on attack. Loses Treasures that tap for two. Equal. |
+| 10 | Ancient Copper Dragon | M | **Grim Hireling** (R) | Two Treasures every combat that connects, and Treasures become removal. Loses the 6/5 flier and the d20. Reasonable exchange. |
+| 11 | Professional Face-Breaker | R | **Captain Lannery Storm** (R) | As in deck 93. |
+| 12 | Savage Beating | M | **Full Throttle** (R) | Two extra combats for one. Loses instant speed and the double-strike mode. Equal, if #7 is crafted. |
+| 13 | Zuko, Firebending Master | M | **Zuko, Exiled Prince** (U) | Firebending 3 from the start (no experience needed) and a {3} impulse sink. Better here. |
+| 14 | Iroh, Dragon of the West | R | **Zhao, Ruthless Admiral** (U) | Firebending 2 and a team pump per sacrifice. Loses giving the whole team firebending. Reasonable exchange. |
+| 15 | Neheb, Dreadhorde Champion | R | **Chandra, Dressed to Kill** (M) | Red mana plus a ping, or impulse draw, every turn. Loses the rummage-for-mana burst. Reasonable exchange. |
+| 16 | Explosive Singularity | M | **Draconic Debut** (U) | X damage to any target from stored red; scales past 10. Better as a sink. |
+| 17 | Overwhelming Victory | R | **Fear, Fire, Foes!** (U) | X damage removal from stored red, plus 1 to their other creatures. Loses the team trample pump. Equal. |
+| 18 | Fire Nation Archers | R | **Torch Breath** (U) | Archers is a REPEATABLE {5} sink (2 to each opponent and a token); Torch Breath is one X shot. Weaker; keep Archers on the list if the sinks feel thin. |
+| 19 | Insurrection | M | **Emrakul, the World Anew** (M) | Steals their whole board on cast; 12 colourless, but Ozai stores mana, and it stays as a 12/12. Reasonable exchange. |
+| 20 | Sarkhan, the Dragonspeaker | M | **Chandra, Torch of Defiance** (M) | Impulse or 2 to each opponent, ramp, or 4 to a creature. Better. |
+| 21 | Smaug the Impenetrable | R | **Chandra, Flameshaper** (M) | Seven mana for RRR plus impulse, haste copies, or 8 split damage. Different job (a value engine, not a body). Reasonable exchange. |
+| 22 | Rakdos, the Muscle | M | **Garna, Bloodfist of Keld** (U) | As in deck 93. |
+| 23 | Rakdos, Patron of Chaos | M | **Ran and Shaw** (R) | A flying firebender with a Dragon pump sink. Loses the end-step tax or two cards. Reasonable exchange. |
+| 24 | Fang, Roku's Companion | R | **Nova Hellkite** (R) | Flying haste body with a ping; Warp for {2}{R}. Loses the legend pump and the return. Reasonable exchange. |
+| 25 | Archpriest of Shadows | R | **Olivia, Crimson Bride** (M) | Reanimates on every ATTACK, not only on damage, tapped and attacking. Better. |
+| 26 | Noxious Gearhulk | M | **Anchovy & Banana Pizza** (C) | Destroy target creature on entry. Loses the 5/4 menace body. Reasonable exchange. |
+| 27 | Efreet Flamepainter | R | **Sword of Fire and Ice** (M) | A card and 2 damage per hit, protection. Loses the spell recursion. Equal or better. |
+| 28 | Drana, Liberator of Malakir | M | **Black Widow, Deadly Hunter** (R) | Different job: card draw on deathtouch damage instead of team counters. Reasonable exchange. |
+| 29 | Lion Vulture | R | **Buster Sword** (M) | A card per hit plus a free spell. Equal. |
+| 30 | Barbed Servitor | R | **Ninja's Blades** (R) | Equipment that draws on combat damage. Equal. |
+| 31 | Zuko, Avatar Hunter | R | **Academy Instructor** (U) | A token per noncreature spell (Zuko counts every red spell). Weaker; Death to Our Enemies (owned U) is the Treasure version. |
+| 32 | Fire Nation Occupation | R | **Death to Our Enemies** (U) | A Treasure per noncreature spell, which Ozai keeps. Different trigger; reasonable exchange. |
+| 33 | Valakut, the Molten Pinnacle | M | **Mountain** | Valakut needs five other Mountains and enters tapped. A basic is better in this manabase. |
+
+**If every replacement is taken:** 4 mythics and 4 rares (#1–8), of which Smellerbee, Embercleave
+and Fiery Confluence are already on earlier decks' lists — so 3 mythics and 2 rares NEW to deck 92.
+With the fallbacks for #4, #6 and #7: 2 mythics and 3 rares (1M 1R new).
