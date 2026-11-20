@@ -1818,6 +1818,7 @@ def swap_board_data(slug):
         raise BuildError(f"no {os.path.relpath(swaps_path(slug), REPO_ROOT)}")
     # The shared, front-face-aliased loaders (G-63): keys are LOWERCASED names.
     pool, mana = D.load_card_data(), D.load_mana()
+    rar = D.load_rarities()
     _, _, byq = D.load_collection()
     decks, cards, problems, ranked, before = {}, {}, [], {}, {}
 
@@ -1831,7 +1832,8 @@ def swap_board_data(slug):
         have, found = D.owned(byq, n)
         cards[n] = {"n": r.get("name") or n, "c": (mana.get(n.lower()) or ("", 0))[0],
                     "t": r.get("type", ""), "o": r.get("text", ""),
-                    "own": have if found else 0, "id": image_slug(n)}
+                    "own": have if found else 0, "id": image_slug(n),
+                    "r": (rar.get(n.lower()) or rar.get(n.split(" // ")[0].lower()) or "")[:1]}
         return True
 
     swaps = []
@@ -1861,11 +1863,32 @@ def swap_board_data(slug):
         sw["delta"] = {c: _swap_delta(D, rec, before[sw["deck"]], c, sw["add"])
                        for c in [sw["cut"], *sw["alts"]]}
         swaps.append(sw)
+    # An optional ranked CRAFT ORDER (2026-11-20, the Brawl craft triage): the unowned cards
+    # worth crafting, best first, each with the decks it serves, the reason, and the owned
+    # stand-ins that exist (the pairs below hold the stand-ins as swaps). Cards are derived like
+    # the pairs' cards; a deck id that does not resolve is a problem, as for a pair.
+    crafts = []
+    for i, cr in enumerate(spec.get("crafts") or []):
+        cr = dict(cr)
+        tag = f"crafts[{i}]"
+        if not card_row(cr["card"], tag):
+            continue
+        for d in cr.get("decks") or []:
+            rec = D.find_deck(d)
+            if not rec:
+                problems.append(f"{tag}: no deck {d}")
+                continue
+            if d not in decks:
+                meta, _l = D.parse_deck_file(rec["path"])
+                decks[d] = {"name": meta.get("name") or rec["name"]}
+        cr["fallbacks"] = [f for f in (cr.get("fallbacks") or []) if card_row(f, tag)]
+        crafts.append(cr)
     if problems:
         raise BuildError("swaps.json: " + "; ".join(problems))
     order = sorted(decks, key=lambda d: (int(re.match(r"\d+", d).group()) if re.match(r"\d+", d) else 9999, d))
     return {"title": spec.get("title") or slug, "intro": spec.get("intro", ""),
-            "decks": {d: decks[d] for d in order}, "cards": cards, "swaps": swaps}
+            "decks": {d: decks[d] for d in order}, "cards": cards, "swaps": swaps,
+            "crafts": crafts}
 
 
 def render_swaps(slug, out_dir, images=True, fetch=True):
@@ -2222,6 +2245,13 @@ def main(argv=None):
             print(f"Created {os.path.relpath(build_path(args.slug), REPO_ROOT)}: "
                   + ", ".join(f"{d['key']}={d['id']}" for d in b["decks"]))
             return 0
+        if args.cmd == "swaps":
+            # A swap board needs only builds/<slug>/swaps.json — a standalone board (the Brawl
+            # craft order, 2026-11-20) has no pile project behind it.
+            r = render_swaps(args.slug, args.out, images=not args.no_images)
+            print(f"Wrote {os.path.relpath(r['page'], REPO_ROOT)}: {r['swaps']} swaps, {r['cards']} cards, "
+                  f"{r['images']} images")
+            return 0
         b = load_build(args.slug)
         if args.cmd == "add":
             added, present = add_cards(b, _read_names(args), args.pile, args.src)
@@ -2319,10 +2349,6 @@ def main(argv=None):
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
             for line in picks_report(b, text, args.slug):
                 print(line)
-        elif args.cmd == "swaps":
-            r = render_swaps(args.slug, args.out, images=not args.no_images)
-            print(f"Wrote {os.path.relpath(r['page'], REPO_ROOT)}: {r['swaps']} swaps, {r['cards']} cards, "
-                  f"{r['images']} images")
         elif args.cmd == "render":
             r = render(args.slug, args.target, args.out, tempo=not args.no_tempo,
                        images=not args.no_images)

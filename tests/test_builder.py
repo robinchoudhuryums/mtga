@@ -1011,6 +1011,24 @@ class TestSwapBoard:
         with pytest.raises(B.BuildError, match="does not run Lightning Bolt"):
             B.swap_board_data("whatever")
 
+    def test_a_craft_order_derives_its_cards_and_refuses_an_unknown_deck(self, tmp_path, monkeypatch):
+        """The optional ranked craft list (2026-11-20): each craft and its owned stand-ins
+        become card rows (with rarity), its decks join the deck list, and an unknown deck id
+        is refused like an unknown pair deck."""
+        spec = {"crafts": [{"tier": "1", "card": "Embercleave", "decks": ["92"],
+                            "why": "w", "fallbacks": ["Genji Glove"]}], "swaps": []}
+        p = tmp_path / "swaps.json"
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
+        d = B.swap_board_data("t")
+        assert [c["card"] for c in d["crafts"]] == ["Embercleave"]
+        assert d["cards"]["Embercleave"]["r"] == "M" and "Genji Glove" in d["cards"]
+        assert "92" in d["decks"]
+        spec["crafts"][0]["decks"] = ["no-such-deck"]
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        with pytest.raises(B.BuildError, match="no deck no-such-deck"):
+            B.swap_board_data("t")
+
     def test_each_pair_offers_other_cuts_with_their_effect(self, scratch, monkeypatch):
         """Pick a different cut (2026-11-17): every pair carries the deck's weakest-fit cards
         from the `deck.py cuts` ranking (never its own cut or add) and, for its cut and each

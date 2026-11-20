@@ -9264,3 +9264,11 @@ outlives the conversation that settled it. So:
 - **Republishing a page alone left 24 new cards without an image** and the thumbnail sprite a
   layout behind the page's sprite map. `publish-plan <out>` compares the page, sprites and
   large images with `.published.json` and lists what to send; `--mark` after the publish.
+
+**A STANDALONE SWAP BOARD (2026-11-20).** `builder.py swaps <slug>` needs only
+`builds/<slug>/swaps.json` — no `build.json` — so a board can exist without a pile project. The
+swaps file may carry an optional ranked `crafts` list (`tier`, `tier_why`, `card`, `decks`, `why`,
+`fallbacks`); the page renders it as a Craft order above the pairs, linking each owned stand-in to
+its pair, and a `standin` verdict ("Stand-in") joins upgrade / sidegrade / spice. First use:
+`builds/brawl-crafts`, the craft triage of the eight unfinished Brawl decks. A pair whose cut leaves
+its deck makes the render refuse (as for every swap board), so re-render after swaps land.

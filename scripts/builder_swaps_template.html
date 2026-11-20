@@ -85,7 +85,30 @@ section.deck h2 small{font-family:var(--ui);font-size:.85rem;color:var(--muted);
 .arrow{align-self:center;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:.8rem;padding-top:40px}
 .arrow .arw{font-size:1.4rem;line-height:1}
 .vd{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
-.vd.upgrade{color:var(--good)} .vd.sidegrade{color:var(--accent)} .vd.spice{color:var(--brass)}
+.vd.upgrade{color:var(--good)} .vd.sidegrade{color:var(--accent)} .vd.spice{color:var(--brass)} .vd.standin{color:var(--warn)}
+
+/* Craft order (optional): the unowned cards worth crafting, best first, grouped in tiers. */
+.crafts{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+.crafts > summary{cursor:pointer;padding:12px 14px;font-family:var(--display);font-size:1.25rem;letter-spacing:.04em;list-style-position:inside}
+.crafts > summary small{font-family:var(--ui);font-size:.85rem;color:var(--muted);letter-spacing:0;margin-left:8px}
+.crafts .tier{padding:0 14px 12px}
+.crafts h3{margin:8px 0 2px;font-family:var(--ui);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brass)}
+.crafts .tierwhy{margin:0 0 6px;font-family:var(--read);font-style:italic;color:var(--muted);font-size:.9rem}
+.crafts ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.craft{display:grid;grid-template-columns:2.2em 64px minmax(0,1fr);gap:10px;align-items:start;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--raise)}
+.craft .rk{font-family:var(--mono);font-size:.95rem;color:var(--muted);text-align:right;padding-top:2px}
+.craft .zoom,.craft img,.craft .noimg{width:64px}
+.craft img{aspect-ratio:488/680;border-radius:5px;display:block;object-fit:cover}
+.craft .noimg{aspect-ratio:488/680;border-radius:5px;border:1px dashed var(--line)}
+.craft .cn{font-size:1rem}
+.rar{display:inline-block;font-family:var(--mono);font-size:.7rem;padding:0 6px;border-radius:999px;border:1px solid var(--line);color:var(--muted);vertical-align:.1em;margin-left:4px}
+.rar.M{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,transparent)} .rar.R{color:var(--brass);border-color:color-mix(in srgb,var(--brass) 45%,transparent)}
+.craft .meta{margin:2px 0 4px;font-size:.84rem;color:var(--muted)}
+.craft .meta b{color:var(--ink);font-weight:500}
+.craft .cw{margin:0;font-family:var(--read);font-size:.92rem}
+.craft .fb{margin:4px 0 0;font-size:.84rem;color:var(--muted)}
+.craft .fb a{color:var(--accent)}
+@media (max-width:460px){ .craft{grid-template-columns:1.6em 48px minmax(0,1fr)} .craft .zoom,.craft img,.craft .noimg{width:48px} }
 
 .why{margin:0;font-family:var(--read);font-size:.95rem}
 .why em{color:var(--muted)}
@@ -138,6 +161,7 @@ section.deck h2 small{font-family:var(--ui);font-size:.85rem;color:var(--muted);
     <button type="button" class="themebtn" id="themebtn" aria-label="Switch colour theme">Theme</button>
   </header>
   <div class="tally" id="tally"></div>
+  <details class="crafts" id="crafts" hidden open></details>
   <p class="store" id="store">Loading your picks…</p>
 
   <div class="bar" role="toolbar" aria-label="Filters">
@@ -174,7 +198,7 @@ function pips(cost){
     return `<span class="pip ${cls}" title="{${esc(t)}}">${esc(t.length <= 2 ? t : t[0])}</span>`;
   }).replace(/ \/\/ /g, " // ");
 }
-const VLAB = {upgrade: "Upgrade", sidegrade: "Sidegrade", spice: "Spice"};
+const VLAB = {upgrade: "Upgrade", sidegrade: "Sidegrade", spice: "Spice", standin: "Stand-in"};
 
 const SWAP_BY = Object.fromEntries(SWAPS.map(s => [s.id, s]));
 const OPEN = new Set();      // decided pairs the owner reopened this visit
@@ -287,7 +311,8 @@ function filters(){
   const seg = (el, key, opts) => {
     el.innerHTML = opts.map(([v, l]) => `<button type="button" data-k="${key}" data-f="${v}" aria-pressed="${F[key] === v}">${l}</button>`).join("");
   };
-  seg(document.getElementById("vdf"), "vd", [["", "All"], ["upgrade", "Upgrade"], ["sidegrade", "Sidegrade"], ["spice", "Spice"]]);
+  const used = new Set(SWAPS.map(s => s.verdict));
+  seg(document.getElementById("vdf"), "vd", [["", "All"], ...Object.entries(VLAB).filter(([v]) => used.has(v))]);
   seg(document.getElementById("pkf"), "pk", [["", "All"], ["open", "Undecided"], ["swap", "Swaps"]]);
   document.querySelector(".bar").addEventListener("click", e => {
     const b = e.target.closest("button[data-k]"); if (!b) return;
@@ -371,9 +396,36 @@ document.getElementById("themebtn").addEventListener("click", () => {
   try { const p = JSON.parse(localStorage.getItem("mtga-prefs") || "{}") || {}; p.theme = next; localStorage.setItem("mtga-prefs", JSON.stringify(p)); } catch (e) {}
 });
 
+/* The ranked craft order, when the board has one: tiers in order, each craft with the decks it
+   serves, the reason, and its owned stand-ins linked to their pairs below. */
+function renderCrafts(){
+  const list = DATA.crafts || [], box = document.getElementById("crafts");
+  if (!list.length) return;
+  const pairOf = (card, add) => SWAPS.find(s => s.cut === card && s.add === add);
+  const tiers = [];
+  list.forEach(c => { const t = tiers.find(x => x.name === c.tier); if (t) t.items.push(c); else tiers.push({name: c.tier, why: c.tier_why || "", items: [c]}); });
+  let rank = 0;
+  const row = c => {
+    const k = CARDS[c.card] || {n: c.card};
+    const img = k.img ? `<button type="button" class="zoom" data-zoom="${esc(k.img)}" data-name="${esc(k.n)}" aria-label="Show ${esc(k.n)} full size"><img src="${esc(k.img)}" alt="" loading="lazy"></button>` : `<div class="noimg" aria-hidden="true"></div>`;
+    const decks = (c.decks || []).map(d => `<b>${esc(d)}</b>${DECKS[d] ? " " + esc(DECKS[d].name) : ""}`).join(" · ");
+    const fbs = (c.fallbacks || []).map(f => { const p = pairOf(c.card, f); return p ? `<a href="#p-${esc(p.id)}">${esc(f)}</a>` : esc(f); });
+    return `<li class="craft"><span class="rk">${++rank}</span>${img}<div>
+      <p class="cn">${esc(k.n)} ${pips(k.c)}<span class="rar ${esc(k.r || "")}">${({M: "Mythic", R: "Rare", U: "Uncommon", C: "Common"})[k.r] || "?"}</span></p>
+      <p class="meta">${(c.decks || []).length > 1 ? "Decks" : "Deck"} ${decks}</p>
+      <p class="cw">${esc(c.why || "")}</p>
+      <p class="fb">${fbs.length ? "Owned stand-in" + (fbs.length > 1 ? "s" : "") + ": " + fbs.join(", ") : "No owned stand-in."}</p></div></li>`;
+  };
+  const m = list.filter(c => (CARDS[c.card] || {}).r === "M").length, r = list.filter(c => (CARDS[c.card] || {}).r === "R").length;
+  box.innerHTML = `<summary>Craft order <small>${list.length} crafts · ${m} mythic, ${r} rare</small></summary>` +
+    tiers.map(t => `<div class="tier"><h3>${esc(t.name)}</h3>${t.why ? `<p class="tierwhy">${esc(t.why)}</p>` : ""}<ol>${t.items.map(row).join("")}</ol></div>`).join("");
+  box.hidden = false;
+  box.addEventListener("click", e => { const z = e.target.closest("button.zoom"); if (z) openZoom(z); });
+}
+
 document.getElementById("title").textContent = DATA.title;
 document.getElementById("intro").textContent = DATA.intro;
-filters(); render();
+filters(); renderCrafts(); render();
 
 (async () => {
   try { const u = JSON.parse(localStorage.getItem("pack-swaps") || "{}"); Object.assign(PICKS, u); } catch (e) {}

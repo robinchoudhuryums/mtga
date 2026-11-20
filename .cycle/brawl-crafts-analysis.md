@@ -220,7 +220,7 @@ Embercleave and Fiery Confluence (56-historic-brawl), Rakdos, the Muscle (93).
 | 2 | Fire Nation Turret | R | Protected. Firebending 2 every combat and the 50-counter sink that turns stored mana into a kill. | none |
 | 3 | Fire Lord Ozai | M | Protected. Sacrifice for red on attack, and a {6} impulse sink every turn. | none |
 | 4 | Aggravated Assault | R | A REPEATABLE extra combat for {3}{R}{R}: with Ozai's stored mana it is several combats a turn, each re-firing firebending. | Genji Glove (owned R) — one extra combat |
-| 5 | Smellerbee, Rebel Fighter | R | Protected. Haste plus an attack-scaled hand refill. Also craft-first in deck 93. | Samut, Hazoret's Champion is not in Rakdos identity; none |
+| 5 | Smellerbee, Rebel Fighter | R | Protected. Haste plus an attack-scaled hand refill. Also craft-first in deck 93. | Samut, Hazoret's Champion (owned R) — haste only, as in deck 93 |
 | 6 | Embercleave | M | Flash it in mid-combat with stored mana. Also craft-first in deck 56-historic-brawl. | Genji Glove (owned R), if not used for #4 |
 | 7 | Moraug, Fury of Akoum | M | An extra combat on every main-phase land drop. | Full Throttle (owned R) — two combats, one-shot |
 | 8 | Fiery Confluence | R | Also craft-first in deck 56-historic-brawl. | none as flexible |
