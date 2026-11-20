@@ -4015,6 +4015,44 @@ The Watcher in the Water,{3}{U}{U},5,
 Signature Slam,{2}{G},3,
 Reject Imperfection,{1}{U}{U},3,Proliferate
 "Vivien, Arkbow Ranger",{1}{G}{G}{G},4,
+Locutus of Borg,{1}{W}{U}{B},4,Lifelink
+The Borg Queen,{4}{W}{U}{B},7,Assimilate
+"Borg Queen, Perfection Manifest",{4}{B}{B},6,Assimilate
+"Tidus, Blitzball Star",{1}{W}{U},3,
+"Deanna Troi, Psychic Counsel",{1}{W},2,
+Hive Mind Coprocessor,{4}{B},5,
+Organic Avulsion Unit,{2}{B},3,
+Bio-Asset Allocator,{3}{B}{B},5,
+"Locutus, the One Who Speaks",{W}{B},2,
+"Alela, Artful Provocateur",{1}{W}{U}{B},4,Deathtouch;Flying;Lifelink
+Kappa Cannoneer,{5}{U},6,Improvise;Ward
+Support Skyforge,{3}{W}{U},5,Flying;Draft from a spellbook;Vigilance;Crew
+Cyberdrive Awakener,{5}{U},6,Flying
+"Mendicant Core, Guidelight",{W}{U},2,Max speed;Start your engines!
+"Lita, Mechanical Engineer",{2}{W},3,Vigilance
+"Malcator, Purity Overseer",{1}{W}{U},3,
+"Noctis, Prince of Lucis",{1}{W}{U}{B},4,Lifelink
+"Winter, Cursed Rider",{U}{B},2,Exhaust;Ward
+"Mikaeus, the Lunarch",{X}{W},1,
+Borg Cube,{5}{W}{B},7,Assimilate;Affinity;Station
+Susurian Dirgecraft,{4}{B},5,Station
+"U.S.S. Reliant, From Hell's Heart",{2}{B}{B},4,Station
+Conquest Mission,{2}{W},3,
+Battle of Wolf 359,{3}{B}{B},5,
+Haunt the Network,{3}{U}{B},5,
+Flare of Fortitude,{2}{W}{W},4,
+"Kaito, Dancing Shadow",{2}{U}{B},4,
+Vanishing Verse,{W}{B},2,
+Sheoldred's Edict,{1}{B},2,
+Mirror Universe Intrusion,{1}{U}{B},3,Kicker
+Arcane Signet,{2},2,
+Replicator,{2},2,Food
+"Tezzeret, Master of the Bridge",{4}{U}{B},6,
+Obscura Storefront,,0,
+Seat of the Synod,,0,
+Ancient Den,,0,
+Vault of Whispers,,0,
+Gaseous Anomaly,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4063,7 +4101,6 @@ Currency Converter,{1},1,Treasure
 Mox Opal,{0},0,Metalcraft
 Pyrite Spellbomb,{1},1,
 Triplicate Titan,{9},9,Flying;Vigilance;Trample
-Ancient Den,,0,
 Great Furnace,,0,
 Tree of Tales,,0,
 "Emrakul, the Aeons Torn",{15},15,Flying;Annihilator;Protection
@@ -5146,17 +5183,14 @@ Explosive Getaway,{3}{R}{W},5,
 "Far Fortune, End Boss",{2}{B}{R},4,Max speed;Start your engines!
 Fearless Swashbuckler,{1}{U}{R},3,Haste
 Gastal Thrillseeker,{B}{R},2,Max speed;Start your engines!
-Haunt the Network,{3}{U}{B},5,
 Haunted Hellride,{1}{U}{B},3,Crew
 "Kolodin, Triumph Caster",{R}{W},2,
 "Lagorin, Soul of Alacria",{G}{W},2,Flying;Saddle
-"Mendicant Core, Guidelight",{W}{U},2,Max speed;Start your engines!
 Oildeep Gearhulk,{U}{U}{B}{B},4,Lifelink;Ward
 Rangers' Aetherhive,{1}{G}{U},3,Vigilance;Crew
 "Samut, the Driving Force",{3}{R}{G}{W},6,Vigilance;First strike;Haste;Start your engines!
 "Sita Varma, Masked Racer",{G}{U},2,Exhaust
 Thundering Broodwagon,{2}{B}{B}{G}{G},6,Reach;Crew;Menace;Cycling
-"Winter, Cursed Rider",{U}{B},2,Exhaust;Ward
 "Zahur, Glory's Past",{W}{B},2,Surveil;Max speed;Start your engines!
 Aetherjacket,{3},3,Flying;Vigilance
 Camera Launcher,{3},3,Exhaust
@@ -6117,7 +6151,6 @@ Taste of Death,{4}{B}{B},6,Food
 Embereth Skyblazer,{3}{R},4,
 Steelbane Hydra,{X}{G}{G},2,
 Thorn Mammoth,{5}{G}{G},7,Trample;Fight
-"Alela, Artful Provocateur",{1}{W}{U}{B},4,Deathtouch;Flying;Lifelink
 Banish into Fable,{4}{W}{U},6,
 "Chulane, Teller of Tales",{2}{G}{W}{U},5,Vigilance
 Gluttonous Troll,{2}{B}{G},4,Food;Trample
@@ -6171,7 +6204,6 @@ Hullcarver,{B},1,Deathtouch
 Monoist Circuit-Feeder,{4}{B}{B},6,Flying
 Monoist Sentry,{B},1,Defender
 Requiem Monolith,{2}{B},3,
-Susurian Dirgecraft,{4}{B},5,Station
 Voidforged Titan,{4}{B},5,Void
 "Xu-Ifit, Osteoharmonist",{1}{B}{B},3,
 Debris Field Crusher,{4}{R},5,Station
@@ -6574,13 +6606,11 @@ Hope Estheim,{W}{U},2,Lifelink;Mill
 "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",{1}{R}{W},3,Flying;Lifelink;Transform
 "Kefka, Court Mage // Kefka, Ruler of Ruin",{2}{U}{B}{R},5,Flying;Transform
 "Kuja, Genome Sorcerer // Trance Kuja, Fate Defied",{2}{B}{R},4,Transform;Flare Star;Double
-"Noctis, Prince of Lucis",{1}{W}{U}{B},4,Lifelink
 Rufus Shinra,{1}{W}{B},3,
 "Rydia, Summoner of Mist",{R}{G},2,Summon;Landfall
 Serah Farron // Crystallized Serah,{1}{G}{W},3,Transform
 "Squall, SeeD Mercenary",{2}{W}{B},4,Rough Divide
 "Terra, Magical Adept // Esper Terra",{1}{R}{G},3,Flying;Transform;Mill;Trance
-"Tidus, Blitzball Star",{1}{W}{U},3,
 "Ultimecia, Time Sorceress // Ultimecia, Omnipotent",{3}{U}{B},5,Surveil;Transform;Menace;Time Compression
 Blitzball,{3},3,GOOOOAAAALLL!
 Excalibur II,{1},1,Equip
@@ -6793,7 +6823,6 @@ Ghalta the Unstoppable,{8}{G},9,Trample
 The Ur-Sphinx,{6}{W}{U}{B},9,Flying;Eminence;Mill
 "Ginger, Queen of Sweets",{6},6,
 "Memnarch, the Warden",{10},10,Indestructible
-Arcane Signet,{2},2,
 Coalition Relic,{3},3,
 Angler Turtle,{5}{U}{U},7,Hexproof
 Vengeant Vampire,{4}{B}{B},6,Lifelink
@@ -8058,7 +8087,6 @@ Lightwalker,{1}{W},2,
 Mace of the Valiant,{2}{W},3,Equip
 Maul of the Skyclaves,{2}{W},3,Equip
 Mesa Unicorn,{1}{W},2,Lifelink
-"Mikaeus, the Lunarch",{X}{W},1,
 Militant Inquisitor,{2}{W},3,
 Mirran Bardiche,{4}{W},5,For Mirrodin!;Equip
 Moment of Heroism,{1}{W},2,
@@ -8543,9 +8571,7 @@ Lonely Sandbar,,0,Cycling
 Memorial to Folly,,0,
 Memorial to Genius,,0,
 Memorial to Glory,,0,
-Seat of the Synod,,0,
 Secluded Steppe,,0,Cycling
-Vault of Whispers,,0,
 Blessed Sanctuary,{3}{W}{W},5,
 Emiel the Blessed,{2}{W}{W},4,
 Steel-Plume Marshal,{3}{W}{W},5,Flying
@@ -10614,7 +10640,6 @@ Return to the Ranks,{X}{W}{W},2,Convoke
 Righteous Fury,{4}{W}{W},6,
 Steelshaper's Gift,{W},1,
 Teferi's Protection,{2}{W},3,
-Cyberdrive Awakener,{5}{U},6,Flying
 Lord of Atlantis,{U}{U},2,
 Mechanized Production,{2}{U}{U},4,Enchant
 Show and Tell,{2}{U},3,
@@ -10727,7 +10752,6 @@ Charitable Levy,{1}{W},2,
 Dog Umbra,{1}{W},2,Enchant;Flash
 Essence Reliquary,{2}{W},3,
 Expel the Unworthy,{1}{W},2,Kicker
-Flare of Fortitude,{2}{W}{W},4,
 Glyph Elemental,{1}{W},2,Bestow;Landfall
 Guardian of the Forgotten,{3}{W},4,Vigilance;Manifest
 Guide of Souls,{W},1,
@@ -10946,7 +10970,6 @@ Orim's Chant,{W},1,Kicker
 Recruiter of the Guard,{2}{W},3,
 Sevinne's Reclamation,{2}{W},3,Flashback
 Estrid's Invocation,{2}{U},3,
-Kappa Cannoneer,{5}{U},6,Improvise;Ward
 Reef Worm,{3}{U},4,
 Shrieking Drake,{U},1,Flying
 Buried Alive,{2}{B},3,
@@ -12289,7 +12312,6 @@ Pestilent Syphoner,{1}{B},2,Flying;Toxic
 Phyrexian Obliterator,{B}{B}{B}{B},4,Trample
 Ravenous Necrotitan,{2}{B}{B},4,Corrupted
 Scheming Aspirant,{1}{B},2,Proliferate
-Sheoldred's Edict,{1}{B},2,
 Sheoldred's Headcleaver,{3}{B},4,Toxic;Menace
 Stinging Hivemaster,{2}{B},3,Toxic
 Testament Bearer,{3}{B},4,
@@ -12374,11 +12396,9 @@ Charforger,{1}{B}{R},3,
 Cinderslash Ravager,{4}{R}{G},6,Vigilance
 "Ezuri, Stalker of Spheres",{2}{G}{U},4,Proliferate
 "Jor Kadeen, First Goldwarden",{R}{W},2,Trample
-"Kaito, Dancing Shadow",{2}{U}{B},4,
 "Kaya, Intangible Slayer",{3}{W}{W}{B}{B},7,Hexproof;Scry
 "Kethek, Crucible Goliath",{2}{B}{R},4,
 "Lukka, Bound to Ruin",{2}{R}{R/G/P}{G},5,Compleated
-"Malcator, Purity Overseer",{1}{W}{U},3,
 "Melira, the Living Cure",{G}{W},2,
 "Migloz, Maze Crusher",{1}{R}{G},3,
 "Nahiri, the Unforgiving",{1}{R}{R/W/P}{W},4,Compleated
@@ -13728,7 +13748,6 @@ Quick-Draw Dagger,{3},3,Equip;Flash
 Unlicensed Hearse,{2},2,Crew
 Botanical Plaza,,0,
 Maestros Theater,,0,
-Obscura Storefront,,0,
 Racers' Ring,,0,
 Riveteers Overlook,,0,
 Skybridge Towers,,0,
@@ -14202,7 +14221,6 @@ Stonebound Mentor,{1}{R}{W},3,Scry
 Tanazir Quandrix,{3}{G}{U},5,Flying;Trample;Double
 Tend the Pests,{B}{G},2,
 Thrilling Discovery,{R}{W},2,
-Vanishing Verse,{W}{B},2,
 Velomachus Lorehold,{5}{R}{W},7,Flying;Vigilance;Haste
 Venerable Warsinger,{1}{R}{W},3,Vigilance;Trample
 Witherbloom Apprentice,{B}{G},2,Magecraft
@@ -14595,7 +14613,6 @@ The Lion-Turtle,{1}{G}{U},3,Reach;Vigilance
 Jasmine Dragon Tea Shop,,0,
 Secret Tunnel,,0,
 Empty City Ruse,{W},1,
-"Lita, Mechanical Engineer",{2}{W},3,Vigilance
 Release to Memory,{3}{W},4,
 Scout's Warning,{W},1,
 Three Dreams,{4}{W},5,
@@ -14833,15 +14850,12 @@ Escape Tunnel,,0,
 Foot Headquarters,,0,
 Northampton Farm,,0,
 TCRI Building,,0,
-The Borg Queen,{4}{W}{U}{B},7,Assimilate
 "Worf, Defiant Commander",{2}{R}{W}{B},5,Battlefront
 "Data, Exploring Humanity",{4}{U},5,Seek;Seek out;Discover
-Battle of Wolf 359,{3}{B}{B},5,
 "Grilka, Widowed Warrior",{5}{R},6,Treasure
 "Captain Kirk, Boldly Going",{1}{G}{W}{U},4,Vigilance
 Commander William Riker,{1}{R}{W},3,Vigilance;Haste
 "Kor, Cause of Vengeance",{1}{R}{W}{B},4,
-Locutus of Borg,{1}{W}{U}{B},4,Lifelink
 "McCoy, Not a Bricklayer",{3}{G}{W},5,
 Starship Enterprise,{5},5,Station;Landfall
 Evasive Maneuvers,{W},1,
@@ -14872,8 +14886,6 @@ Disruptor Pistol,{2},2,
 "Picard, Steadfast Captain",{4}{W}{W},6,
 "Spock, Logical Choice",{3}{U}{U},5,Vigilance
 "Trelane, Squire of Gothos",{5}{U},6,Vigilance;Ward
-Bio-Asset Allocator,{3}{B}{B},5,
-"Borg Queen, Perfection Manifest",{4}{B}{B},6,Assimilate
 "Kirk, Enterprising Captain",{3}{R},4,Menace
 Klingon Strike Force,{3}{R}{R},5,Haste;Trample
 "Benjamin Sisko, Besieged",{4}{G}{G},6,
@@ -14881,8 +14893,6 @@ Tenacious Tosk,{3}{G},4,
 Run Amok,{1}{R},2,
 Andromedan Automatons,{2}{W},3,
 Command Decision,{1}{W},2,
-Conquest Mission,{2}{W},3,
-"Deanna Troi, Psychic Counsel",{1}{W},2,
 Emergency Medical Hologram,{W},1,
 Federation Field Medic,{3}{W},4,Vigilance
 The Measure of a Man,{2}{W},3,Investigate
@@ -14924,16 +14934,13 @@ A Good Day to Die,{B},1,
 Grand Nagus Zek,{2}{B},3,Treasure
 "Gul Dukat, Colonial Prefect",{4}{B}{B}{B},7,Menace
 "He's Dead, Jim",{3}{B},4,Surveil
-Hive Mind Coprocessor,{4}{B},5,
 "Khan, Vengeful Heart",{2}{B}{B},4,
 Obsidian Order Operative,{3}{B},4,Face a dilemma
-Organic Avulsion Unit,{2}{B},3,
 "Sela, Tal Shiar Paradox",{3}{B},4,
 Storied Veteran,{B},1,
 Stray from History,{2}{B},3,Rewrite the Past;Repair the Timeline
 Tenacious Drone,{1}{B},2,
 Test of Loyalty,{B},1,"Of the Obsidian Order;Plain, Simple Garak"
-"U.S.S. Reliant, From Hell's Heart",{2}{B}{B},4,Station
 "Beckett Mariner, Impetuous Ensign",{1}{R},2,Reckless Behavior;First strike
 Boarding Action,{1}{R},2,Beam me up
 Cantankerous Captain,{2}{R},3,
@@ -14989,7 +14996,6 @@ Temporal Conqueror,{2}{G},3,Treasure;Mill
 Test of Courage,{G},1,Obliterate the Transwarp Network;Alter the Past
 Xenobotanist,{1}{G},2,
 All Good Things...,{3}{G}{U},5,
-Borg Cube,{5}{W}{B},7,Assimilate;Affinity;Station
 Constable Odo,{3}{W/U}{W/U},5,Investigate
 "Dal R'El, Augment Orphan",{1}{R}{G},3,Landfall
 "The Doctor, EMH",{3}{G/W}{G/W},5,
@@ -14998,9 +15004,7 @@ The Duras Sisters,{B/R}{B/R},2,
 "Gowron, Eager for Battle",{2}{B}{R},4,
 "Kirk, Commanding Officer",{1}{R}{W},3,
 Live Long and Prosper,{5}{W}{U},7,Double
-"Locutus, the One Who Speaks",{W}{B},2,
 "Lore, Positronic Provocateur",{1}{U/B}{U/B},3,Surveil
-Mirror Universe Intrusion,{1}{U}{B},3,Kicker
 "Nog, Ambitious Cadet",{B}{G},2,Surveil;Menace
 The Traveler,{G}{U},2,Reach;Vigilance;Strange new worlds
 "Vash, Freelance Archaeologist",{1}{B}{G},3,Surveil
@@ -15008,7 +15012,6 @@ The Traveler,{G}{U},2,Reach;Vigilance;Strange new worlds
 Deep Space 9,{9},9,Station
 The Holodeck,{7},7,
 Isolinear Processor,{2},2,
-Replicator,{2},2,Food
 "Tea, Earl Grey, Hot",{2},2,
 Tricorder,{1},1,Surveil;Equip
 "U.S.S. Cerritos, Following Up",{5},5,Station
@@ -15017,7 +15020,6 @@ Bajor,,0,
 Cardassia Prime,,0,
 Federation Outpost,,0,Surveil
 Ferenginar,,0,
-Gaseous Anomaly,,0,
 Orion,,0,
 Qo'noS,,0,
 Quark's Bar,,0,Surveil
@@ -15464,7 +15466,6 @@ Gideon's Company,{3}{W},4,
 Guildpact Informant,{2}{U},3,Flying;Proliferate
 Jace's Projection,{2}{U}{U},4,
 Jace's Ruse,{3}{U}{U},5,
-"Tezzeret, Master of the Bridge",{4}{U}{B},6,
 Archon of the Wild Rose,{2}{W}{W},4,Flying
 Armory Mice,{1}{W},2,Celebration
 Besotted Knight // Betroth the Beast,{3}{W} // {W},4,Role token
@@ -15994,7 +15995,6 @@ Routeway Moose,{1}{G},2,Saddle;Seek
 Highway Reaver,{2}{B}{R},4,Flying;Max speed;Start your engines!
 Quickbeast Amulet,{G}{W},2,Intensity;Equip
 "Sala, Deck Boss",{1}{U}{R},3,
-Support Skyforge,{3}{W}{U},5,Flying;Draft from a spellbook;Vigilance;Crew
 "Tsagan, Raider Warlord",{R}{W}{B},3,Max speed;Double strike;Start your engines!
 Wish Good Luck,{R}{G},2,Treasure;Food
 Benalish Knight-Counselor,{W},1,Enlist

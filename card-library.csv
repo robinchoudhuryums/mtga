@@ -8742,3 +8742,85 @@ Reject Imperfection,Instant,"Counter target spell. If that spell's mana value wa
 "Vivien, Arkbow Ranger",Legendary Planeswalker — Vivien,"+1: Distribute two +1/+1 counters among up to two target creatures. They gain trample until end of turn.
 −3: Target creature you control deals damage equal to its power to target creature or planeswalker.
 −5: You may reveal a creature card you own from outside the game and put it into your hand.",G,Vivien; planeswalker; counters; removal; trample; evasion,M20,199,1
+Locutus of Borg,Legendary Artifact Creature — Borg,"Lifelink
+Artifact creatures you control have ""Whenever this creature deals combat damage to a player, create a 1/1 colorless Borg artifact creature token.""",W/U/B,Borg; lifegain; tokens; artifacts; lifelink,TRC,97,1
+The Borg Queen,Legendary Artifact Creature — Borg Noble,"Artifact creatures you control get +2/+2.
+Whenever The Borg Queen enters or attacks, target opponent exiles cards from the top of their library until they exile a creature card. Assimilate that card. They put the rest on the bottom in a random order. (To assimilate a card, put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)",W/U/B,Borg; Noble; counters; artifacts; pump; assimilate,TRC,1,1
+"Borg Queen, Perfection Manifest",Legendary Artifact Creature — Borg Noble,"Artifact creatures you control get +2/+0.
+When Borg Queen enters, assimilate target creature card from an opponent's graveyard. (Put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)",B,Borg; Noble; counters; graveyard; etb; artifacts; pump; assimilate,TRC,197,1
+"Tidus, Blitzball Star",Legendary Creature — Human Warrior,"Whenever an artifact you control enters, put a +1/+1 counter on Tidus.
+Whenever Tidus attacks, tap target creature an opponent controls.",W/U,Human; Warrior; counters; artifacts,FIN,246,1
+"Deanna Troi, Psychic Counsel",Legendary Creature — Betazoid Human Advisor,Other creatures you control enter with an additional +1/+1 counter on them.,W,Betazoid; Human; Advisor; counters,TRK,11,1
+Hive Mind Coprocessor,Artifact Creature — Borg,"Artifact creatures you control have ""Whenever this creature deals combat damage to a player, you may pay 1 life. If you do, draw a card.""",B,Borg; pay life; card draw; artifacts,TRK,115,1
+Organic Avulsion Unit,Artifact Creature — Borg,{2}: Artifact creatures you control gain menace until end of turn. (A creature with menace can't be blocked except by two or more creatures.),B,Borg; artifacts; menace; evasion,TRK,121,1
+Bio-Asset Allocator,Artifact Creature — Borg,"Artifact creatures you control have ""Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.""",B,Borg; lifegain; artifacts,TRC,196,1
+"Locutus, the One Who Speaks",Legendary Artifact Creature — Borg,"Artifact creatures you control get +1/+1.
+{W}{B}, Discard this card: It deals 2 damage to target creature. You gain 2 life.",W/B,Borg; lifegain; burn; artifacts; pump,TRK,245,1
+"Alela, Artful Provocateur",Legendary Creature — Faerie Warlock,"Flying, deathtouch, lifelink
+Other creatures you control with flying get +1/+0.
+Whenever you cast an artifact or enchantment spell, create a 1/1 blue Faerie creature token with flying.",W/U/B,Faerie; Warlock; lifegain; tokens; artifacts; pump; deathtouch; combat; removal; flying; evasion; lifelink,ELD,324,1
+Kappa Cannoneer,Artifact Creature — Turtle Warrior,"Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)
+Ward {4}
+Whenever this creature or another artifact you control enters, put a +1/+1 counter on this creature. It can't be blocked this turn.",U,Turtle; Warrior; counters; artifacts; improvise; ramp; ward; protection,MH3,270,1
+Support Skyforge,Artifact — Vehicle,"Flying, Vigilance
+When this Vehicle enters, create four 1/1 colorless Servo artifact creature tokens.
+Whenever this Vehicle attacks, draft a card from Support Skyforge's spellbook. That card perpetually becomes an artifact creature.
+Crew 4",W/U,vehicle; tokens; etb; flying; evasion; draft from a spellbook; vigilance; combat; crew; vehicles,YDFT,26,1
+Cyberdrive Awakener,Artifact Creature — Construct,"Flying
+Other artifact creatures you control have flying.
+When this creature enters, each noncreature artifact you control becomes a 4/4 artifact creature until end of turn.",U,Construct; etb; artifacts; flying; evasion,MAR,53,1
+"Mendicant Core, Guidelight",Legendary Artifact Creature — Robot,"Mendicant Core's power is equal to the number of artifacts you control.
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — Whenever you cast an artifact spell, you may pay {1}. If you do, copy it. (The copy becomes a token.)",W/U,Robot; artifacts; max speed; speed; aggro; start your engines!,DFT,213,1
+"Lita, Mechanical Engineer",Legendary Artifact Creature — Artificer,"Vigilance
+At the beginning of your end step, untap each other artifact creature you control.
+{3}{W}, {T}: Create a 5/5 colorless Vehicle artifact token named Zeppelin with flying and crew 3. (It has ""Tap any number of creatures you control with total power 3 or more: This token becomes an artifact creature until end of turn."")",W,Artificer; tokens; artifacts; vigilance; combat,TLE,4,1
+"Malcator, Purity Overseer",Legendary Creature — Phyrexian Elephant Wizard,"When Malcator enters, create a 3/3 colorless Phyrexian Golem artifact creature token.
+At the beginning of your end step, if three or more artifacts entered the battlefield under your control this turn, create a 3/3 colorless Phyrexian Golem artifact creature token.",W/U,Phyrexian; Elephant; Wizard; tokens; etb; artifacts,ONE,208,1
+"Noctis, Prince of Lucis",Legendary Creature — Human Noble,"Lifelink
+You may cast artifact spells from your graveyard by paying 3 life in addition to paying their other costs. If you cast a spell this way, that artifact enters with a finality counter on it.",W/U/B,Human; Noble; counters; graveyard; lifegain; lifelink,FIN,235,1
+"Winter, Cursed Rider",Legendary Creature — Human Warlock,"Ward—Pay 2 life.
+Artifacts you control have ""Ward—Pay 2 life.""
+Exhaust — {2}{U}{B}, {T}, Exile X artifact cards from your graveyard: Each other nonartifact creature gets -X/-X until end of turn. (Activate each exhaust ability only once.)",U/B,Human; Warlock; graveyard; artifacts; removal; exhaust; payoff; ward; protection,DFT,228,1
+"Mikaeus, the Lunarch",Legendary Creature — Human Cleric,"Mikaeus enters with X +1/+1 counters on it.
+{T}: Put a +1/+1 counter on Mikaeus.
+{T}, Remove a +1/+1 counter from Mikaeus: Put a +1/+1 counter on each other creature you control.",W,Human; Cleric; counters,J25,225,1
+Borg Cube,Artifact — Spacecraft,"Affinity for artifact creatures
+Whenever this Spacecraft enters or attacks, assimilate a creature card exiled with it. If you can't, exile up to one target creature. (To assimilate a card, put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)
+Station
+12+ | Artifact creatures you control have flying.",W/B,Spacecraft; counters; artifacts; assimilate; affinity; cost-reduction; station; flying; evasion,TRK,227,1
+Susurian Dirgecraft,Artifact — Spacecraft,"When this Spacecraft enters, each opponent sacrifices a nontoken creature of their choice.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying",B,Spacecraft; sacrifice; etb; station; counters; artifacts,EOE,117,1
+"U.S.S. Reliant, From Hell's Heart",Legendary Artifact — Spacecraft,"Whenever U.S.S. Reliant enters or deals combat damage to a player, return target creature card with mana value 4 or less from your graveyard to the battlefield with a finality counter on it.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 10+.)
+10+ | Flying",B,Spacecraft; counters; reanimator; graveyard; station; artifacts,TRK,135,1
+Conquest Mission,Enchantment,"Whenever a nontoken artifact you control enters, put a quest counter on this enchantment. Create a 1/1 colorless Borg artifact creature token. If this enchantment has six or more quest counters on it, create two of those tokens instead.",W,counters; tokens; artifacts,TRK,10,1
+Battle of Wolf 359,Sorcery,"All nonartifact creatures get -X/-X until end of turn, where X is the number of artifact creatures you control.",B,artifacts,TRC,57,1
+Haunt the Network,Sorcery,"Choose target opponent. Create two 1/1 colorless Thopter artifact creature tokens with flying. Then the chosen player loses X life and you gain X life, where X is the number of artifacts you control.",U/B,lifegain; tokens; artifacts,DFT,207,1
+Flare of Fortitude,Instant,"You may sacrifice a nontoken white creature rather than pay this spell's mana cost.
+Until end of turn, your life total can't change, and permanents you control gain hexproof and indestructible.",W,sacrifice; hexproof; protection; indestructible; resilience,MH3,26,1
+"Kaito, Dancing Shadow",Legendary Planeswalker — Kaito,"Whenever one or more creatures you control deal combat damage to a player, you may return one of them to its owner's hand. If you do, you may activate loyalty abilities of Kaito twice this turn rather than only once.
++1: Up to one target creature can't attack or block until your next turn.
+0: Draw a card.
+−2: Create a 2/2 colorless Drone artifact creature token with deathtouch and ""When this token leaves the battlefield, each opponent loses 2 life and you gain 2 life.""",U/B,Kaito; planeswalker; lifegain; card draw; tokens; bounce,ONE,204,1
+Vanishing Verse,Instant,Exile target monocolored permanent.,W/B,removal,STX,244,1
+Sheoldred's Edict,Instant,"Choose one —
+• Each opponent sacrifices a nontoken creature of their choice.
+• Each opponent sacrifices a creature token of their choice.
+• Each opponent sacrifices a planeswalker of their choice.",B,sacrifice,ONE,108,1
+Mirror Universe Intrusion,Sorcery,"Kicker {4}{U}{B} (You may pay an additional {4}{U}{B} as you cast this spell.)
+Create a token that's a copy of target creature an opponent controls, except it has menace. If this spell was kicked, instead for each creature target opponent controls, create a token that's a copy of that creature, except it has menace.",U/B,tokens; kicker; value,TRK,248,1
+Arcane Signet,Artifact,{T}: Add one mana of any color in your commander's color identity.,Colorless,mana,FRC,20,1
+Replicator,Artifact,"When this artifact enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}, {T}: Create a tapped token that's a copy of target token you control.",Colorless,lifegain; tokens; etb; food,TRK,267,1
+"Tezzeret, Master of the Bridge",Legendary Planeswalker — Tezzeret,"Creature and planeswalker spells you cast have affinity for artifacts. (They cost {1} less to cast for each artifact you control.)
++2: Tezzeret deals X damage to each opponent, where X is the number of artifacts you control. You gain X life.
+−3: Return target artifact card from your graveyard to your hand.
+−8: Exile the top ten cards of your library. Put all artifact cards from among them onto the battlefield.",U/B,Tezzeret; planeswalker; graveyard; lifegain; cost-reduction; burn; artifacts; noncombat damage; affinity,WAR,275,1
+Obscura Storefront,Land,"When this land enters, sacrifice it. When you do, search your library for a basic Plains, Island, or Swamp card, put it onto the battlefield tapped, then shuffle and you gain 1 life.",Colorless,lifegain; sacrifice; ramp; etb,SNC,252,1
+Seat of the Synod,Artifact Land,{T}: Add {U}.,U,mana,J25,773,1
+Ancient Den,Artifact Land,{T}: Add {W}.,W,mana,AA2,23,1
+Vault of Whispers,Artifact Land,{T}: Add {B}.,B,mana,J25,780,1
+Gaseous Anomaly,Land,"{T}: Add {C}.
+{5}{U}, {T}, Sacrifice this land: Draw two cards. Create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color.""",U,card draw; sacrifice; tokens; mana; ramp,TRK,284,1
