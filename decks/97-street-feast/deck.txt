@@ -50,6 +50,10 @@
 #: notes: time. Next cuts if a slot is needed: West Wind Avatar (the 7-drop), then Feline Sovereign.
 #: notes: 2026-11-16: Stable Wormhole for Elanor Gardner (owner's pick): an any-colour land token every attack, and Peregrin
 #: notes: Took adds a Food to each one; Elanor's basic needed a Food sacrificed that turn.
+#: notes: 2026-11-20: Replicator in for Kutzil, Malamet Exemplar. Its {2},{T} copy is a token CREATION, so Peregrin
+#: notes: Took and Tippy-Toe add a Food to it and Doubling Season / Mondrak double it; it copies Foods, Cats, Dogs
+#: notes: and Thopters. Card advantage 8 -> 7 (Kutzil's combat draw); the lock on opponents' spells during our
+#: notes: turn left with Kutzil.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -87,6 +91,7 @@
 1 Giant Opportunity (ELD) 159
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Sidequest: Catch a Fish // Cooking Campsite (FIN) 31
+1 Replicator (TRK) 267
 
 # Artifacts and mana
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -106,7 +111,6 @@
 # Counters and proliferate
 1 Generous Pup (J25) 4
 1 Michelangelo, the Heart (TMC) 5
-1 Kutzil, Malamet Exemplar (LCI) 232
 1 Evolution Sage (WAR) 159
 1 Innkeeper's Talent (BLB) 180
 
