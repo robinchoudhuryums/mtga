@@ -37,6 +37,7 @@ Armament Dragon
 Army of the Damned
 Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
+As Foretold
 Ashiok, Nightmare Weaver
 Ashroot Animist
 Aurelia, the Warleader
@@ -154,6 +155,7 @@ Enigma Drake
 Entropic Battlecruiser
 Entrust the Spark
 Ephemerate
+Epic Experiment
 Eternal Skylord
 Fallen Shinobi
 Fang, Roku's Companion
@@ -199,6 +201,7 @@ Goblin-town Flunkies
 Gogo, Master of Mimicry
 Gold Rush
 Goldvein Hydra
+Goro-Goro and Satoru
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
 Grievous Wound
@@ -257,6 +260,7 @@ Joo Dee, One of Many
 K'un-Lun Warrior
 Kamahl's Druidic Vow
 Kang the Conqueror
+Karolina Dean, Runaway
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
@@ -370,7 +374,6 @@ Quicksilver, Brash Blur
 Quina, Qu Gourmet
 Radiant Lotus
 Radioactive Man
-Raff Capashen, Ship's Mage
 Rage into the Valley
 Raging Goblinoids
 Rainveil Rejuvenator
@@ -429,6 +432,7 @@ Song of Stupefaction
 Soul Diviner
 Souls of the Lost
 Sozin's Comet
+Spellchain Scatter
 Spider-Islanders
 Spider-Man, Web-Slinger
 Spider-Man, Web-Spinner

@@ -358,6 +358,13 @@ def _pattern_groups():
     for name in ("_TYPE_SCALE_CHOOSE_RE", "_TYPE_SCALE_PAYOFF_RE",
                  "_TYPE_SCALE_CONVERTER_RE", "_TYPE_SCALE_CHANGELING_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "raw"))
+    # The suggest-homes MULTIPLIER/FEEDER lanes (2026-11-20). Reminder-stripped oracle text
+    # in original case, like the scale families above. All three fail quietly toward a
+    # MISSED home: if a plus-one pattern dies, Hardened Scales / Doc Samson / Peregrin Took
+    # stop counting as multipliers and a feeder's best deck (86, 97) reads as an ordinary
+    # one; if the enters-with feeder dies, Deanna Troi stops reading as a counters feeder.
+    for name in ("_PLUS_ONE_COUNTER_RE", "_PLUS_TOKEN_RE", "_COUNTER_FEED_EXTRA_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "raw"))
     # The two SUPPRESSION patterns behind the proposed-add gate. Both run on
     # reminder-stripped oracle text in its original case, so the raw corpus is what they
     # see. They fail in OPPOSITE directions and both directions are quiet: if either dies,

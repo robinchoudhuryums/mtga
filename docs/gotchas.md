@@ -2453,6 +2453,61 @@ inputs over every structural pool card × 114 decks: 305 of 2,035 KEY verdicts f
 role-player (doubler 120, cost-scale 132, chosen-type 51, both 2), deck 46's Elspeth (4
 token feeders, floor 5) among them. The KEY 18.6% → 10.2% figure above predates this.
 
+**THE RESOURCE, MULTIPLIER AND NEEDS LANES, AND THE TOP-THEME CONDITION (2026-11-20).**
+Found by hand-checking the 101 cards of one ingest (decks 94, 100, 103) against the roster,
+after the fit pass handed back 96 KEY rows for 38 cards and missed every real home that was
+not a theme match. Four causes, four fixes, measured on that same 101-card set before and
+after (`suggest-homes` per card, new-home rows only):
+
+| | before | after |
+|---|---|---|
+| KEY rows | 218 | 158 |
+| known homes found (as KEY or role-player) | 4 / 16 | 11 / 16 |
+| KEY decks per card, p90 / max | 6 / 15 | 4 / 13 |
+
+1. **No shared theme meant no row, whatever the structural fit.** Every overlay sat AFTER
+   `if not shared: continue`, so a card with no theme in common reached no deck: Seat of
+   the Synod and deck 84 (29 artifacts, 10 artifact payoffs) share nothing. Three LANES
+   (`resource_lane_hits`) now admit such a deck: an artifact PAYOFF (K-15's
+   `_ARTIFACT_MATTERS_RE`, imported, never copied) against the deck's artifact count read
+   from TYPE LINES; a card that IS an artifact against the deck's artifact-payoff count;
+   and a counters/tokens FEEDER against the deck's MULTIPLIERS — the reverse of
+   `doubler_support`, reading the same `_DOUBLER_AXES` feeder patterns. A multiplier here
+   includes the plus-one replacements (Doc Samson, Hardened Scales, Peregrin Took,
+   Donatello), which `_DOUBLER_AXES` rightly keeps out of DOUBLER pricing. Calibrated from
+   the 140-deck roster with the floor near p90: artifacts p90 9 → floor 10 / key 20;
+   artifact payoffs nonzero in 39 decks, p90 2 → 5 / 10; counter multipliers nonzero in
+   28, max 5 → 2 / 3; token multipliers nonzero in 30, max 4 → 2 / 3. A lane-only row is
+   role-player; KEY only at an ARTIFACT lane's key level.
+2. **Removal, ramp and fixing share no theme with anything** (G-38's point about plain
+   `suggest`). Vanishing Verse and Sheoldred's Edict, which no deck ran, read "tangential"
+   everywhere. The NEEDS lane (`needs_axis`, `_needs_lane_rows`) ranks the ≤5 castable,
+   legal decks that most want the job — interaction by distance to the deck's A-line
+   (excluding decks more than 2 above it), ramp by `_accel_want`, fixing by colours
+   covered — and upgrades a tangential row or adds one. It is bounded because
+   interaction sits AT the A line roster-wide (41 of 140 below it), so "is this deck short"
+   alone would both flood and hide.
+3. **The top-theme branch minted KEY for a generic theme unconditionally.** The 2026-09-18
+   fix made a generic SIGNATURE theme earn KEY through the overlay; a generic theme that was
+   also the TOP theme reached `specific` by the same route and minted with no check —
+   148 of the set's KEYs, including Replicator in 13 decks on `tokens` / `lifegain`,
+   Gaseous Anomaly in 7 on `card draw`, Winter, Cursed Rider in 6 on `graveyard`. It now
+   asks the same overlay. **This changed a pinned contract on purpose**: the old
+   `test_the_signature_rescue_is_preserved` asserted KEY with no overlay. The rescue it
+   pins survives because the overlay was widened in the same change: `screen 30` on
+   Innkeeper's Talent, Branching Evolution, Hardened Scales, Kami of Whispered Hopes,
+   Conclave Mentor, The Ozolith and Deanna Troi, and `screen 86` on Deanna, Mikaeus,
+   Hardened Scales and Gaseous Anomaly, read IDENTICAL before and after.
+4. **Saturation** fell as a consequence of 3, not by a new threshold.
+
+**Residuals, measured rather than tuned away:** Sheoldred's Edict misses decks 98, 87 and
+92 — they sit 2–3 above their A line, so the lane ranks needier decks first; that is the
+lane working, and a premium answer that is an UPGRADE rather than a need is a power read
+this model does not make. Deanna Troi and Mikaeus miss deck 95, which has ZERO counter
+multipliers: the hand pick rested on BLINK (an enters-with counter re-applies on every
+flicker), an interaction no lane reads. The rainbow-fixer overlay still promotes Gaseous
+Anomaly in 4- and 5-colour decks off its Planet token; that overlay predates this change.
+
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
 **`suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about
@@ -9026,6 +9081,32 @@ to singulars adds 492 pool tags across ~100 types, 59 of them `Army` from the am
 alone; that is a G-67 widening needing its own measured pass, not a follow-on fix.
 
 ## [G-89] A Builder page is template + data, and the reason is the only thing stored
+
+The first board typed the derived figures (floors, interaction, sources) into its data, and they
+went stale at the first swap; that is why only the reason is stored.
+
+**Image budget (2026-11-17).** The pack-pile board graded 116 cards against 18 decks, and the
+page carries every deck card too: 995 cards against a 511-file artifact cap, one large image
+each. `image_budget` ships the pile first, then commanders, then deck cards a reason names (the
+suggested cuts), then the rest by name; a card left out is marked `nl` and the page shows it as
+text. Alternate-art sheets are capped at `ART_SHEET_RESERVE` and filled pile-first.
+
+**The pairs-only page (`builder.py swaps <slug> --out <dir>`, 2026-11-17).** When the question is
+"this card or that one" rather than "where does this fit", the full board's decklists are noise. The
+swap page reads `builds/<slug>/swaps.json` (each pair: deck, add, cut, verdict, reason, whether the
+cut was a checked pairing) and shows each candidate beside the one deck card it would replace; text,
+cost, type and owned counts are derived at render like the full board's, and a cut the deck no longer
+runs is refused. Picks live in the artifact's `swaps` collection (`{pick, note}` per pair id), and
+Copy picks prints `deck.py swap <id> --package` lines. Each card ships ONE 672 px image
+(`img/lg/<id>.jpg`) that serves as both the thumbnail and the click-to-enlarge view, a modal
+`<dialog>` that closes on Escape, a click or its close button and returns focus to the opener.
+Each pair also offers OTHER CUTS (`alts`: the deck's five weakest-fit cards from
+`rank_cut_candidates`, the `deck.py cuts` ranking) and shows what the swap does to the deck for
+each choice (`delta`: tier floor plus the changed quality-vector figures, from the same
+`_swap_edit_lines` + `deck_quality_vector` path `swap --package` previews with). The record is
+`{pick, note, cut}` from the page plus `reply`, which Claude writes with an ArtifactData
+`update`; the page writes only its own fields (`update` once a record exists), so a reply is
+never erased. A Swap or Keep folds the pair to one line, reopened with a click.
 
 **Where it came from (2026-11-01).** The Sultai pile (426 cards for decks 75-historic-brawl
 and 96) was first reviewed on a hand-built claude.ai board whose page held every figure

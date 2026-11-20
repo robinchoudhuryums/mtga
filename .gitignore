@@ -43,3 +43,5 @@ tools/mods/*/tsconfig.json
 .cycle/board-fury/img/
 .cycle/board-graha/img/
 .cycle/board-feather/img/
+.cycle/board-swaps/img/
+.cycle/board-vivi/img/

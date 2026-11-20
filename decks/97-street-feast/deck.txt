@@ -13,7 +13,7 @@
 #: archetype: Man each take {1} off a Food crack, so with both a crack is free. The exile layer pays again through
 #: archetype: Quintorius Kand and Scalesoul Gnome, and Bard Class turns legendary casts into more exiled cards. Each
 #: archetype: Food then pays three ways: Biotech Specialist (2 damage per artifact sacrificed), Haliya and Teething
-#: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco, Elanor Gardner,
+#: archetype: Wurmlet (life when an artifact enters), and the sinks (Hungering Puppetbeast, Bosco,
 #: archetype: Syr Ginger). Rocco's counters spread through Evolution Sage, Karn's Bastion and Innkeeper's Talent. Cats
 #: archetype: and Dogs are the body layer: Brimaz, Regal Caracal, Feline Sovereign, the Ajanis and Jetmir go wide,
 #: archetype: Generous Pup turns Rocco's counters into team counters, Rin and Seri and Jinnie Fay tie
@@ -48,6 +48,12 @@
 #: notes: 2026-11-07: Yoshimaru was CUT for Ghired, Mirror of the Wilds (owned). The counter layer keeps
 #: notes: Doubling Season, Innkeeper's Talent and Evolution Sage; Ghired's {R}{G}{W} casts on turn 3 68% of the
 #: notes: time. Next cuts if a slot is needed: West Wind Avatar (the 7-drop), then Feline Sovereign.
+#: notes: 2026-11-16: Stable Wormhole for Elanor Gardner (owner's pick): an any-colour land token every attack, and Peregrin
+#: notes: Took adds a Food to each one; Elanor's basic needed a Food sacrificed that turn.
+#: notes: 2026-11-20: Replicator in for Kutzil, Malamet Exemplar. Its {2},{T} copy is a token CREATION, so Peregrin
+#: notes: Took and Tippy-Toe add a Food to it and Doubling Season / Mondrak double it; it copies Foods, Cats, Dogs
+#: notes: and Thopters. Card advantage 8 -> 7 (Kutzil's combat draw); the lock on opponents' spells during our
+#: notes: turn left with Kutzil.
 
 # Commander
 1 Rocco, Street Chef (MAT) 44
@@ -85,6 +91,7 @@
 1 Giant Opportunity (ELD) 159
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Sidequest: Catch a Fish // Cooking Campsite (FIN) 31
+1 Replicator (TRK) 267
 
 # Artifacts and mana
 1 Roxanne, Starfall Savant (OTJ) 228
@@ -96,7 +103,7 @@
 
 # Food sinks — counters, ramp and mana
 1 Hungering Puppetbeast (FRA) 107
-1 Elanor Gardner (LTR) 286
+1 Stable Wormhole (TRK) 215
 1 Bosco, Just a Bear (TLE) 132
 1 Bumi's Feast Lecture (TLE) 133
 1 West Wind Avatar (TMT) 137
@@ -104,7 +111,6 @@
 # Counters and proliferate
 1 Generous Pup (J25) 4
 1 Michelangelo, the Heart (TMC) 5
-1 Kutzil, Malamet Exemplar (LCI) 232
 1 Evolution Sage (WAR) 159
 1 Innkeeper's Talent (BLB) 180
 

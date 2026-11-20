@@ -300,6 +300,10 @@ because `suggest` sorts by theme weight and central themes are the heaviest, so 
 of its list always clears the stricter gate. Not a property — a consequence of the
 ranking — but not currently a problem either. (My first measurement of this said 100%
 *dis*agreement; it was reading a dict's keys as rows. Measure, then check the measurement.)
+That agreement covers THEME rows only: since 2026-11-20 `suggest-homes` also admits decks
+through structural lanes (artifact count / artifact payoffs / multiplier feeders) and a
+needs lane (removal, ramp, fixing), which `suggest`'s theme filter cannot produce — the
+inverse of `suggest --needs`, not a disagreement with plain `suggest` (G-31).
 
 ---
 

@@ -1,0 +1,3078 @@
+{
+ "schema": 1,
+ "title": "Vivi pile",
+ "decks": [
+  {
+   "key": "V",
+   "id": "103",
+   "label": "Vivi"
+  }
+ ],
+ "piles": [
+  {
+   "key": "V",
+   "label": "Vivi's pile",
+   "deck": "V",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "The Scarlet Witch",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "High Fae Trickster",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firebending Student",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Balmor, Battlemage Captain",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dragonfly Swarm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Enigma Drake",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Arius, Flyby Trawler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Man 2099",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Stormchaser Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lilah, Undefeated Slickshot",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spectacle Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Gray and Adira, Forever Joined",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Galazeth Prismari",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rootha, Mastering the Moment",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Najal, the Storm Runner",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thundering Djinn",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Neera, Wild Mage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Vision, Spectral Synthezoid",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Academy Instructor",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Enraged Flamecaster",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Jacob Hauken, Inspector // Hauken's Insight",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dreadhorde Arcanist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firebender Ascension",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Fevered Visions",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Improbable Alliance",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Don & Raph, Hard Science",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kylox, Visionary Inventor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Glóin, Dwarf Emissary",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Captain Storm, Cosmium Raider",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jhoira, Ageless Innovator",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Breeches, the Blastmaker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brudiclad, Telchor Engineer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Katara, Waterbending Master",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Heated Argument",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Orbital Plunge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Role Reversal",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Storm of Saruman",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lightning Strike",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rapturous Moment",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Elemental Mascot",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sprite Dragon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tempest Angler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Kaza, Roil Chaser",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Malcolm, the Eyes",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "The Locust God",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wiccan, Rising Magician",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Professor Zei, Anthropologist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tolarian Terror",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Victor Timely, Wily Tycoon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Emeritus of Conflict",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Kaladesh",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Izzet Guildgate",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Swiftwater Cliffs",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Stark Industries",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Baron, Airship Kingdom",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Airship Engine Room",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Abandon Attachments",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wisdom of Ages",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Colorstorm Stallion",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Vibrant Outburst",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tome Blast",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Abstract Paintmage",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Guttersnipe",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Improvisation Capstone",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Planetarium of Wan Shi Tong",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sunbird's Invocation",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Shark Typhoon",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Jin-Gitaxias, Progress Tyrant",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Kraum, Violent Cacophony",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Memory Lapse",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Asgardian Inspiration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Expansion // Explosion",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Zaffai and the Tempests",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Firemind's Research",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Saheeli, Jewel of Avishkar",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Mage of Zhalfir",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Twinned Vision",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Swan Song",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wizard's Staff",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Harmonic Prodigy",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Human Torch, Johnny Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Otawara, Soaring City",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sokenzan, Crucible of Defiance",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Flux Channeler",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Wizard Class",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Swiftfoot Boots",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Naru Meha, Master Wizard",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Irencrag Pyromancer",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Roaming Throne",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Volt Charge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Lwaxana Troi, Charming Guest",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Hall of Storm Giants",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Ral, Storm Conduit",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Expressive Iteration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Prismari Charm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Prismari, the Inspiration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thousand-Year Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Indris, the Hydrostatic Surge",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Fractal Anomaly",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Stormcatch Mentor",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Galvanic Iteration",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Izzet Charm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Illuminating Lash",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Tempest Trapper",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Solstice Revelations",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Primal Amulet // Primal Wellspring",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Nibelheim Aflame",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Sanar, Unfinished Genius // Wild Idea",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Ral, Crackling Wit",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Slick Sequence",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Kayla's Kindling",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Oracle of the Alpha",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spellchain Scatter",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Artistic Process",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Spectacular Skywhale",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Glacial Dragonhunt",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Loki Laufeyson",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Resonating Lute",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Ashling, Flame Dancer",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Giant's Amulet",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Thryx, the Sudden Storm",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Rimewall Protector",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Storm-Kiln Artist",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Efreet Flamepainter",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Erratic Cyclops",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Dragonmaster Outcast",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Crackle with Power",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Proft's Eidetic Memory",
+   "pile": "V",
+   "src": "added"
+  },
+  {
+   "name": "Chandra, Torch of Defiance",
+   "pile": "V",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "The Scarlet Witch": {
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). Discounts MV 4+ instants/sorceries by her power: Mizzix's Mastery, Improvisation Capstone and the X spells cast big. A creature spell, so no Vivi trigger. Cut candidate for Thryx, the Sudden Storm (the other big-spell discount).",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "High Fae Trickster": {
+   "group": "Flash",
+   "text": "Flash for everything, but a spell flashed on the opponent's turn can't use Vivi's mana (R2). A 4/2 flash flier otherwise.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Firebending Student": {
+   "group": "Attackers",
+   "text": "Prowess plus attack mana; the draft is not built to attack with small creatures.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Balmor, Battlemage Captain": {
+   "group": "Go-wide",
+   "text": "Team pump per spell; the draft is not wide.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Dragonfly Swarm": {
+   "group": "Graveyard bodies",
+   "text": "Flier sized by the noncreature cards in the yard. With ~40 noncreature spells now in the list it grows faster than when first graded; a strong pick if a creature slot opens.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Enigma Drake": {
+   "group": "Graveyard bodies",
+   "text": "Flier sized by instants/sorceries in the yard; a 100-card yard fills slowly.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Arius, Flyby Trawler": {
+   "group": "Attackers",
+   "text": "Attack-driven seek; little discard to grow it.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Spider-Man 2099": {
+   "group": "Recast",
+   "text": "Double strike and end-step burn after a non-hand cast; turn-4 lockout and a narrow trigger.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Stormchaser Mage": {
+   "group": "Prowess",
+   "text": "2-drop prowess flier with haste. The cheap creature threats were cut in round 2, so this is the one to bring back if the early board feels empty.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Lilah, Undefeated Slickshot": {
+   "group": "Recast",
+   "text": "Plots multicolored instants/sorceries; the draft holds only ~4 multicolored ones.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Spectacle Mage": {
+   "group": "Cost reduction",
+   "text": "Discounts MV 5+ instants/sorceries by 1; few such spells.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Gray and Adira, Forever Joined": {
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick). After a noncreature spell, a hasty token copy of a creature each combat: a copy of Niv-Mizzet, Visionary doubles its draws, a copy of Niv-Mizzet, Parun doubles the combo. Never copy Vivi (the copy has no counters).",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Galazeth Prismari": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Irencrag Pyromancer (owner's mark). Its artifact mana had few artifacts to work with here.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Rootha, Mastering the Moment": {
+   "group": "In the deck (round 10)",
+   "text": "Back in round 10 (owner), for Chandra, Torch of Defiance. An X/X hasty flier each combat after an instant/sorcery, X the biggest MV cast that turn.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Najal, the Storm Runner": {
+   "group": "Flash",
+   "text": "Flash sorceries lose Vivi's mana (R2); attack-gated copy.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Thundering Djinn": {
+   "group": "Draw payoff",
+   "text": "Attack damage = cards drawn this turn: strong beside Niv-Mizzet, weak alone.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Neera, Wild Mage": {
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Planetarium of Wan Shi Tong. Once a turn, trades a spell for a random free one.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick), replacing Zaffai: a free noncreature spell from hand each turn, wider than Zaffai's instants/sorceries.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Academy Instructor": {
+   "group": "In the deck (round 7)",
+   "text": "In since round 7 (owner's pick), for Fractal Anomaly: an Officer token per noncreature spell, and Instructor grows with each one.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Enraged Flamecaster": {
+   "group": "Burn",
+   "text": "2 damage per MV 4+ spell; Fiery Inscription triggers on every instant/sorcery.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "group": "Card flow",
+   "text": "Slow card flow; the free-cast back costs 6 to reach.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "group": "Recast",
+   "text": "Attack-recast capped by its 1 power.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Firebender Ascension": {
+   "group": "Noncreature",
+   "text": "A cheap noncreature cast with a 2/2, but it copies ATTACK triggers the deck lacks. First in if more cheap noncreature spells are wanted from the pile.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Fevered Visions": {
+   "group": "Noncreature",
+   "text": "A noncreature cast that draws for both players (G-42 shape: it feeds the opponent too).",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Improbable Alliance": {
+   "group": "Noncreature",
+   "text": "Needs a second draw each turn; its loot costs 6.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Don & Raph, Hard Science": {
+   "group": "Artifacts",
+   "text": "Affinity for artifacts on attack; two artifacts in the deck.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Kylox, Visionary Inventor": {
+   "group": "Artifacts",
+   "text": "Sacrifices your creatures to free-cast; 7 mana.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "group": "Artifacts",
+   "text": "Historic-spell Treasures; few historic spells.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Captain Storm, Cosmium Raider": {
+   "group": "Artifacts",
+   "text": "Artifact/Pirate payoff; the deck has neither.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Jhoira, Ageless Innovator": {
+   "group": "Artifacts",
+   "text": "Artifact cheat; the deck has almost no artifacts.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Breeches, the Blastmaker": {
+   "group": "Artifacts",
+   "text": "Needs an artifact to sacrifice.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Brudiclad, Telchor Engineer": {
+   "group": "Artifacts",
+   "text": "Token/artifact card.",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "group": "Opponent's turn",
+   "text": "Wants spells on the opponent's turn, when Vivi's mana can't be used (R2).",
+   "graded_at": {
+    "103": "84e00893450c"
+   }
+  },
+  "Heated Argument": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: 5 mana for 6 damage, where the cheaper spells grow Vivi sooner. Back in if the deck needs a big single-target answer.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Orbital Plunge": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A 4-mana sorcery that only kills a creature (6 damage, a Lander on excess); the deck's burn now does a second thing.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Role Reversal": {
+   "group": "Cut in round 2",
+   "text": "Cut for Counterspell: {U}{U}{R} sorcery-speed steal; a counterspell protects Vivi instead.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Storm of Saruman": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A 6-mana copy engine (copies, not casts); the copying now comes from Chandra, Hope's Beacon and Arcane Bombardment.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Lightning Strike": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: plain burn; the owner wanted spells that do a second thing.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Rapturous Moment": {
+   "group": "Cut in round 2",
+   "text": "Cut for Epic Experiment: card flow plus mana, where Epic Experiment turns the same mana into several free casts.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Elemental Mascot": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: a creature (no Vivi trigger) whose impulse draw needs 5+ mana spells.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Sprite Dragon": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A cheap creature that grows on every noncreature spell; with the curve now 3.8, the one to bring back if the early game feels empty.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Tempest Angler": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A cheap creature that grows on every noncreature spell; a candidate if the early game needs a body.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Kaza, Roil Chaser": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. Discounts the next instant/sorcery by the Wizard count (about eight Wizards now, Vivi included).",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Malcolm, the Eyes": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A flier that investigates on your second spell each turn; a creature spell, so no Vivi trigger.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "The Locust God": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. A hasty flying Insect per card drawn — strong beside Niv-Mizzet, but a 6-mana creature in a top end that is already crowded.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: tempo on a 5-mana creature.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Professor Zei, Anthropologist": {
+   "group": "Cut in round 2",
+   "text": "Cut for Three Steps Ahead: a looter creature; the spree spell counters, copies or draws.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Tolarian Terror": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: a body, not a spell; the yard fills slowly in 100 cards.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2: recasts one spell, but is a creature spell (no Vivi trigger).",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Emeritus of Conflict": {
+   "group": "Cut in round 2",
+   "text": "Cut for Culmination of Studies: its Bolt copy needs a 3-spell turn first.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Invasion of Kaladesh": {
+   "group": "Cut in round 2",
+   "text": "Cut in round 2. The Thopter is the whole value; the Vehicle back needs artifacts.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Izzet Guildgate": {
+   "group": "Tapped lands",
+   "text": "Replaced by Steam Vents: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Swiftwater Cliffs": {
+   "group": "Tapped lands",
+   "text": "Replaced by Spirebluff Canal: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Stark Industries": {
+   "group": "Tapped lands",
+   "text": "Replaced by Fiery Islet: always enters tapped (1 life on entry).",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Baron, Airship Kingdom": {
+   "group": "Tapped lands",
+   "text": "Replaced by Shivan Reef: always enters tapped.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Airship Engine Room": {
+   "group": "Tapped lands",
+   "text": "Replaced by Sulfur Falls: always enters tapped; its sacrifice-to-draw costs 4.",
+   "graded_at": {
+    "103": "845b603af10b"
+   }
+  },
+  "Abandon Attachments": {
+   "group": "Cut in round 4",
+   "text": "Cut for Artist's Talent: a one-shot discard-1-draw-2; Artist's Talent does the same swap on every noncreature spell and grows into a cost reducer and a damage amplifier.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Wisdom of Ages": {
+   "group": "Cut in round 4",
+   "text": "Cut for Mizzix's Mastery: returns the yard to hand for {U}{U}{U} 7; the Mastery casts the yard instead, each spell a Vivi trigger.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Colorstorm Stallion": {
+   "group": "Cut in round 4",
+   "text": "Cut for Archmage of Runes: a creature (no Vivi trigger) whose copy needs 5+ mana spells; Archmage discounts and draws on every instant/sorcery.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Vibrant Outburst": {
+   "group": "Cut in round 4",
+   "text": "Cut in round 4. Plain 3 damage plus a tap; the deck has since moved to burn that does a second thing.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Tome Blast": {
+   "group": "Cut in round 4",
+   "text": "Cut for Glen Elendra's Answer: 2 damage twice; the deck wanted an uncounterable shield for its big turn more.",
+   "graded_at": {
+    "103": "8e993e2e7c30"
+   }
+  },
+  "Abstract Paintmage": {
+   "group": "Cut in round 4",
+   "text": "Cut in round 4: a once-a-turn ritual on a creature.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Guttersnipe": {
+   "group": "Candidates",
+   "text": "2 damage to the opponent on every instant/sorcery = two Niv-Mizzet draws. Overlaps Irencrag and Talrand as a spell payoff; needs a cut (Melek is the owner's keep).",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Improvisation Capstone": {
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Solstice Revelations. Free-casts a pile of spells, then recasts itself free every first main phase; each free cast is a Vivi trigger. Adds to a crowded top end.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Neera (owner's mark): a 6-drop with almost no other scry to trigger it.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Sunbird's Invocation": {
+   "group": "In the deck (round 7)",
+   "text": "In since round 7, for Thousand-Year Storm: every spell from hand cascades into a free one — a cast, so Vivi triggers.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Shark Typhoon": {
+   "group": "In the deck (round 5)",
+   "text": "In since round 5 (owner's pick), replacing Saheeli: an X/X flying Shark per noncreature spell, X its mana value; cycles for a card when you need one.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "group": "Cut in round 7",
+   "text": "Cut for Ajani Unrelenting (owner's pick): gives up the once-a-turn counter on the opponent's spells and the copy for Ajani's Wizard tokens and refill.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Kraum, Violent Cacophony": {
+   "group": "In the deck (round 5)",
+   "text": "In since round 5, replacing Twinned Vision: a flier that draws and grows on your second spell every turn.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Swan Song": {
+   "group": "Cut in round 5",
+   "text": "Cut by the owner: it gives the opponent a 2/2 flier, against the owner's rule on removal that helps the opponent.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Memory Lapse": {
+   "group": "Cut in round 5",
+   "text": "Cut in round 5 for Gray and Adira. A soft counter; Wizard's Retort is in now.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Asgardian Inspiration": {
+   "group": "Cut in round 5",
+   "text": "Cut in round 5: a 1-mana impulse that costs {2} each time it returns — slow.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Expansion // Explosion": {
+   "group": "Cut in round 5",
+   "text": "Cut for The Scarlet Witch by the owner's choice. Still the best late sink here: X to the face draws X with Niv-Mizzet, Visionary. First back in if a spell slot opens.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Zaffai and the Tempests": {
+   "group": "Cut in round 5",
+   "text": "Cut for Vision, Spectral Synthezoid: the same free cast from hand each turn, limited to instants and sorceries.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Firemind's Research": {
+   "group": "Cut in round 5",
+   "text": "Cut in round 5. Charge counters into cards or 5 damage — slow beside the deck's draw engines.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Saheeli, Jewel of Avishkar": {
+   "group": "Cut in round 5",
+   "text": "Cut for Shark Typhoon: 1/1 hasty flying Thopters per noncreature spell, where Shark makes an X/X.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Teferi, Mage of Zhalfir": {
+   "group": "Protection",
+   "text": "Up from ◇: with Jin-Gitaxias gone, the deck's protection reads 2; opponents acting only at sorcery speed shields a Vivi turn. {U}{U}{U}.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Twinned Vision": {
+   "group": "Cut in round 5",
+   "text": "Cut for Kraum: three cards once against Kraum's draw on every two-spell turn.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Wizard's Staff": {
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. Equip Wizard {1}: on Vivi her trigger fires twice per noncreature spell (two counters, two damage, two Niv-Mizzet, Visionary draws); on either Niv it doubles that Niv's trigger.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Harmonic Prodigy": {
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. Every other Wizard's triggers fire twice — Vivi, both Nivs, Archmage, Tellah, Gandalf. Stacks with Wizard's Staff.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Human Torch, Johnny Storm": {
+   "group": "In the deck (round 6)",
+   "text": "In since round 6. With another Hero out (The Scarlet Witch, Vision and Scarlet Witch, Vision, Spectral Synthezoid), each draw pings the opponent and Niv-Mizzet, Visionary draws per ping: a second two-card kill.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Otawara, Soaring City": {
+   "group": "In the deck (round 6)",
+   "text": "In since round 6, for an Island: a blue source that channels into bounce, cheaper per legendary creature.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Sokenzan, Crucible of Defiance": {
+   "group": "In the deck (round 6)",
+   "text": "In since round 6, for a Mountain: a red source that channels into two hasty 1/1s.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Flux Channeler": {
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add). Each noncreature spell proliferates: Vivi's counters, Ajani, Ral and Chandra, Hope's Beacon loyalty, Wizard Class, and a counter on Pensive Professor draws a card.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Wizard Class": {
+   "group": "In the deck (round 7)",
+   "text": "In since round 7, for Indris: level 3 puts a +1/+1 counter on a creature per card drawn — on Vivi, Niv-Mizzet's draws become mana.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Swiftfoot Boots": {
+   "group": "Tier 2 (round 6)",
+   "text": "Hexproof for Vivi for {1} — the deck's protection reads 2-3. Owned. Cut idea: Charred Foyer.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Naru Meha, Master Wizard": {
+   "group": "Wizard payoffs",
+   "text": "Up a notch: other Wizards get +1/+1, which now includes Ajani's Cadet tokens and Vivi (one more mana).",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Irencrag Pyromancer": {
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Galazeth Prismari. A Wizard (Harmonic Prodigy doubles it) that deals 3 on your second draw each turn.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Roaming Throne": {
+   "group": "Owner's adds (round 7)",
+   "text": "Name Wizard: a third trigger doubler beside Harmonic Prodigy and Wizard's Staff. Not marked; a cut would be needed.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Volt Charge": {
+   "group": "In the deck (round 8)",
+   "text": "In since round 8 (owner's add), for Illuminating Lash. Instant 3 damage plus a proliferate, which draws through Pensive Professor.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Lwaxana Troi, Charming Guest": {
+   "group": "Owner benched",
+   "text": "Benched by the owner. {2},{T}, stay tapped: one creature's triggers fire twice; behind Wizard's Staff and Harmonic Prodigy.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Hall of Storm Giants": {
+   "group": "Tier 2 (round 6)",
+   "text": "A blue land that becomes a 7/7 ward 3; enters tapped once you have two other lands. For an Island.",
+   "graded_at": {
+    "103": "33a071a68a39"
+   }
+  },
+  "Ral, Storm Conduit": {
+   "group": "Cut in round 6",
+   "text": "Cut for Wizard's Staff (owner's mark): pings on every cast or copy, but the Staff doubles Vivi's own ping and draws.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Expressive Iteration": {
+   "group": "Cut in round 6",
+   "text": "Cut for Harmonic Prodigy (owner's mark): a cheap impulse spell; one of the 1–2 mana noncreature spells that grow Vivi early.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Prismari Charm": {
+   "group": "Cut in round 6",
+   "text": "Cut for Human Torch (owner's mark): a flexible 2-mana charm; its two 1-damage pings drew two with Niv-Mizzet.",
+   "graded_at": {
+    "103": "719b1d410edc"
+   }
+  },
+  "Prismari, the Inspiration": {
+   "group": "Cut in round 7",
+   "text": "Cut for Surtland Elementalist (owner's pick): a 7-drop whose storm copies are not casts, so they never grew Vivi.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Thousand-Year Storm": {
+   "group": "Cut in round 7",
+   "text": "Cut for Sunbird's Invocation: same 6 mana, but its copies are not casts; Sunbird's free spells are.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Indris, the Hydrostatic Surge": {
+   "group": "Cut in round 7",
+   "text": "Cut for Wizard Class: draw-per-instant/sorcery for 6, which Archmage of Runes does for 5.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Fractal Anomaly": {
+   "group": "Cut in round 7",
+   "text": "Cut for Academy Instructor (owner's pick): a 1-mana token sized by draws; Instructor makes a token on every noncreature spell.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Stormcatch Mentor": {
+   "group": "Cut in round 7",
+   "text": "Cut in round 7 for Pensive Professor. With 20 cards at MV 2 or less, the first card back if the early game feels thin.",
+   "graded_at": {
+    "103": "5411fe891270"
+   }
+  },
+  "Galvanic Iteration": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Curiosity (owner's mark). A copy, not a cast, so no Vivi trigger.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Izzet Charm": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Wizard's Retort (owner's mark). Retort counters anything and is often {U}{U} with Wizards out.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Illuminating Lash": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Volt Charge (owner's mark).",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Tempest Trapper": {
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Resonating Lute. Instant/sorcery-only mana on a 3-mana Wizard.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Solstice Revelations": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Improvisation Capstone (owner's mark). Free only below the Mountains you control; 13 of about 38 lands are Mountains.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Primal Amulet // Primal Wellspring": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Planetarium (owner's mark). Melek, Archmage of Runes, Artist's Talent and Iron Lad still reduce costs.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Nibelheim Aflame": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Thor, God of Thunder.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Sanar, Unfinished Genius // Wild Idea": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Iron Lad, Young Avenger: a second Hero for the Human Torch loop and a noncreature cost reducer.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Ral, Crackling Wit": {
+   "group": "In the deck (round 9)",
+   "text": "Back in round 9 (owner), for Glacial Dragonhunt. Gains loyalty on every noncreature spell; +1 makes prowess Otters, −3 draws.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Slick Sequence": {
+   "group": "Cut in round 8",
+   "text": "Cut in round 8 for Command the Stage.",
+   "graded_at": {
+    "103": "18368a1682c4"
+   }
+  },
+  "Kayla's Kindling": {
+   "group": "In the deck (round 9)",
+   "text": "In since round 9 (owner's add), for Artistic Process. Every upkeep, draft one of three from its spellbook (9 of 15 red instants/sorceries: Lightning Bolt, Abrade, Volcanic Fallout, Electrodominance…) and cast it that turn; 2 damage on entry.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Oracle of the Alpha": {
+   "group": "In the deck (round 9)",
+   "text": "In since round 9 (owner's add), for Spectacular Skywhale. A flying Wizard that shuffles the Power Nine in, all noncreature casts for Vivi.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Spellchain Scatter": {
+   "group": "In the deck (round 9)",
+   "text": "In since round 9, for Loki Laufeyson. Your next instant or sorcery conjures a copy of itself (kicked, you keep it); the copy is a real cast, so it triggers Vivi.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Ashling, Flame Dancer": {
+   "group": "In the deck (round 10)",
+   "text": "In since round 10 (owner's add), for Crackle with Power. Magecraft rummage; the second each turn deals 2 to each opponent and each of their creatures, the third adds {R}{R}{R}{R}. A Shaman, so Harmonic Prodigy doubles it.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Giant's Amulet": {
+   "group": "In the deck (round 10)",
+   "text": "In since round 10 (owner's add), for Proft's Eidetic Memory. Equip {2} on Vivi: hexproof while untapped (her mana ability is {0}, not a tap). Pay {3}{U} on entry for a 4/4 Giant Wizard token.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "group": "Round 10 candidates",
+   "text": "Still open. Flash flier; spells of MV 5+ cost {1} less and can't be countered. Cut candidates: The Scarlet Witch (the other big-spell discount), Wanda's Vision, Shark Typhoon.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Rimewall Protector": {
+   "group": "Round 10 candidates",
+   "text": "Giant Wizard with ward {1}; on entry every other Giant/Wizard you control or hold perpetually gains ward {1}, Vivi included for the rest of the game.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "group": "Round 10 candidates",
+   "text": "A Treasure per instant/sorcery (Harmonic Prodigy doubles it); Vivi already supplies the mana.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Efreet Flamepainter": {
+   "group": "Round 10 candidates",
+   "text": "Double strike; recasts an instant/sorcery from the graveyard on combat damage. Needs to connect as a 1/4; Goliath Daydreamer covers the job.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Erratic Cyclops": {
+   "group": "Round 10 candidates",
+   "text": "Spell-pumped trampler, the role Spectacular Skywhale held before it was cut.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Dragonmaster Outcast": {
+   "group": "Round 10 candidates",
+   "text": "A 5/5 Dragon each upkeep at six lands; a creature spell (no Vivi trigger) and fragile.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Artistic Process": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Kayla's Kindling (owner's mark); the Kindling drafts removal.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Spectacular Skywhale": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Oracle of the Alpha (owner's mark).",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Glacial Dragonhunt": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Ral, Crackling Wit (owner's mark). Cheap removal; back in if the early game runs thin.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Loki Laufeyson": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Spellchain Scatter (owner's mark). Loki's copy is not a cast.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Resonating Lute": {
+   "group": "Cut in round 9",
+   "text": "Cut in round 9 for Tempest Trapper: overlapping instant/sorcery-only mana.",
+   "graded_at": {
+    "103": "59e45536d994"
+   }
+  },
+  "Crackle with Power": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Ashling (owner's mark). Kayla's Kindling can still draft it.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Giant's Amulet (owner's mark): it overlapped Wizard Class.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "group": "Cut in round 10",
+   "text": "Cut in round 10 for Rootha (owner's pick, keeping Human Torch). Took its −3 removal and +1 card advantage with it.",
+   "graded_at": {
+    "103": "58dbf5992aff"
+   }
+  }
+ },
+ "snapshots": {
+  "103": {
+   "84e00893450c": [
+    "Abandon Attachments",
+    "Abstract Paintmage",
+    "Agna Qel'a",
+    "Airship Engine Room",
+    "Arcane Bombardment",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Baron, Airship Kingdom",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Colorstorm Stallion",
+    "Electro, Assaulting Battery",
+    "Elemental Mascot",
+    "Emeritus of Conflict",
+    "Fiery Inscription",
+    "Firemind's Research",
+    "Gandalf the Grey",
+    "Goliath Daydreamer",
+    "Heated Argument",
+    "Indris, the Hydrostatic Surge",
+    "Invasion of Kaladesh",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Guildgate",
+    "Kaza, Roil Chaser",
+    "Keranos, God of Storms",
+    "Lightning Strike",
+    "Loki Laufeyson",
+    "Malcolm, the Eyes",
+    "Melek, Reforged Researcher",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Orbital Plunge",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Prismari, the Inspiration",
+    "Professor Zei, Anthropologist",
+    "Ral, Crackling Wit",
+    "Rapturous Moment",
+    "Resonating Lute",
+    "Riverpyre Verge",
+    "Role Reversal",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Sprite Dragon",
+    "Stark Industries",
+    "Storm of Saruman",
+    "Stormcatch Mentor",
+    "Swiftwater Cliffs",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Angler",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Locust God",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Thunder Magic",
+    "Tolarian Terror",
+    "Tome Blast",
+    "Vibrant Outburst",
+    "Victor Timely, Wily Tycoon",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wiccan, Rising Magician",
+    "Wisdom of Ages",
+    "Zaffai and the Tempests"
+   ],
+   "845b603af10b": [
+    "Abandon Attachments",
+    "Abstract Paintmage",
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Artistic Process",
+    "As Foretold",
+    "Asgardian Inspiration",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Colorstorm Stallion",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expansion // Explosion",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Firemind's Research",
+    "Fractal Anomaly",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Goliath Daydreamer",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Memory Lapse",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Swan Song",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Tome Blast",
+    "Twinned Vision",
+    "Vibrant Outburst",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wisdom of Ages",
+    "Zaffai and the Tempests"
+   ],
+   "8e993e2e7c30": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Asgardian Inspiration",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expansion // Explosion",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Firemind's Research",
+    "Fractal Anomaly",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Memory Lapse",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Ral, Storm Conduit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Saheeli, Jewel of Avishkar",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Swan Song",
+    "Teferi, Mage of Zhalfir",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Twinned Vision",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Zaffai and the Tempests"
+   ],
+   "33a071a68a39": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Expressive Iteration",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Fractal Anomaly",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Jin-Gitaxias, Progress Tyrant",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari Charm",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Ral, Storm Conduit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole"
+   ],
+   "719b1d410edc": [
+    "Agna Qel'a",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Fractal Anomaly",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Illuminating Lash",
+    "Indris, the Hydrostatic Surge",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Jin-Gitaxias, Progress Tyrant",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Primal Amulet // Primal Wellspring",
+    "Prismari, the Inspiration",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Sokenzan, Crucible of Defiance",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Stormcatch Mentor",
+    "Sulfur Falls",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thousand-Year Storm",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard's Staff"
+   ],
+   "5411fe891270": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Galazeth Prismari",
+    "Galvanic Iteration",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Illuminating Lash",
+    "Iroh's Demonstration",
+    "Island",
+    "Izzet Charm",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Nibelheim Aflame",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Primal Amulet // Primal Wellspring",
+    "Ral, Crackling Wit",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Sanar, Unfinished Genius // Wild Idea",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Slick Sequence",
+    "Sokenzan, Crucible of Defiance",
+    "Solstice Revelations",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Staff"
+   ],
+   "18368a1682c4": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "Artistic Process",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Glacial Dragonhunt",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Loki Laufeyson",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Planetarium of Wan Shi Tong",
+    "Proft's Eidetic Memory",
+    "Resonating Lute",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spectacular Skywhale",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
+   ],
+   "59e45536d994": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "As Foretold",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Crackle with Power",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Kayla's Kindling",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Oracle of the Alpha",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Proft's Eidetic Memory",
+    "Ral, Crackling Wit",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spellchain Scatter",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
+   ],
+   "58dbf5992aff": [
+    "Academy Instructor",
+    "Agna Qel'a",
+    "Ajani Unrelenting",
+    "Arcane Bombardment",
+    "Archmage of Runes",
+    "Artist's Talent",
+    "As Foretold",
+    "Ashling, Flame Dancer",
+    "Baral and Kari Zev",
+    "Chandra, Hope's Beacon",
+    "Charred Foyer // Warped Space",
+    "Command the Stage",
+    "Counterspell",
+    "Culmination of Studies",
+    "Curiosity",
+    "Electro, Assaulting Battery",
+    "Epic Experiment",
+    "Fiery Inscription",
+    "Fiery Islet",
+    "Flux Channeler",
+    "Gandalf the Grey",
+    "Giant's Amulet",
+    "Glen Elendra's Answer",
+    "Goliath Daydreamer",
+    "Gray and Adira, Forever Joined",
+    "Harmonic Prodigy",
+    "Human Torch, Johnny Storm",
+    "Improvisation Capstone",
+    "Irencrag Pyromancer",
+    "Iroh's Demonstration",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Kayla's Kindling",
+    "Keranos, God of Storms",
+    "Kraum, Violent Cacophony",
+    "Melek, Reforged Researcher",
+    "Mizzix's Mastery",
+    "Mountain",
+    "Neera, Wild Mage",
+    "Niv-Mizzet, Parun",
+    "Niv-Mizzet, Visionary",
+    "Oracle of the Alpha",
+    "Otawara, Soaring City",
+    "Ovika, Enigma Goliath",
+    "Paradigm Shifter",
+    "Pensive Professor",
+    "Ral, Crackling Wit",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Riverpyre Verge",
+    "Rootha, Mastering the Moment",
+    "Shark Typhoon",
+    "Shivan Reef",
+    "Sokenzan, Crucible of Defiance",
+    "Sorcerer Class",
+    "Spellchain Scatter",
+    "Spirebluff Canal",
+    "Steam Vents",
+    "Sulfur Falls",
+    "Sunbird's Invocation",
+    "Surtland Elementalist",
+    "Talrand, Sky Summoner",
+    "Tellah, Great Sage",
+    "Tempest Trapper",
+    "Temple of Epiphany",
+    "The Dawning Archaic",
+    "The Emperor of Palamecia",
+    "The Scarlet Witch",
+    "The Vision and Scarlet Witch",
+    "Thor, God of Thunder",
+    "Three Steps Ahead",
+    "Thunder Magic",
+    "Vision, Spectral Synthezoid",
+    "Vivi Ornitier",
+    "Volt Charge",
+    "Wanda's Vision",
+    "Wandering Fumarole",
+    "Wizard Class",
+    "Wizard's Retort",
+    "Wizard's Staff"
+   ]
+  }
+ },
+ "verdicts": {
+  "The Scarlet Witch": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "High Fae Trickster": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Firebending Student": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Balmor, Battlemage Captain": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Dragonfly Swarm": {
+   "V": {
+    "m": "★",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Enigma Drake": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Arius, Flyby Trawler": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Spider-Man 2099": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Stormchaser Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Lilah, Undefeated Slickshot": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Spectacle Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Gray and Adira, Forever Joined": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Galazeth Prismari": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Rootha, Mastering the Moment": {
+   "V": {
+    "m": "★",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Najal, the Storm Runner": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Thundering Djinn": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Neera, Wild Mage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Academy Instructor": {
+   "V": {
+    "m": "★★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Enraged Flamecaster": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Jacob Hauken, Inspector // Hauken's Insight": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Dreadhorde Arcanist": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Firebender Ascension": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Fevered Visions": {
+   "V": {
+    "m": "◇",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Improbable Alliance": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Don & Raph, Hard Science": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Kylox, Visionary Inventor": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "V": {
+    "m": "△",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Captain Storm, Cosmium Raider": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Jhoira, Ageless Innovator": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Breeches, the Blastmaker": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Brudiclad, Telchor Engineer": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "V": {
+    "m": "✗",
+    "graded_at": "84e00893450c"
+   }
+  },
+  "Heated Argument": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Orbital Plunge": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Role Reversal": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Storm of Saruman": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Lightning Strike": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Rapturous Moment": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Elemental Mascot": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Sprite Dragon": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Tempest Angler": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Kaza, Roil Chaser": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Malcolm, the Eyes": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "The Locust God": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Professor Zei, Anthropologist": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Tolarian Terror": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Victor Timely, Wily Tycoon": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Emeritus of Conflict": {
+   "V": {
+    "m": "◇",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Invasion of Kaladesh": {
+   "V": {
+    "m": "△",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Izzet Guildgate": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Swiftwater Cliffs": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Stark Industries": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Baron, Airship Kingdom": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Airship Engine Room": {
+   "V": {
+    "m": "△",
+    "graded_at": "845b603af10b"
+   }
+  },
+  "Abandon Attachments": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Wisdom of Ages": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Colorstorm Stallion": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Vibrant Outburst": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Tome Blast": {
+   "V": {
+    "m": "◇",
+    "graded_at": "8e993e2e7c30"
+   }
+  },
+  "Abstract Paintmage": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Guttersnipe": {
+   "V": {
+    "m": "★★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Improvisation Capstone": {
+   "V": {
+    "m": "★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Sunbird's Invocation": {
+   "V": {
+    "m": "★★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Shark Typhoon": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Kraum, Violent Cacophony": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Swan Song": {
+   "V": {
+    "m": "✗",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Memory Lapse": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Asgardian Inspiration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Expansion // Explosion": {
+   "V": {
+    "m": "★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Zaffai and the Tempests": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Firemind's Research": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Saheeli, Jewel of Avishkar": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Teferi, Mage of Zhalfir": {
+   "V": {
+    "m": "★★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Twinned Vision": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Wizard's Staff": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Harmonic Prodigy": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Human Torch, Johnny Storm": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Otawara, Soaring City": {
+   "V": {
+    "m": "★★",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Sokenzan, Crucible of Defiance": {
+   "V": {
+    "m": "★★",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Flux Channeler": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Wizard Class": {
+   "V": {
+    "m": "★★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Swiftfoot Boots": {
+   "V": {
+    "m": "★★",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Naru Meha, Master Wizard": {
+   "V": {
+    "m": "★★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Irencrag Pyromancer": {
+   "V": {
+    "m": "★★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Roaming Throne": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Volt Charge": {
+   "V": {
+    "m": "★★",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Lwaxana Troi, Charming Guest": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Hall of Storm Giants": {
+   "V": {
+    "m": "◇",
+    "graded_at": "33a071a68a39"
+   }
+  },
+  "Ral, Storm Conduit": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Expressive Iteration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Prismari Charm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "719b1d410edc"
+   }
+  },
+  "Prismari, the Inspiration": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Thousand-Year Storm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Indris, the Hydrostatic Surge": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Fractal Anomaly": {
+   "V": {
+    "m": "◇",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Stormcatch Mentor": {
+   "V": {
+    "m": "★",
+    "graded_at": "5411fe891270"
+   }
+  },
+  "Galvanic Iteration": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Izzet Charm": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Illuminating Lash": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Tempest Trapper": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Solstice Revelations": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Primal Amulet // Primal Wellspring": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Nibelheim Aflame": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Sanar, Unfinished Genius // Wild Idea": {
+   "V": {
+    "m": "◇",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Ral, Crackling Wit": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Slick Sequence": {
+   "V": {
+    "m": "△",
+    "graded_at": "18368a1682c4"
+   }
+  },
+  "Kayla's Kindling": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Oracle of the Alpha": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Spellchain Scatter": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Ashling, Flame Dancer": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Giant's Amulet": {
+   "V": {
+    "m": "★★★",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Thryx, the Sudden Storm": {
+   "V": {
+    "m": "★★",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Rimewall Protector": {
+   "V": {
+    "m": "★★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "V": {
+    "m": "★",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Efreet Flamepainter": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Erratic Cyclops": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Dragonmaster Outcast": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Artistic Process": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Spectacular Skywhale": {
+   "V": {
+    "m": "△",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Glacial Dragonhunt": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Loki Laufeyson": {
+   "V": {
+    "m": "◇",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Resonating Lute": {
+   "V": {
+    "m": "△",
+    "graded_at": "59e45536d994"
+   }
+  },
+  "Crackle with Power": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Proft's Eidetic Memory": {
+   "V": {
+    "m": "◇",
+    "graded_at": "58dbf5992aff"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "V": {
+    "m": "★",
+    "graded_at": "58dbf5992aff"
+   }
+  }
+ }
+}

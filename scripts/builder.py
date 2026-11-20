@@ -1631,6 +1631,42 @@ def _sprite(out_dir, slugs):
     return {"src": "img/thumbs.jpg", "cols": SPRITE_COLS, "rows": rows, "i": {s: i for i, s in enumerate(have)}}
 
 
+# A board grading a pile against many decks carries every deck card too (2026-11-17: 18 decks,
+# 995 cards), and each large image is one file against the 511-file cap. The pile is what the
+# page is for, so when everything will not fit the budget ships, in order: the pile, the
+# commanders (the deck panels' portraits), the deck cards a reason NAMES (the suggested cuts),
+# then the rest by name. A card left out is marked `nl` and shown as text only.
+ART_SHEET_RESERVE = 12       # alternate-art sheets (60 cells each) kept free under the cap
+
+
+def image_budget(data, build, urls, backs, cmds=None, cap=None):
+    """The names whose large image (and back face) an artifact render ships, within `cap`
+    files (default ARTIFACT_FILE_CAP less the page, the thumbnail sprite and
+    ART_SHEET_RESERVE). Everything when it fits."""
+    cap = (ARTIFACT_FILE_CAP - 2 - ART_SHEET_RESERVE) if cap is None else cap
+    names = [n for n in dict.fromkeys([c["n"] for c in data["cards"]] + list((cmds or {}).values()))
+             if n in urls]
+    if len(names) + sum(1 for n in names if n in backs) <= cap:
+        return set(names)
+    text = " ".join((r or {}).get("text", "") for r in (build.get("reasons") or {}).values()).lower()
+    pile = {c["n"] for c in data["cards"] if c.get("p") is not None}
+    cmd = set((cmds or {}).values())
+
+    def rank(n):
+        if n in pile:
+            return 0
+        if n in cmd:
+            return 1
+        return 2 if n.split(" // ")[0].lower() in text else 3
+    ship, used = set(), 0
+    for n in sorted(names, key=lambda n: (rank(n), n)):
+        cost = 1 + (1 if n in backs else 0)
+        if used + cost <= cap:
+            ship.add(n)
+            used += cost
+    return ship
+
+
 def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name="index.html",
            fetch=True, home=None):
     """Write `out_dir/index.html` for a build: the template with the derived data inlined.
@@ -1650,10 +1686,30 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     cmds = {k: v.get("cmd") for k, v in meta["live"].items() if v.get("cmd")}
     urls = image_urls(slug, [c["n"] for c in data["cards"]] + list(cmds.values()),
                       fetch=fetch and (images or target == "pages"))
-    arts = printing_arts(slug, [c["n"] for c in data["cards"]], fetch=fetch)
     backs = back_image_urls(slug, [c["n"] for c in data["cards"]],
                             fetch=fetch and (images or target == "pages"),
                             two_faced=[c["n"] for c in data["cards"] if " // " in (c.get("t") or "")])
+    all_urls = dict(urls)
+    ship = None
+    if target == "artifact" and images:
+        ship = image_budget(data, b, urls, backs, cmds)
+        if len(ship) < len(urls):
+            urls = {n: u for n, u in urls.items() if n in ship}
+            backs = {n: u for n, u in backs.items() if n in ship}
+            for c in data["cards"]:
+                if c["n"] not in ship:
+                    c["nl"] = 1         # no large image shipped: the page shows text only
+    arts = printing_arts(slug, [c["n"] for c in data["cards"] if ship is None or c["n"] in ship],
+                         fetch=fetch)
+    if ship is not None:
+        room = ART_SHEET_RESERVE * ART_PER_SHEET     # alternate arts are extras: pile first
+        pile = {c["n"] for c in data["cards"] if c.get("p") is not None}
+        kept = {}
+        for n in sorted(arts, key=lambda n: (n not in pile, n)):
+            k = sum(1 for p in arts[n] if p.get("art"))
+            if k <= room:
+                kept[n], room = arts[n], room - k
+        arts = kept
     for c in data["cards"]:
         if arts.get(c["n"]):
             c["al"] = arts[c["n"]]          # alternate Arena printings (view-only)
@@ -1703,7 +1759,142 @@ def render(slug, target, out_dir, tempo=True, images=True, data=None, page_name=
     atomic_write(out, lambda fh: fh.write(page), backup=False)
     return {"page": out, "cards": len(data["cards"]), "images": len(urls),
             "fetched": got, "image_errors": missing,
-            "no_image": sorted(set(c["n"] for c in data["cards"]) - set(urls))}
+            "no_image": sorted(set(c["n"] for c in data["cards"]) - set(all_urls)),
+            "over_budget": sorted(set(all_urls) - set(urls))}
+
+
+# ---------------------------------------------------------------- swap board
+# A pairs-only page (2026-11-17): each candidate beside the ONE deck card it would replace,
+# read side by side, instead of whole decklists. `builds/<slug>/swaps.json` stores the pairs
+# and their reasons; card text, cost, type and owned counts are derived at render, as on the
+# full board. The page keeps picks in the artifact's `swaps` collection (doc id = pair id).
+SWAPS_TEMPLATE = os.path.join(REPO_ROOT, "scripts", "builder_swaps_template.html")
+
+
+def swaps_path(slug):
+    return os.path.join(os.path.dirname(build_path(slug)), "swaps.json")
+
+
+SWAP_ALT_CUTS = 5          # the deck's weakest-fit cards offered as other cuts per pair
+_DELTA_KEYS = ("interaction", "card_advantage", "protection", "avg_mv", "board_power",
+               "early_drops", "central_themes")
+
+
+def _swap_delta(D, rec, before, cut, add):
+    """What one swap does to the deck: {"floor": [before, after], key: [before, after]} for
+    the `_DELTA_KEYS` that changed, from the same primitives `swap --package` previews
+    with (`_swap_edit_lines` on the raw lines, `deck_quality_vector` on a temp copy)."""
+    import tempfile
+    with open(rec["path"], encoding="utf-8") as fh:
+        lines = fh.read().rstrip("\n").split("\n")
+    disp, st, cn = D._printing_of(add)
+    lines = D._swap_edit_lines(lines, cut, disp, (st, cn))
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines) + "\n")
+        after = D.deck_quality_vector({"id": rec["id"], "path": tmp, "name": rec.get("name")})
+    finally:
+        os.remove(tmp)
+    out = {"floor": [D.tier_band(before), D.tier_band(after)]}
+    for k in _DELTA_KEYS:
+        if before.get(k) != after.get(k):
+            out[k] = [before.get(k), after.get(k)]
+    return out
+
+
+def swap_board_data(slug):
+    """The swap page's data: {title, intro, decks, cards, swaps}. Raises BuildError for a
+    pair naming a card the deck does not run (the cut) or one with no pool row.
+
+    Each pair also carries `alts` (the deck's `SWAP_ALT_CUTS` weakest-fit cards from
+    `rank_cut_candidates`, the ranking `deck.py cuts` prints, minus the pair's own cut and
+    add) and `delta` ({cut: what the swap does to the deck}) for its cut and every alt, so
+    the page can offer another cut and show each choice's effect without running anything."""
+    import deck as D
+    try:
+        spec = json.load(open(swaps_path(slug), encoding="utf-8"))
+    except OSError:
+        raise BuildError(f"no {os.path.relpath(swaps_path(slug), REPO_ROOT)}")
+    # The shared, front-face-aliased loaders (G-63): keys are LOWERCASED names.
+    pool, mana = D.load_card_data(), D.load_mana()
+    _, _, byq = D.load_collection()
+    decks, cards, problems, ranked, before = {}, {}, [], {}, {}
+
+    def card_row(n, tag):
+        if n in cards:
+            return True
+        r = pool.get(n.lower())
+        if not r:
+            problems.append(f"{tag}: {n} has no card data")
+            return False
+        have, found = D.owned(byq, n)
+        cards[n] = {"n": r.get("name") or n, "c": (mana.get(n.lower()) or ("", 0))[0],
+                    "t": r.get("type", ""), "o": r.get("text", ""),
+                    "own": have if found else 0, "id": image_slug(n)}
+        return True
+
+    swaps = []
+    for sw in spec["swaps"]:
+        sw = dict(sw)
+        rec = D.find_deck(sw["deck"])
+        if not rec:
+            problems.append(f"{sw['id']}: no deck {sw['deck']}")
+            continue
+        meta, lines = D.parse_deck_file(rec["path"])
+        decks.setdefault(sw["deck"], {"name": meta.get("name") or rec["name"]})
+        if sw["cut"] not in {n for _q, n, _s, _c in lines}:
+            problems.append(f"{sw['id']}: deck {sw['deck']} does not run {sw['cut']}")
+            continue
+        if not (card_row(sw["add"], sw["id"]) and card_row(sw["cut"], sw["id"])):
+            continue
+        if sw["deck"] not in ranked:
+            ranked[sw["deck"]] = [row[1] for row in D.rank_cut_candidates(rec)[0]]
+            before[sw["deck"]] = D.deck_quality_vector(rec)
+        skip = {sw["cut"], sw["add"]}
+        sw["alts"] = []
+        for n in ranked[sw["deck"]]:
+            if len(sw["alts"]) >= SWAP_ALT_CUTS:
+                break
+            if n not in skip and card_row(n, sw["id"]):
+                sw["alts"].append(n)
+        sw["delta"] = {c: _swap_delta(D, rec, before[sw["deck"]], c, sw["add"])
+                       for c in [sw["cut"], *sw["alts"]]}
+        swaps.append(sw)
+    if problems:
+        raise BuildError("swaps.json: " + "; ".join(problems))
+    order = sorted(decks, key=lambda d: (int(re.match(r"\d+", d).group()) if re.match(r"\d+", d) else 9999, d))
+    return {"title": spec.get("title") or slug, "intro": spec.get("intro", ""),
+            "decks": {d: decks[d] for d in order}, "cards": cards, "swaps": swaps}
+
+
+def render_swaps(slug, out_dir, images=True, fetch=True):
+    """Write the swap page to `out_dir/index.html`, its card images to `out_dir/img/`.
+    Returns {"page", "swaps", "cards", "images"}."""
+    data = swap_board_data(slug)
+    os.makedirs(out_dir, exist_ok=True)
+    got = 0
+    if images:
+        urls = image_urls(slug, list(data["cards"]), fetch=fetch)
+        for n, c in data["cards"].items():
+            u = urls.get(n)
+            if not u:
+                continue
+            # One LARGE image per card serves both the thumbnail and the full-size view.
+            rel = f"img/lg/{c['id']}.jpg"
+            try:
+                _fetch_image(u.replace("/normal/", "/large/"), os.path.join(out_dir, rel), LARGE)
+                c["img"] = rel
+                got += 1
+            except Exception as e:
+                print(f"builder: image for {n} not fetched ({e})", file=sys.stderr)
+    import html as _html
+    blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    page = open(SWAPS_TEMPLATE, encoding="utf-8").read()
+    page = page.replace("__TITLE__", _html.escape(data["title"]), 1).replace("__DATA__", blob, 1)
+    out = os.path.join(out_dir, "index.html")
+    atomic_write(out, lambda fh: fh.write(page), backup=False)
+    return {"page": out, "swaps": len(data["swaps"]), "cards": len(data["cards"]), "images": got}
 
 
 # ---------------------------------------------------------------- Pages site
@@ -1978,6 +2169,9 @@ def main(argv=None):
     p.add_argument("--out", required=True, help="output directory (index.html, and img/ for artifact)")
     p.add_argument("--no-tempo", action="store_true", help="skip the tapped-land simulation (faster)")
     p.add_argument("--no-images", action="store_true", help="artifact: do not download images")
+    p = sub.add_parser("swaps", help="write the pairs-only swap page from builds/<slug>/swaps.json")
+    p.add_argument("slug"); p.add_argument("--out", required=True, help="output directory (index.html and img/)")
+    p.add_argument("--no-images", action="store_true", help="do not download images")
     p = sub.add_parser("publish-plan", help="list a rendered board's files changed since its last publish")
     p.add_argument("out", help="the render's output directory (e.g. .cycle/board)")
     p.add_argument("--mark", action="store_true", help="record the current files as published (after publishing)")
@@ -2125,6 +2319,10 @@ def main(argv=None):
             text = sys.stdin.read() if args.file == "-" else open(args.file, encoding="utf-8").read()
             for line in picks_report(b, text, args.slug):
                 print(line)
+        elif args.cmd == "swaps":
+            r = render_swaps(args.slug, args.out, images=not args.no_images)
+            print(f"Wrote {os.path.relpath(r['page'], REPO_ROOT)}: {r['swaps']} swaps, {r['cards']} cards, "
+                  f"{r['images']} images")
         elif args.cmd == "render":
             r = render(args.slug, args.target, args.out, tempo=not args.no_tempo,
                        images=not args.no_images)
@@ -2133,6 +2331,9 @@ def main(argv=None):
                   f"{r['images']} image URLs" + (f", {r['fetched']} images on disk" if args.target == "artifact" and not args.no_images else ""))
             if r["no_image"]:
                 print(f"  no image found for: {'; '.join(r['no_image'])}")
+            if r.get("over_budget"):
+                print(f"  {len(r['over_budget'])} deck card(s) shown as text only: the board is at "
+                      f"its {ARTIFACT_FILE_CAP}-file cap (pile cards ship first)")
             if r["image_errors"]:
                 print(f"  {r['image_errors']} image download(s) failed (see above)")
         elif args.cmd == "derive":

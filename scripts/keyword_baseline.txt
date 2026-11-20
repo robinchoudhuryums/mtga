@@ -2,25 +2,55 @@
 # flavor names). check_keywords.py flags only mechanics NOT here — a
 # new set's mechanic. Triage into tag_synergies, or re-run
 # `check_keywords.py --update-baseline` to acknowledge the current set.
+adamant
 ascend
+assimilate
+beam me up
+bestow
+cloak
+companion
+compleated
 conjure
+daybound
+devoid
 double
+double team
+draft from a spellbook
 eerie
+emerge
 empower jace
 enchant
 escalate
 exert
+face a dilemma
+federation
 ferocious
 food
 foretell
+heist
 hexproof from
+incorporate
+intensity
 jump
+landwalk
+madness
 meld
+mutate
+nightbound
 partner
 partner with
+read ahead
 rebound
+revolt
+seek out
+solved
+strange new worlds
+sunburst
+surge
 survival
+suspend
 tiered
 transform
 treasure
 triple
+undergrowth

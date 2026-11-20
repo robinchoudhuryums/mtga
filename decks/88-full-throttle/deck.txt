@@ -16,8 +16,8 @@
 #: archetype: power scales: Selvala, Doc Samson and Giant-Man make huge mana, Master's Guidance
 #: archetype: draws each end step, Emperor Apatzec gives the team haste, Tifa, Martial Artist
 #: archetype: takes extra combats, Unnatural Growth and Tifa's Limit Break multiply it.
-#: archetype: Interaction is bites (Punishing Punch, Hulk's Thunderclap, Ram Through, Ravenous
-#: archetype: Tyrannosaurus) that hit harder with the +X and risk nothing back. A landfall layer
+#: archetype: Interaction is bites (Punishing Punch, Hulk's Thunderclap, Ravenous Tyrannosaurus)
+#: archetype: that hit harder with the +X and risk nothing back, plus Voracious Hydra's fight. A landfall layer
 #: archetype: rides on the ramp: Worldweave, the fetch lands and Ancient Greenwarden (doubled
 #: archetype: land triggers, lands from the graveyard) feed Tifa Lockhart, Beorn's Hospitality and
 #: archetype: Dancing from Dark to Dawn; a Gamma counters layer (Hulk, Brutal Brawler, She-Hulk,
@@ -76,6 +76,9 @@
 #: notes: abilities (power-ups, Rhys, Beorn's Hospitality, Jennifer Walters); power, not toughness, is the
 #: notes: deciding number, so prefer bites (one-way) over fights. No tool models speed or +X/+0, so every
 #: notes: power gate here is graded on printed power.
+#: notes: 2026-11-19: Voracious Hydra in for Ram Through. X scales with the deck's mana, Doc Samson adds a
+#: notes: counter, Samut adds +X/+0, and its fight mode is removal that leaves a threat (Ram Through was an
+#: notes: instant; the Hydra is not). Interaction 15, avg MV 3.60.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Samut, the Driving Force (DFT) 222
@@ -123,10 +126,10 @@
 1 Abomination, Irradiated Brute (MSC) 511
 1 Rhys the Redeemed (TLE) 52
 1 Ayula, Queen Among Bears (J21) 543
+1 Voracious Hydra (M20) 200
 
 # Noncreature — removal, planeswalkers, engines and finishers (22)
 1 Smuggler's Surprise (OTJ) 180
-1 Ram Through (IKO) 170
 1 Minsc & Boo, Timeless Heroes (HBG) 243
 1 Point the Way (DFT) 175
 1 Worldweave (YEOE) 21

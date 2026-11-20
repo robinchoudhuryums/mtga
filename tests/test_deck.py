@@ -2949,9 +2949,14 @@ class TestFitStrength:
         assert s == "KEY"
 
     def test_signature_match_is_key(self):
+        # A GENERIC signature theme (`counters`) earns KEY when the card engages it
+        # structurally — the overlay — and is a role-player when it does not, in BOTH the
+        # signature and the top-theme branch (2026-11-20, M4).
         s = deck.fit_strength(["counters"], {"counters": 10}, "", 8, 8,
-                              signature={"counters"})
+                              signature={"counters"}, overlay=lambda: True)
         assert s == "KEY"
+        assert deck.fit_strength(["counters"], {"counters": 10}, "", 8, 8,
+                                 signature={"counters"}) == "role-player"
 
     def test_specific_top_theme_is_key(self):
         assert deck.fit_strength(["Cat"], {"Cat": 10}, "", 8, 8) == "KEY"
@@ -5003,11 +5008,23 @@ class TestScreenSaturationAndCounts:
         on: **deck 30's KEY rate does not move at all (27.7% before and after)**,
         Innkeeper's Talent and Branching Evolution keep KEY through the overlay, and Kami
         of Whispered Hopes / Conclave Mentor / Ozolith keep it through `top-theme` —
-        because where `counters` really is the spine it is also the top theme. This
-        assertion passes for that second reason, which is why the case below exists too.
+        because where `counters` really is the spine it is also the top theme.
+
+        2026-11-20 (M4): the `top-theme` route now asks the SAME question of a generic
+        theme that the signature branch does — does the card engage it structurally? — so
+        a generic spine no longer mints KEY for a card that merely carries the tag (it had
+        made Replicator KEY in 13 decks and Gaseous Anomaly in 7). The rescue survives
+        because the overlay was widened in the same change: Kami of Whispered Hopes and
+        Conclave Mentor are plus-one counter MULTIPLIERS with feeders, which the new
+        resource lanes read. Measured on deck 30 with `screen`: Innkeeper's Talent,
+        Branching Evolution, Hardened Scales, Kami and Conclave Mentor KEY before and
+        after, The Ozolith tangential before and after — identical. So the rescue now
+        needs the overlay, and this pins both halves.
         """
         assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
-                                 frozenset({"counters"})) == "KEY"
+                                 frozenset({"counters"}), overlay=lambda: True) == "KEY"
+        assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
+                                 frozenset({"counters"}), overlay=lambda: False) == "role-player"
 
     def test_a_generic_signature_that_is_not_the_spine_does_not_mint_key(self):
         """The saturation itself. This branch is the FIRST statement in `fit_strength` and

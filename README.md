@@ -1066,7 +1066,15 @@ or a broad background tribe like Human/Hero/Villain, which carry no home signal)
 The role-gap KEY is gated on a specific-theme match, so a generically-good removal
 or card-advantage card no longer reads KEY in every low-interaction deck it merely
 shares an etb/tokens tag with — its broad utility shows up in the wishlist `--rank`
-`use` (breadth) column instead. Fits are scoped to decks where the card is **legal
+`use` (breadth) column instead. **Since 2026-11-20** a generic theme (signature or the
+deck's top theme) earns KEY only when the card engages it structurally (a doubler or
+multiplier with feeders, a cost-scaler or chosen-type payoff with its resource, or one of
+the lanes below), and three **structural lanes** admit decks that share NO theme: an
+artifact payoff meets the deck's artifact count by type line, an artifact meets the deck's
+artifact payoffs, and a counters/tokens feeder meets the deck's multipliers (doublers and
+plus-one replacements). Removal, ramp and fixing take a **needs lane**: the ≤5 castable,
+legal decks that most want that job, labelled with the deck's own count (e.g.
+`[needs: interaction 11 vs A-line 12]`). Fits are scoped to decks where the card is **legal
 in that deck's `#: format:`** (`--any-format` to disable), the card name resolves
 like `card.py` (exact → DFC front → unique substring), and a bounded curve nudge
 flags a top-heavy / win-more card as `⚠ top-heavy for this curve` in a low-curve deck. A **rainbow mana fixer** gets a

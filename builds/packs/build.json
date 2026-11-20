@@ -1,0 +1,5350 @@
+{
+ "schema": 1,
+ "title": "Pack pile — swap suggestions",
+ "decks": [
+  {
+   "key": "I",
+   "id": "26",
+   "label": "Iron Colossi"
+  },
+  {
+   "key": "A",
+   "id": "38",
+   "label": "Armory"
+  },
+  {
+   "key": "D",
+   "id": "48",
+   "label": "Doombots"
+  },
+  {
+   "key": "M",
+   "id": "55",
+   "label": "Mardu"
+  },
+  {
+   "key": "O",
+   "id": "56-historic-brawl",
+   "label": "Feather"
+  },
+  {
+   "key": "H",
+   "id": "74",
+   "label": "Iron Hills"
+  },
+  {
+   "key": "T",
+   "id": "75-historic-brawl",
+   "label": "Thranduil"
+  },
+  {
+   "key": "G",
+   "id": "85",
+   "label": "Gwen"
+  },
+  {
+   "key": "S",
+   "id": "88",
+   "label": "Samut"
+  },
+  {
+   "key": "Z",
+   "id": "91",
+   "label": "Hashaton"
+  },
+  {
+   "key": "P",
+   "id": "92",
+   "label": "Ozai"
+  },
+  {
+   "key": "W",
+   "id": "93",
+   "label": "Isshin"
+  },
+  {
+   "key": "Q",
+   "id": "94",
+   "label": "Zimone"
+  },
+  {
+   "key": "L",
+   "id": "95",
+   "label": "Galadriel"
+  },
+  {
+   "key": "C",
+   "id": "96",
+   "label": "Glarb"
+  },
+  {
+   "key": "R",
+   "id": "97",
+   "label": "Rocco"
+  },
+  {
+   "key": "Y",
+   "id": "98",
+   "label": "G'raha"
+  },
+  {
+   "key": "X",
+   "id": "100",
+   "label": "Locutus"
+  }
+ ],
+ "piles": [
+  {
+   "key": "I",
+   "label": "Iron's pile",
+   "deck": "I",
+   "intro": ""
+  },
+  {
+   "key": "A",
+   "label": "Armory's pile",
+   "deck": "A",
+   "intro": ""
+  },
+  {
+   "key": "D",
+   "label": "Doombots's pile",
+   "deck": "D",
+   "intro": ""
+  },
+  {
+   "key": "M",
+   "label": "Mardu's pile",
+   "deck": "M",
+   "intro": ""
+  },
+  {
+   "key": "O",
+   "label": "Feather's pile",
+   "deck": "O",
+   "intro": ""
+  },
+  {
+   "key": "H",
+   "label": "Iron's pile",
+   "deck": "H",
+   "intro": ""
+  },
+  {
+   "key": "T",
+   "label": "Thranduil's pile",
+   "deck": "T",
+   "intro": ""
+  },
+  {
+   "key": "G",
+   "label": "Gwen's pile",
+   "deck": "G",
+   "intro": ""
+  },
+  {
+   "key": "S",
+   "label": "Samut's pile",
+   "deck": "S",
+   "intro": ""
+  },
+  {
+   "key": "Z",
+   "label": "Hashaton's pile",
+   "deck": "Z",
+   "intro": ""
+  },
+  {
+   "key": "P",
+   "label": "Ozai's pile",
+   "deck": "P",
+   "intro": ""
+  },
+  {
+   "key": "W",
+   "label": "Isshin's pile",
+   "deck": "W",
+   "intro": ""
+  },
+  {
+   "key": "Q",
+   "label": "Zimone's pile",
+   "deck": "Q",
+   "intro": ""
+  },
+  {
+   "key": "L",
+   "label": "Galadriel's pile",
+   "deck": "L",
+   "intro": ""
+  },
+  {
+   "key": "C",
+   "label": "Glarb's pile",
+   "deck": "C",
+   "intro": ""
+  },
+  {
+   "key": "R",
+   "label": "Rocco's pile",
+   "deck": "R",
+   "intro": ""
+  },
+  {
+   "key": "Y",
+   "label": "G'raha's pile",
+   "deck": "Y",
+   "intro": ""
+  },
+  {
+   "key": "X",
+   "label": "Locutus's pile",
+   "deck": "X",
+   "intro": ""
+  },
+  {
+   "key": "B",
+   "label": "More than one deck",
+   "deck": null,
+   "intro": "Cards suggested for more than one deck. Copies are shared in Arena, so one card can sit in every deck it fits."
+  },
+  {
+   "key": "N",
+   "label": "Fits none",
+   "deck": null,
+   "intro": "Pack cards that were checked against a matching deck and skipped, each with the reason. Listed so nothing is silently dropped."
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Pinnacle Emissary",
+   "pile": "B",
+   "src": "packs"
+  },
+  {
+   "name": "Combadge",
+   "pile": "B",
+   "src": "packs"
+  },
+  {
+   "name": "Umbral Juke",
+   "pile": "B",
+   "src": "packs"
+  },
+  {
+   "name": "Bat'leth",
+   "pile": "A",
+   "src": "packs"
+  },
+  {
+   "name": "L'Rell, Fierce Visionary",
+   "pile": "M",
+   "src": "packs"
+  },
+  {
+   "name": "Craterous Stomp",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Forging the Tyrite Sword",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Meteoric Mace",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Spectral Steel",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Storm-Kiln Artist",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Stormforged Armor",
+   "pile": "O",
+   "src": "packs"
+  },
+  {
+   "name": "Elvish Elegy",
+   "pile": "T",
+   "src": "packs"
+  },
+  {
+   "name": "Perennial Gravewarden",
+   "pile": "T",
+   "src": "packs"
+  },
+  {
+   "name": "Concert Kaboomist",
+   "pile": "G",
+   "src": "packs"
+  },
+  {
+   "name": "Fiery Inscription",
+   "pile": "G",
+   "src": "packs"
+  },
+  {
+   "name": "Ghitu Journeymage",
+   "pile": "G",
+   "src": "packs"
+  },
+  {
+   "name": "Soul-Scar Mage",
+   "pile": "G",
+   "src": "packs"
+  },
+  {
+   "name": "Unstable Amulet",
+   "pile": "G",
+   "src": "packs"
+  },
+  {
+   "name": "Bouncer's Beatdown",
+   "pile": "S",
+   "src": "packs"
+  },
+  {
+   "name": "Hydra's Growth",
+   "pile": "S",
+   "src": "packs"
+  },
+  {
+   "name": "Kami of Whispered Hopes",
+   "pile": "S",
+   "src": "packs"
+  },
+  {
+   "name": "Narfi, Betrayer King",
+   "pile": "Z",
+   "src": "packs"
+  },
+  {
+   "name": "Sidisi, Undead Vizier",
+   "pile": "Z",
+   "src": "packs"
+  },
+  {
+   "name": "Warren Soultrader",
+   "pile": "Z",
+   "src": "packs"
+  },
+  {
+   "name": "The Wrath of Khan",
+   "pile": "P",
+   "src": "packs"
+  },
+  {
+   "name": "Emperor of Bones",
+   "pile": "P",
+   "src": "packs"
+  },
+  {
+   "name": "Witch-king of Angmar",
+   "pile": "P",
+   "src": "packs"
+  },
+  {
+   "name": "Switchgrass Grazer",
+   "pile": "W",
+   "src": "packs"
+  },
+  {
+   "name": "Shapers of Nature",
+   "pile": "Q",
+   "src": "packs"
+  },
+  {
+   "name": "Emergent Sequence",
+   "pile": "Q",
+   "src": "packs"
+  },
+  {
+   "name": "Ghost of Illyria",
+   "pile": "L",
+   "src": "packs"
+  },
+  {
+   "name": "Tamiyo, Compleated Sage",
+   "pile": "C",
+   "src": "packs"
+  },
+  {
+   "name": "Garruk, Cursed Huntsman",
+   "pile": "C",
+   "src": "packs"
+  },
+  {
+   "name": "Mesmeric Orb",
+   "pile": "C",
+   "src": "packs"
+  },
+  {
+   "name": "Sweet Oblivion",
+   "pile": "C",
+   "src": "packs"
+  },
+  {
+   "name": "Feasting Troll King",
+   "pile": "R",
+   "src": "packs"
+  },
+  {
+   "name": "Meriadoc Brandybuck",
+   "pile": "R",
+   "src": "packs"
+  },
+  {
+   "name": "Siege-Gang Commander",
+   "pile": "R",
+   "src": "packs"
+  },
+  {
+   "name": "Dramatic Accusation",
+   "pile": "Y",
+   "src": "packs"
+  },
+  {
+   "name": "Unable to Scream",
+   "pile": "Y",
+   "src": "packs"
+  },
+  {
+   "name": "Assembly Specialist",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Bronze Walrus",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Class-F Shuttlecraft",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Free Borg Revolutionaries",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Jin-Gitaxias, Progress Tyrant",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Machinist's Dismissal",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Squadron Carrier",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Vexing Drone",
+   "pile": "X",
+   "src": "packs"
+  },
+  {
+   "name": "Gilt-Leaf Alchemist",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Val, Marooned Surveyor",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Ominous Seas",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Splendor Mare",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Zagoth Crystal",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Flourishing Fox",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Go for Blood",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Easy Prey",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Raking Claws",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Dathon, His Heart Open",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Lich's Mastery",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Krydle of Baldur's Gate",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Glory-Bound Initiate",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Gnawing Vermin",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Scourge of Valkas",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Goblin Chainwhirler",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Starfleet Academy",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Draugr Necromancer",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Tactical Officer",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Captain Jonathan Archer",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Glaring Fleshraker",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Immersturm Skullcairn",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Ravenous Cosmozoan",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Leyline Tyrant",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Mindless Conscription",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Chittering Skullspeaker",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Pact Weapon",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Reconnaissance Mission",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Resolute Rejection",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Shefet Monitor",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Fangs of Kalonia",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Masterpiece Vault",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Winota, Joiner of Forces",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Battershield Warrior",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Kargan Warleader",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Thunderbond Vanguard",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Boreal Outrider",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Bramblearmor Brawler",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Tempest Trapper",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Atmosphere Surgeon",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Geistchanneler",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Merfolk Trickster",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Reflective Rimekin",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Phyrexian Censor",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Primary Unimatrix Adjunct",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Antagonist Incorporator",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Command Subadjunct",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Sunset Saboteur",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Tetsuko Umezawa, Fugitive",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Year of Hell",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Federation Resupply",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Rediscover the Way",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Collation Trimatrix",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Hologram Janeway",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Impossible Choice",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Fuel Tank Feaster",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Sleep with the Fishes",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Stab Wound",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Swallow Whole",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Hoshi Sato, Exolinguist",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Raff, Weatherlight Stalwart",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Una Chin-Riley, Number One",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Master of Waves",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Patchwork Crawler",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Cauldron's Gift",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Cemetery Tampering",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "Vivien, Monsters' Advocate",
+   "pile": "N",
+   "src": "packs"
+  },
+  {
+   "name": "World Shaper",
+   "pile": "N",
+   "src": "packs"
+  }
+ ],
+ "reasons": {
+  "Pinnacle Emissary": {
+   "group": "Sidegrade",
+   "text": "26 Iron Colossi: ROLE-PLAYER — A Robot artifact creature that makes a 1/1 flying Drone for every artifact spell you cast; warp {U/R} for an early trigger. Cut: Cosmic Cube. | 48 Doombots: SIDEGRADE — As in 26: a Robot that turns artifact spells into flying Drones. Cut: UNOWNED: Mm'menon, Uthros Exile (an artifact-enters payoff; Leyline makes either a Robot).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Bat'leth": {
+   "group": "Upgrade",
+   "text": "UPGRADE — Equipment with removal: on entering, an opponent's creature gets -2/-2; then +2/+0. Orzhov Equipment, Standard-legal. Cut: Shrike Force.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Combadge": {
+   "group": "Role-player",
+   "text": "38 Armory: ROLE-PLAYER — Equipment that copies itself when cast (two for 3); a creature wearing one can't be blocked while another wears the other. Equip {2}. Cut: Shrike Force. | 74 Iron Hills Forge: ROLE-PLAYER — Two Equipment for 3 (it copies itself), so two bodies of equip-trigger fodder; equip {2}. Cut: owned deck: confirm with `cuts 74`.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "L'Rell, Fierce Visionary": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — A hasty 2/1 Klingon token at every combat (sacrificed at end step), plus a sacrifice outlet that surveils. Cut: owned deck: confirm with `cuts 55`.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Craterous Stomp": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Instant: 3 damage to an opponent's creature; their other creatures can't block Giants or Warriors that turn. Cut: UNOWNED: Mishra's Command (X-cost modal sorcery).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Forging the Tyrite Sword": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Two Treasures, then chapter III tutors any Equipment (Embercleave, Kaldra) to hand. Cut: UNOWNED: Stoneforge Mystic (also an Equipment tutor; it also cheats one in).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Meteoric Mace": {
+   "group": "Spice / flavour",
+   "text": "SPICE — Cascade on cast plus +4/+0 and trample; much weaker than Embercleave, but owned. Cut: UNOWNED: Embercleave (a stand-in until it is crafted).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Spectral Steel": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — +2/+2 Aura that later returns an Aura or Equipment from the graveyard to hand. Cut: UNOWNED: Shadowspear (a stand-in; much weaker).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — A Treasure for every instant you cast on your own creature; +1/+0 per artifact. Cut: UNOWNED: Erratic Cyclops (also rewards casting instants).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Stormforged Armor": {
+   "group": "Spice / flavour",
+   "text": "SPICE — Equip by paying 3 life; the creature conjures an attacking Ball Lightning on every attack. Cut: UNOWNED: Kaldra Compleat (a stand-in until it is crafted).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Elvish Elegy": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — {B/G}: mill three, permanent +1/+1 to graveyard creatures, an Elf or land to hand. Cut: Leyline of Transformation.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Perennial Gravewarden": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — 2-mana Elf that returns from the graveyard on a turn a creature entered and one died. Cut: Leyline of Transformation.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Concert Kaboomist": {
+   "group": "Spice / flavour",
+   "text": "FLAVOUR — Damage to an opponent equal to noncreature spells cast since your last turn. Cut: Torbran.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Fiery Inscription": {
+   "group": "Spice / flavour",
+   "text": "FLAVOUR — 2 damage to each opponent per instant or sorcery you cast; worth it only with a high spell count. Cut: Torbran.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Ghitu Journeymage": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — 2 damage to each opponent on entering if you control another Wizard; deck runs 7 Wizards. Cut: Torbran.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Soul-Scar Mage": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — Prowess; your noncombat damage to their creatures becomes -1/-1 counters. Cut: Torbran.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Unstable Amulet": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — 1 damage to each opponent whenever you cast a spell from outside your hand, plus energy-fuelled impulse draw; Gwen's exile plays trigger it. Cut: Torbran.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Bouncer's Beatdown": {
+   "group": "Upgrade",
+   "text": "UPGRADE — Instant: damage equal to your greatest power (Samut makes that huge) to a creature or planeswalker, exiling it if it would die. Cut: UNOWNED: Hulk's Thunderclap (a sorcery bite).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Hydra's Growth": {
+   "group": "Spice / flavour",
+   "text": "FLAVOUR — An Aura that doubles the creature's +1/+1 counters every upkeep; a fast-growing threat for Samut. Cut: UNOWNED: Gamma Grotesque (a counters card in a power deck).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Kami of Whispered Hopes": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Taps for mana equal to its power (Samut's +X/+0 counts) and adds an extra counter whenever counters go on. Cut: UNOWNED: Back-Alley Gardener (land ramp off creatures entering).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Narfi, Betrayer King": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Other Zombies get +1/+1, and the deck runs 22 Zombies. (Its snow recursion is dead here.) Cut: UNOWNED: Eternal Skylord (also a 5-drop; flying for Zombie tokens instead of +1/+1 for all Zombies).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Sidisi, Undead Vizier": {
+   "group": "Upgrade",
+   "text": "UPGRADE — A Zombie with deathtouch; exploit (sacrifice a creature, e.g. a token) to tutor any card. Cut: UNOWNED: Fallen Shinobi (5-drop needing an unblocked attacker).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Umbral Juke": {
+   "group": "Sidegrade",
+   "text": "91 Scarab's Fist: SIDEGRADE — Instant: target player sacrifices a creature or planeswalker, or make a 2/1 flier. Cut: UNOWNED: Never // Return (sorcery destroy, Zombie later). | 100 Resistance Is Futile: SIDEGRADE — Instant edict (creature or planeswalker), or a 2/1 flier. Cut: UNOWNED: Sheoldred's Edict (2-mana instant edict).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Warren Soultrader": {
+   "group": "Spice / flavour",
+   "text": "FLAVOUR — Pay 1 life, sacrifice another creature: a Treasure. A Zombie Wizard sacrifice outlet. Cut: as above.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "The Wrath of Khan": {
+   "group": "Upgrade",
+   "text": "UPGRADE — 3-mana Saga: 4 damage to a creature, then you take control of it for combat; later chapters add value. Cut: UNOWNED: Overwhelming Victory (5-mana instant, 5 damage).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Emperor of Bones": {
+   "group": "Upgrade",
+   "text": "UPGRADE — Exiles a card from a graveyard each combat; adapt {1}{B} brings an exiled creature back hasty for the turn, and every extra combat is another exile. Cut: UNOWNED: Archpriest of Shadows (5-mana reanimation that needs combat damage first).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Witch-king of Angmar": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — 5-mana flier; when creatures hit you, the opponent sacrifices one of them; discard a card for indestructible. Cut: UNOWNED: Yathan Tombguard (draws only off creatures with counters, which the deck rarely makes).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Switchgrass Grazer": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — Haste; 1 damage to any target whenever it attacks, which Isshin doubles. Cut: no unowned card it clearly beats (Nadier's Nightblade and Professional Face-Breaker both fit better).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Shapers of Nature": {
+   "group": "Upgrade",
+   "text": "UPGRADE — A Merfolk that puts +1/+1 counters ({3}{G}) and turns a counter into a card ({2}{U}); Zimone doubles counters. Cut: UNOWNED: Nadir Kraken (not a Merfolk; also its stored printing is flagged unverified).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Emergent Sequence": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Fetch a basic; it becomes a land creature with +1/+1 counters, which Zimone then doubles. Cut: UNOWNED: Song of Freyalise (two turns of creature mana, then a counter each).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Ghost of Illyria": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — Flier that blinks your own nonland permanent until end step; a second Galadriel entry. Cut: Panharmonicon.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Tamiyo, Compleated Sage": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — +1 locks down a creature; −X copies a permanent card from your graveyard (thin in an opponent-mill deck). A walker to hold the board. Cut: UNOWNED: Nissa, Voice of Zendikar (also a non-mill walker).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Garruk, Cursed Huntsman": {
+   "group": "Spice / flavour",
+   "text": "SPICE — 6-mana walker: two 2/2 Wolves each turn, or −3 destroy a creature and draw. Cut: UNOWNED: Ob Nixilis Reignited (a stand-in; Ob's +1 draw is a mill under the Tutelages, so Ob stays the better card).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Mesmeric Orb": {
+   "group": "Spice / flavour",
+   "text": "FLAVOUR — Every untap mills that permanent's controller: the opponent untaps more, but it is symmetric. Cut: Lithoform Engine.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Sweet Oblivion": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — {1}{U}: target player (the opponent) mills four; escape recasts it. On plan. Cut: no unowned card it clearly beats (Master's Councillors and Cut Your Losses both mill harder).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Feasting Troll King": {
+   "group": "Upgrade",
+   "text": "UPGRADE — Three Foods when cast from hand; returns from the graveyard by sacrificing three Foods. {G}{G}{G}{G}. Cut: Mythweaver Poq.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Meriadoc Brandybuck": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — A Food whenever your Halflings attack; the deck runs 6 Halflings. Cut: Mythweaver Poq.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Siege-Gang Commander": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — Three Goblin tokens (Peregrin Took adds a Food to each); sacrifice a Goblin for 2 damage. Cut: Mythweaver Poq.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Dramatic Accusation": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — 3-mana Aura: tap the creature and keep it tapped; {U}{U} shuffles it away. A noncreature spell for G'raha. Cut: UNOWNED: Lawmage's Binding (flash, also stops activated abilities).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Unable to Scream": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — 1-mana Aura: the creature loses all abilities and becomes a 0/2. A cheap noncreature spell for G'raha. Cut: UNOWNED: Mesmerizing Dose (3 mana; its proliferate also grows Hero tokens).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Assembly Specialist": {
+   "group": "Upgrade",
+   "text": "UPGRADE — 2 mana for two Borg artifact creatures, feeding Collation Trimatrix's tap-three draw and Borg Cube's affinity. Cut: UNOWNED: Tidus, Blitzball Star (not an artifact creature, so it feeds none of the deck's counts).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Bronze Walrus": {
+   "group": "Upgrade",
+   "text": "UPGRADE — A 3-mana artifact CREATURE that taps for any colour and scries 2; it counts for Borg Cube and Collation Trimatrix. Cut: UNOWNED: Arcane Signet (a rock that counts for neither).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Class-F Shuttlecraft": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — A 3-mana Spacecraft that taps for any colour; stationed to 6 it is a flying artifact creature. Cut: UNOWNED: Arcane Signet, if Bronze Walrus is not taken.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Free Borg Revolutionaries": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — A Borg artifact creature that pumps the team on entering; basic landcycling {2} early. Cut: no unowned card it clearly beats; Winter at most.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — 7 mana: copies your first artifact, instant or sorcery each turn, and counters the opponent's first. Top-heavy. Cut: UNOWNED: Kappa Cannoneer (another 6-mana blue artifact payoff).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Machinist's Dismissal": {
+   "group": "Sidegrade",
+   "text": "SIDEGRADE — Counter a noncreature spell, {1} cheaper per artifact you control or hold; instant-speed interaction the deck lacks. Cut: UNOWNED: Haunt the Network (same 5 mana; a sorcery drain where this is instant interaction).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Squadron Carrier": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — Spacecraft gain \"exhaust {W}: conjure a Starfighter Pilot\"; stationed 10+, your creatures fly. Cut: Sheoldred's Edict.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Vexing Drone": {
+   "group": "Role-player",
+   "text": "ROLE-PLAYER — A 2-mana Borg artifact creature that taps a blocker on entering. Cut: UNOWNED: Winter, Cursed Rider (not an artifact creature).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Gilt-Leaf Alchemist": {
+   "group": "Skip",
+   "text": "SKIP — 75 Historic Brawl: Needs two Elf cards already in the graveyard.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Val, Marooned Surveyor": {
+   "group": "Skip",
+   "text": "SKIP — 97: Few scry / investigate effects there.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Ominous Seas": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Splendor Mare": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Zagoth Crystal": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Flourishing Fox": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Go for Blood": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Easy Prey": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Raking Claws": {
+   "group": "Skip",
+   "text": "SKIP — 101: Match on \"cycling\" only. | 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Dathon, His Heart Open": {
+   "group": "Skip",
+   "text": "SKIP — 101: Rewards casting enchantments; matched only on the Officer type.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Lich's Mastery": {
+   "group": "Skip",
+   "text": "SKIP — 101: \"You can't lose\" with a lose-the-game rider; not this deck's plan.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Krydle of Baldur's Gate": {
+   "group": "Skip",
+   "text": "SKIP — 75 Historic Brawl, 96: A 2-mana evasion enabler; lateral at best.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Glory-Bound Initiate": {
+   "group": "Skip",
+   "text": "SKIP — 78 Historic Brawl: Matched on Warrior only. | 85: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Gnawing Vermin": {
+   "group": "Skip",
+   "text": "SKIP — 96: A 1-mana mill-two; minor.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Scourge of Valkas": {
+   "group": "Skip",
+   "text": "SKIP — 85: {R}{R}{R} in a three-colour deck; few Dragons.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Goblin Chainwhirler": {
+   "group": "Skip",
+   "text": "SKIP — 85: {R}{R}{R} in a three-colour deck; few Dragons.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Starfleet Academy": {
+   "group": "Skip",
+   "text": "SKIP — 100: Their Federation count reads only non-Borg creature types, and deck 100 is nearly all Borg.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Draugr Necromancer": {
+   "group": "Skip",
+   "text": "SKIP — 91: Snow-mana payoff with no snow in the deck.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Tactical Officer": {
+   "group": "Skip",
+   "text": "SKIP — 101: Matched on the Officer type; neither cares about dilemmas.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Captain Jonathan Archer": {
+   "group": "Skip",
+   "text": "SKIP — 101: Matched on the Officer type; neither cares about dilemmas.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Glaring Fleshraker": {
+   "group": "Skip",
+   "text": "SKIP — 97: Rewards colourless spells, which the deck has few of.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Immersturm Skullcairn": {
+   "group": "Skip",
+   "text": "SKIP — 102: A tapped land; the deck is cutting those.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Ravenous Cosmozoan": {
+   "group": "Skip",
+   "text": "SKIP — 56b: Discount needs noncreature cards in the graveyard; off-plan.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Leyline Tyrant": {
+   "group": "Skip",
+   "text": "SKIP — 85: A Dragon payoff in a deck with few Dragons.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Mindless Conscription": {
+   "group": "Skip",
+   "text": "SKIP — 93: Triggers on your third card drawn each turn, which the deck rarely reaches.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Chittering Skullspeaker": {
+   "group": "Skip",
+   "text": "SKIP — 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Pact Weapon": {
+   "group": "Skip",
+   "text": "SKIP — 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Reconnaissance Mission": {
+   "group": "Skip",
+   "text": "SKIP — 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Resolute Rejection": {
+   "group": "Skip",
+   "text": "SKIP — 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Shefet Monitor": {
+   "group": "Skip",
+   "text": "SKIP — 101: Cycling or pay-life matches only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Fangs of Kalonia": {
+   "group": "Skip",
+   "text": "SKIP — 88: Doubles +1/+1 counters; deck 88 scales on power, not counters.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Masterpiece Vault": {
+   "group": "Skip",
+   "text": "SKIP — 56 Historic Brawl: Off the one-protected-attacker plan, or random value.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Winota, Joiner of Forces": {
+   "group": "Skip",
+   "text": "SKIP — 85: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Battershield Warrior": {
+   "group": "Skip",
+   "text": "SKIP — 85: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Kargan Warleader": {
+   "group": "Skip",
+   "text": "SKIP — 85: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Thunderbond Vanguard": {
+   "group": "Skip",
+   "text": "SKIP — 85: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Boreal Outrider": {
+   "group": "Skip",
+   "text": "SKIP — 78 Historic Brawl: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Bramblearmor Brawler": {
+   "group": "Skip",
+   "text": "SKIP — 78 Historic Brawl: Matched on Warrior only.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Tempest Trapper": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Atmosphere Surgeon": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Geistchanneler": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Merfolk Trickster": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Reflective Rimekin": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Phyrexian Censor": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; none is a Zombie or a discard card. Phyrexian Censor also locks your own spells.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Primary Unimatrix Adjunct": {
+   "group": "Skip",
+   "text": "SKIP — 74: Already in deck 100; Borg artifacts are off-tribe in the Dwarf deck.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Antagonist Incorporator": {
+   "group": "Skip",
+   "text": "SKIP — 74: Already in deck 100; Borg artifacts are off-tribe in the Dwarf deck.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Command Subadjunct": {
+   "group": "Skip",
+   "text": "SKIP — 74: Already in deck 100; Borg artifacts are off-tribe in the Dwarf deck.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Sunset Saboteur": {
+   "group": "Skip",
+   "text": "SKIP — 44, 44a: Its attack puts a +1/+1 counter on an OPPONENT's creature (your removal rule).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Tetsuko Umezawa, Fugitive": {
+   "group": "Skip",
+   "text": "SKIP — 44: Needs creatures with power or toughness 1 or less.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Year of Hell": {
+   "group": "Skip",
+   "text": "SKIP — 26b, 37a: Symmetric draw and 2 damage to each player.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Federation Resupply": {
+   "group": "Skip",
+   "text": "SKIP — 65, 68: Tutors Auras/Equipment/Spacecraft, which neither deck is built on.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Rediscover the Way": {
+   "group": "Skip",
+   "text": "SKIP — 57, 41, 42, 84, 101, 26a: Low-fit tag matches.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Collation Trimatrix": {
+   "group": "Skip",
+   "text": "SKIP — 57, 41, 42, 84, 101, 26a: Low-fit tag matches.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Hologram Janeway": {
+   "group": "Skip",
+   "text": "SKIP — 57, 41, 42, 84, 101, 26a: Low-fit tag matches.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Impossible Choice": {
+   "group": "Skip",
+   "text": "SKIP — any: Its removal mode gives the opponent two 1/1 Officers (your removal rule).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Fuel Tank Feaster": {
+   "group": "Skip",
+   "text": "SKIP — 89: Deck 89's unowned ramp (Azusa, Kodama, Dryad) plays extra lands; a mana creature is not a substitute.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Sleep with the Fishes": {
+   "group": "Skip",
+   "text": "SKIP — 98, 100: Weaker than the paired removal above, or conditional (Swallow Whole needs a tapped target).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Stab Wound": {
+   "group": "Skip",
+   "text": "SKIP — 98, 100: Weaker than the paired removal above, or conditional (Swallow Whole needs a tapped target).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Swallow Whole": {
+   "group": "Skip",
+   "text": "SKIP — 98, 100: Weaker than the paired removal above, or conditional (Swallow Whole needs a tapped target).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Hoshi Sato, Exolinguist": {
+   "group": "Skip",
+   "text": "SKIP — 100: Its Federation count reads only non-Borg creature types, and deck 100 is nearly all Borg.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Raff, Weatherlight Stalwart": {
+   "group": "Skip",
+   "text": "SKIP — 91: Matched on Wizard only; neither a Zombie nor a discard card.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Una Chin-Riley, Number One": {
+   "group": "Skip",
+   "text": "SKIP — 101: Low-fit tag match (Officer); needs total power 8.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Master of Waves": {
+   "group": "Skip",
+   "text": "91 Scarab's Fist: SKIP — Its devotion-to-blue tokens are thin in Esper; it is a Merfolk, so deck 94 may want it instead (not matched there).",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Patchwork Crawler": {
+   "group": "Skip",
+   "text": "91 Scarab's Fist: SKIP — Exiles creature cards from your graveyard, which fights recursion.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Cauldron's Gift": {
+   "group": "Skip",
+   "text": "96 Drowned Library: SKIP — Mills you four; deck 96 must not deck itself.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Cemetery Tampering": {
+   "group": "Skip",
+   "text": "96 Drowned Library: SKIP — Mills you three every upkeep; the wrong library for this deck.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "Vivien, Monsters' Advocate": {
+   "group": "Skip",
+   "text": "96 Drowned Library: SKIP — Casting creatures off the top duplicates Glarb, and the deck plays few creatures.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  },
+  "World Shaper": {
+   "group": "Skip",
+   "text": "96 Drowned Library: SKIP — Mills you on each attack.",
+   "graded_at": {
+    "26": "90c27140f47d",
+    "38": "39e5ac4266f1",
+    "48": "240593281f9b",
+    "55": "e82f65284a90",
+    "56-historic-brawl": "e275b2d9a55b",
+    "74": "ae1d7df5a59f",
+    "75-historic-brawl": "5c0e16c58c76",
+    "85": "dabde365452e",
+    "88": "b98c526bccef",
+    "91": "abef18f4ef81",
+    "92": "d45191f9959a",
+    "93": "0ef68c14bd7c",
+    "94": "60a5cf4c8ee6",
+    "95": "4f187b0299e6",
+    "96": "bd6edb0ddbdc",
+    "97": "d2432cc42552",
+    "98": "9d5aaca4dc8c",
+    "100": "ae7c9e34fd81"
+   }
+  }
+ },
+ "snapshots": {
+  "26": {
+   "90c27140f47d": [
+    "Airship Engine Room",
+    "Anticausal Vestige",
+    "Arc Reactor",
+    "Armor Wars",
+    "Baron, Airship Kingdom",
+    "Buster Sword",
+    "Bygone Colossus",
+    "Castle Doom",
+    "Chronicle of Victory",
+    "Cosmic Cube",
+    "Dawnsire, Sunstar Dreadnought",
+    "Donatello, Mutant Mechanic",
+    "Explosive Derailment",
+    "Full Bore",
+    "I Am Iron Man",
+    "Improvised Arsenal",
+    "Iron Man Armor",
+    "Iron Man, Master of Machines",
+    "Iron Spider, Stark Upgrade",
+    "Ironheart, Clever Champion",
+    "Island",
+    "Kavaron, Memorial World",
+    "Krang, Utrom Warlord",
+    "Legion Extruder",
+    "Machinesmith Automaton",
+    "Mjölnir, Hammer of Thor",
+    "Mountain",
+    "Plasma Bolt",
+    "Riverpyre Verge",
+    "Shuri, Wakandan Inventor",
+    "Simulacrum Synthesizer",
+    "Sokka, Bold Boomeranger",
+    "Stark Industries",
+    "Swiftwater Cliffs",
+    "Tannuk, Steadfast Second",
+    "Technodrome",
+    "The Gold Saucer",
+    "The Ooze",
+    "The Vision",
+    "Tony Stark",
+    "Ugin, Eye of the Storms",
+    "Ultron, Artificial Malevolence",
+    "Uthros, Titanic Godcore",
+    "Virulent Silencer",
+    "Vision Quest",
+    "Viv Vision, Teen Synthezoid",
+    "Weftstalker Ardent"
+   ]
+  },
+  "38": {
+   "39e5ac4266f1": [
+    "Abigale, Eloquent First-Year",
+    "Bleachbone Verge",
+    "Buster Sword",
+    "Captain America's Shield",
+    "Celestial Armor",
+    "Cloud, Midgar Mercenary",
+    "Crude Bent Blade",
+    "Dragoon's Lance",
+    "Glider Staff",
+    "Goldvein Pick",
+    "Honored Knight-Captain",
+    "Insomnia, Crown City",
+    "Iron Man Armor",
+    "Kyoshi Battle Fan",
+    "Kíli the Resourceful",
+    "Meteor Sword",
+    "Mirrormind Crown",
+    "Ninja's Blades",
+    "Plains",
+    "Quintessential Katana",
+    "Ronin, Shadow Stalker",
+    "S.H.I.E.L.D. Spy Kit",
+    "Scoured Barrens",
+    "Sheltered by Ghosts",
+    "Shrike Force",
+    "Stolen Stark Tech",
+    "Sun-Spider, Nimble Webber",
+    "Super-Soldier Serum",
+    "Swamp",
+    "Swordsman, Sharp Scoundrel",
+    "Temple of Silence",
+    "The Aetherspark",
+    "Thunder Lasso",
+    "U.S.Agent, John Walker",
+    "Vibranium Energy Daggers",
+    "Weapons Vendor",
+    "Web-Shooters",
+    "Whiplash, Vengeful Engineer",
+    "Winter Soldier, Icy Assassin",
+    "Wrench",
+    "Zack Fair"
+   ]
+  },
+  "48": {
+   "240593281f9b": [
+    "Aerial Doombot",
+    "Banner of Kinship",
+    "Baxter Stockman",
+    "Brilliance Unleashed",
+    "Castle Doom",
+    "Chandra, Spark Hunter",
+    "Chrome Dome",
+    "Chronicle of Victory",
+    "Diversion Unit",
+    "Donatello, Way with Machines",
+    "Esoteric Duplicator",
+    "Fateful Discovery",
+    "Firdoch Core",
+    "HYDRA Assault Robot",
+    "Henchbots",
+    "Into the Flood Maw",
+    "Island",
+    "Kavaron Harrier",
+    "Kavaron, Memorial World",
+    "Krang, Utrom Warlord",
+    "Leyline of Transformation",
+    "Lifecraft Engine",
+    "Machinesmith Automaton",
+    "Mechan Assembler",
+    "Mm'menon, Uthros Exile",
+    "Mountain",
+    "Mouser Foundry",
+    "Patchwork Banner",
+    "Plasma Bolt",
+    "Ravenous Robots",
+    "Retrieve the Esper",
+    "Riverpyre Verge",
+    "Roaming Throne",
+    "Secluded Courtyard",
+    "Shuri, Wakandan Inventor",
+    "Simulacrum Synthesizer",
+    "Stark Industries",
+    "Swiftwater Cliffs",
+    "Tezzeret, Cruel Captain",
+    "The Mechanist, Aerial Artisan",
+    "The Vision",
+    "Tony Stark",
+    "Ultron, Artificial Malevolence",
+    "Untimely Malfunction"
+   ]
+  },
+  "55": {
+   "e82f65284a90": [
+    "Ajani Unrelenting",
+    "Alesha, Who Laughs at Fate",
+    "Aurelia, the Warleader",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blood Crypt",
+    "Bone-Cairn Butcher",
+    "Boros Charm",
+    "Dalkovan Packbeasts",
+    "Dark Fortress",
+    "Dedicated Commons",
+    "Delney, Streetwise Lookout",
+    "EPF Point Squad",
+    "Enduring Innocence",
+    "Exalted Sunborn",
+    "Fire Navy Trebuchet",
+    "Garna, Bloodfist of Keld",
+    "Godless Shrine",
+    "Hardened Tactician",
+    "Impact Tremors",
+    "Ingris Stingerquill",
+    "Jet, Freedom Fighter",
+    "Liliana the Faultless",
+    "Mardu Siegebreaker",
+    "Mountain",
+    "Neriv, Heart of the Storm",
+    "Nomad Outpost",
+    "Plains",
+    "Pyrrhic Strike",
+    "Raph & Leo, Sibling Rivals",
+    "Sacred Foundry",
+    "Shattered Sanctum",
+    "Shocking Sharpshooter",
+    "Slash, Reptile Rampager",
+    "Sonic Shrieker",
+    "Sothera, the Supervoid",
+    "Stadium Headliner",
+    "Suki, Courageous Rescuer",
+    "Sunbillow Verge",
+    "Super Shredder",
+    "Swamp",
+    "The Fire Crystal",
+    "The Jolly Balloon Man",
+    "Valorous Stance",
+    "Venerated Stormsinger",
+    "Voice of Victory",
+    "Windcrag Siege",
+    "Zurgo, Thunder's Decree"
+   ]
+  },
+  "56-historic-brawl": {
+   "e275b2d9a55b": [
+    "Abraded Bluffs",
+    "Agrus Kos, Spirit of Justice",
+    "Akiri, Fearless Voyager",
+    "Akroma's Will",
+    "Aurelia, the Warleader",
+    "Balduvian Berserker",
+    "Battlefield Forge",
+    "Bionic Blow",
+    "Bre of Clan Stoutarm",
+    "Bruenor Battlehammer",
+    "Bulk Up",
+    "Clifftop Retreat",
+    "Combadge",
+    "Combustion Man",
+    "Command Tower",
+    "Dalkovan Encampment",
+    "Danitha Capashen, Paragon",
+    "Elspeth Resplendent",
+    "Embercleave",
+    "Erratic Cyclops",
+    "Esper Sentinel",
+    "Exploratory Mission",
+    "Feather, the Redeemed",
+    "Fiery Confluence",
+    "Fire Nation Palace",
+    "Furious Rise",
+    "Furycalm Snarl",
+    "Giantfall",
+    "Great Train Heist",
+    "Inspiring Vantage",
+    "Iron Fist, Living Weapon",
+    "Jor Kadeen, First Goldwarden",
+    "Kaldra Compleat",
+    "Kazuul's Fury // Kazuul's Cliffs",
+    "Kirk, Enterprising Captain",
+    "Krenko, Tin Street Kingpin",
+    "Laelia, the Blade Reforged",
+    "Legion Leadership // Legion Stronghold",
+    "Lightning, Army of One",
+    "Luke Cage, Power Man",
+    "Mabel, Heir to Cragflame",
+    "Mishra's Command",
+    "Mother of Runes",
+    "Mountain",
+    "Needleverge Pathway // Pillarverge Pathway",
+    "Odric, Lunarch Marshal",
+    "Pain for All",
+    "Picard, Leading by Example",
+    "Plains",
+    "Rabid Gnaw",
+    "Raiyuu, Storm's Edge",
+    "Raph & Leo, Sibling Rivals",
+    "Raubahn, Bull of Ala Mhigo",
+    "Rogue's Passage",
+    "Sacred Foundry",
+    "Seedglaive Mentor",
+    "Seize the Day",
+    "Self-Destruct",
+    "Shadowspear",
+    "Sif's Spearmaster",
+    "Starting Town",
+    "Stingerback Terror",
+    "Stoneforge Mystic",
+    "Sun-Blessed Peak",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swiftblade Vindicator",
+    "Swiftfoot Boots",
+    "Sword of Fire and Ice",
+    "Sword of Forge and Frontier",
+    "Team Avatar",
+    "Temple of Triumph",
+    "Temur Battle Rage",
+    "Teyo, Aegis Adept",
+    "The Fire Crystal",
+    "The Last Agni Kai",
+    "The Sentry, Golden Guardian",
+    "The Wandering Emperor",
+    "Thorin, Mountain-king",
+    "Two-Handed Axe // Sweeping Cleave",
+    "Worf, Honor-Bound Warrior",
+    "Zada, Hedron Grinder",
+    "Éowyn, Fearless Knight"
+   ]
+  },
+  "74": {
+   "ae1d7df5a59f": [
+    "Abraded Bluffs",
+    "An Unexpected Party // At the Door",
+    "Balin, Loremaster",
+    "Barret Wallace",
+    "Bifur, Melodic Rider",
+    "Blacksmith's Talent",
+    "Bofur, Reliable Guardian",
+    "Buster Sword",
+    "Cathar Commando",
+    "Chainsaw",
+    "Cloud, Midgar Mercenary",
+    "Dori, Bearer of Friends",
+    "Dwalin, Weaponmaster",
+    "Dwarven Mauler",
+    "Dwarven Shortsword",
+    "Dáin Ironfoot",
+    "Dáin's Company",
+    "Firion, Wild Rose Warrior",
+    "Fíli the Pathfinder",
+    "Gilgamesh, Master-at-Arms",
+    "Giott, King of the Dwarves",
+    "Glóin the Mighty // Easy Pickings",
+    "Iron Hills",
+    "Iron Hills Blacksmith",
+    "Iron Hills Stalwart",
+    "Kíli the Resourceful",
+    "Leonardo, Sewer Samurai",
+    "Magda, the Hoardmaster",
+    "Meteor Sword",
+    "Mjölnir, Hammer of Thor",
+    "Mountain",
+    "Orcrist, Goblin-cleaver",
+    "Ori, Keeper of Songs",
+    "Plains",
+    "Samurai's Katana",
+    "Sting, Bilbo's Sword",
+    "Sun-Blessed Peak",
+    "Sunbillow Verge",
+    "Temple of Triumph",
+    "The Lonely Mountain",
+    "Thor, God of Thunder",
+    "Thorin Oakenshield",
+    "Thorin's Last Stand",
+    "Thorin, Mountain-king"
+   ]
+  },
+  "75-historic-brawl": {
+   "5c0e16c58c76": [
+    "Abomination of Llanowar",
+    "Advanced Floral Invocations",
+    "Aftermath Analyst",
+    "Agna Qel'a",
+    "Ancient Greenwarden",
+    "Annihilating Glare",
+    "Assassin's Trophy",
+    "Ba Sing Se",
+    "Black Widow, Daring Operative",
+    "Blooming Cactusfolk",
+    "Breeding Pool",
+    "Cauldron of Essence",
+    "Champions of the Perfect",
+    "Chatterfang, Squirrel General",
+    "Circle of Dreams Druid",
+    "Command Tower",
+    "Dionus, Elvish Archdruid",
+    "Drag to the Roots",
+    "Dreamroot Cascade",
+    "Eclipsed Realms",
+    "Eladamri, Korvecdal",
+    "Elrond, Moon-Reader",
+    "Elven Passage",
+    "Elvish Archdruid",
+    "Evolving Wilds",
+    "Fatal Push",
+    "Fauna Shaman",
+    "Fiend Artisan",
+    "Foggy Bottom Swamp",
+    "Forest",
+    "Freyalise, Skyshroud Partisan",
+    "Glissa Sunslayer",
+    "Gloomlake Verge",
+    "Harald Unites the Elves",
+    "Heartless Act",
+    "Hidden Lair",
+    "High Perfect Morcant",
+    "Imperious Perfect",
+    "Insidious Roots",
+    "Ioreth of the Healing House",
+    "Island",
+    "Izoni, Thousand-Eyed",
+    "Kamahl's Druidic Vow",
+    "Killmonger, Scourge of Wakanda",
+    "Kinnan, Bonder Prodigy",
+    "Kotis, Sibsig Champion",
+    "Lathril, Blade of the Elves",
+    "Leyline of Transformation",
+    "Maralen, Fae Ascendant",
+    "Marwyn, the Nurturer",
+    "Meditation Pools",
+    "Morcant's Eyes",
+    "Muldrotha, the Gravetide",
+    "Mycoid Resurrection",
+    "Oasis of Renewal",
+    "Opulent Palace",
+    "Overgrown Tomb",
+    "Priest of Titania",
+    "Prototype X-8",
+    "Reflecting Pool",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Sheoldred // The True Scriptures",
+    "Sidisi, Brood Tyrant",
+    "Skyfisher Spider",
+    "Surveillance Room",
+    "Swamp",
+    "Temple of Mystery",
+    "Terramorphic Expanse",
+    "Teval, the Balanced Scale",
+    "Thranduil's Company",
+    "Thranduil, Sindarin Liege",
+    "Thranduil, the Elvenking",
+    "Three Tree City",
+    "Trystan's Command",
+    "Trystan, Callous Cultivator",
+    "Twilight Diviner",
+    "Tyvar Kell",
+    "Tyvar the Bellicose",
+    "Tyvar's Stand",
+    "Undercity Sewers",
+    "Voice of the Woods",
+    "Vraska, Golgari Queen",
+    "Wastewood Verge",
+    "Watery Grave",
+    "Willowrush Verge",
+    "Woodland Cemetery",
+    "Wrenn and Realmbreaker",
+    "Wrenn and Seven",
+    "Yarok, the Desecrated",
+    "Yawgmoth's Vile Offering",
+    "Yawgmoth, Thran Physician"
+   ]
+  },
+  "85": {
+   "dabde365452e": [
+    "Airbender's Reversal",
+    "Appa, Steadfast Guardian",
+    "Artist's Talent",
+    "Asgardian Citadel",
+    "Avengers Hangar",
+    "Avengers Tower",
+    "Bilbo, Thief in the Night",
+    "Boros Charm",
+    "Captain America, Living Legend",
+    "Chandra, Dressed to Kill",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer",
+    "City on Fire",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Daily Bugle Building",
+    "Daredevil, Fearless Fighter",
+    "Daredevil, Man Without Fear",
+    "Echo, Perceptive Prodigy",
+    "Evolving Wilds",
+    "Fire Nation Palace",
+    "Floodfarm Verge",
+    "Gandalf, Goblins' Bane // Flameshape",
+    "Glóin the Mighty // Easy Pickings",
+    "Goliath Daydreamer",
+    "Gwen Stacy // Ghost-Spider",
+    "Hallowed Fountain",
+    "Hawkeye, Master Marksman",
+    "Hawkeye, Trick Shot",
+    "Hawkeye, Young Avenger",
+    "Heartfire Hero",
+    "Heartflame Duelist // Heartflame Slash",
+    "Insult // Injury",
+    "Iron Fist, Living Weapon",
+    "Iron Lad, Young Avenger",
+    "Island",
+    "Jessica Jones, Private Eye",
+    "Koth, Fire of Resistance",
+    "Lady Spider, Maybelle Reilly",
+    "Laelia, the Blade Reforged",
+    "Longhorn Sharpshooter",
+    "Matt Murdock, Justice Seeker",
+    "Mjölnir, Hammer of Thor",
+    "Mog, Moogle Warrior",
+    "Monica Rambeau",
+    "Mountain",
+    "Mystic Monastery",
+    "Nico Minoru, Runaway",
+    "Niv-Mizzet, Visionary",
+    "Ojer Axonil, Deepest Might",
+    "Origin of Thor",
+    "Party Thrasher",
+    "Photon, Mighty Marvel",
+    "Plains",
+    "Quintorius Kand",
+    "Reflecting Pool",
+    "Riverpyre Verge",
+    "Sacred Foundry",
+    "Scalesoul Gnome",
+    "Secluded Courtyard",
+    "Shiko and Narset, Unified",
+    "Solphim, Mayhem Dominus",
+    "Spider-Man 2099",
+    "Spider-Man, New Champion",
+    "Spider-Man, Web-Spinner",
+    "Spider-Sense",
+    "Spider-Verse",
+    "Spirebluff Canal",
+    "Stark Industries",
+    "Starting Town",
+    "Steam Vents",
+    "Sunbillow Verge",
+    "Sword of Fire and Ice",
+    "Taii Wakeen, Perfect Shot",
+    "Tellah, Great Sage",
+    "The Legend of Roku",
+    "Thor, Asgard's Avenger",
+    "Thor, God of Thunder",
+    "Thor, Guardian of Midgard",
+    "Thorin Oakenshield",
+    "Tomik, Izzet Sparkmage",
+    "Torbran, Thane of Red Fell",
+    "Valakut Exploration",
+    "Vega, the Watcher",
+    "Virtue of Courage // Embereth Blaze",
+    "Vivi Ornitier"
+   ]
+  },
+  "88": {
+   "b98c526bccef": [
+    "Abomination, Irradiated Brute",
+    "Abraded Bluffs",
+    "Absorbing Man and Titania",
+    "Alien Invasion",
+    "Amonkhet Raceway",
+    "Ancient Greenwarden",
+    "Annie Joins Up",
+    "Arlinn Kord // Arlinn, Embraced by the Moon",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Back-Alley Gardener",
+    "Beorn the Fierce",
+    "Beorn's Hospitality",
+    "Black Panther, Wakandan King",
+    "Bristling Backwoods",
+    "Command Tower",
+    "Dancing from Dark to Dawn",
+    "Doc Samson, Super Psychiatrist",
+    "Elven Passage",
+    "Emperor Apatzec Intli IV",
+    "Enduring Vitality",
+    "Epic Fight",
+    "Evolving Wilds",
+    "Forest",
+    "Gamma Grotesque",
+    "Gathering Place",
+    "Ghired, Mirror of the Wilds",
+    "Giant-Man, Gargantuan Genius",
+    "Grand Warlord Radha",
+    "Great Divide Guide",
+    "Hexhaven Invigorator",
+    "Hobbit Hole",
+    "Hulk's Thunderclap",
+    "Hulk, Brutal Brawler",
+    "Hulk, Strongest There Is",
+    "Hushwood Verge",
+    "Icetill Explorer",
+    "Inscription of Abundance",
+    "Inspiring Call",
+    "Jennifer Walters",
+    "Master's Guidance",
+    "Miles Morales",
+    "Minsc & Boo, Timeless Heroes",
+    "Mountain",
+    "Nylea, God of the Hunt",
+    "Nyxbloom Ancient",
+    "Omnath, Locus of Rage",
+    "Plains",
+    "Point the Way",
+    "Punishing Punch",
+    "Ram Through",
+    "Ravenous Tyrannosaurus",
+    "Red Hulk",
+    "Rhys the Redeemed",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Samut, Hazoret's Champion",
+    "Samut, the Driving Force",
+    "Samut, the Tested",
+    "Selvala, Heart of the Wilds",
+    "She-Hulk, Attorney-at-Law",
+    "She-Hulk, Jennifer Walters",
+    "Sheltering Landscape",
+    "Sledge-Class Seedship",
+    "Smuggler's Surprise",
+    "Starting Town",
+    "Temple of Abandon",
+    "Temple of Plenty",
+    "Terramorphic Expanse",
+    "Thornspire Verge",
+    "Tifa Lockhart",
+    "Tifa's Limit Break",
+    "Tifa, Martial Artist",
+    "Toph, Earthbending Master",
+    "Toph, Greatest Earthbender",
+    "Toph, the First Metalbender",
+    "Torgal, A Fine Hound",
+    "Training Compound",
+    "Unnatural Growth",
+    "Vibrant Cityscape",
+    "Vigorbloom Charm",
+    "Voja, Jaws of the Conclave",
+    "Worldweave",
+    "Wrenn and Realmbreaker",
+    "Zacama, Primal Calamity"
+   ]
+  },
+  "91": {
+   "abef18f4ef81": [
+    "Anguished Unmaking",
+    "Army of the Damned",
+    "Assemble from Parts",
+    "Aven Wind Guide",
+    "Black Market Connections",
+    "Bleachbone Verge",
+    "Bone Miser",
+    "Command Tower",
+    "Commence the Endgame",
+    "Contaminated Landscape",
+    "Cryptcaller Chariot",
+    "Cursecloth Wrappings",
+    "Dalkovan Encampment",
+    "Deadly Precision",
+    "Diregraf Captain",
+    "Dismal Backwater",
+    "Doctor Doom",
+    "Dreadhorde Invasion",
+    "Eaten Alive",
+    "Embalmed Ascendant",
+    "Enter the God-Eternals",
+    "Eternal Skylord",
+    "Eternal of Harsh Truths",
+    "Fallen Shinobi",
+    "Floodfarm Verge",
+    "Funeral Room // Awakening Hall",
+    "Geralf, the Fleshwright",
+    "Ghoulcaller Gisa",
+    "Gisa and Geralf",
+    "Gisa, the Hellraiser",
+    "Gleaming Overseer",
+    "Gloomlake Verge",
+    "God-Eternal Oketra",
+    "God-Pharaoh's Gift",
+    "Godless Shrine",
+    "Grim Reaper's Scythe",
+    "Grimgrin, Corpse-Born",
+    "Hallowed Fountain",
+    "Hashaton, Scarab's Fist",
+    "Havengul Runebinder",
+    "Hidden Lair",
+    "Invasion of Amonkhet // Lazotep Convert",
+    "Island",
+    "Kalitas, Traitor of Ghet",
+    "Lazotep Chancellor",
+    "Liliana of the Veil",
+    "Liliana, Death's Majesty",
+    "Liliana, Dreadhorde General",
+    "Liliana, Heretical Healer // Liliana, Defiant Necromancer",
+    "Liliana, Waker of the Dead",
+    "Liliana, the Last Hope",
+    "Mana Confluence",
+    "Miasmic Mummy",
+    "Necroduality",
+    "Never // Return",
+    "Oglor, Devoted Assistant",
+    "Outlaw Stitcher",
+    "Plains",
+    "Prismatic Vista",
+    "Psychic Frog",
+    "Ral Zarek, Guest Lecturer",
+    "Realm of Koh",
+    "Reflecting Pool",
+    "Risen Necroregent",
+    "Shattered Sanctum",
+    "Sothera, the Supervoid",
+    "Soul Diviner",
+    "Starting Town",
+    "Swamp",
+    "Temmet, Naktamun's Will",
+    "Temple of Silence",
+    "The Cloning of Shredder",
+    "The Final Days",
+    "The Scarab God",
+    "The Sibsig Ceremony",
+    "The Soul Stone",
+    "Tomebound Lich",
+    "Undercity Sewers",
+    "Unstoppable Slasher",
+    "Vizier of the Scorpion",
+    "Waste Not",
+    "Watery Grave",
+    "Way of the Necromancer",
+    "Wayward Servant",
+    "Zahur, Glory's Past",
+    "Zul Ashur, Lich Lord"
+   ]
+  },
+  "92": {
+   "d45191f9959a": [
+    "Aggravated Assault",
+    "Ancient Copper Dragon",
+    "Archpriest of Shadows",
+    "Avatar Roku, Firebender",
+    "Barbed Servitor",
+    "Black Widow, Super Spy",
+    "Blazemire Verge",
+    "Blood Crypt",
+    "Boiling Rock Prison",
+    "Burst Lightning",
+    "Combustion Man",
+    "Cruel Administrator",
+    "Dark Fortress",
+    "Day of Black Sun",
+    "Dragonskull Summit",
+    "Drana, Liberator of Malakir",
+    "Efreet Flamepainter",
+    "Electro, Assaulting Battery",
+    "Embercleave",
+    "Evolving Wilds",
+    "Explosive Singularity",
+    "Fang, Roku's Companion",
+    "Fated Firepower",
+    "Fiery Confluence",
+    "Fire Lord Ozai",
+    "Fire Nation Archers",
+    "Fire Nation Occupation",
+    "Fire Nation Palace",
+    "Fire Nation Sentinels",
+    "Fire Nation Turret",
+    "Fire Sages",
+    "Firebender Ascension",
+    "Firebending Lesson",
+    "Firebending Student",
+    "Frantic Confrontation",
+    "Gix, Yawgmoth Praetor",
+    "Goldspan Dragon",
+    "Great Train Heist",
+    "Hell to Pay",
+    "Improvisation Capstone",
+    "Insurrection",
+    "Iroh's Demonstration",
+    "Iroh, Dragon of the West",
+    "Lion Vulture",
+    "Longshot, Rebel Bowman",
+    "Moraug, Fury of Akoum",
+    "Mountain",
+    "Neheb, Dreadhorde Champion",
+    "Noxious Gearhulk",
+    "Ominous Asylum",
+    "Overwhelming Victory",
+    "Ozai, the Phoenix King",
+    "Photon, Mighty Marvel",
+    "Professional Face-Breaker",
+    "Rakdos Joins Up",
+    "Rakdos, Patron of Chaos",
+    "Rakdos, the Muscle",
+    "Raven Eagle",
+    "Razortrap Gorge",
+    "Realm of Koh",
+    "Redirect Lightning",
+    "Return the Favor",
+    "Sarkhan, the Dragonspeaker",
+    "Savage Beating",
+    "Smaug the Impenetrable",
+    "Smellerbee, Rebel Fighter",
+    "Sozin's Comet",
+    "Starting Town",
+    "Swamp",
+    "Temple of Malice",
+    "The Last Agni Kai",
+    "The Legend of Roku",
+    "The Rise of Sozin // Fire Lord Sozin",
+    "Thriving Bluff",
+    "Thriving Moor",
+    "Valakut, the Molten Pinnacle",
+    "White Lotus Hideout",
+    "Yathan Tombguard",
+    "Zuko, Avatar Hunter",
+    "Zuko, Firebending Master",
+    "Zuko, Seeking Honor"
+   ]
+  },
+  "93": {
+   "0ef68c14bd7c": [
+    "Agrus Kos, Spirit of Justice",
+    "Akul the Unrepentant",
+    "All-Fates Stalker",
+    "Alpharael, Stonechosen",
+    "Angrath, the Flame-Chained",
+    "Arabella, Abandoned Doll",
+    "At Knifepoint",
+    "Aurelia, the Warleader",
+    "Bitter Triumph",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blood Crypt",
+    "Bone-Cairn Butcher",
+    "Boneyard Desecrator",
+    "Celes, Rune Knight",
+    "Combustion Man",
+    "Command Tower",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Packbeasts",
+    "Dark Fortress",
+    "Dictate of Erebos",
+    "Djeru and Hazoret",
+    "Dragonskull Summit",
+    "Ertha Jo, Frontier Mentor",
+    "Evolving Wilds",
+    "Far Fortune, End Boss",
+    "Fire Lord Zuko",
+    "Genji Glove",
+    "Godless Shrine",
+    "Hellrider",
+    "Hero's Downfall",
+    "Ingris Stingerquill",
+    "Inti, Seneschal of the Sun",
+    "Isshin, Two Heavens as One",
+    "Kingpin, Wilson Fisk",
+    "Kinscaer Sentry",
+    "Kira Nerys, Firebrand",
+    "Laughing Jasper Flint",
+    "Liliana, Dreadhorde General",
+    "Living Laser",
+    "Long Goodbye",
+    "Mardu Siegebreaker",
+    "Mardu Thunderkite",
+    "Massacre Girl, Most Wanted",
+    "Mishra, Claimed by Gix",
+    "Mog, Moogle Warrior",
+    "Mountain",
+    "Nadier's Nightblade",
+    "Nico Minoru, Runaway",
+    "Nomad Outpost",
+    "Nowhere to Run",
+    "Olivia, Opulent Outlaw",
+    "Outlaws' Merriment",
+    "Overlord of the Boilerbilges",
+    "Phyrexian Dragon Engine",
+    "Pirate Peddlers",
+    "Plains",
+    "Professional Face-Breaker",
+    "Pyre-Sledge Arsonist",
+    "Raiyuu, Storm's Edge",
+    "Rakdos, the Muscle",
+    "Raph & Leo, Sibling Rivals",
+    "Raucous Carnival",
+    "Razortrap Gorge",
+    "Sacred Foundry",
+    "Scoured Barrens",
+    "Shattered Sanctum",
+    "Smellerbee, Rebel Fighter",
+    "Sothera, the Supervoid",
+    "Spider-Man, New Champion",
+    "Starting Town",
+    "Steal the Show",
+    "Stormforged Armor",
+    "Sun-Blessed Peak",
+    "Sunbillow Verge",
+    "Swamp",
+    "Temple of Malice",
+    "Temple of Silence",
+    "Temple of Triumph",
+    "The Infamous Cruelclaw",
+    "Voice of Victory",
+    "Vraan, Executioner Thane",
+    "War Effort",
+    "Zagras, Thief of Heartbeats",
+    "Zurgo Stormrender",
+    "Zurgo, Thunder's Decree"
+   ]
+  },
+  "94": {
+   "60a5cf4c8ee6": [
+    "Adrix and Nev, Twincasters",
+    "Agna Qel'a",
+    "Ancient Bronze Dragon",
+    "Applied Geometry",
+    "Arwen, Weaver of Hope",
+    "Attuma, Atlantean Warlord",
+    "Ba Sing Se",
+    "Baxter, Fly in the Ointment",
+    "Berta, Wise Extrapolator",
+    "Body of Research",
+    "Bonny Pall, Clearcutter",
+    "Branching Evolution",
+    "Breeding Pool",
+    "Bristly Bill, Spine Sower",
+    "Command Tower",
+    "Contagion Dispenser",
+    "Daughter of the Deep",
+    "Deeproot Pilgrimage",
+    "Deeproot Waters",
+    "Double Major",
+    "Dreamroot Cascade",
+    "Eladamri, Korvecdal",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Ezuri, Claw of Progress",
+    "Felling Blow",
+    "Forest",
+    "Germination Practicum",
+    "Herald of Secret Streams",
+    "Hunter's Talent",
+    "Inexorable Tide",
+    "Innkeeper's Talent",
+    "Inscription of Abundance",
+    "Island",
+    "Kami of Whispered Hopes",
+    "Kiora's Follower",
+    "Kiora, the Crashing Wave",
+    "Krang, the All-Powerful",
+    "Kumena, Tyrant of Orazca",
+    "Merfolk Skydiver",
+    "Nadir Kraken",
+    "Namor the Sub-Mariner",
+    "Namor, Scourge of the Seas",
+    "Origin of Metalbending",
+    "Primo, the Unbounded",
+    "Quandrix Charm",
+    "Reject Imperfection",
+    "Repulsive Mutation",
+    "Roalesk, Apex Hybrid",
+    "Selvala, Heart of the Wilds",
+    "Signature Slam",
+    "Silverback Elder",
+    "Simic Ascendancy",
+    "Smuggler's Surprise",
+    "Song of Freyalise",
+    "Starting Town",
+    "Svyelun of Sea and Sky",
+    "Teferi, Temporal Pilgrim",
+    "Tekuthal, Inquiry Dominus",
+    "Temple of Mystery",
+    "The Earth Crystal",
+    "The Skullspore Nexus",
+    "The Watcher in the Water",
+    "Thornwood Falls",
+    "Three Steps Ahead",
+    "Tishana, Voice of Thunder",
+    "Topiary Lecturer",
+    "Verdant Kraken",
+    "Vivien, Arkbow Ranger",
+    "Voracious Hydra",
+    "Vulture, Feathered Fiend",
+    "Willowrush Verge",
+    "Xolatoyac, the Smiling Flood",
+    "Yue, the Moon Spirit",
+    "Zimone, Paradox Sculptor",
+    "Zimone, Quandrix Prodigy"
+   ]
+  },
+  "95": {
+   "4f187b0299e6": [
+    "Aang's Iceberg",
+    "Aang, Swift Savior // Aang and La, Ocean's Fury",
+    "Aerith, Last Ancient",
+    "Airbender Ascension",
+    "Ajani, Strength of the Pride",
+    "Ajani, the Greathearted",
+    "Alert Heedbonder",
+    "Archangel of Thune",
+    "Arwen, Mortal Queen",
+    "Arwen, Weaver of Hope",
+    "Avengers Hangar",
+    "Birnin Zana Plaza",
+    "Bloombrute",
+    "Blossoming Sands",
+    "Breeding Pool",
+    "Captain Marvel, Shooting Star",
+    "Cloudblazer",
+    "Collective Effort",
+    "Command Tower",
+    "Dawn of Hope",
+    "Denzilore Fatehold",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Don & Leo, Problem Solvers",
+    "Dreamroot Cascade",
+    "Elesh Norn, Mother of Machines",
+    "Elspeth Resplendent",
+    "Ephemerate",
+    "Felidar Sovereign",
+    "Flickering Hound",
+    "Floodfarm Verge",
+    "Forest",
+    "Galadriel, Light of Valinor",
+    "Gathering Place",
+    "Genku, Future Shaper",
+    "Gleaming Bastion",
+    "Gold-Forged Thopteryx",
+    "Hallowed Fountain",
+    "Helga, Skittish Seer",
+    "Heliod, God of the Sun",
+    "Huatli's Raptor",
+    "Huatli, Radiant Champion",
+    "Hushwood Verge",
+    "Island",
+    "King T'Challa // Black Panther, Hope Enduring",
+    "Knight of Autumn",
+    "Kwia Vigorbloom",
+    "Lathiel, the Bounteous Dawn",
+    "Lilysplash Mentor",
+    "Mana Confluence",
+    "March of Otherworldly Light",
+    "Matoya, Archon Elder",
+    "Ob Nixilis, the Ascended",
+    "Oji, the Exquisite Blade",
+    "Overgrown Farmland",
+    "Panharmonicon",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Pym Technologies",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Resplendent Angel",
+    "Righteous Valkyrie",
+    "Serra Paragon",
+    "Shanna, Purifying Blade",
+    "Sheltered by Ghosts",
+    "Sigarda, Font of Blessings",
+    "Silver Surfer, Cosmic Voyager",
+    "Soul Warden",
+    "Soulherder",
+    "Spara's Headquarters",
+    "Starting Town",
+    "Temple Garden",
+    "Thassa, Deep-Dwelling",
+    "The Book of Exalted Deeds",
+    "The Wandering Emperor",
+    "Thornwood Falls",
+    "Thragtusk",
+    "Tidus, Yuna's Guardian",
+    "Titan of Industry",
+    "Titanbones, Towering Heart",
+    "Tranquil Cove",
+    "Trelasarra, Moon Dancer",
+    "Valgavoth, the Lifeline",
+    "Wan Shi Tong, All-Knowing",
+    "Willowrush Verge",
+    "Y'shtola Rhul",
+    "Your Fate Ends Here"
+   ]
+  },
+  "96": {
+   "bd6edb0ddbdc": [
+    "Absorbing Man",
+    "Altar of Dementia",
+    "Ashiok, Nightmare Muse",
+    "Ashiok, Nightmare Weaver",
+    "Ashiok, Sculptor of Fears",
+    "Bilbo, Thief in the Night",
+    "Breeding Pool",
+    "Bruvac the Grandiloquent",
+    "Cankerbloom",
+    "Command Tower",
+    "Conduit Pylons",
+    "Consuming Aberration",
+    "Cut Your Losses",
+    "Deepmuck Desperado",
+    "Defiler of Dreams",
+    "Didn't Say Please",
+    "Dismal Backwater",
+    "Drown in the Loch",
+    "Echocasting Symposium",
+    "Erebos, God of the Dead",
+    "Flux Channeler",
+    "Forest",
+    "Fraying Sanity",
+    "Glarb, Calamity's Augur",
+    "Gloomlake Verge",
+    "Hidden Lair",
+    "Ichormoon Gauntlet",
+    "Immortus, Master of Eternity",
+    "Insidious Roots",
+    "Ioreth of the Healing House",
+    "Island",
+    "Jace, Memory Adept",
+    "Jace, Wielder of Mysteries",
+    "Jace, the Perfected Mind",
+    "Jidoor, Aristocratic Capital // Overture",
+    "Jin-Gitaxias // The Great Synthesis",
+    "Kasmina, Enigma Sage",
+    "Krang, the All-Powerful",
+    "Lithoform Engine",
+    "Lord of the Forsaken",
+    "M.O.D.O.K., Evil Intellect",
+    "Malcolm, Alluring Scoundrel",
+    "Mana Confluence",
+    "Master's Councillors",
+    "Matoya, Archon Elder",
+    "Nissa, Voice of Zendikar",
+    "Ob Nixilis Reignited",
+    "Ominous Seas",
+    "One Ring to Rule Them All",
+    "Opulent Palace",
+    "Overgrown Tomb",
+    "Phenax, God of Deception",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Vista",
+    "Reed Richards, Smartest Man",
+    "Reflecting Pool",
+    "Reject Imperfection",
+    "Riverchurn Monument",
+    "Rona, Herald of Invasion // Rona, Tolarian Obliterator",
+    "Scavenger's Talent",
+    "Serpent's Pass",
+    "Sheoldred // The True Scriptures",
+    "Sheoldred, the Apocalypse",
+    "Sphinx's Tutelage",
+    "Starting Town",
+    "Surveillance Room",
+    "Swamp",
+    "Tainted Observer",
+    "Teferi's Tutelage",
+    "Teferi, Temporal Pilgrim",
+    "Temple of Malady",
+    "Temple of Mystery",
+    "Terisian Mindbreaker",
+    "Tezzeret the Schemer",
+    "The Mycotyrant",
+    "The Theorist, Jace Beleren",
+    "The Water Crystal",
+    "Thryx, the Sudden Storm",
+    "Tireless Provisioner",
+    "Undercity Sewers",
+    "Villainous Wealth",
+    "Vraska, Betrayal's Sting",
+    "Vraska, Golgari Queen",
+    "Wastewood Verge",
+    "Watery Grave",
+    "Way of the Necromancer",
+    "Willowrush Verge",
+    "Woodland Cemetery",
+    "Yawgmoth's Vile Offering"
+   ]
+  },
+  "97": {
+   "d2432cc42552": [
+    "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+    "Ajani, Strength of the Pride",
+    "Bard Class",
+    "Belladonna Took",
+    "Bilbo, Fellow Conspirator",
+    "Biotech Specialist",
+    "Bosco, Just a Bear",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Brimaz, King of Oreskos",
+    "Bumi's Feast Lecture",
+    "Cabaretti Courtyard",
+    "Caretaker's Talent",
+    "Castle Doom",
+    "Chandra, Spark Hunter",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Doubling Season",
+    "Dragonspark Reactor",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Felidar Retreat",
+    "Feline Sovereign",
+    "Food Coma",
+    "Forest",
+    "Gathering Place",
+    "Generous Pup",
+    "Ghired, Mirror of the Wilds",
+    "Giant Opportunity",
+    "Gilded Goose",
+    "Haliya, Guided by Light",
+    "Heroic Feast",
+    "Hobbit's Sting",
+    "Hungering Puppetbeast",
+    "Hushwood Verge",
+    "Innkeeper's Talent",
+    "Inspiring Vantage",
+    "Jetmir's Garden",
+    "Jetmir, Nexus of Revels",
+    "Jiang Yanggu, Never Alone",
+    "Jinnie Fay, Jetmir's Second",
+    "Karn's Bastion",
+    "Kutzil, Malamet Exemplar",
+    "Lita, Little Orphan Amphibian",
+    "Lucky the Pizza Dog",
+    "Mana Confluence",
+    "Michelangelo, the Heart",
+    "Mondrak, Glory Dominus",
+    "Mountain",
+    "Mutagen Man, Living Ooze",
+    "Mythweaver Poq",
+    "Night of the Sweets' Revenge",
+    "Overgrown Farmland",
+    "Pawpatch Formation",
+    "Peregrin Took",
+    "Pia Nalaar, Consul of Revival",
+    "Plains",
+    "Prismatic Vista",
+    "Quintorius Kand",
+    "Ragost, Deft Gastronaut",
+    "Reflecting Pool",
+    "Regal Caracal",
+    "Rin and Seri, Inseparable",
+    "Rocco, Street Chef",
+    "Rockfall Vale",
+    "Rosie Cotton of South Lane",
+    "Roxanne, Starfall Savant",
+    "Sacred Foundry",
+    "Sam, Loyal Attendant",
+    "Sami, Wildcat Captain",
+    "Samwise Gamgee",
+    "Scalesoul Gnome",
+    "Sidequest: Catch a Fish // Cooking Campsite",
+    "Stable Wormhole",
+    "Starting Town",
+    "Stew the Coneys",
+    "Stomping Ground",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Syr Ginger, the Meal Ender",
+    "Teething Wurmlet",
+    "Temple Garden",
+    "Tenured Tethermage",
+    "The Cabbage Merchant",
+    "The Shire",
+    "The Wandering Emperor",
+    "Thornspire Verge",
+    "Tippy-Toe, Terrific Partner",
+    "Tireless Provisioner",
+    "Training Compound",
+    "West Wind Avatar",
+    "Wicked Wolf",
+    "Woodwork Prodigy // Soul Tether"
+   ]
+  },
+  "98": {
+   "9d5aaca4dc8c": [
+    "Alela, Artful Provocateur",
+    "Angelic Destiny",
+    "Anguished Unmaking",
+    "Archnemesis",
+    "Archon of the Wild Rose",
+    "Azorius Charm",
+    "Baron Bertram Graywater",
+    "Barrensteppe Siege",
+    "Biorganic Carapace",
+    "Bleachbone Verge",
+    "Captain America, Super-Soldier",
+    "Captain America, Wings of Freedom",
+    "Command Tower",
+    "Contaminated Landscape",
+    "Dalkovan Encampment",
+    "Danitha Capashen, Paragon",
+    "Deserted Beach",
+    "Detention Sphere",
+    "Doctor Strange, Surgeon",
+    "Drana and Linvala",
+    "Entity Tracker",
+    "Ephara, God of the Polis",
+    "Eriette of the Charmed Apple",
+    "Eriette, the Beguiler",
+    "Firja's Retribution",
+    "Floodfarm Verge",
+    "Flux Channeler",
+    "G'raha Tia, Scion Reborn",
+    "Gift of Orzhova",
+    "Gleaming Bastion",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Hallowed Fountain",
+    "Hallowed Haunting",
+    "Halvar, God of Battle // Sword of the Realms",
+    "Heliod, God of the Sun",
+    "Heliod, the Radiant Dawn",
+    "Hope Against Hope",
+    "Ichormoon Gauntlet",
+    "Invasion of New Capenna // Holy Frazzle-Cannon",
+    "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+    "Island",
+    "Kaya, Geist Hunter",
+    "Killian, Decisive Mentor",
+    "Killian, Ink Duelist",
+    "Kor Spiritdancer",
+    "Lawmage's Binding",
+    "Leyline of Anticipation",
+    "Light of Promise",
+    "Light-Paws, Emperor's Voice",
+    "Mana Confluence",
+    "Mesmerizing Dose",
+    "Metropolis Angel",
+    "Mondrak, Glory Dominus",
+    "Nahiri's Binding",
+    "Ojutai's Command",
+    "Pearl-Ear, Imperial Advisor",
+    "Petrify",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Pull of the Mist Moon",
+    "Quintorius, Fate Splitter",
+    "Reflecting Pool",
+    "Restless Anchorage",
+    "Rite of Oblivion",
+    "Rodolf Duskbringer",
+    "Scoured Barrens",
+    "Scriv, the Obligator",
+    "Serra Redeemer",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Sigil of the Empty Throne",
+    "Skyblade's Boon",
+    "Sorin of House Markov // Sorin, Ravenous Neonate",
+    "Spectral Steel",
+    "Sphinx's Revelation",
+    "Sram, Senior Edificer",
+    "Staff of Compleation",
+    "Staggering Insight",
+    "Starting Town",
+    "Swamp",
+    "Teferi, Hero of Dominaria",
+    "Temple of Silence",
+    "The Circle of Loyalty",
+    "Tranquil Cove",
+    "Undercity Sewers",
+    "Watery Grave",
+    "Y'shtola, Night's Blessed"
+   ]
+  },
+  "100": {
+   "ae7c9e34fd81": [
+    "Alela, Artful Provocateur",
+    "Ancient Den",
+    "Anguished Unmaking",
+    "Antagonist Incorporator",
+    "Arcane Signet",
+    "Battle of Wolf 359",
+    "Bio-Asset Allocator",
+    "Bleachbone Verge",
+    "Borg Cube",
+    "Borg Queen, Perfection Manifest",
+    "Brad Boimler, Eager Ensign",
+    "Capital City",
+    "Castle Doom",
+    "Chrome Dome",
+    "Cid, Timeless Artificer",
+    "Collation Trimatrix",
+    "Collective Drone",
+    "Command Subadjunct",
+    "Command Tower",
+    "Conquest Mission",
+    "Consider the Prime Directive",
+    "Crystalline Entity",
+    "Cyberdrive Awakener",
+    "Data, New Life",
+    "Dawnsire, Sunstar Dreadnought",
+    "Deanna Troi, Psychic Counsel",
+    "Death Is Irrelevant",
+    "Deserted Beach",
+    "Doctor Doom",
+    "Flare of Fortitude",
+    "Floodfarm Verge",
+    "Gaseous Anomaly",
+    "Gleaming Bastion",
+    "Gloomlake Verge",
+    "Godless Shrine",
+    "Gold-Forged Thopteryx",
+    "Hallowed Fountain",
+    "Haunt the Network",
+    "Hidden Lair",
+    "Hive Mind Coprocessor",
+    "Infernal Grasp",
+    "Iron Man, Bleeding Edge",
+    "Iron Man, Modern Marvel",
+    "Iron Spider, Stark Upgrade",
+    "Island",
+    "Kaito, Dancing Shadow",
+    "Kappa Cannoneer",
+    "Lita, Mechanical Engineer",
+    "Locutus of Borg",
+    "Locutus, the One Who Speaks",
+    "Lt. Cmdr. Geordi La Forge",
+    "Malcator, Purity Overseer",
+    "Malfunctioning Holodeck",
+    "Mana Confluence",
+    "Mendicant Core, Guidelight",
+    "Mikaeus, the Lunarch",
+    "Mirror Universe Intrusion",
+    "Mr. Spock, Science Officer",
+    "Noctis, Prince of Lucis",
+    "Obscura Storefront",
+    "Organic Avulsion Unit",
+    "Overflow Submatrix",
+    "Plains",
+    "Plaza of Heroes",
+    "Primary Unimatrix Adjunct",
+    "Replicator",
+    "Resistance Is Futile",
+    "Salvation Engine",
+    "Seat of the Synod",
+    "Secluded Courtyard",
+    "Shattered Sanctum",
+    "Sheoldred's Edict",
+    "Sheoldred, the Apocalypse",
+    "Starting Town",
+    "Support Skyforge",
+    "Susurian Dirgecraft",
+    "Swamp",
+    "Temple of Enlightenment",
+    "Temple of Silence",
+    "Test of Conviction",
+    "Test of Priorities",
+    "Tezzeret, Master of the Bridge",
+    "The Borg Queen",
+    "The Unicomplex",
+    "Tidus, Blitzball Star",
+    "U.S.S. Excelsior, Cutting Edge",
+    "U.S.S. Reliant, From Hell's Heart",
+    "Undercity Sewers",
+    "Uthros, Titanic Godcore",
+    "Vanishing Verse",
+    "Vault of Whispers",
+    "Watery Grave",
+    "Weather Maker",
+    "Winter, Cursed Rider",
+    "Zefram Cochrane, Warp Pioneer"
+   ]
+  }
+ },
+ "verdicts": {
+  "Pinnacle Emissary": {
+   "I": {
+    "m": "★",
+    "graded_at": "90c27140f47d"
+   },
+   "D": {
+    "m": "★★",
+    "graded_at": "240593281f9b"
+   }
+  },
+  "Bat'leth": {
+   "A": {
+    "m": "★★★",
+    "graded_at": "39e5ac4266f1"
+   }
+  },
+  "Combadge": {
+   "A": {
+    "m": "★",
+    "graded_at": "39e5ac4266f1"
+   },
+   "H": {
+    "m": "★",
+    "graded_at": "ae1d7df5a59f"
+   }
+  },
+  "L'Rell, Fierce Visionary": {
+   "M": {
+    "m": "★",
+    "graded_at": "e82f65284a90"
+   }
+  },
+  "Craterous Stomp": {
+   "O": {
+    "m": "★★",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Forging the Tyrite Sword": {
+   "O": {
+    "m": "★★",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Meteoric Mace": {
+   "O": {
+    "m": "◇",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Spectral Steel": {
+   "O": {
+    "m": "★",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Storm-Kiln Artist": {
+   "O": {
+    "m": "★★",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Stormforged Armor": {
+   "O": {
+    "m": "◇",
+    "graded_at": "e275b2d9a55b"
+   }
+  },
+  "Elvish Elegy": {
+   "T": {
+    "m": "★",
+    "graded_at": "5c0e16c58c76"
+   }
+  },
+  "Perennial Gravewarden": {
+   "T": {
+    "m": "★",
+    "graded_at": "5c0e16c58c76"
+   }
+  },
+  "Concert Kaboomist": {
+   "G": {
+    "m": "◇",
+    "graded_at": "dabde365452e"
+   }
+  },
+  "Fiery Inscription": {
+   "G": {
+    "m": "◇",
+    "graded_at": "dabde365452e"
+   }
+  },
+  "Ghitu Journeymage": {
+   "G": {
+    "m": "★",
+    "graded_at": "dabde365452e"
+   }
+  },
+  "Soul-Scar Mage": {
+   "G": {
+    "m": "★",
+    "graded_at": "dabde365452e"
+   }
+  },
+  "Unstable Amulet": {
+   "G": {
+    "m": "★",
+    "graded_at": "dabde365452e"
+   }
+  },
+  "Bouncer's Beatdown": {
+   "S": {
+    "m": "★★★",
+    "graded_at": "b98c526bccef"
+   }
+  },
+  "Hydra's Growth": {
+   "S": {
+    "m": "◇",
+    "graded_at": "b98c526bccef"
+   }
+  },
+  "Kami of Whispered Hopes": {
+   "S": {
+    "m": "★★",
+    "graded_at": "b98c526bccef"
+   }
+  },
+  "Narfi, Betrayer King": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "abef18f4ef81"
+   }
+  },
+  "Sidisi, Undead Vizier": {
+   "Z": {
+    "m": "★★★",
+    "graded_at": "abef18f4ef81"
+   }
+  },
+  "Master of Waves": {
+   "Z": {
+    "m": "✗",
+    "graded_at": "abef18f4ef81"
+   }
+  },
+  "Patchwork Crawler": {
+   "Z": {
+    "m": "✗",
+    "graded_at": "abef18f4ef81"
+   }
+  },
+  "Umbral Juke": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "abef18f4ef81"
+   },
+   "X": {
+    "m": "★★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Warren Soultrader": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "abef18f4ef81"
+   }
+  },
+  "The Wrath of Khan": {
+   "P": {
+    "m": "★★★",
+    "graded_at": "d45191f9959a"
+   }
+  },
+  "Emperor of Bones": {
+   "P": {
+    "m": "★★★",
+    "graded_at": "d45191f9959a"
+   }
+  },
+  "Witch-king of Angmar": {
+   "P": {
+    "m": "★",
+    "graded_at": "d45191f9959a"
+   }
+  },
+  "Switchgrass Grazer": {
+   "W": {
+    "m": "★",
+    "graded_at": "0ef68c14bd7c"
+   }
+  },
+  "Shapers of Nature": {
+   "Q": {
+    "m": "★★★",
+    "graded_at": "60a5cf4c8ee6"
+   }
+  },
+  "Emergent Sequence": {
+   "Q": {
+    "m": "★★",
+    "graded_at": "60a5cf4c8ee6"
+   }
+  },
+  "Ghost of Illyria": {
+   "L": {
+    "m": "★",
+    "graded_at": "4f187b0299e6"
+   }
+  },
+  "Tamiyo, Compleated Sage": {
+   "C": {
+    "m": "★★",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Cauldron's Gift": {
+   "C": {
+    "m": "✗",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Cemetery Tampering": {
+   "C": {
+    "m": "✗",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Garruk, Cursed Huntsman": {
+   "C": {
+    "m": "◇",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Mesmeric Orb": {
+   "C": {
+    "m": "◇",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Sweet Oblivion": {
+   "C": {
+    "m": "★",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Vivien, Monsters' Advocate": {
+   "C": {
+    "m": "✗",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "World Shaper": {
+   "C": {
+    "m": "✗",
+    "graded_at": "bd6edb0ddbdc"
+   }
+  },
+  "Feasting Troll King": {
+   "R": {
+    "m": "★★★",
+    "graded_at": "d2432cc42552"
+   }
+  },
+  "Meriadoc Brandybuck": {
+   "R": {
+    "m": "★",
+    "graded_at": "d2432cc42552"
+   }
+  },
+  "Siege-Gang Commander": {
+   "R": {
+    "m": "★",
+    "graded_at": "d2432cc42552"
+   }
+  },
+  "Dramatic Accusation": {
+   "Y": {
+    "m": "★★",
+    "graded_at": "9d5aaca4dc8c"
+   }
+  },
+  "Unable to Scream": {
+   "Y": {
+    "m": "★★",
+    "graded_at": "9d5aaca4dc8c"
+   }
+  },
+  "Assembly Specialist": {
+   "X": {
+    "m": "★★★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Bronze Walrus": {
+   "X": {
+    "m": "★★★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Class-F Shuttlecraft": {
+   "X": {
+    "m": "★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Free Borg Revolutionaries": {
+   "X": {
+    "m": "★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Jin-Gitaxias, Progress Tyrant": {
+   "X": {
+    "m": "★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Machinist's Dismissal": {
+   "X": {
+    "m": "★★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Squadron Carrier": {
+   "X": {
+    "m": "★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  },
+  "Vexing Drone": {
+   "X": {
+    "m": "★",
+    "graded_at": "ae7c9e34fd81"
+   }
+  }
+ }
+}

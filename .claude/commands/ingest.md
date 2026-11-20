@@ -131,6 +131,12 @@ tag or a role label, which is CLAUDE.md's recurring mis-grade:
 2. `python3 scripts/deck.py suggest-homes "<name>"` — every deck the card is castable in
    and shares a central theme with, each row labelled **KEY** / **role-player** /
    **tangential**, with a suggested cut. Rows sort strongest-first. Costs ~2s per card.
+   Since 2026-11-20 it also admits decks with NO shared theme through structural lanes —
+   an artifact payoff / artifact against a real artifact deck, a counters or tokens feeder
+   against a deck that multiplies them, and removal / ramp / fixing into the ≤5 decks that
+   most need the job. A lane row's shared-themes column shows the count in brackets
+   (`[29 artifact count]`, `[needs: interaction 11 vs A-line 12]`); read that number as the
+   evidence (G-31).
 3. Grade each real fit from the Stage-1 text **against that deck's engine** — a clause
    that reads as a drawback in isolation is often an upside in the matching deck (the
    swap gotcha). Classify it:

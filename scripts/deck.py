@@ -5365,7 +5365,208 @@ def deck_role_counts(cards, carddata):
     return t["interaction"], t["card_advantage"]
 
 
-def structural_overlay_hit(card_text, cards, carddata):
+# RESOURCE AND MULTIPLIER LANES (2026-11-20). Three structural fits that theme overlap cannot
+# see, found by hand-checking the 101 cards of one ingest against the roster: a card that
+# PAYS OFF artifacts in the roster's artifact deck (Conquest Mission → deck 84, 29 artifacts,
+# whose central themes are Hero-led), a card that IS an artifact in a deck full of artifact
+# payoffs (Seat of the Synod → 84), and a card that FEEDS counters or tokens in a deck that
+# MULTIPLIES them (Deanna Troi → deck 86's Doc Samson / Michelangelo / Shang-Chi stack). The
+# multiplier side is the REVERSE of `doubler_support`: that prices a doubler by its feeders,
+# this prices a feeder by its doublers, and both read the same `_DOUBLER_AXES` feeder
+# patterns so the two directions cannot disagree about what a feeder is (G-70).
+#
+# A MULTIPLIER here is wider than a doubler on purpose: the "that many PLUS ONE" counter
+# replacements (Doc Samson, Hardened Scales, Conclave Mentor, Kami of Whispered Hopes) and
+# the "those tokens PLUS an additional" token replacements (Peregrin Took, Tippy-Toe,
+# Donatello) multiply every feeder exactly as a doubler does. `_DOUBLER_AXES` deliberately
+# excludes them from DOUBLER pricing (a +1 is not a x2 — its comment says why), and that
+# stays true there; a feeder does not care which kind of multiplier it is meeting.
+#
+# Calibrated from the roster (140 decks, 2026-11-20), floor near p90 so a lane fires on a
+# deck that really does the thing:
+#   artifacts by type line   p50 3 / p80 5 / p90 9 / max 38   → floor 10, key 20
+#   artifact-payoff cards    nonzero in 39 of 140, p90 2      → floor 5,  key 10
+#   counter multipliers      nonzero in 28 of 140, max 5      → floor 2,  key 3
+#   token multipliers        nonzero in 30 of 140, max 4      → floor 2,  key 3
+_PLUS_ONE_COUNTER_RE = re.compile(r"(?:that many|those counters?) plus (?:one|1)\b", re.I)
+_PLUS_TOKEN_RE = re.compile(r"\btokens? plus (?:an additional|a|one)\b", re.I)
+# A counters FEEDER beyond `_DOUBLER_AXES`' "put a +1/+1 counter": the enters-with templating
+# (Deanna Troi, Voracious Hydra) and the board-wide "+1/+1 counter on each" (Mikaeus).
+_COUNTER_FEED_EXTRA_RE = re.compile(
+    r"enters? with [^.]{0,40}?\+1/\+1 counters?|\+1/\+1 counters? on (?:each|target|another|up to)",
+    re.I)
+_LANE_CALIB = {
+    "artifact count": (10, 20),
+    "artifact payoffs": (5, 10),
+    "counters multipliers": (2, 3),
+    "tokens multipliers": (2, 3),
+}
+_LANE_PER_SOURCE = 1.0
+_LANE_CAP = 12.0
+
+
+def multiplier_axes(text):
+    """The counters/tokens axes this card MULTIPLIES — a doubler or a plus-one replacement."""
+    t = _REMINDER_RE.sub(" ", text or "")
+    axes = {a for a in doubler_axes(t) if a in ("counters", "tokens")}
+    if _PLUS_ONE_COUNTER_RE.search(t):
+        axes.add("counters")
+    if _PLUS_TOKEN_RE.search(t):
+        axes.add("tokens")
+    return axes
+
+
+def feeder_axes(text):
+    """The counters/tokens axes this card FEEDS — read through `_DOUBLER_AXES`' own feeder
+    patterns (plus the enters-with counter templating), reminder text stripped."""
+    t = _REMINDER_RE.sub(" ", text or "")
+    axes = set()
+    if _DOUBLER_AXES["counters"][1].search(t) or _COUNTER_FEED_EXTRA_RE.search(t):
+        axes.add("counters")
+    if _DOUBLER_AXES["tokens"][1].search(t):
+        axes.add("tokens")
+    return axes
+
+
+def artifact_payoff(text):
+    """True when the card pays off artifacts — K-15's `_ARTIFACT_MATTERS_RE` (one definition,
+    in the tagger, read on its reminder-stripped text) or a cost that falls per artifact."""
+    from tag_synergies import _ARTIFACT_MATTERS_RE, _clean_text
+    t = text or ""
+    return bool(_ARTIFACT_MATTERS_RE.search(_clean_text(t))) or cost_scale_resource(t) == "artifact"
+
+
+def _lane_count(cards, carddata, pred):
+    n = 0
+    for q, name, _s, _c in cards:
+        nl = name.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if cd and pred(cd):
+            n += q
+    return n
+
+
+def resource_lane_hits(card_text, card_type, cards, carddata):
+    """Every resource/multiplier lane this card clears in THIS deck, as
+    [(label, support, floor, key)], each at or above its floor. Empty when none fire.
+
+    The deck-side counts read TYPE LINES and card TEXT, never synergy tags (K-04)."""
+    out = []
+    ctype = (card_type or "").split("//")[0]
+    if artifact_payoff(card_text):
+        n = cost_scale_support("artifact", cards, carddata)
+        out.append(("artifact count", n))
+    if "Artifact" in ctype:
+        n = _lane_count(cards, carddata, lambda cd: artifact_payoff(cd.get("text") or ""))
+        out.append(("artifact payoffs", n))
+    for ax in sorted(feeder_axes(card_text)):
+        n = _lane_count(cards, carddata,
+                        lambda cd, a=ax: a in multiplier_axes(cd.get("text") or ""))
+        out.append((f"{ax} multipliers", n))
+    hits = []
+    for label, n in out:
+        floor, key = _LANE_CALIB[label]
+        if n >= floor:
+            hits.append((label, n, floor, key))
+    # A plus-one MULTIPLIER is priced by its feeders exactly as a doubler is — through the
+    # doubler's own calibration, so Conclave Mentor and Hardened Scales meet the same bar
+    # Branching Evolution does. A literal doubler is already handled by `doubler_best`.
+    for ax in sorted(multiplier_axes(card_text) - set(doubler_axes(card_text))):
+        sup = doubler_support(ax, cards, carddata)
+        floor, key = doubler_calib(ax)
+        if sup >= floor:
+            hits.append((f"{ax} feeders", sup, floor, key))
+    return hits
+
+
+_NEEDS_LANE_K = 5          # at most this many needs-lane homes per card
+_NEEDS_INT_HEADROOM = 2    # a deck this far ABOVE its A-line interaction is not a home
+_NEEDS_ACCEL_MIN = 0.6     # `_accel_want` below this: the curve does not want ramp
+
+
+def needs_axis(text, card_type, card_colors_=None):
+    """The structural job this card does — "interaction", "ramp" or "fixing" — or None.
+
+    Read from `classify_roles` (the same classifier `tier_band` grades on) and, for a land,
+    from what it produces (`land_production`): a land making two or more colours is a
+    fixer; a mono-colour land is not, and an ARTIFACT land reaches its home through the
+    artifact lane instead."""
+    t = text or ""
+    if "Land" in _primary_type(card_type or ""):
+        prod = land_production(t, "".join(sorted(card_colors_ or ())))
+        made = set(prod.get("free") or ()) | set(prod.get("conditional") or ())
+        return "fixing" if (prod.get("any") or len(made) >= 2) else None
+    roles = set(classify_roles(t))
+    if roles & _INTERACTION_ROLES:
+        return "interaction"
+    if "Ramp / fixing" in roles:
+        return "ramp"
+    return None
+
+
+def _needs_lane_rows(axis, cands, carddata, card_cd):
+    """[(fit, dd, dmeta, cards, pipwarn, label, strength)] for the `_NEEDS_LANE_K` decks that
+    most want `axis` done, most-wanting first; ties break on the deck id (G-54).
+
+      interaction  decks at most `_NEEDS_INT_HEADROOM` above their A-line interaction,
+                   fewest first; KEY only below the needs model's own minimum
+                   (`_NEEDS_INT_TARGET`, scaled per 60 like the floor), else role-player.
+      ramp         decks whose curve wants acceleration (`_accel_want` ≥ 0.6), more colours
+                   breaking ties toward a deck a mana rock also fixes; role-player.
+      fixing       decks whose colours the land covers (two or more of them); role-player.
+    """
+    scored = []
+    for dd, dmeta, cards, castable, d_mvs, pipwarn in cands:
+        scale = deck_floor_scale(dmeta, cards)
+        if axis == "interaction":
+            d_int, _ca = deck_role_counts(cards, carddata)
+            aline = floor_requirements({"floor_scale": scale}, "A")[0]
+            if d_int - aline > _NEEDS_INT_HEADROOM:
+                continue
+            target = _scale_count(_NEEDS_INT_TARGET, scale)
+            strength = "KEY" if d_int < target else "role-player"
+            want = aline - d_int
+            label = f"[needs: interaction {d_int} vs A-line {aline}]"
+        elif axis == "ramp":
+            if not d_mvs:
+                continue
+            avg = sum(d_mvs) / len(d_mvs)
+            heavy = sum(1 for v in d_mvs if v >= 4) / len(d_mvs)
+            accel = _accel_want(avg, heavy)
+            if accel < _NEEDS_ACCEL_MIN:
+                continue
+            want = accel + 0.05 * len(castable)
+            strength = "role-player"
+            label = f"[needs: ramp, curve wants {accel:.2f}]"
+        else:   # fixing
+            prod = land_production(card_cd.get("text") or "", card_cd.get("colors") or "")
+            made = (set("WUBRG") if prod.get("any") else
+                    set(prod.get("free") or ()) | set(prod.get("conditional") or ()))
+            covered = len(made & set(castable))
+            if covered < 2:
+                continue
+            want = covered + 0.1 * len(castable)
+            strength = "role-player"
+            label = f"[fixing: {covered} of {len(castable)} colours]"
+        scored.append((want, dd["id"], dd, dmeta, cards, pipwarn, label, strength))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    return [(round(max(1.0, w * 5 + 10), 1), dd, dmeta, cards, pw, label, st)
+            for w, _id, dd, dmeta, cards, pw, label, st in scored[:_NEEDS_LANE_K]]
+
+
+def lane_boost(hit):
+    """Bounded fit bump for a lane hit: zero below the floor, linear above it, capped —
+    the `cost_scale_boost` contract, measured from the floor for the same reason."""
+    label, n, floor, _key = hit
+    if n < floor:
+        return 0.0
+    return min((n - floor + 1) * _LANE_PER_SOURCE * (4 if "multipliers" in label else 1),
+               _LANE_CAP)
+
+
+def structural_overlay_hit(card_text, cards, carddata, card_type=None):
     """Does this card clear a STRUCTURAL overlay for THIS deck — a doubler with feeders,
     a cost-scaler with its resource, a chosen-type payoff with a type to choose?
 
@@ -5406,6 +5607,14 @@ def structural_overlay_hit(card_text, cards, carddata):
                 return True
         except Exception:
             pass
+    # The resource and multiplier lanes (2026-11-20), at their floors like every branch
+    # above. `card_type` is optional so a caller holding only text still gets the text-read
+    # lanes; the "this card IS an artifact" lane needs the type line.
+    try:
+        if resource_lane_hits(txt, card_type, cards, carddata):
+            return True
+    except Exception:
+        pass
     return False
 
 
@@ -5493,8 +5702,23 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     if gap:                       # on a specific theme AND fills a role the deck lacks
         return "KEY"
     top = max(theme_w.values()) if theme_w else 0
-    if top and any(theme_w.get(t, 0) >= top for t in specific):
-        return "KEY"
+    top_hits = [t for t in specific if top and theme_w.get(t, 0) >= top]
+    if top_hits:
+        # The SAME condition the signature branch above puts on a GENERIC theme, applied
+        # here too (2026-11-20). A generic theme reaches `specific` only by being in the
+        # deck's signature, and this branch let it mint KEY unconditionally whenever it was
+        # also the top theme — so in a 101-card ingest it produced 148 KEY verdicts, the
+        # worst being incidental tags: Replicator KEY in 13 decks on `tokens` / `lifegain`
+        # (its one Food), Gaseous Anomaly in 7 on `card draw`, Winter, Cursed Rider in 6 on
+        # `graveyard` (it EXILES artifact cards from there). A generic top theme now earns
+        # KEY through the overlay, which the resource/multiplier lanes widened in the same
+        # change so the deck-30 rescue cards still clear it: Kami of Whispered Hopes and
+        # Conclave Mentor are plus-one counter MULTIPLIERS with feeders, Deanna Troi a
+        # feeder in a multiplier deck. A SPECIFIC top theme still mints on its own.
+        if any(t.lower() not in GENERIC_THEMES for t in top_hits):
+            return "KEY"
+        if overlay is not None and overlay():
+            return "KEY"
     return "role-player"
 
 
@@ -13491,7 +13715,8 @@ def cmd_screen(args):
         shared = sorted(ctags & central)
         strength = fit_strength(
             shared, theme_w, text, d_int, d_ca, sig,
-            overlay=lambda t=text: structural_overlay_hit(t, cards, carddata),
+            overlay=lambda t=text, ty=cd.get("type"): structural_overlay_hit(
+                t, cards, carddata, card_type=ty),
             scale=deck_floor_scale(dmeta, cards))
         roles = sorted(classify_roles(text))
         ax, sup = doubler_best(text, cards, carddata)
@@ -13903,6 +14128,14 @@ def cmd_suggest_homes(args):
     # earns is invisible without this. Wizard's Staff — "Equip Wizard {1}" against
     # "Equip {3}" — ranked into a ONE-Wizard deck above two 20-Wizard decks.
     _cscale = cost_scale_resource(cd.get("text") or "")
+    _ctext = cd.get("text") or ""
+    # THE NEEDS LANE (2026-11-20). Removal, ramp and fixing share no synergy theme with
+    # anything — that is G-38's point about plain `suggest`, and this surface had the same
+    # blind spot: Vanishing Verse and Sheoldred's Edict, premium removal no deck ran, reached
+    # no deck as more than "tangential". A card whose job is structural is ranked instead by
+    # how much each castable, legal deck wants that job done (see `_needs_lane_rows`).
+    _needs_axis = needs_axis(_ctext, cd.get("type") or "", ccols)
+    _needs_cands = []
     results = []
     skipped_illegal = 0
     # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
@@ -13964,7 +14197,29 @@ def cmd_suggest_homes(args):
                     d_mvs += [e[1]] * q
         shared = sorted(ctags & _central_themes(theme_w))
         shared = _drop_cost_themes(shared, cards, carddata)
+        # The resource/multiplier lanes (2026-11-20) are checked BEFORE the no-theme exit.
+        # Every overlay below used to sit after `if not shared: continue`, so it could only
+        # promote a deck that already shared a theme — a card with no shared theme reached
+        # no deck however strong the structural fit (Seat of the Synod → deck 84's 29
+        # artifacts and 10 artifact payoffs; it shares no theme with anything).
+        lanes = resource_lane_hits(_ctext, cd.get("type"), cards, carddata)
         if not shared:
+            already0 = _ms_key(card) in {_ms_key(n) for _, n, _, _ in cards}
+            if lanes:
+                best = max(lanes, key=lambda h: (h[1] >= h[3], h[1] - h[2], h[0]))
+                # A lane-only row is role-player; KEY only at an ARTIFACT lane's key level,
+                # where the deck is a real artifact build-around. A feeder lane never mints
+                # KEY on its own — with no theme in common it is a role-player at most.
+                lstrength = ("KEY" if best[1] >= best[3] and best[0].startswith("artifact")
+                             else "role-player")
+                lcut = (None if already0 else
+                        _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=is_fixer))
+                lgate = "" if already0 else unmet_gate(card, cards, carddata, mana)
+                results.append((lane_boost(best), dd["id"], already0,
+                                [f"[{best[1]} {best[0]}]"], lcut, lstrength, False, pipwarn,
+                                None, lgate, f"lane ({best[0]})"))
+            elif _needs_axis and not already0:
+                _needs_cands.append((dd, dmeta, cards, castable, d_mvs, pipwarn))
             continue
         deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0
         # BOTH sides through `_ms_key` (G-63). The card side was front-normalized and the
@@ -13979,8 +14234,8 @@ def cmd_suggest_homes(args):
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(
             shared, theme_w, cd.get("text") or "", d_int, d_ca, sig,
-            overlay=lambda t=(cd.get("text") or ""): structural_overlay_hit(
-                t, cards, carddata),
+            overlay=lambda t=(cd.get("text") or ""), ty=cd.get("type"): structural_overlay_hit(
+                t, cards, carddata, card_type=ty),
             scale=deck_floor_scale(dmeta, cards))
         # WHICH branch minted a KEY, for the saturation note below: the overlays promote
         # on DENSITY, each at its own roster-calibrated key threshold, so a doubler KEY in a
@@ -14044,6 +14299,19 @@ def cmd_suggest_homes(args):
                 strength, key_via = "KEY", key_via or "chosen-type"
             elif _tboost and strength == "tangential":
                 strength = "role-player"
+        # RESOURCE / MULTIPLIER lanes on a theme-sharing deck, same contract as the overlays
+        # above: bounded, promotes tangential → role-player only, never demotes. KEY from a
+        # generic theme comes through `fit_strength`'s overlay (which reads these lanes);
+        # the only direct promotion is an ARTIFACT lane at its key level, the same rule the
+        # cost-scale overlay applies to the same type-line count.
+        if lanes:
+            best = max(lanes, key=lambda h: (h[1] >= h[3], h[1] - h[2], h[0]))
+            _lboost = lane_boost(best)
+            fit += _lboost
+            if best[1] >= best[3] and best[0].startswith("artifact"):
+                strength, key_via = "KEY", key_via or f"lane ({best[0]})"
+            elif _lboost and strength == "tangential":
+                strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
         # in an aggressive low-curve deck (never boosts, never relabels — see
         # _home_curve_fit). `top_heavy` flags the row so the clunk is visible, not silent.
@@ -14058,6 +14326,32 @@ def cmd_suggest_homes(args):
         gate = "" if already else unmet_gate(card, cards, carddata, mana)
         results.append((fit, dd["id"], already, shared, cut, strength, top_heavy,
                         pipwarn, tscale if is_tscale else None, gate, key_via))
+        # A TANGENTIAL theme row is a needs candidate too: Vanishing Verse shares only a
+        # generic theme with deck 91, so it had a row there — labelled tangential, which is
+        # how a premium removal spell read in the deck with the least interaction.
+        if strength == "tangential" and _needs_axis and not already:
+            _needs_cands.append((dd, dmeta, cards, castable, d_mvs, pipwarn))
+
+    # THE NEEDS LANE: the K decks that most want this card's structural job, upgrading their
+    # tangential row or adding one. Bounded at `_NEEDS_LANE_K` rows so a removal spell does
+    # not list every deck it is castable in (interaction sits at the A line roster-wide).
+    if _needs_axis and _needs_cands:
+        _by_id = {r[1]: i for i, r in enumerate(results)}
+        for need, dd, dmeta, cards, pipwarn, label, nstrength in _needs_lane_rows(
+                _needs_axis, _needs_cands, carddata, cd):
+            if dd["id"] in _by_id:
+                i = _by_id[dd["id"]]
+                r = list(results[i])
+                r[0] = max(r[0], need)
+                r[3] = [label] + list(r[3])
+                r[5] = nstrength
+                r[10] = r[10] or "needs"
+                results[i] = tuple(r)
+            else:
+                ncut = _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=is_fixer)
+                ngate = unmet_gate(card, cards, carddata, mana)
+                results.append((need, dd["id"], False, [label], ncut, nstrength, False,
+                                pipwarn, None, ngate, "needs"))
 
     if skipped_illegal:
         print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
@@ -14498,8 +14792,8 @@ def cmd_quality(args):
         sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(
             shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig,
-            overlay=lambda t=((cd or {}).get("text") or ""): structural_overlay_hit(
-                t, cards, carddata),
+            overlay=lambda t=((cd or {}).get("text") or ""), ty=(cd or {}).get("type"):
+                structural_overlay_hit(t, cards, carddata, card_type=ty),
             scale=deck_floor_scale(dmeta, cards))
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"

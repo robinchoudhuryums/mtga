@@ -17,7 +17,7 @@
 #: archetype: commander's trigger happen twice. DISTINCT from the other Brawl decks (78 Bant
 #: archetype: tokens, 84 Jeskai Iron Legion, 85 Jeskai damage): green counters, four colours.
 #: tier: A — set by the owner 2026-10-20. The measurable floor reads A at 100 cards: interaction 12
-#: tier: and card advantage 12 against an A line of 12 and a sum of 19, protection 8. The engine is
+#: tier: and card advantage 11 against an A line of 12 and a sum of 19, protection 8. The engine is
 #: tier: layered: counter multipliers, two token doublers (Parallel Lives and Donatello's Mutagen),
 #: tier: and Reed Richards turning each turn's first extra draw into four. Weaknesses: four colours
 #: tier: (the commander is 58% on turn four from lands alone), several double-pip cards, and removal
@@ -75,6 +75,12 @@
 #: notes: list (its (DOM) line is Scryfall's code; Arena's is DAR). Tamiyo, Field Researcher is mana
 #: notes: value 4, so unlike Teferi she triggers the commander and the members; she draws through
 #: notes: combat damage and her −2 taps two permanents. Interaction 13 → 12, still on the A line.
+#: notes: 2026-11-19: Namor, Scourge of the Seas in for Vizier of the Menagerie. Namor is a 4/4 (triggers the
+#: notes: commander) and a Mutant, flies, and makes a creature connive each combat (a card, and a counter the
+#: notes: multipliers grow). Card advantage 12 → 11 (Vizier's top-of-library creature casting).
+#: notes: 2026-11-19: Baxter, Fly in the Ointment in for Earth's Mightiest Heroes. Mana value 4 (triggers the
+#: notes: commander), a Mutant, grows on each draw, and gives every creature with a counter flying when it
+#: notes: enters or attacks: a team evasion finisher in a counters deck.
 
 # Commander (leads from the command zone; also one of the 100)
 1 The Fantastic Four (MSC) 741
@@ -117,6 +123,7 @@
 1 Sally Pride, Lioness Leader (TMT) 24
 1 Giant-Man, Gargantuan Genius (MSC) 722
 1 Raph & Mikey, Troublemakers (TMT) 167
+1 Baxter, Fly in the Ointment (TMC) 10
 
 # Support Heroes — card flow, mana and protection
 1 Bruce Banner (MSH) 49
@@ -127,7 +134,7 @@
 1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Mikey & Don, Party Planners (TMT) 157
 1 Genghis Frog (TMT) 148
-1 Vizier of the Menagerie (FDN) 649
+1 Namor, Scourge of the Seas (MSC) 631
 1 The Thing, Ben Grimm (MSH) 190
 1 Moon Girl and Devil Dinosaur (MSH) 223
 1 Reed Richards, Smartest Man (MSC) 636
@@ -144,7 +151,6 @@
 1 Origin of Metalbending (TLA) 187
 1 Rally the Monastery (TDM) 19
 1 Heroic Intervention (M21) 188
-1 Earth's Mightiest Heroes (MSH) 165
 1 The Wandering Emperor (NEO) 42
 1 Parallel Lives (MAR) 36
 1 Tamiyo, Field Researcher (BLC) 100

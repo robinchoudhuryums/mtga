@@ -1,0 +1,179 @@
+#: name: Black Mage — Vivi
+#: format: Historic Brawl
+#: colors: UR
+#: commander: Vivi Ornitier
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), IZZET SPELLS around Vivi Ornitier:
+#: archetype: "{0}: Add X mana in any combination of {U} and/or {R}, where X is Vivi's power" (once per turn, on
+#: archetype: your turn) and "whenever you cast a noncreature spell, put a +1/+1 counter on Vivi and it deals 1
+#: archetype: damage to each opponent". Every noncreature spell grows her mana and pings; cheap spells first,
+#: archetype: then tap Vivi for the big one. The WIN: Vivi's ping is noncombat damage, so Niv-Mizzet, Visionary
+#: archetype: draws on every noncreature spell, and with Niv-Mizzet, Parun the two loop (draw → ping → draw) until
+#: archetype: the opponent is dead; Human Torch, Johnny Storm makes the same loop with Visionary (draw → ping) while
+#: archetype: another Hero is out. Wizard's Staff (equip Wizard {1}) and Harmonic Prodigy make Vivi's and both Nivs'
+#: archetype: triggers fire again; Iron Lad, Young Avenger is a second Hero for the Torch loop and makes noncreature
+#: archetype: spells cost {1} less. Free casts and recasts (Baral, Vision, Spectral Synthezoid, Arcane Bombardment,
+#: archetype: Wanda's Vision, As Foretold, Epic Experiment, Mizzix's Mastery, Sunbird's Invocation, Surtland
+#: archetype: Elementalist, Improvisation Capstone, Neera, Kayla's Kindling's daily draft) each count as another cast. Copies
+#: archetype: made by Chandra, Hope's Beacon are NOT casts and do not grow Vivi; they multiply burn and draw. The cheap
+#: archetype: spells are chosen to COMPOUND rather than cantrip: Artist's Talent adds 2 to every Vivi ping, Wizard Class
+#: archetype: turns every Niv-Mizzet draw into a counter on Vivi, Curiosity on Parun or Torch draws on every ping, Fiery
+#: archetype: Inscription and Culmination of Studies hit the opponent for extra draws, and Flux Channeler / Volt Charge
+#: archetype: proliferate into Pensive Professor draws. Four counterspells (Counterspell, Wizard's Retort, Three Steps
+#: archetype: Ahead, Glen Elendra's Answer) protect Vivi through a big turn; Ajani Unrelenting makes a Wizard token every turn, and Talrand
+#: archetype: and Irencrag Pyromancer turn the spell count into fliers and damage.
+#: archetype: A creature payoff layer (Gray and Adira copying a Niv-Mizzet, Shark Typhoon, Vision) trades some Vivi
+#: archetype: growth for board presence — the owner's call in round 5.
+#: archetype: DRAFTED from the owner's pile (2026-11-18), then filled with outside spells and untapped duals.
+#: protect: Vivi Ornitier; Niv-Mizzet, Visionary; Niv-Mizzet, Parun; Electro, Assaulting Battery; Arcane Bombardment
+#: notes: 2026-11-18 round 2 (owner's picks, 24 swaps): outside spells in — counterspells (Counterspell, Swan Song,
+#: notes: Izzet Charm, Memory Lapse, Three Steps Ahead), compounding draw/burn (Asgardian Inspiration, Fractal Anomaly,
+#: notes: Twinned Vision, Slick Sequence, Prismari Charm, Illuminating Lash, Expressive Iteration, Glacial Dragonhunt),
+#: notes: Vivi-mana sinks (Crackle with Power, Expansion // Explosion, Epic Experiment, Culmination of Studies) and
+#: notes: Galvanic Iteration; untapped duals (Steam Vents, Spirebluff Canal, Fiery Islet, Shivan Reef, Sulfur Falls,
+#: notes: Riverglide Pathway) for five tapped lands and an Island. The owner kept Goliath Daydreamer, Keranos and Loki,
+#: notes: and turned down plain cantrips and burn (Opt, Consider, Preordain, Ponder, Brainstorm, Lightning Bolt) as
+#: notes: too one-note. The 18 pile cards cut this round sit on the builds/vivi bench with reasons.
+#: notes: 2026-11-18 round 4 (owner's picks, 6 swaps): Artist's Talent, Mizzix's Mastery, Archmage of Runes,
+#: notes: Ral, Storm Conduit, Glen Elendra's Answer and Primal Amulet in for Abandon Attachments, Wisdom of Ages,
+#: notes: Colorstorm Stallion, Vibrant Outburst, Tome Blast and Abstract Paintmage. The owner kept Spectacular
+#: notes: Skywhale (Guttersnipe waits for another cut) and held the spice round (Improvisation Capstone,
+#: notes: Planetarium of Wan Shi Tong, Sunbird's Invocation, Shark Typhoon); those, Jin-Gitaxias, Progress Tyrant
+#: notes: and Kraum are on the builds/vivi board with suggested cuts.
+#: notes: 2026-11-18 round 5 (owner's board picks, 9 swaps): Gray and Adira, Neera, Rootha, The Scarlet Witch,
+#: notes: Vision, Spectral Synthezoid, Galazeth Prismari, Shark Typhoon, Jin-Gitaxias and Kraum in for Memory Lapse,
+#: notes: Swan Song (it gives the opponent a 2/2 — the owner's no-benefit removal rule), Asgardian Inspiration,
+#: notes: Expansion // Explosion, Zaffai, Firemind's Research, Saheeli, Teferi and Twinned Vision. Academy
+#: notes: Instructor is still marked on the board with no cut (suggested: Prismari, the Inspiration).
+#: notes: 2026-11-18 round 6 (tier 1, 5 swaps): Wizard's Staff, Harmonic Prodigy, Human Torch, Johnny Storm (a second
+#: notes: Niv-Mizzet, Visionary loop, needs another Hero), Otawara and Sokenzan in for Ral, Storm Conduit, Expressive
+#: notes: Iteration, Prismari Charm, an Island and a Mountain. Eight more owner adds wait on the board with suggested cuts.
+#: notes: 2026-11-18 round 7 (owner's picks, 6 swaps): Surtland Elementalist, Sunbird's Invocation, Wizard Class, Academy
+#: notes: Instructor, Pensive Professor and Ajani Unrelenting (its Cadets are Wizard tokens; its −3 also kills Vivi, so it
+#: notes: is an emergency button) in for Prismari, the Inspiration, Thousand-Year Storm, Indris, Fractal Anomaly,
+#: notes: Stormcatch Mentor and Jin-Gitaxias, Progress Tyrant.
+#: notes: Round 8 (owner, 2026-11-18): Curiosity, Wizard's Retort, Volt Charge, Irencrag Pyromancer, Flux Channeler,
+#: notes: Improvisation Capstone, Planetarium of Wan Shi Tong, Thor, God of Thunder, Iron Lad, Young Avenger, Chandra,
+#: notes: Torch of Defiance, Command the Stage, Proft's Eidetic Memory and Talrand in for Galvanic Iteration, Izzet Charm,
+#: notes: Illuminating Lash, Galazeth Prismari, Tempest Trapper, Solstice Revelations, Primal Amulet, Nibelheim Aflame,
+#: notes: Sanar, Ral, Crackling Wit, Slick Sequence, Neera and Rootha. Glacial Dragonhunt kept over the owner's cut
+#: notes: mark (cheap removal; early drops 14, not 13). Curve: avg MV 3.75 -> 3.83. If the early game runs thin, the
+#: notes: first card back is Stormcatch Mentor, for Proft's Eidetic Memory.
+#: notes: Round 9 (owner, 2026-11-19): Kayla's Kindling, Oracle of the Alpha, Ral, Crackling Wit, Spellchain Scatter,
+#: notes: Neera, Wild Mage and Tempest Trapper in for Artistic Process, Spectacular Skywhale, Glacial Dragonhunt, Loki
+#: notes: Laufeyson, Planetarium of Wan Shi Tong and Resonating Lute. Interaction 16 -> 15 (Artistic Process and
+#: notes: Dragonhunt out); the Kindling's spellbook drafts Lightning Bolt, Abrade, Volcanic Fallout and Electrodominance.
+#: notes: Avg MV 3.83 -> 3.82.
+#: notes: Round 10 (owner, 2026-11-19): Ashling, Flame Dancer, Giant's Amulet and Rootha in for Crackle with Power,
+#: notes: Proft's Eidetic Memory and Chandra, Torch of Defiance (Human Torch kept as the second combo route; The Dawning
+#: notes: Archaic kept). Ashling is a Shaman, so Harmonic Prodigy doubles her magecraft; equip the Amulet to Vivi for
+#: notes: hexproof while untapped (her mana ability is {0}, not a tap). Card advantage 15 -> 14, interaction 15,
+#: notes: protection 2 -> 3. Thryx, the Sudden Storm (for The Scarlet Witch) is still open.
+#: notes: Lands (owner, 2026-11-19): Temple of Epiphany -> Command Tower, Wandering Fumarole -> Frostboil Snarl, one
+#: notes: Island -> Stormcarved Coast, one Mountain -> Mana Confluence. Sources 22/22 -> 23/23; cards below 90% on curve
+#: notes: 47 -> 40. The tools read Frostboil Snarl as always tapped; it enters untapped when you reveal an Island or
+#: notes: Mountain. Still 35 lands: a fourth land by turn four is 48.8% (36 lands: 51.7%), the first thing to raise if
+#: notes: the deck stumbles on mana.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Vivi Ornitier (FIN) 248
+
+# Payoffs and the Niv-Mizzet combo
+1 Niv-Mizzet, Visionary (FDN) 123
+1 Niv-Mizzet, Parun (GRN) 192
+1 Electro, Assaulting Battery (SPM) 76
+1 Oracle of the Alpha (MBC) 64
+1 Ovika, Enigma Goliath (FDN) 663
+1 Gandalf the Grey (LTR) 207
+1 Tellah, Great Sage (FIN) 244
+1 Shark Typhoon (IKO) 67
+1 The Vision and Scarlet Witch (MSC) 707
+1 Keranos, God of Storms (PIO) 311
+1 Academy Instructor (TRK) 137
+1 Gray and Adira, Forever Joined (TRK) 238
+1 Talrand, Sky Summoner (JMP) 181
+1 Wizard's Staff (HOB) 59
+1 Harmonic Prodigy (J21) 466
+1 Human Torch, Johnny Storm (MSH) 136
+
+# Cost reduction and spell mana
+1 Melek, Reforged Researcher (MKM) 430
+1 The Emperor of Palamecia (FIN) 219
+1 Neera, Wild Mage (HBG) 245
+1 Paradigm Shifter (YSOS) 23
+1 Flux Channeler (WAR) 52
+1 Tempest Trapper (YBLB) 8
+1 As Foretold (WOT) 14
+1 Archmage of Runes (FDN) 30
+1 The Scarlet Witch (MSH) 151
+1 Irencrag Pyromancer (ELD) 128
+
+# Free casts and recasts — each one is another Vivi trigger
+1 Baral and Kari Zev (MOM) 218
+1 Vision, Spectral Synthezoid (MSC) 644
+1 Arcane Bombardment (SNC) 101
+1 Wanda's Vision (MSC) 708
+1 Charred Foyer // Warped Space (DSK) 129
+1 The Dawning Archaic (SOS) 1
+1 Goliath Daydreamer (ECL) 143
+1 Improvisation Capstone (SOS) 120
+1 Epic Experiment (PIO) 223
+1 Mizzix's Mastery (FCA) 41
+1 Giant's Amulet (KHM) 59
+1 Surtland Elementalist (KHM) 375
+1 Sunbird's Invocation (XLN) 165
+
+# Copy engines
+1 Chandra, Hope's Beacon (MOM) 134
+1 Spellchain Scatter (YDMU) 15
+1 Curiosity (JMP) 147
+
+# Card flow and tutors
+1 Iron Lad, Young Avenger (MSC) 569
+1 Wizard Class (AFR) 81
+1 Artist's Talent (BLB) 124
+1 Rootha, Mastering the Moment (SOC) 8
+1 Sorcerer Class (AFR) 233
+1 Kraum, Violent Cacophony (OTJ) 214
+1 Culmination of Studies (STX) 173
+1 Pensive Professor (SOS) 63
+1 Ajani Unrelenting (FRA) 242
+
+# Protection and counterspells — keep Vivi alive through a big turn
+1 Counterspell (MAR) 52
+1 Wizard's Retort (JMP) 198
+1 Three Steps Ahead (OTJ) 75
+1 Glen Elendra's Answer (ECL) 52
+
+# Interaction and burn
+1 Thunder Magic (FIN) 165
+1 Ral, Crackling Wit (BLB) 230
+1 Iroh's Demonstration (TLA) 141
+1 Thor, God of Thunder (MSH) 156
+1 Command the Stage (FRA) 77
+1 Kayla's Kindling (YBRO) 9
+1 Fiery Inscription (LTR) 126
+1 Ashling, Flame Dancer (MH3) 115
+1 Volt Charge (ONE) 155
+
+# Lands (35)
+1 Agna Qel'a (TLA) 264
+1 Sulfur Falls (DOM) 247
+1 Shivan Reef (DMU) 255
+1 Steam Vents (ECL) 267
+1 Riverpyre Verge (DFT) 260
+1 Fiery Islet (HA7) 21
+1 Spirebluff Canal (OTJ) 270
+1 Command Tower (FRC) 22
+1 Frostboil Snarl (STX) 265
+10 Island (TRK) 319
+1 Stormcarved Coast (SOS) 263
+1 Otawara, Soaring City (NEO) 271
+1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
+11 Mountain (TRK) 323
+1 Mana Confluence (EOS) 25
+1 Sokenzan, Crucible of Defiance (NEO) 276
+
+#~ +Jacob Hauken, Inspector // Hauken's Insight | BENCH (builder vivi): benched on the board
+#~ +Lwaxana Troi, Charming Guest | BENCH (builder vivi): benched on the board
+#~ +Najal, the Storm Runner | BENCH (builder vivi): benched on the board

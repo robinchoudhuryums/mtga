@@ -355,7 +355,16 @@ def check():
     #       not it falls through to the branches BELOW rather than being forced to
     #       tangential. So the rescue below is untouched, and the assertion the old
     #       comment warned against is still one nobody makes.
-    if fs(["counters"], {"counters": 12}, "", 8, 8, signature={"counters"}) != "KEY":
+    #
+    #       2026-11-20 (M4): the TOP-THEME route asks the same question, so the rescue now
+    #       needs the card to engage the spine structurally — a counter-doubler does, which
+    #       is what the overlay predicate stands for here. Without it a generic spine is a
+    #       role-player: that route had minted 148 KEYs on one 101-card ingest, Replicator
+    #       KEY in 13 decks on `tokens` / `lifegain`. Deck 30's rescue cards (Innkeeper's
+    #       Talent, Branching Evolution, Hardened Scales, Kami, Conclave Mentor) were
+    #       measured identical before and after, through the widened multiplier lanes.
+    if fs(["counters"], {"counters": 12}, "", 8, 8, signature={"counters"},
+          overlay=lambda: True) != "KEY":
         errs.append("fit_strength: the #: protect: rescue must still promote a deck's real "
                     "build-around spine (a counters deck protecting counter-doublers).")
 

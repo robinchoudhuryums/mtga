@@ -1926,3 +1926,100 @@ class TestDeck89RolePatternHoles:
     def test_counters_engine_reads_creatures_with_counters_and_counter_doublers(self):
         assert "payoff" in deck.engine_roles(self.BUSHMASTER).get("counters", set())
         assert "payoff" in deck.engine_roles(self.SEASON).get("counters", set())
+
+
+class TestHomesLanes:
+    """suggest-homes resource / multiplier / needs lanes (2026-11-20). Synthetic card data,
+    so the pins hold whatever the roster does."""
+
+    def _cd(self, rows):
+        return {n.lower(): {"name": n, "type": t, "text": x, "power": "1", "colors": c}
+                for n, t, x, c in rows}
+
+    # --- what a multiplier and a feeder are ---
+    def test_plus_one_replacements_are_multipliers(self):
+        assert deck.multiplier_axes("If one or more +1/+1 counters would be put on a "
+                                    "creature you control, that many plus one +1/+1 "
+                                    "counters are put on it instead.") == {"counters"}
+        assert deck.multiplier_axes("If you would create one or more tokens, instead create "
+                                    "those tokens plus an additional Food token.") == {"tokens"}
+        assert deck.multiplier_axes("Draw a card.") == set()
+
+    def test_enters_with_counters_is_a_feeder(self):
+        assert "counters" in deck.feeder_axes(
+            "Other creatures you control enter with an additional +1/+1 counter on them.")
+        assert "tokens" in deck.feeder_axes(
+            "{2}, {T}: Create a tapped token that's a copy of target token you control.")
+
+    def test_artifact_payoff_reads_the_tagger_pattern(self):
+        assert deck.artifact_payoff("Whenever a nontoken artifact you control enters, "
+                                    "put a quest counter on this enchantment.")
+        assert not deck.artifact_payoff("Destroy target creature.")
+
+    # --- each lane clears only at its floor ---
+    def test_artifact_count_lane_floor(self):
+        floor = deck._LANE_CALIB["artifact count"][0]
+        cd = self._cd([("Gear", "Artifact", "", "")])
+        pay = "Artifact creatures you control get +1/+1."
+        assert not deck.resource_lane_hits(pay, "Enchantment", [(floor - 1, "Gear", "", "")], cd)
+        hits = deck.resource_lane_hits(pay, "Enchantment", [(floor, "Gear", "", "")], cd)
+        assert [h[0] for h in hits] == ["artifact count"]
+
+    def test_an_artifact_meets_the_artifact_payoff_lane(self):
+        floor = deck._LANE_CALIB["artifact payoffs"][0]
+        cd = self._cd([("Payer", "Creature", "Artifacts you control get +1/+0.", "")])
+        land = "{T}: Add {U}."
+        assert not deck.resource_lane_hits(land, "Artifact Land", [(floor - 1, "Payer", "", "")], cd)
+        assert deck.resource_lane_hits(land, "Artifact Land", [(floor, "Payer", "", "")], cd)
+        # …and a non-artifact with the same text does not
+        assert not deck.resource_lane_hits(land, "Land", [(floor, "Payer", "", "")], cd)
+
+    def test_a_feeder_meets_a_multiplier_deck(self):
+        floor = deck._LANE_CALIB["counters multipliers"][0]
+        cd = self._cd([("Scales", "Enchantment",
+                        "If one or more +1/+1 counters would be put on a creature you "
+                        "control, that many plus one +1/+1 counters are put on it instead.", "G")])
+        feeder = "Put a +1/+1 counter on each other creature you control."
+        assert not deck.resource_lane_hits(feeder, "Creature", [(floor - 1, "Scales", "", "")], cd)
+        hits = deck.resource_lane_hits(feeder, "Creature", [(floor, "Scales", "", "")], cd)
+        assert ("counters multipliers", floor) == hits[0][:2]
+
+    def test_lanes_reach_the_shared_overlay(self):
+        floor = deck._LANE_CALIB["artifact payoffs"][0]
+        cd = self._cd([("Payer", "Creature", "Artifacts you control get +1/+0.", "")])
+        cards = [(floor, "Payer", "", "")]
+        assert deck.structural_overlay_hit("{T}: Add {U}.", cards, cd, card_type="Artifact Land")
+        assert not deck.structural_overlay_hit("{T}: Add {U}.", cards, cd)   # type unknown
+
+    def test_lane_boost_is_bounded(self):
+        assert deck.lane_boost(("artifact count", 9, 10, 20)) == 0.0
+        assert 0 < deck.lane_boost(("artifact count", 10, 10, 20)) <= deck._LANE_CAP
+        assert deck.lane_boost(("artifact count", 999, 10, 20)) == deck._LANE_CAP
+
+    # --- the needs lane ---
+    def test_needs_axis(self):
+        assert deck.needs_axis("Destroy target creature.", "Instant") == "interaction"
+        assert deck.needs_axis("{T}: Add {U} or {R}.", "Land", {"U", "R"}) == "fixing"
+        assert deck.needs_axis("{T}: Add {U}.", "Artifact Land", {"U"}) is None
+        assert deck.needs_axis("Draw a card.", "Sorcery") is None
+
+    def test_the_top_theme_branch_asks_the_overlay_for_a_generic_theme(self):
+        # a SPECIFIC top theme still mints alone; a generic one (in the signature) needs it
+        assert deck.fit_strength(["Cat"], {"Cat": 10}, "", 8, 8) == "KEY"
+        assert deck.fit_strength(["tokens"], {"tokens": 10}, "", 8, 8,
+                                 signature={"tokens"}) == "role-player"
+        assert deck.fit_strength(["tokens"], {"tokens": 10}, "", 8, 8,
+                                 signature={"tokens"}, overlay=lambda: True) == "KEY"
+
+    def test_needs_lane_is_bounded_and_skips_saturated_decks(self, monkeypatch):
+        # Interaction counts per fake deck; the A line at 60 cards is TIER_FLOOR_REQ['A'][0].
+        aline = deck.TIER_FLOOR_REQ["A"][0]
+        counts = {f"d{i}": aline - 3 + i for i in range(10)}   # aline-3 … aline+6
+        monkeypatch.setattr(deck, "deck_role_counts", lambda cards, cd: (cards[0][0], 0))
+        cands = [({"id": k, "path": k}, {"format": "Standard"}, [(v, "X", "", "")], {"B"}, [2, 3], None)
+                 for k, v in counts.items()]
+        rows = deck._needs_lane_rows("interaction", cands, {}, {"text": "", "colors": "B"})
+        ids = [r[1]["id"] for r in rows]
+        assert len(rows) <= deck._NEEDS_LANE_K
+        assert ids[0] == "d0"                                 # fewest interaction first
+        assert all(counts[i] - aline <= deck._NEEDS_INT_HEADROOM for i in ids)

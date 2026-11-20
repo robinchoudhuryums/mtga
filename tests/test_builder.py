@@ -955,3 +955,81 @@ class TestPublishPlan:
         monkeypatch.setattr(B, "ARTIFACT_FILE_CAP", 2)
         assert B.main(["publish-plan", str(tmp_path)]) == 0
         assert "within 0 file(s)" in capsys.readouterr().err
+
+
+class TestImageBudget:
+    """A many-deck board cannot ship one large image per card under the 511-file cap, so the
+    budget keeps the pile, then commanders, then deck cards a reason names (2026-11-17)."""
+
+    def _data(self, n_deck):
+        cards = [{"n": f"Pile {i}", "p": "A"} for i in range(3)]
+        cards += [{"n": f"Deck {i:03d}", "p": None} for i in range(n_deck)]
+        return {"cards": cards}
+
+    def test_everything_ships_when_it_fits(self):
+        data = self._data(5)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        assert B.image_budget(data, {}, urls, {}, cap=20) == set(urls)
+
+    def test_pile_then_commander_then_named_cut_then_the_rest(self):
+        data = self._data(10)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        urls["Boss"] = "u"
+        build = {"reasons": {"Pile 0": {"text": "Cut: Deck 007 (weaker)."}}}
+        ship = B.image_budget(data, build, urls, {}, cmds={"A": "Boss"}, cap=6)
+        assert ship == {"Pile 0", "Pile 1", "Pile 2", "Boss", "Deck 007", "Deck 000"}
+
+    def test_a_back_face_costs_a_second_file(self):
+        data = self._data(4)
+        urls = {c["n"]: "u" for c in data["cards"]}
+        ship = B.image_budget(data, {}, urls, {"Pile 0": "b"}, cap=4)
+        assert ship == {"Pile 0", "Pile 1", "Pile 2"}
+
+
+class TestSwapBoard:
+    """The pairs-only page (`builder.py swaps`): each candidate beside the one deck card it
+    would replace, derived from builds/<slug>/swaps.json (2026-11-17)."""
+
+    def test_repo_swap_board_renders_offline(self, tmp_path):
+        if not os.path.exists(B.swaps_path("packs")):
+            pytest.skip("no packs swap board")
+        r = B.render_swaps("packs", str(tmp_path), images=False)
+        page = open(r["page"], encoding="utf-8").read()
+        assert r["swaps"] >= 1 and '"swaps"' in page and "__DATA__" not in page
+        data = B.swap_board_data("packs")
+        for s in data["swaps"]:
+            assert s["add"] in data["cards"] and s["cut"] in data["cards"]
+            assert s["deck"] in data["decks"]
+
+    def test_a_cut_the_deck_does_not_run_is_refused(self, tmp_path, monkeypatch):
+        spec = {"swaps": [{"id": "x", "deck": "100", "add": "Bronze Walrus",
+                           "cut": "Lightning Bolt", "verdict": "upgrade", "why": "", "cut_note": "",
+                           "confirmed": True}]}
+        p = tmp_path / "swaps.json"
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
+        with pytest.raises(B.BuildError, match="does not run Lightning Bolt"):
+            B.swap_board_data("whatever")
+
+    def test_each_pair_offers_other_cuts_with_their_effect(self, scratch, monkeypatch):
+        """Pick a different cut (2026-11-17): every pair carries the deck's weakest-fit cards
+        from the `deck.py cuts` ranking (never its own cut or add) and, for its cut and each
+        of those, what the swap does to the deck — so the page shows each choice's effect."""
+        deck_path, tmp = scratch
+        real = D.find_deck
+        monkeypatch.setattr(D, "find_deck", lambda i, **k: {"id": "96", "path": deck_path,
+                            "name": "Glarb"} if i == "96" else real(i, **k))
+        spec = {"swaps": [{"id": "96-x", "deck": "96", "add": "Lightning Bolt",
+                           "cut": "Bruvac the Grandiloquent", "verdict": "spice", "why": "",
+                           "cut_note": "", "confirmed": False}]}
+        p = tmp / "swaps.json"
+        p.write_text(json.dumps(spec), encoding="utf-8")
+        monkeypatch.setattr(B, "swaps_path", lambda slug: str(p))
+        sw = B.swap_board_data("t")["swaps"][0]
+        ranked = [r[1] for r in D.rank_cut_candidates({"id": "96", "path": deck_path})[0]]
+        want = [n for n in ranked if n not in ("Bruvac the Grandiloquent", "Lightning Bolt")]
+        assert sw["alts"] == want[:B.SWAP_ALT_CUTS]
+        assert set(sw["delta"]) == {"Bruvac the Grandiloquent", *sw["alts"]}
+        for d in sw["delta"].values():
+            assert len(d["floor"]) == 2 and all(b in "SABCD" for b in d["floor"])
+            assert all(k == "floor" or (k in B._DELTA_KEYS and d[k][0] != d[k][1]) for k in d)

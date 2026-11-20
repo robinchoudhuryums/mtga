@@ -973,14 +973,339 @@
    "name": "Vorinclex, Monstrous Raider",
    "pile": "J",
    "src": "added"
+  },
+  {
+   "name": "Chromatic Lantern",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Arcane Signet",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Birds of Paradise",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Paradise Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Farseek",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Enduring Vitality",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Selvala, Heart of the Wilds",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline Prowler",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Great Forest Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Yuna, Grand Summoner",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Path to the World Tree",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Everything Pizza",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Outcaster Trailblazer",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Tireless Provisioner",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Dryad of the Ilysian Grove",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Cultivate",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Caryatid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Phial of Galadriel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Faeburrow Elder",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bloom Tender",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Bard Class",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Buried in the Garden",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Transdimensional Bovine",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Leyline Immersion",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Greenhouse // Rickety Gazebo",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Inga and Esika",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Gwenna, Eyes of Gaea",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Invasion of Zendikar // Awakened Skyclave",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Animal Attendant",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Great Hall of the Citadel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Mycosynth Gardens",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Vorinclex, Voice of Hunger",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Emergent Sequence",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Mana Flare",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Culling Ritual",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tazri, Stalwart Survivor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Photon, Mighty Marvel",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "The Last Agni Kai",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Open the Omenpaths",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Manamorphose",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glittering Stockpile",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Paradigm Shifter",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kalain, Reclusive Painter",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Kolvori, God of Kinship // The Ringhart Crest",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Chaos Warp",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Crackle with Power",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Black Market Connections",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Glóin, Dwarf Emissary",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Big Score",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Death to Our Enemies",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Grim Hireling",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Jolene, Plundering Pugilist",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Ancient Cornucopia",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Heaped Harvest",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Omni-Cheese Pizza",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Oasis Gardener",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Hot Dog Cart",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Prosperous Innkeeper",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Saint Elenda",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Incubation Druid",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Wrenn and Realmbreaker",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Elven Chorus",
+   "pile": "J",
+   "src": "added"
+  },
+  {
+   "name": "Echo, Perceptive Prodigy",
+   "pile": "J",
+   "src": "added"
   }
  ],
  "reasons": {
   "Rona, Herald of Invasion // Rona, Tolarian Obliterator": {
-   "group": "In deck",
-   "text": "2-mana legendary looter that untaps on each legendary cast (R5, R8)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Chromatic Lantern: a 2-mana looter that untaps on legendary casts; the slow start needed mana more.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "The World Tree": {
@@ -991,10 +1316,10 @@
    }
   },
   "Crystal Quarry": {
-   "group": "In deck",
-   "text": "{5}: WUBRG — a guaranteed Jodah cast from six lands (R3); colourless otherwise",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Wrenn and Realmbreaker: colourless unless you pay {5}.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "f173dc49bb79"
    }
   },
   "Meeting of the Five": {
@@ -1005,31 +1330,31 @@
    }
   },
   "Wizard's Staff": {
-   "group": "Pile",
-   "text": "doubles Jodah the Unifier's cascade (a Wizard, equip {1}); narrow",
+   "group": "Bench",
+   "text": "BENCHED 2026-11-15 for Tamiyo: best on Jodah, the Unifier (two cascades per legend) but needs him in play.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "b0f65e1f92c7"
    }
   },
   "Flux Channeler": {
    "group": "Pile",
-   "text": "proliferate needs walkers/counters",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: proliferate on each noncreature spell adds loyalty to the six walkers (and Doubling Season doubles it), but a 3-mana 2/2.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Gogo, Master of Mimicry": {
-   "group": "Pile",
-   "text": "copies the Unifier's cascade trigger X times; mana-hungry",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Prismatic Omen: copies an activated or triggered ability X times, including from noncreature sources.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Oracle of the Alpha": {
-   "group": "In deck",
-   "text": "conjures the Power Nine: five Moxen are fixing, Black Lotus is a Jodah cast (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Buried in the Garden: the Moxen shuffle into 99 cards and arrive late.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Tazri, Beacon of Unity": {
@@ -1048,9 +1373,9 @@
   },
   "Ramos, Dragon Engine": {
    "group": "Pile",
-   "text": "CUT 2026-11-15 for Akul: slow ten-mana engine; Door to Nothingness keeps its other enablers.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. Doubling Season now makes each five-colour cast put TEN counters on it, so its ten-mana ability is live every turn; a Door to Nothingness enabler.",
    "graded_at": {
-    "102": "0ba0e806f41f"
+    "102": "75432feb4028"
    }
   },
   "Providence of Night": {
@@ -1082,10 +1407,10 @@
    }
   },
   "Invasion of Alara // Awaken the Maelstrom": {
-   "group": "In deck",
-   "text": "free cast of an MV ≤4 card plus one to hand; the back face is a five-mode bomb",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Enduring Vitality: 5-mana cascade battle; the slow start needed mana more.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Infinite Guideline Station": {
@@ -1173,10 +1498,10 @@
    }
   },
   "Bringer of the Green Dawn": {
-   "group": "In deck",
-   "text": "carries its own WUBRG alt cost (R6); a 3/3 every upkeep",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Faeburrow Elder: Leyline of Mutation already backs up the alt cost.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Leyline of Mutation": {
@@ -1194,10 +1519,10 @@
    }
   },
   "Widespread Thieving": {
-   "group": "In deck",
-   "text": "a Treasure per multicoloured spell (R3); pay WUBRG to play the hideaway card free",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Black Market Connections: its Treasures need multicoloured spells.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Najeela, the Blade-Blossom": {
@@ -1278,17 +1603,17 @@
    }
   },
   "Anticausal Vestige": {
-   "group": "In deck",
-   "text": "warp {4}: it is exiled at end step, so it LEAVES — draw, then put a permanent with MV ≤ lands from hand onto the battlefield (R4); recast later",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Saint Elenda.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "f173dc49bb79"
    }
   },
   "Bane of Bala Ged": {
    "group": "Pile",
-   "text": "MV 7 for WUBRG (R1); each attack exiles two of their permanents",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Each attack makes the defender exile two permanents of their choice, but the classifier counts no role and it needs to attack; another MV 7.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Herigast, Erupting Nullkite": {
@@ -1320,10 +1645,10 @@
    }
   },
   "Goro-Goro and Satoru": {
-   "group": "Pile",
-   "text": "Owner's note: {1}{R} haste lets Ulamog's annihilator, Emrakul's stolen board, Raph & Mikey, Narset and the equipment carriers attack the turn they arrive, and new creatures connecting make 5/5 Dragons. Three mana in a top-heavy deck.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Teferi, Time Raveler: hasty Dragons off legends that entered this turn, and the cheated bombs attack at once.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "de43e8ae91cc"
    }
   },
   "Maestros Diabolist": {
@@ -1384,9 +1709,9 @@
   },
   "Obeka, Splitter of Seconds": {
    "group": "Pile",
-   "text": "extra upkeeps replay upkeep cheats (Prismatic Bridge, Bringer of the Green Dawn) — spice",
+   "text": "Extra upkeep steps replay upkeep cheats (Esika's Prismatic Bridge; Bringer of the Green Dawn was cut). Spice.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Saruman, the White Hand": {
@@ -1405,9 +1730,9 @@
   },
   "Inalla, Archmage Ritualist": {
    "group": "Pile",
-   "text": "Wizard copies; Jodah, the Unifier and Rona are Wizards, but the payoff wants five",
+   "text": "Wizard copies; Jodah, the Unifier and Raff Capashen are Wizards, but the payoff wants five Wizards.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Kefka, Court Mage // Kefka, Ruler of Ruin": {
@@ -1489,9 +1814,9 @@
   },
   "Relic of Sauron": {
    "group": "Pile",
-   "text": "UBR rock",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: 4-mana rock for two of U/B/R plus a loot; colour-limited.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Jace, Multiverse Architect": {
@@ -1516,10 +1841,10 @@
    }
   },
   "Karolina Dean, Runaway": {
-   "group": "Pile",
-   "text": "Owner's note: the WUBRG can't cast from hand, but this deck spends a lot outside it — One with the Multiverse's top-of-library casts, recasting Jodah from the command zone, Golos ({2}WUBRG), Nico, Yue's waterbend, Widespread Thieving's WUBRG, half of Door to Nothingness.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Lukka: an early body that makes mana.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "de43e8ae91cc"
    }
   },
   "Tome of the Infinite": {
@@ -1530,10 +1855,10 @@
    }
   },
   "Prismatic Omen": {
-   "group": "In deck",
-   "text": "2 mana: every land is every basic type, so all lands tap for any colour (R3)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Gogo: the fixer most covered by other cards (Lantern, Leyline of the Guildpact, Great Divide Guide, Wrenn).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Prismatic Undercurrents": {
@@ -1601,9 +1926,9 @@
   },
   "Grand Nagus Zek": {
    "group": "Pile",
-   "text": "Treasures need deaths",
+   "text": "Re-evaluated 2026-11-15 (bench) — stays ★: a Treasure when another creature dies (once a turn); the Treasure makers added don't make it trigger more, only grow it.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Lo and Li, Twin Tutors": {
@@ -1663,10 +1988,10 @@
    }
   },
   "Buxton, Decorated Host": {
-   "group": "Pile",
-   "text": "needs tapped creatures",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Raff Capashen: each end step, a free permanent onto the battlefield with mana value up to the number of tapped creatures.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "b0f65e1f92c7"
    }
   },
   "The Key to the Vault": {
@@ -1677,10 +2002,10 @@
    }
   },
   "Jacob Hauken, Inspector // Hauken's Insight": {
-   "group": "In deck",
-   "text": "looter now; transformed, casts a card from its exile free each turn (R4)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Ancient Cornucopia: a slow looter.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Malcolm, Alluring Scoundrel": {
@@ -1712,17 +2037,17 @@
    }
   },
   "Yue, the Moon Spirit": {
-   "group": "In deck",
-   "text": "Waterbend {5} is generic and creatures/artifacts help pay: a repeatable free noncreature cast that needs no colours.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Incubation Druid: {5} per free cast, among many free-cast engines.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Jin-Gitaxias // The Great Synthesis": {
    "group": "Pile",
-   "text": "draws on noncreature MV 3+; the Saga's chapter III casts any number of spells free (R4)",
+   "text": "CUT 2026-11-15 for Selvala: its free-cast Saga needs seven cards in hand.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "a7f047666cc1"
    }
   },
   "Omnispell Adept": {
@@ -1741,9 +2066,9 @@
   },
   "Brazen Bluff": {
    "group": "Pile",
-   "text": "conditional",
+   "text": "Needs an opponent's noncreature spell to target, and the opponent can just exile it to deny the free cast.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Nico Minoru, Runaway": {
@@ -1762,9 +2087,9 @@
   },
   "Descendants' Path": {
    "group": "Pile",
-   "text": "needs shared creature types",
+   "text": "Free creature casts in upkeep only when the top card shares a type with your creatures; this deck's creature types are scattered, so it whiffs often.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "Fight Rigging": {
@@ -1783,9 +2108,9 @@
   },
   "Omnipresence": {
    "group": "Pile",
-   "text": "MV 8 for WUBRG; free casts capped by creature count",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★: MV 8 for WUBRG; free casts of spells with MV ≤ your creature count, and the mana creatures and tokens push that to 6–8.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Kaya the Inexorable": {
@@ -1825,9 +2150,9 @@
   },
   "Unexpected Results": {
    "group": "Pile",
-   "text": "Owner's note: about 62% of the library is nonland averaging MV 5+, so 4 mana usually casts a bomb free; a land goes onto the battlefield and the card returns to hand to try again. Free casts also trigger Kellan and Nico.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: 4-mana free cast off the top, or a land and a retry.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "75432feb4028"
    }
   },
   "Kellan, the Kid": {
@@ -1838,10 +2163,10 @@
    }
   },
   "Tamiyo, Field Researcher": {
-   "group": "Pile",
-   "text": "the −7 emblem is a long way off",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jetmir's Garden: with Doubling Season she uses her −7 on arrival (draw three, free casts from hand); −2 taps two blockers or mana permanents.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "b0f65e1f92c7"
    }
   },
   "Gandalf, Party Guest": {
@@ -1887,10 +2212,10 @@
    }
   },
   "Cosmic Cube": {
-   "group": "In deck",
-   "text": "each attack casts from the top six, capped by the biggest attacker's power — the Eldrazi make that 7+",
+   "group": "Pile",
+   "text": "Re-evaluated 2026-11-15 — tier 3. CUT 2026-11-15 for Bard Class; attack-gated free casts, slower than the engines in the deck.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -1908,10 +2233,10 @@
    }
   },
   "Lukka, Coppercoat Outcast": {
-   "group": "In deck",
-   "text": "−2 turns a creature into a bigger one from the library (R4)",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Karolina Dean (owner's pick).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Ashiok, Sculptor of Fears": {
@@ -1930,9 +2255,9 @@
   },
   "Nissa of Shadowed Boughs": {
    "group": "Pile",
-   "text": "Owner's note: starts at 4 loyalty; +1 and a land drop a turn reach −5 two turns after landing and can repeat every couple of turns, from hand or graveyard, for a creature with MV ≤ lands.",
+   "text": "Re-evaluated 2026-11-15 — tier 2. With Doubling Season she enters at 8 loyalty and can −5 at once (a creature with MV ≤ lands from hand or graveyard, plus counters); landfall grows her.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "75432feb4028"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -1951,9 +2276,9 @@
   },
   "Nissa, Steward of Elements": {
    "group": "Pile",
-   "text": "X walker, X = 0 under the alt cost (R2)",
+   "text": "Re-evaluated 2026-11-15 (bench) — ◇: X = 0 through the alt cost; hard-cast for X it can put creatures with MV ≤ loyalty onto the battlefield.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Rocco, Cabaretti Caterer": {
@@ -1999,17 +2324,17 @@
    }
   },
   "Goldspan Dragon": {
-   "group": "In deck",
-   "text": "Treasures make two mana of one colour (R3)",
+   "group": "Bench",
+   "text": "BENCHED 2026-11-15 for Kethis: a hasty flier for Buster Sword; Treasures make two mana of one colour.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "7a9cdd0fcfed"
    }
   },
   "Rogue Class": {
    "group": "Pile",
-   "text": "slow",
+   "text": "Needs combat damage, and the any-colour casting only comes at level 3 ({U}{B}, then {1}{U}{B}, then {2}{U}{B}). Slow.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "d526869441f6"
    }
   },
   "King Narfi's Betrayal": {
@@ -2090,17 +2415,17 @@
    }
   },
   "Sublime Epiphany": {
-   "group": "In deck",
-   "text": "MV 6 instant for WUBRG: counters a spell AND an ability, bounces, copies, draws.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Grim Hireling: Grim Hireling's removal is reusable.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Jeskai Revelation": {
-   "group": "In deck",
-   "text": "MV 7 instant for WUBRG: bounce, 4 damage, two Monks, draw two, gain 4.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for The Last Agni Kai: Jodah pays only 5 for it, but cheap interaction does more early.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Cryptic Command": {
@@ -2125,10 +2450,10 @@
    }
   },
   "Teferi, Time Raveler": {
-   "group": "In deck",
-   "text": "Opponents cast only at sorcery speed, protecting the big turns; −3 bounces and draws.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Goro-Goro and Satoru (owner's pick).",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Lithoform Engine": {
@@ -2140,9 +2465,9 @@
   },
   "Roaming Throne": {
    "group": "Outside pile",
-   "text": "Naming Wizard doubles Jodah, the Unifier's and Rona's triggers; bench.",
+   "text": "Naming Wizard doubles Jodah, the Unifier's cascade trigger (and Raff Capashen's a Wizard too); bench.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Echoes of Eternity": {
@@ -2217,44 +2542,44 @@
   },
   "Jhoira, Weatherlight Captain": {
    "group": "Legendary / historic",
-   "text": "Draws on every historic spell (artifact, legendary, Saga): 39 of the deck's 63 nonland cards are historic, so most casts — free casts included — draw a card.",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: draws on every historic spell (40+ here); the best card-advantage option, and the package takes card advantage to 14.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Plaza of Heroes": {
-   "group": "Legendary / historic",
-   "text": "Owned land: any colour for a legendary spell (most of the bombs are legends, and WUBRG alt casts count), any colour among legendary permanents, and {3} exile: hexproof and indestructible for Jodah. Replaces a tapland or one of the unowned rares.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Raffine's Tower: untapped, any colour for legendary spells.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Raff Capashen, Ship's Mage": {
-   "group": "In deck",
-   "text": "IN 2026-11-15 for Leyline of Anticipation (owner's call): a legendary Wizard flash flier that gives every historic spell flash — most of the bombs are legends, and it feeds Jodah, the Unifier and Wizard's Staff-style Wizard synergies.",
+   "group": "Pile",
+   "text": "CUT 2026-11-15 for Buxton (owner's pick): lost instant-speed legendary casts and one flier for the equipment.",
    "graded_at": {
-    "102": "5fe9e1f29579"
+    "102": "b0f65e1f92c7"
    }
   },
   "Thran Temporal Gateway": {
    "group": "Legendary / historic",
-   "text": "{4},{T}: put a historic permanent from hand onto the battlefield at any time, no cast needed — but a put-into-play skips cast triggers (Ulamog, Emrakul, Sauron), so it suits ETB legends (Etali, Lord Xander, Nissa).",
+   "text": "Re-evaluated 2026-11-15 (bench) — up to ★: {4},{T} puts a historic permanent from hand onto the battlefield at instant speed. It skips cast triggers (Ulamog, Emrakul, Sauron) but suits entry triggers (Etali, Lord Xander, Nissa) and legends at end of turn.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "75432feb4028"
    }
   },
   "Kethis, the Hidden Hand": {
-   "group": "Legendary / historic",
-   "text": "Legendary spells cost {1} less (helps the hard-cast legends), and exiling two legends from the graveyard lets the rest be replayed this turn.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Goldspan Dragon: replays legends from the graveyard; Karolina's WUBRG (not for spells from hand) pays Jodah's alt cost for them.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "7a9cdd0fcfed"
    }
   },
   "Otawara, Soaring City": {
-   "group": "Legendary / historic",
-   "text": "Untapped legendary land; channel bounces an artifact, creature, enchantment or walker at instant speed for {3}{U} minus one per legendary creature (25 here). One colour only — a swap for a tapland, weighed against losing colours.",
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Zagoth Triome: untapped blue land with a bounce channel ability.",
    "graded_at": {
-    "102": "b0616d28935a"
+    "102": "de43e8ae91cc"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -2287,9 +2612,9 @@
   },
   "Replicator": {
    "group": "Outside pile",
-   "text": "Better after Doubling Season: each activation makes TWO tapped copies, so copying a Stable Wormhole Planet is two any-colour lands a turn for {2}; Treasures from Widespread Thieving and Goldspan double too. Still idle until a token exists (about five cards make one).",
+   "text": "Better after Doubling Season: each activation makes TWO tapped token copies — a Stable Wormhole Planet becomes two any-colour lands for {2}, and Treasures from Black Market Connections and Goldspan double too. Idle until a token exists.",
    "graded_at": {
-    "102": "0ba0e806f41f"
+    "102": "75432feb4028"
    }
   },
   "Doubling Season": {
@@ -2301,9 +2626,464 @@
   },
   "Vorinclex, Monstrous Raider": {
    "group": "Outside pile",
-   "text": "MV 6 for WUBRG: doubles counters (walker loyalty included) on a 6/6 trample haste body and halves the opponent's. A second copy of the effect beside Doubling Season, which is now in the deck; bench.",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Doubles counters (walker loyalty included) on a 6/6 trample haste body — a second Doubling Season effect, so mostly redundant.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Chromatic Lantern": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Rona: 3-mana rock for any colour that makes every land tap for any colour. The deck reached five mana by turn 5 only ~42% of the time with almost no early ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Arcane Signet": {
+   "group": "Early ramp",
+   "text": "2-mana rock for any colour in Jodah's identity (all five). The cheapest pure acceleration toward the turn-4 WUBRG cast.",
    "graded_at": {
     "102": "0ba0e806f41f"
+   }
+  },
+  "Birds of Paradise": {
+   "group": "Early ramp",
+   "text": "1-mana flying dork for any colour; online turn 2, an early blocker against fliers, and Kinnan doubles it.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Paradise Druid": {
+   "group": "Early ramp",
+   "text": "2-mana dork for any colour, hexproof while untapped; Kinnan doubles it.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Farseek": {
+   "group": "Early ramp",
+   "text": "2 mana: fetch a Plains, Island, Swamp or Mountain card — the shocklands and Triomes carry those types — onto the battlefield (tapped; untapped with Warp Speed).",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Early ramp",
+   "text": "2-mana dork; any colour for legendary spells (most of the bombs) and makes them uncounterable; {C} otherwise.",
+   "graded_at": {
+    "102": "0ba0e806f41f"
+   }
+  },
+  "Enduring Vitality": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Invasion of Alara: every creature taps for any colour, and it comes back as an enchantment when it dies.",
+   "graded_at": {
+    "102": "de43e8ae91cc"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jin-Gitaxias. {G},{T}: X mana of any colours, X = your biggest creature's power. Legendary. Its draw trigger is symmetric.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Leyline Prowler": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Savai Triome: a 4-mana deathtouch lifelink dork for any colour, replacing a tapped land (35 lands now).",
+   "graded_at": {
+    "102": "de43e8ae91cc"
+   }
+  },
+  "Great Forest Druid": {
+   "group": "Early ramp",
+   "text": "Owned. 2-mana 0/4 that taps for any colour: an early blocker that ramps.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "group": "Early ramp",
+   "text": "Re-evaluated 2026-11-15 — tier 2. Owned legend 1/5 that taps for any colour — ramp and a real blocker — but four mana for a dork.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Path to the World Tree": {
+   "group": "Early ramp",
+   "text": "2 mana: a basic to hand now; late, {2}{W}{U}{B}{R}{G} and sacrifice to draw two, drain 2, deal 2 to a creature and make a 2/2.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Everything Pizza": {
+   "group": "Early ramp",
+   "text": "Owned. 2 mana: a basic to hand now; late, {2}{W}{U}{B}{R}{G} and sacrifice for a draw, a discard, 3 damage and three counters.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "group": "Early ramp",
+   "text": "Owned. 3 mana 4/2 that adds one mana as it enters (so it costs 2) and draws on every power-4+ creature entering — most of the deck's bombs.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Tireless Provisioner": {
+   "group": "Early ramp",
+   "text": "Re-evaluated 2026-11-15 — tier 1. Owned. A Food (3 life) or a Treasure every land drop from turn 3; Doubling Season doubles them.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "group": "Early ramp",
+   "text": "Re-evaluated 2026-11-15 — tier 3. Extra land drop plus every land every type — fixing the deck already has five times over.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Cultivate": {
+   "group": "Early ramp",
+   "text": "3 mana: one basic onto the battlefield tapped, one to hand. Ramp plus a land drop; no body.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Sylvan Caryatid": {
+   "group": "Early ramp",
+   "text": "2-mana 0/3 hexproof defender that taps for any colour: a blocker that survives removal.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Phial of Galadriel": {
+   "group": "Early ramp",
+   "text": "3-mana legendary rock for any colour; its other lines rarely matter here.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Faeburrow Elder": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Bringer of the Green Dawn. Taps for one mana of each colour among your permanents — often most of WUBRG from one creature.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Bloom Tender": {
+   "group": "Owner's screenshots",
+   "text": "Owned. 2-mana version of Faeburrow's mana: one of each colour among your permanents. Fragile 1/1.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Bard Class": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Cosmic Cube. Level 2: legendary spells cost {R}{G} less, so a legendary alt-cost cast is {W}{U}{B}.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Buried in the Garden": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Oracle of the Alpha. Exiles a nonland permanent they control; the enchanted land adds an extra mana of any colour.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Transdimensional Bovine": {
+   "group": "Owner's screenshots",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★: owned flying 0/4 that taps for two mana; a blocker now that ramp is deep.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Leyline Immersion": {
+   "group": "Owner's screenshots",
+   "text": "Re-evaluated 2026-11-15 — tier 2. On a legendary creature (Selvala, Esika, Kinnan): taps for five mana in any colours for spells — a WUBRG cast every turn — plus ward 2. Two-for-one risk.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Greenhouse // Rickety Gazebo": {
+   "group": "Owner's screenshots",
+   "text": "Owned Room. Greenhouse ({2}{G}) makes every land tap for any colour, like Prismatic Omen; unlocking Gazebo later mills four and returns two permanents.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Inga and Esika": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 4/4: every creature taps for any colour, but only for creature spells; draws when three creature mana pays for one. Enduring Vitality does the unrestricted version.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Gwenna, Eyes of Gaea": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 2/3: two mana of any colours, creature spells and creature abilities only; untaps on each power-5+ creature cast.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Invasion of Zendikar // Awakened Skyclave": {
+   "group": "Owner's screenshots",
+   "text": "4 mana: two basics onto the battlefield; flipped, a 4/4 land creature that taps for any colour.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Animal Attendant": {
+   "group": "Owner's screenshots",
+   "text": "2-mana 2/2 that taps for any colour: a sturdier body than Birds of Paradise, no flying.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Hall of the Citadel": {
+   "group": "Owner's screenshots",
+   "text": "Land: {1},{T} makes two mana in any colours for legendary spells — net ramp for most of the bombs, colourless otherwise.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "The Mycosynth Gardens": {
+   "group": "Owner's screenshots",
+   "text": "Land: {1} filters to any colour; later it can become a copy of an artifact — a second Timeless Lotus (X = 5) or Chromatic Lantern (X = 3).",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "group": "Owner's screenshots",
+   "text": "MV 8 for WUBRG: doubles your land mana and keeps their tapped lands tapped. A bomb, not early ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Emergent Sequence": {
+   "group": "Owner's screenshots",
+   "text": "2 mana: a basic onto the battlefield that is also a creature. Ramp plus a small body.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Mana Flare": {
+   "group": "Owner's screenshots",
+   "text": "Symmetric: the opponent's lands make double mana too, which helps them as much as us.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Culling Ritual": {
+   "group": "Owner's screenshots",
+   "text": "Destroys every nonland permanent with MV 2 or less — including our own rocks and mana creatures.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Tazri, Stalwart Survivor": {
+   "group": "Owner's screenshots",
+   "text": "Its mana only pays creature activated abilities, which this deck barely uses.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Photon, Mighty Marvel": {
+   "group": "Owner's screenshots",
+   "text": "Owned. 2/4 flier for 4: combat damage adds that much mana of ONE colour and it keeps until end of turn — post-combat ramp, bigger with Buster Sword (+3). One colour, so it pays printed costs or anything under Chromatic Orrery, not WUBRG on its own.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "The Last Agni Kai": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jeskai Revelation: cheap removal (fight-style) that also makes red mana; keeps interaction at 12.",
+   "graded_at": {
+    "102": "de43e8ae91cc"
+   }
+  },
+  "Open the Omenpaths": {
+   "group": "Owner's screenshots",
+   "text": "Instant ritual: three mana for two of one colour plus two of another (creature or enchantment spells only). A one-shot +1 that also fixes two colours.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Manamorphose": {
+   "group": "Owner's screenshots",
+   "text": "Free cantrip that turns two mana into any two colours: fixing that replaces itself, no net ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Glittering Stockpile": {
+   "group": "Owner's screenshots",
+   "text": "3-mana Treasure artifact: taps for red each turn and builds stash counters, then sacrifices for that many mana of one colour. Slow burst ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Paradigm Shifter": {
+   "group": "Owner's screenshots",
+   "text": "Re-evaluated 2026-11-15 — tier 2. 2/2 Wizard for 3 that taps for two mana (instants/sorceries) and conjures a Paradigm spell; Restoration Seminar recurs a permanent free every first main phase.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "group": "Owner's screenshots",
+   "text": "Legendary 2-drop that makes a Treasure (any colour) on entering; creatures cast with Treasure mana enter bigger. One-shot fixing, a body and a legend.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Kolvori, God of Kinship // The Ringhart Crest": {
+   "group": "Owner's screenshots",
+   "text": "Modal: early, The Ringhart Crest is a 2-mana rock for green that casts legendary creatures; late, Kolvori digs six cards for a legendary creature and is a 6/6 with three legends.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Chaos Warp": {
+   "group": "Owner's screenshots",
+   "text": "Instant answer to any permanent, but the opponent may put the card they reveal onto the battlefield — that can benefit them (removal rule).",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Crackle with Power": {
+   "group": "Owner's screenshots",
+   "text": "X spell: X = 0 under the alt cost; hard-cast for five it deals 5. A late finisher, not ramp.",
+   "graded_at": {
+    "102": "2cf7aeb7ef2a"
+   }
+  },
+  "Black Market Connections": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Widespread Thieving: a Treasure, a card and/or a 3/2 every first main phase, paid in life.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "group": "Treasure",
+   "text": "Re-evaluated 2026-11-15 (bench) — ★★: a Treasure on the first historic spell each turn.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Big Score": {
+   "group": "Treasure",
+   "text": "Instant: discard a card, draw two, make two Treasures. Filtering plus a two-mana burst.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
+   "group": "Treasure",
+   "text": "3-mana Saga: a Goblin that makes a Treasure each attack, a two-card rummage, then a copier for NONlegendary creatures (few here).",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Death to Our Enemies": {
+   "group": "Treasure",
+   "text": "Owned. A tapped Treasure on each noncreature spell; after four, 7 damage split between two targets. About half the deck is noncreature.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Grim Hireling": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Sublime Epiphany: Treasures on combat damage, and it spends Treasures to shrink or kill a creature (interaction).",
+   "graded_at": {
+    "102": "de43e8ae91cc"
+   }
+  },
+  "Jolene, Plundering Pugilist": {
+   "group": "Treasure",
+   "text": "Owned legend. A Treasure whenever a power-4+ creature attacks; pings with spare Treasures. Needs the big attackers out first.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Ancient Cornucopia": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Jacob Hauken: any-colour rock; the first coloured spell each turn gains 1 life per colour.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Heaped Harvest": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3 mana: a basic onto the battlefield when it enters AND when sacrificed ({2}: gain 3 life) — two lands of ramp and 3 life.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Omni-Cheese Pizza": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 2 mana: draws a card on entering; later sacrifice for one mana of any colour or 3 life. A cantrip that fixes or heals.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Oasis Gardener": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3-mana artifact creature: gain 2 on entering, taps for any colour. A rock that also blocks.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Hot Dog Cart": {
+   "group": "Lifegain + mana",
+   "text": "Owned. 3-mana rock for any colour that also leaves a Food (3 life).",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "group": "Lifegain + mana",
+   "text": "2-mana 1/1: a Treasure on entering and 1 life whenever another creature enters.",
+   "graded_at": {
+    "102": "a7f047666cc1"
+   }
+  },
+  "Saint Elenda": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Anticausal Vestige: lifelink, a free conjured spell, and an X/X Avatar each end step you gained life (Ancient Cornucopia supplies it).",
+   "graded_at": {
+    "102": "f173dc49bb79"
+   }
+  },
+  "Wrenn and Realmbreaker": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Crystal Quarry: every land taps for any colour; +1 makes a 3/3 hexproof land blocker each turn; −2 digs for a permanent.",
+   "graded_at": {
+    "102": "f173dc49bb79"
+   }
+  },
+  "Incubation Druid": {
+   "group": "In deck",
+   "text": "IN 2026-11-15 for Yue: a 2-mana dork for any colour your lands make (three mana once adapted). Chosen over Leyline Prowler for speed: five mana by turn 4 rises to ~27.5% against ~26.8% with Prowler.",
+   "graded_at": {
+    "102": "75432feb4028"
+   }
+  },
+  "Elven Chorus": {
+   "group": "Early ramp",
+   "text": "4-mana enchantment: every creature taps for any colour, and you can cast creatures from the top of the library. Enduring Vitality's mana effect plus card advantage, but no body.",
+   "graded_at": {
+    "102": "d526869441f6"
+   }
+  },
+  "Echo, Perceptive Prodigy": {
+   "group": "Legendary / historic",
+   "text": "Owned legend. {1},{T}: copy one activated or triggered ability from a CREATURE source — cheaper than Gogo for a single copy (Unifier cascade, Kellan, Etali, Golos, Buxton, Saint Elenda). Gogo stays ahead: it copies X times for {X}{X} and also copies non-creature sources — Sunbird's Invocation, Black Market Connections, Bard Class and planeswalker loyalty abilities.",
+   "graded_at": {
+    "102": "75432feb4028"
    }
   }
  },
@@ -2614,6 +3394,822 @@
     "Yue, the Moon Spirit",
     "Zagoth Triome",
     "Ziatora's Proving Ground"
+   ],
+   "2cf7aeb7ef2a": [
+    "Akul the Unrepentant",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Bringer of the Green Dawn",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cosmic Cube",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jin-Gitaxias",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Oracle of the Alpha",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "a7f047666cc1": [
+    "Akul the Unrepentant",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jacob Hauken, Inspector // Hauken's Insight",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Widespread Thieving",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "d526869441f6": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Anticausal Vestige",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Crystal Quarry",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "f173dc49bb79": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Yue, the Moon Spirit",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "75432feb4028": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Great Divide Guide",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Invasion of Alara // Awaken the Maelstrom",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jeskai Revelation",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Lukka, Coppercoat Outcast",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Prismatic Omen",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raffine's Tower",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Savai Triome",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sublime Epiphany",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Teferi, Time Raveler",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Zagoth Triome",
+    "Ziatora's Proving Ground"
+   ],
+   "de43e8ae91cc": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Enduring Vitality",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Gogo, Master of Mimicry",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Goro-Goro and Satoru",
+    "Great Divide Guide",
+    "Grim Hireling",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jetmir's Garden",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Karolina Dean, Runaway",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline Prowler",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Otawara, Soaring City",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Raff Capashen, Ship's Mage",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The Last Agni Kai",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Ziatora's Proving Ground"
+   ],
+   "b0f65e1f92c7": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Buxton, Decorated Host",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Enduring Vitality",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Gogo, Master of Mimicry",
+    "Goldspan Dragon",
+    "Golos, Tireless Pilgrim",
+    "Goro-Goro and Satoru",
+    "Great Divide Guide",
+    "Grim Hireling",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Karolina Dean, Runaway",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline Prowler",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Otawara, Soaring City",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Tamiyo, Field Researcher",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The Last Agni Kai",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Ziatora's Proving Ground"
+   ],
+   "7a9cdd0fcfed": [
+    "Akul the Unrepentant",
+    "Ancient Cornucopia",
+    "Anguished Unmaking",
+    "Artificial Anomaly",
+    "Bard Class",
+    "Black Market Connections",
+    "Blood Crypt",
+    "Branchloft Pathway // Boulderloft Pathway",
+    "Breeding Pool",
+    "Buried in the Garden",
+    "Buster Sword",
+    "Buxton, Decorated Host",
+    "Chromatic Lantern",
+    "Chromatic Orrery",
+    "Command Tower",
+    "Commander Spock",
+    "Cragcrown Pathway // Timbercrown Pathway",
+    "Cruel Ultimatum",
+    "Cryptic Command",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Door to Nothingness",
+    "Doubling Season",
+    "Emrakul, the World Anew",
+    "Enduring Vitality",
+    "Esika, God of the Tree // The Prismatic Bridge",
+    "Etali, Primal Conqueror // Etali, Primal Sickness",
+    "Fabled Passage",
+    "Faeburrow Elder",
+    "Forest",
+    "Godless Shrine",
+    "Gogo, Master of Mimicry",
+    "Golos, Tireless Pilgrim",
+    "Goro-Goro and Satoru",
+    "Great Divide Guide",
+    "Grim Hireling",
+    "Hallowed Fountain",
+    "Hero's Downfall",
+    "Improvisation Capstone",
+    "Incubation Druid",
+    "Indatha Triome",
+    "Island",
+    "Jace, Multiverse Architect",
+    "Jodah, Archmage Eternal",
+    "Jodah, the Unifier",
+    "Karolina Dean, Runaway",
+    "Kaya the Inexorable",
+    "Kellan, the Kid",
+    "Kethis, the Hidden Hand",
+    "Ketria Triome",
+    "Kinnan, Bonder Prodigy",
+    "Leyline Prowler",
+    "Leyline of Mutation",
+    "Leyline of the Guildpact",
+    "Lord Xander, the Collector",
+    "Maelstrom Archangel",
+    "Mana Confluence",
+    "Mountain",
+    "Narset, Enlightened Master",
+    "Neera, Wild Mage",
+    "Nico Minoru, Runaway",
+    "Nicol Bolas, Dragon-God",
+    "Nicol Bolas, God-Pharaoh",
+    "Nissa, Leyline Tamer",
+    "Olivia, Crimson Bride",
+    "Omnath, Locus of All",
+    "Omniscience",
+    "One with the Multiverse",
+    "Otawara, Soaring City",
+    "Overgrown Tomb",
+    "Plains",
+    "Planetarium of Wan Shi Tong",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Raph & Mikey, Troublemakers",
+    "Raugrin Triome",
+    "Reflecting Pool",
+    "Riverglide Pathway // Lavaglide Pathway",
+    "Sacred Foundry",
+    "Saint Elenda",
+    "Sauron, Lord of the Rings",
+    "Selvala, Heart of the Wilds",
+    "Spara's Headquarters",
+    "Stable Wormhole",
+    "Steam Vents",
+    "Stomping Ground",
+    "Sunbird's Invocation",
+    "Swamp",
+    "Tamiyo, Field Researcher",
+    "Temple Garden",
+    "The Key to the Vault",
+    "The Last Agni Kai",
+    "The World Tree",
+    "Timeless Lotus",
+    "Ulamog, the Defiler",
+    "Vona de Iedo, the Antifex",
+    "Warp Speed",
+    "Watery Grave",
+    "Wrenn and Realmbreaker",
+    "Xander's Lounge",
+    "Ziatora's Proving Ground"
    ]
   }
  },
@@ -2644,20 +4240,20 @@
   },
   "Wizard's Staff": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Flux Channeler": {
    "J": {
-    "m": "△",
-    "graded_at": "b0616d28935a"
+    "m": "◇",
+    "graded_at": "75432feb4028"
    }
   },
   "Gogo, Master of Mimicry": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Oracle of the Alpha": {
@@ -2681,13 +4277,13 @@
   "Ramos, Dragon Engine": {
    "J": {
     "m": "★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Providence of Night": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omnath, Locus of All": {
@@ -2765,7 +4361,7 @@
   "Norman Osborn // Green Goblin": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Thanos, the Mad Titan": {
@@ -2813,7 +4409,7 @@
   "Najeela, the Blade-Blossom": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Kenrith, the Returned King": {
@@ -2825,13 +4421,13 @@
   "Leonardo, the Balance": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Lone Rider // It That Rides as One": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Extricator of Sin // Extricator of Flesh": {
@@ -2855,7 +4451,7 @@
   "Wharf Infiltrator": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Corrupted Shapeshifter": {
@@ -2884,8 +4480,8 @@
   },
   "Bane of Bala Ged": {
    "J": {
-    "m": "★★",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Herigast, Erupting Nullkite": {
@@ -2915,13 +4511,13 @@
   "Goro-Goro and Satoru": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Maestros Diabolist": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Marchesa, Dealer of Death": {
@@ -2939,7 +4535,7 @@
   "Cormela, Glamour Thief": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Fire Lord Azula": {
@@ -2968,8 +4564,8 @@
   },
   "Obeka, Splitter of Seconds": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "◇",
+    "graded_at": "75432feb4028"
    }
   },
   "Saruman, the White Hand": {
@@ -2981,7 +4577,7 @@
   "Evelyn, the Covetous": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Inalla, Archmage Ritualist": {
@@ -3059,7 +4655,7 @@
   "Relic of Sauron": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Jace, Multiverse Architect": {
@@ -3083,7 +4679,7 @@
   "Karolina Dean, Runaway": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Tome of the Infinite": {
@@ -3154,14 +4750,14 @@
   },
   "Grand Nagus Zek": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Lo and Li, Twin Tutors": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Loot, Exuberant Explorer": {
@@ -3173,7 +4769,7 @@
   "Baron Bertram Graywater": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Indulging Patrician": {
@@ -3197,7 +4793,7 @@
   "Raphael, Fiendish Savior": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Olivia, Crimson Bride": {
@@ -3208,8 +4804,8 @@
   },
   "Buxton, Decorated Host": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "The Key to the Vault": {
@@ -3227,7 +4823,7 @@
   "Malcolm, Alluring Scoundrel": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Tempest Trapper": {
@@ -3239,7 +4835,7 @@
   "Reenact the Crime": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "The Conundrum of Bowls": {
@@ -3263,7 +4859,7 @@
   "Omnispell Adept": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omniscience": {
@@ -3274,8 +4870,8 @@
   },
   "Brazen Bluff": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "△",
+    "graded_at": "75432feb4028"
    }
   },
   "Nico Minoru, Runaway": {
@@ -3293,7 +4889,7 @@
   "Descendants' Path": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "d526869441f6"
    }
   },
   "Fight Rigging": {
@@ -3305,13 +4901,13 @@
   "World War Hulk": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Omnipresence": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Kaya the Inexorable": {
@@ -3347,7 +4943,7 @@
   "Unexpected Results": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Kellan, the Kid": {
@@ -3358,8 +4954,8 @@
   },
   "Tamiyo, Field Researcher": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Gandalf, Party Guest": {
@@ -3371,7 +4967,7 @@
   "Narset, Enlightened Exile": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Commander Spock": {
@@ -3400,8 +4996,8 @@
   },
   "Cosmic Cube": {
    "J": {
-    "m": "★★",
-    "graded_at": "b0616d28935a"
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   },
   "Planetarium of Wan Shi Tong": {
@@ -3413,7 +5009,7 @@
   "Teyo, Aegis Adept": {
    "J": {
     "m": "△",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Lukka, Coppercoat Outcast": {
@@ -3437,7 +5033,7 @@
   "Nissa of Shadowed Boughs": {
    "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Raph & Mikey, Troublemakers": {
@@ -3455,13 +5051,13 @@
   "Nissa, Steward of Elements": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Rocco, Cabaretti Caterer": {
    "J": {
     "m": "◇",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Aang, at the Crossroads // Aang, Destined Savior": {
@@ -3502,8 +5098,8 @@
   },
   "Rogue Class": {
    "J": {
-    "m": "◇",
-    "graded_at": "b0616d28935a"
+    "m": "△",
+    "graded_at": "d526869441f6"
    }
   },
   "King Narfi's Betrayal": {
@@ -3527,7 +5123,7 @@
   "Helga, Skittish Seer": {
    "J": {
     "m": "★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Vraska, Soul of Stone": {
@@ -3682,14 +5278,14 @@
   },
   "Jhoira, Weatherlight Captain": {
    "J": {
-    "m": "★★★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Plaza of Heroes": {
    "J": {
     "m": "★★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Raff Capashen, Ship's Mage": {
@@ -3701,19 +5297,19 @@
   "Thran Temporal Gateway": {
    "J": {
     "m": "★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Kethis, the Hidden Hand": {
    "J": {
-    "m": "★",
-    "graded_at": "b0616d28935a"
+    "m": "★★",
+    "graded_at": "75432feb4028"
    }
   },
   "Otawara, Soaring City": {
    "J": {
     "m": "★★",
-    "graded_at": "b0616d28935a"
+    "graded_at": "75432feb4028"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -3743,7 +5339,7 @@
   "Replicator": {
    "J": {
     "m": "★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "75432feb4028"
    }
   },
   "Doubling Season": {
@@ -3754,8 +5350,398 @@
   },
   "Vorinclex, Monstrous Raider": {
    "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Chromatic Lantern": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Arcane Signet": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Birds of Paradise": {
+   "J": {
     "m": "★★",
-    "graded_at": "5fe9e1f29579"
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Paradise Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Farseek": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Delighted Halfling": {
+   "J": {
+    "m": "★★",
+    "graded_at": "0ba0e806f41f"
+   }
+  },
+  "Enduring Vitality": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Leyline Prowler": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Great Forest Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Path to the World Tree": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Everything Pizza": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Tireless Provisioner": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Cultivate": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Sylvan Caryatid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Phial of Galadriel": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Faeburrow Elder": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Bloom Tender": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Bard Class": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Buried in the Garden": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Transdimensional Bovine": {
+   "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Leyline Immersion": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Greenhouse // Rickety Gazebo": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Inga and Esika": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Gwenna, Eyes of Gaea": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Invasion of Zendikar // Awakened Skyclave": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Animal Attendant": {
+   "J": {
+    "m": "★★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Great Hall of the Citadel": {
+   "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "The Mycosynth Gardens": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Emergent Sequence": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Mana Flare": {
+   "J": {
+    "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Culling Ritual": {
+   "J": {
+    "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Tazri, Stalwart Survivor": {
+   "J": {
+    "m": "✗",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Photon, Mighty Marvel": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "The Last Agni Kai": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Open the Omenpaths": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Manamorphose": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Glittering Stockpile": {
+   "J": {
+    "m": "◇",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Paradigm Shifter": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Kolvori, God of Kinship // The Ringhart Crest": {
+   "J": {
+    "m": "★",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Chaos Warp": {
+   "J": {
+    "m": "△",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Crackle with Power": {
+   "J": {
+    "m": "△",
+    "graded_at": "2cf7aeb7ef2a"
+   }
+  },
+  "Black Market Connections": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Glóin, Dwarf Emissary": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Big Score": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Death to Our Enemies": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Grim Hireling": {
+   "J": {
+    "m": "★★",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Jolene, Plundering Pugilist": {
+   "J": {
+    "m": "◇",
+    "graded_at": "75432feb4028"
+   }
+  },
+  "Ancient Cornucopia": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Heaped Harvest": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Omni-Cheese Pizza": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Oasis Gardener": {
+   "J": {
+    "m": "★★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Hot Dog Cart": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "J": {
+    "m": "★",
+    "graded_at": "a7f047666cc1"
+   }
+  },
+  "Saint Elenda": {
+   "J": {
+    "m": "★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Wrenn and Realmbreaker": {
+   "J": {
+    "m": "★★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Incubation Druid": {
+   "J": {
+    "m": "★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Elven Chorus": {
+   "J": {
+    "m": "★★",
+    "graded_at": "d526869441f6"
+   }
+  },
+  "Echo, Perceptive Prodigy": {
+   "J": {
+    "m": "★",
+    "graded_at": "75432feb4028"
    }
   }
  }

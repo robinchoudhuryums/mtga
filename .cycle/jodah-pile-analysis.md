@@ -40,7 +40,7 @@ batch verdicts below become its reasons then.
 
 ## 2. Standing error list
 
-- (none yet)
+- 2026-11-15: ten of the owner's screenshot cards were dismissed as "off-plan" by category; several make or fix mana (Photon, The Last Agni Kai, Paradigm Shifter, Kalain, Kolvori's Ringhart Crest). Grade each from its text — the rule-6 error this skill warns about.
 
 ## 3. Cross-batch observations
 
@@ -272,6 +272,16 @@ Breya, Vraska Soul of Stone, Karolina Dean, Wizard Class, Kefka, Chandra Hope's 
 of Bala Ged, Bringer of the Black Dawn, Nicol Bolas the Ravager, Herigast). Legal; floor A;
 interaction 13 (5 instant, 8 can hit a noncreature permanent); card advantage 14.
 
+### Round 3 (2026-11-15) — the slow start
+
+Owner's games: the plan is strong once it runs but slow to start. Measured with a draw simulation
+(37 lands of 99, on the play): five mana by turn 4 ~4%, by turn 5 ~42%, because the only early
+mana source is Esika. Adding Chromatic Lantern, Arcane Signet, Birds of Paradise, Paradise Druid and
+Farseek raises that to ~25% by turn 4 and ~56% by turn 5 (three of them: ~17% / ~50%). The fix is
+cheap mana that also fixes; the dorks double as early blockers. Proposed cuts: Rona, Jin-Gitaxias,
+Commander Spock, Narset Enlightened Master, Bringer of the Green Dawn. The consistency model does not
+count nonland mana sources, so its on-curve figure cannot show this.
+
 ## 5. Consolidated plan (live)
 
 **Draft 100 (proposed, not yet a deck file):** 62 nonland + 37 lands + Jodah. Scratch-measured:
@@ -304,3 +314,14 @@ cost (R1) — not a meaningful figure for this deck.
 **Bench (★ not in the 62):** Crystal Quarry and The World Tree are in as lands; Pensive Professor,
 Glamorous Outlaw, Bard, The Key to the Vault, Yue, Buster Sword, Ashiok, Nissa of Shadowed Boughs,
 Aang, Stable Wormhole, Helga, Obeka, Saruman, Loot, Prismatic Undercurrents, Thanos alternatives.
+
+### Round 4 (2026-11-15) — applied, and alternate cuts for the held four
+Applied: Vitality/Invasion of Alara, Last Agni Kai/Jeskai Revelation, Grim Hireling/Sublime Epiphany,
+Goro-Goro/Teferi, Karolina/Lukka, Leyline Prowler/Savai Triome, Plaza of Heroes/Raffine's Tower,
+Otawara/Zagoth Triome, Gogo/Prismatic Omen. Floor A, interaction 12, 35 lands.
+Owner keeps Jace, Neera, Warp Speed, Chromatic Orrery. Proposed alternates (package previews at floor A,
+interaction 12, card advantage 14 → 16):
+- Tamiyo: Etali (first) · One with the Multiverse · Nissa, Leyline Tamer
+- Buxton: Nico Minoru (first) · Etali · Kellan
+- Kethis: Goldspan Dragon (first) · Kellan · Nico Minoru
+- Wizard's Staff: Jetmir's Garden (first; 34 lands, keepable 76.9% → 75.2%) · Indatha Triome · Kellan

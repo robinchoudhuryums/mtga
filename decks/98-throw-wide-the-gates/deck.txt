@@ -64,6 +64,10 @@
 #: notes: 2026-11-10: −Teferi, Who Slows the Sunset (to the flex block) +Heliod, God of the Sun (owned): each {2}{W}{W} Cleric
 #: notes: is an enchantment entering, so Entity Tracker draws and Killian, Decisive Mentor goads, doubled by Mondrak;
 #: notes: the cast triggers Sigil, Hallowed Haunting and Alela; team vigilance; indestructible.
+#: notes: LANDS 2026-11-15 (owner's call, unowned rares): Adarkar Wastes -> Mana Confluence, Glacial Fortress
+#: notes: -> Tranquil Cove, Hengegate Pathway -> Prismatic Vista, Seachrome Coast -> Restless Anchorage,
+#: notes: Concealed Courtyard -> Temple of Silence, Isolated Chapel -> Dalkovan Encampment, Caves of Koilos ->
+#: notes: Scoured Barrens. Tempo sim 50.7 -> 49.5 on curve (tapped-land cost 1.1 -> 2.2); all owned.
 
 # Commander (leads from the command zone; also one of the 100)
 1 G'raha Tia, Scion Reborn (FIC) 3
@@ -155,14 +159,14 @@
 1 Starting Town (FIN) 289
 1 Shattered Sanctum (SOS) 260
 1 Deserted Beach (FRA) 176
-1 Isolated Chapel (DOM) 241
-1 Seachrome Coast (ONE) 258
-1 Glacial Fortress (XLN) 255
-1 Concealed Courtyard (OTJ) 268
+1 Dalkovan Encampment (TDM) 253
+1 Restless Anchorage (LCI) 280
+1 Tranquil Cove (TDM) 270
+1 Temple of Silence (FDN) 704
 1 Reflecting Pool (FRC) 23
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Adarkar Wastes (DMU) 243
-1 Caves of Koilos (DMU) 244
+1 Prismatic Vista (SPG) 38
+1 Mana Confluence (EOS) 25
+1 Scoured Barrens (M21) 250
 5 Plains (FRA) 281
 1 Contaminated Landscape (MH3) 218
 1 Undercity Sewers (PZA) 0
