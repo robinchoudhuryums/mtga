@@ -664,17 +664,17 @@ is protecting.
   control deck. It is a SHORTLIST: grade from full text, preview with `swap`.
   **A SATURATED KEY SAYS SO** (`_HOMES_KEY_SATURATED`, the roster twin of `screen`'s
   `_SCREEN_KEY_SATURATED`): KEY in ≥15% of the roster is a fact about the TAGS, not a
-  recommendation. **That warning was the SYMPTOM; the CAUSE was fixed 2026-09-18** — the
-  signature branch ran FIRST and excluded `_GENERIC_TRIBES` but not `GENERIC_THEMES`, so it
-  minted **97.3% of all KEY verdicts** while the two branches designed to discriminate lay
-  dead. A GENERIC signature theme must now EARN its KEY by also clearing
-  **`structural_overlay_hit`** — ONE definition across all THREE callers (G-40/G-70) —
-  while a SPECIFIC one still mints alone. KEY 18.6% → 10.2%; top-theme 1.2% → 63.8%.
-  Each overlay clears only at its FLOOR (BS11-16 — 305 sub-floor KEYs fell to role-player). **TWO RESIDUALS, measurements in the gotchas section:** a
-  ZERO-ROW result is a THEME miss, not a colour-identity fact (reporting the second
-  produced a written "you have no Abzan deck" claim against FOUR WBG decks); and a
-  SPECIFIC signature theme still mints on overlap alone, so a structurally-valued card can
-  rate KEY broadly on generic tags. [G-31]
+  recommendation. A GENERIC theme (signature OR top theme, since 2026-11-20) EARNS KEY
+  only by clearing **`structural_overlay_hit`** — ONE definition across all THREE callers
+  (G-40/G-70), each branch at its FLOOR; a SPECIFIC theme still mints alone. **Three
+  LANES admit a deck with NO shared theme (2026-11-20):** an artifact payoff meets the
+  deck's artifact count, an artifact meets its artifact payoffs, a counters/tokens feeder
+  meets its MULTIPLIERS (plus-one replacements count); and the NEEDS lane ranks removal,
+  ramp and fixing into the ≤5 decks wanting it most. On a 101-card test set KEY
+  fell 218 → 158 and known homes rose 4 → 11 of 16. **RESIDUALS (gotchas section):** a
+  ZERO-ROW result is a THEME miss, not a colour-identity fact; a blink deck's value for an
+  enters-with feeder (Deanna Troi in 95) is invisible; the needs lane ranks by NEED, so
+  premium removal skips a deck already above its A line. [G-31]
 - **Castability reads the PRINTED COST (`suggest-homes`, the last identity-subset holdout,
   converted 2026-08-20 — G-58) and says nothing about PIPS.** A `{W}{W}{W}{W}{W}` was KEY for
   decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
