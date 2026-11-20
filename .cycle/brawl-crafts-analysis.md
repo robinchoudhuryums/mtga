@@ -358,7 +358,7 @@ for every enchanted creature, nothing owned does it).
 | 20 | Doctor Strange, Surgeon | R | **The Wind Crystal** (R) | Doubles lifegain and discounts white spells. Better. |
 | 21 | Rodolf Duskbringer | R | **Exemplar of Light** (R) | A flier that grows on lifegain and draws. Loses the reanimation. Equal. |
 | 22 | Drana and Linvala | R | **Archangel of Thune** (M) | Flying lifelink; every lifegain grows the team. Better here. |
-| 23 | Scriv, the Obligator | M | **Lich's Mastery** (R) is too risky; use **Dawn of Hope** (R) | A card per lifegain, and lifelink tokens. Loses the Contract Auras. Reasonable exchange. |
+| 23 | Scriv, the Obligator | M | **Dawn of Hope** (R) | A card per lifegain, and lifelink tokens. Loses the Contract Auras. Reasonable exchange. |
 | 24 | Eriette, the Beguiler | R | **Imprisoned in the Moon** (U) | Eriette steals with Auras; the owned Aura answers them instead (and counts as an Aura). Reasonable exchange. |
 | 25 | The Circle of Loyalty | M | **Bard's Company** (R) | A team anthem with conditional flash. Loses the Knight per legendary spell. Reasonable exchange. |
 | 26 | Staff of Compleation | M | **Karn's Bastion** (R) | Proliferate from a land slot. Loses the draw and mana modes. Reasonable exchange. |
