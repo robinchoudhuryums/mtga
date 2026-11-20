@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96 and 92 done; 91, 98, 89 to go.**
+**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl, 96, 92 and 91 done; 98, 89 to go.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -259,3 +259,58 @@ Embercleave and Fiery Confluence (56-historic-brawl), Rakdos, the Muscle (93).
 and Fiery Confluence are already on earlier decks' lists — so 3 mythics and 2 rares NEW to deck 92.
 With the fallbacks for #4 and #7 (Genji Glove can cover #4 or #6, not both): 3 mythics and 3
 rares, of which 2M 1R are new (Avatar Roku, Fire Lord Ozai, Fire Nation Turret).
+
+## Deck 91 — Scarab's Fist (Hashaton, Scarab's Fist, Esper discard Zombies) — 18M 15R missing
+
+Engine: every creature card discarded becomes a 4/4 Zombie copy for {2}{U}; Zombie payoffs read
+the copies; The Sibsig Ceremony and Necroduality are a second engine. **The owned Esper pool has
+plenty of discard outlets and removal but almost NO Zombie support** — two owned cards make a
+Zombie (Draugr's Helm, Essence Anchor) and none pumps one. So this deck keeps more of its crafts
+than any so far: the Zombie half of the plan has nothing owned to stand in.
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | Hashaton, Scarab's Fist | M | The commander. | none |
+| 2 | Necroduality | M | Protected. Copies every nontoken Zombie entering. | none |
+| 3 | The Sibsig Ceremony | R | Protected. The second engine (cost reduction, enters trigger, a 2/2, a card back in the yard). | none |
+| 4 | Waste Not | M | Protected. Pays off the each-player discard cards. | none |
+| 5 | The Scarab God | M | Upkeep drain per Zombie, and 4/4 Zombie copies from any graveyard. | none |
+| 6 | Cursecloth Wrappings | R | The only Zombie anthem in reach, plus embalm. | none owned |
+| 7 | Gisa and Geralf | M | Cast a Zombie from your graveyard every turn: the discarded Zombies come back. | Zombify (owned U) — one-shot |
+| 8 | Liliana, Death's Majesty | M | A Zombie every turn, reanimation, and a one-sided wipe of non-Zombies. | Coiling Rebirth (owned R) — reanimation only |
+| 9 | Kalitas, Traitor of Ghet | M | Their dying creatures become your Zombies. Nothing owned does this. | none |
+| 10 | God-Eternal Oketra | M | A 4/4 Zombie per creature cast. Nothing owned does this in Esper. | none |
+| 11 | Cryptcaller Chariot | R | A Zombie per card discarded. | Scrounging Skyray (owned U) — counters only, weak |
+| 12 | Liliana of the Veil | M | Protected. Each player discards (fires Waste Not), and an edict. | Fanatic of the Harrowing (owned C) — one discard on entry |
+| 13 | Bone Miser | M | Protected. A Zombie, mana or a card per discard. | Monument to Endurance (owned R) — draw, Treasure or drain 3 per turn |
+
+**Craft later — unique, no owned replacement, lower impact:** Ghoulcaller Gisa (M; a 4/4 Hashaton
+copy sacrificed is four Zombies), Havengul Runebinder (R; Zombies plus a team counter per exiled
+creature card), Army of the Damned (M; thirteen Zombies — a finisher nothing owned matches).
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 14 | Psychic Frog | R | **Compulsion** (U) | PROTECTED, so the owner's call. A repeatable discard outlet that draws. Loses the growing flier. Reasonable exchange. |
+| 15 | Liliana, Waker of the Dead | M | **Ral Zarek, Guest Lecturer** (M) | −1: each player discards; surveil 2; reanimate MV 3 or less. Loses the −X removal. Reasonable exchange. |
+| 16 | Temmet, Naktamun's Will | M | **Sphinx of False Conclusions** (R) | Flash flier that loots on every attack and copies itself when it dies. Loses the Zombie pump. Reasonable exchange. |
+| 17 | Oglor, Devoted Assistant | M | **Essence Anchor** (U) | Upkeep surveil plus a Zombie on turns a card left your graveyard. Equal. |
+| 18 | Grimgrin, Corpse-Born | M | **Yawgmoth, Thran Physician** (M) | Sacrifice for removal and a card; discard to proliferate. Equal or better. |
+| 19 | Unstoppable Slasher | R | **Draugr's Helm** (U) | A Zombie body with +2/+2 and menace. Reasonable exchange. |
+| 20 | Dreadhorde Invasion | R | **Emet-Selch, Unsundered** (M) | Different job: loots on entry and attack (feeds Hashaton) and flips to replay the graveyard. Reasonable exchange. |
+| 21 | Liliana, Heretical Healer | M | **Kaya the Inexorable** (M) | Exile any nonland permanent; ghostform protection. Better. |
+| 22 | Zahur, Glory's Past | R | **Liliana the Faultless** (R) | A 1-drop discard outlet. Zahur's Zombie half needs max speed. Equal. |
+| 23 | Liliana, the Last Hope | M | **Coiling Rebirth** (R) | Reanimation. Loses the repeatable −2/−1. Reasonable exchange (if #8 keeps Coiling Rebirth free). |
+| 24 | Assemble from Parts | R | **Zombify** (U) | Reanimate instead of a 4/4 copy. Equal (if #7 keeps Zombify free). |
+| 25 | Grim Reaper's Scythe | R | **Grim Reaper, Lethal Legionnaire** (U) | Reanimates tapped and attacking on every attack. Loses the Zombie per card leaving the yard. Reasonable exchange. |
+| 26 | Never // Return | R | **Bake into a Pie** (C) | Instant-speed kill. Loses the Return half. Equal. |
+| 27 | Enter the God-Eternals | R | **Consuming Ashes** (C) | Instant exile. Loses the amass and mill. Reasonable exchange. |
+| 28 | Soul Diviner | R | **Collector's Vault** (U) | PROTECTED. A loot plus a Treasure each turn. Different job. Reasonable exchange. |
+| 29 | Commence the Endgame | R | **Seasoned Cryomancer** (M) | Draw two, discard two (two Hashaton triggers). Better here. |
+| 30 | Fallen Shinobi | R | **Locke Cole** (U) | A loot on combat damage, deathtouch and lifelink. Much weaker; skip the slot if nothing better turns up. |
+
+**If every replacement is taken:** 10 mythics and 3 rares (#1–13), down from 18M 15R. With the
+fallbacks for #12–13: 8 mythics and 3 rares. The three craft-later cards add 2M 1R.
