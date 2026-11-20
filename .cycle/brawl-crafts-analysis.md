@@ -257,4 +257,5 @@ Embercleave and Fiery Confluence (56-historic-brawl), Rakdos, the Muscle (93).
 
 **If every replacement is taken:** 4 mythics and 4 rares (#1–8), of which Smellerbee, Embercleave
 and Fiery Confluence are already on earlier decks' lists — so 3 mythics and 2 rares NEW to deck 92.
-With the fallbacks for #4, #6 and #7: 2 mythics and 3 rares (1M 1R new).
+With the fallbacks for #4 and #7 (Genji Glove can cover #4 or #6, not both): 3 mythics and 3
+rares, of which 2M 1R are new (Avatar Roku, Fire Lord Ozai, Fire Nation Turret).
