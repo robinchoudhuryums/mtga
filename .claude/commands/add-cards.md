@@ -77,7 +77,12 @@ For **every** card, in this order — never grade from a tag or a role label
    **strength** label (**KEY** — fills an interaction/card-advantage gap or shares
    the deck's signature theme; **role-player** — a secondary central theme;
    **tangential** — generic overlap only) and a single weakest-nonland **cut
-   candidate**. Rows are sorted strongest-fit first. Costs ~2s per card.
+   candidate**. Rows are sorted strongest-fit first. Costs ~2s per card. A generic theme
+   (tokens, counters, card draw) only earns KEY when the card engages it structurally, and
+   structural LANES add decks that share no theme at all: artifact payoffs / artifacts in a
+   real artifact deck, counters or tokens feeders in a deck that multiplies them, and
+   removal / ramp / fixing into the ≤5 decks that most need the job — each lane row shows
+   its count in brackets (G-31).
 3. For each real fit, grade it from the Stage-1.1 text against **this deck's
    engine** (a "downside" clause is often an upside in the matching deck — see
    CLAUDE.md's swap gotcha) and classify it:
