@@ -122,6 +122,9 @@
 #: notes: and Origin are benched in the flex block. Interaction 15 -> 18, card advantage 13 -> 14,
 #: notes: protection 11 -> 14, avg MV 3.77 -> 3.66. Lands rechecked after: no owned untapped dual is left,
 #: notes: and moving a basic to Plains measured inside the noise, so the next land step is the craft one.
+#: notes: 2026-11-20: Seat of the Synod and Ancient Den in for an Island and a Plains: two more artifacts for
+#: notes: Sami, Shuri and Iron Man, Master of Machines at no spell slot. They carry no basic land type, so the
+#: notes: Verges and check lands lose a little gated credit: sources read W 20 -> 19, U 18 -> 17.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Director Nick Fury (MSC) 81
@@ -227,8 +230,10 @@
 1 Deserted Beach (FRA) 176
 1 Asgardian Citadel (MSH) 258
 1 Plaza of Heroes (DMU) 252
-5 Plains (FRA) 281
-3 Island (FRA) 283
+4 Plains (FRA) 281
+1 Ancient Den (AA2) 23
+2 Island (FRA) 283
+1 Seat of the Synod (J25) 773
 1 Uthros, Titanic Godcore (EOE) 260
 4 Mountain (FRA) 287
 
