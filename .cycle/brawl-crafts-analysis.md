@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93, 88 and 56-historic-brawl done; 96, 92, 91, 98, 89 to go.**
+**Status: IN PROGRESS — decks 93, 88, 56-historic-brawl and 96 done; 92, 91, 98, 89 to go.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -152,3 +152,53 @@ instants and sorceries, which blocks your OWN Feather spells on that body — no
 
 **If every replacement is taken:** 2 mythics and 4 rares to craft (#1–6), down from 7M 17R.
 With the fallbacks for #3–5, 1 mythic and 2 rares (Feather, Seize the Day, Fiery Confluence).
+
+## Deck 96 — Drowned Library (Glarb, Calamity's Augur, Sultai draw-to-mill) — 18M 10R missing
+
+Engine: every card drawn mills the opponent (two Sphinx's Tutelages, owned), multiplied by
+Bruvac and The Water Crystal and repeated by Fraying Sanity; Glarb casts MV 4+ cards off the
+top. 29 creatures (Phenax's count). The owned pool has many planeswalkers but almost no MILL
+multipliers — that is where the crafts concentrate.
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | Bruvac the Grandiloquent | M | Protected. Doubles every mill; the deck's clock is built on it. | none |
+| 2 | The Water Crystal | R | +4 on every mill instance, and blue spells cost 1 less. | none |
+| 3 | Fraying Sanity | R | Repeats each turn's total at end step: a second doubler. | none |
+| 4 | Jace, Memory Adept | M | Protected. Mills 10 a turn, or draws and mills. | none |
+| 5 | Ashiok, Nightmare Muse | M | Protected. A token per turn that exiles two from their library on every attack or block. | none |
+| 6 | Phenax, God of Deception | M | Every creature taps to mill its toughness; with 29 creatures (and Bruvac's 4 toughness) this is a mill engine on its own. | none |
+| 7 | Terisian Mindbreaker | R | Half their library on attack, and Glarb casts it off the top (MV 7). | Kitsune's Technique (owned R), but see #8 |
+
+**Craft later — unique but optional:** Villainous Wealth (R; an X finisher that casts their cards,
+nothing owned does it) and Jace, Wielder of Mysteries (R; mill 2 + draw each turn, AND it wins if
+YOU are the one who decks out — insurance in a deck that draws this much).
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 8 | Cut Your Losses | R | **Kitsune's Technique** (R) | Mills half their library, rounded UP, at instant speed. Loses the casualty copy. Equal. |
+| 9 | Altar of Dementia | M | **Exhibition Tidecaller** (R) | Mill 3 per instant or sorcery, 10 if 5+ mana was spent; no creature to sacrifice. Reasonable exchange. |
+| 10 | Lithoform Engine | M | **Gogo, Master of Mimicry** (M) | Copies an activated or triggered ability X times, loyalty abilities included. Loses copying spells. Better for the planeswalker plan. |
+| 11 | Ob Nixilis Reignited | M | **Garruk, Cursed Huntsman** (M) | −3 destroys a creature AND draws, plus two Wolves a turn. Better. |
+| 12 | Ashiok, Sculptor of Fears | M | **Professor Dellian Fel** (M) | 0: draw, −3: destroy a creature, +2: 3 life. Loses each-player mill 2. Reasonable exchange. |
+| 13 | Ashiok, Nightmare Weaver | M | **Ral Zarek, Guest Lecturer** (M) | Surveil 2 each turn feeds Matoya and Glarb. Loses exile 3. Reasonable exchange. |
+| 14 | Kasmina, Enigma Sage | M | **Chandra, Chill of Compliance** (M) | Surveil plus card advantage for 3. Loses sharing Kasmina's abilities with the other walkers. Reasonable exchange. |
+| 15 | Vraska, Betrayal's Sting | M | **Vivien Reid** (M) | Card selection every turn and flier/artifact removal. Loses the proliferate. Reasonable exchange. |
+| 16 | Nissa, Voice of Zendikar | M | **Wrenn and Seven** (M) | Lands to hand, ramp, a huge reach token. Better. |
+| 17 | Tezzeret the Schemer | M | **Kiora, the Crashing Wave** (M) | Draw plus an extra land drop, a Fog on their best threat, a Kraken emblem. Better. |
+| 18 | Jace, the Perfected Mind | M | **Jace, Reality Sculptor** (R) | Weakest exchange: JPM's −X is a mill finisher, and nothing owned matches it. Keep it on the craft list if the mill clock feels slow. |
+| 19 | Erebos, God of the Dead | M | **Phyrexian Arena** (R) | A card every upkeep. Loses "opponents can't gain life". Equal. |
+| 20 | Malcolm, Alluring Scoundrel | R | **Seven of Nine, Unassimilated** (M) | A card every main phase, no combat needed. Better. |
+| 21 | Thryx, the Sudden Storm | R | **Thunderous Snapper** (U) | Draws on every 5+ MV spell instead of discounting it. Equal. |
+| 22 | Defiler of Dreams | R | **Tanufel Rimespeaker** (U) | Draws on every MV 4+ spell — exactly what Glarb casts off the top. Equal or better. |
+| 23 | Lord of the Forsaken | M | **Hama, the Bloodbender** (U) | Mill 3 on entry plus graveyard exile. Loses the 6/6 flier and repeatable mill. Weak exchange. |
+| 24 | One Ring to Rule Them All | R | **Villainous Wrath** (R) | A full sweeper with a drain. The Ring spares legends (this deck has many); Wrath does not. Reasonable exchange. |
+| 25 | The Mycotyrant | M | **Archmage of Runes** (R) | Different job: the Fungus count is only what Mycotyrant itself makes. Archmage draws per instant or sorcery. Reasonable. |
+| 26 | Immortus, Master of Eternity | M | **Aether Syphon** (U) | A draw engine that mills 2 per draw at max speed. Speed needs life loss (Master of Lake-town helps). Weaker. |
+
+**If every replacement is taken:** 4 mythics and 3 rares to craft (#1–7), plus the two optional
+rares — down from 18M 10R.
