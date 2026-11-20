@@ -1,6 +1,6 @@
 # Brawl craft triage — unowned mythics and rares (TEMPORARY working doc)
 
-**Status: IN PROGRESS — decks 93 and 88 done; 56-historic-brawl, 96, 92, 91, 98, 89 to go.**
+**Status: IN PROGRESS — decks 93, 88 and 56-historic-brawl done; 96, 92, 91, 98, 89 to go.**
 Delete once every deck is done and the owner's picks have landed (as swaps, or as notes in each
 deck's `#: notes:`). A scratchpad, not a source of truth — decks/ are.
 
@@ -108,3 +108,47 @@ their value is the power-4+ and landfall reads it does not score.
 
 **If every replacement is taken:** 4 mythics and 2 rares to craft (#1–6), down from 13M 9R.
 With the fallbacks for #3–6, only Samut and Unnatural Growth remain (2 rares).
+
+## Deck 56-historic-brawl — One Fell Swoop (Feather, the Redeemed, Boros Voltron) — 7M 17R missing
+
+Engine: Feather returns every instant or sorcery that TARGETS your own creature to hand at end
+step, so a self-targeting spell is a spell every turn. Equipment is the second layer, and the
+plan is one protected body. **Trap:** Sword of Wealth and Power (owned) gives protection from
+instants and sorceries, which blocks your OWN Feather spells on that body — not a replacement here.
+
+### Craft first — no acceptable replacement found
+
+| # | Card | R | Why | Nearest fallback |
+|---|------|---|-----|------------------|
+| 1 | Feather, the Redeemed | R | The commander. | none |
+| 2 | Seize the Day | M | Targets your creature, so Feather returns it: an extra combat EVERY turn. No owned extra-combat spell targets. | Full Throttle (owned R) — one-shot, not returned |
+| 3 | Embercleave | M | Protected. Flash, double strike and trample, cheaper while attacking. | Genji Glove (owned R) — double strike plus an extra combat; no flash or trample |
+| 4 | Akiri, Fearless Voyager | R | A card every attack with an equipped creature, and {W} indestructible. The deck's repeatable card draw. | Buster Sword (owned M) — a card per hit, needs to connect |
+| 5 | Raiyuu, Storm's Edge | R | The Voltron body attacks alone; Raiyuu untaps it and adds a combat. | Genji Glove (owned R), if not used for #3 |
+| 6 | Fiery Confluence | R | Sweeps 1/1s, deals 6 to the face, or kills artifacts, in one card. Also wanted by deck 92. | none owned at that flexibility |
+
+### Replaceable — an owned card covers the job
+
+| # | Craft | R | Replacement (owned) | Verdict |
+|---|-------|---|---------------------|---------|
+| 7 | Stoneforge Mystic | R | **Cloud, Midgar Mercenary** (M) | Tutors any Equipment and doubles the triggers of the equipment on it. Better. |
+| 8 | Akroma's Will | M | **Divine Resilience** (U) | Targets your creature, so Feather returns it: repeatable indestructible (kicked = the team). Loses the double-strike mode. Better as repeatable protection. |
+| 9 | Sword of Forge and Frontier | M | **Buster Sword** (M) | +3/+2, a card and a free spell per hit. Better or equal. |
+| 10 | Kaldra Compleat | M | **Orcrist, Goblin-cleaver** (M) | Kaldra is a 7-mana, 7-equip finisher. Orcrist gives +2/+2 and trample for 3. Reasonable exchange; Meteoric Mace (owned U) is the bigger hit. |
+| 11 | Mishra's Command | R | **HULK SMASH!** (C) | Both bite through your own creature, so Feather returns either. Loses X-scaling and the pump mode. Reasonable exchange. |
+| 12 | Teyo, Aegis Adept | M | **Nahiri, Heir of the Ancients** (M) | Teyo's main job is Erratic Cyclops (#13). Nahiri makes bodies, attaches equipment, digs for it and removes. Better here. |
+| 13 | Erratic Cyclops | R | **Crackling Cyclops** (C) | +3/+0 per noncreature spell instead of +MV. Feather recasts cheap spells, where +3 is more. Equal or better. |
+| 14 | Kirk, Enterprising Captain | M | **Chandra, Torch of Defiance** (M) | Impulse every turn, ramp, or 4 to a creature. Better. |
+| 15 | Éowyn, Fearless Knight | R | **Stasis Snare** (U) | Flash exile of any creature, not only a bigger one. Loses the haste body. Equal. |
+| 16 | Raubahn, Bull of Ala Mhigo | R | **Frodo, Determined Hero** (R) | Attaches a 2–3 MV Equipment on entry and every attack, and takes no damage on your turn. Equal. |
+| 17 | Shadowspear | R | **Meteoric Mace** (U) | Trample plus +4/+0, with cascade. Loses the 1-mana lifelink. Reasonable exchange. |
+| 18 | Odric, Lunarch Marshal | R | **Captain America, Liberator** (R) | Different job: Odric shares the body's keywords with a team this deck does not build. Captain America fetches and puts an Equipment in. Better here. |
+| 19 | Jor Kadeen, First Goldwarden | R | **Firion, Wild Rose Warrior** (R) | Jor Kadeen scales with equipped creatures (one, in a Voltron deck). Firion gives haste to equipped creatures and copies each Equipment. Better here. |
+| 20 | Zada, Hedron Grinder | R | **Aziza, Mage Tower Captain** (R) | Zada copies a self-targeting spell per creature, a go-wide read. Aziza copies a spell for three tapped creatures. Both are weak in Voltron; consider cutting the slot entirely. |
+| 21 | Krenko, Tin Street Kingpin | R | **Solitary Cell** (R) | No owned card makes tokens on attack in Boros. Krenko is a power-scaling carrier; Solitary Cell is a different job (removal). Weak exchange. |
+| 22 | Esper Sentinel | R | **Banishing Light** (U) | A 1-drop tax is low impact in Brawl. A removal slot does more. Better. |
+| 23 | Battlefield Forge | R | **Asgardian Citadel** (C) | Same colours, enters tapped. A tempo cost; craft these late, not never. |
+| 24 | Needleverge Pathway | R | **Rabanastre, Royal City** (C) | As #23. |
+
+**If every replacement is taken:** 2 mythics and 4 rares to craft (#1–6), down from 7M 17R.
+With the fallbacks for #3–5, 1 mythic and 2 rares (Feather, Seize the Day, Fiery Confluence).
