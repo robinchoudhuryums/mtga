@@ -329,3 +329,38 @@ this deck.
 **Ownership (information only, F7):** of the 63 nonland cards and 8 pile lands, 35 are unowned —
 5 mythic, 13 rare, 13 uncommon, 4 common.
 
+
+## 6. Hybrid evaluation — board round 1 (2026-11-21)
+
+The owner's first board marks (10 adds, 5 cuts, 29 bench) asked whether deck 104 can keep the
+Ninja plan and mix in lifegain, aristocrats/sacrifice and Treasure. Three scratch copies were
+measured against the drafted list (not deck files; `deck.py tier/quality/engines/consistency` on
+a path):
+
+| Version | Floor | Interaction | Card adv | Ninjas (tribes) | Lifegain payoffs | Board power | Tempo cost |
+|---|---|---|---|---|---|---|---|
+| Drafted 104 | A | 20 | 9 | 18 | 2 (25 sources) | 109 | 2.0 |
+| A: marks as given | A | 18 | 7 | 16 | 7 | 107 | 2.1 |
+| C: refined hybrid | A | 16 | 9 | 17 | 9 (31 sources) | 111 | 2.1 |
+
+- **The lifegain half already existed.** The draft runs 25 lifegain sources (lifelink on Golden
+  Sidekick, Killian, Falcon, Lurrus, Exalted Sunborn, Eradicator Valkyrie, Cloak and Dagger,
+  Tymna, Katana's gain 2…) and 2 payoffs. A lifegain secondary is mostly adding PAYOFFS, which is
+  why it costs the Ninja plan little.
+- **Bridge cards** (help both plans): Sorin, Vengeful Bloodlord (all your creatures have lifelink
+  on your turn, so every attacking Ninja gains life); Teysa Karlov (Ninja/Turtle/Inkling tokens
+  get lifelink and vigilance); Indulging Patrician and Starseer Mentor (fliers, so also sneak
+  enablers per F2b, plus a drain); Rosa and Leader's Talent (a counter and lifelink each combat);
+  Elas il-Kor (every sneak entry and token gains 1 life).
+- **Aristocrats and Treasure fight F1.** Sacrificing Ninjas lowers the count the commander reads,
+  and sneak returns attackers to HAND, so death triggers are rare here. Treasure has no payoff in
+  the list. Teysa and Elas are the light touch; Kingpin Fisk, Deadly Dispute, Baron Bertram,
+  Ayli and Smothering Tithe stay on the bench.
+- **Counters vs sneak (G-42):** a returned creature loses its counters and its Aura. Rosa and
+  Leader's Talent are fine if the counter goes on the creature that stays in play; Light of
+  Promise is not (the Aura falls off on the return).
+- **Disagreements with the marks:** keep Cloak and Dagger (deathtouch + lifelink, and every sneak
+  return re-buys its exile), Dokuchi Silencer (a Ninja and one of six 1–2-mana sneak costs) and
+  Tymna (lifelink + draw; version A drops card advantage 9→7 mostly through Tymna and Doctor
+  Doom). Agree on Biting-Palm Ninja and Doctor Doom.
+- Niv-Mizzet, Ghost Counsel is {2}{W}{W}{B}{B}: 67% on turn 5 — a late-game card, not a curve play.
