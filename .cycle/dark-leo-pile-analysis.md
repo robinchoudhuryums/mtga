@@ -397,3 +397,14 @@ All 101 pile cards outside the deck were re-graded on the board under the new cr
   KEPT (owner), so Vona, Butcher of Magan and Starseer Mentor went to the bench instead of in. Live:
   floor A · interaction 15 · card advantage 9 · board power 115 · avg MV 3.27 · early drops 19.
   Light of Promise (not added) and Cloak and Dagger (kept) were settled in chat and cleared on the board.
+
+### 6c. Board round 3 — owner marks, feedback only (2026-11-21)
+
+Marks: +Baron Bertram Graywater, +Starseer Mentor; −Enduring Innocence, −Falcon, −Ink-Eyes,
+−Oath of Kaya, −Quintessential Katana, −The Cloning of Shredder (net −4); notes on Kingpin Fisk,
+Primevals' Glorious Rebirth and Veko (answered on the board). Measured on scratch copies:
+F (marks + Veko, Kingpin, Vona Butcher, Ethereal Escort): floor A · int 15 · CA 9 · Ninjas 15 ·
+board power 123. G (keep Katana and Enduring Innocence; + Baron, Starseer, Vona, Veko): floor A ·
+int 15 · CA 10 · Ninjas 15 · board power 119 · avg MV 3.23 · early drops 20. Recommended G:
+Katana is the Envoy lifelink enabler and survives every sneak return; Enduring Innocence draws
+off nearly every token and sneak entry. Baron is the first real Treasure payoff (sac Treasure: draw).
