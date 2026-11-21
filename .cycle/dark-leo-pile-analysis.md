@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: ALL SIX BATCHES GRADED (2026-11-21). Consolidated plan in §5, awaiting the owner's picks before /draft-deck.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: DRAFTED as deck 104 (Way of the Foot), 2026-11-21. The bench is the Builder board `builds/dark-leo` (https://claude.ai/artifact/NczS8xwUj3r6qX63Y6esve); delete this doc once the owner's board picks land and the findings are folded into deck 104's `#: notes:`.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -42,7 +42,8 @@ player loses half their life.
 
 ## 2. Standing error list
 
-(none yet)
+- Batch 3 note claimed deck 104 would be the roster's only Orzhov Ninja deck; deck 20 (Standard) is one. Caught by `deck.py similar` at draft; the header now says so.
+- Classifier holes (G-67, record only): Biting-Palm Ninja, Black Widow, Double Agent, Ink-Eyes, Nashi and Swarm Saboteur score NO role — their value is a combat-damage trigger (hand exile, reanimation, impulse, conjure) or a lone-attacker grant. Acknowledged in role_baseline.txt by `make postedit`; fix in a classifier batch, with the K-12 roster diff.
 
 ## 3. Cross-batch observations
 
@@ -322,6 +323,8 @@ Vona, Exemplar of Light, Enduring Tenacity, Ajani's Welcome, Dr. Crusher, Doctor
 Crystal, Niv-Mizzet, Leonardo, Cutting Edge) and an ARISTOCRATS deck (Teysa, Elas il-Kor, Elenda,
 the Dusk Rose, Massacre Girl, Pitiless Plunderer, Blood Money, Vito) are each coherent; neither is
 this deck.
+
+**Draft changes from this plan:** the land section became 14 nonbasics + 10 Plains + 12 Swamp — Silent Clearing, Brightclimb Pathway, Caves of Koilos, Concealed Courtyard, Isolated Chapel and Prismatic Vista (owned) in for six basics (`suggest --lands`; sources W 24 / B 26; tapped lands cost 2.0 points a card on `consistency --tempo`, under the roster median 2.7).
 
 **Ownership (information only, F7):** of the 63 nonland cards and 8 pile lands, 35 are unowned —
 5 mythic, 13 rare, 13 uncommon, 4 common.

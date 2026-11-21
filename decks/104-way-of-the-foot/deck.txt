@@ -1,0 +1,122 @@
+#: name: Way of the Foot
+#: format: Historic Brawl
+#: colors: WB
+#: commander: Dark Leo & Shredder
+#: plan: aggro
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), ORZHOV NINJAS around Dark Leo &
+#: archetype: Shredder: attacking Ninjas have deathtouch, and when the commander connects it makes a Ninja token,
+#: archetype: then takes HALF the opponent's life if you control five or more Ninjas. So the deciding number is
+#: archetype: Ninjas in play: all seventeen Ninja cards, plus Ninja makers (The Last Ronin's Technique's three
+#: archetype: attacking Turtles, Ninja's Blades, The Cloning of Shredder, Black Market Connections' changeling,
+#: archetype: Exalted Sunborn doubling every token). Sneak and ninjutsu cast in the declare-blockers step by
+#: archetype: returning an unblocked attacker, so the deck pays the sneak cost (six cost 1-2 mana) and runs cheap
+#: archetype: EVASIVE attackers to stay unblocked — fliers, menace (Ninja Teen gives the team menace), My Precious.
+#: archetype: Returning a creature re-buys its enters trigger (Ruthless Lawbringer, Vona de Iedo, Cloak and
+#: archetype: Dagger, Turncoat Kunoichi). Every connection draws: Black Widow, Deadly Hunter and White Widow read
+#: archetype: "a creature with deathtouch", which every attacking Ninja is. Second finisher: Shredder, Shadow
+#: archetype: Master takes half their life on its own hit. Lifegain is incidental. Deck 20 (Honor Among Thieves)
+#: archetype: is the 60-card Standard Orzhov Ninja deck and shares 14 cards; its engine is The Kingpin of Crime's
+#: archetype: lifegain-drain, this one's is the Ninja count and the commander's half-life hit.
+#: protect: Dark Leo & Shredder; Black Widow, Deadly Hunter; White Widow, Yelena Belova; Ninja Teen; Exalted Sunborn; Black Market Connections; My Precious; Splinter, Hamato Yoshi; The Last Ronin's Technique
+#: notes: DRAFTED 2026-11-21 from the owner's 172-card pile (.cycle/dark-leo-pile-analysis.md: framework F1-F7,
+#: notes: six batch verdict tables, the consolidated plan). Ownership is information only; the list is the optimal
+#: notes: one from the pile. Left out on purpose: the pile's lifegain cluster (Archangel of Thune, Elenda, Saint of
+#: notes: Dusk, Vona, Butcher of Magan, Enduring Tenacity) and aristocrats cluster (Teysa, Elas il-Kor, Blood Money)
+#: notes: — neither makes a Ninja or reads combat damage; each is a separate deck if wanted. The bench lives on the
+#: notes: Builder board builds/dark-leo. `deck.py targets` flags Black Widow, Double Agent and Squall as
+#: notes: attacks-alone cards in a go-wide deck; they are kept for the one-evasive-attacker sneak setup, and
+#: notes: are the first place to look if the deck plays wide more often than it sneaks.
+
+# Commander
+1 Dark Leo & Shredder (TMT) 142
+
+# Ninjas — the count the commander reads (five in play halves their life)
+1 Karai, Future of the Foot (TMT) 151
+1 Turncoat Kunoichi (TMT) 26
+1 Leonardo, Cutting Edge (TMT) 15
+1 Lita, Little Orphan Amphibian (TMT) 19
+1 Leonardo, Sewer Samurai (TMT) 17
+1 Dokuchi Silencer (NEO) 95
+1 Splinter, Hamato Yoshi (TMT) 79
+1 Splinter, the Mentor (TMC) 3
+1 Super Shredder (TMT) 83
+1 Undead Hand Ninja (MSC) 670
+1 Swarm Saboteur (YNEO) 13
+1 Biting-Palm Ninja (NEO) 88
+1 Nashi, Moon Sage's Scion (NEO) 114
+1 Shark Shredder, Killer Clone (TMT) 73
+1 Shredder, Unrelenting (TMT) 74
+1 Shredder, Shadow Master (TMC) 20
+1 Ink-Eyes, Servant of Oni (BLC) 77
+
+# Ninja makers
+1 The Last Ronin's Technique (TMT) 12
+1 Ninja's Blades (FIN) 108
+1 The Cloning of Shredder (TMT) 60
+1 Black Market Connections (HBG) 145
+1 Exalted Sunborn (EOE) 15
+
+# Evasive enablers — the unblocked attacker a sneak returns
+1 Shaile, Dean of Radiance // Embrose, Dean of Shadow (STX) 158
+1 Golden Sidekick (YDSK) 23
+1 Killian, Ink Duelist (STX) 197
+1 Syr Vondam, Sunstar Exemplar (EOE) 231
+1 Grateful Apparition (WAR) 17
+1 Falcon, Joaquin Torres (MSC) 593
+1 Black Widow, Double Agent (MSH) 208
+1 Barbed Servitor (MKM) 77
+1 Wispdrinker Vampire (MKM) 243
+1 My Precious (HOB) 176
+1 Ninja Teen (TMT) 67
+1 Blot Out the Sky (STX) 167
+
+# Combat-damage payoffs and card flow
+1 Black Widow, Deadly Hunter (MSC) 648
+1 White Widow, Yelena Belova (MSC) 676
+1 Enduring Innocence (DSK) 6
+1 Tymna the Weaver (FCA) 18
+1 Rev, Tithe Extractor (J25) 45
+1 Grim Hireling (HBG) 158
+1 Squall, SeeD Mercenary (FIN) 243
+1 Lurrus of the Dream-Den (IKO) 226
+1 Quintessential Katana (TMT) 23
+1 Arvad the Cursed (DOM) 191
+1 Doctor Doom, Unrivaled (MSC) 654
+1 Inspiring Commander (OANA) 4
+1 Eradicator Valkyrie (KHM) 94
+
+# Interaction
+1 Despark (WAR) 190
+1 Mortify (FDN) 662
+1 Karai's Technique (TMT) 152
+1 Closing Statement (STX) 169
+1 Sheltered by Ghosts (DSK) 30
+1 The Wandering Emperor (NEO) 42
+1 Ruthless Lawbringer (OTJ) 229
+1 Vona de Iedo, the Antifex (YOTJ) 28
+1 Cloak and Dagger, Entwined (MSH) 211
+1 Fracture (STX) 188
+1 Kaya the Inexorable (KHM) 218
+1 Oath of Kaya (WAR) 209
+1 Finale of Eternity (WAR) 91
+1 Vraska, Scheming Gorgon (RIX) 197
+1 Origin of Black Widow (MSC) 664
+1 Bond of Discipline (WAR) 6
+
+# Lands
+1 Godless Shrine (EOE) 254
+1 Bleachbone Verge (DFT) 250
+1 Shattered Sanctum (SOS) 260
+1 Temple of Silence (FDN) 704
+1 Cardassia Prime (TRK) 280
+1 Foot Headquarters (TMT) 185
+1 Fisk Tower (MSH) 265
+1 Meticulous Commons (FRA) 184
+1 Silent Clearing (HA7) 24
+1 Brightclimb Pathway // Grimclimb Pathway (ZNR) 259
+1 Caves of Koilos (DMU) 244
+1 Concealed Courtyard (OTJ) 268
+1 Isolated Chapel (DOM) 241
+1 Prismatic Vista (SPG) 38
+10 Plains (TRK) 317
+12 Swamp (TRK) 321
