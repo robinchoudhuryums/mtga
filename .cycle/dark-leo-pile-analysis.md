@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 1 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: IN PROGRESS — batches 1–2 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -46,6 +46,12 @@ player loses half their life.
 
 ## 3. Cross-batch observations
 
+- Batch 2: the Ninja core is deep and CHEAP — six sneak/ninjutsu costs of 1–2 mana (Leonardo,
+  Cutting Edge {W}; Splinter, Hamato Yoshi {B}; Swarm Saboteur {B}; Dokuchi Silencer {1}{B}; Last
+  Ronin's Technique {1}{W}; Karai's Technique {W}{B}). Menace is the main evasion (Splinter ×2,
+  Super Shredder, Killian, Syr Vondam, Ninja Teen level 2). Two half-life sources (commander at 5
+  Ninjas; Shredder, Shadow Master alone).
+
 - Batch 1: the lifegain variant signal is already visible (Leonardo, Cutting Edge; Ayli; Elenda,
   Saint of Dusk; Vona, Butcher of Magan all read "your life total"). Watch whether it overlaps
   the Ninja plan or competes with it (F5).
@@ -88,6 +94,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 28 | Ashen Rider | △ | 8 mana. |
 | 29 | Turncoat Kunoichi | ★★★ | Ninja; sneak 4 exiles a creature for good (F1, F2, F6). |
 | 30 | Leonardo, Cutting Edge | ★★ | Ninja with Sneak {W}: the cheapest sneak in the pile; lifelink, grows on lifegain. |
+
+### Batch 2 (cards 31–60)
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 31 | Quintessential Katana | ★ | Attaches itself to every Ninja that enters (sneaks included); untap plus 2 life per hit. |
+| 32 | Lita, Little Orphan Amphibian | ★★ | A 2-mana Ninja (F1) that grows, makes Food or scries on every creature entering. |
+| 33 | Leonardo, Sewer Samurai | ★★★ | Ninja; double strike (two combat-damage triggers, F3); recasts power-1 creatures from the yard on your turn — Splinter, Hamato Yoshi, Super Shredder, Leonardo, Cutting Edge. |
+| 34 | The Last Ronin's Technique | ★★★ | Sneak {1}{W}, instant: three Ninja Turtle Spirit tokens tapped and ATTACKING — three Ninjas at once (F1). |
+| 35 | Dokuchi Silencer | ★★ | Ninjutsu {1}{B}; a hit discards a creature card (recursion fodder) to destroy a creature or planeswalker. |
+| 36 | Splinter, Hamato Yoshi | ★★★ | Ninja lord (+1/+1), menace, Sneak {B}. |
+| 37 | Splinter, the Mentor | ★★ | Menace Ninja 2-drop; a Mutagen token whenever a nontoken creature leaves — every sneak return counts. |
+| 38 | Super Shredder | ★★ | Menace Ninja that grows whenever ANY permanent leaves (sneak returns, deaths, removal). |
+| 39 | Undead Hand Ninja | ★★ | Deathtouch Ninja 2-drop; drains whenever creature cards leave your yard (Karai, Lurrus, Leonardo). |
+| 40 | Swarm Saboteur | ★★ | Ninjutsu {B}, deathtouch; a hit conjures Virus Beetle (more hand attack). |
+| 41 | Biting-Palm Ninja | ★★ | Ninjutsu {2}{B}, menace; a hit exiles their best nonland card. |
+| 42 | Ninja's Blades | ★★ | Job select makes a Hero token and makes it a NINJA (F1); loot plus life loss per hit. |
+| 43 | Ninja Teen | ★★★ | Drain whenever a creature leaves (every sneak return); level 2 gives the team MENACE (F2b); level 3 sneaks creatures from the yard. |
+| 44 | Nashi, Moon Sage's Scion | ★ | Ninjutsu {3}{B}; impulse paid with life. |
+| 45 | Shark Shredder, Killer Clone | ★★ | Ninja; first strike; a hit steals a creature from their yard, attacking. |
+| 46 | Shredder, Unrelenting | ★★ | 6/4 deathtouch Ninja for Sneak {3}{B}; lends deathtouch. |
+| 47 | Shredder, Shadow Master | ★★★ | Ninja; its OWN hit takes half their life — a second half-life source that needs no Ninja count (the copy clause is blank in 1v1). |
+| 48 | Ink-Eyes, Servant of Oni | ★★ | Ninjutsu 5; reanimates their creature; regenerates. |
+| 49 | Fracture | ★ | Instant: artifact, enchantment or planeswalker. |
+| 50 | Fleshtaker | △ | Aristocrats; fights F1. |
+| 51 | Frodo, Adventurous Hobbit | △ | Needs 3 life gained a turn. |
+| 52 | Golden Sidekick | ★ | 2-mana flying lifelink attacker (F2b). |
+| 53 | Head of the Class | ◇ | Discount for creature-targeting spells. |
+| 54 | Humiliate | ◇ | Hand attack plus a counter. |
+| 55 | Killian, Ink Duelist | ★★ | Menace lifelink 2-drop (F2b); creature-targeting spells cost {2} less (Karai's Technique, removal, pumps). |
+| 56 | Syr Vondam, Sunstar Exemplar | ★ | Menace vigilance 2-drop; grows on deaths and exiles (not on sneak returns). |
+| 57 | Athreos, God of Passage | ◇ | Recursion tax on deaths. |
+| 58 | Black Widow, Double Agent | ★ | A lone attacker gets first strike and menace — the one-attacker sneak setup (F2b); deathtouch. |
+| 59 | Cloak and Dagger, Entwined | ★★ | Deathtouch lifelink; enters → exile a card from hand or a creature; sneak returns re-buy it (F2c). |
+| 60 | Indulging Patrician | ◇ | Flying lifelink 1/4; ★ in a lifegain build. |
 
 ## 5. Consolidated plan (live)
 
