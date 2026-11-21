@@ -1313,9 +1313,9 @@
   },
   "Head of the Class": {
    "group": "Off-plan",
-   "text": "Discount for spells that target creatures; Killian does this.",
+   "text": "Discount for spells that target creatures; the deck runs about four such spells.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "e14da171a91b"
    }
   },
   "Humiliate": {
@@ -1326,10 +1326,10 @@
    }
   },
   "Killian, Ink Duelist": {
-   "group": "In: Evasive enablers",
-   "text": "Menace lifelink 2-drop; creature-targeting spells cost {2} less (Karai's Technique, removal, pumps).",
+   "group": "Cut in round 7",
+   "text": "Its targeted-spell discount had about four spells left; Delney took the slot and its evasion role.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "e14da171a91b"
    }
   },
   "Syr Vondam, Sunstar Exemplar": {
@@ -2201,10 +2201,10 @@
    }
   },
   "Delney, Streetwise Lookout": {
-   "group": "Final pass: recommended",
-   "text": "Power ≤2 creatures can't be blocked by power ≥3 and their triggers fire twice — Dark Leo is a 1/3. Cut options: Killian (its discount has ~4 creature-targeting spells left), Grateful Apparition, Nashi (−1 Ninja). Counters push creatures past 2.",
+   "group": "In: Evasive enablers",
+   "text": "Power ≤2 creatures can't be blocked by power ≥3 and their triggers fire twice — Dark Leo is a 1/3, so two Ninja tokens and the half-life check twice. Counters past power 2 switch it off for that creature.",
    "graded_at": {
-    "104": "7ac7798e1edd"
+    "104": "e14da171a91b"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -2230,9 +2230,9 @@
   },
   "Elesh Norn, Mother of Machines": {
    "group": "Final pass: recommended",
-   "text": "Enters triggers fire twice; opponents' enters triggers stop. Cut options: Rev (its deathtouch grant repeats the commander's), Squall (attacks-alone conflict), Niv-Mizzet (67% on turn 5; costs a card-advantage source).",
+   "text": "Enters triggers fire twice; opponents' enters triggers stop. Best cut: Rosa (its counters push creatures past Delney's power-2 line). Shark Shredder is a Ninja and its steal is live in a deathtouch deck.",
    "graded_at": {
-    "104": "7ac7798e1edd"
+    "104": "e14da171a91b"
    }
   },
   "Oroku Saki, Shredder Rising": {
@@ -2771,6 +2771,90 @@
     "Vona de Iedo, the Antifex",
     "White Widow, Yelena Belova",
     "Yathan Tombguard"
+   ],
+   "e14da171a91b": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
    ]
   }
  },
@@ -3078,7 +3162,7 @@
   "Head of the Class": {
    "D": {
     "m": "△",
-    "graded_at": "da991b79acbc"
+    "graded_at": "e14da171a91b"
    }
   },
   "Humiliate": {
@@ -3089,8 +3173,8 @@
   },
   "Killian, Ink Duelist": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "e14da171a91b"
    }
   },
   "Syr Vondam, Sunstar Exemplar": {
@@ -3840,7 +3924,7 @@
   "Delney, Streetwise Lookout": {
    "D": {
     "m": "★★★",
-    "graded_at": "7ac7798e1edd"
+    "graded_at": "e14da171a91b"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -3864,7 +3948,7 @@
   "Elesh Norn, Mother of Machines": {
    "D": {
     "m": "★★",
-    "graded_at": "7ac7798e1edd"
+    "graded_at": "e14da171a91b"
    }
   },
   "Oroku Saki, Shredder Rising": {

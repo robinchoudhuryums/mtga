@@ -37,7 +37,7 @@
 #: notes: second Enduring Tenacity) and Replicator (copies the commander's Ninja token); round 6 added Shredder's
 #: notes: Technique and Bloodthirsty Conqueror, whose life-loss-to-gain loop with Vito, Thorn or Enduring Tenacity
 #: notes: kills from any life gain. Interaction sits ONE above the A line: do not cut removal without replacing it.
-#: notes: Next in if a slot opens: Delney, Streetwise Lookout; Elesh Norn, Mother of Machines;
+#: notes: Delney (round 7) doubles Dark Leo's hit trigger (a 1/3) — counters past power 2 switch it off. Next in: Elesh Norn, Mother of Machines;
 #: notes: Vito, Fanatic of Aclazotz; Vona, Butcher of Magan; Pitiless Plunderer; Sorin, Solemn Visitor. The bench lives on the
 #: notes: Builder board builds/dark-leo. `deck.py targets` flags Black Widow, Double Agent and Squall as
 #: notes: attacks-alone cards in a go-wide deck; they are kept for the one-evasive-attacker sneak setup, and
@@ -71,7 +71,7 @@
 # Evasive enablers — the unblocked attacker a sneak returns
 1 Shaile, Dean of Radiance // Embrose, Dean of Shadow (STX) 158
 1 Golden Sidekick (YDSK) 23
-1 Killian, Ink Duelist (STX) 197
+1 Delney, Streetwise Lookout (MKM) 12
 1 Syr Vondam, Sunstar Exemplar (EOE) 231
 1 Grateful Apparition (WAR) 17
 1 Starseer Mentor (BLB) 233
