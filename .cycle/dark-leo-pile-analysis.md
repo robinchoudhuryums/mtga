@@ -421,3 +421,15 @@ off nearly every token and sneak entry. Baron is the first real Treasure payoff 
   figure stays flat (58.7% now; 58.0–58.5% with 2–4 more duals, inside the ±0.8 noise). No fix needed;
   optional: −2 Swamp +Restless Fortress +Shambling Vent (creature lands, W 24 → 26, tempo-neutral).
 - **Land swap applied 2026-11-21:** −1 Swamp +Shambling Vent (W 25 / B 26; as-built 58.7%, unchanged); Restless Fortress parked as a `#~` flex line.
+
+### 6d. Final pass — fits, upgrades and spice from the WHOLE pool (2026-11-21)
+
+Searched beyond the pile (`suggest --limit 0`, `pool.py --regex` for "opponent loses life, you gain",
+"triggers an additional time", "twice that many", "whenever you gain life", sneak/ninjutsu).
+Recommended 5 (scratch copy Q: floor A · int 14 · CA 9 · protection 4 · Ninjas 15 · board power 122 ·
+quality guard clean): −Mortify +Shredder's Technique (strict upgrade); −Nashi +Elektra; −Grateful
+Apparition +Delney (Dark Leo is a 1/3, so its trigger fires twice); −Closing Statement +Bloodthirsty
+Conqueror (infinite drain with Vito, Thorn or Enduring Tenacity); −Kaya the Inexorable +Elspeth, Storm
+Slayer. A first draft also cut Barbed Servitor and Eradicator Valkyrie — protection fell 4 → 2 and CA
+9 → 8, so rejected. Spice with no slot: Elesh Norn, Mother of Machines; Oroku Saki; Exquisite Blood;
+Splinter's Technique; Mondrak; Marauding Blight-Priest. All on the board under "Final pass".

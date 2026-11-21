@@ -69,6 +69,7 @@
  "Black Widow, Double Agent": [],
  "Bleachbone Verge": [],
  "Blood Money": [],
+ "Bloodthirsty Conqueror": [],
  "Blot Out the Sky": [],
  "Bond of Discipline": [],
  "Boon-Bringer Valkyrie": [],
@@ -179,6 +180,7 @@
    "y": "2026"
   }
  ],
+ "Delney, Streetwise Lookout": [],
  "Despark": [
   {
    "a": "Slawomir Maniak",
@@ -276,8 +278,11 @@
    "y": "2022"
   }
  ],
+ "Elektra, Daughter of the Hand": [],
  "Elenda, Saint of Dusk": [],
  "Elenda, the Dusk Rose": [],
+ "Elesh Norn, Mother of Machines": [],
+ "Elspeth, Storm Slayer": [],
  "Enduring Innocence": [],
  "Enduring Tenacity": [],
  "Envoy of the Ancestors": [],
@@ -311,6 +316,7 @@
  "Ethereal Escort": [],
  "Exalted Sunborn": [],
  "Exemplar of Light": [],
+ "Exquisite Blood": [],
  "Falcon, Joaquin Torres": [],
  "Feast of the Victorious Dead": [],
  "Federation Outpost": [],
@@ -615,11 +621,13 @@
  ],
  "MJ, Rising Star": [],
  "Madame Null, Power Broker": [],
+ "Marauding Blight-Priest": [],
  "Massacre Girl, Most Wanted": [],
  "Meticulous Commons": [],
  "Metropolis Reformer": [],
  "Mister Negative": [],
  "Moment of Reckoning": [],
+ "Mondrak, Glory Dominus": [],
  "Moogles' Valor": [],
  "Mortify": [
   {
@@ -678,6 +686,7 @@
  "Niv-Mizzet, Ghost Counsel": [],
  "Oath of Kaya": [],
  "Origin of Black Widow": [],
+ "Oroku Saki, Shredder Rising": [],
  "Pitiless Plunderer": [],
  "Practiced Offense": [],
  "Primevals' Glorious Rebirth": [],
@@ -810,6 +819,7 @@
  ],
  "Sheltered by Ghosts": [],
  "Shepherd of Heroes": [],
+ "Shredder's Technique": [],
  "Shredder, Shadow Master": [],
  "Shredder, Unrelenting": [],
  "Sigiled Contender": [],
@@ -929,6 +939,7 @@
    "y": "2022"
   }
  ],
+ "Splinter's Technique": [],
  "Splinter, Hamato Yoshi": [],
  "Splinter, the Mentor": [],
  "Squall, SeeD Mercenary": [],

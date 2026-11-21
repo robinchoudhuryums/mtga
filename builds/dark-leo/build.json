@@ -903,6 +903,61 @@
    "name": "Restless Fortress",
    "pile": "D",
    "src": "added"
+  },
+  {
+   "name": "Bloodthirsty Conqueror",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Delney, Streetwise Lookout",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth, Storm Slayer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elektra, Daughter of the Hand",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shredder's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elesh Norn, Mother of Machines",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Oroku Saki, Shredder Rising",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Exquisite Blood",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Splinter's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Mondrak, Glory Dominus",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Marauding Blight-Priest",
+   "pile": "D",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2134,6 +2189,83 @@
   "Restless Fortress": {
    "group": "Bench: lifegain/counters",
    "text": "W/B creature land; each attack drains 2 and gains 2, which Tenacity, Vito, Thorn and Crusher multiply. Enters tapped. Flex line: −Swamp.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Bloodthirsty Conqueror": {
+   "group": "Final pass: recommended",
+   "text": "5/5 flying deathtouch; \"Whenever an opponent loses life, you gain that much life\" — with Vito, Thorn or Enduring Tenacity out, any life gain loops until the opponent is dead. Proposed for Closing Statement.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "group": "Final pass: recommended",
+   "text": "Power ≤2 creatures can't be blocked by power ≥3 (sneak evasion) and their triggers fire twice — Dark Leo is a 1/3, so two Ninja tokens and the half-life check twice. Counters push creatures past 2. Proposed for Grateful Apparition.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "group": "Final pass: recommended",
+   "text": "Second token doubler; +1 makes two Soldiers, 0 gives the team a counter and flying (Envoy lifelink, sneak evasion), −3 kills MV 3+. Proposed for Kaya the Inexorable.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Elektra, Daughter of the Hand": {
+   "group": "Final pass: recommended",
+   "text": "Ninja; sneak {1}{B}{B}; enters: destroy an opposing creature with power 3 or less — removal every time sneak re-buys her. Proposed for Nashi.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Shredder's Technique": {
+   "group": "Final pass: recommended",
+   "text": "Mortify's creature/enchantment kill for a {B} sneak. Proposed for Mortify (screen: strict upgrade).",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "Enters triggers fire twice (every sneak re-buy: Elektra, Vona de Iedo, Lawbringer, Cloak and Dagger, Elas) and opponents' enters triggers stop. 5 mana; needs a cut.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Oroku Saki, Shredder Rising": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "2-mana sneak Ninja that draws on a hit; +1 Ninja if a non-Ninja leaves.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Exquisite Blood": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "A third combo piece with Vito, Thorn/Tenacity (Conqueror's text on an enchantment). 5 mana, does nothing alone.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Splinter's Technique": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "Sneak {1}{B}: tutor any card — finds either half of the Conqueror loop.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "Third token doubler on a 4/4; Sunborn and Elspeth already cover it.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Marauding Blight-Priest": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "3-mana: each life gain drains 1 (Crusher doubles). Tenacity and Vito, Thorn do it bigger.",
    "graded_at": {
     "104": "4df3285531bd"
    }
@@ -3612,6 +3744,72 @@
   "Restless Fortress": {
    "D": {
     "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Bloodthirsty Conqueror": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Elektra, Daughter of the Hand": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Shredder's Technique": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Oroku Saki, Shredder Rising": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Exquisite Blood": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Splinter's Technique": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "D": {
+    "m": "◇",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Marauding Blight-Priest": {
+   "D": {
+    "m": "◇",
     "graded_at": "4df3285531bd"
    }
   }
