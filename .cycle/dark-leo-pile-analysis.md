@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batches 1–5 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: ALL SIX BATCHES GRADED (2026-11-21). Consolidated plan in §5, awaiting the owner's picks before /draft-deck.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -58,6 +58,9 @@ player loses half their life.
 - Batch 4 is almost all LIFEGAIN payoffs (14 of 30). Variant signal (rule 7): they are rejected
   for the same reason every time — none of them makes a Ninja or reads combat damage. A lifegain
   deck is a different deck; in this one, lifegain stays incidental (lifelink bodies, Katana).
+- Batch 6: the Treasure cluster splits — Rev and Grim Hireling read combat damage (in); the rest
+  feed on sacrifices or their draws (out). Exalted Sunborn (batch 5) doubles the commander's
+  Ninja tokens: the strongest single non-Ninja for F1.
 
 - Batch 1: the lifegain variant signal is already visible (Leonardo, Cutting Edge; Ayli; Elenda,
   Saint of Dusk; Vona, Butcher of Magan all read "your life total"). Watch whether it overlaps
@@ -242,6 +245,84 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 149 | Eradicator Valkyrie | ★ | Flying lifelink 4/3; boast edict (sacrifice a token, not a Ninja card). |
 | 150 | Erebos, Bleak-Hearted | ◇ | Cards on deaths; aristocrats. |
 
+### Batch 6 (cards 151–172)
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 151 | Daxos, Blessed by the Sun | △ | Lifegain on enter/die. |
+| 152 | Surgical Precision | ◇ | Sorcery: kill toughness 4+, or a card. |
+| 153 | Bill the Pony | △ | Food and toughness damage. |
+| 154 | Ghalta the Immovable | △ | Toughness-matters; off-plan. |
+| 155 | Scourge of the Skyclaves | ◇ | Kicked, both players lose half their life. |
+| 156 | Vincent's Limit Break | ◇ | Cheap protection trick. |
+| 157 | Finale of Eternity | ★ | X removal for up to three creatures (F6). |
+| 158 | Zero Point Ballad | △ | Sweeper that kills the small Ninjas first. |
+| 159 | Veko, Death's Doorkeeper | ◇ | Recursion for a sacrifice. |
+| 160 | Kingpin, Wilson Fisk | ◇ | Menace 3/6; Treasure on a sacrifice. |
+| 161 | Tataru Taru | ◇ | A card, and a Treasure engine on their off-turn draws. |
+| 162 | Smothering Tithe | ◇ | Treasure off their draws; slow in 1v1. |
+| 163 | Deadly Dispute | ◇ | Sacrifice a token for two cards. |
+| 164 | Grim Hireling | ★ | Two Treasures per connecting combat (F3); Treasures become removal. |
+| 165 | Pitiless Plunderer | △ | Aristocrats Treasure. |
+| 166 | Rev, Tithe Extractor | ★★ | Deathtouch on attack; every connecting combat makes a Treasure and steals a card (F3). |
+| 167 | Ruthless Technomancer | △ | Sacrifice for Treasure; reanimation. |
+| 168 | Blood Money | △ | A sweeper. |
+| 169 | Revel in Riches | ◇ | Treasure on their deaths; slow alternate win. |
+| 170 | Vraska, Betrayal's Sting | ◇ | Draw and proliferate; −2 neutralises a creature. |
+| 171 | Lotho, Corrupt Shirriff | △ | Second-spell Treasure. |
+| 172 | Vraska, Scheming Gorgon | ★ | −3 destroys a creature; +2 team pump. |
+
 ## 5. Consolidated plan (live)
 
-(after batch 6)
+**The deck: Orzhov Ninjas.** Win by connecting with Ninjas — the commander at five Ninjas takes
+half their life, Shredder, Shadow Master does it alone — and draw off every connection (Black
+Widow, Deadly Hunter reads the commander's deathtouch). Lifegain stays incidental (F5): the
+pile's lifegain, aristocrats and Treasure clusters are each rejected for the same reason, none of
+them makes a Ninja or reads combat damage, so they are a different deck (see Variant signals).
+
+**Proposed core, 63 nonland cards + the commander** (printed avg MV 3.29; sneak lowers the real
+cost — six sneak/ninjutsu costs are 1–2 mana):
+
+- **Ninjas, all 17 (F1):** Karai; Turncoat Kunoichi; Leonardo, Cutting Edge; Lita; Leonardo,
+  Sewer Samurai; Dokuchi Silencer; Splinter, Hamato Yoshi; Splinter, the Mentor; Super Shredder;
+  Undead Hand Ninja; Swarm Saboteur; Biting-Palm Ninja; Nashi; Shark Shredder; Shredder,
+  Unrelenting; Shredder, Shadow Master; Ink-Eyes.
+- **Ninja makers (5):** The Last Ronin's Technique (three, attacking); Ninja's Blades (a Ninja
+  Hero token); The Cloning of Shredder (three copies of a Ninja card); Black Market Connections
+  (a changeling a turn); Exalted Sunborn (doubles every token).
+- **Evasive enablers (12, F2b):** Shaile; Golden Sidekick; Killian, Ink Duelist; Syr Vondam,
+  Sunstar Exemplar; Grateful Apparition; Falcon; Black Widow, Double Agent; Barbed Servitor;
+  Wispdrinker Vampire; My Precious; Ninja Teen; Blot Out the Sky.
+- **Combat-damage payoffs and engines (13, F3):** Black Widow, Deadly Hunter; White Widow;
+  Enduring Innocence; Tymna; Rev, Tithe Extractor; Grim Hireling; Squall; Lurrus; Quintessential
+  Katana; Arvad the Cursed; Doctor Doom, Unrivaled; Inspiring Commander; Eradicator Valkyrie.
+- **Interaction (16, F6):** Despark; Mortify; Karai's Technique; Closing Statement; Sheltered by
+  Ghosts; The Wandering Emperor; Ruthless Lawbringer; Vona de Iedo; Cloak and Dagger; Fracture;
+  Kaya the Inexorable; Oath of Kaya; Finale of Eternity; Vraska, Scheming Gorgon; Origin of
+  Black Widow; and Bond of Discipline as the finishing-turn enabler.
+- **Lands (36):** the pile's Godless Shrine, Bleachbone Verge, Shattered Sanctum, Temple of
+  Silence, Cardassia Prime, Foot Headquarters, Fisk Tower and Meticulous Commons, plus 28 more —
+  basics and untapped duals chosen with `suggest --lands` once the list exists.
+
+**Closest cuts if the owner wants other pile cards in** (each is the weakest of its group):
+Inspiring Commander (6 mana), Nashi (impulse paid in life), Arvad, Grateful Apparition, Oath of
+Kaya, Fracture, Origin of Black Widow.
+
+**Strongest pile cards left out**, for the owner to argue back in: Archangel of Thune, Elenda,
+Saint of Dusk, Vona, Butcher of Magan (lifegain); Teysa Karlov, Elas il-Kor (aristocrats);
+Moment of Reckoning, Ashen Rider, Kaya's Wrath (top-end interaction); Sally Pride; Silverquill.
+
+**Protect list** (value the ranking cannot see): Black Widow, Deadly Hunter and White Widow (they
+read the commander's deathtouch grant); Ninja Teen (menace for the team, drain on every sneak
+return); Exalted Sunborn and Black Market Connections (Ninja count, F1); My Precious (a guaranteed
+unblocked attacker); Splinter, Hamato Yoshi (the lord).
+
+**Variant signals (rule 7):** an Orzhov LIFEGAIN deck (Archangel of Thune, Elenda, Saint of Dusk,
+Vona, Exemplar of Light, Enduring Tenacity, Ajani's Welcome, Dr. Crusher, Doctor Strange, The Wind
+Crystal, Niv-Mizzet, Leonardo, Cutting Edge) and an ARISTOCRATS deck (Teysa, Elas il-Kor, Elenda,
+the Dusk Rose, Massacre Girl, Pitiless Plunderer, Blood Money, Vito) are each coherent; neither is
+this deck.
+
+**Ownership (information only, F7):** of the 63 nonland cards and 8 pile lands, 35 are unowned —
+5 mythic, 13 rare, 13 uncommon, 4 common.
+
