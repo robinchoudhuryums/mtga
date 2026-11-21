@@ -586,7 +586,7 @@
   },
   {
    "name": "MJ, Rising Star",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -846,7 +846,7 @@
   },
   {
    "name": "Pitiless Plunderer",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -856,7 +856,7 @@
   },
   {
    "name": "Ruthless Technomancer",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -964,10 +964,10 @@
    }
   },
   "Oath of Kaya": {
-   "group": "In: Interaction",
-   "text": "3 damage and 3 life on entry; punishes attacks on planeswalkers.",
+   "group": "Cut in round 4",
+   "text": "One-shot 3 damage + 3 life; the planeswalker clause rarely fires.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Ruthless Lawbringer": {
@@ -985,17 +985,17 @@
    }
   },
   "Baron Bertram Graywater": {
-   "group": "Bench: lifegain/counters",
-   "text": "Tokens entering make a lifelink 1/1 (the commander makes one a hit); sac for a card. Card advantage that eats tokens, not Ninja cards.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Tokens entering make a lifelink 1/1 once a turn; \"{1}{B}, Sacrifice another creature or artifact: Draw a card\" turns Treasure into cards. Replaced Enduring Innocence.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Elenda, the Dusk Rose": {
-   "group": "Bench: aristocrats/Treasure",
-   "text": "Lifelink; grows on deaths, lifelink tokens when it dies.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Counter whenever ANY creature dies (Teysa doubles; deathtouch makes it common); dies into lifelink tokens equal to her power (Sunborn doubles).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Elenda, Saint of Dusk": {
@@ -1013,10 +1013,10 @@
    }
   },
   "Starseer Mentor": {
-   "group": "Bench: lifegain/counters",
-   "text": "Flier; end-step drain 3 unless they sacrifice or discard. Benched in round 2 — Patrician and Elas cover the drain cheaper.",
+   "group": "In: Lifegain and counters",
+   "text": "Flier; end-step drain 3 unless they sacrifice or discard.",
    "graded_at": {
-    "104": "52f6983b9635"
+    "104": "6e0103a12aff"
    }
   },
   "Spirit-Sister's Call": {
@@ -1028,9 +1028,9 @@
   },
   "Vona, Butcher of Magan": {
    "group": "Bench: lifegain/counters",
-   "text": "Lifelink 4/4; \"Pay 7 life: Destroy target nonland permanent\" each turn. Benched in round 2 to keep Oath of Kaya; first in for a removal slot.",
+   "text": "Lifelink 4/4; \"Pay 7 life: Destroy target nonland permanent\" each turn — the lifegain plan pays for repeatable removal. First in if interaction (14) needs a card.",
    "graded_at": {
-    "104": "52f6983b9635"
+    "104": "6e0103a12aff"
    }
   },
   "Vona de Iedo, the Antifex": {
@@ -1083,10 +1083,10 @@
    }
   },
   "Quintessential Katana": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "Attaches itself to every Ninja that enters (sneaks included); untap plus 2 life per hit.",
+   "group": "Cut in round 4",
+   "text": "Counters, Ninja's Blades, My Precious and Sheltered by Ghosts already modify creatures for Envoy (owner).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Lita, Little Orphan Amphibian": {
@@ -1370,10 +1370,10 @@
    }
   },
   "Vito, Fanatic of Aclazotz": {
-   "group": "Bench: aristocrats/Treasure",
-   "text": "Sacrifice payoff on a 4/4 flier; sacrifices are rare here.",
+   "group": "Open slot (for Ink-Eyes)",
+   "text": "4-mana 4/4 flier; sacrificing Treasure counts, so gain 2 / drain 2 / a 4/3 flier each turn (Sunborn doubles the token). Teysa most likely does not double it. First choice for the open slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Wispdrinker Vampire": {
@@ -1510,10 +1510,10 @@
    }
   },
   "The Cloning of Shredder": {
-   "group": "In: Ninja makers",
-   "text": "Three non-legendary token copies of one creature card from your yard — of a Ninja, that is three Ninjas.",
+   "group": "Cut in round 4",
+   "text": "6 mana and needs a creature card in the graveyard, which sneak rarely leaves.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Sally Pride, Lioness Leader": {
@@ -1608,10 +1608,10 @@
    }
   },
   "Enduring Innocence": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "A card a turn when small creatures enter — Ninjas, tokens and every sneak re-entry; returns once as an enchantment.",
+   "group": "Cut in round 4",
+   "text": "Draw capped at one a turn; Baron replaces the card flow (owner).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Ethereal Escort": {
@@ -1622,10 +1622,10 @@
    }
   },
   "Falcon, Joaquin Torres": {
-   "group": "In: Evasive enablers",
-   "text": "3-mana flying lifelink attacker.",
+   "group": "Cut in round 4",
+   "text": "Plenty of cheap fliers now; Starseer took the slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Gideon Blackblade": {
@@ -1650,10 +1650,10 @@
    }
   },
   "MJ, Rising Star": {
-   "group": "Off-plan",
-   "text": "Grows on lifegain; no evasion.",
+   "group": "Bench: lifegain/counters",
+   "text": "Crusher doubles its counters, but a 2/3 with no evasion; Archangel already counters the team.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Practiced Offense": {
@@ -1888,10 +1888,10 @@
    }
   },
   "Enduring Tenacity": {
-   "group": "Bench: lifegain/counters",
-   "text": "\"Whenever you gain life, target opponent loses that much life\" and returns once as an enchantment. Strong drain; out on slots, not on fit.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"Whenever you gain life, target opponent loses that much\": Crusher makes it fire twice and The Wind Crystal doubles the life first.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Eradicator Valkyrie": {
@@ -1965,10 +1965,10 @@
    }
   },
   "Veko, Death's Doorkeeper": {
-   "group": "Bench: aristocrats/Treasure",
-   "text": "Extort; sacrifice a non-Spirit to regrow a creature as a cheap 1/1.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Extort makes every spell a lifegain trigger; sacrifice a non-Spirit to return an enters-trigger creature that then costs {W/B}. A returned Ninja most likely stops being a Ninja.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Kingpin, Wilson Fisk": {
@@ -2007,10 +2007,10 @@
    }
   },
   "Pitiless Plunderer": {
-   "group": "Off-plan",
-   "text": "Treasure on your deaths; F1 cost.",
+   "group": "Open slot (for Ink-Eyes)",
+   "text": "Death trigger, so Teysa doubles it and Sunborn doubles each Treasure: 4 per death, fuel for Baron. Needs your creatures to die. Second choice.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Rev, Tithe Extractor": {
@@ -2021,10 +2021,10 @@
    }
   },
   "Ruthless Technomancer": {
-   "group": "Off-plan",
-   "text": "Sacrifice for Treasure; F1 cost.",
+   "group": "Open slot (for Ink-Eyes)",
+   "text": "Enters trigger (Teysa no, Sunborn doubles the Treasures); reanimates power-X creatures for X artifacts. One burst per entry. Third choice.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "6e0103a12aff"
    }
   },
   "Blood Money": {
@@ -2257,6 +2257,89 @@
     "Vona de Iedo, the Antifex",
     "White Widow, Yelena Belova",
     "Yathan Tombguard"
+   ],
+   "6e0103a12aff": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Ink-Eyes, Servant of Oni",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Lurrus of the Dream-Den",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
    ]
   }
  },
@@ -2329,8 +2412,8 @@
   },
   "Oath of Kaya": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Ruthless Lawbringer": {
@@ -2347,14 +2430,14 @@
   },
   "Baron Bertram Graywater": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Elenda, the Dusk Rose": {
    "D": {
-    "m": "△",
-    "graded_at": "da991b79acbc"
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Elenda, Saint of Dusk": {
@@ -2372,7 +2455,7 @@
   "Starseer Mentor": {
    "D": {
     "m": "★★",
-    "graded_at": "52f6983b9635"
+    "graded_at": "6e0103a12aff"
    }
   },
   "Spirit-Sister's Call": {
@@ -2384,7 +2467,7 @@
   "Vona, Butcher of Magan": {
    "D": {
     "m": "★★",
-    "graded_at": "52f6983b9635"
+    "graded_at": "6e0103a12aff"
    }
   },
   "Vona de Iedo, the Antifex": {
@@ -2431,8 +2514,8 @@
   },
   "Quintessential Katana": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Lita, Little Orphan Amphibian": {
@@ -2677,8 +2760,8 @@
   },
   "Vito, Fanatic of Aclazotz": {
    "D": {
-    "m": "△",
-    "graded_at": "da991b79acbc"
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Wispdrinker Vampire": {
@@ -2797,8 +2880,8 @@
   },
   "The Cloning of Shredder": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Sally Pride, Lioness Leader": {
@@ -2881,8 +2964,8 @@
   },
   "Enduring Innocence": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Ethereal Escort": {
@@ -2893,8 +2976,8 @@
   },
   "Falcon, Joaquin Torres": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Gideon Blackblade": {
@@ -2917,8 +3000,8 @@
   },
   "MJ, Rising Star": {
    "D": {
-    "m": "△",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Practiced Offense": {
@@ -3121,8 +3204,8 @@
   },
   "Enduring Tenacity": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "★★★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Eradicator Valkyrie": {
@@ -3187,8 +3270,8 @@
   },
   "Veko, Death's Doorkeeper": {
    "D": {
-    "m": "◇",
-    "graded_at": "da991b79acbc"
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Kingpin, Wilson Fisk": {
@@ -3223,8 +3306,8 @@
   },
   "Pitiless Plunderer": {
    "D": {
-    "m": "△",
-    "graded_at": "da991b79acbc"
+    "m": "★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Rev, Tithe Extractor": {
@@ -3235,8 +3318,8 @@
   },
   "Ruthless Technomancer": {
    "D": {
-    "m": "△",
-    "graded_at": "da991b79acbc"
+    "m": "★",
+    "graded_at": "6e0103a12aff"
    }
   },
   "Blood Money": {

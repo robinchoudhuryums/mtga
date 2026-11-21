@@ -408,3 +408,10 @@ board power 123. G (keep Katana and Enduring Innocence; + Baron, Starseer, Vona,
 int 15 · CA 10 · Ninjas 15 · board power 119 · avg MV 3.23 · early drops 20. Recommended G:
 Katana is the Envoy lifelink enabler and survives every sneak return; Enduring Innocence draws
 off nearly every token and sneak entry. Baron is the first real Treasure payoff (sac Treasure: draw).
+- **Round 4 applied 2026-11-21:** −Enduring Innocence +Baron, −Katana +Veko, −Falcon +Starseer,
+  −Oath of Kaya +Enduring Tenacity, −The Cloning of Shredder +Elenda, the Dusk Rose (owner's reasons:
+  Innocence caps at one draw, Baron replaces it; counters already feed Envoy; use slots on doubler
+  payoffs). Massacre Girl declined; Ink-Eyes stays until its replacement is chosen — Vito first,
+  Pitiless Plunderer second, Ruthless Technomancer third (replies on the board). Live: floor A ·
+  int 14 · CA 9 · board power 123. Tooling gap: `swap --apply` did not retire the builder BENCH
+  flex lines for the four adds (deck.py flex listed them as STALE); retired by hand.
