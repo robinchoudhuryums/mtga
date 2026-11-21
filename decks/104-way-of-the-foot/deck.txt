@@ -31,10 +31,13 @@
 #: notes: Treasure/sacrifice layer built around the three doublers (Dr. Beverly Crusher for lifegain triggers,
 #: notes: Teysa for death triggers, Exalted Sunborn for tokens): Enduring Tenacity, Elenda, the Dusk Rose,
 #: notes: Baron Bertram Graywater (turns Treasure into cards), Veko (re-buys enters-trigger creatures for {W/B};
-#: notes: a returned Ninja most likely stops being a Ninja). Measured: floor A, interaction 14 (A needs 12 at
-#: notes: 100), card advantage 9, board power 123. Teysa most likely does NOT double "whenever you sacrifice"
+#: notes: a returned Ninja most likely stops being a Ninja). Measured: floor A, interaction 13 (A needs 12 at
+#: notes: 100), card advantage 9, board power 121. Teysa most likely does NOT double "whenever you sacrifice"
 #: notes: triggers (Kingpin; Vito, Fanatic), only death triggers. Round 5 added Vito, Thorn of the Dusk Rose (a
-#: notes: second Enduring Tenacity) and Replicator (copies the commander's Ninja token). Next in if a slot opens:
+#: notes: second Enduring Tenacity) and Replicator (copies the commander's Ninja token); round 6 added Shredder's
+#: notes: Technique and Bloodthirsty Conqueror, whose life-loss-to-gain loop with Vito, Thorn or Enduring Tenacity
+#: notes: kills from any life gain. Interaction sits ONE above the A line: do not cut removal without replacing it.
+#: notes: Next in if a slot opens: Delney, Streetwise Lookout; Elesh Norn, Mother of Machines;
 #: notes: Vito, Fanatic of Aclazotz; Vona, Butcher of Magan; Pitiless Plunderer; Sorin, Solemn Visitor. The bench lives on the
 #: notes: Builder board builds/dark-leo. `deck.py targets` flags Black Widow, Double Agent and Squall as
 #: notes: attacks-alone cards in a go-wide deck; they are kept for the one-evasive-attacker sneak setup, and
@@ -102,12 +105,12 @@
 1 Enduring Tenacity (DSK) 95
 1 Elenda, the Dusk Rose (RIX) 157
 1 Vito, Thorn of the Dusk Rose (J25) 71
+1 Bloodthirsty Conqueror (FDN) 58
 
 # Interaction
 1 Despark (WAR) 190
-1 Mortify (FDN) 662
+1 Shredder's Technique (TMT) 77
 1 Karai's Technique (TMT) 152
-1 Closing Statement (STX) 169
 1 Sheltered by Ghosts (DSK) 30
 1 The Wandering Emperor (NEO) 42
 1 Ruthless Lawbringer (OTJ) 229

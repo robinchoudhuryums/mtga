@@ -433,3 +433,4 @@ Conqueror (infinite drain with Vito, Thorn or Enduring Tenacity); −Kaya the In
 Slayer. A first draft also cut Barbed Servitor and Eradicator Valkyrie — protection fell 4 → 2 and CA
 9 → 8, so rejected. Spice with no slot: Elesh Norn, Mother of Machines; Oroku Saki; Exquisite Blood;
 Splinter's Technique; Mondrak; Marauding Blight-Priest. All on the board under "Final pass".
+- **Round 6 applied 2026-11-21:** −Mortify +Shredder's Technique; −Closing Statement +Bloodthirsty Conqueror (interaction 13, one above A). Open: Delney (cut options Killian / Grateful Apparition / Nashi) and Elesh Norn (Rev / Squall / Niv-Mizzet). Classifier hole: Bloodthirsty Conqueror scores no role (its life-loss→gain trigger).

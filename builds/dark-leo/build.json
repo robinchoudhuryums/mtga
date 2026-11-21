@@ -1032,10 +1032,10 @@
    }
   },
   "Mortify": {
-   "group": "In: Interaction",
-   "text": "Instant: creature or enchantment.",
+   "group": "Cut in round 6",
+   "text": "Shredder's Technique does the same for {B} on a sneak.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "7ac7798e1edd"
    }
   },
   "Oath of Kaya": {
@@ -1466,10 +1466,10 @@
    }
   },
   "Closing Statement": {
-   "group": "In: Interaction",
-   "text": "Instant creature/planeswalker kill, cheaper at your end step.",
+   "group": "Cut in round 6",
+   "text": "5-mana removal; Bloodthirsty Conqueror took the slot (interaction 13, one above the A line).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "7ac7798e1edd"
    }
   },
   "Syr Vondam, the Lucent": {
@@ -2194,17 +2194,17 @@
    }
   },
   "Bloodthirsty Conqueror": {
-   "group": "Final pass: recommended",
-   "text": "5/5 flying deathtouch; \"Whenever an opponent loses life, you gain that much life\" — with Vito, Thorn or Enduring Tenacity out, any life gain loops until the opponent is dead. Proposed for Closing Statement.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "5/5 flying deathtouch; with Vito, Thorn or Enduring Tenacity out, any life gain loops until the opponent is dead.",
    "graded_at": {
-    "104": "4df3285531bd"
+    "104": "7ac7798e1edd"
    }
   },
   "Delney, Streetwise Lookout": {
    "group": "Final pass: recommended",
-   "text": "Power ≤2 creatures can't be blocked by power ≥3 (sneak evasion) and their triggers fire twice — Dark Leo is a 1/3, so two Ninja tokens and the half-life check twice. Counters push creatures past 2. Proposed for Grateful Apparition.",
+   "text": "Power ≤2 creatures can't be blocked by power ≥3 and their triggers fire twice — Dark Leo is a 1/3. Cut options: Killian (its discount has ~4 creature-targeting spells left), Grateful Apparition, Nashi (−1 Ninja). Counters push creatures past 2.",
    "graded_at": {
-    "104": "4df3285531bd"
+    "104": "7ac7798e1edd"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -2222,17 +2222,17 @@
    }
   },
   "Shredder's Technique": {
-   "group": "Final pass: recommended",
-   "text": "Mortify's creature/enchantment kill for a {B} sneak. Proposed for Mortify (screen: strict upgrade).",
+   "group": "In: Interaction",
+   "text": "Mortify's creature/enchantment kill for a {B} sneak (screen: strict upgrade).",
    "graded_at": {
-    "104": "4df3285531bd"
+    "104": "7ac7798e1edd"
    }
   },
   "Elesh Norn, Mother of Machines": {
-   "group": "Final pass: spice, no slot yet",
-   "text": "Enters triggers fire twice (every sneak re-buy: Elektra, Vona de Iedo, Lawbringer, Cloak and Dagger, Elas) and opponents' enters triggers stop. 5 mana; needs a cut.",
+   "group": "Final pass: recommended",
+   "text": "Enters triggers fire twice; opponents' enters triggers stop. Cut options: Rev (its deathtouch grant repeats the commander's), Squall (attacks-alone conflict), Niv-Mizzet (67% on turn 5; costs a card-advantage source).",
    "graded_at": {
-    "104": "4df3285531bd"
+    "104": "7ac7798e1edd"
    }
   },
   "Oroku Saki, Shredder Rising": {
@@ -2687,6 +2687,90 @@
     "Vona de Iedo, the Antifex",
     "White Widow, Yelena Belova",
     "Yathan Tombguard"
+   ],
+   "7ac7798e1edd": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
    ]
   }
  },
@@ -2753,8 +2837,8 @@
   },
   "Mortify": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Oath of Kaya": {
@@ -3125,8 +3209,8 @@
   },
   "Closing Statement": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Syr Vondam, the Lucent": {
@@ -3750,13 +3834,13 @@
   "Bloodthirsty Conqueror": {
    "D": {
     "m": "★★★",
-    "graded_at": "4df3285531bd"
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Delney, Streetwise Lookout": {
    "D": {
     "m": "★★★",
-    "graded_at": "4df3285531bd"
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Elspeth, Storm Slayer": {
@@ -3774,13 +3858,13 @@
   "Shredder's Technique": {
    "D": {
     "m": "★★",
-    "graded_at": "4df3285531bd"
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Elesh Norn, Mother of Machines": {
    "D": {
     "m": "★★",
-    "graded_at": "4df3285531bd"
+    "graded_at": "7ac7798e1edd"
    }
   },
   "Oroku Saki, Shredder Rising": {
