@@ -364,3 +364,32 @@ a path):
   Tymna (lifelink + draw; version A drops card advantage 9→7 mostly through Tymna and Doctor
   Doom). Agree on Biting-Palm Ninja and Doctor Doom.
 - Niv-Mizzet, Ghost Counsel is {2}{W}{W}{B}{B}: 67% on turn 5 — a late-game card, not a curve play.
+
+### 6b. Round 2 — owner's answers and the regrade (2026-11-21)
+
+Owner: keep Squall, Grim Hireling and Black Widow, Double Agent; cut Dokuchi Silencer (needs a hit
+AND a creature discard) and Tymna (card advantage capped at 1); Envoy belongs (its lifelink is
+permanent, and Equipment counts as a modification). All three accepted. Squall and Black Widow, Double Agent still show
+`targets` ⚠ CONFLICT against 9 go-wide cards; they stay for the lone-attacker turns.
+
+**New criteria for the bench** (added to F1–F7): H1 lifegain SOURCES are plentiful (29), so a new
+card earns a slot as a PAYOFF or as an evasive body that gains life; H2 +1/+1 counters are now a
+third layer (Rosa, Leader's Talent, Archangel → Envoy lifelink, Yathan Tombguard draws) — mind
+that sneak strips counters and Auras; H3 a sacrifice or Treasure card must not eat Ninjas and needs
+a payoff — Treasure has none here; H4 card advantage must replace Tymna/Doom with repeatable draw.
+
+**Version E (the plan, measured on a scratch copy):** floor A · interaction 15 (A needs 12 at 100)
+· card advantage 9 (8 repeatable) · Ninjas 16 · lifegain 29 sources / 8 payoffs · counters 16 / 2
+payoffs · board power 121 (was 109) · avg MV 3.34 (3.27) · early drops 18 (19) · tapped-land cost 1.9.
+- ADD (16): Sorin, Vengeful Bloodlord; Archangel of Thune; Yathan Tombguard (new find — menace,
+  draws off every countered attacker); Teysa Karlov; Indulging Patrician; Starseer Mentor; Rosa;
+  Dr. Beverly Crusher; Niv-Mizzet, Ghost Counsel; The Wind Crystal; Leader's Talent; Elas il-Kor;
+  Exemplar of Light; Envoy of the Ancestors; Vona, Butcher of Magan; Federation Outpost (for a Plains).
+- CUT (16): Biting-Palm Ninja, Doctor Doom, Dokuchi Silencer, Tymna, Bond of Discipline, Inspiring
+  Commander, Fracture, Blot Out the Sky, Origin of Black Widow, Arvad the Cursed, Vraska, Scheming
+  Gorgon, Finale of Eternity, Oath of Kaya, Wispdrinker Vampire, Golden Sidekick, 1 Plains.
+  Mortify and Kaya the Inexorable were kept: cutting them too put interaction at 13.
+- Version D (Mortify + Kaya cut instead of Wispdrinker + Golden Sidekick) read interaction 13; rejected.
+
+All 101 pile cards outside the deck were re-graded on the board under the new criteria
+(groups: Hybrid plan: add · Bench: lifegain/counters · Bench: aristocrats/Treasure · Off-plan).

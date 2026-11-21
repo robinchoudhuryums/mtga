@@ -36,7 +36,7 @@
   },
   {
    "name": "Ayli, Eternal Pilgrim",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "name": "Feast of the Victorious Dead",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -61,7 +61,7 @@
   },
   {
    "name": "Hardened Tactician",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -146,7 +146,7 @@
   },
   {
    "name": "Mister Negative",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -156,7 +156,7 @@
   },
   {
    "name": "Primevals' Glorious Rebirth",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -271,7 +271,7 @@
   },
   {
    "name": "Fleshtaker",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -286,7 +286,7 @@
   },
   {
    "name": "Head of the Class",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -331,7 +331,7 @@
   },
   {
    "name": "Kambal, Consul of Allocation",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -341,7 +341,7 @@
   },
   {
    "name": "Basilica Bell-Haunt",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -381,7 +381,7 @@
   },
   {
    "name": "Vito, Fanatic of Aclazotz",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -481,7 +481,7 @@
   },
   {
    "name": "Massacre Girl, Most Wanted",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -496,12 +496,12 @@
   },
   {
    "name": "Ajani's Welcome",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
    "name": "Speaker of the Heavens",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -511,7 +511,7 @@
   },
   {
    "name": "Donald Blake, Guise of Thor",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -521,7 +521,7 @@
   },
   {
    "name": "Griffin Aerie",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -546,12 +546,12 @@
   },
   {
    "name": "Dr. Beverly Crusher",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
    "name": "Envoy of the Ancestors",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -561,7 +561,7 @@
   },
   {
    "name": "Ethereal Escort",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -621,7 +621,7 @@
   },
   {
    "name": "The Wind Crystal",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -656,7 +656,7 @@
   },
   {
    "name": "Doctor Strange, Surgeon",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -691,7 +691,7 @@
   },
   {
    "name": "Righteous Fury",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -776,7 +776,7 @@
   },
   {
    "name": "Daxos, Blessed by the Sun",
-   "pile": "N",
+   "pile": "D",
    "src": "added"
   },
   {
@@ -796,12 +796,12 @@
   },
   {
    "name": "Scourge of the Skyclaves",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Vincent's Limit Break",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -826,7 +826,7 @@
   },
   {
    "name": "Tataru Taru",
-   "pile": "D",
+   "pile": "N",
    "src": "added"
   },
   {
@@ -887,15 +887,15 @@
  ],
  "reasons": {
   "Ayli, Eternal Pilgrim": {
-   "group": "Lifegain deck",
-   "text": "Deathtouch 2-drop and a sac outlet; the exile needs +10 life. ★ only in a lifegain build.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Deathtouch 2-drop; the exile needs 35 life, which this plan reaches. The sac outlet eats Ninjas.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Cleric of Life's Bond": {
-   "group": "Lifegain deck",
-   "text": "Cleric lifegain; few Clerics here.",
+   "group": "Off-plan",
+   "text": "Cleric lifegain; few Clerics.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -908,22 +908,22 @@
    }
   },
   "Feast of the Victorious Dead": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Aristocrats payoff; competes with F1 (sacrificing Ninjas lowers the count).",
+   "group": "Bench: lifegain/counters",
+   "text": "Any creature dying (deathtouch blocks count) gains life and spreads counters at end step.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Elas il-Kor, Sadistic Pilgrim": {
-   "group": "Bench",
-   "text": "Deathtouch 2-drop; life on every creature entering (Ninja tokens, sneak re-entries).",
+   "group": "Hybrid plan: add",
+   "text": "2-drop deathtouch; \"another creature you control enters, you gain 1\" fires on every sneak/ninjutsu entry and token; deaths drain.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Hardened Tactician": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Sacrifices tokens for cards — the commander's Ninja tokens are F1's count.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Sac a token: draw. Same F1 cost as Deadly Dispute.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -943,8 +943,8 @@
    }
   },
   "Kaya, Geist Hunter": {
-   "group": "Bench",
-   "text": "Team deathtouch (attacking Ninjas already have it), doubled tokens once.",
+   "group": "Bench: lifegain/counters",
+   "text": "+1 team deathtouch and a counter on a token; −2 doubles the commander's Ninja token. 3 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -978,29 +978,29 @@
    }
   },
   "The Kingpin of Crime": {
-   "group": "Bench",
-   "text": "Extort and toughness damage; off-plan.",
+   "group": "Bench: lifegain/counters",
+   "text": "Extort makes every spell a lifegain trigger; the 1/5 body does not attack. Deck 20's engine.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Baron Bertram Graywater": {
-   "group": "Bench",
-   "text": "A lifelink Vampire when tokens enter, sac-draw; not Ninjas.",
+   "group": "Bench: lifegain/counters",
+   "text": "Tokens entering make a lifelink 1/1 (the commander makes one a hit); sac for a card. Card advantage that eats tokens, not Ninja cards.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Elenda, the Dusk Rose": {
-   "group": "Bench",
-   "text": "Aristocrats/lifegain body.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Lifelink; grows on deaths, lifelink tokens when it dies.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Elenda, Saint of Dusk": {
-   "group": "Bench",
-   "text": "Lifegain payoff; ★ in a lifegain build.",
+   "group": "Bench: lifegain/counters",
+   "text": "4-mana lifelink; menace above 25 life (an evasive attacker the plan turns on), +5/+5 at 35.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1013,22 +1013,22 @@
    }
   },
   "Starseer Mentor": {
-   "group": "Bench",
-   "text": "Flying vigilance 5-drop with an end-step punisher.",
+   "group": "Hybrid plan: add",
+   "text": "Flier; \"if you gained or lost life this turn, target opponent loses 3 unless they sacrifice … or discard\" — near-free every turn in this list. 5 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Spirit-Sister's Call": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Slow recursion engine.",
+   "group": "Off-plan",
+   "text": "Sacrifice a permanent to return one; slow.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Vona, Butcher of Magan": {
-   "group": "Bench",
-   "text": "Repeatable removal for 7 life; better with lifegain.",
+   "group": "Hybrid plan: add",
+   "text": "Vigilance lifelink 4/4; \"{T}, Pay 7 life: Destroy target nonland permanent\" each turn — the lifegain plan pays for repeatable removal.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1041,22 +1041,22 @@
    }
   },
   "Mister Negative": {
-   "group": "Bench",
-   "text": "7-drop life swap and cards; situational at 25 life.",
+   "group": "Off-plan",
+   "text": "Swapping life totals is backwards when you are ahead on life.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Moment of Reckoning": {
-   "group": "Bench",
-   "text": "7 mana, four modes of destroy or return.",
+   "group": "Bench: lifegain/counters",
+   "text": "Four destroy/return modes at 7 mana. Strong, expensive.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Primevals' Glorious Rebirth": {
-   "group": "Off-plan",
-   "text": "Mass legend reanimation; slow.",
+   "group": "Bench: lifegain/counters",
+   "text": "Returns every legend from the graveyard; many legends here. 7 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1216,15 +1216,15 @@
    }
   },
   "Fleshtaker": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Aristocrats; fights F1.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Sacrifice payoff; F1 cost.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Frodo, Adventurous Hobbit": {
-   "group": "Lifegain deck",
-   "text": "Needs 3 life gained a turn.",
+   "group": "Off-plan",
+   "text": "Needs 3 life gained BEFORE it attacks.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1237,15 +1237,15 @@
    }
   },
   "Head of the Class": {
-   "group": "Bench",
-   "text": "Discount for creature-targeting spells.",
+   "group": "Off-plan",
+   "text": "Discount for spells that target creatures; Killian does this.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Humiliate": {
-   "group": "Bench",
-   "text": "Hand attack plus a counter.",
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana hand attack plus a counter.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1265,8 +1265,8 @@
    }
   },
   "Athreos, God of Passage": {
-   "group": "Bench",
-   "text": "Recursion tax on deaths.",
+   "group": "Bench: lifegain/counters",
+   "text": "Dead creatures return to hand unless they pay 3 life.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1286,22 +1286,22 @@
    }
   },
   "Indulging Patrician": {
-   "group": "Bench",
-   "text": "Flying lifelink 1/4; ★ in a lifegain build.",
+   "group": "Hybrid plan: add",
+   "text": "3-mana flying lifelink (a sneak enabler) and \"gained 3 or more life this turn, each opponent loses 3\" — reach on top of the half-life hit.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Kambal, Profiteering Mayor": {
-   "group": "Bench",
-   "text": "Drains 1 when your tokens enter (commander Ninjas, Last Ronin's Technique); copies their tokens.",
+   "group": "Bench: lifegain/counters",
+   "text": "Your tokens entering drain 1; copies their tokens. 3 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Kambal, Consul of Allocation": {
-   "group": "Bench",
-   "text": "Taxes their noncreature spells; a hate card.",
+   "group": "Off-plan",
+   "text": "Drains only on their noncreature spells.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1314,43 +1314,43 @@
    }
   },
   "Basilica Bell-Haunt": {
-   "group": "Off-plan",
-   "text": "{W}{W}{B}{B} for a discard and 3 life.",
+   "group": "Bench: lifegain/counters",
+   "text": "WWBB 3/4: they discard, you gain 3.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Kaya's Wrath": {
    "group": "Off-plan",
-   "text": "A sweeper in an attacking deck; emergency only.",
+   "text": "Destroys your own board.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Render Speechless": {
    "group": "Off-plan",
-   "text": "Sorcery hand attack plus counters.",
+   "text": "4 mana: discard plus two counters.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Sorin, Solemn Visitor": {
-   "group": "Bench",
-   "text": "Team +1/+0 lifelink, or a 2/2 flier (an enabler).",
+   "group": "Bench: lifegain/counters",
+   "text": "+1: team +1/+0 and lifelink until your next turn; −2 flying token. Close to Vengeful Bloodlord; first in if a 4-drop opens.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Silverquill, the Disputant": {
-   "group": "Bench",
-   "text": "Flying 4/4; casualty copies Karai's Technique and the removal — but the sacrifice costs a Ninja.",
+   "group": "Bench: lifegain/counters",
+   "text": "4-mana 4/4 flier; casualty needs instants and sorceries.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Sorin, Vengeful Bloodlord": {
-   "group": "Bench",
-   "text": "Lifelink on your turn; −X reanimates.",
+   "group": "Hybrid plan: add",
+   "text": "\"During your turn, creatures … you control have lifelink\": every attacking Ninja becomes a lifegain trigger. The bridge card; −X reanimates.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1363,15 +1363,15 @@
    }
   },
   "Teysa Karlov": {
-   "group": "Bench",
-   "text": "Doubles death triggers; aristocrats.",
+   "group": "Hybrid plan: add",
+   "text": "\"Creature tokens you control have vigilance and lifelink\": the commander's Ninja tokens, Turtles and Sunborn's doubled tokens all gain life. Death doubling is minor here.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Vito, Fanatic of Aclazotz": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Sacrifice payoff; fights F1.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Sacrifice payoff on a 4/4 flier; sacrifices are rare here.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1398,22 +1398,22 @@
    }
   },
   "Syr Vondam, the Lucent": {
-   "group": "Bench",
-   "text": "Team deathtouch and +1/+0 on entry and attack; attacking Ninjas already have deathtouch.",
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana deathtouch lifelink; enters/attacks gives the team +1/+0 and deathtouch, so non-Ninjas trigger the Widows too.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Athreos, Shroud-Veiled": {
-   "group": "Bench",
-   "text": "Slow coin-counter recursion.",
+   "group": "Bench: lifegain/counters",
+   "text": "Coin counters return dying creatures. 6 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Niv-Mizzet, Ghost Counsel": {
-   "group": "Bench",
-   "text": "Lifegain draw engine.",
+   "group": "Hybrid plan: add",
+   "text": "\"Whenever you gain life, you may pay that much life. If you do, draw that many\" — the card-advantage engine that replaces Tymna/Doom. WWBB: 67% on turn 5, a late card.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1462,7 +1462,7 @@
   },
   "Great Hall of Starnheim": {
    "group": "Off-plan",
-   "text": "Tapped, mono-B, sacrifice for an Angel.",
+   "text": "Tapped land; sacrifices a creature.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1503,8 +1503,8 @@
    }
   },
   "Massacre Girl, Most Wanted": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Aristocrats drain; fights F1.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Death drain; 5 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1517,36 +1517,36 @@
    }
   },
   "Sally Pride, Lioness Leader": {
-   "group": "Bench",
-   "text": "Mutant tokens per nontoken creature; not Ninjas.",
+   "group": "Bench: lifegain/counters",
+   "text": "Enters with a 2/2 per nontoken creature; attacks put a counter on each creature — mass counters for Envoy and Yathan. 5 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Ajani's Welcome": {
-   "group": "Lifegain deck",
-   "text": "Lifegain only.",
+   "group": "Bench: lifegain/counters",
+   "text": "1 mana: every creature entering gains 1. Elas does this on a body.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Speaker of the Heavens": {
-   "group": "Lifegain deck",
-   "text": "Needs +7 life.",
+   "group": "Bench: lifegain/counters",
+   "text": "1-drop lifelink; makes 4/4 flying Angels once you are 7 above starting life — reachable here.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Belladonna Took": {
-   "group": "Bench",
-   "text": "Pays off tokens entering (commander's Ninjas, Last Ronin).",
+   "group": "Bench: lifegain/counters",
+   "text": "Token triggers: gain 1, then draw, then counters — needs two tokens a turn.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Donald Blake, Guise of Thor": {
-   "group": "Lifegain deck",
-   "text": "Expensive power-up.",
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana lifelink; 6-mana power-up to a flier.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1559,22 +1559,22 @@
    }
   },
   "Griffin Aerie": {
-   "group": "Lifegain deck",
-   "text": "Lifegain only.",
+   "group": "Bench: lifegain/counters",
+   "text": "3 life in a turn makes a 2/2 flier — easy here, but a 2-mana card that does nothing alone.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Leader's Talent": {
-   "group": "Bench",
-   "text": "A counter on an attacker each attack.",
+   "group": "Hybrid plan: add",
+   "text": "\"Whenever you attack, +1/+1 counter on target attacking creature\" — counters for Envoy/Yathan; level 3 counters the team per spell.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Selfless Samurai": {
    "group": "Off-plan",
-   "text": "One-shot protection.",
+   "text": "Samurai/Warrior lone-attack lifelink; few here.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1587,22 +1587,22 @@
    }
   },
   "Black Panther, Claws of Bast": {
-   "group": "Bench",
-   "text": "Counters on a lone attacker.",
+   "group": "Bench: lifegain/counters",
+   "text": "Lifelink 3/3; attacks-alone counter — fits the Squall/Black Widow, Double Agent lone-attacker turns.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Dr. Beverly Crusher": {
-   "group": "Lifegain deck",
-   "text": "Lifegain doubler.",
+   "group": "Hybrid plan: add",
+   "text": "Lifegain-triggered abilities trigger twice: Archangel, Exemplar, Patrician, Leonardo, Starseer, Niv-Mizzet.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Envoy of the Ancestors": {
-   "group": "Lifegain deck",
-   "text": "Lifelink for modified creatures.",
+   "group": "Hybrid plan: add",
+   "text": "\"Modified creatures you control have lifelink\" — permanent, and Equipment counts: Katana auto-attaches to entering Ninjas, plus Ninja's Blades, My Precious and every counter.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1615,8 +1615,8 @@
    }
   },
   "Ethereal Escort": {
-   "group": "Lifegain deck",
-   "text": "Lifelink spread.",
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana 3/3 lifelink; each enter/attack gives a card in hand perpetual lifelink — the Ninjas you sneak later.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1629,85 +1629,85 @@
    }
   },
   "Gideon Blackblade": {
-   "group": "Bench",
-   "text": "A 4/4 attacker on your turn; grants a keyword.",
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana 4/4 indestructible attacker on your turn; +1 grants lifelink or indestructible.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Light of Promise": {
-   "group": "Lifegain deck",
-   "text": "Lifegain Aura.",
+   "group": "Off-plan",
+   "text": "An Aura falls off when sneak returns its creature.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Metropolis Reformer": {
-   "group": "Bench",
-   "text": "Flier; you have hexproof.",
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana flier, you have hexproof; gains life when damaged.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "MJ, Rising Star": {
-   "group": "Lifegain deck",
-   "text": "Lifegain payoff.",
+   "group": "Off-plan",
+   "text": "Grows on lifegain; no evasion.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Practiced Offense": {
-   "group": "Bench",
-   "text": "Team counters plus double strike; flashback.",
+   "group": "Bench: lifegain/counters",
+   "text": "Counter on each creature + double strike or lifelink; flashback. Mass counters for Envoy/Yathan.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Teferi's Protection": {
-   "group": "Bench",
-   "text": "Protection from a board wipe.",
+   "group": "Bench: lifegain/counters",
+   "text": "Protection from a sweeper; nothing else.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Way of the Mentor": {
-   "group": "Lifegain deck",
-   "text": "Planeswalker loyalty from lifegain.",
+   "group": "Off-plan",
+   "text": "Planeswalker loyalty support.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Exemplar of Light": {
-   "group": "Bench",
-   "text": "Flier; lifegain → counters → a card. ★ in a lifegain build.",
+   "group": "Hybrid plan: add",
+   "text": "Flier; grows on lifegain and draws once a turn when it gets counters — card advantage on the plan.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Rosa, Resolute White Mage": {
-   "group": "Bench",
-   "text": "A counter and lifelink each combat.",
+   "group": "Hybrid plan: add",
+   "text": "Each combat: +1/+1 counter and lifelink on a creature. Put it on a creature that stays in (sneak strips counters).",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Sigiled Contender": {
-   "group": "Lifegain deck",
-   "text": "Vanilla 4-drop.",
+   "group": "Off-plan",
+   "text": "Lifelink only with a counter; 4-mana 3/3.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "The Wind Crystal": {
-   "group": "Lifegain deck",
-   "text": "Lifegain doubler.",
+   "group": "Hybrid plan: add",
+   "text": "White spells cost {1} less; doubles lifegain; {4}{W}{W}: team flying + lifelink — an alpha strike that turns every Ninja into a connection.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Teyo, Aegis Adept": {
-   "group": "Lifegain deck",
-   "text": "Off-plan walker.",
+   "group": "Off-plan",
+   "text": "Defender support; conjures a wall.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1720,8 +1720,8 @@
    }
   },
   "Archangel of Thune": {
-   "group": "Bench",
-   "text": "Lifegain engine; ★ in a lifegain build.",
+   "group": "Hybrid plan: add",
+   "text": "Flier (sneak enabler) whose \"whenever you gain life, +1/+1 counter on each creature\" fires once per lifelink attacker — the counters also switch on Envoy and Yathan.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1734,22 +1734,22 @@
    }
   },
   "Captain America, Steve Rogers": {
-   "group": "Bench",
-   "text": "Counter and indestructible on an attacker.",
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana lifelink; attacks put a counter and indestructible on another creature.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Boon-Bringer Valkyrie": {
-   "group": "Bench",
-   "text": "Flier; backup hands a Ninja flying for the turn.",
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana flying first-strike lifelink; backup puts a counter on another creature.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Doctor Strange, Surgeon": {
-   "group": "Lifegain deck",
-   "text": "Lifegain doubler.",
+   "group": "Bench: lifegain/counters",
+   "text": "Doubles lifegain; +2/+2 team at 10 above. Wind Crystal does the doubling cheaper.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1762,22 +1762,22 @@
    }
   },
   "Moogles' Valor": {
-   "group": "Bench",
-   "text": "Lifelink tokens plus team indestructible.",
+   "group": "Bench: lifegain/counters",
+   "text": "Instant: a lifelink 1/2 per creature and team indestructible — a wide lifegain burst and sweeper protection.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Shepherd of Heroes": {
-   "group": "Lifegain deck",
-   "text": "Party lifegain.",
+   "group": "Off-plan",
+   "text": "Party lifegain; no party here.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Tale of Tinúviel": {
-   "group": "Bench",
-   "text": "Protection then reanimation.",
+   "group": "Bench: lifegain/counters",
+   "text": "Indestructible, reanimate, two lifelinks over three turns. Slow.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1790,36 +1790,36 @@
    }
   },
   "Loxodon Lifechanter": {
-   "group": "Lifegain deck",
-   "text": "Life-total reset.",
+   "group": "Off-plan",
+   "text": "6-mana; the life-total reset rarely helps.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Righteous Fury": {
-   "group": "Bench",
-   "text": "Kills tapped creatures — theirs after they attack.",
+   "group": "Off-plan",
+   "text": "Destroys tapped creatures — your attackers too.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Federation Outpost": {
-   "group": "Bench",
-   "text": "Mono-W land.",
+   "group": "Hybrid plan: add",
+   "text": "In for a Plains: untapped from turn 3, gains 2 (a lifegain trigger) or surveils.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Toxin Analysis": {
-   "group": "Bench",
-   "text": "Cheap trick plus a Clue.",
+   "group": "Bench: lifegain/counters",
+   "text": "1-mana deathtouch + lifelink trick and a Clue.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Tymaret, Chosen from Death": {
    "group": "Off-plan",
-   "text": "Graveyard hate; fights Karai and Leonardo's recursion (G-42).",
+   "text": "Graveyard hate; devotion toughness.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1832,15 +1832,15 @@
    }
   },
   "Madame Null, Power Broker": {
-   "group": "Bench",
-   "text": "Counters for life on each creature entering.",
+   "group": "Bench: lifegain/counters",
+   "text": "Pay life equal to power to put that many counters on each creature that enters — sneaks and tokens. Lifegain pays for it.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Nadier's Nightblade": {
-   "group": "Bench",
-   "text": "Drain when tokens leave.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Token leaving drains 1.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1854,21 +1854,21 @@
   },
   "Sanctum Lurker": {
    "group": "Off-plan",
-   "text": "Planeswalker support.",
+   "text": "Planeswalker support; few walkers.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Yathan Tombguard": {
-   "group": "Bench",
-   "text": "Menace, and a card whenever a creature with a counter connects: White Widow puts a counter on every deathtouch attacker that hits, so the pair draws off each Ninja hit. Bench: Black Widow, Deadly Hunter already draws without needing counters.",
+   "group": "Hybrid plan: add",
+   "text": "Menace 3-drop (sneak enabler); \"a creature you control with a counter on it deals combat damage to a player, you draw\" — repeatable card advantage off Rosa/Talent/Archangel counters.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Withering Curse": {
    "group": "Off-plan",
-   "text": "−2/−2 to all kills most of this deck's own Ninjas.",
+   "text": "Infusion makes it destroy all creatures — yours too.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1888,8 +1888,8 @@
    }
   },
   "Enduring Tenacity": {
-   "group": "Bench",
-   "text": "Lifegain drain.",
+   "group": "Bench: lifegain/counters",
+   "text": "\"Whenever you gain life, target opponent loses that much life\" and returns once as an enchantment. Strong drain; out on slots, not on fit.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1902,50 +1902,50 @@
    }
   },
   "Erebos, Bleak-Hearted": {
-   "group": "Bench",
-   "text": "Cards on deaths; aristocrats.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Draw on deaths; devotion rarely met.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Daxos, Blessed by the Sun": {
-   "group": "Lifegain deck",
-   "text": "Lifegain on enter/die.",
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana: gain 1 on each creature entering or dying.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Surgical Precision": {
-   "group": "Bench",
-   "text": "Sorcery: kill toughness 4+, or a card.",
+   "group": "Bench: lifegain/counters",
+   "text": "Kill toughness 4+, or draw and gain 2.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Bill the Pony": {
-   "group": "Lifegain deck",
-   "text": "Food and toughness damage.",
+   "group": "Off-plan",
+   "text": "Food lifegain; toughness damage.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Ghalta the Immovable": {
-   "group": "Lifegain deck",
-   "text": "Toughness-matters; off-plan.",
+   "group": "Off-plan",
+   "text": "Defender plan.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Scourge of the Skyclaves": {
-   "group": "Bench",
-   "text": "Kicked, both players lose half their life.",
+   "group": "Off-plan",
+   "text": "Rewards low life totals.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Vincent's Limit Break": {
-   "group": "Bench",
-   "text": "Cheap protection trick.",
+   "group": "Off-plan",
+   "text": "One-turn body swap.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -1959,42 +1959,42 @@
   },
   "Zero Point Ballad": {
    "group": "Off-plan",
-   "text": "Sweeper that kills the small Ninjas first.",
+   "text": "Sweeper that hits your own creatures.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Veko, Death's Doorkeeper": {
-   "group": "Bench",
-   "text": "Recursion for a sacrifice.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Extort; sacrifice a non-Spirit to regrow a creature as a cheap 1/1.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Kingpin, Wilson Fisk": {
-   "group": "Bench",
-   "text": "Menace 3/6; Treasure on a sacrifice.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Menace 3/6 (an evasive body); Treasure only when you sacrifice, which this deck rarely does.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Tataru Taru": {
-   "group": "Bench",
-   "text": "A card, and a Treasure engine on their off-turn draws.",
+   "group": "Off-plan",
+   "text": "Draw, and Treasure off their off-turn draws.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Smothering Tithe": {
-   "group": "Bench",
-   "text": "Treasure off their draws; slow in 1v1.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "About a Treasure a turn in 1v1. Ramp with no Treasure payoff.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Deadly Dispute": {
-   "group": "Bench",
-   "text": "Sacrifice a token for two cards.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Two cards for a token; the sacrificed token is a Ninja the commander counts.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -2007,8 +2007,8 @@
    }
   },
   "Pitiless Plunderer": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Aristocrats Treasure.",
+   "group": "Off-plan",
+   "text": "Treasure on your deaths; F1 cost.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -2021,36 +2021,36 @@
    }
   },
   "Ruthless Technomancer": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Sacrifice for Treasure; reanimation.",
+   "group": "Off-plan",
+   "text": "Sacrifice for Treasure; F1 cost.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Blood Money": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "A sweeper.",
+   "group": "Off-plan",
+   "text": "Destroys your own board.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Revel in Riches": {
-   "group": "Bench",
-   "text": "Treasure on their deaths; slow alternate win.",
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Treasure on their creature deaths; ten Treasures is far.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Vraska, Betrayal's Sting": {
-   "group": "Bench",
-   "text": "Draw and proliferate; −2 neutralises a creature.",
+   "group": "Bench: lifegain/counters",
+   "text": "0: draw and proliferate (counters); −2 turns a creature into a Treasure. 6 mana.",
    "graded_at": {
     "104": "da991b79acbc"
    }
   },
   "Lotho, Corrupt Shirriff": {
-   "group": "Aristocrats / Treasure deck",
-   "text": "Second-spell Treasure.",
+   "group": "Off-plan",
+   "text": "Treasure on second spells; you lose life.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -2063,8 +2063,8 @@
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
-   "group": "Bench",
-   "text": "Flying lifelink 5/5; convoke for creatures; the back face gives the team persist. A good card that makes no Ninja.",
+   "group": "Bench: lifegain/counters",
+   "text": "5/5 flying lifelink; creature spells get convoke; back face gives persist. Competes with Archangel at 5.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -2077,8 +2077,8 @@
    }
   },
   "Vincent Valentine": {
-   "group": "Bench",
-   "text": "Grows on their creatures dying (deathtouch blocks kill them); comes back once as the Beast.",
+   "group": "Bench: lifegain/counters",
+   "text": "Grows when their creatures die; deathtouch makes that common. Trample lifelink back face.",
    "graded_at": {
     "104": "da991b79acbc"
    }
@@ -2180,7 +2180,7 @@
  "verdicts": {
   "Ayli, Eternal Pilgrim": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2198,13 +2198,13 @@
   },
   "Feast of the Victorious Dead": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Elas il-Kor, Sadistic Pilgrim": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2228,7 +2228,7 @@
   },
   "Kaya, Geist Hunter": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2258,25 +2258,25 @@
   },
   "The Kingpin of Crime": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Baron Bertram Graywater": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Elenda, the Dusk Rose": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
   "Elenda, Saint of Dusk": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2288,19 +2288,19 @@
   },
   "Starseer Mentor": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Spirit-Sister's Call": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Vona, Butcher of Magan": {
    "D": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2312,25 +2312,25 @@
   },
   "Mister Negative": {
    "D": {
-    "m": "◇",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Moment of Reckoning": {
    "D": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Primevals' Glorious Rebirth": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Ashen Rider": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2480,7 +2480,7 @@
   },
   "Head of the Class": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2522,19 +2522,19 @@
   },
   "Indulging Patrician": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Kambal, Profiteering Mayor": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Kambal, Consul of Allocation": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2546,13 +2546,13 @@
   },
   "Basilica Bell-Haunt": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Kaya's Wrath": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2564,7 +2564,7 @@
   },
   "Sorin, Solemn Visitor": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2576,7 +2576,7 @@
   },
   "Sorin, Vengeful Bloodlord": {
    "D": {
-    "m": "◇",
+    "m": "★★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2588,7 +2588,7 @@
   },
   "Teysa Karlov": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2618,7 +2618,7 @@
   },
   "Syr Vondam, the Lucent": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2630,7 +2630,7 @@
   },
   "Niv-Mizzet, Ghost Counsel": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2720,19 +2720,19 @@
   },
   "Sally Pride, Lioness Leader": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Ajani's Welcome": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Speaker of the Heavens": {
    "D": {
-    "m": "△",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2744,7 +2744,7 @@
   },
   "Donald Blake, Guise of Thor": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2756,13 +2756,13 @@
   },
   "Griffin Aerie": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
   "Leader's Talent": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2786,13 +2786,13 @@
   },
   "Dr. Beverly Crusher": {
    "D": {
-    "m": "△",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Envoy of the Ancestors": {
    "D": {
-    "m": "△",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2804,7 +2804,7 @@
   },
   "Ethereal Escort": {
    "D": {
-    "m": "△",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2816,7 +2816,7 @@
   },
   "Gideon Blackblade": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2840,7 +2840,7 @@
   },
   "Practiced Offense": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2852,31 +2852,31 @@
   },
   "Way of the Mentor": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Exemplar of Light": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Rosa, Resolute White Mage": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
   "Sigiled Contender": {
    "D": {
-    "m": "✗",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
   "The Wind Crystal": {
    "D": {
-    "m": "△",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2894,7 +2894,7 @@
   },
   "Archangel of Thune": {
    "D": {
-    "m": "◇",
+    "m": "★★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2906,19 +2906,19 @@
   },
   "Captain America, Steve Rogers": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Boon-Bringer Valkyrie": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Doctor Strange, Surgeon": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2930,13 +2930,13 @@
   },
   "Moogles' Valor": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Shepherd of Heroes": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2954,19 +2954,19 @@
   },
   "Loxodon Lifechanter": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Righteous Fury": {
    "D": {
-    "m": "◇",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Federation Outpost": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -2990,13 +2990,13 @@
   },
   "Madame Null, Power Broker": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
   "Nadier's Nightblade": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3014,7 +3014,7 @@
   },
   "Yathan Tombguard": {
    "D": {
-    "m": "◇",
+    "m": "★★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3038,7 +3038,7 @@
   },
   "Enduring Tenacity": {
    "D": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3050,13 +3050,13 @@
   },
   "Erebos, Bleak-Hearted": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
   "Daxos, Blessed by the Sun": {
    "D": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3074,19 +3074,19 @@
   },
   "Ghalta the Immovable": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Scourge of the Skyclaves": {
    "D": {
-    "m": "◇",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Vincent's Limit Break": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3098,7 +3098,7 @@
   },
   "Zero Point Ballad": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3116,7 +3116,7 @@
   },
   "Tataru Taru": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3158,19 +3158,19 @@
   },
   "Blood Money": {
    "D": {
-    "m": "△",
+    "m": "✗",
     "graded_at": "da991b79acbc"
    }
   },
   "Revel in Riches": {
    "D": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "da991b79acbc"
    }
   },
   "Vraska, Betrayal's Sting": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
@@ -3188,7 +3188,7 @@
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
    "D": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "da991b79acbc"
    }
   },
