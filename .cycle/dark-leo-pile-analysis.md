@@ -435,3 +435,4 @@ Slayer. A first draft also cut Barbed Servitor and Eradicator Valkyrie — prote
 Splinter's Technique; Mondrak; Marauding Blight-Priest. All on the board under "Final pass".
 - **Round 6 applied 2026-11-21:** −Mortify +Shredder's Technique; −Closing Statement +Bloodthirsty Conqueror (interaction 13, one above A). Open: Delney (cut options Killian / Grateful Apparition / Nashi) and Elesh Norn (Rev / Squall / Niv-Mizzet). Classifier hole: Bloodthirsty Conqueror scores no role (its life-loss→gain trigger).
 - **Round 7 applied 2026-11-21:** −Killian +Delney. Elesh Norn cut under discussion: Rosa recommended over Shark Shredder (a Ninja; 15 → 14).
+- **Round 8 applied 2026-11-21:** −Rosa +Elesh Norn, Mother of Machines. Live: floor A · int 13 · CA 9 · protection 4 · board power 123.

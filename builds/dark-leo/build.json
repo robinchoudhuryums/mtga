@@ -1760,10 +1760,10 @@
    }
   },
   "Rosa, Resolute White Mage": {
-   "group": "In: Lifegain and counters",
-   "text": "Each combat: a counter and lifelink on a creature. Target one that stays in (sneak strips counters).",
+   "group": "Cut in round 8",
+   "text": "Its combat counter pushed creatures past Delney's power-2 line; Elesh Norn took the slot.",
    "graded_at": {
-    "104": "52f6983b9635"
+    "104": "a90c4c0fa04d"
    }
   },
   "Sigiled Contender": {
@@ -2229,10 +2229,10 @@
    }
   },
   "Elesh Norn, Mother of Machines": {
-   "group": "Final pass: recommended",
-   "text": "Enters triggers fire twice; opponents' enters triggers stop. Best cut: Rosa (its counters push creatures past Delney's power-2 line). Shark Shredder is a Ninja and its steal is live in a deathtouch deck.",
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Enters triggers fire twice (every sneak re-buy: Vona de Iedo, Lawbringer, Cloak and Dagger, Elas, Turncoat Kunoichi; a stolen creature from Shark Shredder) and opponents' enters triggers stop.",
    "graded_at": {
-    "104": "e14da171a91b"
+    "104": "a90c4c0fa04d"
    }
   },
   "Oroku Saki, Shredder Rising": {
@@ -2824,6 +2824,90 @@
     "Replicator",
     "Rev, Tithe Extractor",
     "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "a90c4c0fa04d": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Elesh Norn, Mother of Machines",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
     "Ruthless Lawbringer",
     "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
     "Shambling Vent",
@@ -3545,8 +3629,8 @@
   },
   "Rosa, Resolute White Mage": {
    "D": {
-    "m": "★★",
-    "graded_at": "52f6983b9635"
+    "m": "◇",
+    "graded_at": "a90c4c0fa04d"
    }
   },
   "Sigiled Contender": {
@@ -3948,7 +4032,7 @@
   "Elesh Norn, Mother of Machines": {
    "D": {
     "m": "★★",
-    "graded_at": "e14da171a91b"
+    "graded_at": "a90c4c0fa04d"
    }
   },
   "Oroku Saki, Shredder Rising": {
