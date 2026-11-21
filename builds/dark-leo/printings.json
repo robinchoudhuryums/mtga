@@ -683,6 +683,7 @@
  "Primevals' Glorious Rebirth": [],
  "Quintessential Katana": [],
  "Render Speechless": [],
+ "Replicator": [],
  "Rev, Tithe Extractor": [],
  "Revel in Riches": [],
  "Righteous Fury": [],
@@ -1087,6 +1088,30 @@
  "Vincent Valentine": [],
  "Vincent's Limit Break": [],
  "Vito, Fanatic of Aclazotz": [],
+ "Vito, Thorn of the Dusk Rose": [
+  {
+   "a": "Lie Setiawan",
+   "art": "https://cards.scryfall.io/art_crop/front/0/f/0fe79ee4-c3f3-4a6b-a967-203ca3b70ee5.jpg?1783930698",
+   "cn": "127",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/f/0fe79ee4-c3f3-4a6b-a967-203ca3b70ee5.jpg?1783930698",
+   "r": "R",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  },
+  {
+   "a": "Susumu Kuroi",
+   "art": "https://cards.scryfall.io/art_crop/front/5/d/5deb74ff-15df-4894-b074-9a98731bd2c0.jpg?1783908850",
+   "cn": "71",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/d/5deb74ff-15df-4894-b074-9a98731bd2c0.jpg?1783908850",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
  "Vona de Iedo, the Antifex": [],
  "Vona, Butcher of Magan": [],
  "Vraska, Betrayal's Sting": [],

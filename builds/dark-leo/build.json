@@ -883,6 +883,16 @@
    "name": "Vraska, Scheming Gorgon",
    "pile": "D",
    "src": "added"
+  },
+  {
+   "name": "Vito, Thorn of the Dusk Rose",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Replicator",
+   "pile": "D",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -950,10 +960,10 @@
    }
   },
   "Lurrus of the Dream-Den": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "Recasts a ≤2 MV permanent from the graveyard each turn: the cheap Ninjas and enablers come back.",
+   "group": "Cut in round 4",
+   "text": "Recasts 2-drops from the graveyard, which sneak rarely fills; Replicator took the slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "cafe501e0663"
    }
   },
   "Mortify": {
@@ -1202,10 +1212,10 @@
    }
   },
   "Ink-Eyes, Servant of Oni": {
-   "group": "In: Ninjas",
-   "text": "Ninjutsu 5; reanimates their creature; regenerates.",
+   "group": "Cut in round 4",
+   "text": "6-mana Ninja (ninjutsu 5); Vito, Thorn took the slot and Replicator makes Ninja tokens.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "cafe501e0663"
    }
   },
   "Fracture": {
@@ -1370,10 +1380,10 @@
    }
   },
   "Vito, Fanatic of Aclazotz": {
-   "group": "Open slot (for Ink-Eyes)",
-   "text": "4-mana 4/4 flier; sacrificing Treasure counts, so gain 2 / drain 2 / a 4/3 flier each turn (Sunborn doubles the token). Teysa most likely does not double it. First choice for the open slot.",
+   "group": "Bench: lifegain/counters",
+   "text": "4/4 flier; sacrificing Treasure gains 2 / drains 2 / makes a 4/3 flier each turn. First in if a slot opens (costs Barbed Servitor's draw and protection if forced).",
    "graded_at": {
-    "104": "6e0103a12aff"
+    "104": "cafe501e0663"
    }
   },
   "Wispdrinker Vampire": {
@@ -2089,6 +2099,20 @@
    "graded_at": {
     "104": "da991b79acbc"
    }
+  },
+  "Vito, Thorn of the Dusk Rose": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"Whenever you gain life, target opponent loses that much life\" — Enduring Tenacity at 3 mana; with both out and Crusher, one lifelink hit drains four times. {3}{B}{B}: team lifelink for a wide attack.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Replicator": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"{2}, {T}: Create a tapped token that's a copy of target token you control\" — copy the commander's Ninja token for the five-Ninja count (two with Sunborn), or a Treasure/lifelink token. Activate at their end step so the copy can attack.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
   }
  },
  "snapshots": {
@@ -2340,6 +2364,89 @@
     "Vona de Iedo, the Antifex",
     "White Widow, Yelena Belova",
     "Yathan Tombguard"
+   ],
+   "cafe501e0663": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
    ]
   }
  },
@@ -2400,8 +2507,8 @@
   },
   "Lurrus of the Dream-Den": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "cafe501e0663"
    }
   },
   "Mortify": {
@@ -2616,8 +2723,8 @@
   },
   "Ink-Eyes, Servant of Oni": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "cafe501e0663"
    }
   },
   "Fracture": {
@@ -2761,7 +2868,7 @@
   "Vito, Fanatic of Aclazotz": {
    "D": {
     "m": "★★",
-    "graded_at": "6e0103a12aff"
+    "graded_at": "cafe501e0663"
    }
   },
   "Wispdrinker Vampire": {
@@ -3374,6 +3481,18 @@
    "D": {
     "m": "★★",
     "graded_at": "da991b79acbc"
+   }
+  },
+  "Vito, Thorn of the Dusk Rose": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Replicator": {
+   "D": {
+    "m": "★★",
+    "graded_at": "cafe501e0663"
    }
   }
  }

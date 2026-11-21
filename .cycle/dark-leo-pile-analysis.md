@@ -415,3 +415,8 @@ off nearly every token and sneak entry. Baron is the first real Treasure payoff 
   Pitiless Plunderer second, Ruthless Technomancer third (replies on the board). Live: floor A ·
   int 14 · CA 9 · board power 123. Tooling gap: `swap --apply` did not retire the builder BENCH
   flex lines for the four adds (deck.py flex listed them as STALE); retired by hand.
+- **Round 5 applied 2026-11-21:** −Ink-Eyes +Vito, Thorn of the Dusk Rose; −Lurrus +Replicator. Floor A ·
+  int 14 · CA 9 · early drops 20. Land check (scratch copies, `consistency --tempo`): every W/B dual left
+  in the pool enters tapped, so adding duals raises colour access (87.9% → 89–90%) but the as-built
+  figure stays flat (58.7% now; 58.0–58.5% with 2–4 more duals, inside the ±0.8 noise). No fix needed;
+  optional: −2 Swamp +Restless Fortress +Shambling Vent (creature lands, W 24 → 26, tempo-neutral).
