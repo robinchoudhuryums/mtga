@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batches 1–3 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: IN PROGRESS — batches 1–4 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -55,6 +55,9 @@ player loses half their life.
   Hunter read "a creature you control with deathtouch deals combat damage", which every attacking
   Ninja does. The lone-attacker cards (Black Widow, Double Agent; Squall) fit the one-attacker
   sneak setup. Lifegain keeps appearing as a secondary (Wispdrinker, Niv-Mizzet, Sorin ×2).
+- Batch 4 is almost all LIFEGAIN payoffs (14 of 30). Variant signal (rule 7): they are rejected
+  for the same reason every time — none of them makes a Ninja or reads combat damage. A lifegain
+  deck is a different deck; in this one, lifegain stays incidental (lifelink bodies, Katana).
 
 - Batch 1: the lifegain variant signal is already visible (Leonardo, Cutting Edge; Ayli; Elenda,
   Saint of Dusk; Vona, Butcher of Magan all read "your life total"). Watch whether it overlaps
@@ -168,6 +171,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 88 | Temple of Silence | ★ | Tapped, scry 1. |
 | 89 | White Widow, Yelena Belova | ★★ | Every deathtouch creature that connects grows — and attacking Ninjas all have deathtouch. |
 | 90 | Black Widow, Deadly Hunter | ★★★ | A card per deathtouch creature that connects: under the commander, every Ninja hit draws (F3). |
+
+### Batch 4 (cards 91–120)
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 91 | Vincent Valentine // Galian Beast | ◇ | Grows on their creatures dying (deathtouch blocks kill them); comes back once. |
+| 92 | Massacre Girl, Most Wanted | △ | Aristocrats drain; fights F1. |
+| 93 | The Cloning of Shredder | ★★ | Three non-legendary token copies of one creature card from your yard — of a Ninja, that is three Ninjas (F1). |
+| 94 | Sally Pride, Lioness Leader | ◇ | Mutant tokens per nontoken creature; not Ninjas. |
+| 95 | Ajani's Welcome | △ | Lifegain only (F5). |
+| 96 | Speaker of the Heavens | △ | Needs +7 life. |
+| 97 | Belladonna Took | ◇ | Pays off tokens entering (commander's Ninjas, Last Ronin). |
+| 98 | Donald Blake, Guise of Thor | △ | Expensive power-up. |
+| 99 | Grateful Apparition | ★ | 2-mana flier (F2b); proliferate on hit. |
+| 100 | Griffin Aerie | △ | Lifegain only. |
+| 101 | Leader's Talent | ◇ | A counter on an attacker each attack. |
+| 102 | Selfless Samurai | △ | One-shot protection. |
+| 103 | Sheltered by Ghosts | ★★ | 2-mana exile of any nonland permanent, plus lifelink and ward on your creature (F6). |
+| 104 | Black Panther, Claws of Bast | ◇ | Counters on a lone attacker. |
+| 105 | Dr. Beverly Crusher | △ | Lifegain doubler (F5). |
+| 106 | Envoy of the Ancestors | △ | Lifelink for modified creatures. |
+| 107 | Enduring Innocence | ★★ | A card a turn when small creatures enter — Ninjas, tokens and every sneak re-entry; returns once as an enchantment. |
+| 108 | Ethereal Escort | △ | Lifelink spread. |
+| 109 | Falcon, Joaquin Torres | ★ | 3-mana flying lifelink attacker (F2b). |
+| 110 | Gideon Blackblade | ◇ | A 4/4 attacker on your turn; grants a keyword. |
+| 111 | Light of Promise | △ | Lifegain Aura. |
+| 112 | Metropolis Reformer | ◇ | Flier; you have hexproof. |
+| 113 | MJ, Rising Star | △ | Lifegain payoff. |
+| 114 | Practiced Offense | ◇ | Team counters plus double strike; flashback. |
+| 115 | Teferi's Protection | ◇ | Protection from a board wipe. |
+| 116 | Way of the Mentor | △ | Planeswalker loyalty from lifegain. |
+| 117 | Exemplar of Light | ◇ | Flier; lifegain → counters → a card. ★ in a lifegain build. |
+| 118 | Rosa, Resolute White Mage | ◇ | A counter and lifelink each combat. |
+| 119 | Sigiled Contender | ✗ | Vanilla 4-drop. |
+| 120 | The Wind Crystal | △ | Lifegain doubler. |
 
 ## 5. Consolidated plan (live)
 
