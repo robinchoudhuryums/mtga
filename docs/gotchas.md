@@ -9272,3 +9272,8 @@ swaps file may carry an optional ranked `crafts` list (`tier`, `tier_why`, `card
 its pair, and a `standin` verdict ("Stand-in") joins upgrade / sidegrade / spice. First use:
 `builds/brawl-crafts`, the craft triage of the eight unfinished Brawl decks. A pair whose cut leaves
 its deck makes the render refuse (as for every swap board), so re-render after swaps land.
+**"I own this" marks (2026-11-21).** Every not-owned card on a swap board (the craft order and
+each pair's cut side) has a toggle. A mark lives in the board's `owned` collection (doc id = the
+card's image slug, `{own: 1|0, name}`), changes only what the PAGE counts as a craft, and leaves
+Copy picks as a `reconcile_crafts --set-exact` block (one copy, the printing from `_printings`).
+It never edits the library: run the block through /ingest, dry run first.

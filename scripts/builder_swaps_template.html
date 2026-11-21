@@ -108,6 +108,11 @@ section.deck h2 small{font-family:var(--ui);font-size:.85rem;color:var(--muted);
 .craft .cw{margin:0;font-family:var(--read);font-size:.92rem}
 .craft .fb{margin:4px 0 0;font-size:.84rem;color:var(--muted)}
 .craft .fb a{color:var(--accent)}
+.craft.got{opacity:.62}
+.craft.got .cn{text-decoration:line-through;text-decoration-color:var(--good)}
+.ownbtn{margin-top:8px;margin-left:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 10px;cursor:pointer;color:var(--muted);font-size:.78rem}
+.ownbtn[aria-pressed="true"]{border-color:color-mix(in srgb,var(--good) 55%,var(--line));color:var(--good);background:color-mix(in srgb,var(--good) 12%,var(--panel))}
+.own.marked{border-color:color-mix(in srgb,var(--good) 55%,var(--line));color:var(--good)}
 @media (max-width:460px){ .craft{grid-template-columns:1.6em 48px minmax(0,1fr)} .craft .zoom,.craft img,.craft .noimg{width:48px} }
 
 .why{margin:0;font-family:var(--read);font-size:.95rem}
@@ -188,6 +193,7 @@ section.deck h2 small{font-family:var(--ui);font-size:.85rem;color:var(--muted);
 const DATA = JSON.parse(document.getElementById("data").textContent);
 const CARDS = DATA.cards, DECKS = DATA.decks, SWAPS = DATA.swaps;
 const PICKS = {};            // id -> {pick, note}
+const OWNED = {};            // card id -> 1 when the owner marked it owned on this board
 let db = null, local = false;
 const F = {deck: "", vd: "", pk: ""};
 
@@ -201,6 +207,15 @@ function pips(cost){
 const VLAB = {upgrade: "Upgrade", sidegrade: "Sidegrade", spice: "Spice", standin: "Stand-in"};
 
 const SWAP_BY = Object.fromEntries(SWAPS.map(s => [s.id, s]));
+const BYCARDID = Object.fromEntries(Object.values(CARDS).map(c => [c.id, c]));
+/* Owned as far as this page knows: the repo's count, or the owner's mark on this board. */
+const marked = name => !!OWNED[(CARDS[name] || {}).id];
+const isOwned = name => ((CARDS[name] || {}).own > 0) || marked(name);
+function ownBtn(name){
+  const c = CARDS[name]; if (!c || c.own > 0) return "";
+  const on = marked(name);
+  return `<button type="button" class="ownbtn" data-own="${esc(c.id)}" aria-pressed="${on}" aria-label="${on ? "Unmark" : "Mark"} ${esc(c.n)} as owned">${on ? "Unmark" : "I own this"}</button>`;
+}
 const OPEN = new Set();      // decided pairs the owner reopened this visit
 const DLAB = {interaction: "Interaction", card_advantage: "Card advantage", protection: "Protection",
   avg_mv: "Avg MV", board_power: "Board power", early_drops: "Early drops", central_themes: "Themes"};
@@ -216,7 +231,9 @@ const folded = s => { const p = (PICKS[s.id] || {}).pick; return (p === "swap" |
 
 function side(name, role){
   const c = CARDS[name] || {n: name};
-  const own = c.own > 0 ? `<span class="own">Owned ×${c.own}</span>` : `<span class="own no">Not owned${role === "out" ? " — one less craft if replaced" : ""}</span>`;
+  const own = c.own > 0 ? `<span class="own">Owned ×${c.own}</span>`
+    : marked(name) ? `<span class="own marked">Marked owned</span>${ownBtn(name)}`
+    : `<span class="own no">Not owned${role === "out" ? " — one less craft if replaced" : ""}</span>${ownBtn(name)}`;
   const img = c.img ? `<button type="button" class="zoom" data-zoom="${esc(c.img)}" data-name="${esc(c.n)}" aria-label="Show ${esc(c.n)} full size"><img src="${esc(c.img)}" alt="" loading="lazy"></button>` : `<div class="noimg" aria-hidden="true"></div>`;
   return `<div class="side">${img}<div>
     <p class="role ${role}">${role === "in" ? "Swap in" : "Currently in the deck"}</p>
@@ -254,7 +271,7 @@ function pairHTML(s){
   const btn = (v, label) => `<button type="button" data-id="${s.id}" data-v="${v}" aria-pressed="${p.pick === v}">${label}</button>`;
   const opts = [`<option value="${esc(s.cut)}"${chosen ? "" : " selected"}>${esc(s.cut)} (suggested)</option>`]
     .concat((s.alts || []).length ? [`<optgroup label="Weakest fit in this deck">` + s.alts.map(a =>
-      `<option value="${esc(a)}"${a === cut ? " selected" : ""}>${esc(a)}${(CARDS[a] || {}).own > 0 ? "" : " (not owned)"}</option>`).join("") + `</optgroup>`] : []);
+      `<option value="${esc(a)}"${a === cut ? " selected" : ""}>${esc(a)}${isOwned(a) ? "" : " (not owned)"}</option>`).join("") + `</optgroup>`] : []);
   const decided = p.pick === "swap" || p.pick === "keep";
   return `<article class="pair" id="p-${s.id}" data-pick="${esc(p.pick || "")}">
     <div class="duel">${side(s.add, "in")}<div class="arrow"><span class="arw" aria-hidden="true">→</span><span class="vd ${s.verdict}">${VLAB[s.verdict]}</span></div>${side(cut, "out")}</div>
@@ -299,9 +316,10 @@ function render(){
 function tally(){
   const n = k => SWAPS.filter(s => (PICKS[s.id] || {}).pick === k).length;
   const open = SWAPS.length - n("swap") - n("maybe") - n("keep");
-  const crafts = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "swap" && !((CARDS[cutOf(s)] || {}).own > 0)).length;
+  const crafts = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "swap" && !isOwned(cutOf(s))).length;
+  const nOwned = Object.keys(OWNED).filter(k => OWNED[k]).length;
   document.getElementById("tally").innerHTML =
-    `<span><b>${SWAPS.length}</b> swaps in <b>${Object.keys(DECKS).length}</b> decks</span><span><b>${n("swap")}</b> to swap</span><span><b>${n("maybe")}</b> maybe</span><span><b>${n("keep")}</b> kept</span><span><b>${open}</b> undecided</span><span><b>${crafts}</b> craft${crafts === 1 ? "" : "s"} saved by your swaps</span>`;
+    `<span><b>${SWAPS.length}</b> swaps in <b>${Object.keys(DECKS).length}</b> decks</span><span><b>${n("swap")}</b> to swap</span><span><b>${n("maybe")}</b> maybe</span><span><b>${n("keep")}</b> kept</span><span><b>${open}</b> undecided</span><span><b>${crafts}</b> craft${crafts === 1 ? "" : "s"} saved by your swaps</span><span><b>${nOwned}</b> marked owned</span>`;
 }
 
 function filters(){
@@ -355,6 +373,7 @@ ZOOM.addEventListener("close", () => { if (zoomFrom && document.contains(zoomFro
 
 document.getElementById("list").addEventListener("click", e => {
   const z = e.target.closest("button.zoom"); if (z) { openZoom(z); return; }
+  const o = e.target.closest("button[data-own]"); if (o) { toggleOwned(o.dataset.own, o); return; }
   const u = e.target.closest("[data-unfold]");
   if (u) { OPEN.add(u.dataset.unfold); redraw(u.dataset.unfold, ".act .seg button"); return; }
   const f = e.target.closest("[data-fold]");
@@ -383,7 +402,11 @@ document.getElementById("copy").addEventListener("click", () => {
   Object.entries(byDeck).forEach(([d, ss]) => lines.push(`python3 scripts/deck.py swap ${d} --package ` + ss.map(s => `"${cutOf(s)}=${s.add}"`).join(" ")));
   const maybe = SWAPS.filter(s => (PICKS[s.id] || {}).pick === "maybe").map(s => `# maybe: deck ${s.deck} ${s.add} for ${cutOf(s)}`);
   const notes = SWAPS.filter(s => (PICKS[s.id] || {}).note).map(s => `# note (${s.deck} ${s.add}): ${PICKS[s.id].note}`);
-  const text = [...lines, ...maybe, ...notes].join("\n") || "# no swaps picked yet";
+  const owns = Object.keys(OWNED).filter(k => OWNED[k] && BYCARDID[k]).map(k => BYCARDID[k]);
+  const ownLines = owns.length ? ["# ownership — save these lines to a file, then /ingest (dry run first):",
+    ...owns.map(c => `1 ${c.n}` + (c.pr ? ` (${c.pr.split(" ")[0]}) ${c.pr.split(" ").slice(1).join(" ")}` : "   # no printing: add (SET) #")),
+    "#   python3 scripts/reconcile_crafts.py <file> --set-exact      # then --apply"] : [];
+  const text = [...lines, ...maybe, ...notes, ...ownLines].join("\n") || "# no swaps picked yet";
   const box = document.getElementById("copybox"); box.value = text; box.hidden = false;
   const btn = document.getElementById("copy");
   navigator.clipboard.writeText(text).then(() => { btn.textContent = "Copied"; setTimeout(() => btn.textContent = "Copy picks", 1600); })
@@ -410,17 +433,48 @@ function renderCrafts(){
     const img = k.img ? `<button type="button" class="zoom" data-zoom="${esc(k.img)}" data-name="${esc(k.n)}" aria-label="Show ${esc(k.n)} full size"><img src="${esc(k.img)}" alt="" loading="lazy"></button>` : `<div class="noimg" aria-hidden="true"></div>`;
     const decks = (c.decks || []).map(d => `<b>${esc(d)}</b>${DECKS[d] ? " " + esc(DECKS[d].name) : ""}`).join(" · ");
     const fbs = (c.fallbacks || []).map(f => { const p = pairOf(c.card, f); return p ? `<a href="#p-${esc(p.id)}">${esc(f)}</a>` : esc(f); });
-    return `<li class="craft"><span class="rk">${++rank}</span>${img}<div>
+    return `<li class="craft${marked(c.card) ? " got" : ""}"><span class="rk">${++rank}</span>${img}<div>
       <p class="cn">${esc(k.n)} ${pips(k.c)}<span class="rar ${esc(k.r || "")}">${({M: "Mythic", R: "Rare", U: "Uncommon", C: "Common"})[k.r] || "?"}</span></p>
       <p class="meta">${(c.decks || []).length > 1 ? "Decks" : "Deck"} ${decks}</p>
       <p class="cw">${esc(c.why || "")}</p>
-      <p class="fb">${fbs.length ? "Owned stand-in" + (fbs.length > 1 ? "s" : "") + ": " + fbs.join(", ") : "No owned stand-in."}</p></div></li>`;
+      <p class="fb">${fbs.length ? "Owned stand-in" + (fbs.length > 1 ? "s" : "") + ": " + fbs.join(", ") : "No owned stand-in."}</p>
+      ${marked(c.card) ? `<span class="own marked">Marked owned</span>` : ""}${ownBtn(c.card)}</div></li>`;
   };
-  const m = list.filter(c => (CARDS[c.card] || {}).r === "M").length, r = list.filter(c => (CARDS[c.card] || {}).r === "R").length;
-  box.innerHTML = `<summary>Craft order <small>${list.length} crafts · ${m} mythic, ${r} rare</small></summary>` +
+  const open = list.filter(c => !marked(c.card));
+  const m = open.filter(c => (CARDS[c.card] || {}).r === "M").length, r = open.filter(c => (CARDS[c.card] || {}).r === "R").length;
+  const got = list.length - open.length;
+  const wasOpen = box.hasAttribute("open") || !box.dataset.drawn;
+  box.innerHTML = `<summary>Craft order <small>${open.length} to craft · ${m} mythic, ${r} rare${got ? ` · ${got} marked owned` : ""}</small></summary>` +
     tiers.map(t => `<div class="tier"><h3>${esc(t.name)}</h3>${t.why ? `<p class="tierwhy">${esc(t.why)}</p>` : ""}<ol>${t.items.map(row).join("")}</ol></div>`).join("");
-  box.hidden = false;
-  box.addEventListener("click", e => { const z = e.target.closest("button.zoom"); if (z) openZoom(z); });
+  box.hidden = false; box.open = wasOpen; box.dataset.drawn = "1";
+}
+document.getElementById("crafts").addEventListener("click", e => {
+  const z = e.target.closest("button.zoom"); if (z) { openZoom(z); return; }
+  const o = e.target.closest("button[data-own]"); if (o) toggleOwned(o.dataset.own, o);
+});
+
+/* "I own this": a mark kept in the board's `owned` collection (doc id = card id), so Claude can
+   read it back and run it through /ingest. It changes what the page counts as a craft, never a
+   deck file or the repo's collection. */
+function toggleOwned(id, from){
+  if (OWNED[id]) delete OWNED[id]; else OWNED[id] = 1;
+  const pair = from && from.closest("article.pair");
+  renderCrafts(); render();
+  // Keep focus on the toggle that was pressed: the same card can show in the craft list and in pairs.
+  const scope = (pair && document.getElementById(pair.id)) || document.getElementById("crafts");
+  const el = scope.querySelector(`button[data-own="${CSS.escape(id)}"]`); if (el) el.focus();
+  saveOwned(id);
+}
+function saveOwned(id){
+  if (!db) { try { localStorage.setItem("pack-swaps-owned", JSON.stringify(OWNED)); } catch (e) {} return; }
+  const key = "owned/" + id;
+  CHAIN[key] = (CHAIN[key] || Promise.resolve()).then(async () => {
+    const ref = db.collection("owned").doc(id), body = {own: OWNED[id] ? 1 : 0, name: (BYCARDID[id] || {}).n || id};
+    try {
+      if (EXISTS.has(key)) { try { await ref.update(body); } catch (e) { await ref.set(body); } }
+      else { await ref.set(body); EXISTS.add(key); }
+    } catch (e) { setStore("Your ownership mark could not be saved: " + (e && e.message || e) + ". It is kept on this page until you reload.", true); }
+  });
 }
 
 document.getElementById("title").textContent = DATA.title;
@@ -429,8 +483,20 @@ filters(); renderCrafts(); render();
 
 (async () => {
   try { const u = JSON.parse(localStorage.getItem("pack-swaps") || "{}"); Object.assign(PICKS, u); } catch (e) {}
+  try { const o = JSON.parse(localStorage.getItem("pack-swaps-owned") || "{}"); Object.assign(OWNED, o); } catch (e) {}
   db = window.claude && window.claude.use ? await window.claude.use("db") : null;
-  if (!db) { local = true; setStore("Picks are kept in this browser only. Use Copy picks to send them to Claude."); render(); return; }
+  if (!db) { local = true; setStore("Picks are kept in this browser only. Use Copy picks to send them to Claude."); renderCrafts(); render(); return; }
+  db.collection("owned").onSnapshot(snap => {
+    let changed = false;
+    snap.docs.forEach(d => {
+      const v = d.data(); if (!v) return;
+      EXISTS.add("owned/" + d.id);
+      const want = v.own ? 1 : 0;
+      if (want !== (OWNED[d.id] ? 1 : 0)) { if (want) OWNED[d.id] = 1; else delete OWNED[d.id]; changed = true; }
+    });
+    // Another view changed a mark: redraw, unless the owner is typing a note here.
+    if (changed && !(document.activeElement && document.activeElement.matches("input.note"))) { renderCrafts(); render(); }
+  }, () => {});
   const timer = setTimeout(() => setStore("Your saved picks can't be reached yet; new picks are kept on this page.", true), 10000);
   let first = true;
   db.collection("swaps").onSnapshot(snap => {

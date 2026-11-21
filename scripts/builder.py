@@ -1819,6 +1819,7 @@ def swap_board_data(slug):
     # The shared, front-face-aliased loaders (G-63): keys are LOWERCASED names.
     pool, mana = D.load_card_data(), D.load_mana()
     rar = D.load_rarities()
+    printing = _printings()
     _, _, byq = D.load_collection()
     decks, cards, problems, ranked, before = {}, {}, [], {}, {}
 
@@ -1833,7 +1834,9 @@ def swap_board_data(slug):
         cards[n] = {"n": r.get("name") or n, "c": (mana.get(n.lower()) or ("", 0))[0],
                     "t": r.get("type", ""), "o": r.get("text", ""),
                     "own": have if found else 0, "id": image_slug(n),
-                    "r": (rar.get(n.lower()) or rar.get(n.split(" // ")[0].lower()) or "")[:1]}
+                    "r": (rar.get(n.lower()) or rar.get(n.split(" // ")[0].lower()) or "")[:1],
+                    # the printing an "I own this" mark names in its /ingest line
+                    "pr": printing.get(n.lower()) or printing.get(n.split(" // ")[0].lower()) or ""}
         return True
 
     swaps = []
