@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batches 1–4 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: IN PROGRESS — batches 1–5 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -206,6 +206,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 118 | Rosa, Resolute White Mage | ◇ | A counter and lifelink each combat. |
 | 119 | Sigiled Contender | ✗ | Vanilla 4-drop. |
 | 120 | The Wind Crystal | △ | Lifegain doubler. |
+
+### Batch 5 (cards 121–150)
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 121 | Teyo, Aegis Adept | △ | Off-plan walker. |
+| 122 | The Wandering Emperor | ★★ | Flash; −2 exiles a tapped creature, +1 a counter and first strike, −1 a token (F6). |
+| 123 | Archangel of Thune | ◇ | Lifegain engine; ★ in a lifegain build (F5). |
+| 124 | Bond of Discipline | ★ | Taps their whole board: every attacker unblocked, so every sneak is live — the five-Ninja finishing turn. |
+| 125 | Captain America, Steve Rogers | ◇ | Counter and indestructible on an attacker. |
+| 126 | Boon-Bringer Valkyrie | ◇ | Flier; backup hands a Ninja flying for the turn. |
+| 127 | Doctor Strange, Surgeon | △ | Lifegain doubler. |
+| 128 | Exalted Sunborn | ★★ | Token DOUBLER: two Ninjas per commander hit, six from Last Ronin's Technique (F1); Warp {1}{W} for the big turn. |
+| 129 | Moogles' Valor | ◇ | Lifelink tokens plus team indestructible. |
+| 130 | Shepherd of Heroes | △ | Party lifegain. |
+| 131 | Tale of Tinúviel | ◇ | Protection then reanimation. |
+| 132 | Inspiring Commander | ★ | A card for every small creature entering (tokens, sneak re-entries), no once-a-turn cap; 6 mana. |
+| 133 | Loxodon Lifechanter | △ | Life-total reset. |
+| 134 | Righteous Fury | ◇ | Kills tapped creatures — theirs after they attack. |
+| 135 | Federation Outpost | ◇ | Mono-W land. |
+| 136 | Toxin Analysis | ◇ | Cheap trick plus a Clue. |
+| 137 | Tymaret, Chosen from Death | △ | Graveyard hate; fights Karai and Leonardo's recursion (G-42). |
+| 138 | Black Market Connections | ★★ | Card, Treasure or a CHANGELING token each turn — a changeling is a Ninja (F1). |
+| 139 | Madame Null, Power Broker | ◇ | Counters for life on each creature entering. |
+| 140 | My Precious // Allure of Power | ★★ | Equip → hexproof and CAN'T BE BLOCKED: a guaranteed unblocked attacker for sneak every turn (F2b), or a protected commander. |
+| 141 | Nadier's Nightblade | ◇ | Drain when tokens leave. |
+| 142 | Origin of Black Widow | ★ | Edict, team deathtouch, drain. |
+| 143 | Sanctum Lurker | △ | Planeswalker support. |
+| 144 | Yathan Tombguard | ◇ | Menace; a card when a countered creature connects. |
+| 145 | Withering Curse | ✗ | −2/−2 to all kills most of this deck's own Ninjas. |
+| 146 | Barbed Servitor | ★ | Indestructible menace attacker that draws on a hit (F2b, F3). |
+| 147 | Doctor Doom, Unrivaled | ★ | A card a turn on a 4/4 lifelinker. |
+| 148 | Enduring Tenacity | ◇ | Lifegain drain (F5). |
+| 149 | Eradicator Valkyrie | ★ | Flying lifelink 4/3; boast edict (sacrifice a token, not a Ninja card). |
+| 150 | Erebos, Bleak-Hearted | ◇ | Cards on deaths; aristocrats. |
 
 ## 5. Consolidated plan (live)
 
