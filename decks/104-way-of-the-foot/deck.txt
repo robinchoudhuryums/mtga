@@ -46,13 +46,11 @@
 1 Leonardo, Cutting Edge (TMT) 15
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Leonardo, Sewer Samurai (TMT) 17
-1 Yathan Tombguard (TDM) 100
 1 Splinter, Hamato Yoshi (TMT) 79
 1 Splinter, the Mentor (TMC) 3
 1 Super Shredder (TMT) 83
 1 Undead Hand Ninja (MSC) 670
 1 Swarm Saboteur (YNEO) 13
-1 Indulging Patrician (M21) 219
 1 Nashi, Moon Sage's Scion (NEO) 114
 1 Shark Shredder, Killer Clone (TMT) 73
 1 Shredder, Unrelenting (TMT) 74
@@ -79,6 +77,8 @@
 1 My Precious (HOB) 176
 1 Ninja Teen (TMT) 67
 1 Envoy of the Ancestors (MH3) 23
+1 Yathan Tombguard (TDM) 100
+1 Indulging Patrician (M21) 219
 
 # Combat-damage payoffs and card flow
 1 Black Widow, Deadly Hunter (MSC) 648
