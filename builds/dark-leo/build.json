@@ -893,6 +893,16 @@
    "name": "Replicator",
    "pile": "D",
    "src": "added"
+  },
+  {
+   "name": "Shambling Vent",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Restless Fortress",
+   "pile": "D",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2113,6 +2123,20 @@
    "graded_at": {
     "104": "cafe501e0663"
    }
+  },
+  "Shambling Vent": {
+   "group": "In: Lands",
+   "text": "W/B creature land (in for a Swamp): {1}{W}{B} makes it a 2/3 lifelink — a lifegain trigger late. Enters tapped; tempo-neutral by the 2026-11-21 land check.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Restless Fortress": {
+   "group": "Bench: lifegain/counters",
+   "text": "W/B creature land; each attack drains 2 and gains 2, which Tenacity, Vito, Thorn and Crusher multiply. Enters tapped. Flex line: −Swamp.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
   }
  },
  "snapshots": {
@@ -2420,6 +2444,90 @@
     "Rosa, Resolute White Mage",
     "Ruthless Lawbringer",
     "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "4df3285531bd": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
     "Shark Shredder, Killer Clone",
     "Shattered Sanctum",
     "Sheltered by Ghosts",
@@ -3493,6 +3601,18 @@
    "D": {
     "m": "★★",
     "graded_at": "cafe501e0663"
+   }
+  },
+  "Shambling Vent": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Restless Fortress": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
    }
   }
  }

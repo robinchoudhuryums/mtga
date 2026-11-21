@@ -684,6 +684,7 @@
  "Quintessential Katana": [],
  "Render Speechless": [],
  "Replicator": [],
+ "Restless Fortress": [],
  "Rev, Tithe Extractor": [],
  "Revel in Riches": [],
  "Righteous Fury": [],
@@ -720,6 +721,32 @@
   }
  ],
  "Shaile, Dean of Radiance // Embrose, Dean of Shadow": [],
+ "Shambling Vent": [
+  {
+   "a": "Jung Park",
+   "art": "https://cards.scryfall.io/art_crop/front/c/d/cda2de1b-56da-4ee3-9cd6-18c639cc9173.jpg?1783908277",
+   "cn": "275",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/d/cda2de1b-56da-4ee3-9cd6-18c639cc9173.jpg?1783908277",
+   "r": "R",
+   "set": "PIO",
+   "sn": "Pioneer Masters",
+   "y": "2024"
+  },
+  {
+   "a": "Mark Poole",
+   "art": "https://cards.scryfall.io/art_crop/front/7/f/7f39bc7a-129e-4d52-8024-396c06906a45.jpg?1783905852",
+   "cn": "38",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/f/7f39bc7a-129e-4d52-8024-396c06906a45.jpg?1783905852",
+   "r": "R",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  }
+ ],
  "Shark Shredder, Killer Clone": [
   {
    "a": "Nicholas Gregory",

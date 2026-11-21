@@ -420,3 +420,4 @@ off nearly every token and sneak entry. Baron is the first real Treasure payoff 
   in the pool enters tapped, so adding duals raises colour access (87.9% → 89–90%) but the as-built
   figure stays flat (58.7% now; 58.0–58.5% with 2–4 more duals, inside the ±0.8 noise). No fix needed;
   optional: −2 Swamp +Restless Fortress +Shambling Vent (creature lands, W 24 → 26, tempo-neutral).
+- **Land swap applied 2026-11-21:** −1 Swamp +Shambling Vent (W 25 / B 26; as-built 58.7%, unchanged); Restless Fortress parked as a `#~` flex line.

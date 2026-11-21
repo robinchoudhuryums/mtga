@@ -133,7 +133,8 @@
 1 Prismatic Vista (SPG) 38
 9 Plains (TRK) 317
 1 Federation Outpost (TRK) 282
-12 Swamp (TRK) 321
+11 Swamp (TRK) 321
+1 Shambling Vent (EOS) 38
 
 #~ +Ayli, Eternal Pilgrim | BENCH (builder dark-leo): benched on the board
 #~ +Belladonna Took | BENCH (builder dark-leo): benched on the board
@@ -164,3 +165,4 @@
 #~ +Ruthless Technomancer | BENCH (builder dark-leo): benched on the board
 #~ +Vito, Fanatic of Aclazotz | BENCH (builder dark-leo): benched on the board
 #~ +Vraska, Scheming Gorgon | BENCH (builder dark-leo): benched on the board
+#~ +Restless Fortress | −Swamp: creature land, attacks drain 2 and gain 2 (Tenacity/Vito, Thorn/Crusher multiply it); tapped, so tempo-neutral at best (2026-11-21 land check)
