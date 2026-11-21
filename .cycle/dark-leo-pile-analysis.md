@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batches 1–2 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: IN PROGRESS — batches 1–3 of 6 graded.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -51,6 +51,10 @@ player loses half their life.
   Ronin's Technique {1}{W}; Karai's Technique {W}{B}). Menace is the main evasion (Splinter ×2,
   Super Shredder, Killian, Syr Vondam, Ninja Teen level 2). Two half-life sources (commander at 5
   Ninjas; Shredder, Shadow Master alone).
+- Batch 3: the commander's DEATHTOUCH grant is a second key — White Widow and Black Widow, Deadly
+  Hunter read "a creature you control with deathtouch deals combat damage", which every attacking
+  Ninja does. The lone-attacker cards (Black Widow, Double Agent; Squall) fit the one-attacker
+  sneak setup. Lifegain keeps appearing as a secondary (Wispdrinker, Niv-Mizzet, Sorin ×2).
 
 - Batch 1: the lifegain variant signal is already visible (Leonardo, Cutting Edge; Ayli; Elenda,
   Saint of Dusk; Vona, Butcher of Magan all read "your life total"). Watch whether it overlaps
@@ -129,6 +133,41 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 58 | Black Widow, Double Agent | ★ | A lone attacker gets first strike and menace — the one-attacker sneak setup (F2b); deathtouch. |
 | 59 | Cloak and Dagger, Entwined | ★★ | Deathtouch lifelink; enters → exile a card from hand or a creature; sneak returns re-buy it (F2c). |
 | 60 | Indulging Patrician | ◇ | Flying lifelink 1/4; ★ in a lifegain build. |
+
+### Batch 3 (cards 61–90)
+
+| # | Card | Verdict | Note |
+|---|------|---------|------|
+| 61 | Kambal, Profiteering Mayor | ◇ | Drains 1 when your tokens enter (commander Ninjas, Last Ronin's Technique); copies their tokens. |
+| 62 | Kambal, Consul of Allocation | ◇ | Taxes their noncreature spells; a hate card. |
+| 63 | Tymna the Weaver | ★ | A card a turn after combat damage (F3); in 1v1 that is pay 1, draw 1. |
+| 64 | Basilica Bell-Haunt | △ | {W}{W}{B}{B} for a discard and 3 life. |
+| 65 | Kaya's Wrath | △ | A sweeper in an attacking deck; emergency only. |
+| 66 | Render Speechless | △ | Sorcery hand attack plus counters. |
+| 67 | Sorin, Solemn Visitor | ◇ | Team +1/+0 lifelink, or a 2/2 flier (an enabler). |
+| 68 | Silverquill, the Disputant | ◇ | Flying 4/4; casualty copies Karai's Technique and the removal — but the sacrifice costs a Ninja (F1). |
+| 69 | Sorin, Vengeful Bloodlord | ◇ | Lifelink on your turn; −X reanimates. |
+| 70 | Squall, SeeD Mercenary | ★ | A lone attacker gets double strike (two hits, F3); a hit returns a ≤3 MV permanent. |
+| 71 | Teysa Karlov | ◇ | Doubles death triggers; aristocrats (F5). |
+| 72 | Vito, Fanatic of Aclazotz | △ | Sacrifice payoff; fights F1. |
+| 73 | Wispdrinker Vampire | ★ | Flier; drains on every small creature entering — most Ninjas, every sneak re-entry, every token. |
+| 74 | Arvad the Cursed | ★ | Legends +2/+2: 12 of the 17 Ninjas are legendary, plus the commander. |
+| 75 | Closing Statement | ★★ | Instant creature/planeswalker kill, cheaper at your end step (F6). |
+| 76 | Syr Vondam, the Lucent | ◇ | Team deathtouch and +1/+0 on entry and attack; attacking Ninjas already have deathtouch. |
+| 77 | Athreos, Shroud-Veiled | ◇ | Slow coin-counter recursion. |
+| 78 | Niv-Mizzet, Ghost Counsel | ◇ | Lifegain draw engine (F5). |
+| 79 | Blot Out the Sky | ★★ | X flying 2/1s: a wave of evasive attackers for sneaks (F2b); X ≥ 6 is a one-sided noncreature wipe. |
+| 80 | Bleachbone Verge | ★★ | Untapped dual (gated W). |
+| 81 | Cardassia Prime | ◇ | Tapland, 1 life. |
+| 82 | Foot Headquarters | ◇ | Tapland, 1 life. |
+| 83 | Fisk Tower | ◇ | Tapland, 1 life. |
+| 84 | Godless Shrine | ★★★ | Untapped dual. |
+| 85 | Great Hall of Starnheim | △ | Tapped, mono-B, sacrifice for an Angel. |
+| 86 | Meticulous Commons | ◇ | Untapped only with a planeswalker out. |
+| 87 | Shattered Sanctum | ★★ | Untapped from turn 3. |
+| 88 | Temple of Silence | ★ | Tapped, scry 1. |
+| 89 | White Widow, Yelena Belova | ★★ | Every deathtouch creature that connects grows — and attacking Ninjas all have deathtouch. |
+| 90 | Black Widow, Deadly Hunter | ★★★ | A card per deathtouch creature that connects: under the commander, every Ninja hit draws (F3). |
 
 ## 5. Consolidated plan (live)
 
