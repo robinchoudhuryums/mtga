@@ -1,6 +1,6 @@
 # Dark Leo & Shredder pile — analysis (TEMPORARY working doc)
 
-**Status: DRAFTED as deck 104 (Way of the Foot), 2026-11-21. The bench is the Builder board `builds/dark-leo` (https://claude.ai/artifact/NczS8xwUj3r6qX63Y6esve); delete this doc once the owner's board picks land and the findings are folded into deck 104's `#: notes:`.** For a NEW Orzhov Historic Brawl deck. Delete once the
+**Status: DRAFTED as deck 104 (Way of the Foot), 2026-11-21; board round 2 APPLIED (14 swaps, §6b) the same day. The bench is the Builder board `builds/dark-leo` (https://claude.ai/artifact/NczS8xwUj3r6qX63Y6esve); delete this doc once the owner's board picks land and the findings are folded into deck 104's `#: notes:`.** For a NEW Orzhov Historic Brawl deck. Delete once the
 deck is drafted and these findings are folded into its `#: notes:` block. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -393,3 +393,7 @@ payoffs · board power 121 (was 109) · avg MV 3.34 (3.27) · early drops 18 (19
 
 All 101 pile cards outside the deck were re-graded on the board under the new criteria
 (groups: Hybrid plan: add · Bench: lifegain/counters · Bench: aristocrats/Treasure · Off-plan).
+- **Applied 2026-11-21** with two changes from the plan above: Oath of Kaya and Golden Sidekick were
+  KEPT (owner), so Vona, Butcher of Magan and Starseer Mentor went to the bench instead of in. Live:
+  floor A · interaction 15 · card advantage 9 · board power 115 · avg MV 3.27 · early drops 19.
+  Light of Promise (not added) and Cloak and Dagger (kept) were settled in chat and cleared on the board.

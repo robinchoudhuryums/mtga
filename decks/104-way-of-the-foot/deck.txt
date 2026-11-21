@@ -14,15 +14,25 @@
 #: archetype: Returning a creature re-buys its enters trigger (Ruthless Lawbringer, Vona de Iedo, Cloak and
 #: archetype: Dagger, Turncoat Kunoichi). Every connection draws: Black Widow, Deadly Hunter and White Widow read
 #: archetype: "a creature with deathtouch", which every attacking Ninja is. Second finisher: Shredder, Shadow
-#: archetype: Master takes half their life on its own hit. Lifegain is incidental. Deck 20 (Honor Among Thieves)
-#: archetype: is the 60-card Standard Orzhov Ninja deck and shares 14 cards; its engine is The Kingpin of Crime's
+#: archetype: Master takes half their life on its own hit. SECONDARY LAYER (2026-11-21): lifegain and +1/+1
+#: archetype: counters riding the same attacks. Lifelink is everywhere (Sorin, Vengeful Bloodlord gives it to the
+#: archetype: whole team on your turn; Teysa to tokens; Envoy to every modified creature, and Quintessential
+#: archetype: Katana attaches itself to each entering Ninja), and the payoffs turn it into counters, cards and
+#: archetype: drain: Archangel of Thune, Dr. Beverly Crusher, Exemplar of Light, Niv-Mizzet, Indulging Patrician,
+#: archetype: Elas il-Kor, The Wind Crystal. Rosa and Leader's Talent add counters each combat, and Yathan
+#: archetype: Tombguard draws off every countered attacker. Sneak returns a creature WITHOUT its counters or
+#: archetype: Aura, so counters and Sheltered by Ghosts go on creatures that stay in play. Deck 20 (Honor Among
+#: archetype: Thieves) is the 60-card Standard Orzhov Ninja deck; its engine is The Kingpin of Crime's
 #: archetype: lifegain-drain, this one's is the Ninja count and the commander's half-life hit.
 #: protect: Dark Leo & Shredder; Black Widow, Deadly Hunter; White Widow, Yelena Belova; Ninja Teen; Exalted Sunborn; Black Market Connections; My Precious; Splinter, Hamato Yoshi; The Last Ronin's Technique
 #: notes: DRAFTED 2026-11-21 from the owner's 172-card pile (.cycle/dark-leo-pile-analysis.md: framework F1-F7,
 #: notes: six batch verdict tables, the consolidated plan). Ownership is information only; the list is the optimal
-#: notes: one from the pile. Left out on purpose: the pile's lifegain cluster (Archangel of Thune, Elenda, Saint of
-#: notes: Dusk, Vona, Butcher of Magan, Enduring Tenacity) and aristocrats cluster (Teysa, Elas il-Kor, Blood Money)
-#: notes: — neither makes a Ninja or reads combat damage; each is a separate deck if wanted. The bench lives on the
+#: notes: one from the pile. Board round 2 (2026-11-21) added the lifegain/counters layer: 14 swaps, measured
+#: notes: floor A, interaction 20 -> 15 (A needs 12 at 100), card advantage 9 (Tymna and Doctor Doom out, Yathan,
+#: notes: Exemplar and Niv-Mizzet in), board power 109 -> 115. Aristocrats and Treasure were left out on purpose:
+#: notes: sacrifices eat the Ninjas the commander counts, sneak sends creatures to hand rather than the
+#: notes: graveyard, and nothing spends Treasure. Next in if a slot opens: Vona, Butcher of Magan; Starseer
+#: notes: Mentor; Sorin, Solemn Visitor; Sally Pride; Enduring Tenacity. The bench lives on the
 #: notes: Builder board builds/dark-leo. `deck.py targets` flags Black Widow, Double Agent and Squall as
 #: notes: attacks-alone cards in a go-wide deck; they are kept for the one-evasive-attacker sneak setup, and
 #: notes: are the first place to look if the deck plays wide more often than it sneaks.
@@ -36,13 +46,13 @@
 1 Leonardo, Cutting Edge (TMT) 15
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Leonardo, Sewer Samurai (TMT) 17
-1 Dokuchi Silencer (NEO) 95
+1 Yathan Tombguard (TDM) 100
 1 Splinter, Hamato Yoshi (TMT) 79
 1 Splinter, the Mentor (TMC) 3
 1 Super Shredder (TMT) 83
 1 Undead Hand Ninja (MSC) 670
 1 Swarm Saboteur (YNEO) 13
-1 Biting-Palm Ninja (NEO) 88
+1 Indulging Patrician (M21) 219
 1 Nashi, Moon Sage's Scion (NEO) 114
 1 Shark Shredder, Killer Clone (TMT) 73
 1 Shredder, Unrelenting (TMT) 74
@@ -65,25 +75,29 @@
 1 Falcon, Joaquin Torres (MSC) 593
 1 Black Widow, Double Agent (MSH) 208
 1 Barbed Servitor (MKM) 77
-1 Wispdrinker Vampire (MKM) 243
+1 Elas il-Kor, Sadistic Pilgrim (DMU) 198
 1 My Precious (HOB) 176
 1 Ninja Teen (TMT) 67
-1 Blot Out the Sky (STX) 167
+1 Envoy of the Ancestors (MH3) 23
 
 # Combat-damage payoffs and card flow
 1 Black Widow, Deadly Hunter (MSC) 648
 1 White Widow, Yelena Belova (MSC) 676
 1 Enduring Innocence (DSK) 6
-1 Tymna the Weaver (FCA) 18
+1 Exemplar of Light (FDN) 733
 1 Rev, Tithe Extractor (J25) 45
 1 Grim Hireling (HBG) 158
 1 Squall, SeeD Mercenary (FIN) 243
 1 Lurrus of the Dream-Den (IKO) 226
 1 Quintessential Katana (TMT) 23
-1 Arvad the Cursed (DOM) 191
-1 Doctor Doom, Unrivaled (MSC) 654
-1 Inspiring Commander (OANA) 4
+1 Teysa Karlov (RNA) 212
+1 Niv-Mizzet, Ghost Counsel (FRC) 10
+1 Archangel of Thune (MAR) 41
 1 Eradicator Valkyrie (KHM) 94
+1 Leader's Talent (TMT) 13
+1 Rosa, Resolute White Mage (FIN) 555
+1 The Wind Crystal (FIN) 43
+1 Dr. Beverly Crusher (TRK) 13
 
 # Interaction
 1 Despark (WAR) 190
@@ -95,13 +109,9 @@
 1 Ruthless Lawbringer (OTJ) 229
 1 Vona de Iedo, the Antifex (YOTJ) 28
 1 Cloak and Dagger, Entwined (MSH) 211
-1 Fracture (STX) 188
 1 Kaya the Inexorable (KHM) 218
 1 Oath of Kaya (WAR) 209
-1 Finale of Eternity (WAR) 91
-1 Vraska, Scheming Gorgon (RIX) 197
-1 Origin of Black Widow (MSC) 664
-1 Bond of Discipline (WAR) 6
+1 Sorin, Vengeful Bloodlord (WAR) 217
 
 # Lands
 1 Godless Shrine (EOE) 254
@@ -118,5 +128,32 @@
 1 Concealed Courtyard (OTJ) 268
 1 Isolated Chapel (DOM) 241
 1 Prismatic Vista (SPG) 38
-10 Plains (TRK) 317
+9 Plains (TRK) 317
+1 Federation Outpost (TRK) 282
 12 Swamp (TRK) 321
+
+#~ +Ayli, Eternal Pilgrim | BENCH (builder dark-leo): benched on the board
+#~ +Baron Bertram Graywater | BENCH (builder dark-leo): benched on the board
+#~ +Belladonna Took | BENCH (builder dark-leo): benched on the board
+#~ +Captain America, Steve Rogers | BENCH (builder dark-leo): benched on the board
+#~ +Deadly Dispute | BENCH (builder dark-leo): benched on the board
+#~ +Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight | BENCH (builder dark-leo): benched on the board
+#~ +Enduring Tenacity | BENCH (builder dark-leo): benched on the board
+#~ +Griffin Aerie | BENCH (builder dark-leo): benched on the board
+#~ +Kaya, Geist Hunter | BENCH (builder dark-leo): benched on the board
+#~ +Kingpin, Wilson Fisk | BENCH (builder dark-leo): benched on the board
+#~ +Madame Null, Power Broker | BENCH (builder dark-leo): benched on the board
+#~ +Metropolis Reformer | BENCH (builder dark-leo): benched on the board
+#~ +MJ, Rising Star | BENCH (builder dark-leo): benched on the board
+#~ +Moogles' Valor | BENCH (builder dark-leo): benched on the board
+#~ +Primevals' Glorious Rebirth | BENCH (builder dark-leo): benched on the board
+#~ +Sanctum Lurker | BENCH (builder dark-leo): benched on the board
+#~ +Smothering Tithe | BENCH (builder dark-leo): benched on the board
+#~ +Sorin, Solemn Visitor | BENCH (builder dark-leo): benched on the board
+#~ +Starseer Mentor | BENCH (builder dark-leo): benched on the board
+#~ +Teyo, Aegis Adept | BENCH (builder dark-leo): benched on the board
+#~ +The Kingpin of Crime | BENCH (builder dark-leo): benched on the board
+#~ +Tymaret, Chosen from Death | BENCH (builder dark-leo): benched on the board
+#~ +Veko, Death's Doorkeeper | BENCH (builder dark-leo): benched on the board
+#~ +Vona, Butcher of Magan | BENCH (builder dark-leo): benched on the board
+#~ +Vraska, Betrayal's Sting | BENCH (builder dark-leo): benched on the board

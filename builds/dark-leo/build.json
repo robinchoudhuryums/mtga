@@ -915,10 +915,10 @@
    }
   },
   "Elas il-Kor, Sadistic Pilgrim": {
-   "group": "Hybrid plan: add",
-   "text": "2-drop deathtouch; \"another creature you control enters, you gain 1\" fires on every sneak/ninjutsu entry and token; deaths drain.",
+   "group": "In: Lifegain and counters",
+   "text": "2-drop deathtouch; every sneak entry and token gains 1; deaths drain.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Hardened Tactician": {
@@ -1013,10 +1013,10 @@
    }
   },
   "Starseer Mentor": {
-   "group": "Hybrid plan: add",
-   "text": "Flier; \"if you gained or lost life this turn, target opponent loses 3 unless they sacrifice … or discard\" — near-free every turn in this list. 5 mana.",
+   "group": "Bench: lifegain/counters",
+   "text": "Flier; end-step drain 3 unless they sacrifice or discard. Benched in round 2 — Patrician and Elas cover the drain cheaper.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Spirit-Sister's Call": {
@@ -1027,10 +1027,10 @@
    }
   },
   "Vona, Butcher of Magan": {
-   "group": "Hybrid plan: add",
-   "text": "Vigilance lifelink 4/4; \"{T}, Pay 7 life: Destroy target nonland permanent\" each turn — the lifegain plan pays for repeatable removal.",
+   "group": "Bench: lifegain/counters",
+   "text": "Lifelink 4/4; \"Pay 7 life: Destroy target nonland permanent\" each turn. Benched in round 2 to keep Oath of Kaya; first in for a removal slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Vona de Iedo, the Antifex": {
@@ -1111,10 +1111,10 @@
    }
   },
   "Dokuchi Silencer": {
-   "group": "In: Ninjas",
-   "text": "Ninjutsu {1}{B}; a hit discards a creature card (recursion fodder) to destroy a creature or planeswalker.",
+   "group": "Cut in round 2",
+   "text": "Its removal needs a hit AND a creature discard — too narrow (owner).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Splinter, Hamato Yoshi": {
@@ -1153,10 +1153,10 @@
    }
   },
   "Biting-Palm Ninja": {
-   "group": "In: Ninjas",
-   "text": "Ninjutsu {2}{B}, menace; a hit exiles their best nonland card.",
+   "group": "Cut in round 2",
+   "text": "3-mana ninjutsu for one hand exile on a hit; owner's cut.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Ninja's Blades": {
@@ -1209,10 +1209,10 @@
    }
   },
   "Fracture": {
-   "group": "In: Interaction",
-   "text": "Instant: artifact, enchantment or planeswalker.",
+   "group": "Cut in round 2",
+   "text": "Noncreature-only removal; interaction stayed at 15.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Fleshtaker": {
@@ -1286,10 +1286,10 @@
    }
   },
   "Indulging Patrician": {
-   "group": "Hybrid plan: add",
-   "text": "3-mana flying lifelink (a sneak enabler) and \"gained 3 or more life this turn, each opponent loses 3\" — reach on top of the half-life hit.",
+   "group": "In: Lifegain and counters",
+   "text": "3-mana flying lifelink (a sneak enabler); 3 life in a turn drains 3.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Kambal, Profiteering Mayor": {
@@ -1307,10 +1307,10 @@
    }
   },
   "Tymna the Weaver": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "A card a turn after combat damage; in 1v1 that is pay 1, draw 1.",
+   "group": "Cut in round 2",
+   "text": "Card advantage capped at one a turn in 1v1 (owner); Exemplar and Yathan replace it.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Basilica Bell-Haunt": {
@@ -1349,10 +1349,10 @@
    }
   },
   "Sorin, Vengeful Bloodlord": {
-   "group": "Hybrid plan: add",
+   "group": "In: Lifegain and counters",
    "text": "\"During your turn, creatures … you control have lifelink\": every attacking Ninja becomes a lifegain trigger. The bridge card; −X reanimates.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Squall, SeeD Mercenary": {
@@ -1363,10 +1363,10 @@
    }
   },
   "Teysa Karlov": {
-   "group": "Hybrid plan: add",
-   "text": "\"Creature tokens you control have vigilance and lifelink\": the commander's Ninja tokens, Turtles and Sunborn's doubled tokens all gain life. Death doubling is minor here.",
+   "group": "In: Lifegain and counters",
+   "text": "\"Creature tokens you control have vigilance and lifelink\": Ninja tokens, Turtles and Sunborn's doubled tokens gain life.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Vito, Fanatic of Aclazotz": {
@@ -1377,17 +1377,17 @@
    }
   },
   "Wispdrinker Vampire": {
-   "group": "In: Evasive enablers",
-   "text": "Flier; drains on every small creature entering — most Ninjas, every sneak re-entry, every token.",
+   "group": "Cut in round 2",
+   "text": "Its drain on small creatures entering is Elas's job at half the cost.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Arvad the Cursed": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "Legends +2/+2: 12 of the 17 Ninjas are legendary, plus the commander.",
+   "group": "Cut in round 2",
+   "text": "5-mana legend anthem; Teysa took the slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Closing Statement": {
@@ -1412,17 +1412,17 @@
    }
   },
   "Niv-Mizzet, Ghost Counsel": {
-   "group": "Hybrid plan: add",
-   "text": "\"Whenever you gain life, you may pay that much life. If you do, draw that many\" — the card-advantage engine that replaces Tymna/Doom. WWBB: 67% on turn 5, a late card.",
+   "group": "In: Lifegain and counters",
+   "text": "Pay the life you gain to draw that many. WWBB: 67% on turn 5, a late card.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Blot Out the Sky": {
-   "group": "In: Evasive enablers",
-   "text": "X flying 2/1s: a wave of evasive attackers for sneaks; X ≥ 6 is a one-sided noncreature wipe.",
+   "group": "Cut in round 2",
+   "text": "X Inklings; its wipe needs X ≥ 6.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Bleachbone Verge": {
@@ -1566,10 +1566,10 @@
    }
   },
   "Leader's Talent": {
-   "group": "Hybrid plan: add",
-   "text": "\"Whenever you attack, +1/+1 counter on target attacking creature\" — counters for Envoy/Yathan; level 3 counters the team per spell.",
+   "group": "In: Lifegain and counters",
+   "text": "A counter on an attacker every attack; level 3 counters the team per spell.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Selfless Samurai": {
@@ -1594,17 +1594,17 @@
    }
   },
   "Dr. Beverly Crusher": {
-   "group": "Hybrid plan: add",
-   "text": "Lifegain-triggered abilities trigger twice: Archangel, Exemplar, Patrician, Leonardo, Starseer, Niv-Mizzet.",
+   "group": "In: Lifegain and counters",
+   "text": "Lifegain triggers fire twice: Archangel, Exemplar, Patrician, Leonardo, Niv-Mizzet.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Envoy of the Ancestors": {
-   "group": "Hybrid plan: add",
-   "text": "\"Modified creatures you control have lifelink\" — permanent, and Equipment counts: Katana auto-attaches to entering Ninjas, plus Ninja's Blades, My Precious and every counter.",
+   "group": "In: Lifegain and counters",
+   "text": "\"Modified creatures you control have lifelink\" — permanent; Katana attaches to every entering Ninja, and counters count.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Enduring Innocence": {
@@ -1678,17 +1678,17 @@
    }
   },
   "Exemplar of Light": {
-   "group": "Hybrid plan: add",
-   "text": "Flier; grows on lifegain and draws once a turn when it gets counters — card advantage on the plan.",
+   "group": "In: Lifegain and counters",
+   "text": "Flier that grows on lifegain and draws once a turn when it gets counters.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Rosa, Resolute White Mage": {
-   "group": "Hybrid plan: add",
-   "text": "Each combat: +1/+1 counter and lifelink on a creature. Put it on a creature that stays in (sneak strips counters).",
+   "group": "In: Lifegain and counters",
+   "text": "Each combat: a counter and lifelink on a creature. Target one that stays in (sneak strips counters).",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Sigiled Contender": {
@@ -1699,10 +1699,10 @@
    }
   },
   "The Wind Crystal": {
-   "group": "Hybrid plan: add",
-   "text": "White spells cost {1} less; doubles lifegain; {4}{W}{W}: team flying + lifelink — an alpha strike that turns every Ninja into a connection.",
+   "group": "In: Lifegain and counters",
+   "text": "White spells cost {1} less; doubles lifegain; team flying + lifelink for an alpha strike.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Teyo, Aegis Adept": {
@@ -1720,17 +1720,17 @@
    }
   },
   "Archangel of Thune": {
-   "group": "Hybrid plan: add",
-   "text": "Flier (sneak enabler) whose \"whenever you gain life, +1/+1 counter on each creature\" fires once per lifelink attacker — the counters also switch on Envoy and Yathan.",
+   "group": "In: Lifegain and counters",
+   "text": "Flier whose \"whenever you gain life, +1/+1 counter on each creature\" fires once per lifelink attacker; the counters switch on Envoy and Yathan.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Bond of Discipline": {
-   "group": "In: Interaction",
-   "text": "Taps their whole board: every attacker unblocked, so every sneak is live — the five-Ninja finishing turn.",
+   "group": "Cut in round 2",
+   "text": "One-shot tap-down + lifelink; Sorin gives team lifelink every turn.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Captain America, Steve Rogers": {
@@ -1783,10 +1783,10 @@
    }
   },
   "Inspiring Commander": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "A card for every small creature entering (tokens, sneak re-entries), no once-a-turn cap; 6 mana.",
+   "group": "Cut in round 2",
+   "text": "6 mana for draws on small creatures; Archangel took the slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Loxodon Lifechanter": {
@@ -1804,10 +1804,10 @@
    }
   },
   "Federation Outpost": {
-   "group": "Hybrid plan: add",
-   "text": "In for a Plains: untapped from turn 3, gains 2 (a lifegain trigger) or surveils.",
+   "group": "In: Lands",
+   "text": "Untapped from turn 3; gains 2 (a lifegain trigger) or surveils.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Toxin Analysis": {
@@ -1846,10 +1846,10 @@
    }
   },
   "Origin of Black Widow": {
-   "group": "In: Interaction",
-   "text": "Edict, team deathtouch, drain.",
+   "group": "Cut in round 2",
+   "text": "Edict saga; slow.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Sanctum Lurker": {
@@ -1860,10 +1860,10 @@
    }
   },
   "Yathan Tombguard": {
-   "group": "Hybrid plan: add",
-   "text": "Menace 3-drop (sneak enabler); \"a creature you control with a counter on it deals combat damage to a player, you draw\" — repeatable card advantage off Rosa/Talent/Archangel counters.",
+   "group": "In: Lifegain and counters",
+   "text": "Menace 3-drop; draws whenever a creature with a counter deals combat damage to a player — the repeatable card advantage that replaced Tymna and Doctor Doom.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Withering Curse": {
@@ -1881,10 +1881,10 @@
    }
   },
   "Doctor Doom, Unrivaled": {
-   "group": "In: Combat-damage payoffs and card flow",
-   "text": "A card a turn on a 4/4 lifelinker.",
+   "group": "Cut in round 2",
+   "text": "Taps to draw; its win needs an empty library, not this deck's plan. Niv-Mizzet took the draw slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Enduring Tenacity": {
@@ -1951,10 +1951,10 @@
    }
   },
   "Finale of Eternity": {
-   "group": "In: Interaction",
-   "text": "X removal for up to three creatures.",
+   "group": "Cut in round 2",
+   "text": "X removal for small creatures; Crusher took the slot.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Zero Point Ballad": {
@@ -2056,10 +2056,10 @@
    }
   },
   "Vraska, Scheming Gorgon": {
-   "group": "In: Interaction",
-   "text": "−3 destroys a creature; +2 team pump.",
+   "group": "Cut in round 2",
+   "text": "6-mana walker; Vona/Wind Crystal fill the top end.",
    "graded_at": {
-    "104": "da991b79acbc"
+    "104": "52f6983b9635"
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
@@ -2174,6 +2174,89 @@
     "Vraska, Scheming Gorgon",
     "White Widow, Yelena Belova",
     "Wispdrinker Vampire"
+   ],
+   "52f6983b9635": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Enduring Innocence",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Falcon, Joaquin Torres",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Ink-Eyes, Servant of Oni",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Lurrus of the Dream-Den",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Oath of Kaya",
+    "Plains",
+    "Prismatic Vista",
+    "Quintessential Katana",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Cloning of Shredder",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
    ]
   }
  },
@@ -2205,7 +2288,7 @@
   "Elas il-Kor, Sadistic Pilgrim": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Hardened Tactician": {
@@ -2289,7 +2372,7 @@
   "Starseer Mentor": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Spirit-Sister's Call": {
@@ -2301,7 +2384,7 @@
   "Vona, Butcher of Magan": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Vona de Iedo, the Antifex": {
@@ -2372,8 +2455,8 @@
   },
   "Dokuchi Silencer": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Splinter, Hamato Yoshi": {
@@ -2408,8 +2491,8 @@
   },
   "Biting-Palm Ninja": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Ninja's Blades": {
@@ -2456,8 +2539,8 @@
   },
   "Fracture": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Fleshtaker": {
@@ -2523,7 +2606,7 @@
   "Indulging Patrician": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Kambal, Profiteering Mayor": {
@@ -2540,8 +2623,8 @@
   },
   "Tymna the Weaver": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Basilica Bell-Haunt": {
@@ -2577,7 +2660,7 @@
   "Sorin, Vengeful Bloodlord": {
    "D": {
     "m": "★★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Squall, SeeD Mercenary": {
@@ -2589,7 +2672,7 @@
   "Teysa Karlov": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Vito, Fanatic of Aclazotz": {
@@ -2600,14 +2683,14 @@
   },
   "Wispdrinker Vampire": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Arvad the Cursed": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Closing Statement": {
@@ -2631,13 +2714,13 @@
   "Niv-Mizzet, Ghost Counsel": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Blot Out the Sky": {
    "D": {
-    "m": "★★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Bleachbone Verge": {
@@ -2763,7 +2846,7 @@
   "Leader's Talent": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Selfless Samurai": {
@@ -2787,13 +2870,13 @@
   "Dr. Beverly Crusher": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Envoy of the Ancestors": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Enduring Innocence": {
@@ -2859,13 +2942,13 @@
   "Exemplar of Light": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Rosa, Resolute White Mage": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Sigiled Contender": {
@@ -2877,7 +2960,7 @@
   "The Wind Crystal": {
    "D": {
     "m": "★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Teyo, Aegis Adept": {
@@ -2895,13 +2978,13 @@
   "Archangel of Thune": {
    "D": {
     "m": "★★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Bond of Discipline": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "△",
+    "graded_at": "52f6983b9635"
    }
   },
   "Captain America, Steve Rogers": {
@@ -2948,8 +3031,8 @@
   },
   "Inspiring Commander": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "△",
+    "graded_at": "52f6983b9635"
    }
   },
   "Loxodon Lifechanter": {
@@ -2967,7 +3050,7 @@
   "Federation Outpost": {
    "D": {
     "m": "★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Toxin Analysis": {
@@ -3002,8 +3085,8 @@
   },
   "Origin of Black Widow": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Sanctum Lurker": {
@@ -3015,7 +3098,7 @@
   "Yathan Tombguard": {
    "D": {
     "m": "★★★",
-    "graded_at": "da991b79acbc"
+    "graded_at": "52f6983b9635"
    }
   },
   "Withering Curse": {
@@ -3032,8 +3115,8 @@
   },
   "Doctor Doom, Unrivaled": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Enduring Tenacity": {
@@ -3092,8 +3175,8 @@
   },
   "Finale of Eternity": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Zero Point Ballad": {
@@ -3182,8 +3265,8 @@
   },
   "Vraska, Scheming Gorgon": {
    "D": {
-    "m": "★",
-    "graded_at": "da991b79acbc"
+    "m": "◇",
+    "graded_at": "52f6983b9635"
    }
   },
   "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
