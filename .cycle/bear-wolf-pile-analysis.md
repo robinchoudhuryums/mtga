@@ -81,6 +81,44 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 33 | Howlpack Piper // Wildsong Howler | ★ | Puts a creature from hand onto the battlefield each turn (Bears → Ayula), untaps for Wolves. |
 | 34 | Mantle of the Wolf | ◇ | +4/+4 makes a gate-opener; two Wolves when it leaves. An Aura. |
 
+### Batch 2 (cards 35–67)
+
+| # | Card | Deck 105 | Note |
+|---|---|---|---|
+| 35 | Edgar, Moonlit Sovereign | ◇ | Flash 4/4 Werewolf, so power 4 on arrival (F2). Grows itself and the counter creatures, but a Werewolf is not a Wolf for most of the deck's Wolf cards (F4). |
+| 36 | Sage of Ancient Lore | △ | Draws one on entry, and its size is your hand size, so it is small in a deck that empties its hand. Werewolf, not Wolf. |
+| 37 | Arlinn, Voice of the Pack | ◇ | Six mana for a Wolf-token walker. Wolves entering with a counter helps the gate, but it is slow and its static does nothing for Bears. |
+| 38 | Avabruck Caretaker | ★★ | A hexproof 4/4 that puts two counters on another creature each combat, which turns a 2-power Bear into a gate-opener (F2). Its night side puts two counters on everything and gives the rest of the board hexproof: the deck's best protection card in the pile. MV 6, so it survives most Sarulf wipes (F3). |
+| 39 | Flourishing Hunter | △ | A 6/6 Wolf body that gains some life. A Wolf count of one for six mana; the deck has better six-drops. |
+| 40 | Wolfkin Outcast | ◇ | Costs four with a Wolf out (the deck has 10). 5/4 for the gate; its night side draws when Wolves die. Werewolf type, so it is not itself a Wolf. |
+| 41 | Somberwald Beastmaster | ◇ | Seven mana for four bodies (a Wolf, a 3/3 and a 4/4 among them), and the tokens have deathtouch. Tokens are MV 0, so a Sarulf wipe takes all of them (F3). |
+| 42 | Primal Witchstalker | ◇ | A 3-mana BG Wolf with menace that ramps a land back from a mill of four. Cheap Wolf count (F4); the deck already runs Fierce Witchstalker. |
+| 43 | Sword of Body and Mind | ★ | +2/+2 turns any 2-power creature into a power-4 gate-opener (F2), protection from green covers the mirror, and a hit makes a Wolf (F4). MV 3, so it is exposed to a big Sarulf wipe. |
+| 44 | Fuel Tank Feaster | ◇ | A 2-mana any-colour dork (Alchemy) that discounts your biggest creature each turn. The deck has three dorks already; a fourth is only worth it if the ramp suite is cut back elsewhere. |
+| 45 | Fight Rigging | ★ | A counter on a creature every combat (F2 enabler), plus a free hideaway card once you have power 7. Big Bears, Lumra and Vaultborn reach 7. Repeatable and cheap. |
+| 46 | Flare of Cultivation | ◇ | Ramp that can be free by sacrificing a nontoken green creature. The deck has 6 ramp spells plus Sarulf to protect; a sacrifice cost on a creature deck is a real cost. |
+| 47 | Descendants' Path | ◇ | A free creature each upkeep when the top card shares a type with your board. With 37 creatures, about 37% of draws are creatures, and most share Bear or Wolf. Lands and noncreature spells whiff and go to the bottom. |
+| 48 | World War Hulk | ★ | Chapter I makes the next green creature free, chapter II gives three counters (a 1-power Bear becomes a gate-opener, F2), chapter III doubles power with trample. A strong turn-5 play in a creature deck. |
+| 49 | Omnipresence | △ | Eight mana. The deck wins by the time this resolves. |
+| 50 | Etali, Primal Garden | ◇ | A 7/7 trampler (Alchemy) that casts a random Dinosaur free on entry and attack. Real value, but off-tribe, and actualize barely discounts it here. |
+| 51 | Heirloom Epic | △ | Tapping creatures to draw is slow in a deck that wants to attack with them. |
+| 52 | Monstrous Vortex | ◇ | Fires on power-5+ creature spells; the deck runs 8 (Beorns, Big Bears, Surrak and Goreclaw, Chief Warg's Company, Vaultborn, Rhonas). A free spell on each, but 8 of 37 creatures is a thin trigger. |
+| 53 | Path of Discovery | ★ | Every creature explores: a land in hand or a +1/+1 counter. That counter takes a 3-power Bear to 4 (F2), and with 37 creatures it is repeatable card advantage (F6). |
+| 54 | Chimil, the Inner Sun | ★ | A free MV-5-or-less card every end step (F6, repeatable), and your spells can't be countered. MV 6 colourless, so it survives most Sarulf wipes (F3). |
+| 55 | Sentinel of the Nameless City | ★ | A 3-mana 3/4 vigilance that makes a Map on entry and every attack. Each Map is an explore, which means a counter or a land. Strong 3-drop, though not a Bear. |
+| 56 | Mole Man, Moloid Master | △ | A landfall token maker. The deck has no landfall plan. |
+| 57 | Wrenn and Realmbreaker | ◇ | Fixing the deck does not need. The +1 is a 3/3 attacker and the -2 digs for a permanent. Fine, not a fit. |
+| 58 | Icetill Explorer | △ | A landfall and graveyard-lands engine; off plan. |
+| 59 | Elemental Teachings | △ | Five mana for two tapped lands. |
+| 60 | World Shaper | △ | A lands-recursion payoff with no lands plan behind it. |
+| 61 | Nissa, Vital Force | ◇ | A 5/5 haste land each turn, which is a gate-opener (F2), and -3 regrows a permanent. A playable five-drop walker. |
+| 62 | Ancient Greenwarden | △ | Doubles landfall triggers the deck does not have. A 5/7 reach body is all it gives. |
+| 63 | Kamahl's Druidic Vow | ◇ | Sarulf satisfies the legendary-sorcery rule, and the deck has about 15 legendary permanents plus lands. An X spell that puts several onto the battlefield; strong late, weak early. |
+| 64 | Nog, Ambitious Cadet | △ | A Ferengi with a land-recursion mode. Off plan. |
+| 65 | Nissa of Shadowed Boughs | ◇ | BG walker that grows from land drops; its -5 puts a creature onto the battlefield with two counters. Slow to get there. |
+| 66 | Badlands Revival | ◇ | Two-for-one recursion after removal. Sarulf exiles rather than sends to the graveyard, so it does not undo a wipe. |
+| 67 | Glacier Godmaw | ◇ | A 6/6 trampler whose landfall pumps the team and gives haste. Seven mana; a finisher the deck does not need. |
+
 ## 5. Consolidated plan (live)
 
 (after the last batch)
