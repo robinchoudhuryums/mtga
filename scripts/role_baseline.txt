@@ -331,6 +331,7 @@ Nashi, Moon Sage's Scion
 Nashi, Searcher in the Dark
 Necrogen Rotpriest
 Neriv, Heart of the Storm
+Network Marauder
 Nick Fury, Agent of S.H.I.E.L.D.
 Nighthowl Pursuer
 Nightwhorl Hermit
@@ -553,6 +554,5 @@ Wraith, Vicious Vigilante
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
 Zagras, Thief of Heartbeats
-Zefram Cochrane, Warp Pioneer
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree
