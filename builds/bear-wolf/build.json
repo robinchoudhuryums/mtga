@@ -1,0 +1,452 @@
+{
+ "schema": 1,
+ "title": "Bear Wolf",
+ "decks": [
+  {
+   "key": "A",
+   "id": "105",
+   "label": "Ayula"
+  }
+ ],
+ "piles": [
+  {
+   "key": "A",
+   "label": "Ayula's pile",
+   "deck": "A",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Rampaging Ursaguana",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Copper Host Crusher",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Striped Bears",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Fierce Witchstalker",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Howling Moon",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Cemetery Prowler",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Werewolf Pack Leader",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Arlinn, Voice of the Pack",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mayor of Avabruck // Howlpack Alpha",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "The Great Henge",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Selvala, Heart of the Wilds",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Goliath, Mass Manipulator",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Scavenging",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Large Bear",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Head of the Hunt",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Chief Warg",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Chief Warg's Company",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Garruk, Cursed Huntsman",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Assassin's Trophy",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Rampaging Ursaguana": {
+   "group": "Bench",
+   "text": "Owned Bear: 6-mana haste trample ward, grows each attack. First in for a top-end slot.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Copper Host Crusher": {
+   "group": "Bench",
+   "text": "Owned 8/8 trample hexproof Bear; 8 mana is the cost.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Striped Bears": {
+   "group": "Bench",
+   "text": "4-mana Bear that draws a card; an Ayula trigger that replaces itself.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Fierce Witchstalker": {
+   "group": "Bench",
+   "text": "4-mana 4/4 trample Wolf plus a Food; turns the gate on, but not a Bear.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Howling Moon": {
+   "group": "Bench",
+   "text": "Wolf +2/+2 each combat and a Wolf token when they cast a second spell.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Cemetery Prowler": {
+   "group": "Bench",
+   "text": "3-mana 3/4 Wolf; discounts spells sharing a type with what it exiles.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Werewolf Pack Leader": {
+   "group": "Bench",
+   "text": "2-mana 3/3 that draws when you attack with total power 6+.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Arlinn, Voice of the Pack": {
+   "group": "Bench",
+   "text": "Wolves enter with an extra counter; −2 makes Wolves. Only 6 Wolves here.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Mayor of Avabruck // Howlpack Alpha": {
+   "group": "Bench",
+   "text": "Wolf lord and Wolf maker once it flips; needs a turn with no spells.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "The Great Henge": {
+   "group": "Bench",
+   "text": "Owned: free with a 7-power creature out; taps for GG, counters and a card per creature.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "group": "Bench",
+   "text": "Owned: mana equal to greatest power, but it also draws the opponent cards.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Goliath, Mass Manipulator": {
+   "group": "Bench",
+   "text": "Owned: power-up draws a card per power-4 creature.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Sylvan Scavenging": {
+   "group": "Bench",
+   "text": "Owned: end-step counter, or a 3/3 if you control a power-4 creature.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Large Bear": {
+   "group": "Bench",
+   "text": "{B/G} hybrid: black in its identity, so illegal under Ayula or Goreclaw. In for a Sarulf version.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Head of the Hunt": {
+   "group": "Bench",
+   "text": "Black Wolf: Sarulf version only.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "The Chief Warg": {
+   "group": "Bench",
+   "text": "Black-green Wolf that draws on ferocious attacks: Sarulf version only.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Chief Warg's Company": {
+   "group": "Bench",
+   "text": "Black-green Wolf maker: Sarulf version only.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Garruk, Cursed Huntsman": {
+   "group": "Bench",
+   "text": "Owned black-green planeswalker (Wolves, removal): Sarulf version only.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  },
+  "Assassin's Trophy": {
+   "group": "Bench",
+   "text": "Owned black-green removal: Sarulf version only.",
+   "graded_at": {
+    "105": "7fd8423f5784"
+   }
+  }
+ },
+ "snapshots": {
+  "105": {
+   "7fd8423f5784": [
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beast Within",
+    "Bejeweled Warg",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Bosco, Just a Bear",
+    "Boseiju, Who Endures",
+    "Castle Garenbrig",
+    "Colossal Majesty",
+    "Cultivate",
+    "Dancing from Dark to Dawn",
+    "Drover Grizzly",
+    "Elemental Bond",
+    "Elvish Mystic",
+    "Esika's Chariot",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fanatic of Rhonas",
+    "Forest",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Giant-Man, Gargantuan Genius",
+    "Gigantic Big Bear",
+    "Goreclaw, Terror of Qal Sisma",
+    "Guardian Project",
+    "Herd Heirloom",
+    "Heroic Intervention",
+    "Hunter's Talent",
+    "Ilysian Caryatid",
+    "Kogla, the Titan Ape",
+    "Little Bear",
+    "Llanowar Elves",
+    "Lumra, Bellow of the Woods",
+    "Master's Guidance",
+    "Mother Bear",
+    "Nature's Lore",
+    "Nightpack Ambusher",
+    "Ordinary Bear",
+    "Outcaster Trailblazer",
+    "Owlbear",
+    "Paradise Druid",
+    "Pick Your Poison",
+    "Primal Adversary",
+    "Primal Might",
+    "Prismatic Vista",
+    "Professor of Zoomancy",
+    "Rabid Bite",
+    "Ram Through",
+    "Ranger Class",
+    "Return of the Wildspeaker",
+    "Rhonas the Indomitable",
+    "Snakeskin Veil",
+    "Spider-Ham, Peter Porker",
+    "Studious First-Year",
+    "Surrak and Goreclaw",
+    "Tail Swipe",
+    "The Earth King",
+    "Thrashing Brontodon",
+    "Titania's Command",
+    "Tovolar's Huntmaster // Tovolar's Packleader",
+    "Tranquil Thicket",
+    "Turntimber Symbiosis // Turntimber, Serpentine Wood",
+    "Ursine Guide // Ranger's Merit",
+    "Vastlands Scavenger",
+    "Vaultborn Tyrant",
+    "Vivien Reid",
+    "Vivien, Monsters' Advocate",
+    "Wicked Wolf",
+    "Wilderland Scrounger",
+    "Wilson, Bear Comrade"
+   ]
+  }
+ },
+ "verdicts": {
+  "Rampaging Ursaguana": {
+   "A": {
+    "m": "★★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Copper Host Crusher": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Striped Bears": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Fierce Witchstalker": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Howling Moon": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Cemetery Prowler": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Werewolf Pack Leader": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Arlinn, Voice of the Pack": {
+   "A": {
+    "m": "◇",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Mayor of Avabruck // Howlpack Alpha": {
+   "A": {
+    "m": "◇",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "The Great Henge": {
+   "A": {
+    "m": "★",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Selvala, Heart of the Wilds": {
+   "A": {
+    "m": "◇",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Goliath, Mass Manipulator": {
+   "A": {
+    "m": "◇",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Sylvan Scavenging": {
+   "A": {
+    "m": "◇",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Large Bear": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Head of the Hunt": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "The Chief Warg": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Chief Warg's Company": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Garruk, Cursed Huntsman": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  },
+  "Assassin's Trophy": {
+   "A": {
+    "m": "✗",
+    "graded_at": "7fd8423f5784"
+   }
+  }
+ }
+}

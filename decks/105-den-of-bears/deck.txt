@@ -1,0 +1,110 @@
+#: name: Den of Bears and Wolves
+#: format: Historic Brawl
+#: colors: G
+#: commander: Ayula, Queen Among Bears
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), MONO-GREEN BEARS AND WOLVES around
+#: archetype: Ayula, Queen Among Bears: whenever another Bear enters, two +1/+1 counters on a Bear or that Bear
+#: archetype: fights a creature you don't control. So the deciding number is BEARS ENTERING: eighteen Bear cards,
+#: archetype: plus The Earth King's 4/4 Bear, Dancing from Dark to Dawn's Bear on every land drop, Titania's Command
+#: archetype: and Beorn the Fierce turning a creature into a Bear each combat. Ayula's fights are the deck's
+#: archetype: repeatable removal. The Bears are also the big bodies that switch on the POWER-4 GATE the payoffs read:
+#: archetype: Garruk's Uprising, Colossal Majesty, Garruk, Curse Breaker, Vaultborn Tyrant, Elemental Bond, Master's
+#: archetype: Guidance, Rhonas, Fanatic of Rhonas, Ilysian Caryatid. Wolves are the second tribe (Nightpack Ambusher,
+#: archetype: Spider-Ham pumps both). Brawl sibling of deck 69 (Standard Bear-Wolf, black-green): Ayula is mono-green,
+#: archetype: so this list is mono-green; a Sarulf version would add the black Wolves and removal.
+#: protect: Ayula, Queen Among Bears; Beorn the Fierce; Dancing from Dark to Dawn; Spider-Ham, Peter Porker; Garruk's Uprising; Goreclaw, Terror of Qal Sisma
+#: notes: DRAFTED 2026-11-22 from the owner's request (Brawl version of deck 69). COLOUR IDENTITY: with Ayula or Goreclaw
+#: notes: as commander every card must be mono-green; hybrids count too, so Large Bear ({B/G}) and Duskwatch Hunter are
+#: notes: out, and so is Garruk Relentless (its back face is black). Switching to Sarulf, Realm Eater (black-green) would
+#: notes: re-open Head of the Hunt, The Chief Warg, Chief Warg's Company, Garruk, Cursed Huntsman, Large Bear and black
+#: notes: removal (Assassin's Trophy, Infernal Grasp, Heartless Act, Casualties of War are owned).
+
+
+# Commander
+1 Ayula, Queen Among Bears (J21) 543
+
+# Bears — every one that enters is an Ayula trigger (two counters or a fight)
+1 Goreclaw, Terror of Qal Sisma (M19) 186
+1 Beorn the Fierce (HOB) 119
+1 Beorn, Reluctant Host // Till and Tend (HOB) 118
+1 Gigantic Big Bear (HOB) 126
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Owlbear (AFR) 198
+1 Exuberant Wolfbear (IKO) 151
+1 Little Bear (HOB) 128
+1 Vastlands Scavenger (SOS) 166
+1 Studious First-Year (SOS) 162
+1 Professor of Zoomancy (STX) 140
+1 Surrak and Goreclaw (MOM) 337
+1 Wilson, Bear Comrade (HBG) 19
+1 Bosco, Just a Bear (TLE) 132
+1 Ursine Guide // Ranger's Merit (YSOS) 11
+1 Drover Grizzly (OTJ) 161
+1 Mother Bear (J21) 604
+1 Ordinary Bear (HOB) 133
+
+# Bear makers
+1 The Earth King (TLA) 172
+1 Dancing from Dark to Dawn (HOB) 123
+1 Titania's Command (BRO) 194
+
+# Wolves
+1 Primal Adversary (MID) 194
+1 Nightpack Ambusher (M20) 185
+1 Wilderland Scrounger (HOB) 141
+1 Wicked Wolf (ELD) 181
+1 Tovolar's Huntmaster // Tovolar's Packleader (MID) 204
+1 Bejeweled Warg (HOB) 117
+1 Ranger Class (AFR) 202
+1 Spider-Ham, Peter Porker (SPM) 114
+
+# Power-4 payoffs and card flow
+1 Garruk's Uprising (M21) 186
+1 Colossal Majesty (M19) 173
+1 Garruk, Curse Breaker (FRA) 259
+1 Vaultborn Tyrant (BIG) 20
+1 Outcaster Trailblazer (OTJ) 173
+1 Return of the Wildspeaker (ELD) 172
+1 Elemental Bond (TLE) 40
+1 Guardian Project (RNA) 130
+1 Master's Guidance (TLE) 141
+1 Rhonas the Indomitable (AKR) 213
+1 Giant-Man, Gargantuan Genius (MSC) 722
+1 Esika's Chariot (KHM) 169
+
+# Ramp
+1 Llanowar Elves (FDN) 227
+1 Elvish Mystic (HOC) 205
+1 Paradise Druid (J25) 698
+1 Fanatic of Rhonas (MH3) 152
+1 Ilysian Caryatid (THB) 174
+1 Cultivate (M21) 177
+1 Nature's Lore (P02) 135
+1 Herd Heirloom (TDM) 144
+
+# Interaction and protection
+1 Beast Within (MAR) 75
+1 Primal Might (FDN) 766
+1 Ram Through (IKO) 170
+1 Tail Swipe (J25) 721
+1 Rabid Bite (ANB) 101
+1 Pick Your Poison (SOA) 55
+1 Hunter's Talent (BLB) 179
+1 Kogla, the Titan Ape (IKO) 162
+1 Thrashing Brontodon (FDN) 560
+1 Vivien, Monsters' Advocate (IKO) 175
+1 Vivien Reid (FDN) 234
+1 Heroic Intervention (M21) 188
+1 Snakeskin Veil (TDM) 159
+
+# Lands
+1 Boseiju, Who Endures (NEO) 266
+1 Castle Garenbrig (ELD) 240
+1 Ba Sing Se (TLA) 266
+1 Tranquil Thicket (HA2) 25
+1 Fabled Passage (BLB) 252
+1 Evolving Wilds (ECL) 264
+1 Prismatic Vista (SPG) 38
+1 Turntimber Symbiosis // Turntimber, Serpentine Wood (ZNR) 215
+29 Forest (TRK) 325

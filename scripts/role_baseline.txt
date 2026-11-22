@@ -138,6 +138,7 @@ Dreaded Bat-Cloud
 Dream Harvest
 Dreams of Laguna
 Drix Fatemaker
+Drover Grizzly
 Dwalin, Weaponmaster
 Earth Kingdom Soldier
 Earth's Mightiest Heroes
@@ -157,6 +158,7 @@ Entrust the Spark
 Ephemerate
 Epic Experiment
 Eternal Skylord
+Exuberant Wolfbear
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
@@ -327,6 +329,7 @@ Namazu Trader
 Namor, Scourge of the Seas
 Nashi, Moon Sage's Scion
 Nashi, Searcher in the Dark
+Nature's Lore
 Necrogen Rotpriest
 Neriv, Heart of the Storm
 Network Marauder
@@ -350,6 +353,7 @@ Orphans of the Wheat
 Ostrich-Horse
 Outlaw Stitcher
 Outrageous Robbery
+Owlbear
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor
@@ -365,6 +369,7 @@ Picklock Prankster // Free the Fae
 Pond Prophet
 Pride of the Road
 Prideful Parent
+Primal Adversary
 Primary Unimatrix Adjunct
 Primo, the Unbounded
 Prophet of the Planeswalker
@@ -518,6 +523,7 @@ Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
 Valentina Allegra de Fontaine
+Vastlands Scavenger
 Vastlands Scavenger // Bind to Life
 Venomized Cat
 Verdant Kraken
