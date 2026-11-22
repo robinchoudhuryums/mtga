@@ -176,7 +176,7 @@
 1 Kura, the Boundless Sky (NEO) 200
 1 Venomous Brutalizer (ONE) 193
 1 Bloated Contaminator (ONE) 159
-1 Hornet Queen (AKR) 196
+1 Etali, Primal Conqueror // Etali, Primal Sickness (MOM) 137
 1 Tyrranax Rex (ONE) 189
 1 Necrogen Rotpriest (ONE) 212
 1 Grist, Voracious Larva // Grist, the Plague Swarm (MH3) 251
@@ -186,11 +186,11 @@
 1 Dina, Essence Brewer (SOC) 1
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Hidetsugu, Devouring Chaos (NEO) 99
-1 Daemogoth Titan (STX) 174
+1 Will Riker, First in the Field (TRK) 179
 1 Honest Rutstein (OTJ) 207
 1 Mayhem Devil (WAR) 204
 1 Eddie Brock // Venom, Lethal Protector (SPM) 55
-1 Bontu the Glorified (AKR) 95
+1 Juri, Master of the Revue (MUL) 46
 1 Korvold, Fae-Cursed King (ELD) 329
 1 Unforgiving One (NEO) 127
 
@@ -255,3 +255,7 @@
 3 Swamp (FRA) 285
 5 Forest (FRA) 289
 2 Mountain (FRA) 287
+
+#~ +Hornet Queen | BENCH: Five flying deathtouch bodies; with Fynn each deathtouch hit is 2 poison. GGG cast late (58% on T5). Out for Etali 2026-11-22
+#~ +Bontu the Glorified | BENCH: Creature sacrifice outlet that drains 1; can't attack or block unless a creature died. Out for Juri 2026-11-22
+#~ +Daemogoth Titan | BENCH: 4-mana body that sacrifices a creature on attack or block. Out for Will Riker 2026-11-22
