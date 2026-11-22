@@ -1,6 +1,6 @@
 # Bear-Wolf pile (deck 105) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
+**Status: GRADED — awaiting owner picks.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
 Historic Brawl, Sarulf, Realm Eater). Delete once the swaps land and the findings are folded into
 deck 105's `#: notes:`. The board is the existing Builder project `builds/bear-wolf`.
 
@@ -34,9 +34,26 @@ board power 124 · avg MV 3.45 · 18 Bears · 10 Wolves · WIDE (wide 14 / tall 
 
 ## 2. Standing error list
 
-(none yet)
+- **E1 — `screen`'s ★ STRICT UPGRADE is a text-containment test.** It called Argoth a strict
+  upgrade of Llanowar Elves (a land is not a dork) and Flare of Cultivation of Cultivate (true
+  here: same effect, plus a free alternative cost, at the price of a GG pip).
+- **E2 — a creature's death is Sarulf's fuel.** Sarulf counts opposing permanents going to the
+  GRAVEYARD. An exile-instead replacement on their creatures (Head of the Hunt, in the deck)
+  stops Sarulf's counters from creature kills, and switches Kraven off too. Check any
+  exile-on-death card against Sarulf before adding or keeping it.
 
 ## 3. Cross-batch observations
+
+- **Counters are the axis this pile adds most to.** Winding Constrictor, Avabruck Caretaker,
+  Fight Rigging, Path of Discovery and World War Hulk all put counters on creatures. Each
+  counter both opens the power-4 gate (F2) and, through Constrictor, charges Sarulf.
+- **Repeatable draw is the other** (F6): Owlbear Shepherd, Toski, Werewolf Pack Leader, Chevill,
+  Kraven and Chimil. The deck goes from 14 card advantage to 17 with the tier-1 package.
+- **Removal doubles as Sarulf's fuel**, so cutting it has a cost beyond the interaction count.
+  The plan takes interaction from 16 to 14, still above the A line of 12; Garruk Relentless
+  replaces one spell with a repeatable fight.
+- **No variant signal.** The rejected cards are mostly landfall and graveyard engines, which
+  are already their own decks in the roster.
 
 ## 4. Running verdicts
 
@@ -119,6 +136,88 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 66 | Badlands Revival | ◇ | Two-for-one recursion after removal. Sarulf exiles rather than sends to the graveyard, so it does not undo a wipe. |
 | 67 | Glacier Godmaw | ◇ | A 6/6 trampler whose landfall pumps the team and gives haste. Seven mana; a finisher the deck does not need. |
 
+### Batch 3 (cards 68–100)
+
+| # | Card | Deck 105 | Note |
+|---|---|---|---|
+| 68 | Berserk | △ | Doubles a creature's power for one swing, then kills it if it attacked. One big hit for a creature you lose. |
+| 69 | Burgeoning | △ | One-opponent Brawl gives about one extra land a turn cycle. Not the deck's problem. |
+| 70 | Glimpse of Nature | △ | A burst-draw turn needs a hand of cheap creatures; this deck's creatures cost 3–5. |
+| 71 | Hunter's Axe | ◇ | One mana, +2/+0: a 2-power Bear becomes a gate-opener (F2). Equip {2} each time, and the Sword and Forebear's Blade do the same job better. |
+| 72 | Vraska, Swarm's Eminence | △ | A deathtouch-token planeswalker. The deck has few deathtouch creatures. |
+| 73 | Vraska, Golgari Queen | ◇ | -3 destroys a nonland permanent with MV 3 or less, and +2 trades a spare permanent for a card. A fair replacement removal piece if one is cut (F5). |
+| 74 | Tyvar, Jubilant Brawler | ◇ | Dorks and tap abilities work the turn they enter; -2 returns a 2-drop Bear. Modest. |
+| 75 | Chevill, Bane of Monsters | ★ | A 2-mana deathtouch body that marks one opposing creature at a time and draws when it dies. With 16 removal spells and Ayula fights it is a repeatable draw (F6). |
+| 76 | Fiend Artisan | ◇ | A creature tutor that needs a sacrifice. It can find Ayula or Goreclaw, but its size reads your graveyard and Sarulf exiles rather than bins. |
+| 77 | Insidious Roots | △ | Tokens tap for mana and Plants grow when creature cards leave the graveyard. Off plan. |
+| 78 | Vraska Joins Up | ◇ | Deathtouch counters on the team on entry, then a card whenever a legendary creature connects. About 14 legendary creatures here; the counters are not +1/+1 and do not open the gate. |
+| 79 | Winding Constrictor | ★★ | Every counter you place gets one more. Ayula's two counters become three, Fight Rigging and Avabruck give more, and Sarulf itself gets two per opposing permanent instead of one, so its wipe charges twice as fast. A 2-mana 2/3. |
+| 80 | Dina, Essence Brewer | △ | A sacrifice outlet. The deck has no sacrifice plan. |
+| 81 | Kraven the Hunter | ★ | A 3-mana 4/3 trampler (power 4 on arrival, F2) that draws and grows whenever the opponent's biggest creature dies. Removal and fights trigger it. Note: Head of the Hunt (in the deck) exiles dying creatures instead, which switches Kraven off. |
+| 82 | Sméagol, Helpful Guide | △ | Needs one of your creatures to die each turn. |
+| 83 | Beifong's Bounty Hunters | ◇ | A 4/4 for 4 (F2) that turns each dying creature into a land creature with counters equal to its power. A sturdy body. |
+| 84 | Culling Ritual | △ | Destroys every nonland permanent with MV 2 or less, including your own dorks, 2-drop Bears and Constrictor. Sarulf already gives the deck a wipe. |
+| 85 | Host of the Hereafter | ◇ | A 4/4 for 4 whose counters move to another creature when it dies. Fine, not exciting. |
+| 86 | Jenova, Ancient Calamity | △ | Gives counters equal to its own power, which starts at 1. Needs a pump first. |
+| 87 | Mortality Spear | ◇ | An instant that destroys any nonland permanent. Four mana here, since the deck rarely gains life. A fair replacement removal piece (F5). |
+| 88 | Kagha, Shadow Archdruid | △ | Graveyard casting off a mill of two. Off plan. |
+| 89 | Rise of the Witch-king | ◇ | An edict that also costs you a creature, then returns a permanent. Symmetrical in a creature deck. |
+| 90 | Deathbloom Ritualist | △ | Its mana scales with creature cards in your graveyard; this deck's graveyard stays small. |
+| 91 | Diregraf Rebirth | ◇ | Reanimation with flashback. Undoes removal, but not a Sarulf wipe, which exiles. |
+| 92 | Lord of Extinction | △ | Its size reads all graveyards; Sarulf exiles, so graveyards stay small here. |
+| 93 | Ygra, Eater of All | ◇ | A 6/6 for 5 (F2) that grows whenever a creature dies. It also gives every opposing creature a 'sacrifice: gain 3 life' ability, which helps the opponent (owner's rule). |
+| 94 | Back for More | ◇ | Instant reanimation plus a fight, for six mana. |
+| 95 | Mycoid Resurrection | △ | Graveyard reanimation; the graveyard stays thin here. |
+| 96 | The Last Ronin | ✗ | Chapter I destroys every creature, and this is a 37-creature deck. |
+| 97 | Harness Infinity | ✗ | Swaps hand and graveyard for six mana with a BBB GGG cost. A graveyard deck's card. |
+| 98 | Vraska, Regal Gorgon | △ | Seven mana. -3 destroys a creature and +2 opens the gate (F2), but the deck has cheaper removal. |
+| 99 | Witherbloom, the Balancer | ★ | Affinity for creatures, so about 3 mana on a normal board, for a 5/5 flying deathtouch. It also gives instants and sorceries affinity, which discounts the removal. MV 8, so a Sarulf wipe never takes it (F3). |
+| 100 | Old Stickfingers | △ | An X spell that fills the graveyard; its size reads creature cards there. |
+
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+### Tier 1 — the package (previewed with `swap --package`: legal, floor A, interaction 16→14,
+card advantage 14→17, protection 7→9, board power 124→129, avg MV unchanged)
+
+| # | Cut | Add | Why |
+|---|---|---|---|
+| 1 | Casualties of War | Avabruck Caretaker | Six for six. Two counters a combat (F2), and its night side gives the board hexproof. |
+| 2 | Head of the Hunt | Winding Constrictor | Head of the Hunt exiles dying opposing creatures, so they never reach the graveyard and Sarulf gets no counter (E2). Constrictor doubles Sarulf's charge rate instead. |
+| 3 | Drover Grizzly | Werewolf Pack Leader | Drover's only text is a saddled trample grant. Pack Leader is a 2-mana 3/3 that draws every big attack (F6). Bears 18→17. |
+| 4 | Colossal Majesty | Owlbear Shepherd | Two draw-a-turn cards with the same trigger shape. The Shepherd's condition (total power 8) is easier, and it is a body. |
+| 5 | Assassin's Trophy | Toski, Bearer of Secrets | Trophy gives the opponent a basic land, which breaks the owner's removal rule. Toski is an indestructible draw engine. |
+| 6 | Go for the Throat | Garruk Relentless | Garruk's 3 damage keeps the removal slot, then makes a Wolf every turn (F4). |
+| 7 | Wilderland Scrounger | Geistpack Alpha | Wolf for Wolf. Scrounger is a gate consumer (F2); the Alpha is a 5/4 trampler that opens the gate itself. |
+| 8 | Forest | Argoth, Sanctum of Nature | Untapped with Sarulf out; a mana sink that makes a 2/2 Bear (an Ayula trigger). |
+| 9 | Cultivate | Flare of Cultivation | Same effect, plus a free alternative cost (E1). Owned. |
+
+### Tier 2 — strong alternatives (swap in for a tier-1 add, or for a cut below)
+
+- **Kraven the Hunter** (owned): a 4/3 trampler that draws when their biggest creature dies.
+  Swap 2 removes the Head of the Hunt conflict that would otherwise switch it off.
+- **Chevill, Bane of Monsters** (owned): 2 mana, repeatable draw off removal.
+- **Witherbloom, the Balancer** (owned): about 3 mana for a 5/5 flying deathtouch, and it
+  discounts the removal.
+- **Fight Rigging · Path of Discovery · World War Hulk** (Hulk owned): counter engines (F2).
+- **Chimil, the Inner Sun · Sentinel of the Nameless City · Vincent Valentine** (Vincent owned).
+- **Sword of Body and Mind · Forebear's Blade**: equipment that opens the gate.
+- **Flaxen Intruder** (three Bears, three Ayula triggers) · **Mirkwood** (owned, for a Forest).
+
+Next cut candidates if more tier-2 cards go in: Large Bear (a vanilla 5-drop), Heartless Act and
+Infernal Grasp (spot removal; keep interaction at 12 or more), Elemental Bond (overlaps the
+draw engines above), Snakeskin Veil.
+
+### Protect list (what the cut ranking cannot see)
+
+- **Exuberant Wolfbear**: a Wolf AND a Bear, so it counts for both tribes. `cuts` rates it low power.
+- **Little Bear, Mother Bear**: Ayula triggers. Little Bear's flash untap puts a counter on a
+  Bear; Mother Bear makes two Bear tokens.
+- **Nature's Lore**: finds any Forest card, Overgrown Tomb included, untapped. `cuts` shows no tags.
+- **The removal suite generally**: each kill is a Sarulf counter (E2), so interaction is
+  worth more here than its count says.
+
+### Ownership (information only, F7)
+
+Tier 1 crafts: 2 mythic (Avabruck Caretaker, Garruk Relentless), 4 rare (Werewolf Pack Leader,
+Toski, Geistpack Alpha, Argoth), 2 uncommon (Winding Constrictor, Owlbear Shepherd). Flare of
+Cultivation is owned.

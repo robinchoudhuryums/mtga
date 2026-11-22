@@ -1,5 +1,7 @@
 {
  "Abrupt Decay": [],
+ "Ancient Greenwarden": [],
+ "Argoth, Sanctum of Nature": [],
  "Arlinn, Voice of the Pack": [
   {
    "a": "Ryan Pancoast",
@@ -24,6 +26,7 @@
    "y": "2019"
   }
  ],
+ "Ascendant Packleader": [],
  "Assassin's Trophy": [
   {
    "a": "Seb McKinnon",
@@ -48,8 +51,37 @@
    "y": "2024"
   }
  ],
+ "Avabruck Caretaker // Hollowhenge Huntmaster": [],
  "Ayula, Queen Among Bears": [],
  "Ba Sing Se": [],
+ "Back for More": [
+  {
+   "a": "Daarken",
+   "art": "https://cards.scryfall.io/art_crop/front/3/f/3fc7210c-da23-4cec-9195-4de75587f40f.jpg?1783931029",
+   "cn": "177",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/f/3fc7210c-da23-4cec-9195-4de75587f40f.jpg?1783931029",
+   "r": "U",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Florey",
+   "art": "https://cards.scryfall.io/art_crop/front/f/5/f55e5aca-b6fe-4b2f-9943-568f4d1704ca.jpg?1783911718",
+   "cn": "36",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/5/f55e5aca-b6fe-4b2f-9943-568f4d1704ca.jpg?1783911718",
+   "r": "U",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  }
+ ],
+ "Badlands Revival": [],
  "Beast Within": [
   {
    "a": "Jesper Ejsing",
@@ -91,9 +123,12 @@
    "y": "2026"
   }
  ],
+ "Beifong's Bounty Hunters": [],
  "Bejeweled Warg": [],
  "Beorn the Fierce": [],
+ "Beorn's Hospitality": [],
  "Beorn, Reluctant Host // Till and Tend": [],
+ "Berserk": [],
  "Binding the Old Gods": [],
  "Blooming Marsh": [
   {
@@ -146,9 +181,12 @@
    "y": "2022"
   }
  ],
+ "Burgeoning": [],
  "Casualties of War": [],
  "Cemetery Prowler": [],
+ "Chevill, Bane of Monsters": [],
  "Chief Warg's Company": [],
+ "Chimil, the Inner Sun": [],
  "Colossal Majesty": [],
  "Command Tower": [
   {
@@ -186,6 +224,33 @@
   }
  ],
  "Copper Host Crusher": [],
+ "Culling Ritual": [
+  {
+   "a": "Lorenzo Mastroianni",
+   "art": "https://cards.scryfall.io/art_crop/front/8/f/8f6f91d3-cc07-4a42-99a0-5fb83b29cc25.jpg?1783927321",
+   "cn": "172",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/f/8f6f91d3-cc07-4a42-99a0-5fb83b29cc25.jpg?1783927321",
+   "r": "R",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  },
+  {
+   "a": "Lenka Šimečková",
+   "art": "https://cards.scryfall.io/art_crop/front/2/b/2bcd7858-7ae6-4419-bc58-a5c133c97577.jpg?1783903915",
+   "cn": "62",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/b/2bcd7858-7ae6-4419-bc58-a5c133c97577.jpg?1783903915",
+   "r": "R",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  }
+ ],
  "Cultivate": [
   {
    "a": "Anthony Palumbo",
@@ -266,6 +331,7 @@
    "y": "2021"
   }
  ],
+ "Deathbloom Ritualist": [],
  "Deathcap Glade": [
   {
    "a": "Sam Burley",
@@ -303,8 +369,13 @@
    "y": "2026"
   }
  ],
+ "Descendants' Path": [],
+ "Dina, Essence Brewer": [],
+ "Diregraf Rebirth": [],
  "Drover Grizzly": [],
+ "Edgar, Moonlit Sovereign": [],
  "Elemental Bond": [],
+ "Elemental Teachings": [],
  "Esika's Chariot": [
   {
    "a": "Raoul Vitale",
@@ -331,6 +402,7 @@
    "y": "2021"
   }
  ],
+ "Etali, Primal Garden": [],
  "Evolving Wilds": [
   {
    "a": "Jonas De Ro",
@@ -540,7 +612,40 @@
   }
  ],
  "Fanatic of Rhonas": [],
+ "Fiend Artisan": [
+  {
+   "a": "Yigit Koroglu",
+   "art": "https://cards.scryfall.io/art_crop/front/6/c/6cd9d800-6d31-42e2-87d2-772db0ff95ed.jpg?1783931012",
+   "cn": "220",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/c/6cd9d800-6d31-42e2-87d2-772db0ff95ed.jpg?1783931012",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Carl Critchlow",
+   "art": "https://cards.scryfall.io/art_crop/front/5/0/50a31dde-29b0-4c6f-b345-ae3c984cd1c7.jpg?1783908593",
+   "cn": "83",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/0/50a31dde-29b0-4c6f-b345-ae3c984cd1c7.jpg?1783908593",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  }
+ ],
  "Fierce Witchstalker": [],
+ "Fight Rigging": [],
+ "Flare of Cultivation": [],
+ "Flaxen Intruder // Welcome Home": [],
+ "Flourishing Hunter": [],
+ "Forebear's Blade": [],
+ "Fuel Tank Feaster": [],
+ "Garruk Relentless // Garruk, the Veil-Cursed": [],
  "Garruk's Uprising": [
   {
    "a": "Wisnu Tan",
@@ -595,8 +700,11 @@
    "y": "2024"
   }
  ],
+ "Geistpack Alpha": [],
  "Giant-Man, Gargantuan Genius": [],
  "Gigantic Big Bear": [],
+ "Glacier Godmaw": [],
+ "Glimpse of Nature": [],
  "Go for the Throat": [],
  "Goliath, Mass Manipulator": [],
  "Goreclaw, Terror of Qal Sisma": [
@@ -627,6 +735,7 @@
  ],
  "Grizzly Ghoul": [],
  "Guardian Project": [],
+ "Harness Infinity": [],
  "Head of the Hunt": [],
  "Heartless Act": [
   {
@@ -652,6 +761,7 @@
    "y": "2025"
   }
  ],
+ "Heirloom Epic": [],
  "Herd Heirloom": [],
  "Heroic Intervention": [
   {
@@ -773,8 +883,39 @@
    "y": "2025"
   }
  ],
+ "Host of the Hereafter": [],
+ "Hound Tamer // Untamed Pup": [
+  {
+   "a": "Randy Vargas",
+   "art": "https://cards.scryfall.io/art_crop/front/2/8/28e2119b-ed78-4b98-a956-f2b453d0b164.jpg?1783925584",
+   "cn": "187",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/8/28e2119b-ed78-4b98-a956-f2b453d0b164.jpg?1783925584",
+   "r": "U",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Cabrol",
+   "art": "https://cards.scryfall.io/art_crop/front/8/3/83218607-240e-4473-8b0b-6b4670b010e6.jpg?1783925527",
+   "cn": "302",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/3/83218607-240e-4473-8b0b-6b4670b010e6.jpg?1783925527",
+   "r": "U",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  }
+ ],
  "Howling Moon": [],
+ "Howlpack Piper // Wildsong Howler": [],
+ "Howlpack Resurgence": [],
+ "Hunter's Axe": [],
  "Hunter's Talent": [],
+ "Icetill Explorer": [],
  "Infernal Grasp": [
   {
    "a": "Naomi Baker",
@@ -802,7 +943,12 @@
    "y": "2025"
   }
  ],
+ "Insidious Roots": [],
+ "Jenova, Ancient Calamity": [],
+ "Kagha, Shadow Archdruid": [],
+ "Kamahl's Druidic Vow": [],
  "Kogla, the Titan Ape": [],
+ "Kraven the Hunter": [],
  "Large Bear": [],
  "Little Bear": [],
  "Llanowar Elves": [
@@ -877,7 +1023,10 @@
    "y": "2022"
   }
  ],
+ "Lord of Extinction": [],
+ "Lukamina, Moon Druid": [],
  "Lumra, Bellow of the Woods": [],
+ "Lupine Harbingers": [],
  "Maelstrom Pulse": [
   {
    "a": "Anthony Francisco",
@@ -902,13 +1051,75 @@
    "y": "2024"
   }
  ],
+ "Mantle of the Wolf": [],
  "Master's Guidance": [],
  "Mayor of Avabruck // Howlpack Alpha": [],
+ "Mirkwood": [],
+ "Mole Man, Moloid Master": [],
+ "Monstrous Vortex": [],
+ "Mortality Spear": [],
  "Mother Bear": [],
+ "Mycoid Resurrection": [],
  "Nature's Lore": [],
  "Necroblossom Snarl": [],
+ "Nighthowl Pursuer": [],
  "Nightpack Ambusher": [],
+ "Nissa of Shadowed Boughs": [
+  {
+   "a": "Yongjae Choi",
+   "art": "https://cards.scryfall.io/art_crop/front/6/d/6d69f943-d474-47c0-bc6b-1b247a5dd6f3.jpg?1783929321",
+   "cn": "231",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/d/6d69f943-d474-47c0-bc6b-1b247a5dd6f3.jpg?1783929321",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  },
+  {
+   "a": "David Rapoza",
+   "art": "https://cards.scryfall.io/art_crop/front/d/a/dabac59d-8319-417e-9cd5-e4ee59b2e5f2.jpg?1783929295",
+   "cn": "283",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/a/dabac59d-8319-417e-9cd5-e4ee59b2e5f2.jpg?1783929295",
+   "r": "M",
+   "set": "ZNR",
+   "sn": "Zendikar Rising",
+   "y": "2020"
+  }
+ ],
+ "Nissa, Vital Force": [],
+ "Nog, Ambitious Cadet": [],
  "Nurturing Peatland": [],
+ "Old Stickfingers": [
+  {
+   "a": "Jehan Choo",
+   "art": "https://cards.scryfall.io/art_crop/front/b/2/b203be6f-c565-4d8f-b200-b537569a0292.jpg?1783925557",
+   "cn": "234",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/2/b203be6f-c565-4d8f-b200-b537569a0292.jpg?1783925557",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "DZO",
+   "art": "https://cards.scryfall.io/art_crop/front/d/3/d3a0dc21-c202-4cef-9e67-26b9dd24d565.jpg?1783925511",
+   "cn": "321",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/3/d3a0dc21-c202-4cef-9e67-26b9dd24d565.jpg?1783925511",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  }
+ ],
+ "Omnipresence": [],
  "Outcaster Trailblazer": [],
  "Overgrown Tomb": [
   {
@@ -971,6 +1182,8 @@
    "y": "2021"
   }
  ],
+ "Owlbear Shepherd": [],
+ "Packsong Pup": [],
  "Paradise Druid": [
   {
    "a": "Nils Hamm",
@@ -997,6 +1210,7 @@
    "y": "2024"
   }
  ],
+ "Path of Discovery": [],
  "Polukranos, Unchained": [],
  "Primal Adversary": [],
  "Primal Might": [
@@ -1026,9 +1240,11 @@
    "y": "2024"
   }
  ],
+ "Primal Witchstalker": [],
  "Prismatic Vista": [],
  "Rampaging Ursaguana": [],
  "Ranger Class": [],
+ "Ravening Warg": [],
  "Return of the Wildspeaker": [
   {
    "a": "Chris Rallis",
@@ -1057,6 +1273,9 @@
   }
  ],
  "Rhonas the Indomitable": [],
+ "Rhovanion Rampager": [],
+ "Rise of the Witch-king": [],
+ "Sage of Ancient Lore // Werewolf of Ancient Hunger": [],
  "Sarulf, Realm Eater": [
   {
    "a": "Chris Rahn",
@@ -1083,7 +1302,11 @@
    "y": "2021"
   }
  ],
+ "Sauron, the Necromancer": [],
  "Selvala, Heart of the Wilds": [],
+ "Sentinel of the Nameless City": [],
+ "Shrill Howler // Howling Chorus": [],
+ "Sméagol, Helpful Guide": [],
  "Snakeskin Veil": [
   {
    "a": "Matt Stewart",
@@ -1146,12 +1369,15 @@
    "y": "2025"
   }
  ],
+ "Somberwald Beastmaster": [],
  "Spider-Ham, Peter Porker": [],
  "Striped Bears": [],
  "Studious First-Year": [],
  "Surrak and Goreclaw": [],
+ "Sword of Body and Mind": [],
  "Sylvan Scavenging": [],
  "Temple of Malady": [],
+ "Tenacious Pup": [],
  "The Chief Warg": [],
  "The Earth King": [],
  "The Great Henge": [
@@ -1181,7 +1407,48 @@
    "y": "2025"
   }
  ],
+ "The Last Ronin": [],
  "Titania's Command": [],
+ "Torgal, A Fine Hound": [],
+ "Toski, Bearer of Secrets": [
+  {
+   "a": "Jason Rainville",
+   "art": "https://cards.scryfall.io/art_crop/front/f/9/f9e79b59-94c8-4697-bf88-f0a0433170f5.jpg?1783928203",
+   "cn": "197",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/9/f9e79b59-94c8-4697-bf88-f0a0433170f5.jpg?1783928203",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Andy Brase",
+   "art": "https://cards.scryfall.io/art_crop/front/0/8/08eb31f3-7686-4d6b-a0e4-5d6ece6fba82.jpg?1783928145",
+   "cn": "319",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/8/08eb31f3-7686-4d6b-a0e4-5d6ece6fba82.jpg?1783928145",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Lucas Graciano",
+   "art": "https://cards.scryfall.io/art_crop/front/0/1/0153d1ad-c8ee-42ff-a059-b763c2cfb7be.jpg?1783909912",
+   "cn": "60",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/1/0153d1ad-c8ee-42ff-a059-b763c2cfb7be.jpg?1783909912",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  }
+ ],
  "Tovolar's Huntmaster // Tovolar's Packleader": [
   {
    "a": "Cristi Balanescu",
@@ -1209,9 +1476,37 @@
   }
  ],
  "Turntimber Symbiosis // Turntimber, Serpentine Wood": [],
+ "Tyvar, Jubilant Brawler": [],
  "Ursine Guide // Ranger's Merit": [],
+ "Varis, Silverymoon Ranger": [
+  {
+   "a": "Jesper Ejsing",
+   "art": "https://cards.scryfall.io/art_crop/front/e/3/e3bd3ea9-f06d-4df7-8b8d-ac6a0e591b09.jpg?1783926453",
+   "cn": "209",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/3/e3bd3ea9-f06d-4df7-8b8d-ac6a0e591b09.jpg?1783926453",
+   "r": "R",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Justine Mara Andersen",
+   "art": "https://cards.scryfall.io/art_crop/front/a/0/a051be39-298e-44dc-8fd9-bfbecdf98a58.jpg?1783926405",
+   "cn": "335",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/0/a051be39-298e-44dc-8fd9-bfbecdf98a58.jpg?1783926405",
+   "r": "R",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  }
+ ],
  "Vastlands Scavenger": [],
  "Vaultborn Tyrant": [],
+ "Vincent Valentine": [],
  "Vivien Reid": [],
  "Vivien, Monsters' Advocate": [
   {
@@ -1239,11 +1534,66 @@
    "y": "2020"
   }
  ],
+ "Vraska Joins Up": [],
+ "Vraska, Golgari Queen": [
+  {
+   "a": "Livia Prima",
+   "art": "https://cards.scryfall.io/art_crop/front/0/e/0e2de47c-828e-4e09-996d-b4c360af2d2f.jpg?1783934222",
+   "cn": "3",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/e/0e2de47c-828e-4e09-996d-b4c360af2d2f.jpg?1783934222",
+   "r": "M",
+   "set": "PANA",
+   "sn": "MTG Arena Promos",
+   "y": "2018"
+  },
+  {
+   "a": "Magali Villeneuve",
+   "art": "https://cards.scryfall.io/art_crop/front/a/3/a36d3ea7-0f18-4865-b47b-755673db065e.jpg?1783934118",
+   "cn": "213",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/3/a36d3ea7-0f18-4865-b47b-755673db065e.jpg?1783934118",
+   "r": "M",
+   "set": "GRN",
+   "sn": "Guilds of Ravnica",
+   "y": "2018"
+  }
+ ],
+ "Vraska, Regal Gorgon": [],
+ "Vraska, Swarm's Eminence": [
+  {
+   "a": "Anna Steinbauer",
+   "art": "https://cards.scryfall.io/art_crop/front/5/9/59ee2974-07e9-4506-903c-457cb7327dd8.jpg?1783933375",
+   "cn": "236",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/9/59ee2974-07e9-4506-903c-457cb7327dd8.jpg?1783933375",
+   "r": "U",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Ryota Murayama",
+   "art": "https://cards.scryfall.io/art_crop/front/c/1/c1523eed-d417-44bc-90fc-f67ecb3dc2c4.jpg?1783933373",
+   "cn": "236★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/1/c1523eed-d417-44bc-90fc-f67ecb3dc2c4.jpg?1783933373",
+   "r": "U",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
+ "Wargling": [],
  "Wastewood Verge": [],
+ "Weaver of Blossoms // Blossom-Clad Werewolf": [],
  "Werewolf Pack Leader": [],
  "Wicked Wolf": [],
  "Wilderland Scrounger": [],
  "Wilson, Bear Comrade": [],
+ "Winding Constrictor": [],
+ "Witherbloom, the Balancer": [],
+ "Wolfkin Outcast // Wedding Crasher": [],
  "Woodland Cemetery": [
   {
    "a": "Christine Choi",
@@ -1267,5 +1617,9 @@
    "sn": "Tales of Middle-earth Commander",
    "y": "2023"
   }
- ]
+ ],
+ "World Shaper": [],
+ "World War Hulk": [],
+ "Wrenn and Realmbreaker": [],
+ "Ygra, Eater of All": []
 }

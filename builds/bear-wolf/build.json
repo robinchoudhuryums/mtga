@@ -831,167 +831,167 @@
   },
   {
    "name": "Berserk",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Burgeoning",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Glimpse of Nature",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Hunter's Axe",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Vraska, Swarm's Eminence",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Vraska, Golgari Queen",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Tyvar, Jubilant Brawler",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Chevill, Bane of Monsters",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Fiend Artisan",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Insidious Roots",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Vraska Joins Up",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Winding Constrictor",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Dina, Essence Brewer",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Kraven the Hunter",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Sméagol, Helpful Guide",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Beifong's Bounty Hunters",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Culling Ritual",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Host of the Hereafter",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Jenova, Ancient Calamity",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Mortality Spear",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Kagha, Shadow Archdruid",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Rise of the Witch-king",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Deathbloom Ritualist",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Diregraf Rebirth",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Lord of Extinction",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Ygra, Eater of All",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Back for More",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Mycoid Resurrection",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "The Last Ronin",
-   "pile": null,
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Harness Infinity",
-   "pile": null,
+   "pile": "N",
    "src": "added"
   },
   {
    "name": "Vraska, Regal Gorgon",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Witherbloom, the Balancer",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Old Stickfingers",
-   "pile": null,
+   "pile": "A",
    "src": "added"
   }
  ],
@@ -2122,6 +2122,237 @@
    "graded_at": {
     "105": "fea2e30b439e"
    }
+  },
+  "Berserk": {
+   "group": "Pile: out",
+   "text": "Doubles a creature's power for one swing, then kills it if it attacked. One big hit for a creature you lose.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Burgeoning": {
+   "group": "Pile: out",
+   "text": "One-opponent Brawl gives about one extra land a turn cycle. Not the deck's problem.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Glimpse of Nature": {
+   "group": "Pile: out",
+   "text": "A burst-draw turn needs a hand of cheap creatures; this deck's creatures cost 3–5.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Hunter's Axe": {
+   "group": "Pile: situational",
+   "text": "One mana, +2/+0: a 2-power Bear becomes a gate-opener (F2). Equip {2} each time, and the Sword and Forebear's Blade do the same job better.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vraska, Swarm's Eminence": {
+   "group": "Pile: out",
+   "text": "A deathtouch-token planeswalker. The deck has few deathtouch creatures.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vraska, Golgari Queen": {
+   "group": "Pile: situational",
+   "text": "-3 destroys a nonland permanent with MV 3 or less, and +2 trades a spare permanent for a card. A fair replacement removal piece if one is cut (F5).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Tyvar, Jubilant Brawler": {
+   "group": "Pile: situational",
+   "text": "Dorks and tap abilities work the turn they enter; -2 returns a 2-drop Bear. Modest.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "group": "Pile: real",
+   "text": "A 2-mana deathtouch body that marks one opposing creature at a time and draws when it dies. With 16 removal spells and Ayula fights it is a repeatable draw (F6).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Fiend Artisan": {
+   "group": "Pile: situational",
+   "text": "A creature tutor that needs a sacrifice. It can find Ayula or Goreclaw, but its size reads your graveyard and Sarulf exiles rather than bins.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Insidious Roots": {
+   "group": "Pile: out",
+   "text": "Tokens tap for mana and Plants grow when creature cards leave the graveyard. Off plan.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vraska Joins Up": {
+   "group": "Pile: situational",
+   "text": "Deathtouch counters on the team on entry, then a card whenever a legendary creature connects. About 14 legendary creatures here; the counters are not +1/+1 and do not open the gate.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Winding Constrictor": {
+   "group": "Pile: take",
+   "text": "Every counter you place gets one more. Ayula's two counters become three, Fight Rigging and Avabruck give more, and Sarulf itself gets two per opposing permanent instead of one, so its wipe charges twice as fast. A 2-mana 2/3.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Dina, Essence Brewer": {
+   "group": "Pile: out",
+   "text": "A sacrifice outlet. The deck has no sacrifice plan.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Kraven the Hunter": {
+   "group": "Pile: real",
+   "text": "A 3-mana 4/3 trampler (power 4 on arrival, F2) that draws and grows whenever the opponent's biggest creature dies. Removal and fights trigger it. Note: Head of the Hunt (in the deck) exiles dying creatures instead, which switches Kraven off.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "group": "Pile: out",
+   "text": "Needs one of your creatures to die each turn.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Beifong's Bounty Hunters": {
+   "group": "Pile: situational",
+   "text": "A 4/4 for 4 (F2) that turns each dying creature into a land creature with counters equal to its power. A sturdy body.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Culling Ritual": {
+   "group": "Pile: out",
+   "text": "Destroys every nonland permanent with MV 2 or less, including your own dorks, 2-drop Bears and Constrictor. Sarulf already gives the deck a wipe.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Host of the Hereafter": {
+   "group": "Pile: situational",
+   "text": "A 4/4 for 4 whose counters move to another creature when it dies. Fine, not exciting.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "group": "Pile: out",
+   "text": "Gives counters equal to its own power, which starts at 1. Needs a pump first.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mortality Spear": {
+   "group": "Pile: situational",
+   "text": "An instant that destroys any nonland permanent. Four mana here, since the deck rarely gains life. A fair replacement removal piece (F5).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Kagha, Shadow Archdruid": {
+   "group": "Pile: out",
+   "text": "Graveyard casting off a mill of two. Off plan.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Rise of the Witch-king": {
+   "group": "Pile: situational",
+   "text": "An edict that also costs you a creature, then returns a permanent. Symmetrical in a creature deck.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Deathbloom Ritualist": {
+   "group": "Pile: out",
+   "text": "Its mana scales with creature cards in your graveyard; this deck's graveyard stays small.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Diregraf Rebirth": {
+   "group": "Pile: situational",
+   "text": "Reanimation with flashback. Undoes removal, but not a Sarulf wipe, which exiles.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Lord of Extinction": {
+   "group": "Pile: out",
+   "text": "Its size reads all graveyards; Sarulf exiles, so graveyards stay small here.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ygra, Eater of All": {
+   "group": "Pile: situational",
+   "text": "A 6/6 for 5 (F2) that grows whenever a creature dies. It also gives every opposing creature a 'sacrifice: gain 3 life' ability, which helps the opponent (owner's rule).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Back for More": {
+   "group": "Pile: situational",
+   "text": "Instant reanimation plus a fight, for six mana.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mycoid Resurrection": {
+   "group": "Pile: out",
+   "text": "Graveyard reanimation; the graveyard stays thin here.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "The Last Ronin": {
+   "group": "Pile: out",
+   "text": "Chapter I destroys every creature, and this is a 37-creature deck.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Harness Infinity": {
+   "group": "Pile: out",
+   "text": "Swaps hand and graveyard for six mana with a BBB GGG cost. A graveyard deck's card.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vraska, Regal Gorgon": {
+   "group": "Pile: out",
+   "text": "Seven mana. -3 destroys a creature and +2 opens the gate (F2), but the deck has cheaper removal.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Witherbloom, the Balancer": {
+   "group": "Pile: real",
+   "text": "Affinity for creatures, so about 3 mana on a normal board, for a 5/5 flying deathtouch. It also gives instants and sorceries affinity, which discounts the removal. MV 8, so a Sarulf wipe never takes it (F3).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Old Stickfingers": {
+   "group": "Pile: out",
+   "text": "An X spell that fills the graveyard; its size reads creature cards there.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
   }
  },
  "snapshots": {
@@ -2807,6 +3038,204 @@
   "Glacier Godmaw": {
    "A": {
     "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Berserk": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Burgeoning": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Glimpse of Nature": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Hunter's Axe": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vraska, Swarm's Eminence": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vraska, Golgari Queen": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Tyvar, Jubilant Brawler": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Fiend Artisan": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Insidious Roots": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vraska Joins Up": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Winding Constrictor": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Dina, Essence Brewer": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Kraven the Hunter": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Beifong's Bounty Hunters": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Culling Ritual": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Host of the Hereafter": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Mortality Spear": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Kagha, Shadow Archdruid": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Rise of the Witch-king": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Deathbloom Ritualist": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Diregraf Rebirth": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Lord of Extinction": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Ygra, Eater of All": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Back for More": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Mycoid Resurrection": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "The Last Ronin": {
+   "A": {
+    "m": "✗",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Harness Infinity": {
+   "A": {
+    "m": "✗",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vraska, Regal Gorgon": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Witherbloom, the Balancer": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Old Stickfingers": {
+   "A": {
+    "m": "△",
     "graded_at": "fea2e30b439e"
    }
   }
