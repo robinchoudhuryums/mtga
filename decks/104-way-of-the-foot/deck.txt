@@ -108,7 +108,7 @@
 1 Bloodthirsty Conqueror (FDN) 58
 
 # Interaction
-1 Despark (WAR) 190
+1 Seal from Existence (MOM) 35
 1 Shredder's Technique (TMT) 77
 1 Karai's Technique (TMT) 152
 1 Sheltered by Ghosts (DSK) 30

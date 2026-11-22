@@ -26,7 +26,6 @@ Eternal of Harsh Truths,Creature — Zombie Cleric,"Afflict 2 (Whenever this cre
 Whenever this creature attacks and isn't blocked, draw a card.",U,Zombie; Cleric; card draw; afflict,AKR,61,Uncommon,91,,5.5,seed
 Rhonas's Monument,Legendary Artifact,"Green creature spells you cast cost {1} less to cast.
 Whenever you cast a creature spell, target creature you control gets +2/+2 and gains trample until end of turn.",Colorless,cost-reduction; pump; trample; evasion,AKR,279,Uncommon,89,deck 89 tune 2026-10-23,6.0,seed
-"Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
@@ -663,7 +662,6 @@ Sphinx's Tutelage,Enchantment,"Whenever you draw a card, target opponent mills t
 When enchanted creature dies, return it to the battlefield under your control, then return this card to the battlefield transformed under your control. // (Transforms from Journey to Eternity.)
 {T}: Add one mana of any color.
 {3}{B}{G}, {T}: Return target creature card from your graveyard to the battlefield.",B/G,aura; reanimator; graveyard; mana; transform; enchant,RIX,160,Rare,75-historic-brawl,,7.0,seed
-Growth Spiral,Instant,Draw a card. You may put a land card from your hand onto the battlefield.,U/G,card draw,RNA,178,Common,96,,1.5,seed
 Skewer the Critics,Sorcery,"Spectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)
 Skewer the Critics deals 3 damage to any target.",R,burn; spectacle,RNA,115,Common,93,,2.0,seed
 "Arlinn Kord // Arlinn, Embraced by the Moon",Legendary Planeswalker — Arlinn // Legendary Planeswalker — Arlinn,"+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.
@@ -710,9 +708,6 @@ Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.
 {1}{B}, Exile an instant or sorcery card from your graveyard: Return this card from your graveyard to the battlefield.",B,Zombie; Warlock; reanimator; graveyard; lifegain,SOS,93,Rare,11,reanimator Zombie — recurs creatures for the mono-black graveyard engine,5.0,hand
 Pox Plague,Sorcery,"Each player loses half their life, then discards half the cards in their hand, then sacrifices half the permanents they control of their choice. Round down each time.",B,sacrifice,SOS,94,Rare,11,symmetric pox — mono-black control rebuilds from the wreckage via tokens/reanimation,5.0,hand
 Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 4,13,9",4.0,hand
-Splatter Technique,Sorcery,"Choose one —
-• Draw four cards.
-• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell,6.5,hand
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
@@ -887,8 +882,6 @@ Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{
 Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.0,hand
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,general,"symmetric red wheel (each player may draw 7) — niche refuel, no sacrifice synergy",3.5,hand
-"Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
-{T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
 Turtle Power!,Enchantment,"Flash
@@ -928,8 +921,6 @@ Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artif
 Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
-Decadent Dragon // Expensive Taste,Creature — Dragon // Instant — Adventure,"Flying, trample
-Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,5.5,seed
 Picklock Prankster // Free the Fae,Creature — Faerie Rogue // Instant — Adventure,"Flying, vigilance // Mill four cards. Then put an instant, sorcery, or Faerie card from among the milled cards into your hand.",U,Faerie; Rogue; Adventure; mill; exile cast; flying; evasion; vigilance; combat; graveyard,WOE,64,Uncommon,,,2.0,seed
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
