@@ -1048,6 +1048,16 @@
    "name": "Stable Wormhole",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Innkeeper's Talent",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Advanced Floral Invocations",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2485,6 +2495,20 @@
    "graded_at": {
     "105": "fea2e30b439e"
    }
+  },
+  "Innkeeper's Talent": {
+   "group": "Pile: take",
+   "text": "Three cards in one, each level an activation rather than a spell (so it works on a no-spell turn). Level 1 is a counter every combat (F2). Level 2 gives ward {1} to every permanent with a counter: the Ayula Bears, Sarulf and the planeswalkers. Level 3 doubles EVERY counter placement, so Sarulf charges twice as fast, walkers enter with double loyalty, and it stacks with Constrictor. Owned. MV 2, so a Sarulf wipe of 2+ takes it (F3).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Advanced Floral Invocations": {
+   "group": "Pile: situational",
+   "text": "Mills two per land drop, which fills the graveyard Sauron and Mother Bear read. Level 3 casts creatures from the graveyard, so each recast Bear is another Ayula trigger. But reaching level 3 costs eight mana in total, and Sarulf's wipe exiles rather than bins, so the graveyard plan stays a side line. Owned.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
   }
  },
  "snapshots": {
@@ -3432,6 +3456,18 @@
    }
   },
   "Stable Wormhole": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Innkeeper's Talent": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Advanced Floral Invocations": {
    "A": {
     "m": "◇",
     "graded_at": "fea2e30b439e"

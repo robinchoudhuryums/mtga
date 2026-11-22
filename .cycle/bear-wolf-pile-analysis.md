@@ -200,6 +200,8 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 109 | Hardened Scales | ★ | One mana: each +1/+1 counter placement on a creature gets one more: Ayula's two become three, and Sarulf's counters count. It stacks with Winding Constrictor. MV 1, so every Sarulf wipe takes it (F3). |
 | 110 | Mythweaver Poq | ★ | Its size is your land count (power 4+ by turn four, F2), and each turn it conjures a copy of the land you played, so a fetch land is played twice. Ramp on a body, Alchemy. |
 | 111 | Stable Wormhole | ◇ | A tapped any-colour land token every time you attack. The deck has enough ramp; this is ramp that needs the attack first. |
+| 112 | Innkeeper's Talent | ★★ | Three cards in one, each level an activation rather than a spell (so it works on a no-spell turn). Level 1 is a counter every combat (F2). Level 2 gives ward {1} to every permanent with a counter: the Ayula Bears, Sarulf and the planeswalkers. Level 3 doubles EVERY counter placement, so Sarulf charges twice as fast, walkers enter with double loyalty, and it stacks with Constrictor. Owned. MV 2, so a Sarulf wipe of 2+ takes it (F3). |
+| 113 | Advanced Floral Invocations | ◇ | Mills two per land drop, which fills the graveyard Sauron and Mother Bear read. Level 3 casts creatures from the graveyard, so each recast Bear is another Ayula trigger. But reaching level 3 costs eight mana in total, and Sarulf's wipe exiles rather than bins, so the graveyard plan stays a side line. Owned. |
 
 ## 5. Consolidated plan (live)
 
@@ -219,12 +221,12 @@ card advantage 14→17, protection 7→9, board power 124→129, avg MV unchange
 | 9 | Cultivate | Flare of Cultivation | Same effect, plus a free alternative cost (E1). Owned. |
 
 ### Tier 1b — batch 4 adds (previewed on top of tier 1: legal, floor A, interaction 13,
-card advantage 17, protection 8, board power 131)
+card advantage 17, protection 9, board power 131, avg MV 3.47)
 
 | # | Cut | Add | Why |
 |---|---|---|---|
 | 10 | Large Bear | Howlpack Piper | Large Bear is a vanilla 5-drop. The Piper puts a Bear in from hand every turn and enables a no-spell turn. Bears 17→16. |
-| 11 | Snakeskin Veil | Hardened Scales | One mana for one mana. Protection falls to 8 (still above the 7 it started at); counters gain a second doubler. |
+| 11 | Snakeskin Veil | Innkeeper's Talent | Replaces Hardened Scales here (owner's add, 2026-11-22): a counter every combat, ward {1} on everything with a counter, then a doubler at level 3. Protection holds at 9. Owned. Hardened Scales drops to tier 2. |
 | 12 | Elemental Bond | Evolution Sage | Bond draws off power-3 creatures entering; the draw engines in tier 1 cover that. The Sage proliferates every land drop. |
 | 13 | Heartless Act | Lukamina, Moon Druid | Interaction 14→13, still above the A line of 12. Bear Form is a team anthem plus trample. |
 
@@ -241,6 +243,7 @@ Swap 13 is the one to drop first.
 - **Fight Rigging · Path of Discovery · World War Hulk** (Hulk owned): counter engines (F2).
 - **Chimil, the Inner Sun · Sentinel of the Nameless City · Vincent Valentine** (Vincent owned).
 - **Sword of Body and Mind · Forebear's Blade**: equipment that opens the gate.
+- **Hardened Scales · Advanced Floral Invocations** (Floral owned).
 - **Edgar, Moonlit Sovereign · Vraska, Betrayal's Sting · Mythweaver Poq** (Poq owned).
 - **Flaxen Intruder** (three Bears, three Ayula triggers) · **Mirkwood** (owned, for a Forest).
 
@@ -261,5 +264,5 @@ draw engines above), Snakeskin Veil.
 
 Tier 1 crafts: 2 mythic (Avabruck Caretaker, Garruk Relentless), 4 rare (Werewolf Pack Leader,
 Toski, Geistpack Alpha, Argoth), 2 uncommon (Winding Constrictor, Owlbear Shepherd). Flare of
-Cultivation is owned. Tier 1b: 1 mythic (Lukamina), 2 rare (Howlpack Piper, Hardened
-Scales); Evolution Sage is owned.
+Cultivation is owned. Tier 1b: 1 mythic (Lukamina), 1 rare (Howlpack Piper); Evolution Sage and
+Innkeeper's Talent are owned.
