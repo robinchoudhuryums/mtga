@@ -4053,6 +4053,23 @@ Seat of the Synod,,0,
 Ancient Den,,0,
 Vault of Whispers,,0,
 Gaseous Anomaly,,0,
+Dictate of Erebos,{3}{B}{B},5,Flash
+Avatar of the Resolute,{G}{G},2,Reach;Trample
+Bloodtithe Harvester,{B}{R},2,
+"Raggadragga, Goreguts Boss",{2}{R}{G},4,
+Grave Pact,{1}{B}{B}{B},4,
+"Kellan, the Fae-Blooded",{2}{R} // {1}{W},3,Double strike
+Tough Cookie,{1}{G},2,Food
+Doppelgang,{X}{X}{X}{G}{U},2,
+Lost in the Maze,{X}{U}{U},2,Flash
+Turtles Forever,{3}{W},4,
+"Gowron, Eager for Battle",{2}{B}{R},4,
+Sunfall,{3}{W}{W},5,Incubate;Transform
+Scrappy Bruiser,{3}{R},4,
+Seal from Existence,{1}{W}{W},3,Ward
+Fall of Gil-galad,{1}{G},2,Fight;Scry
+Oath of the Grey Host,{3}{B},4,Treasure;Food
+Storm of Saruman,{4}{U}{U},6,Ward
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -7298,7 +7315,6 @@ Catti-brie of Mithral Hall,{G}{W},2,Reach;First strike
 "Mazzy, Truesword Paladin",{1}{R}{G}{W},4,
 "Miirym, Sentinel Wyrm",{3}{G}{U}{R},6,Flying;Ward
 Nalia de'Arnise,{1}{W}{B},3,
-"Raggadragga, Goreguts Boss",{2}{R}{G},4,
 "Raphael, Fiendish Savior",{3}{B}{R},5,Flying
 Thrakkus the Butcher,{3}{R}{G},5,Trample;Double
 Chardalyn Dragon,{6},6,Flying
@@ -8533,7 +8549,6 @@ Thundering Spineback,{5}{G}{G},7,
 Time to Feed,{2}{G},3,Fight
 Tireless Tracker,{2}{G},3,Investigate;Landfall
 Topiary Stomper,{1}{G}{G},3,Vigilance
-Tough Cookie,{1}{G},2,Food
 Trail of Crumbs,{1}{G},2,Food
 Tukatongue Thallid,{G},1,
 Ulvenwald Mysteries,{2}{G},3,Investigate
@@ -9851,7 +9866,6 @@ Saruman the White,{4}{U},5,Amass;Ward
 Saruman's Trickery,{1}{U}{U},3,Amass
 Scroll of Isildur,{2}{U},3,
 Soothing of Sméagol,{1}{U},2,
-Storm of Saruman,{4}{U}{U},6,Ward
 Surrounded by Orcs,{3}{U},4,Amass;Mill
 Treason of Isengard,{2}{U},3,Amass
 The Black Breath,{2}{B},3,
@@ -9876,7 +9890,6 @@ Mordor Trebuchet,{2}{B},3,Defender
 Morgul-Knife Wound,{1}{B},2,Enchant
 Nasty End,{1}{B},2,
 Nazgûl,{2}{B},3,Deathtouch
-Oath of the Grey Host,{3}{B},4,Treasure;Food
 One Ring to Rule Them All,{2}{B}{B},4,Mill
 Orcish Bowmasters,{1}{B},2,Amass;Flash
 Orcish Medicine,{1}{B},2,Amass
@@ -9926,7 +9939,6 @@ Elven Farsight,{G},1,Scry
 Enraged Huorn,{4}{G},5,Trample
 Entish Restoration,{2}{G},3,
 Ent's Fury,{1}{G},2,Fight
-Fall of Gil-galad,{1}{G},2,Fight;Scry
 "Fangorn, Tree Shepherd",{4}{G}{G}{G},7,
 Galadhrim Bow,{2}{G},3,Equip;Flash
 Generous Ent,{5}{G},6,Reach;Landcycling;Food;Forestcycling;Typecycling;Cycling
@@ -11274,7 +11286,6 @@ Forensic Researcher,{2}{U},3,Collect evidence
 Furtive Courier,{2}{U},3,
 Hotshot Investigators,{5}{U},6,Investigate
 Intrude on the Mind,{3}{U}{U},5,
-Lost in the Maze,{X}{U}{U},2,Flash
 Out Cold,{3}{U},4,Investigate
 Proft's Eidetic Memory,{1}{U},2,
 Projektor Inspector,{2}{U},3,
@@ -11375,7 +11386,6 @@ Curious Cadaver,{2}{U}{B},4,Flying
 Deadly Complication,{1}{B}{R},3,
 Detective's Satchel,{2}{U}{R},4,Investigate
 Dog Walker,{R}{W},2,Vigilance;Disguise
-Doppelgang,{X}{X}{X}{G}{U},2,
 Drag the Canal,{U}{B},2,Surveil;Investigate
 "Etrata, Deadly Fugitive",{1}{U}{B},3,Cloak;Deathtouch
 Evidence Examiner,{G}{U},2,Collect evidence;Investigate
@@ -11472,12 +11482,10 @@ Phyrexian Awakening,{2}{W},3,Incubate;Transform
 Progenitor Exarch,{X}{X}{W},1,Incubate;Transform
 Realmbreaker's Grasp,{1}{W},2,Enchant
 Scrollshift,{2}{W},3,
-Seal from Existence,{1}{W}{W},3,Ward
 Seraph of New Capenna // Seraph of New Phyrexia,{2}{W},3,Flying;Transform
 Sigiled Sentinel,{2}{W},3,Vigilance;Backup
 Sun-Blessed Guardian // Furnace-Blessed Conqueror,{1}{W},2,Transform
 Sunder the Gateway,{1}{W},2,Incubate;Transform
-Sunfall,{3}{W}{W},5,Incubate;Transform
 Surge of Salvation,{W},1,
 Swordsworn Cavalier,{1}{W},2,
 Tarkir Duneshaper // Burnished Dunestomper,{W},1,Transform;Trample
@@ -11590,7 +11598,6 @@ Ral's Reinforcements,{1}{R},2,
 Ramosian Greatsword,{4}{R},5,Equip;Convoke
 Rampaging Raptor,{2}{R}{R},4,Haste;Trample
 Redcap Heelslasher,{3}{R},4,Backup;First strike
-Scrappy Bruiser,{3}{R},4,
 Searing Barb,{2}{R},3,Incubate;Transform
 Shatter the Source,{5}{R},6,Convoke
 Shivan Branch-Burner,{5}{R}{R},7,Flying;Haste;Convoke
@@ -12646,7 +12653,6 @@ Basilica Screecher,{1}{B},2,Flying;Extort
 Blood Scrivener,{1}{B},2,
 Cruel Revival,{4}{B},5,
 Devour Flesh,{1}{B},2,
-Dictate of Erebos,{3}{B}{B},5,Flash
 Gurmag Angler,{6}{B},7,Delve
 Lifebane Zombie,{1}{B}{B},3,Intimidate
 "Liliana, Heretical Healer // Liliana, Defiant Necromancer",{1}{B}{B},3,Lifelink;Transform
@@ -12770,7 +12776,6 @@ Ash Zealot,{R}{R},2,First strike;Haste
 Fanatic of Mogis,{3}{R},4,
 Pyromancer's Assault,{3}{R},4,
 Stoneshock Giant,{3}{R}{R},5,Monstrosity
-Avatar of the Resolute,{G}{G},2,Reach;Trample
 "Nylea, God of the Hunt",{3}{G},4,Indestructible
 Nylea's Disciple,{2}{G}{G},4,
 Reverent Hunter,{2}{G},3,
@@ -14833,7 +14838,6 @@ Leonardo's Technique,{3}{W},4,Sneak
 Make Your Move,{2}{W},3,
 Prehistoric Pet,{W},1,
 Turncoat Kunoichi,{2}{W},3,Sneak
-Turtles Forever,{3}{W},4,
 "April O'Neil, Hacktivist",{3}{U},4,
 Does Machines,{1}{U},2,Mill
 Donatello's Technique,{2}{U},3,Sneak
@@ -15011,7 +15015,6 @@ Constable Odo,{3}{W/U}{W/U},5,Investigate
 "The Doctor, EMH",{3}{G/W}{G/W},5,
 The Duras Sisters,{B/R}{B/R},2,
 "D'Vana Tendi, Optimistic Ensign",{1}{G/U}{G/U},3,Surveil
-"Gowron, Eager for Battle",{2}{B}{R},4,
 "Kirk, Commanding Officer",{1}{R}{W},3,
 Live Long and Prosper,{5}{W}{U},7,Double
 "Lore, Positronic Provocateur",{1}{U/B}{U/B},3,Surveil
@@ -15250,7 +15253,6 @@ Wolf Strike,{2}{G},3,
 Wolfkin Outcast // Wedding Crasher,{5}{G},6,Transform;Daybound;Nightbound
 Ancient Lumberknot,{2}{B}{G},4,
 "Anje, Maid of Dishonor",{2}{B}{R},4,
-Bloodtithe Harvester,{B}{R},2,
 Brine Comber // Brinebound Gift,{1}{W}{U},3,Transform;Enchant;Disturb
 Child of the Pack // Savage Packmate,{2}{R}{G},4,Transform;Daybound;Trample;Nightbound
 "Dorothea, Vengeful Victim // Dorothea's Retribution",{W}{U},2,Flying;Transform;Enchant;Disturb
@@ -15720,7 +15722,6 @@ Copy Enchantment,{2}{U},3,
 Fraying Sanity,{2}{U},3,Enchant;Mill
 Kindred Discovery,{3}{U}{U},5,
 Spreading Seas,{1}{U},2,Enchant
-Grave Pact,{1}{B}{B}{B},4,
 Necropotence,{B}{B}{B},3,
 Oppression,{1}{B}{B},3,
 Oversold Cemetery,{1}{B},2,

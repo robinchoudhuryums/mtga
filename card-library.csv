@@ -8824,3 +8824,39 @@ Ancient Den,Artifact Land,{T}: Add {W}.,W,mana,AA2,23,1
 Vault of Whispers,Artifact Land,{T}: Add {B}.,B,mana,J25,780,1
 Gaseous Anomaly,Land,"{T}: Add {C}.
 {5}{U}, {T}, Sacrifice this land: Draw two cards. Create a tapped Planet land token named New Planet with ""{T}: Add one mana of any color.""",U,card draw; sacrifice; tokens; mana; ramp,TRK,284,1
+Dictate of Erebos,Enchantment,"Flash
+Whenever a creature you control dies, each opponent sacrifices a creature of their choice.",B,sacrifice; flash; tempo,PIO,91,1
+Avatar of the Resolute,Creature — Avatar,"Reach, trample
+This creature enters with a +1/+1 counter on it for each other creature you control with a +1/+1 counter on it.",G,Avatar; counters; reach; defense; trample; evasion,PIO,299,1
+Bloodtithe Harvester,Creature — Vampire,"When this creature enters, create a Blood token. (It's an artifact with ""{1}, {T}, Discard a card, Sacrifice this token: Draw a card."")
+{T}, Sacrifice this creature: Target creature gets -X/-X until end of turn, where X is twice the number of Blood tokens you control. Activate only as a sorcery.",B/R,Vampire; card draw; sacrifice; tokens; etb; removal,VOW,232,1
+"Raggadragga, Goreguts Boss",Legendary Creature — Human Boar,"Each creature you control with a mana ability gets +2/+2.
+Whenever a creature you control with a mana ability attacks, untap it.
+Whenever you cast a spell, if at least seven mana was spent to cast it, untap target creature. It gets +7/+7 and gains trample until end of turn.",R/G,Human; Boar; pump; trample; evasion,HBG,248,1
+Grave Pact,Enchantment,"Whenever a creature you control dies, each other player sacrifices a creature of their choice.",B,sacrifice,WOT,29,1
+"Kellan, the Fae-Blooded",Legendary Creature — Human Faerie // Sorcery — Adventure,"Double strike
+Other creatures you control get +1/+0 for each Aura and Equipment attached to Kellan. // Search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.",W/R,Human; Faerie; Adventure; equipment; exile cast; pump; double strike; combat; aggro,WOE,230,1
+Tough Cookie,Artifact Creature — Food Golem,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}{G}: Until end of turn, target noncreature artifact you control becomes a 4/4 artifact creature.
+{2}, {T}, Sacrifice this creature: You gain 3 life.",G,food; Golem; lifegain; sacrifice; tokens; etb; artifacts,J25,731,1
+Doppelgang,Sorcery,"For each of X target permanents, create X tokens that are copies of that permanent.",U/G,tokens,MKM,198,1
+Lost in the Maze,Enchantment,"Flash
+When this enchantment enters, tap X target creatures. Put a stun counter on each of those creatures you don't control. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Tapped creatures you control have hexproof.",U,counters; etb; flash; tempo,MKM,64,1
+Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,1
+"Gowron, Eager for Battle",Legendary Creature — Klingon Warrior,"Whenever another creature dies, put a +1/+1 counter on Gowron.
+Sacrifice another creature: Gowron gains trample until end of turn. If you sacrificed a Klingon this way, you draw a card and lose 1 life.",B/R,Klingon; Warrior; counters; pay life; card draw; sacrifice; trample; evasion,TRK,237,1
+Sunfall,Sorcery,"Exile all creatures. Incubate X, where X is the number of creatures exiled this way. (Create an Incubator token with X +1/+1 counters on it and ""{2}: Transform this token."" It transforms into a 0/0 Phyrexian artifact creature.)",W,counters; tokens; incubate; transform,MOM,40,1
+Scrappy Bruiser,Creature — Raccoon Warrior,"Whenever this creature attacks, up to one target attacking creature gets +2/+0 and gains trample until end of turn. Return that creature to its owner's hand at end of combat. (Return it only if it's on the battlefield.)",R,Raccoon; Warrior; pump; bounce; trample; evasion,MOM,162,1
+Seal from Existence,Enchantment,"Ward {3} (Whenever this enchantment becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)
+When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",W,removal; etb; ward; protection,MOM,35,1
+Fall of Gil-galad,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Scry 2.
+II — Put two +1/+1 counters on target creature you control.
+III — Until end of turn, target creature you control gains ""When this creature dies, draw two cards."" Then that creature fights up to one other target creature.",G,saga; counters; card draw; scry; fight; removal; combat; selection,LTR,165,1
+Oath of the Grey Host,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — You and target opponent each create a Food token.
+II — Each opponent loses 3 life. Create a Treasure token.
+III — Create three tapped 1/1 white Spirit creature tokens with flying.",B,saga; tokens; food; treasure,LTR,101,1
+Storm of Saruman,Enchantment,"Ward {3}
+Whenever you cast your second spell each turn, copy it, except the copy isn't legendary. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)",U,ward; protection,LTR,72,1

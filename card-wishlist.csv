@@ -652,8 +652,6 @@ Whenever another nontoken creature you control dies, exile Liliana, Heretical He
 Ob Nixilis Reignited,Legendary Planeswalker — Nixilis,"+1: You draw a card and you lose 1 life.
 −3: Destroy target creature.
 −8: Target opponent gets an emblem with ""Whenever a player draws a card, you lose 2 life.""",B,Nixilis; planeswalker; pay life; card draw; removal,PIO,99,Mythic,75-historic-brawl; 96,,10.0,seed
-Dictate of Erebos,Enchantment,"Flash
-Whenever a creature you control dies, each opponent sacrifices a creature of their choice.",B,sacrifice; flash; tempo,PIO,91,Rare,93,,6.5,seed
 Notion Thief,Creature — Human Rogue,"Flash
 If an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.",U/B,Human; Rogue; card draw; flash; tempo,PIO,235,Rare,96,,3.0,seed
 Sphinx's Tutelage,Enchantment,"Whenever you draw a card, target opponent mills two cards. If two nonland cards that share a color were milled this way, repeat this process.
@@ -897,7 +895,6 @@ Turtle Power!,Enchantment,"Flash
 Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9",3.0,hand
 Turtle Van,Artifact — Vehicle,"Whenever this Vehicle attacks, put a +1/+1 counter on target creature that crewed it this turn. Then if that creature is a Mutant, Ninja, or Turtle, double the number of +1/+1 counters on it.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; counters; vehicle; crew; vehicles; double,TMT,181,Rare,concept,"TMNT payoff: crew -> counters, doubled for Mutant/Ninja/Turtle — a TMNT-tribal build-around",4.5,hand
-Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,Rare,general,legendary toolbox — needs a legend-dense white shell; niche build-around,3.0,hand
 Donatello's Technique,Sorcery,"Sneak {U} (You may cast this spell for {U} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Draw two cards.",U,card draw; sneak; tempo; cost-reduction,TMT,39,Uncommon,54b,,3.5,seed
 Foot Headquarters,Land,"This land enters tapped.
