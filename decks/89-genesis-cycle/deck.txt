@@ -7,7 +7,7 @@
 #: archetype: around Szarel, Genesis Shepherd: she lets us play lands from the graveyard and puts
 #: archetype: counters equal to her power on another creature whenever we sacrifice a nontoken
 #: archetype: permanent on our turn. So every land that sacrifices itself (11 basic fetches, the
-#: archetype: three Star Trek Anomalies, Hidden caves, The Hunter Maze, Skemfar Elderhall,
+#: archetype: three Star Trek Anomalies, Skemfar Elderhall,
 #: archetype: Ifnir Deadlands) is a spell we replay every turn, and the land outlets (Gitrog, Zuran Orb,
 #: archetype: Korvold, She-Hulk, Hearthhull) turn spare land drops into
 #: archetype: triggers. Long Feng, Jenova and Vorinclex grow Szarel's power so each trigger is bigger.
@@ -65,6 +65,9 @@
 #: notes: refills what damage removes, Bushmaster makes each fight a kill). Escape exiles six
 #: notes: graveyard cards, i.e. the lands Szarel replays: a late-game option, not the plan. Other
 #: notes: artifact/enchantment answers remain: Casualties, Binding, Killmonger, Glissa, Grist. Int 15.
+#: notes: LANDS 2026-11-22: Hidden Necropolis, Hidden Nursery and The Hunter Maze out for Darkbore and Cragcrown
+#: notes: Pathway plus a Forest. Tapped lands cost 6.7 -> 5.1 points a card on `consistency --tempo` (as built 45.3 ->
+#: notes: 47.6%), basics now 11 against 11 fetches. Three fewer self-sacrificing lands; the fetches and Will Riker remain.
 #: notes: LANDS 2026-10-23: a Forest for a Mountain and The Hunter Maze for The Dross Pits (the same
 #: notes: tapped Sphere that sacrifices to draw, in green). Green carries 59 strict pips across 47
 #: notes: cards against red's 6; sources B 24 / R 18 / G 23 -> B 23 / R 17 / G 25 (G 24 once typed
@@ -241,8 +244,8 @@
 1 Blazemire Verge (DSK) 256
 1 Artificial Anomaly (TRK) 276
 1 Temporal Anomaly (TRK) 302
-1 Hidden Necropolis (LCI) 275
-1 Hidden Nursery (LCI) 276
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
 1 Skemfar Elderhall (KHM) 268
 1 Wastewood Verge (DFT) 268
 1 Ifnir Deadlands (AKR) 302
@@ -250,10 +253,9 @@
 1 Blood Crypt (ECL) 262
 1 Stomping Ground (EOE) 258
 1 Command Tower (FRC) 22
-1 The Hunter Maze (ONE) 253
 1 Lotus Field (M20) 249
 3 Swamp (FRA) 285
-5 Forest (FRA) 289
+6 Forest (FRA) 289
 2 Mountain (FRA) 287
 
 #~ +Hornet Queen | BENCH: Five flying deathtouch bodies; with Fynn each deathtouch hit is 2 poison. GGG cast late (58% on T5). Out for Etali 2026-11-22
