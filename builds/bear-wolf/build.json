@@ -528,6 +528,471 @@
    "name": "Turntimber Symbiosis // Turntimber, Serpentine Wood",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Sauron, the Necromancer",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Flaxen Intruder // Welcome Home",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Beorn's Hospitality",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Owlbear Shepherd",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Lukamina, Moon Druid",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Toski, Bearer of Secrets",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Argoth, Sanctum of Nature",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mirkwood",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Forebear's Blade",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Nighthowl Pursuer",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ravening Warg",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Rhovanion Rampager",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vincent Valentine",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ascendant Packleader",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Tenacious Pup",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Packsong Pup",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Torgal, A Fine Hound",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wargling",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Hound Tamer // Untamed Pup",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Howlpack Resurgence",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Shrill Howler // Howling Chorus",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Varis, Silverymoon Ranger",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Weaver of Blossoms // Blossom-Clad Werewolf",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Garruk Relentless // Garruk, the Veil-Cursed",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Geistpack Alpha",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Lupine Harbingers",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Howlpack Piper // Wildsong Howler",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mantle of the Wolf",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Edgar, Moonlit Sovereign",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Sage of Ancient Lore // Werewolf of Ancient Hunger",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Avabruck Caretaker // Hollowhenge Huntmaster",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Flourishing Hunter",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Wolfkin Outcast // Wedding Crasher",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Somberwald Beastmaster",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Primal Witchstalker",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Sword of Body and Mind",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Fuel Tank Feaster",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Fight Rigging",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Flare of Cultivation",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Descendants' Path",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "World War Hulk",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Omnipresence",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Etali, Primal Garden",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Heirloom Epic",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Monstrous Vortex",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Path of Discovery",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Chimil, the Inner Sun",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Sentinel of the Nameless City",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Mole Man, Moloid Master",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Wrenn and Realmbreaker",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Icetill Explorer",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Elemental Teachings",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "World Shaper",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Nissa, Vital Force",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Ancient Greenwarden",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Kamahl's Druidic Vow",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Nog, Ambitious Cadet",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Nissa of Shadowed Boughs",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Badlands Revival",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Glacier Godmaw",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Berserk",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Burgeoning",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Glimpse of Nature",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Hunter's Axe",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Swarm's Eminence",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Golgari Queen",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Tyvar, Jubilant Brawler",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Chevill, Bane of Monsters",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Fiend Artisan",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Insidious Roots",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Vraska Joins Up",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Winding Constrictor",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Dina, Essence Brewer",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Kraven the Hunter",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Sméagol, Helpful Guide",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Beifong's Bounty Hunters",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Culling Ritual",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Host of the Hereafter",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Jenova, Ancient Calamity",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Mortality Spear",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Kagha, Shadow Archdruid",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Rise of the Witch-king",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Deathbloom Ritualist",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Diregraf Rebirth",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Lord of Extinction",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Ygra, Eater of All",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Back for More",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Mycoid Resurrection",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "The Last Ronin",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Harness Infinity",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Regal Gorgon",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Witherbloom, the Balancer",
+   "pile": null,
+   "src": "added"
+  },
+  {
+   "name": "Old Stickfingers",
+   "pile": null,
+   "src": "added"
   }
  ],
  "reasons": {
@@ -539,10 +1004,10 @@
    }
   },
   "Copper Host Crusher": {
-   "group": "Bench",
-   "text": "Owned 8/8 trample hexproof Bear; 8 mana is the cost.",
+   "group": "Pile: situational",
+   "text": "8/8 trample hexproof Bear; Goreclaw makes it 6. Top-end only.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Striped Bears": {
@@ -560,29 +1025,29 @@
    }
   },
   "Howling Moon": {
-   "group": "Bench",
-   "text": "Wolf +2/+2 each combat and a Wolf token when they cast a second spell.",
+   "group": "Pile: situational",
+   "text": "+2/+2 to a Wolf each combat; Wolf tokens on their second spell.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Cemetery Prowler": {
-   "group": "Bench",
-   "text": "3-mana 3/4 Wolf; discounts spells sharing a type with what it exiles.",
+   "group": "Pile: real",
+   "text": "3-mana 3/4 Wolf; graveyard exile on enter/attack and a creature discount.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Werewolf Pack Leader": {
-   "group": "Bench",
-   "text": "2-mana 3/3 that draws when you attack with total power 6+.",
+   "group": "Pile: take",
+   "text": "2-mana 3/3 that draws when you attack with total power 6+ (F6). Not a Wolf.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Arlinn, Voice of the Pack": {
    "group": "Bench",
-   "text": "Wolves enter with an extra counter; \u22122 makes Wolves. Only 6 Wolves here.",
+   "text": "Wolves enter with an extra counter; −2 makes Wolves. Only 6 Wolves here.",
    "graded_at": {
     "105": "7fd8423f5784"
    }
@@ -707,15 +1172,15 @@
    }
   },
   "Titania's Command": {
-   "group": "Bench",
-   "text": "Cut in the Sarulf rebuild: two Bear tokens and counters.",
+   "group": "Pile: situational",
+   "text": "Two Bears (two Ayula triggers) plus counters on everything; 6 mana. Benched before.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
   },
   "Ursine Guide // Ranger's Merit": {
-   "group": "Bench",
-   "text": "Cut in the Sarulf rebuild.",
+   "group": "Pile: situational",
+   "text": "Already benched: its Bear Cub engine needs spells not from your starting deck.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -1237,6 +1702,202 @@
    "graded_at": {
     "105": "fea2e30b439e"
    }
+  },
+  "Sauron, the Necromancer": {
+   "group": "Pile: real",
+   "text": "5-mana 4/4 menace (F2 body); attacks reanimate a graveyard creature as a temporary 3/3. Graveyard fill is incidental here.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Flaxen Intruder // Welcome Home": {
+   "group": "Pile: real",
+   "text": "Adventure makes three 2/2 Bears = three Ayula triggers (F1); the 1-drop half answers an artifact/enchantment.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Beorn's Hospitality": {
+   "group": "Pile: situational",
+   "text": "Landfall counters; becomes a land-count Bear for 7. Slow.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Owlbear Shepherd": {
+   "group": "Pile: take",
+   "text": "Draws each end step when total power is 8+ — trivial with this board (F6). 3 MV (F3 risk).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Lukamina, Moon Druid": {
+   "group": "Pile: out",
+   "text": "Seeks a land; specialize needs six lands. Little here.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Toski, Bearer of Secrets": {
+   "group": "Pile: take",
+   "text": "Indestructible; a card whenever any creature connects (F6). Must attack as a 1/1, but indestructible.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Argoth, Sanctum of Nature": {
+   "group": "Pile: take",
+   "text": "Untapped with a legendary green creature (Sarulf is one); {2}{G}{G}: a 2/2 Bear — an Ayula trigger mana sink. For a Forest.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mirkwood": {
+   "group": "Pile: real",
+   "text": "Tapped black-green dual that sacrifices for two counters on a Bear or Wolf. For a Forest.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Forebear's Blade": {
+   "group": "Pile: real",
+   "text": "+3/+0 trample turns any 1-2 power body into a gate-opener (F2) and moves when it dies.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Nighthowl Pursuer": {
+   "group": "Pile: situational",
+   "text": "1-drop Wolf that is a 3/3 menace attacker once the gate is on (consumer, F2).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ravening Warg": {
+   "group": "Pile: situational",
+   "text": "2-drop deathtouch Wolf; gate consumer.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Rhovanion Rampager": {
+   "group": "Pile: out",
+   "text": "Sacrifices a creature to grow; the deck does not want to sacrifice its bodies.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vincent Valentine": {
+   "group": "Pile: real",
+   "text": "Counters equal to the power of each opposing creature that dies — 16 removal spells feed it; flips to trample lifelink.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ascendant Packleader": {
+   "group": "Pile: situational",
+   "text": "1-drop Wolf that grows on every 4+ MV spell (most of the deck). F3 risk.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Tenacious Pup": {
+   "group": "Pile: out",
+   "text": "Cut once already: a 1/2 and a one-shot boon.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Packsong Pup": {
+   "group": "Pile: out",
+   "text": "Grows by one a turn with another Wolf; small.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Torgal, A Fine Hound": {
+   "group": "Pile: situational",
+   "text": "Any-colour mana dork that is a Wolf; its Human clause is dead here.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Wargling": {
+   "group": "Pile: situational",
+   "text": "Gate consumer (deck 69 trimmed it for that reason).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Hound Tamer // Untamed Pup": {
+   "group": "Pile: situational",
+   "text": "Counter sink; night side gives Wolves trample. Day/night is fiddly.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Howlpack Resurgence": {
+   "group": "Pile: situational",
+   "text": "Flash Wolf anthem (+1/+1 trample) with 10 Wolves.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Shrill Howler // Howling Chorus": {
+   "group": "Pile: out",
+   "text": "Evasion against small blockers; slow to flip.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Varis, Silverymoon Ranger": {
+   "group": "Pile: situational",
+   "text": "Ventures on creature casts; a dungeon completion makes one Wolf. Slow payoff.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Weaver of Blossoms // Blossom-Clad Werewolf": {
+   "group": "Pile: out",
+   "text": "3-mana mana creature; the deck has better ramp.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Garruk Relentless // Garruk, the Veil-Cursed": {
+   "group": "Pile: take",
+   "text": "Now legal (black-green): 3 damage to a creature, or a Wolf a turn; flips to deathtouch Wolves and a tutor.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Geistpack Alpha": {
+   "group": "Pile: take",
+   "text": "4-mana 5/4 trample Wolf — a gate-opener on arrival (F2), Goreclaw-discounted; dies into a seek.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Lupine Harbingers": {
+   "group": "Pile: real",
+   "text": "4/4 haste trample Wolf; foretold it grows.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Howlpack Piper // Wildsong Howler": {
+   "group": "Pile: real",
+   "text": "Puts a creature from hand onto the battlefield each turn (Bears → Ayula), untaps for Wolves.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mantle of the Wolf": {
+   "group": "Pile: situational",
+   "text": "+4/+4 makes a gate-opener; two Wolves when it leaves. An Aura.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
   }
  },
  "snapshots": {
@@ -1405,163 +2066,331 @@
  "verdicts": {
   "Rampaging Ursaguana": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "7fd8423f5784"
    }
   },
   "Copper Host Crusher": {
    "A": {
-    "m": "\u2605",
-    "graded_at": "7fd8423f5784"
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Striped Bears": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "7fd8423f5784"
    }
   },
   "Fierce Witchstalker": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Howling Moon": {
    "A": {
-    "m": "\u2605",
-    "graded_at": "7fd8423f5784"
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Cemetery Prowler": {
    "A": {
-    "m": "\u2605",
-    "graded_at": "7fd8423f5784"
+    "m": "★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Werewolf Pack Leader": {
    "A": {
-    "m": "\u2605",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Arlinn, Voice of the Pack": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "7fd8423f5784"
    }
   },
   "Mayor of Avabruck // Howlpack Alpha": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "7fd8423f5784"
    }
   },
   "The Great Henge": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "7fd8423f5784"
    }
   },
   "Selvala, Heart of the Wilds": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "7fd8423f5784"
    }
   },
   "Goliath, Mass Manipulator": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "7fd8423f5784"
    }
   },
   "Sylvan Scavenging": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "7fd8423f5784"
    }
   },
   "Large Bear": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Head of the Hunt": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "The Chief Warg": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Chief Warg's Company": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Garruk, Cursed Huntsman": {
    "A": {
-    "m": "\u2605\u2605\u2605",
+    "m": "★★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Assassin's Trophy": {
    "A": {
-    "m": "\u2605\u2605",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Kogla, the Titan Ape": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Vivien Reid": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Tovolar's Huntmaster // Tovolar's Packleader": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Esika's Chariot": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Giant-Man, Gargantuan Genius": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "fea2e30b439e"
    }
   },
   "Return of the Wildspeaker": {
    "A": {
-    "m": "\u2605",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
   "Titania's Command": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
     "graded_at": "fea2e30b439e"
    }
   },
   "Ursine Guide // Ranger's Merit": {
    "A": {
-    "m": "\u25c7",
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Sauron, the Necromancer": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Flaxen Intruder // Welcome Home": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Beorn's Hospitality": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Owlbear Shepherd": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Lukamina, Moon Druid": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Toski, Bearer of Secrets": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Argoth, Sanctum of Nature": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Mirkwood": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Forebear's Blade": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Nighthowl Pursuer": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Ravening Warg": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Rhovanion Rampager": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vincent Valentine": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Ascendant Packleader": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Tenacious Pup": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Packsong Pup": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Torgal, A Fine Hound": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Wargling": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Hound Tamer // Untamed Pup": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Howlpack Resurgence": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Shrill Howler // Howling Chorus": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Varis, Silverymoon Ranger": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Weaver of Blossoms // Blossom-Clad Werewolf": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Garruk Relentless // Garruk, the Veil-Cursed": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Geistpack Alpha": {
+   "A": {
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Lupine Harbingers": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Howlpack Piper // Wildsong Howler": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Mantle of the Wolf": {
+   "A": {
+    "m": "◇",
     "graded_at": "fea2e30b439e"
    }
   }
