@@ -1,25 +1,25 @@
 {
  "schema": 1,
- "title": "Bear Wolf",
+ "title": "Den of Bears and Wolves (deck 105, Sarulf)",
  "decks": [
   {
    "key": "A",
    "id": "105",
-   "label": "Ayula"
+   "label": "Sarulf"
   }
  ],
  "piles": [
   {
    "key": "A",
-   "label": "Ayula's pile",
+   "label": "Sarulf, Realm Eater (deck 105)",
    "deck": "A",
-   "intro": ""
+   "intro": "Every card in deck 105 plus the bench. Cards in the deck show as in; the rest are options."
   },
   {
    "key": "N",
    "label": "Doesn't fit",
    "deck": null,
-   "intro": ""
+   "intro": "Cards that do not fit this list."
   }
  ],
  "groups": {},
@@ -158,6 +158,376 @@
    "name": "Ursine Guide // Ranger's Merit",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Sarulf, Realm Eater",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ayula, Queen Among Bears",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Goreclaw, Terror of Qal Sisma",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Beorn the Fierce",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Beorn, Reluctant Host // Till and Tend",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Gigantic Big Bear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Grizzly Ghoul",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Lumra, Bellow of the Woods",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Owlbear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Exuberant Wolfbear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Little Bear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vastlands Scavenger",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Studious First-Year",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Surrak and Goreclaw",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wilson, Bear Comrade",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Bosco, Just a Bear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Drover Grizzly",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mother Bear",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "The Earth King",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Dancing from Dark to Dawn",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Primal Adversary",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Nightpack Ambusher",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wilderland Scrounger",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wicked Wolf",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Bejeweled Warg",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ranger Class",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Ham, Peter Porker",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Garruk's Uprising",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Colossal Majesty",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Garruk, Curse Breaker",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vaultborn Tyrant",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Outcaster Trailblazer",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Elemental Bond",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Guardian Project",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Master's Guidance",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Rhonas the Indomitable",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Llanowar Elves",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Paradise Druid",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Fanatic of Rhonas",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Cultivate",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Nature's Lore",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Herd Heirloom",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Beast Within",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Infernal Grasp",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Heartless Act",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Casualties of War",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Abrupt Decay",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Maelstrom Pulse",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Go for the Throat",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Binding the Old Gods",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Polukranos, Unchained",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Primal Might",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Hunter's Talent",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vivien, Monsters' Advocate",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Heroic Intervention",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Snakeskin Veil",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Boseiju, Who Endures",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Overgrown Tomb",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Woodland Cemetery",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Darkbore Pathway // Slitherbore Pathway",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Llanowar Wastes",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Deathcap Glade",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Blooming Marsh",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Necroblossom Snarl",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Nurturing Peatland",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wastewood Verge",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Hissing Quagmire",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Temple of Malady",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Command Tower",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ba Sing Se",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Fabled Passage",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Evolving Wilds",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Prismatic Vista",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Turntimber Symbiosis // Turntimber, Serpentine Wood",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -212,7 +582,7 @@
   },
   "Arlinn, Voice of the Pack": {
    "group": "Bench",
-   "text": "Wolves enter with an extra counter; −2 makes Wolves. Only 6 Wolves here.",
+   "text": "Wolves enter with an extra counter; \u22122 makes Wolves. Only 6 Wolves here.",
    "graded_at": {
     "105": "7fd8423f5784"
    }
@@ -346,6 +716,524 @@
   "Ursine Guide // Ranger's Merit": {
    "group": "Bench",
    "text": "Cut in the Sarulf rebuild.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Sarulf, Realm Eater": {
+   "group": "In: Commander",
+   "text": "In the deck (Commander).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ayula, Queen Among Bears": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Goreclaw, Terror of Qal Sisma": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Beorn the Fierce": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Beorn, Reluctant Host // Till and Tend": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Gigantic Big Bear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Grizzly Ghoul": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Lumra, Bellow of the Woods": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Owlbear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Exuberant Wolfbear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Little Bear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vastlands Scavenger": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Studious First-Year": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Surrak and Goreclaw": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Wilson, Bear Comrade": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Bosco, Just a Bear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Drover Grizzly": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mother Bear": {
+   "group": "In: Bears",
+   "text": "In the deck (Bears).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "The Earth King": {
+   "group": "In: Bear makers",
+   "text": "In the deck (Bear makers).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Dancing from Dark to Dawn": {
+   "group": "In: Bear makers",
+   "text": "In the deck (Bear makers).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Primal Adversary": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Nightpack Ambusher": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Wilderland Scrounger": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Wicked Wolf": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Bejeweled Warg": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ranger Class": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Spider-Ham, Peter Porker": {
+   "group": "In: Wolves",
+   "text": "In the deck (Wolves).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Garruk's Uprising": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Colossal Majesty": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Garruk, Curse Breaker": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vaultborn Tyrant": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Elemental Bond": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Guardian Project": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Master's Guidance": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Rhonas the Indomitable": {
+   "group": "In: Power-4 payoffs and card flow",
+   "text": "In the deck (Power-4 payoffs and card flow).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Llanowar Elves": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Paradise Druid": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Fanatic of Rhonas": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Cultivate": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Nature's Lore": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Herd Heirloom": {
+   "group": "In: Ramp",
+   "text": "In the deck (Ramp).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Beast Within": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Infernal Grasp": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Heartless Act": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Casualties of War": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Abrupt Decay": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Maelstrom Pulse": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Go for the Throat": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Binding the Old Gods": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Polukranos, Unchained": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Primal Might": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Hunter's Talent": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vivien, Monsters' Advocate": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Heroic Intervention": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Snakeskin Veil": {
+   "group": "In: Interaction and protection",
+   "text": "In the deck (Interaction and protection).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Boseiju, Who Endures": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Overgrown Tomb": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Woodland Cemetery": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Darkbore Pathway // Slitherbore Pathway": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Llanowar Wastes": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Deathcap Glade": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Blooming Marsh": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Necroblossom Snarl": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Nurturing Peatland": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Wastewood Verge": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Hissing Quagmire": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Temple of Malady": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Command Tower": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ba Sing Se": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Fabled Passage": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Evolving Wilds": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Prismatic Vista": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Turntimber Symbiosis // Turntimber, Serpentine Wood": {
+   "group": "In: Lands",
+   "text": "In the deck (Lands).",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -517,163 +1405,163 @@
  "verdicts": {
   "Rampaging Ursaguana": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Copper Host Crusher": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Striped Bears": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Fierce Witchstalker": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Howling Moon": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Cemetery Prowler": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Werewolf Pack Leader": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Arlinn, Voice of the Pack": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "7fd8423f5784"
    }
   },
   "Mayor of Avabruck // Howlpack Alpha": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "7fd8423f5784"
    }
   },
   "The Great Henge": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "7fd8423f5784"
    }
   },
   "Selvala, Heart of the Wilds": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "7fd8423f5784"
    }
   },
   "Goliath, Mass Manipulator": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "7fd8423f5784"
    }
   },
   "Sylvan Scavenging": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "7fd8423f5784"
    }
   },
   "Large Bear": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Head of the Hunt": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "The Chief Warg": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Chief Warg's Company": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Garruk, Cursed Huntsman": {
    "A": {
-    "m": "★★★",
+    "m": "\u2605\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Assassin's Trophy": {
    "A": {
-    "m": "★★",
+    "m": "\u2605\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Kogla, the Titan Ape": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Vivien Reid": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Tovolar's Huntmaster // Tovolar's Packleader": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Esika's Chariot": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Giant-Man, Gargantuan Genius": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "fea2e30b439e"
    }
   },
   "Return of the Wildspeaker": {
    "A": {
-    "m": "★",
+    "m": "\u2605",
     "graded_at": "fea2e30b439e"
    }
   },
   "Titania's Command": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "fea2e30b439e"
    }
   },
   "Ursine Guide // Ranger's Merit": {
    "A": {
-    "m": "◇",
+    "m": "\u25c7",
     "graded_at": "fea2e30b439e"
    }
   }
