@@ -91,32 +91,72 @@
   },
   {
    "name": "Large Bear",
-   "pile": "N",
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Head of the Hunt",
-   "pile": "N",
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "The Chief Warg",
-   "pile": "N",
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Chief Warg's Company",
-   "pile": "N",
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Garruk, Cursed Huntsman",
-   "pile": "N",
+   "pile": "A",
    "src": "added"
   },
   {
    "name": "Assassin's Trophy",
-   "pile": "N",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Kogla, the Titan Ape",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vivien Reid",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Tovolar's Huntmaster // Tovolar's Packleader",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Esika's Chariot",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Giant-Man, Gargantuan Genius",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Return of the Wildspeaker",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Titania's Command",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ursine Guide // Ranger's Merit",
+   "pile": "A",
    "src": "added"
   }
  ],
@@ -143,10 +183,10 @@
    }
   },
   "Fierce Witchstalker": {
-   "group": "Bench",
-   "text": "4-mana 4/4 trample Wolf plus a Food; turns the gate on, but not a Bear.",
+   "group": "In",
+   "text": "In the deck now: 4-mana 4/4 trample Wolf and a Food; took Kogla's slot.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Howling Moon": {
@@ -213,45 +253,101 @@
    }
   },
   "Large Bear": {
-   "group": "Bench",
-   "text": "{B/G} hybrid: black in its identity, so illegal under Ayula or Goreclaw. In for a Sarulf version.",
+   "group": "In",
+   "text": "In the deck now (Sarulf allows black).",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Head of the Hunt": {
-   "group": "Bench",
-   "text": "Black Wolf: Sarulf version only.",
+   "group": "In",
+   "text": "In the deck now: black Wolf; their dying creatures become your Wolves.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "The Chief Warg": {
-   "group": "Bench",
-   "text": "Black-green Wolf that draws on ferocious attacks: Sarulf version only.",
+   "group": "In",
+   "text": "In the deck now: draws on each ferocious attack.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Chief Warg's Company": {
-   "group": "Bench",
-   "text": "Black-green Wolf maker: Sarulf version only.",
+   "group": "In",
+   "text": "In the deck now: a Wolf every upkeep.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Garruk, Cursed Huntsman": {
-   "group": "Bench",
-   "text": "Owned black-green planeswalker (Wolves, removal): Sarulf version only.",
+   "group": "In",
+   "text": "In the deck now: two Wolves a turn or kill-and-draw.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
    }
   },
   "Assassin's Trophy": {
-   "group": "Bench",
-   "text": "Owned black-green removal: Sarulf version only.",
+   "group": "In",
+   "text": "In the deck now: removal that also feeds Sarulf.",
    "graded_at": {
-    "105": "7fd8423f5784"
+    "105": "fea2e30b439e"
+   }
+  },
+  "Kogla, the Titan Ape": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: GGG 6-drop; black removal covers its fight.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vivien Reid": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: black removal covers its answers.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Tovolar's Huntmaster // Tovolar's Packleader": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: 6-mana Wolf maker.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Esika's Chariot": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: Cat tokens, crew 4.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Giant-Man, Gargantuan Genius": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: mana per power-4 creature.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Return of the Wildspeaker": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: draw by greatest non-Human power, or a team pump.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Titania's Command": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild: two Bear tokens and counters.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Ursine Guide // Ranger's Merit": {
+   "group": "Bench",
+   "text": "Cut in the Sarulf rebuild.",
+   "graded_at": {
+    "105": "fea2e30b439e"
    }
   }
  },
@@ -330,6 +426,91 @@
     "Wicked Wolf",
     "Wilderland Scrounger",
     "Wilson, Bear Comrade"
+   ],
+   "fea2e30b439e": [
+    "Abrupt Decay",
+    "Assassin's Trophy",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beast Within",
+    "Bejeweled Warg",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Binding the Old Gods",
+    "Blooming Marsh",
+    "Bosco, Just a Bear",
+    "Boseiju, Who Endures",
+    "Casualties of War",
+    "Chief Warg's Company",
+    "Colossal Majesty",
+    "Command Tower",
+    "Cultivate",
+    "Dancing from Dark to Dawn",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deathcap Glade",
+    "Drover Grizzly",
+    "Elemental Bond",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fanatic of Rhonas",
+    "Fierce Witchstalker",
+    "Forest",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Garruk, Cursed Huntsman",
+    "Gigantic Big Bear",
+    "Go for the Throat",
+    "Goreclaw, Terror of Qal Sisma",
+    "Grizzly Ghoul",
+    "Guardian Project",
+    "Head of the Hunt",
+    "Heartless Act",
+    "Herd Heirloom",
+    "Heroic Intervention",
+    "Hissing Quagmire",
+    "Hunter's Talent",
+    "Infernal Grasp",
+    "Large Bear",
+    "Little Bear",
+    "Llanowar Elves",
+    "Llanowar Wastes",
+    "Lumra, Bellow of the Woods",
+    "Maelstrom Pulse",
+    "Master's Guidance",
+    "Mother Bear",
+    "Nature's Lore",
+    "Necroblossom Snarl",
+    "Nightpack Ambusher",
+    "Nurturing Peatland",
+    "Outcaster Trailblazer",
+    "Overgrown Tomb",
+    "Owlbear",
+    "Paradise Druid",
+    "Polukranos, Unchained",
+    "Primal Adversary",
+    "Primal Might",
+    "Prismatic Vista",
+    "Ranger Class",
+    "Rhonas the Indomitable",
+    "Sarulf, Realm Eater",
+    "Snakeskin Veil",
+    "Spider-Ham, Peter Porker",
+    "Studious First-Year",
+    "Surrak and Goreclaw",
+    "Swamp",
+    "Temple of Malady",
+    "The Chief Warg",
+    "The Earth King",
+    "Turntimber Symbiosis // Turntimber, Serpentine Wood",
+    "Vastlands Scavenger",
+    "Vaultborn Tyrant",
+    "Vivien, Monsters' Advocate",
+    "Wastewood Verge",
+    "Wicked Wolf",
+    "Wilderland Scrounger",
+    "Wilson, Bear Comrade",
+    "Woodland Cemetery"
    ]
   }
  },
@@ -354,8 +535,8 @@
   },
   "Fierce Witchstalker": {
    "A": {
-    "m": "★",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Howling Moon": {
@@ -414,38 +595,86 @@
   },
   "Large Bear": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Head of the Hunt": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "The Chief Warg": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Chief Warg's Company": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Garruk, Cursed Huntsman": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★★",
+    "graded_at": "fea2e30b439e"
    }
   },
   "Assassin's Trophy": {
    "A": {
-    "m": "✗",
-    "graded_at": "7fd8423f5784"
+    "m": "★★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Kogla, the Titan Ape": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vivien Reid": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Tovolar's Huntmaster // Tovolar's Packleader": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Esika's Chariot": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Giant-Man, Gargantuan Genius": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Return of the Wildspeaker": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Titania's Command": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Ursine Guide // Ranger's Merit": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
    }
   }
  }
