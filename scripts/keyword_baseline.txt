@@ -3,14 +3,18 @@
 # new set's mechanic. Triage into tag_synergies, or re-run
 # `check_keywords.py --update-baseline` to acknowledge the current set.
 adamant
+annihilator
 ascend
 assimilate
 beam me up
 bestow
+blitz
+casualty
 cloak
 companion
 compleated
 conjure
+corrupted
 daybound
 devoid
 double
@@ -30,11 +34,13 @@ foretell
 heist
 hexproof from
 incorporate
+incubate
 intensity
 jump
 landwalk
 madness
 meld
+monstrosity
 mutate
 nightbound
 partner
