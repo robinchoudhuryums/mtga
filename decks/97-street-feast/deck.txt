@@ -164,3 +164,8 @@
 5 Forest (FRA) 289
 1 Karn's Bastion (WAR) 248
 2 Mountain (FRA) 287
+
+#~ -Mythweaver Poq | +Stimulus Package | OWNED (2026-11-22 ingest; owner passed for now): Two Treasures; sacrifice a Treasure for a 1/1 Citizen, doubled by Doubling Season and Mondrak
+#~ -Evolution Sage | +Tough Cookie | OWNED (2026-11-22 ingest; owner passed for now): Food on entering; turns a Food into a 4/4
+#~ -Sami, Wildcat Captain | +Imodane's Recruiter | OWNED (2026-11-22 ingest; owner passed for now): Adventure makes two 2/2 Knights; casting the creature from exile triggers Rocco
+#~ -Generous Pup | +The Huntsman's Redemption | OWNED (2026-11-22 ingest; owner passed for now): 3/3, then a creature-or-land search, then a team pump
