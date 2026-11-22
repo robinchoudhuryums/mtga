@@ -993,6 +993,61 @@
    "name": "Old Stickfingers",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Cursebound Witch",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Dark Ritual",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Betrayal's Sting",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Vat Emergence",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Cankerbloom",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Unnatural Restoration",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Evolution Sage",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Urban Daggertooth",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Hardened Scales",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mythweaver Poq",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Stable Wormhole",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1705,7 +1760,7 @@
   },
   "Sauron, the Necromancer": {
    "group": "Pile: real",
-   "text": "5-mana 4/4 menace (F2 body); attacks reanimate a graveyard creature as a temporary 3/3. Graveyard fill is incidental here.",
+   "text": "Re-read in batch 4, unchanged. A 5-mana 4/4 menace (F2). Its attack trigger needs a creature card in YOUR graveyard, and that graveyard stays thin here: Sarulf's wipe exiles rather than bins, so only combat trades and the opponent's removal fill it (Mother Bear and Vastlands Scavenger add a few). Read the trigger as a bonus, the body as the card.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -1732,8 +1787,8 @@
    }
   },
   "Lukamina, Moon Druid": {
-   "group": "Pile: out",
-   "text": "Seeks a land; specialize needs six lands. Little here.",
+   "group": "Pile: real",
+   "text": "Re-graded in batch 4. Specialize (six lands, {3}, discard a green card or a Forest) makes Lukamina, Bear Form: a 4/4 trample Bear with 'other creatures you control get +1/+1 and have trample', so every 3-power Bear opens the gate (F2). The entry seek is a free land, and the form returns to base when it dies. Wolf Form needs a red discard, so it is out of reach in BG. Scorpion Form (black discard) is a deathtouch 4/4 that must be blocked.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -1886,8 +1941,8 @@
    }
   },
   "Howlpack Piper // Wildsong Howler": {
-   "group": "Pile: real",
-   "text": "Puts a creature from hand onto the battlefield each turn (Bears → Ayula), untaps for Wolves.",
+   "group": "Pile: take",
+   "text": "Re-graded in batch 4. The engine of a no-spell turn: it puts a creature from hand onto the battlefield without casting it, so Bears still trigger Ayula on entry while the turn counts as spell-less. That makes it night, which flips Avabruck Caretaker and the Piper itself (look at six for a creature), and pays Nightpack Ambusher's and Edgar's end-step clauses. Untaps after a Wolf or Werewolf.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -1900,8 +1955,8 @@
    }
   },
   "Edgar, Moonlit Sovereign": {
-   "group": "Pile: situational",
-   "text": "Flash 4/4 Werewolf, so power 4 on arrival (F2). Grows itself and the counter creatures, but a Werewolf is not a Wolf for most of the deck's Wolf cards (F4).",
+   "group": "Pile: real",
+   "text": "Re-graded in batch 4. Flash, so cast it in the opponent's end step and pass your own turn with no spell: Edgar takes two counters, it becomes night, and Nightpack Ambusher (in the deck) makes a Wolf off the same clause. A 4/4 on arrival (F2), and {4}{G} spreads counters, which Constrictor and Hardened Scales add to.",
    "graded_at": {
     "105": "fea2e30b439e"
    }
@@ -2353,6 +2408,83 @@
    "graded_at": {
     "105": "fea2e30b439e"
    }
+  },
+  "Cursebound Witch": {
+   "group": "Pile: out",
+   "text": "A 1/2 that drafts a card from its spellbook when it dies (Alchemy). Low impact in a 100-card creature deck.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Dark Ritual": {
+   "group": "Pile: out",
+   "text": "One burst of BBB for a card. Only black spells use it, and the deck's power is green.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "group": "Pile: real",
+   "text": "0: draw a card and proliferate, every turn, which adds a counter to every creature with one, to Sarulf (a bigger wipe) and to Vraska. Repeatable draw (F6). Six mana. Its -2 turns a creature into a Treasure the OPPONENT keeps, which gives them mana, so it clashes with the owner's removal rule; treat it as a draw-and-proliferate walker.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Vat Emergence": {
+   "group": "Pile: situational",
+   "text": "Reanimate from ANY graveyard, so it can steal the creature your removal just killed, then proliferate. Five mana.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Cankerbloom": {
+   "group": "Pile: situational",
+   "text": "A 2-mana 3/2 that sacrifices to destroy an artifact or enchantment, or to proliferate. A flexible noncreature answer on a body.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Unnatural Restoration": {
+   "group": "Pile: situational",
+   "text": "Two mana: regrow a permanent card and proliferate. Fine value, small.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Evolution Sage": {
+   "group": "Pile: real",
+   "text": "Proliferate on every land drop, twice with Evolving Wilds, Fabled Passage or Prismatic Vista. Grows the Ayula-counter Bears and charges Sarulf each turn. A 3/2 for 3.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Urban Daggertooth": {
+   "group": "Pile: situational",
+   "text": "A 4/3 vigilance for 4 (F2). Proliferates whenever it is dealt damage, which a fight or a block does.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Hardened Scales": {
+   "group": "Pile: real",
+   "text": "One mana: each +1/+1 counter placement on a creature gets one more: Ayula's two become three, and Sarulf's counters count. It stacks with Winding Constrictor. MV 1, so every Sarulf wipe takes it (F3).",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Mythweaver Poq": {
+   "group": "Pile: real",
+   "text": "Its size is your land count (power 4+ by turn four, F2), and each turn it conjures a copy of the land you played, so a fetch land is played twice. Ramp on a body, Alchemy.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
+  },
+  "Stable Wormhole": {
+   "group": "Pile: situational",
+   "text": "A tapped any-colour land token every time you attack. The deck has enough ramp; this is ramp that needs the attack first.",
+   "graded_at": {
+    "105": "fea2e30b439e"
+   }
   }
  },
  "snapshots": {
@@ -2707,7 +2839,7 @@
   },
   "Lukamina, Moon Druid": {
    "A": {
-    "m": "△",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
@@ -2839,7 +2971,7 @@
   },
   "Howlpack Piper // Wildsong Howler": {
    "A": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "fea2e30b439e"
    }
   },
@@ -2851,7 +2983,7 @@
   },
   "Edgar, Moonlit Sovereign": {
    "A": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "fea2e30b439e"
    }
   },
@@ -3236,6 +3368,72 @@
   "Old Stickfingers": {
    "A": {
     "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Cursebound Witch": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Dark Ritual": {
+   "A": {
+    "m": "△",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Vat Emergence": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Cankerbloom": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Unnatural Restoration": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Evolution Sage": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Urban Daggertooth": {
+   "A": {
+    "m": "◇",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Hardened Scales": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Mythweaver Poq": {
+   "A": {
+    "m": "★",
+    "graded_at": "fea2e30b439e"
+   }
+  },
+  "Stable Wormhole": {
+   "A": {
+    "m": "◇",
     "graded_at": "fea2e30b439e"
    }
   }

@@ -52,6 +52,17 @@ board power 124 · avg MV 3.45 · 18 Bears · 10 Wolves · WIDE (wide 14 / tall 
 - **Removal doubles as Sarulf's fuel**, so cutting it has a cost beyond the interaction count.
   The plan takes interaction from 16 to 14, still above the A line of 12; Garruk Relentless
   replaces one spell with a repeatable fight.
+- **A no-spell-turn cluster is real but small (batch 4).** Day becomes night when the active
+  player casts no spells on their turn, and two spells in a turn flip it back. The deck already
+  holds a payoff (Nightpack Ambusher's end-step Wolf) and spell-less actions: three
+  planeswalkers, Ranger Class levels, Mother Bear's graveyard ability, flash creatures cast on
+  the opponent's turn, and Argoth if added. Howlpack Piper is the piece that resolves the
+  tension with Ayula, which wants Bears to ENTER, not to be cast. So take Piper, Edgar and
+  Avabruck; leave Weaver of Blossoms, Hound Tamer and Wolfkin Outcast, whose night sides are
+  smaller. In one-on-one the opponent controls half the clock, so night is a bonus, never the plan.
+- **Proliferate is a second counters axis (batch 4).** Every proliferate grows the
+  Ayula-counter Bears AND Sarulf. Note the tools score proliferate as no role (a known
+  classifier hole), so `cuts` and the card-advantage figure under-rate these cards.
 - **No variant signal.** The rejected cards are mostly landfall and graveyard engines, which
   are already their own decks in the roster.
 
@@ -63,11 +74,11 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 
 | # | Card | Verdict | Note |
 |---|------|---------|------|
-| 1 | Sauron, the Necromancer | ★ | 5-mana 4/4 menace (F2 body); attacks reanimate a graveyard creature as a temporary 3/3. Graveyard fill is incidental here. |
+| 1 | Sauron, the Necromancer | ★ | Re-read in batch 4, unchanged. A 5-mana 4/4 menace (F2). Its attack trigger needs a creature card in YOUR graveyard, and that graveyard stays thin here: Sarulf's wipe exiles rather than bins, so only combat trades and the opponent's removal fill it (Mother Bear and Vastlands Scavenger add a few). Read the trigger as a bonus, the body as the card. |
 | 2 | Flaxen Intruder // Welcome Home | ★ | Adventure makes three 2/2 Bears = three Ayula triggers (F1); the 1-drop half answers an artifact/enchantment. |
 | 3 | Beorn's Hospitality | ◇ | Landfall counters; becomes a land-count Bear for 7. Slow. |
 | 4 | Owlbear Shepherd | ★★ | Draws each end step when total power is 8+ — trivial with this board (F6). 3 MV (F3 risk). |
-| 5 | Lukamina, Moon Druid | △ | Seeks a land; specialize needs six lands. Little here. |
+| 5 | Lukamina, Moon Druid | ★ | Re-graded in batch 4. Specialize (six lands, {3}, discard a green card or a Forest) makes Lukamina, Bear Form: a 4/4 trample Bear with 'other creatures you control get +1/+1 and have trample', so every 3-power Bear opens the gate (F2). The entry seek is a free land, and the form returns to base when it dies. Wolf Form needs a red discard, so it is out of reach in BG. Scorpion Form (black discard) is a deathtouch 4/4 that must be blocked. |
 | 6 | Ursine Guide | ◇ | Already benched: its Bear Cub engine needs spells not from your starting deck. |
 | 7 | Toski, Bearer of Secrets | ★★ | Indestructible; a card whenever any creature connects (F6). Must attack as a 1/1, but indestructible. |
 | 8 | Titania's Command | ◇ | Two Bears (two Ayula triggers) plus counters on everything; 6 mana. Benched before. |
@@ -95,14 +106,14 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 30 | Garruk Relentless | ★★ | Now legal (black-green): 3 damage to a creature, or a Wolf a turn; flips to deathtouch Wolves and a tutor. |
 | 31 | Geistpack Alpha | ★★ | 4-mana 5/4 trample Wolf — a gate-opener on arrival (F2), Goreclaw-discounted; dies into a seek. |
 | 32 | Lupine Harbingers | ★ | 4/4 haste trample Wolf; foretold it grows. |
-| 33 | Howlpack Piper // Wildsong Howler | ★ | Puts a creature from hand onto the battlefield each turn (Bears → Ayula), untaps for Wolves. |
+| 33 | Howlpack Piper // Wildsong Howler | ★★ | Re-graded in batch 4. The engine of a no-spell turn: it puts a creature from hand onto the battlefield without casting it, so Bears still trigger Ayula on entry while the turn counts as spell-less. That makes it night, which flips Avabruck Caretaker and the Piper itself (look at six for a creature), and pays Nightpack Ambusher's and Edgar's end-step clauses. Untaps after a Wolf or Werewolf. |
 | 34 | Mantle of the Wolf | ◇ | +4/+4 makes a gate-opener; two Wolves when it leaves. An Aura. |
 
 ### Batch 2 (cards 35–67)
 
 | # | Card | Deck 105 | Note |
 |---|---|---|---|
-| 35 | Edgar, Moonlit Sovereign | ◇ | Flash 4/4 Werewolf, so power 4 on arrival (F2). Grows itself and the counter creatures, but a Werewolf is not a Wolf for most of the deck's Wolf cards (F4). |
+| 35 | Edgar, Moonlit Sovereign | ★ | Re-graded in batch 4. Flash, so cast it in the opponent's end step and pass your own turn with no spell: Edgar takes two counters, it becomes night, and Nightpack Ambusher (in the deck) makes a Wolf off the same clause. A 4/4 on arrival (F2), and {4}{G} spreads counters, which Constrictor and Hardened Scales add to. |
 | 36 | Sage of Ancient Lore | △ | Draws one on entry, and its size is your hand size, so it is small in a deck that empties its hand. Werewolf, not Wolf. |
 | 37 | Arlinn, Voice of the Pack | ◇ | Six mana for a Wolf-token walker. Wolves entering with a counter helps the gate, but it is slow and its static does nothing for Bears. |
 | 38 | Avabruck Caretaker | ★★ | A hexproof 4/4 that puts two counters on another creature each combat, which turns a 2-power Bear into a gate-opener (F2). Its night side puts two counters on everything and gives the rest of the board hexproof: the deck's best protection card in the pile. MV 6, so it survives most Sarulf wipes (F3). |
@@ -174,6 +185,22 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | 99 | Witherbloom, the Balancer | ★ | Affinity for creatures, so about 3 mana on a normal board, for a 5/5 flying deathtouch. It also gives instants and sorceries affinity, which discounts the removal. MV 8, so a Sarulf wipe never takes it (F3). |
 | 100 | Old Stickfingers | △ | An X spell that fills the graveyard; its size reads creature cards there. |
 
+### Batch 4 (owner's extension, 2026-11-22)
+
+| # | Card | Deck 105 | Note |
+|---|---|---|---|
+| 101 | Cursebound Witch | △ | A 1/2 that drafts a card from its spellbook when it dies (Alchemy). Low impact in a 100-card creature deck. |
+| 102 | Dark Ritual | △ | One burst of BBB for a card. Only black spells use it, and the deck's power is green. |
+| 103 | Vraska, Betrayal's Sting | ★ | 0: draw a card and proliferate, every turn, which adds a counter to every creature with one, to Sarulf (a bigger wipe) and to Vraska. Repeatable draw (F6). Six mana. Its -2 turns a creature into a Treasure the OPPONENT keeps, which gives them mana, so it clashes with the owner's removal rule; treat it as a draw-and-proliferate walker. |
+| 104 | Vat Emergence | ◇ | Reanimate from ANY graveyard, so it can steal the creature your removal just killed, then proliferate. Five mana. |
+| 105 | Cankerbloom | ◇ | A 2-mana 3/2 that sacrifices to destroy an artifact or enchantment, or to proliferate. A flexible noncreature answer on a body. |
+| 106 | Unnatural Restoration | ◇ | Two mana: regrow a permanent card and proliferate. Fine value, small. |
+| 107 | Evolution Sage | ★ | Proliferate on every land drop, twice with Evolving Wilds, Fabled Passage or Prismatic Vista. Grows the Ayula-counter Bears and charges Sarulf each turn. A 3/2 for 3. |
+| 108 | Urban Daggertooth | ◇ | A 4/3 vigilance for 4 (F2). Proliferates whenever it is dealt damage, which a fight or a block does. |
+| 109 | Hardened Scales | ★ | One mana: each +1/+1 counter placement on a creature gets one more: Ayula's two become three, and Sarulf's counters count. It stacks with Winding Constrictor. MV 1, so every Sarulf wipe takes it (F3). |
+| 110 | Mythweaver Poq | ★ | Its size is your land count (power 4+ by turn four, F2), and each turn it conjures a copy of the land you played, so a fetch land is played twice. Ramp on a body, Alchemy. |
+| 111 | Stable Wormhole | ◇ | A tapped any-colour land token every time you attack. The deck has enough ramp; this is ramp that needs the attack first. |
+
 ## 5. Consolidated plan (live)
 
 ### Tier 1 — the package (previewed with `swap --package`: legal, floor A, interaction 16→14,
@@ -191,6 +218,19 @@ card advantage 14→17, protection 7→9, board power 124→129, avg MV unchange
 | 8 | Forest | Argoth, Sanctum of Nature | Untapped with Sarulf out; a mana sink that makes a 2/2 Bear (an Ayula trigger). |
 | 9 | Cultivate | Flare of Cultivation | Same effect, plus a free alternative cost (E1). Owned. |
 
+### Tier 1b — batch 4 adds (previewed on top of tier 1: legal, floor A, interaction 13,
+card advantage 17, protection 8, board power 131)
+
+| # | Cut | Add | Why |
+|---|---|---|---|
+| 10 | Large Bear | Howlpack Piper | Large Bear is a vanilla 5-drop. The Piper puts a Bear in from hand every turn and enables a no-spell turn. Bears 17→16. |
+| 11 | Snakeskin Veil | Hardened Scales | One mana for one mana. Protection falls to 8 (still above the 7 it started at); counters gain a second doubler. |
+| 12 | Elemental Bond | Evolution Sage | Bond draws off power-3 creatures entering; the draw engines in tier 1 cover that. The Sage proliferates every land drop. |
+| 13 | Heartless Act | Lukamina, Moon Druid | Interaction 14→13, still above the A line of 12. Bear Form is a team anthem plus trample. |
+
+Interaction 13 is one above the A line; take all four only if you are happy at that margin.
+Swap 13 is the one to drop first.
+
 ### Tier 2 — strong alternatives (swap in for a tier-1 add, or for a cut below)
 
 - **Kraven the Hunter** (owned): a 4/3 trampler that draws when their biggest creature dies.
@@ -201,6 +241,7 @@ card advantage 14→17, protection 7→9, board power 124→129, avg MV unchange
 - **Fight Rigging · Path of Discovery · World War Hulk** (Hulk owned): counter engines (F2).
 - **Chimil, the Inner Sun · Sentinel of the Nameless City · Vincent Valentine** (Vincent owned).
 - **Sword of Body and Mind · Forebear's Blade**: equipment that opens the gate.
+- **Edgar, Moonlit Sovereign · Vraska, Betrayal's Sting · Mythweaver Poq** (Poq owned).
 - **Flaxen Intruder** (three Bears, three Ayula triggers) · **Mirkwood** (owned, for a Forest).
 
 Next cut candidates if more tier-2 cards go in: Large Bear (a vanilla 5-drop), Heartless Act and
@@ -220,4 +261,5 @@ draw engines above), Snakeskin Veil.
 
 Tier 1 crafts: 2 mythic (Avabruck Caretaker, Garruk Relentless), 4 rare (Werewolf Pack Leader,
 Toski, Geistpack Alpha, Argoth), 2 uncommon (Winding Constrictor, Owlbear Shepherd). Flare of
-Cultivation is owned.
+Cultivation is owned. Tier 1b: 1 mythic (Lukamina), 2 rare (Howlpack Piper, Hardened
+Scales); Evolution Sage is owned.

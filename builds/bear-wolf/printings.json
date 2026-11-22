@@ -182,6 +182,7 @@
   }
  ],
  "Burgeoning": [],
+ "Cankerbloom": [],
  "Casualties of War": [],
  "Cemetery Prowler": [],
  "Chevill, Bane of Monsters": [],
@@ -304,7 +305,86 @@
    "y": "2021"
   }
  ],
+ "Cursebound Witch": [],
  "Dancing from Dark to Dawn": [],
+ "Dark Ritual": [
+  {
+   "a": "Robbie Trevino",
+   "art": "https://cards.scryfall.io/art_crop/front/6/f/6fc57076-cac4-4f5e-956b-e3d77bd258b2.jpg?1783927435",
+   "cn": "26",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/f/6fc57076-cac4-4f5e-956b-e3d77bd258b2.jpg?1783927435",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Rien.",
+   "art": "https://cards.scryfall.io/art_crop/front/b/7/b734cb11-2024-411f-9885-dafda14bb431.jpg?1783927412",
+   "cn": "89",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/7/b734cb11-2024-411f-9885-dafda14bb431.jpg?1783927412",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Clint Langley",
+   "art": "https://cards.scryfall.io/art_crop/front/2/0/20fec71b-a9e8-4b2d-b480-6a977e29a5a6.jpg?1783925680",
+   "cn": "783",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/0/20fec71b-a9e8-4b2d-b480-6a977e29a5a6.jpg?1783925680",
+   "r": "C",
+   "set": "J21",
+   "sn": "Jumpstart: Historic Horizons",
+   "y": "2021"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7cc0cfe1-7f13-4b1b-9a37-33ef457d3c62.jpg?1783906393",
+   "cn": "8",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7cc0cfe1-7f13-4b1b-9a37-33ef457d3c62.jpg?1783906393",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  },
+  {
+   "a": "Filipe Pagliuso",
+   "art": "https://cards.scryfall.io/art_crop/front/e/f/ef9d3e48-85c2-4347-810f-a6a0725b288d.jpg?1783904131",
+   "cn": "131",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/f/ef9d3e48-85c2-4347-810f-a6a0725b288d.jpg?1783904131",
+   "r": "M",
+   "set": "TMC",
+   "sn": "Teenage Mutant Ninja Turtles Eternal",
+   "y": "2026"
+  },
+  {
+   "a": "Nino Is",
+   "art": "https://cards.scryfall.io/art_crop/front/1/1/11e12a84-e7be-4afc-a230-c2e644743fa8.jpg?1783903013",
+   "cn": "793",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/1/11e12a84-e7be-4afc-a230-c2e644743fa8.jpg?1783903013",
+   "r": "U",
+   "set": "MSC",
+   "sn": "Marvel Super Heroes Commander",
+   "y": "2026"
+  }
+ ],
  "Darkbore Pathway // Slitherbore Pathway": [
   {
    "a": "Johannes Voss",
@@ -403,6 +483,7 @@
   }
  ],
  "Etali, Primal Garden": [],
+ "Evolution Sage": [],
  "Evolving Wilds": [
   {
    "a": "Jonas De Ro",
@@ -735,6 +816,33 @@
  ],
  "Grizzly Ghoul": [],
  "Guardian Project": [],
+ "Hardened Scales": [
+  {
+   "a": "Mark Winters",
+   "art": "https://cards.scryfall.io/art_crop/front/7/d/7dcdf1db-bfaf-4160-8003-1fa2e56b00dc.jpg?1783939069",
+   "cn": "133",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/d/7dcdf1db-bfaf-4160-8003-1fa2e56b00dc.jpg?1783939069",
+   "r": "R",
+   "set": "KTK",
+   "sn": "Khans of Tarkir",
+   "y": "2014"
+  },
+  {
+   "a": "Abigail Larson",
+   "art": "https://cards.scryfall.io/art_crop/front/d/2/d2d1bfab-25b4-474b-bdab-ac18215f1920.jpg?1783914918",
+   "cn": "55",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/2/d2d1bfab-25b4-474b-bdab-ac18215f1920.jpg?1783914918",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Harness Infinity": [],
  "Head of the Hunt": [],
  "Heartless Act": [
@@ -1060,6 +1168,7 @@
  "Mortality Spear": [],
  "Mother Bear": [],
  "Mycoid Resurrection": [],
+ "Mythweaver Poq": [],
  "Nature's Lore": [],
  "Necroblossom Snarl": [],
  "Nighthowl Pursuer": [],
@@ -1371,6 +1480,7 @@
  ],
  "Somberwald Beastmaster": [],
  "Spider-Ham, Peter Porker": [],
+ "Stable Wormhole": [],
  "Striped Bears": [],
  "Studious First-Year": [],
  "Surrak and Goreclaw": [],
@@ -1477,6 +1587,8 @@
  ],
  "Turntimber Symbiosis // Turntimber, Serpentine Wood": [],
  "Tyvar, Jubilant Brawler": [],
+ "Unnatural Restoration": [],
+ "Urban Daggertooth": [],
  "Ursine Guide // Ranger's Merit": [],
  "Varis, Silverymoon Ranger": [
   {
@@ -1505,6 +1617,7 @@
   }
  ],
  "Vastlands Scavenger": [],
+ "Vat Emergence": [],
  "Vaultborn Tyrant": [],
  "Vincent Valentine": [],
  "Vivien Reid": [],
@@ -1535,6 +1648,7 @@
   }
  ],
  "Vraska Joins Up": [],
+ "Vraska, Betrayal's Sting": [],
  "Vraska, Golgari Queen": [
   {
    "a": "Livia Prima",
