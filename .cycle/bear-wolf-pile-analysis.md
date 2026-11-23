@@ -416,3 +416,13 @@ added 16 to the builder. Previewed package (−Mortality Spear +Fatal Push, −M
 Call, −Exuberant Wolfbear +Sarulf's Packmate, −Studious First-Year +Incubation Druid): legal, floor
 A, interaction 14, card advantage 12→13, avg MV 3.94→3.89. `suggest --lands` offered only tapped BG
 duals, none better than the current manabase.
+
+## 11. Third board pass (2026-11-23)
+
+Applied: Studious First-Year → Incubation Druid. Owner's new cuts: Bosco, Rhonas, Turntimber
+Symbiosis, Wicked Wolf. Owner's point taken: Bear/Wolf TOKENS are the real tribe count. 11 cards
+make them (5 repeatably: Dancing from Dark to Dawn, Garruk Cursed Huntsman, Garruk Relentless,
+Nightpack Ambusher, Argoth), and tokens count for Ayula, Torgal, Moonlight Hunt and Nightpack.
+Trade-off: every Sarulf wipe exiles all tokens (MV 0). Proposed 4-pair package (Wicked Wolf→Ram
+Through, Bosco→Branching Evolution, Rhonas→Sentinel, Turntimber→Moonlight Hunt): legal, floor A,
+interaction 14 (Moonlight Hunt reads as no role, a classifier hole), protection 9→7, avg MV 3.81.
