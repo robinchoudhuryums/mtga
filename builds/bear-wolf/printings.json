@@ -1,6 +1,7 @@
 {
  "Abrupt Decay": [],
  "Advanced Floral Invocations": [],
+ "Alpha Authority": [],
  "Ancient Greenwarden": [],
  "Argoth, Sanctum of Nature": [],
  "Arlinn, Voice of the Pack": [
@@ -212,6 +213,7 @@
  "Cankerbloom": [],
  "Casualties of War": [],
  "Cemetery Prowler": [],
+ "Champion's Helm": [],
  "Chevill, Bane of Monsters": [],
  "Chief Warg's Company": [],
  "Chimil, the Inner Sun": [],
@@ -439,6 +441,30 @@
    "y": "2021"
   }
  ],
+ "Darksteel Plate": [
+  {
+   "a": "Russell Dongjun Lu",
+   "art": "https://cards.scryfall.io/art_crop/front/4/9/49277723-84df-4842-a8e5-cdf1c1aa8161.jpg?1785650614",
+   "cn": "342",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/9/49277723-84df-4842-a8e5-cdf1c1aa8161.jpg?1785650614",
+   "r": "R",
+   "set": "FIC",
+   "sn": "Final Fantasy Commander",
+   "y": "2025"
+  },
+  {
+   "a": "Daniel Ljunggren",
+   "art": "https://cards.scryfall.io/art_crop/front/f/3/f3ef4c7e-c4bd-44f1-bfb5-5fe62bbd844f.jpg?1783905640",
+   "cn": "4",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/3/f3ef4c7e-c4bd-44f1-bfb5-5fe62bbd844f.jpg?1783905640",
+   "r": "R",
+   "set": "AA1",
+   "sn": "Arena Anthology 1",
+   "y": "2025"
+  }
+ ],
  "Deathbloom Ritualist": [],
  "Deathcap Glade": [
   {
@@ -481,6 +507,7 @@
  "Dina, Essence Brewer": [],
  "Diregraf Rebirth": [],
  "Doc Samson, Super Psychiatrist": [],
+ "Dragonfire Blade": [],
  "Drover Grizzly": [],
  "Edgar, Moonlit Sovereign": [],
  "Elemental Bond": [],
@@ -1142,6 +1169,7 @@
  "Kogla, the Titan Ape": [],
  "Kraven the Hunter": [],
  "Large Bear": [],
+ "Leyline Immersion": [],
  "Little Bear": [],
  "Llanowar Elves": [
   {
@@ -1248,6 +1276,32 @@
  "Mayor of Avabruck // Howlpack Alpha": [],
  "Michelangelo, Weirdness to 11": [],
  "Mirkwood": [],
+ "Mithril Coat": [
+  {
+   "a": "Igor Krstic",
+   "art": "https://cards.scryfall.io/art_crop/front/0/f/0fd1fc09-a09d-45e6-8a07-3a8a83b4e6ec.jpg?1783916237",
+   "cn": "245",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/f/0fd1fc09-a09d-45e6-8a07-3a8a83b4e6ec.jpg?1783916237",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Ellie Livingston",
+   "art": "https://cards.scryfall.io/art_crop/front/b/1/b19d533b-0081-4744-8fc8-5e864ddb39ba.jpg?1784980202",
+   "cn": "43",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/1/b19d533b-0081-4744-8fc8-5e864ddb39ba.jpg?1784980202",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Mole Man, Moloid Master": [],
  "Monstrous Vortex": [],
  "Moonlight Hunt": [],
@@ -1353,6 +1407,7 @@
    "y": "2026"
   }
  ],
+ "Overprotect": [],
  "Owlbear": [
   {
    "a": "Ilse Gort",
@@ -1669,7 +1724,48 @@
   }
  ],
  "Sword of Body and Mind": [],
+ "Sword of Fire and Ice": [
+  {
+   "a": "Mark Zug",
+   "art": "https://cards.scryfall.io/art_crop/front/0/8/080f7d1b-3e73-4766-8d0a-21d1a2f692a4.jpg?1783915766",
+   "cn": "20",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/8/080f7d1b-3e73-4766-8d0a-21d1a2f692a4.jpg?1783915766",
+   "r": "R",
+   "set": "HA7",
+   "sn": "Historic Anthology 7",
+   "y": "2023"
+  },
+  {
+   "a": "Volkan Baǵa",
+   "art": "https://cards.scryfall.io/art_crop/front/0/6/065cd3b9-b5aa-44d3-93f4-3a43694d7a1a.jpg?1783909908",
+   "cn": "62",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/6/065cd3b9-b5aa-44d3-93f4-3a43694d7a1a.jpg?1783909908",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  },
+  {
+   "a": "Alex Ross",
+   "art": "https://cards.scryfall.io/art_crop/front/9/0/908770e0-5927-486a-b99b-64f165da4d90.jpg?1783903304",
+   "cn": "100",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/0/908770e0-5927-486a-b99b-64f165da4d90.jpg?1783903304",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  }
+ ],
  "Sword of Truth and Justice": [],
+ "Sword of Wealth and Power": [],
  "Sylvan Scavenging": [],
  "Temple of Malady": [],
  "Tenacious Pup": [],

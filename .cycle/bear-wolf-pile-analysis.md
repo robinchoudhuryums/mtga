@@ -471,3 +471,11 @@ Lukamina→Snakeskin Veil, Edgar→Warg Tactics, Gigantic Big Bear→Gaea's Gift
 interaction 14, protection 9, avg MV 3.77, card advantage 10.
 Tooling note: the rationale audit missed "Rhonas" (cut) in the archetype prose — G-78's short-name
 floor; fixed by hand.
+
+## 16. Ygra and Nog in; equipment and auras for Sarulf (2026-11-23)
+
+Applied Wilson→Ygra, Fanatic of Rhonas→Nog. Owner shortlist: Inspiring Call, Gaea's Gift, Plaza of
+Heroes, Overprotect. Added 9 aura/equipment/protection cards to the board (Champion's Helm, Mithril
+Coat, Sword of Wealth and Power, Dragonfire Blade, Sword of Fire and Ice, Leyline Immersion,
+Darksteel Plate, Alpha Authority, Overprotect). Caveat for all of them: Sarulf's wipe exiles your
+own equipment and auras at MV ≤ N too (they are MV 1–4).

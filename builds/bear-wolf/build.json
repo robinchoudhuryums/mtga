@@ -1188,6 +1188,51 @@
    "name": "Tyvar's Stand",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Champion's Helm",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mithril Coat",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Wealth and Power",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Dragonfire Blade",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Fire and Ice",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Leyline Immersion",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Darksteel Plate",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Alpha Authority",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Overprotect",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2821,6 +2866,69 @@
    "graded_at": {
     "105": "688cb80da7c4"
    }
+  },
+  "Champion's Helm": {
+   "group": "Pile: take",
+   "text": "3 mana, equip {1}: +2/+2 and HEXPROOF while the creature is legendary. Sarulf is, and so are about a dozen others here. The cheapest permanent hexproof for the commander; moving it is an activation, not a spell, so it does not break night.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Mithril Coat": {
+   "group": "Pile: take",
+   "text": "Flash, indestructible itself, and it attaches to a legendary creature as it enters: cast it in response to a destroy spell and Sarulf survives. Equip {3} afterwards. Indestructible does not stop exile or -X/-X.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Sword of Wealth and Power": {
+   "group": "Pile: real",
+   "text": "Owned. Protection from instants and sorceries, which blanks most removal SPELLS aimed at Sarulf (not abilities or one-sided 'each creature' effects), and +2/+2. On a hit, a Treasure and a copy of your next instant or sorcery.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Dragonfire Blade": {
+   "group": "Pile: real",
+   "text": "Owned, 1 mana. Hexproof from monocolored (most removal is mono-coloured) and +2/+2; equip costs {2} on a two-colour creature like Sarulf, {3} on a mono-green one.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Sword of Fire and Ice": {
+   "group": "Pile: real",
+   "text": "Owned. Protection from red and blue, +2/+2, and each hit draws a card and shocks something: card advantage plus partial protection.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Leyline Immersion": {
+   "group": "Pile: situational",
+   "text": "Spice. Aura for a legendary creature: ward {2}, and it taps for five mana for spells. On Sarulf that is a ward plus a ritual every turn, but an Aura dies with its creature.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Darksteel Plate": {
+   "group": "Pile: situational",
+   "text": "Indestructible itself and gives indestructible; equip {2}. Mithril Coat does the same and can be flashed in.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Alpha Authority": {
+   "group": "Pile: situational",
+   "text": "A 2-mana Aura: hexproof and can't be blocked by more than one creature. Permanent hexproof, but an Aura is lost to a sacrifice or exile effect along with the creature.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Overprotect": {
+   "group": "Pile: real",
+   "text": "Owned. A 2-mana instant: +3/+3, trample, hexproof and indestructible. Gaea's Gift does the same with a permanent counter (multiplied, and it charges Sarulf), so Gift first, Overprotect as the owned stand-in.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
   }
  },
  "snapshots": {
@@ -3155,6 +3263,92 @@
     "Witherbloom, the Balancer",
     "Woodland Cemetery",
     "World War Hulk"
+   ],
+   "bd82b7c98371": [
+    "Advanced Floral Invocations",
+    "Argoth, Sanctum of Nature",
+    "Avabruck Caretaker // Hollowhenge Huntmaster",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beifong's Bounty Hunters",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Binding the Old Gods",
+    "Blooming Marsh",
+    "Boseiju, Who Endures",
+    "Branching Evolution",
+    "Cemetery Prowler",
+    "Chief Warg's Company",
+    "Command Tower",
+    "Dancing from Dark to Dawn",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deathcap Glade",
+    "Descendants' Path",
+    "Edgar, Moonlit Sovereign",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fight Rigging",
+    "Flare of Cultivation",
+    "Forest",
+    "Fuel Tank Feaster",
+    "Garruk Relentless // Garruk, the Veil-Cursed",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Garruk, Cursed Huntsman",
+    "Gigantic Big Bear",
+    "Goreclaw, Terror of Qal Sisma",
+    "Head of the Hunt",
+    "Hissing Quagmire",
+    "Howlpack Piper // Wildsong Howler",
+    "Hunter's Talent",
+    "Incubation Druid",
+    "Innkeeper's Talent",
+    "Kogla, the Titan Ape",
+    "Llanowar Wastes",
+    "Lukamina, Moon Druid",
+    "Lumra, Bellow of the Woods",
+    "Maelstrom Pulse",
+    "Mirkwood",
+    "Mortality Spear",
+    "Mythweaver Poq",
+    "Necroblossom Snarl",
+    "Nightpack Ambusher",
+    "Nog, Ambitious Cadet",
+    "Nurturing Peatland",
+    "Overgrown Tomb",
+    "Owlbear Shepherd",
+    "Path of Discovery",
+    "Polukranos, Unchained",
+    "Primal Adversary",
+    "Prismatic Vista",
+    "Ram Through",
+    "Ranger Class",
+    "Rise of the Witch-king",
+    "Sarulf, Realm Eater",
+    "Sentinel of the Nameless City",
+    "Shang-Chi, Martial Mentor",
+    "Spider-Ham, Peter Porker",
+    "Surrak and Goreclaw",
+    "Swamp",
+    "Sword of Body and Mind",
+    "The Chief Warg",
+    "The Earth King",
+    "The Great Henge",
+    "Titania's Command",
+    "Torgal, A Fine Hound",
+    "Toski, Bearer of Secrets",
+    "Tovolar's Huntmaster // Tovolar's Packleader",
+    "Vastlands Scavenger",
+    "Vivien, Monsters' Advocate",
+    "Wastewood Verge",
+    "Wilderland Scrounger",
+    "Winding Constrictor",
+    "Witherbloom, the Balancer",
+    "Woodland Cemetery",
+    "World War Hulk",
+    "Ygra, Eater of All"
    ]
   }
  },
@@ -4261,6 +4455,60 @@
    "A": {
     "m": "◇",
     "graded_at": "688cb80da7c4"
+   }
+  },
+  "Champion's Helm": {
+   "A": {
+    "m": "★★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Mithril Coat": {
+   "A": {
+    "m": "★★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Sword of Wealth and Power": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Dragonfire Blade": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Sword of Fire and Ice": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Leyline Immersion": {
+   "A": {
+    "m": "◇",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Darksteel Plate": {
+   "A": {
+    "m": "◇",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Alpha Authority": {
+   "A": {
+    "m": "◇",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Overprotect": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
    }
   }
  }
