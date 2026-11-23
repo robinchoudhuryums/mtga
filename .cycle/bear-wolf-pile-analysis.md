@@ -398,3 +398,13 @@ for Temple of Malady):
 Owner notes conceded: Descendants' Path is pure upside (misses cost no draw); Floral + Argoth +
 Mirkwood answer §6 I6 (now about eight ways for a land to reach the graveyard); Beifong's earthbend
 counters are multiplied and its land returns; Jenova's 1 becomes 4 with the multipliers.
+
+## 9. Plan A applied, bench re-graded (2026-11-23)
+
+Applied 12 of plan A's 13 swaps; Fuel Tank Feaster stays and Sentinel of the Nameless City is held
+pending a cut (suggestions on the board: Mythweaver Poq, Exuberant Wolfbear, Bosco). Live: floor A,
+interaction 14, card advantage 12, avg MV 3.94, 11 nonland cards at MV 2 or less, 9 Humans.
+All 125 off-deck board cards re-graded against this list (builder reasons and verdicts). What moved
+most: cheap cards and card draw rose (Werewolf Pack Leader and Return of the Wildspeaker ★★; Abrupt
+Decay ★★; Infernal Grasp, Go for the Throat, Heartless Act, Torgal, Goliath, Mayor of Avabruck,
+Chevill, Cankerbloom, Striped Bears ★), because those are the two thin axes now.
