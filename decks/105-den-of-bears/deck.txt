@@ -30,7 +30,7 @@
 #: notes: RE-ADDED 2026-11-23 by choice: while it is out, a killed opposing creature becomes a Wolf instead of a Sarulf
 #: notes: counter (and Vincent/Ygra-style death payoffs do not trigger). With this many tokens the wipe is often a bad trade. WIPE
 #: notes: DISCIPLINE: with Innkeeper + Constrictor one kill is four counters, and a 4-counter wipe exiles the engine
-#: notes: itself (Innkeeper, Constrictor, Sage, Fight Rigging, Lukamina); take it only when their board is worth more.
+#: notes: itself (Innkeeper, Constrictor, Sage, Fight Rigging, Saryth, Dina, M'Benga); take it only when their board is worth more.
 #: notes: 2026-11-23 second pass: 12 swaps (plan A), keeping the Bear-Wolf core over a lands-from-graveyard package
 #: notes: (Advanced Floral Invocations, Nog, Nissa of Shadowed Boughs, Mole Man stay on the builder bench). The cost is the
 #: notes: curve: 11 nonland cards at MV 2 or less. If early games run slow, cheap removal is the first thing to restore.
@@ -50,7 +50,7 @@
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Howlpack Piper // Wildsong Howler (VOW) 205
 1 Exuberant Wolfbear (IKO) 151
-1 Lukamina, Moon Druid (HBG) 17
+1 Kodama of the West Tree (J25) 78
 1 Vastlands Scavenger (SOS) 166
 1 Incubation Druid (RNA) 131
 1 Surrak and Goreclaw (MOM) 337
@@ -139,3 +139,4 @@
 #~ +Chevill, Bane of Monsters | BENCH (builder bear-wolf): benched on the board
 #~ +Hardened Scales | BENCH (builder bear-wolf): benched on the board
 #~ +Vraska, Betrayal's Sting | BENCH (builder bear-wolf): benched on the board
+#~ +Lukamina, Moon Druid | BENCH (builder bear-wolf): benched on the board — Bear Form anthem once you have six lands
