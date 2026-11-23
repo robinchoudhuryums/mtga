@@ -512,6 +512,7 @@
  "Dr. Joseph M'Benga": [],
  "Dragonfire Blade": [],
  "Drover Grizzly": [],
+ "Earthbender Ascension": [],
  "Edgar, Moonlit Sovereign": [],
  "Elemental Bond": [],
  "Elemental Teachings": [],
@@ -935,6 +936,7 @@
   }
  ],
  "Harness Infinity": [],
+ "Harrow": [],
  "Head of the Hunt": [],
  "Heartless Act": [
   {
@@ -1173,6 +1175,43 @@
  "Kagha, Shadow Archdruid": [],
  "Kamahl's Druidic Vow": [],
  "Kami of Whispered Hopes": [],
+ "Kodama of the West Tree": [
+  {
+   "a": "Daarken",
+   "art": "https://cards.scryfall.io/art_crop/front/e/f/ef1e1dff-b559-441d-8df3-b6a418066aca.jpg?1783923845",
+   "cn": "199",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/f/ef1e1dff-b559-441d-8df3-b6a418066aca.jpg?1783923845",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "TAPIOCA",
+   "art": "https://cards.scryfall.io/art_crop/front/b/4/b4a4aeaa-aff7-4299-8030-36eefd5acaf3.jpg?1783923769",
+   "cn": "392",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/4/b4a4aeaa-aff7-4299-8030-36eefd5acaf3.jpg?1783923769",
+   "r": "M",
+   "set": "NEO",
+   "sn": "Kamigawa: Neon Dynasty",
+   "y": "2022"
+  },
+  {
+   "a": "Dai-XT",
+   "art": "https://cards.scryfall.io/art_crop/front/a/4/a4f53a56-eb8e-44cd-ab13-8ac068052c68.jpg?1783908846",
+   "cn": "78",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/4/a4f53a56-eb8e-44cd-ab13-8ac068052c68.jpg?1783908846",
+   "r": "M",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
  "Kogla, the Titan Ape": [],
  "Kraven the Hunter": [],
  "Kraven's Last Hunt": [],
@@ -1745,10 +1784,13 @@
  ],
  "Somberwald Beastmaster": [],
  "Spider-Ham, Peter Porker": [],
+ "Springbloom Druid": [],
  "Stable Wormhole": [],
  "Striped Bears": [],
  "Studious First-Year": [],
+ "Summon: Fenrir": [],
  "Surrak and Goreclaw": [],
+ "Sutina, Speaker of the Tajuru": [],
  "Swiftfoot Boots": [
   {
    "a": "Svetlin Velinov",
@@ -2083,6 +2125,7 @@
  "Witherbloom Charm": [],
  "Witherbloom, the Balancer": [],
  "Wolfkin Outcast // Wedding Crasher": [],
+ "Wood Elves": [],
  "Woodland Cemetery": [
   {
    "a": "Christine Choi",

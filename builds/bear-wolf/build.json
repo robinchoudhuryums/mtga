@@ -1323,6 +1323,41 @@
    "name": "Archenemy's Charm",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Summon: Fenrir",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Earthbender Ascension",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Kodama of the West Tree",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Springbloom Druid",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Harrow",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Wood Elves",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sutina, Speaker of the Tajuru",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -3145,6 +3180,55 @@
    "graded_at": {
     "105": "3e3a3f62a4d8"
    }
+  },
+  "Summon: Fenrir": {
+   "group": "Pile: take",
+   "text": "Owned, 3 mana. A Wolf (Saga creature): I puts a basic land onto the battlefield, II gives your next creature an extra +1/+1 counter (multiplied), III draws a card if you have the biggest creature. Land ramp that survives a Sarulf wipe, plus a counter and a card.",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Earthbender Ascension": {
+   "group": "Pile: real",
+   "text": "Owned, 3 mana: earthbend 2 (a land becomes a haste creature with two counters, which the multipliers grow) and a basic land onto the battlefield; later land drops add +1/+1 counters and trample.",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Kodama of the West Tree": {
+   "group": "Pile: real",
+   "text": "3 mana: modified creatures (anything with a counter) have trample, and each one that hits the opponent fetches a basic land onto the battlefield UNTAPPED. Repeatable ramp that the counter engine turns on.",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Springbloom Druid": {
+   "group": "Pile: situational",
+   "text": "3 mana: sacrifice a land for two basics. Three land drops in one (landfall for Dancing, Sage, Floral) and a land in the graveyard for Nog, Lumra or Floral level 3. A 1/1 body.",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Harrow": {
+   "group": "Pile: situational",
+   "text": "Instant, 3 mana: sacrifice a land, two basics UNTAPPED. Ramp at instant speed, with the same graveyard and landfall benefits as Springbloom Druid.",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Wood Elves": {
+   "group": "Pile: situational",
+   "text": "3 mana: a Forest card onto the battlefield UNTAPPED, which can be Overgrown Tomb (a black source too).",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
+  },
+  "Sutina, Speaker of the Tajuru": {
+   "group": "Pile: situational",
+   "text": "3-mana legend: a basic land on entry; when it attacks, return a land to hand to put a +1/+1 counter on a creature (replaying the land is another landfall).",
+   "graded_at": {
+    "105": "0d1a9dea4954"
+   }
   }
  },
  "snapshots": {
@@ -3594,6 +3678,92 @@
     "Fabled Passage",
     "Fight Rigging",
     "Flare of Cultivation",
+    "Forest",
+    "Fuel Tank Feaster",
+    "Garruk Relentless // Garruk, the Veil-Cursed",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Garruk, Cursed Huntsman",
+    "Gigantic Big Bear",
+    "Goreclaw, Terror of Qal Sisma",
+    "Head of the Hunt",
+    "Hissing Quagmire",
+    "Howlpack Piper // Wildsong Howler",
+    "Incubation Druid",
+    "Innkeeper's Talent",
+    "Kogla, the Titan Ape",
+    "Llanowar Wastes",
+    "Lukamina, Moon Druid",
+    "Lumra, Bellow of the Woods",
+    "Maelstrom Pulse",
+    "Mirkwood",
+    "Mortality Spear",
+    "Mythweaver Poq",
+    "Necroblossom Snarl",
+    "Nightpack Ambusher",
+    "Nog, Ambitious Cadet",
+    "Nurturing Peatland",
+    "Overgrown Tomb",
+    "Owlbear Shepherd",
+    "Path of Discovery",
+    "Polukranos, Unchained",
+    "Primal Adversary",
+    "Prismatic Vista",
+    "Ram Through",
+    "Ranger Class",
+    "Rise of the Witch-king",
+    "Sarulf, Realm Eater",
+    "Saryth, the Viper's Fang",
+    "Sentinel of the Nameless City",
+    "Shang-Chi, Martial Mentor",
+    "Spider-Ham, Peter Porker",
+    "Surrak and Goreclaw",
+    "Swamp",
+    "The Chief Warg",
+    "The Earth King",
+    "The Great Henge",
+    "Titania's Command",
+    "Torgal, A Fine Hound",
+    "Toski, Bearer of Secrets",
+    "Tovolar's Huntmaster // Tovolar's Packleader",
+    "Vastlands Scavenger",
+    "Vivien, Monsters' Advocate",
+    "Wastewood Verge",
+    "Wilderland Scrounger",
+    "Winding Constrictor",
+    "Witherbloom, the Balancer",
+    "Woodland Cemetery",
+    "World War Hulk",
+    "Ygra, Eater of All"
+   ],
+   "0d1a9dea4954": [
+    "Advanced Floral Invocations",
+    "Argoth, Sanctum of Nature",
+    "Avabruck Caretaker // Hollowhenge Huntmaster",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beifong's Bounty Hunters",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Binding the Old Gods",
+    "Blooming Marsh",
+    "Boseiju, Who Endures",
+    "Branching Evolution",
+    "Chief Warg's Company",
+    "Command Tower",
+    "Dancing from Dark to Dawn",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deathcap Glade",
+    "Descendants' Path",
+    "Dina, Essence Brewer",
+    "Dr. Joseph M'Benga",
+    "Edgar, Moonlit Sovereign",
+    "Elemental Bond",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fight Rigging",
     "Forest",
     "Fuel Tank Feaster",
     "Garruk Relentless // Garruk, the Veil-Cursed",
@@ -4919,6 +5089,48 @@
    "A": {
     "m": "◇",
     "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Summon: Fenrir": {
+   "A": {
+    "m": "★★",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Earthbender Ascension": {
+   "A": {
+    "m": "★",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Kodama of the West Tree": {
+   "A": {
+    "m": "★",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Springbloom Druid": {
+   "A": {
+    "m": "◇",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Harrow": {
+   "A": {
+    "m": "◇",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Wood Elves": {
+   "A": {
+    "m": "◇",
+    "graded_at": "0d1a9dea4954"
+   }
+  },
+  "Sutina, Speaker of the Tajuru": {
+   "A": {
+    "m": "◇",
+    "graded_at": "0d1a9dea4954"
    }
   }
  }

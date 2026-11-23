@@ -511,3 +511,17 @@ plan") predates the token makers and the five counter multipliers; a 2/2 token s
 counters before multiplying, plus life (Mortality Spear) and a once-a-turn draw. Cut candidates:
 Cemetery Prowler (3 for 3; preview: floor A, interaction 12, card advantage 10→11), Howlpack Piper,
 Edgar.
+
+## 21. Dina and Elemental Bond in; ramp and land check (2026-11-23)
+
+Applied Cemetery Prowler→Dina, Flare of Cultivation→Elemental Bond. With Flare gone the deck runs no
+cheap land-ramp spell (Cultivate, Nature's Lore and Flare are all out); ramp is three dorks
+(Incubation Druid, Torgal, Fuel Tank Feaster: all exiled by any Sarulf wipe of 2+), The Earth King,
+Titania's Command, Mythweaver Poq, Nog and Binding the Old Gods. Land ramp survives the wipe and each
+land is a landfall trigger. Added 7 to the board, led by Summon: Fenrir (owned, a Wolf) and
+Earthbender Ascension (owned).
+Lands: B 20 / G 31 over 36 lands. Shifting 2–4 Forests to Swamps made it WORSE (18→26 cards under 90%
+on curve). Replacing three Forests with Jungle Hollow, Plaza of Heroes and Underground Mortuary: 18→12
+cards under 90%, but tapped-land tempo 2.4→3.2 points a card (as-built mean 50.9%→50.3%, inside the
+±0.8 noise). Verdict: no land change needed; the black shortfall is structural (Head of the Hunt
+{B}{B} at 64%), and the any-colour dorks cover part of it.

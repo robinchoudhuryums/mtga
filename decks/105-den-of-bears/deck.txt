@@ -75,7 +75,7 @@
 1 Torgal, A Fine Hound (FIN) 208
 1 Ranger Class (AFR) 202
 1 Spider-Ham, Peter Porker (SPM) 114
-1 Cemetery Prowler (VOW) 191
+1 Dina, Essence Brewer (SOC) 1
 
 # Power-4 payoffs and card flow
 1 Garruk's Uprising (M21) 186
@@ -92,7 +92,7 @@
 1 Fuel Tank Feaster (YDFT) 17
 1 Mythweaver Poq (YLCI) 19
 1 Nog, Ambitious Cadet (TRK) 249
-1 Flare of Cultivation (MH3) 154
+1 Elemental Bond (TLE) 40
 1 Path of Discovery (RIX) 142
 1 Titania's Command (BRO) 194
 
