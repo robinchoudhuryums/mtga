@@ -1138,6 +1138,56 @@
    "name": "Bushmaster, Coiled Henchman",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Gaea's Gift",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Warg Tactics",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Oblivion's Hunger",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Silkguard",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Swiftfoot Boots",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Plaza of Heroes",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Commander's Plate",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Revitalizing Repast // Old-Growth Grove",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Truth and Justice",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Tyvar's Stand",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1716,10 +1766,10 @@
    }
   },
   "Snakeskin Veil": {
-   "group": "Pile: situational",
-   "text": "Cut. One-mana protection plus a counter.",
+   "group": "Pile: take",
+   "text": "Owned. A 1-mana instant: a +1/+1 counter (multiplied four ways; on Sarulf it charges the wipe) and hexproof. The cheapest protection for Sarulf, and its counter is never wasted here.",
    "graded_at": {
-    "105": "2bf57c943681"
+    "105": "688cb80da7c4"
    }
   },
   "Boseiju, Who Endures": {
@@ -2701,6 +2751,76 @@
    "graded_at": {
     "105": "2bf57c943681"
    }
+  },
+  "Gaea's Gift": {
+   "group": "Pile: take",
+   "text": "A 2-mana instant: a +1/+1 counter (multiplied four ways, and on Sarulf it charges the wipe) plus hexproof AND indestructible, reach and trample for the turn. Answers both targeted removal and a destroy-wipe for Sarulf.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Warg Tactics": {
+   "group": "Pile: take",
+   "text": "Owned. A 2-mana instant with two modes: kill a flier, or a counter plus trample and hexproof on your creature. Protection that doubles as interaction, and it is instant-speed, which the deck lacks (2 of 13 interaction pieces are instants).",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Oblivion's Hunger": {
+   "group": "Pile: real",
+   "text": "A 2-mana instant: indestructible, and you draw a card if the creature has a +1/+1 counter (Sarulf usually does). Protection plus a card.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Silkguard": {
+   "group": "Pile: real",
+   "text": "An X-cost instant: a counter on each of X creatures, then every modified creature you control (counters, Auras, Equipment) gains hexproof. A one-sided mass protection spell in a deck where almost everything carries counters.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Swiftfoot Boots": {
+   "group": "Pile: real",
+   "text": "Owned. Hexproof and haste on Sarulf (or anything) for equip {1}. Equipping is an activation, not a spell, so it keeps a night turn alive. Colourless MV 2, so a Sarulf wipe of 2+ exiles it.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Plaza of Heroes": {
+   "group": "Pile: real",
+   "text": "Owned land. Taps for legendary spells, and {3}, exile it: a legendary creature gains hexproof and indestructible. Sarulf and about a dozen other legends qualify. Costs a land slot, not a spell slot.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Commander's Plate": {
+   "group": "Pile: situational",
+   "text": "1 mana, equip commander {3}: Sarulf gets +3/+3 and protection from white, blue and red (every colour outside its identity). Blind to black and green removal.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Revitalizing Repast // Old-Growth Grove": {
+   "group": "Pile: situational",
+   "text": "A modal card: a {B/G} instant (counter plus indestructible) or a tapped BG land. Flexible, like Turntimber was.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "group": "Pile: situational",
+   "text": "+2/+2 and protection from white and blue; each hit puts a counter on a creature and proliferates. Counters plus protection, but only against two colours.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
+  },
+  "Tyvar's Stand": {
+   "group": "Pile: situational",
+   "text": "Owned. X-cost instant: +X/+X, hexproof and indestructible. Pure protection; Gaea's Gift does more for less.",
+   "graded_at": {
+    "105": "688cb80da7c4"
+   }
   }
  },
  "snapshots": {
@@ -2943,6 +3063,92 @@
     "Vivien, Monsters' Advocate",
     "Wastewood Verge",
     "Wicked Wolf",
+    "Wilderland Scrounger",
+    "Wilson, Bear Comrade",
+    "Winding Constrictor",
+    "Witherbloom, the Balancer",
+    "Woodland Cemetery",
+    "World War Hulk"
+   ],
+   "688cb80da7c4": [
+    "Advanced Floral Invocations",
+    "Argoth, Sanctum of Nature",
+    "Avabruck Caretaker // Hollowhenge Huntmaster",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beifong's Bounty Hunters",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Binding the Old Gods",
+    "Blooming Marsh",
+    "Boseiju, Who Endures",
+    "Branching Evolution",
+    "Cemetery Prowler",
+    "Chief Warg's Company",
+    "Command Tower",
+    "Dancing from Dark to Dawn",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deathcap Glade",
+    "Descendants' Path",
+    "Edgar, Moonlit Sovereign",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fanatic of Rhonas",
+    "Fight Rigging",
+    "Flare of Cultivation",
+    "Forest",
+    "Fuel Tank Feaster",
+    "Garruk Relentless // Garruk, the Veil-Cursed",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Garruk, Cursed Huntsman",
+    "Gigantic Big Bear",
+    "Goreclaw, Terror of Qal Sisma",
+    "Head of the Hunt",
+    "Hissing Quagmire",
+    "Howlpack Piper // Wildsong Howler",
+    "Hunter's Talent",
+    "Incubation Druid",
+    "Innkeeper's Talent",
+    "Kogla, the Titan Ape",
+    "Llanowar Wastes",
+    "Lukamina, Moon Druid",
+    "Lumra, Bellow of the Woods",
+    "Maelstrom Pulse",
+    "Mirkwood",
+    "Mortality Spear",
+    "Mythweaver Poq",
+    "Necroblossom Snarl",
+    "Nightpack Ambusher",
+    "Nurturing Peatland",
+    "Overgrown Tomb",
+    "Owlbear Shepherd",
+    "Path of Discovery",
+    "Polukranos, Unchained",
+    "Primal Adversary",
+    "Prismatic Vista",
+    "Ram Through",
+    "Ranger Class",
+    "Rise of the Witch-king",
+    "Sarulf, Realm Eater",
+    "Sentinel of the Nameless City",
+    "Shang-Chi, Martial Mentor",
+    "Spider-Ham, Peter Porker",
+    "Surrak and Goreclaw",
+    "Swamp",
+    "Sword of Body and Mind",
+    "The Chief Warg",
+    "The Earth King",
+    "The Great Henge",
+    "Titania's Command",
+    "Torgal, A Fine Hound",
+    "Toski, Bearer of Secrets",
+    "Tovolar's Huntmaster // Tovolar's Packleader",
+    "Vastlands Scavenger",
+    "Vivien, Monsters' Advocate",
+    "Wastewood Verge",
     "Wilderland Scrounger",
     "Wilson, Bear Comrade",
     "Winding Constrictor",
@@ -3891,8 +4097,8 @@
   },
   "Snakeskin Veil": {
    "A": {
-    "m": "◇",
-    "graded_at": "2bf57c943681"
+    "m": "★★",
+    "graded_at": "688cb80da7c4"
    }
   },
   "Temple of Malady": {
@@ -3995,6 +4201,66 @@
    "A": {
     "m": "◇",
     "graded_at": "2bf57c943681"
+   }
+  },
+  "Gaea's Gift": {
+   "A": {
+    "m": "★★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Warg Tactics": {
+   "A": {
+    "m": "★★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Oblivion's Hunger": {
+   "A": {
+    "m": "★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Silkguard": {
+   "A": {
+    "m": "★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Swiftfoot Boots": {
+   "A": {
+    "m": "★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Plaza of Heroes": {
+   "A": {
+    "m": "★",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Commander's Plate": {
+   "A": {
+    "m": "◇",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Revitalizing Repast // Old-Growth Grove": {
+   "A": {
+    "m": "◇",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Sword of Truth and Justice": {
+   "A": {
+    "m": "◇",
+    "graded_at": "688cb80da7c4"
+   }
+  },
+  "Tyvar's Stand": {
+   "A": {
+    "m": "◇",
+    "graded_at": "688cb80da7c4"
    }
   }
  }

@@ -457,3 +457,17 @@ Hunt and Elemental Bond in = interaction 11, floor A→B. Keeping Rise (Kraven�
 floor A. Head of the Hunt: owner's case accepted with conditions — the more tokens the deck makes,
 the more a Sarulf wipe costs (it exiles every token), so Sarulf's counters matter less; but Head
 also switches off Kraven, Vincent Valentine's counters and Ygra's growth from opposing deaths.
+
+## 15. Head of the Hunt and Floral in; protection for Sarulf (2026-11-23)
+
+Applied Kraven→Head of the Hunt, Primal Might→Advanced Floral Invocations; prose updated (Head is
+now in by choice). Live gaps: interaction 13 but only 2 instant-speed; card advantage 11; protection
+7, but only three can protect SARULF (Sword of Body and Mind, Innkeeper's ward {1}, Avabruck's night
+side) — the rest protect themselves. Protection that also adds a +1/+1 counter doubles as wipe fuel
+for Sarulf. Added 10 candidates to the board (Gaea's Gift, Warg Tactics, Oblivion's Hunger,
+Silkguard, Swiftfoot Boots, Plaza of Heroes, Commander's Plate, Revitalizing Repast, Sword of Truth
+and Justice, Tyvar's Stand) plus Snakeskin Veil re-graded. Preview: Wilson→Ygra, Fanatic→Nog,
+Lukamina→Snakeskin Veil, Edgar→Warg Tactics, Gigantic Big Bear→Gaea's Gift = legal, floor A,
+interaction 14, protection 9, avg MV 3.77, card advantage 10.
+Tooling note: the rationale audit missed "Rhonas" (cut) in the archetype prose — G-78's short-name
+floor; fixed by hand.

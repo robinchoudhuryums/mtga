@@ -14,7 +14,7 @@
 #: archetype: Garruk, Cursed Huntsman. A COUNTER ENGINE multiplies all of it: Innkeeper's Talent (level 3 doubles),
 #: archetype: Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The Great Henge and
 #: archetype: Titania's Command; with Innkeeper and Constrictor out, one kill puts four counters on Sarulf. Bears switch
-#: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker, Kraven, Rhonas,
+#: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker,
 #: archetype: Fanatic of Rhonas); Ayula in the 99 turns each entering Bear into two counters or a fight. Brawl sibling of
 #: archetype: deck 69 (Standard Bear-Wolf, also black-green).
 #: protect: Sarulf, Realm Eater; Ayula, Queen Among Bears; Beorn the Fierce; Dancing from Dark to Dawn; Spider-Ham, Peter Porker; Garruk's Uprising; Garruk, Cursed Huntsman
@@ -26,8 +26,9 @@
 #: notes: Esika's Chariot, Giant-Man, Elvish Mystic, Return of the Wildspeaker, Ursine Guide, Ilysian Caryatid, and Kogla
 #: notes: (GGG; Fierce Witchstalker took the slot). Black sources 20 against green 31: shifting basics was measured flat.
 #: notes: 2026-11-23 pile pass (builder bear-wolf): 18 swaps for the counter engine, Kogla's Human bounce (Tovolar,
-#: notes: Lukamina, Piper, Avabruck) and the draw engines Toski and The Great Henge. Head of the Hunt was CUT because its
-#: notes: exile-instead stops opposing creatures reaching the graveyard, so Sarulf got no counter from a kill. WIPE
+#: notes: Lukamina, Piper, Avabruck) and the draw engines Toski and The Great Henge. Head of the Hunt was cut, then
+#: notes: RE-ADDED 2026-11-23 by choice: while it is out, a killed opposing creature becomes a Wolf instead of a Sarulf
+#: notes: counter (and Vincent/Ygra-style death payoffs do not trigger). With this many tokens the wipe is often a bad trade. WIPE
 #: notes: DISCIPLINE: with Innkeeper + Constrictor one kill is four counters, and a 4-counter wipe exiles the engine
 #: notes: itself (Innkeeper, Constrictor, Sage, Fight Rigging, Lukamina); take it only when their board is worth more.
 #: notes: 2026-11-23 second pass: 12 swaps (plan A), keeping the Bear-Wolf core over a lands-from-graveyard package
@@ -101,12 +102,12 @@
 1 Tovolar's Huntmaster // Tovolar's Packleader (MID) 204
 1 Sword of Body and Mind (HA4) 24
 1 Avabruck Caretaker // Hollowhenge Huntmaster (VOW) 187
-1 Kraven the Hunter (SPM) 133
+1 Head of the Hunt (HOB) 75
 1 Maelstrom Pulse (FDN) 661
 1 Kogla, the Titan Ape (IKO) 162
 1 Binding the Old Gods (KHM) 206
 1 Polukranos, Unchained (THB) 224
-1 Primal Might (FDN) 766
+1 Advanced Floral Invocations (YSOS) 13
 1 Hunter's Talent (BLB) 179
 1 Vivien, Monsters' Advocate (IKO) 175
 1 World War Hulk (MSH) 197

@@ -251,6 +251,7 @@
    "y": "2026"
   }
  ],
+ "Commander's Plate": [],
  "Copper Host Crusher": [],
  "Culling Ritual": [
   {
@@ -781,6 +782,7 @@
  "Flourishing Hunter": [],
  "Forebear's Blade": [],
  "Fuel Tank Feaster": [],
+ "Gaea's Gift": [],
  "Garruk Relentless // Garruk, the Veil-Cursed": [],
  "Garruk's Uprising": [
   {
@@ -1287,6 +1289,7 @@
  "Nissa, Vital Force": [],
  "Nog, Ambitious Cadet": [],
  "Nurturing Peatland": [],
+ "Oblivion's Hunger": [],
  "Old Stickfingers": [
   {
    "a": "Jehan Choo",
@@ -1405,6 +1408,32 @@
   }
  ],
  "Path of Discovery": [],
+ "Plaza of Heroes": [
+  {
+   "a": "Gabor Szikszai",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "cn": "252",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "r": "R",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "John Thacker",
+   "art": "https://cards.scryfall.io/art_crop/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "cn": "33",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "r": "M",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  }
+ ],
  "Polukranos, Unchained": [],
  "Power Word Kill": [],
  "Primal Adversary": [],
@@ -1468,6 +1497,7 @@
    "y": "2025"
   }
  ],
+ "Revitalizing Repast // Old-Growth Grove": [],
  "Rhonas the Indomitable": [],
  "Rhovanion Rampager": [],
  "Rise of the Witch-king": [],
@@ -1504,6 +1534,33 @@
  "Sentinel of the Nameless City": [],
  "Shang-Chi, Martial Mentor": [],
  "Shrill Howler // Howling Chorus": [],
+ "Silkguard": [
+  {
+   "a": "Dan Murayama Scott",
+   "art": "https://cards.scryfall.io/art_crop/front/d/3/d3040187-dd70-4db9-b5da-5051fd3c6781.jpg?1783905414",
+   "cn": "37",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/3/d3040187-dd70-4db9-b5da-5051fd3c6781.jpg?1783905414",
+   "r": "R",
+   "set": "OMB",
+   "sn": "Through the Omenpaths Bonus Sheet",
+   "y": "2025"
+  },
+  {
+   "a": "Dave Johnson",
+   "art": "https://cards.scryfall.io/art_crop/front/d/c/dcc41152-ca20-40d6-82ac-6b7fcd471a42.jpg?1783905379",
+   "cn": "37",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/c/dcc41152-ca20-40d6-82ac-6b7fcd471a42.jpg?1783905379",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  }
+ ],
  "Sméagol, Helpful Guide": [],
  "Snakeskin Veil": [
   {
@@ -1573,7 +1630,46 @@
  "Striped Bears": [],
  "Studious First-Year": [],
  "Surrak and Goreclaw": [],
+ "Swiftfoot Boots": [
+  {
+   "a": "Svetlin Velinov",
+   "art": "https://cards.scryfall.io/art_crop/front/e/5/e5a412b9-5cab-486f-a0d3-3f73b33b93ca.jpg?1783919730",
+   "cn": "121",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/5/e5a412b9-5cab-486f-a0d3-3f73b33b93ca.jpg?1783919730",
+   "r": "U",
+   "set": "BRR",
+   "sn": "The Brothers' War Retro Artifacts",
+   "y": "2022"
+  },
+  {
+   "a": "Svetlin Velinov",
+   "art": "https://cards.scryfall.io/art_crop/front/4/1/41040541-b129-4cf4-9411-09b1d9d32c19.jpg?1783909047",
+   "cn": "258",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/1/41040541-b129-4cf4-9411-09b1d9d32c19.jpg?1783909047",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Barbara Rosiak",
+   "art": "https://cards.scryfall.io/art_crop/front/a/f/aff074f2-6ad9-4c0c-88e2-fc622772d2a1.jpg?1783904750",
+   "cn": "317",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/f/aff074f2-6ad9-4c0c-88e2-fc622772d2a1.jpg?1783904750",
+   "r": "R",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
  "Sword of Body and Mind": [],
+ "Sword of Truth and Justice": [],
  "Sylvan Scavenging": [],
  "Temple of Malady": [],
  "Tenacious Pup": [],
@@ -1701,6 +1797,7 @@
   }
  ],
  "Turntimber Symbiosis // Turntimber, Serpentine Wood": [],
+ "Tyvar's Stand": [],
  "Tyvar, Jubilant Brawler": [],
  "Unnatural Restoration": [],
  "Urban Daggertooth": [],
@@ -1813,6 +1910,7 @@
    "y": "2019"
   }
  ],
+ "Warg Tactics": [],
  "Wargling": [],
  "Wastewood Verge": [],
  "Weaver of Blossoms // Blossom-Clad Werewolf": [],
