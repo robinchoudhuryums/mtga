@@ -503,3 +503,11 @@ Fall of Gil-galad, Liliana Dreadhorde General (★★); Witherbloom Charm, Pawpa
 Sunslayer, Kraven's Last Hunt (★, owned). Preview Lukamina→Dellian Fel, Cemetery Prowler→Fall of
 Gil-galad, Gigantic Big Bear→Liliana: legal, floor A, interaction 12→15, card advantage 10→12,
 protection 8→7 (Gigantic Big Bear's own hexproof), avg MV 3.95.
+
+## 20. Dina re-graded (2026-11-23)
+
+Owner's case accepted: Dina, Essence Brewer △→★★. The original grade ("a sacrifice outlet with no
+plan") predates the token makers and the five counter multipliers; a 2/2 token sacrificed is two
+counters before multiplying, plus life (Mortality Spear) and a once-a-turn draw. Cut candidates:
+Cemetery Prowler (3 for 3; preview: floor A, interaction 12, card advantage 10→11), Howlpack Piper,
+Edgar.

@@ -2538,10 +2538,10 @@
    }
   },
   "Dina, Essence Brewer": {
-   "group": "Pile: out",
-   "text": "A sacrifice outlet with no sacrifice plan.",
+   "group": "Pile: take",
+   "text": "Re-graded (owner's case, 2026-11-23). A 3-mana BG engine: {2},{T}, sacrifice a creature (a Wolf or Bear token) to gain X life and put X +1/+1 counters on a creature, X = the sacrificed creature's power, at instant speed. A 2/2 token becomes 2 counters before the five multipliers. Sacrificing also draws a card, once a turn. The life turns on Mortality Spear's discount, and it can sacrifice a creature that is about to be removed or stolen. The activation is not a spell, so it keeps night.",
    "graded_at": {
-    "105": "2bf57c943681"
+    "105": "3e3a3f62a4d8"
    }
   },
   "Kraven the Hunter": {
@@ -4251,8 +4251,8 @@
   },
   "Dina, Essence Brewer": {
    "A": {
-    "m": "△",
-    "graded_at": "2bf57c943681"
+    "m": "★★",
+    "graded_at": "3e3a3f62a4d8"
    }
   },
   "Kraven the Hunter": {
