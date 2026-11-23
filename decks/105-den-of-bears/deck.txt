@@ -7,14 +7,14 @@
 #: archetype: Realm Eater: every opponent permanent that hits the graveyard puts a counter on Sarulf, and in your
 #: archetype: upkeep you MAY remove them all to exile each other nonland permanent with mana value up to that number
 #: archetype: (yours too) — an optional, sized board wipe. The deck lives above that line: the big Bears (Gigantic Big
-#: archetype: Bear, Large Bear, Lumra, Beorn), Kogla, Avabruck Caretaker, Tovolar's Huntmaster and The Great Henge cost
-#: archetype: 6+, so a small wipe clears their early game and keeps yours. Removal and fights feed Sarulf (Abrupt Decay,
-#: archetype: Maelstrom Pulse, Heartless Act, Mortality Spear, Binding the Old Gods, Polukranos, Kogla, Garruk
+#: archetype: Bear, Lumra, Beorn), Kogla, Avabruck Caretaker, Tovolar's Huntmaster and The Great Henge cost
+#: archetype: 6+, so a small wipe clears their early game and keeps yours. Removal and fights feed Sarulf (Maelstrom
+#: archetype: Pulse, Mortality Spear, Rise of the Witch-king, Binding the Old Gods, Polukranos, Kogla, Garruk
 #: archetype: Relentless, Tovolar's fights), and the black Wolves come from The Chief Warg, Chief Warg's Company and
 #: archetype: Garruk, Cursed Huntsman. A COUNTER ENGINE multiplies all of it: Innkeeper's Talent (level 3 doubles),
 #: archetype: Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The Great Henge and
 #: archetype: Titania's Command; with Innkeeper and Constrictor out, one kill puts four counters on Sarulf. Bears switch
-#: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker, Vaultborn Tyrant, Rhonas,
+#: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker, Kraven, Rhonas,
 #: archetype: Fanatic of Rhonas); Ayula in the 99 turns each entering Bear into two counters or a fight. Brawl sibling of
 #: archetype: deck 69 (Standard Bear-Wolf, also black-green).
 #: protect: Sarulf, Realm Eater; Ayula, Queen Among Bears; Beorn the Fierce; Dancing from Dark to Dawn; Spider-Ham, Peter Porker; Garruk's Uprising; Garruk, Cursed Huntsman
@@ -30,6 +30,9 @@
 #: notes: exile-instead stops opposing creatures reaching the graveyard, so Sarulf got no counter from a kill. WIPE
 #: notes: DISCIPLINE: with Innkeeper + Constrictor one kill is four counters, and a 4-counter wipe exiles the engine
 #: notes: itself (Innkeeper, Constrictor, Sage, Fight Rigging, Lukamina); take it only when their board is worth more.
+#: notes: 2026-11-23 second pass: 12 swaps (plan A), keeping the Bear-Wolf core over a lands-from-graveyard package
+#: notes: (Advanced Floral Invocations, Nog, Nissa of Shadowed Boughs, Mole Man stay on the builder bench). The cost is the
+#: notes: curve: 11 nonland cards at MV 2 or less. If early games run slow, cheap removal is the first thing to restore.
 
 
 # Commander
@@ -41,8 +44,8 @@
 1 Beorn the Fierce (HOB) 119
 1 Beorn, Reluctant Host // Till and Tend (HOB) 118
 1 Gigantic Big Bear (HOB) 126
-1 Large Bear (HOB) 159
-1 Grizzly Ghoul (MID) 226
+1 Edgar, Moonlit Sovereign (FRA) 257
+1 Descendants' Path (TLE) 167
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Howlpack Piper // Wildsong Howler (VOW) 205
 1 Exuberant Wolfbear (IKO) 151
@@ -53,7 +56,7 @@
 1 Wilson, Bear Comrade (HBG) 19
 1 Bosco, Just a Bear (TLE) 132
 1 Rise of the Witch-king (LTR) 221
-1 Mother Bear (J21) 604
+1 Beifong's Bounty Hunters (TLA) 209
 
 # Bear makers
 1 The Earth King (TLA) 172
@@ -71,14 +74,14 @@
 1 Bejeweled Warg (HOB) 117
 1 Ranger Class (AFR) 202
 1 Spider-Ham, Peter Porker (SPM) 114
-1 Fierce Witchstalker (J25) 656
+1 Cemetery Prowler (VOW) 191
 
 # Power-4 payoffs and card flow
 1 Garruk's Uprising (M21) 186
 1 Toski, Bearer of Secrets (KHM) 197
 1 Garruk, Curse Breaker (FRA) 259
-1 Vaultborn Tyrant (BIG) 20
-1 Outcaster Trailblazer (OTJ) 173
+1 Witherbloom, the Balancer (SOS) 245
+1 Owlbear Shepherd (HBG) 219
 1 Evolution Sage (WAR) 159
 1 The Great Henge (ELD) 161
 1 Fight Rigging (SNC) 145
@@ -89,16 +92,16 @@
 1 Mythweaver Poq (YLCI) 19
 1 Fanatic of Rhonas (MH3) 152
 1 Flare of Cultivation (MH3) 154
-1 Nature's Lore (P02) 135
+1 Path of Discovery (RIX) 142
 1 Titania's Command (BRO) 194
 
 # Interaction and protection
 1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
 1 Mortality Spear (STX) 207
 1 Tovolar's Huntmaster // Tovolar's Packleader (MID) 204
-1 Heartless Act (TLA) 103
+1 Sword of Body and Mind (HA4) 24
 1 Avabruck Caretaker // Hollowhenge Huntmaster (VOW) 187
-1 Abrupt Decay (OTP) 34
+1 Kraven the Hunter (SPM) 133
 1 Maelstrom Pulse (FDN) 661
 1 Kogla, the Titan Ape (IKO) 162
 1 Binding the Old Gods (KHM) 206
@@ -106,7 +109,7 @@
 1 Primal Might (FDN) 766
 1 Hunter's Talent (BLB) 179
 1 Vivien, Monsters' Advocate (IKO) 175
-1 Heroic Intervention (M21) 188
+1 World War Hulk (MSH) 197
 1 Innkeeper's Talent (BLB) 180
 
 # Lands
@@ -121,25 +124,19 @@
 1 Nurturing Peatland (HA7) 23
 1 Wastewood Verge (DFT) 268
 1 Hissing Quagmire (EOS) 19
-1 Temple of Malady (FDN) 700
+1 Mirkwood (HOB) 188
 1 Command Tower (FRC) 22
 1 Ba Sing Se (TLA) 266
 1 Fabled Passage (BLB) 252
 1 Evolving Wilds (ECL) 264
 1 Prismatic Vista (SPG) 38
 1 Turntimber Symbiosis // Turntimber, Serpentine Wood (ZNR) 215
-14 Forest (TRK) 325
+13 Forest (TRK) 325
+1 Argoth, Sanctum of Nature (BRO) 256
 5 Swamp (TRK) 321
 
 #~ +Chevill, Bane of Monsters | BENCH (builder bear-wolf): benched on the board
-#~ +Edgar, Moonlit Sovereign | BENCH (builder bear-wolf): benched on the board
 #~ +Hardened Scales | BENCH (builder bear-wolf): benched on the board
-#~ +Kraven the Hunter | BENCH (builder bear-wolf): benched on the board
-#~ +Owlbear Shepherd | BENCH (builder bear-wolf): benched on the board
-#~ +Path of Discovery | BENCH (builder bear-wolf): benched on the board
 #~ +Sentinel of the Nameless City | BENCH (builder bear-wolf): benched on the board
-#~ +Sword of Body and Mind | BENCH (builder bear-wolf): benched on the board
 #~ +Vraska, Betrayal's Sting | BENCH (builder bear-wolf): benched on the board
-#~ +Witherbloom, the Balancer | BENCH (builder bear-wolf): benched on the board
-#~ +World War Hulk | BENCH (builder bear-wolf): benched on the board
 #~ +Ygra, Eater of All | BENCH (builder bear-wolf): benched on the board

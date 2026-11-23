@@ -166,7 +166,6 @@ Fear of Isolation
 Fearsome Goblin Pair
 Felonious Rage
 Festerleech
-Fierce Witchstalker
 Fire Sages
 Firebender Ascension
 Firebending Student
@@ -207,7 +206,6 @@ Goro-Goro and Satoru
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
 Grievous Wound
-Grizzly Ghoul
 Groundchuck & Dirtbag
 Group Project
 Growth Curve
@@ -331,7 +329,6 @@ Namazu Trader
 Namor, Scourge of the Seas
 Nashi, Moon Sage's Scion
 Nashi, Searcher in the Dark
-Nature's Lore
 Necrogen Rotpriest
 Neriv, Heart of the Storm
 Network Marauder
