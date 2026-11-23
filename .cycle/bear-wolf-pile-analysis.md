@@ -1,6 +1,6 @@
 # Bear-Wolf pile (deck 105) — analysis (TEMPORARY working doc)
 
-**Status: GRADED — awaiting owner picks.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
+**Status: owner marks reviewed (§6) — awaiting confirmation.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
 Historic Brawl, Sarulf, Realm Eater). Delete once the swaps land and the findings are folded into
 deck 105's `#: notes:`. The board is the existing Builder project `builds/bear-wolf`.
 
@@ -266,3 +266,96 @@ Tier 1 crafts: 2 mythic (Avabruck Caretaker, Garruk Relentless), 4 rare (Werewol
 Toski, Geistpack Alpha, Argoth), 2 uncommon (Winding Constrictor, Owlbear Shepherd). Flare of
 Cultivation is owned. Tier 1b: 1 mythic (Lukamina), 1 rare (Howlpack Piper); Evolution Sage and
 Innkeeper's Talent are owned.
+
+## 6. Owner's board marks — review (2026-11-23)
+
+Marks read from the board: **37 adds, 15 cuts, 44 bench** (and one note, on Wicked Wolf). As
+marked, the deck is **122 cards**, 22 over. Measured as a scratch copy (`consistency`/`tier` take
+a path):
+
+| | Deck now | As marked (122) | Proposed (100) |
+|---|---|---|---|
+| Interaction | 16 | 16 | 15 |
+| Card advantage | 14 | 17 | 12 |
+| Protection | 7 | 11 | 9 |
+| Board power | 124 | 166 | 133 |
+| Avg MV | 3.45 | 3.72 | 3.73 |
+| Bears / Wolves (creature cards) | 18 / 11 | 15 / 13 | 15 / 10 |
+| Removal at MV 2 or less | 8 | 4 | 5 |
+| Keepable 7 (first hand) | 78.4% | 66.4% | 78.4% |
+
+### What the marks do together (the interactions, not the single cards)
+
+- **I1 — the counter engine is the strongest cluster you marked.** Innkeeper's Talent (level 3
+  doubles), Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The
+  Great Henge, Titania's Command and Avabruck all multiply each other. With Innkeeper level 3 and
+  Constrictor out, Ayula's two counters become five or six, and every opposing permanent that dies
+  puts four counters on Sarulf instead of one.
+- **I2 — that same engine makes Sarulf's wipe a trap if used blindly.** Four counters from one kill
+  means a wipe that exiles everything you control at MV 4 or less: Innkeeper (2), Constrictor (2),
+  Fight Rigging (3), Evolution Sage (3), Lukamina (3). The wipe is optional; take it only when the
+  opponent's board is worth more than your engine. Kogla (6), Avabruck (6), Tovolar (6) and The
+  Great Henge (9) survive it.
+- **I3 — Kogla bounces HUMANS, and four of your adds are Humans.** {1}{G} returns Tovolar's
+  Huntmaster (replay = two more Wolves), Lukamina (replay = seek a land), Howlpack Piper or
+  Avabruck Caretaker to hand, and makes Kogla indestructible for the turn. Kogla also fights on
+  entry (a removal piece that feeds Sarulf).
+- **I4 — The Great Henge's discount reads your biggest creature.** Kogla (7), Tovolar (6) or a
+  counter-loaded Bear make it cost two or three. Its GG-and-2-life tap also turns on Mortality
+  Spear's discount (Spear costs {B}{G} after a life gain).
+- **I5 — Titania's Command is three cluster cards in one.** Two Bear tokens (two Ayula triggers),
+  two counters on each creature (multiplied by I1), or two lands (two landfall triggers for
+  Evolution Sage and Beorn's Hospitality).
+- **I6 — the landfall / lands-from-graveyard half is only half built.** Mole Man, Ancient
+  Greenwarden, Kagha, Nog and Wrenn all replay lands from the graveyard, but the deck has three
+  lands that put themselves there (Evolving Wilds, Fabled Passage, Prismatic Vista) and little
+  mill. Glacier Godmaw and Nissa of Shadowed Boughs pay off land drops the deck makes about once a
+  turn. Keep the cheap landfall pieces that also do something else (Evolution Sage, Beorn's
+  Hospitality, Mythweaver Poq); bench the recursion five.
+- **I7 — cutting Nature's Lore works against your own landfall adds.** It puts a land onto the
+  battlefield (a landfall trigger) and can fetch Overgrown Tomb untapped. Flare of Cultivation
+  for Cultivate is fine; cutting both search spells and both dorks (Llanowar, Paradise Druid)
+  while the curve rises from 3.45 to 3.7 is the mana risk in the marks.
+- **I8 — the cheap removal went out, the expensive removal came in.** Cut: Abrupt Decay, Go for
+  the Throat, Infernal Grasp (all 2 MV), Assassin's Trophy and Beast Within (both rightly — each
+  hands the opponent something). Added: Mortality Spear (4), Garruk Relentless (4), Kogla (6),
+  Tovolar's fight (6 + 4 per use), Vraska, Regal Gorgon (7), Rise of the Witch-king (4,
+  symmetrical). The total holds; the speed does not. Keep Abrupt Decay as the one cheap instant.
+- **I9 — Head of the Hunt still fights the commander (E2).** It is not marked; it should go.
+- **I10 — Ygra and Wicked Wolf would answer your Food note.** Ygra makes every other creature a
+  Food, so Wicked Wolf can sacrifice any creature for its indestructible counter, and Kogla's
+  attack trigger (destroy an artifact) hits a creature every turn. But Ygra also gives every
+  opposing creature a 'sacrifice: gain 3 life' ability, which benefits the opponent. Bench it.
+- **I11 — the Wolf adds are weaker than the Wolves you cut.** Packsong Pup, Tenacious Pup and
+  Rhovanion Rampager (a sacrifice outlet with nothing to feed) for Fierce Witchstalker (a 4/4
+  trampler for 4, a gate-opener) and Wicked Wolf (a fight on entry). Keep the two you cut; keep
+  Ravening Warg as the cheap one.
+
+### Proposed 100 (built and checked as a scratch copy: legal, floor A)
+
+- **Keep 19 of your adds:** Avabruck Caretaker, Winding Constrictor, Innkeeper's Talent, Garruk
+  Relentless, Howlpack Piper, Toski, Tovolar's Huntmaster, Kogla, The Great Henge, Evolution
+  Sage, Fight Rigging, Flare of Cultivation, Titania's Command, Mortality Spear, Lukamina,
+  Mythweaver Poq, Beorn's Hospitality, Fuel Tank Feaster, Ravening Warg.
+- **Bench 18 of your adds:** Ancient Greenwarden, Mole Man, Kagha, Nog, Wrenn and Realmbreaker
+  (I6); Glacier Godmaw, Nissa of Shadowed Boughs (I6); Insidious Roots, Jenova, Fiend Artisan,
+  Descendants' Path, Hound Tamer (curve); Rise of the Witch-king, Vraska, Regal Gorgon (I8);
+  Ygra (I10); Packsong Pup, Tenacious Pup, Rhovanion Rampager (I11).
+- **Un-cut 5 of your cuts:** Nature's Lore (I7), Abrupt Decay (I8), Fierce Witchstalker and
+  Wicked Wolf (I11), Mother Bear (two Bear tokens late; Bear count).
+- **Keep your other 10 cuts:** Assassin's Trophy, Beast Within, Go for the Throat, Infernal
+  Grasp, Cultivate, Llanowar Elves, Paradise Druid, Little Bear, Owlbear, Guardian Project.
+- **Cut 9 more:** Head of the Hunt (I9), Casualties of War, Colossal Majesty, Elemental Bond,
+  Master's Guidance, Snakeskin Veil, Herd Heirloom, Drover Grizzly, Wilderland Scrounger.
+- **The trade:** card advantage falls 14→12 (four draw enchantments out, Toski and the Henge in).
+  If that is too low, keep Elemental Bond and bench Beorn's Hospitality.
+
+### Bench marks (44)
+
+Each benched card becomes a `#~` flex line in the deck file on apply. 44 lines is a block that
+rots (G-04). The bench calls themselves are sound — Kraven, Chevill, Witherbloom, Sword, Path,
+Sentinel, Hardened Scales and Vraska, Betrayal's Sting are all ★ in §4, and benching them is a
+fair choice of the ones above. Suggest trimming the bench to the cards that would come in for a
+named reason (about 12); the rest stay on the board with their reasons.
+
+Unmarked from the tier-1 plan: Werewolf Pack Leader, Geistpack Alpha, Argoth (no mark at all).
