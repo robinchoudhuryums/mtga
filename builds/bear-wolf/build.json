@@ -3197,7 +3197,7 @@
   },
   "Kodama of the West Tree": {
    "group": "Pile: real",
-   "text": "3 mana: modified creatures (anything with a counter) have trample, and each one that hits the opponent fetches a basic land onto the battlefield UNTAPPED. Repeatable ramp that the counter engine turns on.",
+   "text": "3-mana 3/3 reach legend: modified creatures (anything with a counter, Aura or Equipment) have trample, and whenever one deals combat damage to a player you fetch a basic land onto the battlefield TAPPED. Repeatable ramp the counter engine turns on; each fetched land is also a landfall trigger.",
    "graded_at": {
     "105": "0d1a9dea4954"
    }
