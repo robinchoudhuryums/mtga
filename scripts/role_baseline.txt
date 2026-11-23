@@ -138,7 +138,6 @@ Dreaded Bat-Cloud
 Dream Harvest
 Dreams of Laguna
 Drix Fatemaker
-Drover Grizzly
 Dwalin, Weaponmaster
 Earth Kingdom Soldier
 Earth's Mightiest Heroes
@@ -235,6 +234,7 @@ Hop to It
 Hope Against Hope
 Hour of Victory
 How to Start a Riot
+Howlpack Piper // Wildsong Howler
 Hulk, Strongest There Is
 Human Torch
 HYDRA Troopers
@@ -355,7 +355,6 @@ Orphans of the Wheat
 Ostrich-Horse
 Outlaw Stitcher
 Outrageous Robbery
-Owlbear
 Ozai's Cruelty
 Pain 101
 Paradox Surveyor

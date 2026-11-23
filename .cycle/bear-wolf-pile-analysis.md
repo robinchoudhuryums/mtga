@@ -1,6 +1,6 @@
 # Bear-Wolf pile (deck 105) — analysis (TEMPORARY working doc)
 
-**Status: owner marks reviewed (§6) — awaiting confirmation.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
+**Status: 18 swaps APPLIED 2026-11-23 (§7); two adds held pending two cuts.** 100 new cards the owner added for deck 105 (Den of Bears and Wolves,
 Historic Brawl, Sarulf, Realm Eater). Delete once the swaps land and the findings are folded into
 deck 105's `#: notes:`. The board is the existing Builder project `builds/bear-wolf`.
 
@@ -359,3 +359,15 @@ fair choice of the ones above. Suggest trimming the bench to the cards that woul
 named reason (about 12); the rest stay on the board with their reasons.
 
 Unmarked from the tier-1 plan: Werewolf Pack Leader, Geistpack Alpha, Argoth (no mark at all).
+
+## 7. Applied 2026-11-23
+
+Owner kept Wilderland Scrounger (not cut) and kept Rise of the Witch-king (sacrifice a weak token
+for the best permanent in the graveyard). Applied 18 paired swaps through `builder.py apply`, plus 12
+bench lines (`#~`): Kraven, Hardened Scales, Chevill, Witherbloom, Path of Discovery, Sword of Body
+and Mind, Sentinel, Edgar, Vraska Betrayal's Sting, World War Hulk, Owlbear Shepherd, Ygra. Live:
+floor A, interaction 16, card advantage 12, avg MV 3.81, preflight READY.
+
+**Held (still marked add on the board):** Beorn's Hospitality, Ravening Warg. With Scrounger kept
+and Rise added, the plan is two cards over 100. Cut candidates written to the board as suggestions:
+Large Bear, Heartless Act, Grizzly Ghoul.
