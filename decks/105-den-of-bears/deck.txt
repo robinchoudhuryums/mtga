@@ -15,7 +15,7 @@
 #: archetype: Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The Great Henge and
 #: archetype: Titania's Command; with Innkeeper and Constrictor out, one kill puts four counters on Sarulf. Bears switch
 #: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker,
-#: archetype: Fanatic of Rhonas); Ayula in the 99 turns each entering Bear into two counters or a fight. Brawl sibling of
+#: archetype: Goreclaw, Wilderland Scrounger); Ayula in the 99 turns each entering Bear into two counters or a fight. Brawl sibling of
 #: archetype: deck 69 (Standard Bear-Wolf, also black-green).
 #: protect: Sarulf, Realm Eater; Ayula, Queen Among Bears; Beorn the Fierce; Dancing from Dark to Dawn; Spider-Ham, Peter Porker; Garruk's Uprising; Garruk, Cursed Huntsman
 #: notes: DRAFTED 2026-11-22 as a mono-green Ayula deck, then REBUILT the same day with Sarulf as commander because
@@ -54,7 +54,7 @@
 1 Vastlands Scavenger (SOS) 166
 1 Incubation Druid (RNA) 131
 1 Surrak and Goreclaw (MOM) 337
-1 Wilson, Bear Comrade (HBG) 19
+1 Ygra, Eater of All (BLB) 241
 1 Branching Evolution (MH3) 285
 1 Rise of the Witch-king (LTR) 221
 1 Beifong's Bounty Hunters (TLA) 209
@@ -91,7 +91,7 @@
 # Ramp
 1 Fuel Tank Feaster (YDFT) 17
 1 Mythweaver Poq (YLCI) 19
-1 Fanatic of Rhonas (MH3) 152
+1 Nog, Ambitious Cadet (TRK) 249
 1 Flare of Cultivation (MH3) 154
 1 Path of Discovery (RIX) 142
 1 Titania's Command (BRO) 194
