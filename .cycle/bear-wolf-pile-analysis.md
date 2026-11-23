@@ -371,3 +371,30 @@ floor A, interaction 16, card advantage 12, avg MV 3.81, preflight READY.
 **Held (still marked add on the board):** Beorn's Hospitality, Ravening Warg. With Scrounger kept
 and Rise added, the plan is two cards over 100. Cut candidates written to the board as suggestions:
 Large Bear, Heartless Act, Grizzly Ghoul.
+
+## 8. Second board review (2026-11-23)
+
+Marks: 21 adds (2 of them lands: Argoth, Mirkwood), 8 cuts (Abrupt Decay, Heartless Act,
+Fierce Witchstalker, Large Bear, Mother Bear, Nature's Lore, Outcaster Trailblazer, Vaultborn
+Tyrant). That is 13 over. Measured as scratch copies (land swaps: Argoth for a Forest, Mirkwood
+for Temple of Malady):
+
+| | Deck now | A: tribal core | B: every add |
+|---|---|---|---|
+| Interaction | 16 | 14 | 13 |
+| Card advantage | 12 | 12 | 12 |
+| Avg MV | 3.81 | 3.95 | 3.88 |
+| Nonland cards at MV 2 or less | 17 | 11 | 12 |
+| Bears / Wolves | 15 / 10 | 12 / 10 | 8 / 8 |
+
+- **A** takes the 11 nonland adds outside the lands package, benches the lands package (Floral,
+  Nog, Nissa of Shadowed Boughs, Kamahl's Druidic Vow, Burgeoning, Beorn's Hospitality) plus
+  Copper Host Crusher and Ravening Warg, and cuts Fuel Tank Feaster, Heroic Intervention and
+  Grizzly Ghoul.
+- **B** takes every add and has to find nine more cuts inside the tribal core.
+- Both share the curve problem: the four cheap cuts (Abrupt Decay, Heartless Act, Mother Bear,
+  Nature's Lore) leave 11–12 nonland cards at MV 2 or less, against 21 at the draft.
+
+Owner notes conceded: Descendants' Path is pure upside (misses cost no draw); Floral + Argoth +
+Mirkwood answer §6 I6 (now about eight ways for a land to reach the graveyard); Beifong's earthbend
+counters are multiplied and its land returns; Jenova's 1 becomes 4 with the multipliers.
