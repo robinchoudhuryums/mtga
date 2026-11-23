@@ -438,3 +438,13 @@ Lukamina→Elemental Bond, Bejeweled Warg→Nog, Wilson→Beorn's Hospitality, F
 All 8 previewed: legal, floor A, interaction 13 (Moonlight Hunt unclassified, so really 14),
 protection 6, avg MV 3.78. Mortality Spear DESTROYS (not exiles); its discount sources are Spider-Ham,
 The Great Henge, Titania's Command.
+
+## 13. Re-scoped cuts (2026-11-23)
+
+Owner keeps Exuberant Wolfbear (and maybe Gigantic Big Bear, Edgar, Lukamina). Re-scoped as board
+suggestions: Kraven→Elemental Bond (alt The Chief Warg; Bond triggers on 25 power-3+ creatures vs
+18 power-4+ for Garruk's Uprising), Flare→Burgeoning (Flare is the only lands-only card),
+Beorn Reluctant Host→Ygra (alts Gigantic Big Bear, Garruk Curse Breaker), Bejeweled Warg→Torgal,
+Wilson→Nog, Fanatic→Beorn's Hospitality, Edgar→Vincent (if one of the maybes goes), Primal
+Might→Moonlight Hunt. Full 8-pair preview: legal, floor A, avg MV 3.83, interaction 13 (14 real).
+Floral Invocations has no cut left.
