@@ -3,6 +3,7 @@
  "Advanced Floral Invocations": [],
  "Alpha Authority": [],
  "Ancient Greenwarden": [],
+ "Archenemy's Charm": [],
  "Argoth, Sanctum of Nature": [],
  "Arlinn, Voice of the Pack": [
   {
@@ -750,6 +751,7 @@
    "y": "2025"
   }
  ],
+ "Fall of Gil-galad": [],
  "Fanatic of Rhonas": [],
  "Fatal Push": [
   {
@@ -872,6 +874,7 @@
  "Gigantic Big Bear": [],
  "Glacier Godmaw": [],
  "Glimpse of Nature": [],
+ "Glissa Sunslayer": [],
  "Go for the Throat": [],
  "Goliath, Mass Manipulator": [],
  "Goreclaw, Terror of Qal Sisma": [
@@ -900,6 +903,7 @@
    "y": "2023"
   }
  ],
+ "Grist, the Hunger Tide": [],
  "Grizzly Ghoul": [],
  "Guardian Project": [],
  "Guildpact Greenwalker": [],
@@ -1171,8 +1175,33 @@
  "Kami of Whispered Hopes": [],
  "Kogla, the Titan Ape": [],
  "Kraven the Hunter": [],
+ "Kraven's Last Hunt": [],
  "Large Bear": [],
  "Leyline Immersion": [],
+ "Liliana, Dreadhorde General": [
+  {
+   "a": "Chris Rallis",
+   "art": "https://cards.scryfall.io/art_crop/front/d/7/d75ebba8-34ca-47a0-bf13-8318ad73b343.jpg?1783933442",
+   "cn": "97",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/7/d75ebba8-34ca-47a0-bf13-8318ad73b343.jpg?1783933442",
+   "r": "M",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/1/9/199e3667-33be-415f-8f10-1c42a78d7637.jpg?1783933441",
+   "cn": "97★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/9/199e3667-33be-415f-8f10-1c42a78d7637.jpg?1783933441",
+   "r": "M",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
  "Little Bear": [],
  "Llanowar Elves": [
   {
@@ -1310,6 +1339,7 @@
  "Moonlight Hunt": [],
  "Mortality Spear": [],
  "Mossborn Hydra": [],
+ "Mosswood Dreadknight // Dread Whispers": [],
  "Mother Bear": [],
  "Mycoid Resurrection": [],
  "Mythweaver Poq": [],
@@ -1346,6 +1376,7 @@
  "Nissa, Vital Force": [],
  "Nog, Ambitious Cadet": [],
  "Nurturing Peatland": [],
+ "Ob Nixilis Reignited": [],
  "Oblivion's Hunger": [],
  "Old Stickfingers": [
   {
@@ -1466,6 +1497,7 @@
   }
  ],
  "Path of Discovery": [],
+ "Pawpatch Formation": [],
  "Plaza of Heroes": [
   {
    "a": "Gabor Szikszai",
@@ -1524,6 +1556,7 @@
  ],
  "Primal Witchstalker": [],
  "Prismatic Vista": [],
+ "Professor Dellian Fel": [],
  "Ram Through": [],
  "Rampaging Ursaguana": [],
  "Ranger Class": [],
@@ -1614,6 +1647,7 @@
   }
  ],
  "Sauron, the Necromancer": [],
+ "Season of Gathering": [],
  "Selfless Safewright": [],
  "Selvala, Heart of the Wilds": [],
  "Sentinel of the Nameless City": [],
@@ -2046,6 +2080,7 @@
  "Wilderland Scrounger": [],
  "Wilson, Bear Comrade": [],
  "Winding Constrictor": [],
+ "Witherbloom Charm": [],
  "Witherbloom, the Balancer": [],
  "Wolfkin Outcast // Wedding Crasher": [],
  "Woodland Cemetery": [

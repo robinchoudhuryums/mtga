@@ -494,3 +494,12 @@ Applied Sword of Body and Mind→Dr. Joseph M'Benga, Hunter's Talent→Saryth. L
 interaction 12 (exactly the A line), card advantage 10, protection 8, avg MV 3.97. Rise of the
 Witch-king is still marked cut on the board but should stay while interaction sits at 12.
 Correction: Saryth is MV 3 ({2}{G}), not 4 as first reported.
+
+## 19. Multi-role search: interaction + card advantage (+ protection, mill/recursion) (2026-11-23)
+
+Swept BG Historic Brawl for cards with two or more of interaction / card advantage / protection /
+mill-recursion (299 hits), curated 12 onto the board. Strongest are OWNED: Professor Dellian Fel,
+Fall of Gil-galad, Liliana Dreadhorde General (★★); Witherbloom Charm, Pawpatch Formation, Glissa
+Sunslayer, Kraven's Last Hunt (★, owned). Preview Lukamina→Dellian Fel, Cemetery Prowler→Fall of
+Gil-galad, Gigantic Big Bear→Liliana: legal, floor A, interaction 12→15, card advantage 10→12,
+protection 8→7 (Gigantic Big Bear's own hexproof), avg MV 3.95.

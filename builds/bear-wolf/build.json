@@ -1263,6 +1263,66 @@
    "name": "Bedrock Tortoise",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Professor Dellian Fel",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Fall of Gil-galad",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Liliana, Dreadhorde General",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Witherbloom Charm",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Pawpatch Formation",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Glissa Sunslayer",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Kraven's Last Hunt",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Grist, the Hunger Tide",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Season of Gathering",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ob Nixilis Reignited",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mosswood Dreadknight // Dread Whispers",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Archenemy's Charm",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -3001,6 +3061,90 @@
    "graded_at": {
     "105": "bd82b7c98371"
    }
+  },
+  "Professor Dellian Fel": {
+   "group": "Pile: take",
+   "text": "Owned. A 4-mana BG planeswalker: 0 draws a card every turn, -3 destroys a creature. Repeatable card advantage and removal in one card, the two axes the deck is thinnest on (interaction at the A line, card advantage 10).",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Fall of Gil-galad": {
+   "group": "Pile: take",
+   "text": "Owned, 2 mana. Scry 2; then two +1/+1 counters (multiplied five ways now); then a fight, with 'draw two if it dies' on your creature. Selection, counters and removal from a 2-drop.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Liliana, Dreadhorde General": {
+   "group": "Pile: take",
+   "text": "Owned, 6 mana: draw a card whenever one of YOUR creatures dies (tokens trading in combat count), +1 makes a Zombie, -4 is a two-creature edict. Card advantage plus interaction, and MV 6 survives most Sarulf wipes.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Witherbloom Charm": {
+   "group": "Pile: real",
+   "text": "Owned 2-mana instant: destroy a nonland permanent up to MV 2, OR sacrifice a spare permanent (a token) to draw two, OR gain 5 life, which turns on Mortality Spear's discount. Instant-speed, which the deck lacks.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Pawpatch Formation": {
+   "group": "Pile: real",
+   "text": "Owned 2-mana instant: kill a flier or an enchantment, or draw a card and make a Food (life for Mortality Spear's discount, and a Food for Ygra's ward).",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Glissa Sunslayer": {
+   "group": "Pile: real",
+   "text": "Owned 3-mana BG first strike + deathtouch. Each hit: draw, destroy an enchantment, or remove three counters. Multicoloured (Guildpact Greenwalker's ward) and nothing blocks it profitably.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Kraven's Last Hunt": {
+   "group": "Pile: real",
+   "text": "Owned 4-mana Saga: mill five and deal damage equal to the biggest creature card in your graveyard (removal), +2/+2, then return a creature card to hand. Interaction, mill and recursion; the mill also feeds Lumra and Floral.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Grist, the Hunger Tide": {
+   "group": "Pile: real",
+   "text": "3-mana BG planeswalker: +1 makes an Insect and mills; -2 sacrifices a creature (a token) to destroy a creature or planeswalker. Interaction plus a token stream.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Season of Gathering": {
+   "group": "Pile: situational",
+   "text": "Owned, 6 mana: up to five counters, an artifact or enchantment wipe, or draw cards equal to your biggest creature's power (7+ with Kogla or Ygra). Flexible, but expensive.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Ob Nixilis Reignited": {
+   "group": "Pile: situational",
+   "text": "5-mana walker: +1 draws, -3 destroys a creature. Professor Dellian Fel does the same a mana cheaper and is owned.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Mosswood Dreadknight // Dread Whispers": {
+   "group": "Pile: situational",
+   "text": "A 2-mana 3/2 trample Human whose adventure draws a card, castable from the graveyard when it dies. Cheap card advantage with recursion.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
+  },
+  "Archenemy's Charm": {
+   "group": "Pile: situational",
+   "text": "Instant: exile a creature or planeswalker, return two creature cards from your graveyard, or two counters and lifelink. Strong, but BBB on 20 black sources is hard to cast on time.",
+   "graded_at": {
+    "105": "3e3a3f62a4d8"
+   }
   }
  },
  "snapshots": {
@@ -3405,6 +3549,92 @@
     "Surrak and Goreclaw",
     "Swamp",
     "Sword of Body and Mind",
+    "The Chief Warg",
+    "The Earth King",
+    "The Great Henge",
+    "Titania's Command",
+    "Torgal, A Fine Hound",
+    "Toski, Bearer of Secrets",
+    "Tovolar's Huntmaster // Tovolar's Packleader",
+    "Vastlands Scavenger",
+    "Vivien, Monsters' Advocate",
+    "Wastewood Verge",
+    "Wilderland Scrounger",
+    "Winding Constrictor",
+    "Witherbloom, the Balancer",
+    "Woodland Cemetery",
+    "World War Hulk",
+    "Ygra, Eater of All"
+   ],
+   "3e3a3f62a4d8": [
+    "Advanced Floral Invocations",
+    "Argoth, Sanctum of Nature",
+    "Avabruck Caretaker // Hollowhenge Huntmaster",
+    "Ayula, Queen Among Bears",
+    "Ba Sing Se",
+    "Beifong's Bounty Hunters",
+    "Beorn the Fierce",
+    "Beorn, Reluctant Host // Till and Tend",
+    "Binding the Old Gods",
+    "Blooming Marsh",
+    "Boseiju, Who Endures",
+    "Branching Evolution",
+    "Cemetery Prowler",
+    "Chief Warg's Company",
+    "Command Tower",
+    "Dancing from Dark to Dawn",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deathcap Glade",
+    "Descendants' Path",
+    "Dr. Joseph M'Benga",
+    "Edgar, Moonlit Sovereign",
+    "Evolution Sage",
+    "Evolving Wilds",
+    "Exuberant Wolfbear",
+    "Fabled Passage",
+    "Fight Rigging",
+    "Flare of Cultivation",
+    "Forest",
+    "Fuel Tank Feaster",
+    "Garruk Relentless // Garruk, the Veil-Cursed",
+    "Garruk's Uprising",
+    "Garruk, Curse Breaker",
+    "Garruk, Cursed Huntsman",
+    "Gigantic Big Bear",
+    "Goreclaw, Terror of Qal Sisma",
+    "Head of the Hunt",
+    "Hissing Quagmire",
+    "Howlpack Piper // Wildsong Howler",
+    "Incubation Druid",
+    "Innkeeper's Talent",
+    "Kogla, the Titan Ape",
+    "Llanowar Wastes",
+    "Lukamina, Moon Druid",
+    "Lumra, Bellow of the Woods",
+    "Maelstrom Pulse",
+    "Mirkwood",
+    "Mortality Spear",
+    "Mythweaver Poq",
+    "Necroblossom Snarl",
+    "Nightpack Ambusher",
+    "Nog, Ambitious Cadet",
+    "Nurturing Peatland",
+    "Overgrown Tomb",
+    "Owlbear Shepherd",
+    "Path of Discovery",
+    "Polukranos, Unchained",
+    "Primal Adversary",
+    "Prismatic Vista",
+    "Ram Through",
+    "Ranger Class",
+    "Rise of the Witch-king",
+    "Sarulf, Realm Eater",
+    "Saryth, the Viper's Fang",
+    "Sentinel of the Nameless City",
+    "Shang-Chi, Martial Mentor",
+    "Spider-Ham, Peter Porker",
+    "Surrak and Goreclaw",
+    "Swamp",
     "The Chief Warg",
     "The Earth King",
     "The Great Henge",
@@ -4617,6 +4847,78 @@
    "A": {
     "m": "◇",
     "graded_at": "bd82b7c98371"
+   }
+  },
+  "Professor Dellian Fel": {
+   "A": {
+    "m": "★★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Fall of Gil-galad": {
+   "A": {
+    "m": "★★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Liliana, Dreadhorde General": {
+   "A": {
+    "m": "★★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Witherbloom Charm": {
+   "A": {
+    "m": "★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Pawpatch Formation": {
+   "A": {
+    "m": "★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Glissa Sunslayer": {
+   "A": {
+    "m": "★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Kraven's Last Hunt": {
+   "A": {
+    "m": "★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Grist, the Hunger Tide": {
+   "A": {
+    "m": "★",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Season of Gathering": {
+   "A": {
+    "m": "◇",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Ob Nixilis Reignited": {
+   "A": {
+    "m": "◇",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Mosswood Dreadknight // Dread Whispers": {
+   "A": {
+    "m": "◇",
+    "graded_at": "3e3a3f62a4d8"
+   }
+  },
+  "Archenemy's Charm": {
+   "A": {
+    "m": "◇",
+    "graded_at": "3e3a3f62a4d8"
    }
   }
  }
