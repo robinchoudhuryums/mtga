@@ -100,7 +100,7 @@
 1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
 1 Mortality Spear (STX) 207
 1 Tovolar's Huntmaster // Tovolar's Packleader (MID) 204
-1 Sword of Body and Mind (HA4) 24
+1 Dr. Joseph M'Benga (TRK) 196
 1 Avabruck Caretaker // Hollowhenge Huntmaster (VOW) 187
 1 Head of the Hunt (HOB) 75
 1 Maelstrom Pulse (FDN) 661
@@ -108,7 +108,7 @@
 1 Binding the Old Gods (KHM) 206
 1 Polukranos, Unchained (THB) 224
 1 Advanced Floral Invocations (YSOS) 13
-1 Hunter's Talent (BLB) 179
+1 Saryth, the Viper's Fang (MID) 197
 1 Vivien, Monsters' Advocate (IKO) 175
 1 World War Hulk (MSH) 197
 1 Innkeeper's Talent (BLB) 180
@@ -139,4 +139,3 @@
 #~ +Chevill, Bane of Monsters | BENCH (builder bear-wolf): benched on the board
 #~ +Hardened Scales | BENCH (builder bear-wolf): benched on the board
 #~ +Vraska, Betrayal's Sting | BENCH (builder bear-wolf): benched on the board
-#~ +Ygra, Eater of All | BENCH (builder bear-wolf): benched on the board

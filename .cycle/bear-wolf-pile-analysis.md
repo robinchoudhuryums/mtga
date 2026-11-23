@@ -487,3 +487,10 @@ does. Added 6 to the board: Dr. Joseph M'Benga ★★ (countered creatures hexpr
 doubler), Saryth ★★ (untapped creatures hexproof), Selfless Safewright ★ (flash Wolf-wide hexproof
 + indestructible, convoke), Guildpact Greenwalker ★ (multicoloured creatures ward {2}), The Walls of
 Ba Sing Se ◇ (owned, MV 8), Bedrock Tortoise ◇.
+
+## 18. M'Benga and Saryth in (2026-11-23)
+
+Applied Sword of Body and Mind→Dr. Joseph M'Benga, Hunter's Talent→Saryth. Live: floor A,
+interaction 12 (exactly the A line), card advantage 10, protection 8, avg MV 3.97. Rise of the
+Witch-king is still marked cut on the board but should stay while interaction sits at 12.
+Correction: Saryth is MV 3 ({2}{G}), not 4 as first reported.
