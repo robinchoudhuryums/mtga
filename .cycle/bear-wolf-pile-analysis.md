@@ -426,3 +426,15 @@ Nightpack Ambusher, Argoth), and tokens count for Ayula, Torgal, Moonlight Hunt 
 Trade-off: every Sarulf wipe exiles all tokens (MV 0). Proposed 4-pair package (Wicked Wolf→Ram
 Through, Bosco→Branching Evolution, Rhonas→Sentinel, Turntimber→Moonlight Hunt): legal, floor A,
 interaction 14 (Moonlight Hunt reads as no role, a classifier hole), protection 9→7, avg MV 3.81.
+
+## 12. Fourth pass (2026-11-23)
+
+Applied: Wicked Wolf→Ram Through, Bosco→Branching Evolution, Rhonas→Sentinel, Turntimber
+Symbiosis→Shang-Chi (owner's change from Moonlight Hunt). The deck now runs FOUR counter
+multipliers (Winding Constrictor +1, Branching Evolution ×2, Shang-Chi ×2, Innkeeper level 3 ×2):
+one counter can become 16. Scoped 8 pairs for the owner's adds (suggestions on the board): Primal
+Might→Moonlight Hunt, Exuberant Wolfbear→Torgal, Gigantic Big Bear→Ygra, Edgar→Vincent Valentine,
+Lukamina→Elemental Bond, Bejeweled Warg→Nog, Wilson→Beorn's Hospitality, Fanatic of Rhonas→Floral.
+All 8 previewed: legal, floor A, interaction 13 (Moonlight Hunt unclassified, so really 14),
+protection 6, avg MV 3.78. Mortality Spear DESTROYS (not exiles); its discount sources are Spider-Ham,
+The Great Henge, Titania's Command.
