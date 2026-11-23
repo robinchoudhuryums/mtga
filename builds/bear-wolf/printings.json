@@ -126,6 +126,7 @@
    "y": "2026"
   }
  ],
+ "Bedrock Tortoise": [],
  "Beifong's Bounty Hunters": [],
  "Bejeweled Warg": [],
  "Beorn the Fierce": [],
@@ -507,6 +508,7 @@
  "Dina, Essence Brewer": [],
  "Diregraf Rebirth": [],
  "Doc Samson, Super Psychiatrist": [],
+ "Dr. Joseph M'Benga": [],
  "Dragonfire Blade": [],
  "Drover Grizzly": [],
  "Edgar, Moonlit Sovereign": [],
@@ -900,6 +902,7 @@
  ],
  "Grizzly Ghoul": [],
  "Guardian Project": [],
+ "Guildpact Greenwalker": [],
  "Hardened Scales": [
   {
    "a": "Mark Winters",
@@ -1584,7 +1587,34 @@
    "y": "2021"
   }
  ],
+ "Saryth, the Viper's Fang": [
+  {
+   "a": "Igor Kieryluk",
+   "art": "https://cards.scryfall.io/art_crop/front/b/c/bc8b3a09-75e8-428c-91f7-8fac62fadc98.jpg?1783925573",
+   "cn": "197",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/c/bc8b3a09-75e8-428c-91f7-8fac62fadc98.jpg?1783925573",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Tyler Crook",
+   "art": "https://cards.scryfall.io/art_crop/front/3/a/3a07fd28-0b65-4ff0-96c6-7e88fc89b0a5.jpg?1783925519",
+   "cn": "304",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/a/3a07fd28-0b65-4ff0-96c6-7e88fc89b0a5.jpg?1783925519",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  }
+ ],
  "Sauron, the Necromancer": [],
+ "Selfless Safewright": [],
  "Selvala, Heart of the Wilds": [],
  "Sentinel of the Nameless City": [],
  "Shang-Chi, Martial Mentor": [],
@@ -1825,6 +1855,7 @@
    "y": "2026"
   }
  ],
+ "The Walls of Ba Sing Se": [],
  "Titania's Command": [],
  "Torgal, A Fine Hound": [],
  "Toski, Bearer of Secrets": [

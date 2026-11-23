@@ -479,3 +479,11 @@ Heroes, Overprotect. Added 9 aura/equipment/protection cards to the board (Champ
 Coat, Sword of Wealth and Power, Dragonfire Blade, Sword of Fire and Ice, Leyline Immersion,
 Darksteel Plate, Alpha Authority, Overprotect). Caveat for all of them: Sarulf's wipe exiles your
 own equipment and auras at MV ≤ N too (they are MV 1–4).
+
+## 17. Protection creatures (2026-11-23)
+
+Searched BG Historic Brawl creatures and planeswalkers that protect OTHER creatures. No planeswalker
+does. Added 6 to the board: Dr. Joseph M'Benga ★★ (countered creatures hexproof + a fifth counter
+doubler), Saryth ★★ (untapped creatures hexproof), Selfless Safewright ★ (flash Wolf-wide hexproof
++ indestructible, convoke), Guildpact Greenwalker ★ (multicoloured creatures ward {2}), The Walls of
+Ba Sing Se ◇ (owned, MV 8), Bedrock Tortoise ◇.

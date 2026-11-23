@@ -1233,6 +1233,36 @@
    "name": "Overprotect",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Dr. Joseph M'Benga",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Saryth, the Viper's Fang",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Selfless Safewright",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Guildpact Greenwalker",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "The Walls of Ba Sing Se",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Bedrock Tortoise",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2929,6 +2959,48 @@
    "graded_at": {
     "105": "bd82b7c98371"
    }
+  },
+  "Dr. Joseph M'Benga": {
+   "group": "Pile: take",
+   "text": "4-mana 3/3 Human: every OTHER creature you control with counters has hexproof, and every counter placement on your creatures is doubled. With the counter engine that is nearly the whole board hexproof, Sarulf included once it has a counter, and a fifth multiplier. A Human for Kogla and Torgal.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Saryth, the Viper's Fang": {
+   "group": "Pile: take",
+   "text": "4-mana Human: your other UNTAPPED creatures have hexproof, tapped ones have deathtouch. Sarulf rarely needs to attack, so it stays hexproof; {1},{T} untaps a creature (or a land) at instant speed, so an attacker can get its hexproof back.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Selfless Safewright": {
+   "group": "Pile: real",
+   "text": "A 5-mana flash creature with convoke (tokens help pay): name Wolf and every Wolf you control, Sarulf and the tokens included, gains hexproof and indestructible for the turn. A Heroic Intervention on a body; MV 5 rides out small wipes.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Guildpact Greenwalker": {
+   "group": "Pile: real",
+   "text": "3 mana (Alchemy): multicoloured creatures you control have ward {2}. Sarulf, Ygra, Nog, Constrictor, The Chief Warg and Chief Warg's Company are all black-green. It also gives a creature in hand +4/+4.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "The Walls of Ba Sing Se": {
+   "group": "Pile: situational",
+   "text": "Owned spice. 8 mana, defender: every other permanent you control has indestructible. MV 8 survives almost any Sarulf wipe, and The Great Henge or Kogla can make it affordable. Indestructible does not stop exile.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
+  },
+  "Bedrock Tortoise": {
+   "group": "Pile: situational",
+   "text": "Your creatures have hexproof during YOUR turn only. Covers sorcery-speed removal and combat tricks, not instant removal on their turn.",
+   "graded_at": {
+    "105": "bd82b7c98371"
+   }
   }
  },
  "snapshots": {
@@ -4508,6 +4580,42 @@
   "Overprotect": {
    "A": {
     "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Dr. Joseph M'Benga": {
+   "A": {
+    "m": "★★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Saryth, the Viper's Fang": {
+   "A": {
+    "m": "★★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Selfless Safewright": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Guildpact Greenwalker": {
+   "A": {
+    "m": "★",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "The Walls of Ba Sing Se": {
+   "A": {
+    "m": "◇",
+    "graded_at": "bd82b7c98371"
+   }
+  },
+  "Bedrock Tortoise": {
+   "A": {
+    "m": "◇",
     "graded_at": "bd82b7c98371"
    }
   }
