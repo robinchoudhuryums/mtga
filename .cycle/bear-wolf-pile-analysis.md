@@ -408,3 +408,11 @@ All 125 off-deck board cards re-graded against this list (builder reasons and ve
 most: cheap cards and card draw rose (Werewolf Pack Leader and Return of the Wildspeaker ★★; Abrupt
 Decay ★★; Infernal Grasp, Go for the Throat, Heartless Act, Torgal, Goliath, Mayor of Avabruck,
 Chevill, Cankerbloom, Striped Bears ★), because those are the two thin axes now.
+
+## 10. Fits, upgrades and spice search (2026-11-23)
+
+Searched the pool by effect (cheap removal, counter payoffs, draw, Bears/Wolves) beyond the board;
+added 16 to the builder. Previewed package (−Mortality Spear +Fatal Push, −Mythweaver Poq +Inspiring
+Call, −Exuberant Wolfbear +Sarulf's Packmate, −Studious First-Year +Incubation Druid): legal, floor
+A, interaction 14, card advantage 12→13, avg MV 3.94→3.89. `suggest --lands` offered only tapped BG
+duals, none better than the current manabase.

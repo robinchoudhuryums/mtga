@@ -27,6 +27,7 @@
    "y": "2019"
   }
  ],
+ "Armorcraft Judge": [],
  "Ascendant Packleader": [],
  "Assassin's Trophy": [
   {
@@ -182,7 +183,32 @@
    "y": "2022"
   }
  ],
+ "Branching Evolution": [
+  {
+   "a": "Tomasz Jedruszek",
+   "art": "https://cards.scryfall.io/art_crop/front/4/a/4a6971ad-cbb4-4f66-9bc4-b407c5805e85.jpg?1783930499",
+   "cn": "29",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/a/4a6971ad-cbb4-4f66-9bc4-b407c5805e85.jpg?1783930499",
+   "r": "R",
+   "set": "JMP",
+   "sn": "Jumpstart",
+   "y": "2020"
+  },
+  {
+   "a": "Lucas Graciano",
+   "art": "https://cards.scryfall.io/art_crop/front/c/0/c0f1a736-8b12-4f58-a031-bf1733f65c51.jpg?1783911212",
+   "cn": "285",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/0/c0f1a736-8b12-4f58-a031-bf1733f65c51.jpg?1783911212",
+   "r": "R",
+   "set": "MH3",
+   "sn": "Modern Horizons 3",
+   "y": "2024"
+  }
+ ],
  "Burgeoning": [],
+ "Bushmaster, Coiled Henchman": [],
  "Cankerbloom": [],
  "Casualties of War": [],
  "Cemetery Prowler": [],
@@ -453,6 +479,7 @@
  "Descendants' Path": [],
  "Dina, Essence Brewer": [],
  "Diregraf Rebirth": [],
+ "Doc Samson, Super Psychiatrist": [],
  "Drover Grizzly": [],
  "Edgar, Moonlit Sovereign": [],
  "Elemental Bond": [],
@@ -694,6 +721,33 @@
   }
  ],
  "Fanatic of Rhonas": [],
+ "Fatal Push": [
+  {
+   "a": "Eric Deschamps",
+   "art": "https://cards.scryfall.io/art_crop/front/d/c/dc187caf-3551-4d6a-8cdd-42c5d08bfaf2.jpg?1783929030",
+   "cn": "84",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/c/dc187caf-3551-4d6a-8cdd-42c5d08bfaf2.jpg?1783929030",
+   "r": "U",
+   "set": "KLR",
+   "sn": "Kaladesh Remastered",
+   "y": "2020"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/2/4/2430f223-edb2-402b-a85b-5d328323992d.jpg?1783906394",
+   "cn": "9",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/4/2430f223-edb2-402b-a85b-5d328323992d.jpg?1783906394",
+   "r": "U",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
  "Fiend Artisan": [
   {
    "a": "Yigit Koroglu",
@@ -1025,6 +1079,7 @@
  "Hunter's Axe": [],
  "Hunter's Talent": [],
  "Icetill Explorer": [],
+ "Incubation Druid": [],
  "Infernal Grasp": [
   {
    "a": "Naomi Baker",
@@ -1054,9 +1109,34 @@
  ],
  "Innkeeper's Talent": [],
  "Insidious Roots": [],
+ "Inspiring Call": [
+  {
+   "a": "Dan Murayama Scott",
+   "art": "https://cards.scryfall.io/art_crop/front/3/e/3e241642-5172-4437-b694-f6aa159d5cd9.jpg?1783909058",
+   "cn": "226",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/e/3e241642-5172-4437-b694-f6aa159d5cd9.jpg?1783909058",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Alexander Forssberg",
+   "art": "https://cards.scryfall.io/art_crop/front/2/5/2555ec7b-5cc2-4ffd-9344-6368019feff9.jpg?1783904804",
+   "cn": "168",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/5/2555ec7b-5cc2-4ffd-9344-6368019feff9.jpg?1783904804",
+   "r": "U",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
  "Jenova, Ancient Calamity": [],
  "Kagha, Shadow Archdruid": [],
  "Kamahl's Druidic Vow": [],
+ "Kami of Whispered Hopes": [],
  "Kogla, the Titan Ape": [],
  "Kraven the Hunter": [],
  "Large Bear": [],
@@ -1164,10 +1244,13 @@
  "Mantle of the Wolf": [],
  "Master's Guidance": [],
  "Mayor of Avabruck // Howlpack Alpha": [],
+ "Michelangelo, Weirdness to 11": [],
  "Mirkwood": [],
  "Mole Man, Moloid Master": [],
  "Monstrous Vortex": [],
+ "Moonlight Hunt": [],
  "Mortality Spear": [],
+ "Mossborn Hydra": [],
  "Mother Bear": [],
  "Mycoid Resurrection": [],
  "Mythweaver Poq": [],
@@ -1323,6 +1406,7 @@
  ],
  "Path of Discovery": [],
  "Polukranos, Unchained": [],
+ "Power Word Kill": [],
  "Primal Adversary": [],
  "Primal Might": [
   {
@@ -1353,6 +1437,7 @@
  ],
  "Primal Witchstalker": [],
  "Prismatic Vista": [],
+ "Ram Through": [],
  "Rampaging Ursaguana": [],
  "Ranger Class": [],
  "Ravening Warg": [],
@@ -1387,6 +1472,7 @@
  "Rhovanion Rampager": [],
  "Rise of the Witch-king": [],
  "Sage of Ancient Lore // Werewolf of Ancient Hunger": [],
+ "Sarulf's Packmate": [],
  "Sarulf, Realm Eater": [
   {
    "a": "Chris Rahn",
@@ -1416,6 +1502,7 @@
  "Sauron, the Necromancer": [],
  "Selvala, Heart of the Wilds": [],
  "Sentinel of the Nameless City": [],
+ "Shang-Chi, Martial Mentor": [],
  "Shrill Howler // Howling Chorus": [],
  "Sméagol, Helpful Guide": [],
  "Snakeskin Veil": [
@@ -1520,6 +1607,32 @@
   }
  ],
  "The Last Ronin": [],
+ "The One Ring": [
+  {
+   "a": "Veli Nyström",
+   "art": "https://cards.scryfall.io/art_crop/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1790212038",
+   "cn": "246",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/5/d5806e68-1054-458e-866d-1f2470f682b2.jpg?1790212038",
+   "r": "M",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Dan Frazier & Marta Nael",
+   "art": "https://cards.scryfall.io/art_crop/front/b/d/bdd2c783-1483-490a-ae93-c4664a0a9564.jpg?1794595973",
+   "cn": "44",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/d/bdd2c783-1483-490a-ae93-c4664a0a9564.jpg?1794595973",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Titania's Command": [],
  "Torgal, A Fine Hound": [],
  "Toski, Bearer of Secrets": [

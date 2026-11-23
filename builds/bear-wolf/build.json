@@ -1058,6 +1058,86 @@
    "name": "Advanced Floral Invocations",
    "pile": "A",
    "src": "added"
+  },
+  {
+   "name": "Inspiring Call",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Fatal Push",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Power Word Kill",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Ram Through",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Armorcraft Judge",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Sarulf's Packmate",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Incubation Druid",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Branching Evolution",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Michelangelo, Weirdness to 11",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Kami of Whispered Hopes",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "The One Ring",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Moonlight Hunt",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Shang-Chi, Martial Mentor",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Doc Samson, Super Psychiatrist",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Mossborn Hydra",
+   "pile": "A",
+   "src": "added"
+  },
+  {
+   "name": "Bushmaster, Coiled Henchman",
+   "pile": "A",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2509,6 +2589,118 @@
    "graded_at": {
     "105": "2bf57c943681"
    }
+  },
+  "Inspiring Call": {
+   "group": "Pile: take",
+   "text": "Owned. A 3-mana instant: draw a card for each creature with a +1/+1 counter, and they gain indestructible. The counter engine (Innkeeper, Constrictor, Fight Rigging, Path, Ayula) puts counters on most of the board, so this is often 4+ cards, and it also blanks a destroy-wipe (it does not stop Sarulf's exile). Pairs with Mythweaver Poq.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Fatal Push": {
+   "group": "Pile: take",
+   "text": "Owned. A 1-mana instant kill: MV 2 or less, or MV 4 or less after a permanent leaves your battlefield (fetch lands, Mirkwood, a Food, a fight casualty). The deck's cheap removal is down to Primal Might and Hunter's Talent. Pairs with Mortality Spear (same count, three mana cheaper).",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Power Word Kill": {
+   "group": "Pile: real",
+   "text": "A 2-mana instant that kills any creature except an Angel, Demon, Devil or Dragon. Cheap interaction, which is the deck's thinnest axis.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Ram Through": {
+   "group": "Pile: real",
+   "text": "A 2-mana instant one-sided fight; with trample (Surrak and Goreclaw gives it to everything) the excess hits the opponent. Big creatures and counters make it a kill and a burn. Feeds Sarulf like any kill.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Armorcraft Judge": {
+   "group": "Pile: real",
+   "text": "A 4-mana 3/3 that draws a card per creature with a +1/+1 counter. Inspiring Call on a body, at sorcery speed.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Sarulf's Packmate": {
+   "group": "Pile: real",
+   "text": "A 4-mana 3/3 Wolf that draws on entry, or foretold for {1}{G} later. Wolf count plus card flow; it is also the commander's own pack. Pairs with Exuberant Wolfbear.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Incubation Druid": {
+   "group": "Pile: real",
+   "text": "Owned. A 2-mana dork that taps for THREE once it has a +1/+1 counter, which Innkeeper level 1, Path of Discovery or Ayula give it. Ramp that the counter engine turns on. Pairs with Studious First-Year (costs a Bear) or Fuel Tank Feaster.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Branching Evolution": {
+   "group": "Pile: real",
+   "text": "Owned. 3 mana: every +1/+1 counter placement on your creatures is doubled. Redundancy for Innkeeper's level 3, from turn three. MV 3, so a Sarulf wipe of 3+ takes it.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Michelangelo, Weirdness to 11": {
+   "group": "Pile: real",
+   "text": "Owned. A 2-mana body with a +1 counter multiplier and a Mutagen token (a counter of its own). Cheap, a creature, and a third multiplier beside Constrictor.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Kami of Whispered Hopes": {
+   "group": "Pile: situational",
+   "text": "Owned spice. +1 to every counter placement, and it taps for mana equal to its power; with the counter engine pointed at it, that is 4-8 mana for The Great Henge or Titania's Command. A 1/1, so fragile.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "The One Ring": {
+   "group": "Pile: real",
+   "text": "A 4-mana colourless engine that draws 1, 2, 3... cards a turn, and casting it gives you protection from everything until your next turn. Card advantage is the deck's thin axis. The life loss adds up; MV 4 means a large Sarulf wipe takes it.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Moonlight Hunt": {
+   "group": "Pile: situational",
+   "text": "Spice. A 2-mana instant: every Wolf and Werewolf you control deals its power to one target creature. With 10 Wolves plus the Werewolves, usually a kill, and it feeds Sarulf.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Shang-Chi, Martial Mentor": {
+   "group": "Pile: situational",
+   "text": "Owned. A 5-mana 4/4 Human that doubles counter placements (and Kogla can bounce it). The five slot is crowded; Branching Evolution does this cheaper.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Doc Samson, Super Psychiatrist": {
+   "group": "Pile: situational",
+   "text": "Owned spice. +1 to EVERY kind of counter: Sarulf's, planeswalker loyalty, Saga lore (World War Hulk, Binding the Old Gods). It taps for mana equal to its power. Five mana.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Mossborn Hydra": {
+   "group": "Pile: situational",
+   "text": "Owned spice. A 3-mana trampler whose landfall doubles its counters; with Constrictor and Innkeeper it is huge in three land drops.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
+  },
+  "Bushmaster, Coiled Henchman": {
+   "group": "Pile: situational",
+   "text": "Spice. 2 mana: every creature with a +1/+1 counter has deathtouch, so every fight (Tovolar, Kogla, Garruk, Ram Through) and every block kills.",
+   "graded_at": {
+    "105": "2bf57c943681"
+   }
   }
  },
  "snapshots": {
@@ -3704,6 +3896,102 @@
    }
   },
   "Temple of Malady": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Inspiring Call": {
+   "A": {
+    "m": "★★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Fatal Push": {
+   "A": {
+    "m": "★★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Power Word Kill": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Ram Through": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Armorcraft Judge": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Sarulf's Packmate": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Incubation Druid": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Branching Evolution": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Michelangelo, Weirdness to 11": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Kami of Whispered Hopes": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "The One Ring": {
+   "A": {
+    "m": "★",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Moonlight Hunt": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Shang-Chi, Martial Mentor": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Doc Samson, Super Psychiatrist": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Mossborn Hydra": {
+   "A": {
+    "m": "◇",
+    "graded_at": "2bf57c943681"
+   }
+  },
+  "Bushmaster, Coiled Henchman": {
    "A": {
     "m": "◇",
     "graded_at": "2bf57c943681"
