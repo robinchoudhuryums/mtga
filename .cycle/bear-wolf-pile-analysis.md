@@ -448,3 +448,12 @@ Beorn Reluctant Host→Ygra (alts Gigantic Big Bear, Garruk Curse Breaker), Beje
 Wilson→Nog, Fanatic→Beorn's Hospitality, Edgar→Vincent (if one of the maybes goes), Primal
 Might→Moonlight Hunt. Full 8-pair preview: legal, floor A, avg MV 3.83, interaction 13 (14 real).
 Floral Invocations has no cut left.
+
+## 14. Torgal in; Head of the Hunt reconsidered (2026-11-23)
+
+Applied Bejeweled Warg→Torgal. Owner's new board cuts: Primal Might, Hunter's Talent, Rise of the
+Witch-king, Sword of Body and Mind. Measured: all four cut with Floral, Moonlight Hunt, Head of the
+Hunt and Elemental Bond in = interaction 11, floor A→B. Keeping Rise (Kraven→Head instead) = 12,
+floor A. Head of the Hunt: owner's case accepted with conditions — the more tokens the deck makes,
+the more a Sarulf wipe costs (it exiles every token), so Sarulf's counters matter less; but Head
+also switches off Kraven, Vincent Valentine's counters and Ygra's growth from opposing deaths.
