@@ -878,6 +878,11 @@
    "name": "Wildgrove Summoner",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "The Notary Hobbits",
+   "pile": "H",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -952,17 +957,17 @@
    }
   },
   "Betor, Ancestor's Voice": {
-   "group": "Bench — real, not in the first draft",
-   "text": "lifelink counters, MV≤life-lost recursion",
+   "group": "Payoffs and card flow",
+   "text": "3/5 flying lifelink; each end step counters equal to life gained, and recursion up to the life you lost. Replaced Yathan Roadwatcher.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Yathan Roadwatcher": {
-   "group": "Recursion",
-   "text": "MV≤3 recursion hits Barricade/Kingpin/Walls-tier cheap enablers; cast only",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Betor, Ancestor's Voice. MV≤3 recursion, only when cast.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Thalia and The Gitrog Monster": {
@@ -1078,10 +1083,10 @@
    }
   },
   "Ancient Lumberknot": {
-   "group": "Toughness enablers",
-   "text": "4-mana T>P enabler on a 1/4",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Zopandrel. A 4-mana toughness-damage enabler; return it if 7 enablers feel thin.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Vraska's Stoneglare": {
@@ -1120,10 +1125,10 @@
    }
   },
   "Harrowing Swarm": {
-   "group": "Face-down engine",
-   "text": "F5 — every face-down {2} cheaper + counter",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Claim the Kingdom. One manifest plus a {2} flip discount.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Break Down the Door": {
@@ -1484,10 +1489,10 @@
    }
   },
   "Kagha, Shadow Archdruid": {
-   "group": "Payoffs and card flow",
-   "text": "1/4 that mills 2 on attack and plays a land or permanent from those cards each turn — card flow, and lands feed Hamza. Replaced Mentor of the Meek.",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Impervious Greatwurm. Card flow from milled cards.",
    "graded_at": {
-    "106": "4c1f22d6ae28"
+    "106": "18a732ee56c5"
    }
   },
   "Professor Dellian Fel": {
@@ -1534,16 +1539,16 @@
   },
   "The Walls of Ba Sing Se": {
    "group": "Walls and cheap high-toughness flips",
-   "text": "0/30, others indestructible; Betor 40 alone; flip via Shrieker = endure 30",
+   "text": "0/30; other permanents you control are indestructible. Alone it clears Betor, Kin to All's 40 total toughness; flipped from a manifest by Hauntwoods Shrieker it endures 30.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Multiply by Zero": {
-   "group": "Bench — real, not in the first draft",
-   "text": "instant 2-mana shrink-to-0/0",
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "2-mana instant: base 0/0 kills most creatures (not ones with counters). The tools count it as no role. Replaced Languish.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "General's Enforcer": {
@@ -1582,10 +1587,10 @@
    }
   },
   "Earthshape": {
-   "group": "Protection",
-   "text": "protects every creature with power ≤ 3 = the whole wall team (F2)",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Strength of Will. One turn of protection for every power-≤3 creature.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Akroma's Will": {
@@ -1673,10 +1678,10 @@
    }
   },
   "Claim the Kingdom": {
-   "group": "Bench — real, not in the first draft",
-   "text": "landfall counters (rides loops)",
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "A counter on every land drop (each already a Hamza trigger); the fourth gives an indestructible counter. Replaced Harrowing Swarm.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Heroic Intervention": {
@@ -1701,10 +1706,10 @@
    }
   },
   "Strength of Will": {
-   "group": "Bench — real, not in the first draft",
-   "text": "a blocking wall grows by damage dealt",
+   "group": "Protection",
+   "text": "Indestructible, and damage dealt to it becomes +1/+1 counters — cast it on a blocking wall. Replaced Earthshape.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Inspiring Call": {
@@ -1729,10 +1734,10 @@
    }
   },
   "Zopandrel, Hunger Dominus": {
-   "group": "Bench — real, not in the first draft",
-   "text": "doubles toughness each combat = doubles damage",
+   "group": "Payoffs and card flow",
+   "text": "Doubles every creature's power AND toughness at each combat, on both players' turns — double damage on offence, double walls on defence. Replaced Ancient Lumberknot.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Rok-Tahk, Budding Scientist": {
@@ -1743,10 +1748,10 @@
    }
   },
   "Impervious Greatwurm": {
-   "group": "Bench — real, not in the first draft",
-   "text": "convoke off a wide face-down board",
+   "group": "Payoffs and card flow",
+   "text": "16/16 indestructible with convoke: face-down 2/2s and Hobbit tokens pay most of it. Creatures tapped for it can't block that turn. Replaced Kagha.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Amaranthine Wall": {
@@ -1757,10 +1762,10 @@
    }
   },
   "Plaza of Heroes": {
-   "group": "Bench — real, not in the first draft",
-   "text": "land; legendary protection",
+   "group": "Lands — fetches count twice for landfall; Threats Around Every Corner wants basics",
+   "text": "Any colour for 23 legendary spells (Felothar, Doran, Thalia and The Gitrog Monster…) and the deck's only hexproof/indestructible for Hamza. Replaced 1 Forest.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Eladamri, Korvecdal": {
@@ -1883,10 +1888,10 @@
    }
   },
   "Languish": {
-   "group": "Interaction",
-   "text": "−4/−4, same logic",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Multiply by Zero. −4/−4 our walls survive, but BB and it kills the face-down 2/2s.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "18a732ee56c5"
    }
   },
   "Find // Finality": {
@@ -1947,9 +1952,9 @@
   },
   "Mentor of the Meek": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Kagha. Draws for {1} off every power-2 creature entering, face-down manifests included.",
+   "text": "Cut for Kagha (owner's pick); Kagha has since been cut too. Draws for {1} off every power-2 creature entering, face-down manifests included — a card-advantage piece worth returning.",
    "graded_at": {
-    "106": "4c1f22d6ae28"
+    "106": "18a732ee56c5"
    }
   },
   "Trail of Mystery": {
@@ -2076,6 +2081,13 @@
    "text": "turns Forests into creature cards → Hamza's seek can find a land it cannot flip (no mana cost)",
    "graded_at": {
     "106": "9fa73aec30f6"
+   }
+  },
+  "The Notary Hobbits": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Two token copies; each Halfling taps for one per Halfling — about 9 colourless from the next turn, 25 with Elesh Norn. Pays The Walls' 8-mana flip and the top end. If flipped from a manifest it makes no tokens.",
+   "graded_at": {
+    "106": "18a732ee56c5"
    }
   }
  },
@@ -2356,6 +2368,99 @@
     "Wastewood Verge",
     "Woodland Cemetery",
     "Yathan Roadwatcher"
+   ],
+   "18a732ee56c5": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Claim the Kingdom",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
    ]
   }
  },
@@ -2422,14 +2527,14 @@
   },
   "Betor, Ancestor's Voice": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Yathan Roadwatcher": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Thalia and The Gitrog Monster": {
@@ -2530,8 +2635,8 @@
   },
   "Ancient Lumberknot": {
    "H": {
-    "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Vraska's Stoneglare": {
@@ -2566,8 +2671,8 @@
   },
   "Harrowing Swarm": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Break Down the Door": {
@@ -2879,7 +2984,7 @@
   "Kagha, Shadow Archdruid": {
    "H": {
     "m": "★",
-    "graded_at": "4c1f22d6ae28"
+    "graded_at": "18a732ee56c5"
    }
   },
   "Professor Dellian Fel": {
@@ -2921,13 +3026,13 @@
   "The Walls of Ba Sing Se": {
    "H": {
     "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "18a732ee56c5"
    }
   },
   "Multiply by Zero": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "General's Enforcer": {
@@ -2962,8 +3067,8 @@
   },
   "Earthshape": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Akroma's Will": {
@@ -3040,8 +3145,8 @@
   },
   "Claim the Kingdom": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Heroic Intervention": {
@@ -3064,8 +3169,8 @@
   },
   "Strength of Will": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Inspiring Call": {
@@ -3088,8 +3193,8 @@
   },
   "Zopandrel, Hunger Dominus": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Rok-Tahk, Budding Scientist": {
@@ -3100,8 +3205,8 @@
   },
   "Impervious Greatwurm": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Amaranthine Wall": {
@@ -3112,8 +3217,8 @@
   },
   "Plaza of Heroes": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Eladamri, Korvecdal": {
@@ -3220,8 +3325,8 @@
   },
   "Languish": {
    "H": {
-    "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   },
   "Find // Finality": {
@@ -3275,7 +3380,7 @@
   "Mentor of the Meek": {
    "H": {
     "m": "★★",
-    "graded_at": "4c1f22d6ae28"
+    "graded_at": "18a732ee56c5"
    }
   },
   "Trail of Mystery": {
@@ -3384,6 +3489,12 @@
    "H": {
     "m": "✗",
     "graded_at": "9fa73aec30f6"
+   }
+  },
+  "The Notary Hobbits": {
+   "H": {
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
    }
   }
  },

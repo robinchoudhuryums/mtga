@@ -8,19 +8,21 @@
 #: archetype: ENDURE X where X is its toughness (X +1/+1 counters, or an X/X Spirit). So the deck is built from creatures
 #: archetype: with LOW cost and HIGH toughness (Crystal Barricade flips for 2 and endures 4, Flatman 4 → 10, The Walls of
 #: archetype: Ba Sing Se 8 → 30, flipped for {1}{G} by Hauntwoods Shrieker), and toughness becomes the damage stat
-#: archetype: through the enablers (Felothar the Steadfast, Assault Formation, Huatli, Doran, Lumberknot, Bedrock
+#: archetype: through the enablers (Felothar the Steadfast, Assault Formation, Huatli, Doran, Bedrock
 #: archetype: Tortoise, Ghalta, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
 #: archetype: → another manifest, until the library runs out of creatures) and Threats Around Every Corner fetches a
 #: archetype: basic for each face-down creature (landfall → another manifest). Elesh Norn doubles every landfall. Low
 #: archetype: power is UPSIDE: power-capped recursion (Smile at Death, Slumbering Walker, Nethroi's total power 10)
 #: archetype: returns the walls, Delney makes power ≤2 attackers unblockable by power ≥3, and Destined Confrontation,
-#: archetype: Languish and Toxic Deluge are one-sided against a board of 5+ toughness. Distinct from every roster deck:
+#: archetype: Choking Miasma and Toxic Deluge are one-sided against a board of 5+ toughness. Distinct from every roster deck:
 #: archetype: the only face-down / toughness-as-damage list.
 #: protect: Hamza, Might of the Yathan; Felothar the Steadfast; Doran, Besieged by Time; Assault Formation; Crystal Barricade; The Walls of Ba Sing Se; Hauntwoods Shrieker; Threats Around Every Corner; Ashaya, Soul of the Wild; Smile at Death; Delney, Streetwise Lookout; Destined Confrontation
 #: notes: Drafted 2026-11-24 from the Abzan toughness pile (.cycle/abzan-toughness-pile-analysis.md) plus an off-pile
-#: notes: search. Defaults chosen while the owner's two open questions stand: both loops at moderate depth (37
-#: notes: creatures, 13 basics) and about six protection cards. A flipped creature gets no ETB, no kicker and no cost
-#: notes: reduction; Towering Titan and Darksteel Hydra were left out because they flip as 0/0 and die.
+#: notes: search, then tuned on its Builder board (builds/hamza) the same day: both loops at moderate depth (38
+#: notes: creatures, 12 basics). A flipped creature gets no ETB, no kicker and no cost reduction, but a manifest never
+#: notes: HAS to be flipped, so Towering Titan (0/0 if flipped) stays a 2/2 face down and is cast for its counters.
+#: notes: Face-down 2/2s die to our own Choking Miasma / Toxic Deluge: flip the ones worth keeping first (each flip is
+#: notes: an endure). The Notary Hobbits (owned) is the next mana add — about 9 colourless a turn, 25 with Elesh Norn.
 
 # Commander
 1 Hamza, Might of the Yathan (YTDM) 21
@@ -29,7 +31,7 @@
 1 Felothar the Steadfast (TDC) 4
 1 Doran, Besieged by Time (ECL) 215
 1 Assault Formation (JMP) 378
-1 Ancient Lumberknot (VOW) 230
+1 Zopandrel, Hunger Dominus (ONE) 195
 1 Bedrock Tortoise (LCI) 176
 1 Basri Ket (M21) 7
 1 Huatli, the Sun's Heart (WAR) 230
@@ -51,10 +53,10 @@
 1 Hauntwoods Shrieker (DSK) 182
 1 Threats Around Every Corner (DSK) 200
 1 Ashaya, Soul of the Wild (ZNR) 179
-1 Harrowing Swarm (YDSK) 16
+1 Claim the Kingdom (MSH) 163
 1 Dormant Grove // Gnarled Grovestrider (VOW) 198
 1 Eagle of Deliverance (LTR) 824
-1 Kagha, Shadow Archdruid (HBG) 236
+1 Impervious Greatwurm (GRN) 273
 
 # Landfall and extra land drops (every land is a Hamza manifest)
 1 Thalia and The Gitrog Monster (MOM) 255
@@ -80,7 +82,7 @@
 # Recursion — power-capped, which is upside in a power-0 deck
 1 Nethroi, Apex of Death (IKO) 197
 1 Smile at Death (TDM) 24
-1 Yathan Roadwatcher (TDM) 236
+1 Betor, Ancestor's Voice (TDC) 1
 
 # Interaction — the -X/-X sweepers spare our high-toughness board
 1 Kin-Tree Severance (TDM) 200
@@ -90,7 +92,7 @@
 1 Choking Miasma (DMU) 86
 1 Vindicate (MH2) 294
 1 Despark (WAR) 190
-1 Languish (HOC) 187
+1 Multiply by Zero (FRA) 58
 1 Toxic Deluge (MH3) 277
 1 Destined Confrontation (TLA) 15
 1 Crime // Punishment (OTP) 39
@@ -99,7 +101,7 @@
 # Protection
 1 Heroic Intervention (M21) 188
 1 Shalai, Voice of Plenty (DOM) 35
-1 Earthshape (TLE) 67
+1 Strength of Will (SPM) 118
 1 Smuggler's Surprise (OTJ) 180
 1 Ghalta the Immovable (FRA) 197
 
@@ -128,7 +130,8 @@
 1 Evolving Wilds (ECL) 264
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
-6 Forest (TRK) 325
+5 Forest (TRK) 325
+1 Plaza of Heroes (DMU) 252
 4 Plains (TRK) 317
 3 Swamp (TRK) 321
 

@@ -23,7 +23,6 @@ Ajani, Caller of the Pride
 Akul the Unrepentant
 Altar of Dementia
 Ambitious Augmenter
-Ancient Lumberknot
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -269,7 +268,6 @@ Jinnie Fay, Jetmir's Second
 Jodah, Archmage Eternal
 Joo Dee, One of Many
 K'un-Lun Warrior
-Kagha, Shadow Archdruid
 Kamahl's Druidic Vow
 Kang the Conqueror
 Karolina Dean, Runaway
@@ -333,6 +331,7 @@ Morcant's Eyes
 Morningtide's Light
 Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
+Multiply by Zero
 Mutable Explorer
 Mysterio, Master of Illusion
 Mythweaver Poq
