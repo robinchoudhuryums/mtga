@@ -133,10 +133,37 @@
   }
  ],
  "Bedrock Tortoise": [],
+ "Belladonna Took": [],
  "Belligerent Brontodon": [],
  "Beorn's Hospitality": [],
  "Betor, Ancestor's Voice": [],
  "Betor, Kin to All": [],
+ "Bilbo's Ring": [
+  {
+   "a": "Randy Gallegos",
+   "art": "https://cards.scryfall.io/art_crop/front/9/1/91dbeac4-1c39-4a4f-84e7-1b71f7468c8f.jpg?1783916214",
+   "cn": "298",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/1/91dbeac4-1c39-4a4f-84e7-1b71f7468c8f.jpg?1783916214",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Mark Poole",
+   "art": "https://cards.scryfall.io/art_crop/front/6/7/67a4e16b-df1b-4b57-a388-add58eae5a24.jpg?1785152488",
+   "cn": "41",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/7/67a4e16b-df1b-4b57-a388-add58eae5a24.jpg?1785152488",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Bill the Pony": [],
  "Blighted Nightmare": [],
  "Body Launderer": [],
@@ -195,6 +222,32 @@
   }
  ],
  "Death's Oasis": [],
+ "Delighted Halfling": [
+  {
+   "a": "Inka Schulz",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "cn": "158",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Heather Hudson",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "cn": "25",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Delney, Streetwise Lookout": [],
  "Despark": [
   {
@@ -348,6 +401,7 @@
  "Find // Finality": [],
  "Flatman": [],
  "Flourishing Hunter": [],
+ "Frodo, Sauron's Bane": [],
  "Garruk, Apex Predator": [],
  "Gauntlets of Light": [],
  "General's Enforcer": [],
@@ -454,6 +508,7 @@
    "y": "2026"
   }
  ],
+ "Hobbit Hole": [],
  "Hooded Hydra": [],
  "Hornet Nest": [],
  "Huatli, the Sun's Heart": [
@@ -824,7 +879,10 @@
  "Revival of the Ancestors": [],
  "Righteous Valkyrie": [],
  "Rok-Tahk, Budding Scientist": [],
+ "Rosie Cotton of South Lane": [],
  "Ruthless Technomancer": [],
+ "Samwise Gamgee": [],
+ "Saradoc, Master of Buckland": [],
  "Sauron, Dino Devotee": [],
  "Selfless Glyphweaver // Deadly Vanity": [],
  "Severance Priest": [],
@@ -835,6 +893,7 @@
  "Slumbering Walker": [],
  "Smile at Death": [],
  "Smuggler's Surprise": [],
+ "Sméagol, Helpful Guide": [],
  "Song of Freyalise": [],
  "South Wind Avatar": [],
  "Stalwart Successor": [],

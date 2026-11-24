@@ -988,6 +988,51 @@
    "name": "Vorinclex, Voice of Hunger",
    "pile": "H",
    "src": "added"
+  },
+  {
+   "name": "Saradoc, Master of Buckland",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Belladonna Took",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Samwise Gamgee",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Rosie Cotton of South Lane",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Bilbo's Ring",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hobbit Hole",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sméagol, Helpful Guide",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Frodo, Sauron's Bane",
+   "pile": "N",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2338,6 +2383,69 @@
   "Vorinclex, Voice of Hunger": {
    "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
    "text": "Doubles your land mana and locks the opponent's tapped lands, but 8 mana in a deck whose problem is early coloured mana.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "1-drop that taps for colourless, or any colour for a legendary spell (23 in the deck, plus Hamza), and is a Halfling for the Hobbits. Early ramp and fixing, the two things the deck lacks.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Saradoc, Master of Buckland": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Every nontoken creature with power 2 or less that enters, including each Hamza manifest, makes a 1/1 Halfling token (two with Elesh Norn). With The Notary Hobbits out, each token is 3 more mana a turn; also fodder for Felothar, Dawn and Greatwurm's convoke. A 2/4 for 4.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Belladonna Took": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. Tokens entering: the first in a turn gains a life, the second draws, the third puts a counter on every creature. The Hobbits' two copies, endure Spirits and Saradoc reach three easily.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Samwise Gamgee": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. A Food for every nontoken creature entering (each manifest counts); three Foods return a legendary card from the graveyard. Value, but slow.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. Every token you create puts a counter on a creature; a 1/1 for 3.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Bilbo's Ring": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Equip a Halfling for {1} (or Hamza for {4}): hexproof and unblockable on your turn, and a draw when it attacks alone. Attacking alone works against a wide board.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Hobbit Hole": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. A fetch for a basic (two Hamza triggers) or Halflingcycling {4} to find The Notary Hobbits, but it makes no mana itself; at best a swap for Deceptive Landscape.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Steals an opponent's land onto your battlefield (another landfall) when the Ring tempts you, which needs a creature to die each turn. A 4/2, so the toughness enablers do nothing for it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Frodo, Sauron's Bane": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Its win needs the Ring to tempt you four times, and nothing else here tempts you.",
    "graded_at": {
     "106": "638d0b4a0931"
    }
@@ -3965,6 +4073,60 @@
   "Vorinclex, Voice of Hunger": {
    "H": {
     "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Delighted Halfling": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Saradoc, Master of Buckland": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Belladonna Took": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Samwise Gamgee": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Bilbo's Ring": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Hobbit Hole": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Frodo, Sauron's Bane": {
+   "H": {
+    "m": "✗",
     "graded_at": "638d0b4a0931"
    }
   }
