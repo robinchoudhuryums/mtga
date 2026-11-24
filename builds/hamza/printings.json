@@ -104,6 +104,7 @@
  "Assault Formation": [],
  "Athreos, Shroud-Veiled": [],
  "Avacyn, Angel of Hope": [],
+ "Badgermole Cub": [],
  "Bark of Doran": [],
  "Basri Ket": [
   {
@@ -150,6 +151,7 @@
  "Choking Miasma": [],
  "Claim the Kingdom": [],
  "Crime // Punishment": [],
+ "Cryptolith Rite": [],
  "Crystal Barricade": [],
  "Cursed Wombat": [],
  "Darksteel Hydra": [],
@@ -309,7 +311,34 @@
    "y": "2022"
   }
  ],
+ "Elven Chorus": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "cn": "160",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Stephen L. Walsh",
+   "art": "https://cards.scryfall.io/art_crop/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Enduring Innocence": [],
+ "Enduring Vitality": [],
  "Erebos, God of the Dead": [],
  "Essence of Antiquity": [],
  "Fecund Greenshell": [],
@@ -564,6 +593,33 @@
    "y": "2026"
   }
  ],
+ "Leyline of Abundance": [
+  {
+   "a": "Noah Bradley",
+   "art": "https://cards.scryfall.io/art_crop/front/c/6/c68e8342-78d2-4826-a287-64c371b97d19.jpg?1783932962",
+   "cn": "179",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/6/c68e8342-78d2-4826-a287-64c371b97d19.jpg?1783932962",
+   "r": "R",
+   "set": "M20",
+   "sn": "Core Set 2020",
+   "y": "2019"
+  },
+  {
+   "a": "BEMOCS",
+   "art": "https://cards.scryfall.io/art_crop/front/6/0/607157a4-4fe8-46b9-86e1-0a30f040116b.jpg?1783914918",
+   "cn": "56",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/0/607157a4-4fe8-46b9-86e1-0a30f040116b.jpg?1783914918",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Lord of Extinction": [],
  "Loxodon Lifechanter": [],
  "Luke Cage, Power Man": [],
@@ -605,6 +661,7 @@
   }
  ],
  "Mephidross Slime": [],
+ "Mirari's Wake": [],
  "Moogles' Valor": [],
  "Mortify": [
   {
@@ -964,6 +1021,35 @@
  "Veteran Beastrider": [],
  "Vigorbloom Charm": [],
  "Vindicate": [],
+ "Vorinclex, Voice of Hunger": [
+  {
+   "a": "JungShan",
+   "art": "https://cards.scryfall.io/art_crop/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "cn": "29",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Karl Kopinski",
+   "art": "https://cards.scryfall.io/art_crop/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "cn": "94",
+   "fx": [
+    "etched"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
  "Vraska Joins Up": [],
  "Vraska's Stoneglare": [],
  "Walking Bulwark": [],

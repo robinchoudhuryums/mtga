@@ -953,6 +953,41 @@
    "name": "Hornet Nest",
    "pile": "H",
    "src": "added"
+  },
+  {
+   "name": "Enduring Vitality",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Elven Chorus",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Cryptolith Rite",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Badgermole Cub",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Abundance",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mirari's Wake",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vorinclex, Voice of Hunger",
+   "pile": "H",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2254,6 +2289,55 @@
   "Hornet Nest": {
    "group": "Off-pile finds 2026-11-24 (two or more axes)",
    "text": "Spice: blocks and makes deathtouch fliers equal to the damage taken. Only a 0/2, so it's a poor flip and dies to our own sweepers.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Enduring Vitality": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Owned. Every creature taps for any colour, including each face-down 2/2 from the turn after it enters: fixing for the WW/BB/GG cards and a lot of mana for flips. A 3/3 vigilance that returns as an enchantment when it dies. Ivorytusk untaps creatures with counters on the opponent's turn, so tapping for mana doesn't cost you blockers.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Elven Chorus": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Creatures tap for any colour AND you can cast creature spells from the top of your library — fixing plus card advantage (the deck's thinnest axis) in one 4-mana enchantment.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Cryptolith Rite": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "The 2-mana version of the creature-mana effect: every creature taps for any colour. No body, but it lands on turn 2.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Badgermole Cub": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Owned. +{G} whenever you tap a creature for mana (with Rok-Tahk each creature makes GGG); its earthbend turns a land into a creature too. Strong only once a creature-mana effect is out.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Leyline of Abundance": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "+{G} per creature tapped for mana, free if in your opening hand, and an 8-mana counter on every creature. Second-order: the deck needs coloured mana first, raw mana second.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Mirari's Wake": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Lands make double mana plus a team +1/+1 anthem. 5 mana; the anthem adds damage under the enablers but doesn't widen any toughness gap.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Doubles your land mana and locks the opponent's tapped lands, but 8 mana in a deck whose problem is early coloured mana.",
    "graded_at": {
     "106": "638d0b4a0931"
    }
@@ -3837,6 +3921,48 @@
    }
   },
   "Hornet Nest": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Enduring Vitality": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Elven Chorus": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Cryptolith Rite": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Badgermole Cub": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Leyline of Abundance": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Mirari's Wake": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
    "H": {
     "m": "◇",
     "graded_at": "638d0b4a0931"
