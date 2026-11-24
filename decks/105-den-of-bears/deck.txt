@@ -7,9 +7,9 @@
 #: archetype: Realm Eater: every opponent permanent that hits the graveyard puts a counter on Sarulf, and in your
 #: archetype: upkeep you MAY remove them all to exile each other nonland permanent with mana value up to that number
 #: archetype: (yours too) — an optional, sized board wipe. The deck lives above that line: the big Bears (Gigantic Big
-#: archetype: Bear, Lumra, Beorn), Kogla, Avabruck Caretaker, Tovolar's Huntmaster and The Great Henge cost
+#: archetype: Bear, Copper Host Crusher, Lumra, Beorn), Kogla, Avabruck Caretaker, Tovolar's Huntmaster and The Great Henge cost
 #: archetype: 6+, so a small wipe clears their early game and keeps yours. Removal and fights feed Sarulf (Maelstrom
-#: archetype: Pulse, Mortality Spear, Rise of the Witch-king, Binding the Old Gods, Polukranos, Kogla, Garruk
+#: archetype: Pulse, Mortality Spear, Glissa Sunslayer, Binding the Old Gods, Polukranos, Kogla, Garruk
 #: archetype: Relentless, Tovolar's fights), and the black Wolves come from The Chief Warg, Chief Warg's Company and
 #: archetype: Garruk, Cursed Huntsman. A COUNTER ENGINE multiplies all of it: Innkeeper's Talent (level 3 doubles),
 #: archetype: Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The Great Henge and
@@ -43,7 +43,7 @@
 1 Ayula, Queen Among Bears (J21) 543
 1 Goreclaw, Terror of Qal Sisma (M19) 186
 1 Beorn the Fierce (HOB) 119
-1 Beorn, Reluctant Host // Till and Tend (HOB) 118
+1 Copper Host Crusher (MOM) 181
 1 Gigantic Big Bear (HOB) 126
 1 Edgar, Moonlit Sovereign (FRA) 257
 1 Descendants' Path (TLE) 167
@@ -56,7 +56,7 @@
 1 Surrak and Goreclaw (MOM) 337
 1 Ygra, Eater of All (BLB) 241
 1 Branching Evolution (MH3) 285
-1 Rise of the Witch-king (LTR) 221
+1 Glissa Sunslayer (ONE) 202
 1 Beifong's Bounty Hunters (TLA) 209
 
 # Bear makers
@@ -140,3 +140,5 @@
 #~ +Hardened Scales | BENCH (builder bear-wolf): benched on the board
 #~ +Vraska, Betrayal's Sting | BENCH (builder bear-wolf): benched on the board
 #~ +Lukamina, Moon Druid | BENCH (builder bear-wolf): benched on the board — Bear Form anthem once you have six lands
+#~ +Rise of the Witch-king | BENCH (builder bear-wolf): edict that beats hexproof; a Wolf with Head of the Hunt out
+#~ +Beorn, Reluctant Host // Till and Tend | BENCH (builder bear-wolf): Human Bear 5/5 trample, extra land drop
