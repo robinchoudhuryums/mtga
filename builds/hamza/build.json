@@ -1052,9 +1052,9 @@
   },
   "Crime // Punishment": {
    "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
-   "text": "Punishment is an X sweeper that our mana values dodge; Crime steals a creature from their graveyard. The tools count it as no role. Replaced Break Down the Door.",
+   "text": "Punishment is an X sweeper our big mana values dodge, but at X=0 it kills our tokens and face-downs (mana value 0) — pick X above 0. Crime steals a creature from their graveyard. The tools count it as no role. Replaced Break Down the Door.",
    "graded_at": {
-    "106": "ece9d59e662b"
+    "106": "6f2135e4cb89"
    }
   },
   "Kin-Tree Severance": {
@@ -1087,9 +1087,9 @@
   },
   "Ivorytusk Fortress": {
    "group": "Payoffs and card flow",
-   "text": "Untaps every creature with a counter on each opponent's turn; endure puts counters everywhere, so the team attacks and still blocks. Replaced Veteran Beastrider.",
+   "text": "Untaps every creature with a counter on each opponent's turn, so the team attacks (or taps for Vitality mana) and still blocks. Alternate cut for Saradoc if you'd rather keep Eagle's protection.",
    "graded_at": {
-    "106": "ece9d59e662b"
+    "106": "6f2135e4cb89"
    }
   },
   "Betor, Kin to All": {
@@ -1570,16 +1570,16 @@
   },
   "Shalai, Voice of Plenty": {
    "group": "Protection",
-   "text": "team hexproof + counters sink",
+   "text": "Team hexproof and a counters sink. Suggested cut for Tireless Tracker (still pending): protection is the deep axis, card advantage the thin one.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "6f2135e4cb89"
    }
   },
   "Choking Miasma": {
    "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
-   "text": "−2/−2 sweep our walls shrug off. Flip the face-down 2/2s you want to keep first; each flip is a Hamza endure. Replaced Infernal Grasp.",
+   "text": "−2/−2 sweep our walls shrug off. With the Saradoc/Belladonna package it also kills every 1/1 token and face-down 2/2, so flip your best face-downs first and keep it for when you are behind on board. Replaced Infernal Grasp.",
    "graded_at": {
-    "106": "ece9d59e662b"
+    "106": "6f2135e4cb89"
    }
   },
   "Mythos of Nethroi": {
@@ -1605,9 +1605,9 @@
   },
   "Cursed Wombat": {
    "group": "Payoffs and card flow",
-   "text": "Every time counters land on a permanent (each endure, Arwen, Basri) it gets one more. Replaced Druid Class.",
+   "text": "One extra counter every time counters land on a permanent (endure, Arwen, Basri, and Belladonna's team counters with the package). Alternate cut for Belladonna, but it gets better with her, not worse.",
    "graded_at": {
-    "106": "4c1f22d6ae28"
+    "106": "6f2135e4cb89"
    }
   },
   "Insidious Roots": {
@@ -1787,9 +1787,9 @@
   },
   "Eagle of Deliverance": {
    "group": "Payoffs and card flow",
-   "text": "Indestructible counter on another creature, and a draw because nearly everything here has power 2 or less. Replaced Whisperwood Elemental.",
+   "text": "Proposed cut for Saradoc: a 6-drop for a 4-drop. Its indestructible counter is protection the deck has plenty of, and Belladonna's second token each turn replaces its draw.",
    "graded_at": {
-    "106": "4c1f22d6ae28"
+    "106": "6f2135e4cb89"
    }
   },
   "Angelic Guardian": {
@@ -1822,16 +1822,16 @@
   },
   "Smuggler's Surprise": {
    "group": "Protection",
-   "text": "{4}{G} puts two creatures from hand onto the battlefield; they ENTER, so Towering Titan (now in the deck) gets its counters and the Walls skip 8 mana. {1} mode gives hexproof and indestructible. Replaced Restoration Magic.",
+   "text": "Proposed cut for Enduring Vitality: protection is the deck's deepest axis (17 → 14 with the package). Its two-creature cheat matters less now that the Hobbits pay for Titan and The Walls; the mill mode is the other loss.",
    "graded_at": {
-    "106": "4c1f22d6ae28"
+    "106": "6f2135e4cb89"
    }
   },
   "Claim the Kingdom": {
    "group": "Landfall and extra land drops (every land is a Hamza manifest)",
-   "text": "A counter on every land drop (each already a Hamza trigger); the fourth gives an indestructible counter. Replaced Harrowing Swarm.",
+   "text": "Proposed cut for Belladonna Took: Claim's one counter per land is replaced by Belladonna's counter on every creature, and the indestructible counter by the deck's other protection.",
    "graded_at": {
-    "106": "18a732ee56c5"
+    "106": "6f2135e4cb89"
    }
   },
   "Heroic Intervention": {
@@ -2081,9 +2081,9 @@
   },
   "Despark": {
    "group": "Interaction",
-   "text": "staple Abzan removal",
+   "text": "Alternate cut for Enduring Vitality: the narrowest removal here (mana value 4+), but cutting it drops interaction to 9 and trips the quality guard.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "6f2135e4cb89"
    }
   },
   "Mortify": {
@@ -2172,9 +2172,9 @@
   },
   "Dryad of the Ilysian Grove": {
    "group": "Landfall and extra land drops",
-   "text": "extra land drops (F3)",
+   "text": "Alternate cut for Enduring Vitality: both fix, but Dryad also gives an extra land drop (a Hamza trigger), so it's the costlier cut.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "6f2135e4cb89"
    }
   },
   "Icetill Explorer": {
@@ -2340,9 +2340,9 @@
   },
   "Enduring Vitality": {
    "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
-   "text": "Owned. Every creature taps for any colour, including each face-down 2/2 from the turn after it enters: fixing for the WW/BB/GG cards and a lot of mana for flips. A 3/3 vigilance that returns as an enchantment when it dies. Ivorytusk untaps creatures with counters on the opponent's turn, so tapping for mana doesn't cost you blockers.",
+   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and, with the package, each Saradoc token becomes fixing from the turn after it enters. That fixes the WW/BB/GG cards and pays for flips. A 3/3 vigilance that returns as an enchantment when it dies; Ivorytusk untaps the creatures you tapped. Proposed for Smuggler's Surprise.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Elven Chorus": {
@@ -2396,16 +2396,16 @@
   },
   "Saradoc, Master of Buckland": {
    "group": "Halflings for The Notary Hobbits (2026-11-24)",
-   "text": "Every nontoken creature with power 2 or less that enters, including each Hamza manifest, makes a 1/1 Halfling token (two with Elesh Norn). With The Notary Hobbits out, each token is 3 more mana a turn; also fodder for Felothar, Dawn and Greatwurm's convoke. A 2/4 for 4.",
+   "text": "A 1/1 Halfling token for every nontoken power-≤2 creature entering, including each Hamza manifest. Elesh Norn doubles it, and so does Delney (Saradoc has power 2). Each token is 3 more Hobbit mana, an any-colour source with Enduring Vitality, a Belladonna trigger, and enters with Arwen's counters. Proposed for Eagle of Deliverance (6-drop → 4-drop).",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Belladonna Took": {
    "group": "Halflings for The Notary Hobbits (2026-11-24)",
-   "text": "Owned. Tokens entering: the first in a turn gains a life, the second draws, the third puts a counter on every creature. The Hobbits' two copies, endure Spirits and Saradoc reach three easily.",
+   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature. Saradoc, the Hobbits' copies and endure Spirits reach three; Delney doubles her trigger (power 2), so one token can reach the draw. Replaces both Eagle's draw and Claim's counters. Proposed for Claim the Kingdom.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Samwise Gamgee": {
@@ -3026,7 +3026,7 @@
   "Crime // Punishment": {
    "H": {
     "m": "★★",
-    "graded_at": "ece9d59e662b"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Kin-Tree Severance": {
@@ -3056,7 +3056,7 @@
   "Ivorytusk Fortress": {
    "H": {
     "m": "★★",
-    "graded_at": "ece9d59e662b"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Betor, Kin to All": {
@@ -3470,13 +3470,13 @@
   "Shalai, Voice of Plenty": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Choking Miasma": {
    "H": {
     "m": "★★",
-    "graded_at": "ece9d59e662b"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Mythos of Nethroi": {
@@ -3500,7 +3500,7 @@
   "Cursed Wombat": {
    "H": {
     "m": "★★",
-    "graded_at": "4c1f22d6ae28"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Insidious Roots": {
@@ -3656,7 +3656,7 @@
   "Eagle of Deliverance": {
    "H": {
     "m": "★★",
-    "graded_at": "4c1f22d6ae28"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Angelic Guardian": {
@@ -3686,13 +3686,13 @@
   "Smuggler's Surprise": {
    "H": {
     "m": "★★",
-    "graded_at": "4c1f22d6ae28"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Claim the Kingdom": {
    "H": {
     "m": "★★",
-    "graded_at": "18a732ee56c5"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Heroic Intervention": {
@@ -3908,7 +3908,7 @@
   "Despark": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Mortify": {
@@ -3986,7 +3986,7 @@
   "Dryad of the Ilysian Grove": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Icetill Explorer": {
@@ -4130,7 +4130,7 @@
   "Enduring Vitality": {
    "H": {
     "m": "★★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Elven Chorus": {
@@ -4178,13 +4178,13 @@
   "Saradoc, Master of Buckland": {
    "H": {
     "m": "★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Belladonna Took": {
    "H": {
     "m": "★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Samwise Gamgee": {
