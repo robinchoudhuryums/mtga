@@ -451,6 +451,8 @@ Discard a card: Put a +1/+1 counter on this creature.
 Exile three cards from your graveyard: This creature gains flying until end of turn.",U/B,Frog; counters; graveyard; card draw; flying; evasion,MH3,199,Rare,91,,7.5,seed
 Nadier's Nightblade,Creature — Elf Warrior,"Whenever a token you control leaves the battlefield, each opponent loses 1 life and you gain 1 life.",B,Elf; Warrior; lifegain,MH3,275,Uncommon,93,,5.5,seed
 Priest of Titania,Creature — Elf Druid,{T}: Add {G} for each Elf on the battlefield.,G,Elf; Druid; mana,MH3,286,Uncommon,75-historic-brawl,,2.5,seed
+Revitalizing Repast // Old-Growth Grove,Instant // Land,"Put a +1/+1 counter on target creature. It gains indestructible until end of turn. // This land enters tapped.
+{T}: Add {B} or {G}.",B/G,counters; mana; indestructible; resilience,MH3,256,Uncommon,105,,3.0,seed
 Sheltering Landscape,Land,"{T}: Add {C}.
 {T}, Sacrifice this land: Search your library for a basic Mountain, Forest, or Plains card, put it onto the battlefield tapped, then shuffle.
 Cycling {R}{G}{W} ({R}{G}{W}, Discard this card: Draw a card.)",W/R/G,card draw; sacrifice; ramp; mana; cycling,MH3,227,Common,88,,1.5,seed

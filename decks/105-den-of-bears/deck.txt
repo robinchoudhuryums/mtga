@@ -115,15 +115,15 @@
 1 Innkeeper's Talent (BLB) 180
 
 # Lands
-1 Boseiju, Who Endures (NEO) 266
+1 Realm of Koh (TLA) 276
 1 Overgrown Tomb (ECL) 266
 1 Woodland Cemetery (DOM) 248
 1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
-1 Llanowar Wastes (BRO) 264
-1 Deathcap Glade (SOS) 253
-1 Blooming Marsh (OTJ) 266
-1 Necroblossom Snarl (STX) 269
-1 Nurturing Peatland (HA7) 23
+1 Mana Confluence (EOS) 25
+1 Q Continuum (TRK) 290
+1 Starting Town (FIN) 289
+1 Reflecting Pool (FRC) 23
+1 Revitalizing Repast // Old-Growth Grove (MH3) 256
 1 Wastewood Verge (DFT) 268
 1 Hissing Quagmire (EOS) 19
 1 Mirkwood (HOB) 188
@@ -133,7 +133,7 @@
 1 Evolving Wilds (ECL) 264
 1 Prismatic Vista (SPG) 38
 13 Forest (TRK) 325
-1 Argoth, Sanctum of Nature (BRO) 256
+1 The Shire (LTR) 260
 5 Swamp (TRK) 321
 
 #~ +Chevill, Bane of Monsters | BENCH (builder bear-wolf): benched on the board
