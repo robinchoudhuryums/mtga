@@ -100,6 +100,7 @@ Command Subadjunct
 Corrupt Court Official
 Craterclaw Colossus
 Craterhoof Behemoth
+Crime // Punishment
 Crow of Dark Tidings
 Cruelclaw's Heist
 Crustacean Commando
@@ -168,6 +169,7 @@ Fauna Shaman
 Fear of Isolation
 Fearsome Goblin Pair
 Felonious Rage
+Felothar, Dawn of the Abzan
 Festerleech
 Fire Sages
 Firebender Ascension
@@ -192,6 +194,7 @@ Gas Guzzler
 Gastal Raider
 Germinate Recruits
 Germination Practicum
+Ghalta the Immovable
 Ghalta the Unstoppable
 Ghalta, Primal Hunger
 Ghost, Spectral Saboteur
@@ -256,6 +259,7 @@ Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
+Ivorytusk Fortress
 Jadzia Dax, Living Legacy
 Jeong Jeong, the Deserter
 Jeskai Brushmaster
@@ -270,7 +274,6 @@ Karolina Dean, Runaway
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
-Kin-Tree Invocation
 Kiora's Follower
 Kirol, Attentive First-Year
 Kitsune's Technique
@@ -298,6 +301,7 @@ Living Brain, Mechanical Marvel
 Loki Laufeyson
 Long Feng, Grand Secretariat
 Lorehold, the Historian
+Loxodon Lifechanter
 Magic Pot
 Magitek Armor
 Mai, Jaded Edge

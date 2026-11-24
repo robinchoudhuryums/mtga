@@ -9,7 +9,7 @@
 #: archetype: with LOW cost and HIGH toughness (Crystal Barricade flips for 2 and endures 4, Flatman 4 → 10, The Walls of
 #: archetype: Ba Sing Se 8 → 30, flipped for {1}{G} by Hauntwoods Shrieker), and toughness becomes the damage stat
 #: archetype: through the enablers (Felothar the Steadfast, Assault Formation, Huatli, Doran, Lumberknot, Bedrock
-#: archetype: Tortoise, Tapestry Warden, Kingpin, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
+#: archetype: Tortoise, Tapestry Warden, Ghalta, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
 #: archetype: → another manifest, until the library runs out of creatures) and Threats Around Every Corner fetches a
 #: archetype: basic for each face-down creature (landfall → another manifest). Elesh Norn doubles every landfall. Low
 #: archetype: power is UPSIDE: power-capped recursion (Smile at Death, Slumbering Walker, Nethroi's total power 10)
@@ -33,7 +33,7 @@
 1 Bedrock Tortoise (LCI) 176
 1 Tapestry Warden (EOE) 209
 1 Huatli, the Sun's Heart (WAR) 230
-1 The Kingpin of Crime (MSH) 220
+1 Catapult Fodder // Catapult Captain (VOW) 99
 1 Teyo, Aegis Adept (J21) 6
 
 # Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)
@@ -52,7 +52,7 @@
 1 Threats Around Every Corner (DSK) 200
 1 Ashaya, Soul of the Wild (ZNR) 179
 1 Harrowing Swarm (YDSK) 16
-1 Trail of Mystery (KTK) 154
+1 Dormant Grove // Gnarled Grovestrider (VOW) 198
 1 Whisperwood Elemental (PIO) 200
 1 Mentor of the Meek (HOC) 170
 
@@ -63,19 +63,19 @@
 1 The Necrobloom (MH3) 194
 1 Druid Class (AFR) 180
 1 Dryad of the Ilysian Grove (THB) 169
-1 Icetill Explorer (EOE) 192
+1 Loxodon Lifechanter (M20) 27
 1 Rok-Tahk, Budding Scientist (TRK) 211
 
 # Payoffs and card flow
 1 Betor, Kin to All (TDM) 172
 1 Jenova, Ancient Calamity (FIN) 228
 1 Akroma's Will (SOA) 1
-1 Kin-Tree Invocation (KTK) 183
+1 Felothar, Dawn of the Abzan (TDM) 184
 1 Delney, Streetwise Lookout (MKM) 12
-1 Veteran Beastrider (DFT) 226
+1 Ivorytusk Fortress (KTK) 179
 1 Captain America's Shield (MSH) 244
-1 Eladamri, Korvecdal (MH3) 149
-1 Sharp-Eyed Rookie (MKM) 176
+1 Last March of the Ents (LTR) 172
+1 Arwen, Weaver of Hope (LTC) 35
 
 # Recursion — power-capped, which is upside in a power-0 deck
 1 Nethroi, Apex of Death (IKO) 197
@@ -87,21 +87,21 @@
 1 Mythos of Nethroi (IKO) 97
 1 Abzan Charm (KTK) 161
 1 Anguished Unmaking (OTP) 35
-1 Infernal Grasp (MID) 107
+1 Choking Miasma (DMU) 86
 1 Vindicate (MH2) 294
 1 Despark (WAR) 190
 1 Languish (HOC) 187
 1 Toxic Deluge (MH3) 277
 1 Destined Confrontation (TLA) 15
-1 Break Down the Door (DSK) 170
+1 Crime // Punishment (OTP) 39
 1 Garruk, Apex Predator (PIO) 225
 
 # Protection
 1 Heroic Intervention (M21) 188
 1 Shalai, Voice of Plenty (DOM) 35
 1 Earthshape (TLE) 67
-1 Restoration Magic (FIN) 30
-1 Hakoda, Selfless Commander (TLA) 23
+1 Smuggler's Surprise (OTJ) 180
+1 Ghalta the Immovable (FRA) 197
 
 # Lands — fetches count twice for landfall; Threats Around Every Corner wants basics
 1 Command Tower (FRC) 22
@@ -131,3 +131,22 @@
 6 Forest (TRK) 325
 4 Plains (TRK) 317
 3 Swamp (TRK) 321
+
+#~ +Beorn's Hospitality | BENCH (builder hamza): benched on the board
+#~ +Blighted Nightmare | BENCH (builder hamza): benched on the board
+#~ +Braulios of Pheres Band | BENCH (builder hamza): benched on the board
+#~ +Call the Crash | BENCH (builder hamza): benched on the board
+#~ +Eerie Ultimatum | BENCH (builder hamza): benched on the board
+#~ +Karametra, God of Harvests | BENCH (builder hamza): benched on the board
+#~ +Luke Cage, Power Man | BENCH (builder hamza): benched on the board
+#~ +Nog, Ambitious Cadet | BENCH (builder hamza): benched on the board
+#~ +Polukranos Reborn // Polukranos, Engine of Ruin | BENCH (builder hamza): benched on the board
+#~ +Rasaad, Monk of Selûne | BENCH (builder hamza): benched on the board
+#~ +Sauron, Dino Devotee | BENCH (builder hamza): benched on the board
+#~ +Sleuth Instructor | BENCH (builder hamza): benched on the board
+#~ +Stalwart Successor | BENCH (builder hamza): benched on the board
+#~ +Sultai Flayer | BENCH (builder hamza): benched on the board
+#~ +Swampbenders | BENCH (builder hamza): benched on the board
+#~ +The Soul Stone | BENCH (builder hamza): benched on the board
+#~ +Toski, Bearer of Secrets | BENCH (builder hamza): benched on the board
+#~ +Valgavoth's Onslaught | BENCH (builder hamza): benched on the board

@@ -896,10 +896,10 @@
    }
   },
   "Crime // Punishment": {
-   "group": "Bench — real, not in the first draft",
-   "text": "steal a reanimation target, or an X-sweeper that dodges our MVs",
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "Punishment is an X sweeper that our mana values dodge; Crime steals a creature from their graveyard. The tools count it as no role. Replaced Break Down the Door.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Kin-Tree Severance": {
@@ -931,10 +931,10 @@
    }
   },
   "Ivorytusk Fortress": {
-   "group": "Bench — real, not in the first draft",
-   "text": "every endured creature has counters → attacks AND blocks; flip 5 → 7",
+   "group": "Payoffs and card flow",
+   "text": "Untaps every creature with a counter on each opponent's turn; endure puts counters everywhere, so the team attacks and still blocks. Replaced Veteran Beastrider.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Betor, Kin to All": {
@@ -1008,10 +1008,10 @@
    }
   },
   "Felothar, Dawn of the Abzan": {
-   "group": "Bench — real, not in the first draft",
-   "text": "counters on the team, trample",
+   "group": "Payoffs and card flow",
+   "text": "Sacrifices an endure Spirit or a Plant on entering and on every attack to put a counter on each creature. Replaced Kin-Tree Invocation.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Death's Oasis": {
@@ -1050,10 +1050,10 @@
    }
   },
   "Kin-Tree Invocation": {
-   "group": "Payoffs and card flow",
-   "text": "2 mana, X/X = greatest toughness (F7)",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Felothar, Dawn of the Abzan. A 2-mana X/X (greatest toughness) is still a fine early play.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Nog, Ambitious Cadet": {
@@ -1127,10 +1127,10 @@
    }
   },
   "Break Down the Door": {
-   "group": "Interaction",
-   "text": "art/ench exile or manifest dread, instant",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Crime // Punishment. Instant artifact/enchantment exile or a manifest; return it if you face artifact decks.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Guardian of the Forgotten": {
@@ -1169,24 +1169,24 @@
    }
   },
   "Sharp-Eyed Rookie": {
-   "group": "Payoffs and card flow",
-   "text": "nearly every creature we play has toughness >2 → clue each",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Arwen. Clues off every high-toughness creature; a fine return if card advantage runs thin.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Arwen, Weaver of Hope": {
-   "group": "Bench — real, not in the first draft",
-   "text": "face-down manifests ENTER → +1 counter each",
+   "group": "Payoffs and card flow",
+   "text": "With Captain America's Shield on her she's a 2/9, so every creature after her, each Hamza manifest included, enters with 9 extra counters. Replaced Sharp-Eyed Rookie.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Dormant Grove // Gnarled Grovestrider": {
-   "group": "Bench — real, not in the first draft",
-   "text": "transforms on any 6-toughness → team vigilance (attack and block)",
+   "group": "Payoffs and card flow",
+   "text": "A counter each combat; transforms at toughness 6 (immediate here) into team vigilance. Replaced Trail of Mystery.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Bedrock Tortoise": {
@@ -1288,10 +1288,10 @@
    }
   },
   "Last March of the Ents": {
-   "group": "Bench — real, not in the first draft",
-   "text": "draw = greatest toughness, then deploy",
+   "group": "Payoffs and card flow",
+   "text": "Draws equal to the greatest toughness, then puts creatures from hand onto the battlefield. The draw isn't optional, so with the Walls out it's 30 cards. Replaced Eladamri.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Bark of Doran": {
@@ -1358,24 +1358,24 @@
    }
   },
   "Loxodon Lifechanter": {
-   "group": "Bench — real, not in the first draft",
-   "text": "Life becomes total toughness (30–50 here), then {5}{W}: +X/+X where X is your life — under an enabler, one swing kills from 25.",
+   "group": "Payoffs and card flow",
+   "text": "Life becomes total toughness (30–50 here), then {5}{W}: +X/+X where X is life, a one-swing kill under an enabler. Replaced Icetill Explorer.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Ghalta the Immovable": {
-   "group": "Bench — real, not in the first draft",
-   "text": "enabler + defender attack; costs ~4 cast, 9 flipped (F4)",
+   "group": "Toughness enablers — each creature (or each with toughness > power) deals damage equal to its toughness",
+   "text": "Toughness-damage enabler that lets defenders attack; costs about 4 with a 5-toughness creature out (9 if flipped). Replaced Hakoda.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "The Kingpin of Crime": {
-   "group": "Toughness enablers",
-   "text": "1/5 for 3, extort, attack-time enabler",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Catapult Fodder. Its enabler costs 2 life per attack; Bark of Doran or Ghalta do the job more cheaply.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Tymaret, Chosen from Death": {
@@ -1421,10 +1421,10 @@
    }
   },
   "Choking Miasma": {
-   "group": "Bench — real, not in the first draft",
-   "text": "−2/−2 sweep our toughness survives",
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "−2/−2 sweep our walls shrug off. Flip the face-down 2/2s you want to keep first; each flip is a Hamza endure. Replaced Infernal Grasp.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Mythos of Nethroi": {
@@ -1568,10 +1568,10 @@
    }
   },
   "Restoration Magic": {
-   "group": "Protection",
-   "text": "1-mana protection, scalable",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Smuggler's Surprise, whose {1} mode does the same protection with more options.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Basri Ket": {
@@ -1596,10 +1596,10 @@
    }
   },
   "Hakoda, Selfless Commander": {
-   "group": "Protection",
-   "text": "+0/+5 team = +5 damage each under an enabler",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Ghalta. One-shot +0/+5 and indestructible for the team; the first protection piece to bring back.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Luke Cage, Power Man": {
@@ -1666,10 +1666,10 @@
    }
   },
   "Smuggler's Surprise": {
-   "group": "Bench — real, not in the first draft",
-   "text": "mill/deploy; hexproof mode is power≥4 (anti, F2)",
+   "group": "Protection",
+   "text": "{4}{G} puts two creatures from hand onto the battlefield; they ENTER, so Towering Titan gets its counters. {1} mode gives hexproof and indestructible. Replaced Restoration Magic.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Claim the Kingdom": {
@@ -1764,17 +1764,17 @@
    }
   },
   "Eladamri, Korvecdal": {
-   "group": "Payoffs and card flow",
-   "text": "cast creatures from top; free creature drop",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Last March. Casting creatures from the top is good, but GG on turn 3 is 66% here.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Veteran Beastrider": {
-   "group": "Payoffs and card flow",
-   "text": "untap team at end step → attack AND block",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Ivorytusk Fortress, which does the same attack-and-block job on a bigger body.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Delney, Streetwise Lookout": {
@@ -1911,10 +1911,10 @@
    }
   },
   "Infernal Grasp": {
-   "group": "Interaction",
-   "text": "2-mana instant kill",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut 2026-11-24 for Choking Miasma (owner's pick). Still a clean 2-mana kill if spot removal runs short.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Vindicate": {
@@ -1953,10 +1953,10 @@
    }
   },
   "Trail of Mystery": {
-   "group": "Face-down engine",
-   "text": "basic to hand per face-down; +2/+2 on every flip",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Dormant Grove. Lands to hand per face-down plus +2/+2 on flips; the face-down support most worth returning.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Whisperwood Elemental": {
@@ -2009,10 +2009,10 @@
    }
   },
   "Catapult Fodder // Catapult Captain": {
-   "group": "Bench — real, not in the first draft",
-   "text": "1/5 for 3; transforms (3 T>P creatures) into a toughness-drain outlet",
+   "group": "Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)",
+   "text": "A 1/5 for 3 that transforms off three creatures with toughness above power, then sacrifices for life loss equal to toughness: 30 from the Walls. Replaced The Kingpin of Crime.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Dryad of the Ilysian Grove": {
@@ -2023,10 +2023,10 @@
    }
   },
   "Icetill Explorer": {
-   "group": "Landfall and extra land drops",
-   "text": "extra land drops (F3)",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Loxodon Lifechanter. Extra land drop plus lands from the graveyard; return it if landfall feels thin.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "ece9d59e662b"
    }
   },
   "Oracle of Mul Daya": {
@@ -2172,6 +2172,98 @@
     "Whisperwood Elemental",
     "Woodland Cemetery",
     "Yathan Roadwatcher"
+   ],
+   "ece9d59e662b": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Amaranthine Wall",
+    "Ancient Lumberknot",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Bedrock Tortoise",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Druid Class",
+    "Dryad of the Ilysian Grove",
+    "Earthshape",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Garruk, Apex Predator",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Harrowing Swarm",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Languish",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Mentor of the Meek",
+    "Mythos of Nethroi",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Sunpetal Grove",
+    "Swamp",
+    "Tapestry Warden",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Necrobloom",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Whisperwood Elemental",
+    "Woodland Cemetery",
+    "Yathan Roadwatcher"
    ]
   }
  },
@@ -2191,7 +2283,7 @@
   "Crime // Punishment": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "Kin-Tree Severance": {
@@ -2221,7 +2313,7 @@
   "Ivorytusk Fortress": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "Betor, Kin to All": {
@@ -2286,8 +2378,8 @@
   },
   "Felothar, Dawn of the Abzan": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Death's Oasis": {
@@ -2322,8 +2414,8 @@
   },
   "Kin-Tree Invocation": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Nog, Ambitious Cadet": {
@@ -2388,8 +2480,8 @@
   },
   "Break Down the Door": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Guardian of the Forgotten": {
@@ -2424,20 +2516,20 @@
   },
   "Sharp-Eyed Rookie": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Arwen, Weaver of Hope": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Dormant Grove // Gnarled Grovestrider": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "Bedrock Tortoise": {
@@ -2526,8 +2618,8 @@
   },
   "Last March of the Ents": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Bark of Doran": {
@@ -2587,19 +2679,19 @@
   "Loxodon Lifechanter": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "Ghalta the Immovable": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "The Kingpin of Crime": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Tymaret, Chosen from Death": {
@@ -2641,7 +2733,7 @@
   "Choking Miasma": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "ece9d59e662b"
    }
   },
   "Mythos of Nethroi": {
@@ -2766,8 +2858,8 @@
   },
   "Restoration Magic": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Basri Ket": {
@@ -2790,8 +2882,8 @@
   },
   "Hakoda, Selfless Commander": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Luke Cage, Power Man": {
@@ -2850,8 +2942,8 @@
   },
   "Smuggler's Surprise": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Claim the Kingdom": {
@@ -2934,14 +3026,14 @@
   },
   "Eladamri, Korvecdal": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Veteran Beastrider": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Delney, Streetwise Lookout": {
@@ -3060,8 +3152,8 @@
   },
   "Infernal Grasp": {
    "H": {
-    "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Vindicate": {
@@ -3096,8 +3188,8 @@
   },
   "Trail of Mystery": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Whisperwood Elemental": {
@@ -3144,8 +3236,8 @@
   },
   "Catapult Fodder // Catapult Captain": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Dryad of the Ilysian Grove": {
@@ -3156,8 +3248,8 @@
   },
   "Icetill Explorer": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "ece9d59e662b"
    }
   },
   "Oracle of Mul Daya": {
@@ -3205,6 +3297,9 @@
  },
  "hidden": {
   "Destined Confrontation": [
+   "interaction"
+  ],
+  "Crime // Punishment": [
    "interaction"
   ]
  }
