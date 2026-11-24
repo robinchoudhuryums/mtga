@@ -144,6 +144,7 @@
  "Call the Crash": [],
  "Captain America's Shield": [],
  "Captain America, Wings of Freedom": [],
+ "Carven Caryatid": [],
  "Catapult Fodder // Catapult Captain": [],
  "Chevill, Bane of Monsters": [],
  "Choking Miasma": [],
@@ -324,6 +325,7 @@
  "Ghalta the Immovable": [],
  "Glint Weaver": [],
  "Golden-Tail Trainer": [],
+ "Greenbelt Radical": [],
  "Grunn, the Lonely King": [],
  "Guardian of the Forgotten": [],
  "Hakoda, Selfless Commander": [],
@@ -424,6 +426,7 @@
   }
  ],
  "Hooded Hydra": [],
+ "Hornet Nest": [],
  "Huatli, the Sun's Heart": [
   {
    "a": "Lius Lasahido",
@@ -502,6 +505,7 @@
    "y": "2025"
   }
  ],
+ "Inspiring Commander": [],
  "Ivorytusk Fortress": [],
  "Jadzia Dax, Living Legacy": [],
  "Jenova, Ancient Calamity": [],
@@ -779,7 +783,11 @@
  "Stalwart Successor": [],
  "Strength of Will": [],
  "Sultai Flayer": [],
+ "Sumala Sentry": [],
  "Swampbenders": [],
+ "Sword of Forge and Frontier": [],
+ "Sylvan Caryatid": [],
+ "Symmetry Matrix": [],
  "Tapestry Warden": [],
  "Tenth District Hero": [],
  "Teyo, Aegis Adept": [],
@@ -818,6 +826,32 @@
  "The Soul Stone": [],
  "The Walls of Ba Sing Se": [],
  "Threats Around Every Corner": [],
+ "Tireless Tracker": [
+  {
+   "a": "Donato Giancola",
+   "art": "https://cards.scryfall.io/art_crop/front/b/3/b3364018-aeba-4f58-8233-b0026c488dd0.jpg?1783912747",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/3/b3364018-aeba-4f58-8233-b0026c488dd0.jpg?1783912747",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  },
+  {
+   "a": "Eric Deschamps",
+   "art": "https://cards.scryfall.io/art_crop/front/e/7/e7fe81de-a81f-4226-9067-4d6598b82016.jpg?1783908614",
+   "cn": "729",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/7/e7fe81de-a81f-4226-9067-4d6598b82016.jpg?1783908614",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
  "Toski, Bearer of Secrets": [
   {
    "a": "Jason Rainville",
@@ -925,12 +959,42 @@
  ],
  "Unyielding Gatekeeper": [],
  "Valgavoth's Onslaught": [],
+ "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": [],
  "Verdant Dread": [],
  "Veteran Beastrider": [],
+ "Vigorbloom Charm": [],
  "Vindicate": [],
  "Vraska Joins Up": [],
  "Vraska's Stoneglare": [],
  "Walking Bulwark": [],
+ "Wall of Blossoms": [],
+ "Wall of Omens": [],
+ "Welcoming Vampire": [
+  {
+   "a": "Lorenzo Mastroianni",
+   "art": "https://cards.scryfall.io/art_crop/front/d/8/d8f69cea-823c-482b-a605-8138b3d950e6.jpg?1783924905",
+   "cn": "46",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/8/d8f69cea-823c-482b-a605-8138b3d950e6.jpg?1783924905",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Christian Angel",
+   "art": "https://cards.scryfall.io/art_crop/front/f/d/fd60ee8d-fb50-41df-89a8-aed5a53d755f.jpg?1783924768",
+   "cn": "287",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/d/fd60ee8d-fb50-41df-89a8-aed5a53d755f.jpg?1783924768",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  }
+ ],
  "Whisperwood Elemental": [],
  "Wildgrove Summoner": [],
  "Yathan Roadwatcher": [],

@@ -883,6 +883,76 @@
    "name": "The Notary Hobbits",
    "pile": "H",
    "src": "added"
+  },
+  {
+   "name": "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Tireless Tracker",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Wall of Omens",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Wall of Blossoms",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Carven Caryatid",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Caryatid",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Welcoming Vampire",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sumala Sentry",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Greenbelt Radical",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vigorbloom Charm",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Forge and Frontier",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Inspiring Commander",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Symmetry Matrix",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hornet Nest",
+   "pile": "H",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -2086,6 +2156,104 @@
   "The Notary Hobbits": {
    "group": "Landfall and extra land drops (every land is a Hamza manifest)",
    "text": "Owned. Two token copies; each Halfling taps for one per Halfling, so about 9 colourless from the next turn, 25 with Elesh Norn. Pays The Walls' 8-mana flip, Last March, Titan and Lifechanter's pump. Flipped from a manifest it makes no tokens. Replaced Dormant Grove.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Owned. Draws once a turn when you cast a legendary spell (23 in the deck). {7},T: exile a nonland permanent (the Hobbits pay it), then it transforms: each combat a counter and indestructible on another creature, plus a draw if that creature is legendary. Card advantage, interaction and protection in one. WW on turn 3 is about 63%.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Tireless Tracker": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "A Clue on every land drop, two with Elesh Norn, and it grows when you crack them. Fixes the thinnest axis (card advantage 8) off the deck's own engine; the Hobbits' colourless cracks Clues.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Wall of Omens": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "0/4 defender that draws on entering. Flips for 2 → endure 4; Smile at Death and Slumbering Walker return power ≤2 creatures, so it re-draws every time.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Wall of Blossoms": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Green Wall of Omens: 0/4, draws on entering, flips for 2 → endure 4, and the power-capped recursion re-buys the draw.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Carven Caryatid": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "2/5 defender that draws on entering; flips for 3 → endure 5. Power 2, so Smile at Death returns it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sylvan Caryatid": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "0/3 hexproof defender that taps for any colour: fixing for the double-pip cards (Basri, Choking Miasma, Hauntwoods) plus a cheap flip (2 → endure 3).",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Welcoming Vampire": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Draws once a turn when a power-2-or-less creature enters, which every Hamza manifest is. A 2/3 flier. Card advantage tied to the engine.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sumala Sentry": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "1/3 for GW: whenever a face-down creature is turned face up, a counter on it and on the Sentry (two each with Cursed Wombat). Stacks on Hamza's endure.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Greenbelt Radical": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Disguise: cast face down for 3, flip for {5}{G}{G} (the Hobbits help) → a counter on every creature and team trample, which toughness damage badly wants; Hamza also endures it 4.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vigorbloom Charm": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Owned. 2-mana instant: hexproof and indestructible on a permanent, or draw and gain 3, or a counter then a fight. Protection or card advantage as needed.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sword of Forge and Frontier": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "On a toughness attacker that connects (Delney makes that easy): play the top two cards and an extra land, which is another Hamza trigger. +2/+2 and protection from red and green.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Inspiring Commander": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Life and a draw for every power-≤2 creature that enters, with no once-a-turn limit, so each manifest draws (two with Elesh Norn). 6 mana for a 1/4.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Symmetry Matrix": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Spice: every face-down 2/2 and every endure Spirit token has power equal to toughness, so each one entering is a {1} draw; the Hobbits pay for it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Hornet Nest": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Spice: blocks and makes deathtouch fliers equal to the damage taken. Only a 0/2, so it's a poor flip and dies to our own sweepers.",
    "graded_at": {
     "106": "638d0b4a0931"
    }
@@ -3587,6 +3755,90 @@
   "The Notary Hobbits": {
    "H": {
     "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Tireless Tracker": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Wall of Omens": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Wall of Blossoms": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Carven Caryatid": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sylvan Caryatid": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Welcoming Vampire": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sumala Sentry": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Greenbelt Radical": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vigorbloom Charm": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sword of Forge and Frontier": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Inspiring Commander": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Symmetry Matrix": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Hornet Nest": {
+   "H": {
+    "m": "◇",
     "graded_at": "638d0b4a0931"
    }
   }
