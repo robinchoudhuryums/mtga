@@ -1,7 +1,7 @@
 # Abzan toughness (Hamza) — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — all 163 cards graded (batches 1–4); consolidated plan drafted;
-awaiting owner picks before /draft-deck.** Delete once the deck is drafted and the
+**Status: DRAFTED as deck 106 (Yathan Bulwark, 2026-11-24); its Builder board is
+`builds/hamza` — owner reviewing picks there.** Delete once the deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth —
 decks/ are.
 
@@ -117,6 +117,13 @@ choose endure's Spirit TOKEN on a creature you want to keep under Delney. Gravey
 **What no tool scores here** (G-67): toughness-as-damage (the floor counts interaction and
 card advantage, not damage), flip value, the two loops, and power-capped upside. `cuts` will
 read the walls as low-power filler — every wall goes on the protect list.
+
+**Tool gaps found while drafting (G-67, fix in a batch later):** Destined Confrontation
+("each player chooses creatures with total power 4 or less, then sacrifices all other
+creatures") scores NO role, so deck 106 reads interaction 11 against a real 12 — recorded on
+the board as a hidden interaction role. `similar` and the theme tags see none of the
+toughness / face-down identity (deck 106's top themes read mana, tokens, pay life), so its
+similarity percentages are generic-theme noise; card overlap with any roster deck is ≤1.
 
 ## 2. Standing error list
 - E1: don't grade a 0-power creature as a vanilla wall when ≥5 enablers are in the list (F1).

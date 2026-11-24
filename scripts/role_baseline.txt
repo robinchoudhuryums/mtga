@@ -23,6 +23,7 @@ Ajani, Caller of the Pride
 Akul the Unrepentant
 Altar of Dementia
 Ambitious Augmenter
+Ancient Lumberknot
 Angel of Vitality
 Angelic Destiny
 Another Round
@@ -38,6 +39,7 @@ Army of the Damned
 Arnim Zola, Bio-Fanatic
 Arwen, Weaver of Hope
 As Foretold
+Ashaya, Soul of the Wild
 Ashiok, Nightmare Weaver
 Ashroot Animist
 Aurelia, the Warleader
@@ -119,6 +121,7 @@ Deepway Navigator
 Defiant Survivor
 Demonic Ruckus
 Desert Were-Worm
+Destined Confrontation
 Diligent Zookeeper
 Dominion Supervisor
 Don & Leo, Problem Solvers
@@ -170,6 +173,7 @@ Fire Sages
 Firebender Ascension
 Firebending Student
 Flamehold Grappler
+Flatman
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
 Fog Bank
@@ -228,6 +232,7 @@ High Fae Trickster
 Holo-Engineer
 Honden of Night's Reach
 Honored Knight-Captain
+Hooded Hydra
 Hop to It
 Hope Against Hope
 Hour of Victory
@@ -265,6 +270,7 @@ Karolina Dean, Runaway
 Katara, Water Tribe's Hope
 Kav Landseeker
 Kavaron Skywarden
+Kin-Tree Invocation
 Kiora's Follower
 Kirol, Attentive First-Year
 Kitsune's Technique
@@ -506,6 +512,7 @@ Toph, the First Metalbender
 Topiary Lecturer
 Torbran, Thane of Red Fell
 Treasure Dredger
+Tree of Perdition
 Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
@@ -546,6 +553,7 @@ Welcome to Sweettooth
 Whiplash Wordsmith // Vicious Verse
 Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
+Whisperwood Elemental
 White Tiger, Ava Ayala
 Wisecrack
 Wolverine, Claws Out

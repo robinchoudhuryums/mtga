@@ -1,0 +1,133 @@
+#: name: Yathan Bulwark
+#: format: Historic Brawl
+#: colors: WBG
+#: commander: Hamza, Might of the Yathan
+#: plan: midrange
+#: archetype: 100-card Brawl, ABZAN TOUGHNESS around Hamza, Might of the Yathan. Every land you play SEEKS a creature
+#: archetype: card and manifests it face down as a 2/2; when any face-down creature is turned face up, Hamza makes it
+#: archetype: ENDURE X where X is its toughness (X +1/+1 counters, or an X/X Spirit). So the deck is built from creatures
+#: archetype: with LOW cost and HIGH toughness (Crystal Barricade flips for 2 and endures 4, Flatman 4 → 10, The Walls of
+#: archetype: Ba Sing Se 8 → 30, flipped for {1}{G} by Hauntwoods Shrieker), and toughness becomes the damage stat
+#: archetype: through the enablers (Felothar the Steadfast, Assault Formation, Huatli, Doran, Lumberknot, Bedrock
+#: archetype: Tortoise, Tapestry Warden, Kingpin, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
+#: archetype: → another manifest, until the library runs out of creatures) and Threats Around Every Corner fetches a
+#: archetype: basic for each face-down creature (landfall → another manifest). Elesh Norn doubles every landfall. Low
+#: archetype: power is UPSIDE: power-capped recursion (Smile at Death, Slumbering Walker, Nethroi's total power 10)
+#: archetype: returns the walls, Delney makes power ≤2 attackers unblockable by power ≥3, and Destined Confrontation,
+#: archetype: Languish and Toxic Deluge are one-sided against a board of 5+ toughness. Distinct from every roster deck:
+#: archetype: the only face-down / toughness-as-damage list.
+#: protect: Hamza, Might of the Yathan; Felothar the Steadfast; Doran, Besieged by Time; Assault Formation; Crystal Barricade; The Walls of Ba Sing Se; Hauntwoods Shrieker; Threats Around Every Corner; Ashaya, Soul of the Wild; Smile at Death; Delney, Streetwise Lookout; Destined Confrontation
+#: notes: Drafted 2026-11-24 from the Abzan toughness pile (.cycle/abzan-toughness-pile-analysis.md) plus an off-pile
+#: notes: search. Defaults chosen while the owner's two open questions stand: both loops at moderate depth (37
+#: notes: creatures, 13 basics) and about six protection cards. A flipped creature gets no ETB, no kicker and no cost
+#: notes: reduction; Towering Titan and Darksteel Hydra were left out because they flip as 0/0 and die.
+
+# Commander
+1 Hamza, Might of the Yathan (YTDM) 21
+
+# Toughness enablers — each creature (or each with toughness > power) deals damage equal to its toughness
+1 Felothar the Steadfast (TDC) 4
+1 Doran, Besieged by Time (ECL) 215
+1 Assault Formation (JMP) 378
+1 Ancient Lumberknot (VOW) 230
+1 Bedrock Tortoise (LCI) 176
+1 Tapestry Warden (EOE) 209
+1 Huatli, the Sun's Heart (WAR) 230
+1 The Kingpin of Crime (MSH) 220
+1 Teyo, Aegis Adept (J21) 6
+
+# Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)
+1 Crystal Barricade (FDN) 7
+1 The Walls of Ba Sing Se (TLA) 261
+1 Amaranthine Wall (DOM) 210
+1 Flatman (MSC) 721
+1 Tree of Perdition (SIR) 136
+1 Essence of Antiquity (MKM) 15
+1 Nyx-Fleece Ram (J25) 231
+1 Slumbering Walker (ECL) 35
+1 Hooded Hydra (KTK) 136
+
+# Face-down engine
+1 Hauntwoods Shrieker (DSK) 182
+1 Threats Around Every Corner (DSK) 200
+1 Ashaya, Soul of the Wild (ZNR) 179
+1 Harrowing Swarm (YDSK) 16
+1 Trail of Mystery (KTK) 154
+1 Whisperwood Elemental (PIO) 200
+1 Mentor of the Meek (HOC) 170
+
+# Landfall and extra land drops (every land is a Hamza manifest)
+1 Thalia and The Gitrog Monster (MOM) 255
+1 Fecund Greenshell (BLB) 171
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 The Necrobloom (MH3) 194
+1 Druid Class (AFR) 180
+1 Dryad of the Ilysian Grove (THB) 169
+1 Icetill Explorer (EOE) 192
+1 Rok-Tahk, Budding Scientist (TRK) 211
+
+# Payoffs and card flow
+1 Betor, Kin to All (TDM) 172
+1 Jenova, Ancient Calamity (FIN) 228
+1 Akroma's Will (SOA) 1
+1 Kin-Tree Invocation (KTK) 183
+1 Delney, Streetwise Lookout (MKM) 12
+1 Veteran Beastrider (DFT) 226
+1 Captain America's Shield (MSH) 244
+1 Eladamri, Korvecdal (MH3) 149
+1 Sharp-Eyed Rookie (MKM) 176
+
+# Recursion — power-capped, which is upside in a power-0 deck
+1 Nethroi, Apex of Death (IKO) 197
+1 Smile at Death (TDM) 24
+1 Yathan Roadwatcher (TDM) 236
+
+# Interaction — the -X/-X sweepers spare our high-toughness board
+1 Kin-Tree Severance (TDM) 200
+1 Mythos of Nethroi (IKO) 97
+1 Abzan Charm (KTK) 161
+1 Anguished Unmaking (OTP) 35
+1 Infernal Grasp (MID) 107
+1 Vindicate (MH2) 294
+1 Despark (WAR) 190
+1 Languish (HOC) 187
+1 Toxic Deluge (MH3) 277
+1 Destined Confrontation (TLA) 15
+1 Break Down the Door (DSK) 170
+1 Garruk, Apex Predator (PIO) 225
+
+# Protection
+1 Heroic Intervention (M21) 188
+1 Shalai, Voice of Plenty (DOM) 35
+1 Earthshape (TLE) 67
+1 Restoration Magic (FIN) 30
+1 Hakoda, Selfless Commander (TLA) 23
+
+# Lands — fetches count twice for landfall; Threats Around Every Corner wants basics
+1 Command Tower (FRC) 22
+1 Sandsteppe Citadel (TDM) 266
+1 Indatha Triome (IKO) 248
+1 Overgrown Tomb (ECL) 266
+1 Godless Shrine (EOE) 254
+1 Temple Garden (ECL) 268
+1 Woodland Cemetery (DOM) 248
+1 Isolated Chapel (DOM) 241
+1 Sunpetal Grove (XLN) 257
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Branchloft Pathway (ZNR) 258
+1 Brightclimb Pathway // Grimclimb Pathway (ZNR) 259
+1 Wastewood Verge (DFT) 268
+1 Bleachbone Verge (DFT) 250
+1 Hushwood Verge (DSK) 261
+1 Mana Confluence (EOS) 25
+1 Brushland (BRO) 259
+1 Llanowar Wastes (BRO) 264
+1 Caves of Koilos (DMU) 244
+1 Reflecting Pool (FRC) 23
+1 Deceptive Landscape (MH3) 219
+1 Evolving Wilds (ECL) 264
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+6 Forest (TRK) 325
+4 Plains (TRK) 317
+3 Swamp (TRK) 321
