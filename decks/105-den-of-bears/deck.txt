@@ -87,6 +87,7 @@
 1 The Great Henge (ELD) 161
 1 Fight Rigging (SNC) 145
 1 Sentinel of the Nameless City (LCI) 211
+1 Shang-Chi, Martial Mentor (MSC) 732
 
 # Ramp
 1 Fuel Tank Feaster (YDFT) 17
@@ -131,7 +132,6 @@
 1 Fabled Passage (BLB) 252
 1 Evolving Wilds (ECL) 264
 1 Prismatic Vista (SPG) 38
-1 Shang-Chi, Martial Mentor (MSC) 732
 13 Forest (TRK) 325
 1 Argoth, Sanctum of Nature (BRO) 256
 5 Swamp (TRK) 321
