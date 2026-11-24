@@ -42,10 +42,10 @@ Amaranthine Wall 0/6, Lumberknot 1/4, Flatman 1/10, Kingpin 1/5). So:
   attackers evasive;
 - Destined Confrontation ("keep total power 4 or less") is a ONE-SIDED wrath for us;
 - power-based removal aimed at us (Abzan Charm's mode, "power 4 or greater") whiffs.
-Conversely, "equal to its POWER" payoffs are weak (Madame Null, Jenova, Golden-Tail
+Conversely, "equal to its POWER" payoffs start weak (Madame Null, Jenova, Golden-Tail
 Trainer, Ruthless Technomancer's Treasures, Body Launderer's own cap) and "equal to its
 TOUGHNESS" payoffs are strong (Felothar's sac-draw, South Wind Avatar, Stoneglare/Garruk
-lifegain, Kin-Tree Invocation, Abzan Monument, Last March).
+lifegain, Kin-Tree Invocation, Abzan Monument, Last March). See F11: counters lift the power-scaled ones.
 
 **F3 — Hamza turns lands into creatures, so landfall COUNT is a payoff multiplier.** Every
 land = a 2/2 face-down body plus a creature pulled out of the library. Extra land drops
@@ -105,6 +105,15 @@ Eclipsed blight cost (put X −1/−1 counters on a creature you control); the p
 reminder text for it. A high-toughness creature pays it painlessly — a 0/6 eats six.
 Verify on the card in Arena before relying on it.
 
+**F11 — Counters lift power-scaled cards and break power caps (owner, 2026-11-24).** Hamza's
+endure, Arwen, Cursed Wombat and friends put counters everywhere, so a power-scaled card is
+not dead here: Jenova (1/5, gap 4) grows into its "counters equal to Jenova's power", Teyo's
++1 rebases a 0/5 to 5/5, and Golden-Tail Trainer/Madame Null read better than their printed
+power. The flip side: counters on the battlefield push our creatures OUT of the power ≤2
+clauses that live there (Delney's evasion and doubling, Enduring Innocence's trigger) — so
+choose endure's Spirit TOKEN on a creature you want to keep under Delney. Graveyard caps
+(Smile at Death, Slumbering Walker, Nethroi) are unaffected: counters leave with the card.
+
 **What no tool scores here** (G-67): toughness-as-damage (the floor counts interaction and
 card advantage, not damage), flip value, the two loops, and power-capped upside. `cuts` will
 read the walls as low-power filler — every wall goes on the protect list.
@@ -124,6 +133,12 @@ read the walls as low-power filler — every wall goes on the protect list.
   Intervention).
 - **Indestructible "others" pieces** (Walls of Ba Sing Se, Avacyn) turn our own wraths
   (The Last Ronin, Deadly Vanity, Punishment) one-sided. Only the Walls is cheap enough to plan on.
+- **Direction (after the off-pile search):** two things firm up. (1) The face-down engine has
+  real dedicated cards beyond manifests — disguise/morph creatures with huge toughness
+  (Essence of Antiquity, Hooded Hydra) and Elesh Norn doubling every landfall. (2) The
+  high-toughness board makes **−X/−X sweepers one-sided** (Languish, Toxic Deluge, Finality,
+  Choking Miasma, Meathook), which beside Destined Confrontation gives the deck a real
+  control backbone the pile alone lacked. Interaction stops being the thin axis.
 - **Variant signal — none yet.** The Hero/Captain America cluster (Wings of Freedom,
   Skybound, Steve Rogers, Luke Cage, Nick Fury) keeps grading low for the same reason (power
   matters, attack-alone); it belongs to the existing Hero decks, not a variant here.
@@ -233,11 +248,11 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Insidious Roots | ◇ | plant per recursion |
 | Vraska Joins Up | ★ | deathtouch counters on team |
 | Stalwart Successor | ★ | +1 counter on first counters |
-| Jenova | ✗ | power-scaled (F2) |
+| Jenova | ★★ | RE-GRADED (owner): 1/5 gap 4 = +4/+4 under Doran; endure counters and Teyo's base-power rebase raise her power, so the combat counters scale (F11) |
 | Kagha | ★ | 1/4, lands/permanents from milled cards |
 | Professor Dellian Fel | ★★ | removal + draw walker |
 | The Last Ronin | ◇ | kills our walls too unless Walls of Ba Sing Se is out |
-| Madame Null | ✗ | power-scaled |
+| Madame Null | ◇ | F11 — face-down 2/2s enter at power 2: pay 2 life for 2 counters per manifest |
 | Jadzia Dax | ★ | ramp |
 | Ferrafor | ★ | doubles endure counters; 7 mana |
 | Crystal Barricade | ★★★ | 2-mana 0/4, flip 2 → 4, you have hexproof |
@@ -313,7 +328,39 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Smile at Death | ★★★ | two power≤2 creatures back every upkeep (F2) |
 | Body Launderer | ★ | returns power ≤3 on death |
 | Ruthless Technomancer | ★ | X=1 returns a 0-power wall per artifact; needs artifacts |
-| Golden-Tail Trainer | ✗ | power-scaled |
+| Golden-Tail Trainer | ◇ | F11 — endure counters make every creature 'modified'; scales only once its own power grows |
+
+### Batch 5 — off-pile (pool search, full text read 2026-11-24)
+| Card | Verdict | Note |
+|---|---|---|
+| Elesh Norn, Mother of Machines (own) | ★★★ | a land entering → Hamza's landfall triggers TWICE (also Necrobloom, Threats, both loops); 4/7, flips 5 → 7 |
+| Huatli, the Sun's Heart | ★★★ | 3-mana global toughness-damage enabler on a planeswalker (not a seek target) |
+| Essence of Antiquity | ★★★ | 1/10; disguise flip {2}{W} → endure 10 + team hexproof + untap |
+| Hooded Hydra | ★★★ | morph/manifest flip adds 5 counters THEN endures 5; dies into snakes |
+| Tree of Perdition | ★★ | 0/13 for 4 — flip 4 → endure 13; life-swap with its toughness (spice) |
+| The Necrobloom | ★★★ | landfall → a 0/1 Plant (T>P) or a 2/2 Zombie; lands get dredge 2 |
+| Toxic Deluge | ★★★ | pay X, −X/−X: at X=4 our 5+ toughness board survives (one-sided) |
+| Languish | ★★★ | −4/−4, same logic |
+| Find // Finality | ★★ | two creatures back, or counters + −4/−4 |
+| The Meathook Massacre | ★★ | flexible −X/−X + drain |
+| Anguished Unmaking (own) | ★★★ | instant exile any nonland permanent |
+| Infernal Grasp (own) | ★★★ | 2-mana instant kill |
+| Vindicate / Despark / Mortify / Putrefy | ★★ | staple Abzan removal |
+| Mentor of the Meek (own) | ★★ | every face-down 2/2 is power 2 → pay {1}, draw (F2) |
+| Trail of Mystery | ★★ | basic to hand per face-down; +2/+2 on every flip |
+| Whisperwood Elemental | ★★ | a manifest every end step |
+| Verdant Dread | ★★ | 2-mana manifest dread, repeatable |
+| Valgavoth's Onslaught | ★★ | X manifests with X counters |
+| Sleuth Instructor | ★ | disguise; one-shot seek+cloak MV≤3 |
+| Pine Walker | ★ | untaps each creature turned face up |
+| Nyx-Fleece Ram | ★★ | 0/5 for 2 — flip 2 → endure 5 |
+| Reaping Willow | ★★ | flips as 3/6 (no −1/−1); endure counters fuel its MV≤3 recursion |
+| Catapult Fodder | ★★ | 1/5 for 3; transforms (3 T>P creatures) into a toughness-drain outlet |
+| Dryad of the Ilysian Grove / Icetill Explorer (own) / Oracle of Mul Daya / The Gitrog Monster | ★★ | extra land drops (F3) |
+| Walking Bulwark | ★ | 1-mana defender attack + toughness damage |
+| Belligerent Brontodon | ★ | global enabler, 7 mana |
+| Unyielding Gatekeeper | ✗ | F9 — the opponent gets a 2/2 |
+| Wildgrove Summoner | ✗ | turns Forests into creature cards → seek can find a land it can't flip |
 
 ## 5. Consolidated plan (live) — the core for /draft-deck
 
@@ -349,5 +396,4 @@ value is the power cap, F2); Delney and Destined Confrontation (same).
 1. How hard to lean on the loops (F6): Threats wants ~12+ basics; Ashaya wants ~35+
    creatures. Both together pull the list toward creature-dense / basics-heavy.
 2. Protection budget: the pile offers ~30 protection cards; plan ~6.
-3. Interaction is the thin axis — Abzan in this pile has ~9 real removal pieces; all of
-   them likely make the cut, and off-pile removal may be worth a look at draft.
+3. ~~Interaction is the thin axis~~ — resolved by the off-pile removal and one-sided sweepers (batch 5).
