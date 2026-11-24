@@ -22,7 +22,7 @@
 #: notes: creatures, 12 basics). A flipped creature gets no ETB, no kicker and no cost reduction, but a manifest never
 #: notes: HAS to be flipped, so Towering Titan (0/0 if flipped) stays a 2/2 face down and is cast for its counters.
 #: notes: Face-down 2/2s die to our own Choking Miasma / Toxic Deluge: flip the ones worth keeping first (each flip is
-#: notes: an endure). The Notary Hobbits (owned) is the next mana add — about 9 colourless a turn, 25 with Elesh Norn.
+#: notes: an endure). The Notary Hobbits makes about 9 colourless a turn (25 with Elesh Norn) for the big flips.
 
 # Commander
 1 Hamza, Might of the Yathan (YTDM) 21
@@ -54,7 +54,6 @@
 1 Threats Around Every Corner (DSK) 200
 1 Ashaya, Soul of the Wild (ZNR) 179
 1 Claim the Kingdom (MSH) 163
-1 Dormant Grove // Gnarled Grovestrider (VOW) 198
 1 Eagle of Deliverance (LTR) 824
 1 Impervious Greatwurm (GRN) 273
 
@@ -67,6 +66,7 @@
 1 Dryad of the Ilysian Grove (THB) 169
 1 Loxodon Lifechanter (M20) 27
 1 Rok-Tahk, Budding Scientist (TRK) 211
+1 The Notary Hobbits (HOB) 131
 
 # Payoffs and card flow
 1 Betor, Kin to All (TDM) 172
@@ -153,3 +153,4 @@
 #~ +The Soul Stone | BENCH (builder hamza): benched on the board
 #~ +Toski, Bearer of Secrets | BENCH (builder hamza): benched on the board
 #~ +Valgavoth's Onslaught | BENCH (builder hamza): benched on the board
+#~ +Dormant Grove // Gnarled Grovestrider | BENCH (builder hamza): cut for The Notary Hobbits; team vigilance overlaps Ivorytusk Fortress
