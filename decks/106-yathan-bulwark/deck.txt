@@ -99,7 +99,7 @@
 1 Selfless Glyphweaver // Deadly Vanity (STX) 157
 
 # Protection
-1 Heroic Intervention (M21) 188
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
 1 Shalai, Voice of Plenty (DOM) 35
 1 Strength of Will (SPM) 118
 1 Smuggler's Surprise (OTJ) 180

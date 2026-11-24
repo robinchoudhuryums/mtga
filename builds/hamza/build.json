@@ -1738,9 +1738,9 @@
   },
   "Earthshape": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Strength of Will. One turn of protection for every power-≤3 creature.",
+   "text": "Cut for Strength of Will. One turn of hexproof and indestructible for every power-≤3 creature (most of the deck).",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Akroma's Will": {
@@ -1752,9 +1752,9 @@
   },
   "Hakoda, Selfless Commander": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Ghalta. One-shot +0/+5 and indestructible for the team; the first protection piece to bring back.",
+   "text": "Cut for Ghalta. One-shot +0/+5 and indestructible for the team; a protection piece to bring back if the deck feels exposed.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Luke Cage, Power Man": {
@@ -1835,10 +1835,10 @@
    }
   },
   "Heroic Intervention": {
-   "group": "Protection",
-   "text": "team hexproof + indestructible",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Venat: protection was the deck's deepest axis. Team hexproof and indestructible for 2 — the answer to a wrath if you need it back.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "6f2135e4cb89"
    }
   },
   "Origin of Metalbending": {
@@ -2241,10 +2241,10 @@
    }
   },
   "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
-   "group": "Off-pile finds 2026-11-24 (two or more axes)",
-   "text": "Owned. Draws once a turn when you cast a legendary spell (23 in the deck). {7},T: exile a nonland permanent (the Hobbits pay it), then it transforms: each combat a counter and indestructible on another creature, plus a draw if that creature is legendary. Card advantage, interaction and protection in one. WW on turn 3 is about 63%.",
+   "group": "Protection",
+   "text": "Owned. Draws once a turn when you cast a legendary spell (23 in the deck). {7},T: exile a nonland permanent, then it transforms: each combat a counter and indestructible on another creature, plus a draw if that creature is legendary. Replaced Heroic Intervention.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "6f2135e4cb89"
    }
   },
   "Tireless Tracker": {
@@ -2914,6 +2914,99 @@
     "Wastewood Verge",
     "Woodland Cemetery",
     "Zopandrel, Hunger Dominus"
+   ],
+   "6f2135e4cb89": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Claim the Kingdom",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
    ]
   }
  },
@@ -3521,7 +3614,7 @@
   "Earthshape": {
    "H": {
     "m": "★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Akroma's Will": {
@@ -3533,7 +3626,7 @@
   "Hakoda, Selfless Commander": {
    "H": {
     "m": "★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Luke Cage, Power Man": {
@@ -3605,7 +3698,7 @@
   "Heroic Intervention": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Origin of Metalbending": {
@@ -3953,7 +4046,7 @@
   "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
    "H": {
     "m": "★★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "6f2135e4cb89"
    }
   },
   "Tireless Tracker": {
