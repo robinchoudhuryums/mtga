@@ -20,7 +20,6 @@ Agrus Kos, Spirit of Justice
 Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
-Akul the Unrepentant
 Altar of Dementia
 Ambitious Augmenter
 Angel of Vitality
@@ -268,7 +267,6 @@ Kiora's Follower
 Kirol, Attentive First-Year
 Kitsune's Technique
 Klaw, Sonic Subjugator
-Kona, Rescue Beastie
 Koya, Death from Above
 Kraven, Proud Predator
 Krenko, Mob Boss
@@ -322,7 +320,6 @@ Most Decrepit Old Bird
 Most Decrepit Old Bird // Speak Secrets
 Mutable Explorer
 Mysterio, Master of Illusion
-Mythweaver Poq
 Nahiri's Binding
 Namazu Trader
 Namor, Scourge of the Seas
@@ -424,7 +421,6 @@ Simic Ascendancy
 Sinister Cryologist
 Skyblade's Boon
 Skyskipper Duo
-Sledge-Class Seedship
 Slick Imitator
 Slime Against Humanity
 Slumbering Keepguard
@@ -447,7 +443,6 @@ Stegron the Dinosaur Man
 Stickytongue Sentinel
 Stingerback Terror
 Stingerquill Voxmancer // Vicious Verse
-Stoneforge Mystic
 Stony-Voiced Goblins
 Storm, Force of Nature
 Sultai Devotee
@@ -516,7 +511,6 @@ Unstable Experiment
 Unstoppable Plan
 Unstoppable Slasher
 Valentina Allegra de Fontaine
-Vastlands Scavenger // Bind to Life
 Venomized Cat
 Verdant Kraken
 Veteran Ice Climber

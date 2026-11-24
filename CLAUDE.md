@@ -1583,10 +1583,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure.
   **CONNIVE is an unread keyword here**, so a FLAT metric after a tune is not proof the
-  tune failed. **The dated widenings since 2026-10-07 are in the long form; the latest, 2026-11-02:** draws of
-  seven or more, "draws an additional card", replacement draws (Notion Thief, Leader), a draw
-  MODE on a combat-on-your-turn or whenever trigger, and a 120-character whenever condition —
-  64 pool cards, card advantage up in 37 decks, 0 tier floors moved. [K-12]
+  tune failed. **The dated widenings since 2026-10-07 are in the long form; the latest, 2026-11-23:** a draw
+  as the NEXT sentence of a loyalty/activated line (Garruk's −3), a WHENEVER dig to hand, a
+  creature put from HAND (cheat), mill-then-put (reanimation) and Poq's conjured land; a Map
+  token as card advantage was measured and DECLINED. Card advantage up in 2 decks, 0 floors. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A sweep for "Robots you control get" / "for each
   Robot" returned zero and an archetype was declined in writing as "bodies without a
