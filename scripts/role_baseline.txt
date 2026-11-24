@@ -107,6 +107,7 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
+Cursed Wombat
 Cut Your Losses
 Cyberdrive Awakener
 Daggerfang Duo
@@ -268,6 +269,7 @@ Jinnie Fay, Jetmir's Second
 Jodah, Archmage Eternal
 Joo Dee, One of Many
 K'un-Lun Warrior
+Kagha, Shadow Archdruid
 Kamahl's Druidic Vow
 Kang the Conqueror
 Karolina Dean, Runaway
@@ -515,6 +517,7 @@ Toph, the Blind Bandit
 Toph, the First Metalbender
 Topiary Lecturer
 Torbran, Thane of Red Fell
+Towering Titan
 Treasure Dredger
 Tree of Perdition
 Treeguard Duo
@@ -557,7 +560,6 @@ Welcome to Sweettooth
 Whiplash Wordsmith // Vicious Verse
 Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
-Whisperwood Elemental
 White Tiger, Ava Ayala
 Wisecrack
 Wolverine, Claws Out

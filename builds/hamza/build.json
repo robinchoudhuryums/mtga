@@ -1092,10 +1092,10 @@
    }
   },
   "Garruk, Apex Predator": {
-   "group": "Interaction",
-   "text": "removal + 3/3 deathtouch each turn, 7 mana",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Selfless Glyphweaver. 7-mana removal plus 3/3 deathtouch tokens.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Zar Ojanen, Scion of Efrava": {
@@ -1162,10 +1162,10 @@
    }
   },
   "Druid Class": {
-   "group": "Landfall and extra land drops",
-   "text": "extra land drop (F3), land creature at 3",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Cursed Wombat. Extra land drop plus life per landfall.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Sharp-Eyed Rookie": {
@@ -1204,10 +1204,10 @@
    }
   },
   "Mythweaver Poq": {
-   "group": "Bench — real, not in the first draft",
-   "text": "doubles a land drop → two Hamza triggers",
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "Conjures a duplicate of the first land each turn: an extra Hamza trigger, two with Elesh Norn. Replaced The Necrobloom.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Sultai Flayer": {
@@ -1218,10 +1218,10 @@
    }
   },
   "Tapestry Warden": {
-   "group": "Toughness enablers",
-   "text": "T>P enabler, vigilance",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Basri Ket (owner's pick). A T>P toughness-damage enabler; return it if the enablers feel thin (8 remain).",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Ashaya, Soul of the Wild": {
@@ -1274,10 +1274,10 @@
    }
   },
   "Towering Titan": {
-   "group": "Bench — real, not in the first draft",
-   "text": "Cast, it enters with counters equal to every other creature's toughness (20–60 here); sacrificing a defender gives the team trample. If Hamza manifests it, leave it face down — a flip is 0/0.",
+   "group": "Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)",
+   "text": "Cast, it enters with counters equal to every other creature's toughness (20–60 here); sacrificing a defender gives the team trample. If Hamza manifests it, leave it face down — a flip is 0/0. Replaced Amaranthine Wall.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Glint Weaver": {
@@ -1449,10 +1449,10 @@
    }
   },
   "Cursed Wombat": {
-   "group": "Bench — real, not in the first draft",
-   "text": "+1 on every endure-counters event",
+   "group": "Payoffs and card flow",
+   "text": "Every time counters land on a permanent (each endure, Arwen, Basri) it gets one more. Replaced Druid Class.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Insidious Roots": {
@@ -1484,10 +1484,10 @@
    }
   },
   "Kagha, Shadow Archdruid": {
-   "group": "Bench — real, not in the first draft",
-   "text": "1/4, lands/permanents from milled cards",
+   "group": "Payoffs and card flow",
+   "text": "1/4 that mills 2 on attack and plays a land or permanent from those cards each turn — card flow, and lands feed Hamza. Replaced Mentor of the Meek.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Professor Dellian Fel": {
@@ -1575,10 +1575,10 @@
    }
   },
   "Basri Ket": {
-   "group": "Bench — real, not in the first draft",
-   "text": "counters + soldiers",
+   "group": "Payoffs and card flow",
+   "text": "+1 puts a counter and indestructible on a creature each turn; −2 makes attacking 1/1s; the emblem counters the whole team each combat. Replaced Tapestry Warden (owner's pick).",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Earthshape": {
@@ -1631,10 +1631,10 @@
    }
   },
   "Eagle of Deliverance": {
-   "group": "Bench — real, not in the first draft",
-   "text": "indestructible counter + near-certain draw (F2)",
+   "group": "Payoffs and card flow",
+   "text": "Indestructible counter on another creature, and a draw because nearly everything here has power 2 or less. Replaced Whisperwood Elemental.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Angelic Guardian": {
@@ -1667,9 +1667,9 @@
   },
   "Smuggler's Surprise": {
    "group": "Protection",
-   "text": "{4}{G} puts two creatures from hand onto the battlefield; they ENTER, so Towering Titan gets its counters. {1} mode gives hexproof and indestructible. Replaced Restoration Magic.",
+   "text": "{4}{G} puts two creatures from hand onto the battlefield; they ENTER, so Towering Titan (now in the deck) gets its counters and the Walls skip 8 mana. {1} mode gives hexproof and indestructible. Replaced Restoration Magic.",
    "graded_at": {
-    "106": "ece9d59e662b"
+    "106": "4c1f22d6ae28"
    }
   },
   "Claim the Kingdom": {
@@ -1750,10 +1750,10 @@
    }
   },
   "Amaranthine Wall": {
-   "group": "Walls and cheap high-toughness flips",
-   "text": "colourless 0/6, flip 4 → 6",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Towering Titan. A colourless 0/6 that flips for 4 → endure 6.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Plaza of Heroes": {
@@ -1869,10 +1869,10 @@
    }
   },
   "The Necrobloom": {
-   "group": "Landfall and extra land drops",
-   "text": "landfall → a 0/1 Plant (T>P) or a 2/2 Zombie; lands get dredge 2",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Mythweaver Poq. A 0/1 Plant (or 2/2 Zombie) per land.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Toxic Deluge": {
@@ -1946,10 +1946,10 @@
    }
   },
   "Mentor of the Meek": {
-   "group": "Face-down engine",
-   "text": "every face-down 2/2 is power 2 → pay {1}, draw (F2)",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Kagha. Draws for {1} off every power-2 creature entering, face-down manifests included.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Trail of Mystery": {
@@ -1960,10 +1960,10 @@
    }
   },
   "Whisperwood Elemental": {
-   "group": "Face-down engine",
-   "text": "a manifest every end step",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Eagle of Deliverance. A manifest every end step — the face-down engine piece most worth returning.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Verdant Dread": {
@@ -2065,10 +2065,10 @@
    }
   },
   "Selfless Glyphweaver // Deadly Vanity": {
-   "group": "Bench — real, not in the first draft",
-   "text": "team indestructible, or an 8-mana keep-one wipe",
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "Front: exile it for team indestructible. Back: an 8-mana wipe that keeps your best creature. Replaced Garruk, Apex Predator.",
    "graded_at": {
-    "106": "9fa73aec30f6"
+    "106": "4c1f22d6ae28"
    }
   },
   "Wildgrove Summoner": {
@@ -2264,6 +2264,98 @@
     "Whisperwood Elemental",
     "Woodland Cemetery",
     "Yathan Roadwatcher"
+   ],
+   "4c1f22d6ae28": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Ancient Lumberknot",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Earthshape",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Harrowing Swarm",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kagha, Shadow Archdruid",
+    "Kin-Tree Severance",
+    "Languish",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Yathan Roadwatcher"
    ]
   }
  },
@@ -2450,8 +2542,8 @@
   },
   "Garruk, Apex Predator": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Zar Ojanen, Scion of Efrava": {
@@ -2510,8 +2602,8 @@
   },
   "Druid Class": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Sharp-Eyed Rookie": {
@@ -2547,7 +2639,7 @@
   "Mythweaver Poq": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Sultai Flayer": {
@@ -2558,8 +2650,8 @@
   },
   "Tapestry Warden": {
    "H": {
-    "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Ashaya, Soul of the Wild": {
@@ -2607,7 +2699,7 @@
   "Towering Titan": {
    "H": {
     "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Glint Weaver": {
@@ -2757,7 +2849,7 @@
   "Cursed Wombat": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Insidious Roots": {
@@ -2787,7 +2879,7 @@
   "Kagha, Shadow Archdruid": {
    "H": {
     "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Professor Dellian Fel": {
@@ -2864,8 +2956,8 @@
   },
   "Basri Ket": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Earthshape": {
@@ -2913,7 +3005,7 @@
   "Eagle of Deliverance": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Angelic Guardian": {
@@ -2943,7 +3035,7 @@
   "Smuggler's Surprise": {
    "H": {
     "m": "★★",
-    "graded_at": "ece9d59e662b"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Claim the Kingdom": {
@@ -3014,8 +3106,8 @@
   },
   "Amaranthine Wall": {
    "H": {
-    "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Plaza of Heroes": {
@@ -3116,8 +3208,8 @@
   },
   "The Necrobloom": {
    "H": {
-    "m": "★★★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Toxic Deluge": {
@@ -3183,7 +3275,7 @@
   "Mentor of the Meek": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Trail of Mystery": {
@@ -3195,7 +3287,7 @@
   "Whisperwood Elemental": {
    "H": {
     "m": "★★",
-    "graded_at": "9fa73aec30f6"
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Verdant Dread": {
@@ -3284,8 +3376,8 @@
   },
   "Selfless Glyphweaver // Deadly Vanity": {
    "H": {
-    "m": "★",
-    "graded_at": "9fa73aec30f6"
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
    }
   },
   "Wildgrove Summoner": {

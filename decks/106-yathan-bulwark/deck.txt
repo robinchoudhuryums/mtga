@@ -9,7 +9,7 @@
 #: archetype: with LOW cost and HIGH toughness (Crystal Barricade flips for 2 and endures 4, Flatman 4 → 10, The Walls of
 #: archetype: Ba Sing Se 8 → 30, flipped for {1}{G} by Hauntwoods Shrieker), and toughness becomes the damage stat
 #: archetype: through the enablers (Felothar the Steadfast, Assault Formation, Huatli, Doran, Lumberknot, Bedrock
-#: archetype: Tortoise, Tapestry Warden, Ghalta, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
+#: archetype: Tortoise, Ghalta, Teyo). Two loops: Ashaya makes every face-down manifest a land (landfall
 #: archetype: → another manifest, until the library runs out of creatures) and Threats Around Every Corner fetches a
 #: archetype: basic for each face-down creature (landfall → another manifest). Elesh Norn doubles every landfall. Low
 #: archetype: power is UPSIDE: power-capped recursion (Smile at Death, Slumbering Walker, Nethroi's total power 10)
@@ -31,7 +31,7 @@
 1 Assault Formation (JMP) 378
 1 Ancient Lumberknot (VOW) 230
 1 Bedrock Tortoise (LCI) 176
-1 Tapestry Warden (EOE) 209
+1 Basri Ket (M21) 7
 1 Huatli, the Sun's Heart (WAR) 230
 1 Catapult Fodder // Catapult Captain (VOW) 99
 1 Teyo, Aegis Adept (J21) 6
@@ -39,7 +39,7 @@
 # Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)
 1 Crystal Barricade (FDN) 7
 1 The Walls of Ba Sing Se (TLA) 261
-1 Amaranthine Wall (DOM) 210
+1 Towering Titan (JMP) 31
 1 Flatman (MSC) 721
 1 Tree of Perdition (SIR) 136
 1 Essence of Antiquity (MKM) 15
@@ -53,15 +53,15 @@
 1 Ashaya, Soul of the Wild (ZNR) 179
 1 Harrowing Swarm (YDSK) 16
 1 Dormant Grove // Gnarled Grovestrider (VOW) 198
-1 Whisperwood Elemental (PIO) 200
-1 Mentor of the Meek (HOC) 170
+1 Eagle of Deliverance (LTR) 824
+1 Kagha, Shadow Archdruid (HBG) 236
 
 # Landfall and extra land drops (every land is a Hamza manifest)
 1 Thalia and The Gitrog Monster (MOM) 255
 1 Fecund Greenshell (BLB) 171
 1 Elesh Norn, Mother of Machines (ONE) 10
-1 The Necrobloom (MH3) 194
-1 Druid Class (AFR) 180
+1 Mythweaver Poq (YLCI) 19
+1 Cursed Wombat (MH3) 181
 1 Dryad of the Ilysian Grove (THB) 169
 1 Loxodon Lifechanter (M20) 27
 1 Rok-Tahk, Budding Scientist (TRK) 211
@@ -94,7 +94,7 @@
 1 Toxic Deluge (MH3) 277
 1 Destined Confrontation (TLA) 15
 1 Crime // Punishment (OTP) 39
-1 Garruk, Apex Predator (PIO) 225
+1 Selfless Glyphweaver // Deadly Vanity (STX) 157
 
 # Protection
 1 Heroic Intervention (M21) 188
