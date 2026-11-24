@@ -366,7 +366,7 @@
   },
   {
    "name": "Loxodon Lifechanter",
-   "pile": "N",
+   "pile": "H",
    "src": "added"
   },
   {
@@ -1275,7 +1275,7 @@
   },
   "Towering Titan": {
    "group": "Bench — real, not in the first draft",
-   "text": "hardcast only (E4); X = total toughness → enormous",
+   "text": "Cast, it enters with counters equal to every other creature's toughness (20–60 here); sacrificing a defender gives the team trample. If Hamza manifests it, leave it face down — a flip is 0/0.",
    "graded_at": {
     "106": "9fa73aec30f6"
    }
@@ -1358,8 +1358,8 @@
    }
   },
   "Loxodon Lifechanter": {
-   "group": "Doesn't fit",
-   "text": "life = total toughness; 6 mana",
+   "group": "Bench — real, not in the first draft",
+   "text": "Life becomes total toughness (30–50 here), then {5}{W}: +X/+X where X is your life — under an enabler, one swing kills from 25.",
    "graded_at": {
     "106": "9fa73aec30f6"
    }
@@ -2514,7 +2514,7 @@
   },
   "Towering Titan": {
    "H": {
-    "m": "★",
+    "m": "★★★",
     "graded_at": "9fa73aec30f6"
    }
   },
@@ -2586,7 +2586,7 @@
   },
   "Loxodon Lifechanter": {
    "H": {
-    "m": "◇",
+    "m": "★★",
     "graded_at": "9fa73aec30f6"
    }
   },

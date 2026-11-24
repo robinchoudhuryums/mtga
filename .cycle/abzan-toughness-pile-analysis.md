@@ -118,7 +118,7 @@ choose endure's Spirit TOKEN on a creature you want to keep under Delney. Gravey
 card advantage, not damage), flip value, the two loops, and power-capped upside. `cuts` will
 read the walls as low-power filler — every wall goes on the protect list.
 
-**Tool gaps found while drafting (G-67, fix in a batch later):** Destined Confrontation
+**Tool gaps found while drafting (G-67, fix in a batch later):** Crime // Punishment scores no role (Punishment is a sweeper); Eagle of Deliverance's 'draw a card if power 2 or less' is not card advantage; Felothar, Dawn of the Abzan and Loxodon Lifechanter score none. Destined Confrontation
 ("each player chooses creatures with total power 4 or less, then sacrifices all other
 creatures") scores NO role, so deck 106 reads interaction 11 against a real 12 — recorded on
 the board as a hidden interaction role. `similar` and the theme tags see none of the
@@ -129,7 +129,8 @@ similarity percentages are generic-theme noise; card overlap with any roster dec
 - E1: don't grade a 0-power creature as a vanilla wall when ≥5 enablers are in the list (F1).
 - E2: don't credit an ETB to a card's manifest/flip value (F4).
 - E3: a power cap on recursion or a draw clause is upside, not a restriction (F2).
-- E4: Towering Titan / Darksteel Hydra die if flipped — count them as hardcast-only.
+- E4: Towering Titan / Darksteel Hydra die if flipped — but a manifest is never forced face up, so this costs nothing; grade them on the cast (corrected 2026-11-24).
+- E5: Hamza's face-down 2/2s DIE to our own −2/−2 and −4/−4 sweepers; flip the ones worth keeping first (each flip is an endure).
 
 ## 3. Cross-batch observations
 - **Two shells compete for the same slots**: a *protection-and-pump* shell (the ~30
@@ -221,7 +222,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Flourishing Hunter | ◇ | 6-mana 6/6, lifegain |
 | Grunn | ✗ | attack-alone, kicker lost on flip |
 | Swampbenders | ◇ | off-plan */* |
-| Towering Titan | ★ | hardcast only (E4); X = total toughness → enormous |
+| Towering Titan | ★★★ | RE-GRADED (owner): manifested it just stays a face-down 2/2, so E4 costs nothing; cast, X = total toughness (20–60), and its defender sacrifice gives the team trample |
 | Glint Weaver | ◇ | 7 mana |
 | Last March of the Ents | ★★ | draw = greatest toughness, then deploy |
 | Bark of Doran | ★★ | +0/+1 makes even a face-down 2/2 a T>P attacker |
@@ -233,7 +234,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Righteous Valkyrie | ◇ | few Angels/Clerics |
 | Bill the Pony | ◇ | single-creature enabler per Food |
 | Teyo, Aegis Adept | ★★ | perpetual base power = toughness; defenders attack |
-| Loxodon Lifechanter | ◇ | life = total toughness; 6 mana |
+| Loxodon Lifechanter | ★★ | RE-GRADED (owner): life becomes total toughness (30–50), then {5}{W} +X/+X where X = life — a one-swing kill under an enabler |
 | Ghalta the Immovable | ★★ | enabler + defender attack; costs ~4 cast, 9 flipped (F4) |
 | The Kingpin of Crime | ★★ | 1/5 for 3, extort, attack-time enabler |
 | Tymaret | ✗ | BB devotion |
