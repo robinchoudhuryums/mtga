@@ -1276,9 +1276,9 @@
   },
   "Harrowing Swarm": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Claim the Kingdom. One manifest plus a {2} flip discount.",
+   "text": "Cut earlier (for Claim the Kingdom, now cut too). One manifest plus a {2} flip discount and a counter on each face-down.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "1ce9e4256179"
    }
   },
   "Break Down the Door": {
@@ -1828,10 +1828,10 @@
    }
   },
   "Claim the Kingdom": {
-   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
-   "text": "Proposed cut for Belladonna Took: Claim's one counter per land is replaced by Belladonna's counter on every creature, and the indestructible counter by the deck's other protection.",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Belladonna Took, whose third token each turn counters the whole team. A counter per land drop and an eventual indestructible counter.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "1ce9e4256179"
    }
   },
   "Heroic Intervention": {
@@ -1864,9 +1864,9 @@
   },
   "Inspiring Call": {
    "group": "Bench — real, not in the first draft",
-   "text": "Card advantage is now the thinnest axis (8). With endure, Arwen, Basri, Claim the Kingdom and Cursed Wombat, most of the board carries counters, so this often draws 5+ and makes them indestructible.",
+   "text": "Card advantage is the thinnest axis. With endure, Arwen, Basri, Cursed Wombat and Belladonna's team counters, most of the board carries counters, so this often draws 5+ and makes them indestructible.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "1ce9e4256179"
    }
   },
   "Toski, Bearer of Secrets": {
@@ -2402,10 +2402,10 @@
    }
   },
   "Belladonna Took": {
-   "group": "Halflings for The Notary Hobbits (2026-11-24)",
-   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature. Saradoc, the Hobbits' copies and endure Spirits reach three; Delney doubles her trigger (power 2), so one token can reach the draw. Replaces both Eagle's draw and Claim's counters. Proposed for Claim the Kingdom.",
+   "group": "Payoffs and card flow",
+   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature; Saradoc, the Hobbits' copies and endure Spirits reach three, and Delney doubles her trigger. Replaced Claim the Kingdom.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "1ce9e4256179"
    }
   },
   "Samwise Gamgee": {
@@ -3007,6 +3007,99 @@
     "Wastewood Verge",
     "Woodland Cemetery",
     "Zopandrel, Hunger Dominus"
+   ],
+   "1ce9e4256179": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
    ]
   }
  },
@@ -3218,7 +3311,7 @@
   "Harrowing Swarm": {
    "H": {
     "m": "★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "1ce9e4256179"
    }
   },
   "Break Down the Door": {
@@ -3691,8 +3784,8 @@
   },
   "Claim the Kingdom": {
    "H": {
-    "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "m": "★",
+    "graded_at": "1ce9e4256179"
    }
   },
   "Heroic Intervention": {
@@ -3722,7 +3815,7 @@
   "Inspiring Call": {
    "H": {
     "m": "★★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "1ce9e4256179"
    }
   },
   "Toski, Bearer of Secrets": {
@@ -4184,7 +4277,7 @@
   "Belladonna Took": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "1ce9e4256179"
    }
   },
   "Samwise Gamgee": {
