@@ -7,11 +7,11 @@
 #: archetype: you may cast a permanent from your hand with equal or lesser mana value for free (or put a land from
 #: archetype: hand onto the battlefield). The deck casts from everywhere else: AIRBEND (Aang, Airbending Master; Aang,
 #: archetype: Swift Savior; Appa, Steadfast Guardian; Appa, Loyal Sky Bison — exile your own permanent, recast it for
-#: archetype: {2}, and the free cast is sized by its full mana value), plot (Kellan Joins Up, Fblthp, Make Your Own
-#: archetype: Luck), warp (Anticausal Vestige, Exalted Sunborn, Quantum Riddler), adventures, Ephemerate's rebound,
-#: archetype: the graveyard (Uro, Torrential Gearhulk, Bilbo, Thief in the Night) and the top of the library
-#: archetype: (Mm'menon, Falco Spara, Vizier of the Menagerie, Elven Chorus). Doc Aurlock makes those casts {2}
-#: archetype: cheaper. Clues are the card-advantage spine, doubled by Bard, King of Dale, Exalted Sunborn and Mondrak,
+#: archetype: {2}, and the free cast is sized by its full mana value; Monk Gyatso airbends any creature you target),
+#: archetype: plot (Kellan Joins Up, Fblthp), warp (Anticausal Vestige, Exalted Sunborn), adventures, Ephemerate's
+#: archetype: rebound, the graveyard (Torrential Gearhulk, Bilbo, Thief in the Night) and the top of the library
+#: archetype: (Mm'menon, Falco Spara, Vizier, Elven Chorus, One with the Multiverse, Chimil's discover). Doc Aurlock
+#: archetype: makes those casts {2} cheaper. Clues are the card-advantage spine, doubled by Bard, King of Dale and Exalted Sunborn,
 #: archetype: and drawn off by Fateful Discovery. Interaction is exile-based and gives the opponent nothing.
 #: archetype: Distinct from deck 67 (the Standard Kellan list): this is the 100-card build, airbend-first.
 #: protect: Kellan, the Kid; Doc Aurlock, Grizzled Genius; Bilbo, Thief in the Night; Appa, Steadfast Guardian; Aang, Swift Savior; Aang, Airbending Master; Fblthp, Lost on the Range; Mm'menon, the Right Hand; Kellan Joins Up; Bard, King of Dale
@@ -33,25 +33,22 @@
 1 Airbender's Reversal (TLA) 7
 1 Glider Staff (TLA) 22
 1 Ephemerate (MAR) 44
+1 Monk Gyatso (TLE) 81
 
 # Cast-from-elsewhere engine — plot, warp, adventure
 1 Kellan Joins Up (OTJ) 212
-1 Make Your Own Luck (OTJ) 218
 1 Fblthp, Lost on the Range (OTJ) 48
-1 Railway Brawler (OTJ) 175
 1 Visage Bandit (OTJ) 76
 1 Anticausal Vestige (EOE) 1
 1 Spirited Simulacrum (YEOE) 30
 1 Exalted Sunborn (EOE) 15
-1 Quantum Riddler (EOE) 72
 1 Kellan, Inquisitive Prodigy // Tail the Suspect (MKM) 212
 1 Bilbo, Luckwearer (HOB) 32
-1 Brazen Borrower // Petty Theft (ELD) 39
 
 # Cast-from-elsewhere engine — graveyard and library top
-1 Uro, Titan of Nature's Wrath (THB) 229
+1 Chimil, the Inner Sun (LCI) 249
 1 Torrential Gearhulk (KLR) 70
-1 Scholar of the Lost Trove (JMP) 14
+1 One with the Multiverse (BRO) 59
 1 Valgavoth, the Lifeline (YFRA) 3
 1 Mm'menon, the Right Hand (EOE) 68
 1 Falco Spara, Pactweaver (SNC) 186
@@ -64,11 +61,9 @@
 # Cost reducers and mana
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
 1 Bilbo, Thief in the Night (HOB) 33
-1 Delighted Halfling (LTR) 158
 
 # Clues and card advantage
 1 Bard, King of Dale (HOB) 144
-1 Mondrak, Glory Dominus (ONE) 23
 1 Ezrim, Agency Chief (MKM) 202
 1 Constable Odo (TRK) 230
 1 Alquist Proft, Master Sleuth (MKM) 185
@@ -77,14 +72,19 @@
 1 Forensic Gadgeteer (MKM) 57
 1 Fateful Discovery (HOB) 40
 1 King T'Challa (MSH) 219
-1 Ephara, God of the Polis (PIO) 305
-1 Teferi, Who Slows the Sunset (MID) 245
+1 The Mechanist, Aerial Artisan (TLA) 64
+1 Kappa Cannoneer (MH3) 270
 
 # Blink — re-uses Clue makers and exile removal
 1 Don & Leo, Problem Solvers (TMT) 143
 1 Soulherder (J21) 718
 1 Restoration Angel (J21) 117
 1 The Mighty Thor, Jane Foster (MSH) 222
+1 Silver Surfer, Cosmic Voyager (MSC) 639
+1 Dour Port-Mage (BLB) 47
+1 Eagle of Deliverance (LTR) 824
+1 Photon, Lady of Light (MSC) 606
+1 Imperial Cosmographer (MSC) 624
 
 # Interaction — exile removal, no gifts to the opponent
 1 Seal from Existence (MOM) 35
@@ -96,9 +96,9 @@
 1 Lagrella, the Magpie (SNC) 196
 1 Soul of Emancipation (SNC) 223
 1 Avatar's Wrath (TLA) 12
-1 Riptide Gearhulk (DFT) 219
 1 Reclamation Sage (FDN) 231
 1 Teferi's Protection (MAR) 51
+1 Katara's Reversal (TLE) 63
 
 # Lands
 1 Command Tower (FRC) 22

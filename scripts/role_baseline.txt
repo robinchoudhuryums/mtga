@@ -90,6 +90,7 @@ Central Elevator // Promising Stairs
 Cephalid Inkmage
 Charging Strifeknight
 Chatterfang, Squirrel General
+Chimil, the Inner Sun
 Claim Jumper
 Collation Trimatrix
 Collective Drone
@@ -325,6 +326,7 @@ Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
 Momo, Playful Pet
+Monk Gyatso
 Moonshadow
 Moonshaker Cavalry
 Morcant's Eyes
@@ -373,6 +375,7 @@ Personify
 Peter Parker
 Peter Parker // Amazing Spider-Man
 Petrify
+Photon, Lady of Light
 Picard, Leading by Example
 Picklock Prankster // Free the Fae
 Pond Prophet
