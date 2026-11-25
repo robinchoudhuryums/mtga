@@ -1033,6 +1033,11 @@
    "name": "Frodo, Sauron's Bane",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Arwen, Mortal Queen",
+   "pile": "H",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1087,9 +1092,9 @@
   },
   "Ivorytusk Fortress": {
    "group": "Payoffs and card flow",
-   "text": "Untaps every creature with a counter on each opponent's turn, so the team attacks (or taps for Vitality mana) and still blocks. Alternate cut for Saradoc if you'd rather keep Eagle's protection.",
+   "text": "Untaps every creature with a counter on each opponent's turn, so the team attacks (or taps for mana) and still blocks; Saradoc's tokens enter with Arwen counters and qualify too. Replaced Veteran Beastrider.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "7fe9aa7d0828"
    }
   },
   "Betor, Kin to All": {
@@ -1338,10 +1343,10 @@
    }
   },
   "Dormant Grove // Gnarled Grovestrider": {
-   "group": "Payoffs and card flow",
-   "text": "Benched for The Notary Hobbits. Transforms on its first combat into team vigilance, which overlaps Ivorytusk Fortress untapping every creature with counters.",
+   "group": "Bench — real, not in the first draft",
+   "text": "Benched for The Notary Hobbits. Transforms on its first combat into team vigilance; still overlaps Ivorytusk Fortress, and vigilance doesn't help creatures tapped for mana.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "7fe9aa7d0828"
    }
   },
   "Bedrock Tortoise": {
@@ -1577,9 +1582,9 @@
   },
   "Choking Miasma": {
    "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
-   "text": "−2/−2 sweep our walls shrug off. With the Saradoc/Belladonna package it also kills every 1/1 token and face-down 2/2, so flip your best face-downs first and keep it for when you are behind on board. Replaced Infernal Grasp.",
+   "text": "−2/−2 sweep our walls shrug off, but it also kills Saradoc's 1/1 tokens and every face-down 2/2: flip your best face-downs first and keep it for when you're behind. Replaced Infernal Grasp.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "7fe9aa7d0828"
    }
   },
   "Mythos of Nethroi": {
@@ -1668,9 +1673,9 @@
   },
   "Jadzia Dax, Living Legacy": {
    "group": "Bench — real, not in the first draft",
-   "text": "ramp",
+   "text": "Upgraded: a 2-mana ramp piece that grows each turn — a counter in your first main phase, then {G} per counter — and Cursed Wombat doubles the growth. The deck wants early acceleration; the mana is green only.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "7fe9aa7d0828"
    }
   },
   "Ferrafor, Young Yew": {
@@ -1786,10 +1791,10 @@
    }
   },
   "Eagle of Deliverance": {
-   "group": "Payoffs and card flow",
-   "text": "Proposed cut for Saradoc: a 6-drop for a 4-drop. Its indestructible counter is protection the deck has plenty of, and Belladonna's second token each turn replaces its draw.",
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Saradoc. A 6-mana 5/5 flier that puts an indestructible counter on another creature and draws; Belladonna now covers the draw.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "7fe9aa7d0828"
    }
   },
   "Angelic Guardian": {
@@ -1801,9 +1806,9 @@
   },
   "Avacyn, Angel of Hope": {
    "group": "Bench — real, not in the first draft",
-   "text": "8 mana; others indestructible",
+   "text": "8/8 flier, others indestructible: makes Punishment and Deadly Vanity one-sided, but not Choking Miasma or Toxic Deluge (−X/−X ignores indestructible). The Walls of Ba Sing Se already does this, and WWW is hard to cast here.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "7fe9aa7d0828"
    }
   },
   "The Soul Stone": {
@@ -1920,9 +1925,9 @@
   },
   "Eladamri, Korvecdal": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Last March. Casting creatures from the top is good, but GG on turn 3 is 66% here.",
+   "text": "Upgraded: cast creatures from the top of your library (card advantage, the thin axis), and with Saradoc tokens and face-downs, tapping two creatures to put a creature onto the battlefield is easy (it ENTERS, so Towering Titan gets its counters). GG on turn 3 is still about 66%.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "7fe9aa7d0828"
    }
   },
   "Veteran Beastrider": {
@@ -2116,9 +2121,9 @@
   },
   "Whisperwood Elemental": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Eagle of Deliverance. A manifest every end step — the face-down engine piece most worth returning.",
+   "text": "Cut for Eagle of Deliverance, which has since been cut for Saradoc. A manifest every end step — the face-down engine piece most worth returning.",
    "graded_at": {
-    "106": "638d0b4a0931"
+    "106": "7fe9aa7d0828"
    }
   },
   "Verdant Dread": {
@@ -2340,9 +2345,9 @@
   },
   "Enduring Vitality": {
    "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
-   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and, with the package, each Saradoc token becomes fixing from the turn after it enters. That fixes the WW/BB/GG cards and pays for flips. A 3/3 vigilance that returns as an enchantment when it dies; Ivorytusk untaps the creatures you tapped. Proposed for Smuggler's Surprise.",
+   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and each Saradoc token becomes fixing from the turn after it enters, fixing the WW/BB/GG cards and paying for flips. A 3/3 vigilance that returns as an enchantment when it dies. Suggested for Smuggler's Surprise.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "7fe9aa7d0828"
    }
   },
   "Elven Chorus": {
@@ -2395,17 +2400,17 @@
    }
   },
   "Saradoc, Master of Buckland": {
-   "group": "Halflings for The Notary Hobbits (2026-11-24)",
-   "text": "A 1/1 Halfling token for every nontoken power-≤2 creature entering, including each Hamza manifest. Elesh Norn doubles it, and so does Delney (Saradoc has power 2). Each token is 3 more Hobbit mana, an any-colour source with Enduring Vitality, a Belladonna trigger, and enters with Arwen's counters. Proposed for Eagle of Deliverance (6-drop → 4-drop).",
+   "group": "Payoffs and card flow",
+   "text": "A 1/1 Halfling token for every nontoken power-≤2 creature entering, each Hamza manifest included (doubled by Elesh Norn and by Delney). Each token is 3 more Hobbit mana, a Belladonna trigger and an Arwen-countered body. Replaced Eagle of Deliverance.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "7fe9aa7d0828"
    }
   },
   "Belladonna Took": {
    "group": "Payoffs and card flow",
-   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature; Saradoc, the Hobbits' copies and endure Spirits reach three, and Delney doubles her trigger. Replaced Claim the Kingdom.",
+   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature; Saradoc (now in), the Hobbits' copies and endure Spirits reach three, and Delney doubles her trigger. Replaced Claim the Kingdom.",
    "graded_at": {
-    "106": "1ce9e4256179"
+    "106": "7fe9aa7d0828"
    }
   },
   "Samwise Gamgee": {
@@ -2448,6 +2453,13 @@
    "text": "Its win needs the Ring to tempt you four times, and nothing else here tempts you.",
    "graded_at": {
     "106": "638d0b4a0931"
+   }
+  },
+  "Arwen, Mortal Queen": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Re-graded up from ◇. {1}: another creature gets indestructible, plus a +1/+1 counter and a LIFELINK counter (Arwen gets both too). Lifelink on a toughness-damage attacker gains its toughness in life, which feeds Betor, Ancestor's Voice's counters and Loxodon Lifechanter; Cursed Wombat adds a counter each time. It only has one indestructible counter, so it's one use, and protection is already the deck's deepest axis.",
+   "graded_at": {
+    "106": "7fe9aa7d0828"
    }
   }
  },
@@ -3100,6 +3112,99 @@
     "Wastewood Verge",
     "Woodland Cemetery",
     "Zopandrel, Hunger Dominus"
+   ],
+   "7fe9aa7d0828": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Saradoc, Master of Buckland",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
    ]
   }
  },
@@ -3149,7 +3254,7 @@
   "Ivorytusk Fortress": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Betor, Kin to All": {
@@ -3365,7 +3470,7 @@
   "Dormant Grove // Gnarled Grovestrider": {
    "H": {
     "m": "★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Bedrock Tortoise": {
@@ -3569,7 +3674,7 @@
   "Choking Miasma": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Mythos of Nethroi": {
@@ -3646,8 +3751,8 @@
   },
   "Jadzia Dax, Living Legacy": {
    "H": {
-    "m": "★",
-    "graded_at": "638d0b4a0931"
+    "m": "★★",
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Ferrafor, Young Yew": {
@@ -3748,8 +3853,8 @@
   },
   "Eagle of Deliverance": {
    "H": {
-    "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "m": "★",
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Angelic Guardian": {
@@ -3761,7 +3866,7 @@
   "Avacyn, Angel of Hope": {
    "H": {
     "m": "★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "The Soul Stone": {
@@ -3862,8 +3967,8 @@
   },
   "Eladamri, Korvecdal": {
    "H": {
-    "m": "★",
-    "graded_at": "638d0b4a0931"
+    "m": "★★",
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Veteran Beastrider": {
@@ -4031,7 +4136,7 @@
   "Whisperwood Elemental": {
    "H": {
     "m": "★★",
-    "graded_at": "638d0b4a0931"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Verdant Dread": {
@@ -4223,7 +4328,7 @@
   "Enduring Vitality": {
    "H": {
     "m": "★★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Elven Chorus": {
@@ -4271,13 +4376,13 @@
   "Saradoc, Master of Buckland": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Belladonna Took": {
    "H": {
     "m": "★★",
-    "graded_at": "1ce9e4256179"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Samwise Gamgee": {
@@ -4314,6 +4419,12 @@
    "H": {
     "m": "✗",
     "graded_at": "638d0b4a0931"
+   }
+  },
+  "Arwen, Mortal Queen": {
+   "H": {
+    "m": "★★",
+    "graded_at": "7fe9aa7d0828"
    }
   }
  },

@@ -54,7 +54,7 @@
 1 Threats Around Every Corner (DSK) 200
 1 Ashaya, Soul of the Wild (ZNR) 179
 1 Belladonna Took (HOB) 4
-1 Eagle of Deliverance (LTR) 824
+1 Saradoc, Master of Buckland (LTR) 282
 1 Impervious Greatwurm (GRN) 273
 
 # Landfall and extra land drops (every land is a Hamza manifest)
