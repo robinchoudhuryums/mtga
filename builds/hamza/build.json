@@ -1092,7 +1092,7 @@
   },
   "Ivorytusk Fortress": {
    "group": "Payoffs and card flow",
-   "text": "Untaps every creature with a counter on each opponent's turn, so the team attacks (or taps for mana) and still blocks; Saradoc's tokens enter with Arwen counters and qualify too. Replaced Veteran Beastrider.",
+   "text": "Untaps every creature with a counter on each opponent's turn. Suggested cut for Eladamri (a 5-drop for a card-advantage 3-drop); Dormant Grove on the bench is the vigilance fallback, and losing the untap matters more if Enduring Vitality comes in.",
    "graded_at": {
     "106": "7fe9aa7d0828"
    }
@@ -1169,9 +1169,9 @@
   },
   "Felothar, Dawn of the Abzan": {
    "group": "Payoffs and card flow",
-   "text": "Sacrifices an endure Spirit or a Plant on entering and on every attack to put a counter on each creature. Replaced Kin-Tree Invocation.",
+   "text": "Sacrifices a token on entering and attacking to counter the whole team. Suggested cut for Jadzia Dax: Belladonna and Basri now cover team counters, and the deck lacks early ramp.",
    "graded_at": {
-    "106": "ece9d59e662b"
+    "106": "7fe9aa7d0828"
    }
   },
   "Death's Oasis": {
@@ -1862,9 +1862,9 @@
   },
   "Strength of Will": {
    "group": "Protection",
-   "text": "Indestructible, and damage dealt to it becomes +1/+1 counters — cast it on a blocking wall. Replaced Earthshape.",
+   "text": "Indestructible, and damage dealt to it becomes +1/+1 counters. Suggested cut for Arwen, Mortal Queen, who does the same job on a body and adds lifelink counters. Replaced Earthshape.",
    "graded_at": {
-    "106": "18a732ee56c5"
+    "106": "7fe9aa7d0828"
    }
   },
   "Inspiring Call": {
@@ -3320,7 +3320,7 @@
   "Felothar, Dawn of the Abzan": {
    "H": {
     "m": "★★",
-    "graded_at": "ece9d59e662b"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Death's Oasis": {
@@ -3914,7 +3914,7 @@
   "Strength of Will": {
    "H": {
     "m": "★★",
-    "graded_at": "18a732ee56c5"
+    "graded_at": "7fe9aa7d0828"
    }
   },
   "Inspiring Call": {
