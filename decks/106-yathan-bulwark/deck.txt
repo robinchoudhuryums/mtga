@@ -67,6 +67,7 @@
 1 Loxodon Lifechanter (M20) 27
 1 Rok-Tahk, Budding Scientist (TRK) 211
 1 The Notary Hobbits (HOB) 131
+1 Enduring Vitality (DSK) 176
 
 # Payoffs and card flow
 1 Betor, Kin to All (TDM) 172
@@ -91,7 +92,6 @@
 1 Abzan Charm (KTK) 161
 1 Anguished Unmaking (OTP) 35
 1 Vindicate (MH2) 294
-1 Despark (WAR) 190
 1 Multiply by Zero (FRA) 58
 1 Toxic Deluge (MH3) 277
 1 Destined Confrontation (TLA) 15
@@ -154,3 +154,4 @@
 #~ +Toski, Bearer of Secrets | BENCH (builder hamza): benched on the board
 #~ +Valgavoth's Onslaught | BENCH (builder hamza): benched on the board
 #~ +Dormant Grove // Gnarled Grovestrider | BENCH (builder hamza): cut for The Notary Hobbits; team vigilance overlaps Ivorytusk Fortress
+#~ +Despark | BENCH (builder hamza): cut for Enduring Vitality; 2-mana instant exile of an MV 4+ permanent if interaction runs thin

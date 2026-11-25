@@ -1092,9 +1092,9 @@
   },
   "Ivorytusk Fortress": {
    "group": "Bench — real, not in the first draft",
-   "text": "Cut for Jadzia Dax. Untapped every creature with a counter on each opponent's turn; return it (or Dormant Grove) if Enduring Vitality comes in and you tap creatures for mana.",
+   "text": "Cut for Jadzia Dax. Untapped every creature with a counter on each opponent's turn — now that Enduring Vitality is in and you tap creatures for mana, the strongest return candidate (or Dormant Grove for vigilance).",
    "graded_at": {
-    "106": "6a0f9e8695cc"
+    "106": "98ebf7fee7d9"
    }
   },
   "Betor, Kin to All": {
@@ -1827,9 +1827,9 @@
   },
   "Smuggler's Surprise": {
    "group": "Protection",
-   "text": "Proposed cut for Enduring Vitality: protection is the deck's deepest axis (17 → 14 with the package). Its two-creature cheat matters less now that the Hobbits pay for Titan and The Walls; the mill mode is the other loss.",
+   "text": "{4}{G} puts two creatures from hand onto the battlefield (they enter, so Titan gets its counters); {1} gives hexproof and indestructible; or mill four and keep two. Kept when Enduring Vitality came in for Despark instead.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "98ebf7fee7d9"
    }
   },
   "Claim the Kingdom": {
@@ -2085,10 +2085,10 @@
    }
   },
   "Despark": {
-   "group": "Interaction",
-   "text": "Alternate cut for Enduring Vitality: the narrowest removal here (mana value 4+), but cutting it drops interaction to 9 and trips the quality guard.",
+   "group": "Bench — real, not in the first draft",
+   "text": "Benched for Enduring Vitality. 2-mana instant exile of a mana value 4+ permanent (most commanders and bombs); the first answer to bring back if interaction feels thin.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "98ebf7fee7d9"
    }
   },
   "Mortify": {
@@ -2177,9 +2177,9 @@
   },
   "Dryad of the Ilysian Grove": {
    "group": "Landfall and extra land drops",
-   "text": "Alternate cut for Enduring Vitality: both fix, but Dryad also gives an extra land drop (a Hamza trigger), so it's the costlier cut.",
+   "text": "An extra land drop each turn (another Hamza trigger) and every land taps for any colour. Kept alongside Enduring Vitality; together they make the deck's colours reliable.",
    "graded_at": {
-    "106": "6f2135e4cb89"
+    "106": "98ebf7fee7d9"
    }
   },
   "Icetill Explorer": {
@@ -2344,10 +2344,10 @@
    }
   },
   "Enduring Vitality": {
-   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
-   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and each Saradoc token becomes fixing from the turn after it enters, fixing the WW/BB/GG cards and paying for flips. A 3/3 vigilance that returns as an enchantment when it dies. Suggested for Smuggler's Surprise.",
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and Saradoc token becomes fixing from the turn after it enters — the deck's real fixing lever. A 3/3 vigilance that returns as an enchantment when it dies. Replaced Despark.",
    "graded_at": {
-    "106": "7fe9aa7d0828"
+    "106": "98ebf7fee7d9"
    }
   },
   "Elven Chorus": {
@@ -3298,6 +3298,99 @@
     "Wastewood Verge",
     "Woodland Cemetery",
     "Zopandrel, Hunger Dominus"
+   ],
+   "98ebf7fee7d9": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Mortal Queen",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eladamri, Korvecdal",
+    "Elesh Norn, Mother of Machines",
+    "Enduring Vitality",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Jadzia Dax, Living Legacy",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Saradoc, Master of Buckland",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
    ]
   }
  },
@@ -3347,7 +3440,7 @@
   "Ivorytusk Fortress": {
    "H": {
     "m": "★★",
-    "graded_at": "6a0f9e8695cc"
+    "graded_at": "98ebf7fee7d9"
    }
   },
   "Betor, Kin to All": {
@@ -3977,7 +4070,7 @@
   "Smuggler's Surprise": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "98ebf7fee7d9"
    }
   },
   "Claim the Kingdom": {
@@ -4199,7 +4292,7 @@
   "Despark": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "98ebf7fee7d9"
    }
   },
   "Mortify": {
@@ -4277,7 +4370,7 @@
   "Dryad of the Ilysian Grove": {
    "H": {
     "m": "★★",
-    "graded_at": "6f2135e4cb89"
+    "graded_at": "98ebf7fee7d9"
    }
   },
   "Icetill Explorer": {
@@ -4421,7 +4514,7 @@
   "Enduring Vitality": {
    "H": {
     "m": "★★★",
-    "graded_at": "7fe9aa7d0828"
+    "graded_at": "98ebf7fee7d9"
    }
   },
   "Elven Chorus": {
