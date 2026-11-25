@@ -11,11 +11,11 @@
 #: archetype: plot (Kellan Joins Up, Fblthp), warp (Anticausal Vestige, Exalted Sunborn), adventures, Ephemerate's
 #: archetype: rebound, the graveyard (Valgavoth, Bilbo, Thief in the Night;
 #: archetype: Conspiracy Unraveler's collect evidence pays for any of these casts) and the top of the library
-#: archetype: (Mm'menon, Falco Spara, Vizier, Elven Chorus, One with the Multiverse, Chimil's discover). Doc Aurlock
+#: archetype: (Mm'menon, Falco Spara, Elven Chorus, One with the Multiverse, Chimil's discover). Doc Aurlock
 #: archetype: makes those casts {2} cheaper. Clues are the card-advantage spine, doubled by Bard, King of Dale and Exalted Sunborn,
 #: archetype: and drawn off by Fateful Discovery. Counters are a
-#: archetype: subtheme because Falco Spara spends them to cast from the library (Kellan Joins Up, Imperial Cosmographer,
-#: archetype: Spara's Bodyguard's shields, Wakka). Interaction is exile-based and gives the opponent nothing.
+#: archetype: subtheme because Falco Spara spends them to cast from the library (Kellan Joins Up, Imperial Cosmographer, doubled by Dr. Joseph M'Benga,
+#: archetype: Spara's Bodyguard's shields, Wakka); Hamza turns +1/+1 counters into a creature discount. Interaction is exile-based and gives the opponent nothing.
 #: archetype: Distinct from deck 67 (the Standard Kellan list): this is the 100-card build, airbend-first.
 #: protect: Kellan, the Kid; Doc Aurlock, Grizzled Genius; Bilbo, Thief in the Night; Appa, Steadfast Guardian; Aang, Swift Savior; Aang, Airbending Master; Fblthp, Lost on the Range; Mm'menon, the Right Hand; Kellan Joins Up; Bard, King of Dale
 #: notes: Drafted 2026-11-25 from the owner's 249-card Kellan pile (.cycle/kellan-pile-analysis.md) plus an off-pile
@@ -54,7 +54,6 @@
 1 Valgavoth, the Lifeline (YFRA) 3
 1 Mm'menon, the Right Hand (EOE) 68
 1 Falco Spara, Pactweaver (SNC) 186
-1 Vizier of the Menagerie (FDN) 649
 1 Elven Chorus (LTR) 160
 1 Commander Spock (TRC) 2
 1 Data, Exploring Humanity (TRC) 40
@@ -65,6 +64,7 @@
 1 Bilbo, Thief in the Night (HOB) 33
 1 Irma, Part-Time Mutant (TMC) 12
 1 Genesis Device (TRK) 200
+1 Hamza, Guardian of Arashin (HA4) 18
 
 # Clues and card advantage
 1 Bard, King of Dale (HOB) 144
@@ -91,6 +91,7 @@
 1 Imperial Cosmographer (MSC) 624
 1 Spara's Bodyguard (YSNC) 28
 1 McCoy, Not a Bricklayer (TRC) 99
+1 Dr. Joseph M'Benga (TRK) 196
 
 # Interaction — exile removal, no gifts to the opponent
 1 Seal from Existence (MOM) 35
@@ -102,7 +103,6 @@
 1 Lagrella, the Magpie (SNC) 196
 1 Avatar's Wrath (TLA) 12
 1 Wakka, Devoted Guardian (FIC) 97
-1 Teferi's Protection (MAR) 51
 1 Katara's Reversal (TLE) 63
 
 # Lands
