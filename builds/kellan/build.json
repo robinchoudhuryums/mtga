@@ -2211,7 +2211,7 @@
   },
   "Monk Gyatso": {
    "group": "Bench — real, not in the first draft",
-   "text": "Airbends your targeted creature — protection that recasts from exile",
+   "text": "Re-graded (owner): whenever any of your creatures is targeted — by removal or by your own Ephemerate, Eagle or equipment — airbend it. Dodges removal, and the {2} recast from exile is a Kellan trigger.",
    "graded_at": {
     "107": "df52a59c317d"
    }
@@ -2393,7 +2393,7 @@
   },
   "Kappa Cannoneer": {
    "group": "Bench — real, not in the first draft",
-   "text": "Improvise; grows unblockable per artifact (Clues)",
+   "text": "Re-graded (owner): Clues pay its improvise (often 2–3 mana), and every artifact entering (each Clue, doubled) grows it and makes it unblockable that turn; ward {4}.",
    "graded_at": {
     "107": "df52a59c317d"
    }
@@ -2463,7 +2463,7 @@
   },
   "Eagle of Deliverance": {
    "group": "Bench — real, not in the first draft",
-   "text": "Indestructible counter + draw",
+   "text": "Re-graded (owner): each blink is another indestructible counter and usually a draw (most targets have power 2 or less); with Monk Gyatso it can also airbend the target.",
    "graded_at": {
     "107": "df52a59c317d"
    }
@@ -3296,7 +3296,7 @@
   },
   "Chimil, the Inner Sun": {
    "group": "Bench — real, not in the first draft",
-   "text": "Discover 5 every end step — a free cast from exile each turn, and spells can't be countered",
+   "text": "Discover 5 every end step — a free cast from exile, so a Kellan trigger every turn — and your spells can't be countered.",
    "graded_at": {
     "107": "df52a59c317d"
    }
@@ -4188,7 +4188,7 @@
   },
   "Monk Gyatso": {
    "K": {
-    "m": "★",
+    "m": "★★★",
     "graded_at": "df52a59c317d"
    }
   },
@@ -4344,7 +4344,7 @@
   },
   "Kappa Cannoneer": {
    "K": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "df52a59c317d"
    }
   },
@@ -4404,7 +4404,7 @@
   },
   "Eagle of Deliverance": {
    "K": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "df52a59c317d"
    }
   },
@@ -5118,7 +5118,7 @@
   },
   "Chimil, the Inner Sun": {
    "K": {
-    "m": "★★",
+    "m": "★★★",
     "graded_at": "df52a59c317d"
    }
   },
