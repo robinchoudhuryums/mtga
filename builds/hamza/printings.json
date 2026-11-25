@@ -74,6 +74,32 @@
    "y": "2024"
   }
  ],
+ "Arwen, Mortal Queen": [
+  {
+   "a": "Miranda Meeks",
+   "art": "https://cards.scryfall.io/art_crop/front/5/4/547f92d4-cd1d-4ca7-a6e2-6473b4d3c832.jpg?1783916259",
+   "cn": "193",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/4/547f92d4-cd1d-4ca7-a6e2-6473b4d3c832.jpg?1783916259",
+   "r": "M",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Kev Walker",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2055227-0a53-4b6b-b6d3-0eafc1884d4c.jpg?1785152323",
+   "cn": "30",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2055227-0a53-4b6b-b6d3-0eafc1884d4c.jpg?1785152323",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Arwen, Weaver of Hope": [
   {
    "a": "Axel Sauerwald",
