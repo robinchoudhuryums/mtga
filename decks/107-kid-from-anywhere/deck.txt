@@ -27,6 +27,9 @@
 #: notes: Lands 2026-11-25: Genesis Device fetches a basic OR a Planet, so the deck runs three Planets (Risa, Uthros,
 #: notes: Evendo) as Genesis targets; Risa's 1 life turns on Valgavoth. Prairie Stream / Canopy Vista measured +0.8 on-curve
 #: notes: and are the next land upgrade if crafted (owner deferred the rare crafts).
+#: notes: The ten unowned rare duals (fast/check/pain/pathway lands) were swapped for owned Verges, slowlands, the MSH
+#: notes: basic-gated lands, Earth, Sector 001 and Glacial Floodplain (owner, 2026-11-25): sources 21/21/21 -> 20/20/20,
+#: notes: on-curve as built 48.9% -> 47.0%. Those rares are the upgrade path back if crafted.
 
 # Commander
 1 Kellan, the Kid (OTJ) 213
@@ -115,18 +118,18 @@
 1 Hallowed Fountain (ECL) 265
 1 Temple Garden (ECL) 268
 1 Breeding Pool (EOE) 251
-1 Glacial Fortress (XLN) 255
-1 Sunpetal Grove (XLN) 257
-1 Hinterland Harbor (DOM) 240
-1 Hengegate Pathway // Mistgate Pathway (KHM) 260
-1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
+1 Glacial Floodplain (KHM) 257
+1 Overgrown Farmland (FRA) 185
+1 Willowrush Verge (DFT) 270
+1 Gleaming Bastion (MSH) 267
+1 Earth, Sector 001 (TRK) 281
 1 Branchloft Pathway (ZNR) 258
-1 Seachrome Coast (ONE) 258
-1 Botanical Sanctum (OTJ) 267
-1 Razorverge Thicket (ONE) 257
-1 Adarkar Wastes (DMU) 243
+1 Floodfarm Verge (DSK) 259
+1 Dreamroot Cascade (SOS) 254
+1 Gathering Place (MSH) 266
+1 Deserted Beach (FRA) 176
 1 Yavimaya Coast (DMU) 261
-1 Brushland (BRO) 259
+1 Hushwood Verge (DSK) 261
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
 1 Risa (TRK) 293
