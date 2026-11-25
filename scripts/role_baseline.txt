@@ -106,7 +106,6 @@ Crustacean Commando
 Cryogen Relic
 Crypt Feaster
 Cuboid Colony
-Cursed Wombat
 Cut Your Losses
 Cyberdrive Awakener
 Daggerfang Duo
@@ -259,7 +258,6 @@ Iroh, Dragon of the West
 Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Ironpaw Aspirant
-Ivorytusk Fortress
 Jadzia Dax, Living Legacy
 Jeong Jeong, the Deserter
 Jeskai Brushmaster

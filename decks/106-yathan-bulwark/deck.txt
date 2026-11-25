@@ -13,15 +13,15 @@
 #: archetype: → another manifest, until the library runs out of creatures) and Threats Around Every Corner fetches a
 #: archetype: basic for each face-down creature (landfall → another manifest). Elesh Norn doubles every landfall. Low
 #: archetype: power is UPSIDE: power-capped recursion (Smile at Death, Slumbering Walker, Nethroi's total power 10)
-#: archetype: returns the walls, Delney makes power ≤2 attackers unblockable by power ≥3, and Destined Confrontation,
-#: archetype: Choking Miasma and Toxic Deluge are one-sided against a board of 5+ toughness. Distinct from every roster deck:
+#: archetype: returns the walls, Delney makes power ≤2 attackers unblockable by power ≥3, and Destined Confrontation
+#: archetype: and Toxic Deluge (at a small X) are one-sided against a board of 5+ toughness. Distinct from every roster deck:
 #: archetype: the only face-down / toughness-as-damage list.
 #: protect: Hamza, Might of the Yathan; Felothar the Steadfast; Doran, Besieged by Time; Assault Formation; Crystal Barricade; The Walls of Ba Sing Se; Hauntwoods Shrieker; Threats Around Every Corner; Ashaya, Soul of the Wild; Smile at Death; Delney, Streetwise Lookout; Destined Confrontation
 #: notes: Drafted 2026-11-24 from the Abzan toughness pile (.cycle/abzan-toughness-pile-analysis.md) plus an off-pile
 #: notes: search, then tuned on its Builder board (builds/hamza) the same day: both loops at moderate depth (38
 #: notes: creatures, 12 basics). A flipped creature gets no ETB, no kicker and no cost reduction, but a manifest never
 #: notes: HAS to be flipped, so Towering Titan (0/0 if flipped) stays a 2/2 face down and is cast for its counters.
-#: notes: Face-down 2/2s die to our own Choking Miasma / Toxic Deluge: flip the ones worth keeping first (each flip is
+#: notes: Face-down 2/2s die to our own Toxic Deluge (pick a small X) and Punishment (never X=0): flip the ones worth keeping first (each flip is
 #: notes: an endure). The Notary Hobbits makes about 9 colourless a turn (25 with Elesh Norn) for the big flips.
 
 # Commander
@@ -62,7 +62,7 @@
 1 Fecund Greenshell (BLB) 171
 1 Elesh Norn, Mother of Machines (ONE) 10
 1 Mythweaver Poq (YLCI) 19
-1 Cursed Wombat (MH3) 181
+1 Arwen, Mortal Queen (LTR) 193
 1 Dryad of the Ilysian Grove (THB) 169
 1 Loxodon Lifechanter (M20) 27
 1 Rok-Tahk, Budding Scientist (TRK) 211
@@ -74,10 +74,11 @@
 1 Akroma's Will (SOA) 1
 1 Felothar, Dawn of the Abzan (TDM) 184
 1 Delney, Streetwise Lookout (MKM) 12
-1 Ivorytusk Fortress (KTK) 179
+1 Jadzia Dax, Living Legacy (TRK) 204
 1 Captain America's Shield (MSH) 244
 1 Last March of the Ents (LTR) 172
 1 Arwen, Weaver of Hope (LTC) 35
+1 Eladamri, Korvecdal (MH3) 149
 
 # Recursion — power-capped, which is upside in a power-0 deck
 1 Nethroi, Apex of Death (IKO) 197
@@ -89,7 +90,6 @@
 1 Mythos of Nethroi (IKO) 97
 1 Abzan Charm (KTK) 161
 1 Anguished Unmaking (OTP) 35
-1 Choking Miasma (DMU) 86
 1 Vindicate (MH2) 294
 1 Despark (WAR) 190
 1 Multiply by Zero (FRA) 58
