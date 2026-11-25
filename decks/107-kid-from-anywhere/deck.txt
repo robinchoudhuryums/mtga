@@ -22,7 +22,8 @@
 #: notes: search. Kellan triggers on CASTS from elsewhere — blink (Don & Leo, Soulherder) does not trigger him, airbend
 #: notes: does. Holo-Engineer is out: it turns every token into an Illusion, so no Clues. Rampage of the Clans and
 #: notes: Soul of Emancipation are fine (owner): aim them at your own Clues for bodies — but Rampage also destroys our
-#: notes: own exile-removal enchantments and artifacts, returning what they hold.
+#: notes: own exile-removal enchantments and artifacts, returning what they hold. Soul of Emancipation was CUT 2026-11-25
+#: notes: for McCoy, Not a Bricklayer (interaction 13 -> 12, the 100-card A line exactly; the next interaction cut drops the floor to B).
 
 # Commander
 1 Kellan, the Kid (OTJ) 213
@@ -89,6 +90,7 @@
 1 Photon, Lady of Light (MSC) 606
 1 Imperial Cosmographer (MSC) 624
 1 Spara's Bodyguard (YSNC) 28
+1 McCoy, Not a Bricklayer (TRC) 99
 
 # Interaction — exile removal, no gifts to the opponent
 1 Seal from Existence (MOM) 35
@@ -98,7 +100,6 @@
 1 Aang's Iceberg (TLA) 5
 1 Assimilation Aegis (OTJ) 192
 1 Lagrella, the Magpie (SNC) 196
-1 Soul of Emancipation (SNC) 223
 1 Avatar's Wrath (TLA) 12
 1 Wakka, Devoted Guardian (FIC) 97
 1 Teferi's Protection (MAR) 51
