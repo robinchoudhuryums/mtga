@@ -113,6 +113,7 @@ Dalkovan Packbeasts
 Daredevil, Fearless Fighter
 Dark Confidant
 Darkstar Augur
+Data, Exploring Humanity
 Daydream
 Deanna Troi, Psychic Counsel
 Deepchannel Duelist
@@ -283,6 +284,7 @@ Krenko, Mob Boss
 Krumar Initiate
 Kumena, Tyrant of Orazca
 Kyoshi Warriors
+Lagrella, the Magpie
 Lake-town Toymaker
 Large Bear
 Lazotep Chancellor
@@ -400,6 +402,7 @@ Reckless Velocitaur
 Reno and Rude
 Resentful Revelation
 Resolute Reinforcements
+Restoration Angel
 Restorative Technique
 Retrieve the Esper
 Rhovanion Rampager
@@ -523,6 +526,7 @@ Triceraton Commander
 Twilight Diviner
 Ty Lee, Artful Acrobat
 Tyvar the Bellicose
+U.S.S. Discovery, at Black Alert
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium

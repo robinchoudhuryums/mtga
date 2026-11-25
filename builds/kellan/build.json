@@ -1,0 +1,5240 @@
+{
+ "schema": 1,
+ "title": "Kellan, the Kid — cast from anywhere",
+ "decks": [
+  {
+   "key": "K",
+   "id": "107",
+   "label": "Kellan"
+  }
+ ],
+ "piles": [
+  {
+   "key": "K",
+   "label": "Kellan's pile",
+   "deck": "K",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Constable Odo",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Alquist Proft, Master Sleuth",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Officious Interrogation",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Bard the Bowman",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Private Eye",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "King T'Challa // Black Panther, Hope Enduring",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Hylda of the Icy Crown",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ephara, God of the Polis",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Bard, King of Dale",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Live Long and Prosper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brokers' Safeguard",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Gold-Forged Thopteryx",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Mendicant Core, Guidelight",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Abuelo, Ancestral Echo",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Scour the Scene",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Spider-Woman, Stunning Savior",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Assimilation Aegis",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Richlau, Headmaster",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tidus, Blitzball Star",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Mighty Thor, Jane Foster",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Cephalopod Sentry",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Don & Leo, Problem Solvers",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Ghalma the Shaper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Urza, Prince of Kroog",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Who Slows the Sunset",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Riptide Gearhulk",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Tenth District Hero",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Unyielding Gatekeeper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "April O'Neil, Live on the Scene",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Excogitator Sphinx",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Wraith, Vicious Vigilante",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Conspiracy Unraveler",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Forensic Gadgeteer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Agent 13, Sharon Carter",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Measure of a Man",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Curious Inquiry",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Confirm Suspicions",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Tamiyo's Journal",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Knowledge Seeker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Mechanist, Aerial Artisan",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Scene of the Crime",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aang, Air Nomad",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Aang, Airbending Master",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aang, Swift Savior // Aang and La, Ocean's Fury",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Teferi's Protection",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aang's Iceberg",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Imperial Cosmographer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Dour Port-Mage",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Kami of Transmutation",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Klement, Novice Acolyte",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Leader's Talent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Shire Shirriff",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Sheltered by Ghosts",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Idol of Endurance",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "In the Trenches",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Malfunctioning Holodeck",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Nine Lives",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rasaad, Monk of Selûne",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Seal from Existence",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Suki, Courageous Rescuer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aurelia's Vindicator",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Celebrate the Mountain-king",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "White Auracite",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Static Snare",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Detention Sphere",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Dr. Joseph M'Benga",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Spirited Simulacrum",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Anticausal Vestige",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Priest of Possibility",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Odric, Lunarch Marshal",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Valkyrie Harbinger",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Super-Adaptoid",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Katara, Waterbending Master",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Lyra, Tolarian Archangel",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Data, Exploring Humanity",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Krang, the All-Powerful",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Teferi, Temporal Pilgrim",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Pol Jamaar, Illusionist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Fateful Discovery",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Kindred Discovery",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Donatello, Gadget Master",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Donatello, the Brains",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Donatello, Way with Machines",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Irma, Part-Time Mutant",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Donatello, Mutant Mechanic",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Skatewing Spy",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wiccan, Rising Magician",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Namor, Atlantean King",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Medomai the Ageless",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Matoya, Archon Elder",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Land Tax",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Ashe, Princess of Dalmasca",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Valgavoth, the Lifeline",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Does Machines",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Glamdring, Foe-hammer // Gleam of Death",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Enter the Infinite",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Blind Obedience",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Mondrak, Glory Dominus",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Katara's Reversal",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "One with the Machine",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tekuthal, Inquiry Dominus",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Mm'menon, the Right Hand",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Repulsor Bots",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Valkyrie Aerial Unit",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Krang, Master Mind",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Cerebral Download",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Airbender Ascension",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Appa, Steadfast Guardian",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Avatar's Wrath",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Monk Gyatso",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Airbender's Reversal",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Glider Staff",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Key to the Vault",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Caretaker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Soulherder",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Metastatic Evangel",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Urdnan, Dromoka Warrior",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Extricator of Sin // Extricator of Flesh",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Koth of the Homestead",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rosie Cotton of South Lane",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Rumor Gatherer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Dr. McCoy, Surly Surgeon",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Felidar Retreat",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Sentry, Golden Guardian",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Anti-Venom, Horrifying Healer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Katara, Heroic Healer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Nick Fury, Spymaster",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Falcon, Sam Wilson",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Appa, Loyal Sky Bison",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Captain Marvel, Shooting Star",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Saint Elenda",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ironheart, Clever Champion",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Origin of Iron Man",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Iron Man, Futurist Paragon",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Stark's Ingenuity",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kappa Cannoneer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Metallic Rebuke",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Reverse Engineer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Archway of Innovation",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lady Octopus, Inspired Inventor",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Malcolm, Alluring Scoundrel",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Yue, the Moon Spirit",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Torrential Gearhulk",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Vision, Spectral Synthezoid",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Scholar of the Lost Trove",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Eagle of Deliverance",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Ezrim, Agency Chief",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Brokers Ascendancy",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Peter Parker // Amazing Spider-Man",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Derevi, Empyrial Tactician",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Disciplined Duelist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Helga, Skittish Seer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Gorion, Wise Mentor",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Katilda and Lier",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Kellan Joins Up",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Lagrella, the Magpie",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Rigo, Streetwise Mentor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Spara's Bodyguard",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Shanna, Purifying Blade",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Falco Spara, Pactweaver",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Choco, Seeker of Paradise",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sarek, Federation Ambassador",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tamiyo, Field Researcher",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Yuna, Grand Summoner",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aang, at the Crossroads // Aang, Destined Savior",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Tocasia, Dig Site Mentor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Commander Spock",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Spara's Adjudicators",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Aang and Katara",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Soul of Emancipation",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Urban Retreat",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Brigid, Clachan's Heart // Brigid, Doun's Mind",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jake Sisko, War Correspondent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sharp-Eyed Rookie",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Tireless Tracker",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Weirding Wood",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Briarbridge Patrol",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ulvenwald Mysteries",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Lonis, Cryptozoologist",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Undercover Crocodelf",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kellan, Inquisitive Prodigy // Tail the Suspect",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Path of Discovery",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "U.S.S. Discovery, at Black Alert",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Monstrous Vortex",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jadelight Ranger",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Captain Kathryn Janeway",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Auspicious Starrix",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Doc Aurlock, Grizzled Genius",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Make Your Own Luck",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Bilbo, Luckwearer // Burglar's Plot",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Railway Brawler",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Bilbo, Thief in the Night",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Teething Wurmlet",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Legion of Clay",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rampage of the Clans",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Pest Infestation",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Shuri, the Black Panther",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Black Panther, Most Dangerous",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Black Panther, Wakandan King",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "T'Challa, the Black Panther",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Shuri, Vibranium Technologist",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Party Dude",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Belt of Giant Strength",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Elvish Archivist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vivien's Arkbow",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Genesis Device",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Reclamation Sage",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Sandstorm Salvager",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Sledge-Class Seedship",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Thunderous Velocipede",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Holo-Engineer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Summoner's Grimoire",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "U.S.S. Voyager, Lone Wanderer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Silverback Elder",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Storm, Shaker of Skies",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Titan of Industry",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Mutagen Man, Living Ooze",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Baseball Bat",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sundering Growth",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Yotian Dissident",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Serah Farron // Crystallized Serah",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Wakka, Devoted Guardian",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Doctor, EMH",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Kwia Vigorbloom",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Absorbing Man",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Omega, Heartless Evolution",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Matt Murdock, Justice Seeker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Peggy Carter, Secret Agent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Super-Soldier",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Mockingbird, Ace Agent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Photon, Lady of Light",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Iron Man, Bleeding Edge",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Silver Surfer, Cosmic Voyager",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Earth's Mightiest Heroes",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Living Legend",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ms. Marvel, Elastic Ally",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wylie Duke, Atiin Hero",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Web-Warriors",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Fblthp, Lost on the Range",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Visage Bandit",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Hamza, Guardian of Arashin",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Notary Hobbits",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Pippin, Guard of the Citadel",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Gretchen Titchwillow",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Prosperous Innkeeper",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Belladonna Took",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Gaffer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "McCoy, Not a Bricklayer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ephemerate",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Restoration Angel",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Brazen Borrower // Petty Theft",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Virtue of Knowledge // Vantress Visions",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Uro, Titan of Nature's Wrath",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Quantum Riddler",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Starfield Vocalist",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Exalted Sunborn",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Haliya, Guided by Light",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Plan the Heist",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Slickshot Lockpicker",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Sheriff of Safe Passage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Outcaster Trailblazer",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Alrund's Epiphany",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Glorious Protector",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Chimil, the Inner Sun",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Vizier of the Menagerie",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Sigarda, Font of Blessings",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Cemetery Illuminator",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "One with the Multiverse",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Collector's Cage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Planetarium of Wan Shi Tong",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Quandrix, the Proof",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Aang, the Last Airbender",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "The Legend of Yangchen // Avatar Yangchen",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Whirlwind Technique",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Displacer Kitten",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Spell Queller",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Taigam, Master Opportunist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Snapcaster Mage",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Lier, Disciple of the Drowned",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Augur of Autumn",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Precognition Field",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Elven Chorus",
+   "pile": "K",
+   "src": "added"
+  },
+  {
+   "name": "Kellan, Daring Traveler // Journey On",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Constable Odo": {
+   "group": "Clues and card advantage",
+   "text": "ETB stun or two Clues; a blink target either way",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Alquist Proft, Master Sleuth": {
+   "group": "Clues and card advantage",
+   "text": "Clue on entering, and a Clue sink that draws X and gains X",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Officious Interrogation": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Clues equal to creatures; scales with the opponent's board",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Bard the Bowman": {
+   "group": "Doesn't fit",
+   "text": "Second-draw counters; Clues make the second draw easy, but the payoff is small",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Private Eye": {
+   "group": "Doesn't fit",
+   "text": "Detective tribal; few Detectives",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "King T'Challa // Black Panther, Hope Enduring": {
+   "group": "Clues and card advantage",
+   "text": "Draws whenever any player draws their second card; Clues and Bard make that every turn",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "group": "Doesn't fit",
+   "text": "Needs tapping opposing creatures (Tidus, Odo)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ephara, God of the Polis": {
+   "group": "Clues and card advantage",
+   "text": "Upkeep draw if a creature entered last turn — blink makes that automatic",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Bard, King of Dale": {
+   "group": "Clues and card advantage",
+   "text": "Doubles tokens (Clues) AND turns every non-first draw into two — Clue cracks draw two",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Live Long and Prosper": {
+   "group": "Doesn't fit",
+   "text": "7-mana life and cards",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Brokers' Safeguard": {
+   "group": "Bench — real, not in the first draft",
+   "text": "2-mana instant blink with a shield counter",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Ward {2} on legends, incl. Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Mendicant Core, Guidelight": {
+   "group": "Doesn't fit",
+   "text": "Speed-gated artifact copy",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Abuelo, Ancestral Echo": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Repeatable blink of a creature or artifact, returning at end step",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Scour the Scene": {
+   "group": "Doesn't fit",
+   "text": "Pays off sacrificed Clues, but small",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Spider-Woman, Stunning Savior": {
+   "group": "Doesn't fit",
+   "text": "Opponents' creatures enter tapped",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Assimilation Aegis": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "Exile removal, then the equipped creature copies it",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Richlau, Headmaster": {
+   "group": "Doesn't fit",
+   "text": "Artifact recursion, slow",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tidus, Blitzball Star": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counter per artifact (each Clue) and taps a blocker",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Mighty Thor, Jane Foster": {
+   "group": "Blink — re-uses Clue makers and exile removal",
+   "text": "On attack, blinks your own creature/artifact (an ETB again) or resets an opposing token",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Cephalopod Sentry": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Power = artifacts (Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "group": "Blink — re-uses Clue makers and exile removal",
+   "text": "Blinks an artifact AND a creature every end step",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ghalma the Shaper": {
+   "group": "Doesn't fit",
+   "text": "Artifact tokens, off-plan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Urza, Prince of Kroog": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Copies an artifact for 6",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Teferi, Who Slows the Sunset": {
+   "group": "Clues and card advantage",
+   "text": "Untap, dig three, protection-ish",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Riptide Gearhulk": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "ETB tuck a permanent per opponent — a blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tenth District Hero": {
+   "group": "Doesn't fit",
+   "text": "Collect evidence; off-plan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Unyielding Gatekeeper": {
+   "group": "Doesn't fit",
+   "text": "Flip blinks your own permanent; on theirs it gives them a 2/2 (removal rule)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "April O'Neil, Live on the Scene": {
+   "group": "Doesn't fit",
+   "text": "Clue per Mutant/Ninja/Turtle; depends on the TMNT count",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Excogitator Sphinx": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Clues on combat damage; Clue → seek an instant/sorcery",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Wraith, Vicious Vigilante": {
+   "group": "Doesn't fit",
+   "text": "Unblockable double strike 1/1",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Conspiracy Unraveler": {
+   "group": "Doesn't fit",
+   "text": "Collect evidence 10 instead of mana — cast from hand, so no Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Forensic Gadgeteer": {
+   "group": "Clues and card advantage",
+   "text": "Clue per artifact spell; Clue and artifact abilities cost {1} less",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Agent 13, Sharon Carter": {
+   "group": "Doesn't fit",
+   "text": "Attack-alone Clues",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Measure of a Man": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Exile your creature, investigate, return it — a delayed blink, or a temporary removal",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Curious Inquiry": {
+   "group": "Doesn't fit",
+   "text": "Aura Clues on damage",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Confirm Suspicions": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counterspell plus three Clues, at 5",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tamiyo's Journal": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Clue every upkeep plus a tutor; 5 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Knowledge Seeker": {
+   "group": "Doesn't fit",
+   "text": "Second-draw counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Mechanist, Aerial Artisan": {
+   "group": "Bench — real, not in the first draft",
+   "text": "A Clue per noncreature spell; animates Clues",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Scene of the Crime": {
+   "group": "Lands",
+   "text": "Land that is also a Clue (and an artifact)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang, Air Nomad": {
+   "group": "Doesn't fit",
+   "text": "Vigilance anthem",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang, Airbending Master": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Airbend your own creature → recast it from exile for {2} (a Kellan trigger); experience tokens",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang, Swift Savior // Aang and La, Ocean's Fury": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Flash airbend of a creature or SPELL; recast from exile for {2} triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Teferi's Protection": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "The best protection effect in the format",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang's Iceberg": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "Flash exile removal; waterbend sac to scry",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Imperial Cosmographer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Grows when creatures leave without dying (blink)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Dour Port-Mage": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draws when creatures leave without dying; bounces your own creature",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kami of Transmutation": {
+   "group": "Doesn't fit",
+   "text": "Perpetual type change; niche",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Klement, Novice Acolyte": {
+   "group": "Doesn't fit",
+   "text": "Perpetual +1/+1",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Leader's Talent": {
+   "group": "Doesn't fit",
+   "text": "Counters; off-plan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Shire Shirriff": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Sacrifice a Clue to exile a creature (until it leaves)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "2-mana exile removal on an aura",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Idol of Endurance": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Casts MV≤3 creatures from exile for free — each one triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "In the Trenches": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Anthem plus one exile",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Malfunctioning Holodeck": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "3-mana warded exile removal",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Nine Lives": {
+   "group": "Doesn't fit",
+   "text": "Damage shield with a lose-the-game risk",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Rasaad, Monk of Selûne": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Exile a creature until it leaves; a blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Seal from Existence": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "Warded exile removal",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Suki, Courageous Rescuer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Token whenever a permanent leaves on your turn (Clue sacrifices count)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aurelia's Vindicator": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Disguise exile of X creatures",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Celebrate the Mountain-king": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Exile one permanent per opponent and recruit",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "White Auracite": {
+   "group": "Bench — real, not in the first draft",
+   "text": "4-mana exile removal that taps for W",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Static Snare": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flash exile of an artifact/creature; cheaper with attackers",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Detention Sphere": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "3-mana exile of a permanent and all copies",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Dr. Joseph M'Benga": {
+   "group": "Doesn't fit",
+   "text": "Counters doubler; counters are not this deck's axis",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Spirited Simulacrum": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Warp it (cast later from exile = a Kellan trigger); land on enter, card on leaving — blink fodder",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Anticausal Vestige": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Warp {4}, leaves → draw and put a permanent onto the battlefield; recast from exile triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Priest of Possibility": {
+   "group": "Doesn't fit",
+   "text": "Keyword lottery",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Odric, Lunarch Marshal": {
+   "group": "Doesn't fit",
+   "text": "Keyword sharing",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Valkyrie Harbinger": {
+   "group": "Doesn't fit",
+   "text": "Lifegain angels",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Super-Adaptoid": {
+   "group": "Doesn't fit",
+   "text": "Legendary count; keyword copy",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Experience from flash spells; loot on attack",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Lyra, Tolarian Archangel": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Angel when you drew three; Clues help",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Data, Exploring Humanity": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Second draw each turn → discover 4 — a free cast from exile, which triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Krang, the All-Powerful": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Doubles draw-caused triggers (T'Challa, Data, Bard the Bowman)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Teferi, Temporal Pilgrim": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draw engine walker",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Pol Jamaar, Illusionist": {
+   "group": "Doesn't fit",
+   "text": "Tribal draw; no tribe",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Fateful Discovery": {
+   "group": "Clues and card advantage",
+   "text": "Draw a card whenever an artifact enters — every Clue (two with Bard, King of Dale)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kindred Discovery": {
+   "group": "Doesn't fit",
+   "text": "Needs a creature type",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Donatello, Gadget Master": {
+   "group": "Doesn't fit",
+   "text": "Copies an artifact on damage",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Donatello, the Brains": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Extra Mutagen token whenever you make tokens (Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Donatello, Way with Machines": {
+   "group": "Doesn't fit",
+   "text": "Grows off artifacts",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Irma, Part-Time Mutant": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Copies your best ETB creature each combat — copy, not ETB, though",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Donatello, Mutant Mechanic": {
+   "group": "Doesn't fit",
+   "text": "Animates artifacts",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Skatewing Spy": {
+   "group": "Doesn't fit",
+   "text": "Counters → flying",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Noncreature spell → blink a nontoken permanent (yours for an ETB, or theirs to reset)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Namor, Atlantean King": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Token per noncreature spell",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Medomai the Ageless": {
+   "group": "Doesn't fit",
+   "text": "Extra turn on damage, 6 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Matoya, Archon Elder": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draw on scry/surveil",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Land Tax": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Thins basics and fixes; in Brawl you are often behind on lands early",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ashe, Princess of Dalmasca": {
+   "group": "Doesn't fit",
+   "text": "Digs for artifacts on attack",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Valgavoth, the Lifeline": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Cast creatures from your GRAVEYARD after lifegain (Kellan has lifelink) — each one triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Does Machines": {
+   "group": "Doesn't fit",
+   "text": "Loot then artifact recursion",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Glamdring, Foe-hammer // Gleam of Death": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Adventure: cast the sorcery, then the artifact from exile (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Enter the Infinite": {
+   "group": "Doesn't fit",
+   "text": "14 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Blind Obedience": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Opponents' creatures enter tapped; extort",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "group": "Clues and card advantage",
+   "text": "Doubles tokens (Clues), 4 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Katara's Reversal": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counter up to four spells/abilities",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "One with the Machine": {
+   "group": "Doesn't fit",
+   "text": "Draw = biggest artifact MV",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tekuthal, Inquiry Dominus": {
+   "group": "Doesn't fit",
+   "text": "Proliferate doubler",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Mm'menon, the Right Hand": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Cast artifacts from the top of your library (each a Kellan trigger), and artifacts tap for mana for exactly those casts",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Repulsor Bots": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Bounce two of your ETB creatures to recast",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Valkyrie Aerial Unit": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Affinity flier; Clues pay for it",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Krang, Master Mind": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Affinity refill to four cards",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Cerebral Download": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Surveil X + draw three",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Airbender Ascension": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Airbend on entering (a recast from exile triggers Kellan), then a blink every end step",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Appa, Steadfast Guardian": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Flash airbend of ANY number of your permanents (each recast from exile triggers Kellan), and an Ally token per spell cast from exile",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Avatar's Wrath": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "One-sided sweep: airbend everything else, and opponents can't cast from exile until your turn",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Monk Gyatso": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Airbends your targeted creature — protection that recasts from exile",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Airbender's Reversal": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Removal, or airbend your own creature (protection plus a Kellan recast)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Glider Staff": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Airbend on entering; flying equipment",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Key to the Vault": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Free cast from exile on combat damage",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Caretaker": {
+   "group": "Doesn't fit",
+   "text": "Needs modal spells",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Soulherder": {
+   "group": "Blink — re-uses Clue makers and exile removal",
+   "text": "Blinks a creature every end step",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Metastatic Evangel": {
+   "group": "Doesn't fit",
+   "text": "Proliferate",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Urdnan, Dromoka Warrior": {
+   "group": "Doesn't fit",
+   "text": "Counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Extricator of Sin // Extricator of Flesh": {
+   "group": "Doesn't fit",
+   "text": "Sacrifice → 3/2",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Koth of the Homestead": {
+   "group": "Doesn't fit",
+   "text": "Landfall life",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counter per token (each Clue)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Rumor Gatherer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Scry or draw as creatures enter — blink feeds it",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Dr. McCoy, Surly Surgeon": {
+   "group": "Doesn't fit",
+   "text": "Counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Felidar Retreat": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Landfall tokens/counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "group": "Doesn't fit",
+   "text": "Gives the opponent a 5/5 indestructible flier (removal rule spirit)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Anti-Venom, Horrifying Healer": {
+   "group": "Doesn't fit",
+   "text": "WWWWW; reanimate only when cast",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Katara, Heroic Healer": {
+   "group": "Doesn't fit",
+   "text": "Counters on the team",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Nick Fury, Spymaster": {
+   "group": "Doesn't fit",
+   "text": "Attack-alone",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Falcon, Sam Wilson": {
+   "group": "Doesn't fit",
+   "text": "Counters on the team",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Appa, Loyal Sky Bison": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Airbends one of your permanents on entering AND on every attack — repeatable Kellan triggers",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Captain Marvel, Shooting Star": {
+   "group": "Bench — real, not in the first draft",
+   "text": "7-mana exile on entering/attack; opponent gains life",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Saint Elenda": {
+   "group": "Doesn't fit",
+   "text": "WWW 7-drop",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ironheart, Clever Champion": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Improvise for noncreature spells (Clues pay)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Origin of Iron Man": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Tap-down, draw two, cheat an artifact",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Iron Man, Futurist Paragon": {
+   "group": "Doesn't fit",
+   "text": "6-mana animate",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Stark's Ingenuity": {
+   "group": "Doesn't fit",
+   "text": "Pay X draw X",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kappa Cannoneer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Improvise; grows unblockable per artifact (Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Metallic Rebuke": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Improvise soft counter, often free with Clues",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Reverse Engineer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Improvise draw three",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Archway of Innovation": {
+   "group": "Doesn't fit",
+   "text": "Improvise land",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Lady Octopus, Inspired Inventor": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Free artifact casts — from hand, so no Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "group": "Doesn't fit",
+   "text": "Flash looter",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Free noncreature spell from hand (waterbend pays with Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Torrential Gearhulk": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Flash; casts an instant from your graveyard — a Kellan trigger at instant speed",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "group": "Doesn't fit",
+   "text": "Free casts from hand; 8 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Scholar of the Lost Trove": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Casts an instant/sorcery/artifact from your graveyard (a Kellan trigger); blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Eagle of Deliverance": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Indestructible counter + draw",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ezrim, Agency Chief": {
+   "group": "Clues and card advantage",
+   "text": "Two Clues on entering (blink it) and sacrifices artifacts for keywords",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Brokers Ascendancy": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counters each end step",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Peter Parker // Amazing Spider-Man": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Web-slinging returns a creature to recast (ETB again)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Derevi, Empyrial Tactician": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Can be put onto the battlefield from the command zone — but only as a commander",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Disciplined Duelist": {
+   "group": "Doesn't fit",
+   "text": "Shield double striker",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Helga, Skittish Seer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draws on 4+ MV creatures; mana for big creatures",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Gorion, Wise Mentor": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Copies Adventure spells (several here)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Katilda and Lier": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flashback for instants/sorceries per Human spell — casting from the graveyard triggers Kellan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kellan Joins Up": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Plots a card (a later free cast from exile = a Kellan trigger) and counters per legend",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Lagrella, the Magpie": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "Exile removal on entering — a blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Rigo, Streetwise Mentor": {
+   "group": "Doesn't fit",
+   "text": "Small-attacker draws",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Spara's Bodyguard": {
+   "group": "Doesn't fit",
+   "text": "Shield counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Shanna, Purifying Blade": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draw for lifegain (Kellan has lifelink)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Falco Spara, Pactweaver": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Cast spells from the top of your library — every one a Kellan trigger; costs counters (shield, Clues are not counters)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Choco, Seeker of Paradise": {
+   "group": "Doesn't fit",
+   "text": "Bird attack digging",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sarek, Federation Ambassador": {
+   "group": "Doesn't fit",
+   "text": "Creature-type draws",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tamiyo, Field Researcher": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draws on damage, taps two",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Any-colour mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang, at the Crossroads // Aang, Destined Savior": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Puts a creature from the top five onto the battlefield; transforms when a creature leaves (blink)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tocasia, Dig Site Mentor": {
+   "group": "Doesn't fit",
+   "text": "Surveil, artifact mass recursion",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Commander Spock": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Casts the top card free on entering/attack — from the library, a Kellan trigger; blink it",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Spara's Adjudicators": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Exile from hand to fix a land, then cast it from exile later (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang and Katara": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Ally tokens per tapped artifact/creature",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Soul of Emancipation": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "Owner re-grade: target your own Clue tokens for three 3/3 fliers, or an opponent's best permanents when you need to.",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Urban Retreat": {
+   "group": "Lands",
+   "text": "Tri-land",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Brigid, Clachan's Heart // Brigid, Doun's Mind": {
+   "group": "Doesn't fit",
+   "text": "Kithkin tokens / mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Jake Sisko, War Correspondent": {
+   "group": "Doesn't fit",
+   "text": "Landfall Clue on the second land",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sharp-Eyed Rookie": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Clue when a bigger creature enters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Tireless Tracker": {
+   "group": "Clues and card advantage",
+   "text": "A Clue on every land drop",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Weirding Wood": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Ramp aura + Clue",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Briarbridge Patrol": {
+   "group": "Doesn't fit",
+   "text": "Clues on creature damage",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ulvenwald Mysteries": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Clue on death, token per Clue sacrificed",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Lonis, Cryptozoologist": {
+   "group": "Clues and card advantage",
+   "text": "Clue per nontoken creature entering (blink!) and a Clue sink that steals from their library",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Undercover Crocodelf": {
+   "group": "Doesn't fit",
+   "text": "Disguise Clue beater",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kellan, Inquisitive Prodigy // Tail the Suspect": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Adventure: Clue + extra land, then cast the creature from exile (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Path of Discovery": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Explore per creature entering",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "U.S.S. Discovery, at Black Alert": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Discover 5 on entering/attack — a free cast from exile (Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Monstrous Vortex": {
+   "group": "Doesn't fit",
+   "text": "Needs power-5 creatures",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Jadelight Ranger": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Double explore",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Captain Kathryn Janeway": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Extra land + explore per creature entering",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Auspicious Starrix": {
+   "group": "Doesn't fit",
+   "text": "Mutate cheats permanents from exile (not cast)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Doc Aurlock, Grizzled Genius": {
+   "group": "Cost reducers and mana",
+   "text": "Spells cast from exile or graveyard cost {2} less, and plotting costs {2} less — the cost engine for every Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Make Your Own Luck": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Plots a card from the top three (a free cast from exile later) and keeps the rest",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Bilbo, Luckwearer // Burglar's Plot": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Adventure: steal-swap a permanent, then cast Bilbo from exile (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Railway Brawler": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Plot it (free cast from exile = Kellan trigger); every creature entering gets counters equal to its power",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Bilbo, Thief in the Night": {
+   "group": "Cost reducers and mana",
+   "text": "Spells cast from anywhere but your hand cost {1} less, and on attack you cast an artifact/instant/sorcery from your graveyard (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Teething Wurmlet": {
+   "group": "Doesn't fit",
+   "text": "Artifact lifegain",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Legion of Clay": {
+   "group": "Doesn't fit",
+   "text": "Trample anthem",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Rampage of the Clans": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owner re-grade: destroys your own Clues for 3/3 Centaurs, so with a Clue board it's one-sided. It also destroys our own exile-removal enchantments/artifacts (Seal, Detention Sphere, Holodeck), returning what they hold.",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Pest Infestation": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Artifact/enchantment removal that makes your own tokens",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Shuri, the Black Panther": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draws on attack with 3+ artifacts (Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Black Panther, Most Dangerous": {
+   "group": "Doesn't fit",
+   "text": "Damage redirect",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Black Panther, Wakandan King": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Counters on lands per creature entering; cashes in for a draw",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "T'Challa, the Black Panther": {
+   "group": "Doesn't fit",
+   "text": "Vibranium artifacts",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Shuri, Vibranium Technologist": {
+   "group": "Bench — real, not in the first draft",
+   "text": "ETB token or draw — a blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Party Dude": {
+   "group": "Doesn't fit",
+   "text": "Food and artifact draw",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Belt of Giant Strength": {
+   "group": "Doesn't fit",
+   "text": "Off-plan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Elvish Archivist": {
+   "group": "Doesn't fit",
+   "text": "Artifact counters, enchantment draws",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Vivien's Arkbow": {
+   "group": "Doesn't fit",
+   "text": "Creature cheat",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Genesis Device": {
+   "group": "Doesn't fit",
+   "text": "Land fetch",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Reclamation Sage": {
+   "group": "Interaction — exile removal, no gifts to the opponent",
+   "text": "ETB artifact/enchantment removal — blink it for repeated answers",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sandstorm Salvager": {
+   "group": "Bench — real, not in the first draft",
+   "text": "ETB Golem — blink target",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sledge-Class Seedship": {
+   "group": "Doesn't fit",
+   "text": "Spacecraft cheat",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Thunderous Velocipede": {
+   "group": "Doesn't fit",
+   "text": "Counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Holo-Engineer": {
+   "group": "Doesn't fit",
+   "text": "Turns every token (Clues!) into a 3/3 Illusion — kills the Clue plan",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Summoner's Grimoire": {
+   "group": "Doesn't fit",
+   "text": "Creature cheat on attack",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "U.S.S. Voyager, Lone Wanderer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Ramp two lands",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Silverback Elder": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Removal/land/life per creature spell",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Storm, Shaker of Skies": {
+   "group": "Bench — real, not in the first draft",
+   "text": "ETB removal of artifact/enchantment/flier",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Titan of Industry": {
+   "group": "Bench — real, not in the first draft",
+   "text": "ETB modes",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Mutagen Man, Living Ooze": {
+   "group": "Doesn't fit",
+   "text": "Mutagen tokens; artifact token abilities cost {1} less (Clues!)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Baseball Bat": {
+   "group": "Doesn't fit",
+   "text": "Tapper equipment",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sundering Growth": {
+   "group": "Bench — real, not in the first draft",
+   "text": "2-mana instant artifact/enchantment removal",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Yotian Dissident": {
+   "group": "Doesn't fit",
+   "text": "Counters per artifact",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Serah Farron // Crystallized Serah": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Legendary creature discount",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Wakka, Devoted Guardian": {
+   "group": "Doesn't fit",
+   "text": "Counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Doctor, EMH": {
+   "group": "Doesn't fit",
+   "text": "Counters",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Lotus per lifegain (Kellan lifelink)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Absorbing Man": {
+   "group": "Doesn't fit",
+   "text": "Copies an artifact",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Omega, Heartless Evolution": {
+   "group": "Doesn't fit",
+   "text": "Stun on entering, 7 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Matt Murdock, Justice Seeker": {
+   "group": "Doesn't fit",
+   "text": "Counters ward",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Peggy Carter, Secret Agent": {
+   "group": "Doesn't fit",
+   "text": "Attack-alone",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Captain America, Super-Soldier": {
+   "group": "Doesn't fit",
+   "text": "Hero hexproof",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Mockingbird, Ace Agent": {
+   "group": "Doesn't fit",
+   "text": "Double strike, targeted spells",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Photon, Lady of Light": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Blinks your creature on every attack",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Iron Man, Bleeding Edge": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Copies an artifact spell each turn",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Silver Surfer, Cosmic Voyager": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flash mass blink of your permanents (ETBs again, and a wrath dodge)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Earth's Mightiest Heroes": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cheat creatures from the top eight",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Captain America, Living Legend": {
+   "group": "Doesn't fit",
+   "text": "Untap on first tap",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ms. Marvel, Elastic Ally": {
+   "group": "Doesn't fit",
+   "text": "Pump draws",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Wylie Duke, Atiin Hero": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draw whenever it becomes tapped",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Web-Warriors": {
+   "group": "Doesn't fit",
+   "text": "Counters on the team",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Fblthp, Lost on the Range": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Plot cards from the top of your library — each later free cast from exile is a Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Visage Bandit": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Plot it (free cast from exile) as a copy of your best ETB creature",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Hamza, Guardian of Arashin": {
+   "group": "Doesn't fit",
+   "text": "Counters discount",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Cost reducers and mana",
+   "text": "1-drop, any colour for legendary spells",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Notary Hobbits": {
+   "group": "Doesn't fit",
+   "text": "Colourless mana; few Halflings here",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Pippin, Guard of the Citadel": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Protection from a card type",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Gretchen Titchwillow": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draw and put a land in (Kellan's land half)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Treasure + lifegain per creature entering",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Belladonna Took": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Token triggers (Clues)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Gaffer": {
+   "group": "Doesn't fit",
+   "text": "Draw on 3+ lifegain",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "McCoy, Not a Bricklayer": {
+   "group": "Doesn't fit",
+   "text": "Counters, Doctors",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Ephemerate": {
+   "group": "Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)",
+   "text": "Owned. 1-mana blink with rebound: the rebound cast next upkeep comes from exile, a free Kellan trigger every time",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Restoration Angel": {
+   "group": "Blink — re-uses Clue makers and exile removal",
+   "text": "Flash blink of a Clue maker or removal creature on a 3/4 flier",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Brazen Borrower // Petty Theft": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Adventure tempo bounce, then cast the 3/1 flash flier from exile (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Virtue of Knowledge // Vantress Visions": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Doubles enter triggers (Clue makers); adventure copies a trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Uro, Titan of Nature's Wrath": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Escapes from the graveyard (a Kellan trigger, MV 3) every few turns: draw, 3 life, a land",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Quantum Riddler": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Owned. Warp {1}{U}: draw now, recast from exile later as an MV 5 Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Starfield Vocalist": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Doubles enter triggers; warp for a Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Exalted Sunborn": {
+   "group": "Cast-from-elsewhere engine — plot, warp, adventure",
+   "text": "Owned. Token doubler (Clues!) on a 4/5 lifelink flier; warp it first, recast from exile for an MV 5 Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Haliya, Guided by Light": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Warp {W}; life and a draw off artifacts entering",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Plan the Heist": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Plot a draw-three; the free cast later is a Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Slickshot Lockpicker": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Plot; gives an instant flashback (a graveyard cast)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sheriff of Safe Passage": {
+   "group": "Doesn't fit",
+   "text": "Owned. Plot body",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Plot; draws on power-4 creatures",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Alrund's Epiphany": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Foretell extra turn — the foretold cast is from exile (a Kellan trigger, MV 7)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Glorious Protector": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Foretell flash flier that exiles your creatures (blink on leaving)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Chimil, the Inner Sun": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Discover 5 every end step — a free cast from exile each turn, and spells can't be countered",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Vizier of the Menagerie": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Owned. Cast creatures from the top of your library, with any mana — every one a Kellan trigger",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Sigarda, Font of Blessings": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Casts Humans/Angels from the top; hexproof for your other permanents",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Cemetery Illuminator": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Casts from the top once a turn (matching type)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "One with the Multiverse": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Play anything from the top and one free spell a turn; 8 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Collector's Cage": {
+   "group": "Doesn't fit",
+   "text": "Owned. Hideaway free play needs three different powers",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "group": "Doesn't fit",
+   "text": "Owned. Free cast on scry; 6 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Quandrix, the Proof": {
+   "group": "Doesn't fit",
+   "text": "Owned. Cascade is a cast from exile, but only instants/sorceries from hand get it",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Aang, the Last Airbender": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Airbends a nonland permanent on entering (your own for a recast, or theirs)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "The Legend of Yangchen // Avatar Yangchen": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Owned. Exiles a big opposing permanent, draws three, then airbends on your second spell each turn",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Whirlwind Technique": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Loot plus airbend two creatures; 6 mana",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Displacer Kitten": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Blinks a permanent per noncreature spell",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Spell Queller": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flash exile of a spell",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Taigam, Master Opportunist": {
+   "group": "Doesn't fit",
+   "text": "Owned. Suspend copies — the suspended cast is from exile",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Snapcaster Mage": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flashback cast from the graveyard (a Kellan trigger)",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Lier, Disciple of the Drowned": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Flashback for every instant/sorcery",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Augur of Autumn": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Lands from the top, creatures with coven",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Precognition Field": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cast instants/sorceries from the top",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Elven Chorus": {
+   "group": "Cast-from-elsewhere engine — graveyard and library top",
+   "text": "Cast creatures from the top (each a Kellan trigger) and every creature taps for any colour",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  },
+  "Kellan, Daring Traveler // Journey On": {
+   "group": "Doesn't fit",
+   "text": "Adventure Map tokens",
+   "graded_at": {
+    "107": "df52a59c317d"
+   }
+  }
+ },
+ "snapshots": {
+  "107": {
+   "df52a59c317d": [
+    "Aang's Iceberg",
+    "Aang, Airbending Master",
+    "Aang, Swift Savior",
+    "Adarkar Wastes",
+    "Airbender Ascension",
+    "Airbender's Reversal",
+    "Alquist Proft, Master Sleuth",
+    "Anticausal Vestige",
+    "Appa, Loyal Sky Bison",
+    "Appa, Steadfast Guardian",
+    "Assimilation Aegis",
+    "Avatar's Wrath",
+    "Bard, King of Dale",
+    "Barkchannel Pathway // Tidechannel Pathway",
+    "Bilbo, Luckwearer",
+    "Bilbo, Thief in the Night",
+    "Botanical Sanctum",
+    "Branchloft Pathway",
+    "Brazen Borrower // Petty Theft",
+    "Breeding Pool",
+    "Brushland",
+    "Command Tower",
+    "Commander Spock",
+    "Constable Odo",
+    "Data, Exploring Humanity",
+    "Delighted Halfling",
+    "Detention Sphere",
+    "Doc Aurlock, Grizzled Genius",
+    "Don & Leo, Problem Solvers",
+    "Elven Chorus",
+    "Ephara, God of the Polis",
+    "Ephemerate",
+    "Exalted Sunborn",
+    "Ezrim, Agency Chief",
+    "Fabled Passage",
+    "Falco Spara, Pactweaver",
+    "Fateful Discovery",
+    "Fblthp, Lost on the Range",
+    "Forensic Gadgeteer",
+    "Forest",
+    "Glacial Fortress",
+    "Glider Staff",
+    "Hallowed Fountain",
+    "Hengegate Pathway // Mistgate Pathway",
+    "Hinterland Harbor",
+    "Island",
+    "Kellan Joins Up",
+    "Kellan, Inquisitive Prodigy // Tail the Suspect",
+    "Kellan, the Kid",
+    "King T'Challa",
+    "Lagrella, the Magpie",
+    "Lonis, Cryptozoologist",
+    "Make Your Own Luck",
+    "Malfunctioning Holodeck",
+    "Mana Confluence",
+    "Mm'menon, the Right Hand",
+    "Mondrak, Glory Dominus",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Quantum Riddler",
+    "Railway Brawler",
+    "Razorverge Thicket",
+    "Reclamation Sage",
+    "Reflecting Pool",
+    "Restoration Angel",
+    "Riptide Gearhulk",
+    "Scene of the Crime",
+    "Scholar of the Lost Trove",
+    "Seachrome Coast",
+    "Seal from Existence",
+    "Sheltered by Ghosts",
+    "Soul of Emancipation",
+    "Soulherder",
+    "Spara's Headquarters",
+    "Spirited Simulacrum",
+    "Sunpetal Grove",
+    "Teferi's Protection",
+    "Teferi, Who Slows the Sunset",
+    "Temple Garden",
+    "The Mighty Thor, Jane Foster",
+    "Tireless Tracker",
+    "Torrential Gearhulk",
+    "U.S.S. Discovery, at Black Alert",
+    "Urban Retreat",
+    "Uro, Titan of Nature's Wrath",
+    "Valgavoth, the Lifeline",
+    "Visage Bandit",
+    "Vizier of the Menagerie",
+    "Yavimaya Coast"
+   ]
+  }
+ },
+ "verdicts": {
+  "Constable Odo": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Alquist Proft, Master Sleuth": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Officious Interrogation": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Bard the Bowman": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Private Eye": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "King T'Challa // Black Panther, Hope Enduring": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Hylda of the Icy Crown": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ephara, God of the Polis": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Bard, King of Dale": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Live Long and Prosper": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Brokers' Safeguard": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Gold-Forged Thopteryx": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Mendicant Core, Guidelight": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Abuelo, Ancestral Echo": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Scour the Scene": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Spider-Woman, Stunning Savior": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Assimilation Aegis": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Richlau, Headmaster": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tidus, Blitzball Star": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Mighty Thor, Jane Foster": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Cephalopod Sentry": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Don & Leo, Problem Solvers": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ghalma the Shaper": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Urza, Prince of Kroog": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Teferi, Who Slows the Sunset": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Riptide Gearhulk": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tenth District Hero": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Unyielding Gatekeeper": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "April O'Neil, Live on the Scene": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Excogitator Sphinx": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Wraith, Vicious Vigilante": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Conspiracy Unraveler": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Forensic Gadgeteer": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Agent 13, Sharon Carter": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Measure of a Man": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Curious Inquiry": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Confirm Suspicions": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tamiyo's Journal": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Knowledge Seeker": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Mechanist, Aerial Artisan": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Scene of the Crime": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang, Air Nomad": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang, Airbending Master": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang, Swift Savior // Aang and La, Ocean's Fury": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Teferi's Protection": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang's Iceberg": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Imperial Cosmographer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Dour Port-Mage": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kami of Transmutation": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Klement, Novice Acolyte": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Leader's Talent": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Shire Shirriff": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Idol of Endurance": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "In the Trenches": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Malfunctioning Holodeck": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Nine Lives": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Rasaad, Monk of Selûne": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Seal from Existence": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Suki, Courageous Rescuer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aurelia's Vindicator": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Celebrate the Mountain-king": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "White Auracite": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Static Snare": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Detention Sphere": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Dr. Joseph M'Benga": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Spirited Simulacrum": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Anticausal Vestige": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Priest of Possibility": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Odric, Lunarch Marshal": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Valkyrie Harbinger": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Super-Adaptoid": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Katara, Waterbending Master": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Lyra, Tolarian Archangel": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Data, Exploring Humanity": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Krang, the All-Powerful": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Teferi, Temporal Pilgrim": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Pol Jamaar, Illusionist": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Fateful Discovery": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kindred Discovery": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Donatello, Gadget Master": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Donatello, the Brains": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Donatello, Way with Machines": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Irma, Part-Time Mutant": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Donatello, Mutant Mechanic": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Skatewing Spy": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Wiccan, Rising Magician": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Namor, Atlantean King": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Medomai the Ageless": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Matoya, Archon Elder": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Land Tax": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ashe, Princess of Dalmasca": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Valgavoth, the Lifeline": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Does Machines": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Glamdring, Foe-hammer // Gleam of Death": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Enter the Infinite": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Blind Obedience": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Katara's Reversal": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "One with the Machine": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tekuthal, Inquiry Dominus": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Mm'menon, the Right Hand": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Repulsor Bots": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Valkyrie Aerial Unit": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Krang, Master Mind": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Cerebral Download": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Airbender Ascension": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Appa, Steadfast Guardian": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Avatar's Wrath": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Monk Gyatso": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Airbender's Reversal": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Glider Staff": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Key to the Vault": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Caretaker": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Soulherder": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Metastatic Evangel": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Urdnan, Dromoka Warrior": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Extricator of Sin // Extricator of Flesh": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Koth of the Homestead": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Rumor Gatherer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Dr. McCoy, Surly Surgeon": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Felidar Retreat": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Sentry, Golden Guardian": {
+   "K": {
+    "m": "✗",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Anti-Venom, Horrifying Healer": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Katara, Heroic Healer": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Nick Fury, Spymaster": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Falcon, Sam Wilson": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Appa, Loyal Sky Bison": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Captain Marvel, Shooting Star": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Saint Elenda": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ironheart, Clever Champion": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Origin of Iron Man": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Iron Man, Futurist Paragon": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Stark's Ingenuity": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kappa Cannoneer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Metallic Rebuke": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Reverse Engineer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Archway of Innovation": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Lady Octopus, Inspired Inventor": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Malcolm, Alluring Scoundrel": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Yue, the Moon Spirit": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Torrential Gearhulk": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Vision, Spectral Synthezoid": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Scholar of the Lost Trove": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Eagle of Deliverance": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ezrim, Agency Chief": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Brokers Ascendancy": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Peter Parker // Amazing Spider-Man": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Derevi, Empyrial Tactician": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Disciplined Duelist": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Helga, Skittish Seer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Gorion, Wise Mentor": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Katilda and Lier": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kellan Joins Up": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Lagrella, the Magpie": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Rigo, Streetwise Mentor": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Spara's Bodyguard": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Shanna, Purifying Blade": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Falco Spara, Pactweaver": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Choco, Seeker of Paradise": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sarek, Federation Ambassador": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tamiyo, Field Researcher": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Yuna, Grand Summoner": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang, at the Crossroads // Aang, Destined Savior": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tocasia, Dig Site Mentor": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Commander Spock": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Spara's Adjudicators": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang and Katara": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Soul of Emancipation": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Urban Retreat": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Brigid, Clachan's Heart // Brigid, Doun's Mind": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Jake Sisko, War Correspondent": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sharp-Eyed Rookie": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Tireless Tracker": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Weirding Wood": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Briarbridge Patrol": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ulvenwald Mysteries": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Lonis, Cryptozoologist": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Undercover Crocodelf": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kellan, Inquisitive Prodigy // Tail the Suspect": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Path of Discovery": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "U.S.S. Discovery, at Black Alert": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Monstrous Vortex": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Jadelight Ranger": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Captain Kathryn Janeway": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Auspicious Starrix": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Doc Aurlock, Grizzled Genius": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Make Your Own Luck": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Bilbo, Luckwearer // Burglar's Plot": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Railway Brawler": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Bilbo, Thief in the Night": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Teething Wurmlet": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Legion of Clay": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Rampage of the Clans": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Pest Infestation": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Shuri, the Black Panther": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Black Panther, Most Dangerous": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Black Panther, Wakandan King": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "T'Challa, the Black Panther": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Shuri, Vibranium Technologist": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Party Dude": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Belt of Giant Strength": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Elvish Archivist": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Vivien's Arkbow": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Genesis Device": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Reclamation Sage": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sandstorm Salvager": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sledge-Class Seedship": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Thunderous Velocipede": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Holo-Engineer": {
+   "K": {
+    "m": "✗",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Summoner's Grimoire": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "U.S.S. Voyager, Lone Wanderer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Silverback Elder": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Storm, Shaker of Skies": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Titan of Industry": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Mutagen Man, Living Ooze": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Baseball Bat": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sundering Growth": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Yotian Dissident": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Serah Farron // Crystallized Serah": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Wakka, Devoted Guardian": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Doctor, EMH": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kwia Vigorbloom": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Absorbing Man": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Omega, Heartless Evolution": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Matt Murdock, Justice Seeker": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Peggy Carter, Secret Agent": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Captain America, Super-Soldier": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Mockingbird, Ace Agent": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Photon, Lady of Light": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Iron Man, Bleeding Edge": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Silver Surfer, Cosmic Voyager": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Earth's Mightiest Heroes": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Captain America, Living Legend": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ms. Marvel, Elastic Ally": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Wylie Duke, Atiin Hero": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Web-Warriors": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Fblthp, Lost on the Range": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Visage Bandit": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Hamza, Guardian of Arashin": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Delighted Halfling": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Notary Hobbits": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Pippin, Guard of the Citadel": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Gretchen Titchwillow": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Prosperous Innkeeper": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Belladonna Took": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Gaffer": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "McCoy, Not a Bricklayer": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Ephemerate": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Restoration Angel": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Brazen Borrower // Petty Theft": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Virtue of Knowledge // Vantress Visions": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Uro, Titan of Nature's Wrath": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Quantum Riddler": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Starfield Vocalist": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Exalted Sunborn": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Haliya, Guided by Light": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Plan the Heist": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Slickshot Lockpicker": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sheriff of Safe Passage": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Outcaster Trailblazer": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Alrund's Epiphany": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Glorious Protector": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Chimil, the Inner Sun": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Vizier of the Menagerie": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Sigarda, Font of Blessings": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Cemetery Illuminator": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "One with the Multiverse": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Collector's Cage": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Planetarium of Wan Shi Tong": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Quandrix, the Proof": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Aang, the Last Airbender": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "The Legend of Yangchen // Avatar Yangchen": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Whirlwind Technique": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Displacer Kitten": {
+   "K": {
+    "m": "★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Spell Queller": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Taigam, Master Opportunist": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Snapcaster Mage": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Lier, Disciple of the Drowned": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Augur of Autumn": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Precognition Field": {
+   "K": {
+    "m": "★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Elven Chorus": {
+   "K": {
+    "m": "★★★",
+    "graded_at": "df52a59c317d"
+   }
+  },
+  "Kellan, Daring Traveler // Journey On": {
+   "K": {
+    "m": "◇",
+    "graded_at": "df52a59c317d"
+   }
+  }
+ }
+}

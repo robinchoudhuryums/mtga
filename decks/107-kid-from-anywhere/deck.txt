@@ -1,0 +1,130 @@
+#: name: Kid from Anywhere
+#: format: Historic Brawl
+#: colors: GWU
+#: commander: Kellan, the Kid
+#: plan: midrange
+#: archetype: 100-card Brawl around Kellan, the Kid: whenever you cast a spell from anywhere OTHER than your hand,
+#: archetype: you may cast a permanent from your hand with equal or lesser mana value for free (or put a land from
+#: archetype: hand onto the battlefield). The deck casts from everywhere else: AIRBEND (Aang, Airbending Master; Aang,
+#: archetype: Swift Savior; Appa, Steadfast Guardian; Appa, Loyal Sky Bison — exile your own permanent, recast it for
+#: archetype: {2}, and the free cast is sized by its full mana value), plot (Kellan Joins Up, Fblthp, Make Your Own
+#: archetype: Luck), warp (Anticausal Vestige, Exalted Sunborn, Quantum Riddler), adventures, Ephemerate's rebound,
+#: archetype: the graveyard (Uro, Torrential Gearhulk, Bilbo, Thief in the Night) and the top of the library
+#: archetype: (Mm'menon, Falco Spara, Vizier of the Menagerie, Elven Chorus). Doc Aurlock makes those casts {2}
+#: archetype: cheaper. Clues are the card-advantage spine, doubled by Bard, King of Dale, Exalted Sunborn and Mondrak,
+#: archetype: and drawn off by Fateful Discovery. Interaction is exile-based and gives the opponent nothing.
+#: archetype: Distinct from deck 67 (the Standard Kellan list): this is the 100-card build, airbend-first.
+#: protect: Kellan, the Kid; Doc Aurlock, Grizzled Genius; Bilbo, Thief in the Night; Appa, Steadfast Guardian; Aang, Swift Savior; Aang, Airbending Master; Fblthp, Lost on the Range; Mm'menon, the Right Hand; Kellan Joins Up; Bard, King of Dale
+#: notes: Drafted 2026-11-25 from the owner's 249-card Kellan pile (.cycle/kellan-pile-analysis.md) plus an off-pile
+#: notes: search. Kellan triggers on CASTS from elsewhere — blink (Don & Leo, Soulherder) does not trigger him, airbend
+#: notes: does. Holo-Engineer is out: it turns every token into an Illusion, so no Clues. Rampage of the Clans and
+#: notes: Soul of Emancipation are fine (owner): aim them at your own Clues for bodies — but Rampage also destroys our
+#: notes: own exile-removal enchantments and artifacts, returning what they hold.
+
+# Commander
+1 Kellan, the Kid (OTJ) 213
+
+# Cast-from-elsewhere engine — airbend (recast from exile for {2}: a Kellan trigger)
+1 Aang, Airbending Master (TLE) 74
+1 Aang, Swift Savior (TLA) 204
+1 Appa, Steadfast Guardian (TLA) 10
+1 Appa, Loyal Sky Bison (TLA) 9
+1 Airbender Ascension (TLA) 6
+1 Airbender's Reversal (TLA) 7
+1 Glider Staff (TLA) 22
+1 Ephemerate (MAR) 44
+
+# Cast-from-elsewhere engine — plot, warp, adventure
+1 Kellan Joins Up (OTJ) 212
+1 Make Your Own Luck (OTJ) 218
+1 Fblthp, Lost on the Range (OTJ) 48
+1 Railway Brawler (OTJ) 175
+1 Visage Bandit (OTJ) 76
+1 Anticausal Vestige (EOE) 1
+1 Spirited Simulacrum (YEOE) 30
+1 Exalted Sunborn (EOE) 15
+1 Quantum Riddler (EOE) 72
+1 Kellan, Inquisitive Prodigy // Tail the Suspect (MKM) 212
+1 Bilbo, Luckwearer (HOB) 32
+1 Brazen Borrower // Petty Theft (ELD) 39
+
+# Cast-from-elsewhere engine — graveyard and library top
+1 Uro, Titan of Nature's Wrath (THB) 229
+1 Torrential Gearhulk (KLR) 70
+1 Scholar of the Lost Trove (JMP) 14
+1 Valgavoth, the Lifeline (YFRA) 3
+1 Mm'menon, the Right Hand (EOE) 68
+1 Falco Spara, Pactweaver (SNC) 186
+1 Vizier of the Menagerie (FDN) 649
+1 Elven Chorus (LTR) 160
+1 Commander Spock (TRC) 2
+1 Data, Exploring Humanity (TRC) 40
+1 U.S.S. Discovery, at Black Alert (TRK) 221
+
+# Cost reducers and mana
+1 Doc Aurlock, Grizzled Genius (OTJ) 201
+1 Bilbo, Thief in the Night (HOB) 33
+1 Delighted Halfling (LTR) 158
+
+# Clues and card advantage
+1 Bard, King of Dale (HOB) 144
+1 Mondrak, Glory Dominus (ONE) 23
+1 Ezrim, Agency Chief (MKM) 202
+1 Constable Odo (TRK) 230
+1 Alquist Proft, Master Sleuth (MKM) 185
+1 Lonis, Cryptozoologist (J21) 703
+1 Tireless Tracker (J25) 729
+1 Forensic Gadgeteer (MKM) 57
+1 Fateful Discovery (HOB) 40
+1 King T'Challa (MSH) 219
+1 Ephara, God of the Polis (PIO) 305
+1 Teferi, Who Slows the Sunset (MID) 245
+
+# Blink — re-uses Clue makers and exile removal
+1 Don & Leo, Problem Solvers (TMT) 143
+1 Soulherder (J21) 718
+1 Restoration Angel (J21) 117
+1 The Mighty Thor, Jane Foster (MSH) 222
+
+# Interaction — exile removal, no gifts to the opponent
+1 Seal from Existence (MOM) 35
+1 Malfunctioning Holodeck (TRK) 22
+1 Sheltered by Ghosts (DSK) 30
+1 Detention Sphere (OTP) 43
+1 Aang's Iceberg (TLA) 5
+1 Assimilation Aegis (OTJ) 192
+1 Lagrella, the Magpie (SNC) 196
+1 Soul of Emancipation (SNC) 223
+1 Avatar's Wrath (TLA) 12
+1 Riptide Gearhulk (DFT) 219
+1 Reclamation Sage (FDN) 231
+1 Teferi's Protection (MAR) 51
+
+# Lands
+1 Command Tower (FRC) 22
+1 Spara's Headquarters (SNC) 257
+1 Plaza of Heroes (DMU) 252
+1 Urban Retreat (SPM) 187
+1 Hallowed Fountain (ECL) 265
+1 Temple Garden (ECL) 268
+1 Breeding Pool (EOE) 251
+1 Glacial Fortress (XLN) 255
+1 Sunpetal Grove (XLN) 257
+1 Hinterland Harbor (DOM) 240
+1 Hengegate Pathway // Mistgate Pathway (KHM) 260
+1 Barkchannel Pathway // Tidechannel Pathway (KHM) 251
+1 Branchloft Pathway (ZNR) 258
+1 Seachrome Coast (ONE) 258
+1 Botanical Sanctum (OTJ) 267
+1 Razorverge Thicket (ONE) 257
+1 Adarkar Wastes (DMU) 243
+1 Yavimaya Coast (DMU) 261
+1 Brushland (BRO) 259
+1 Mana Confluence (EOS) 25
+1 Reflecting Pool (FRC) 23
+1 Scene of the Crime (MKM) 267
+1 Fabled Passage (BLB) 252
+1 Prismatic Vista (SPG) 38
+5 Island (TRK) 319
+4 Plains (TRK) 317
+4 Forest (TRK) 325

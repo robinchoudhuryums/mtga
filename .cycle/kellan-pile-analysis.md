@@ -1,7 +1,6 @@
 # Kellan, the Kid pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — all 249 cards graded (batches 1–4); consolidated plan drafted;
-awaiting owner direction before /draft-deck.** Delete once the deck is drafted and the
+**Status: DRAFTED as deck 107 (Kid from Anywhere, 2026-11-25); Builder board `builds/kellan`.** Delete once the deck is drafted and the
 findings are folded into its `#: notes:` block. A scratchpad, not a source of truth.
 
 **Source list:** the owner's 249-card pile (2026-11-25), commander **Kellan, the Kid**
@@ -268,7 +267,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Commander Spock | ★★ | casts the top card free on entering/attack — from the library, a Kellan trigger; blink it |
 | Spara's Adjudicators | ★ | exile from hand to fix a land, then cast it from exile later (a Kellan trigger) |
 | Aang and Katara | ★ | Ally tokens per tapped artifact/creature |
-| Soul of Emancipation | ✗ | gives opponents 3/3 fliers (removal rule) |
+| Soul of Emancipation | ★★ | OWNER RE-GRADE: target your own Clues for 3/3 fliers, or their best permanents |
 | Urban Retreat | ★ | tri-land |
 | Brigid, Clachan's Heart // Brigid, Doun's Mind | ◇ | Kithkin tokens / mana |
 | Jake Sisko, War Correspondent | ◇ | landfall Clue on the second land |
@@ -297,7 +296,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 | Bilbo, Thief in the Night | ★★★ | spells cast from anywhere but your hand cost {1} less, and on attack you cast an artifact/instant/sorcery from your graveyard (a Kellan trigger) |
 | Teething Wurmlet | ◇ | artifact lifegain |
 | Legion of Clay | ◇ | trample anthem |
-| Rampage of the Clans | ✗ | gives opponents 3/3s for each permanent (removal rule) |
+| Rampage of the Clans | ★ | OWNER RE-GRADE: destroy your own Clues for 3/3s; it also destroys our own exile-removal permanents |
 | Pest Infestation | ★ | artifact/enchantment removal that makes your own tokens |
 | Shuri, the Black Panther | ★ | draws on attack with 3+ artifacts (Clues) |
 | Black Panther, Most Dangerous | ◇ | damage redirect |
