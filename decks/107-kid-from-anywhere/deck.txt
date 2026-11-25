@@ -24,6 +24,9 @@
 #: notes: Soul of Emancipation are fine (owner): aim them at your own Clues for bodies — but Rampage also destroys our
 #: notes: own exile-removal enchantments and artifacts, returning what they hold. Soul of Emancipation was CUT 2026-11-25
 #: notes: for McCoy, Not a Bricklayer (interaction 13 -> 12, the 100-card A line exactly; the next interaction cut drops the floor to B).
+#: notes: Lands 2026-11-25: Genesis Device fetches a basic OR a Planet, so the deck runs three Planets (Risa, Uthros,
+#: notes: Evendo) as Genesis targets; Risa's 1 life turns on Valgavoth. Prairie Stream / Canopy Vista measured +0.8 on-curve
+#: notes: and are the next land upgrade if crafted (owner deferred the rare crafts).
 
 # Commander
 1 Kellan, the Kid (OTJ) 213
@@ -126,10 +129,12 @@
 1 Brushland (BRO) 259
 1 Mana Confluence (EOS) 25
 1 Reflecting Pool (FRC) 23
-1 Scene of the Crime (MKM) 267
+1 Risa (TRK) 293
 1 Fabled Passage (BLB) 252
 1 Prismatic Vista (SPG) 38
-5 Island (TRK) 319
+3 Island (TRK) 319
+1 Evendo, Waking Haven (EOE) 253
+1 Uthros, Titanic Godcore (EOE) 260
 4 Plains (TRK) 317
 3 Forest (TRK) 325
 1 Archway of Innovation (MH3) 214
