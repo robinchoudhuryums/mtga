@@ -69,7 +69,8 @@
 1 Treno, Dark City (FIN) 290
 1 Hidden Lair (MSH) 269
 1 Serpent's Pass (TLA) 279
-13 Island (MSH) 290
+12 Island (MSH) 290
+1 Watery Grave (EOE) 261
 4 Swamp (MSH) 292
 
 # Flex — Brawl notes (comments; not part of the 60)

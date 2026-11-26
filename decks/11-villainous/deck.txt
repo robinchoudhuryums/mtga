@@ -6,7 +6,7 @@
 #: notes: Mono-black villains / control-midrange.
 
 # Nonland
-1 Too Evil to Stay Dead (MSH) 118
+1 Rat King, Verminister (TMT) 71
 1 Black Cat, Cunning Thief (SPM) 52
 1 Construct a Cosmic Cube (MSH) 90
 1 Baron Strucker, HYDRA Overlord (MSH) 88

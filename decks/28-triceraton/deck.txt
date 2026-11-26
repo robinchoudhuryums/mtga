@@ -166,7 +166,7 @@
 #~ note: RESTLESS RIDGELINE WAS TESTED AND REJECTED as a third dual, even though it measured
 #~ note: well: it is LCI and rotates ~2026, and the flex block above records it being removed
 #~ note: from this deck FOR that reason in 2026-08. Re-adding it would undo a rotation fix.
-#~ note: PROTECTION IS 1 AND IS THE NEXT AXIS. Options, all OWNED, measured as adds:
+#~ note: PROTECTION WAS 1 when this was written (2026-08; now 2) AND WAS THE NEXT AXIS. Options, all OWNED, measured as adds:
 #~ note:   Spectacular Tactics {1}{W} — "counter + hexproof" OR "destroy target creature with
 #~ note:   power 4 or greater". The best of them: it is the ONLY class of pick that raises BOTH
 #~ note:   axes (interaction 5 -> 6, protection 1 -> 2), and interaction currently sits exactly

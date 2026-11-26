@@ -14,12 +14,12 @@
 #: archetype: Process, Orbital Plunge, Heated Argument, and The Dawning Archaic at mana
 #: archetype: value 10. THEN THE DECK COPIES IT. Thousand-Year Storm copies each instant or
 #: archetype: sorcery once per spell already cast that turn, Prismari simply grants them all
-#: archetype: storm, and Loki copies one on demand. The payoff layer counts SPELLS, not
+#: archetype: storm, and Alania copies the first instant and the first sorcery each turn. The payoff layer counts SPELLS, not
 #: archetype: creatures — Niv-Mizzet draws for each point of noncombat damage any of your
 #: archetype: sources deals, Balmor pumps the team on every spell, and Enigma Drake,
 #: archetype: Dragonfly Swarm, Firebender Ascension, Ovika, Melek and Wiccan all scale off
 #: archetype: the count. Measured: interaction 11, card advantage 4, protection 5, board
-#: archetype: power 52 and 17 central themes at a 3.72 curve. DISTINCTNESS vs Wizardz, its
+#: archetype: power 53 and 17 central themes at a 3.81 curve. DISTINCTNESS vs Wizardz, its
 #: archetype: nearest theme neighbour at 89% and the roster's other blue-red spellslinger:
 #: archetype: that deck is WIZARD TRIBAL and grinds "draw your second card each turn"
 #: archetype: payoffs; this one is not tribal at all — its seven Wizards are incidental —
@@ -29,7 +29,7 @@
 #: archetype: can carry a ten-drop.
 #: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
 #: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into
-#: notes: a curated set of big spells; Thousand-Year Storm / Prismari / Loki copy
+#: notes: a curated set of big spells; Thousand-Year Storm / Prismari / Alania copy
 #: notes: them; Niv-Mizzet / Ovika / opus + graveyard-drakes pay off; cheap owned
 #: notes: burn covers the early game. Promoted from the refined 60 (was variant
 #: notes: 25b); the raw 86-card pool is kept as variant 25a.
@@ -38,7 +38,7 @@ Deck
 # Storm / spell-copy payoffs
 1 Thousand-Year Storm (FDN) 248
 1 Prismari, the Inspiration (SOS) 212
-1 Loki Laufeyson (MSH) 143
+1 Alania, Divergent Storm (BLB) 204
 # Cost reduction / ramp
 1 The Scarlet Witch (MSH) 151
 1 Stormcatch Mentor (BLB) 234

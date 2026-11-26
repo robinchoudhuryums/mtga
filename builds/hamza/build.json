@@ -1,0 +1,4625 @@
+{
+ "schema": 1,
+ "title": "Abzan toughness (Hamza)",
+ "decks": [
+  {
+   "key": "H",
+   "id": "106",
+   "label": "Hamza"
+  }
+ ],
+ "piles": [
+  {
+   "key": "H",
+   "label": "Hamza's pile",
+   "deck": "H",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Darksteel Hydra",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Eerie Ultimatum",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Crime // Punishment",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Kin-Tree Severance",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Perennation",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Call the Crash",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Nethroi, Apex of Death",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Ivorytusk Fortress",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Betor, Kin to All",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Drover of the Swine",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Betor, Ancestor's Voice",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Yathan Roadwatcher",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Thalia and The Gitrog Monster",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Felothar the Steadfast",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Revival of the Ancestors",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Doran, Besieged by Time",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Kethis, the Hidden Hand",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Severance Priest",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Felothar, Dawn of the Abzan",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Death's Oasis",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Anafenza, the Foremost",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Abzan Charm",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Abzan Ascendancy",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Abzan Monument",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Kin-Tree Invocation",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Nog, Ambitious Cadet",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mephidross Slime",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Lord of Extinction",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ancient Lumberknot",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vraska's Stoneglare",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Garruk, Apex Predator",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Zar Ojanen, Scion of Efrava",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hauntwoods Shrieker",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Threats Around Every Corner",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Harrowing Swarm",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Break Down the Door",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Guardian of the Forgotten",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Shilgengar, Sire of Famine",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Assault Formation",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Beorn's Hospitality",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Druid Class",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sharp-Eyed Rookie",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Arwen, Weaver of Hope",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Dormant Grove // Gnarled Grovestrider",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Bedrock Tortoise",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Flatman",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mythweaver Poq",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sultai Flayer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tapestry Warden",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Ashaya, Soul of the Wild",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Braulios of Pheres Band",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Fecund Greenshell",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sauron, Dino Devotee",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Flourishing Hunter",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Grunn, the Lonely King",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Swampbenders",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Towering Titan",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Glint Weaver",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Last March of the Ents",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Bark of Doran",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Daxos, Blessed by the Sun",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tenth District Hero",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Wings of Freedom",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Gauntlets of Light",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Rasaad, Monk of Selûne",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Righteous Valkyrie",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Bill the Pony",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Teyo, Aegis Adept",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Loxodon Lifechanter",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Ghalta the Immovable",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Kingpin of Crime",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Tymaret, Chosen from Death",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Blighted Nightmare",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "South Wind Avatar",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth Resplendent",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Captain America's Shield",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Shalai, Voice of Plenty",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Choking Miasma",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mythos of Nethroi",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Polukranos Reborn // Polukranos, Engine of Ruin",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Chevill, Bane of Monsters",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Cursed Wombat",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Insidious Roots",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vraska Joins Up",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Stalwart Successor",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Jenova, Ancient Calamity",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Kagha, Shadow Archdruid",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Professor Dellian Fel",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Last Ronin",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Madame Null, Power Broker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Jadzia Dax, Living Legacy",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Ferrafor, Young Yew",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Crystal Barricade",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Walls of Ba Sing Se",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Multiply by Zero",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "General's Enforcer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Athreos, Shroud-Veiled",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Karametra, God of Harvests",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Restoration Magic",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Basri Ket",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Earthshape",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Akroma's Will",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hakoda, Selfless Commander",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Luke Cage, Power Man",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Oketra the True",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Moogles' Valor",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Nick Fury, Spymaster",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Eagle of Deliverance",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Angelic Guardian",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Avacyn, Angel of Hope",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Soul Stone",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Erebos, God of the Dead",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Smuggler's Surprise",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Claim the Kingdom",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Heroic Intervention",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Origin of Metalbending",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Song of Freyalise",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Strength of Will",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Inspiring Call",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Toski, Bearer of Secrets",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Majestic Myriarch",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Zopandrel, Hunger Dominus",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Rok-Tahk, Budding Scientist",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Impervious Greatwurm",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Amaranthine Wall",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Plaza of Heroes",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Eladamri, Korvecdal",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Veteran Beastrider",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Delney, Streetwise Lookout",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Enduring Innocence",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Destined Confrontation",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Slumbering Walker",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Smile at Death",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Body Launderer",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Ruthless Technomancer",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Golden-Tail Trainer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Elesh Norn, Mother of Machines",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Huatli, the Sun's Heart",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Essence of Antiquity",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hooded Hydra",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Tree of Perdition",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Necrobloom",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Toxic Deluge",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Languish",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Find // Finality",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Meathook Massacre",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Anguished Unmaking",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Infernal Grasp",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vindicate",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Despark",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mortify",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Putrefy",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mentor of the Meek",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Trail of Mystery",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Whisperwood Elemental",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Verdant Dread",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Valgavoth's Onslaught",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sleuth Instructor",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Pine Walker",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Nyx-Fleece Ram",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Reaping Willow",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Catapult Fodder // Catapult Captain",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Dryad of the Ilysian Grove",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Icetill Explorer",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Oracle of Mul Daya",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "The Gitrog Monster",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Walking Bulwark",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Belligerent Brontodon",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Unyielding Gatekeeper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Selfless Glyphweaver // Deadly Vanity",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Wildgrove Summoner",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Notary Hobbits",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Tireless Tracker",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Wall of Omens",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Wall of Blossoms",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Carven Caryatid",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sylvan Caryatid",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Welcoming Vampire",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sumala Sentry",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Greenbelt Radical",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vigorbloom Charm",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sword of Forge and Frontier",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Inspiring Commander",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Symmetry Matrix",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hornet Nest",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Enduring Vitality",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Elven Chorus",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Cryptolith Rite",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Badgermole Cub",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Leyline of Abundance",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Mirari's Wake",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Vorinclex, Voice of Hunger",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Saradoc, Master of Buckland",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Delighted Halfling",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Belladonna Took",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Samwise Gamgee",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Rosie Cotton of South Lane",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Bilbo's Ring",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Hobbit Hole",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Sméagol, Helpful Guide",
+   "pile": "H",
+   "src": "added"
+  },
+  {
+   "name": "Frodo, Sauron's Bane",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Arwen, Mortal Queen",
+   "pile": "H",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Darksteel Hydra": {
+   "group": "Doesn't fit",
+   "text": "Upgraded: a manifest never has to be flipped, so the 0/0 flip doesn't matter, and The Notary Hobbits' colourless pays a big X. Indestructible, but power equals toughness, so it gains nothing from the enablers.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Eerie Ultimatum": {
+   "group": "Bench — real, not in the first draft",
+   "text": "returns lands too (landfall, F3); WWBBBGG is a hard 7",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Crime // Punishment": {
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "Punishment is an X sweeper our big mana values dodge, but at X=0 it kills our tokens and face-downs (mana value 0) — pick X above 0. Crime steals a creature from their graveyard. The tools count it as no role. Replaced Break Down the Door.",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Kin-Tree Severance": {
+   "group": "Interaction",
+   "text": "instant exile MV≥3, hybrid-cheap",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Perennation": {
+   "group": "Bench — real, not in the first draft",
+   "text": "any permanent back, hexproof+indestructible",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Call the Crash": {
+   "group": "Bench — real, not in the first draft",
+   "text": "two 4/5 Rhinos (T>P) and 6 drain",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Nethroi, Apex of Death": {
+   "group": "Recursion",
+   "text": "total power 10 = five 0-power walls back (F2)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Ivorytusk Fortress": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Jadzia Dax. Untapped every creature with a counter on each opponent's turn — now that Enduring Vitality is in and you tap creatures for mana, the strongest return candidate (or Dormant Grove for vigilance).",
+   "graded_at": {
+    "106": "98ebf7fee7d9"
+   }
+  },
+  "Betor, Kin to All": {
+   "group": "Payoffs and card flow",
+   "text": "F7 — draws every turn from turn ~4, untaps at 20",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Drover of the Swine": {
+   "group": "Doesn't fit",
+   "text": "no Boars",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Betor, Ancestor's Voice": {
+   "group": "Payoffs and card flow",
+   "text": "3/5 flying lifelink; each end step counters equal to life gained, and recursion up to the life you lost. Replaced Yathan Roadwatcher.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "Yathan Roadwatcher": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Betor, Ancestor's Voice. MV≤3 recursion, only when cast.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Thalia and The Gitrog Monster": {
+   "group": "Landfall and extra land drops",
+   "text": "extra land (F3), opponents' creatures enter tapped, attack-draw",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Felothar the Steadfast": {
+   "group": "Toughness enablers",
+   "text": "global enabler + defenders attack + sac-draw by toughness",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Revival of the Ancestors": {
+   "group": "Bench — real, not in the first draft",
+   "text": "trample finisher chapter matters for toughness damage",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Doran, Besieged by Time": {
+   "group": "Toughness enablers",
+   "text": "enabler-by-gap + discount on every wall",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Kethis, the Hidden Hand": {
+   "group": "Doesn't fit",
+   "text": "legendary count to be measured at draft",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Severance Priest": {
+   "group": "Doesn't fit",
+   "text": "F9 — hands the opponent an X/X",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Felothar, Dawn of the Abzan": {
+   "group": "Payoffs and card flow",
+   "text": "Sacrifices a token (Saradoc's, an endure Spirit) on entering and attacking to put a counter on the whole team; stayed when Ivorytusk was cut for Jadzia.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Death's Oasis": {
+   "group": "Doesn't fit",
+   "text": "value on death, lesser-MV return",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Anafenza, the Foremost": {
+   "group": "Bench — real, not in the first draft",
+   "text": "one-sided graveyard hate, counter on tapped creature",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Abzan Charm": {
+   "group": "Interaction",
+   "text": "exile power≥3 / draw two / counters",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Abzan Ascendancy": {
+   "group": "Bench — real, not in the first draft",
+   "text": "counters on team, spirits on death",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Abzan Monument": {
+   "group": "Bench — real, not in the first draft",
+   "text": "basic to hand now, X/X (greatest toughness) later — 30/30 with Walls",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Kin-Tree Invocation": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Felothar, Dawn of the Abzan. A 2-mana X/X (greatest toughness) is still a fine early play.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Nog, Ambitious Cadet": {
+   "group": "Bench — real, not in the first draft",
+   "text": "3/4 body, extra land drop + lands from graveyard (F3)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Mephidross Slime": {
+   "group": "Doesn't fit",
+   "text": "off-plan",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Lord of Extinction": {
+   "group": "Doesn't fit",
+   "text": "big, unrelated to the axis",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Ancient Lumberknot": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Zopandrel. The deck is down to 7 toughness-damage enablers; this is the first to bring back if attacks stall.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vraska's Stoneglare": {
+   "group": "Doesn't fit",
+   "text": "6-mana sorcery removal",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Garruk, Apex Predator": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Selfless Glyphweaver. 7-mana removal plus 3/3 deathtouch tokens.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Zar Ojanen, Scion of Efrava": {
+   "group": "Doesn't fit",
+   "text": "rewards LOW toughness",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Hauntwoods Shrieker": {
+   "group": "Face-down engine",
+   "text": "F5 — {1}{G} flips anything; manifests on attack",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Threats Around Every Corner": {
+   "group": "Face-down engine",
+   "text": "F6 loop",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Harrowing Swarm": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut earlier (for Claim the Kingdom, now cut too). One manifest plus a {2} flip discount and a counter on each face-down.",
+   "graded_at": {
+    "106": "1ce9e4256179"
+   }
+  },
+  "Break Down the Door": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Crime // Punishment. Instant artifact/enchantment exile or a manifest; return it if you face artifact decks.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Guardian of the Forgotten": {
+   "group": "Bench — real, not in the first draft",
+   "text": "manifests top card when a modified creature dies (may be unflippable)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Shilgengar, Sire of Famine": {
+   "group": "Doesn't fit",
+   "text": "BB-heavy, few Blood sources",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Assault Formation": {
+   "group": "Toughness enablers",
+   "text": "2-mana global enabler + defender attack + team +0/+1",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Beorn's Hospitality": {
+   "group": "Bench — real, not in the first draft",
+   "text": "landfall counters, rides both loops",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Druid Class": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Cursed Wombat (since cut too). Extra land drop plus life per landfall.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Sharp-Eyed Rookie": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Arwen, Weaver of Hope. Clues off every high-toughness creature; a fine return if card advantage runs thin.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Arwen, Weaver of Hope": {
+   "group": "Payoffs and card flow",
+   "text": "With Captain America's Shield on her she's a 2/9, so every creature after her, each Hamza manifest included, enters with 9 extra counters. Replaced Sharp-Eyed Rookie.",
+   "graded_at": {
+    "106": "ece9d59e662b"
+   }
+  },
+  "Dormant Grove // Gnarled Grovestrider": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Benched for The Notary Hobbits. Transforms on its first combat into team vigilance — with Ivorytusk now cut, it's the only vigilance option on the bench. Vigilance doesn't help creatures tapped for mana.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Bedrock Tortoise": {
+   "group": "Toughness enablers",
+   "text": "T>P enabler + team hexproof on our turn",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Flatman": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "1/10 for 4; flip 4 → endure 10; don't switch him under an enabler",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Mythweaver Poq": {
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "Conjures a duplicate of the first land each turn: an extra Hamza trigger, two with Elesh Norn. Replaced The Necrobloom.",
+   "graded_at": {
+    "106": "4c1f22d6ae28"
+   }
+  },
+  "Sultai Flayer": {
+   "group": "Doesn't fit",
+   "text": "4 life per T≥4 death",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Tapestry Warden": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Basri Ket. A toughness-damage enabler for creatures with toughness above power; second in line behind Lumberknot (7 enablers left).",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Ashaya, Soul of the Wild": {
+   "group": "Face-down engine",
+   "text": "F6 loop; also every creature counts as a land for Poq/Braulios",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Braulios of Pheres Band": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Attack-draw plus a land onto the battlefield (another Hamza trigger); with Ashaya its size counts creatures too. Card flow the deck is short on.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Fecund Greenshell": {
+   "group": "Landfall and extra land drops",
+   "text": "T>P creature enters → land onto battlefield (F3) or a card; +2/+2 at 10 lands",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Sauron, Dino Devotee": {
+   "group": "Doesn't fit",
+   "text": "5/5 rebase shrinks our walls' toughness",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Flourishing Hunter": {
+   "group": "Doesn't fit",
+   "text": "6-mana 6/6, lifegain",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Grunn, the Lonely King": {
+   "group": "Doesn't fit",
+   "text": "attack-alone, kicker lost on flip",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Swampbenders": {
+   "group": "Doesn't fit",
+   "text": "Underrated with Ashaya (creatures become lands, all lands become Swamps, its size counts both) and every land taps for black. Still 6 mana for one body.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Towering Titan": {
+   "group": "Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)",
+   "text": "Cast, it enters with counters equal to every other creature's toughness (20–60 here); sacrificing a defender gives the team trample. If Hamza manifests it, leave it face down — a flip is 0/0. Replaced Amaranthine Wall.",
+   "graded_at": {
+    "106": "4c1f22d6ae28"
+   }
+  },
+  "Glint Weaver": {
+   "group": "Doesn't fit",
+   "text": "7 mana",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Last March of the Ents": {
+   "group": "Payoffs and card flow",
+   "text": "Draws equal to the greatest toughness, then puts creatures from hand onto the battlefield. The draw isn't optional, so with the Walls out it's 30 cards.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Bark of Doran": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cheapest way back to 8 enablers: +0/+1 and toughness damage for {1} to equip. On Arwen, Weaver of Hope it adds 1 to every creature's entering counters.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Daxos, Blessed by the Sun": {
+   "group": "Doesn't fit",
+   "text": "devotion toughness, thin",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Tenth District Hero": {
+   "group": "Doesn't fit",
+   "text": "off-plan",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Captain America, Wings of Freedom": {
+   "group": "Doesn't fit",
+   "text": "Hero-only",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Gauntlets of Light": {
+   "group": "Doesn't fit",
+   "text": "aura enabler, one creature",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Rasaad, Monk of Selûne": {
+   "group": "Bench — real, not in the first draft",
+   "text": "3-mana creature exile (until it leaves)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Righteous Valkyrie": {
+   "group": "Doesn't fit",
+   "text": "few Angels/Clerics",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Bill the Pony": {
+   "group": "Doesn't fit",
+   "text": "single-creature enabler per Food",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "group": "Toughness enablers",
+   "text": "perpetual base power = toughness; defenders attack",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "group": "Payoffs and card flow",
+   "text": "Life becomes total toughness (30–50 here), then {5}{W}: +X/+X where X is life, a one-swing kill under an enabler. Replaced Icetill Explorer.",
+   "graded_at": {
+    "106": "ece9d59e662b"
+   }
+  },
+  "Ghalta the Immovable": {
+   "group": "Toughness enablers — each creature (or each with toughness > power) deals damage equal to its toughness",
+   "text": "Toughness-damage enabler that lets defenders attack; costs about 4 with a 5-toughness creature out (9 if flipped). Replaced Hakoda.",
+   "graded_at": {
+    "106": "ece9d59e662b"
+   }
+  },
+  "The Kingpin of Crime": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Catapult Fodder. Its enabler costs 2 life per attack; Bark of Doran or Ghalta do the job more cheaply.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Tymaret, Chosen from Death": {
+   "group": "Doesn't fit",
+   "text": "BB devotion",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Blighted Nightmare": {
+   "group": "Bench — real, not in the first draft",
+   "text": "repeatable reanimation capped by toughness; blight paid by walls (F10)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "South Wind Avatar": {
+   "group": "Bench — real, not in the first draft",
+   "text": "life = toughness on deaths, drain",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Elspeth Resplendent": {
+   "group": "Bench — real, not in the first draft",
+   "text": "counters + keyword, dig MV≤3 with shield",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Captain America's Shield": {
+   "group": "Payoffs and card flow",
+   "text": "+0/+8 = +8 damage under an enabler; taps a blocker",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Shalai, Voice of Plenty": {
+   "group": "Protection",
+   "text": "Team hexproof and a counters sink. Suggested cut for Tireless Tracker (still pending): protection is the deep axis, card advantage the thin one.",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Choking Miasma": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Eladamri: its −2/−2 also killed Saradoc's tokens and the face-down 2/2s.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Mythos of Nethroi": {
+   "group": "Interaction",
+   "text": "instant destroy any nonland permanent (GW spent)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Polukranos Reborn // Polukranos, Engine of Ruin": {
+   "group": "Doesn't fit",
+   "text": "GGG",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "group": "Bench — real, not in the first draft",
+   "text": "1/3 deathtouch, bounty draws",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Cursed Wombat": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Arwen, Mortal Queen. One extra counter every time counters land on a permanent — with endure, Jadzia, Basri and Belladonna in the deck, the first multiplier to bring back.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Insidious Roots": {
+   "group": "Doesn't fit",
+   "text": "plant per recursion",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vraska Joins Up": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Upgraded: draws whenever a legendary creature connects, and the deck runs 23 legendary nonland cards; the deathtouch counters make every wall lethal on the block.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Stalwart Successor": {
+   "group": "Bench — real, not in the first draft",
+   "text": "+1 counter on first counters",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "group": "Payoffs and card flow",
+   "text": "RE-GRADED (owner): 1/5 gap 4 = +4/+4 under Doran; endure counters and Teyo's base-power rebase raise her power, so the combat counters scale (F11)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Kagha, Shadow Archdruid": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Impervious Greatwurm. Card flow from milled cards.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Professor Dellian Fel": {
+   "group": "Bench — real, not in the first draft",
+   "text": "removal + draw walker",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "The Last Ronin": {
+   "group": "Doesn't fit",
+   "text": "kills our walls too unless Walls of Ba Sing Se is out",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Madame Null, Power Broker": {
+   "group": "Doesn't fit",
+   "text": "F11 — face-down 2/2s enter at power 2: pay 2 life for 2 counters per manifest",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Jadzia Dax, Living Legacy": {
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "2-mana ramp that grows each turn ({G} per counter); Arwen, Weaver of Hope's counters and Belladonna's team counters speed it up. Green only. Replaced Ivorytusk Fortress.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Ferrafor, Young Yew": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Doubles every counter on one creature each turn; {6}{G} is easy with The Notary Hobbits.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Crystal Barricade": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "2-mana 0/4, flip 2 → 4, you have hexproof",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "The Walls of Ba Sing Se": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "0/30; other permanents you control are indestructible. Alone it clears Betor, Kin to All's 40 total toughness; flipped from a manifest by Hauntwoods Shrieker it endures 30.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "Multiply by Zero": {
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "2-mana instant: base 0/0 kills most creatures (not ones with counters). The tools count it as no role. Replaced Languish.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "General's Enforcer": {
+   "group": "Doesn't fit",
+   "text": "Hamza isn't Human",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "group": "Doesn't fit",
+   "text": "devotion 7 unreachable",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Karametra, God of Harvests": {
+   "group": "Bench — real, not in the first draft",
+   "text": "each creature cast fetches a land onto the battlefield (F3)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Restoration Magic": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Smuggler's Surprise, whose {1} mode does the same protection with more options.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Basri Ket": {
+   "group": "Payoffs and card flow",
+   "text": "+1 puts a counter and indestructible on a creature each turn; −2 makes attacking 1/1s; the emblem counters the whole team each combat. Replaced Tapestry Warden (owner's pick).",
+   "graded_at": {
+    "106": "4c1f22d6ae28"
+   }
+  },
+  "Earthshape": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Strength of Will. One turn of hexproof and indestructible for every power-≤3 creature (most of the deck).",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Akroma's Will": {
+   "group": "Payoffs and card flow",
+   "text": "double strike doubles toughness damage; both modes with Hamza out",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Hakoda, Selfless Commander": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Ghalta. One-shot +0/+5 and indestructible for the team; a protection piece to bring back if the deck feels exposed.",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Luke Cage, Power Man": {
+   "group": "Doesn't fit",
+   "text": "attack-alone",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Oketra the True": {
+   "group": "Bench — real, not in the first draft",
+   "text": "double strike 3/6 enabler target",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Moogles' Valor": {
+   "group": "Bench — real, not in the first draft",
+   "text": "1/2 tokens (T>P) + team indestructible",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Nick Fury, Spymaster": {
+   "group": "Doesn't fit",
+   "text": "attack-alone",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Eagle of Deliverance": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Saradoc. A 6-mana 5/5 flier that puts an indestructible counter on another creature and draws; Belladonna now covers the draw.",
+   "graded_at": {
+    "106": "7fe9aa7d0828"
+   }
+  },
+  "Angelic Guardian": {
+   "group": "Bench — real, not in the first draft",
+   "text": "attackers indestructible",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Avacyn, Angel of Hope": {
+   "group": "Bench — real, not in the first draft",
+   "text": "8/8 flier, others indestructible: makes Punishment and Deadly Vanity one-sided, but not Toxic Deluge (−X/−X ignores indestructible). The Walls of Ba Sing Se already does this, and WWW is hard to cast here.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "The Soul Stone": {
+   "group": "Doesn't fit",
+   "text": "slow",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Erebos, God of the Dead": {
+   "group": "Doesn't fit",
+   "text": "devotion 5",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Smuggler's Surprise": {
+   "group": "Protection",
+   "text": "{4}{G} puts two creatures from hand onto the battlefield (they enter, so Titan gets its counters); {1} gives hexproof and indestructible; or mill four and keep two. Kept when Enduring Vitality came in for Despark instead.",
+   "graded_at": {
+    "106": "98ebf7fee7d9"
+   }
+  },
+  "Claim the Kingdom": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Belladonna Took, whose third token each turn counters the whole team. A counter per land drop and an eventual indestructible counter.",
+   "graded_at": {
+    "106": "1ce9e4256179"
+   }
+  },
+  "Heroic Intervention": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Venat: protection was the deck's deepest axis. Team hexproof and indestructible for 2 — the answer to a wrath if you need it back.",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Origin of Metalbending": {
+   "group": "Bench — real, not in the first draft",
+   "text": "flex art/ench removal or protection",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Song of Freyalise": {
+   "group": "Bench — real, not in the first draft",
+   "text": "mana from face-downs for two turns",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Strength of Will": {
+   "group": "Protection",
+   "text": "Indestructible, and damage dealt to it becomes +1/+1 counters. Kept when Cursed Wombat was cut for Arwen, Mortal Queen instead. Replaced Earthshape.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Inspiring Call": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Card advantage is the thinnest axis. With endure, both Arwens, Basri, Jadzia and Belladonna's team counters, most of the board carries counters, so this often draws 5+ and makes them indestructible.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Toski, Bearer of Secrets": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Upgraded: a draw for each creature that connects, and Delney plus toughness damage connect a lot. Card advantage is the thin axis. It must attack each combat.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Majestic Myriarch": {
+   "group": "Bench — real, not in the first draft",
+   "text": "twice creature count (manifests go wide)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Zopandrel, Hunger Dominus": {
+   "group": "Payoffs and card flow",
+   "text": "Doubles every creature's power AND toughness at each combat, on both players' turns — double damage on offence, double walls on defence. Replaced Ancient Lumberknot.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "Rok-Tahk, Budding Scientist": {
+   "group": "Landfall and extra land drops",
+   "text": "every face-down taps for GG → pays flips (F5)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Impervious Greatwurm": {
+   "group": "Payoffs and card flow",
+   "text": "16/16 indestructible with convoke: face-down 2/2s and Hobbit tokens pay most of it. Creatures tapped for it can't block that turn. Replaced Kagha.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "Amaranthine Wall": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Towering Titan. A colourless 0/6 that flips for 4 → endure 6.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Plaza of Heroes": {
+   "group": "Lands — fetches count twice for landfall; Threats Around Every Corner wants basics",
+   "text": "Any colour for 23 legendary spells (Felothar, Doran, Thalia and The Gitrog Monster…) and the deck's only hexproof/indestructible for Hamza. Replaced 1 Forest.",
+   "graded_at": {
+    "106": "18a732ee56c5"
+   }
+  },
+  "Eladamri, Korvecdal": {
+   "group": "Payoffs and card flow",
+   "text": "Cast creatures from the top of your library, and tap two creatures (easy with Saradoc tokens and face-downs) to put a creature onto the battlefield — it enters, so Titan gets its counters. Replaced Choking Miasma.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Veteran Beastrider": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Ivorytusk Fortress (since cut for Jadzia). Untaps your team at end step — attack and still block.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "group": "Payoffs and card flow",
+   "text": "power≤2 attackers unblockable by power≥3 (F2)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Enduring Innocence": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Draws once a turn when a power-2 creature enters, which Hamza supplies every land drop. A strong return candidate while card advantage sits at 8.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Destined Confrontation": {
+   "group": "Interaction",
+   "text": "one-sided wrath for a power-0 board (F2)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Slumbering Walker": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "power≤2 recursion each end step, fuelled by endure counters; flips as 4/7 (F4)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Smile at Death": {
+   "group": "Recursion",
+   "text": "two power≤2 creatures back every upkeep (F2)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Body Launderer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "returns power ≤3 on death",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Ruthless Technomancer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Downgraded: X=1 returns a 0-power wall, but the deck's only artifacts are the Shield, Crystal Barricade and The Walls, which are the things you'd want to keep.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Golden-Tail Trainer": {
+   "group": "Doesn't fit",
+   "text": "F11 — endure counters make every creature 'modified'; scales only once its own power grows",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "group": "Landfall and extra land drops",
+   "text": "a land entering → Hamza's landfall triggers TWICE (also Necrobloom, Threats, both loops); 4/7, flips 5 → 7",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Huatli, the Sun's Heart": {
+   "group": "Toughness enablers",
+   "text": "3-mana global toughness-damage enabler on a planeswalker (not a seek target)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Essence of Antiquity": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "1/10; disguise flip {2}{W} → endure 10 + team hexproof + untap",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Hooded Hydra": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "morph/manifest flip adds 5 counters THEN endures 5; dies into snakes",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Tree of Perdition": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "0/13 for 4 — flip 4 → endure 13; life-swap with its toughness (spice)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "The Necrobloom": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Mythweaver Poq. A Plant per land, two with Elesh Norn; good with Felothar, Dawn of the Abzan as sacrifice fodder.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Toxic Deluge": {
+   "group": "Interaction",
+   "text": "pay X, −X/−X: at X=4 our 5+ toughness board survives (one-sided)",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Languish": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Multiply by Zero. −4/−4 our walls survive, but BB and it kills the face-down 2/2s.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Find // Finality": {
+   "group": "Bench — real, not in the first draft",
+   "text": "two creatures back, or counters + −4/−4",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "The Meathook Massacre": {
+   "group": "Bench — real, not in the first draft",
+   "text": "flexible −X/−X + drain",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Anguished Unmaking": {
+   "group": "Interaction",
+   "text": "instant exile any nonland permanent",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Infernal Grasp": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Choking Miasma (since cut too, for Eladamri). A clean 2-mana instant kill if spot removal runs short.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Vindicate": {
+   "group": "Interaction",
+   "text": "staple Abzan removal",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Despark": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Benched for Enduring Vitality. 2-mana instant exile of a mana value 4+ permanent (most commanders and bombs); the first answer to bring back if interaction feels thin.",
+   "graded_at": {
+    "106": "98ebf7fee7d9"
+   }
+  },
+  "Mortify": {
+   "group": "Bench — real, not in the first draft",
+   "text": "staple Abzan removal",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Putrefy": {
+   "group": "Bench — real, not in the first draft",
+   "text": "staple Abzan removal",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Mentor of the Meek": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Card advantage is the thinnest axis (8). Every face-down 2/2 Hamza manifests has power 2, and Elesh Norn doubles the trigger; The Notary Hobbits' colourless pays the {1}s. The strongest draw card on the bench.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Trail of Mystery": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Dormant Grove, which has since gone to the bench too. Basics to hand per face-down and +2/+2 on every flip; face-down support worth returning.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Whisperwood Elemental": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Eagle of Deliverance, which has since been cut for Saradoc. A manifest every end step — the face-down engine piece most worth returning.",
+   "graded_at": {
+    "106": "7fe9aa7d0828"
+   }
+  },
+  "Verdant Dread": {
+   "group": "Bench — real, not in the first draft",
+   "text": "2-mana manifest dread, repeatable",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Valgavoth's Onslaught": {
+   "group": "Bench — real, not in the first draft",
+   "text": "X manifests with X counters each; The Notary Hobbits' colourless pays the {X}{X}, and Elesh Norn doubles the landfall that follows Threats fetches.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sleuth Instructor": {
+   "group": "Bench — real, not in the first draft",
+   "text": "disguise; one-shot seek+cloak MV≤3",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Pine Walker": {
+   "group": "Bench — real, not in the first draft",
+   "text": "untaps each creature turned face up",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Nyx-Fleece Ram": {
+   "group": "Walls and cheap high-toughness flips",
+   "text": "0/5 for 2 — flip 2 → endure 5",
+   "graded_at": {
+    "106": "9fa73aec30f6"
+   }
+  },
+  "Reaping Willow": {
+   "group": "Bench — real, not in the first draft",
+   "text": "flips as 3/6 (no −1/−1); endure counters fuel its MV≤3 recursion",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Catapult Fodder // Catapult Captain": {
+   "group": "Walls and cheap high-toughness flips (Hamza endures X = toughness when one is turned face up)",
+   "text": "A 1/5 for 3 that transforms off three creatures with toughness above power, then sacrifices for life loss equal to toughness: 30 from the Walls. Replaced The Kingpin of Crime.",
+   "graded_at": {
+    "106": "ece9d59e662b"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "group": "Landfall and extra land drops",
+   "text": "An extra land drop each turn (another Hamza trigger) and every land taps for any colour. Kept alongside Enduring Vitality; together they make the deck's colours reliable.",
+   "graded_at": {
+    "106": "98ebf7fee7d9"
+   }
+  },
+  "Icetill Explorer": {
+   "group": "Bench — real, not in the first draft",
+   "text": "Cut for Loxodon Lifechanter. Extra land drop plus lands from the graveyard; return it if landfall feels thin.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Oracle of Mul Daya": {
+   "group": "Bench — real, not in the first draft",
+   "text": "extra land drops (F3)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "The Gitrog Monster": {
+   "group": "Bench — real, not in the first draft",
+   "text": "extra land drops (F3)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Walking Bulwark": {
+   "group": "Bench — real, not in the first draft",
+   "text": "1-mana defender attack + toughness damage",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Belligerent Brontodon": {
+   "group": "Bench — real, not in the first draft",
+   "text": "A global toughness-damage enabler at 7; The Notary Hobbits pays most of it. Worth a look if enablers feel thin and the curve allows.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Unyielding Gatekeeper": {
+   "group": "Doesn't fit",
+   "text": "F9 — the opponent gets a 2/2",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Selfless Glyphweaver // Deadly Vanity": {
+   "group": "Interaction — the -X/-X sweepers spare our high-toughness board",
+   "text": "Front: exile it for team indestructible. Back: an 8-mana wipe that keeps your best creature. Replaced Garruk, Apex Predator.",
+   "graded_at": {
+    "106": "4c1f22d6ae28"
+   }
+  },
+  "Wildgrove Summoner": {
+   "group": "Doesn't fit",
+   "text": "turns Forests into creature cards → Hamza's seek can find a land it cannot flip (no mana cost)",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "The Notary Hobbits": {
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "Owned. Two token copies; each Halfling taps for one per Halfling, so about 9 colourless from the next turn, 25 with Elesh Norn. Pays The Walls' 8-mana flip, Last March, Titan and Lifechanter's pump. Flipped from a manifest it makes no tokens. Replaced Dormant Grove.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "group": "Protection",
+   "text": "Owned. Draws once a turn when you cast a legendary spell (23 in the deck). {7},T: exile a nonland permanent, then it transforms: each combat a counter and indestructible on another creature, plus a draw if that creature is legendary. Replaced Heroic Intervention.",
+   "graded_at": {
+    "106": "6f2135e4cb89"
+   }
+  },
+  "Tireless Tracker": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "A Clue on every land drop, two with Elesh Norn, and it grows when you crack them. Fixes the thinnest axis (card advantage 8) off the deck's own engine; the Hobbits' colourless cracks Clues.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Wall of Omens": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "0/4 defender that draws on entering. Flips for 2 → endure 4; Smile at Death and Slumbering Walker return power ≤2 creatures, so it re-draws every time.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Wall of Blossoms": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Green Wall of Omens: 0/4, draws on entering, flips for 2 → endure 4, and the power-capped recursion re-buys the draw.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Carven Caryatid": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "2/5 defender that draws on entering; flips for 3 → endure 5. Power 2, so Smile at Death returns it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sylvan Caryatid": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "0/3 hexproof defender that taps for any colour: fixing for the double-pip cards (Basri, Venat, Hauntwoods, Eladamri) plus a cheap flip (2 → endure 3).",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Welcoming Vampire": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Draws once a turn when a power-2-or-less creature enters, which every Hamza manifest is. A 2/3 flier. Card advantage tied to the engine.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sumala Sentry": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "1/3 for GW: whenever a face-down creature is turned face up, a counter on it and on the Sentry. Stacks on Hamza's endure.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Greenbelt Radical": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Disguise: cast face down for 3, flip for {5}{G}{G} (the Hobbits help) → a counter on every creature and team trample, which toughness damage badly wants; Hamza also endures it 4.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vigorbloom Charm": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Owned. 2-mana instant: hexproof and indestructible on a permanent, or draw and gain 3, or a counter then a fight. Protection or card advantage as needed.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sword of Forge and Frontier": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "On a toughness attacker that connects (Delney makes that easy): play the top two cards and an extra land, which is another Hamza trigger. +2/+2 and protection from red and green.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Inspiring Commander": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Life and a draw for every power-≤2 creature that enters, with no once-a-turn limit, so each manifest draws (two with Elesh Norn). 6 mana for a 1/4.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Symmetry Matrix": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Spice: every face-down 2/2 and every endure Spirit token has power equal to toughness, so each one entering is a {1} draw; the Hobbits pay for it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Hornet Nest": {
+   "group": "Off-pile finds 2026-11-24 (two or more axes)",
+   "text": "Spice: blocks and makes deathtouch fliers equal to the damage taken. Only a 0/2, so it's a poor flip and dies to our own sweepers.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Enduring Vitality": {
+   "group": "Landfall and extra land drops (every land is a Hamza manifest)",
+   "text": "Owned. Every creature taps for any colour, so each face-down 2/2 and Saradoc token becomes fixing from the turn after it enters — the deck's real fixing lever. A 3/3 vigilance that returns as an enchantment when it dies. Replaced Despark.",
+   "graded_at": {
+    "106": "98ebf7fee7d9"
+   }
+  },
+  "Elven Chorus": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Creatures tap for any colour AND you can cast creature spells from the top of your library — fixing plus card advantage (the deck's thinnest axis) in one 4-mana enchantment.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Cryptolith Rite": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "The 2-mana version of the creature-mana effect: every creature taps for any colour. No body, but it lands on turn 2.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Badgermole Cub": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Owned. +{G} whenever you tap a creature for mana (with Rok-Tahk each creature makes GGG); its earthbend turns a land into a creature too. Strong only once a creature-mana effect is out.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Leyline of Abundance": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "+{G} per creature tapped for mana, free if in your opening hand, and an 8-mana counter on every creature. Second-order: the deck needs coloured mana first, raw mana second.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Mirari's Wake": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Lands make double mana plus a team +1/+1 anthem. 5 mana; the anthem adds damage under the enablers but doesn't widen any toughness gap.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "group": "Mana: creatures tap for mana / amplifiers (2026-11-24)",
+   "text": "Doubles your land mana and locks the opponent's tapped lands, but 8 mana in a deck whose problem is early coloured mana.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Delighted Halfling": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "1-drop that taps for colourless, or any colour for a legendary spell (23 in the deck, plus Hamza), and is a Halfling for the Hobbits. Early ramp and fixing, the two things the deck lacks.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Saradoc, Master of Buckland": {
+   "group": "Payoffs and card flow",
+   "text": "A 1/1 Halfling token for every nontoken power-≤2 creature entering, each Hamza manifest included (doubled by Elesh Norn and by Delney). Each token is 3 more Hobbit mana, a Belladonna trigger and an Arwen-countered body; Arwen, Mortal Queen can lend one indestructible and lifelink. Replaced Eagle of Deliverance.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  },
+  "Belladonna Took": {
+   "group": "Payoffs and card flow",
+   "text": "Owned. First token each turn gains a life, the second draws, the third puts a counter on every creature; Saradoc (now in), the Hobbits' copies and endure Spirits reach three, and Delney doubles her trigger. Replaced Claim the Kingdom.",
+   "graded_at": {
+    "106": "7fe9aa7d0828"
+   }
+  },
+  "Samwise Gamgee": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. A Food for every nontoken creature entering (each manifest counts); three Foods return a legendary card from the graveyard. Value, but slow.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. Every token you create puts a counter on a creature; a 1/1 for 3.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Bilbo's Ring": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Equip a Halfling for {1} (or Hamza for {4}): hexproof and unblockable on your turn, and a draw when it attacks alone. Attacking alone works against a wide board.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Hobbit Hole": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Owned. A fetch for a basic (two Hamza triggers) or Halflingcycling {4} to find The Notary Hobbits, but it makes no mana itself; at best a swap for Deceptive Landscape.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Steals an opponent's land onto your battlefield (another landfall) when the Ring tempts you, which needs a creature to die each turn. A 4/2, so the toughness enablers do nothing for it.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Frodo, Sauron's Bane": {
+   "group": "Halflings for The Notary Hobbits (2026-11-24)",
+   "text": "Its win needs the Ring to tempt you four times, and nothing else here tempts you.",
+   "graded_at": {
+    "106": "638d0b4a0931"
+   }
+  },
+  "Arwen, Mortal Queen": {
+   "group": "Payoffs and card flow",
+   "text": "Owned. {1}: another creature gets indestructible plus a +1/+1 and a lifelink counter (Arwen gets both too); lifelink on a toughness attacker gains its toughness in life for Betor, Ancestor's Voice and Lifechanter. One indestructible counter, so one use. Replaced Cursed Wombat.",
+   "graded_at": {
+    "106": "6a0f9e8695cc"
+   }
+  }
+ },
+ "snapshots": {
+  "106": {
+   "9fa73aec30f6": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Amaranthine Wall",
+    "Ancient Lumberknot",
+    "Anguished Unmaking",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Bedrock Tortoise",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Break Down the Door",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Caves of Koilos",
+    "Command Tower",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Druid Class",
+    "Dryad of the Ilysian Grove",
+    "Earthshape",
+    "Eladamri, Korvecdal",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Flatman",
+    "Forest",
+    "Garruk, Apex Predator",
+    "Godless Shrine",
+    "Hakoda, Selfless Commander",
+    "Hamza, Might of the Yathan",
+    "Harrowing Swarm",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Icetill Explorer",
+    "Indatha Triome",
+    "Infernal Grasp",
+    "Isolated Chapel",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Invocation",
+    "Kin-Tree Severance",
+    "Languish",
+    "Llanowar Wastes",
+    "Mana Confluence",
+    "Mentor of the Meek",
+    "Mythos of Nethroi",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Restoration Magic",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Shalai, Voice of Plenty",
+    "Sharp-Eyed Rookie",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Sunpetal Grove",
+    "Swamp",
+    "Tapestry Warden",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Kingpin of Crime",
+    "The Necrobloom",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Toxic Deluge",
+    "Trail of Mystery",
+    "Tree of Perdition",
+    "Veteran Beastrider",
+    "Vindicate",
+    "Wastewood Verge",
+    "Whisperwood Elemental",
+    "Woodland Cemetery",
+    "Yathan Roadwatcher"
+   ],
+   "ece9d59e662b": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Amaranthine Wall",
+    "Ancient Lumberknot",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Bedrock Tortoise",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Druid Class",
+    "Dryad of the Ilysian Grove",
+    "Earthshape",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Garruk, Apex Predator",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Harrowing Swarm",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Languish",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Mentor of the Meek",
+    "Mythos of Nethroi",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Sunpetal Grove",
+    "Swamp",
+    "Tapestry Warden",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Necrobloom",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Whisperwood Elemental",
+    "Woodland Cemetery",
+    "Yathan Roadwatcher"
+   ],
+   "4c1f22d6ae28": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Ancient Lumberknot",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Earthshape",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Harrowing Swarm",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kagha, Shadow Archdruid",
+    "Kin-Tree Severance",
+    "Languish",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Yathan Roadwatcher"
+   ],
+   "18a732ee56c5": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Claim the Kingdom",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dormant Grove // Gnarled Grovestrider",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "638d0b4a0931": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Claim the Kingdom",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Heroic Intervention",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "6f2135e4cb89": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Claim the Kingdom",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "1ce9e4256179": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eagle of Deliverance",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "7fe9aa7d0828": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Choking Miasma",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Cursed Wombat",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Ivorytusk Fortress",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Saradoc, Master of Buckland",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "6a0f9e8695cc": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Mortal Queen",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eladamri, Korvecdal",
+    "Elesh Norn, Mother of Machines",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Jadzia Dax, Living Legacy",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Saradoc, Master of Buckland",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ],
+   "98ebf7fee7d9": [
+    "Abzan Charm",
+    "Akroma's Will",
+    "Anguished Unmaking",
+    "Arwen, Mortal Queen",
+    "Arwen, Weaver of Hope",
+    "Ashaya, Soul of the Wild",
+    "Assault Formation",
+    "Basri Ket",
+    "Bedrock Tortoise",
+    "Belladonna Took",
+    "Betor, Ancestor's Voice",
+    "Betor, Kin to All",
+    "Bleachbone Verge",
+    "Branchloft Pathway",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Brushland",
+    "Captain America's Shield",
+    "Catapult Fodder // Catapult Captain",
+    "Caves of Koilos",
+    "Command Tower",
+    "Crime // Punishment",
+    "Crystal Barricade",
+    "Darkbore Pathway // Slitherbore Pathway",
+    "Deceptive Landscape",
+    "Delney, Streetwise Lookout",
+    "Destined Confrontation",
+    "Doran, Besieged by Time",
+    "Dryad of the Ilysian Grove",
+    "Eladamri, Korvecdal",
+    "Elesh Norn, Mother of Machines",
+    "Enduring Vitality",
+    "Essence of Antiquity",
+    "Evolving Wilds",
+    "Fabled Passage",
+    "Fecund Greenshell",
+    "Felothar the Steadfast",
+    "Felothar, Dawn of the Abzan",
+    "Flatman",
+    "Forest",
+    "Ghalta the Immovable",
+    "Godless Shrine",
+    "Hamza, Might of the Yathan",
+    "Hauntwoods Shrieker",
+    "Hooded Hydra",
+    "Huatli, the Sun's Heart",
+    "Hushwood Verge",
+    "Impervious Greatwurm",
+    "Indatha Triome",
+    "Isolated Chapel",
+    "Jadzia Dax, Living Legacy",
+    "Jenova, Ancient Calamity",
+    "Kin-Tree Severance",
+    "Last March of the Ents",
+    "Llanowar Wastes",
+    "Loxodon Lifechanter",
+    "Mana Confluence",
+    "Multiply by Zero",
+    "Mythos of Nethroi",
+    "Mythweaver Poq",
+    "Nethroi, Apex of Death",
+    "Nyx-Fleece Ram",
+    "Overgrown Tomb",
+    "Plains",
+    "Plaza of Heroes",
+    "Prismatic Vista",
+    "Reflecting Pool",
+    "Rok-Tahk, Budding Scientist",
+    "Sandsteppe Citadel",
+    "Saradoc, Master of Buckland",
+    "Selfless Glyphweaver // Deadly Vanity",
+    "Shalai, Voice of Plenty",
+    "Slumbering Walker",
+    "Smile at Death",
+    "Smuggler's Surprise",
+    "Strength of Will",
+    "Sunpetal Grove",
+    "Swamp",
+    "Temple Garden",
+    "Teyo, Aegis Adept",
+    "Thalia and The Gitrog Monster",
+    "The Notary Hobbits",
+    "The Walls of Ba Sing Se",
+    "Threats Around Every Corner",
+    "Towering Titan",
+    "Toxic Deluge",
+    "Tree of Perdition",
+    "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+    "Vindicate",
+    "Wastewood Verge",
+    "Woodland Cemetery",
+    "Zopandrel, Hunger Dominus"
+   ]
+  }
+ },
+ "verdicts": {
+  "Darksteel Hydra": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Eerie Ultimatum": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Crime // Punishment": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Kin-Tree Severance": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Perennation": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Call the Crash": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Nethroi, Apex of Death": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Ivorytusk Fortress": {
+   "H": {
+    "m": "★★",
+    "graded_at": "98ebf7fee7d9"
+   }
+  },
+  "Betor, Kin to All": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Drover of the Swine": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Betor, Ancestor's Voice": {
+   "H": {
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "Yathan Roadwatcher": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Thalia and The Gitrog Monster": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Felothar the Steadfast": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Revival of the Ancestors": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Doran, Besieged by Time": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Kethis, the Hidden Hand": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Severance Priest": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Felothar, Dawn of the Abzan": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Death's Oasis": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Anafenza, the Foremost": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Abzan Charm": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Abzan Ascendancy": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Abzan Monument": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Kin-Tree Invocation": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Nog, Ambitious Cadet": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Mephidross Slime": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Lord of Extinction": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Ancient Lumberknot": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vraska's Stoneglare": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Garruk, Apex Predator": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Zar Ojanen, Scion of Efrava": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Hauntwoods Shrieker": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Threats Around Every Corner": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Harrowing Swarm": {
+   "H": {
+    "m": "★",
+    "graded_at": "1ce9e4256179"
+   }
+  },
+  "Break Down the Door": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Guardian of the Forgotten": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Shilgengar, Sire of Famine": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Assault Formation": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Beorn's Hospitality": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Druid Class": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Sharp-Eyed Rookie": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Arwen, Weaver of Hope": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "ece9d59e662b"
+   }
+  },
+  "Dormant Grove // Gnarled Grovestrider": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Bedrock Tortoise": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Flatman": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Mythweaver Poq": {
+   "H": {
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
+   }
+  },
+  "Sultai Flayer": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Tapestry Warden": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Ashaya, Soul of the Wild": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Braulios of Pheres Band": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Fecund Greenshell": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Sauron, Dino Devotee": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Flourishing Hunter": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Grunn, the Lonely King": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Swampbenders": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Towering Titan": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "4c1f22d6ae28"
+   }
+  },
+  "Glint Weaver": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Last March of the Ents": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Bark of Doran": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Daxos, Blessed by the Sun": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Tenth District Hero": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Captain America, Wings of Freedom": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Gauntlets of Light": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Rasaad, Monk of Selûne": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Righteous Valkyrie": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Bill the Pony": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "H": {
+    "m": "★★",
+    "graded_at": "ece9d59e662b"
+   }
+  },
+  "Ghalta the Immovable": {
+   "H": {
+    "m": "★★",
+    "graded_at": "ece9d59e662b"
+   }
+  },
+  "The Kingpin of Crime": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Tymaret, Chosen from Death": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Blighted Nightmare": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "South Wind Avatar": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Elspeth Resplendent": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Captain America's Shield": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Shalai, Voice of Plenty": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Choking Miasma": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Mythos of Nethroi": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Polukranos Reborn // Polukranos, Engine of Ruin": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Chevill, Bane of Monsters": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Cursed Wombat": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Insidious Roots": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vraska Joins Up": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Stalwart Successor": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Jenova, Ancient Calamity": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Kagha, Shadow Archdruid": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Professor Dellian Fel": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "The Last Ronin": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Madame Null, Power Broker": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Jadzia Dax, Living Legacy": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Ferrafor, Young Yew": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Crystal Barricade": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "The Walls of Ba Sing Se": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "Multiply by Zero": {
+   "H": {
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "General's Enforcer": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Karametra, God of Harvests": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Restoration Magic": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Basri Ket": {
+   "H": {
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
+   }
+  },
+  "Earthshape": {
+   "H": {
+    "m": "★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Akroma's Will": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Hakoda, Selfless Commander": {
+   "H": {
+    "m": "★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Luke Cage, Power Man": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Oketra the True": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Moogles' Valor": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Nick Fury, Spymaster": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Eagle of Deliverance": {
+   "H": {
+    "m": "★",
+    "graded_at": "7fe9aa7d0828"
+   }
+  },
+  "Angelic Guardian": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Avacyn, Angel of Hope": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "The Soul Stone": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Erebos, God of the Dead": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Smuggler's Surprise": {
+   "H": {
+    "m": "★★",
+    "graded_at": "98ebf7fee7d9"
+   }
+  },
+  "Claim the Kingdom": {
+   "H": {
+    "m": "★",
+    "graded_at": "1ce9e4256179"
+   }
+  },
+  "Heroic Intervention": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Origin of Metalbending": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Song of Freyalise": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Strength of Will": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Inspiring Call": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Toski, Bearer of Secrets": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Majestic Myriarch": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Zopandrel, Hunger Dominus": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "Rok-Tahk, Budding Scientist": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Impervious Greatwurm": {
+   "H": {
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "Amaranthine Wall": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Plaza of Heroes": {
+   "H": {
+    "m": "★★",
+    "graded_at": "18a732ee56c5"
+   }
+  },
+  "Eladamri, Korvecdal": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Veteran Beastrider": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Enduring Innocence": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Destined Confrontation": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Slumbering Walker": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Smile at Death": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Body Launderer": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Ruthless Technomancer": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Golden-Tail Trainer": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Huatli, the Sun's Heart": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Essence of Antiquity": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Hooded Hydra": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Tree of Perdition": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "The Necrobloom": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Toxic Deluge": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Languish": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Find // Finality": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "The Meathook Massacre": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Anguished Unmaking": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Infernal Grasp": {
+   "H": {
+    "m": "★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Vindicate": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Despark": {
+   "H": {
+    "m": "★★",
+    "graded_at": "98ebf7fee7d9"
+   }
+  },
+  "Mortify": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Putrefy": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Mentor of the Meek": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Trail of Mystery": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Whisperwood Elemental": {
+   "H": {
+    "m": "★★",
+    "graded_at": "7fe9aa7d0828"
+   }
+  },
+  "Verdant Dread": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Valgavoth's Onslaught": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sleuth Instructor": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Pine Walker": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Nyx-Fleece Ram": {
+   "H": {
+    "m": "★★",
+    "graded_at": "9fa73aec30f6"
+   }
+  },
+  "Reaping Willow": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Catapult Fodder // Catapult Captain": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "ece9d59e662b"
+   }
+  },
+  "Dryad of the Ilysian Grove": {
+   "H": {
+    "m": "★★",
+    "graded_at": "98ebf7fee7d9"
+   }
+  },
+  "Icetill Explorer": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Oracle of Mul Daya": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "The Gitrog Monster": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Walking Bulwark": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Belligerent Brontodon": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Unyielding Gatekeeper": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Selfless Glyphweaver // Deadly Vanity": {
+   "H": {
+    "m": "★★",
+    "graded_at": "4c1f22d6ae28"
+   }
+  },
+  "Wildgrove Summoner": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "The Notary Hobbits": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "6f2135e4cb89"
+   }
+  },
+  "Tireless Tracker": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Wall of Omens": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Wall of Blossoms": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Carven Caryatid": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sylvan Caryatid": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Welcoming Vampire": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sumala Sentry": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Greenbelt Radical": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vigorbloom Charm": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sword of Forge and Frontier": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Inspiring Commander": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Symmetry Matrix": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Hornet Nest": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Enduring Vitality": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "98ebf7fee7d9"
+   }
+  },
+  "Elven Chorus": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Cryptolith Rite": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Badgermole Cub": {
+   "H": {
+    "m": "★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Leyline of Abundance": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Mirari's Wake": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Vorinclex, Voice of Hunger": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Delighted Halfling": {
+   "H": {
+    "m": "★★★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Saradoc, Master of Buckland": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  },
+  "Belladonna Took": {
+   "H": {
+    "m": "★★",
+    "graded_at": "7fe9aa7d0828"
+   }
+  },
+  "Samwise Gamgee": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Rosie Cotton of South Lane": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Bilbo's Ring": {
+   "H": {
+    "m": "★",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Hobbit Hole": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Sméagol, Helpful Guide": {
+   "H": {
+    "m": "◇",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Frodo, Sauron's Bane": {
+   "H": {
+    "m": "✗",
+    "graded_at": "638d0b4a0931"
+   }
+  },
+  "Arwen, Mortal Queen": {
+   "H": {
+    "m": "★★",
+    "graded_at": "6a0f9e8695cc"
+   }
+  }
+ },
+ "hidden": {
+  "Destined Confrontation": [
+   "interaction"
+  ],
+  "Crime // Punishment": [
+   "interaction"
+  ]
+ }
+}

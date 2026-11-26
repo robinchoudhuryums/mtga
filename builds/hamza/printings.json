@@ -1,0 +1,1199 @@
+{
+ "Abzan Ascendancy": [],
+ "Abzan Charm": [],
+ "Abzan Monument": [],
+ "Akroma's Will": [
+  {
+   "a": "Square Enix",
+   "art": "https://cards.scryfall.io/art_crop/front/f/c/fc9c542d-ff46-4193-9972-68287879a8a0.jpg?1783906388",
+   "cn": "21",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/c/fc9c542d-ff46-4193-9972-68287879a8a0.jpg?1783906388",
+   "r": "M",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  },
+  {
+   "a": "Zuzanna Wużyk",
+   "art": "https://cards.scryfall.io/art_crop/front/6/7/674e08ef-5291-4465-99c0-7313698f7a93.jpg?1783903936",
+   "cn": "1",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/7/674e08ef-5291-4465-99c0-7313698f7a93.jpg?1783903936",
+   "r": "M",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  }
+ ],
+ "Amaranthine Wall": [],
+ "Anafenza, the Foremost": [],
+ "Ancient Lumberknot": [],
+ "Angelic Guardian": [],
+ "Anguished Unmaking": [
+  {
+   "a": "Wesley Burt",
+   "art": "https://cards.scryfall.io/art_crop/front/6/4/64f79d81-f3f1-4cf1-9159-007eb5d07d87.jpg?1783917556",
+   "cn": "229",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/4/64f79d81-f3f1-4cf1-9159-007eb5d07d87.jpg?1783917556",
+   "r": "U",
+   "set": "SIR",
+   "sn": "Shadows over Innistrad Remastered",
+   "y": "2023"
+  },
+  {
+   "a": "Liiga Smilshkalne",
+   "art": "https://cards.scryfall.io/art_crop/front/7/e/7e798845-4d8a-46ea-8507-41edcb6c1f80.jpg?1783915909",
+   "cn": "265",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/e/7e798845-4d8a-46ea-8507-41edcb6c1f80.jpg?1783915909",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Arik Roper",
+   "art": "https://cards.scryfall.io/art_crop/front/c/0/c03cc4a3-a526-4811-871e-290ae5bbe424.jpg?1783911718",
+   "cn": "35",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/0/c03cc4a3-a526-4811-871e-290ae5bbe424.jpg?1783911718",
+   "r": "M",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  }
+ ],
+ "Arwen, Mortal Queen": [
+  {
+   "a": "Miranda Meeks",
+   "art": "https://cards.scryfall.io/art_crop/front/5/4/547f92d4-cd1d-4ca7-a6e2-6473b4d3c832.jpg?1783916259",
+   "cn": "193",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/4/547f92d4-cd1d-4ca7-a6e2-6473b4d3c832.jpg?1783916259",
+   "r": "M",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Kev Walker",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2055227-0a53-4b6b-b6d3-0eafc1884d4c.jpg?1785152323",
+   "cn": "30",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2055227-0a53-4b6b-b6d3-0eafc1884d4c.jpg?1785152323",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Arwen, Weaver of Hope": [
+  {
+   "a": "Axel Sauerwald",
+   "art": "https://cards.scryfall.io/art_crop/front/4/d/4d4f4d41-232d-4377-be69-de590b880edb.jpg?1783916027",
+   "cn": "35",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/d/4d4f4d41-232d-4377-be69-de590b880edb.jpg?1783916027",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Danny Schwartz",
+   "art": "https://cards.scryfall.io/art_crop/front/6/9/69d7bf6e-2309-4093-8a6e-db6b297556ed.jpg?1785152231",
+   "cn": "24",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/9/69d7bf6e-2309-4093-8a6e-db6b297556ed.jpg?1785152231",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Ashaya, Soul of the Wild": [],
+ "Assault Formation": [],
+ "Athreos, Shroud-Veiled": [],
+ "Avacyn, Angel of Hope": [],
+ "Badgermole Cub": [],
+ "Bark of Doran": [],
+ "Basri Ket": [
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "cn": "7",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  },
+  {
+   "a": "Jehan Choo",
+   "art": "https://cards.scryfall.io/art_crop/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "cn": "280",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  }
+ ],
+ "Bedrock Tortoise": [],
+ "Belladonna Took": [],
+ "Belligerent Brontodon": [],
+ "Beorn's Hospitality": [],
+ "Betor, Ancestor's Voice": [],
+ "Betor, Kin to All": [],
+ "Bilbo's Ring": [
+  {
+   "a": "Randy Gallegos",
+   "art": "https://cards.scryfall.io/art_crop/front/9/1/91dbeac4-1c39-4a4f-84e7-1b71f7468c8f.jpg?1783916214",
+   "cn": "298",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/1/91dbeac4-1c39-4a4f-84e7-1b71f7468c8f.jpg?1783916214",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Mark Poole",
+   "art": "https://cards.scryfall.io/art_crop/front/6/7/67a4e16b-df1b-4b57-a388-add58eae5a24.jpg?1785152488",
+   "cn": "41",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/7/67a4e16b-df1b-4b57-a388-add58eae5a24.jpg?1785152488",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Bill the Pony": [],
+ "Blighted Nightmare": [],
+ "Body Launderer": [],
+ "Braulios of Pheres Band": [],
+ "Break Down the Door": [],
+ "Call the Crash": [],
+ "Captain America's Shield": [],
+ "Captain America, Wings of Freedom": [],
+ "Carven Caryatid": [],
+ "Catapult Fodder // Catapult Captain": [],
+ "Chevill, Bane of Monsters": [],
+ "Choking Miasma": [],
+ "Claim the Kingdom": [],
+ "Crime // Punishment": [],
+ "Cryptolith Rite": [],
+ "Crystal Barricade": [],
+ "Cursed Wombat": [],
+ "Darksteel Hydra": [],
+ "Daxos, Blessed by the Sun": [
+  {
+   "a": "Lius Lasahido",
+   "art": "https://cards.scryfall.io/art_crop/front/0/f/0fd2adb3-a6f4-448e-af2a-15ca92b1de63.jpg?1783931602",
+   "cn": "9",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/f/0fd2adb3-a6f4-448e-af2a-15ca92b1de63.jpg?1783931602",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/f/5/f5770e8a-045d-42bc-b6aa-17b89488c9d4.jpg?1783931504",
+   "cn": "258",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/5/f5770e8a-045d-42bc-b6aa-17b89488c9d4.jpg?1783931504",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/4/2/42496543-db8c-4053-aaf5-8e96948bafb9.jpg?1783916878",
+   "cn": "2",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/2/42496543-db8c-4053-aaf5-8e96948bafb9.jpg?1783916878",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
+ "Death's Oasis": [],
+ "Delighted Halfling": [
+  {
+   "a": "Inka Schulz",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "cn": "158",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/1/71384418-173a-4f77-adab-56e52fa23692.jpg?1783916276",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Heather Hudson",
+   "art": "https://cards.scryfall.io/art_crop/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "cn": "25",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/a/aad18e0d-ccf9-4d86-945b-36991558fd3e.jpg?1784632206",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Delney, Streetwise Lookout": [],
+ "Despark": [
+  {
+   "a": "Slawomir Maniak",
+   "art": "https://cards.scryfall.io/art_crop/front/3/2/32b17dfc-b916-4134-ba77-501cff435e7e.jpg?1783933399",
+   "cn": "190",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/2/32b17dfc-b916-4134-ba77-501cff435e7e.jpg?1783933399",
+   "r": "U",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Mark Tedin",
+   "art": "https://cards.scryfall.io/art_crop/front/c/2/c2743ca3-8b4a-429a-9f9b-090d632b6601.jpg?1783927423",
+   "cn": "59",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/2/c2743ca3-8b4a-429a-9f9b-090d632b6601.jpg?1783927423",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Kiritada",
+   "art": "https://cards.scryfall.io/art_crop/front/f/3/f3e0de9d-de5b-4a95-95af-aef4cc546a94.jpg?1783927400",
+   "cn": "122",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/3/f3e0de9d-de5b-4a95-95af-aef4cc546a94.jpg?1783927400",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  }
+ ],
+ "Destined Confrontation": [],
+ "Doran, Besieged by Time": [],
+ "Dormant Grove // Gnarled Grovestrider": [],
+ "Drover of the Swine": [],
+ "Druid Class": [],
+ "Dryad of the Ilysian Grove": [],
+ "Eagle of Deliverance": [],
+ "Earthshape": [],
+ "Eerie Ultimatum": [
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/3/a/3a9fb2db-228f-4d48-acdf-6330baf356c7.jpg?1783931025",
+   "cn": "184",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/a/3a9fb2db-228f-4d48-acdf-6330baf356c7.jpg?1783931025",
+   "r": "R",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Dominik Mayer",
+   "art": "https://cards.scryfall.io/art_crop/front/5/d/5dca6cae-b357-4ce5-a913-f4ff9cf032ed.jpg?1783907432",
+   "cn": "104",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/d/5dca6cae-b357-4ce5-a913-f4ff9cf032ed.jpg?1783907432",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2025"
+  }
+ ],
+ "Eladamri, Korvecdal": [],
+ "Elesh Norn, Mother of Machines": [],
+ "Elspeth Resplendent": [
+  {
+   "a": "Anna Steinbauer",
+   "art": "https://cards.scryfall.io/art_crop/front/7/c/7c606af0-f3d1-44a4-b24e-ee1263569b1f.jpg?1783923158",
+   "cn": "11",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/c/7c606af0-f3d1-44a4-b24e-ee1263569b1f.jpg?1783923158",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Tom Roberts",
+   "art": "https://cards.scryfall.io/art_crop/front/6/6/66d75499-1be8-42a0-8520-9cd8adbd0ca3.jpg?1783923042",
+   "cn": "282",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/6/66d75499-1be8-42a0-8520-9cd8adbd0ca3.jpg?1783923042",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Krharts",
+   "art": "https://cards.scryfall.io/art_crop/front/1/a/1a883eb5-2666-487b-b8c8-fd8ad12afaeb.jpg?1783923016",
+   "cn": "341",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/a/1a883eb5-2666-487b-b8c8-fd8ad12afaeb.jpg?1783923016",
+   "r": "M",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
+ "Elven Chorus": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "cn": "160",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Stephen L. Walsh",
+   "art": "https://cards.scryfall.io/art_crop/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/e/ceb93bf0-ed21-4963-b87b-1b5b76ca5b1a.jpg?1784894997",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Enduring Innocence": [],
+ "Enduring Vitality": [],
+ "Erebos, God of the Dead": [],
+ "Essence of Antiquity": [],
+ "Fecund Greenshell": [],
+ "Felothar the Steadfast": [],
+ "Felothar, Dawn of the Abzan": [],
+ "Ferrafor, Young Yew": [],
+ "Find // Finality": [],
+ "Flatman": [],
+ "Flourishing Hunter": [],
+ "Frodo, Sauron's Bane": [],
+ "Garruk, Apex Predator": [],
+ "Gauntlets of Light": [],
+ "General's Enforcer": [],
+ "Ghalta the Immovable": [],
+ "Glint Weaver": [],
+ "Golden-Tail Trainer": [],
+ "Greenbelt Radical": [],
+ "Grunn, the Lonely King": [],
+ "Guardian of the Forgotten": [],
+ "Hakoda, Selfless Commander": [],
+ "Harrowing Swarm": [],
+ "Hauntwoods Shrieker": [],
+ "Heroic Intervention": [
+  {
+   "a": "James Ryman",
+   "art": "https://cards.scryfall.io/art_crop/front/4/3/43c037e3-7d1a-48ca-8ecc-276696592f62.jpg?1783930674",
+   "cn": "188",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/3/43c037e3-7d1a-48ca-8ecc-276696592f62.jpg?1783930674",
+   "r": "R",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  },
+  {
+   "a": "Joshua Raphael",
+   "art": "https://cards.scryfall.io/art_crop/front/4/3/4377b09d-08e8-4150-bb84-4a9c00c7af82.jpg?1783915917",
+   "cn": "249",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/3/4377b09d-08e8-4150-bb84-4a9c00c7af82.jpg?1783915917",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Jack Kirby & Steve Ditko",
+   "art": "https://cards.scryfall.io/art_crop/front/5/f/5fb701f6-bfad-4b43-9a0f-85496973d849.jpg?1783905380",
+   "cn": "34",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/f/5fb701f6-bfad-4b43-9a0f-85496973d849.jpg?1783905380",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  },
+  {
+   "a": "Viacom",
+   "art": "https://cards.scryfall.io/art_crop/front/6/9/6969b172-8c86-4c2e-95a6-7b23e6f2092f.jpg?1783904848",
+   "cn": "43",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/9/6969b172-8c86-4c2e-95a6-7b23e6f2092f.jpg?1783904848",
+   "r": "M",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  },
+  {
+   "a": "Bob Layton",
+   "art": "https://cards.scryfall.io/art_crop/front/1/2/12edbdcc-085f-48c8-9605-3c7e3fe63bc7.jpg?1783903312",
+   "cn": "78",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/2/12edbdcc-085f-48c8-9605-3c7e3fe63bc7.jpg?1783903312",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  },
+  {
+   "a": "Jack Kirby & Don Heck",
+   "art": "https://cards.scryfall.io/art_crop/front/a/5/a51d8579-a99c-417b-ba71-7f2204ebea2a.jpg?1783903310",
+   "cn": "79",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/5/a51d8579-a99c-417b-ba71-7f2204ebea2a.jpg?1783903310",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  },
+  {
+   "a": "Jack Kirby & Dick Ayers",
+   "art": "https://cards.scryfall.io/art_crop/front/4/2/4208a5fd-4ca9-4648-883e-5dfe02746e68.jpg?1783903309",
+   "cn": "80",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/2/4208a5fd-4ca9-4648-883e-5dfe02746e68.jpg?1783903309",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2026"
+  }
+ ],
+ "Hobbit Hole": [],
+ "Hooded Hydra": [],
+ "Hornet Nest": [],
+ "Huatli, the Sun's Heart": [
+  {
+   "a": "Lius Lasahido",
+   "art": "https://cards.scryfall.io/art_crop/front/d/7/d709742c-82a2-457e-9991-85e98d78029d.jpg?1783933379",
+   "cn": "230",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/7/d709742c-82a2-457e-9991-85e98d78029d.jpg?1783933379",
+   "r": "U",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Mikio Masuda",
+   "art": "https://cards.scryfall.io/art_crop/front/8/d/8d7c88ec-0537-4d94-81d1-e1ba877d2cdb.jpg?1783933378",
+   "cn": "230★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/d/8d7c88ec-0537-4d94-81d1-e1ba877d2cdb.jpg?1783933378",
+   "r": "U",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
+ "Icetill Explorer": [],
+ "Impervious Greatwurm": [],
+ "Infernal Grasp": [
+  {
+   "a": "Naomi Baker",
+   "art": "https://cards.scryfall.io/art_crop/front/1/7/17824929-f131-4b8d-addb-66c25323155e.jpg?1783925615",
+   "cn": "107",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/7/17824929-f131-4b8d-addb-66c25323155e.jpg?1783925615",
+   "r": "U",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Erik Larsen & Randy Emberlin",
+   "art": "https://cards.scryfall.io/art_crop/front/8/2/82d69044-8d8c-4ae3-853e-de180f4706ca.jpg?1783905388",
+   "cn": "18",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/2/82d69044-8d8c-4ae3-853e-de180f4706ca.jpg?1783905388",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  }
+ ],
+ "Insidious Roots": [],
+ "Inspiring Call": [
+  {
+   "a": "Dan Murayama Scott",
+   "art": "https://cards.scryfall.io/art_crop/front/3/e/3e241642-5172-4437-b694-f6aa159d5cd9.jpg?1783909058",
+   "cn": "226",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/e/3e241642-5172-4437-b694-f6aa159d5cd9.jpg?1783909058",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Alexander Forssberg",
+   "art": "https://cards.scryfall.io/art_crop/front/2/5/2555ec7b-5cc2-4ffd-9344-6368019feff9.jpg?1783904804",
+   "cn": "168",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/5/2555ec7b-5cc2-4ffd-9344-6368019feff9.jpg?1783904804",
+   "r": "U",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
+ "Inspiring Commander": [],
+ "Ivorytusk Fortress": [],
+ "Jadzia Dax, Living Legacy": [],
+ "Jenova, Ancient Calamity": [],
+ "Kagha, Shadow Archdruid": [],
+ "Karametra, God of Harvests": [],
+ "Kethis, the Hidden Hand": [],
+ "Kin-Tree Invocation": [],
+ "Kin-Tree Severance": [],
+ "Languish": [
+  {
+   "a": "Jeff Simpson",
+   "art": "https://cards.scryfall.io/art_crop/front/9/b/9b53ce1b-9353-42ad-89a0-36e907ba576a.jpg?1783930420",
+   "cn": "246",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/b/9b53ce1b-9353-42ad-89a0-36e907ba576a.jpg?1783930420",
+   "r": "R",
+   "set": "JMP",
+   "sn": "Jumpstart",
+   "y": "2020"
+  },
+  {
+   "a": "Sean Vo",
+   "art": "https://cards.scryfall.io/art_crop/front/e/8/e8701682-5b74-4855-adcf-7a1cf0c8cb41.jpg?1785497504",
+   "cn": "187",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/8/e8701682-5b74-4855-adcf-7a1cf0c8cb41.jpg?1785497504",
+   "r": "R",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Last March of the Ents": [
+  {
+   "a": "John Tedrick",
+   "art": "https://cards.scryfall.io/art_crop/front/7/f/7f1b99e0-ffb7-4f98-8ee5-4357bb79dd2e.jpg?1783916273",
+   "cn": "172",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/f/7f1b99e0-ffb7-4f98-8ee5-4357bb79dd2e.jpg?1783916273",
+   "r": "M",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Wayne Reynolds",
+   "art": "https://cards.scryfall.io/art_crop/front/2/d/2d7097c9-2076-4ebc-8c9e-aa596351588c.jpg?1785152215",
+   "cn": "27",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/d/2d7097c9-2076-4ebc-8c9e-aa596351588c.jpg?1785152215",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Leyline of Abundance": [
+  {
+   "a": "Noah Bradley",
+   "art": "https://cards.scryfall.io/art_crop/front/c/6/c68e8342-78d2-4826-a287-64c371b97d19.jpg?1783932962",
+   "cn": "179",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/6/c68e8342-78d2-4826-a287-64c371b97d19.jpg?1783932962",
+   "r": "R",
+   "set": "M20",
+   "sn": "Core Set 2020",
+   "y": "2019"
+  },
+  {
+   "a": "BEMOCS",
+   "art": "https://cards.scryfall.io/art_crop/front/6/0/607157a4-4fe8-46b9-86e1-0a30f040116b.jpg?1783914918",
+   "cn": "56",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/0/607157a4-4fe8-46b9-86e1-0a30f040116b.jpg?1783914918",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
+ "Lord of Extinction": [],
+ "Loxodon Lifechanter": [],
+ "Luke Cage, Power Man": [],
+ "Madame Null, Power Broker": [],
+ "Majestic Myriarch": [],
+ "Mentor of the Meek": [
+  {
+   "a": "Jana Schirmer & Johannes Voss",
+   "art": "https://cards.scryfall.io/art_crop/front/6/0/60790977-efd4-470a-823a-6929f84016e7.jpg?1783908939",
+   "cn": "578",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/0/60790977-efd4-470a-823a-6929f84016e7.jpg?1783908939",
+   "r": "R",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  },
+  {
+   "a": "Lie Setiawan",
+   "art": "https://cards.scryfall.io/art_crop/front/4/5/45dd4f49-be8c-468d-b9e4-a71aac5e4281.jpg?1783908839",
+   "cn": "99",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/5/45dd4f49-be8c-468d-b9e4-a71aac5e4281.jpg?1783908839",
+   "r": "U",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  },
+  {
+   "a": "Wei Guan",
+   "art": "https://cards.scryfall.io/art_crop/front/0/5/05b6a101-4d12-4f50-8f02-5c778e08b149.jpg?1785497406",
+   "cn": "170",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/5/05b6a101-4d12-4f50-8f02-5c778e08b149.jpg?1785497406",
+   "r": "R",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
+ "Mephidross Slime": [],
+ "Mirari's Wake": [],
+ "Moogles' Valor": [],
+ "Mortify": [
+  {
+   "a": "Anthony Palumbo",
+   "art": "https://cards.scryfall.io/art_crop/front/e/b/ebf6c0dc-5c7b-4170-99bc-2637ea44e716.jpg?1783933643",
+   "cn": "192",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/b/ebf6c0dc-5c7b-4170-99bc-2637ea44e716.jpg?1783933643",
+   "r": "U",
+   "set": "RNA",
+   "sn": "Ravnica Allegiance",
+   "y": "2019"
+  },
+  {
+   "a": "Nils Hamm",
+   "art": "https://cards.scryfall.io/art_crop/front/8/8/88e85619-3a7d-48c2-b9b0-20718c913696.jpg?1783908910",
+   "cn": "662",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/8/88e85619-3a7d-48c2-b9b0-20718c913696.jpg?1783908910",
+   "r": "U",
+   "set": "FDN",
+   "sn": "Foundations",
+   "y": "2024"
+  }
+ ],
+ "Multiply by Zero": [],
+ "Mythos of Nethroi": [],
+ "Mythweaver Poq": [],
+ "Nethroi, Apex of Death": [
+  {
+   "a": "Slawomir Maniak",
+   "art": "https://cards.scryfall.io/art_crop/front/8/c/8ca6eb5a-8bc9-4091-bcfb-b207f0afd188.jpg?1783931020",
+   "cn": "197",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/8/c/8ca6eb5a-8bc9-4091-bcfb-b207f0afd188.jpg?1783931020",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Tomasz Jedruszek",
+   "art": "https://cards.scryfall.io/art_crop/front/b/a/ba04c102-e4c1-43a8-9c2f-d1f3c9bf5edf.jpg?1783930981",
+   "cn": "303",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/a/ba04c102-e4c1-43a8-9c2f-d1f3c9bf5edf.jpg?1783930981",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Torstein Nordstrand",
+   "art": "https://cards.scryfall.io/art_crop/front/b/9/b9ebe73b-29d7-4a07-b7dc-a885dad61a88.jpg?1783930951",
+   "cn": "380",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/9/b9ebe73b-29d7-4a07-b7dc-a885dad61a88.jpg?1783930951",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  }
+ ],
+ "Nick Fury, Spymaster": [],
+ "Nog, Ambitious Cadet": [],
+ "Nyx-Fleece Ram": [
+  {
+   "a": "Terese Nielsen",
+   "art": "https://cards.scryfall.io/art_crop/front/7/8/783d5756-2fab-4757-b7e0-2d222c2d010e.jpg?1783931303",
+   "cn": "1",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/7/8/783d5756-2fab-4757-b7e0-2d222c2d010e.jpg?1783931303",
+   "r": "U",
+   "set": "HA2",
+   "sn": "Historic Anthology 2",
+   "y": "2020"
+  },
+  {
+   "a": "Hasani Claxton",
+   "art": "https://cards.scryfall.io/art_crop/front/5/5/550c6402-5a9b-4318-9883-8ffacd61eba1.jpg?1783908796",
+   "cn": "231",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/5/550c6402-5a9b-4318-9883-8ffacd61eba1.jpg?1783908796",
+   "r": "U",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
+ "Oketra the True": [],
+ "Oracle of Mul Daya": [],
+ "Origin of Metalbending": [],
+ "Perennation": [],
+ "Pine Walker": [],
+ "Plaza of Heroes": [
+  {
+   "a": "Gabor Szikszai",
+   "art": "https://cards.scryfall.io/art_crop/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "cn": "252",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/2/a2cfcf67-f83c-43af-9e2d-5513fcdde835.jpg?1783921260",
+   "r": "R",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "John Thacker",
+   "art": "https://cards.scryfall.io/art_crop/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "cn": "33",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/c/5/c5653373-d4ed-4211-9393-c7839d2d0a73.jpg?1783905854",
+   "r": "M",
+   "set": "EOS",
+   "sn": "Edge of Eternities: Stellar Sights",
+   "y": "2025"
+  }
+ ],
+ "Polukranos Reborn // Polukranos, Engine of Ruin": [],
+ "Professor Dellian Fel": [],
+ "Putrefy": [
+  {
+   "a": "Minttu Hynninen",
+   "art": "https://cards.scryfall.io/art_crop/front/3/8/3882ebea-2864-40ef-a21d-6ba80a0bd417.jpg?1783927422",
+   "cn": "63",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/8/3882ebea-2864-40ef-a21d-6ba80a0bd417.jpg?1783927422",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Magane Okuda",
+   "art": "https://cards.scryfall.io/art_crop/front/5/e/5ee093aa-87ad-4a9e-8edf-e397fb1dd6aa.jpg?1783927397",
+   "cn": "126",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/e/5ee093aa-87ad-4a9e-8edf-e397fb1dd6aa.jpg?1783927397",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  }
+ ],
+ "Rasaad, Monk of Selûne": [],
+ "Reaping Willow": [],
+ "Restoration Magic": [],
+ "Revival of the Ancestors": [],
+ "Righteous Valkyrie": [],
+ "Rok-Tahk, Budding Scientist": [],
+ "Rosie Cotton of South Lane": [],
+ "Ruthless Technomancer": [],
+ "Samwise Gamgee": [],
+ "Saradoc, Master of Buckland": [],
+ "Sauron, Dino Devotee": [],
+ "Selfless Glyphweaver // Deadly Vanity": [],
+ "Severance Priest": [],
+ "Shalai, Voice of Plenty": [],
+ "Sharp-Eyed Rookie": [],
+ "Shilgengar, Sire of Famine": [],
+ "Sleuth Instructor": [],
+ "Slumbering Walker": [],
+ "Smile at Death": [],
+ "Smuggler's Surprise": [],
+ "Sméagol, Helpful Guide": [],
+ "Song of Freyalise": [],
+ "South Wind Avatar": [],
+ "Stalwart Successor": [],
+ "Strength of Will": [],
+ "Sultai Flayer": [],
+ "Sumala Sentry": [],
+ "Swampbenders": [],
+ "Sword of Forge and Frontier": [],
+ "Sylvan Caryatid": [],
+ "Symmetry Matrix": [],
+ "Tapestry Warden": [],
+ "Tenth District Hero": [],
+ "Teyo, Aegis Adept": [],
+ "Thalia and The Gitrog Monster": [],
+ "The Gitrog Monster": [
+  {
+   "a": "Jason Kang",
+   "art": "https://cards.scryfall.io/art_crop/front/e/b/eb008ef1-840d-4e55-b940-601a21494b83.jpg?1783931363",
+   "cn": "103",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/b/eb008ef1-840d-4e55-b940-601a21494b83.jpg?1783931363",
+   "r": "M",
+   "set": "PANA",
+   "sn": "MTG Arena Promos",
+   "y": "2020"
+  },
+  {
+   "a": "Nils Hamm",
+   "art": "https://cards.scryfall.io/art_crop/front/f/7/f74298f2-c9f7-4c5d-9fab-8fd8d6952059.jpg?1783910709",
+   "cn": "88",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/7/f74298f2-c9f7-4c5d-9fab-8fd8d6952059.jpg?1783910709",
+   "r": "M",
+   "set": "BLC",
+   "sn": "Bloomburrow Commander",
+   "y": "2024"
+  }
+ ],
+ "The Kingpin of Crime": [],
+ "The Last Ronin": [],
+ "The Meathook Massacre": [],
+ "The Necrobloom": [],
+ "The Notary Hobbits": [],
+ "The Soul Stone": [],
+ "The Walls of Ba Sing Se": [],
+ "Threats Around Every Corner": [],
+ "Tireless Tracker": [
+  {
+   "a": "Donato Giancola",
+   "art": "https://cards.scryfall.io/art_crop/front/b/3/b3364018-aeba-4f58-8233-b0026c488dd0.jpg?1783912747",
+   "cn": "26",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/3/b3364018-aeba-4f58-8233-b0026c488dd0.jpg?1783912747",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  },
+  {
+   "a": "Eric Deschamps",
+   "art": "https://cards.scryfall.io/art_crop/front/e/7/e7fe81de-a81f-4226-9067-4d6598b82016.jpg?1783908614",
+   "cn": "729",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/7/e7fe81de-a81f-4226-9067-4d6598b82016.jpg?1783908614",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  }
+ ],
+ "Toski, Bearer of Secrets": [
+  {
+   "a": "Jason Rainville",
+   "art": "https://cards.scryfall.io/art_crop/front/f/9/f9e79b59-94c8-4697-bf88-f0a0433170f5.jpg?1783928203",
+   "cn": "197",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/9/f9e79b59-94c8-4697-bf88-f0a0433170f5.jpg?1783928203",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Andy Brase",
+   "art": "https://cards.scryfall.io/art_crop/front/0/8/08eb31f3-7686-4d6b-a0e4-5d6ece6fba82.jpg?1783928145",
+   "cn": "319",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/8/08eb31f3-7686-4d6b-a0e4-5d6ece6fba82.jpg?1783928145",
+   "r": "R",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Lucas Graciano",
+   "art": "https://cards.scryfall.io/art_crop/front/0/1/0153d1ad-c8ee-42ff-a059-b763c2cfb7be.jpg?1783909912",
+   "cn": "60",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/1/0153d1ad-c8ee-42ff-a059-b763c2cfb7be.jpg?1783909912",
+   "r": "M",
+   "set": "SPG",
+   "sn": "Special Guests",
+   "y": "2024"
+  }
+ ],
+ "Towering Titan": [],
+ "Toxic Deluge": [
+  {
+   "a": "Anato Finnstark",
+   "art": "https://cards.scryfall.io/art_crop/front/d/c/dc988247-1072-4e47-a656-8c5b1391dfca.jpg?1783915939",
+   "cn": "209",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/c/dc988247-1072-4e47-a656-8c5b1391dfca.jpg?1783915939",
+   "r": "R",
+   "set": "LTC",
+   "sn": "Tales of Middle-earth Commander",
+   "y": "2023"
+  },
+  {
+   "a": "Svetlin Velinov",
+   "art": "https://cards.scryfall.io/art_crop/front/5/a/5aa02b7d-db31-4924-b75e-eb02f332ca3a.jpg?1783911214",
+   "cn": "277",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/a/5aa02b7d-db31-4924-b75e-eb02f332ca3a.jpg?1783911214",
+   "r": "R",
+   "set": "MH3",
+   "sn": "Modern Horizons 3",
+   "y": "2024"
+  }
+ ],
+ "Trail of Mystery": [],
+ "Tree of Perdition": [],
+ "Tymaret, Chosen from Death": [
+  {
+   "a": "Chase Stone",
+   "art": "https://cards.scryfall.io/art_crop/front/1/4/14b28eae-e8ed-4b99-b6ec-86d0716ec473.jpg?1783931559",
+   "cn": "119",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/4/14b28eae-e8ed-4b99-b6ec-86d0716ec473.jpg?1783931559",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/1/b/1bcb02d3-dcf4-41a6-8b9a-f8ad477faea0.jpg?1783931502",
+   "cn": "263",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/1/b/1bcb02d3-dcf4-41a6-8b9a-f8ad477faea0.jpg?1783931502",
+   "r": "U",
+   "set": "THB",
+   "sn": "Theros Beyond Death",
+   "y": "2020"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/a/f/aff4fb74-8fb8-4d58-ac1b-be3de156411a.jpg?1783916872",
+   "cn": "18",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/f/aff4fb74-8fb8-4d58-ac1b-be3de156411a.jpg?1783916872",
+   "r": "U",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
+ "Unyielding Gatekeeper": [],
+ "Valgavoth's Onslaught": [],
+ "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": [],
+ "Verdant Dread": [],
+ "Veteran Beastrider": [],
+ "Vigorbloom Charm": [],
+ "Vindicate": [],
+ "Vorinclex, Voice of Hunger": [
+  {
+   "a": "JungShan",
+   "art": "https://cards.scryfall.io/art_crop/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "cn": "29",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/d/bdcd2ec9-a8e7-46b3-8d79-eb15d6e95a3c.jpg?1783916869",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  },
+  {
+   "a": "Karl Kopinski",
+   "art": "https://cards.scryfall.io/art_crop/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "cn": "94",
+   "fx": [
+    "etched"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/5/b/5bad83b2-3b03-441a-8cbd-5a5317bfa5ea.jpg?1783916843",
+   "r": "M",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
+ "Vraska Joins Up": [],
+ "Vraska's Stoneglare": [],
+ "Walking Bulwark": [],
+ "Wall of Blossoms": [],
+ "Wall of Omens": [],
+ "Welcoming Vampire": [
+  {
+   "a": "Lorenzo Mastroianni",
+   "art": "https://cards.scryfall.io/art_crop/front/d/8/d8f69cea-823c-482b-a605-8138b3d950e6.jpg?1783924905",
+   "cn": "46",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/d/8/d8f69cea-823c-482b-a605-8138b3d950e6.jpg?1783924905",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Christian Angel",
+   "art": "https://cards.scryfall.io/art_crop/front/f/d/fd60ee8d-fb50-41df-89a8-aed5a53d755f.jpg?1783924768",
+   "cn": "287",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/f/d/fd60ee8d-fb50-41df-89a8-aed5a53d755f.jpg?1783924768",
+   "r": "R",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  }
+ ],
+ "Whisperwood Elemental": [],
+ "Wildgrove Summoner": [],
+ "Yathan Roadwatcher": [],
+ "Zar Ojanen, Scion of Efrava": [
+  {
+   "a": "Justine Cruz",
+   "art": "https://cards.scryfall.io/art_crop/front/6/5/65c903e3-d622-415e-9144-a5b2f3f7b9ed.jpg?1783921273",
+   "cn": "227",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/5/65c903e3-d622-415e-9144-a5b2f3f7b9ed.jpg?1783921273",
+   "r": "U",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "Eshpur",
+   "art": "https://cards.scryfall.io/art_crop/front/a/9/a9afd7c2-fe9b-4ccd-bd55-a0f91c52fd29.jpg?1783921206",
+   "cn": "367",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/9/a9afd7c2-fe9b-4ccd-bd55-a0f91c52fd29.jpg?1783921206",
+   "r": "U",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  }
+ ],
+ "Zopandrel, Hunger Dominus": []
+}

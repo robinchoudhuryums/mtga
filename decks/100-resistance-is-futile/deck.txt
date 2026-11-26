@@ -12,7 +12,7 @@
 #: archetype: whole team; Primary Unimatrix Adjunct gives double strike, Organic Avulsion
 #: archetype: Unit menace, Cyberdrive Awakener flying; Hive Mind Coprocessor and Collation Trimatrix draw. Battle of Wolf 359
 #: archetype: and Crystalline Entity are one-sided sweepers while the board is artifact creatures. Spacecraft become artifact
-#: archetype: creatures once stationed (Geordi doubles the counters, Zefram adds two). Winter gives every artifact ward.
+#: archetype: creatures once stationed (Geordi doubles the counters). Winter gives every artifact ward.
 #: archetype: DISTINCT from the roster's Esper decks (43 hand-size control, 91 discard zombies, 98 spells and heroes).
 #: protect: Locutus of Borg; Borg Cube; The Borg Queen; Battle of Wolf 359; Crystalline Entity; Conquest Mission
 #: notes: Drafted 2026-11-12 from the Star Trek pile (.cycle/trek-pile-analysis.md section 5, deck A), a day before the TRK
@@ -52,7 +52,7 @@
 1 Support Skyforge (YDFT) 26
 1 Iron Man, Modern Marvel (MSC) 830
 1 Cyberdrive Awakener (MAR) 53
-1 Zefram Cochrane, Warp Pioneer (TRK) 90
+1 Network Marauder (YEOE) 8
 1 Lt. Cmdr. Geordi La Forge (TRK) 70
 1 Mendicant Core, Guidelight (DFT) 213
 1 Mr. Spock, Science Officer (TRK) 74
@@ -123,6 +123,8 @@
 1 The Unicomplex (TRK) 304
 1 Uthros, Titanic Godcore (EOE) 260
 1 Gaseous Anomaly (TRK) 284
-3 Plains (TRK) 317
-2 Island (TRK) 319
+2 Plains (TRK) 317
+1 Reflecting Pool (FRC) 23
+1 Island (TRK) 319
+1 The Mycosynth Gardens (ONE) 256
 3 Swamp (TRK) 321

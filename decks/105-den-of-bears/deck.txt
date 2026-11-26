@@ -1,0 +1,144 @@
+#: name: Den of Bears and Wolves
+#: format: Historic Brawl
+#: colors: BG
+#: commander: Sarulf, Realm Eater
+#: plan: midrange
+#: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), GOLGARI BEARS AND WOLVES around Sarulf,
+#: archetype: Realm Eater: every opponent permanent that hits the graveyard puts a counter on Sarulf, and in your
+#: archetype: upkeep you MAY remove them all to exile each other nonland permanent with mana value up to that number
+#: archetype: (yours too) — an optional, sized board wipe. The deck lives above that line: the big Bears (Gigantic Big
+#: archetype: Bear, Copper Host Crusher, Lumra, Beorn), Kogla, Avabruck Caretaker, Tovolar's Huntmaster and The Great Henge cost
+#: archetype: 6+, so a small wipe clears their early game and keeps yours. Removal and fights feed Sarulf (Maelstrom
+#: archetype: Pulse, Mortality Spear, Glissa Sunslayer, Binding the Old Gods, Polukranos, Kogla, Garruk
+#: archetype: Relentless, Tovolar's fights), and the black Wolves come from The Chief Warg, Chief Warg's Company and
+#: archetype: Garruk, Cursed Huntsman. A COUNTER ENGINE multiplies all of it: Innkeeper's Talent (level 3 doubles),
+#: archetype: Winding Constrictor (+1), Evolution Sage (proliferate per land), Fight Rigging, The Great Henge and
+#: archetype: Titania's Command; with Innkeeper and Constrictor out, one kill puts four counters on Sarulf. Bears switch
+#: archetype: on the POWER-4 GATE the payoffs read (Garruk's Uprising, Garruk, Curse Breaker,
+#: archetype: Goreclaw, Wilderland Scrounger); Ayula in the 99 turns each entering Bear into two counters or a fight. Brawl sibling of
+#: archetype: deck 69 (Standard Bear-Wolf, also black-green).
+#: protect: Sarulf, Realm Eater; Ayula, Queen Among Bears; Beorn the Fierce; Dancing from Dark to Dawn; Spider-Ham, Peter Porker; Garruk's Uprising; Garruk, Cursed Huntsman
+#: notes: DRAFTED 2026-11-22 as a mono-green Ayula deck, then REBUILT the same day with Sarulf as commander because
+#: notes: Ayula's identity is mono-green (it would have barred every black card, hybrids included). Sarulf's wipe is
+#: notes: symmetrical: count your own small permanents (mana dorks, 2-drops, Spider-Ham) before removing the counters.
+#: notes: Cut in the rebuild for the black package: Pick Your Poison, Rabid Bite, Tail Swipe, Ram Through, Thrashing
+#: notes: Brontodon, Ordinary Bear, Professor of Zoomancy, Vivien Reid, Tovolar's Huntmaster, Titania's Command,
+#: notes: Esika's Chariot, Giant-Man, Elvish Mystic, Return of the Wildspeaker, Ursine Guide, Ilysian Caryatid, and Kogla
+#: notes: (GGG; Fierce Witchstalker took the slot). Black sources 20 against green 31: shifting basics was measured flat.
+#: notes: 2026-11-23 pile pass (builder bear-wolf): 18 swaps for the counter engine, Kogla's Human bounce (Tovolar,
+#: notes: Lukamina, Piper, Avabruck) and the draw engines Toski and The Great Henge. Head of the Hunt was cut, then
+#: notes: RE-ADDED 2026-11-23 by choice: while it is out, a killed opposing creature becomes a Wolf instead of a Sarulf
+#: notes: counter (and Vincent/Ygra-style death payoffs do not trigger). With this many tokens the wipe is often a bad trade. WIPE
+#: notes: DISCIPLINE: with Innkeeper + Constrictor one kill is four counters, and a 4-counter wipe exiles the engine
+#: notes: itself (Innkeeper, Constrictor, Sage, Fight Rigging, Saryth, Dina, M'Benga); take it only when their board is worth more.
+#: notes: 2026-11-23 second pass: 12 swaps (plan A), keeping the Bear-Wolf core over a lands-from-graveyard package
+#: notes: (Advanced Floral Invocations, Nog, Nissa of Shadowed Boughs, Mole Man stay on the builder bench). The cost is the
+#: notes: curve: 11 nonland cards at MV 2 or less. If early games run slow, cheap removal is the first thing to restore.
+
+
+# Commander
+1 Sarulf, Realm Eater (KHM) 228
+
+# Bears — every one that enters is an Ayula trigger (two counters or a fight)
+1 Ayula, Queen Among Bears (J21) 543
+1 Goreclaw, Terror of Qal Sisma (M19) 186
+1 Beorn the Fierce (HOB) 119
+1 Copper Host Crusher (MOM) 181
+1 Gigantic Big Bear (HOB) 126
+1 Edgar, Moonlit Sovereign (FRA) 257
+1 Descendants' Path (TLE) 167
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Howlpack Piper // Wildsong Howler (VOW) 205
+1 Exuberant Wolfbear (IKO) 151
+1 Kodama of the West Tree (J25) 78
+1 Vastlands Scavenger (SOS) 166
+1 Incubation Druid (RNA) 131
+1 Surrak and Goreclaw (MOM) 337
+1 Ygra, Eater of All (BLB) 241
+1 Branching Evolution (MH3) 285
+1 Glissa Sunslayer (ONE) 202
+1 Beifong's Bounty Hunters (TLA) 209
+
+# Bear makers
+1 The Earth King (TLA) 172
+1 Dancing from Dark to Dawn (HOB) 123
+
+# Wolves
+1 Primal Adversary (MID) 194
+1 Winding Constrictor (KLR) 216
+1 The Chief Warg (HOB) 150
+1 Chief Warg's Company (HOB) 151
+1 Garruk, Cursed Huntsman (ELD) 191
+1 Nightpack Ambusher (M20) 185
+1 Wilderland Scrounger (HOB) 141
+1 Ram Through (IKO) 170
+1 Torgal, A Fine Hound (FIN) 208
+1 Ranger Class (AFR) 202
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Dina, Essence Brewer (SOC) 1
+
+# Power-4 payoffs and card flow
+1 Garruk's Uprising (M21) 186
+1 Toski, Bearer of Secrets (KHM) 197
+1 Garruk, Curse Breaker (FRA) 259
+1 Witherbloom, the Balancer (SOS) 245
+1 Owlbear Shepherd (HBG) 219
+1 Evolution Sage (WAR) 159
+1 The Great Henge (ELD) 161
+1 Fight Rigging (SNC) 145
+1 Sentinel of the Nameless City (LCI) 211
+1 Shang-Chi, Martial Mentor (MSC) 732
+
+# Ramp
+1 Fuel Tank Feaster (YDFT) 17
+1 Mythweaver Poq (YLCI) 19
+1 Nog, Ambitious Cadet (TRK) 249
+1 Elemental Bond (TLE) 40
+1 Path of Discovery (RIX) 142
+1 Titania's Command (BRO) 194
+
+# Interaction and protection
+1 Garruk Relentless // Garruk, the Veil-Cursed (SIS) 49
+1 Mortality Spear (STX) 207
+1 Tovolar's Huntmaster // Tovolar's Packleader (MID) 204
+1 Dr. Joseph M'Benga (TRK) 196
+1 Avabruck Caretaker // Hollowhenge Huntmaster (VOW) 187
+1 Head of the Hunt (HOB) 75
+1 Maelstrom Pulse (FDN) 661
+1 Kogla, the Titan Ape (IKO) 162
+1 Binding the Old Gods (KHM) 206
+1 Polukranos, Unchained (THB) 224
+1 Advanced Floral Invocations (YSOS) 13
+1 Saryth, the Viper's Fang (MID) 197
+1 Vivien, Monsters' Advocate (IKO) 175
+1 World War Hulk (MSH) 197
+1 Innkeeper's Talent (BLB) 180
+
+# Lands
+1 Realm of Koh (TLA) 276
+1 Overgrown Tomb (ECL) 266
+1 Woodland Cemetery (DOM) 248
+1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
+1 Mana Confluence (EOS) 25
+1 Q Continuum (TRK) 290
+1 Starting Town (FIN) 289
+1 Reflecting Pool (FRC) 23
+1 Revitalizing Repast // Old-Growth Grove (MH3) 256
+1 Wastewood Verge (DFT) 268
+1 Hissing Quagmire (EOS) 19
+1 Mirkwood (HOB) 188
+1 Command Tower (FRC) 22
+1 Ba Sing Se (TLA) 266
+1 Fabled Passage (BLB) 252
+1 Evolving Wilds (ECL) 264
+1 Prismatic Vista (SPG) 38
+13 Forest (TRK) 325
+1 The Shire (LTR) 260
+5 Swamp (TRK) 321
+
+#~ +Chevill, Bane of Monsters | BENCH (builder bear-wolf): benched on the board
+#~ +Hardened Scales | BENCH (builder bear-wolf): benched on the board
+#~ +Vraska, Betrayal's Sting | BENCH (builder bear-wolf): benched on the board
+#~ +Lukamina, Moon Druid | BENCH (builder bear-wolf): benched on the board — Bear Form anthem once you have six lands
+#~ +Rise of the Witch-king | BENCH (builder bear-wolf): edict that beats hexproof; a Wolf with Head of the Hunt out
+#~ +Beorn, Reluctant Host // Till and Tend | BENCH (builder bear-wolf): Human Bear 5/5 trample, extra land drop

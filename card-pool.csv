@@ -9660,9 +9660,6 @@ At the beginning of combat on your turn, if you have a full party, put a +1/+1 c
 "Neera, Wild Mage",Legendary Creature — Human Elf Shaman,"Whenever you cast a spell, you may put it on the bottom of its owner's library. If you do, reveal cards from the top of your library until you reveal a nonland card. You may cast that card without paying its mana cost. Then put all revealed cards not cast this way on the bottom of your library in a random order. This ability triggers only once each turn.",U/R,Human; Elf; Shaman; card advantage,HBG,245,Rare,legacy;vintage;historic;timeless;brawl,2022-07-07,2,7
 "Oji, the Exquisite Blade",Legendary Creature — Human Monk,"When Oji enters, you gain 2 life and scry 2.
 Whenever you cast your second spell each turn, exile up to one target creature you control, then return it to the battlefield under its owner's control.",W/U,Human; Monk; lifegain; etb; scry; blink; selection,HBG,246,Uncommon,legacy;vintage;historic;timeless;brawl,2022-07-07,2,3
-"Prosper, Tome-Bound",Legendary Creature — Tiefling Warlock,"Deathtouch
-Mystic Arcanum — At the beginning of your end step, exile the top card of your library. Until the end of your next turn, you may play that card.
-Pact Boon — Whenever you play a card from exile, create a Treasure token.",B/R,Tiefling; Warlock; tokens; treasure; impulse; deathtouch; combat; removal,HBG,247,Mythic,legacy;vintage;historic;timeless;brawl,2022-07-07,1,4
 "Raggadragga, Goreguts Boss",Legendary Creature — Human Boar,"Each creature you control with a mana ability gets +2/+2.
 Whenever a creature you control with a mana ability attacks, untap it.
 Whenever you cast a spell, if at least seven mana was spent to cast it, untap target creature. It gets +7/+7 and gains trample until end of turn.",R/G,Human; Boar; pump; trample; evasion,HBG,248,Rare,legacy;vintage;historic;timeless;brawl,2022-07-07,4,4
@@ -21761,8 +21758,6 @@ Whenever one or more creatures you control deal combat damage to a player, look 
 "Olivia, Opulent Outlaw",Legendary Creature — Vampire Assassin,"Flying, lifelink
 Whenever one or more outlaws you control deal combat damage to a player, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)
 {3}, Sacrifice two Treasures: Put two +1/+1 counters on each creature you control. Activate only as a sorcery.",W/B/R,Vampire; Assassin; counters; lifegain; sacrifice; tokens; treasure; flying; evasion; lifelink,OTC,2,Mythic,legacy;vintage;historic;timeless;brawl,2024-04-19,3,3
-"Stella Lee, Wild Card",Legendary Creature — Human Rogue,"Whenever you cast your second spell each turn, exile the top card of your library. Until the end of your next turn, you may play that card.
-{T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if you've cast three or more spells this turn.",U/R,Human; Rogue; impulse; spell copy,OTC,3,Mythic,legacy;vintage;historic;timeless;brawl,2024-04-19,2,4
 "Yuma, Proud Protector",Legendary Creature — Human Ranger,"This spell costs {1} less to cast for each land card in your graveyard.
 Whenever Yuma enters or attacks, you may sacrifice a land. If you do, draw a card.
 Whenever a Desert card is put into your graveyard from anywhere, create a 4/2 green Plant Warrior creature token with reach.",W/R/G,Human; Ranger; graveyard; cost-reduction; card draw; sacrifice; tokens,OTC,4,Mythic,legacy;vintage;historic;timeless;brawl,2024-04-19,6,6
@@ -22847,9 +22842,6 @@ Reveal the first card you draw on each of your turns. Whenever you reveal a land
 As long as your devotion to green and blue is less than seven, Kruphix isn't a creature.
 You have no maximum hand size.
 If you would lose unspent mana, that mana becomes colorless instead.",U/G,God; indestructible; resilience,PIO,312,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-12-10,4,7
-"Mogis, God of Slaughter",Legendary Enchantment Creature — God,"Indestructible
-As long as your devotion to black and red is less than seven, Mogis isn't a creature.
-At the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature of their choice.",B/R,God; sacrifice; burn; noncombat damage; indestructible; resilience,PIO,313,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-12-10,7,5
 Nightveil Specter,Creature — Specter,"Flying
 Whenever this creature deals combat damage to a player, that player exiles the top card of their library.
 You may play lands and cast spells from among cards exiled with this creature.",U/B,Specter; heist; flying; evasion,PIO,314,Uncommon,pioneer;modern;legacy;vintage;historic;timeless;brawl,2024-12-10,2,3
@@ -23745,6 +23737,37 @@ When this creature dies, create three 5/5 green Wurm creature tokens with trampl
 When Worldspine Wurm is put into a graveyard from anywhere, shuffle it into its owner's library.",G,Wurm; graveyard; tokens; trample; evasion,RTR,140,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2012-10-05,15,15
 Brain Freeze,Instant,"Target player mills three cards.
 Storm (When you cast this spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)",U,mill; storm; spellslinger; graveyard,SCG,29,Uncommon,legacy;vintage;historic;timeless;brawl,2003-05-26,,
+"Sisay, Weatherlight Captain",Legendary Creature — Human Soldier,"Sisay gets +1/+1 for each color among other legendary permanents you control.
+{W}{U}{B}{R}{G}: Search your library for a legendary permanent card with mana value less than Sisay's power, put that card onto the battlefield, then shuffle.",W/U/B/R/G,Human; Soldier; pump,SDS,4,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
+"Thada Adel, Acquisitor",Legendary Creature — Merfolk Rogue,"Islandwalk (This creature can't be blocked as long as defending player controls an Island.)
+Whenever Thada Adel deals combat damage to a player, search that player's library for an artifact card and exile it. Then that player shuffles. Until end of turn, you may play that card.",U,Merfolk; Rogue; heist; landwalk; islandwalk,SDS,5,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
+Empress Galina,Legendary Creature — Merfolk Noble,"{U}{U}, {T}: Gain control of target legendary permanent. (This effect lasts indefinitely.)",U,Merfolk; Noble; theft,SDS,6,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,1,3
+Arcum Dagsson,Legendary Creature — Human Artificer,"{T}: Target artifact creature's controller sacrifices it. That player may search their library for a noncreature artifact card, put it onto the battlefield, then shuffle.",U,Human; Artificer; sacrifice,SDS,7,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
+Decree of Pain,Sorcery,"Destroy all creatures. They can't be regenerated. Draw a card for each creature destroyed this way.
+Cycling {3}{B}{B} ({3}{B}{B}, Discard this card: Draw a card.)
+When you cycle this card, all creatures get -2/-2 until end of turn.",B,card draw; cycling,SDS,9,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,,
+Sen Triplets,Legendary Artifact Creature — Human Wizard,"At the beginning of your upkeep, choose target opponent. This turn, that player can't cast spells or activate abilities and plays with their hand revealed. You may play lands and cast spells from that player's hand this turn.",W/U/B,Human; Wizard; heist,SDS,16,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,3,3
+Hull Breach,Sorcery,"Choose one —
+• Destroy target artifact.
+• Destroy target enchantment.
+• Destroy target artifact and target enchantment.",R/G,removal,SDS,18,Mythic,legacy;vintage;pauper;historic;timeless;brawl,2026-11-13,,
+Captain Sisay,Legendary Creature — Human Soldier,"{T}: Search your library for a legendary card, reveal that card, put it into your hand, then shuffle.",W/G,Human; Soldier,SDS,22,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
+"Prosper, Tome-Bound",Legendary Creature — Tiefling Warlock,"Deathtouch
+Mystic Arcanum — At the beginning of your end step, exile the top card of your library. Until the end of your next turn, you may play that card.
+Pact Boon — Whenever you play a card from exile, create a Treasure token.",B/R,Tiefling; Warlock; tokens; treasure; impulse; deathtouch; combat; removal,SDS,24,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,1,4
+"Stella Lee, Wild Card",Legendary Creature — Human Rogue,"Whenever you cast your second spell each turn, exile the top card of your library. Until the end of your next turn, you may play that card.
+{T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if you've cast three or more spells this turn.",U/R,Human; Rogue; impulse; spell copy,SDS,25,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,2,4
+"Mogis, God of Slaughter",Legendary Enchantment Creature — God,"Indestructible
+As long as your devotion to black and red is less than seven, Mogis isn't a creature.
+At the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature of their choice.",B/R,God; sacrifice; burn; noncombat damage; indestructible; resilience,SDS,26,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-11-13,7,5
+"Minamo, School at Water's Edge",Legendary Land,"{T}: Add {U}.
+{U}, {T}: Untap target legendary permanent.",U,mana,SDS,27,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,,
+Talon Gates of Madara,Land — Gate,"When this land enters, up to one target creature phases out.
+{T}: Add {C}.
+{1}, {T}: Add one mana of any color.
+{4}: Put this card from your hand onto the battlefield.",Colorless,Gate; mana; etb,SDS,28,Mythic,legacy;vintage;historic;timeless;brawl,2026-11-13,,
+"Shizo, Death's Storehouse",Legendary Land,"{T}: Add {B}.
+{B}, {T}: Target legendary creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)",B,mana,SDS,30,Mythic,modern;legacy;vintage;historic;timeless;brawl,2026-11-13,,
 Greater Auramancy,Enchantment,"Other enchantments you control have shroud. (A permanent with shroud can't be the target of spells or abilities.)
 Enchanted creatures you control have shroud.",W,enchantments,SHM,7,Rare,modern;legacy;vintage;historic;timeless;brawl,2008-05-02,,
 Faerie Macabre,Creature — Faerie Rogue,"Flying
@@ -28064,7 +28087,6 @@ Heartbeat of Spring,Enchantment,"Whenever a player taps a land for mana, that pl
 Rites of Flourishing,Enchantment,"At the beginning of each player's draw step, that player draws an additional card.
 Each player may play an additional land on each of their turns.",G,,TLE,45,Mythic,modern;legacy;vintage;historic;timeless;brawl,2025-11-21,,
 Taunting Challenge,Sorcery,All creatures able to block target creature this turn do so.,G,,TLE,46,Mythic,legacy;vintage;historic;timeless;brawl,2025-11-21,,
-Captain Sisay,Legendary Creature — Human Soldier,"{T}: Search your library for a legendary card, reveal that card, put it into your hand, then shuffle.",W/G,Human; Soldier,TLE,47,Mythic,legacy;vintage;historic;timeless;brawl,2025-11-21,2,2
 Eladamri's Call,Instant,"Search your library for a creature card, reveal that card, put it into your hand, then shuffle.",W/G,,TLE,48,Mythic,modern;legacy;vintage;historic;timeless;brawl,2025-11-21,,
 Fevered Visions,Enchantment,"At the beginning of each player's end step, that player draws a card. If the player is your opponent and has four or more cards in hand, this enchantment deals 2 damage to that player.",U/R,burn; noncombat damage,TLE,49,Mythic,pioneer;modern;legacy;vintage;historic;timeless;brawl,2025-11-21,,
 Rhys the Redeemed,Legendary Creature — Elf Warrior,"{2}{G/W}, {T}: Create a 1/1 green and white Elf Warrior creature token.
@@ -28926,7 +28948,7 @@ Assembly Specialist,Artifact Creature — Borg,"When this creature enters, creat
 "Brad Boimler, Eager Ensign",Legendary Creature — Human Officer,"Lifelink
 Whenever Brad Boimler becomes tapped, until end of turn, if one or more counters would be put on a permanent you control, that many plus one of each of those kinds of counters are put on that permanent instead.",W,Human; Officer; counters; lifegain; lifelink,TRK,5,Uncommon,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
 Captain Benjamin Sisko,Legendary Creature — Human Officer,"At the beginning of your end step, create a 1/1 red Officer creature token for each dilemma you've faced this turn.
-{2}{W}{U}{B}{R}{G}, {T}: Exile the top five cards of your library. You may cast any number of spells with mana value less than or equal to the number of Officers you control from among those cards without paying their mana costs.",W/U/B/R/G,Human; Officer; tokens,TRK,6,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
+{2}{W}{U}{B}{R}{G}, {T}: Exile the top five cards of your library. You may cast any number of spells with mana value less than or equal to the number of Officers you control from among those cards without paying their mana costs.",W/U/B/R/G,Human; Officer; tokens; face a dilemma,TRK,6,Rare,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,2
 Captain Jean-Luc Picard,Legendary Creature — Human Officer,"Other creatures you control get +1/+1.
 Whenever you cast a creature or Spacecraft spell, create a 1/1 red Officer creature token.
 Tap seven untapped Officers you control: Search your library for a Spacecraft card, put it onto the battlefield with seven charge counters on it, then shuffle.",W,Human; Officer; tokens; pump,TRK,7,Mythic,standard;pioneer;modern;legacy;vintage;historic;timeless;brawl,2026-11-13,2,3

@@ -1,0 +1,2553 @@
+{
+ "title": "Brawl Craft Order",
+ "intro": "The eight Brawl decks that are not fully owned. The craft order ranks the unowned mythics and rares worth crafting across all of them; below it, each owned stand-in sits beside the craft it would replace. Ownership counts are lower bounds, so check before spending a wildcard.",
+ "crafts": [
+  {
+   "tier": "1 · Commanders",
+   "tier_why": "The deck does not exist without them. Rares before mythics.",
+   "card": "Samut, the Driving Force",
+   "decks": [
+    "88"
+   ],
+   "why": "Commander of deck 88.",
+   "fallbacks": []
+  },
+  {
+   "tier": "1 · Commanders",
+   "tier_why": "The deck does not exist without them. Rares before mythics.",
+   "card": "Feather, the Redeemed",
+   "decks": [
+    "56-historic-brawl"
+   ],
+   "why": "Commander of deck 56-historic-brawl.",
+   "fallbacks": []
+  },
+  {
+   "tier": "1 · Commanders",
+   "tier_why": "The deck does not exist without them. Rares before mythics.",
+   "card": "Szarel, Genesis Shepherd",
+   "decks": [
+    "89"
+   ],
+   "why": "Commander of deck 89.",
+   "fallbacks": []
+  },
+  {
+   "tier": "1 · Commanders",
+   "tier_why": "The deck does not exist without them. Rares before mythics.",
+   "card": "G'raha Tia, Scion Reborn",
+   "decks": [
+    "98"
+   ],
+   "why": "Commander of deck 98.",
+   "fallbacks": []
+  },
+  {
+   "tier": "1 · Commanders",
+   "tier_why": "The deck does not exist without them. Rares before mythics.",
+   "card": "Hashaton, Scarab's Fist",
+   "decks": [
+    "91"
+   ],
+   "why": "Commander of deck 91.",
+   "fallbacks": []
+  },
+  {
+   "tier": "2 · Shared by two decks",
+   "tier_why": "One craft, two decks. Each has no owned stand-in that does the same job.",
+   "card": "Fiery Confluence",
+   "decks": [
+    "56-historic-brawl",
+    "92"
+   ],
+   "why": "Sweeper, 6 to the face, or artifact removal in one card.",
+   "fallbacks": []
+  },
+  {
+   "tier": "2 · Shared by two decks",
+   "tier_why": "One craft, two decks. Each has no owned stand-in that does the same job.",
+   "card": "Smellerbee, Rebel Fighter",
+   "decks": [
+    "93",
+    "92"
+   ],
+   "why": "Protected in 92. Team haste plus an attack-scaled hand refill; the stand-in covers the haste only.",
+   "fallbacks": [
+    "Samut, Hazoret's Champion"
+   ]
+  },
+  {
+   "tier": "2 · Shared by two decks",
+   "tier_why": "One craft, two decks. Each has no owned stand-in that does the same job.",
+   "card": "Raiyuu, Storm's Edge",
+   "decks": [
+    "93",
+    "56-historic-brawl"
+   ],
+   "why": "Protected in 93. A repeatable extra combat for a creature attacking alone.",
+   "fallbacks": [
+    "Full Throttle",
+    "Genji Glove"
+   ]
+  },
+  {
+   "tier": "2 · Shared by two decks",
+   "tier_why": "One craft, two decks. Each has no owned stand-in that does the same job.",
+   "card": "Embercleave",
+   "decks": [
+    "56-historic-brawl",
+    "92"
+   ],
+   "why": "Protected in 56b. Flash, double strike, trample, cheaper while attacking.",
+   "fallbacks": [
+    "Genji Glove"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Seize the Day",
+   "decks": [
+    "56-historic-brawl"
+   ],
+   "why": "Feather returns it every turn: an extra combat every turn.",
+   "fallbacks": [
+    "Full Throttle"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Unnatural Growth",
+   "decks": [
+    "88"
+   ],
+   "why": "Protected. Doubles the team every combat, on top of Samut.",
+   "fallbacks": [
+    "Mightform Harmonizer"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Mishra, Claimed by Gix",
+   "decks": [
+    "93"
+   ],
+   "why": "Drains for every attacker, twice under Isshin. The deck's finisher.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Hellrider",
+   "decks": [
+    "93"
+   ],
+   "why": "1 damage per attacker, twice.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Dictate of Erebos",
+   "decks": [
+    "93"
+   ],
+   "why": "Every end-step token sacrifice becomes an opponent sacrifice.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Avatar Roku, Firebender",
+   "decks": [
+    "92"
+   ],
+   "why": "Protected. Six red on any player's attack, which Ozai keeps.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Fire Nation Turret",
+   "decks": [
+    "92"
+   ],
+   "why": "Protected. Firebending every combat and the 50-counter finisher.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Fire Lord Ozai",
+   "decks": [
+    "92"
+   ],
+   "why": "Protected. Red mana from a sacrifice on attack, and an impulse sink.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "The Gitrog Monster",
+   "decks": [
+    "89"
+   ],
+   "why": "Protected. A card per land to the graveyard and an extra land drop.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Titania, Protector of Argoth",
+   "decks": [
+    "89"
+   ],
+   "why": "A 5/3 for every land sacrificed.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Korvold, Fae-Cursed King",
+   "decks": [
+    "89"
+   ],
+   "why": "A card and a counter per sacrifice.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Vraska, Betrayal's Sting",
+   "decks": [
+    "89",
+    "96"
+   ],
+   "why": "With Vorinclex, −9 is 18 poison in 89. Replaceable in 96 (Vivien Reid).",
+   "fallbacks": [
+    "Vivien Reid"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Ephara, God of the Polis",
+   "decks": [
+    "98"
+   ],
+   "why": "Protected. A card on both upkeeps; a Hero enters every turn.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Sram, Senior Edificer",
+   "decks": [
+    "98"
+   ],
+   "why": "The cheapest card-per-Aura engine; nothing owned draws on Aura casts.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Eriette of the Charmed Apple",
+   "decks": [
+    "98"
+   ],
+   "why": "Drains per Aura each end step; enchanted creatures cannot attack you.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Sigil of the Empty Throne",
+   "decks": [
+    "98"
+   ],
+   "why": "A 4/4 flying Angel per enchantment cast.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Killian, Decisive Mentor",
+   "decks": [
+    "98"
+   ],
+   "why": "Goad per enchantment, a card when enchanted creatures attack.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Bruvac the Grandiloquent",
+   "decks": [
+    "96"
+   ],
+   "why": "Protected. Doubles every mill.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "The Water Crystal",
+   "decks": [
+    "96"
+   ],
+   "why": "+4 on every mill instance.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Fraying Sanity",
+   "decks": [
+    "96"
+   ],
+   "why": "Repeats each turn's mill at end step.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Jace, Memory Adept",
+   "decks": [
+    "96"
+   ],
+   "why": "Protected. Mills 10 a turn.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Ashiok, Nightmare Muse",
+   "decks": [
+    "96"
+   ],
+   "why": "Protected. Tokens that exile two from their library on every attack or block.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Phenax, God of Deception",
+   "decks": [
+    "96"
+   ],
+   "why": "Every creature taps to mill its toughness; the deck has 29.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Necroduality",
+   "decks": [
+    "91"
+   ],
+   "why": "Protected. Copies every nontoken Zombie entering.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "The Sibsig Ceremony",
+   "decks": [
+    "91"
+   ],
+   "why": "Protected. The deck's second engine.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Waste Not",
+   "decks": [
+    "91"
+   ],
+   "why": "Protected. Pays off the each-player discards.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "The Scarab God",
+   "decks": [
+    "91"
+   ],
+   "why": "Drain per Zombie each upkeep, and 4/4 copies from any graveyard.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Cursecloth Wrappings",
+   "decks": [
+    "91"
+   ],
+   "why": "The only Zombie anthem in reach.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Gisa and Geralf",
+   "decks": [
+    "91"
+   ],
+   "why": "Recasts a discarded Zombie every turn.",
+   "fallbacks": [
+    "Zombify"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Liliana, Death's Majesty",
+   "decks": [
+    "91"
+   ],
+   "why": "A Zombie a turn, reanimation, a one-sided wipe.",
+   "fallbacks": [
+    "Coiling Rebirth"
+   ]
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "Kalitas, Traitor of Ghet",
+   "decks": [
+    "91"
+   ],
+   "why": "Their dying creatures become your Zombies.",
+   "fallbacks": []
+  },
+  {
+   "tier": "3 · Engine pieces with no stand-in",
+   "tier_why": "Ordered to finish decks: the decks with the fewest remaining crafts come first.",
+   "card": "God-Eternal Oketra",
+   "decks": [
+    "91"
+   ],
+   "why": "A 4/4 Zombie per creature cast.",
+   "fallbacks": []
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Djeru and Hazoret",
+   "decks": [
+    "93"
+   ],
+   "why": "A free legend from the top six on attack (34 legends).",
+   "fallbacks": [
+    "Cosmic Cube",
+    "Winota, Joiner of Forces"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Far Fortune, End Boss",
+   "decks": [
+    "93"
+   ],
+   "why": "Attack ping plus max-speed damage boost.",
+   "fallbacks": [
+    "Screeching Soulbreaker"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Tifa, Martial Artist",
+   "decks": [
+    "88"
+   ],
+   "why": "Protected. Untap and an extra combat when a 7-power creature connects.",
+   "fallbacks": [
+    "Full Throttle"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Worldweave",
+   "decks": [
+    "88"
+   ],
+   "why": "A land for every creature cast.",
+   "fallbacks": [
+    "Earthbender Ascension"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Emperor Apatzec Intli IV",
+   "decks": [
+    "88"
+   ],
+   "why": "Protected. Haste, life and a card for every big creature.",
+   "fallbacks": [
+    "Hit It!"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Ravenous Tyrannosaurus",
+   "decks": [
+    "88"
+   ],
+   "why": "A bite on every attack.",
+   "fallbacks": [
+    "Hunter's Talent"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Akiri, Fearless Voyager",
+   "decks": [
+    "56-historic-brawl"
+   ],
+   "why": "Repeatable draw for an equipped attacker.",
+   "fallbacks": [
+    "Buster Sword"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Aggravated Assault",
+   "decks": [
+    "92"
+   ],
+   "why": "A repeatable extra combat; with stored mana, several a turn.",
+   "fallbacks": [
+    "Genji Glove"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Moraug, Fury of Akoum",
+   "decks": [
+    "92"
+   ],
+   "why": "An extra combat on every main-phase land drop.",
+   "fallbacks": [
+    "Full Throttle"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Vorinclex, Monstrous Raider",
+   "decks": [
+    "89"
+   ],
+   "why": "Protected. Doubles counters AND poison.",
+   "fallbacks": [
+    "Doubling Season"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Azusa, Lost but Seeking",
+   "decks": [
+    "89"
+   ],
+   "why": "Protected. Two extra land drops a turn.",
+   "fallbacks": [
+    "Icetill Explorer"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Y'shtola, Night's Blessed",
+   "decks": [
+    "98"
+   ],
+   "why": "Protected. Drain and life per MV 3+ noncreature spell, and a card.",
+   "fallbacks": [
+    "Enduring Tenacity"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Terisian Mindbreaker",
+   "decks": [
+    "96"
+   ],
+   "why": "Half their library on attack; Glarb casts it off the top.",
+   "fallbacks": [
+    "Kitsune's Technique"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Liliana of the Veil",
+   "decks": [
+    "91"
+   ],
+   "why": "Protected. Each player discards, and an edict.",
+   "fallbacks": [
+    "Fanatic of the Harrowing"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Bone Miser",
+   "decks": [
+    "91"
+   ],
+   "why": "Protected. A Zombie, mana or a card per discard.",
+   "fallbacks": [
+    "Monument to Endurance"
+   ]
+  },
+  {
+   "tier": "4 · Engine pieces with a weaker stand-in",
+   "tier_why": "Craft these once tier 3 is done for the deck; until then the stand-in plays the slot.",
+   "card": "Cryptcaller Chariot",
+   "decks": [
+    "91"
+   ],
+   "why": "A Zombie per card discarded.",
+   "fallbacks": [
+    "Scrounging Skyray"
+   ]
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Villainous Wealth",
+   "decks": [
+    "96"
+   ],
+   "why": "An X finisher that casts their cards.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Jace, Wielder of Mysteries",
+   "decks": [
+    "96"
+   ],
+   "why": "Mill and draw each turn, and you win if YOU deck out.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Ghoulcaller Gisa",
+   "decks": [
+    "91"
+   ],
+   "why": "A sacrificed 4/4 copy becomes four Zombies.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Havengul Runebinder",
+   "decks": [
+    "91"
+   ],
+   "why": "Zombies plus team counters from exiled creature cards.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Army of the Damned",
+   "decks": [
+    "91"
+   ],
+   "why": "Thirteen Zombies.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Kor Spiritdancer",
+   "decks": [
+    "98"
+   ],
+   "why": "A second card-per-Aura engine.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Pearl-Ear, Imperial Advisor",
+   "decks": [
+    "98"
+   ],
+   "why": "Aura discount and draw.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Hallowed Haunting",
+   "decks": [
+    "98"
+   ],
+   "why": "A Spirit per enchantment cast.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Halvar, God of Battle // Sword of the Realms",
+   "decks": [
+    "98"
+   ],
+   "why": "Double strike for every enchanted creature.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Zopandrel, Hunger Dominus",
+   "decks": [
+    "89"
+   ],
+   "why": "Doubles the team every combat.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Bloated Contaminator",
+   "decks": [
+    "89"
+   ],
+   "why": "Toxic plus proliferate on a 3-drop.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Triumph of the Hordes",
+   "decks": [
+    "89"
+   ],
+   "why": "The infect finisher.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Tectonic Split",
+   "decks": [
+    "89"
+   ],
+   "why": "Half your lands sacrificed (a Szarel trigger each), then triple mana.",
+   "fallbacks": []
+  },
+  {
+   "tier": "5 · Craft later",
+   "tier_why": "Unique effects, but secondary to the deck's plan.",
+   "card": "Lotus Field",
+   "decks": [
+    "89"
+   ],
+   "why": "Sacrifices two lands on entry: two Szarel triggers.",
+   "fallbacks": []
+  }
+ ],
+ "swaps": [
+  {
+   "id": "93-zurgo-stormrender-venerated-stormsinger",
+   "deck": "93",
+   "add": "Venerated Stormsinger",
+   "cut": "Zurgo Stormrender",
+   "verdict": "upgrade",
+   "why": "Mobilize plus a death payoff, like Zurgo — and it drains on EVERY creature death, which this token deck makes several of each turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-zurgo-stormrender-garna-bloodfist-of-keld",
+   "deck": "93",
+   "add": "Garna, Bloodfist of Keld",
+   "cut": "Zurgo Stormrender",
+   "verdict": "sidegrade",
+   "why": "Alternate: draws when an attacking creature dies, pings otherwise — Zurgo's second half without mobilize.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-vraan-executioner-thane-funeral-room-awakening-hall",
+   "deck": "93",
+   "add": "Funeral Room // Awakening Hall",
+   "cut": "Vraan, Executioner Thane",
+   "verdict": "upgrade",
+   "why": "Drains 1 per death instead of 2 once a turn: better from the third death on, and the back half is a mass reanimation.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-outlaws-merriment-warren-warleader",
+   "deck": "93",
+   "add": "Warren Warleader",
+   "cut": "Outlaws' Merriment",
+   "verdict": "upgrade",
+   "why": "Merriment's upkeep token is not an attack trigger; Warleader's token or pump is, so Isshin doubles it.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-mardu-thunderkite-dragonback-lancer",
+   "deck": "93",
+   "add": "Dragonback Lancer",
+   "cut": "Mardu Thunderkite",
+   "verdict": "sidegrade",
+   "why": "A flying mobilize body. Loses the perpetual keyword grant.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-professional-face-breaker-captain-lannery-storm",
+   "deck": "93",
+   "add": "Captain Lannery Storm",
+   "cut": "Professional Face-Breaker",
+   "verdict": "sidegrade",
+   "why": "A Treasure on every attack (doubled by Isshin) instead of on combat damage, with haste. Loses the impulse draw.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-phyrexian-dragon-engine-cosmic-cube",
+   "deck": "93",
+   "add": "Cosmic Cube",
+   "cut": "Phyrexian Dragon Engine",
+   "verdict": "upgrade",
+   "why": "The card the Dragon Engine replaced: whenever you attack, a free spell from the top six, doubled. The Mishra meld is optional.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-celes-rune-knight-captain-james-t-kirk",
+   "deck": "93",
+   "add": "Captain James T. Kirk",
+   "cut": "Celes, Rune Knight",
+   "verdict": "upgrade",
+   "why": "Loots, makes a token or pumps on entry and on every attack (doubled). Celes' counter half rarely fires here.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-crucias-titan-of-the-waves-cool-but-rude",
+   "deck": "93",
+   "add": "Cool but Rude",
+   "cut": "Crucias, Titan of the Waves",
+   "verdict": "upgrade",
+   "why": "An attack-triggered loot (doubled) for the discard engine; level 2 adds 2 damage per discard.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-living-laser-monument-to-endurance",
+   "deck": "93",
+   "add": "Monument to Endurance",
+   "cut": "Living Laser",
+   "verdict": "standin",
+   "why": "A discard payoff: draw, Treasure or drain 3 per turn. Loses the copy-attackers burst.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-living-laser-magmakin-artillerist",
+   "deck": "93",
+   "add": "Magmakin Artillerist",
+   "cut": "Living Laser",
+   "verdict": "standin",
+   "why": "Alternate: damage to each opponent per card discarded.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-rakdos-the-muscle-garna-bloodfist-of-keld",
+   "deck": "93",
+   "add": "Garna, Bloodfist of Keld",
+   "cut": "Rakdos, the Muscle",
+   "verdict": "upgrade",
+   "why": "Rakdos exiles cards equal to the sacrificed creature's mana value, so mobilize tokens (MV 0) give nothing. Garna draws or pings on every death.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-olivia-opulent-outlaw-olivia-crimson-bride",
+   "deck": "93",
+   "add": "Olivia, Crimson Bride",
+   "cut": "Olivia, Opulent Outlaw",
+   "verdict": "upgrade",
+   "why": "Flying and haste; reanimates tapped and attacking on attack, and Isshin doubles that.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-zagras-thief-of-heartbeats-drakuseth-maw-of-flames",
+   "deck": "93",
+   "add": "Drakuseth, Maw of Flames",
+   "cut": "Zagras, Thief of Heartbeats",
+   "verdict": "standin",
+   "why": "A different job: 10 damage split on attack (doubled) instead of team deathtouch.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-laughing-jasper-flint-daredevil-man-without-fear",
+   "deck": "93",
+   "add": "Daredevil, Man Without Fear",
+   "cut": "Laughing Jasper Flint",
+   "verdict": "standin",
+   "why": "Jasper scales with outlaws, which drop if the outlaw crafts above are replaced. Daredevil's whenever-you-attack impulse is doubled.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-angrath-the-flame-chained-involuntary-employment",
+   "deck": "93",
+   "add": "Involuntary Employment",
+   "cut": "Angrath, the Flame-Chained",
+   "verdict": "standin",
+   "why": "Keeps the steal-and-sacrifice line. The weakest exchange here: nothing owned matches a planeswalker.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-smellerbee-rebel-fighter-samut-hazoret-s-champion",
+   "deck": "93",
+   "add": "Samut, Hazoret's Champion",
+   "cut": "Smellerbee, Rebel Fighter",
+   "verdict": "standin",
+   "why": "Stand-in only: team haste, but not the attack-scaled hand refill.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-djeru-and-hazoret-winota-joiner-of-forces",
+   "deck": "93",
+   "add": "Winota, Joiner of Forces",
+   "cut": "Djeru and Hazoret",
+   "verdict": "standin",
+   "why": "Stand-in: another top-six cheat on attack, but it finds Humans, not legends.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-raiyuu-storm-s-edge-full-throttle",
+   "deck": "93",
+   "add": "Full Throttle",
+   "cut": "Raiyuu, Storm's Edge",
+   "verdict": "standin",
+   "why": "Stand-in: two extra combats, but once.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "93-far-fortune-end-boss-screeching-soulbreaker",
+   "deck": "93",
+   "add": "Screeching Soulbreaker",
+   "cut": "Far Fortune, End Boss",
+   "verdict": "standin",
+   "why": "Stand-in: its own attack ping, doubled. Much weaker.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-nylea-god-of-the-hunt-garruk-s-uprising",
+   "deck": "88",
+   "add": "Garruk's Uprising",
+   "cut": "Nylea, God of the Hunt",
+   "verdict": "upgrade",
+   "why": "Team trample plus a card. Nylea is rarely a creature here.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-zacama-primal-calamity-craterhoof-behemoth",
+   "deck": "88",
+   "add": "Craterhoof Behemoth",
+   "cut": "Zacama, Primal Calamity",
+   "verdict": "upgrade",
+   "why": "A finisher that ends the game a turn earlier. Loses the repeatable removal.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-nyxbloom-ancient-caged-sun",
+   "deck": "88",
+   "add": "Caged Sun",
+   "cut": "Nyxbloom Ancient",
+   "verdict": "standin",
+   "why": "Doubles green mana from lands and pumps green creatures. Nyxbloom also triples the dorks.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-voja-jaws-of-the-conclave-vaultborn-tyrant",
+   "deck": "88",
+   "add": "Vaultborn Tyrant",
+   "cut": "Voja, Jaws of the Conclave",
+   "verdict": "upgrade",
+   "why": "Voja reads 4 Elves and 2 Wolves. Vaultborn draws and gains 3 on every power-4 creature, which Samut makes most of them.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-samut-the-tested-vivien-arkbow-ranger",
+   "deck": "88",
+   "add": "Vivien, Arkbow Ranger",
+   "cut": "Samut, the Tested",
+   "verdict": "upgrade",
+   "why": "Counters and trample, a bite, a creature tutor.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-arlinn-kord-arlinn-embraced-by-the-moon-garruk-curse-breaker",
+   "deck": "88",
+   "add": "Garruk, Curse Breaker",
+   "cut": "Arlinn Kord // Arlinn, Embraced by the Moon",
+   "verdict": "upgrade",
+   "why": "Draws on every power-4 creature entering, makes 4/4s, untaps lands.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-omnath-locus-of-rage-rampaging-baloths",
+   "deck": "88",
+   "add": "Rampaging Baloths",
+   "cut": "Omnath, Locus of Rage",
+   "verdict": "standin",
+   "why": "Landfall 4/4s for 6 instead of 5/5s for 7. Loses the Elemental death burn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-rhys-the-redeemed-mole-man-moloid-master",
+   "deck": "88",
+   "add": "Mole Man, Moloid Master",
+   "cut": "Rhys the Redeemed",
+   "verdict": "standin",
+   "why": "Rhys's Elves fed Voja. Mole Man makes a token per land drop and replays lands from the graveyard.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-back-alley-gardener-tireless-provisioner",
+   "deck": "88",
+   "add": "Tireless Provisioner",
+   "cut": "Back-Alley Gardener",
+   "verdict": "standin",
+   "why": "Treasure on land drops instead of a land on creature entries. Weaker ramp.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-toph-greatest-earthbender-bumi-unleashed",
+   "deck": "88",
+   "add": "Bumi, Unleashed",
+   "cut": "Toph, Greatest Earthbender",
+   "verdict": "upgrade",
+   "why": "Only 4 cards earthbend. Bumi earthbends 4 and takes an extra combat.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-toph-the-first-metalbender-earthbender-ascension",
+   "deck": "88",
+   "add": "Earthbender Ascension",
+   "cut": "Toph, the First Metalbender",
+   "verdict": "upgrade",
+   "why": "The artifacts-are-lands clause has one artifact to read. Ascension earthbends, fetches a land and grows a creature on land drops.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-hulk-strongest-there-is-branching-evolution",
+   "deck": "88",
+   "add": "Branching Evolution",
+   "cut": "Hulk, Strongest There Is",
+   "verdict": "upgrade",
+   "why": "Doubles every +1/+1 counter the team gets, not only Gamma ones.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-gamma-grotesque-outcaster-trailblazer",
+   "deck": "88",
+   "add": "Outcaster Trailblazer",
+   "cut": "Gamma Grotesque",
+   "verdict": "sidegrade",
+   "why": "A card per power-4 creature entering, and it taps for mana.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-abomination-irradiated-brute-bristly-bill-spine-sower",
+   "deck": "88",
+   "add": "Bristly Bill, Spine Sower",
+   "cut": "Abomination, Irradiated Brute",
+   "verdict": "upgrade",
+   "why": "Counters on every land drop plus a counter doubler, on the axis this deck feeds.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-ayula-queen-among-bears-felling-blow",
+   "deck": "88",
+   "add": "Felling Blow",
+   "cut": "Ayula, Queen Among Bears",
+   "verdict": "upgrade",
+   "why": "Two Bears in the deck. Felling Blow is a counter plus a bite.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-master-s-guidance-bitter-work",
+   "deck": "88",
+   "add": "Bitter Work",
+   "cut": "Master's Guidance",
+   "verdict": "standin",
+   "why": "Protected, so your call: a card when a power-4 creature attacks, and earthbend 4 once.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-unnatural-growth-mightform-harmonizer",
+   "deck": "88",
+   "add": "Mightform Harmonizer",
+   "cut": "Unnatural Growth",
+   "verdict": "standin",
+   "why": "Stand-in: doubles one creature's power per land drop.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-tifa-martial-artist-full-throttle",
+   "deck": "88",
+   "add": "Full Throttle",
+   "cut": "Tifa, Martial Artist",
+   "verdict": "standin",
+   "why": "Stand-in: two extra combats, once.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-worldweave-earthbender-ascension",
+   "deck": "88",
+   "add": "Earthbender Ascension",
+   "cut": "Worldweave",
+   "verdict": "standin",
+   "why": "Stand-in: one land plus land-drop counters, not a land per creature cast.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-emperor-apatzec-intli-iv-hit-it",
+   "deck": "88",
+   "add": "Hit It!",
+   "cut": "Emperor Apatzec Intli IV",
+   "verdict": "standin",
+   "why": "Stand-in: team haste and a land. Loses the life and the seeked creature.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "88-ravenous-tyrannosaurus-hunter-s-talent",
+   "deck": "88",
+   "add": "Hunter's Talent",
+   "cut": "Ravenous Tyrannosaurus",
+   "verdict": "standin",
+   "why": "Stand-in: one bite on entry instead of a bite every attack.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-stoneforge-mystic-cloud-midgar-mercenary",
+   "deck": "56-historic-brawl",
+   "add": "Cloud, Midgar Mercenary",
+   "cut": "Stoneforge Mystic",
+   "verdict": "upgrade",
+   "why": "Tutors any Equipment AND doubles the triggers of the Equipment on it.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-akroma-s-will-divine-resilience",
+   "deck": "56-historic-brawl",
+   "add": "Divine Resilience",
+   "cut": "Akroma's Will",
+   "verdict": "upgrade",
+   "why": "Targets your creature, so Feather returns it: indestructible every turn (kicked, the team).",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-sword-of-forge-and-frontier-buster-sword",
+   "deck": "56-historic-brawl",
+   "add": "Buster Sword",
+   "cut": "Sword of Forge and Frontier",
+   "verdict": "upgrade",
+   "why": "+3/+2, a card and a free spell per hit. (Sword of Wealth and Power would block your own Feather spells.)",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-kaldra-compleat-orcrist-goblin-cleaver",
+   "deck": "56-historic-brawl",
+   "add": "Orcrist, Goblin-cleaver",
+   "cut": "Kaldra Compleat",
+   "verdict": "standin",
+   "why": "+2/+2 and trample for 3 instead of a 7-mana finisher.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-kaldra-compleat-meteoric-mace",
+   "deck": "56-historic-brawl",
+   "add": "Meteoric Mace",
+   "cut": "Kaldra Compleat",
+   "verdict": "standin",
+   "why": "Alternate: the bigger hit, +4/+0 and trample, with cascade.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-mishra-s-command-hulk-smash",
+   "deck": "56-historic-brawl",
+   "add": "HULK SMASH!",
+   "cut": "Mishra's Command",
+   "verdict": "standin",
+   "why": "Both make your creature deal the damage, so Feather returns either. Loses X scaling and the pump mode.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-teyo-aegis-adept-nahiri-heir-of-the-ancients",
+   "deck": "56-historic-brawl",
+   "add": "Nahiri, Heir of the Ancients",
+   "cut": "Teyo, Aegis Adept",
+   "verdict": "upgrade",
+   "why": "Teyo mainly served Erratic Cyclops. Nahiri makes bodies, attaches and digs for Equipment, and removes.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-erratic-cyclops-crackling-cyclops",
+   "deck": "56-historic-brawl",
+   "add": "Crackling Cyclops",
+   "cut": "Erratic Cyclops",
+   "verdict": "sidegrade",
+   "why": "+3/+0 per noncreature spell; Feather recasts cheap spells, where +3 beats +MV.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-kirk-enterprising-captain-chandra-torch-of-defiance",
+   "deck": "56-historic-brawl",
+   "add": "Chandra, Torch of Defiance",
+   "cut": "Kirk, Enterprising Captain",
+   "verdict": "upgrade",
+   "why": "Card advantage every turn, ramp, or 4 to a creature.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-owyn-fearless-knight-stasis-snare",
+   "deck": "56-historic-brawl",
+   "add": "Stasis Snare",
+   "cut": "Éowyn, Fearless Knight",
+   "verdict": "sidegrade",
+   "why": "Flash exile of any creature. Loses the haste body.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-raubahn-bull-of-ala-mhigo-frodo-determined-hero",
+   "deck": "56-historic-brawl",
+   "add": "Frodo, Determined Hero",
+   "cut": "Raubahn, Bull of Ala Mhigo",
+   "verdict": "sidegrade",
+   "why": "Attaches Equipment on entry and every attack; takes no damage on your turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-shadowspear-meteoric-mace",
+   "deck": "56-historic-brawl",
+   "add": "Meteoric Mace",
+   "cut": "Shadowspear",
+   "verdict": "standin",
+   "why": "Trample and +4/+0. Loses the 1-mana lifelink.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-odric-lunarch-marshal-captain-america-liberator",
+   "deck": "56-historic-brawl",
+   "add": "Captain America, Liberator",
+   "cut": "Odric, Lunarch Marshal",
+   "verdict": "upgrade",
+   "why": "Odric shares keywords with a team this deck does not build. Captain America fetches and puts in an Equipment.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-jor-kadeen-first-goldwarden-firion-wild-rose-warrior",
+   "deck": "56-historic-brawl",
+   "add": "Firion, Wild Rose Warrior",
+   "cut": "Jor Kadeen, First Goldwarden",
+   "verdict": "upgrade",
+   "why": "Jor Kadeen scales with equipped creatures, which a voltron deck has one of. Firion gives haste and copies each Equipment.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-zada-hedron-grinder-aziza-mage-tower-captain",
+   "deck": "56-historic-brawl",
+   "add": "Aziza, Mage Tower Captain",
+   "cut": "Zada, Hedron Grinder",
+   "verdict": "standin",
+   "why": "Both are weak in a one-body deck; consider cutting the slot.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-krenko-tin-street-kingpin-solitary-cell",
+   "deck": "56-historic-brawl",
+   "add": "Solitary Cell",
+   "cut": "Krenko, Tin Street Kingpin",
+   "verdict": "standin",
+   "why": "A different job (removal): nothing owned makes tokens on attack in Boros.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-esper-sentinel-banishing-light",
+   "deck": "56-historic-brawl",
+   "add": "Banishing Light",
+   "cut": "Esper Sentinel",
+   "verdict": "upgrade",
+   "why": "A 1-drop tax does little in Brawl; removal does more.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-battlefield-forge-asgardian-citadel",
+   "deck": "56-historic-brawl",
+   "add": "Asgardian Citadel",
+   "cut": "Battlefield Forge",
+   "verdict": "standin",
+   "why": "Same colours, enters tapped. Craft the untapped land late, not never.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-needleverge-pathway-pillarverge-pathway-rabanastre-royal-city",
+   "deck": "56-historic-brawl",
+   "add": "Rabanastre, Royal City",
+   "cut": "Needleverge Pathway // Pillarverge Pathway",
+   "verdict": "standin",
+   "why": "Same colours, enters tapped.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-embercleave-genji-glove",
+   "deck": "56-historic-brawl",
+   "add": "Genji Glove",
+   "cut": "Embercleave",
+   "verdict": "standin",
+   "why": "Stand-in: double strike plus an extra combat. No flash, trample or attack discount.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-seize-the-day-full-throttle",
+   "deck": "56-historic-brawl",
+   "add": "Full Throttle",
+   "cut": "Seize the Day",
+   "verdict": "standin",
+   "why": "Stand-in: two extra combats once; Seize the Day returns every turn under Feather.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-akiri-fearless-voyager-buster-sword",
+   "deck": "56-historic-brawl",
+   "add": "Buster Sword",
+   "cut": "Akiri, Fearless Voyager",
+   "verdict": "standin",
+   "why": "Stand-in: a card per hit, but only when it connects.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "56-historic-brawl-raiyuu-storm-s-edge-genji-glove",
+   "deck": "56-historic-brawl",
+   "add": "Genji Glove",
+   "cut": "Raiyuu, Storm's Edge",
+   "verdict": "standin",
+   "why": "Stand-in, if Genji Glove is not covering Embercleave.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-cut-your-losses-kitsune-s-technique",
+   "deck": "96",
+   "add": "Kitsune's Technique",
+   "cut": "Cut Your Losses",
+   "verdict": "sidegrade",
+   "why": "Mills half their library, rounded UP, at instant speed. Loses the casualty copy.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-altar-of-dementia-exhibition-tidecaller",
+   "deck": "96",
+   "add": "Exhibition Tidecaller",
+   "cut": "Altar of Dementia",
+   "verdict": "standin",
+   "why": "Mill 3 per instant or sorcery, 10 if 5+ mana was spent; nothing to sacrifice.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-lithoform-engine-gogo-master-of-mimicry",
+   "deck": "96",
+   "add": "Gogo, Master of Mimicry",
+   "cut": "Lithoform Engine",
+   "verdict": "upgrade",
+   "why": "Copies abilities X times, planeswalker loyalty abilities included. Loses copying spells.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-ob-nixilis-reignited-garruk-cursed-huntsman",
+   "deck": "96",
+   "add": "Garruk, Cursed Huntsman",
+   "cut": "Ob Nixilis Reignited",
+   "verdict": "upgrade",
+   "why": "Removal plus a card in one ability, and two Wolves a turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-ashiok-sculptor-of-fears-professor-dellian-fel",
+   "deck": "96",
+   "add": "Professor Dellian Fel",
+   "cut": "Ashiok, Sculptor of Fears",
+   "verdict": "standin",
+   "why": "Draw, removal, life. Loses each-player mill 2.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-ashiok-nightmare-weaver-ral-zarek-guest-lecturer",
+   "deck": "96",
+   "add": "Ral Zarek, Guest Lecturer",
+   "cut": "Ashiok, Nightmare Weaver",
+   "verdict": "standin",
+   "why": "Surveil 2 each turn feeds Matoya and Glarb. Loses exile 3.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-kasmina-enigma-sage-chandra-chill-of-compliance",
+   "deck": "96",
+   "add": "Chandra, Chill of Compliance",
+   "cut": "Kasmina, Enigma Sage",
+   "verdict": "standin",
+   "why": "Surveil plus card advantage for 3.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-vraska-betrayal-s-sting-vivien-reid",
+   "deck": "96",
+   "add": "Vivien Reid",
+   "cut": "Vraska, Betrayal's Sting",
+   "verdict": "standin",
+   "why": "Card selection and removal. Loses the proliferate.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-nissa-voice-of-zendikar-wrenn-and-seven",
+   "deck": "96",
+   "add": "Wrenn and Seven",
+   "cut": "Nissa, Voice of Zendikar",
+   "verdict": "upgrade",
+   "why": "Lands to hand, ramp, a huge reach Treefolk.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-tezzeret-the-schemer-kiora-the-crashing-wave",
+   "deck": "96",
+   "add": "Kiora, the Crashing Wave",
+   "cut": "Tezzeret the Schemer",
+   "verdict": "upgrade",
+   "why": "Draw plus a land, a Fog on their best threat, a Kraken emblem.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-jace-the-perfected-mind-jace-reality-sculptor",
+   "deck": "96",
+   "add": "Jace, Reality Sculptor",
+   "cut": "Jace, the Perfected Mind",
+   "verdict": "standin",
+   "why": "The weakest exchange here: nothing owned matches Jace's big mill finisher.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-erebos-god-of-the-dead-phyrexian-arena",
+   "deck": "96",
+   "add": "Phyrexian Arena",
+   "cut": "Erebos, God of the Dead",
+   "verdict": "sidegrade",
+   "why": "A card every upkeep. Loses 'opponents can't gain life'.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-malcolm-alluring-scoundrel-seven-of-nine-unassimilated",
+   "deck": "96",
+   "add": "Seven of Nine, Unassimilated",
+   "cut": "Malcolm, Alluring Scoundrel",
+   "verdict": "upgrade",
+   "why": "A card every main phase, no combat needed.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-thryx-the-sudden-storm-thunderous-snapper",
+   "deck": "96",
+   "add": "Thunderous Snapper",
+   "cut": "Thryx, the Sudden Storm",
+   "verdict": "sidegrade",
+   "why": "Draws on every 5+ MV spell instead of discounting it.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-defiler-of-dreams-tanufel-rimespeaker",
+   "deck": "96",
+   "add": "Tanufel Rimespeaker",
+   "cut": "Defiler of Dreams",
+   "verdict": "sidegrade",
+   "why": "Draws on every MV 4+ spell — exactly what Glarb casts off the top.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-lord-of-the-forsaken-hama-the-bloodbender",
+   "deck": "96",
+   "add": "Hama, the Bloodbender",
+   "cut": "Lord of the Forsaken",
+   "verdict": "standin",
+   "why": "Mill 3 on entry. Loses the 6/6 flier and the repeatable mill.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-one-ring-to-rule-them-all-villainous-wrath",
+   "deck": "96",
+   "add": "Villainous Wrath",
+   "cut": "One Ring to Rule Them All",
+   "verdict": "standin",
+   "why": "A full wipe with a drain. The Ring spares legends; Wrath does not.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-the-mycotyrant-archmage-of-runes",
+   "deck": "96",
+   "add": "Archmage of Runes",
+   "cut": "The Mycotyrant",
+   "verdict": "standin",
+   "why": "A different job (card draw): the Fungus count is only what Mycotyrant makes.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-immortus-master-of-eternity-aether-syphon",
+   "deck": "96",
+   "add": "Aether Syphon",
+   "cut": "Immortus, Master of Eternity",
+   "verdict": "standin",
+   "why": "A draw engine that mills 2 per draw at max speed. Weaker.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "96-terisian-mindbreaker-kitsune-s-technique",
+   "deck": "96",
+   "add": "Kitsune's Technique",
+   "cut": "Terisian Mindbreaker",
+   "verdict": "standin",
+   "why": "Stand-in, if not used for Cut Your Losses: half their library once.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-goldspan-dragon-smaug-the-magnificent",
+   "deck": "92",
+   "add": "Smaug the Magnificent",
+   "cut": "Goldspan Dragon",
+   "verdict": "sidegrade",
+   "why": "Flying haste, a Treasure every upkeep, damage per Treasure on attack.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-ancient-copper-dragon-grim-hireling",
+   "deck": "92",
+   "add": "Grim Hireling",
+   "cut": "Ancient Copper Dragon",
+   "verdict": "standin",
+   "why": "Two Treasures every connecting combat; Treasures become removal. Loses the 6/5 flier.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-professional-face-breaker-captain-lannery-storm",
+   "deck": "92",
+   "add": "Captain Lannery Storm",
+   "cut": "Professional Face-Breaker",
+   "verdict": "sidegrade",
+   "why": "A Treasure on every attack, with haste.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-savage-beating-full-throttle",
+   "deck": "92",
+   "add": "Full Throttle",
+   "cut": "Savage Beating",
+   "verdict": "sidegrade",
+   "why": "Two extra combats for one. Loses instant speed and the double-strike mode.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-zuko-firebending-master-zuko-exiled-prince",
+   "deck": "92",
+   "add": "Zuko, Exiled Prince",
+   "cut": "Zuko, Firebending Master",
+   "verdict": "upgrade",
+   "why": "Firebending 3 from the start, and a {3} impulse sink.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-iroh-dragon-of-the-west-zhao-ruthless-admiral",
+   "deck": "92",
+   "add": "Zhao, Ruthless Admiral",
+   "cut": "Iroh, Dragon of the West",
+   "verdict": "standin",
+   "why": "Firebending 2 and a pump per sacrifice. Loses team firebending.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-neheb-dreadhorde-champion-chandra-dressed-to-kill",
+   "deck": "92",
+   "add": "Chandra, Dressed to Kill",
+   "cut": "Neheb, Dreadhorde Champion",
+   "verdict": "standin",
+   "why": "Red mana and a ping, or impulse draw, every turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-explosive-singularity-draconic-debut",
+   "deck": "92",
+   "add": "Draconic Debut",
+   "cut": "Explosive Singularity",
+   "verdict": "upgrade",
+   "why": "X damage to any target from stored red; scales past 10.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-overwhelming-victory-fear-fire-foes",
+   "deck": "92",
+   "add": "Fear, Fire, Foes!",
+   "cut": "Overwhelming Victory",
+   "verdict": "sidegrade",
+   "why": "X damage removal from stored red.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-fire-nation-archers-torch-breath",
+   "deck": "92",
+   "add": "Torch Breath",
+   "cut": "Fire Nation Archers",
+   "verdict": "standin",
+   "why": "Archers spends mana every turn; Torch Breath once. Keep Archers if the deck runs short of mana sinks.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-insurrection-emrakul-the-world-anew",
+   "deck": "92",
+   "add": "Emrakul, the World Anew",
+   "cut": "Insurrection",
+   "verdict": "standin",
+   "why": "Steals the whole board on cast. 12 colourless, but Ozai stores mana.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-sarkhan-the-dragonspeaker-chandra-torch-of-defiance",
+   "deck": "92",
+   "add": "Chandra, Torch of Defiance",
+   "cut": "Sarkhan, the Dragonspeaker",
+   "verdict": "upgrade",
+   "why": "Impulse or 2 to each opponent, ramp, or 4 to a creature.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-smaug-the-impenetrable-chandra-flameshaper",
+   "deck": "92",
+   "add": "Chandra, Flameshaper",
+   "cut": "Smaug the Impenetrable",
+   "verdict": "standin",
+   "why": "A different job: a value engine, not a body.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-rakdos-the-muscle-garna-bloodfist-of-keld",
+   "deck": "92",
+   "add": "Garna, Bloodfist of Keld",
+   "cut": "Rakdos, the Muscle",
+   "verdict": "standin",
+   "why": "A card or a ping on every death. Loses the 6/5 flier.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-rakdos-patron-of-chaos-ran-and-shaw",
+   "deck": "92",
+   "add": "Ran and Shaw",
+   "cut": "Rakdos, Patron of Chaos",
+   "verdict": "standin",
+   "why": "A flying firebender with a Dragon pump sink.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-fang-roku-s-companion-nova-hellkite",
+   "deck": "92",
+   "add": "Nova Hellkite",
+   "cut": "Fang, Roku's Companion",
+   "verdict": "standin",
+   "why": "A flying haste body with a ping. Loses the legend pump and the return.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-archpriest-of-shadows-olivia-crimson-bride",
+   "deck": "92",
+   "add": "Olivia, Crimson Bride",
+   "cut": "Archpriest of Shadows",
+   "verdict": "upgrade",
+   "why": "Reanimates on every attack, not only on damage.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-noxious-gearhulk-anchovy-banana-pizza",
+   "deck": "92",
+   "add": "Anchovy & Banana Pizza",
+   "cut": "Noxious Gearhulk",
+   "verdict": "standin",
+   "why": "Destroy a creature on entry. Loses the 5/4 menace body.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-efreet-flamepainter-sword-of-fire-and-ice",
+   "deck": "92",
+   "add": "Sword of Fire and Ice",
+   "cut": "Efreet Flamepainter",
+   "verdict": "sidegrade",
+   "why": "A card and 2 damage per hit, plus protection.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-drana-liberator-of-malakir-black-widow-deadly-hunter",
+   "deck": "92",
+   "add": "Black Widow, Deadly Hunter",
+   "cut": "Drana, Liberator of Malakir",
+   "verdict": "standin",
+   "why": "A different job: card draw on deathtouch damage.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-lion-vulture-buster-sword",
+   "deck": "92",
+   "add": "Buster Sword",
+   "cut": "Lion Vulture",
+   "verdict": "sidegrade",
+   "why": "A card per hit plus a free spell.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-barbed-servitor-ninja-s-blades",
+   "deck": "92",
+   "add": "Ninja's Blades",
+   "cut": "Barbed Servitor",
+   "verdict": "sidegrade",
+   "why": "Equipment that draws on combat damage.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-zuko-avatar-hunter-academy-instructor",
+   "deck": "92",
+   "add": "Academy Instructor",
+   "cut": "Zuko, Avatar Hunter",
+   "verdict": "standin",
+   "why": "A token per noncreature spell (Zuko counts every red spell). Weaker.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-fire-nation-occupation-death-to-our-enemies",
+   "deck": "92",
+   "add": "Death to Our Enemies",
+   "cut": "Fire Nation Occupation",
+   "verdict": "standin",
+   "why": "A Treasure per noncreature spell, which Ozai keeps.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-valakut-the-molten-pinnacle-mountain",
+   "deck": "92",
+   "add": "Mountain",
+   "cut": "Valakut, the Molten Pinnacle",
+   "verdict": "upgrade",
+   "why": "Valakut enters tapped and needs five other Mountains.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-aggravated-assault-genji-glove",
+   "deck": "92",
+   "add": "Genji Glove",
+   "cut": "Aggravated Assault",
+   "verdict": "standin",
+   "why": "Stand-in: one extra combat, not a repeatable one.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-embercleave-genji-glove",
+   "deck": "92",
+   "add": "Genji Glove",
+   "cut": "Embercleave",
+   "verdict": "standin",
+   "why": "Stand-in, if Genji Glove is not covering Aggravated Assault.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-moraug-fury-of-akoum-full-throttle",
+   "deck": "92",
+   "add": "Full Throttle",
+   "cut": "Moraug, Fury of Akoum",
+   "verdict": "standin",
+   "why": "Stand-in, if not used for Savage Beating.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-psychic-frog-compulsion",
+   "deck": "91",
+   "add": "Compulsion",
+   "cut": "Psychic Frog",
+   "verdict": "standin",
+   "why": "Protected, so your call: a repeatable discard outlet that draws. Loses the growing flier.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-liliana-waker-of-the-dead-ral-zarek-guest-lecturer",
+   "deck": "91",
+   "add": "Ral Zarek, Guest Lecturer",
+   "cut": "Liliana, Waker of the Dead",
+   "verdict": "standin",
+   "why": "Each player discards; surveil; reanimate. Loses the −X removal.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-temmet-naktamun-s-will-sphinx-of-false-conclusions",
+   "deck": "91",
+   "add": "Sphinx of False Conclusions",
+   "cut": "Temmet, Naktamun's Will",
+   "verdict": "standin",
+   "why": "A flash flier that loots on attack. Loses the Zombie pump.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-oglor-devoted-assistant-essence-anchor",
+   "deck": "91",
+   "add": "Essence Anchor",
+   "cut": "Oglor, Devoted Assistant",
+   "verdict": "sidegrade",
+   "why": "Upkeep surveil plus a Zombie on turns a card left your graveyard.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-grimgrin-corpse-born-yawgmoth-thran-physician",
+   "deck": "91",
+   "add": "Yawgmoth, Thran Physician",
+   "cut": "Grimgrin, Corpse-Born",
+   "verdict": "sidegrade",
+   "why": "Sacrifice for removal and a card; discard to proliferate.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-unstoppable-slasher-draugr-s-helm",
+   "deck": "91",
+   "add": "Draugr's Helm",
+   "cut": "Unstoppable Slasher",
+   "verdict": "standin",
+   "why": "A Zombie body with +2/+2 and menace.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-dreadhorde-invasion-emet-selch-unsundered-hades-sorcerer-of-",
+   "deck": "91",
+   "add": "Emet-Selch, Unsundered // Hades, Sorcerer of Eld",
+   "cut": "Dreadhorde Invasion",
+   "verdict": "standin",
+   "why": "A different job: loots on entry and attack, feeding Hashaton.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-liliana-heretical-healer-liliana-defiant-kaya-the-inexorable",
+   "deck": "91",
+   "add": "Kaya the Inexorable",
+   "cut": "Liliana, Heretical Healer // Liliana, Defiant Necromancer",
+   "verdict": "upgrade",
+   "why": "Exile any nonland permanent; ghostform protection.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-zahur-glory-s-past-liliana-the-faultless",
+   "deck": "91",
+   "add": "Liliana the Faultless",
+   "cut": "Zahur, Glory's Past",
+   "verdict": "sidegrade",
+   "why": "A 1-drop discard outlet. Zahur's Zombie half needs max speed.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-liliana-the-last-hope-coiling-rebirth",
+   "deck": "91",
+   "add": "Coiling Rebirth",
+   "cut": "Liliana, the Last Hope",
+   "verdict": "standin",
+   "why": "Reanimation. Loses the repeatable −2/−1.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-assemble-from-parts-zombify",
+   "deck": "91",
+   "add": "Zombify",
+   "cut": "Assemble from Parts",
+   "verdict": "sidegrade",
+   "why": "Reanimate instead of a 4/4 copy.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-grim-reaper-s-scythe-grim-reaper-lethal-legionnaire",
+   "deck": "91",
+   "add": "Grim Reaper, Lethal Legionnaire",
+   "cut": "Grim Reaper's Scythe",
+   "verdict": "standin",
+   "why": "Reanimates tapped and attacking on attack.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-never-return-bake-into-a-pie",
+   "deck": "91",
+   "add": "Bake into a Pie",
+   "cut": "Never // Return",
+   "verdict": "sidegrade",
+   "why": "Instant-speed kill. Loses the Return half.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-enter-the-god-eternals-consuming-ashes",
+   "deck": "91",
+   "add": "Consuming Ashes",
+   "cut": "Enter the God-Eternals",
+   "verdict": "standin",
+   "why": "Instant exile. Loses the amass and mill.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-soul-diviner-collector-s-vault",
+   "deck": "91",
+   "add": "Collector's Vault",
+   "cut": "Soul Diviner",
+   "verdict": "standin",
+   "why": "Protected: a loot plus a Treasure each turn. A different job.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-commence-the-endgame-seasoned-cryomancer",
+   "deck": "91",
+   "add": "Seasoned Cryomancer",
+   "cut": "Commence the Endgame",
+   "verdict": "upgrade",
+   "why": "Draw two, discard two: two Hashaton triggers.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-fallen-shinobi-locke-cole",
+   "deck": "91",
+   "add": "Locke Cole",
+   "cut": "Fallen Shinobi",
+   "verdict": "standin",
+   "why": "Much weaker; skip the slot if nothing better turns up.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-liliana-of-the-veil-fanatic-of-the-harrowing",
+   "deck": "91",
+   "add": "Fanatic of the Harrowing",
+   "cut": "Liliana of the Veil",
+   "verdict": "standin",
+   "why": "Stand-in: one each-player discard on entry.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-bone-miser-monument-to-endurance",
+   "deck": "91",
+   "add": "Monument to Endurance",
+   "cut": "Bone Miser",
+   "verdict": "standin",
+   "why": "Stand-in: a card, Treasure or drain per turn on discard.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "91-cryptcaller-chariot-scrounging-skyray",
+   "deck": "91",
+   "add": "Scrounging Skyray",
+   "cut": "Cryptcaller Chariot",
+   "verdict": "standin",
+   "why": "Stand-in: counters per discard, no Zombies. Weak.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-leyline-of-anticipation-valley-floodcaller",
+   "deck": "98",
+   "add": "Valley Floodcaller",
+   "cut": "Leyline of Anticipation",
+   "verdict": "sidegrade",
+   "why": "Protected, so your call: noncreature spells with flash — the half G'raha needs — on a flash body.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-leyline-of-anticipation-high-fae-trickster",
+   "deck": "98",
+   "add": "High Fae Trickster",
+   "cut": "Leyline of Anticipation",
+   "verdict": "sidegrade",
+   "why": "Alternate: every spell with flash, on a flying flash body.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-light-paws-emperor-s-voice-sun-spider-nimble-webber",
+   "deck": "98",
+   "add": "Sun-Spider, Nimble Webber",
+   "cut": "Light-Paws, Emperor's Voice",
+   "verdict": "standin",
+   "why": "An Aura tutor on entry; Light-Paws chains Auras every cast.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-entity-tracker-uncover-the-moon-letters",
+   "deck": "98",
+   "add": "Uncover the Moon-Letters",
+   "cut": "Entity Tracker",
+   "verdict": "standin",
+   "why": "Draws X per noncreature spell (discard two).",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-archnemesis-curiosity",
+   "deck": "98",
+   "add": "Curiosity",
+   "cut": "Archnemesis",
+   "verdict": "standin",
+   "why": "Still an Aura, so the Aura count holds; draws on damage.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-archon-of-the-wild-rose-heliod-sun-crowned",
+   "deck": "98",
+   "add": "Heliod, Sun-Crowned",
+   "cut": "Archon of the Wild Rose",
+   "verdict": "standin",
+   "why": "A different job: every life gained puts a counter on a Hero.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-barrensteppe-siege-inexorable-tide",
+   "deck": "98",
+   "add": "Inexorable Tide",
+   "cut": "Barrensteppe Siege",
+   "verdict": "upgrade",
+   "why": "Proliferate on every spell grows every Hero.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-teferi-hero-of-dominaria-kaya-the-inexorable",
+   "deck": "98",
+   "add": "Kaya the Inexorable",
+   "cut": "Teferi, Hero of Dominaria",
+   "verdict": "standin",
+   "why": "Exile any nonland permanent. Loses Teferi's draw and untap.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-kaya-geist-hunter-elspeth-resplendent",
+   "deck": "98",
+   "add": "Elspeth Resplendent",
+   "cut": "Kaya, Geist Hunter",
+   "verdict": "upgrade",
+   "why": "Counters plus a keyword on a Hero each turn, and a free permanent.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-invasion-of-new-phyrexia-teferi-akosa-of-finale-of-revelation",
+   "deck": "98",
+   "add": "Finale of Revelation",
+   "cut": "Invasion of New Phyrexia // Teferi Akosa of Zhalfir",
+   "verdict": "sidegrade",
+   "why": "An X noncreature spell: an X-counter Hero and X cards.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-sphinx-s-revelation-mind-spring",
+   "deck": "98",
+   "add": "Mind Spring",
+   "cut": "Sphinx's Revelation",
+   "verdict": "standin",
+   "why": "Draw X. Loses instant speed and the life.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-ojutai-s-command-reject-imperfection",
+   "deck": "98",
+   "add": "Reject Imperfection",
+   "cut": "Ojutai's Command",
+   "verdict": "sidegrade",
+   "why": "A counterspell that proliferates.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-sorin-of-house-markov-sorin-ravenous-neo-enduring-tenacity",
+   "deck": "98",
+   "add": "Enduring Tenacity",
+   "cut": "Sorin of House Markov // Sorin, Ravenous Neonate",
+   "verdict": "upgrade",
+   "why": "Lifegain becomes a drain.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-doctor-strange-surgeon-the-wind-crystal",
+   "deck": "98",
+   "add": "The Wind Crystal",
+   "cut": "Doctor Strange, Surgeon",
+   "verdict": "upgrade",
+   "why": "Doubles lifegain and discounts white spells.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-rodolf-duskbringer-exemplar-of-light",
+   "deck": "98",
+   "add": "Exemplar of Light",
+   "cut": "Rodolf Duskbringer",
+   "verdict": "sidegrade",
+   "why": "A flier that grows on lifegain and draws. Loses the reanimation.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-drana-and-linvala-archangel-of-thune",
+   "deck": "98",
+   "add": "Archangel of Thune",
+   "cut": "Drana and Linvala",
+   "verdict": "upgrade",
+   "why": "Flying lifelink; every lifegain grows the team.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-scriv-the-obligator-dawn-of-hope",
+   "deck": "98",
+   "add": "Dawn of Hope",
+   "cut": "Scriv, the Obligator",
+   "verdict": "standin",
+   "why": "A card per lifegain and lifelink tokens. Loses the Contract Auras.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-eriette-the-beguiler-imprisoned-in-the-moon",
+   "deck": "98",
+   "add": "Imprisoned in the Moon",
+   "cut": "Eriette, the Beguiler",
+   "verdict": "standin",
+   "why": "Answers their permanent with an owned Aura instead of stealing it.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-the-circle-of-loyalty-bard-s-company",
+   "deck": "98",
+   "add": "Bard's Company",
+   "cut": "The Circle of Loyalty",
+   "verdict": "standin",
+   "why": "A team anthem. Loses the Knight per legendary spell.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-staff-of-compleation-karn-s-bastion",
+   "deck": "98",
+   "add": "Karn's Bastion",
+   "cut": "Staff of Compleation",
+   "verdict": "standin",
+   "why": "Proliferate from a land slot.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "98-y-shtola-night-s-blessed-enduring-tenacity",
+   "deck": "98",
+   "add": "Enduring Tenacity",
+   "cut": "Y'shtola, Night's Blessed",
+   "verdict": "standin",
+   "why": "Stand-in, if not used for Sorin: drains on lifegain.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-hardened-scales-branching-evolution",
+   "deck": "89",
+   "add": "Branching Evolution",
+   "cut": "Hardened Scales",
+   "verdict": "upgrade",
+   "why": "Doubles +1/+1 counters instead of +1.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-hardened-scales-kami-of-whispered-hopes",
+   "deck": "89",
+   "add": "Kami of Whispered Hopes",
+   "cut": "Hardened Scales",
+   "verdict": "sidegrade",
+   "why": "Alternate: the same +1, and it taps for mana.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-fanatic-of-rhonas-kami-of-whispered-hopes",
+   "deck": "89",
+   "add": "Kami of Whispered Hopes",
+   "cut": "Fanatic of Rhonas",
+   "verdict": "upgrade",
+   "why": "Taps for mana equal to its power, and adds a counter to every counter placement.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-dryad-of-the-ilysian-grove-captain-kathryn-janeway",
+   "deck": "89",
+   "add": "Captain Kathryn Janeway",
+   "cut": "Dryad of the Ilysian Grove",
+   "verdict": "sidegrade",
+   "why": "An extra land drop on a body. Loses the every-basic-type fixing.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-kodama-of-the-west-tree-loot-exuberant-explorer",
+   "deck": "89",
+   "add": "Loot, Exuberant Explorer",
+   "cut": "Kodama of the West Tree",
+   "verdict": "standin",
+   "why": "An extra land drop and a creature dig.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-grist-voracious-larva-grist-the-plague-s-undergrowth-recon",
+   "deck": "89",
+   "add": "Undergrowth Recon",
+   "cut": "Grist, Voracious Larva // Grist, the Plague Swarm",
+   "verdict": "upgrade",
+   "why": "A land from the graveyard every upkeep, which Szarel turns into a sacrifice loop.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-kura-the-boundless-sky-world-shaper",
+   "deck": "89",
+   "add": "World Shaper",
+   "cut": "Kura, the Boundless Sky",
+   "verdict": "sidegrade",
+   "why": "Returns ALL land cards from the graveyard when it dies.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-hornet-queen-rampaging-baloths",
+   "deck": "89",
+   "add": "Rampaging Baloths",
+   "cut": "Hornet Queen",
+   "verdict": "standin",
+   "why": "A 4/4 on every land drop, and the deck replays lands every turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-tyrranax-rex-etali-primal-conqueror-etali-primal-sick",
+   "deck": "89",
+   "add": "Etali, Primal Conqueror // Etali, Primal Sickness",
+   "cut": "Tyrranax Rex",
+   "verdict": "standin",
+   "why": "A 7-drop that casts their cards. Loses toxic 4 and ward.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-rhonas-the-indomitable-lumra-bellow-of-the-woods",
+   "deck": "89",
+   "add": "Lumra, Bellow of the Woods",
+   "cut": "Rhonas the Indomitable",
+   "verdict": "standin",
+   "why": "A huge body that grows with lands. Loses indestructible deathtouch.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-daemogoth-titan-summon-titan",
+   "deck": "89",
+   "add": "Summon: Titan",
+   "cut": "Daemogoth Titan",
+   "verdict": "sidegrade",
+   "why": "A big body that also mills and returns lands.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-polukranos-unchained-vivien-arkbow-ranger",
+   "deck": "89",
+   "add": "Vivien, Arkbow Ranger",
+   "cut": "Polukranos, Unchained",
+   "verdict": "sidegrade",
+   "why": "Counters, trample and a bite every other turn.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-garruk-relentless-garruk-the-veil-cursed-garruk-cursed-huntsman",
+   "deck": "89",
+   "add": "Garruk, Cursed Huntsman",
+   "cut": "Garruk Relentless // Garruk, the Veil-Cursed",
+   "verdict": "upgrade",
+   "why": "Two Wolves a turn, removal plus a card.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-lukka-bound-to-ruin-wrenn-and-seven",
+   "deck": "89",
+   "add": "Wrenn and Seven",
+   "cut": "Lukka, Bound to Ruin",
+   "verdict": "upgrade",
+   "why": "Lands to hand, ramp, a huge Treefolk.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-nissa-of-shadowed-boughs-vivien-reid",
+   "deck": "89",
+   "add": "Vivien Reid",
+   "cut": "Nissa of Shadowed Boughs",
+   "verdict": "standin",
+   "why": "Card selection and removal. Loses the land animation and reanimation.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-tyvar-jubilant-brawler-professor-dellian-fel",
+   "deck": "89",
+   "add": "Professor Dellian Fel",
+   "cut": "Tyvar, Jubilant Brawler",
+   "verdict": "standin",
+   "why": "Draw, life, removal. Loses haste-activation and recursion.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-dina-essence-brewer-the-sackville-bagginses",
+   "deck": "89",
+   "add": "The Sackville-Bagginses",
+   "cut": "Dina, Essence Brewer",
+   "verdict": "sidegrade",
+   "why": "Sacrifice for a card and a Treasure.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-hidetsugu-devouring-chaos-yawgmoth-thran-physician",
+   "deck": "89",
+   "add": "Yawgmoth, Thran Physician",
+   "cut": "Hidetsugu, Devouring Chaos",
+   "verdict": "upgrade",
+   "why": "A sacrifice outlet that draws and kills, and proliferates poison.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-bontu-the-glorified-juri-master-of-the-revue",
+   "deck": "89",
+   "add": "Juri, Master of the Revue",
+   "cut": "Bontu the Glorified",
+   "verdict": "standin",
+   "why": "Grows per sacrifice and burns when it dies.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-hearthhull-the-worldseed-redrock-sentinel",
+   "deck": "89",
+   "add": "Redrock Sentinel",
+   "cut": "Hearthhull, the Worldseed",
+   "verdict": "sidegrade",
+   "why": "Sacrifice a land: a card and a Treasure.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-genesis-device-cycle-of-renewal",
+   "deck": "89",
+   "add": "Cycle of Renewal",
+   "cut": "Genesis Device",
+   "verdict": "sidegrade",
+   "why": "Sacrifice a land for two basics — a Szarel trigger.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-vraska-joins-up-venom-connoisseur",
+   "deck": "89",
+   "add": "Venom Connoisseur",
+   "cut": "Vraska Joins Up",
+   "verdict": "standin",
+   "why": "Deathtouch on entries. Loses the team counters and the draw. Weak.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-azusa-lost-but-seeking-icetill-explorer",
+   "deck": "89",
+   "add": "Icetill Explorer",
+   "cut": "Azusa, Lost but Seeking",
+   "verdict": "standin",
+   "why": "Stand-in: one extra land drop plus lands from the graveyard.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "89-vorinclex-monstrous-raider-doubling-season",
+   "deck": "89",
+   "add": "Doubling Season",
+   "cut": "Vorinclex, Monstrous Raider",
+   "verdict": "standin",
+   "why": "Stand-in: doubles counters, but not poison.",
+   "cut_note": "",
+   "confirmed": true
+  },
+  {
+   "id": "92-smellerbee-samut",
+   "deck": "92",
+   "add": "Samut, Hazoret's Champion",
+   "cut": "Smellerbee, Rebel Fighter",
+   "verdict": "standin",
+   "why": "Stand-in only: team haste, but not the attack-scaled hand refill.",
+   "cut_note": "",
+   "confirmed": true
+  }
+ ]
+}

@@ -1,0 +1,4069 @@
+{
+ "schema": 1,
+ "title": "Dark Leo & Shredder pile",
+ "decks": [
+  {
+   "key": "D",
+   "id": "104",
+   "label": "Dark"
+  }
+ ],
+ "piles": [
+  {
+   "key": "D",
+   "label": "Dark Leo & Shredder (deck 104)",
+   "deck": "D",
+   "intro": "Every pile card graded for the Orzhov Ninja deck. Cards in the deck show as in; the rest are the bench."
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": "Good cards for a different deck: the lifegain and aristocrats clusters, and cards that fight the Ninja count."
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ayli, Eternal Pilgrim",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Cleric of Life's Bond",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Despark",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Feast of the Victorious Dead",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elas il-Kor, Sadistic Pilgrim",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Hardened Tactician",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Karai's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Karai, Future of the Foot",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kaya, Geist Hunter",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Lurrus of the Dream-Den",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Mortify",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Oath of Kaya",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ruthless Lawbringer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "The Kingpin of Crime",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Baron Bertram Graywater",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elenda, the Dusk Rose",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elenda, Saint of Dusk",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kaya the Inexorable",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Starseer Mentor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Spirit-Sister's Call",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vona, Butcher of Magan",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Vona de Iedo, the Antifex",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Mister Negative",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Moment of Reckoning",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Primevals' Glorious Rebirth",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ashen Rider",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Turncoat Kunoichi",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Leonardo, Cutting Edge",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Quintessential Katana",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Lita, Little Orphan Amphibian",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Leonardo, Sewer Samurai",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "The Last Ronin's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Dokuchi Silencer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Splinter, Hamato Yoshi",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Splinter, the Mentor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Super Shredder",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Undead Hand Ninja",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Swarm Saboteur",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Biting-Palm Ninja",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ninja's Blades",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ninja Teen",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Nashi, Moon Sage's Scion",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shark Shredder, Killer Clone",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shredder, Unrelenting",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shredder, Shadow Master",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ink-Eyes, Servant of Oni",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Fracture",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Fleshtaker",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Frodo, Adventurous Hobbit",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Golden Sidekick",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Head of the Class",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Humiliate",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Killian, Ink Duelist",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Syr Vondam, Sunstar Exemplar",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Athreos, God of Passage",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Black Widow, Double Agent",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Cloak and Dagger, Entwined",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Indulging Patrician",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kambal, Profiteering Mayor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kambal, Consul of Allocation",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tymna the Weaver",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Basilica Bell-Haunt",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kaya's Wrath",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Render Speechless",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sorin, Solemn Visitor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Silverquill, the Disputant",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Sorin, Vengeful Bloodlord",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Squall, SeeD Mercenary",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Teysa Karlov",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Vito, Fanatic of Aclazotz",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Wispdrinker Vampire",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Arvad the Cursed",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Closing Statement",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Syr Vondam, the Lucent",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Athreos, Shroud-Veiled",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Niv-Mizzet, Ghost Counsel",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Blot Out the Sky",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Bleachbone Verge",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Cardassia Prime",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Foot Headquarters",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Fisk Tower",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Godless Shrine",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Great Hall of Starnheim",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Meticulous Commons",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shattered Sanctum",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Temple of Silence",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "White Widow, Yelena Belova",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Black Widow, Deadly Hunter",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Vincent Valentine",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Massacre Girl, Most Wanted",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "The Cloning of Shredder",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Sally Pride, Lioness Leader",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ajani's Welcome",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Speaker of the Heavens",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Belladonna Took",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Donald Blake, Guise of Thor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Grateful Apparition",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Griffin Aerie",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Leader's Talent",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Selfless Samurai",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sheltered by Ghosts",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Black Panther, Claws of Bast",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Dr. Beverly Crusher",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Envoy of the Ancestors",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Enduring Innocence",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ethereal Escort",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Falcon, Joaquin Torres",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Gideon Blackblade",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Light of Promise",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Metropolis Reformer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "MJ, Rising Star",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Practiced Offense",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Teferi's Protection",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Way of the Mentor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Exemplar of Light",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Rosa, Resolute White Mage",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Sigiled Contender",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Wind Crystal",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Teyo, Aegis Adept",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Wandering Emperor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Archangel of Thune",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Bond of Discipline",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Captain America, Steve Rogers",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Boon-Bringer Valkyrie",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Strange, Surgeon",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Exalted Sunborn",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Moogles' Valor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shepherd of Heroes",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tale of Tinúviel",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Inspiring Commander",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Loxodon Lifechanter",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Righteous Fury",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Federation Outpost",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Toxin Analysis",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Tymaret, Chosen from Death",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Black Market Connections",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Madame Null, Power Broker",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "My Precious",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Nadier's Nightblade",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Origin of Black Widow",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Sanctum Lurker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Yathan Tombguard",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Withering Curse",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Barbed Servitor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Doctor Doom, Unrivaled",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Enduring Tenacity",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Eradicator Valkyrie",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Erebos, Bleak-Hearted",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Daxos, Blessed by the Sun",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Surgical Precision",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Bill the Pony",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ghalta the Immovable",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Scourge of the Skyclaves",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vincent's Limit Break",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Finale of Eternity",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Zero Point Ballad",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Veko, Death's Doorkeeper",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Kingpin, Wilson Fisk",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Tataru Taru",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Smothering Tithe",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Deadly Dispute",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Grim Hireling",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Pitiless Plunderer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Rev, Tithe Extractor",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Ruthless Technomancer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Blood Money",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Revel in Riches",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Betrayal's Sting",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Lotho, Corrupt Shirriff",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vraska, Scheming Gorgon",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Vito, Thorn of the Dusk Rose",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Replicator",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shambling Vent",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Restless Fortress",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Bloodthirsty Conqueror",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Delney, Streetwise Lookout",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elspeth, Storm Slayer",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elektra, Daughter of the Hand",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Shredder's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Elesh Norn, Mother of Machines",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Oroku Saki, Shredder Rising",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Exquisite Blood",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Splinter's Technique",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Mondrak, Glory Dominus",
+   "pile": "D",
+   "src": "added"
+  },
+  {
+   "name": "Marauding Blight-Priest",
+   "pile": "D",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Ayli, Eternal Pilgrim": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Deathtouch 2-drop; the exile needs 35 life, which this plan reaches. The sac outlet eats Ninjas.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Cleric of Life's Bond": {
+   "group": "Off-plan",
+   "text": "Cleric lifegain; few Clerics.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Despark": {
+   "group": "In: Interaction",
+   "text": "Instant exile of anything MV 4+.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Feast of the Victorious Dead": {
+   "group": "Bench: lifegain/counters",
+   "text": "Any creature dying (deathtouch blocks count) gains life and spreads counters at end step.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Elas il-Kor, Sadistic Pilgrim": {
+   "group": "In: Lifegain and counters",
+   "text": "2-drop deathtouch; every sneak entry and token gains 1; deaths drain.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Hardened Tactician": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Sac a token: draw. Same F1 cost as Deadly Dispute.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Karai's Technique": {
+   "group": "In: Interaction",
+   "text": "Sneak {W}{B}: ±3/±3, either or both, and it returns an unblocked attacker.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Karai, Future of the Foot": {
+   "group": "In: Ninjas",
+   "text": "Ninja; combat damage returns a creature card — to the battlefield when sneaked.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Kaya, Geist Hunter": {
+   "group": "Bench: lifegain/counters",
+   "text": "+1 team deathtouch and a counter on a token; −2 doubles the commander's Ninja token. 3 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Lurrus of the Dream-Den": {
+   "group": "Cut in round 4",
+   "text": "Recasts 2-drops from the graveyard, which sneak rarely fills; Replicator took the slot.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Mortify": {
+   "group": "Cut in round 6",
+   "text": "Shredder's Technique does the same for {B} on a sneak.",
+   "graded_at": {
+    "104": "7ac7798e1edd"
+   }
+  },
+  "Oath of Kaya": {
+   "group": "Cut in round 4",
+   "text": "One-shot 3 damage + 3 life; the planeswalker clause rarely fires.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "group": "In: Interaction",
+   "text": "Enters → sacrifice a creature, destroy any nonland permanent; sneak returns re-buy it.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "The Kingpin of Crime": {
+   "group": "Bench: lifegain/counters",
+   "text": "Extort makes every spell a lifegain trigger; the 1/5 body does not attack. Deck 20's engine.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Tokens entering make a lifelink 1/1 once a turn; \"{1}{B}, Sacrifice another creature or artifact: Draw a card\" turns Treasure into cards. Replaced Enduring Innocence.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Elenda, the Dusk Rose": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Counter whenever ANY creature dies (Teysa doubles; deathtouch makes it common); dies into lifelink tokens equal to her power (Sunborn doubles).",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Elenda, Saint of Dusk": {
+   "group": "Bench: lifegain/counters",
+   "text": "4-mana lifelink; menace above 25 life (an evasive attacker the plan turns on), +5/+5 at 35.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Kaya the Inexorable": {
+   "group": "In: Interaction",
+   "text": "−3 exiles any nonland permanent; +1 protects a key creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Starseer Mentor": {
+   "group": "In: Lifegain and counters",
+   "text": "Flier; end-step drain 3 unless they sacrifice or discard.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Spirit-Sister's Call": {
+   "group": "Off-plan",
+   "text": "Sacrifice a permanent to return one; slow.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vona, Butcher of Magan": {
+   "group": "Bench: lifegain/counters",
+   "text": "Lifelink 4/4; \"Pay 7 life: Destroy target nonland permanent\" each turn — the lifegain plan pays for repeatable removal. First in if interaction (14) needs a card.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Vona de Iedo, the Antifex": {
+   "group": "In: Interaction",
+   "text": "Enters → destroy a nonland, nontoken permanent; menace; sneak re-buys it.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Mister Negative": {
+   "group": "Off-plan",
+   "text": "Swapping life totals is backwards when you are ahead on life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Moment of Reckoning": {
+   "group": "Bench: lifegain/counters",
+   "text": "Four destroy/return modes at 7 mana. Strong, expensive.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Primevals' Glorious Rebirth": {
+   "group": "Bench: lifegain/counters",
+   "text": "Returns every legend from the graveyard; many legends here. 7 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ashen Rider": {
+   "group": "Off-plan",
+   "text": "8 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Turncoat Kunoichi": {
+   "group": "In: Ninjas",
+   "text": "Ninja; sneak 4 exiles a creature for good.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Leonardo, Cutting Edge": {
+   "group": "In: Ninjas",
+   "text": "Ninja with Sneak {W}: the cheapest sneak in the pile; lifelink, grows on lifegain.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Quintessential Katana": {
+   "group": "Cut in round 4",
+   "text": "Counters, Ninja's Blades, My Precious and Sheltered by Ghosts already modify creatures for Envoy (owner).",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Lita, Little Orphan Amphibian": {
+   "group": "In: Ninjas",
+   "text": "A 2-mana Ninja that grows, makes Food or scries on every creature entering.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Leonardo, Sewer Samurai": {
+   "group": "In: Ninjas",
+   "text": "Ninja; double strike (two combat-damage triggers, F3); recasts power-1 creatures from the yard on your turn — Splinter, Hamato Yoshi, Super Shredder, Leonardo, Cutting Edge.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "The Last Ronin's Technique": {
+   "group": "In: Ninja makers",
+   "text": "Sneak {1}{W}, instant: three Ninja Turtle Spirit tokens tapped and ATTACKING — three Ninjas at once.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Dokuchi Silencer": {
+   "group": "Cut in round 2",
+   "text": "Its removal needs a hit AND a creature discard — too narrow (owner).",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Splinter, Hamato Yoshi": {
+   "group": "In: Ninjas",
+   "text": "Ninja lord (+1/+1), menace, Sneak {B}.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Splinter, the Mentor": {
+   "group": "In: Ninjas",
+   "text": "Menace Ninja 2-drop; a Mutagen token whenever a nontoken creature leaves — every sneak return counts.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Super Shredder": {
+   "group": "In: Ninjas",
+   "text": "Menace Ninja that grows whenever ANY permanent leaves (sneak returns, deaths, removal).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Undead Hand Ninja": {
+   "group": "In: Ninjas",
+   "text": "Deathtouch Ninja 2-drop; drains whenever creature cards leave your yard (Karai, Lurrus, Leonardo).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Swarm Saboteur": {
+   "group": "In: Ninjas",
+   "text": "Ninjutsu {B}, deathtouch; a hit conjures Virus Beetle (more hand attack).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Biting-Palm Ninja": {
+   "group": "Cut in round 2",
+   "text": "3-mana ninjutsu for one hand exile on a hit; owner's cut.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Ninja's Blades": {
+   "group": "In: Ninja makers",
+   "text": "Job select makes a Hero token and makes it a NINJA; loot plus life loss per hit.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ninja Teen": {
+   "group": "In: Evasive enablers",
+   "text": "Drain whenever a creature leaves (every sneak return); level 2 gives the team MENACE; level 3 sneaks creatures from the yard.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Nashi, Moon Sage's Scion": {
+   "group": "In: Ninjas",
+   "text": "Ninjutsu {3}{B}; impulse paid with life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shark Shredder, Killer Clone": {
+   "group": "In: Ninjas",
+   "text": "Ninja; first strike; a hit steals a creature from their yard, attacking.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shredder, Unrelenting": {
+   "group": "In: Ninjas",
+   "text": "6/4 deathtouch Ninja for Sneak {3}{B}; lends deathtouch.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shredder, Shadow Master": {
+   "group": "In: Ninjas",
+   "text": "Ninja; its OWN hit takes half their life — a second half-life source that needs no Ninja count (the copy clause is blank in 1v1).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ink-Eyes, Servant of Oni": {
+   "group": "Cut in round 4",
+   "text": "6-mana Ninja (ninjutsu 5); Vito, Thorn took the slot and Replicator makes Ninja tokens.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Fracture": {
+   "group": "Cut in round 2",
+   "text": "Noncreature-only removal; interaction stayed at 15.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Fleshtaker": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Sacrifice payoff; F1 cost.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Frodo, Adventurous Hobbit": {
+   "group": "Off-plan",
+   "text": "Needs 3 life gained BEFORE it attacks.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Golden Sidekick": {
+   "group": "In: Evasive enablers",
+   "text": "2-mana flying lifelink attacker.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Head of the Class": {
+   "group": "Off-plan",
+   "text": "Discount for spells that target creatures; the deck runs about four such spells.",
+   "graded_at": {
+    "104": "e14da171a91b"
+   }
+  },
+  "Humiliate": {
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana hand attack plus a counter.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Killian, Ink Duelist": {
+   "group": "Cut in round 7",
+   "text": "Its targeted-spell discount had about four spells left; Delney took the slot and its evasion role.",
+   "graded_at": {
+    "104": "e14da171a91b"
+   }
+  },
+  "Syr Vondam, Sunstar Exemplar": {
+   "group": "In: Evasive enablers",
+   "text": "Menace vigilance 2-drop; grows on deaths and exiles (not on sneak returns).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Athreos, God of Passage": {
+   "group": "Bench: lifegain/counters",
+   "text": "Dead creatures return to hand unless they pay 3 life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Black Widow, Double Agent": {
+   "group": "In: Evasive enablers",
+   "text": "A lone attacker gets first strike and menace — the one-attacker sneak setup; deathtouch.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Cloak and Dagger, Entwined": {
+   "group": "In: Interaction",
+   "text": "Deathtouch lifelink; enters → exile a card from hand or a creature; sneak returns re-buy it.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Indulging Patrician": {
+   "group": "In: Lifegain and counters",
+   "text": "3-mana flying lifelink (a sneak enabler); 3 life in a turn drains 3.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Kambal, Profiteering Mayor": {
+   "group": "Bench: lifegain/counters",
+   "text": "Your tokens entering drain 1; copies their tokens. 3 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Kambal, Consul of Allocation": {
+   "group": "Off-plan",
+   "text": "Drains only on their noncreature spells.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Tymna the Weaver": {
+   "group": "Cut in round 2",
+   "text": "Card advantage capped at one a turn in 1v1 (owner); Exemplar and Yathan replace it.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Basilica Bell-Haunt": {
+   "group": "Bench: lifegain/counters",
+   "text": "WWBB 3/4: they discard, you gain 3.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Kaya's Wrath": {
+   "group": "Off-plan",
+   "text": "Destroys your own board.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Render Speechless": {
+   "group": "Off-plan",
+   "text": "4 mana: discard plus two counters.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Sorin, Solemn Visitor": {
+   "group": "Bench: lifegain/counters",
+   "text": "+1: team +1/+0 and lifelink until your next turn; −2 flying token. Close to Vengeful Bloodlord; first in if a 4-drop opens.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Silverquill, the Disputant": {
+   "group": "Bench: lifegain/counters",
+   "text": "4-mana 4/4 flier; casualty needs instants and sorceries.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Sorin, Vengeful Bloodlord": {
+   "group": "In: Lifegain and counters",
+   "text": "\"During your turn, creatures … you control have lifelink\": every attacking Ninja becomes a lifegain trigger. The bridge card; −X reanimates.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "A lone attacker gets double strike (two hits, F3); a hit returns a ≤3 MV permanent.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Teysa Karlov": {
+   "group": "In: Lifegain and counters",
+   "text": "\"Creature tokens you control have vigilance and lifelink\": Ninja tokens, Turtles and Sunborn's doubled tokens gain life.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Vito, Fanatic of Aclazotz": {
+   "group": "Bench: lifegain/counters",
+   "text": "4/4 flier; sacrificing Treasure gains 2 / drains 2 / makes a 4/3 flier each turn. First in if a slot opens (costs Barbed Servitor's draw and protection if forced).",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Wispdrinker Vampire": {
+   "group": "Cut in round 2",
+   "text": "Its drain on small creatures entering is Elas's job at half the cost.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Arvad the Cursed": {
+   "group": "Cut in round 2",
+   "text": "5-mana legend anthem; Teysa took the slot.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Closing Statement": {
+   "group": "Cut in round 6",
+   "text": "5-mana removal; Bloodthirsty Conqueror took the slot (interaction 13, one above the A line).",
+   "graded_at": {
+    "104": "7ac7798e1edd"
+   }
+  },
+  "Syr Vondam, the Lucent": {
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana deathtouch lifelink; enters/attacks gives the team +1/+0 and deathtouch, so non-Ninjas trigger the Widows too.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "group": "Bench: lifegain/counters",
+   "text": "Coin counters return dying creatures. 6 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Niv-Mizzet, Ghost Counsel": {
+   "group": "In: Lifegain and counters",
+   "text": "Pay the life you gain to draw that many. WWBB: 67% on turn 5, a late card.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Blot Out the Sky": {
+   "group": "Cut in round 2",
+   "text": "X Inklings; its wipe needs X ≥ 6.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Bleachbone Verge": {
+   "group": "In: Lands",
+   "text": "Untapped dual (gated W).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Cardassia Prime": {
+   "group": "In: Lands",
+   "text": "Tapland, 1 life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Foot Headquarters": {
+   "group": "In: Lands",
+   "text": "Tapland, 1 life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Fisk Tower": {
+   "group": "In: Lands",
+   "text": "Tapland, 1 life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Godless Shrine": {
+   "group": "In: Lands",
+   "text": "Untapped dual.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Great Hall of Starnheim": {
+   "group": "Off-plan",
+   "text": "Tapped land; sacrifices a creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Meticulous Commons": {
+   "group": "In: Lands",
+   "text": "Untapped only with a planeswalker out.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shattered Sanctum": {
+   "group": "In: Lands",
+   "text": "Untapped from turn 3.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Temple of Silence": {
+   "group": "In: Lands",
+   "text": "Tapped, scry 1.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "White Widow, Yelena Belova": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "Every deathtouch creature that connects grows — and attacking Ninjas all have deathtouch.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Black Widow, Deadly Hunter": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "A card per deathtouch creature that connects: under the commander, every Ninja hit draws.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Massacre Girl, Most Wanted": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Death drain; 5 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "The Cloning of Shredder": {
+   "group": "Cut in round 4",
+   "text": "6 mana and needs a creature card in the graveyard, which sneak rarely leaves.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Sally Pride, Lioness Leader": {
+   "group": "Bench: lifegain/counters",
+   "text": "Enters with a 2/2 per nontoken creature; attacks put a counter on each creature — mass counters for Envoy and Yathan. 5 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ajani's Welcome": {
+   "group": "Bench: lifegain/counters",
+   "text": "1 mana: every creature entering gains 1. Elas does this on a body.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Speaker of the Heavens": {
+   "group": "Bench: lifegain/counters",
+   "text": "1-drop lifelink; makes 4/4 flying Angels once you are 7 above starting life — reachable here.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Belladonna Took": {
+   "group": "Bench: lifegain/counters",
+   "text": "Token triggers: gain 1, then draw, then counters — needs two tokens a turn.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Donald Blake, Guise of Thor": {
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana lifelink; 6-mana power-up to a flier.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Grateful Apparition": {
+   "group": "In: Evasive enablers",
+   "text": "2-mana flier; proliferate on hit.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Griffin Aerie": {
+   "group": "Bench: lifegain/counters",
+   "text": "3 life in a turn makes a 2/2 flier — easy here, but a 2-mana card that does nothing alone.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Leader's Talent": {
+   "group": "In: Lifegain and counters",
+   "text": "A counter on an attacker every attack; level 3 counters the team per spell.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Selfless Samurai": {
+   "group": "Off-plan",
+   "text": "Samurai/Warrior lone-attack lifelink; few here.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "group": "In: Interaction",
+   "text": "2-mana exile of any nonland permanent, plus lifelink and ward on your creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Black Panther, Claws of Bast": {
+   "group": "Bench: lifegain/counters",
+   "text": "Lifelink 3/3; attacks-alone counter — fits the Squall/Black Widow, Double Agent lone-attacker turns.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Dr. Beverly Crusher": {
+   "group": "In: Lifegain and counters",
+   "text": "Lifegain triggers fire twice: Archangel, Exemplar, Patrician, Leonardo, Niv-Mizzet.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Envoy of the Ancestors": {
+   "group": "In: Lifegain and counters",
+   "text": "\"Modified creatures you control have lifelink\" — permanent; Katana attaches to every entering Ninja, and counters count.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Enduring Innocence": {
+   "group": "Cut in round 4",
+   "text": "Draw capped at one a turn; Baron replaces the card flow (owner).",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Ethereal Escort": {
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana 3/3 lifelink; each enter/attack gives a card in hand perpetual lifelink — the Ninjas you sneak later.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Falcon, Joaquin Torres": {
+   "group": "Cut in round 4",
+   "text": "Plenty of cheap fliers now; Starseer took the slot.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Gideon Blackblade": {
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana 4/4 indestructible attacker on your turn; +1 grants lifelink or indestructible.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Light of Promise": {
+   "group": "Off-plan",
+   "text": "An Aura falls off when sneak returns its creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Metropolis Reformer": {
+   "group": "Bench: lifegain/counters",
+   "text": "3-mana flier, you have hexproof; gains life when damaged.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "MJ, Rising Star": {
+   "group": "Bench: lifegain/counters",
+   "text": "Crusher doubles its counters, but a 2/3 with no evasion; Archangel already counters the team.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Practiced Offense": {
+   "group": "Bench: lifegain/counters",
+   "text": "Counter on each creature + double strike or lifelink; flashback. Mass counters for Envoy/Yathan.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Teferi's Protection": {
+   "group": "Bench: lifegain/counters",
+   "text": "Protection from a sweeper; nothing else.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Way of the Mentor": {
+   "group": "Off-plan",
+   "text": "Planeswalker loyalty support.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Exemplar of Light": {
+   "group": "In: Lifegain and counters",
+   "text": "Flier that grows on lifegain and draws once a turn when it gets counters.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Rosa, Resolute White Mage": {
+   "group": "Cut in round 8",
+   "text": "Its combat counter pushed creatures past Delney's power-2 line; Elesh Norn took the slot.",
+   "graded_at": {
+    "104": "a90c4c0fa04d"
+   }
+  },
+  "Sigiled Contender": {
+   "group": "Off-plan",
+   "text": "Lifelink only with a counter; 4-mana 3/3.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "The Wind Crystal": {
+   "group": "In: Lifegain and counters",
+   "text": "White spells cost {1} less; doubles lifegain; team flying + lifelink for an alpha strike.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "group": "Off-plan",
+   "text": "Defender support; conjures a wall.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "The Wandering Emperor": {
+   "group": "In: Interaction",
+   "text": "Flash; −2 exiles a tapped creature, +1 a counter and first strike, −1 a token.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Archangel of Thune": {
+   "group": "In: Lifegain and counters",
+   "text": "Flier whose \"whenever you gain life, +1/+1 counter on each creature\" fires once per lifelink attacker; the counters switch on Envoy and Yathan.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Bond of Discipline": {
+   "group": "Cut in round 2",
+   "text": "One-shot tap-down + lifelink; Sorin gives team lifelink every turn.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Captain America, Steve Rogers": {
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana lifelink; attacks put a counter and indestructible on another creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Boon-Bringer Valkyrie": {
+   "group": "Bench: lifegain/counters",
+   "text": "5-mana flying first-strike lifelink; backup puts a counter on another creature.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Doctor Strange, Surgeon": {
+   "group": "Bench: lifegain/counters",
+   "text": "Doubles lifegain; +2/+2 team at 10 above. Wind Crystal does the doubling cheaper.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Exalted Sunborn": {
+   "group": "In: Ninja makers",
+   "text": "Token DOUBLER: two Ninjas per commander hit, six from Last Ronin's Technique; Warp {1}{W} for the big turn.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Moogles' Valor": {
+   "group": "Bench: lifegain/counters",
+   "text": "Instant: a lifelink 1/2 per creature and team indestructible — a wide lifegain burst and sweeper protection.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shepherd of Heroes": {
+   "group": "Off-plan",
+   "text": "Party lifegain; no party here.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Tale of Tinúviel": {
+   "group": "Bench: lifegain/counters",
+   "text": "Indestructible, reanimate, two lifelinks over three turns. Slow.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Inspiring Commander": {
+   "group": "Cut in round 2",
+   "text": "6 mana for draws on small creatures; Archangel took the slot.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "group": "Off-plan",
+   "text": "6-mana; the life-total reset rarely helps.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Righteous Fury": {
+   "group": "Off-plan",
+   "text": "Destroys tapped creatures — your attackers too.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Federation Outpost": {
+   "group": "In: Lands",
+   "text": "Untapped from turn 3; gains 2 (a lifegain trigger) or surveils.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Toxin Analysis": {
+   "group": "Bench: lifegain/counters",
+   "text": "1-mana deathtouch + lifelink trick and a Clue.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Tymaret, Chosen from Death": {
+   "group": "Off-plan",
+   "text": "Graveyard hate; devotion toughness.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Black Market Connections": {
+   "group": "In: Ninja makers",
+   "text": "Card, Treasure or a CHANGELING token each turn — a changeling is a Ninja.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Madame Null, Power Broker": {
+   "group": "Bench: lifegain/counters",
+   "text": "Pay life equal to power to put that many counters on each creature that enters — sneaks and tokens. Lifegain pays for it.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Nadier's Nightblade": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Token leaving drains 1.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Origin of Black Widow": {
+   "group": "Cut in round 2",
+   "text": "Edict saga; slow.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Sanctum Lurker": {
+   "group": "Off-plan",
+   "text": "Planeswalker support; few walkers.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Yathan Tombguard": {
+   "group": "In: Lifegain and counters",
+   "text": "Menace 3-drop; draws whenever a creature with a counter deals combat damage to a player — the repeatable card advantage that replaced Tymna and Doctor Doom.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Withering Curse": {
+   "group": "Off-plan",
+   "text": "Infusion makes it destroy all creatures — yours too.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Barbed Servitor": {
+   "group": "In: Evasive enablers",
+   "text": "Indestructible menace attacker that draws on a hit.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Doctor Doom, Unrivaled": {
+   "group": "Cut in round 2",
+   "text": "Taps to draw; its win needs an empty library, not this deck's plan. Niv-Mizzet took the draw slot.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Enduring Tenacity": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"Whenever you gain life, target opponent loses that much\": Crusher makes it fire twice and The Wind Crystal doubles the life first.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Eradicator Valkyrie": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "Flying lifelink 4/3; boast edict (sacrifice a token, not a Ninja card).",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Erebos, Bleak-Hearted": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Draw on deaths; devotion rarely met.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Daxos, Blessed by the Sun": {
+   "group": "Bench: lifegain/counters",
+   "text": "2-mana: gain 1 on each creature entering or dying.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Surgical Precision": {
+   "group": "Bench: lifegain/counters",
+   "text": "Kill toughness 4+, or draw and gain 2.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Bill the Pony": {
+   "group": "Off-plan",
+   "text": "Food lifegain; toughness damage.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ghalta the Immovable": {
+   "group": "Off-plan",
+   "text": "Defender plan.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Scourge of the Skyclaves": {
+   "group": "Off-plan",
+   "text": "Rewards low life totals.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vincent's Limit Break": {
+   "group": "Off-plan",
+   "text": "One-turn body swap.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Finale of Eternity": {
+   "group": "Cut in round 2",
+   "text": "X removal for small creatures; Crusher took the slot.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Zero Point Ballad": {
+   "group": "Off-plan",
+   "text": "Sweeper that hits your own creatures.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Veko, Death's Doorkeeper": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Extort makes every spell a lifegain trigger; sacrifice a non-Spirit to return an enters-trigger creature that then costs {W/B}. A returned Ninja most likely stops being a Ninja.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Kingpin, Wilson Fisk": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Menace 3/6 (an evasive body); Treasure only when you sacrifice, which this deck rarely does.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Tataru Taru": {
+   "group": "Off-plan",
+   "text": "Draw, and Treasure off their off-turn draws.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Smothering Tithe": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "About a Treasure a turn in 1v1. Ramp with no Treasure payoff.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Deadly Dispute": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Two cards for a token; the sacrificed token is a Ninja the commander counts.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Grim Hireling": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "Two Treasures per connecting combat; Treasures become removal.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Pitiless Plunderer": {
+   "group": "Open slot (for Ink-Eyes)",
+   "text": "Death trigger, so Teysa doubles it and Sunborn doubles each Treasure: 4 per death, fuel for Baron. Needs your creatures to die. Second choice.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "group": "In: Combat-damage payoffs and card flow",
+   "text": "Deathtouch on attack; every connecting combat makes a Treasure and steals a card.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Ruthless Technomancer": {
+   "group": "Open slot (for Ink-Eyes)",
+   "text": "Enters trigger (Teysa no, Sunborn doubles the Treasures); reanimates power-X creatures for X artifacts. One burst per entry. Third choice.",
+   "graded_at": {
+    "104": "6e0103a12aff"
+   }
+  },
+  "Blood Money": {
+   "group": "Off-plan",
+   "text": "Destroys your own board.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Revel in Riches": {
+   "group": "Bench: aristocrats/Treasure",
+   "text": "Treasure on their creature deaths; ten Treasures is far.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "group": "Bench: lifegain/counters",
+   "text": "0: draw and proliferate (counters); −2 turns a creature into a Treasure. 6 mana.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Lotho, Corrupt Shirriff": {
+   "group": "Off-plan",
+   "text": "Treasure on second spells; you lose life.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vraska, Scheming Gorgon": {
+   "group": "Cut in round 2",
+   "text": "6-mana walker; Vona/Wind Crystal fill the top end.",
+   "graded_at": {
+    "104": "52f6983b9635"
+   }
+  },
+  "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
+   "group": "Bench: lifegain/counters",
+   "text": "5/5 flying lifelink; creature spells get convoke; back face gives persist. Competes with Archangel at 5.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Shaile, Dean of Radiance // Embrose, Dean of Shadow": {
+   "group": "In: Evasive enablers",
+   "text": "A 2-mana FLYING attacker — an unblocked enabler for sneaks; the back half is repeatable ping removal.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vincent Valentine": {
+   "group": "Bench: lifegain/counters",
+   "text": "Grows when their creatures die; deathtouch makes that common. Trample lifelink back face.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "My Precious": {
+   "group": "In: Evasive enablers",
+   "text": "Equip → hexproof and can't be blocked: a guaranteed unblocked attacker for sneak every turn, or a protected commander. The Adventure half sacrifices a creature for two cards.",
+   "graded_at": {
+    "104": "da991b79acbc"
+   }
+  },
+  "Vito, Thorn of the Dusk Rose": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"Whenever you gain life, target opponent loses that much life\" — Enduring Tenacity at 3 mana; with both out and Crusher, one lifelink hit drains four times. {3}{B}{B}: team lifelink for a wide attack.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Replicator": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "\"{2}, {T}: Create a tapped token that's a copy of target token you control\" — copy the commander's Ninja token for the five-Ninja count (two with Sunborn), or a Treasure/lifelink token. Activate at their end step so the copy can attack.",
+   "graded_at": {
+    "104": "cafe501e0663"
+   }
+  },
+  "Shambling Vent": {
+   "group": "In: Lands",
+   "text": "W/B creature land (in for a Swamp): {1}{W}{B} makes it a 2/3 lifelink — a lifegain trigger late. Enters tapped; tempo-neutral by the 2026-11-21 land check.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Restless Fortress": {
+   "group": "Bench: lifegain/counters",
+   "text": "W/B creature land; each attack drains 2 and gains 2, which Tenacity, Vito, Thorn and Crusher multiply. Enters tapped. Flex line: −Swamp.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Bloodthirsty Conqueror": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "5/5 flying deathtouch; with Vito, Thorn or Enduring Tenacity out, any life gain loops until the opponent is dead.",
+   "graded_at": {
+    "104": "7ac7798e1edd"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "group": "In: Evasive enablers",
+   "text": "Power ≤2 creatures can't be blocked by power ≥3 and their triggers fire twice — Dark Leo is a 1/3, so two Ninja tokens and the half-life check twice. Counters past power 2 switch it off for that creature.",
+   "graded_at": {
+    "104": "e14da171a91b"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "group": "Final pass: recommended",
+   "text": "Second token doubler; +1 makes two Soldiers, 0 gives the team a counter and flying (Envoy lifelink, sneak evasion), −3 kills MV 3+. Proposed for Kaya the Inexorable.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Elektra, Daughter of the Hand": {
+   "group": "Final pass: recommended",
+   "text": "Ninja; sneak {1}{B}{B}; enters: destroy an opposing creature with power 3 or less — removal every time sneak re-buys her. Proposed for Nashi.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Shredder's Technique": {
+   "group": "In: Interaction",
+   "text": "Mortify's creature/enchantment kill for a {B} sneak (screen: strict upgrade).",
+   "graded_at": {
+    "104": "7ac7798e1edd"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "group": "In: Doublers, Treasure and sacrifice",
+   "text": "Enters triggers fire twice (every sneak re-buy: Vona de Iedo, Lawbringer, Cloak and Dagger, Elas, Turncoat Kunoichi; a stolen creature from Shark Shredder) and opponents' enters triggers stop.",
+   "graded_at": {
+    "104": "a90c4c0fa04d"
+   }
+  },
+  "Oroku Saki, Shredder Rising": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "2-mana sneak Ninja that draws on a hit; +1 Ninja if a non-Ninja leaves.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Exquisite Blood": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "A third combo piece with Vito, Thorn/Tenacity (Conqueror's text on an enchantment). 5 mana, does nothing alone.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Splinter's Technique": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "Sneak {1}{B}: tutor any card — finds either half of the Conqueror loop.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "Third token doubler on a 4/4; Sunborn and Elspeth already cover it.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  },
+  "Marauding Blight-Priest": {
+   "group": "Final pass: spice, no slot yet",
+   "text": "3-mana: each life gain drains 1 (Crusher doubles). Tenacity and Vito, Thorn do it bigger.",
+   "graded_at": {
+    "104": "4df3285531bd"
+   }
+  }
+ },
+ "snapshots": {
+  "104": {
+   "da991b79acbc": [
+    "Arvad the Cursed",
+    "Barbed Servitor",
+    "Biting-Palm Ninja",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Blot Out the Sky",
+    "Bond of Discipline",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Doctor Doom, Unrivaled",
+    "Dokuchi Silencer",
+    "Enduring Innocence",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Falcon, Joaquin Torres",
+    "Finale of Eternity",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Fracture",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Ink-Eyes, Servant of Oni",
+    "Inspiring Commander",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Lurrus of the Dream-Den",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Oath of Kaya",
+    "Origin of Black Widow",
+    "Plains",
+    "Prismatic Vista",
+    "Quintessential Katana",
+    "Rev, Tithe Extractor",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "The Cloning of Shredder",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "Turncoat Kunoichi",
+    "Tymna the Weaver",
+    "Undead Hand Ninja",
+    "Vona de Iedo, the Antifex",
+    "Vraska, Scheming Gorgon",
+    "White Widow, Yelena Belova",
+    "Wispdrinker Vampire"
+   ],
+   "52f6983b9635": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Enduring Innocence",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Falcon, Joaquin Torres",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Ink-Eyes, Servant of Oni",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Lurrus of the Dream-Den",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Oath of Kaya",
+    "Plains",
+    "Prismatic Vista",
+    "Quintessential Katana",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Cloning of Shredder",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "6e0103a12aff": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Ink-Eyes, Servant of Oni",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Lurrus of the Dream-Den",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "cafe501e0663": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "4df3285531bd": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Closing Statement",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "Mortify",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "7ac7798e1edd": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Killian, Ink Duelist",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "e14da171a91b": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Rosa, Resolute White Mage",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ],
+   "a90c4c0fa04d": [
+    "Archangel of Thune",
+    "Barbed Servitor",
+    "Baron Bertram Graywater",
+    "Black Market Connections",
+    "Black Widow, Deadly Hunter",
+    "Black Widow, Double Agent",
+    "Bleachbone Verge",
+    "Bloodthirsty Conqueror",
+    "Brightclimb Pathway // Grimclimb Pathway",
+    "Cardassia Prime",
+    "Caves of Koilos",
+    "Cloak and Dagger, Entwined",
+    "Concealed Courtyard",
+    "Dark Leo & Shredder",
+    "Delney, Streetwise Lookout",
+    "Despark",
+    "Dr. Beverly Crusher",
+    "Elas il-Kor, Sadistic Pilgrim",
+    "Elenda, the Dusk Rose",
+    "Elesh Norn, Mother of Machines",
+    "Enduring Tenacity",
+    "Envoy of the Ancestors",
+    "Eradicator Valkyrie",
+    "Exalted Sunborn",
+    "Exemplar of Light",
+    "Federation Outpost",
+    "Fisk Tower",
+    "Foot Headquarters",
+    "Godless Shrine",
+    "Golden Sidekick",
+    "Grateful Apparition",
+    "Grim Hireling",
+    "Indulging Patrician",
+    "Isolated Chapel",
+    "Karai's Technique",
+    "Karai, Future of the Foot",
+    "Kaya the Inexorable",
+    "Leader's Talent",
+    "Leonardo, Cutting Edge",
+    "Leonardo, Sewer Samurai",
+    "Lita, Little Orphan Amphibian",
+    "Meticulous Commons",
+    "My Precious",
+    "Nashi, Moon Sage's Scion",
+    "Ninja Teen",
+    "Ninja's Blades",
+    "Niv-Mizzet, Ghost Counsel",
+    "Plains",
+    "Prismatic Vista",
+    "Replicator",
+    "Rev, Tithe Extractor",
+    "Ruthless Lawbringer",
+    "Shaile, Dean of Radiance // Embrose, Dean of Shadow",
+    "Shambling Vent",
+    "Shark Shredder, Killer Clone",
+    "Shattered Sanctum",
+    "Sheltered by Ghosts",
+    "Shredder's Technique",
+    "Shredder, Shadow Master",
+    "Shredder, Unrelenting",
+    "Silent Clearing",
+    "Sorin, Vengeful Bloodlord",
+    "Splinter, Hamato Yoshi",
+    "Splinter, the Mentor",
+    "Squall, SeeD Mercenary",
+    "Starseer Mentor",
+    "Super Shredder",
+    "Swamp",
+    "Swarm Saboteur",
+    "Syr Vondam, Sunstar Exemplar",
+    "Temple of Silence",
+    "Teysa Karlov",
+    "The Last Ronin's Technique",
+    "The Wandering Emperor",
+    "The Wind Crystal",
+    "Turncoat Kunoichi",
+    "Undead Hand Ninja",
+    "Veko, Death's Doorkeeper",
+    "Vito, Thorn of the Dusk Rose",
+    "Vona de Iedo, the Antifex",
+    "White Widow, Yelena Belova",
+    "Yathan Tombguard"
+   ]
+  }
+ },
+ "verdicts": {
+  "Ayli, Eternal Pilgrim": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Cleric of Life's Bond": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Despark": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Feast of the Victorious Dead": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Elas il-Kor, Sadistic Pilgrim": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Hardened Tactician": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Karai's Technique": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Karai, Future of the Foot": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Kaya, Geist Hunter": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Lurrus of the Dream-Den": {
+   "D": {
+    "m": "◇",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Mortify": {
+   "D": {
+    "m": "◇",
+    "graded_at": "7ac7798e1edd"
+   }
+  },
+  "Oath of Kaya": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "The Kingpin of Crime": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "D": {
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Elenda, the Dusk Rose": {
+   "D": {
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Elenda, Saint of Dusk": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Kaya the Inexorable": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Starseer Mentor": {
+   "D": {
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Spirit-Sister's Call": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vona, Butcher of Magan": {
+   "D": {
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Vona de Iedo, the Antifex": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Mister Negative": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Moment of Reckoning": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Primevals' Glorious Rebirth": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ashen Rider": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Turncoat Kunoichi": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Leonardo, Cutting Edge": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Quintessential Katana": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Lita, Little Orphan Amphibian": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Leonardo, Sewer Samurai": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "The Last Ronin's Technique": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Dokuchi Silencer": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Splinter, Hamato Yoshi": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Splinter, the Mentor": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Super Shredder": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Undead Hand Ninja": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Swarm Saboteur": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Biting-Palm Ninja": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Ninja's Blades": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ninja Teen": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Nashi, Moon Sage's Scion": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shark Shredder, Killer Clone": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shredder, Unrelenting": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shredder, Shadow Master": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ink-Eyes, Servant of Oni": {
+   "D": {
+    "m": "◇",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Fracture": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Fleshtaker": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Frodo, Adventurous Hobbit": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Golden Sidekick": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Head of the Class": {
+   "D": {
+    "m": "△",
+    "graded_at": "e14da171a91b"
+   }
+  },
+  "Humiliate": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Killian, Ink Duelist": {
+   "D": {
+    "m": "◇",
+    "graded_at": "e14da171a91b"
+   }
+  },
+  "Syr Vondam, Sunstar Exemplar": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Athreos, God of Passage": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Black Widow, Double Agent": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Cloak and Dagger, Entwined": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Indulging Patrician": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Kambal, Profiteering Mayor": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Kambal, Consul of Allocation": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Tymna the Weaver": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Basilica Bell-Haunt": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Kaya's Wrath": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Render Speechless": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Sorin, Solemn Visitor": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Silverquill, the Disputant": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Sorin, Vengeful Bloodlord": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Teysa Karlov": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Vito, Fanatic of Aclazotz": {
+   "D": {
+    "m": "★★",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Wispdrinker Vampire": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Arvad the Cursed": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Closing Statement": {
+   "D": {
+    "m": "◇",
+    "graded_at": "7ac7798e1edd"
+   }
+  },
+  "Syr Vondam, the Lucent": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Athreos, Shroud-Veiled": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Niv-Mizzet, Ghost Counsel": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Blot Out the Sky": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Bleachbone Verge": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Cardassia Prime": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Foot Headquarters": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Fisk Tower": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Godless Shrine": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Great Hall of Starnheim": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Meticulous Commons": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shattered Sanctum": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Temple of Silence": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "White Widow, Yelena Belova": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Black Widow, Deadly Hunter": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Massacre Girl, Most Wanted": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "The Cloning of Shredder": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Sally Pride, Lioness Leader": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ajani's Welcome": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Speaker of the Heavens": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Belladonna Took": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Donald Blake, Guise of Thor": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Grateful Apparition": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Griffin Aerie": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Leader's Talent": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Selfless Samurai": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Sheltered by Ghosts": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Black Panther, Claws of Bast": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Dr. Beverly Crusher": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Envoy of the Ancestors": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Enduring Innocence": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Ethereal Escort": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Falcon, Joaquin Torres": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Gideon Blackblade": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Light of Promise": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Metropolis Reformer": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "MJ, Rising Star": {
+   "D": {
+    "m": "◇",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Practiced Offense": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Teferi's Protection": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Way of the Mentor": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Exemplar of Light": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Rosa, Resolute White Mage": {
+   "D": {
+    "m": "◇",
+    "graded_at": "a90c4c0fa04d"
+   }
+  },
+  "Sigiled Contender": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "The Wind Crystal": {
+   "D": {
+    "m": "★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Teyo, Aegis Adept": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "The Wandering Emperor": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Archangel of Thune": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Bond of Discipline": {
+   "D": {
+    "m": "△",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Captain America, Steve Rogers": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Boon-Bringer Valkyrie": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Doctor Strange, Surgeon": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Exalted Sunborn": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Moogles' Valor": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shepherd of Heroes": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Tale of Tinúviel": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Inspiring Commander": {
+   "D": {
+    "m": "△",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Loxodon Lifechanter": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Righteous Fury": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Federation Outpost": {
+   "D": {
+    "m": "★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Toxin Analysis": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Tymaret, Chosen from Death": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Black Market Connections": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Madame Null, Power Broker": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Nadier's Nightblade": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Origin of Black Widow": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Sanctum Lurker": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Yathan Tombguard": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Withering Curse": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Barbed Servitor": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Doctor Doom, Unrivaled": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Enduring Tenacity": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Eradicator Valkyrie": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Erebos, Bleak-Hearted": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Daxos, Blessed by the Sun": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Surgical Precision": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Bill the Pony": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ghalta the Immovable": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Scourge of the Skyclaves": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vincent's Limit Break": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Finale of Eternity": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Zero Point Ballad": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Veko, Death's Doorkeeper": {
+   "D": {
+    "m": "★★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Kingpin, Wilson Fisk": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Tataru Taru": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Smothering Tithe": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Deadly Dispute": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Grim Hireling": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Pitiless Plunderer": {
+   "D": {
+    "m": "★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Ruthless Technomancer": {
+   "D": {
+    "m": "★",
+    "graded_at": "6e0103a12aff"
+   }
+  },
+  "Blood Money": {
+   "D": {
+    "m": "✗",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Revel in Riches": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vraska, Betrayal's Sting": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Lotho, Corrupt Shirriff": {
+   "D": {
+    "m": "△",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vraska, Scheming Gorgon": {
+   "D": {
+    "m": "◇",
+    "graded_at": "52f6983b9635"
+   }
+  },
+  "Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Shaile, Dean of Radiance // Embrose, Dean of Shadow": {
+   "D": {
+    "m": "★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vincent Valentine": {
+   "D": {
+    "m": "◇",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "My Precious": {
+   "D": {
+    "m": "★★",
+    "graded_at": "da991b79acbc"
+   }
+  },
+  "Vito, Thorn of the Dusk Rose": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Replicator": {
+   "D": {
+    "m": "★★",
+    "graded_at": "cafe501e0663"
+   }
+  },
+  "Shambling Vent": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Restless Fortress": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Bloodthirsty Conqueror": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "7ac7798e1edd"
+   }
+  },
+  "Delney, Streetwise Lookout": {
+   "D": {
+    "m": "★★★",
+    "graded_at": "e14da171a91b"
+   }
+  },
+  "Elspeth, Storm Slayer": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Elektra, Daughter of the Hand": {
+   "D": {
+    "m": "★★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Shredder's Technique": {
+   "D": {
+    "m": "★★",
+    "graded_at": "7ac7798e1edd"
+   }
+  },
+  "Elesh Norn, Mother of Machines": {
+   "D": {
+    "m": "★★",
+    "graded_at": "a90c4c0fa04d"
+   }
+  },
+  "Oroku Saki, Shredder Rising": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Exquisite Blood": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Splinter's Technique": {
+   "D": {
+    "m": "★",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Mondrak, Glory Dominus": {
+   "D": {
+    "m": "◇",
+    "graded_at": "4df3285531bd"
+   }
+  },
+  "Marauding Blight-Priest": {
+   "D": {
+    "m": "◇",
+    "graded_at": "4df3285531bd"
+   }
+  }
+ }
+}

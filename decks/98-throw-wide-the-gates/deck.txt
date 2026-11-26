@@ -84,7 +84,7 @@
 1 Light-Paws, Emperor's Voice (NEO) 25
 1 Kor Spiritdancer (JMP) 116
 1 Eriette of the Charmed Apple (WOE) 202
-1 Danitha Capashen, Paragon (DOM) 12
+1 Danitha Capashen, Paragon (J25) 59
 1 Entity Tracker (DSK) 53
 1 Sigil of the Empty Throne (HA2) 3
 1 Hallowed Haunting (VOW) 17
