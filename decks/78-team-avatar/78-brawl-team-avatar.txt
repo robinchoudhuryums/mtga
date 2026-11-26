@@ -119,7 +119,8 @@
 5 Plains (HOB) 189
 1 Deserted Beach (FRA) 176
 1 Three Tree City (BLB) 260
-3 Forest (HOB) 193
+2 Forest (HOB) 193
+1 Temple Garden (ECL) 268
 1 Dreamroot Cascade (SOS) 254
 2 Island (HOB) 190
 # Flex — Brawl notes (comments; not part of the 60)
