@@ -1,0 +1,2014 @@
+{
+ "schema": 1,
+ "title": "Isshin, Two Heavens — bench and fixes",
+ "decks": [
+  {
+   "key": "I",
+   "id": "93",
+   "label": "Isshin"
+  }
+ ],
+ "piles": [
+  {
+   "key": "I",
+   "label": "Isshin's pile",
+   "deck": "I",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Stadium Headliner",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Sanguine Syphoner",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Vampire Gourmand",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Kavaron Harrier",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Phelia, Exuberant Shepherd",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Seasoned Consultant",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Anguished Unmaking",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Ruthless Lawbringer",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Worthy Cost",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Eaten Alive",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Banishing Light",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Stormplain Detainment",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Solitary Cell",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Venat, Heart of Hydaelyn",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Tinybones, the Pickpocket",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Black Widow, Super Spy",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Reno and Rude",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tinybones, Bauble Burglar",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Deep-Cavern Bat",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Virus Beetle",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Corrupt Court Official",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Umbral Collar Zealot",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Sawblade Skinripper",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Raven Eagle",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Ninja of the Hand",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Shark Shredder, Killer Clone",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Black Cat, Cunning Thief",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Hama, the Bloodbender",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Cruelclaw's Heist",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Outrageous Robbery",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Dream Harvest",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Korvold and the Noble Thief",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Auntie's Sentence",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Psychic Whorl",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ozai's Cruelty",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Death in the Family",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Epic Downfall",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Feed the Swarm",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Cruel Alliance",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Phyrexian Arena",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Interdimensional Web Watch",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Terra, Herald of Hope",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Hazoret's Monument",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hazoret the Fervent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hazoret, Godseeker",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Archon's Glory",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Mabel, Valley Hero",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Panicked Bystander // Cackling Culprit",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Oona's Blackguard",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Morbid Opportunist",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Rankle, Pitiless Trickster",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Locke, Treasure Hunter",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Annex Sentry",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Silver Sable, Mercenary Leader",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Omenport Vigilante",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Wild Pack Squad",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Brimstone Roundup",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Vial Smasher, Gleeful Grenadier",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ertha Jo, Frontier Mentor",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Form a Posse",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Murderous Redcap",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Shoot the Sheriff",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Caught in the Crossfire",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Hellspur Posse Boss",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Hellspur Brute",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ahn-Crop Invader",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Chandra's Spitfire",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Longhorn Sharpshooter",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Loyal Fire Sage",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Molecular Modifier",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Nahiri's Wrath",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Repercussion",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Seismic Wave",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Skewer the Critics",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Smelt-Ward Minotaur",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Tibalt, Rakish Instigator",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Toralf's Disciple",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Vaan, Street Thief",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Stoke the Flames",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Lecturing Scornmage",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Scalestorm Summoner",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Molten Lavamancer",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Marauding Mako",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Ragavan, Nimble Pilferer",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Angrath, Minotaur Pirate",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Imperial Blademaster",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Tamiyo, Upriser Crowned",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Warren Warleader",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Fire Navy Trebuchet",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Overlord of the Mistmoors",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Overlord of the Balemurk",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Drakuseth, Maw of Flames",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Cosmic Cube",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Daredevil, Man Without Fear",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Etali, Primal Storm",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Sun Warriors",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Syr Vondam, the Lucent",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Cecil, Dark Knight",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Agrus Kos, Spirit of Justice",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Desert Were-Worm",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Seifer Almasy",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Team Avatar",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "S.H.I.E.L.D. Spy Kit",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "Leader's Talent",
+   "pile": "N",
+   "src": "added"
+  },
+  {
+   "name": "The Kingpin of Crime",
+   "pile": "N",
+   "src": "added"
+  }
+ ],
+ "reasons": {
+  "Tinybones, the Pickpocket": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 1-drop deathtouch; combat-damage recast (E1)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Black Widow, Super Spy": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): menace 2-drop; combat-damage card advantage, not doubled",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Reno and Rude": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): menace 2-drop; damage impulse needs a sacrifice",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Tinybones, Bauble Burglar": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): payoff for the hand-attack sub-theme (O2) only",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Deep-Cavern Bat": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): evasive lifelink 2-drop + hand disruption",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Virus Beetle": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ETB discard body",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Corrupt Court Official": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ETB discard body",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Umbral Collar Zealot": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): sac outlet, surveil",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Sawblade Skinripper": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): sacrifice deck card",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Raven Eagle": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): flier; ATTACK trigger doubled — two graveyard exiles, two Clues off creatures",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ninja of the Hand": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): deathtouch 3-drop, late discard",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Shark Shredder, Killer Clone": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): first strike 4/4; reanimates on damage (enters attacking — no trigger)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Black Cat, Cunning Thief": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ETB: two cards from their top nine — card advantage 2",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hama, the Bloodbender": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): U/B hybrid — blue identity (E2)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Cruelclaw's Heist": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): hand attack + steal; gift costs a card",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Outrageous Robbery": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): instant X impulse from their library",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Dream Harvest": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): U/B hybrid — blue identity (E2)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Korvold and the Noble Thief": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two Treasures then impulse 3",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Auntie's Sentence": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): cheap modal discard / -2/-2",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Psychic Whorl": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): discard two; no Rats",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ozai's Cruelty": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): discard two + 2 damage",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Death in the Family": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 2-mana instant exile, MV ≤3",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Epic Downfall": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 2-mana exile, MV ≥3 (sorcery)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Feed the Swarm": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): creature OR enchantment answer",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Cruel Alliance": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): teamwork taps your own attackers — fights the plan",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Phyrexian Arena": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): a card every upkeep",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Interdimensional Web Watch": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 2 impulse + exile-only mana",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Terra, Herald of Hope": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): Mardu 3/3; flies each combat; reanimates on damage (beginning-of-combat, not doubled)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hazoret's Monument": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): red creature reducer + loot per creature cast",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hazoret the Fervent": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): hellbent gate; discard ping",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hazoret, Godseeker": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): makes a power-2 attacker unblockable; max-speed gate",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Archon's Glory": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): pump",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Mabel, Valley Hero": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ETB counters",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Panicked Bystander // Cackling Culprit": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): death lifegain",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Oona's Blackguard": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): Rogue counters + damage discard",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Morbid Opportunist": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): draw on a death each turn",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Rankle, Pitiless Trickster": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): symmetric discard + edict ETB",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Locke, Treasure Hunter": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ATTACK trigger doubled: four mills, Treasures off lands, cast up to two spells",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Annex Sentry": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): removal on a body (W)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Silver Sable, Mercenary Leader": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): attack trigger doubles to nothing (E3)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Omenport Vigilante": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): double strike after a crime (any targeted attack trigger counts)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Wild Pack Squad": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): beginning-of-combat, not doubled",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Brimstone Roundup": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): second-spell tokens — a spells-deck card",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ertha Jo, Frontier Mentor": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): copies ACTIVATED abilities, not triggers",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Form a Posse": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): X tokens = width for per-attacker triggers (R2)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Murderous Redcap": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): ETB 2 damage, persists for another",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Shoot the Sheriff": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 2-mana instant, non-outlaws only",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Caught in the Crossfire": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): modal sweeper; the outlaw half hits your own",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hellspur Posse Boss": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): outlaws gain haste; two tokens",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Hellspur Brute": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): outlaw affinity trampler",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ahn-Crop Invader": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Chandra's Spitfire": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Longhorn Sharpshooter": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): plot for 2 damage",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Loyal Fire Sage": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): firebending doubled = {R}{R} per attack (E4)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Molecular Modifier": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): beginning-of-combat",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Nahiri's Wrath": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): discard-cost removal",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Repercussion": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): combo-ish damage redirect",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Seismic Wave": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): instant 2 to any target + 1 to their board",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Skewer the Critics": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 3 damage, spectacle {R} after an attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Smelt-Ward Minotaur": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): spells deck",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Tibalt, Rakish Instigator": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): no lifegain for them; two Devils",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Toralf's Disciple": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): haste; doubled = eight Lightning Bolts shuffled in",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Vaan, Street Thief": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): Rogue/Pirate damage impulse",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Stoke the Flames": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): instant 4 damage, convoke",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Lecturing Scornmage": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Scalestorm Summoner": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): doubled = two 3/1s per attack while you control power 4+",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Molten Lavamancer": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Marauding Mako": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ragavan, Nimble Pilferer": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 1-drop, damage Treasure + impulse; dash",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Angrath, Minotaur Pirate": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 6-mana walker; +2 pings their board",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Imperial Blademaster": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): Samurai double strike; lone attack doubled = two drafted cards (O4)",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Tamiyo, Upriser Crowned": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 6-mana flying double strike haste; monarch = a card every end step",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Warren Warleader": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two modes an attack: Rabbits or +1/+1 team",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Fire Navy Trebuchet": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two 2/1 flying attackers a combat off a 0/4 wall",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Overlord of the Mistmoors": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): four 2/1 fliers an attack; impending {2}{W}{W}",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Overlord of the Balemurk": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): mill 4 + regrow twice an attack; impending {1}{B}",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Drakuseth, Maw of Flames": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 7-drop; 4+3+3 damage twice an attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Cosmic Cube": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two free casts from the top six an attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Daredevil, Man Without Fear": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two impulse cards an attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Etali, Primal Storm": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): two free casts per player an attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Sun Warriors": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): firebending X = creature count, doubled",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Syr Vondam, the Lucent": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): team deathtouch +1/+0 on attack",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Cecil, Dark Knight": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): 1-drop; flipped side gives attackers indestructible",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Agrus Kos, Spirit of Justice": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): double strike; suspect then exile a creature",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Desert Were-Worm": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): extra combat at 12 attacking power",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Vial Smasher, Gleeful Grenadier": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): outlaw-ETB pings",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Seifer Almasy": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): attacks-alone support",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Team Avatar": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): attacks-alone support",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "S.H.I.E.L.D. Spy Kit": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix): attacks-alone support",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Leader's Talent": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "The Kingpin of Crime": {
+   "group": "Original pile",
+   "text": "Pile grade (Oct, before the sacrifice re-read and today's land fix):",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Stadium Headliner": {
+   "group": "Speed",
+   "text": "1-drop with mobilize 1; Isshin doubles it, so two attacking 1/1s every attack from turn 2. Fixes the deck's empty 1-slot and feeds the end-step sacrifice payoffs.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Sanguine Syphoner": {
+   "group": "Speed",
+   "text": "2-drop; 'whenever this creature attacks, each opponent loses 1 life and you gain 1' fires twice under Isshin. Cheap early pressure.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Vampire Gourmand": {
+   "group": "Speed / card advantage",
+   "text": "2-drop; on attack sacrifice another creature, draw a card and can't be blocked. Isshin doubles it: sacrifice two mobilize tokens that die at end step anyway, draw two. Fixes thin card draw and fires Vraan, Nightblade, Sothera, Dictate.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Kavaron Harrier": {
+   "group": "Speed",
+   "text": "1-drop; pay {2} on attack for a tapped-and-attacking 2/2 Robot. Doubled, but each copy costs {2} — mana-hungry.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Phelia, Exuberant Shepherd": {
+   "group": "Speed / interaction",
+   "text": "2-drop with flash; on attack exile another nonland permanent until end step. Doubled: can blink two of your ETB creatures, or remove two blockers for the turn.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Seasoned Consultant": {
+   "group": "Speed",
+   "text": "2-drop; +2/+0 when you attack with three or more, doubled to +4/+0. Easy to turn on with mobilize.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Anguished Unmaking": {
+   "group": "Answers",
+   "text": "{1}{W}{B} instant: exile target nonland permanent. The clean answer to a compounding engine the deck lost to.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "group": "Answers",
+   "text": "3-drop creature; ETB sacrifice another creature to destroy target nonland permanent. The sacrifice also fires the death payoffs; a body plus an answer.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Worthy Cost": {
+   "group": "Answers",
+   "text": "{B}: sacrifice a creature, exile target creature or planeswalker. In main phase 2, sacrifice a mobilize token that would die anyway — 1-mana exile removal that triggers the death payoffs.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Eaten Alive": {
+   "group": "Answers",
+   "text": "{B}: sacrifice a creature (or pay {3}{B}), exile target creature or planeswalker. Same token line as Worthy Cost, with a fallback cost.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Banishing Light": {
+   "group": "Answers",
+   "text": "{2}{W}: exile any nonland permanent an opponent controls. Answers enchantments, artifacts and planeswalkers the creature removal can't.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Stormplain Detainment": {
+   "group": "Answers",
+   "text": "{2}{W}: exile target nonland permanent an opponent controls. A second Banishing Light.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Solitary Cell": {
+   "group": "Answers",
+   "text": "{R}{W} artifact: exile a nonland permanent with MV 3 or less. Turn-2 answer to an early engine; misses big threats.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Venat, Heart of Hydaelyn": {
+   "group": "Card advantage",
+   "text": "3-drop; 'whenever you cast a legendary spell, draw a card', once each turn. Most of this deck's creatures are legendary, so it draws nearly every turn — the card-advantage fix.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  }
+ },
+ "snapshots": {
+  "93": {
+   "bb3fe7013412": [
+    "Agrus Kos, Spirit of Justice",
+    "Akul the Unrepentant",
+    "All-Fates Stalker",
+    "Alpharael, Stonechosen",
+    "Angrath, the Flame-Chained",
+    "Arabella, Abandoned Doll",
+    "At Knifepoint",
+    "Aurelia, the Warleader",
+    "Bitter Triumph",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blightstep Pathway // Searstep Pathway",
+    "Blood Crypt",
+    "Bone-Cairn Butcher",
+    "Boneyard Desecrator",
+    "Celes, Rune Knight",
+    "Clifftop Retreat",
+    "Combustion Man",
+    "Command Tower",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Packbeasts",
+    "Dark Fortress",
+    "Dictate of Erebos",
+    "Djeru and Hazoret",
+    "Dragonskull Summit",
+    "Ertha Jo, Frontier Mentor",
+    "Evolving Wilds",
+    "Far Fortune, End Boss",
+    "Fire Lord Zuko",
+    "Genji Glove",
+    "Godless Shrine",
+    "Hellrider",
+    "Hero's Downfall",
+    "Ingris Stingerquill",
+    "Inspiring Vantage",
+    "Inti, Seneschal of the Sun",
+    "Isshin, Two Heavens as One",
+    "Kingpin, Wilson Fisk",
+    "Kinscaer Sentry",
+    "Kira Nerys, Firebrand",
+    "Laughing Jasper Flint",
+    "Liliana, Dreadhorde General",
+    "Living Laser",
+    "Long Goodbye",
+    "Mardu Siegebreaker",
+    "Mardu Thunderkite",
+    "Massacre Girl, Most Wanted",
+    "Mishra, Claimed by Gix",
+    "Mog, Moogle Warrior",
+    "Mountain",
+    "Nadier's Nightblade",
+    "Nico Minoru, Runaway",
+    "Nomad Outpost",
+    "Nowhere to Run",
+    "Olivia, Opulent Outlaw",
+    "Outlaws' Merriment",
+    "Overlord of the Boilerbilges",
+    "Phyrexian Dragon Engine",
+    "Pirate Peddlers",
+    "Plains",
+    "Prismatic Vista",
+    "Professional Face-Breaker",
+    "Pyre-Sledge Arsonist",
+    "Raiyuu, Storm's Edge",
+    "Rakdos, the Muscle",
+    "Raph & Leo, Sibling Rivals",
+    "Raucous Carnival",
+    "Razortrap Gorge",
+    "Sacred Foundry",
+    "Shattered Sanctum",
+    "Smellerbee, Rebel Fighter",
+    "Sothera, the Supervoid",
+    "Spider-Man, New Champion",
+    "Starting Town",
+    "Steal the Show",
+    "Stormforged Armor",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swamp",
+    "The Infamous Cruelclaw",
+    "Voice of Victory",
+    "Vraan, Executioner Thane",
+    "War Effort",
+    "Zagras, Thief of Heartbeats",
+    "Zurgo Stormrender",
+    "Zurgo, Thunder's Decree"
+   ]
+  }
+ },
+ "verdicts": {
+  "Tinybones, the Pickpocket": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Black Widow, Super Spy": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Reno and Rude": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Tinybones, Bauble Burglar": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Deep-Cavern Bat": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Virus Beetle": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Corrupt Court Official": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Umbral Collar Zealot": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Sawblade Skinripper": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Raven Eagle": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Ninja of the Hand": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Shark Shredder, Killer Clone": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Black Cat, Cunning Thief": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Hama, the Bloodbender": {
+   "I": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Cruelclaw's Heist": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Outrageous Robbery": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Dream Harvest": {
+   "I": {
+    "m": "✗",
+    "graded_at": null
+   }
+  },
+  "Korvold and the Noble Thief": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Auntie's Sentence": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Psychic Whorl": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ozai's Cruelty": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Death in the Family": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Epic Downfall": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Feed the Swarm": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Cruel Alliance": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Phyrexian Arena": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Interdimensional Web Watch": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Terra, Herald of Hope": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Hazoret's Monument": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Hazoret the Fervent": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Hazoret, Godseeker": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Archon's Glory": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Mabel, Valley Hero": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Panicked Bystander // Cackling Culprit": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Oona's Blackguard": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Morbid Opportunist": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Rankle, Pitiless Trickster": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Locke, Treasure Hunter": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Annex Sentry": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Silver Sable, Mercenary Leader": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Omenport Vigilante": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Wild Pack Squad": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Brimstone Roundup": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ertha Jo, Frontier Mentor": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Form a Posse": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Murderous Redcap": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Shoot the Sheriff": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Caught in the Crossfire": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Hellspur Posse Boss": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Hellspur Brute": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Ahn-Crop Invader": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Chandra's Spitfire": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Longhorn Sharpshooter": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Loyal Fire Sage": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Molecular Modifier": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Nahiri's Wrath": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Repercussion": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Seismic Wave": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Skewer the Critics": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Smelt-Ward Minotaur": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Tibalt, Rakish Instigator": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Toralf's Disciple": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Vaan, Street Thief": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Stoke the Flames": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Lecturing Scornmage": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Scalestorm Summoner": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Molten Lavamancer": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Marauding Mako": {
+   "I": {
+    "m": "△",
+    "graded_at": null
+   }
+  },
+  "Ragavan, Nimble Pilferer": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Angrath, Minotaur Pirate": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Imperial Blademaster": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Tamiyo, Upriser Crowned": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Warren Warleader": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Fire Navy Trebuchet": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Overlord of the Mistmoors": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Overlord of the Balemurk": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Drakuseth, Maw of Flames": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Cosmic Cube": {
+   "I": {
+    "m": "★★",
+    "graded_at": null
+   }
+  },
+  "Daredevil, Man Without Fear": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Etali, Primal Storm": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Sun Warriors": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Syr Vondam, the Lucent": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Cecil, Dark Knight": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Agrus Kos, Spirit of Justice": {
+   "I": {
+    "m": "★",
+    "graded_at": null
+   }
+  },
+  "Desert Were-Worm": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Vial Smasher, Gleeful Grenadier": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Seifer Almasy": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Team Avatar": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "S.H.I.E.L.D. Spy Kit": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Leader's Talent": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "The Kingpin of Crime": {
+   "I": {
+    "m": "◇",
+    "graded_at": null
+   }
+  },
+  "Stadium Headliner": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Sanguine Syphoner": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Vampire Gourmand": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Kavaron Harrier": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Phelia, Exuberant Shepherd": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Seasoned Consultant": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Anguished Unmaking": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Ruthless Lawbringer": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Worthy Cost": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Eaten Alive": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Banishing Light": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Stormplain Detainment": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Solitary Cell": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Venat, Heart of Hydaelyn": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  }
+ }
+}
