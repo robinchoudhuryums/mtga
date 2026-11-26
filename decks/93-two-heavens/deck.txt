@@ -67,6 +67,10 @@
 #: notes: always-tapped land in the first three drops 42% -> 23%.
 #: notes: 2026-10-28 -1 Mountain +Dragonskull Summit (owned; Mountain was the larger basic
 #: notes: count). `consistency --tempo`: mean on-curve 49.0% -> 49.4%.
+#: notes: 2026-11-26: owner went 0-10 (phone games, unlogged): opponents' plans compounded with no answer, and
+#: notes: some games the lands came wrong for early plays. Applied five owned untapped lands for the five
+#: notes: unconditional taplands (tapped-land cost 3.1 -> 1.4 points a card). Open: refocus on the Isshin attack
+#: notes: core (cut the discard / outlaw / cast-from-exile strands for cheap attack-trigger creatures), add draw and interaction.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -169,11 +173,11 @@
 1 Dark Fortress (MSH) 264
 1 Razortrap Gorge (DSK) 267
 1 Raucous Carnival (DSK) 266
-1 Scoured Barrens (M21) 250
-1 Temple of Silence (FDN) 704
-1 Temple of Triumph (FDN) 705
-1 Temple of Malice (FDN) 701
-1 Sun-Blessed Peak (TLA) 280
+1 Sunbaked Canyon (TLE) 58
+1 Prismatic Vista (SPG) 38
+1 Inspiring Vantage (OTJ) 269
+1 Blightstep Pathway // Searstep Pathway (KHM) 252
+1 Clifftop Retreat (DOM) 239
 1 Evolving Wilds (ECL) 264
 3 Plains (FRA) 281
 7 Mountain (FRA) 287
