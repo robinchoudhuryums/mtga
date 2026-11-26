@@ -116,9 +116,11 @@
 1 Breeding Pool (EOE) 251
 1 Starting Town (FIN) 289
 1 Secluded Courtyard (FDN) 267
-6 Plains (HOB) 189
+5 Plains (HOB) 189
+1 Deserted Beach (FRA) 176
 1 Three Tree City (BLB) 260
-4 Forest (HOB) 193
+3 Forest (HOB) 193
+1 Dreamroot Cascade (SOS) 254
 2 Island (HOB) 190
 # Flex — Brawl notes (comments; not part of the 60)
 #~ note: Colour-identity swap vs the Standard list: −Jet, Freedom Fighter (R/W hybrid → R in identity, illegal under G/W/U Katara) / +Prayer of Binding.
