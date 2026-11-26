@@ -9125,3 +9125,5 @@ Cantor of the Refrain,Creature — Human Pilot,"This creature can't block.
 When you cast a spell for its warp cost, return this card from your graveyard to the battlefield under its owner's control. It perpetually gets +1/+0.",B,Human; Pilot; reanimator; graveyard; exile cast; pump,YEOE,9,1
 Mine Security,Creature — Kavu Soldier,"Trample
 When this creature enters, conjure a card named Flametongue Kavu into the top eight cards of your library at random. It perpetually gains ""You may pay {0} rather than pay this spell's mana cost.""",R,Kavu; Soldier; etb; trample; evasion; conjure,YEOE,16,2
+Glacial Floodplain,Snow Land — Plains Island,"({T}: Add {W} or {U}.)
+This land enters tapped.",W/U,Plains; Island; mana,KHM,257,1
