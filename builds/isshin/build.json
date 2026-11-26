@@ -548,6 +548,136 @@
    "name": "The Kingpin of Crime",
    "pile": "N",
    "src": "added"
+  },
+  {
+   "name": "Kor, Cause of Vengeance",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Mardu Ascendancy",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Adeline, Resplendent Cathar",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Anim Pakal, Thousandth Moon",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Preacher of the Schism",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Merry, Esquire of Rohan",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Gut, True Soul Zealot",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Worf, Defiant Commander",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Rabble Rousing",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Connecting the Dots",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Marshal of the Lost",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Audacious Thief",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Moonglove Extractor",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Lionheart Glimmer",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Path of Bravery",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Boros Charm",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Selfless Spirit",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Adept Watershaper",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "The Needs of the Many",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Duty Beyond Death",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Flare of Fortitude",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Combat Celebrant",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Shared Animosity",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "All-Out Assault",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Aggravated Assault",
+   "pile": "I",
+   "src": "added"
+  },
+  {
+   "name": "Great Train Heist",
+   "pile": "I",
+   "src": "added"
   }
  ],
  "reasons": {
@@ -1285,6 +1415,188 @@
    "graded_at": {
     "93": "bb3fe7013412"
    }
+  },
+  "Kor, Cause of Vengeance": {
+   "group": "Upgrade — draw",
+   "text": "{1}{R}{W}{B}: whenever you attack, sacrifice another creature to draw a card and give Klingons and Warriors +2/+2. Isshin doubles it: sacrifice two mobilize Warriors (they die at end step anyway) for two cards, and the surviving Warriors get +4/+4. Draw, death-payoff fuel and a pump in one card.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Mardu Ascendancy": {
+   "group": "Upgrade — width",
+   "text": "{R}{W}{B}: whenever a nontoken creature attacks, an attacking 1/1 Goblin. Per attacker AND doubled: three attackers make six tokens, each one fuel for Hellrider/Ingris on the next combat and for the end-step death payoffs.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "group": "Upgrade — width",
+   "text": "{1}{W}{W}: whenever you attack, an attacking 1/1 Human per opponent; doubled, two a combat and four with an extra combat. Her power is your creature count.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Anim Pakal, Thousandth Moon": {
+   "group": "Upgrade — width",
+   "text": "{1}{R}{W}: whenever you attack with a non-Gnome, +1/+1 counter then X attacking Gnomes (X = counters). Doubled, it gains two counters a combat and the token counts climb fast.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Preacher of the Schism": {
+   "group": "Upgrade — draw",
+   "text": "{2}{B} deathtouch: attacking the life leader makes a lifelink 1/1; attacking while you lead draws a card. Doubled — two tokens or two cards a turn from a 3-drop.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Merry, Esquire of Rohan": {
+   "group": "Upgrade — draw",
+   "text": "{R}{W} haste 2-drop: attack with Merry and another legend, draw a card — doubled, two. Most of this deck's creatures are legendary, so it draws every attack from turn 3.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Gut, True Soul Zealot": {
+   "group": "Upgrade — sacrifice",
+   "text": "{2}{R}: whenever you attack, sacrifice another creature or artifact for an attacking 4/1 menace. Doubled: turn two doomed mobilize tokens into two 4/1s, and each sacrifice fires the death payoffs.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Worf, Defiant Commander": {
+   "group": "Upgrade — draw",
+   "text": "{2}{R}{W}{B}: a 2/1 haste token on entry; whenever you attack, exile the top card (one opponent) and play it until your next turn. Doubled, two cards of impulse draw every attack.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Rabble Rousing": {
+   "group": "Upgrade — width",
+   "text": "{4}{W}: whenever you attack, a 1/1 per attacker — doubled. Ten creatures casts the hideaway card free. Big on a wide board; 5 mana.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Connecting the Dots": {
+   "group": "Upgrade — draw",
+   "text": "{1}{R}, owned: each attacker exiles a card face down, doubled. Later discard your hand and sacrifice it to take them all. A burst-refill engine for a deck that empties its hand.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Marshal of the Lost": {
+   "group": "Upgrade — pump",
+   "text": "{2}{W}{B} deathtouch: whenever you attack, a creature gets +X/+X for X attackers — doubled, +2X.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Audacious Thief": {
+   "group": "Upgrade — draw",
+   "text": "{2}{B}: draw a card and lose 1 life when it attacks — doubled, two cards. Fragile 2/2.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Moonglove Extractor": {
+   "group": "Upgrade — draw",
+   "text": "{2}{B}: same as Audacious Thief (draw on attack, doubled).",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Lionheart Glimmer": {
+   "group": "Upgrade — pump",
+   "text": "{3}{W}{W} ward 2: whenever you attack, team +1/+1 — doubled, +2/+2.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Path of Bravery": {
+   "group": "Upgrade — lifegain",
+   "text": "{2}{W}: gain life per attacker (doubled) and an anthem while at or above starting life. Lifegain also turns on the drain payoffs' side value.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Boros Charm": {
+   "group": "Protection",
+   "text": "{R}{W}, owned: permanents you control gain indestructible — the answer to the board wipe that kills a go-wide deck; or 4 to the face.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Selfless Spirit": {
+   "group": "Protection",
+   "text": "{1}{W} flier: sacrifice it to give your creatures indestructible. The sacrifice also fires the death payoffs.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Adept Watershaper": {
+   "group": "Protection",
+   "text": "{2}{W} 3/4: other TAPPED creatures you control have indestructible — every attacker survives combat and instant-speed damage while tapped.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "The Needs of the Many": {
+   "group": "Protection",
+   "text": "{1}{W}: sacrifice a creature (a token) for hexproof and indestructible on your team and hexproof on you.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Duty Beyond Death": {
+   "group": "Protection",
+   "text": "{1}{W}, owned: sacrifice a creature for team indestructible plus a +1/+1 counter each.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Flare of Fortitude": {
+   "group": "Protection",
+   "text": "Owned: free by sacrificing a nontoken white creature; your life can't change and your permanents gain hexproof and indestructible this turn.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Combat Celebrant": {
+   "group": "Spice — extra combat",
+   "text": "{2}{R} 4/1: exert as it attacks to untap your team and add a combat. The exert trigger fires as it attacks, so Isshin may double it — confirm on first play.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Shared Animosity": {
+   "group": "Spice — pump",
+   "text": "{2}{R}: per attacker +1/+0 for each other attacker sharing a type — doubled. Every mobilize token is a Warrior, as are both Zurgos, Siegebreaker and Face-Breaker.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "All-Out Assault": {
+   "group": "Spice — extra combat",
+   "text": "{2}{R}{W}{B}: team +1/+1 and deathtouch, and an extra combat if cast in your main phase.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Aggravated Assault": {
+   "group": "Spice — extra combat",
+   "text": "{2}{R}: {3}{R}{R} for untap-and-extra-combat, repeatable. Fire Lord Zuko's attack mana can pay for it.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
+  },
+  "Great Train Heist": {
+   "group": "Spice — extra combat",
+   "text": "{R}, owned: spree — untap and extra combat for {2}{R} more, with optional pump and Treasure modes.",
+   "graded_at": {
+    "93": "bb3fe7013412"
+   }
   }
  },
  "snapshots": {
@@ -2007,6 +2319,162 @@
   "Venat, Heart of Hydaelyn": {
    "I": {
     "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Kor, Cause of Vengeance": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Mardu Ascendancy": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Adeline, Resplendent Cathar": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Anim Pakal, Thousandth Moon": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Preacher of the Schism": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Merry, Esquire of Rohan": {
+   "I": {
+    "m": "★★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Gut, True Soul Zealot": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Worf, Defiant Commander": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Rabble Rousing": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Connecting the Dots": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Marshal of the Lost": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Audacious Thief": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Moonglove Extractor": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Lionheart Glimmer": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Path of Bravery": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Boros Charm": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Selfless Spirit": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Adept Watershaper": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "The Needs of the Many": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Duty Beyond Death": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Flare of Fortitude": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Combat Celebrant": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Shared Animosity": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "All-Out Assault": {
+   "I": {
+    "m": "★★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Aggravated Assault": {
+   "I": {
+    "m": "★",
+    "graded_at": "bb3fe7013412"
+   }
+  },
+  "Great Train Heist": {
+   "I": {
+    "m": "★",
     "graded_at": "bb3fe7013412"
    }
   }

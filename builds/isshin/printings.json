@@ -1,8 +1,90 @@
 {
+ "Adeline, Resplendent Cathar": [
+  {
+   "a": "Bryan Sola",
+   "art": "https://cards.scryfall.io/art_crop/front/1/8/18092f68-b96e-4084-9eba-b240d2195d81.jpg?1783925668",
+   "cn": "1",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/8/18092f68-b96e-4084-9eba-b240d2195d81.jpg?1783925668",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "rishxxv",
+   "art": "https://cards.scryfall.io/art_crop/front/2/f/2f71585a-3ea8-40f8-8e02-e155477fd8b5.jpg?1783925516",
+   "cn": "312",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/f/2f71585a-3ea8-40f8-8e02-e155477fd8b5.jpg?1783925516",
+   "r": "R",
+   "set": "MID",
+   "sn": "Innistrad: Midnight Hunt",
+   "y": "2021"
+  },
+  {
+   "a": "Susumu Kuroi",
+   "art": "https://cards.scryfall.io/art_crop/front/2/1/21a0e852-7855-4a6b-8eca-191a8e83023a.jpg?1783908852",
+   "cn": "57",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/1/21a0e852-7855-4a6b-8eca-191a8e83023a.jpg?1783908852",
+   "r": "R",
+   "set": "J25",
+   "sn": "Foundations Jumpstart",
+   "y": "2024"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/0/b/0b9579d8-bc8f-4d74-bfc1-dcdd42568f79.jpg?1783906395",
+   "cn": "1",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/b/0b9579d8-bc8f-4d74-bfc1-dcdd42568f79.jpg?1783906395",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
+ "Adept Watershaper": [],
+ "Aggravated Assault": [
+  {
+   "a": "Maihope",
+   "art": "https://cards.scryfall.io/art_crop/front/0/1/01499449-5614-428f-8fc1-1fa74f7114ad.jpg?1783914923",
+   "cn": "39",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/1/01499449-5614-428f-8fc1-1fa74f7114ad.jpg?1783914923",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  },
+  {
+   "a": "zizero",
+   "art": "https://cards.scryfall.io/art_crop/front/a/5/a5e5ec5c-c50d-4c26-a7ad-f28124c35f9b.jpg?1783914911",
+   "cn": "76",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/5/a5e5ec5c-c50d-4c26-a7ad-f28124c35f9b.jpg?1783914911",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Agrus Kos, Spirit of Justice": [],
  "Ahn-Crop Invader": [],
  "Akul the Unrepentant": [],
  "All-Fates Stalker": [],
+ "All-Out Assault": [],
  "Alpharael, Stonechosen": [],
  "Angrath, Minotaur Pirate": [],
  "Angrath, the Flame-Chained": [],
@@ -44,10 +126,12 @@
    "y": "2024"
   }
  ],
+ "Anim Pakal, Thousandth Moon": [],
  "Annex Sentry": [],
  "Arabella, Abandoned Doll": [],
  "Archon's Glory": [],
  "At Knifepoint": [],
+ "Audacious Thief": [],
  "Auntie's Sentence": [],
  "Aurelia, the Warleader": [
   {
@@ -177,12 +261,15 @@
  "Black Widow, Super Spy": [],
  "Bone-Cairn Butcher": [],
  "Boneyard Desecrator": [],
+ "Boros Charm": [],
  "Brimstone Roundup": [],
  "Caught in the Crossfire": [],
  "Cecil, Dark Knight": [],
  "Celes, Rune Knight": [],
  "Chandra's Spitfire": [],
+ "Combat Celebrant": [],
  "Combustion Man": [],
+ "Connecting the Dots": [],
  "Corrupt Court Official": [
   {
    "a": "Drew Baker",
@@ -220,6 +307,33 @@
  "Djeru and Hazoret": [],
  "Drakuseth, Maw of Flames": [],
  "Dream Harvest": [],
+ "Duty Beyond Death": [
+  {
+   "a": "Kev Fang",
+   "art": "https://cards.scryfall.io/art_crop/front/2/e/2e92640d-768b-4357-905f-bea017d351cc.jpg?1783907415",
+   "cn": "10",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/e/2e92640d-768b-4357-905f-bea017d351cc.jpg?1783907415",
+   "r": "U",
+   "set": "TDM",
+   "sn": "Tarkir: Dragonstorm",
+   "y": "2025"
+  },
+  {
+   "a": "Zuzanna Wużyk",
+   "art": "https://cards.scryfall.io/art_crop/front/6/f/6f8f8183-d17a-41b8-b3b5-914f193fd964.jpg?1783903934",
+   "cn": "4",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/f/6f8f8183-d17a-41b8-b3b5-914f193fd964.jpg?1783903934",
+   "r": "U",
+   "set": "SOA",
+   "sn": "Secrets of Strixhaven Mystical Archive",
+   "y": "2026"
+  }
+ ],
  "Eaten Alive": [
   {
    "a": "Nicholas Gregory",
@@ -347,8 +461,36 @@
  ],
  "Fire Lord Zuko": [],
  "Fire Navy Trebuchet": [],
+ "Flare of Fortitude": [
+  {
+   "a": "Winona Nelson",
+   "art": "https://cards.scryfall.io/art_crop/front/3/7/37b41b59-0296-443b-8a62-8d5c4641ef66.jpg?1783911302",
+   "cn": "26",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/7/37b41b59-0296-443b-8a62-8d5c4641ef66.jpg?1783911302",
+   "r": "R",
+   "set": "MH3",
+   "sn": "Modern Horizons 3",
+   "y": "2024"
+  },
+  {
+   "a": "Eddie Holly",
+   "art": "https://cards.scryfall.io/art_crop/front/3/6/362e20d5-5e7f-4367-86d0-ac5fc556682d.jpg?1793187303",
+   "cn": "2",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/6/362e20d5-5e7f-4367-86d0-ac5fc556682d.jpg?1793187303",
+   "r": "M",
+   "set": "SDS",
+   "sn": "Stardates",
+   "y": "2026"
+  }
+ ],
  "Form a Posse": [],
  "Genji Glove": [],
+ "Great Train Heist": [],
+ "Gut, True Soul Zealot": [],
  "Hama, the Bloodbender": [],
  "Hazoret the Fervent": [],
  "Hazoret's Monument": [],
@@ -365,6 +507,7 @@
  "Kingpin, Wilson Fisk": [],
  "Kinscaer Sentry": [],
  "Kira Nerys, Firebrand": [],
+ "Kor, Cause of Vengeance": [],
  "Korvold and the Noble Thief": [],
  "Laughing Jasper Flint": [],
  "Leader's Talent": [],
@@ -393,6 +536,7 @@
    "y": "2019"
   }
  ],
+ "Lionheart Glimmer": [],
  "Living Laser": [],
  "Locke, Treasure Hunter": [],
  "Long Goodbye": [],
@@ -400,13 +544,17 @@
  "Loyal Fire Sage": [],
  "Mabel, Valley Hero": [],
  "Marauding Mako": [],
+ "Mardu Ascendancy": [],
  "Mardu Siegebreaker": [],
  "Mardu Thunderkite": [],
+ "Marshal of the Lost": [],
  "Massacre Girl, Most Wanted": [],
+ "Merry, Esquire of Rohan": [],
  "Mishra, Claimed by Gix": [],
  "Mog, Moogle Warrior": [],
  "Molecular Modifier": [],
  "Molten Lavamancer": [],
+ "Moonglove Extractor": [],
  "Morbid Opportunist": [
   {
    "a": "Tyler Walpole",
@@ -475,6 +623,7 @@
  "Overlord of the Mistmoors": [],
  "Ozai's Cruelty": [],
  "Panicked Bystander // Cackling Culprit": [],
+ "Path of Bravery": [],
  "Phelia, Exuberant Shepherd": [],
  "Phyrexian Arena": [
   {
@@ -524,9 +673,11 @@
  ],
  "Phyrexian Dragon Engine": [],
  "Pirate Peddlers": [],
+ "Preacher of the Schism": [],
  "Professional Face-Breaker": [],
  "Psychic Whorl": [],
  "Pyre-Sledge Arsonist": [],
+ "Rabble Rousing": [],
  "Ragavan, Nimble Pilferer": [
   {
    "a": "Magali Villeneuve",
@@ -637,6 +788,34 @@
  "Seasoned Consultant": [],
  "Seifer Almasy": [],
  "Seismic Wave": [],
+ "Selfless Spirit": [],
+ "Shared Animosity": [
+  {
+   "a": "Chuck Lukacs",
+   "art": "https://cards.scryfall.io/art_crop/front/f/e/fe332c46-90f0-4cc0-8bf1-35a3934ff8a0.jpg?1783942783",
+   "cn": "104",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/e/fe332c46-90f0-4cc0-8bf1-35a3934ff8a0.jpg?1783942783",
+   "r": "R",
+   "set": "MOR",
+   "sn": "Morningtide",
+   "y": "2008"
+  },
+  {
+   "a": "Lander Strijbol",
+   "art": "https://cards.scryfall.io/art_crop/front/2/9/299a807e-21cb-4b49-ad2b-c9ce7eef393a.jpg?1783914920",
+   "cn": "49",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/2/9/299a807e-21cb-4b49-ad2b-c9ce7eef393a.jpg?1783914920",
+   "r": "R",
+   "set": "WOT",
+   "sn": "Wilds of Eldraine: Enchanting Tales",
+   "y": "2023"
+  }
+ ],
  "Shark Shredder, Killer Clone": [
   {
    "a": "Nicholas Gregory",
@@ -707,6 +886,7 @@
  "Terra, Herald of Hope": [],
  "The Infamous Cruelclaw": [],
  "The Kingpin of Crime": [],
+ "The Needs of the Many": [],
  "Tibalt, Rakish Instigator": [
   {
    "a": "Chase Stone",
@@ -768,6 +948,7 @@
  "War Effort": [],
  "Warren Warleader": [],
  "Wild Pack Squad": [],
+ "Worf, Defiant Commander": [],
  "Worthy Cost": [],
  "Zagras, Thief of Heartbeats": [],
  "Zurgo Stormrender": [],
