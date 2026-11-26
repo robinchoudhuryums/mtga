@@ -172,7 +172,7 @@
 1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
 1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
 1 Plains (TRK) 317
-1 Island (TRK) 319
+1 Yavimaya Coast (DMU) 261
 1 Swamp (TRK) 321
 1 Mountain (TRK) 323
 1 Forest (TRK) 325

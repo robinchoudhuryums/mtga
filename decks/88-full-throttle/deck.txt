@@ -171,6 +171,7 @@
 1 Sheltering Landscape (MH3) 227
 1 Abraded Bluffs (OTJ) 251
 1 Ba Sing Se (TLA) 266
-10 Forest (FRA) 289
+9 Forest (FRA) 289
+1 Reflecting Pool (FRC) 23
 5 Mountain (FRA) 287
 3 Plains (FRA) 281

@@ -123,7 +123,8 @@
 1 The Unicomplex (TRK) 304
 1 Uthros, Titanic Godcore (EOE) 260
 1 Gaseous Anomaly (TRK) 284
-3 Plains (TRK) 317
+2 Plains (TRK) 317
+1 Reflecting Pool (FRC) 23
 1 Island (TRK) 319
 1 The Mycosynth Gardens (ONE) 256
 3 Swamp (TRK) 321

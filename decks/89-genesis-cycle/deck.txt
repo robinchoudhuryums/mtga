@@ -255,7 +255,8 @@
 1 Command Tower (FRC) 22
 1 Lotus Field (M20) 249
 3 Swamp (FRA) 285
-6 Forest (FRA) 289
+5 Forest (FRA) 289
+1 Reflecting Pool (FRC) 23
 2 Mountain (FRA) 287
 
 #~ +Hornet Queen | BENCH: Five flying deathtouch bodies; with Fynn each deathtouch hit is 2 poison. GGG cast late (58% on T5). Out for Etali 2026-11-22

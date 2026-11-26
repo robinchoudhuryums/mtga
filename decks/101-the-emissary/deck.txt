@@ -127,7 +127,7 @@
 1 Riverglide Pathway // Lavaglide Pathway (ZNR) 264
 1 Cragcrown Pathway // Timbercrown Pathway (ZNR) 261
 1 Darkbore Pathway // Slitherbore Pathway (KHM) 254
-1 Plains (TRK) 317
+1 Starting Town (FIN) 289
 1 Island (TRK) 319
 1 Swamp (TRK) 321
 1 Mountain (TRK) 323

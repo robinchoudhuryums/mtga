@@ -158,7 +158,8 @@
 1 Sun-Blessed Peak (TLA) 280
 1 Abraded Bluffs (OTJ) 251
 1 Furycalm Snarl (STX) 266
-10 Plains (FRA) 281
+9 Plains (FRA) 281
+1 Reflecting Pool (FRC) 23
 1 Fire Nation Palace (TLA) 268
 9 Mountain (FRA) 287
 1 Kazuul's Fury // Kazuul's Cliffs (ZNR) 146

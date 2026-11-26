@@ -207,7 +207,8 @@
 1 Hushwood Verge (DSK) 261
 1 Evolving Wilds (ECL) 264
 1 Starting Town (FIN) 289
-2 Plains (FRA) 281
+1 Plains (FRA) 281
+1 Reflecting Pool (FRC) 23
 1 Island (FRA) 283
 1 Swamp (FRA) 285
 1 Mountain (FRA) 287
