@@ -5841,6 +5841,41 @@ deck 87's "Leader and Black Cat score no role" stopped being true, and 78-histor
 "losing two interaction or card-advantage cards puts the floor back at B" became interaction
 only, since the sum now has three to spare.
 
+**2026-11-23 — five holes from deck 105 (Den of Bears and Wolves), four fixed, one declined.**
+Each fix is a CLAUSE, not a window (G-67), and each was measured on the pool's unique texts first:
+- **Card advantage, draw as the next sentence of a cost-shaped line** (Garruk, Cursed Huntsman's
+  `−3: Destroy target creature. Draw a card.`; Teferi, Time Raveler; Faerie Formation). The draw
+  must OPEN the sentence after the first, on the same line, with no quote in between, so "its
+  controller draws a card" and a granted ability stay out. It takes the existing `sacrifice this`
+  exclusion and adds its twin, `exile this`, in cost and effect (Relic of Progenitus, Cranial
+  Archive, Silent Gravestone are one-shot cantrips). 14 texts match, 3 self-exilers and 2
+  rummages (Kaito, Kasmina, through `_LOOT_RE`) drop, 8 of the 9 left are genuine. Residual:
+  Stone of Erech names itself in its sacrifice cost.
+- **Card advantage, a WHENEVER dig to hand** ("look at the top N … reveal a <type> card from
+  among them and put it into your hand"): Wildsong Howler, Kolaghan Warmonger, Ashe, Quandrix
+  Apprentice. 11 texts, all repeatable. The 43 one-shot `When … enters` siblings stay out, the
+  same way an ETB "draw a card" does.
+- **Cost reduction / cheat, put from hand** (Sneak Attack, Through the Breach, Quicksilver
+  Amulet, Stoneforge Mystic, Howlpack Piper's front). Only the CAST half of the cheat family
+  ("without paying its mana cost") had been read. 66 texts carry the shape and 30 put a LAND
+  first, which is Ramp's job and excluded; 35 of the other 36 newly roled.
+- **Reanimation, mill then put from among them** (Vastlands Scavenger's Bind to Life, Gyruda,
+  Vorinclex's Grand Evolution, Bramble Familiar). The milled cards are in the graveyard but the
+  text never says so. 4 texts. NOT built: the 54-text "look at the top N, put from among them
+  onto the battlefield" library cheat (Collected Company, Genesis Wave), which includes land-only
+  digs and is its own question.
+- **Ramp, Mythweaver Poq's conjured land duplicate.** 1 text. The basic-named sibling
+  ("conjure a card named Forest") is 1 real in 3 and was not built.
+- **DECLINED: a Map token as card advantage** (Sentinel of the Nameless City). A Map is an
+  explore, which hands you a card only on a land reveal, and explore is card advantage nowhere
+  here (33 texts). Map makers alone moved 1 deck (105, 13 → 14, 0 floors) and split the family;
+  all explore moved 5 decks and deck 19b's floor B → A. That is a taxonomy change for the owner.
+  A test pins the current answer.
+
+Roster diff on main (140 decks): **interaction 0, card advantage 2 (84 14 → 15, 89 12 → 13),
+0 tier floors moved**. On the deck-105 branch (142 decks) deck 105 also moved, 11 → 13. Deck 84's
+`#: tier:` quoted the old figure and was re-grounded; 89 and 105 quote none.
+
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
 
 **A literal type-name search cannot see the choose-a-creature-type category, and a false

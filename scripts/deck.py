@@ -2495,6 +2495,18 @@ _ROLE_PATTERNS = {
                        # using the keyword — The Mechanist, Aerial Artisan makes a Clue per
                        # noncreature spell and scored Payoff/engine only, so a deck built
                        # on it still read card advantage 0.
+                       #
+                       # A MAP TOKEN IS NOT A CLUE, and was measured and DECLINED
+                       # (2026-11-23, Sentinel of the Nameless City in deck 105). A Map's
+                       # ability is an EXPLORE, which hands you a card only when it reveals
+                       # a land (about 0.4 cards a use at 24 of 60) and otherwise grows a
+                       # creature, and explore is card advantage NOWHERE here: 33 pool
+                       # texts, none roled. Tagging the 3 repeatable Map makers alone moved
+                       # one deck (105, 13 to 14, 0 floors) and split the family, since a
+                       # Map maker and a direct explorer would disagree about one effect.
+                       # Tagging all explore moved 5 decks and deck 19b's FLOOR from B to A
+                       # on the weakest draw in the bucket: a taxonomy change (selection),
+                       # not a pattern hole, so it is the owner's call, not this list's.
                        r"create (?:a|\w+|that many) clue tokens?",
                        # "PUT THE REST INTO YOUR HAND" is a multi-card draw whose word
                        # for drawing is "put", so every pattern in this bucket missed it.
@@ -2681,6 +2693,44 @@ _ROLE_PATTERNS = {
                        r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this)[^.:\n])"
                        r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"
                        ,
+                       # The same ability with the draw as its OWN next sentence, no
+                       # "if you do": Garruk, Cursed Huntsman's `−3: Destroy target
+                       # creature. Draw a card.`, Teferi, Time Raveler's −3, Kasmina's −2,
+                       # Faerie Formation's `{3}{U}: Create a 1/1 … Draw a card.` (deck 105,
+                       # 2026-11-23). Both patterns above stop at the sentence break, so a
+                       # draw riding an ability's second sentence scored nothing. Fixed on
+                       # the CLAUSE, not the window (G-67): the draw must OPEN the sentence
+                       # right after the first one, on the same ability line, so "Its
+                       # controller draws a card" (a gift, not yours) stays out and the
+                       # span cannot walk into a later ability. A quote may not sit in the
+                       # first sentence, so a GRANTED ability's text is never read as this
+                       # line's. Exclusions are the two above plus their one twin:
+                       # `exile this` consumes the source exactly as `sacrifice this` does
+                       # (Relic of Progenitus, Cranial Archive — and Silent Gravestone,
+                       # which exiles itself in the EFFECT, hence the second lookahead).
+                       # Measured: 14 pool texts match the shape; the 3 self-exilers drop on
+                       # the exclusion and 2 rummages (Kaito, Kasmina: "Draw a card, then
+                       # discard a card") on _LOOT_RE, and 8 of the 9 left are genuine (Jace,
+                       # Wielder of Mysteries already counted). KNOWN RESIDUAL: Stone of
+                       # Erech spells its self-sacrifice with its NAME ("Sacrifice Stone of
+                       # Erech"), which no text-only pattern can tell from "sacrifice a
+                       # creature".
+                       r"(?m)^(?:[a-z][a-z']{2,14}(?: \d+)? [-—] )?"
+                       r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this|exile this)[^.:\n])"
+                       r"{0,60}:(?:(?!exile this)[^.\n\"]){0,80}\.\s+(?:you )?draws? a card",
+                       # A REPEATABLE dig to hand: "Whenever …, look at the top N cards of
+                       # your library. You may reveal a <type> card from among them and put
+                       # it into your hand" — Wildsong Howler (Howlpack Piper's back face,
+                       # enters OR transforms, i.e. every day/night flip), Kolaghan
+                       # Warmonger and Ashe on attack, Quandrix Apprentice on every spell.
+                       # It is the `whenever … draw a card` pattern above with a filter on
+                       # what you draw, and takes that pattern's rule: gated on WHENEVER, so
+                       # the 43 one-shot "When this enters, look at the top N…" siblings
+                       # stay out exactly as "When this enters, draw a card" does (the
+                       # cantrip rule). Measured 2026-11-23: 11 pool texts, all repeatable.
+                       r"\bwhenever\b[^.]{0,100}?, (?:you may )?look at the top \w+ cards of"
+                       r" your library\. you may reveal (?:an?|up to \w+) [^.]{0,60}?cards?"
+                       r" from among them and put (?:it|them|that card|those cards) into your hand",
                        # SEEK (Alchemy): "put one at random from your library into your
                        # hand" is a draw that also filters, and no pattern above read the
                        # keyword, so Quintorius's "−1: Seek a non-Quintorius planeswalker
@@ -2738,7 +2788,19 @@ _ROLE_PATTERNS = {
                       # Monster and 29 more are the same shape. An extra land a turn is
                       # acceleration by definition. 32 pool cards; Ramp is not a
                       # `tier_band` term.
-                      r"play (?:an|one|two|three|up to (?:one|two|three)|x) additional lands?"],
+                      r"play (?:an|one|two|three|up to (?:one|two|three)|x) additional lands?",
+                      # A DUPLICATE LAND per land drop (Alchemy conjure): Mythweaver Poq's
+                      # "Whenever one or more nontoken lands enter under your control, for
+                      # each of them, conjure a duplicate of it onto the battlefield" is an
+                      # extra land a turn, the same acceleration as the line above, and
+                      # scored no role (deck 105, 2026-11-23). The `put … land … onto the
+                      # battlefield` pattern cannot see it: conjure is not put. 1 pool card.
+                      # NOT built, measured: the basic-NAMED sibling ("conjure a card named
+                      # Forest onto the battlefield") is 3 cards of which only Gilt-Leaf
+                      # Alchemist is ramp; Argothian Uprooting replaces a land that left and
+                      # Thendar hands the Wastes to the land's (often opposing) controller.
+                      r"\blands?\b[^.]{0,80}?\bconjure (?:a|an) duplicate of"
+                      r" (?:it|that land|each of them)[^.]{0,20}?onto the battlefield"],
     # KNOWN RESIDUAL on the any-colour patterns above: they match the REMINDER TEXT of a
     # Treasure token, including on cards that hand the Treasure to someone else ("Exile
     # target nonland permanent. ITS CONTROLLER creates a Treasure token"). Those pick up a
@@ -2763,6 +2825,17 @@ _ROLE_PATTERNS = {
         r"put [^.]{0,50}?(?:creature|card|permanent)[^.]{0,50}?from (?:your|a|an|any|each|their|that|target) graveyard[^.]{0,60}?onto the battlefield",
         r"return (?:this|it|that card) from your graveyard to the battlefield",
         r"\b(?:unearth|embalm|eternalize|encore|disturb|escape—|persist|undying)\b",
+        # MILL, THEN PUT FROM AMONG THEM: the milled cards are in the graveyard, so this
+        # is a reanimation that never says "graveyard" (Vastlands Scavenger's Bind to
+        # Life, deck 105, 2026-11-23; Vorinclex's Grand Evolution, Gyruda, Bramble
+        # Familiar's Fetch Quest). Every pattern above keys on the zone's NAME. 4 pool
+        # texts, all genuine. NOT built, measured: the wider "look at the top N … put
+        # from among them onto the battlefield" (Collected Company, Genesis Wave, 54
+        # texts) never reaches the graveyard and is a LIBRARY cheat, a different and
+        # larger question that includes land-only digs (Cartographer's Survey).
+        r"\bmills? [^.]{0,30}\.\s*(?:then )?[^.]{0,30}?(?:put|return) [^.]{0,60}?cards?"
+        r" [^.]{0,30}?from among (?:them|the milled cards|cards milled this way)[^.]{0,40}?"
+        r" onto the battlefield",
     ],
     # Repeatable/triggered engines — the death, ETB-matters, lifegain and
     # leaves-play payoffs the role map used to score as "no functional role"
@@ -2875,6 +2948,19 @@ _ROLE_PATTERNS = {
         r"(?<!this spell )(?<!this ability )costs? (?:up to )?\{(?:[0-9x]+|[wubrgc])\}\s+(?:\(or \{1\}\)\s+)?less",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
+        # PUT FROM HAND: the cheat that skips the cast. "Without paying its mana cost"
+        # above is the CAST half of this family and the only half that was read, so
+        # Sneak Attack, Through the Breach, Quicksilver Amulet, Champion of Rhonas,
+        # Stoneforge Mystic and Howlpack Piper's `{1}{G}, {T}: You may put a creature
+        # card from your hand onto the battlefield` (deck 105, 2026-11-23) scored no
+        # role at all: a G-67 family disagreement. A LAND first noun is excluded:
+        # "put a land card from your hand onto the battlefield" (Growth Spiral,
+        # Burgeoning, Uro) is an extra land drop, Ramp's job, already matched there.
+        # Measured: 66 pool texts carry the shape, 30 of them land-first; the other 36
+        # are artifact / creature / permanent cheats (35 newly roled). Not a `tier_band`
+        # term.
+        r"put (?:a|an|up to \w+|any number of|one or more) (?!(?:basic )?land cards?\b)"
+        r"[^.]{0,60}?cards? from your hand onto the battlefield",
     ],
     "Team pump / anthem": [
         r"(?:other )?creatures you control get \+",

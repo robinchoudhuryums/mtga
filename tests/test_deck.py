@@ -607,6 +607,96 @@ class TestClassifyRoles:
             "Whenever you cast a noncreature spell, create a Clue token. (It's an artifact "
             'with "{2}, Sacrifice this token: Draw a card.")')
 
+    # ── Deck 105 role holes (2026-11-23). Real oracle text, one test per card. ──
+    GARRUK = ('0: Create two 2/2 black and green Wolf creature tokens with "When this '
+              'token dies, put a loyalty counter on each Garruk you control."\n'
+              "\u22123: Destroy target creature. Draw a card.\n"
+              '\u22126: You get an emblem with "Creatures you control get +3/+3 and have '
+              'trample."')
+    VASTLANDS = ("Deathtouch\nThis creature enters prepared. (While it's prepared, you "
+                 "may cast a copy of its spell. Doing so unprepares it.) // Mill seven "
+                 "cards. Then put a creature card from among them onto the battlefield.")
+    POQ = ("Mythweaver Poq's power and toughness are each equal to the number of lands "
+           "you control.\nWhenever one or more nontoken lands enter under your control, "
+           "for each of them, conjure a duplicate of it onto the battlefield. This "
+           "ability triggers only once each turn.")
+    HOWLPACK = ("This spell can't be countered.\n{1}{G}, {T}: You may put a creature card "
+                "from your hand onto the battlefield. If it's a Wolf or Werewolf, untap "
+                "this creature. Activate only as a sorcery.\nDaybound (If a player casts "
+                "no spells during their own turn, it becomes night next turn.) // Whenever "
+                "this creature enters or transforms into Wildsong Howler, look at the top "
+                "six cards of your library. You may reveal a creature card from among them "
+                "and put it into your hand. Put the rest on the bottom of your library in "
+                "a random order.\nNightbound (If a player casts at least two spells during "
+                "their own turn, it becomes day next turn.)")
+    SENTINEL = ("Vigilance\nWhenever this creature enters or attacks, create a Map token. "
+                "(It's an artifact with \"{1}, {T}, Sacrifice this token: Target creature "
+                "you control explores. Activate only as a sorcery.\")")
+
+    def test_draw_as_the_next_sentence_of_a_loyalty_ability_is_card_advantage(self):
+        # Garruk, Cursed Huntsman: the cost-shaped pattern stopped at the sentence break,
+        # so `−3: Destroy target creature. Draw a card.` read as removal only.
+        roles = deck.classify_roles(self.GARRUK)
+        assert {"Card advantage", "Removal (spot)"} <= roles
+        assert "Card advantage" in deck.classify_roles(
+            "Each opponent can cast spells only any time they could cast a sorcery.\n"
+            "+1: Until your next turn, you may cast sorcery spells as though they had "
+            "flash.\n\u22123: Return up to one target artifact, creature, or enchantment "
+            "to its owner's hand. Draw a card.")
+
+    def test_next_sentence_draw_keeps_the_one_shot_and_gift_exclusions(self):
+        # The source exiling itself (cost or effect) is a one-shot cantrip, the twin of
+        # `sacrifice this`; a draw handed to someone else is not yours; a rummage stays
+        # card-neutral through _LOOT_RE.
+        for text in [
+            "{T}: Target player exiles a card from their graveyard.\n{1}, Exile this "
+            "artifact: Exile all graveyards. Draw a card.",                 # Relic
+            "Cards in graveyards can't be the targets of spells or abilities.\n{4}, {T}: "
+            "Exile this artifact and all cards from all graveyards. Draw a card.",
+            "{2}, {T}: Destroy target creature. Its controller draws a card.",
+            "Spells your opponents cast that target a creature or planeswalker you "
+            "control cost {2} more to cast.\n\u22122: Create a 2/2 blue Wizard creature "
+            "token. Draw a card, then discard a card.",                     # Kasmina
+        ]:
+            assert "Card advantage" not in deck.classify_roles(text), text
+
+    def test_mill_then_put_from_among_them_is_reanimation(self):
+        # Vastlands Scavenger // Bind to Life: the milled cards are in the graveyard, but
+        # every reanimation pattern keyed on the word "graveyard" and it scored nothing.
+        assert "Reanimation" in deck.classify_roles(self.VASTLANDS)
+
+    def test_conjured_land_duplicate_is_ramp(self):
+        # Mythweaver Poq: an extra land per land drop, spelled `conjure`, not `put`.
+        assert "Ramp / fixing" in deck.classify_roles(self.POQ)
+
+    def test_put_a_creature_from_hand_is_a_cheat_and_whenever_dig_is_card_advantage(self):
+        # Howlpack Piper: the front face is the put-from-hand half of the cheat family
+        # (only "without paying its mana cost" was read); the back face is a REPEATABLE
+        # dig to hand (enters OR transforms).
+        roles = deck.classify_roles(self.HOWLPACK)
+        assert {"Cost reduction / cheat", "Card advantage"} <= roles
+        assert "Cost reduction / cheat" in deck.classify_roles(
+            "{R}: You may put a creature card from your hand onto the battlefield. That "
+            "creature gains haste. Sacrifice the creature at the beginning of the next "
+            "end step.")                                                    # Sneak Attack
+
+    def test_land_from_hand_is_ramp_not_cheat_and_one_shot_dig_is_not_card_advantage(self):
+        # The guards: a land put from hand is an extra land drop (Ramp's job), and a
+        # "When … enters, look at the top N" dig is a one-shot, like an ETB cantrip.
+        growth = deck.classify_roles(
+            "Draw a card. You may put a land card from your hand onto the battlefield.")
+        assert "Cost reduction / cheat" not in growth and "Ramp / fixing" in growth
+        assert "Card advantage" not in deck.classify_roles(
+            "Haste\nWhen Casey Jones enters, look at the top four cards of your library. "
+            "You may reveal an artifact card from among them and put it into your hand. "
+            "Put the rest on the bottom of your library in a random order.")
+
+    def test_map_token_is_not_card_advantage(self):
+        # DECLINED, measured (see the comment at the Clue pattern): a Map is an explore,
+        # and explore is card advantage nowhere in this model. Tagging it is a taxonomy
+        # change (selection) for the owner to make, which would update this test.
+        assert "Card advantage" not in deck.classify_roles(self.SENTINEL)
+
     def test_impulse_is_card_advantage(self):
         # "Exile the top card of your library. You may play that card this turn" is a card
         # you would not otherwise have had. Nothing matched it: Zuko, Exiled Prince scored
