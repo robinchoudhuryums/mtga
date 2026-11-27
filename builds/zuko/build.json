@@ -53,7 +53,7 @@
   },
   {
    "name": "Phyrexian Dragon Engine",
-   "pile": "Z",
+   "pile": "C",
    "src": "survey"
   },
   {
@@ -68,7 +68,7 @@
   },
   {
    "name": "Massacre Girl, Most Wanted",
-   "pile": "B",
+   "pile": "C",
    "src": "survey"
   },
   {
@@ -78,7 +78,7 @@
   },
   {
    "name": "Boneyard Desecrator",
-   "pile": "B",
+   "pile": "C",
    "src": "survey"
   },
   {
@@ -93,17 +93,17 @@
   },
   {
    "name": "Alpharael, Stonechosen",
-   "pile": "B",
+   "pile": "Z",
    "src": "survey"
   },
   {
    "name": "Genji Glove",
-   "pile": "B",
+   "pile": "N",
    "src": "survey"
   },
   {
    "name": "Vraan, Executioner Thane",
-   "pile": "B",
+   "pile": "C",
    "src": "survey"
   },
   {
@@ -158,12 +158,12 @@
   },
   {
    "name": "Necropotence",
-   "pile": "B",
+   "pile": "Z",
    "src": "survey"
   },
   {
    "name": "Currency Converter",
-   "pile": "B",
+   "pile": "Z",
    "src": "survey"
   },
   {
@@ -213,7 +213,7 @@
   },
   {
    "name": "Appa, Steadfast Guardian",
-   "pile": "B",
+   "pile": "Z",
    "src": "survey"
   },
   {
@@ -248,7 +248,7 @@
   },
   {
    "name": "Glorious Protector",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
@@ -258,7 +258,7 @@
   },
   {
    "name": "Avatar's Wrath",
-   "pile": "B",
+   "pile": "Z",
    "src": "fits-pass"
   },
   {
@@ -298,32 +298,32 @@
   },
   {
    "name": "Slickshot Show-Off",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
    "name": "Highway Robbery",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
    "name": "Exalted Sunborn",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
    "name": "Nova Hellkite",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
    "name": "Chandra, Dressed to Kill",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
    "name": "Geological Appraiser",
-   "pile": "Z",
+   "pile": "B",
    "src": "fits-pass"
   },
   {
@@ -333,7 +333,7 @@
   },
   {
    "name": "Heroes for Hire",
-   "pile": "B",
+   "pile": "Z",
    "src": "treasure-pass"
   },
   {
@@ -348,7 +348,7 @@
   },
   {
    "name": "Impetuous Lootmonger",
-   "pile": "B",
+   "pile": "Z",
    "src": "treasure-pass"
   },
   {
@@ -363,7 +363,7 @@
   },
   {
    "name": "Breeches, Eager Pillager",
-   "pile": "B",
+   "pile": "Z",
    "src": "treasure-pass"
   },
   {
@@ -383,7 +383,7 @@
   },
   {
    "name": "Unexpected Windfall",
-   "pile": "Z",
+   "pile": "C",
    "src": "treasure-pass"
   },
   {
@@ -398,7 +398,7 @@
   },
   {
    "name": "Quark, Humble Proprietor",
-   "pile": "B",
+   "pile": "N",
    "src": "treasure-pass"
   },
   {
@@ -413,12 +413,12 @@
   },
   {
    "name": "Azula, Ruthless Firebender",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Hostile Investigator",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -428,7 +428,7 @@
   },
   {
    "name": "Tomb Robber",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -463,7 +463,7 @@
   },
   {
    "name": "Kroxa and Kunoros",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -473,7 +473,7 @@
   },
   {
    "name": "Lorehold, the Historian",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -483,12 +483,12 @@
   },
   {
    "name": "Chainer, Nightmare Adept",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Inevitable Defeat",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -503,22 +503,22 @@
   },
   {
    "name": "Merciless Javelineer",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Quintorius, History Chaser",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Neriv, Crackling Vanguard",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Kroxa, Titan of Death's Hunger",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -538,7 +538,7 @@
   },
   {
    "name": "Bullseye, Death Dealer",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -573,7 +573,7 @@
   },
   {
    "name": "Green Goblin, Back for More",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -588,7 +588,7 @@
   },
   {
    "name": "Tergrid, God of Fright // Tergrid's Lantern",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -603,7 +603,7 @@
   },
   {
    "name": "Armus, Skin of Evil",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -633,12 +633,12 @@
   },
   {
    "name": "Misty Knight, Hero for Hire",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Ambergris, Citadel Agent",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -658,22 +658,22 @@
   },
   {
    "name": "Jaxis, the Troublemaker",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Neheb, Dreadhorde Champion",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Smellerbee, Rebel Fighter",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Solphim, Mayhem Dominus",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -683,12 +683,12 @@
   },
   {
    "name": "Mishra, Claimed by Gix",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -723,7 +723,7 @@
   },
   {
    "name": "The Soul Stone",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -733,7 +733,7 @@
   },
   {
    "name": "Sadistic Slash",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -743,12 +743,12 @@
   },
   {
    "name": "Ayara, Widow of the Realm // Ayara, Furnace Queen",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Hidetsugu Consumes All // Vessel of the All-Consuming",
-   "pile": "B",
+   "pile": "Z",
    "src": "pile-2026-11-27"
   },
   {
@@ -758,7 +758,7 @@
   },
   {
    "name": "Living End",
-   "pile": "B",
+   "pile": "Z",
    "src": "pile-2026-11-27"
   },
   {
@@ -773,12 +773,12 @@
   },
   {
    "name": "Olivia, Crimson Bride",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Dauthi Voidwalker",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
@@ -803,7 +803,7 @@
   },
   {
    "name": "June, Bounty Hunter",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -813,7 +813,7 @@
   },
   {
    "name": "Brimstone Roundup",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
@@ -843,7 +843,7 @@
   },
   {
    "name": "Reno and Rude",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
@@ -858,7 +858,7 @@
   },
   {
    "name": "Astelli Reclaimer",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
@@ -868,7 +868,7 @@
   },
   {
    "name": "Eject the Warp Core",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -888,7 +888,7 @@
   },
   {
    "name": "Spider-Gwen, Free Spirit",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -913,12 +913,12 @@
   },
   {
    "name": "Superior Foes of Spider-Man",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Baron Bertram Graywater",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -928,7 +928,7 @@
   },
   {
    "name": "Akul the Unrepentant",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -988,7 +988,7 @@
   },
   {
    "name": "Zhao, Ruthless Admiral",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -998,12 +998,12 @@
   },
   {
    "name": "Fire Lord Ozai",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Evereth, Viceroy of Plunder",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1013,12 +1013,12 @@
   },
   {
    "name": "Body Dropper",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
    "name": "Dreadhorde Butcher",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1028,7 +1028,7 @@
   },
   {
    "name": "Juri, Master of the Revue",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1043,7 +1043,7 @@
   },
   {
    "name": "Dalkovan Outrider",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1053,7 +1053,7 @@
   },
   {
    "name": "Stormclaw Rager",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1068,7 +1068,7 @@
   },
   {
    "name": "Kethek, Crucible Goliath",
-   "pile": "B",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1088,7 +1088,7 @@
   },
   {
    "name": "Kaya the Inexorable",
-   "pile": "Z",
+   "pile": "C",
    "src": "pile-2026-11-27"
   },
   {
@@ -1103,7 +1103,7 @@
   },
   {
    "name": "Nita, Forum Conciliator",
-   "pile": "Z",
+   "pile": "B",
    "src": "pile-2026-11-27"
   },
   {
@@ -1128,7 +1128,7 @@
   },
   {
    "name": "Takenuma, Abandoned Mire",
-   "pile": "B",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
@@ -1148,22 +1148,22 @@
   },
   {
    "name": "Necrogoyf",
-   "pile": "B",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
    "name": "M.O.D.O.K.",
-   "pile": "B",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
    "name": "Electro's Bolt",
-   "pile": "Z",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
    "name": "Rix Maadi Reveler",
-   "pile": "B",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
@@ -1188,12 +1188,12 @@
   },
   {
    "name": "Phlage, Titan of Fire's Fury",
-   "pile": "Z",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
    "name": "Scurrilous Sentry",
-   "pile": "B",
+   "pile": "C",
    "src": "keyword-sweep"
   },
   {
@@ -1208,12 +1208,12 @@
   },
   {
    "name": "Grand Nagus Zek",
-   "pile": "B",
+   "pile": "C",
    "src": "owner-ask"
   },
   {
    "name": "Bloodtithe Harvester",
-   "pile": "B",
+   "pile": "C",
    "src": "cut-from-108"
   },
   {
@@ -1228,7 +1228,7 @@
   },
   {
    "name": "Steal the Show",
-   "pile": "B",
+   "pile": "C",
    "src": "cut-from-108"
   },
   {
@@ -1243,232 +1243,612 @@
   },
   {
    "name": "Unstable Amulet",
-   "pile": "Z",
+   "pile": "B",
    "src": "cut-from-108"
+  },
+  {
+   "name": "Inti, Seneschal of the Sun",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Moonstone, Harsh Mistress",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Containment Construct",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Conspiracy Theorist",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Party Thrasher",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "The Infamous Cruelclaw",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Nico Minoru, Runaway",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Crucias, Titan of the Waves",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Big Score",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Liliana the Faultless",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Prosper, Tome-Bound",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Laelia, the Blade Reforged",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Professional Face-Breaker",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Laughing Jasper Flint",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Ragavan, Nimble Pilferer",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Stromkirk Occultist",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Outpost Siege",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Charred Foyer",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "All-Fates Stalker",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Spider-Man, New Champion",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Magmakin Artillerist",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Glint-Horn Buccaneer",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Living Laser",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Bone Miser",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Cool but Rude",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Monument to Endurance",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Quintorius Kand",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Nalfeshnee",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Spider-Verse",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Olivia, Opulent Outlaw",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "At Knifepoint",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Fiery Temper",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Giant Killer",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Demon Bolt",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Poison the Cup",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Boros Charm",
+   "pile": "Z",
+   "src": "deck-card"
+  },
+  {
+   "name": "Scarlet Spider, Kaine",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Swarm, Being of Bees",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Spider-Islanders",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Raging Goblinoids",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Carnage, Crimson Chaos",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Bloodghast",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Gixian Recycler",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Tenacious Underdog",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Squee, Dubious Monarch",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Phoenix of Ash",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Woe Strider",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Nethergoyf",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Alesha, Who Smiles at Death",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Terra, Herald of Hope",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Lurrus of the Dream-Den",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Priest of Fell Rites",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Sorin, Vengeful Bloodlord",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Liliana, Heretical Healer // Liliana, Defiant Necromancer",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Can't Stay Away",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Sevinne's Reclamation",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Faithless Looting",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Cathartic Reunion",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Lightning Helix",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Vindicate",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Bitter Triumph",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Anguished Unmaking",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Infernal Grasp",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Kolaghan's Command",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Collective Brutality",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Murderous Rider // Swift End",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Arcane Signet",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Talisman of Indulgence",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Talisman of Hierarchy",
+   "pile": "C",
+   "src": "deck-card"
+  },
+  {
+   "name": "Talisman of Conviction",
+   "pile": "C",
+   "src": "deck-card"
   }
  ],
  "reasons": {
   "Mog, Moogle Warrior": {
-   "group": "In deck",
-   "text": "In the deck (owner's pick). An end-step discard every turn for madness and the discard payoffs, plus Moogle tokens and counters; every player may loot too, so opponents filter as well.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: a discard every end step, and creature discards make Moogle tokens.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rakdos, the Muscle": {
-   "group": "In deck",
-   "text": "In the deck (owner's pick). A flying trampler that sacrifices to itself for indestructible; the exile trigger scales with the sacrificed creature's mana value, so tokens give nothing.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: a sacrifice outlet that impulses cards equal to the sacrificed creature's mana value, and the creature comes back.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Phyrexian Dragon Engine": {
-   "group": "Graveyard",
-   "text": "In Celes' deck: unearth returns it from the graveyard (a Celes counter), then it can discard your hand to draw three; melds with Mishra. Nothing for Zuko.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; unearth. Zuko: little.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Angrath, the Flame-Chained": {
-   "group": "From deck 93",
-   "text": "+1 makes the OPPONENT discard, which feeds none of our discard payoffs; a good walker, but off-axis here.",
+   "group": "Hand attack",
+   "text": "Either: the +1 makes them discard (rule 10); the −3 steal is fine; mostly a 5-mana walker that doesn't feed either engine.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Long Goodbye": {
-   "group": "From deck 93",
-   "text": "Uncounterable 2-mana removal; left out only for slots (16 answers already). First interaction add if one underperforms.",
+   "group": "Interaction",
+   "text": "Either: uncounterable 2-mana removal.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Massacre Girl, Most Wanted": {
-   "group": "From deck 93",
-   "text": "Death payoff; this list kills few of its own creatures, so it would be a 5-mana pinger.",
+   "group": "Sacrifice",
+   "text": "Zuko: few deaths. Celes: every creature you sacrifice or lose pings them and grows it.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Zagras, Thief of Heartbeats": {
-   "group": "From deck 93",
-   "text": "Party discount and team deathtouch; no tie to discard or exile.",
+   "group": "Other",
+   "text": "Either: off-plan.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Boneyard Desecrator": {
-   "group": "From deck 93",
-   "text": "Outlaw-sacrifice Treasure maker, but the deck has no sacrifice plan.",
+   "group": "Sacrifice",
+   "text": "Zuko: no sacrifice plan. Celes: a sacrifice outlet with menace; Treasures when outlaws die.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Outlaws' Merriment": {
-   "group": "From deck 93",
-   "text": "A random Human token every upkeep; steady value, nothing to do with the engine.",
+   "group": "Other",
+   "text": "Either: a random token each upkeep.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ertha Jo, Frontier Mentor": {
-   "group": "Re-graded",
-   "text": "Copies targeted activated abilities: Chandra's −3, Kaya's −3, Eiganjo's channel and Liliana the Faultless all qualify, so it is better than before, but still four or so hits.",
+   "group": "Other",
+   "text": "Either: copies a few targeted activations.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Alpharael, Stonechosen": {
-   "group": "Re-graded",
-   "text": "Owner's point holds: a Treasure sacrificed for mana is a nonland permanent leaving, and Tannuk, Axavar and All-Fates Stalker warp, so void is on most turns. Then each attack makes them lose HALF their life. Ward makes their removal cost a random discard.",
+   "group": "Void",
+   "text": "Zuko: Treasures sacrificed and warps turn on void most turns, then each attack halves their life. Celes: fewer warps, but Treasures and sacrificed creatures still enable it.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Genji Glove": {
-   "group": "From deck 93",
-   "text": "Extra combat equipment; no attack-trigger core in this deck.",
+   "group": "Other",
+   "text": "Neither: extra-combat equipment with no attack-trigger core.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Vraan, Executioner Thane": {
-   "group": "From deck 93",
-   "text": "Death drain; same problem as Massacre Girl — few deaths.",
+   "group": "Sacrifice",
+   "text": "Zuko: few deaths. Celes: drains 2 each turn a creature of yours dies.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Avacyn's Judgment": {
    "group": "Madness",
-   "text": "Cut for Liliana the Faultless. Madness {X}{R} splits X damage among creatures — cast from exile, so a Zuko counter too.",
+   "text": "Either: madness split damage; slightly better for Zuko (cast from exile).",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Bloodhall Priest": {
    "group": "Madness",
-   "text": "Cut for Boros Charm. Madness body that pings on entering or attacking, but only with an EMPTY hand, which this deck rarely has.",
+   "text": "Either: needs an empty hand; Celes empties hands more, Zuko casts it from exile.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Alchemist's Greeting": {
    "group": "Madness",
-   "text": "4 damage to a creature for {1}{R} on madness; a strong discard-outlet removal spell.",
+   "text": "Either: {1}{R} madness for 4 damage; madness casts from exile, a Zuko trigger, which makes it a little better there.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kitchen Imp": {
    "group": "Madness",
-   "text": "{B} madness 2/2 flying haste — the cheapest Zuko trigger in the pool.",
+   "text": "Either: {B} madness flier.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Gisa's Bidding": {
    "group": "Madness",
-   "text": "Two 2/2 Zombies for {2}{B} on madness; bodies to carry Zuko's counters.",
+   "text": "Either: two Zombies for {2}{B} on madness.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Cryptcaller Chariot": {
    "group": "Discard payoff",
-   "text": "A tapped 2/2 Zombie per card discarded, and it crews itself from them.",
+   "text": "Either: a 2/2 per card discarded.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Green Goblin, Revenant": {
    "group": "Discard payoff",
-   "text": "Flying deathtouch; on attack discard one, then draw for each card discarded this turn — grows with Inti and Conspiracy Theorist.",
+   "text": "Either: flying deathtouch; discard on attack and draw per discard this turn.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hobgoblin, Mantled Marauder": {
    "group": "Discard payoff",
-   "text": "Flying haste 2-drop that gets +2/+0 per discard; an evasive clock.",
+   "text": "Either: hasty flier pumped by discards.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ivora, Insatiable Heir": {
    "group": "Discard payoff",
-   "text": "Grows per discard and makes Blood tokens (outlets).",
+   "text": "Either: grows per discard, Blood tokens as outlets.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Marauding Mako": {
    "group": "Discard payoff",
-   "text": "One-mana Pirate (outlaw) that grows per discard.",
+   "text": "Either: a Pirate that grows per discard.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Necropotence": {
-   "group": "Discard payoff",
-   "text": "Huge card advantage; its discards are exiled but NOT castable, so it fights Containment Construct / Moonstone for the same cards.",
+   "group": "Card draw",
+   "text": "Zuko: huge card advantage. Celes: it EXILES every card you discard, which starves the graveyard.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Currency Converter": {
    "group": "Discard outlet",
-   "text": "Loot rock; exiled discards come back as Treasures or 2/2 Rogues (outlaws).",
+   "text": "Zuko: fine. Celes: it EXILES your discards from the graveyard, which starves mayhem and escape.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kitesail Freebooter": {
    "group": "Outlaws",
-   "text": "Pirate flier that strips a noncreature spell from their hand.",
+   "text": "Either: Pirate flier that strips a spell.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hellspur Posse Boss": {
    "group": "Outlaws",
-   "text": "Haste for outlaws plus two Mercenaries; the outlaw axis is light, so this has few targets.",
+   "text": "Either: two Mercenaries and outlaw haste.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Vial Smasher, Gleeful Grenadier": {
    "group": "Outlaws",
-   "text": "Pings when another outlaw enters; about ten outlaws here.",
+   "text": "Either: outlaw pings.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Foulmire Knight // Profane Insight": {
    "group": "Adventure",
-   "text": "Adventure draw, then the deathtouch 1-drop cast from exile — a Zuko trigger.",
+   "text": "Either: draw a card, then a deathtouch 1-drop (from exile for Zuko).",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Order of Midnight // Alter Fate": {
    "group": "Adventure",
-   "text": "Regrow a creature, then the flier cast from exile.",
+   "text": "Either: regrow plus a flier.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Realm-Cloaked Giant // Cast Off": {
    "group": "Adventure",
-   "text": "Board wipe from an adventure; kills our own board, so only as a reset.",
+   "text": "Either: a wipe that hits your board.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Reckless Impulse": {
    "group": "Impulse",
-   "text": "Zuko: two cards from exile for {1}{R}, the same job Theater of Horrors now does every turn.",
+   "text": "Zuko: impulse two. Celes: little.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -1476,106 +1856,119 @@
   },
   "Wrenn's Resolve": {
    "group": "Impulse",
-   "text": "Same as Reckless Impulse.",
+   "text": "Zuko: impulse two. Celes: little.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Valakut Exploration": {
    "group": "Impulse",
-   "text": "Every land drop is a card played from exile; leftover cards burn the opponent.",
+   "text": "Zuko: land-drop impulse. Celes: little.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Appa, Steadfast Guardian": {
-   "group": "Exile payoff",
-   "text": "Flash flier that airbends your own permanents (they re-cast from exile for {2}) and makes an Ally per exile cast; heavy white ({2}{W}{W}).",
+   "group": "Exile cast",
+   "text": "Zuko: airbends your own permanents to recast from exile and makes an Ally per exile cast. Celes: little.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tannuk, Steadfast Second": {
-   "group": "In deck",
-   "text": "In the deck. Red creatures and artifacts in hand gain warp {2}{R}: each is cast twice, the second time from exile (a Zuko counter), and the rest of the team gets haste.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: haste for every returned creature.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Teleportation Circle": {
-   "group": "Blink",
-   "text": "Zuko: in the deck. Blinks every end step, so a permanent enters from exile every turn. Nothing for Celes, who wants graveyard returns.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: blinks return from exile, not the graveyard.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Dream Devourer": {
-   "group": "In deck",
-   "text": "In the deck. Gives every nonland card in hand foretell at two less, so any card can be cast from exile; a 2-drop enabler that grows each time you foretell.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck; foretell everything. Celes: little.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Chandra, Torch of Defiance": {
-   "group": "In deck",
-   "text": "In the deck. +1 casts the top card from exile or deals 2; +1 ramps RR; −3 deals 4 to a creature. Impulse, ramp and removal on one card.",
+   "group": "In Zuko",
+   "text": "Zuko: impulse casts. Celes: ramp and removal.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Axavar, Fate Thief": {
-   "group": "In deck",
-   "text": "In the deck. Warps for one mana (a Pirate outlaw); the warp itself turns on its end-step trigger: discard a card, then heist a card from their library to cast from exile. Discard, outlaws and exile in one card.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: the end-step discard still fills the graveyard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Trumpeting Carnosaur": {
-   "group": "In deck",
-   "text": "In the deck. Discover 5 on entering (a free spell cast from exile); from hand, {2}{R} and discard it for 3 damage, which is a discard for Spider-Man, Inti and Magmakin.",
+   "group": "In Zuko",
+   "text": "Zuko: discover from exile. Celes: discard from hand for 3 damage.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Glorious Protector": {
-   "group": "Package",
-   "text": "Flash flier with foretell; exiles your creatures until it leaves, dodging a wipe, and when they come back they enter from exile, one Zuko counter per creature.",
+   "group": "Protection",
+   "text": "Either: flash; exiles your creatures until it leaves, protecting them from a wipe. For Zuko they return from exile.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sozin's Comet": {
    "group": "Spice",
-   "text": "The comet that powers Fire Lord Zuko's army: foretell (cast from exile) and firebending 5 on every creature. That combat-only red mana pays madness costs for cards discarded by Inti, Conspiracy Theorist or Cool but Rude during the attack.",
+   "text": "Either: foretell and team firebending.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Avatar's Wrath": {
    "group": "Spice",
-   "text": "Airbends every creature but one: opponents can't recast for a turn, and yours come back for {2} each from exile, one Zuko counter per cast.",
+   "text": "Zuko: airbends every creature but one, yours return for {2} each from exile. Celes: recasting from exile does nothing for her.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Airbender's Reversal": {
    "group": "Interaction",
-   "text": "Destroy an attacker, or airbend your own creature in response to removal and recast it from exile for {2}.",
+   "text": "Zuko: kill an attacker or airbend your own creature to dodge removal and recast it from exile. Celes: the removal half only.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Bituminous Blast": {
    "group": "Interaction",
-   "text": "4 damage to a creature plus cascade, a free spell cast from exile.",
+   "text": "Either: 4 damage plus a free cascaded spell (a Zuko cast from exile).",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Theater of Horrors": {
-   "group": "Re-graded",
-   "text": "In the deck. An exiled card every upkeep that never expires, playable once an opponent has lost life. This deck pings almost every turn, so it is a steady extra card.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: impulse only.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -1583,77 +1976,87 @@
   },
   "Tersa Lightshatter": {
    "group": "Discard outlet",
-   "text": "Haste; enters discarding up to two then drawing that many, and attacks play a card from the graveyard via exile once seven are there.",
+   "text": "Either: haste, a two-card loot, attacks play from the graveyard.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rev, Tithe Extractor": {
    "group": "Outlaws",
-   "text": "Rogue outlaw; combat damage makes a Treasure and exiles their top card for you to cast.",
+   "text": "Either: Treasure and their top card on hits.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Restoration Angel": {
    "group": "Blink",
-   "text": "Flash blink: a permanent re-entering from exile, at instant speed.",
+   "text": "Zuko: flash blink. Celes: nothing.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Quantum Entanglement": {
    "group": "Blink",
-   "text": "Flash; repeatable {1}{W} blink at each end step.",
+   "text": "Zuko: repeatable blink. Celes: nothing.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Slickshot Show-Off": {
    "group": "Plot",
-   "text": "Plot for {1}{R}, cast free later from exile; a hasty flier that grows on noncreature spells.",
+   "text": "Either: plot flier.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Highway Robbery": {
    "group": "Plot",
-   "text": "Discard a card to draw two, or plot it and cast it free from exile later.",
+   "text": "Either: discard to draw two; plot for Zuko.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Exalted Sunborn": {
    "group": "Warp",
-   "text": "Warp {1}{W}, then cast again from exile; doubles tokens (Bone Miser Zombies, Mercenaries).",
+   "text": "Either: token doubler; warp recast for Zuko.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Nova Hellkite": {
    "group": "Warp",
-   "text": "Warp a hasty flier that pings a creature, then recast it from exile.",
+   "text": "Either: hasty flier that pings; warp recast for Zuko.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Chandra, Dressed to Kill": {
    "group": "Impulse",
-   "text": "+1 exiles the top card and casts it if red, which is most of this deck.",
+   "text": "Either: +1 casts the top card if red, from exile; better for Zuko.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Geological Appraiser": {
    "group": "Discover",
-   "text": "Discover 3 when cast; free spell from exile.",
+   "text": "Either: discover 3 when cast; free spell from exile for Zuko.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Black Market Connections": {
-   "group": "Treasure",
-   "text": "In the deck. Every first main phase choose any of: a Treasure (1 life), a card (2 life), or a 3/2 changeling Mercenary (3 life), an outlaw that is every creature type. Ramp, draw and bodies on one enchantment; owned.",
+   "group": "In Zuko",
+   "text": "Either: a Treasure, card or Mercenary every turn.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -1661,22 +2064,23 @@
   },
   "Heroes for Hire": {
    "group": "Treasure",
-   "text": "Three Treasures at once, and each Treasure can instead be sacrificed to exile your top card and play it, which is a cast from exile. It turns the Treasure subtheme into impulse draw.",
+   "text": "Zuko: three Treasures, each one an impulse card cast from exile. Celes: three Treasures and card draw, without the Zuko bonus.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Bonehoard Dracosaur": {
-   "group": "Treasure",
-   "text": "In the deck. A first-strike flier that exiles two cards every upkeep for you to play from exile; it makes a Treasure for a nonland and a 3/1 for a land. Card advantage and ramp every turn.",
+   "group": "In Zuko",
+   "text": "Either: two cards a turn plus Treasures or 3/1s.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Ultimate Green Goblin": {
-   "group": "Treasure",
-   "text": "In the deck. Discard a card every upkeep, then make a Treasure: a free discard outlet for madness, Spider-Man and Inti, plus ramp. Mayhem lets you recast it if you discard it. Owned.",
+   "group": "In Zuko",
+   "text": "Either: upkeep discard and a Treasure; mayhem is a Celes cast.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -1684,248 +2088,279 @@
   },
   "Impetuous Lootmonger": {
    "group": "Treasure",
-   "text": "Rogue outlaw: discard on entering, then heist a card from their library to cast from exile; casting their card makes a Treasure. Owned.",
+   "text": "Zuko: discard, then heist a card to cast from exile; Treasures on casting it. Celes: just the loot.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Collector's Vault": {
    "group": "Treasure",
-   "text": "A 2-mana rock in the Talismans' slot: {2},{T}: loot and make a Treasure, so every activation is a discard and refunds most of its cost. Owned.",
+   "text": "Either: a 2-mana loot that makes a Treasure every activation.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Goldspan Dragon": {
    "group": "Treasure",
-   "text": "Hasty flier; a Treasure on attack and whenever targeted, and Treasures tap for two mana. Strong with Prosper, Crucias and Face-Breaker already making Treasures.",
+   "text": "Either: hasty flier, Treasure on attack and when targeted, Treasures tap for two.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Breeches, Eager Pillager": {
    "group": "Treasure",
-   "text": "Pirate outlaw; each Pirate attack picks a mode: Treasure, can't block, or impulse a card. Axavar, Crucias, Ragavan, Glint-Horn and Magmakin are Pirates.",
+   "text": "Zuko: about seven Pirates, each attack gives a Treasure, a can't-block, or an impulse card. Celes: few Pirates.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Grim Hireling": {
    "group": "Treasure",
-   "text": "Rogue outlaw: two Treasures whenever your creatures connect, and spends Treasures as -X/-X removal. Owned.",
+   "text": "Either: two Treasures when you connect, spends them as removal.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Decadent Dragon": {
    "group": "Treasure",
-   "text": "Adventure steals two of their cards to play from exile, then the dragon itself is cast from exile and makes a Treasure on every attack. Owned.",
+   "text": "Either: Treasure on attack; the adventure steals their cards (Zuko trigger).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Pirate's Pillage": {
    "group": "Treasure",
-   "text": "Discard a card as a cost, draw two and make two Treasures; a sorcery Big Score.",
+   "text": "Either: discard, draw two, two Treasures.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Unexpected Windfall": {
-   "group": "Treasure",
-   "text": "The instant version of Pirate's Pillage at {2}{R}{R}.",
+   "group": "In Celes",
+   "text": "Either: discard for two cards and Treasures.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Smaug, Wicked Worm": {
    "group": "Treasure",
-   "text": "Draws a card for each spell paid with Treasure mana, but its own Treasures depend on opponents' artifacts. Owned.",
+   "text": "Either: draws when Treasure mana is spent.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Season of the Bold": {
    "group": "Treasure",
-   "text": "Up to five Treasures, or impulse two, or a mix. Owned.",
+   "text": "Either: Treasures or impulse.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Quark, Humble Proprietor": {
    "group": "Treasure",
-   "text": "A Treasure every upkeep, but you CAN'T sacrifice Treasure tokens, which switches off the mana and Face-Breaker, Prosper and Olivia's uses. Fights the subtheme. Owned.",
+   "text": "Neither: you can't sacrifice Treasures.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Drill Bit": {
    "group": "Hand attack",
-   "text": "One-shot hand attack. The OPPONENT discards, which triggers none of this deck's discard payoffs (rule 10).",
+   "text": "Either: one-shot hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Reckoner Shakedown": {
    "group": "Hand attack",
-   "text": "Opponent discard or two counters; one-shot, off the engine (rule 10).",
+   "text": "Either: hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Azula, Ruthless Firebender": {
-   "group": "Discard outlet",
-   "text": "A repeatable attack-trigger discard on a 3-drop, and firebending 1 gives combat red mana to pay madness for the card it just discarded. Pumps off experience.",
+   "group": "In Celes",
+   "text": "Zuko: combat mana pays madness. Celes: an attack discard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hostile Investigator": {
-   "group": "Discard payoff",
-   "text": "Once a turn, ANY player discarding makes a Clue: our own discards count, so it is card advantage off the engine plus an artifact.",
+   "group": "In Celes",
+   "text": "Either: a Clue when anyone discards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Waste Not": {
    "group": "Hand attack",
-   "text": "Pays off only OPPONENTS discarding; this deck makes them discard rarely (rule 10).",
+   "text": "Either: opponent discards only.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tomb Robber": {
-   "group": "Discard outlet",
-   "text": "Pirate (outlaw) with a {1} repeatable discard outlet that explores, so it grows or draws lands.",
+   "group": "In Celes",
+   "text": "Either: {1} discard outlet.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Dying to Serve": {
    "group": "Discard payoff",
-   "text": "A tapped 2/2 each turn you discard, which is most turns here; bodies for Zuko's counters.",
+   "text": "Either: a 2/2 each turn you discard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Death of Gwen Stacy": {
    "group": "Interaction",
-   "text": "Chapter I destroys a creature; II lets every player discard (ours feeds madness and the payoffs, theirs costs 3 life if they won't); III exiles graveyards.",
+   "text": "Either: removal, symmetric discard, graveyard hate you aim at them.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Heartless Pillage": {
    "group": "Hand attack",
-   "text": "Opponent discards two, plus a Treasure if you attacked; hand attack, so off the engine (rule 10).",
+   "text": "Either: opponent discards two plus a Treasure (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ozai's Cruelty": {
    "group": "Hand attack",
-   "text": "2 damage and the opponent discards two; flavourful for an Avatar deck but off the engine (rule 10).",
+   "text": "Either: hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ninja's Blades": {
    "group": "Discard outlet",
-   "text": "Loot on combat damage per equipped creature, draining by the discarded card's mana value; equip {2}.",
+   "text": "Either: loot on hits.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ral Zarek, Guest Lecturer": {
    "group": "Graveyard",
-   "text": "Celes: −2 returns a 3-drop from the graveyard (a Celes counter), −1 can make you discard. Weak for Zuko.",
+   "text": "Zuko: off-plan. Celes: −2 reanimates a 3-drop.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Kroxa and Kunoros": {
-   "group": "Graveyard",
-   "text": "Celes: reanimates on entering and every attack, each one a Celes counter on the team. Nothing for Zuko.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; reanimates on entry and attack.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Ruinous Ultimatum": {
-   "group": "Re-graded",
-   "text": "Owner's point holds: Treasures pay the WWW, so the pips are no longer the problem. A one-sided wipe of every nonland permanent they control.",
+   "group": "Interaction",
+   "text": "Either: one-sided wipe; Treasures pay the white.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Lorehold, the Historian": {
-   "group": "Discard outlet",
-   "text": "Hasty flier; loots in EACH opponent's upkeep, so a madness card discarded there is cast at instant speed; instants and sorceries gain miracle {2}.",
+   "group": "In Celes",
+   "text": "Either: loot every opponent upkeep.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Killian, Spotlight Chaser": {
    "group": "Discard outlet",
-   "text": "Noncombat damage to an opponent seeks a card, which is discarded at end step: a forced discard each time Spider-Man, Magmakin, Glint-Horn or Nico deal damage.",
+   "text": "Either: noncombat damage seeks a card that is discarded at end step.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Chainer, Nightmare Adept": {
-   "group": "Graveyard",
-   "text": "Celes: in the deck. Discard a card to cast a creature from the graveyard each turn, and returned creatures get haste.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; discard to cast creatures from the graveyard.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Inevitable Defeat": {
-   "group": "Interaction",
-   "text": "Instant, uncounterable exile of any nonland permanent plus a 3-point drain; a better answer than sorcery Vindicate.",
+   "group": "In Celes",
+   "text": "Either: instant exile and drain.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Thoughtseize": {
    "group": "Hand attack",
-   "text": "One-shot hand attack (rule 10).",
+   "text": "Either: hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Carnival // Carnage": {
    "group": "Hand attack",
-   "text": "Carnival is a 1-mana ping; Carnage makes them discard two (rule 10).",
+   "text": "Either: a 1-mana ping or a hand-attack burn (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Merciless Javelineer": {
-   "group": "Discard outlet",
-   "text": "{2}, discard: a -1/-1 counter and can't block. A repeatable outlet that is also removal for X/1s and evasion.",
+   "group": "In Celes",
+   "text": "Either: discard outlet removal.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Quintorius, History Chaser": {
    "group": "Discard outlet",
-   "text": "+1 discards to draw two; a 3/2 Spirit whenever cards LEAVE your graveyard, which Containment Construct, Moonstone and Conspiracy Theorist do every time they exile a discard.",
+   "text": "Zuko: fine. Celes: escape and unearth take cards out of the graveyard every turn, each one a 3/2 Spirit; +1 discards to draw two.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Neriv, Crackling Vanguard": {
    "group": "Impulse",
-   "text": "Exiles cards on attack, playable only in a turn you attacked with your commander; Zuko attacks, so it works if he is out.",
+   "text": "Either: impulse if you attacked with your commander.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kroxa, Titan of Death's Hunger": {
-   "group": "Graveyard",
-   "text": "Celes: escapes from the graveyard (a Celes counter) and punishes on entering and attacking.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; escape. Zuko: little.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -1933,113 +2368,127 @@
   },
   "Intruder's Inquisition": {
    "group": "Interaction",
-   "text": "One-sided fight for {B}{R}; the discard rider is theirs.",
+   "text": "Either: one-sided fight.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Thorna and Twigtooth": {
    "group": "Other",
-   "text": "Removes counters to drain, which spends Zuko's counters.",
+   "text": "Either: removes counters to drain; Celes' counters make it bigger.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Stinging Vitriol": {
    "group": "Hand attack",
-   "text": "2 damage plus a hand-attack discard (rule 10).",
+   "text": "Either: hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Bullseye, Death Dealer": {
-   "group": "Discard outlet",
-   "text": "Discard a nonland card: 2 damage to any target, repeatable for {3}; an outlet that is reach and removal.",
+   "group": "In Celes",
+   "text": "Either: discard outlet removal.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Worf, Defiant Commander": {
    "group": "Impulse",
-   "text": "Whenever you attack, exile the top card (one opponent in Brawl) to play until your next end of turn, plus a hasty 2/1.",
+   "text": "Zuko: impulse on attack. Celes: a body.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tinybones, Trinket Thief": {
    "group": "Hand attack",
-   "text": "Draws only when an OPPONENT discarded (rule 10).",
+   "text": "Either: needs opponent discards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tourach, Dread Cantor": {
    "group": "Hand attack",
-   "text": "Grows only when an OPPONENT discards; kicked, it makes them discard two (rule 10).",
+   "text": "Either: needs opponent discards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Neriv, Heart of the Storm": {
    "group": "Damage",
-   "text": "Creatures that entered THIS turn deal double damage. Tannuk's warp and haste make every red creature that kind of attacker, and madness and adventure creatures enter mid-turn.",
+   "text": "Zuko: warped and hasty creatures entered this turn. Celes: returned creatures entered this turn too.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ob Nixilis, the Adversary": {
-   "group": "Re-graded",
-   "text": "Casualty sacrifices a creature to make a second copy; +1 makes them lose 2 or discard (their choice), −2 makes Devils, and −7 can refill YOUR hand (draw seven) to fuel discards.",
+   "group": "Other",
+   "text": "Either: casualty copy and the −7 refill.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tinybones, Bauble Burglar": {
    "group": "Hand attack",
-   "text": "Opponents' discards go to exile for you to cast (a Zuko trigger), but only if you make them discard (rule 10).",
+   "text": "Either: needs opponent discards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Green Goblin, Back for More": {
-   "group": "Discard outlet",
-   "text": "Each combat you discard (repeatable) and each opponent discards; a 5-mana flier with menace. Mayhem is a graveyard cast (rule 1).",
+   "group": "In Celes",
+   "text": "Either: combat discard; mayhem is a Celes cast.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Junji, the Midnight Sky": {
-   "group": "Other",
-   "text": "A death trigger: opponent discard or a reanimation; strong body, off the engine.",
+   "group": "Graveyard",
+   "text": "Zuko: a 5-mana flier. Celes: its death reanimates a non-Dragon creature (a Celes counter), and a sacrifice outlet sets that up.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Maha, Its Feathers Night": {
    "group": "Damage",
-   "text": "Either deck: opponents' creatures have base toughness 1, so every ping (Spider-Man, Bullseye, Hidetsugu) is removal.",
+   "text": "Either: their creatures have toughness 1.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Tergrid, God of Fright // Tergrid's Lantern": {
-   "group": "Hand attack",
-   "text": "Steals permanents opponents discard or sacrifice; needs hand attack (rule 10).",
+   "group": "Graveyard",
+   "text": "Zuko: needs hand attack. Celes: what they sacrifice or discard comes from their graveyard onto your battlefield, a Celes counter.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Witch-king of Angmar": {
    "group": "Protection",
-   "text": "A flier whose own discard outlet makes it indestructible; punishes creatures that hit you. Owned.",
+   "text": "Either: a flier whose discard outlet makes it indestructible.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Eldest Reborn": {
    "group": "Graveyard",
-   "text": "Celes: edict, a discard for them, then reanimate the best creature or planeswalker in any graveyard.",
+   "text": "Zuko: off-plan. Celes: edict, discard, then reanimate the best creature anywhere.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2047,28 +2496,31 @@
   },
   "Armus, Skin of Evil": {
    "group": "Interaction",
-   "text": "Seven mana as a creature, but {2}{B} and discard it from hand for -4/-4: a discard that is removal, like Carnosaur.",
+   "text": "Zuko: a 7-drop. Celes: discard it from hand for -4/-4, and the card in the graveyard is fine; reanimators can return a 7-power body cheaply.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Mind Twist": {
    "group": "Hand attack",
-   "text": "Mass hand attack (rule 10).",
+   "text": "Either: mass hand attack (rule 10).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Gamble": {
    "group": "Tutor",
-   "text": "{R}: tutor for any card, then discard at random. Finds Tannuk or Containment Construct, and a random discard can hit a madness card.",
+   "text": "Either: one-mana tutor; the random discard is fine in both.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Lightning Axe": {
-   "group": "Interaction",
-   "text": "In the deck. {R}, discard a card: 5 damage to a creature at instant speed. The discard is the cost, so it feeds the payoffs and madness.",
+   "group": "In Zuko",
+   "text": "Either: discard for 5 damage at instant speed.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2076,77 +2528,87 @@
   },
   "Artist's Talent": {
    "group": "Discard outlet",
-   "text": "Loots on every noncreature spell; level 2 reduces costs; level 3 adds 2 to every noncombat damage (Spider-Man, Magmakin, Glint-Horn). Owned.",
+   "text": "Either: loots on every noncreature spell, cuts costs, and adds 2 to noncombat damage.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Lady Spider, Maybelle Reilly": {
    "group": "Discard payoff",
-   "text": "Counters go only on Spiders; Spider-Man and itself are the only ones.",
+   "text": "Either: Spiders only.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Misty Knight, Hero for Hire": {
-   "group": "Discard outlet",
-   "text": "{2},{T}, discard: draw for each card discarded this turn. An outlet that turns a big discard turn into cards.",
+   "group": "In Celes",
+   "text": "Either: discard to draw per discard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ambergris, Citadel Agent": {
    "group": "Discard outlet",
-   "text": "Attack: discard your hand, draw two. A big discard count, but it shrinks the hand.",
+   "text": "Zuko: discarding your whole hand wastes cards Zuko would rather cast. Celes: dumping the hand into the graveyard is exactly what mayhem and escape want.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Captain James T. Kirk": {
    "group": "Discard outlet",
-   "text": "On entering and attacking: loot, a token or a team pump, and all three with an empty hand. Owned.",
+   "text": "Either: loot, a token or a pump on entering and attacking; owned.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Collective Defiance": {
    "group": "Interaction",
-   "text": "Escalate: wheel YOUR hand (a big madness turn), 4 to a creature, 3 to the opponent; one card, three useful modes.",
+   "text": "Either: wheel your hand, 4 to a creature, 3 to them. Wheeling is even better for Celes (fills the graveyard).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kardum, Patron of Flames": {
    "group": "Other",
-   "text": "Seeks a card per attack and makes you discard them at end step if it dies.",
+   "text": "Either: seeks cards it later discards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Jaxis, the Troublemaker": {
    "group": "Discard outlet",
-   "text": "Discard: a hasty token copy of a creature (draws when it dies); sorcery speed.",
+   "text": "Zuko: fine. Celes: discard to copy a creature; blitz from hand draws when it dies.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Neheb, Dreadhorde Champion": {
-   "group": "Discard outlet",
-   "text": "Combat damage: discard any number, draw that many and add that much red. A large discard turn plus mana.",
+   "group": "In Celes",
+   "text": "Either: discard any number on damage.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Smellerbee, Rebel Fighter": {
-   "group": "Discard outlet",
-   "text": "Haste for the team; attacks to discard your hand and draw one per attacker. Owned.",
+   "group": "In Celes",
+   "text": "Either: haste and an attack wheel.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Solphim, Mayhem Dominus": {
    "group": "Damage",
-   "text": "Either deck, but not with Ob Nixilis: it doubles noncombat damage, so a 1-damage ping becomes 2 and Ob Nixilis never triggers. Owned.",
+   "text": "Zuko: conflicts with Ob Nixilis (doubles its 1-damage triggers to 2). Celes: doubles every noncombat burn; discard two for an indestructible counter.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2154,28 +2616,31 @@
   },
   "Jiang Yanggu, Alone": {
    "group": "Discard outlet",
-   "text": "Loots only when a creature attacks ALONE, which a go-wide attacking deck rarely does. Owned.",
+   "text": "Either: needs a lone attacker.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Mishra, Claimed by Gix": {
-   "group": "Damage",
-   "text": "Drains per attacker; melds only with Phyrexian Dragon Engine. Owned.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; drains per attacker, melds with Dragon Engine.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": {
-   "group": "Discard outlet",
-   "text": "Enters looting two; transforming exiles and returns it (enters from exile, a Zuko trigger), and Phoenix's III reanimates and flips it back from exile again. Owned.",
+   "group": "In Celes",
+   "text": "Either: loot two; the Phoenix reanimates.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Cloudshift": {
    "group": "Blink",
-   "text": "Zuko: one-mana blink, a permanent entering from exile plus its enters trigger.",
+   "text": "Zuko: a one-mana permanent re-entering from exile. Celes: nothing.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2183,28 +2648,31 @@
   },
   "Daydream": {
    "group": "Blink",
-   "text": "Blink with a counter, twice with flashback. Owned.",
+   "text": "Zuko: two blinks. Celes: nothing.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Airbender Ascension": {
    "group": "Blink",
-   "text": "Enters airbending a creature (yours to recast from exile for {2}, or theirs as tempo); after four creature arrivals it blinks one of yours every end step. Owned.",
+   "text": "Zuko: airbends a creature to recast from exile for {2}, then blinks one every end step after four arrivals. Celes: blinks return from exile, not the graveyard, so it does nothing for her counters.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Phelia, Exuberant Shepherd": {
    "group": "Blink",
-   "text": "Two-mana flash; every attack exiles a nonland permanent until end step: their blocker leaves combat, or one of yours comes back from exile (a Zuko trigger) and Phelia grows. Owned.",
+   "text": "Zuko: every attack blinks a permanent back from exile. Celes: no graveyard return.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Mind Stone": {
-   "group": "Re-graded",
-   "text": "In the deck. Owner's point: harnessed, the end-step blink returns a permanent from exile, a Zuko trigger every turn, on top of the {W} ramp.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: a {W} rock; its blink does nothing for her.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2212,14 +2680,15 @@
   },
   "Photon, Lady of Light": {
    "group": "Blink",
-   "text": "A 4-mana flier whose every attack blinks another creature of yours: a Zuko trigger per attack plus that creature's enters ability.",
+   "text": "Zuko: attack blink. Celes: nothing.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Soul Stone": {
-   "group": "Graveyard",
-   "text": "Celes: a black mana rock that, harnessed, reanimates every upkeep. Owned.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; ramp, then reanimate every upkeep.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2227,70 +2696,79 @@
   },
   "The Neutrinos": {
    "group": "Blink",
-   "text": "Flier; each attack blinks one of your creatures back tapped and attacking, a Zuko trigger per attack. Owned.",
+   "text": "Zuko: attack blink. Celes: nothing.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sadistic Slash": {
-   "group": "Interaction",
-   "text": "-5/-5 at instant speed, and if you discarded it this turn, mayhem casts it from the graveyard for {1}{B}: removal your discards set up.",
+   "group": "In Celes",
+   "text": "Either: -5/-5; mayhem recast.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
    "group": "Card draw",
-   "text": "Draws once a turn off a legendary spell, and this deck is mostly legends (Inti, Nico, Prosper, Laelia, Tannuk, Chandra, Axavar, Rakdos and more). Owned.",
+   "text": "Either: draws off legendary casts.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ayara, Widow of the Realm // Ayara, Furnace Queen": {
-   "group": "Other",
-   "text": "Sacrifice-to-drain; the back face reanimates (rule 2).",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: a sacrifice outlet that drains for the creature's mana value; transformed, it returns an artifact or creature from the graveyard every combat (a Celes counter each time).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hidetsugu Consumes All // Vessel of the All-Consuming": {
    "group": "Interaction",
-   "text": "I kills every permanent of mana value 1 or less (ours too: Ragavan, Liliana); III exiles and returns it transformed, which is a Zuko trigger.",
+   "text": "Zuko: III returns it from exile. Celes: chapter II exiles ALL graveyards, including hers.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Celestial Vault": {
    "group": "Card draw",
-   "text": "Drafts Alchemy spellbook cards into exile, but they go to hand, so they are not cast from exile.",
+   "text": "Either: drafts Alchemy cards into exile that go to hand, not cast.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Living End": {
    "group": "Spice",
-   "text": "Suspend means it is cast from exile, and every creature card in all graveyards comes back from exile: a Zuko counter per creature. Our discards fill the graveyard with creatures; wild but real.",
+   "text": "Zuko: suspend cast and mass return from exile. Celes: the creatures come back from exile, not the graveyard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kaya's Ghostform": {
    "group": "Protection",
-   "text": "Returns the enchanted creature when it dies or is exiled; one-mana insurance for Tannuk or Containment Construct.",
+   "text": "Either: returns a creature that dies or is exiled; for Celes the death return is a counter.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Indomitable Creativity": {
    "group": "Interaction",
-   "text": "Destroy X creatures or artifacts; the replacements come off the library at random. Volatile.",
+   "text": "Either: volatile.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Olivia, Crimson Bride": {
-   "group": "Graveyard",
-   "text": "Celes: in the deck. Every attack returns a creature from the graveyard tapped and attacking. Owned.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; attack reanimation.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2298,126 +2776,143 @@
   },
   "Dauthi Voidwalker": {
    "group": "Exile cast",
-   "text": "Exiles everything going to their graveyard; once, sacrifice it to cast one of those cards free from exile. Rogue outlaw. Owned.",
+   "text": "Either: exiles their graveyard and casts one of their cards once; the hate only touches opponents.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Black Widow, Super Spy": {
    "group": "Exile cast",
-   "text": "Two-drop menace; each hit exiles their top nonland for you to cast (a Zuko trigger), or grows itself. Owned.",
+   "text": "Zuko: each hit casts their top nonland card from exile. Celes: a 2-drop that grows.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hellspur Brute": {
    "group": "Outlaws",
-   "text": "Affinity for outlaws on a vanilla trampler.",
+   "text": "Either: an outlaw-affinity vanilla.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Wild Pack Squad": {
    "group": "Other",
-   "text": "A combat-step first-strike grant; filler.",
+   "text": "Either: filler.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Lassoed by the Law": {
    "group": "Interaction",
-   "text": "Exiles any nonland permanent and makes a Mercenary; good, but answers are not the shortage (rule 5).",
+   "text": "Either: exile any nonland permanent plus a Mercenary.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "June, Bounty Hunter": {
-   "group": "Outlaws",
-   "text": "Mercenary that sacrifices for Clues; few sacrifice targets.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: sacrifice a recursive creature for a Clue each turn.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rakish Crew": {
    "group": "Outlaws",
-   "text": "Drain when outlaws die; about 11 outlaws (rule 7). Owned.",
+   "text": "Either: drain when outlaws die.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Brimstone Roundup": {
    "group": "Plot",
-   "text": "Plot casts it from exile; Mercenaries on second spells. Owned.",
+   "text": "Either: Mercenaries on second spells; plot casts it from exile for Zuko.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Iron Fist, Hero for Hire": {
    "group": "Outlaws",
-   "text": "Mercenary with prowess and a late power-up; filler.",
+   "text": "Either: filler.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Squall, SeeD Mercenary": {
    "group": "Graveyard",
-   "text": "Double strike for a creature attacking alone; recursion on hits.",
+   "text": "Zuko: off-plan. Celes: returns a 3-or-less permanent on each hit.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Form a Posse": {
    "group": "Outlaws",
-   "text": "X Mercenary tokens; bodies for counters.",
+   "text": "Either: X Mercenaries; Celes' counters make wide boards better.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Taii Wakeen, Perfect Shot": {
    "group": "Damage",
-   "text": "Adds X to noncombat damage and draws when a ping exactly kills a creature; with Maha's toughness 1 that is every ping. Owned.",
+   "text": "Either: draws when a ping exactly kills.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Luke Cage, Hero for Hire": {
    "group": "Treasure",
-   "text": "Mercenary outlaw that makes a Treasure every combat: steady ramp for the Treasure subtheme (rule 6).",
+   "text": "Either: a Treasure every combat.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Reno and Rude": {
    "group": "Exile cast",
-   "text": "Assassin; plays their card from exile but needs a sacrifice each time.",
+   "text": "Either: impulse needing a sacrifice; Celes has fodder.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Vincent Valentine // Galian Beast": {
    "group": "Other",
-   "text": "Grows when their creatures die. Owned.",
+   "text": "Either: grows when theirs die.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Razorkin Needlehead": {
    "group": "Damage",
-   "text": "Pings opponents for each card they draw; filler here.",
+   "text": "Either: filler.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Astelli Reclaimer": {
    "group": "Warp",
-   "text": "Warp (recast later from exile) and returns a noncreature permanent of up to the mana spent; with warp that is 3.",
+   "text": "Zuko: warp then recast from exile. Celes: returns a noncreature permanent from the graveyard (The Soul Stone, Talismans).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Tragic Trajectory": {
-   "group": "Interaction",
-   "text": "In the deck. {B}: -2/-2, or -10/-10 once a spell was warped or a nonland permanent left this turn (Axavar, Tannuk's warps, Teleportation Circle's blink). Cheap real removal. Owned.",
+   "group": "In Zuko",
+   "text": "Either: {B} removal; void is easy with warps or sacrifices.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2425,126 +2920,143 @@
   },
   "Eject the Warp Core": {
    "group": "Interaction",
-   "text": "-2/-2, or -6/-6 with a sacrifice; Treasures can be the sacrifice.",
+   "text": "Zuko: fine. Celes: the kicker sacrifice is free with recursive creatures, so it is a 2-mana -6/-6.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Elegy Acolyte": {
    "group": "Card draw",
-   "text": "Draws when creatures connect; void makes Robots. Owned.",
+   "text": "Either: draws when creatures connect.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Mishra, Tamer of Mak Fawa": {
    "group": "Protection",
-   "text": "Every permanent you control has ward (sacrifice a permanent), which Treasures and tokens pay for the opponent's removal to fizzle; protection is short (rule 5).",
+   "text": "Either: ward for every permanent you control; unearth for artifacts suits Celes.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Highway Reaver": {
    "group": "Graveyard",
-   "text": "Grants unearth (a graveyard return, rule 1).",
+   "text": "Zuko: nothing. Celes: grants unearth to a creature card each time it enters or attacks; at max speed one unearth a turn is free.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Spider-Gwen, Free Spirit": {
-   "group": "Discard outlet",
-   "text": "Loots whenever it becomes tapped, so every attack is a discard. Cheap and repeatable. Owned.",
+   "group": "In Celes",
+   "text": "Either: loot on tap.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Magda, the Hoardmaster": {
    "group": "Treasure",
-   "text": "A tapped Treasure the first time each turn you target an opponent or their stuff (removal, Spider-Man and Bullseye pings); three Treasures become a 4/4 flying haste dragon. Owned.",
+   "text": "Either: a Treasure per crime, then 4/4 dragons.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sela, Tal Shiar Paradox": {
    "group": "Graveyard",
-   "text": "A 2/2 whenever cards leave your graveyard, which Containment Construct, Moonstone and Conspiracy Theorist do with every discard; attacks exile a graveyard card too.",
+   "text": "Zuko: little. Celes: a 2/2 each time cards leave your graveyard (escape, unearth, mayhem casts).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kellan, Planar Trailblazer": {
    "group": "Impulse",
-   "text": "A slow 1-drop that becomes an impulse engine for {1}{R}. Owned.",
+   "text": "Zuko: slow impulse engine. Celes: little.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Vaan, Street Thief": {
    "group": "Outlaws",
-   "text": "Pirates and Rogues that connect let you cast their top card or make a Treasure; we run about seven of those.",
+   "text": "Either: Pirates and Rogues steal cards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Superior Foes of Spider-Man": {
    "group": "Impulse",
-   "text": "Rogue; impulse off each 4+ mana spell. Owned.",
+   "text": "Either: impulse off 4+ spells.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Baron Bertram Graywater": {
-   "group": "Other",
-   "text": "Token-entry Vampires and a sacrifice-draw outlet. Owned.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: sacrifice a creature to draw, then bring it back; token entries make Vampires to sacrifice too.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Locke, Treasure Hunter": {
    "group": "Graveyard",
-   "text": "Mill then cast from the GRAVEYARD (not exile, rule 1); Treasure off milled lands.",
+   "text": "Zuko: casts from the graveyard. Celes: each attack mills and lets you cast one of those cards from the graveyard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Akul the Unrepentant": {
-   "group": "Other",
-   "text": "Sacrifice three to cheat a creature; no token base here. Owned.",
+   "group": "Sacrifice",
+   "text": "Zuko: few spare bodies to sacrifice. Celes: sacrifice three recursive creatures (Bloodghast, Gixian Recycler, Tenacious Underdog come back) to put a creature into play; a 4-mana flier either way.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Grand Goatnapper": {
    "group": "Other",
-   "text": "Alchemy Goat affinity; off-plan. Owned.",
+   "text": "Either: Alchemy Goat affinity.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Grenzo, Crooked Jailer": {
    "group": "Exile cast",
-   "text": "Heists on entering and every upkeep, and casts one of those 3-or-less free each turn: a Zuko trigger every turn. Six mana.",
+   "text": "Zuko: heist every upkeep, a free 3-or-less spell each turn. Celes: just card advantage.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sami, Wildcat Captain": {
    "group": "Other",
-   "text": "Double strike and artifact affinity; we run few artifacts. Owned.",
+   "text": "Either: few artifacts.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Great Train Heist": {
    "group": "Other",
-   "text": "Extra combat plus Treasures on hits; a combat trick. Owned.",
+   "text": "Either: extra combat or Treasures on hits.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Polterheist": {
-   "group": "Exile cast",
-   "text": "In the deck. Three mana, ward (pay 3 life), and EVERY attack heists a card from their library to cast from exile: a repeatable Zuko trigger on a cheap body.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: heist only.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2552,229 +3064,255 @@
   },
   "Rakdos Joins Up": {
    "group": "Graveyard",
-   "text": "Reanimates once (rule 2) and burns when legends die. Owned.",
+   "text": "Zuko: off-plan. Celes: reanimates with counters, burns when legends die.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rakdos, Patron of Chaos": {
    "group": "Card draw",
-   "text": "Six-mana flier: they sacrifice two or you draw two each end step.",
+   "text": "Either: they sacrifice two or you draw two.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rakdos's Return": {
    "group": "Hand attack",
-   "text": "X burn plus X opponent discards (rule 10).",
+   "text": "Either: burn plus opponent discard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ozai, the Phoenix King": {
    "group": "Spice",
-   "text": "Unspent mana becomes red and stays, so firebending mana from Zuko, Azula and Ozai's own firebending 4 survives into the second main phase. Flier and indestructible at six floating. Owned.",
+   "text": "Either: firebending mana persists past combat.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sun Warriors": {
    "group": "Other",
-   "text": "Firebending X per creature; combat-only mana. Owned.",
+   "text": "Either: firebending X.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Cruel Administrator": {
    "group": "Other",
-   "text": "Makes a firebending Soldier per attack. Owned.",
+   "text": "Either: makes a firebending Soldier each attack.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Zhao, Ruthless Admiral": {
-   "group": "Other",
-   "text": "Firebending 2, team pump per sacrifice. Owned.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: firebending and a team pump on every sacrifice.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Hidetsugu, Devouring Chaos": {
-   "group": "Re-graded",
-   "text": "In the deck. Every turn: exile your top card to play AND deal its mana value to any target. Repeatable impulse that is also removal; Solphim doubles the damage to their side.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: impulse plus damage, and a sacrifice outlet for scry.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Fire Lord Ozai": {
-   "group": "Exile cast",
-   "text": "{6}: play one of their top cards free (a Zuko trigger); attack-sacrifices for mana.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: attack-sacrifices a recursive creature for mana; flavour pairs with either.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Evereth, Viceroy of Plunder": {
-   "group": "Treasure",
-   "text": "Flier that eats Treasures or creatures for counters; a Treasure sink more than a source.",
+   "group": "Sacrifice",
+   "text": "Zuko: a Treasure sink. Celes: a flying sacrifice outlet that burns when it dies, then comes back.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kazarov, Sengir Pureblood": {
    "group": "Other",
-   "text": "Seven-mana flier with a pinger. Owned.",
+   "text": "Either: a 7-mana flier with a pinger.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Body Dropper": {
-   "group": "Other",
-   "text": "Sacrifice payoff; no sacrifice theme.",
+   "group": "Sacrifice",
+   "text": "Zuko: no sacrifice plan. Celes: a 2-drop outlet that grows from sacrificing recursive creatures.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Dreadhorde Butcher": {
-   "group": "Other",
-   "text": "Hasty 2-drop that grows; generic aggro.",
+   "group": "Graveyard",
+   "text": "Zuko: generic 2-drop. Celes: hasty, grows, and burns when it dies; a good body for reanimators.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Invasion of Azgol // Ashen Reaper": {
    "group": "Interaction",
-   "text": "Edict; when the Siege is defeated it is cast transformed from exile (a Zuko trigger), which takes attacks.",
+   "text": "Either: an edict; defeated, it casts from exile (Zuko).",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Juri, Master of the Revue": {
-   "group": "Other",
-   "text": "Sacrifice payoff. Owned.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: grows on every sacrifice, Treasures included, and burns when it dies.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kalain, Reclusive Painter": {
    "group": "Treasure",
-   "text": "Makes a Treasure, and every creature cast with Treasure mana enters with that many +1/+1 counters: the Treasure subtheme made into counters.",
+   "text": "Either: Treasure-paid creatures enter with counters.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Oni-Cult Anvil": {
    "group": "Treasure",
-   "text": "A Construct when Treasures are spent on your turn, and an artifact-sacrifice ping.",
+   "text": "Either: Constructs when Treasures are spent.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Dalkovan Outrider": {
-   "group": "Re-graded",
-   "text": "Every sacrifice, Treasures included and with no per-turn limit, perpetually grows the top creature of your library. Impulse draw then casts those grown creatures from exile; its own mobilize tokens are sacrificed each end step too.",
+   "group": "Sacrifice",
+   "text": "Zuko: grows the top creature of your library on each sacrifice. Celes: sacrifices are constant with recursive creatures and Treasures; mobilize tokens feed it every turn.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Florian, Voldaren Scion": {
-   "group": "Impulse",
-   "text": "In the deck. Each postcombat main phase, look at as many cards as the life opponents lost and play one from exile: a Zuko trigger nearly every turn this deck connects or pings.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: impulse only.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Stormclaw Rager": {
-   "group": "Other",
-   "text": "Sacrifice-draw outlet; Treasures can feed it. Owned.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: sacrifice a recursive creature or Treasure to draw and grow.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Vial Smasher the Fierce": {
    "group": "Damage",
-   "text": "Burns an opponent for the mana value of your first spell each turn.",
+   "text": "Either: burns per first spell.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kardur's Vicious Return": {
    "group": "Graveyard",
-   "text": "II makes every player discard (ours feeds madness), III reanimates (rule 2).",
+   "text": "Zuko: off-plan. Celes: sacrifice for 3 damage, everyone discards, then reanimate with a counter and haste.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kethek, Crucible Goliath": {
-   "group": "Other",
-   "text": "Sacrifice-to-cheat at end step; few nonlegendary creatures here.",
+   "group": "Sacrifice",
+   "text": "Zuko: off-plan. Celes: sacrifice each end step to cheat a creature from the library, and the sacrificed one comes back.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Ob Nixilis, Captive Kingpin": {
-   "group": "Impulse",
-   "text": "In the deck. Each time opponents lose exactly 1 life: a counter and an impulse card. Glint-Horn Buccaneer, Shadow of the Goblin and Unstable Amulet each deal exactly 1, so every discard or exile cast becomes a card.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: impulse on 1-damage pings.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "The Balrog, Durin's Bane": {
-   "group": "Re-graded",
-   "text": "Owner's point holds: each Treasure sacrificed for mana also discounts it by 1, so three Treasures make it a 1-drop's worth of land mana. Haste, blockable only by legends, and destroys a creature when it dies.",
+   "group": "Other",
+   "text": "Either: Treasure sacrifices discount it; Celes' sacrifices too.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Orcus, Prince of Undeath": {
-   "group": "Interaction",
-   "text": "X-sweeper or mass reanimation (rule 2).",
+   "group": "Graveyard",
+   "text": "Zuko: an X sweeper. Celes: return X creatures with total mana value X from the graveyard, all at once.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kaya the Inexorable": {
-   "group": "Interaction",
-   "text": "−3 exiles any nonland permanent; +1 protects a creature (back to hand if it dies or is exiled); the emblem casts legends free every upkeep. Owned.",
+   "group": "In Celes",
+   "text": "Either: exile anything, protect a creature.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Djeru and Hazoret": {
    "group": "Exile cast",
-   "text": "Each attack can cast a legendary creature free from exile (a Zuko trigger), and most of this deck's creatures are legends. Owned.",
+   "text": "Zuko: free-casts a legend from exile on each attack. Celes: casts legends too, but from exile, so no counter.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Quintorius, Loremaster": {
    "group": "Exile cast",
-   "text": "Each end step exiles a noncreature card from your graveyard for a 3/2 Spirit; sacrifice a Spirit to cast that card free from exile.",
+   "text": "Zuko: casts exiled noncreature cards free. Celes: it exiles from your graveyard, mildly against her.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Nita, Forum Conciliator": {
    "group": "Exile cast",
-   "text": "Zuko: a counter on every creature when you cast a spell you don't own; stacks with Zuko on Polterheist, Grenzo and Axavar heists. Owned.",
+   "text": "Either: counters on heist casts.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Archfiend of Ifnir": {
-   "group": "Discard payoff",
-   "text": "In the deck. Flier: every card you discard or cycle puts a -1/-1 counter on EACH creature your opponents control. In this deck that is a one-sided sweeper that ticks several times a turn.",
+   "group": "In Zuko",
+   "text": "Either: every discard is a one-sided -1/-1.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "The Legend of Roku": {
-   "group": "Exile cast",
-   "text": "Zuko: in the deck. Impulse three, then mana, then returns from exile as Avatar Roku. Owned.",
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: little.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2782,188 +3320,767 @@
   },
   "Sokenzan, Crucible of Defiance": {
    "group": "Land",
-   "text": "An untapped Mountain that, from hand, discards itself for two hasty 1/1s, cheaper for each legend you control (this deck is mostly legends). A basic upgrade and a discard. Owned.",
+   "text": "Either: untapped Mountain, discard for two hasty 1/1s.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Eiganjo, Seat of the Empire": {
    "group": "Land",
-   "text": "An untapped Plains that discards itself from hand for 4 damage to an attacker or blocker, cheaper per legend. A basic upgrade that is removal and a discard.",
+   "text": "Either: an untapped Plains that discards itself for 4 damage to a combatant.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Takenuma, Abandoned Mire": {
    "group": "Land",
-   "text": "An untapped Swamp that discards itself from hand to mill three and regrow a creature or planeswalker, cheaper per legend.",
+   "text": "Zuko: untapped Swamp and a discard. Celes: also regrows a creature from the graveyard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Clive's Hideaway": {
    "group": "Land",
-   "text": "Hideaway 4; with four legends out, {2} plays the hidden card free from exile. Colourless, which costs this three-colour manabase a source.",
+   "text": "Either: free-plays the hidden card with four legends out; a colourless land in a three-colour deck.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Kumano Faces Kakkazan // Etching of Kumano": {
    "group": "Exile cast",
-   "text": "One mana: a ping, a counter for your next creature, then the Saga exiles and returns as a 2/2 haste creature (enters from exile).",
+   "text": "Zuko: returns from exile as a creature. Celes: a fine 1-drop.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Volcanic Torrent": {
    "group": "Interaction",
-   "text": "Cascade (a free spell from exile) plus X damage to each of their creatures and planeswalkers, X = spells you cast this turn; one-sided.",
+   "text": "Either: one-sided damage plus cascade.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Necrogoyf": {
    "group": "Discard outlet",
-   "text": "Every player discards in their own upkeep: a guaranteed discard for us each turn (madness, payoffs) and one for them. Madness {1}{B}{B} itself.",
+   "text": "Zuko: fine. Celes: a discard every upkeep for everyone, and its power counts creature cards in all graveyards.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "M.O.D.O.K.": {
    "group": "Discard outlet",
-   "text": "Flying lifelink; pay 3 life to connive (draw then discard) as often as you like on your turn; their creatures get -1/-1. Owned.",
+   "text": "Zuko: fine. Celes: repeatable connive fills the graveyard every turn, and their creatures get -1/-1.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Electro's Bolt": {
-   "group": "Interaction",
-   "text": "4 damage to a creature, and if you discarded it this turn, mayhem casts it from the graveyard for {1}{R}. Owned.",
+   "group": "In Celes",
+   "text": "Either: 4 damage; mayhem is a cheap recast after discarding it.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Rix Maadi Reveler": {
    "group": "Discard outlet",
-   "text": "Loot on entering, or spectacle to discard your hand and draw three.",
+   "text": "Zuko: fine. Celes: spectacle discards your whole hand to draw three, a big graveyard fill.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Spring-Loaded Sawblades // Bladewheel Chariot": {
    "group": "Interaction",
-   "text": "Flash, 5 damage to a tapped creature; craft later exiles and returns it transformed (a Zuko trigger).",
+   "text": "Either: flash 5 damage; craft returns from exile for Zuko.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Twinshot Sniper": {
    "group": "Interaction",
-   "text": "Discard from hand for 2 damage (channel), or a body that deals 2. Owned.",
+   "text": "Either: channel 2 damage from hand.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Sandman's Quicksand": {
    "group": "Interaction",
-   "text": "-2/-2 to all; cast by mayhem after discarding it, only their creatures shrink. Owned.",
+   "text": "Zuko: fine. Celes: discard it, then mayhem for a one-sided -2/-2.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Rise of Sozin": {
    "group": "Spice",
-   "text": "Chapter I destroys ALL creatures, including ours; III returns it from exile as Fire Lord Sozin. Flavourful, but it fights a creature deck. Owned.",
+   "text": "Either: a wipe that hits your board, then Fire Lord Sozin; Sozin steals from their graveyard.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Phlage, Titan of Fire's Fury": {
-   "group": "Interaction",
-   "text": "Cast: 3 damage and 3 life, then sacrificed; escape later from the graveyard (not Zuko, rule 1) as a repeating threat.",
+   "group": "In Celes",
+   "text": "Celes: in the deck; removal, then escape. Zuko: removal once.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Scurrilous Sentry": {
    "group": "Discard outlet",
-   "text": "Connives on entering and attacking; Rogue outlaw with menace.",
+   "text": "Zuko: fine. Celes: connives on entering and attacking.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Risk Factor": {
    "group": "Other",
-   "text": "They take 4 or you draw three; jump-start recasts it by discarding a card.",
+   "text": "Either: jump-start by discarding.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "The Fall of Lord Konda // Fragment of Konda": {
    "group": "Interaction",
-   "text": "Exile a 4+ creature, then returns from exile as a defender that draws when it dies.",
+   "text": "Either: exile a 4+ creature.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Grand Nagus Zek": {
    "group": "Treasure",
-   "text": "Three mana; a Treasure the first time each turn ANY other creature dies (removal and end-step sacrifices count), and it grows with every Treasure you hold.",
+   "text": "Zuko: fine. Celes: a Treasure every turn a creature dies, which a sacrifice-and-return deck makes happen constantly.",
    "graded_at": {
-    "108": "c612a2d650d4"
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
    }
   },
   "Bloodtithe Harvester": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. For Celes: a Blood token is a repeatable discard outlet, and it is a 2-drop removal piece.",
+   "group": "Discard outlet",
+   "text": "Zuko: cut from 108. Celes: its Blood token is a discard outlet, and it sacrifices itself for removal (then comes back with a reanimator).",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Bonecrusher Giant // Stomp": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Stomp then a 4/3; an adventure is a Zuko cast, for Celes it is plain good removal.",
+   "group": "Interaction",
+   "text": "Either: Stomp then a 4/3; for Zuko the creature is cast from exile.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Chapter II discards up to two and draws that many; Kiki copies a creature each turn.",
+   "group": "Discard outlet",
+   "text": "Either: Goblin and Treasures, a two-card loot, then Kiki copies a creature each turn.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Steal the Show": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Wheel any number, or damage per instant/sorcery in your graveyard; better in a graveyard deck.",
+   "group": "Discard outlet",
+   "text": "Zuko: cut. Celes: wheel any number, or damage per instant and sorcery in the graveyard.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Light Up the Stage": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Impulse two; an exile card, little for Celes.",
+   "group": "Impulse",
+   "text": "Zuko: impulse two. Celes: little.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Shadow of the Goblin": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Loot every main phase; pings on casts from anywhere but hand, which includes graveyard casts.",
+   "group": "Discard outlet",
+   "text": "Either: main-phase loot, pings on non-hand casts (graveyard casts count).",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
    }
   },
   "Unstable Amulet": {
-   "group": "Cut from Zuko",
-   "text": "Cut from 108. Pings on casts from outside the hand (graveyard casts count too).",
+   "group": "Damage",
+   "text": "Either: pings on non-hand casts (graveyard casts count for Celes).",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Inti, Seneschal of the Sun": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck; attack discards, each discard an impulse card. Celes: still a repeatable attack discard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Moonstone, Harsh Mistress": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck; discards come back from exile. Celes: it exiles your discards out of the graveyard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Containment Construct": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: exiles every discard from the graveyard, the opposite of what she wants.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Conspiracy Theorist": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck; attack loot that recasts a discard from exile. Celes: the loot is fine, the exile is optional.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Party Thrasher": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: a discard each main phase; the impulse half is neutral.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "The Infamous Cruelclaw": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: its discard-as-cost fills the graveyard every hit.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Nico Minoru, Runaway": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: graveyard casts are casts 'from anywhere other than your hand', so every mayhem and escape pings for 2.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Crucias, Titan of the Waves": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: an end-step discard every turn, plus a Treasure and a seek.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Big Score": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: a discard, two cards and two Treasures.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Liliana the Faultless": {
+   "group": "In Zuko",
+   "text": "Either: discard a card to give a creature hexproof; protection and an outlet.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Prosper, Tome-Bound": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: impulse and Treasures, no graveyard tie.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Laelia, the Blade Reforged": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: grows whenever cards are exiled from your graveyard, which every escape does.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Professional Face-Breaker": {
+   "group": "In Zuko",
+   "text": "Either: Treasures on combat damage, impulse by spending one.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Laughing Jasper Flint": {
+   "group": "In Zuko",
+   "text": "Either: impulse sized by your outlaw count, which is small in both.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Ragavan, Nimble Pilferer": {
+   "group": "In Zuko",
+   "text": "Either: a 1-drop that makes Treasures and steals cards.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Stromkirk Occultist": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck; madness and impulse. Celes: a 3-drop trampler.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Outpost Siege": {
+   "group": "In Zuko",
+   "text": "Zuko: Khans mode impulse. Celes: Dragons mode pings each time a creature leaves, good with sacrifices.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Charred Foyer": {
+   "group": "In Zuko",
+   "text": "Zuko: free spells from exile. Celes: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "All-Fates Stalker": {
+   "group": "In Zuko",
+   "text": "Zuko: warp and exile-until-leaves. Celes: plain removal on a body.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Spider-Man, New Champion": {
+   "group": "In Zuko",
+   "text": "Either: damage per discard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Magmakin Artillerist": {
+   "group": "In Zuko",
+   "text": "Either: damage per discard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Glint-Horn Buccaneer": {
+   "group": "In Zuko",
+   "text": "Either: damage per discard, attack loot.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Living Laser": {
+   "group": "In Zuko",
+   "text": "Either: copies per card discarded this turn.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Bone Miser": {
+   "group": "In Zuko",
+   "text": "Zuko: in the deck. Celes: discarded creatures make Zombies and stay in the graveyard to come back.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Cool but Rude": {
+   "group": "In Zuko",
+   "text": "Either: attack loot, then 2 damage per discard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Monument to Endurance": {
+   "group": "In Zuko",
+   "text": "Either: a card, a Treasure or 3 damage per discard.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Quintorius Kand": {
+   "group": "In Zuko",
+   "text": "Zuko: drains on every exile cast. Celes: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Nalfeshnee": {
+   "group": "In Zuko",
+   "text": "Zuko: copies exile casts. Celes: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Spider-Verse": {
+   "group": "In Zuko",
+   "text": "Zuko: copies non-hand casts. Celes: mayhem and escape casts are from the graveyard, so it copies those creatures too.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Olivia, Opulent Outlaw": {
+   "group": "In Zuko",
+   "text": "Either: Treasures from outlaw hits.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "At Knifepoint": {
+   "group": "In Zuko",
+   "text": "Either: outlaw first strike and Mercenaries.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Fiery Temper": {
+   "group": "In Zuko",
+   "text": "Either: madness 3 damage.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Giant Killer": {
+   "group": "In Zuko",
+   "text": "Either: tapper and removal for big creatures.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Demon Bolt": {
+   "group": "In Zuko",
+   "text": "Either: 4 damage, foretell.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Poison the Cup": {
+   "group": "In Zuko",
+   "text": "Either: instant removal, foretell.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Boros Charm": {
+   "group": "In Zuko",
+   "text": "Either: indestructible team or 4 damage.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Scarlet Spider, Kaine": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mayhem for {B/R} after a discard. Zuko: a menace 2-drop.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Swarm, Being of Bees": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mayhem for {B}. Zuko: a flash flier.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Spider-Islanders": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mayhem for {1}{R}. Zuko: vanilla.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Raging Goblinoids": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mayhem for {2}{R}, haste. Zuko: a 5-drop.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Carnage, Crimson Chaos": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mayhem, and its entry reanimates a 3-drop. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Bloodghast": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; returns on every land drop. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Gixian Recycler": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; unearth that refills itself. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Tenacious Underdog": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; blitz from the graveyard. Zuko: a 2-drop.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Squee, Dubious Monarch": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; recast from the graveyard. Zuko: attack token.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Phoenix of Ash": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; escape. Zuko: a hasty flier.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Woe Strider": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; escape and a sacrifice outlet.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Nethergoyf": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; escape for {2}{B}.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Alesha, Who Smiles at Death": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; each attack reanimates a small creature. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Terra, Herald of Hope": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; mills and reanimates on hits. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Lurrus of the Dream-Den": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; a 2-drop permanent from the graveyard every turn. Zuko: little.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Priest of Fell Rites": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; sacrifice to reanimate, then unearth itself.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Sorin, Vengeful Bloodlord": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; −X reanimates. Zuko: lifelink walker.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Liliana, Heretical Healer // Liliana, Defiant Necromancer": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; flips when a creature dies, then reanimates. Zuko: the flip exiles and returns her, a Zuko trigger, but rarely.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Can't Stay Away": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; reanimate twice with flashback.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Sevinne's Reclamation": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; returns a 3-or-less permanent, twice from flashback.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Faithless Looting": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; two discards, then flashback. Zuko: card disadvantage.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Cathartic Reunion": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; discard two to draw three. Zuko: fine.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Lightning Helix": {
+   "group": "In Celes",
+   "text": "Either: 3 damage and 3 life.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Vindicate": {
+   "group": "In Celes",
+   "text": "Either: destroy any permanent.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Bitter Triumph": {
+   "group": "In Celes",
+   "text": "Either: removal with a discard cost.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Anguished Unmaking": {
+   "group": "In Celes",
+   "text": "Either: exile any nonland permanent.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Infernal Grasp": {
+   "group": "In Celes",
+   "text": "Either: 2-mana instant removal.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Kolaghan's Command": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; returns a creature card to hand. Zuko: modest.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Collective Brutality": {
+   "group": "In Celes",
+   "text": "Celes: in the deck; escalate discards. Zuko: modest.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Murderous Rider // Swift End": {
+   "group": "In Celes",
+   "text": "Either: removal; the adventure creature is a Zuko cast.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Arcane Signet": {
+   "group": "In Celes",
+   "text": "Celes: in the deck. Zuko: replaced by Treasures.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Talisman of Indulgence": {
+   "group": "In Celes",
+   "text": "Celes: in the deck. Zuko: replaced by Treasures.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Talisman of Hierarchy": {
+   "group": "In Celes",
+   "text": "Celes: in the deck.",
+   "graded_at": {
+    "108": "4f0d619d9a1c",
+    "109": "bfcf1d218add"
+   }
+  },
+  "Talisman of Conviction": {
+   "group": "In Celes",
+   "text": "Celes: in the deck.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -2972,184 +4089,6 @@
  },
  "snapshots": {
   "108": {
-   "20913d19456d": [
-    "All-Fates Stalker",
-    "Anguished Unmaking",
-    "Anje's Ravager",
-    "Arcane Signet",
-    "At Knifepoint",
-    "Big Score",
-    "Bitter Triumph",
-    "Blazemire Verge",
-    "Bleachbone Verge",
-    "Blightstep Pathway // Searstep Pathway",
-    "Blood Crypt",
-    "Bloodtithe Harvester",
-    "Bone Miser",
-    "Bonecrusher Giant // Stomp",
-    "Boros Charm",
-    "Celes, Rune Knight",
-    "Chaos Warp",
-    "Charred Foyer",
-    "Clifftop Retreat",
-    "Collective Brutality",
-    "Command Tower",
-    "Conspiracy Theorist",
-    "Containment Construct",
-    "Cool but Rude",
-    "Crucias, Titan of the Waves",
-    "Dalkovan Encampment",
-    "Dark Fortress",
-    "Demon Bolt",
-    "Dragonskull Summit",
-    "Ephemerate",
-    "Evolving Wilds",
-    "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
-    "Faithless Salvaging",
-    "Fiery Temper",
-    "Fire Lord Zuko",
-    "Giant Killer",
-    "Glint-Horn Buccaneer",
-    "Godless Shrine",
-    "Infernal Grasp",
-    "Inspiring Vantage",
-    "Inti, Seneschal of the Sun",
-    "Jeska's Will",
-    "Kolaghan's Command",
-    "Laelia, the Blade Reforged",
-    "Laughing Jasper Flint",
-    "Light Up the Stage",
-    "Lightning Helix",
-    "Liliana the Faultless",
-    "Living Laser",
-    "Magmakin Artillerist",
-    "Mana Confluence",
-    "Monument to Endurance",
-    "Moonstone, Harsh Mistress",
-    "Mountain",
-    "Murderous Rider // Swift End",
-    "Nalfeshnee",
-    "Nico Minoru, Runaway",
-    "Nomad Outpost",
-    "Olivia, Opulent Outlaw",
-    "Outpost Siege",
-    "Party Thrasher",
-    "Plains",
-    "Poison the Cup",
-    "Prismatic Vista",
-    "Professional Face-Breaker",
-    "Prosper, Tome-Bound",
-    "Quintorius Kand",
-    "Ragavan, Nimble Pilferer",
-    "Raucous Carnival",
-    "Sacred Foundry",
-    "Shadow of the Goblin",
-    "Shattered Sanctum",
-    "Spider-Man, New Champion",
-    "Spider-Verse",
-    "Starting Town",
-    "Steal the Show",
-    "Stromkirk Occultist",
-    "Sunbaked Canyon",
-    "Sunbillow Verge",
-    "Swamp",
-    "Talisman of Conviction",
-    "Talisman of Hierarchy",
-    "Talisman of Indulgence",
-    "Terminal Agony",
-    "The Infamous Cruelclaw",
-    "Unstable Amulet",
-    "Vindicate"
-   ],
-   "c612a2d650d4": [
-    "All-Fates Stalker",
-    "Anguished Unmaking",
-    "Arcane Signet",
-    "At Knifepoint",
-    "Axavar, Fate Thief",
-    "Big Score",
-    "Bitter Triumph",
-    "Blazemire Verge",
-    "Bleachbone Verge",
-    "Blightstep Pathway // Searstep Pathway",
-    "Blood Crypt",
-    "Bloodtithe Harvester",
-    "Bone Miser",
-    "Bonecrusher Giant // Stomp",
-    "Boros Charm",
-    "Celes, Rune Knight",
-    "Chandra, Torch of Defiance",
-    "Charred Foyer",
-    "Clifftop Retreat",
-    "Collective Brutality",
-    "Command Tower",
-    "Conspiracy Theorist",
-    "Containment Construct",
-    "Cool but Rude",
-    "Crucias, Titan of the Waves",
-    "Dalkovan Encampment",
-    "Dark Fortress",
-    "Demon Bolt",
-    "Dragonskull Summit",
-    "Dream Devourer",
-    "Evolving Wilds",
-    "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
-    "Fiery Temper",
-    "Fire Lord Zuko",
-    "Giant Killer",
-    "Glint-Horn Buccaneer",
-    "Godless Shrine",
-    "Inspiring Vantage",
-    "Inti, Seneschal of the Sun",
-    "Kolaghan's Command",
-    "Laelia, the Blade Reforged",
-    "Laughing Jasper Flint",
-    "Light Up the Stage",
-    "Lightning Helix",
-    "Liliana the Faultless",
-    "Living Laser",
-    "Magmakin Artillerist",
-    "Mana Confluence",
-    "Mog, Moogle Warrior",
-    "Monument to Endurance",
-    "Moonstone, Harsh Mistress",
-    "Mountain",
-    "Murderous Rider // Swift End",
-    "Nalfeshnee",
-    "Nico Minoru, Runaway",
-    "Nomad Outpost",
-    "Olivia, Opulent Outlaw",
-    "Outpost Siege",
-    "Party Thrasher",
-    "Plains",
-    "Poison the Cup",
-    "Prismatic Vista",
-    "Professional Face-Breaker",
-    "Prosper, Tome-Bound",
-    "Quintorius Kand",
-    "Ragavan, Nimble Pilferer",
-    "Rakdos, the Muscle",
-    "Raucous Carnival",
-    "Sacred Foundry",
-    "Shadow of the Goblin",
-    "Shattered Sanctum",
-    "Spider-Man, New Champion",
-    "Spider-Verse",
-    "Starting Town",
-    "Steal the Show",
-    "Stromkirk Occultist",
-    "Sunbaked Canyon",
-    "Sunbillow Verge",
-    "Swamp",
-    "Talisman of Indulgence",
-    "Tannuk, Steadfast Second",
-    "Teleportation Circle",
-    "Terminal Agony",
-    "The Infamous Cruelclaw",
-    "Trumpeting Carnosaur",
-    "Unstable Amulet",
-    "Vindicate"
-   ],
    "4f0d619d9a1c": [
     "All-Fates Stalker",
     "Anguished Unmaking",
@@ -3339,7 +4278,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3349,7 +4288,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3365,11 +4304,11 @@
   },
   "Angrath, the Flame-Chained": {
    "Z": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3389,7 +4328,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3409,7 +4348,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3439,7 +4378,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3459,7 +4398,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3569,7 +4508,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "✗",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3579,7 +4518,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3679,7 +4618,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3689,7 +4628,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3699,7 +4638,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3709,7 +4648,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3719,7 +4658,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3729,7 +4668,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3739,7 +4678,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3749,7 +4688,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3769,7 +4708,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3799,7 +4738,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3849,7 +4788,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3859,7 +4798,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3869,7 +4808,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3879,7 +4818,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3889,7 +4828,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3899,7 +4838,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3909,7 +4848,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3919,7 +4858,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3929,7 +4868,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3939,7 +4878,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3949,7 +4888,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -3979,7 +4918,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4089,7 +5028,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4179,7 +5118,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4199,7 +5138,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4219,7 +5158,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4265,7 +5204,7 @@
   },
   "Quintorius, History Chaser": {
    "Z": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
@@ -4279,7 +5218,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4309,7 +5248,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4339,7 +5278,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4369,7 +5308,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4399,7 +5338,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4429,7 +5368,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4459,7 +5398,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4529,7 +5468,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4569,7 +5508,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4595,7 +5534,7 @@
   },
   "Solphim, Mayhem Dominus": {
    "Z": {
-    "m": "★★",
+    "m": "◇",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
@@ -4679,7 +5618,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4695,11 +5634,11 @@
   },
   "The Soul Stone": {
    "Z": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4719,7 +5658,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4739,7 +5678,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4749,17 +5688,17 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "✗",
     "graded_at": "bfcf1d218add"
    }
   },
   "Celestial Vault": {
    "Z": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "△",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4799,7 +5738,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4809,7 +5748,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4819,7 +5758,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4859,7 +5798,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4879,7 +5818,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4939,7 +5878,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4969,7 +5908,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -4989,7 +5928,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5045,7 +5984,7 @@
   },
   "Sela, Tal Shiar Paradox": {
    "Z": {
-    "m": "★",
+    "m": "◇",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
@@ -5079,7 +6018,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5089,7 +6028,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5109,7 +6048,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5129,7 +6068,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5159,7 +6098,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5229,7 +6168,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5239,7 +6178,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5249,7 +6188,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5259,7 +6198,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5279,7 +6218,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5289,7 +6228,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5309,7 +6248,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5339,7 +6278,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5349,7 +6288,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5359,7 +6298,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5389,7 +6328,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5399,7 +6338,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5439,7 +6378,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5449,7 +6388,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5459,7 +6398,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5469,7 +6408,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5489,7 +6428,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5499,13 +6438,13 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
   "Takenuma, Abandoned Mire": {
    "Z": {
-    "m": "★★",
+    "m": "★",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
@@ -5529,7 +6468,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "△",
+    "m": "◇",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5559,7 +6498,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5569,7 +6508,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5579,7 +6518,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5629,7 +6568,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5639,7 +6578,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "◇",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5669,7 +6608,7 @@
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "★",
+    "m": "★★",
     "graded_at": "bfcf1d218add"
    }
   },
@@ -5740,6 +6679,706 @@
    },
    "C": {
     "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Inti, Seneschal of the Sun": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Moonstone, Harsh Mistress": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "✗",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Containment Construct": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "✗",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Conspiracy Theorist": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Party Thrasher": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "The Infamous Cruelclaw": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Nico Minoru, Runaway": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Crucias, Titan of the Waves": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Big Score": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Liliana the Faultless": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Prosper, Tome-Bound": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Laelia, the Blade Reforged": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Professional Face-Breaker": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Laughing Jasper Flint": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Ragavan, Nimble Pilferer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Stromkirk Occultist": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Outpost Siege": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Charred Foyer": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "△",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "All-Fates Stalker": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Spider-Man, New Champion": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Magmakin Artillerist": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Glint-Horn Buccaneer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Living Laser": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Bone Miser": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Cool but Rude": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Monument to Endurance": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Quintorius Kand": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "△",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Nalfeshnee": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "△",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Spider-Verse": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Olivia, Opulent Outlaw": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "At Knifepoint": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "◇",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Fiery Temper": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Giant Killer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Demon Bolt": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Poison the Cup": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Boros Charm": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Scarlet Spider, Kaine": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Swarm, Being of Bees": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Spider-Islanders": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Raging Goblinoids": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Carnage, Crimson Chaos": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Bloodghast": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Gixian Recycler": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Tenacious Underdog": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Squee, Dubious Monarch": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Phoenix of Ash": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Woe Strider": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Nethergoyf": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Alesha, Who Smiles at Death": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Terra, Herald of Hope": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Lurrus of the Dream-Den": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Priest of Fell Rites": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Sorin, Vengeful Bloodlord": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Liliana, Heretical Healer // Liliana, Defiant Necromancer": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Can't Stay Away": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Sevinne's Reclamation": {
+   "Z": {
+    "m": "△",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Faithless Looting": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Cathartic Reunion": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Lightning Helix": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Vindicate": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Bitter Triumph": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Anguished Unmaking": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Infernal Grasp": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Kolaghan's Command": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Collective Brutality": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Murderous Rider // Swift End": {
+   "Z": {
+    "m": "★",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Arcane Signet": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Talisman of Indulgence": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Talisman of Hierarchy": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
+    "graded_at": "bfcf1d218add"
+   }
+  },
+  "Talisman of Conviction": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "4f0d619d9a1c"
+   },
+   "C": {
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   }

@@ -89,6 +89,17 @@ casts and reanimation; draft from the board), and `builds/zuko` covers BOTH deck
 C (Celes), B (either deck), N (neither). Cards were pre-sorted by reason group; every card has a
 verdict for each deck. The owner divides the rest between the two decks on the board.
 
+**2026-11-27 — full re-grade for both decks.** Every board card outside a deck, and every
+nonland card of each deck, now has a fresh verdict for BOTH decks with a two-part reason
+(Zuko / Celes). Findings: (1) Celes has a natural ARISTOCRATS sub-theme: recursive creatures
+(Bloodghast, Gixian Recycler, Tenacious Underdog) are free sacrifice fodder, so outlets (Akul,
+Ayara, Juri, Stormclaw Rager, Evereth, Kethek, Zhao, Body Dropper) and death payoffs (Vraan,
+Massacre Girl, Grand Nagus Zek, Dalkovan Outrider) move up for her. (2) Cards that EXILE your
+own discards are anti-synergy for Celes: Containment Construct, Moonstone, Necropotence,
+Currency Converter, Hidetsugu Consumes All. (3) Nico and Spider-Verse count graveyard casts
+("anywhere other than your hand"), so both are strong for Celes too. (4) Blink, impulse and
+heist give Celes nothing.
+
 
 **Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
 on the owner's notes: Alpharael (void is on most turns via Treasures and warp), Dalkovan
