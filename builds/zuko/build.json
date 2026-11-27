@@ -2224,6 +2224,216 @@
    "graded_at": {
     "108": "c612a2d650d4"
    }
+  },
+  "Razorkin Needlehead": {
+   "group": "Damage",
+   "text": "Pings opponents for each card they draw; filler here.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Astelli Reclaimer": {
+   "group": "Warp",
+   "text": "Warp (recast later from exile) and returns a noncreature permanent of up to the mana spent; with warp that is 3.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Tragic Trajectory": {
+   "group": "Interaction",
+   "text": "{B}: -2/-2, or -10/-10 once a spell was warped or a nonland permanent left this turn (Axavar, Tannuk's warps, Teleportation Circle's blink). Cheap real removal. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Eject the Warp Core": {
+   "group": "Interaction",
+   "text": "-2/-2, or -6/-6 with a sacrifice; Treasures can be the sacrifice.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Elegy Acolyte": {
+   "group": "Card draw",
+   "text": "Draws when creatures connect; void makes Robots. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Mishra, Tamer of Mak Fawa": {
+   "group": "Protection",
+   "text": "Every permanent you control has ward (sacrifice a permanent), which Treasures and tokens pay for the opponent's removal to fizzle; protection is short (rule 5).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Highway Reaver": {
+   "group": "Graveyard",
+   "text": "Grants unearth (a graveyard return, rule 1).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Spider-Gwen, Free Spirit": {
+   "group": "Discard outlet",
+   "text": "Loots whenever it becomes tapped, so every attack is a discard. Cheap and repeatable. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Magda, the Hoardmaster": {
+   "group": "Treasure",
+   "text": "A tapped Treasure the first time each turn you target an opponent or their stuff (removal, Spider-Man and Bullseye pings); three Treasures become a 4/4 flying haste dragon. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Sela, Tal Shiar Paradox": {
+   "group": "Graveyard",
+   "text": "A 2/2 whenever cards leave your graveyard, which Containment Construct, Moonstone and Conspiracy Theorist do with every discard; attacks exile a graveyard card too.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kellan, Planar Trailblazer": {
+   "group": "Impulse",
+   "text": "A slow 1-drop that becomes an impulse engine for {1}{R}. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Vaan, Street Thief": {
+   "group": "Outlaws",
+   "text": "Pirates and Rogues that connect let you cast their top card or make a Treasure; we run about seven of those.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Superior Foes of Spider-Man": {
+   "group": "Impulse",
+   "text": "Rogue; impulse off each 4+ mana spell. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "group": "Other",
+   "text": "Token-entry Vampires and a sacrifice-draw outlet. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Locke, Treasure Hunter": {
+   "group": "Graveyard",
+   "text": "Mill then cast from the GRAVEYARD (not exile, rule 1); Treasure off milled lands.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Akul the Unrepentant": {
+   "group": "Other",
+   "text": "Sacrifice three to cheat a creature; no token base here. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Grand Goatnapper": {
+   "group": "Other",
+   "text": "Alchemy Goat affinity; off-plan. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Grenzo, Crooked Jailer": {
+   "group": "Exile cast",
+   "text": "Heists on entering and every upkeep, and casts one of those 3-or-less free each turn: a Zuko trigger every turn. Six mana.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Sami, Wildcat Captain": {
+   "group": "Other",
+   "text": "Double strike and artifact affinity; we run few artifacts. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Great Train Heist": {
+   "group": "Other",
+   "text": "Extra combat plus Treasures on hits; a combat trick. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Polterheist": {
+   "group": "Exile cast",
+   "text": "Three mana, ward (pay 3 life), and EVERY attack heists a card from their library to cast from exile: a repeatable Zuko trigger on a cheap body.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Rakdos Joins Up": {
+   "group": "Graveyard",
+   "text": "Reanimates once (rule 2) and burns when legends die. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Rakdos, Patron of Chaos": {
+   "group": "Card draw",
+   "text": "Six-mana flier: they sacrifice two or you draw two each end step.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Rakdos's Return": {
+   "group": "Hand attack",
+   "text": "X burn plus X opponent discards (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ozai, the Phoenix King": {
+   "group": "Spice",
+   "text": "Unspent mana becomes red and stays, so firebending mana from Zuko, Azula and Ozai's own firebending 4 survives into the second main phase. Flier and indestructible at six floating. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Sun Warriors": {
+   "group": "Other",
+   "text": "Firebending X per creature; combat-only mana. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Cruel Administrator": {
+   "group": "Other",
+   "text": "Makes a firebending Soldier per attack. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Zhao, Ruthless Admiral": {
+   "group": "Other",
+   "text": "Firebending 2, team pump per sacrifice. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Hidetsugu, Devouring Chaos": {
+   "group": "Impulse",
+   "text": "{2}{R},{T}: exile your top card to play, and deal its mana value to any target. A repeatable impulse engine that is also removal. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Fire Lord Ozai": {
+   "group": "Exile cast",
+   "text": "{6}: play one of their top cards free (a Zuko trigger); attack-sacrifices for mana.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -3376,6 +3586,186 @@
    }
   },
   "Vincent Valentine // Galian Beast": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Razorkin Needlehead": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Astelli Reclaimer": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tragic Trajectory": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Eject the Warp Core": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Elegy Acolyte": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Mishra, Tamer of Mak Fawa": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Highway Reaver": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Spider-Gwen, Free Spirit": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Magda, the Hoardmaster": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Sela, Tal Shiar Paradox": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kellan, Planar Trailblazer": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Vaan, Street Thief": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Superior Foes of Spider-Man": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Baron Bertram Graywater": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Locke, Treasure Hunter": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Akul the Unrepentant": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Grand Goatnapper": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Grenzo, Crooked Jailer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Sami, Wildcat Captain": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Great Train Heist": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Polterheist": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Rakdos Joins Up": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Rakdos, Patron of Chaos": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Rakdos's Return": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ozai, the Phoenix King": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Sun Warriors": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Cruel Administrator": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Zhao, Ruthless Admiral": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Hidetsugu, Devouring Chaos": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Fire Lord Ozai": {
    "Z": {
     "m": "◇",
     "graded_at": "c612a2d650d4"
