@@ -2434,6 +2434,153 @@
    "graded_at": {
     "108": "c612a2d650d4"
    }
+  },
+  "Evereth, Viceroy of Plunder": {
+   "group": "Treasure",
+   "text": "Flier that eats Treasures or creatures for counters; a Treasure sink more than a source.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kazarov, Sengir Pureblood": {
+   "group": "Other",
+   "text": "Seven-mana flier with a pinger. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Body Dropper": {
+   "group": "Other",
+   "text": "Sacrifice payoff; no sacrifice theme.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Dreadhorde Butcher": {
+   "group": "Other",
+   "text": "Hasty 2-drop that grows; generic aggro.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Invasion of Azgol // Ashen Reaper": {
+   "group": "Interaction",
+   "text": "Edict; when the Siege is defeated it is cast transformed from exile (a Zuko trigger), which takes attacks.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Juri, Master of the Revue": {
+   "group": "Other",
+   "text": "Sacrifice payoff. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "group": "Treasure",
+   "text": "Makes a Treasure, and every creature cast with Treasure mana enters with that many +1/+1 counters: the Treasure subtheme made into counters.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Oni-Cult Anvil": {
+   "group": "Treasure",
+   "text": "A Construct when Treasures are spent on your turn, and an artifact-sacrifice ping.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Dalkovan Outrider": {
+   "group": "Other",
+   "text": "Mobilize 2; sacrifice payoff for the library.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Florian, Voldaren Scion": {
+   "group": "Impulse",
+   "text": "Each postcombat main phase, look at as many cards as the life opponents lost and play one from exile: a Zuko trigger nearly every turn this deck connects or pings.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Stormclaw Rager": {
+   "group": "Other",
+   "text": "Sacrifice-draw outlet; Treasures can feed it. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Vial Smasher the Fierce": {
+   "group": "Damage",
+   "text": "Burns an opponent for the mana value of your first spell each turn.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kardur's Vicious Return": {
+   "group": "Graveyard",
+   "text": "II makes every player discard (ours feeds madness), III reanimates (rule 2).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kethek, Crucible Goliath": {
+   "group": "Other",
+   "text": "Sacrifice-to-cheat at end step; few nonlegendary creatures here.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ob Nixilis, Captive Kingpin": {
+   "group": "Impulse",
+   "text": "Each time opponents lose exactly 1 life: a counter and an impulse card. Glint-Horn Buccaneer, Shadow of the Goblin and Unstable Amulet each deal exactly 1, so every discard or exile cast becomes a card.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Balrog, Durin's Bane": {
+   "group": "Other",
+   "text": "Gets cheaper per sacrifice; mostly a 7-drop here.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Orcus, Prince of Undeath": {
+   "group": "Interaction",
+   "text": "X-sweeper or mass reanimation (rule 2).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kaya the Inexorable": {
+   "group": "Interaction",
+   "text": "−3 exiles any nonland permanent; +1 protects a creature (back to hand if it dies or is exiled); the emblem casts legends free every upkeep. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Djeru and Hazoret": {
+   "group": "Exile cast",
+   "text": "Each attack can cast a legendary creature free from exile (a Zuko trigger), and most of this deck's creatures are legends. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Quintorius, Loremaster": {
+   "group": "Exile cast",
+   "text": "Each end step exiles a noncreature card from your graveyard for a 3/2 Spirit; sacrifice a Spirit to cast that card free from exile.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Nita, Forum Conciliator": {
+   "group": "Exile cast",
+   "text": "A counter on every creature whenever you cast a spell you don't own: stacks with Zuko on heists (Polterheist, Grenzo, Axavar, Black Widow, Jasper Flint). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -3766,6 +3913,132 @@
    }
   },
   "Fire Lord Ozai": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Evereth, Viceroy of Plunder": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kazarov, Sengir Pureblood": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Body Dropper": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Dreadhorde Butcher": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Invasion of Azgol // Ashen Reaper": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Juri, Master of the Revue": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kalain, Reclusive Painter": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Oni-Cult Anvil": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Dalkovan Outrider": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Florian, Voldaren Scion": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Stormclaw Rager": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Vial Smasher the Fierce": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kardur's Vicious Return": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kethek, Crucible Goliath": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ob Nixilis, Captive Kingpin": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Balrog, Durin's Bane": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Orcus, Prince of Undeath": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kaya the Inexorable": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Djeru and Hazoret": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Quintorius, Loremaster": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Nita, Forum Conciliator": {
    "Z": {
     "m": "◇",
     "graded_at": "c612a2d650d4"

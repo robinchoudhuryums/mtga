@@ -75,6 +75,46 @@ Dying to Serve, Death of Gwen Stacy, Inevitable Defeat, Merciless Javelineer, Bu
 Green Goblin Back for More, Maha, Witch-king, Gamble, Artist's Talent, Misty Knight, Kirk,
 Neheb, Smellerbee, Joshua. Everything else ◇/△ (reasons on the board).
 
+**Batches 3–5 (cards 61–141):** ★★ Phelia, The Mind Stone, Polterheist, Florian, Ob Nixilis
+Captive Kingpin. ★ Airbender Ascension, Photon, The Soul Stone, The Neutrinos, Sadistic
+Slash, Venat, Black Widow, Taii Wakeen, Luke Cage, Tragic Trajectory, Mishra Tamer of Mak
+Fawa, Spider-Gwen, Magda, Sela, Grenzo, Ozai the Phoenix King, Hidetsugu Devouring Chaos,
+Kalain, Kaya the Inexorable, Djeru and Hazoret, Quintorius Loremaster.
+
 ## 5. Consolidated plan (live)
 
-(after the last batch)
+**Commander: keep Fire Lord Zuko (rule 8).** About 32 cards in the current 100 trigger Zuko
+(madness, impulse, heist, adventure, foretell, warp, discover, blink). Celes triggers on
+creatures entering or cast from a GRAVEYARD, and the current list has essentially none. The
+pile's Celes cards (Kroxa and Kunoros, Chainer, Kroxa, Olivia Crimson Bride, The Soul Stone,
+Rakdos Joins Up, Eldest Reborn, Kardur's Vicious Return, Orcus, Highway Reaver) top out around
+a dozen, mostly ◇, and adding them means cutting exile cards. Zuko also costs 3 to Celes' 4,
+and his trigger repeats where Celes' wheel happens once per cast. Celes stays in the 99.
+
+**Package (previewed 2026-11-27: floor A, legal; interaction 20 -> 18, card advantage
+20 -> 22, protection 3 -> 4, board power 91 -> 103, avg MV 3.14 -> 3.16):**
+
+| Cut | Add | Source |
+|---|---|---|
+| Talisman of Indulgence | Black Market Connections (owned) | Treasure pass |
+| Light Up the Stage | Heroes for Hire | Treasure pass |
+| Steal the Show | Ultimate Green Goblin (owned) | Treasure pass |
+| Living Laser | Bonehoard Dracosaur | Treasure pass |
+| Bone Miser | Ob Nixilis, Captive Kingpin | this pile |
+| At Knifepoint | Polterheist | this pile |
+| Vindicate | Lightning Axe | this pile |
+| Collective Brutality | Florian, Voldaren Scion | this pile |
+
+Unstable Amulet STAYS: it deals exactly 1, which Ob Nixilis turns into a card.
+
+**Tier 2 (next in line; cut candidates Kolaghan's Command, Giant Killer, Bloodtithe
+Harvester, Cool but Rude, Olivia Opulent Outlaw):** Phelia (owned, 2-drop blink each attack),
+The Mind Stone (owned rock + late blink), Azula, Solphim (owned), Hostile Investigator,
+Lorehold (owned), Quintorius History Chaser, Neriv Heart of the Storm (owned), Collective
+Defiance, Kalain.
+
+**Spice:** Ozai, the Phoenix King (owned; firebending mana survives combat), Living End
+(suspend cast from exile, mass return from exile), Djeru and Hazoret (owned).
+
+**Protect (the cut ranking cannot see exile casts, rule 9):** Teleportation Circle (ranked
+#1 cut by `cuts`), Dream Devourer, Tannuk, Charred Foyer, Containment Construct, Moonstone.
