@@ -198,6 +198,116 @@
    "name": "Appa, Steadfast Guardian",
    "pile": "Z",
    "src": "survey"
+  },
+  {
+   "name": "Tannuk, Steadfast Second",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Teleportation Circle",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Dream Devourer",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Chandra, Torch of Defiance",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Axavar, Fate Thief",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Trumpeting Carnosaur",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Glorious Protector",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Sozin's Comet",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Avatar's Wrath",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Airbender's Reversal",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Bituminous Blast",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Theater of Horrors",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Tersa Lightshatter",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Rev, Tithe Extractor",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Restoration Angel",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Quantum Entanglement",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Slickshot Show-Off",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Highway Robbery",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Exalted Sunborn",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Nova Hellkite",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Chandra, Dressed to Kill",
+   "pile": "Z",
+   "src": "fits-pass"
+  },
+  {
+   "name": "Geological Appraiser",
+   "pile": "Z",
+   "src": "fits-pass"
   }
  ],
  "reasons": {
@@ -442,6 +552,160 @@
   "Appa, Steadfast Guardian": {
    "group": "Exile payoff",
    "text": "Flash flier that airbends your own permanents (they re-cast from exile for {2}) and makes an Ally per exile cast; heavy white ({2}{W}{W}).",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Tannuk, Steadfast Second": {
+   "group": "Package",
+   "text": "Red creatures and artifacts in hand gain warp {2}{R}: each is cast twice, the second time from exile (a Zuko counter), and the rest of the team gets haste.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Teleportation Circle": {
+   "group": "Package",
+   "text": "Blinks a creature or artifact at every end step: a permanent entering from exile every turn, plus another trigger of Celes' discard-and-draw, a Blood token from Bloodtithe, or Giant Killer back untapped.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Dream Devourer": {
+   "group": "Package",
+   "text": "Gives every nonland card in hand foretell at two less, so any card can be cast from exile; a 2-drop enabler that grows each time you foretell.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "group": "Package",
+   "text": "+1 casts the top card from exile or deals 2; +1 ramps RR; −3 deals 4 to a creature. Impulse, ramp and removal on one card.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Axavar, Fate Thief": {
+   "group": "Package",
+   "text": "Warps for one mana (a Pirate outlaw); the warp itself turns on its end-step trigger: discard a card, then heist a card from their library to cast from exile. Discard, outlaws and exile in one card.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Trumpeting Carnosaur": {
+   "group": "Package",
+   "text": "Discover 5 on entering (a free spell cast from exile); from hand, {2}{R} and discard it for 3 damage, which is a discard for Spider-Man, Inti and Magmakin.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Glorious Protector": {
+   "group": "Package",
+   "text": "Flash flier with foretell; exiles your creatures until it leaves, dodging a wipe, and when they come back they enter from exile, one Zuko counter per creature.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Sozin's Comet": {
+   "group": "Spice",
+   "text": "The comet that powers Fire Lord Zuko's army: foretell (cast from exile) and firebending 5 on every creature. That combat-only red mana pays madness costs for cards discarded by Inti, Conspiracy Theorist or Cool but Rude during the attack.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Avatar's Wrath": {
+   "group": "Spice",
+   "text": "Airbends every creature but one: opponents can't recast for a turn, and yours come back for {2} each from exile, one Zuko counter per cast.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Airbender's Reversal": {
+   "group": "Interaction",
+   "text": "Destroy an attacker, or airbend your own creature in response to removal and recast it from exile for {2}.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Bituminous Blast": {
+   "group": "Interaction",
+   "text": "4 damage to a creature plus cascade, a free spell cast from exile.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Theater of Horrors": {
+   "group": "Impulse",
+   "text": "An exiled card every upkeep, playable once an opponent has lost life; Spider-Man, Magmakin and Glint-Horn turn that on.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Tersa Lightshatter": {
+   "group": "Discard outlet",
+   "text": "Haste; enters discarding up to two then drawing that many, and attacks play a card from the graveyard via exile once seven are there.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "group": "Outlaws",
+   "text": "Rogue outlaw; combat damage makes a Treasure and exiles their top card for you to cast.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Restoration Angel": {
+   "group": "Blink",
+   "text": "Flash blink: a permanent re-entering from exile, at instant speed.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Quantum Entanglement": {
+   "group": "Blink",
+   "text": "Flash; repeatable {1}{W} blink at each end step.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Slickshot Show-Off": {
+   "group": "Plot",
+   "text": "Plot for {1}{R}, cast free later from exile; a hasty flier that grows on noncreature spells.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Highway Robbery": {
+   "group": "Plot",
+   "text": "Discard a card to draw two, or plot it and cast it free from exile later.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Exalted Sunborn": {
+   "group": "Warp",
+   "text": "Warp {1}{W}, then cast again from exile; doubles tokens (Bone Miser Zombies, Mercenaries).",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Nova Hellkite": {
+   "group": "Warp",
+   "text": "Warp a hasty flier that pings a creature, then recast it from exile.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Chandra, Dressed to Kill": {
+   "group": "Impulse",
+   "text": "+1 exiles the top card and casts it if red, which is most of this deck.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Geological Appraiser": {
+   "group": "Discover",
+   "text": "Discover 3 when cast; free spell from exile.",
    "graded_at": {
     "108": "20913d19456d"
    }
@@ -748,6 +1012,138 @@
   "Appa, Steadfast Guardian": {
    "Z": {
     "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Tannuk, Steadfast Second": {
+   "Z": {
+    "m": "★★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Teleportation Circle": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Dream Devourer": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Chandra, Torch of Defiance": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Axavar, Fate Thief": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Trumpeting Carnosaur": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Glorious Protector": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Sozin's Comet": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Avatar's Wrath": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Airbender's Reversal": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Bituminous Blast": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Theater of Horrors": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Tersa Lightshatter": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Rev, Tithe Extractor": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Restoration Angel": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Quantum Entanglement": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Slickshot Show-Off": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Highway Robbery": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Exalted Sunborn": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Nova Hellkite": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Chandra, Dressed to Kill": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Geological Appraiser": {
+   "Z": {
+    "m": "◇",
     "graded_at": "20913d19456d"
    }
   }

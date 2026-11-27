@@ -1,4 +1,5 @@
 {
+ "Airbender's Reversal": [],
  "Alchemist's Greeting": [],
  "All-Fates Stalker": [],
  "Alpharael, Stonechosen": [],
@@ -94,6 +95,8 @@
  ],
  "At Knifepoint": [],
  "Avacyn's Judgment": [],
+ "Avatar's Wrath": [],
+ "Axavar, Fate Thief": [],
  "Big Score": [
   {
    "a": "Gaboleps",
@@ -159,6 +162,7 @@
    "y": "2026"
   }
  ],
+ "Bituminous Blast": [],
  "Bloodhall Priest": [],
  "Bloodtithe Harvester": [
   {
@@ -191,6 +195,56 @@
  "Boneyard Desecrator": [],
  "Boros Charm": [],
  "Celes, Rune Knight": [],
+ "Chandra, Dressed to Kill": [
+  {
+   "a": "Viktor Titov",
+   "art": "https://cards.scryfall.io/art_crop/front/6/8/681f7c73-92c6-47ba-af56-3ff032ac12da.jpg?1783924841",
+   "cn": "149",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/8/681f7c73-92c6-47ba-af56-3ff032ac12da.jpg?1783924841",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Ekaterina Burmak",
+   "art": "https://cards.scryfall.io/art_crop/front/7/1/7129a358-4628-4426-ae3b-e3d9288a6355.jpg?1783924774",
+   "cn": "279",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/1/7129a358-4628-4426-ae3b-e3d9288a6355.jpg?1783924774",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  }
+ ],
+ "Chandra, Torch of Defiance": [
+  {
+   "a": "Magali Villeneuve",
+   "art": "https://cards.scryfall.io/art_crop/front/e/e/ee245203-d10a-493b-841c-66c1eb1f89dc.jpg?1783928999",
+   "cn": "117",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/e/e/ee245203-d10a-493b-841c-66c1eb1f89dc.jpg?1783928999",
+   "r": "M",
+   "set": "KLR",
+   "sn": "Kaladesh Remastered",
+   "y": "2020"
+  },
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/4/0/40cb22c8-cb03-45c9-bb0e-b8cabdcc43cd.jpg?1788329325",
+   "cn": "244",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/0/40cb22c8-cb03-45c9-bb0e-b8cabdcc43cd.jpg?1788329325",
+   "r": "M",
+   "set": "FRA",
+   "sn": "Reality Fracture",
+   "y": "2026"
+  }
+ ],
  "Chaos Warp": [
   {
    "a": "Anato Finnstark",
@@ -243,6 +297,7 @@
  "Cryptcaller Chariot": [],
  "Currency Converter": [],
  "Demon Bolt": [],
+ "Dream Devourer": [],
  "Ephemerate": [
   {
    "a": "Rovina Cai",
@@ -287,6 +342,7 @@
   }
  ],
  "Ertha Jo, Frontier Mentor": [],
+ "Exalted Sunborn": [],
  "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": [
   {
    "a": "Joseph Meehan",
@@ -317,11 +373,14 @@
  "Fiery Temper": [],
  "Foulmire Knight // Profane Insight": [],
  "Genji Glove": [],
+ "Geological Appraiser": [],
  "Giant Killer": [],
  "Gisa's Bidding": [],
  "Glint-Horn Buccaneer": [],
+ "Glorious Protector": [],
  "Green Goblin, Revenant": [],
  "Hellspur Posse Boss": [],
+ "Highway Robbery": [],
  "Hobgoblin, Mantled Marauder": [],
  "Infernal Grasp": [
   {
@@ -466,6 +525,7 @@
   }
  ],
  "Nico Minoru, Runaway": [],
+ "Nova Hellkite": [],
  "Olivia, Opulent Outlaw": [],
  "Order of Midnight // Alter Fate": [],
  "Outlaws' Merriment": [
@@ -526,6 +586,7 @@
    "y": "2026"
   }
  ],
+ "Quantum Entanglement": [],
  "Quintorius Kand": [],
  "Ragavan, Nimble Pilferer": [
   {
@@ -595,7 +656,11 @@
    "y": "2026"
   }
  ],
+ "Restoration Angel": [],
+ "Rev, Tithe Extractor": [],
  "Shadow of the Goblin": [],
+ "Slickshot Show-Off": [],
+ "Sozin's Comet": [],
  "Spider-Man, New Champion": [],
  "Spider-Verse": [],
  "Steal the Show": [],
@@ -603,6 +668,34 @@
  "Talisman of Conviction": [],
  "Talisman of Hierarchy": [],
  "Talisman of Indulgence": [],
+ "Tannuk, Steadfast Second": [],
+ "Teleportation Circle": [
+  {
+   "a": "Chris Cold",
+   "art": "https://cards.scryfall.io/art_crop/front/9/0/90140bc0-4a9c-4422-b07c-3400c7ccde56.jpg?1783926523",
+   "cn": "39",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/0/90140bc0-4a9c-4422-b07c-3400c7ccde56.jpg?1783926523",
+   "r": "R",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Michael Dooney",
+   "art": "https://cards.scryfall.io/art_crop/front/d/4/d4291f04-2f94-483f-93f6-db313ecffabf.jpg?1783904181",
+   "cn": "2",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/4/d4291f04-2f94-483f-93f6-db313ecffabf.jpg?1783904181",
+   "r": "M",
+   "set": "PZA",
+   "sn": "Teenage Mutant Ninja Turtles Source Material",
+   "y": "2026"
+  }
+ ],
  "Terminal Agony": [
   {
    "a": "Lucas Graciano",
@@ -630,7 +723,10 @@
    "y": "2024"
   }
  ],
+ "Tersa Lightshatter": [],
  "The Infamous Cruelclaw": [],
+ "Theater of Horrors": [],
+ "Trumpeting Carnosaur": [],
  "Unstable Amulet": [],
  "Valakut Exploration": [
   {
