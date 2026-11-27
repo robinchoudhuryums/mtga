@@ -6,20 +6,20 @@
 #: archetype: 100-card Brawl, MARDU DISCARD INTO EXILE around Fire Lord Zuko: "Whenever you cast a spell from
 #: archetype: exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature
 #: archetype: you control." Discard and cast-from-exile are ONE engine here: a madness card is discarded INTO
-#: archetype: exile and cast from there (Terminal Agony, Fiery Temper), and Inti, Moonstone, Containment
+#: archetype: exile and cast from there (Terminal Agony), and Inti, Moonstone, Containment
 #: archetype: Construct, Conspiracy Theorist and Party Thrasher turn a discard into a card played from exile.
 #: archetype: Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint, Outpost Siege, Charred Foyer,
 #: archetype: Chandra, Rakdos, Theater of Horrors, Hidetsugu, Florian, Bonehoard), HEIST (Polterheist, Grenzo,
 #: archetype: Axavar, Impetuous Lootmonger; Nita adds a counter on every creature per heist, stacking with Zuko),
-#: archetype: adventures (Murderous Rider, Bonecrusher Giant), foretell (Poison the Cup; Dream Devourer gives the
+#: archetype: adventures (Murderous Rider, Bonecrusher Giant), foretell (Dream Devourer gives the
 #: archetype: whole hand foretell), warp (Axavar; Tannuk gives red creatures warp), discover (Trumpeting
 #: archetype: Carnosaur) and Teleportation Circle's end-step blink are more of the same. Payoffs: discard
-#: archetype: (Spider-Man, Magmakin Artillerist, Glint-Horn Buccaneer, Living Laser, Bone Miser, Cool but Rude,
+#: archetype: (Spider-Man, Magmakin Artillerist, Living Laser, Bone Miser, Cool but Rude,
 #: archetype: Monument to Endurance, Archfiend of Ifnir) and exile casts (Quintorius Kand, Spider-Verse, Nico
 #: archetype: Minoru, Ob Nixilis Captive Kingpin). TREASURES are the ramp (Black Market Connections, Heroes for
 #: archetype: Hire, Goldspan Dragon, Ultimate Green Goblin, Crucias, Prosper), paying for the top end (Ruinous
 #: archetype: Ultimatum, Alpharael, whose void the sacrificed Treasures turn on). OUTLAWS are a light axis
-#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Glint-Horn, Magmakin, Olivia; At Knifepoint).
+#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Magmakin, Olivia; At Knifepoint).
 #: protect: Inti, Seneschal of the Sun; Moonstone, Harsh Mistress; Containment Construct; Nico Minoru, Runaway; Prosper, Tome-Bound
 #: notes: 2026-11-27 drafted from deck 93's off-plan cuts (Inti, Nico, Crucias, Celes, Cruelclaw, Jasper Flint,
 #: notes: Living Laser, Spider-Man, Steal the Show, Olivia, Face-Breaker, All-Fates Stalker, At Knifepoint) plus a
@@ -37,6 +37,8 @@
 #: notes: 2026-11-27 board round 5: -Big Score +Heroes for Hire, -Demon Bolt +Grenzo, -All-Fates Stalker +Nita, -Nalfeshnee
 #: notes: +Ruinous Ultimatum, -Giant Killer +Impetuous Lootmonger, -Lightning Helix +Kaya the Inexorable, -Stromkirk
 #: notes: Occultist +Alpharael, -Vindicate +Goldspan Dragon, -Plains +Eiganjo (heist and Treasures over spare removal).
+#: notes: 2026-11-27: -Fiery Temper +Avatar's Wrath, -Poison the Cup +Airbender Ascension, -Glint-Horn Buccaneer +Djeru
+#: notes: and Hazoret (owner's picks; airbending and free legend casts over two spot removal spells).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -77,11 +79,12 @@
 1 Bonehoard Dracosaur (LCI) 134
 1 Grenzo, Crooked Jailer (YOTJ) 22
 1 Impetuous Lootmonger (YOTJ) 12
+1 Airbender Ascension (TLA) 6
 
 # Payoffs — for discarding, and for casting from exile
 1 Spider-Man, New Champion (MSC) 705
 1 Magmakin Artillerist (DFT) 137
-1 Glint-Horn Buccaneer (M20) 141
+1 Djeru and Hazoret (MOM) 221
 1 Living Laser (MSC) 55
 1 Bone Miser (SPG) 87
 1 Cool but Rude (TMT) 89
@@ -97,10 +100,9 @@
 
 # Interaction — madness, adventure and foretell answers are cast from exile too
 1 Terminal Agony (OTP) 55
-1 Fiery Temper (SIR) 154
+1 Avatar's Wrath (TLA) 12
 1 Tragic Trajectory (EOE) 122
 1 Lightning Axe (JMP) 341
-1 Poison the Cup (KHM) 103
 1 Kaya the Inexorable (KHM) 218
 1 Trumpeting Carnosaur (LCI) 171
 1 Chandra, Torch of Defiance (FRA) 244
