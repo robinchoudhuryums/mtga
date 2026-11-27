@@ -2014,6 +2014,216 @@
    "graded_at": {
     "108": "c612a2d650d4"
    }
+  },
+  "Airbender Ascension": {
+   "group": "Blink",
+   "text": "Enters airbending a creature (yours to recast from exile for {2}, or theirs as tempo); after four creature arrivals it blinks one of yours every end step. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Phelia, Exuberant Shepherd": {
+   "group": "Blink",
+   "text": "Two-mana flash; every attack exiles a nonland permanent until end step: their blocker leaves combat, or one of yours comes back from exile (a Zuko trigger) and Phelia grows. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Mind Stone": {
+   "group": "Ramp",
+   "text": "An indestructible {W} rock in a Talisman slot; harnessed, it blinks a permanent of yours every end step. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Photon, Lady of Light": {
+   "group": "Blink",
+   "text": "A 4-mana flier whose every attack blinks another creature of yours: a Zuko trigger per attack plus that creature's enters ability.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Soul Stone": {
+   "group": "Ramp",
+   "text": "An indestructible {B} rock; harnessed, it reanimates every upkeep (a Celes engine, rule 2). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Neutrinos": {
+   "group": "Blink",
+   "text": "Flier; each attack blinks one of your creatures back tapped and attacking, a Zuko trigger per attack. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Sadistic Slash": {
+   "group": "Interaction",
+   "text": "-5/-5 at instant speed, and if you discarded it this turn, mayhem casts it from the graveyard for {1}{B}: removal your discards set up.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "group": "Card draw",
+   "text": "Draws once a turn off a legendary spell, and this deck is mostly legends (Inti, Nico, Prosper, Laelia, Tannuk, Chandra, Axavar, Rakdos and more). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ayara, Widow of the Realm // Ayara, Furnace Queen": {
+   "group": "Other",
+   "text": "Sacrifice-to-drain; the back face reanimates (rule 2).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Hidetsugu Consumes All // Vessel of the All-Consuming": {
+   "group": "Interaction",
+   "text": "I kills every permanent of mana value 1 or less (ours too: Ragavan, Liliana); III exiles and returns it transformed, which is a Zuko trigger.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Celestial Vault": {
+   "group": "Card draw",
+   "text": "Drafts Alchemy spellbook cards into exile, but they go to hand, so they are not cast from exile.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Living End": {
+   "group": "Spice",
+   "text": "Suspend means it is cast from exile, and every creature card in all graveyards comes back from exile: a Zuko counter per creature. Our discards fill the graveyard with creatures; wild but real.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kaya's Ghostform": {
+   "group": "Protection",
+   "text": "Returns the enchanted creature when it dies or is exiled; one-mana insurance for Tannuk or Containment Construct.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Indomitable Creativity": {
+   "group": "Interaction",
+   "text": "Destroy X creatures or artifacts; the replacements come off the library at random. Volatile.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Olivia, Crimson Bride": {
+   "group": "Graveyard",
+   "text": "Reanimates on attack, a Celes engine (rule 2). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Dauthi Voidwalker": {
+   "group": "Exile cast",
+   "text": "Exiles everything going to their graveyard; once, sacrifice it to cast one of those cards free from exile. Rogue outlaw. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Black Widow, Super Spy": {
+   "group": "Exile cast",
+   "text": "Two-drop menace; each hit exiles their top nonland for you to cast (a Zuko trigger), or grows itself. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Hellspur Brute": {
+   "group": "Outlaws",
+   "text": "Affinity for outlaws on a vanilla trampler.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Wild Pack Squad": {
+   "group": "Other",
+   "text": "A combat-step first-strike grant; filler.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Lassoed by the Law": {
+   "group": "Interaction",
+   "text": "Exiles any nonland permanent and makes a Mercenary; good, but answers are not the shortage (rule 5).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "June, Bounty Hunter": {
+   "group": "Outlaws",
+   "text": "Mercenary that sacrifices for Clues; few sacrifice targets.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Rakish Crew": {
+   "group": "Outlaws",
+   "text": "Drain when outlaws die; about 11 outlaws (rule 7). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Brimstone Roundup": {
+   "group": "Plot",
+   "text": "Plot casts it from exile; Mercenaries on second spells. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Iron Fist, Hero for Hire": {
+   "group": "Outlaws",
+   "text": "Mercenary with prowess and a late power-up; filler.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "group": "Graveyard",
+   "text": "Double strike for a creature attacking alone; recursion on hits.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Form a Posse": {
+   "group": "Outlaws",
+   "text": "X Mercenary tokens; bodies for counters.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Taii Wakeen, Perfect Shot": {
+   "group": "Damage",
+   "text": "Adds X to noncombat damage and draws when a ping exactly kills a creature; with Maha's toughness 1 that is every ping. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Luke Cage, Hero for Hire": {
+   "group": "Treasure",
+   "text": "Mercenary outlaw that makes a Treasure every combat: steady ramp for the Treasure subtheme (rule 6).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Reno and Rude": {
+   "group": "Exile cast",
+   "text": "Assassin; plays their card from exile but needs a sacrifice each time.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Vincent Valentine // Galian Beast": {
+   "group": "Other",
+   "text": "Grows when their creatures die. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -2986,6 +3196,186 @@
    }
   },
   "Daydream": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Airbender Ascension": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Phelia, Exuberant Shepherd": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Mind Stone": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Photon, Lady of Light": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Soul Stone": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Neutrinos": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Sadistic Slash": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ayara, Widow of the Realm // Ayara, Furnace Queen": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Hidetsugu Consumes All // Vessel of the All-Consuming": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Celestial Vault": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Living End": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kaya's Ghostform": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Indomitable Creativity": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Olivia, Crimson Bride": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Dauthi Voidwalker": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Black Widow, Super Spy": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Hellspur Brute": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Wild Pack Squad": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Lassoed by the Law": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "June, Bounty Hunter": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Rakish Crew": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Brimstone Roundup": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Iron Fist, Hero for Hire": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Squall, SeeD Mercenary": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Form a Posse": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Taii Wakeen, Perfect Shot": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Luke Cage, Hero for Hire": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Reno and Rude": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Vincent Valentine // Galian Beast": {
    "Z": {
     "m": "◇",
     "graded_at": "c612a2d650d4"
