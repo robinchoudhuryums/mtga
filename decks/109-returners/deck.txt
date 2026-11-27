@@ -7,14 +7,21 @@
 #: archetype: number of cards, then draw that many cards plus one. Whenever one or more other creatures you control enter,
 #: archetype: if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each
 #: archetype: creature you control." The sibling of deck 108 (Fire Lord Zuko), which casts from EXILE; this deck casts
-#: archetype: from the GRAVEYARD. Discard outlets fill the yard, then mayhem (Scarlet Spider, Swarm, Spider-Islanders,
-#: archetype: Raging Goblinoids, both Green Goblins, Carnage), escape (Phoenix of Ash, Woe Strider, Kroxa, Phlage,
-#: archetype: Nethergoyf), unearth (Gixian Recycler, Phyrexian Dragon Engine), Bloodghast, Squee and Tenacious Underdog
-#: archetype: come back, and the reanimators (Alesha, Terra, Kroxa and Kunoros, Olivia Crimson Bride, Chainer, Lurrus,
-#: archetype: Priest of Fell Rites, Sorin, Liliana, The Soul Stone) return the rest. Each return is a team-wide counter.
+#: archetype: from the GRAVEYARD. Discard outlets (Crucias, M.O.D.O.K., Necrogoyf, Azula, Lorehold, Bullseye) fill the
+#: archetype: yard, then mayhem (Scarlet Spider, Swarm, both Green Goblins, Carnage), escape (Phoenix of Ash, Woe Strider,
+#: archetype: Kroxa, Phlage), unearth (Gixian Recycler; Highway Reaver grants more), Bloodghast, Squee and Tenacious
+#: archetype: Underdog come back, and the reanimators (Alesha, Terra, Kroxa and Kunoros, Olivia Crimson Bride, Chainer,
+#: archetype: Lurrus, Sorin, Liliana, The Soul Stone, The Eldest Reborn, Tergrid) return the rest. Each return is a
+#: archetype: team-wide counter. Graveyard casts count as casts "from anywhere other than your hand", so Nico pings and
+#: archetype: Spider-Verse copies them; Quintorius and Sela make tokens as cards leave the graveyard.
 #: protect: Chainer, Nightmare Adept; Lurrus of the Dream-Den; Alesha, Who Smiles at Death
 #: notes: 2026-11-27 drafted as deck 108's graveyard twin, from the shared builds/zuko board. PROVISIONAL first
 #: notes: draft: the owner will divide the board's cards between 108 and 109.
+#: notes: 2026-11-27 board round 5: -Spider-Islanders +Nico, -Raging Goblinoids +Crucias, -Faithless Looting +M.O.D.O.K.,
+#: notes: -Cathartic Reunion +Bonehoard Dracosaur, -Misty Knight +Quintorius History Chaser, -Can't Stay Away +Sela,
+#: notes: -Sevinne's Reclamation +Spider-Verse, -Inevitable Defeat +Lightning Axe, -Mishra +Highway Reaver, -Nethergoyf
+#: notes: +Necrogoyf, -Priest of Fell Rites +The Eldest Reborn, -Tomb Robber +Spider-Man, -Merciless Javelineer +Liliana
+#: notes: the Faultless, -Neheb +Black Market Connections, -Phyrexian Dragon Engine +Boros Charm, -Kolaghan's Command +Tergrid.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Celes, Rune Knight (FIC) 1
@@ -22,8 +29,8 @@
 # Back from the graveyard — every one of these re-entering (or cast from the yard) is a Celes counter on the team
 1 Scarlet Spider, Kaine (SPM) 143
 1 Swarm, Being of Bees (MSC) 799
-1 Spider-Islanders (SPM) 91
-1 Raging Goblinoids (SPM) 85
+1 Nico Minoru, Runaway (MSC) 700
+1 Crucias, Titan of the Waves (YBRO) 18
 1 Green Goblin, Back for More (MSC) 657
 1 Ultimate Green Goblin (SPM) 157
 1 Carnage, Crimson Chaos (SPM) 125
@@ -35,9 +42,9 @@
 1 Woe Strider (THB) 123
 1 Kroxa, Titan of Death's Hunger (THB) 221
 1 Phlage, Titan of Fire's Fury (MH3) 197
-1 Phyrexian Dragon Engine (BRO) 163
-1 Mishra, Claimed by Gix (BRO) 216
-1 Nethergoyf (MH3) 103
+1 Boros Charm (FDN) 721
+1 Highway Reaver (YDFT) 22
+1 Necrogoyf (J21) 363
 
 # Reanimation engines — return creatures from the graveyard
 1 Alesha, Who Smiles at Death (EA1) 8
@@ -46,26 +53,27 @@
 1 Olivia, Crimson Bride (VOW) 245
 1 Chainer, Nightmare Adept (J21) 683
 1 Lurrus of the Dream-Den (IKO) 226
-1 Priest of Fell Rites (J21) 707
+1 The Eldest Reborn (DOM) 90
 1 Sorin, Vengeful Bloodlord (WAR) 217
 1 Liliana, Heretical Healer // Liliana, Defiant Necromancer (PIO) 96
 1 The Soul Stone (SPM) 66
-1 Can't Stay Away (MID) 213
+1 Sela, Tal Shiar Paradox (TRK) 128
 1 Joshua, Phoenix's Dominant (FIN) 229
-1 Sevinne's Reclamation (MH3) 267
+1 Spider-Verse (SPM) 93
+1 Tergrid, God of Fright // Tergrid's Lantern (KHM) 112
 
 # Discard outlets — fill the graveyard
 1 Spider-Gwen, Free Spirit (MSC) 874
-1 Misty Knight, Hero for Hire (MSH) 145
+1 Quintorius, History Chaser (SOC) 7
 1 Azula, Ruthless Firebender (TLE) 101
-1 Tomb Robber (RIX) 87
-1 Merciless Javelineer (AKR) 245
+1 Spider-Man, New Champion (MSC) 705
+1 Liliana the Faultless (FRA) 200
 1 Bullseye, Death Dealer (MSH) 209
 1 Lorehold, the Historian (SOS) 201
 1 Smellerbee, Rebel Fighter (TLE) 125
-1 Neheb, Dreadhorde Champion (WAR) 140
-1 Faithless Looting (SIS) 40
-1 Cathartic Reunion (TLE) 164
+1 Black Market Connections (HBG) 145
+1 M.O.D.O.K. (MSH) 106
+1 Bonehoard Dracosaur (LCI) 134
 1 Unexpected Windfall (AFR) 164
 1 Archfiend of Ifnir (AKR) 91
 1 Hostile Investigator (BIG) 10
@@ -79,11 +87,10 @@
 1 Electro's Bolt (SPM) 77
 1 Sadistic Slash (MSC) 666
 1 Infernal Grasp (MID) 107
-1 Kolaghan's Command (HA5) 20
 1 Collective Brutality (SIR) 103
 1 Murderous Rider // Swift End (ELD) 97
 1 Kaya the Inexorable (KHM) 218
-1 Inevitable Defeat (TDM) 194
+1 Lightning Axe (JMP) 341
 
 # Mana rocks
 1 Arcane Signet (FRC) 20

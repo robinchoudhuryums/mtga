@@ -167,7 +167,6 @@ Ephemerate
 Epic Experiment
 Eternal Skylord
 Exuberant Wolfbear
-Faithless Looting
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
@@ -320,7 +319,6 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
-Merciless Javelineer
 Miasmic Mummy
 Michelangelo, the Heart
 Mikaeus, the Lunarch
@@ -349,6 +347,7 @@ Namor, Scourge of the Seas
 Nashi, Moon Sage's Scion
 Nashi, Searcher in the Dark
 Necrogen Rotpriest
+Necrogoyf
 Neriv, Heart of the Storm
 Network Marauder
 Nick Fury, Agent of S.H.I.E.L.D.
@@ -520,7 +519,6 @@ Tifa, Martial Artist
 Tiger Shark, Abyssal Hunter
 Tiger-Dillo
 Time Stop
-Tomb Robber
 Tomik, Izzet Sparkmage
 Toph, Greatest Earthbender
 Toph, the Blind Bandit
