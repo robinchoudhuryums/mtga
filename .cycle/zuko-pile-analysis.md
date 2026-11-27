@@ -100,6 +100,14 @@ Currency Converter, Hidetsugu Consumes All. (3) Nico and Spider-Verse count grav
 ("anywhere other than your hand"), so both are strong for Celes too. (4) Blink, impulse and
 heist give Celes nothing.
 
+**Zuko package v4 (proposed 2026-11-27, on the board as suggestions):** -Big Score +Heroes for Hire,
+-Laughing Jasper Flint +Impetuous Lootmonger, -Olivia Opulent Outlaw +Goldspan Dragon, -Cool but
+Rude +Alpharael, -Vindicate +Collective Defiance, -Nalfeshnee +Ruinous Ultimatum, -Giant Killer
++Phelia, -Stromkirk Occultist +Azula, -Lightning Helix +Lorehold; Plains/Mountain/Swamp ->
+Eiganjo/Sokenzan/Takenuma. Preview: floor A, legal; interaction 18 -> 17, card advantage 22,
+protection 5 -> 6, board power 107 -> 112, avg MV 3.25 -> 3.40. Keeps Living Laser, Bone Miser,
+At Knifepoint, Mog, Rakdos (owner's).
+
 
 **Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
 on the owner's notes: Alpharael (void is on most turns via Treasures and warp), Dalkovan
