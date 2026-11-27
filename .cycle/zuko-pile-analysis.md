@@ -43,6 +43,10 @@ Indulgence is a placeholder slot marked to cut for a Treasure maker.
 8. **Commander decision rule:** count the deck's cards that trigger each candidate
    (rule 1 vs rule 2), plus what the pile could add to each. Zuko wins by default unless the
    Celes count could reach a comparable density without gutting the exile engine.
+10. **Opponent discard is not our discard.** "Whenever you discard" payoffs (Spider-Man,
+   Magmakin, Glint-Horn, Monument, Cool but Rude) and madness trigger only on OUR discards.
+   Hand attack (Thoughtseize, Mind Twist, Waste Not, Tinybones, Tourach, Tergrid) is a
+   separate engine with its own payoffs; grade it on its own, not as "discard".
 9. **Structurally invisible to the tools:** madness and other cast-from-exile mechanics are
    not a role, so `cuts` reads madness cards and impulse engines as low-fit; Zuko's counters
    are not in any score. Grade those by hand.
@@ -53,11 +57,23 @@ Indulgence is a placeholder slot marked to cut for a Treasure maker.
 
 ## 3. Cross-batch observations
 
-(none yet)
+- **Hand-attack cluster (variant signal):** Thoughtseize, Mind Twist, Drill Bit, Waste Not,
+  Tinybones x2, Tourach, Tergrid, Heartless Pillage, Ozai's Cruelty, Stinging Vitriol, The
+  Eldest Reborn, Armus, Kroxa. A Rakdos "make them discard" deck, not this one.
+- **Celes-side cards so far:** Kroxa and Kunoros, Chainer, Kroxa (escape), Ral Zarek's −2,
+  Eldest Reborn III, Joshua's Phoenix III, Green Goblin Back for More (mayhem).
+- **Noncombat damage package:** Solphim (doubles), Maha (toughness 1), Artist's Talent L3
+  (+2): with Spider-Man, Magmakin, Glint-Horn, Bullseye, every discard becomes removal.
 
 ## 4. Running verdicts
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
+
+**Batches 1–2 (cards 1–60):** ★★ Azula, Hostile Investigator, Lorehold, Quintorius History
+Chaser, Neriv Heart of the Storm, Lightning Axe, Collective Defiance, Solphim. ★ Tomb Robber,
+Dying to Serve, Death of Gwen Stacy, Inevitable Defeat, Merciless Javelineer, Bullseye, Worf,
+Green Goblin Back for More, Maha, Witch-king, Gamble, Artist's Talent, Misty Knight, Kirk,
+Neheb, Smellerbee, Joshua. Everything else ◇/△ (reasons on the board).
 
 ## 5. Consolidated plan (live)
 

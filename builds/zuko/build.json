@@ -1594,6 +1594,216 @@
    "graded_at": {
     "108": "c612a2d650d4"
    }
+  },
+  "Drill Bit": {
+   "group": "Hand attack",
+   "text": "One-shot hand attack. The OPPONENT discards, which triggers none of this deck's discard payoffs (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Reckoner Shakedown": {
+   "group": "Hand attack",
+   "text": "Opponent discard or two counters; one-shot, off the engine (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Azula, Ruthless Firebender": {
+   "group": "Discard outlet",
+   "text": "A repeatable attack-trigger discard on a 3-drop, and firebending 1 gives combat red mana to pay madness for the card it just discarded. Pumps off experience.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Hostile Investigator": {
+   "group": "Discard payoff",
+   "text": "Once a turn, ANY player discarding makes a Clue: our own discards count, so it is card advantage off the engine plus an artifact.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Waste Not": {
+   "group": "Hand attack",
+   "text": "Pays off only OPPONENTS discarding; this deck makes them discard rarely (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Tomb Robber": {
+   "group": "Discard outlet",
+   "text": "Pirate (outlaw) with a {1} repeatable discard outlet that explores, so it grows or draws lands.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Dying to Serve": {
+   "group": "Discard payoff",
+   "text": "A tapped 2/2 each turn you discard, which is most turns here; bodies for Zuko's counters.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Death of Gwen Stacy": {
+   "group": "Interaction",
+   "text": "Chapter I destroys a creature; II lets every player discard (ours feeds madness and the payoffs, theirs costs 3 life if they won't); III exiles graveyards.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Heartless Pillage": {
+   "group": "Hand attack",
+   "text": "Opponent discards two, plus a Treasure if you attacked; hand attack, so off the engine (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ozai's Cruelty": {
+   "group": "Hand attack",
+   "text": "2 damage and the opponent discards two; flavourful for an Avatar deck but off the engine (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ninja's Blades": {
+   "group": "Discard outlet",
+   "text": "Loot on combat damage per equipped creature, draining by the discarded card's mana value; equip {2}.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ral Zarek, Guest Lecturer": {
+   "group": "Graveyard",
+   "text": "−1 can make YOU discard as well as them; −2 returns a 3-drop from the graveyard (a Celes card, rule 2).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kroxa and Kunoros": {
+   "group": "Graveyard",
+   "text": "Reanimates on entering and attacking: a strong CELES card (rule 2), but nothing for Zuko (rule 1).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ruinous Ultimatum": {
+   "group": "Interaction",
+   "text": "One-sided wipe of every nonland permanent; WWW with 19 white sources makes it a late card.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Lorehold, the Historian": {
+   "group": "Discard outlet",
+   "text": "Hasty flier; loots in EACH opponent's upkeep, so a madness card discarded there is cast at instant speed; instants and sorceries gain miracle {2}.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Killian, Spotlight Chaser": {
+   "group": "Discard outlet",
+   "text": "Noncombat damage to an opponent seeks a card, which is discarded at end step: a forced discard each time Spider-Man, Magmakin, Glint-Horn or Nico deal damage.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Chainer, Nightmare Adept": {
+   "group": "Graveyard",
+   "text": "Discard to cast a creature from the GRAVEYARD: a Celes engine (rule 2), not a Zuko one.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Inevitable Defeat": {
+   "group": "Interaction",
+   "text": "Instant, uncounterable exile of any nonland permanent plus a 3-point drain; a better answer than sorcery Vindicate.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Thoughtseize": {
+   "group": "Hand attack",
+   "text": "One-shot hand attack (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Carnival // Carnage": {
+   "group": "Hand attack",
+   "text": "Carnival is a 1-mana ping; Carnage makes them discard two (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Merciless Javelineer": {
+   "group": "Discard outlet",
+   "text": "{2}, discard: a -1/-1 counter and can't block. A repeatable outlet that is also removal for X/1s and evasion.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Quintorius, History Chaser": {
+   "group": "Discard outlet",
+   "text": "+1 discards to draw two; a 3/2 Spirit whenever cards LEAVE your graveyard, which Containment Construct, Moonstone and Conspiracy Theorist do every time they exile a discard.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Neriv, Crackling Vanguard": {
+   "group": "Impulse",
+   "text": "Exiles cards on attack, playable only in a turn you attacked with your commander; Zuko attacks, so it works if he is out.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kroxa, Titan of Death's Hunger": {
+   "group": "Graveyard",
+   "text": "Escape casts it from the graveyard (Celes, rule 2); its punisher is opponent discard.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Intruder's Inquisition": {
+   "group": "Interaction",
+   "text": "One-sided fight for {B}{R}; the discard rider is theirs.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Thorna and Twigtooth": {
+   "group": "Other",
+   "text": "Removes counters to drain, which spends Zuko's counters.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Stinging Vitriol": {
+   "group": "Hand attack",
+   "text": "2 damage plus a hand-attack discard (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Bullseye, Death Dealer": {
+   "group": "Discard outlet",
+   "text": "Discard a nonland card: 2 damage to any target, repeatable for {3}; an outlet that is reach and removal.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Worf, Defiant Commander": {
+   "group": "Impulse",
+   "text": "Whenever you attack, exile the top card (one opponent in Brawl) to play until your next end of turn, plus a hasty 2/1.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Tinybones, Trinket Thief": {
+   "group": "Hand attack",
+   "text": "Draws only when an OPPONENT discarded (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -2208,6 +2418,186 @@
   "Quark, Humble Proprietor": {
    "Z": {
     "m": "✗",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Drill Bit": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Reckoner Shakedown": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Azula, Ruthless Firebender": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Hostile Investigator": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Waste Not": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tomb Robber": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Dying to Serve": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Death of Gwen Stacy": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Heartless Pillage": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ozai's Cruelty": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ninja's Blades": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ral Zarek, Guest Lecturer": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kroxa and Kunoros": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ruinous Ultimatum": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Lorehold, the Historian": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Killian, Spotlight Chaser": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Chainer, Nightmare Adept": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Inevitable Defeat": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Thoughtseize": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Carnival // Carnage": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Merciless Javelineer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Quintorius, History Chaser": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Neriv, Crackling Vanguard": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kroxa, Titan of Death's Hunger": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Intruder's Inquisition": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Thorna and Twigtooth": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Stinging Vitriol": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Bullseye, Death Dealer": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Worf, Defiant Commander": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tinybones, Trinket Thief": {
+   "Z": {
+    "m": "◇",
     "graded_at": "c612a2d650d4"
    }
   }
