@@ -209,3 +209,9 @@ Collective Defiance (Zuko), Stormclaw Rager (Celes), Sokenzan/Takenuma (both).
 interaction 15, card advantage 23, protection 6, avg MV 3.44. Deck 109: floor A, interaction 18,
 card advantage 8 (undercounted), protection 3, avg MV 3.32. Board marks settled into history;
 reasons re-stamped with their new status.
+
+**2026-11-27 follow-up proposals (on the board):** Zuko: only the lands left (-Mountain +Sokenzan,
+-Swamp +Takenuma); the remaining strong off-deck cards (Phelia, Lorehold, Azula, Collective Defiance,
+Neriv, Hostile Investigator) would displace cards the owner has chosen to keep. Celes: -Bullseye
++Dalkovan Outrider, -Azula +Grand Nagus Zek, -Gixian Recycler +Bone Miser, -Swamp +Takenuma,
+-Mountain +Sokenzan (preview: A, legal, interaction 17, card advantage 9, avg MV 3.37).
