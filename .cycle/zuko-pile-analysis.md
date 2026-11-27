@@ -204,3 +204,8 @@ Celes: 16 adds marked against 12 accepted cuts; 4 more cuts suggested (Phyrexian
 Merciless Javelineer, Neheb, Kolaghan's Command; Infernal Grasp kept). Preview: A, legal,
 interaction 18, card advantage 8, protection 3, avg MV 3.32. Not chosen: Phelia, Lorehold, Azula,
 Collective Defiance (Zuko), Stormclaw Rager (Celes), Sokenzan/Takenuma (both).
+
+**2026-11-27 — APPLIED** both round-5 packages (108: 9 swaps; 109: 16 swaps). Deck 108: floor A,
+interaction 15, card advantage 23, protection 6, avg MV 3.44. Deck 109: floor A, interaction 18,
+card advantage 8 (undercounted), protection 3, avg MV 3.32. Board marks settled into history;
+reasons re-stamped with their new status.

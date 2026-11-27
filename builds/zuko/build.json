@@ -1616,10 +1616,10 @@
   },
   "Phyrexian Dragon Engine": {
    "group": "In Celes",
-   "text": "Celes: in the deck; unearth. Zuko: little.",
+   "text": "Cut from Celes 2026-11-27. Celes: unearth. Zuko: little.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Angrath, the Flame-Chained": {
@@ -1680,10 +1680,10 @@
   },
   "Alpharael, Stonechosen": {
    "group": "Void",
-   "text": "Zuko: Treasures sacrificed and warps turn on void most turns, then each attack halves their life. Celes: fewer warps, but Treasures and sacrificed creatures still enable it.",
+   "text": "Now in Zuko (added 2026-11-27). Zuko: Treasures sacrificed and warps turn on void most turns, then each attack halves their life. Celes: fewer warps, but Treasures and sacrificed creatures still enable it.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Genji Glove": {
@@ -2056,26 +2056,26 @@
   },
   "Black Market Connections": {
    "group": "In Zuko",
-   "text": "Either: a Treasure, card or Mercenary every turn.",
+   "text": "Now in Celes (added 2026-11-27). Either: a Treasure, card or Mercenary every turn.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Heroes for Hire": {
    "group": "Treasure",
-   "text": "Zuko: three Treasures, each one an impulse card cast from exile. Celes: three Treasures and card draw, without the Zuko bonus.",
+   "text": "Now in Zuko (added 2026-11-27). Zuko: three Treasures, each one an impulse card cast from exile. Celes: three Treasures and card draw, without the Zuko bonus.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Bonehoard Dracosaur": {
    "group": "In Zuko",
-   "text": "Either: two cards a turn plus Treasures or 3/1s.",
+   "text": "Now in Celes (added 2026-11-27). Either: two cards a turn plus Treasures or 3/1s.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Ultimate Green Goblin": {
@@ -2088,10 +2088,10 @@
   },
   "Impetuous Lootmonger": {
    "group": "Treasure",
-   "text": "Zuko: discard, then heist a card to cast from exile; Treasures on casting it. Celes: just the loot.",
+   "text": "Now in Zuko (added 2026-11-27). Zuko: discard, then heist a card to cast from exile; Treasures on casting it. Celes: just the loot.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Collector's Vault": {
@@ -2104,10 +2104,10 @@
   },
   "Goldspan Dragon": {
    "group": "Treasure",
-   "text": "Either: hasty flier, Treasure on attack and when targeted, Treasures tap for two.",
+   "text": "Now in Zuko (added 2026-11-27). Either: hasty flier, Treasure on attack and when targeted, Treasures tap for two.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Breeches, Eager Pillager": {
@@ -2170,8 +2170,8 @@
    "group": "Treasure",
    "text": "A Treasure in every upkeep, two per turn cycle, that you cannot sacrifice while Quark lives: a battery you cash in by sacrificing Quark. Zuko: Rakdos the Muscle and Hidetsugu are the outlets, but while it lives the Treasure spenders (Face-Breaker, Prosper, Heroes for Hire) are switched off. Celes: more outlets (Stormclaw, Woe Strider, Akul), and the sacrifice can be undone by her reanimators.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Drill Bit": {
@@ -2216,10 +2216,10 @@
   },
   "Tomb Robber": {
    "group": "In Celes",
-   "text": "Either: {1} discard outlet.",
+   "text": "Cut from Celes 2026-11-27. Either: {1} discard outlet.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Dying to Serve": {
@@ -2280,10 +2280,10 @@
   },
   "Ruinous Ultimatum": {
    "group": "Interaction",
-   "text": "Either: one-sided wipe; Treasures pay the white.",
+   "text": "Now in Zuko (added 2026-11-27). Either: one-sided wipe; Treasures pay the white.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Lorehold, the Historian": {
@@ -2312,10 +2312,10 @@
   },
   "Inevitable Defeat": {
    "group": "In Celes",
-   "text": "Either: instant exile and drain.",
+   "text": "Cut from Celes 2026-11-27. Either: instant exile and drain.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Thoughtseize": {
@@ -2336,18 +2336,18 @@
   },
   "Merciless Javelineer": {
    "group": "In Celes",
-   "text": "Either: discard outlet removal.",
+   "text": "Cut from Celes 2026-11-27. Either: discard outlet removal.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Quintorius, History Chaser": {
    "group": "Discard outlet",
-   "text": "Zuko: fine. Celes: escape and unearth take cards out of the graveyard every turn, each one a 3/2 Spirit; +1 discards to draw two.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: fine. Celes: escape and unearth take cards out of the graveyard every turn, each one a 3/2 Spirit; +1 discards to draw two.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Neriv, Crackling Vanguard": {
@@ -2472,10 +2472,10 @@
   },
   "Tergrid, God of Fright // Tergrid's Lantern": {
    "group": "Graveyard",
-   "text": "Zuko: needs hand attack. Celes: what they sacrifice or discard comes from their graveyard onto your battlefield, a Celes counter.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: needs hand attack. Celes: what they sacrifice or discard comes from their graveyard onto your battlefield, a Celes counter.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Witch-king of Angmar": {
@@ -2488,10 +2488,10 @@
   },
   "The Eldest Reborn": {
    "group": "Graveyard",
-   "text": "Zuko: off-plan. Celes: edict, discard, then reanimate the best creature anywhere.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: off-plan. Celes: edict, discard, then reanimate the best creature anywhere.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Armus, Skin of Evil": {
@@ -2520,10 +2520,10 @@
   },
   "Lightning Axe": {
    "group": "In Zuko",
-   "text": "Either: discard for 5 damage at instant speed.",
+   "text": "Now in Celes (added 2026-11-27). Either: discard for 5 damage at instant speed.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Artist's Talent": {
@@ -2544,10 +2544,10 @@
   },
   "Misty Knight, Hero for Hire": {
    "group": "In Celes",
-   "text": "Either: discard to draw per discard.",
+   "text": "Cut from Celes 2026-11-27. Either: discard to draw per discard.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Ambergris, Citadel Agent": {
@@ -2592,10 +2592,10 @@
   },
   "Neheb, Dreadhorde Champion": {
    "group": "In Celes",
-   "text": "Either: discard any number on damage.",
+   "text": "Cut from Celes 2026-11-27. Either: discard any number on damage.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Smellerbee, Rebel Fighter": {
@@ -2624,10 +2624,10 @@
   },
   "Mishra, Claimed by Gix": {
    "group": "In Celes",
-   "text": "Celes: in the deck; drains per attacker, melds with Dragon Engine.",
+   "text": "Cut from Celes 2026-11-27. Celes: drains per attacker, melds with Dragon Engine.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": {
@@ -2944,10 +2944,10 @@
   },
   "Highway Reaver": {
    "group": "Graveyard",
-   "text": "Zuko: nothing. Celes: grants unearth to a creature card each time it enters or attacks; at max speed one unearth a turn is free.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: nothing. Celes: grants unearth to a creature card each time it enters or attacks; at max speed one unearth a turn is free.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Spider-Gwen, Free Spirit": {
@@ -2968,10 +2968,10 @@
   },
   "Sela, Tal Shiar Paradox": {
    "group": "Graveyard",
-   "text": "Zuko: little. Celes: a 2/2 each time cards leave your graveyard (escape, unearth, mayhem casts).",
+   "text": "Now in Celes (added 2026-11-27). Zuko: little. Celes: a 2/2 each time cards leave your graveyard (escape, unearth, mayhem casts).",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Kellan, Planar Trailblazer": {
@@ -3032,10 +3032,10 @@
   },
   "Grenzo, Crooked Jailer": {
    "group": "Exile cast",
-   "text": "Zuko: heist every upkeep, a free 3-or-less spell each turn. Celes: just card advantage.",
+   "text": "Now in Zuko (added 2026-11-27). Zuko: heist every upkeep, a free 3-or-less spell each turn. Celes: just card advantage.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Sami, Wildcat Captain": {
@@ -3272,10 +3272,10 @@
   },
   "Kaya the Inexorable": {
    "group": "In Celes",
-   "text": "Either: exile anything, protect a creature.",
+   "text": "Now in Zuko (added 2026-11-27). Either: exile anything, protect a creature.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Djeru and Hazoret": {
@@ -3296,10 +3296,10 @@
   },
   "Nita, Forum Conciliator": {
    "group": "Exile cast",
-   "text": "Either: counters on heist casts.",
+   "text": "Now in Zuko (added 2026-11-27). Either: counters on heist casts.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Archfiend of Ifnir": {
@@ -3328,10 +3328,10 @@
   },
   "Eiganjo, Seat of the Empire": {
    "group": "Land",
-   "text": "Either: an untapped Plains that discards itself for 4 damage to a combatant.",
+   "text": "Now in Zuko (added 2026-11-27). Either: an untapped Plains that discards itself for 4 damage to a combatant.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Takenuma, Abandoned Mire": {
@@ -3368,18 +3368,18 @@
   },
   "Necrogoyf": {
    "group": "Discard outlet",
-   "text": "Zuko: fine. Celes: a discard every upkeep for everyone, and its power counts creature cards in all graveyards.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: fine. Celes: a discard every upkeep for everyone, and its power counts creature cards in all graveyards.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "M.O.D.O.K.": {
    "group": "Discard outlet",
-   "text": "Zuko: fine. Celes: repeatable connive fills the graveyard every turn, and their creatures get -1/-1.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: fine. Celes: repeatable connive fills the graveyard every turn, and their creatures get -1/-1.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Electro's Bolt": {
@@ -3576,34 +3576,34 @@
   },
   "Nico Minoru, Runaway": {
    "group": "In Zuko",
-   "text": "Zuko: in the deck. Celes: graveyard casts are casts 'from anywhere other than your hand', so every mayhem and escape pings for 2.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: in the deck. Celes: graveyard casts are casts 'from anywhere other than your hand', so every mayhem and escape pings for 2.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Crucias, Titan of the Waves": {
    "group": "In Zuko",
-   "text": "Zuko: in the deck. Celes: an end-step discard every turn, plus a Treasure and a seek.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: in the deck. Celes: an end-step discard every turn, plus a Treasure and a seek.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Big Score": {
    "group": "In Zuko",
-   "text": "Zuko: in the deck. Celes: a discard, two cards and two Treasures.",
+   "text": "Cut from Zuko 2026-11-27. Zuko: was in the deck. Celes: a discard, two cards and two Treasures.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Liliana the Faultless": {
    "group": "In Zuko",
-   "text": "Either: discard a card to give a creature hexproof; protection and an outlet.",
+   "text": "Now in Celes (added 2026-11-27). Either: discard a card to give a creature hexproof; protection and an outlet.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Prosper, Tome-Bound": {
@@ -3648,10 +3648,10 @@
   },
   "Stromkirk Occultist": {
    "group": "In Zuko",
-   "text": "Zuko: in the deck; madness and impulse. Celes: a 3-drop trampler.",
+   "text": "Cut from Zuko 2026-11-27. Zuko: madness and impulse. Celes: a 3-drop trampler.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Outpost Siege": {
@@ -3672,18 +3672,18 @@
   },
   "All-Fates Stalker": {
    "group": "In Zuko",
-   "text": "Zuko: warp and exile-until-leaves. Celes: plain removal on a body.",
+   "text": "Cut from Zuko 2026-11-27. Zuko: warp and exile-until-leaves. Celes: plain removal on a body.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Spider-Man, New Champion": {
    "group": "In Zuko",
-   "text": "Either: damage per discard.",
+   "text": "Now in Celes (added 2026-11-27). Either: damage per discard.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Magmakin Artillerist": {
@@ -3744,18 +3744,18 @@
   },
   "Nalfeshnee": {
    "group": "In Zuko",
-   "text": "Zuko: copies exile casts. Celes: little.",
+   "text": "Cut from Zuko 2026-11-27. Zuko: copies exile casts. Celes: little.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Spider-Verse": {
    "group": "In Zuko",
-   "text": "Zuko: copies non-hand casts. Celes: mayhem and escape casts are from the graveyard, so it copies those creatures too.",
+   "text": "Now in Celes (added 2026-11-27). Zuko: copies non-hand casts. Celes: mayhem and escape casts are from the graveyard, so it copies those creatures too.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Olivia, Opulent Outlaw": {
@@ -3784,18 +3784,18 @@
   },
   "Giant Killer": {
    "group": "In Zuko",
-   "text": "Either: tapper and removal for big creatures.",
+   "text": "Cut from Zuko 2026-11-27. Either: tapper and removal for big creatures.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Demon Bolt": {
    "group": "In Zuko",
-   "text": "Either: 4 damage, foretell.",
+   "text": "Cut from Zuko 2026-11-27. Either: 4 damage, foretell.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Poison the Cup": {
@@ -3808,10 +3808,10 @@
   },
   "Boros Charm": {
    "group": "In Zuko",
-   "text": "Either: indestructible team or 4 damage.",
+   "text": "Now in Celes (added 2026-11-27). Either: indestructible team or 4 damage.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Scarlet Spider, Kaine": {
@@ -3832,18 +3832,18 @@
   },
   "Spider-Islanders": {
    "group": "In Celes",
-   "text": "Celes: in the deck; mayhem for {1}{R}. Zuko: vanilla.",
+   "text": "Cut from Celes 2026-11-27. Celes: mayhem for {1}{R}. Zuko: vanilla.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Raging Goblinoids": {
    "group": "In Celes",
-   "text": "Celes: in the deck; mayhem for {2}{R}, haste. Zuko: a 5-drop.",
+   "text": "Cut from Celes 2026-11-27. Celes: mayhem for {2}{R}, haste. Zuko: a 5-drop.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Carnage, Crimson Chaos": {
@@ -3904,10 +3904,10 @@
   },
   "Nethergoyf": {
    "group": "In Celes",
-   "text": "Celes: in the deck; escape for {2}{B}.",
+   "text": "Cut from Celes 2026-11-27. Celes: escape for {2}{B}.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Alesha, Who Smiles at Death": {
@@ -3936,10 +3936,10 @@
   },
   "Priest of Fell Rites": {
    "group": "In Celes",
-   "text": "Celes: in the deck; sacrifice to reanimate, then unearth itself.",
+   "text": "Cut from Celes 2026-11-27. Celes: sacrifice to reanimate, then unearth itself.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Sorin, Vengeful Bloodlord": {
@@ -3960,50 +3960,50 @@
   },
   "Can't Stay Away": {
    "group": "In Celes",
-   "text": "Celes: in the deck; reanimate twice with flashback.",
+   "text": "Cut from Celes 2026-11-27. Celes: reanimate twice with flashback.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Sevinne's Reclamation": {
    "group": "In Celes",
-   "text": "Celes: in the deck; returns a 3-or-less permanent, twice from flashback.",
+   "text": "Cut from Celes 2026-11-27. Celes: returns a 3-or-less permanent, twice from flashback.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Faithless Looting": {
    "group": "In Celes",
-   "text": "Celes: in the deck; two discards, then flashback. Zuko: card disadvantage.",
+   "text": "Cut from Celes 2026-11-27. Celes: two discards, then flashback. Zuko: card disadvantage.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Cathartic Reunion": {
    "group": "In Celes",
-   "text": "Celes: in the deck; discard two to draw three. Zuko: fine.",
+   "text": "Cut from Celes 2026-11-27. Celes: discard two to draw three. Zuko: fine.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Lightning Helix": {
    "group": "In Celes",
-   "text": "Either: 3 damage and 3 life.",
+   "text": "Cut from Zuko 2026-11-27. Either: 3 damage and 3 life.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Vindicate": {
    "group": "In Celes",
-   "text": "Either: destroy any permanent.",
+   "text": "Cut from Zuko 2026-11-27. Either: destroy any permanent.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Bitter Triumph": {
@@ -4032,10 +4032,10 @@
   },
   "Kolaghan's Command": {
    "group": "In Celes",
-   "text": "Celes: in the deck; returns a creature card to hand. Zuko: modest.",
+   "text": "Cut from Celes 2026-11-27. Celes: returns a creature card to hand. Zuko: modest.",
    "graded_at": {
-    "108": "4f0d619d9a1c",
-    "109": "bfcf1d218add"
+    "108": "4d3a00896885",
+    "109": "86fb9f4552e1"
    }
   },
   "Collective Brutality": {
@@ -4177,6 +4177,96 @@
     "Trumpeting Carnosaur",
     "Ultimate Green Goblin",
     "Vindicate"
+   ],
+   "4d3a00896885": [
+    "Alpharael, Stonechosen",
+    "Anguished Unmaking",
+    "Archfiend of Ifnir",
+    "At Knifepoint",
+    "Axavar, Fate Thief",
+    "Bitter Triumph",
+    "Black Market Connections",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blightstep Pathway // Searstep Pathway",
+    "Blood Crypt",
+    "Bone Miser",
+    "Bonehoard Dracosaur",
+    "Boros Charm",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer",
+    "Clifftop Retreat",
+    "Command Tower",
+    "Conspiracy Theorist",
+    "Containment Construct",
+    "Cool but Rude",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Encampment",
+    "Dark Fortress",
+    "Dragonskull Summit",
+    "Dream Devourer",
+    "Eiganjo, Seat of the Empire",
+    "Evolving Wilds",
+    "Fiery Temper",
+    "Fire Lord Zuko",
+    "Florian, Voldaren Scion",
+    "Glint-Horn Buccaneer",
+    "Godless Shrine",
+    "Goldspan Dragon",
+    "Grenzo, Crooked Jailer",
+    "Heroes for Hire",
+    "Hidetsugu, Devouring Chaos",
+    "Impetuous Lootmonger",
+    "Inspiring Vantage",
+    "Inti, Seneschal of the Sun",
+    "Kaya the Inexorable",
+    "Laelia, the Blade Reforged",
+    "Laughing Jasper Flint",
+    "Lightning Axe",
+    "Liliana the Faultless",
+    "Living Laser",
+    "Magmakin Artillerist",
+    "Mana Confluence",
+    "Mog, Moogle Warrior",
+    "Monument to Endurance",
+    "Moonstone, Harsh Mistress",
+    "Mountain",
+    "Nico Minoru, Runaway",
+    "Nita, Forum Conciliator",
+    "Nomad Outpost",
+    "Ob Nixilis, Captive Kingpin",
+    "Olivia, Opulent Outlaw",
+    "Outpost Siege",
+    "Party Thrasher",
+    "Plains",
+    "Poison the Cup",
+    "Polterheist",
+    "Prismatic Vista",
+    "Professional Face-Breaker",
+    "Prosper, Tome-Bound",
+    "Quintorius Kand",
+    "Ragavan, Nimble Pilferer",
+    "Rakdos, the Muscle",
+    "Raucous Carnival",
+    "Ruinous Ultimatum",
+    "Sacred Foundry",
+    "Shattered Sanctum",
+    "Spider-Man, New Champion",
+    "Spider-Verse",
+    "Starting Town",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swamp",
+    "Tannuk, Steadfast Second",
+    "Teleportation Circle",
+    "Terminal Agony",
+    "The Infamous Cruelclaw",
+    "The Legend of Roku // Avatar Roku",
+    "The Mind Stone",
+    "Theater of Horrors",
+    "Tragic Trajectory",
+    "Trumpeting Carnosaur",
+    "Ultimate Green Goblin"
    ]
   },
   "109": {
@@ -4268,6 +4358,95 @@
     "Unexpected Windfall",
     "Vindicate",
     "Woe Strider"
+   ],
+   "86fb9f4552e1": [
+    "Alesha, Who Smiles at Death",
+    "Anguished Unmaking",
+    "Arcane Signet",
+    "Archfiend of Ifnir",
+    "Azula, Ruthless Firebender",
+    "Bitter Triumph",
+    "Black Market Connections",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blightstep Pathway // Searstep Pathway",
+    "Blood Crypt",
+    "Bloodghast",
+    "Bonehoard Dracosaur",
+    "Boros Charm",
+    "Bullseye, Death Dealer",
+    "Carnage, Crimson Chaos",
+    "Celes, Rune Knight",
+    "Chainer, Nightmare Adept",
+    "Clifftop Retreat",
+    "Collective Brutality",
+    "Command Tower",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Encampment",
+    "Dark Fortress",
+    "Dragonskull Summit",
+    "Electro's Bolt",
+    "Evolving Wilds",
+    "Gixian Recycler",
+    "Godless Shrine",
+    "Green Goblin, Back for More",
+    "Highway Reaver",
+    "Hostile Investigator",
+    "Infernal Grasp",
+    "Inspiring Vantage",
+    "Joshua, Phoenix's Dominant",
+    "Kaya the Inexorable",
+    "Kroxa and Kunoros",
+    "Kroxa, Titan of Death's Hunger",
+    "Lightning Axe",
+    "Lightning Helix",
+    "Liliana the Faultless",
+    "Liliana, Heretical Healer // Liliana, Defiant Necromancer",
+    "Lorehold, the Historian",
+    "Lurrus of the Dream-Den",
+    "M.O.D.O.K.",
+    "Mana Confluence",
+    "Mountain",
+    "Murderous Rider // Swift End",
+    "Necrogoyf",
+    "Nico Minoru, Runaway",
+    "Nomad Outpost",
+    "Olivia, Crimson Bride",
+    "Phlage, Titan of Fire's Fury",
+    "Phoenix of Ash",
+    "Plains",
+    "Prismatic Vista",
+    "Quintorius, History Chaser",
+    "Raucous Carnival",
+    "Sacred Foundry",
+    "Sadistic Slash",
+    "Scarlet Spider, Kaine",
+    "Sela, Tal Shiar Paradox",
+    "Shattered Sanctum",
+    "Smellerbee, Rebel Fighter",
+    "Sorin, Vengeful Bloodlord",
+    "Spider-Gwen, Free Spirit",
+    "Spider-Man, New Champion",
+    "Spider-Verse",
+    "Squee, Dubious Monarch",
+    "Starting Town",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swamp",
+    "Swarm, Being of Bees",
+    "Talisman of Conviction",
+    "Talisman of Hierarchy",
+    "Talisman of Indulgence",
+    "Tenacious Underdog",
+    "Tergrid, God of Fright // Tergrid's Lantern",
+    "Terminal Agony",
+    "Terra, Herald of Hope",
+    "The Eldest Reborn",
+    "The Soul Stone",
+    "Ultimate Green Goblin",
+    "Unexpected Windfall",
+    "Vindicate",
+    "Woe Strider"
    ]
   }
  },
@@ -4275,3111 +4454,3111 @@
   "Mog, Moogle Warrior": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rakdos, the Muscle": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Phyrexian Dragon Engine": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Angrath, the Flame-Chained": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Long Goodbye": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Massacre Girl, Most Wanted": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Zagras, Thief of Heartbeats": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Boneyard Desecrator": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Outlaws' Merriment": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ertha Jo, Frontier Mentor": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Alpharael, Stonechosen": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Genji Glove": {
    "Z": {
     "m": "✗",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "✗",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vraan, Executioner Thane": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Avacyn's Judgment": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bloodhall Priest": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Alchemist's Greeting": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kitchen Imp": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Gisa's Bidding": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Cryptcaller Chariot": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Green Goblin, Revenant": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hobgoblin, Mantled Marauder": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ivora, Insatiable Heir": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Marauding Mako": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Necropotence": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "✗",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Currency Converter": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kitesail Freebooter": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hellspur Posse Boss": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vial Smasher, Gleeful Grenadier": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Foulmire Knight // Profane Insight": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Order of Midnight // Alter Fate": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Realm-Cloaked Giant // Cast Off": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Reckless Impulse": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Wrenn's Resolve": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Valakut Exploration": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Appa, Steadfast Guardian": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tannuk, Steadfast Second": {
    "Z": {
     "m": "★★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Teleportation Circle": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Dream Devourer": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Chandra, Torch of Defiance": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Axavar, Fate Thief": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Trumpeting Carnosaur": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Glorious Protector": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sozin's Comet": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Avatar's Wrath": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Airbender's Reversal": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bituminous Blast": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Theater of Horrors": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tersa Lightshatter": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rev, Tithe Extractor": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Restoration Angel": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Quantum Entanglement": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Slickshot Show-Off": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Highway Robbery": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Exalted Sunborn": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Nova Hellkite": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Chandra, Dressed to Kill": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Geological Appraiser": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Black Market Connections": {
    "Z": {
     "m": "★★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Heroes for Hire": {
    "Z": {
     "m": "★★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bonehoard Dracosaur": {
    "Z": {
     "m": "★★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ultimate Green Goblin": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Impetuous Lootmonger": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Collector's Vault": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Goldspan Dragon": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Breeches, Eager Pillager": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Grim Hireling": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Decadent Dragon": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Pirate's Pillage": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Unexpected Windfall": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Smaug, Wicked Worm": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Season of the Bold": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Quark, Humble Proprietor": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Drill Bit": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Reckoner Shakedown": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Azula, Ruthless Firebender": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hostile Investigator": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Waste Not": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tomb Robber": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Dying to Serve": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Death of Gwen Stacy": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Heartless Pillage": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ozai's Cruelty": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ninja's Blades": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ral Zarek, Guest Lecturer": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kroxa and Kunoros": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ruinous Ultimatum": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lorehold, the Historian": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Killian, Spotlight Chaser": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Chainer, Nightmare Adept": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Inevitable Defeat": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Thoughtseize": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Carnival // Carnage": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Merciless Javelineer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Quintorius, History Chaser": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Neriv, Crackling Vanguard": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kroxa, Titan of Death's Hunger": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Intruder's Inquisition": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Thorna and Twigtooth": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Stinging Vitriol": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bullseye, Death Dealer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Worf, Defiant Commander": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tinybones, Trinket Thief": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tourach, Dread Cantor": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Neriv, Heart of the Storm": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ob Nixilis, the Adversary": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tinybones, Bauble Burglar": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Green Goblin, Back for More": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Junji, the Midnight Sky": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Maha, Its Feathers Night": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tergrid, God of Fright // Tergrid's Lantern": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Witch-king of Angmar": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Eldest Reborn": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Armus, Skin of Evil": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Mind Twist": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Gamble": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lightning Axe": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Artist's Talent": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lady Spider, Maybelle Reilly": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Misty Knight, Hero for Hire": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ambergris, Citadel Agent": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Captain James T. Kirk": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Collective Defiance": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kardum, Patron of Flames": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Jaxis, the Troublemaker": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Neheb, Dreadhorde Champion": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Smellerbee, Rebel Fighter": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Solphim, Mayhem Dominus": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Jiang Yanggu, Alone": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Mishra, Claimed by Gix": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Cloudshift": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Daydream": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Airbender Ascension": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Phelia, Exuberant Shepherd": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Mind Stone": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Photon, Lady of Light": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Soul Stone": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Neutrinos": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sadistic Slash": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ayara, Widow of the Realm // Ayara, Furnace Queen": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hidetsugu Consumes All // Vessel of the All-Consuming": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "✗",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Celestial Vault": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Living End": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kaya's Ghostform": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Indomitable Creativity": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Olivia, Crimson Bride": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Dauthi Voidwalker": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Black Widow, Super Spy": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hellspur Brute": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Wild Pack Squad": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lassoed by the Law": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "June, Bounty Hunter": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rakish Crew": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Brimstone Roundup": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Iron Fist, Hero for Hire": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Squall, SeeD Mercenary": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Form a Posse": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Taii Wakeen, Perfect Shot": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Luke Cage, Hero for Hire": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Reno and Rude": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vincent Valentine // Galian Beast": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Razorkin Needlehead": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Astelli Reclaimer": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tragic Trajectory": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Eject the Warp Core": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Elegy Acolyte": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Mishra, Tamer of Mak Fawa": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Highway Reaver": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Spider-Gwen, Free Spirit": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Magda, the Hoardmaster": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sela, Tal Shiar Paradox": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kellan, Planar Trailblazer": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vaan, Street Thief": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Superior Foes of Spider-Man": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Baron Bertram Graywater": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Locke, Treasure Hunter": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Akul the Unrepentant": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Grand Goatnapper": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Grenzo, Crooked Jailer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sami, Wildcat Captain": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Great Train Heist": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Polterheist": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rakdos Joins Up": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rakdos, Patron of Chaos": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rakdos's Return": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ozai, the Phoenix King": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sun Warriors": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Cruel Administrator": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Zhao, Ruthless Admiral": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Hidetsugu, Devouring Chaos": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Fire Lord Ozai": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Evereth, Viceroy of Plunder": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kazarov, Sengir Pureblood": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Body Dropper": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Dreadhorde Butcher": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Invasion of Azgol // Ashen Reaper": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Juri, Master of the Revue": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kalain, Reclusive Painter": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Oni-Cult Anvil": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Dalkovan Outrider": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Florian, Voldaren Scion": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Stormclaw Rager": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vial Smasher the Fierce": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kardur's Vicious Return": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kethek, Crucible Goliath": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ob Nixilis, Captive Kingpin": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Balrog, Durin's Bane": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Orcus, Prince of Undeath": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kaya the Inexorable": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Djeru and Hazoret": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Quintorius, Loremaster": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Nita, Forum Conciliator": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Archfiend of Ifnir": {
    "Z": {
     "m": "★★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Legend of Roku": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sokenzan, Crucible of Defiance": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Eiganjo, Seat of the Empire": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Takenuma, Abandoned Mire": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Clive's Hideaway": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kumano Faces Kakkazan // Etching of Kumano": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Volcanic Torrent": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Necrogoyf": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "M.O.D.O.K.": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Electro's Bolt": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Rix Maadi Reveler": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Spring-Loaded Sawblades // Bladewheel Chariot": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Twinshot Sniper": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sandman's Quicksand": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Rise of Sozin": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Phlage, Titan of Fire's Fury": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Scurrilous Sentry": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Risk Factor": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Fall of Lord Konda // Fragment of Konda": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Grand Nagus Zek": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bloodtithe Harvester": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bonecrusher Giant // Stomp": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Steal the Show": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Light Up the Stage": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Shadow of the Goblin": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Unstable Amulet": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Inti, Seneschal of the Sun": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Moonstone, Harsh Mistress": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "✗",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Containment Construct": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "✗",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Conspiracy Theorist": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Party Thrasher": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "The Infamous Cruelclaw": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Nico Minoru, Runaway": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Crucias, Titan of the Waves": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Big Score": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Liliana the Faultless": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Prosper, Tome-Bound": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Laelia, the Blade Reforged": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Professional Face-Breaker": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Laughing Jasper Flint": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Ragavan, Nimble Pilferer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Stromkirk Occultist": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Outpost Siege": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Charred Foyer": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "All-Fates Stalker": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Spider-Man, New Champion": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Magmakin Artillerist": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Glint-Horn Buccaneer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Living Laser": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bone Miser": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Cool but Rude": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Monument to Endurance": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Quintorius Kand": {
    "Z": {
     "m": "★★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Nalfeshnee": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "△",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Spider-Verse": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Olivia, Opulent Outlaw": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "At Knifepoint": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "◇",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Fiery Temper": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Giant Killer": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Demon Bolt": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Poison the Cup": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Boros Charm": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Scarlet Spider, Kaine": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Swarm, Being of Bees": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Spider-Islanders": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Raging Goblinoids": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Carnage, Crimson Chaos": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bloodghast": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Gixian Recycler": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Tenacious Underdog": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Squee, Dubious Monarch": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Phoenix of Ash": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Woe Strider": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Nethergoyf": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Alesha, Who Smiles at Death": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Terra, Herald of Hope": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lurrus of the Dream-Den": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Priest of Fell Rites": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sorin, Vengeful Bloodlord": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Liliana, Heretical Healer // Liliana, Defiant Necromancer": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Can't Stay Away": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Sevinne's Reclamation": {
    "Z": {
     "m": "△",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Faithless Looting": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Cathartic Reunion": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Lightning Helix": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Vindicate": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Bitter Triumph": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Anguished Unmaking": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Infernal Grasp": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Kolaghan's Command": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Collective Brutality": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Murderous Rider // Swift End": {
    "Z": {
     "m": "★",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Arcane Signet": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Talisman of Indulgence": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Talisman of Hierarchy": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   },
   "Talisman of Conviction": {
    "Z": {
     "m": "◇",
-    "graded_at": "4f0d619d9a1c"
+    "graded_at": "4d3a00896885"
    },
    "C": {
     "m": "★",
-    "graded_at": "bfcf1d218add"
+    "graded_at": "86fb9f4552e1"
    }
   }
  }
