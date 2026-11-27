@@ -9,12 +9,12 @@
 #: archetype: exile and cast from there (Terminal Agony), and Inti, Moonstone, Containment
 #: archetype: Construct and Party Thrasher turn a discard into a card played from exile.
 #: archetype: Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint, Charred Foyer, Neriv Crackling Vanguard,
-#: archetype: Chandra, Rakdos, Theater of Horrors, Hidetsugu, Florian, Bonehoard), HEIST (Polterheist, Grenzo,
+#: archetype: Chandra, Rakdos, Daredevil, Theater of Horrors, Hidetsugu, Florian, Bonehoard), HEIST (Polterheist, Grenzo,
 #: archetype: Axavar, Impetuous Lootmonger; Nita adds a counter on every creature per heist, stacking with Zuko),
 #: archetype: adventures (Murderous Rider, Bonecrusher Giant), foretell (Dream Devourer gives the
 #: archetype: whole hand foretell), warp (Axavar; Tannuk gives red creatures warp), discover (Trumpeting
 #: archetype: Carnosaur) and Teleportation Circle's end-step blink are more of the same. Payoffs: discard
-#: archetype: (Spider-Man, Magmakin Artillerist, Living Laser, Bone Miser, Cool but Rude,
+#: archetype: (Spider-Man, Magmakin Artillerist, Living Laser, Bone Miser,
 #: archetype: Monument to Endurance, Archfiend of Ifnir) and exile casts (Quintorius Kand, Spider-Verse, Nico
 #: archetype: Minoru, Ob Nixilis Captive Kingpin). TREASURES are the ramp (Black Market Connections, Heroes for
 #: archetype: Hire, Goldspan Dragon, Ultimate Green Goblin, Crucias, Prosper, Magda off every heist crime; Dalkovan
@@ -42,6 +42,7 @@
 #: notes: and Hazoret (owner's picks; airbending and free legend casts over two spot removal spells).
 #: notes: 2026-11-27: -Conspiracy Theorist +Magda, -At Knifepoint +Dalkovan Outrider, -Outpost Siege +Neriv, Crackling
 #: notes: Vanguard (owner's cuts; cheaper Treasure and sacrifice engines, token-count impulse).
+#: notes: 2026-11-28: -Cool but Rude +Daredevil, Man Without Fear (an impulse card every attack, Radar Sense sees it first).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -83,6 +84,7 @@
 1 Grenzo, Crooked Jailer (YOTJ) 22
 1 Impetuous Lootmonger (YOTJ) 12
 1 Airbender Ascension (TLA) 6
+1 Daredevil, Man Without Fear (MSH) 213
 
 # Payoffs — for discarding, and for casting from exile
 1 Spider-Man, New Champion (MSC) 705
@@ -90,7 +92,6 @@
 1 Djeru and Hazoret (MOM) 221
 1 Living Laser (MSC) 55
 1 Bone Miser (SPG) 87
-1 Cool but Rude (TMT) 89
 1 Monument to Endurance (DFT) 237
 1 Quintorius Kand (LCI) 238
 1 Ruinous Ultimatum (IKO) 204
