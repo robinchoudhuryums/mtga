@@ -141,6 +141,7 @@ Dragoon's Wyvern
 Drake Hatcher
 Dread Summons
 Dreaded Bat-Cloud
+Dream Devourer
 Dream Harvest
 Dreams of Laguna
 Drix Fatemaker
@@ -164,7 +165,6 @@ Ephemerate
 Epic Experiment
 Eternal Skylord
 Exuberant Wolfbear
-Faithless Salvaging
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
@@ -481,6 +481,7 @@ Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
 Team Tactics
+Teleportation Circle
 Temur Battle Rage
 Tenured Tethermage
 Terrapact Intimidator

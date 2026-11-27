@@ -6,12 +6,13 @@
 #: archetype: 100-card Brawl, MARDU DISCARD INTO EXILE around Fire Lord Zuko: "Whenever you cast a spell from
 #: archetype: exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature
 #: archetype: you control." Discard and cast-from-exile are ONE engine here: a madness card is discarded INTO
-#: archetype: exile and cast from there (Terminal Agony, Fiery Temper, Anje's Ravager, Stromkirk Occultist), and
+#: archetype: exile and cast from there (Terminal Agony, Fiery Temper, Stromkirk Occultist), and
 #: archetype: Inti, Moonstone, Containment Construct, Conspiracy Theorist and Party Thrasher turn a discard into
 #: archetype: a card played from exile. Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint,
-#: archetype: Outpost Siege, Charred Foyer), adventures (Murderous Rider, Bonecrusher Giant, Giant Killer),
-#: archetype: foretell (Demon Bolt, Poison the Cup), warp (All-Fates Stalker) and rebound (Ephemerate, Faithless
-#: archetype: Salvaging) are more of the same. Payoffs: discard (Spider-Man, Magmakin Artillerist, Glint-Horn
+#: archetype: Outpost Siege, Charred Foyer, Chandra, Rakdos), adventures (Murderous Rider, Bonecrusher Giant, Giant Killer),
+#: archetype: foretell (Demon Bolt, Poison the Cup; Dream Devourer gives the whole hand foretell), warp (All-Fates
+#: archetype: Stalker, Axavar; Tannuk gives red creatures warp), discover (Trumpeting Carnosaur) and Teleportation
+#: archetype: Circle's end-step blink are more of the same. Payoffs: discard (Spider-Man, Magmakin Artillerist, Glint-Horn
 #: archetype: Buccaneer, Living Laser, Bone Miser, Cool but Rude, Monument to Endurance) and exile casts (Quintorius
 #: archetype: Kand, Nalfeshnee, Spider-Verse, Nico Minoru, Unstable Amulet, Shadow of the Goblin). OUTLAWS are the
 #: archetype: light third axis (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Glint-Horn, Magmakin,
@@ -20,6 +21,10 @@
 #: notes: 2026-11-27 drafted from deck 93's off-plan cuts (Inti, Nico, Crucias, Celes, Cruelclaw, Jasper Flint,
 #: notes: Living Laser, Spider-Man, Steal the Show, Olivia, Face-Breaker, All-Fates Stalker, At Knifepoint) plus a
 #: notes: survey of Mardu discard / madness / impulse / adventure cards. PROVISIONAL first draft.
+#: notes: 2026-11-27 owner's board picks: -Jeska's Will +Tannuk, -Ephemerate +Teleportation Circle, -Faithless
+#: notes: Salvaging +Dream Devourer, -Chaos Warp +Chandra Torch of Defiance, -Anje's Ravager +Axavar, -Infernal
+#: notes: Grasp +Trumpeting Carnosaur, -Talisman of Hierarchy +Mog, -Talisman of Conviction +Rakdos the Muscle.
+#: notes: Talisman of Indulgence is also marked to cut: its slot goes to a Treasure maker (owner: a Treasure subtheme replaces the rocks).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -34,13 +39,14 @@
 1 Nico Minoru, Runaway (MSC) 700
 1 Crucias, Titan of the Waves (YBRO) 18
 1 Celes, Rune Knight (FIC) 1
-1 Anje's Ravager (J25) 517
-1 Faithless Salvaging (J21) 439
+1 Axavar, Fate Thief (YEOE) 23
+1 Dream Devourer (KHM) 90
 1 Fable of the Mirror-Breaker // Reflection of Kiki-Jiki (NEO) 141
 1 Big Score (MSC) 802
 1 Bloodtithe Harvester (VOW) 232
 1 Steal the Show (SOS) 130
 1 Liliana the Faultless (FRA) 200
+1 Mog, Moogle Warrior (FIC) 89
 
 # Impulse draw — exile from the library, cast from exile
 1 Prosper, Tome-Bound (SDS) 24
@@ -49,12 +55,13 @@
 1 Laughing Jasper Flint (OTJ) 215
 1 Ragavan, Nimble Pilferer (FCA) 43
 1 Stromkirk Occultist (SIR) 179
-1 Jeska's Will (SOA) 44
+1 Tannuk, Steadfast Second (EOE) 162
 1 Light Up the Stage (RNA) 107
 1 Outpost Siege (PIO) 150
 1 Charred Foyer (DSK) 129
 1 All-Fates Stalker (EOE) 3
-1 Ephemerate (MAR) 44
+1 Teleportation Circle (AFR) 39
+1 Rakdos, the Muscle (OTJ) 226
 
 # Payoffs — for discarding, and for casting from exile
 1 Spider-Man, New Champion (MSC) 705
@@ -83,8 +90,8 @@
 1 Lightning Helix (MKM) 218
 1 Vindicate (MH2) 294
 1 Kolaghan's Command (HA5) 20
-1 Infernal Grasp (MID) 107
-1 Chaos Warp (MAR) 69
+1 Trumpeting Carnosaur (LCI) 171
+1 Chandra, Torch of Defiance (FRA) 244
 1 Bitter Triumph (SOA) 26
 1 Anguished Unmaking (OTP) 35
 1 Collective Brutality (SIR) 103
@@ -93,8 +100,6 @@
 # Mana rocks
 1 Arcane Signet (FRC) 20
 1 Talisman of Indulgence (AA1) 23
-1 Talisman of Conviction (AA1) 17
-1 Talisman of Hierarchy (AA1) 21
 
 # Lands (37)
 1 Command Tower (FRC) 22
@@ -121,3 +126,11 @@
 1 Dalkovan Encampment (TDM) 253
 1 Dragonskull Summit (XLN) 252
 5 Swamp (FRA) 285
+
+#~ +Alchemist's Greeting | BENCH (builder zuko): owner's bench pick
+#~ +Alpharael, Stonechosen | BENCH (builder zuko): owner's bench pick
+#~ +Angrath, the Flame-Chained | BENCH (builder zuko): owner's bench pick
+#~ +Boneyard Desecrator | BENCH (builder zuko): owner's bench pick
+#~ +Ertha Jo, Frontier Mentor | BENCH (builder zuko): owner's bench pick
+#~ +Hellspur Posse Boss | BENCH (builder zuko): owner's bench pick
+#~ +Ivora, Insatiable Heir | BENCH (builder zuko): owner's bench pick
