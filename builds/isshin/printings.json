@@ -83,6 +83,7 @@
  "Agrus Kos, Spirit of Justice": [],
  "Ahn-Crop Invader": [],
  "Akul the Unrepentant": [],
+ "Alesha, Who Laughs at Fate": [],
  "All-Fates Stalker": [],
  "All-Out Assault": [],
  "Alpharael, Stonechosen": [],
@@ -127,12 +128,17 @@
   }
  ],
  "Anim Pakal, Thousandth Moon": [],
+ "Ankle Shanker": [],
  "Annex Sentry": [],
  "Arabella, Abandoned Doll": [],
+ "Archangel Elspeth": [],
  "Archon's Glory": [],
+ "Ares, God of War": [],
+ "Ash, Party Crasher": [],
  "At Knifepoint": [],
  "Audacious Thief": [],
  "Auntie's Sentence": [],
+ "Aurelia, the Law Above": [],
  "Aurelia, the Warleader": [
   {
    "a": "Alex Dos Diaz",
@@ -173,6 +179,7 @@
    "y": "2026"
   }
  ],
+ "Avenger of the Fallen": [],
  "Banishing Light": [
   {
    "a": "Zoltan Boros",
@@ -230,6 +237,56 @@
    "y": "2026"
   }
  ],
+ "Basri Ket": [
+  {
+   "a": "Kieran Yanner",
+   "art": "https://cards.scryfall.io/art_crop/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "cn": "7",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/8/98c85699-2daf-4e87-a3be-465d02bd64bb.jpg?1783930745",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  },
+  {
+   "a": "Jehan Choo",
+   "art": "https://cards.scryfall.io/art_crop/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "cn": "280",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/e/d/ed3906ea-df06-4299-a305-32e6ef476507.jpg?1783930638",
+   "r": "M",
+   "set": "M21",
+   "sn": "Core Set 2021",
+   "y": "2020"
+  }
+ ],
+ "Bastion of Remembrance": [
+  {
+   "a": "Volkan Baǵa",
+   "art": "https://cards.scryfall.io/art_crop/front/2/d/2dd354dd-939e-4b1a-8ed6-fe89a7fd64bf.jpg?1783931067",
+   "cn": "73",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/2/d/2dd354dd-939e-4b1a-8ed6-fe89a7fd64bf.jpg?1783931067",
+   "r": "U",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Yuu Fujiki",
+   "art": "https://cards.scryfall.io/art_crop/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "cn": "160",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "r": "U",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
  "Bitter Triumph": [
   {
    "a": "Donato Giancola",
@@ -259,10 +316,14 @@
  ],
  "Black Cat, Cunning Thief": [],
  "Black Widow, Super Spy": [],
+ "Blade Historian": [],
  "Bone-Cairn Butcher": [],
  "Boneyard Desecrator": [],
+ "Bontu the Glorified": [],
  "Boros Charm": [],
  "Brimstone Roundup": [],
+ "Bruse Tarl, Boorish Herder": [],
+ "Captain America, Skybound": [],
  "Caught in the Crossfire": [],
  "Cecil, Dark Knight": [],
  "Celes, Rune Knight": [],
@@ -296,8 +357,10 @@
  ],
  "Cosmic Cube": [],
  "Crucias, Titan of the Waves": [],
+ "Cruel Administrator": [],
  "Cruel Alliance": [],
  "Cruelclaw's Heist": [],
+ "Dalkovan Outrider": [],
  "Dalkovan Packbeasts": [],
  "Daredevil, Man Without Fear": [],
  "Death in the Family": [],
@@ -306,6 +369,7 @@
  "Dictate of Erebos": [],
  "Djeru and Hazoret": [],
  "Drakuseth, Maw of Flames": [],
+ "Drana, Liberator of Malakir": [],
  "Dream Harvest": [],
  "Duty Beyond Death": [
   {
@@ -334,6 +398,7 @@
    "y": "2026"
   }
  ],
+ "EPF Point Squad": [],
  "Eaten Alive": [
   {
    "a": "Nicholas Gregory",
@@ -358,6 +423,7 @@
    "y": "2024"
   }
  ],
+ "Elspeth, Storm Slayer": [],
  "Epic Downfall": [
   {
    "a": "Eric Deschamps",
@@ -460,7 +526,9 @@
   }
  ],
  "Fire Lord Zuko": [],
+ "Fire Nation Palace": [],
  "Fire Navy Trebuchet": [],
+ "Firebender Ascension": [],
  "Flare of Fortitude": [
   {
    "a": "Winona Nelson",
@@ -489,29 +557,96 @@
  ],
  "Form a Posse": [],
  "Genji Glove": [],
+ "Gideon, the Oathsworn": [],
+ "Gilded Ambusher": [],
+ "Gowron, Eager for Battle": [],
+ "Grave Titan": [],
  "Great Train Heist": [],
+ "Grilka, Widowed Warrior": [],
  "Gut, True Soul Zealot": [],
  "Hama, the Bloodbender": [],
  "Hazoret the Fervent": [],
  "Hazoret's Monument": [],
  "Hazoret, Godseeker": [],
+ "Heartless Pillage": [
+  {
+   "a": "Sara Winters",
+   "art": "https://cards.scryfall.io/art_crop/front/c/5/c5e791ce-1380-4de0-b314-246ea6dfc3cc.jpg?1783935759",
+   "cn": "109",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/5/c5e791ce-1380-4de0-b314-246ea6dfc3cc.jpg?1783935759",
+   "r": "U",
+   "set": "XLN",
+   "sn": "Ixalan",
+   "y": "2017"
+  },
+  {
+   "a": "Mark A. Nelson",
+   "art": "https://cards.scryfall.io/art_crop/front/d/0/d06a1a70-aa26-4178-8486-e0a25c907cdb.jpg?1783911724",
+   "cn": "14",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/d/0/d06a1a70-aa26-4178-8486-e0a25c907cdb.jpg?1783911724",
+   "r": "U",
+   "set": "OTP",
+   "sn": "Breaking News",
+   "y": "2024"
+  }
+ ],
  "Hellrider": [],
  "Hellspur Brute": [],
  "Hellspur Posse Boss": [],
  "Hero's Downfall": [],
+ "Highway Reaver": [],
+ "Honored Crop-Captain": [],
  "Imperial Blademaster": [],
+ "Improvised Arsenal": [],
  "Ingris Stingerquill": [],
  "Interdimensional Web Watch": [],
  "Inti, Seneschal of the Sun": [],
+ "Iroas, God of Victory": [],
+ "Iroh, Dragon of the West": [],
+ "Jor Kadeen, First Goldwarden": [],
+ "Kardur, Doomscourge": [
+  {
+   "a": "Chris Rahn",
+   "art": "https://cards.scryfall.io/art_crop/front/9/6/9685e2a0-5573-41bc-a914-f40c3011459b.jpg?1783928196",
+   "cn": "216",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/6/9685e2a0-5573-41bc-a914-f40c3011459b.jpg?1783928196",
+   "r": "U",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  },
+  {
+   "a": "Jeff Miracola",
+   "art": "https://cards.scryfall.io/art_crop/front/b/f/bfc779ac-a418-4cd0-aa73-8d0d91d51f1c.jpg?1783928144",
+   "cn": "324",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/f/bfc779ac-a418-4cd0-aa73-8d0d91d51f1c.jpg?1783928144",
+   "r": "U",
+   "set": "KHM",
+   "sn": "Kaldheim",
+   "y": "2021"
+  }
+ ],
  "Kavaron Harrier": [],
  "Kingpin, Wilson Fisk": [],
  "Kinscaer Sentry": [],
  "Kira Nerys, Firebrand": [],
+ "Kirk, Commanding Officer": [],
  "Kor, Cause of Vengeance": [],
  "Korvold and the Noble Thief": [],
+ "L'Rell, Fierce Visionary": [],
  "Laughing Jasper Flint": [],
  "Leader's Talent": [],
  "Lecturing Scornmage": [],
+ "Legion Loyalist": [],
  "Liliana, Dreadhorde General": [
   {
    "a": "Chris Rallis",
@@ -542,15 +677,20 @@
  "Long Goodbye": [],
  "Longhorn Sharpshooter": [],
  "Loyal Fire Sage": [],
+ "Mabel, Heir to Cragflame": [],
  "Mabel, Valley Hero": [],
  "Marauding Mako": [],
  "Mardu Ascendancy": [],
  "Mardu Siegebreaker": [],
  "Mardu Thunderkite": [],
  "Marshal of the Lost": [],
+ "Marvel Boy, Noh-Varr": [],
  "Massacre Girl, Most Wanted": [],
+ "Meddling Youths": [],
  "Merry, Esquire of Rohan": [],
+ "Minthara of the Absolute": [],
  "Mishra, Claimed by Gix": [],
+ "Misty Mountains Raider": [],
  "Mog, Moogle Warrior": [],
  "Molecular Modifier": [],
  "Molten Lavamancer": [],
@@ -582,11 +722,53 @@
   }
  ],
  "Murderous Redcap": [],
+ "Myrel, Shield of Argive": [],
  "Nadier's Nightblade": [],
  "Nahiri's Wrath": [],
+ "Neriv, Crackling Vanguard": [],
  "Nico Minoru, Runaway": [],
  "Ninja of the Hand": [],
  "Nowhere to Run": [],
+ "Old Hob, Alleycat Blues": [],
+ "Olivia, Crimson Bride": [
+  {
+   "a": "Anna Steinbauer",
+   "art": "https://cards.scryfall.io/art_crop/front/3/0/301dacc9-ef92-4515-b907-a70d6c3fd73e.jpg?1783924788",
+   "cn": "245",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/0/301dacc9-ef92-4515-b907-a70d6c3fd73e.jpg?1783924788",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Xiaobotong",
+   "art": "https://cards.scryfall.io/art_crop/front/7/9/7964ed78-c0c2-4555-bc25-b0eac14d0b34.jpg?1783924756",
+   "cn": "315",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/9/7964ed78-c0c2-4555-bc25-b0eac14d0b34.jpg?1783924756",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  },
+  {
+   "a": "Bastien L. Deharme",
+   "art": "https://cards.scryfall.io/art_crop/front/0/d/0d5552d3-6860-42e5-8a13-1d36dce77322.jpg?1783924740",
+   "cn": "343",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/d/0d5552d3-6860-42e5-8a13-1d36dce77322.jpg?1783924740",
+   "r": "M",
+   "set": "VOW",
+   "sn": "Innistrad: Crimson Vow",
+   "y": "2021"
+  }
+ ],
  "Olivia, Opulent Outlaw": [],
  "Omenport Vigilante": [],
  "Oona's Blackguard": [],
@@ -673,6 +855,7 @@
  ],
  "Phyrexian Dragon Engine": [],
  "Pirate Peddlers": [],
+ "Polterheist": [],
  "Preacher of the Schism": [],
  "Professional Face-Breaker": [],
  "Psychic Whorl": [],
@@ -750,6 +933,7 @@
  "Rankle, Pitiless Trickster": [],
  "Raph & Leo, Sibling Rivals": [],
  "Raven Eagle": [],
+ "Recruit Instructor": [],
  "Reno and Rude": [],
  "Repercussion": [
   {
@@ -780,15 +964,20 @@
    "y": "2023"
   }
  ],
+ "Response // Resurgence": [],
+ "Restless Bivouac": [],
  "Ruthless Lawbringer": [],
  "S.H.I.E.L.D. Spy Kit": [],
  "Sanguine Syphoner": [],
  "Sawblade Skinripper": [],
  "Scalestorm Summoner": [],
+ "Seal from Existence": [],
  "Seasoned Consultant": [],
  "Seifer Almasy": [],
  "Seismic Wave": [],
  "Selfless Spirit": [],
+ "Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel": [],
+ "Shadowfax, Lord of Horses": [],
  "Shared Animosity": [
   {
    "a": "Chuck Lukacs",
@@ -841,6 +1030,7 @@
   }
  ],
  "Shoot the Sheriff": [],
+ "Shredder, Shadow Master": [],
  "Silver Sable, Mercenary Leader": [],
  "Skewer the Critics": [
   {
@@ -869,6 +1059,7 @@
    "y": "2024"
   }
  ],
+ "Skyknight Vanguard": [],
  "Smellerbee, Rebel Fighter": [],
  "Smelt-Ward Minotaur": [],
  "Solitary Cell": [],
@@ -879,14 +1070,22 @@
  "Stoke the Flames": [],
  "Stormforged Armor": [],
  "Stormplain Detainment": [],
+ "Suki, Courageous Rescuer": [],
  "Sun Warriors": [],
+ "Sun-Blessed Guardian // Furnace-Blessed Conqueror": [],
+ "Super Shredder": [],
+ "Swathcutter Giant": [],
  "Syr Vondam, the Lucent": [],
+ "Tajic, Legion's Valor": [],
  "Tamiyo, Upriser Crowned": [],
  "Team Avatar": [],
+ "Tenured Inkcaster": [],
  "Terra, Herald of Hope": [],
+ "The Haunt of Hightower": [],
  "The Infamous Cruelclaw": [],
  "The Kingpin of Crime": [],
  "The Needs of the Many": [],
+ "The Neutrinos": [],
  "Tibalt, Rakish Instigator": [
   {
    "a": "Chase Stone",
@@ -914,11 +1113,68 @@
  "Tinybones, Bauble Burglar": [],
  "Tinybones, the Pickpocket": [],
  "Toralf's Disciple": [],
+ "Tori D'Avenant, Fury Rider": [
+  {
+   "a": "Anna Podedworna",
+   "art": "https://cards.scryfall.io/art_crop/front/9/c/9c873c5b-61f6-49b9-8993-2d5e9823de62.jpg?1783921274",
+   "cn": "223",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/c/9c873c5b-61f6-49b9-8993-2d5e9823de62.jpg?1783921274",
+   "r": "U",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "Jody Clark",
+   "art": "https://cards.scryfall.io/art_crop/front/8/0/80bd8ea0-05be-4db1-8f7b-bccbb484d552.jpg?1783921208",
+   "cn": "363",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/8/0/80bd8ea0-05be-4db1-8f7b-bccbb484d552.jpg?1783921208",
+   "r": "U",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  }
+ ],
+ "Tsagan, Raider Warlord": [],
+ "Uglúk of the White Hand": [],
+ "Ulder Ravengard, Marshal": [],
  "Umbral Collar Zealot": [],
  "Vaan, Street Thief": [],
  "Vampire Gourmand": [],
+ "Velomachus Lorehold": [
+  {
+   "a": "Raymond Swanland",
+   "art": "https://cards.scryfall.io/art_crop/front/0/4/04ea9067-ad50-4c43-ae4d-3f66890cd898.jpg?1783927292",
+   "cn": "245",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/4/04ea9067-ad50-4c43-ae4d-3f66890cd898.jpg?1783927292",
+   "r": "M",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  },
+  {
+   "a": "Karl Kopinski",
+   "art": "https://cards.scryfall.io/art_crop/front/b/7/b7151c4b-4d42-44c1-a6f4-8be29ace1df3.jpg?1783927264",
+   "cn": "283",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/7/b7151c4b-4d42-44c1-a6f4-8be29ace1df3.jpg?1783927264",
+   "r": "M",
+   "set": "STX",
+   "sn": "Strixhaven: School of Mages",
+   "y": "2021"
+  }
+ ],
  "Venat, Heart of Hydaelyn": [],
+ "Venerated Stormsinger": [],
  "Vial Smasher, Gleeful Grenadier": [],
+ "Vincent Valentine // Galian Beast": [],
  "Virus Beetle": [
   {
    "a": "Dan Murayama Scott",
@@ -947,10 +1203,69 @@
  "Vraan, Executioner Thane": [],
  "War Effort": [],
  "Warren Warleader": [],
+ "Waystone's Guidance": [],
  "Wild Pack Squad": [],
+ "Windcrag Siege": [],
+ "Winota, Joiner of Forces": [
+  {
+   "a": "Magali Villeneuve",
+   "art": "https://cards.scryfall.io/art_crop/front/5/d/5dd13a6c-23d3-44ce-a628-cb1c19d777c4.jpg?1783931014",
+   "cn": "216",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/d/5dd13a6c-23d3-44ce-a628-cb1c19d777c4.jpg?1783931014",
+   "r": "M",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Yoshitaka Amano",
+   "art": "https://cards.scryfall.io/art_crop/front/6/e/6e1a948f-2d7f-4398-9f56-90dac6897c69.jpg?1783906389",
+   "cn": "19",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/6/e/6e1a948f-2d7f-4398-9f56-90dac6897c69.jpg?1783906389",
+   "r": "R",
+   "set": "FCA",
+   "sn": "Final Fantasy: Through the Ages",
+   "y": "2025"
+  }
+ ],
+ "Witch-king, Bringer of Ruin": [
+  {
+   "a": "Denman Rooke",
+   "art": "https://cards.scryfall.io/art_crop/front/9/0/90da1d3e-dbcb-4b1e-a606-d4fc1a60a8fe.jpg?1783916216",
+   "cn": "293",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/0/90da1d3e-dbcb-4b1e-a606-d4fc1a60a8fe.jpg?1783916216",
+   "r": "R",
+   "set": "LTR",
+   "sn": "The Lord of the Rings: Tales of Middle-earth",
+   "y": "2023"
+  },
+  {
+   "a": "Carl Critchlow",
+   "art": "https://cards.scryfall.io/art_crop/front/9/a/9a9e1edd-2a42-41a8-b089-66f3db080984.jpg?1784629984",
+   "cn": "21",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/9/a/9a9e1edd-2a42-41a8-b089-66f3db080984.jpg?1784629984",
+   "r": "M",
+   "set": "HOC",
+   "sn": "The Hobbit Eternal",
+   "y": "2026"
+  }
+ ],
  "Worf, Defiant Commander": [],
+ "Worf, Honor-Bound Warrior": [],
  "Worthy Cost": [],
  "Zagras, Thief of Heartbeats": [],
+ "Zhao, Ruthless Admiral": [],
+ "Zurgo Helmsmasher": [],
  "Zurgo Stormrender": [],
+ "Zurgo's Vanguard": [],
  "Zurgo, Thunder's Decree": []
 }
