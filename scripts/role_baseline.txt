@@ -203,6 +203,7 @@ Ghostly Keybearer
 Ghoulcaller Gisa
 Giant Cindermaw
 Giant Opportunity
+Gilded Ambusher
 Gilgamesh, Master-at-Arms
 Glarb, Calamity's Augur
 Glider Kids
@@ -525,6 +526,7 @@ Twilight Diviner
 Ty Lee, Artful Acrobat
 Tyvar the Bellicose
 U.S.S. Discovery, at Black Alert
+Ulder Ravengard, Marshal
 Ultron Drone
 Umbral Collar Zealot
 Underwater Tunnel // Slimy Aquarium
@@ -559,6 +561,7 @@ Whirlwing Stormbrood
 Whirlwing Stormbrood // Dynamic Soar
 White Tiger, Ava Ayala
 Wisecrack
+Witch-king, Bringer of Ruin
 Wolverine, Claws Out
 Wonder Man, Hollywood Hero
 Woodwork Prodigy // Soul Tether
@@ -566,6 +569,5 @@ Worf, Honor-Bound Warrior
 Wraith, Vicious Vigilante
 Xolatoyac, the Smiling Flood
 Y'shtola Rhul
-Zagras, Thief of Heartbeats
 Zog, Triceraton Castaway
 Zurgo, Thunder's Decree

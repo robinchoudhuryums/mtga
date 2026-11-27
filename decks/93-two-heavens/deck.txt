@@ -6,23 +6,25 @@
 #: archetype: 100-card Brawl (Arena's "Brawl" queue, Historic card pool), MARDU GO-WIDE ATTACK
 #: archetype: TRIGGERS around Isshin, Two Heavens as One: "If a creature attacking causes a
 #: archetype: triggered ability of a permanent you control to trigger, that ability triggers an
-#: archetype: additional time." The plan: attackers that MAKE attackers (mobilize, "whenever you
-#: archetype: attack" tokens — Zurgo, Thunder's Decree, Voice of Victory, Dalkovan Packbeasts, Bone-Cairn
-#: archetype: Butcher, War Effort, Stormforged Armor) go wide on every attack; attack-trigger payoffs deal
+#: archetype: additional time." Windcrag Siege (Mardu) repeats that text, so with both out every
+#: archetype: attack trigger fires three times. The plan: attackers that MAKE attackers (mobilize and
+#: archetype: whenever-you-attack tokens — Zurgo, Thunder's Decree, Voice of Victory, Dalkovan Packbeasts,
+#: archetype: Bone-Cairn Butcher, War Effort, Mardu Ascendancy, Adeline, Skyknight Vanguard, Stormforged
+#: archetype: Armor, with Elspeth doubling every token) go wide on every attack; attack-trigger payoffs deal
 #: archetype: damage (Hellrider and Ingris Stingerquill per attacker, Far Fortune, Combustion Man, Mishra,
-#: archetype: Overlord of the Boilerbilges, Arabella, Alpharael) and draw (Djeru and Hazoret, Smellerbee,
-#: archetype: Laughing Jasper Flint), and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove,
-#: archetype: Raiyuu — each give TWO extra combats under Isshin, re-firing all of it. Raiyuu's line:
-#: archetype: attack ALONE with a Samurai (Isshin or Raiyuu) first, then go
-#: archetype: wide in the extra combats. SECOND ENGINE (owner's 2026-10-26 re-read): mobilize and
-#: archetype: attack tokens are SACRIFICED every end step, so they feed sacrifice and death payoffs —
-#: archetype: Sothera and Dictate of Erebos (each death costs them a creature), Pyre-Sledge Arsonist
-#: archetype: (X = permanents sacrificed this turn, copied by Ertha Jo), Liliana Dreadhorde General
-#: archetype: (a card per death), Zurgo Stormrender, Vraan, Nadier's Nightblade and Massacre Girl, Most Wanted
-#: archetype: (drains), Pirate Peddlers, Kingpin, and Akul (sacrifice three in main phase 2 to cheat a
-#: archetype: creature in). Zurgo stops Warrior tokens being sacrificed in YOUR end step, so on Zurgo
-#: archetype: turns sacrifice them to an outlet instead. DISTINCT from deck 55 (Standard Mardu spells-velocity):
-#: archetype: this deck's engine is the attack step, not the cast count.
+#: archetype: Overlord of the Boilerbilges, Arabella) and draw (Kor, Preacher, Merry, Ulder Ravengard,
+#: archetype: Aurelia the Law Above, Cosmic Cube, Djeru and Hazoret, Smellerbee, Venat on legend casts),
+#: archetype: and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove, Raiyuu — re-fire all of it.
+#: archetype: SECOND ENGINE: mobilize and attack tokens are SACRIFICED every end step, so they feed death
+#: archetype: payoffs — Sothera and Dictate of Erebos (each death costs them a creature), Pyre-Sledge
+#: archetype: Arsonist, Liliana Dreadhorde General, Venerated Stormsinger, Vraan and Nadier's Nightblade
+#: archetype: (drains), Sephiroth and Vampire Gourmand (cards), Pirate Peddlers, Kingpin (Treasure), and
+#: archetype: Akul (sacrifice three in main phase 2 to cheat a creature in). Doomed tokens also pay for
+#: archetype: answers: Worthy Cost, Ruthless Lawbringer and Gilded Ambusher. Myrel stops instant-speed
+#: archetype: answers on your turn; Adept Watershaper and Boros Charm keep the attack alive. Zurgo stops
+#: archetype: Warrior tokens being sacrificed in YOUR end step, so on Zurgo turns sacrifice them to an
+#: archetype: outlet instead. DISTINCT from deck 55 (Standard Mardu spells-velocity): this deck's engine
+#: archetype: is the attack step, not the cast count.
 #: protect: Isshin, Two Heavens as One; Sothera, the Supervoid; Pyre-Sledge Arsonist; Aurelia, the Warleader; Raph & Leo, Sibling Rivals; Genji Glove; Raiyuu, Storm's Edge; Zurgo, Thunder's Decree; Voice of Victory; Djeru and Hazoret; Stormforged Armor
 #: notes: DRAFTED 2026-10-26 from the owner's 130-card pile (.cycle/isshin-pile-analysis.md) plus
 #: notes: owned attack-trigger cards from outside it. The pile held 12 cards Isshin doubles; the
@@ -71,15 +73,18 @@
 #: notes: some games the lands came wrong for early plays. Applied five owned untapped lands for the five
 #: notes: unconditional taplands (tapped-land cost 3.1 -> 1.4 points a card). Open: refocus on the Isshin attack
 #: notes: core (cut the discard / outlaw / cast-from-exile strands for cheap attack-trigger creatures), add draw and interaction.
+#: notes: 2026-11-27: 24-swap refocus applied from the builds/isshin board (owner's 24 cuts; adds chosen for attack-trigger
+#: notes: draw, answers and protection). Interaction 12 -> 15, protection 3 -> 6. Owner keeps Pirate Peddlers, Kingpin and Akul.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
 
-# Extra combats — each attack trigger fires twice, so each card is TWO extra combats
+# Trigger doublers and extra combats — Windcrag Siege repeats Isshin, so attack triggers fire again
 1 Aurelia, the Warleader (FDN) 651
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Genji Glove (FIN) 258
 1 Raiyuu, Storm's Edge (NEO) 232
+1 Windcrag Siege (TDM) 235
 
 # Attackers that make attackers (mobilize and attack-token makers, doubled)
 1 Zurgo, Thunder's Decree (TDM) 237
@@ -90,10 +95,14 @@
 1 Mardu Siegebreaker (TDM) 206
 1 Stormforged Armor (YTDM) 13
 1 Mardu Thunderkite (YTDM) 23
-1 Outlaws' Merriment (ELD) 198
 1 Kinscaer Sentry (ECL) 22
 1 Zurgo Stormrender (TDC) 10
 1 Kira Nerys, Firebrand (TRK) 242
+1 Mardu Ascendancy (KTK) 185
+1 Skyknight Vanguard (M20) 218
+1 Adeline, Resplendent Cathar (J25) 57
+1 Elspeth, Storm Slayer (TDM) 11
+1 Winota, Joiner of Forces (IKO) 216
 
 # Damage engines — attack triggers and noncombat pings
 1 Far Fortune, End Boss (DFT) 203
@@ -101,7 +110,6 @@
 1 Overlord of the Boilerbilges (DSK) 146
 1 Arabella, Abandoned Doll (DSK) 208
 1 Alpharael, Stonechosen (EOE) 87
-1 Nico Minoru, Runaway (MSC) 700
 1 Hellrider (JMP) 334
 1 Ingris Stingerquill (FRA) 137
 1 Mishra, Claimed by Gix (BRO) 216
@@ -109,55 +117,45 @@
 # Attack-trigger card advantage
 1 Djeru and Hazoret (MOM) 221
 1 Smellerbee, Rebel Fighter (TLE) 125
-
-# Attack mana and team counters
-1 Fire Lord Zuko (TLA) 221
+1 Aurelia, the Law Above (MKM) 188
+1 Cosmic Cube (MSH) 245
 
 # Card draw and impulse
-1 Celes, Rune Knight (FIC) 1
-1 Crucias, Titan of the Waves (YBRO) 18
-1 Professional Face-Breaker (SNC) 116
-1 Laughing Jasper Flint (OTJ) 215
-
-# Evasive bodies
-1 Olivia, Opulent Outlaw (OTC) 2
-1 Rakdos, the Muscle (OTJ) 226
-1 Zagras, Thief of Heartbeats (ZNR) 241
-1 The Infamous Cruelclaw (BLB) 219
+1 Kor, Cause of Vengeance (TRC) 96
+1 Preacher of the Schism (LCI) 113
+1 Ulder Ravengard, Marshal (HBG) 76
+1 Merry, Esquire of Rohan (LTR) 215
+1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
+1 Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel (FIN) 115
+1 Vampire Gourmand (FDN) 74
 
 # Sacrifice and death payoffs — mobilize tokens are sacrificed every end step
 1 Sothera, the Supervoid (EOE) 115
 1 Pyre-Sledge Arsonist (SNC) 118
-1 Massacre Girl, Most Wanted (FRA) 234
+1 Venerated Stormsinger (TDM) 97
 1 Akul the Unrepentant (OTJ) 189
 1 Pirate Peddlers (TLA) 115
 1 Liliana, Dreadhorde General (FDN) 176
 1 Vraan, Executioner Thane (ONE) 114
 1 Nadier's Nightblade (MH3) 275
 1 Kingpin, Wilson Fisk (MSC) 661
-1 Boneyard Desecrator (OTJ) 81
 
-# Outlaw support — Mercenary tokens, haste, first strike
-1 At Knifepoint (OTJ) 193
-1 Ertha Jo, Frontier Mentor (OTJ) 203
-
-# Discard engine — attack-trigger discards feed Spider-Man, Living Laser and Inti
-1 Inti, Seneschal of the Sun (LCI) 156
-1 Living Laser (MSC) 55
-1 Steal the Show (SOS) 130
-1 Phyrexian Dragon Engine (BRO) 163
-1 Mog, Moogle Warrior (FIC) 89
-1 Spider-Man, New Champion (MSC) 705
+# Protection — keep the attacking board alive
+1 Boros Charm (FDN) 721
+1 Adept Watershaper (ECL) 3
+1 Myrel, Shield of Argive (BRO) 18
 
 # Interaction
 1 Bitter Triumph (SOA) 26
 1 Hero's Downfall (FDN) 175
-1 Long Goodbye (MKM) 92
+1 Worthy Cost (TDM) 99
 1 Dictate of Erebos (PIO) 91
 1 Nowhere to Run (DSK) 111
-1 All-Fates Stalker (EOE) 3
+1 Anguished Unmaking (OTP) 35
 1 Agrus Kos, Spirit of Justice (MKM) 184
-1 Angrath, the Flame-Chained (RIX) 152
+1 Witch-king, Bringer of Ruin (LTR) 293
+1 Ruthless Lawbringer (OTJ) 229
+1 Gilded Ambusher (YDSK) 22
 
 # Lands (37)
 1 Command Tower (FRC) 22
@@ -184,4 +182,4 @@
 1 Dragonskull Summit (XLN) 252
 7 Swamp (FRA) 285
 
-#~ -Olivia, Opulent Outlaw | +Morbid Opportunist | CRAFT (U): 3-mana once-a-turn draw on any creature death — cheap insurance for games where Liliana is late
+#~ note: applied — Adept Watershaper in for Olivia, Opulent Outlaw.
