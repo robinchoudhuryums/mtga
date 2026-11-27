@@ -108,6 +108,15 @@ Eiganjo/Sokenzan/Takenuma. Preview: floor A, legal; interaction 18 -> 17, card a
 protection 5 -> 6, board power 107 -> 112, avg MV 3.25 -> 3.40. Keeps Living Laser, Bone Miser,
 At Knifepoint, Mog, Rakdos (owner's).
 
+**Celes package v1 (proposed 2026-11-27, on the board as suggestions):** -Spider-Islanders +Nico,
+-Raging Goblinoids +Crucias, -Faithless Looting +M.O.D.O.K., -Cathartic Reunion +Bonehoard
+Dracosaur, -Misty Knight +Quintorius History Chaser, -Can't Stay Away +Sela, -Sevinne's
+Reclamation +Spider-Verse, -Talisman of Conviction +Black Market Connections, -Inevitable Defeat
++Lightning Axe, -Mishra Claimed by Gix +Highway Reaver, -Tomb Robber +Stormclaw Rager, -Smellerbee
++Spider-Man, -Talisman of Hierarchy +Liliana the Faultless, -Spider-Gwen +Boros Charm; Swamp ->
+Takenuma, Mountain -> Sokenzan. Preview: floor A, legal; interaction 16 -> 18, card advantage
+8 -> 10 (the role model undercounts recursion), protection 1 -> 3, avg MV 3.13 -> 3.22.
+
 
 **Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
 on the owner's notes: Alpharael (void is on most turns via Treasures and warp), Dalkovan
