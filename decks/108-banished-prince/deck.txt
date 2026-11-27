@@ -7,8 +7,8 @@
 #: archetype: exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature
 #: archetype: you control." Discard and cast-from-exile are ONE engine here: a madness card is discarded INTO
 #: archetype: exile and cast from there (Terminal Agony), and Inti, Moonstone, Containment
-#: archetype: Construct, Conspiracy Theorist and Party Thrasher turn a discard into a card played from exile.
-#: archetype: Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint, Outpost Siege, Charred Foyer,
+#: archetype: Construct and Party Thrasher turn a discard into a card played from exile.
+#: archetype: Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint, Charred Foyer, Neriv Crackling Vanguard,
 #: archetype: Chandra, Rakdos, Theater of Horrors, Hidetsugu, Florian, Bonehoard), HEIST (Polterheist, Grenzo,
 #: archetype: Axavar, Impetuous Lootmonger; Nita adds a counter on every creature per heist, stacking with Zuko),
 #: archetype: adventures (Murderous Rider, Bonecrusher Giant), foretell (Dream Devourer gives the
@@ -17,9 +17,10 @@
 #: archetype: (Spider-Man, Magmakin Artillerist, Living Laser, Bone Miser, Cool but Rude,
 #: archetype: Monument to Endurance, Archfiend of Ifnir) and exile casts (Quintorius Kand, Spider-Verse, Nico
 #: archetype: Minoru, Ob Nixilis Captive Kingpin). TREASURES are the ramp (Black Market Connections, Heroes for
-#: archetype: Hire, Goldspan Dragon, Ultimate Green Goblin, Crucias, Prosper), paying for the top end (Ruinous
+#: archetype: Hire, Goldspan Dragon, Ultimate Green Goblin, Crucias, Prosper, Magda off every heist crime; Dalkovan
+#: archetype: Outrider grows the library's creatures on every sacrifice), paying for the top end (Ruinous
 #: archetype: Ultimatum, Alpharael, whose void the sacrificed Treasures turn on). OUTLAWS are a light axis
-#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Magmakin, Olivia; At Knifepoint).
+#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Magmakin, Olivia).
 #: protect: Inti, Seneschal of the Sun; Moonstone, Harsh Mistress; Containment Construct; Nico Minoru, Runaway; Prosper, Tome-Bound
 #: notes: 2026-11-27 drafted from deck 93's off-plan cuts (Inti, Nico, Crucias, Celes, Cruelclaw, Jasper Flint,
 #: notes: Living Laser, Spider-Man, Steal the Show, Olivia, Face-Breaker, All-Fates Stalker, At Knifepoint) plus a
@@ -39,6 +40,8 @@
 #: notes: Occultist +Alpharael, -Vindicate +Goldspan Dragon, -Plains +Eiganjo (heist and Treasures over spare removal).
 #: notes: 2026-11-27: -Fiery Temper +Avatar's Wrath, -Poison the Cup +Airbender Ascension, -Glint-Horn Buccaneer +Djeru
 #: notes: and Hazoret (owner's picks; airbending and free legend casts over two spot removal spells).
+#: notes: 2026-11-27: -Conspiracy Theorist +Magda, -At Knifepoint +Dalkovan Outrider, -Outpost Siege +Neriv, Crackling
+#: notes: Vanguard (owner's cuts; cheaper Treasure and sacrifice engines, token-count impulse).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -47,7 +50,7 @@
 1 Inti, Seneschal of the Sun (LCI) 156
 1 Moonstone, Harsh Mistress (MSH) 107
 1 Containment Construct (NEO) 243
-1 Conspiracy Theorist (STX) 94
+1 Magda, the Hoardmaster (OTJ) 133
 1 Party Thrasher (MH3) 129
 1 The Infamous Cruelclaw (BLB) 219
 1 Nico Minoru, Runaway (MSC) 700
@@ -70,7 +73,7 @@
 1 Alpharael, Stonechosen (EOE) 87
 1 Tannuk, Steadfast Second (EOE) 162
 1 Theater of Horrors (RNA) 213
-1 Outpost Siege (PIO) 150
+1 Neriv, Crackling Vanguard (TDC) 6
 1 Charred Foyer (DSK) 129
 1 Nita, Forum Conciliator (SOS) 206
 1 Teleportation Circle (AFR) 39
@@ -95,7 +98,7 @@
 1 Ob Nixilis, Captive Kingpin (MAT) 41
 1 Hidetsugu, Devouring Chaos (NEO) 99
 1 Olivia, Opulent Outlaw (OTC) 2
-1 At Knifepoint (OTJ) 193
+1 Dalkovan Outrider (YTDM) 20
 1 Archfiend of Ifnir (AKR) 91
 
 # Interaction — madness, adventure and foretell answers are cast from exile too
