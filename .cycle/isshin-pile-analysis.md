@@ -386,3 +386,41 @@ first combat alone buys two extra combats); Blademaster does not — Dauntless V
 **Manabase (R6):** the pile's lands make no white. Draft with Nomad Outpost, Godless Shrine,
 Sacred Foundry, Blood Crypt, the W/B and R/W Verges, Temples, Scoured Barrens, Shattered
 Sanctum, Starting Town, Plains/Mountain/Swamp, and measure with `consistency`.
+
+## 6. 2026-11-27 refocus package (proposed, on the builds/isshin board as suggestions)
+
+After an 0-10 run (lost to compounding engines with no answer; colour screw). Lands fix already applied.
+Package (cut=add), 27 swaps + 2 land swaps. Preview: interaction 12->17, protection 3->6, early drops 8->13,
+avg MV 3.65->3.38, on-curve as built 49.4%->50.2%, floor A, legal.
+
+- Laughing Jasper Flint=Merry, Esquire of Rohan
+- At Knifepoint=Mardu Ascendancy
+- Celes, Rune Knight=Kor, Cause of Vengeance
+- Crucias, Titan of the Waves=Preacher of the Schism
+- Mog, Moogle Warrior=Adeline, Resplendent Cathar
+- Steal the Show=Anguished Unmaking
+- Living Laser=Ruthless Lawbringer
+- Spider-Man, New Champion=Skyknight Vanguard
+- Phyrexian Dragon Engine=Vampire Gourmand
+- Olivia, Opulent Outlaw=Adept Watershaper
+- Nico Minoru, Runaway=Venat, Heart of Hydaelyn
+- Boneyard Desecrator=Gilded Ambusher
+- Ertha Jo, Frontier Mentor=Boros Charm
+- Inti, Seneschal of the Sun=Worthy Cost
+- Zagras, Thief of Heartbeats=Elspeth, Storm Slayer
+- Outlaws' Merriment=Windcrag Siege
+- Fire Lord Zuko=Locke, Treasure Hunter
+- Professional Face-Breaker=Fire Navy Trebuchet
+- Kira Nerys, Firebrand=Stadium Headliner
+- Rakdos, the Muscle=Witch-king, Bringer of Ruin
+- The Infamous Cruelclaw=Ulder Ravengard, Marshal
+- Akul the Unrepentant=Winota, Joiner of Forces
+- Angrath, the Flame-Chained=Cosmic Cube
+- Mardu Thunderkite=Combat Celebrant
+- Massacre Girl, Most Wanted=Venerated Stormsinger
+- Kingpin, Wilson Fisk=Sephiroth, Fabled SOLDIER
+- Alpharael, Stonechosen=Myrel, Shield of Argive
+- Mountain=Fire Nation Palace
+- Mountain=Plains
+
+Owner keeps Pirate Peddlers (its sacrifice trigger counts the mobilize end-step sacrifices). Benched by the package: Mabel, Valley Hero; Marshal of the Lost; Shared Animosity; Rabble Rousing (optional 28th swap for Zurgo Stormrender).
