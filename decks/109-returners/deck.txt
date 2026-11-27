@@ -7,9 +7,9 @@
 #: archetype: number of cards, then draw that many cards plus one. Whenever one or more other creatures you control enter,
 #: archetype: if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each
 #: archetype: creature you control." The sibling of deck 108 (Fire Lord Zuko), which casts from EXILE; this deck casts
-#: archetype: from the GRAVEYARD. Discard outlets (Crucias, M.O.D.O.K., Necrogoyf, Azula, Lorehold, Bullseye) fill the
+#: archetype: from the GRAVEYARD. Discard outlets (Crucias, M.O.D.O.K., Necrogoyf, Lorehold, Bone Miser) fill the
 #: archetype: yard, then mayhem (Scarlet Spider, Swarm, both Green Goblins, Carnage), escape (Phoenix of Ash, Woe Strider,
-#: archetype: Kroxa, Phlage), unearth (Gixian Recycler; Highway Reaver grants more), Bloodghast, Squee and Tenacious
+#: archetype: Kroxa, Phlage), unearth (Highway Reaver grants it), Bloodghast, Squee and Tenacious
 #: archetype: Underdog come back, and the reanimators (Alesha, Terra, Kroxa and Kunoros, Olivia Crimson Bride, Chainer,
 #: archetype: Lurrus, Sorin, Liliana, The Soul Stone, The Eldest Reborn, Tergrid) return the rest. Each return is a
 #: archetype: team-wide counter. Graveyard casts count as casts "from anywhere other than your hand", so Nico pings and
@@ -22,6 +22,8 @@
 #: notes: -Sevinne's Reclamation +Spider-Verse, -Inevitable Defeat +Lightning Axe, -Mishra +Highway Reaver, -Nethergoyf
 #: notes: +Necrogoyf, -Priest of Fell Rites +The Eldest Reborn, -Tomb Robber +Spider-Man, -Merciless Javelineer +Liliana
 #: notes: the Faultless, -Neheb +Black Market Connections, -Phyrexian Dragon Engine +Boros Charm, -Kolaghan's Command +Tergrid.
+#: notes: 2026-11-27 follow-up (owner's marks): -Bullseye +Dalkovan Outrider, -Azula +Grand Nagus Zek, -Gixian
+#: notes: Recycler +Bone Miser (sacrifice payoffs and card advantage over spare outlets).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Celes, Rune Knight (FIC) 1
@@ -35,7 +37,7 @@
 1 Ultimate Green Goblin (SPM) 157
 1 Carnage, Crimson Chaos (SPM) 125
 1 Bloodghast (DFT) 77
-1 Gixian Recycler (YBRO) 27
+1 Bone Miser (SPG) 87
 1 Tenacious Underdog (SNC) 97
 1 Squee, Dubious Monarch (DMU) 146
 1 Phoenix of Ash (THB) 148
@@ -65,10 +67,10 @@
 # Discard outlets — fill the graveyard
 1 Spider-Gwen, Free Spirit (MSC) 874
 1 Quintorius, History Chaser (SOC) 7
-1 Azula, Ruthless Firebender (TLE) 101
+1 Grand Nagus Zek (TRK) 112
 1 Spider-Man, New Champion (MSC) 705
 1 Liliana the Faultless (FRA) 200
-1 Bullseye, Death Dealer (MSH) 209
+1 Dalkovan Outrider (YTDM) 20
 1 Lorehold, the Historian (SOS) 201
 1 Smellerbee, Rebel Fighter (TLE) 125
 1 Black Market Connections (HBG) 145

@@ -45,7 +45,6 @@ Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
 Azula, Cunning Usurper
-Azula, Ruthless Firebender
 Badgermole
 Ball Lightning
 Battle of Wolf 359
@@ -113,6 +112,7 @@ Cuboid Colony
 Cut Your Losses
 Cyberdrive Awakener
 Daggerfang Duo
+Dalkovan Outrider
 Dalkovan Packbeasts
 Daredevil, Fearless Fighter
 Dark Confidant
