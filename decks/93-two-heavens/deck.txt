@@ -80,6 +80,8 @@
 #: notes: Schism +Locke; Zurgo Stormrender stays (its draw fires on Kor / Gourmand / Sephiroth / Ambusher combat sacrifices).
 #: notes: -Vraan +Shared Animosity (owner's pick over Kira Nerys / Combustion Man / Arabella; order Arabella's
 #: notes: trigger to resolve BEFORE Animosity's, or the pumped tokens leave its power-2 count).
+#: notes: Lands (white was short, 17 vs R 23 / B 21): -Razortrap Gorge +Mana Confluence, -Mountain +Dalkovan
+#: notes: Encampment (its {2}{W} attack Warriors feed Animosity and the death payoffs), -Mountain +Plains -> W 20 / B 21 / R 21.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -174,7 +176,7 @@
 1 Blazemire Verge (DSK) 256
 1 Shattered Sanctum (SOS) 260
 1 Dark Fortress (MSH) 264
-1 Razortrap Gorge (DSK) 267
+1 Mana Confluence (EOS) 25
 1 Raucous Carnival (DSK) 266
 1 Sunbaked Canyon (TLE) 58
 1 Prismatic Vista (SPG) 38
@@ -182,8 +184,9 @@
 1 Blightstep Pathway // Searstep Pathway (KHM) 252
 1 Clifftop Retreat (DOM) 239
 1 Evolving Wilds (ECL) 264
-3 Plains (FRA) 281
-7 Mountain (FRA) 287
+4 Plains (FRA) 281
+5 Mountain (FRA) 287
+1 Dalkovan Encampment (TDM) 253
 1 Dragonskull Summit (XLN) 252
 7 Swamp (FRA) 285
 
