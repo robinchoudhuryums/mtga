@@ -91,21 +91,31 @@ Rakdos Joins Up, Eldest Reborn, Kardur's Vicious Return, Orcus, Highway Reaver) 
 a dozen, mostly ◇, and adding them means cutting exile cards. Zuko also costs 3 to Celes' 4,
 and his trigger repeats where Celes' wheel happens once per cast. Celes stays in the 99.
 
-**Package (previewed 2026-11-27: floor A, legal; interaction 20 -> 18, card advantage
-20 -> 22, protection 3 -> 4, board power 91 -> 103, avg MV 3.14 -> 3.16):**
+**Package v2 (2026-11-27, owner keeps Living Laser, Bone Miser, At Knifepoint; previewed: floor A,
+legal; interaction 20 -> 16, card advantage 20 -> 23, protection 3 -> 4, board power 91 -> 106,
+avg MV 3.14 -> 3.27, early drops 18 -> 15):**
 
-| Cut | Add | Source |
-|---|---|---|
-| Talisman of Indulgence | Black Market Connections (owned) | Treasure pass |
-| Light Up the Stage | Heroes for Hire | Treasure pass |
-| Steal the Show | Ultimate Green Goblin (owned) | Treasure pass |
-| Living Laser | Bonehoard Dracosaur | Treasure pass |
-| Bone Miser | Ob Nixilis, Captive Kingpin | this pile |
-| At Knifepoint | Polterheist | this pile |
-| Vindicate | Lightning Axe | this pile |
-| Collective Brutality | Florian, Voldaren Scion | this pile |
+| Cut | Add |
+|---|---|
+| Talisman of Indulgence | Black Market Connections (owned) |
+| Light Up the Stage | Heroes for Hire |
+| Steal the Show | Ultimate Green Goblin (owned) |
+| Kolaghan's Command | Bonehoard Dracosaur |
+| Celes, Rune Knight | Ob Nixilis, Captive Kingpin |
+| Bloodtithe Harvester | Polterheist |
+| Vindicate | Lightning Axe |
+| Collective Brutality | Florian, Voldaren Scion |
+| Olivia, Opulent Outlaw | Archfiend of Ifnir |
+| Cool but Rude | The Legend of Roku (owned) |
+| Mountain | Sokenzan (owned) |
+| Plains | Eiganjo |
+| Swamp | Takenuma |
 
-Unstable Amulet STAYS: it deals exactly 1, which Ob Nixilis turns into a card.
+Keyword sweep (channel, hideaway, craft, saga-transform, connive, jump-start, mayhem,
+spectacle, cascade, cycling, Blood) added 20 cards; the best are Archfiend of Ifnir, the
+three channel lands, The Legend of Roku, Kumano Faces Kakkazan, Volcanic Torrent,
+Necrogoyf, M.O.D.O.K. and Electro's Bolt. **Solphim conflicts with Ob Nixilis**: doubling a
+1-damage ping makes it 2, which no longer triggers "exactly 1".
 
 **Tier 2 (next in line; cut candidates Kolaghan's Command, Giant Killer, Bloodtithe
 Harvester, Cool but Rude, Olivia Opulent Outlaw):** Phelia (owned, 2-drop blink each attack),
