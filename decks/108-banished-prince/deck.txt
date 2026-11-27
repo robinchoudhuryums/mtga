@@ -11,16 +11,17 @@
 #: archetype: Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint, Charred Foyer, Neriv Crackling Vanguard,
 #: archetype: Chandra, Rakdos, Daredevil, Theater of Horrors, Hidetsugu, Florian, Bonehoard), HEIST (Polterheist, Grenzo,
 #: archetype: Axavar, Impetuous Lootmonger; Nita adds a counter on every creature per heist, stacking with Zuko),
-#: archetype: adventures (Murderous Rider, Bonecrusher Giant), foretell (Dream Devourer gives the
+#: archetype: foretell (Dream Devourer gives the
 #: archetype: whole hand foretell), warp (Axavar; Tannuk gives red creatures warp), discover (Trumpeting
 #: archetype: Carnosaur) and Teleportation Circle's end-step blink are more of the same. Payoffs: discard
-#: archetype: (Spider-Man, Magmakin Artillerist, Living Laser, Bone Miser,
+#: archetype: (Spider-Man, Living Laser, Bone Miser,
 #: archetype: Monument to Endurance, Archfiend of Ifnir) and exile casts (Quintorius Kand, Spider-Verse, Nico
 #: archetype: Minoru, Ob Nixilis Captive Kingpin). TREASURES are the ramp (Black Market Connections, Heroes for
 #: archetype: Hire, Goldspan Dragon, Ultimate Green Goblin, Crucias, Prosper, Magda off every heist crime; Dalkovan
 #: archetype: Outrider grows the library's creatures on every sacrifice), paying for the top end (Ruinous
 #: archetype: Ultimatum, Alpharael, whose void the sacrificed Treasures turn on). OUTLAWS are a light axis
-#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Magmakin, Olivia).
+#: archetype: (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Olivia). Neriv, Heart of the Storm doubles
+#: archetype: damage from creatures that entered this turn (the haste bodies, Tannuk's warps, attacking tokens).
 #: protect: Inti, Seneschal of the Sun; Moonstone, Harsh Mistress; Containment Construct; Nico Minoru, Runaway; Prosper, Tome-Bound
 #: notes: 2026-11-27 drafted from deck 93's off-plan cuts (Inti, Nico, Crucias, Celes, Cruelclaw, Jasper Flint,
 #: notes: Living Laser, Spider-Man, Steal the Show, Olivia, Face-Breaker, All-Fates Stalker, At Knifepoint) plus a
@@ -43,6 +44,8 @@
 #: notes: 2026-11-27: -Conspiracy Theorist +Magda, -At Knifepoint +Dalkovan Outrider, -Outpost Siege +Neriv, Crackling
 #: notes: Vanguard (owner's cuts; cheaper Treasure and sacrifice engines, token-count impulse).
 #: notes: 2026-11-28: -Cool but Rude +Daredevil, Man Without Fear (an impulse card every attack, Radar Sense sees it first).
+#: notes: 2026-11-28: -Magmakin Artillerist +Neriv, Heart of the Storm (Spider-Man does Magmakin's job at any
+#: notes: target; ~12 haste or enters-attacking creatures for the doubler). Run beside Crackling Vanguard, not instead.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -88,7 +91,7 @@
 
 # Payoffs — for discarding, and for casting from exile
 1 Spider-Man, New Champion (MSC) 705
-1 Magmakin Artillerist (DFT) 137
+1 Neriv, Heart of the Storm (TDM) 210
 1 Djeru and Hazoret (MOM) 221
 1 Living Laser (MSC) 55
 1 Bone Miser (SPG) 87
