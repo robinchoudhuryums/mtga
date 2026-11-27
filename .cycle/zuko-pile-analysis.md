@@ -83,6 +83,18 @@ Kalain, Kaya the Inexorable, Djeru and Hazoret, Quintorius Loremaster.
 
 ## 5. Consolidated plan (live)
 
+
+**Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
+on the owner's notes: Alpharael (void is on most turns via Treasures and warp), Dalkovan
+Outrider, Hidetsugu Devouring Chaos, Ob Nixilis the Adversary, Ruinous Ultimatum (Treasures pay
+WWW), The Balrog (Treasure sacrifices discount it), The Mind Stone, Theater of Horrors.
+**Conflict:** Solphim and Ob Nixilis Captive Kingpin are both marked, with Unstable Amulet and
+Shadow of the Goblin marked to cut: with those cut, Ob Nixilis loses most of its exactly-1
+sources and Solphim turns the rest into 2s, so take Solphim. **Package v3** (21 swaps:
+the owner's 12 cuts, 8 more suggested (Laughing Jasper Flint, not Celes, which the owner kept), Plains -> Eiganjo) previewed floor A, legal; interaction
+18, card advantage 21, protection 7, board power 118, avg MV 3.44, early drops 14 (heavy:
+Treasures are what carry it).
+
 **Commander: keep Fire Lord Zuko (rule 8).** About 32 cards in the current 100 trigger Zuko
 (madness, impulse, heist, adventure, foretell, warp, discover, blink). Celes triggers on
 creatures entering or cast from a GRAVEYARD, and the current list has essentially none. The
