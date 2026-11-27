@@ -15,9 +15,10 @@
 #: archetype: Overlord of the Boilerbilges, Arabella) and draw (Kor, Merry, Locke, Ulder Ravengard,
 #: archetype: Aurelia the Law Above, Cosmic Cube, Djeru and Hazoret, Smellerbee, Venat on legend casts),
 #: archetype: and the extra-combat cards — Aurelia, Raph & Leo, Raiyuu, Combat Celebrant — re-fire all of it.
+#: archetype: Shared Animosity's per-attacker pump is doubled by Isshin (Humans 19, Warriors + mobilize tokens).
 #: archetype: SECOND ENGINE: mobilize and attack tokens are SACRIFICED every end step, so they feed death
 #: archetype: payoffs — Sothera and Dictate of Erebos (each death costs them a creature), Pyre-Sledge
-#: archetype: Arsonist, Liliana Dreadhorde General, Venerated Stormsinger, Vraan and Nadier's Nightblade
+#: archetype: Arsonist, Liliana Dreadhorde General, Venerated Stormsinger and Nadier's Nightblade
 #: archetype: (drains), Sephiroth and Vampire Gourmand (cards), Pirate Peddlers, Kingpin (Treasure), and
 #: archetype: Akul (sacrifice three in main phase 2 to cheat a creature in). Doomed tokens also pay for
 #: archetype: answers: Worthy Cost, Ruthless Lawbringer and Gilded Ambusher. Myrel stops instant-speed
@@ -77,6 +78,8 @@
 #: notes: draw, answers and protection). Interaction 12 -> 14, protection 3 -> 7, card advantage 9 -> 10. Owner keeps Pirate Peddlers, Kingpin and Akul.
 #: notes: Follow-up (owner): -Alpharael +Stadium Headliner, -Genji Glove +Combat Celebrant (unprotected), -Preacher of the
 #: notes: Schism +Locke; Zurgo Stormrender stays (its draw fires on Kor / Gourmand / Sephiroth / Ambusher combat sacrifices).
+#: notes: -Vraan +Shared Animosity (owner's pick over Kira Nerys / Combustion Man / Arabella; order Arabella's
+#: notes: trigger to resolve BEFORE Animosity's, or the pumped tokens leave its power-2 count).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -115,6 +118,7 @@
 1 Hellrider (JMP) 334
 1 Ingris Stingerquill (FRA) 137
 1 Mishra, Claimed by Gix (BRO) 216
+1 Shared Animosity (MOR) 104
 
 # Attack-trigger card advantage
 1 Djeru and Hazoret (MOM) 221
@@ -138,7 +142,6 @@
 1 Akul the Unrepentant (OTJ) 189
 1 Pirate Peddlers (TLA) 115
 1 Liliana, Dreadhorde General (FDN) 176
-1 Vraan, Executioner Thane (ONE) 114
 1 Nadier's Nightblade (MH3) 275
 1 Kingpin, Wilson Fisk (MSC) 661
 
