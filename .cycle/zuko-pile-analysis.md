@@ -194,3 +194,13 @@ Dragon Engine -> Spider-Man, Merciless Javelineer -> Liliana the Faultless, Nehe
 Connections, Infernal Grasp -> Boros Charm, Kolaghan's Command -> Tergrid). Quark re-graded on the
 owner's note (a Treasure battery cashed in by sacrificing it). Previews: Zuko floor A, interaction
 14, avg MV 3.38; Celes floor A, interaction 17, card advantage 9, avg MV 3.33.
+
+**2026-11-27 owner's marks round 5 (clarifying adds):** Zuko adds Heroes for Hire, Grenzo, Nita,
+Ruinous, Impetuous, Goldspan, Alpharael (+ Eiganjo for a Plains); Kaya the Inexorable (an older add
+mark) fills the 8th accepted cut. Read as: -Big Score +Heroes, -Demon Bolt +Grenzo, -All-Fates
++Nita, -Nalfeshnee +Ruinous, -Giant Killer +Impetuous, -Lightning Helix +Kaya, -Stromkirk
++Alpharael, -Vindicate +Goldspan, -Plains +Eiganjo (preview: A, legal, interaction 15, avg MV 3.44).
+Celes: 16 adds marked against 12 accepted cuts; 4 more cuts suggested (Phyrexian Dragon Engine,
+Merciless Javelineer, Neheb, Kolaghan's Command; Infernal Grasp kept). Preview: A, legal,
+interaction 18, card advantage 8, protection 3, avg MV 3.32. Not chosen: Phelia, Lorehold, Azula,
+Collective Defiance (Zuko), Stormclaw Rager (Celes), Sokenzan/Takenuma (both).
