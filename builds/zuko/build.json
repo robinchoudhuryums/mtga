@@ -308,21 +308,96 @@
    "name": "Geological Appraiser",
    "pile": "Z",
    "src": "fits-pass"
+  },
+  {
+   "name": "Black Market Connections",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Heroes for Hire",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Bonehoard Dracosaur",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Ultimate Green Goblin",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Impetuous Lootmonger",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Collector's Vault",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Goldspan Dragon",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Breeches, Eager Pillager",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Grim Hireling",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Decadent Dragon",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Pirate's Pillage",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Unexpected Windfall",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Smaug, Wicked Worm",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Season of the Bold",
+   "pile": "Z",
+   "src": "treasure-pass"
+  },
+  {
+   "name": "Quark, Humble Proprietor",
+   "pile": "Z",
+   "src": "treasure-pass"
   }
  ],
  "reasons": {
   "Mog, Moogle Warrior": {
-   "group": "From deck 93",
-   "text": "End-step loot for EVERY player, so opponents sculpt too; Moogle tokens and counters ride on what you discard. A fine outlet, but symmetric.",
+   "group": "In deck",
+   "text": "In the deck (owner's pick). An end-step discard every turn for madness and the discard payoffs, plus Moogle tokens and counters; every player may loot too, so opponents filter as well.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Rakdos, the Muscle": {
-   "group": "From deck 93",
-   "text": "Each sacrifice exiles cards you may play (cast from exile, a Zuko trigger), but the list has almost no sacrifice fodder; it would want Bloodtithe, Treasures and mobilize-style tokens.",
+   "group": "In deck",
+   "text": "In the deck (owner's pick). A flying trampler that sacrifices to itself for indestructible; the exile trigger scales with the sacrificed creature's mana value, so tokens give nothing.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Phyrexian Dragon Engine": {
@@ -557,45 +632,45 @@
    }
   },
   "Tannuk, Steadfast Second": {
-   "group": "Package",
-   "text": "Red creatures and artifacts in hand gain warp {2}{R}: each is cast twice, the second time from exile (a Zuko counter), and the rest of the team gets haste.",
+   "group": "In deck",
+   "text": "In the deck. Red creatures and artifacts in hand gain warp {2}{R}: each is cast twice, the second time from exile (a Zuko counter), and the rest of the team gets haste.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Teleportation Circle": {
-   "group": "Package",
-   "text": "Blinks a creature or artifact at every end step: a permanent entering from exile every turn, plus another trigger of Celes' discard-and-draw, a Blood token from Bloodtithe, or Giant Killer back untapped.",
+   "group": "In deck",
+   "text": "In the deck. Blinks a creature or artifact at every end step: a permanent entering from exile every turn, plus another trigger of Celes' discard-and-draw, a Blood token from Bloodtithe, or Giant Killer back untapped.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Dream Devourer": {
-   "group": "Package",
-   "text": "Gives every nonland card in hand foretell at two less, so any card can be cast from exile; a 2-drop enabler that grows each time you foretell.",
+   "group": "In deck",
+   "text": "In the deck. Gives every nonland card in hand foretell at two less, so any card can be cast from exile; a 2-drop enabler that grows each time you foretell.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Chandra, Torch of Defiance": {
-   "group": "Package",
-   "text": "+1 casts the top card from exile or deals 2; +1 ramps RR; −3 deals 4 to a creature. Impulse, ramp and removal on one card.",
+   "group": "In deck",
+   "text": "In the deck. +1 casts the top card from exile or deals 2; +1 ramps RR; −3 deals 4 to a creature. Impulse, ramp and removal on one card.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Axavar, Fate Thief": {
-   "group": "Package",
-   "text": "Warps for one mana (a Pirate outlaw); the warp itself turns on its end-step trigger: discard a card, then heist a card from their library to cast from exile. Discard, outlaws and exile in one card.",
+   "group": "In deck",
+   "text": "In the deck. Warps for one mana (a Pirate outlaw); the warp itself turns on its end-step trigger: discard a card, then heist a card from their library to cast from exile. Discard, outlaws and exile in one card.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Trumpeting Carnosaur": {
-   "group": "Package",
-   "text": "Discover 5 on entering (a free spell cast from exile); from hand, {2}{R} and discard it for 3 damage, which is a discard for Spider-Man, Inti and Magmakin.",
+   "group": "In deck",
+   "text": "In the deck. Discover 5 on entering (a free spell cast from exile); from hand, {2}{R} and discard it for 3 damage, which is a discard for Spider-Man, Inti and Magmakin.",
    "graded_at": {
-    "108": "20913d19456d"
+    "108": "c612a2d650d4"
    }
   },
   "Glorious Protector": {
@@ -709,6 +784,111 @@
    "graded_at": {
     "108": "20913d19456d"
    }
+  },
+  "Black Market Connections": {
+   "group": "Treasure",
+   "text": "Every first main phase choose any of: a Treasure (1 life), a card (2 life), or a 3/2 changeling Mercenary (3 life), an outlaw that is every creature type. Ramp, draw and bodies on one enchantment; owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Heroes for Hire": {
+   "group": "Treasure",
+   "text": "Three Treasures at once, and each Treasure can instead be sacrificed to exile your top card and play it, which is a cast from exile. It turns the Treasure subtheme into impulse draw.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Bonehoard Dracosaur": {
+   "group": "Treasure",
+   "text": "A first-strike flier that exiles two cards every upkeep for you to play from exile; it makes a Treasure for a nonland and a 3/1 for a land. Card advantage and ramp every turn.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ultimate Green Goblin": {
+   "group": "Treasure",
+   "text": "Discard a card every upkeep, then make a Treasure: a free discard outlet for madness, Spider-Man and Inti, plus ramp. Mayhem lets you recast it if you discard it. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Impetuous Lootmonger": {
+   "group": "Treasure",
+   "text": "Rogue outlaw: discard on entering, then heist a card from their library to cast from exile; casting their card makes a Treasure. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Collector's Vault": {
+   "group": "Treasure",
+   "text": "A 2-mana rock in the Talismans' slot: {2},{T}: loot and make a Treasure, so every activation is a discard and refunds most of its cost. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Goldspan Dragon": {
+   "group": "Treasure",
+   "text": "Hasty flier; a Treasure on attack and whenever targeted, and Treasures tap for two mana. Strong with Prosper, Crucias and Face-Breaker already making Treasures.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Breeches, Eager Pillager": {
+   "group": "Treasure",
+   "text": "Pirate outlaw; each Pirate attack picks a mode: Treasure, can't block, or impulse a card. Axavar, Crucias, Ragavan, Glint-Horn and Magmakin are Pirates.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Grim Hireling": {
+   "group": "Treasure",
+   "text": "Rogue outlaw: two Treasures whenever your creatures connect, and spends Treasures as -X/-X removal. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Decadent Dragon": {
+   "group": "Treasure",
+   "text": "Adventure steals two of their cards to play from exile, then the dragon itself is cast from exile and makes a Treasure on every attack. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Pirate's Pillage": {
+   "group": "Treasure",
+   "text": "Discard a card as a cost, draw two and make two Treasures; a sorcery Big Score.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Unexpected Windfall": {
+   "group": "Treasure",
+   "text": "The instant version of Pirate's Pillage at {2}{R}{R}.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Smaug, Wicked Worm": {
+   "group": "Treasure",
+   "text": "Draws a card for each spell paid with Treasure mana, but its own Treasures depend on opponents' artifacts. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Season of the Bold": {
+   "group": "Treasure",
+   "text": "Up to five Treasures, or impulse two, or a mix. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Quark, Humble Proprietor": {
+   "group": "Treasure",
+   "text": "A Treasure every upkeep, but you CAN'T sacrifice Treasure tokens, which switches off the mana and Face-Breaker, Prosper and Olivia's uses. Fights the subtheme. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -801,6 +981,95 @@
     "The Infamous Cruelclaw",
     "Unstable Amulet",
     "Vindicate"
+   ],
+   "c612a2d650d4": [
+    "All-Fates Stalker",
+    "Anguished Unmaking",
+    "Arcane Signet",
+    "At Knifepoint",
+    "Axavar, Fate Thief",
+    "Big Score",
+    "Bitter Triumph",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blightstep Pathway // Searstep Pathway",
+    "Blood Crypt",
+    "Bloodtithe Harvester",
+    "Bone Miser",
+    "Bonecrusher Giant // Stomp",
+    "Boros Charm",
+    "Celes, Rune Knight",
+    "Chandra, Torch of Defiance",
+    "Charred Foyer",
+    "Clifftop Retreat",
+    "Collective Brutality",
+    "Command Tower",
+    "Conspiracy Theorist",
+    "Containment Construct",
+    "Cool but Rude",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Encampment",
+    "Dark Fortress",
+    "Demon Bolt",
+    "Dragonskull Summit",
+    "Dream Devourer",
+    "Evolving Wilds",
+    "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
+    "Fiery Temper",
+    "Fire Lord Zuko",
+    "Giant Killer",
+    "Glint-Horn Buccaneer",
+    "Godless Shrine",
+    "Inspiring Vantage",
+    "Inti, Seneschal of the Sun",
+    "Kolaghan's Command",
+    "Laelia, the Blade Reforged",
+    "Laughing Jasper Flint",
+    "Light Up the Stage",
+    "Lightning Helix",
+    "Liliana the Faultless",
+    "Living Laser",
+    "Magmakin Artillerist",
+    "Mana Confluence",
+    "Mog, Moogle Warrior",
+    "Monument to Endurance",
+    "Moonstone, Harsh Mistress",
+    "Mountain",
+    "Murderous Rider // Swift End",
+    "Nalfeshnee",
+    "Nico Minoru, Runaway",
+    "Nomad Outpost",
+    "Olivia, Opulent Outlaw",
+    "Outpost Siege",
+    "Party Thrasher",
+    "Plains",
+    "Poison the Cup",
+    "Prismatic Vista",
+    "Professional Face-Breaker",
+    "Prosper, Tome-Bound",
+    "Quintorius Kand",
+    "Ragavan, Nimble Pilferer",
+    "Rakdos, the Muscle",
+    "Raucous Carnival",
+    "Sacred Foundry",
+    "Shadow of the Goblin",
+    "Shattered Sanctum",
+    "Spider-Man, New Champion",
+    "Spider-Verse",
+    "Starting Town",
+    "Steal the Show",
+    "Stromkirk Occultist",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swamp",
+    "Talisman of Indulgence",
+    "Tannuk, Steadfast Second",
+    "Teleportation Circle",
+    "Terminal Agony",
+    "The Infamous Cruelclaw",
+    "Trumpeting Carnosaur",
+    "Unstable Amulet",
+    "Vindicate"
    ]
   }
  },
@@ -808,13 +1077,13 @@
   "Mog, Moogle Warrior": {
    "Z": {
     "m": "◇",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Rakdos, the Muscle": {
    "Z": {
-    "m": "★",
-    "graded_at": "20913d19456d"
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
    }
   },
   "Phyrexian Dragon Engine": {
@@ -1018,37 +1287,37 @@
   "Tannuk, Steadfast Second": {
    "Z": {
     "m": "★★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Teleportation Circle": {
    "Z": {
     "m": "★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Dream Devourer": {
    "Z": {
     "m": "★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Chandra, Torch of Defiance": {
    "Z": {
     "m": "★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Axavar, Fate Thief": {
    "Z": {
     "m": "★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Trumpeting Carnosaur": {
    "Z": {
     "m": "★★",
-    "graded_at": "20913d19456d"
+    "graded_at": "c612a2d650d4"
    }
   },
   "Glorious Protector": {
@@ -1145,6 +1414,96 @@
    "Z": {
     "m": "◇",
     "graded_at": "20913d19456d"
+   }
+  },
+  "Black Market Connections": {
+   "Z": {
+    "m": "★★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Heroes for Hire": {
+   "Z": {
+    "m": "★★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Bonehoard Dracosaur": {
+   "Z": {
+    "m": "★★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ultimate Green Goblin": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Impetuous Lootmonger": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Collector's Vault": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Goldspan Dragon": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Breeches, Eager Pillager": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Grim Hireling": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Decadent Dragon": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Pirate's Pillage": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Unexpected Windfall": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Smaug, Wicked Worm": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Season of the Bold": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Quark, Humble Proprietor": {
+   "Z": {
+    "m": "✗",
+    "graded_at": "c612a2d650d4"
    }
   }
  }

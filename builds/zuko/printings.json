@@ -163,6 +163,7 @@
   }
  ],
  "Bituminous Blast": [],
+ "Black Market Connections": [],
  "Bloodhall Priest": [],
  "Bloodtithe Harvester": [
   {
@@ -192,8 +193,10 @@
  ],
  "Bone Miser": [],
  "Bonecrusher Giant // Stomp": [],
+ "Bonehoard Dracosaur": [],
  "Boneyard Desecrator": [],
  "Boros Charm": [],
+ "Breeches, Eager Pillager": [],
  "Celes, Rune Knight": [],
  "Chandra, Dressed to Kill": [
   {
@@ -290,12 +293,14 @@
  ],
  "Charred Foyer": [],
  "Collective Brutality": [],
+ "Collector's Vault": [],
  "Conspiracy Theorist": [],
  "Containment Construct": [],
  "Cool but Rude": [],
  "Crucias, Titan of the Waves": [],
  "Cryptcaller Chariot": [],
  "Currency Converter": [],
+ "Decadent Dragon": [],
  "Demon Bolt": [],
  "Dream Devourer": [],
  "Ephemerate": [
@@ -378,10 +383,14 @@
  "Gisa's Bidding": [],
  "Glint-Horn Buccaneer": [],
  "Glorious Protector": [],
+ "Goldspan Dragon": [],
  "Green Goblin, Revenant": [],
+ "Grim Hireling": [],
  "Hellspur Posse Boss": [],
+ "Heroes for Hire": [],
  "Highway Robbery": [],
  "Hobgoblin, Mantled Marauder": [],
+ "Impetuous Lootmonger": [],
  "Infernal Grasp": [
   {
    "a": "Naomi Baker",
@@ -558,6 +567,7 @@
  "Outpost Siege": [],
  "Party Thrasher": [],
  "Phyrexian Dragon Engine": [],
+ "Pirate's Pillage": [],
  "Poison the Cup": [],
  "Professional Face-Breaker": [],
  "Prosper, Tome-Bound": [
@@ -587,6 +597,7 @@
   }
  ],
  "Quantum Entanglement": [],
+ "Quark, Humble Proprietor": [],
  "Quintorius Kand": [],
  "Ragavan, Nimble Pilferer": [
   {
@@ -658,8 +669,10 @@
  ],
  "Restoration Angel": [],
  "Rev, Tithe Extractor": [],
+ "Season of the Bold": [],
  "Shadow of the Goblin": [],
  "Slickshot Show-Off": [],
+ "Smaug, Wicked Worm": [],
  "Sozin's Comet": [],
  "Spider-Man, New Champion": [],
  "Spider-Verse": [],
@@ -727,6 +740,45 @@
  "The Infamous Cruelclaw": [],
  "Theater of Horrors": [],
  "Trumpeting Carnosaur": [],
+ "Ultimate Green Goblin": [],
+ "Unexpected Windfall": [
+  {
+   "a": "Alayna Danner",
+   "art": "https://cards.scryfall.io/art_crop/front/b/a/bae6a5fb-39f5-4cf8-85f7-661cb4570507.jpg?1783926470",
+   "cn": "164",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/a/bae6a5fb-39f5-4cf8-85f7-661cb4570507.jpg?1783926470",
+   "r": "C",
+   "set": "AFR",
+   "sn": "Adventures in the Forgotten Realms",
+   "y": "2021"
+  },
+  {
+   "a": "Lorenzo Mastroianni",
+   "art": "https://cards.scryfall.io/art_crop/front/b/2/b272df7e-f94c-4a57-a3dd-27d53525e726.jpg?1783905420",
+   "cn": "29",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/b/2/b272df7e-f94c-4a57-a3dd-27d53525e726.jpg?1783905420",
+   "r": "C",
+   "set": "OMB",
+   "sn": "Through the Omenpaths Bonus Sheet",
+   "y": "2025"
+  },
+  {
+   "a": "John Romita Sr.",
+   "art": "https://cards.scryfall.io/art_crop/front/3/3/33ba9e5a-d078-4a47-b181-0ca7d1596919.jpg?1783905383",
+   "cn": "29",
+   "fx": [
+    "borderless",
+    "full art"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/3/3/33ba9e5a-d078-4a47-b181-0ca7d1596919.jpg?1783905383",
+   "r": "M",
+   "set": "MAR",
+   "sn": "Marvel Universe",
+   "y": "2025"
+  }
+ ],
  "Unstable Amulet": [],
  "Valakut Exploration": [
   {
