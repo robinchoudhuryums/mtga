@@ -1,0 +1,123 @@
+#: name: Banished Prince
+#: format: Historic Brawl
+#: colors: RWB
+#: commander: Fire Lord Zuko
+#: plan: midrange
+#: archetype: 100-card Brawl, MARDU DISCARD INTO EXILE around Fire Lord Zuko: "Whenever you cast a spell from
+#: archetype: exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature
+#: archetype: you control." Discard and cast-from-exile are ONE engine here: a madness card is discarded INTO
+#: archetype: exile and cast from there (Terminal Agony, Fiery Temper, Anje's Ravager, Stromkirk Occultist), and
+#: archetype: Inti, Moonstone, Containment Construct, Conspiracy Theorist and Party Thrasher turn a discard into
+#: archetype: a card played from exile. Impulse draw (Prosper, Laelia, Face-Breaker, Ragavan, Jasper Flint,
+#: archetype: Outpost Siege, Charred Foyer), adventures (Murderous Rider, Bonecrusher Giant, Giant Killer),
+#: archetype: foretell (Demon Bolt, Poison the Cup), warp (All-Fates Stalker) and rebound (Ephemerate, Faithless
+#: archetype: Salvaging) are more of the same. Payoffs: discard (Spider-Man, Magmakin Artillerist, Glint-Horn
+#: archetype: Buccaneer, Living Laser, Bone Miser, Cool but Rude, Monument to Endurance) and exile casts (Quintorius
+#: archetype: Kand, Nalfeshnee, Spider-Verse, Nico Minoru, Unstable Amulet, Shadow of the Goblin). OUTLAWS are the
+#: archetype: light third axis (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Glint-Horn, Magmakin,
+#: archetype: Olivia, All-Fates Stalker; At Knifepoint). Built from the cards deck 93's refocus removed.
+#: protect: Inti, Seneschal of the Sun; Moonstone, Harsh Mistress; Containment Construct; Nico Minoru, Runaway; Prosper, Tome-Bound
+#: notes: 2026-11-27 drafted from deck 93's off-plan cuts (Inti, Nico, Crucias, Celes, Cruelclaw, Jasper Flint,
+#: notes: Living Laser, Spider-Man, Steal the Show, Olivia, Face-Breaker, All-Fates Stalker, At Knifepoint) plus a
+#: notes: survey of Mardu discard / madness / impulse / adventure cards. PROVISIONAL first draft.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Fire Lord Zuko (TLA) 221
+
+# Discard into exile — the engine: each card cast from exile is a Zuko counter on every creature
+1 Inti, Seneschal of the Sun (LCI) 156
+1 Moonstone, Harsh Mistress (MSH) 107
+1 Containment Construct (NEO) 243
+1 Conspiracy Theorist (STX) 94
+1 Party Thrasher (MH3) 129
+1 The Infamous Cruelclaw (BLB) 219
+1 Nico Minoru, Runaway (MSC) 700
+1 Crucias, Titan of the Waves (YBRO) 18
+1 Celes, Rune Knight (FIC) 1
+1 Anje's Ravager (J25) 517
+1 Faithless Salvaging (J21) 439
+1 Fable of the Mirror-Breaker // Reflection of Kiki-Jiki (NEO) 141
+1 Big Score (MSC) 802
+1 Bloodtithe Harvester (VOW) 232
+1 Steal the Show (SOS) 130
+1 Liliana the Faultless (FRA) 200
+
+# Impulse draw — exile from the library, cast from exile
+1 Prosper, Tome-Bound (SDS) 24
+1 Laelia, the Blade Reforged (MH3) 281
+1 Professional Face-Breaker (SNC) 116
+1 Laughing Jasper Flint (OTJ) 215
+1 Ragavan, Nimble Pilferer (FCA) 43
+1 Stromkirk Occultist (SIR) 179
+1 Jeska's Will (SOA) 44
+1 Light Up the Stage (RNA) 107
+1 Outpost Siege (PIO) 150
+1 Charred Foyer (DSK) 129
+1 All-Fates Stalker (EOE) 3
+1 Ephemerate (MAR) 44
+
+# Payoffs — for discarding, and for casting from exile
+1 Spider-Man, New Champion (MSC) 705
+1 Magmakin Artillerist (DFT) 137
+1 Glint-Horn Buccaneer (M20) 141
+1 Living Laser (MSC) 55
+1 Bone Miser (SPG) 87
+1 Cool but Rude (TMT) 89
+1 Monument to Endurance (DFT) 237
+1 Quintorius Kand (LCI) 238
+1 Nalfeshnee (HBG) 186
+1 Spider-Verse (SPM) 93
+1 Unstable Amulet (MH3) 142
+1 Shadow of the Goblin (SPM) 87
+1 Olivia, Opulent Outlaw (OTC) 2
+1 At Knifepoint (OTJ) 193
+
+# Interaction — madness, adventure and foretell answers are cast from exile too
+1 Terminal Agony (OTP) 55
+1 Fiery Temper (SIR) 154
+1 Murderous Rider // Swift End (ELD) 97
+1 Bonecrusher Giant // Stomp (ELD) 115
+1 Giant Killer (ELD) 14
+1 Demon Bolt (KHM) 129
+1 Poison the Cup (KHM) 103
+1 Lightning Helix (MKM) 218
+1 Vindicate (MH2) 294
+1 Kolaghan's Command (HA5) 20
+1 Infernal Grasp (MID) 107
+1 Chaos Warp (MAR) 69
+1 Bitter Triumph (SOA) 26
+1 Anguished Unmaking (OTP) 35
+1 Collective Brutality (SIR) 103
+1 Boros Charm (FDN) 721
+
+# Mana rocks
+1 Arcane Signet (FRC) 20
+1 Talisman of Indulgence (AA1) 23
+1 Talisman of Conviction (AA1) 17
+1 Talisman of Hierarchy (AA1) 21
+
+# Lands (37)
+1 Command Tower (FRC) 22
+1 Nomad Outpost (TDM) 263
+1 Godless Shrine (EOE) 254
+1 Sacred Foundry (EOE) 256
+1 Blood Crypt (ECL) 262
+1 Starting Town (FIN) 289
+1 Bleachbone Verge (DFT) 250
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Shattered Sanctum (SOS) 260
+1 Dark Fortress (MSH) 264
+1 Mana Confluence (EOS) 25
+1 Raucous Carnival (DSK) 266
+1 Sunbaked Canyon (TLE) 58
+1 Prismatic Vista (SPG) 38
+1 Inspiring Vantage (OTJ) 269
+1 Blightstep Pathway // Searstep Pathway (KHM) 252
+1 Clifftop Retreat (DOM) 239
+1 Evolving Wilds (ECL) 264
+3 Plains (FRA) 281
+8 Mountain (FRA) 287
+1 Dalkovan Encampment (TDM) 253
+1 Dragonskull Summit (XLN) 252
+5 Swamp (FRA) 285
