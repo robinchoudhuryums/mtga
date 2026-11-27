@@ -10,11 +10,11 @@
 #: archetype: attack trigger fires three times. The plan: attackers that MAKE attackers (mobilize and
 #: archetype: whenever-you-attack tokens — Zurgo, Thunder's Decree, Voice of Victory, Dalkovan Packbeasts,
 #: archetype: Bone-Cairn Butcher, War Effort, Mardu Ascendancy, Adeline, Skyknight Vanguard, Stormforged
-#: archetype: Armor, with Elspeth doubling every token) go wide on every attack; attack-trigger payoffs deal
+#: archetype: Armor, Stadium Headliner, with Elspeth doubling every token) go wide on every attack; attack-trigger payoffs deal
 #: archetype: damage (Hellrider and Ingris Stingerquill per attacker, Far Fortune, Combustion Man, Mishra,
-#: archetype: Overlord of the Boilerbilges, Arabella) and draw (Kor, Preacher, Merry, Ulder Ravengard,
+#: archetype: Overlord of the Boilerbilges, Arabella) and draw (Kor, Merry, Locke, Ulder Ravengard,
 #: archetype: Aurelia the Law Above, Cosmic Cube, Djeru and Hazoret, Smellerbee, Venat on legend casts),
-#: archetype: and the extra-combat cards — Aurelia, Raph & Leo, Genji Glove, Raiyuu — re-fire all of it.
+#: archetype: and the extra-combat cards — Aurelia, Raph & Leo, Raiyuu, Combat Celebrant — re-fire all of it.
 #: archetype: SECOND ENGINE: mobilize and attack tokens are SACRIFICED every end step, so they feed death
 #: archetype: payoffs — Sothera and Dictate of Erebos (each death costs them a creature), Pyre-Sledge
 #: archetype: Arsonist, Liliana Dreadhorde General, Venerated Stormsinger, Vraan and Nadier's Nightblade
@@ -25,7 +25,7 @@
 #: archetype: Warrior tokens being sacrificed in YOUR end step, so on Zurgo turns sacrifice them to an
 #: archetype: outlet instead. DISTINCT from deck 55 (Standard Mardu spells-velocity): this deck's engine
 #: archetype: is the attack step, not the cast count.
-#: protect: Isshin, Two Heavens as One; Sothera, the Supervoid; Pyre-Sledge Arsonist; Aurelia, the Warleader; Raph & Leo, Sibling Rivals; Genji Glove; Raiyuu, Storm's Edge; Zurgo, Thunder's Decree; Voice of Victory; Djeru and Hazoret; Stormforged Armor
+#: protect: Isshin, Two Heavens as One; Sothera, the Supervoid; Pyre-Sledge Arsonist; Aurelia, the Warleader; Raph & Leo, Sibling Rivals; Raiyuu, Storm's Edge; Zurgo, Thunder's Decree; Voice of Victory; Djeru and Hazoret; Stormforged Armor
 #: notes: DRAFTED 2026-10-26 from the owner's 130-card pile (.cycle/isshin-pile-analysis.md) plus
 #: notes: owned attack-trigger cards from outside it. The pile held 12 cards Isshin doubles; the
 #: notes: owned Mardu Historic-Brawl pool holds ~160. What Isshin does NOT double: combat-DAMAGE
@@ -75,6 +75,8 @@
 #: notes: core (cut the discard / outlaw / cast-from-exile strands for cheap attack-trigger creatures), add draw and interaction.
 #: notes: 2026-11-27: 24-swap refocus applied from the builds/isshin board (owner's 24 cuts; adds chosen for attack-trigger
 #: notes: draw, answers and protection). Interaction 12 -> 14, protection 3 -> 7, card advantage 9 -> 10. Owner keeps Pirate Peddlers, Kingpin and Akul.
+#: notes: Follow-up (owner): -Alpharael +Stadium Headliner, -Genji Glove +Combat Celebrant (unprotected), -Preacher of the
+#: notes: Schism +Locke; Zurgo Stormrender stays (its draw fires on Kor / Gourmand / Sephiroth / Ambusher combat sacrifices).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
@@ -82,7 +84,7 @@
 # Trigger doublers and extra combats — Windcrag Siege repeats Isshin, so attack triggers fire again
 1 Aurelia, the Warleader (FDN) 651
 1 Raph & Leo, Sibling Rivals (TMT) 166
-1 Genji Glove (FIN) 258
+1 Combat Celebrant (J25) 531
 1 Raiyuu, Storm's Edge (NEO) 232
 1 Windcrag Siege (TDM) 235
 
@@ -103,13 +105,13 @@
 1 Adeline, Resplendent Cathar (J25) 57
 1 Elspeth, Storm Slayer (TDM) 11
 1 Winota, Joiner of Forces (IKO) 216
+1 Stadium Headliner (TDM) 122
 
 # Damage engines — attack triggers and noncombat pings
 1 Far Fortune, End Boss (DFT) 203
 1 Combustion Man (TLA) 127
 1 Overlord of the Boilerbilges (DSK) 146
 1 Arabella, Abandoned Doll (DSK) 208
-1 Alpharael, Stonechosen (EOE) 87
 1 Hellrider (JMP) 334
 1 Ingris Stingerquill (FRA) 137
 1 Mishra, Claimed by Gix (BRO) 216
@@ -122,7 +124,7 @@
 
 # Card draw and impulse
 1 Kor, Cause of Vengeance (TRC) 96
-1 Preacher of the Schism (LCI) 113
+1 Locke, Treasure Hunter (FIC) 87
 1 Ulder Ravengard, Marshal (HBG) 76
 1 Merry, Esquire of Rohan (LTR) 215
 1 Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal (FIN) 39
