@@ -14,7 +14,7 @@
 #: archetype: Stalker, Axavar; Tannuk gives red creatures warp), discover (Trumpeting Carnosaur) and Teleportation
 #: archetype: Circle's end-step blink are more of the same. Payoffs: discard (Spider-Man, Magmakin Artillerist, Glint-Horn
 #: archetype: Buccaneer, Living Laser, Bone Miser, Cool but Rude, Monument to Endurance) and exile casts (Quintorius
-#: archetype: Kand, Nalfeshnee, Spider-Verse, Nico Minoru, Unstable Amulet, Shadow of the Goblin). OUTLAWS are the
+#: archetype: Kand, Nalfeshnee, Spider-Verse, Nico Minoru, Ob Nixilis Captive Kingpin, Archfiend of Ifnir). OUTLAWS are the
 #: archetype: light third axis (Cruelclaw, Jasper Flint, Crucias, Nico, Prosper, Ragavan, Glint-Horn, Magmakin,
 #: archetype: Olivia, All-Fates Stalker; At Knifepoint). Built from the cards deck 93's refocus removed.
 #: protect: Inti, Seneschal of the Sun; Moonstone, Harsh Mistress; Containment Construct; Nico Minoru, Runaway; Prosper, Tome-Bound
@@ -25,6 +25,12 @@
 #: notes: Salvaging +Dream Devourer, -Chaos Warp +Chandra Torch of Defiance, -Anje's Ravager +Axavar, -Infernal
 #: notes: Grasp +Trumpeting Carnosaur, -Talisman of Hierarchy +Mog, -Talisman of Conviction +Rakdos the Muscle.
 #: notes: Talisman of Indulgence is also marked to cut: its slot goes to a Treasure maker (owner: a Treasure subtheme replaces the rocks).
+#: notes: 2026-11-27 board round 3 (owner's 12 cuts): -Arcane Signet +Black Market Connections, -Talisman of
+#: notes: Indulgence +The Mind Stone, -Bloodtithe Harvester +Polterheist, -Bonecrusher Giant +Lightning Axe, -Murderous
+#: notes: Rider +Tragic Trajectory, -Collective Brutality +Florian, -Fable +Ultimate Green Goblin, -Kolaghan's Command
+#: notes: +Bonehoard Dracosaur, -Light Up the Stage +Theater of Horrors, -Shadow of the Goblin +Hidetsugu Devouring Chaos,
+#: notes: -Steal the Show +The Legend of Roku, -Unstable Amulet +Ob Nixilis Captive Kingpin (owner chose it over Solphim).
+#: notes: -Celes +Archfiend of Ifnir: Celes leaves to command her own deck (graveyard casts), sharing this deck's board.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Fire Lord Zuko (TLA) 221
@@ -38,13 +44,12 @@
 1 The Infamous Cruelclaw (BLB) 219
 1 Nico Minoru, Runaway (MSC) 700
 1 Crucias, Titan of the Waves (YBRO) 18
-1 Celes, Rune Knight (FIC) 1
 1 Axavar, Fate Thief (YEOE) 23
 1 Dream Devourer (KHM) 90
-1 Fable of the Mirror-Breaker // Reflection of Kiki-Jiki (NEO) 141
+1 Ultimate Green Goblin (SPM) 157
 1 Big Score (MSC) 802
-1 Bloodtithe Harvester (VOW) 232
-1 Steal the Show (SOS) 130
+1 Polterheist (YDSK) 26
+1 The Legend of Roku // Avatar Roku (TLA) 145
 1 Liliana the Faultless (FRA) 200
 1 Mog, Moogle Warrior (FIC) 89
 
@@ -56,12 +61,14 @@
 1 Ragavan, Nimble Pilferer (FCA) 43
 1 Stromkirk Occultist (SIR) 179
 1 Tannuk, Steadfast Second (EOE) 162
-1 Light Up the Stage (RNA) 107
+1 Theater of Horrors (RNA) 213
 1 Outpost Siege (PIO) 150
 1 Charred Foyer (DSK) 129
 1 All-Fates Stalker (EOE) 3
 1 Teleportation Circle (AFR) 39
 1 Rakdos, the Muscle (OTJ) 226
+1 Florian, Voldaren Scion (MID) 223
+1 Bonehoard Dracosaur (LCI) 134
 
 # Payoffs — for discarding, and for casting from exile
 1 Spider-Man, New Champion (MSC) 705
@@ -74,32 +81,31 @@
 1 Quintorius Kand (LCI) 238
 1 Nalfeshnee (HBG) 186
 1 Spider-Verse (SPM) 93
-1 Unstable Amulet (MH3) 142
-1 Shadow of the Goblin (SPM) 87
+1 Ob Nixilis, Captive Kingpin (MAT) 41
+1 Hidetsugu, Devouring Chaos (NEO) 99
 1 Olivia, Opulent Outlaw (OTC) 2
 1 At Knifepoint (OTJ) 193
+1 Archfiend of Ifnir (AKR) 91
 
 # Interaction — madness, adventure and foretell answers are cast from exile too
 1 Terminal Agony (OTP) 55
 1 Fiery Temper (SIR) 154
-1 Murderous Rider // Swift End (ELD) 97
-1 Bonecrusher Giant // Stomp (ELD) 115
+1 Tragic Trajectory (EOE) 122
+1 Lightning Axe (JMP) 341
 1 Giant Killer (ELD) 14
 1 Demon Bolt (KHM) 129
 1 Poison the Cup (KHM) 103
 1 Lightning Helix (MKM) 218
 1 Vindicate (MH2) 294
-1 Kolaghan's Command (HA5) 20
 1 Trumpeting Carnosaur (LCI) 171
 1 Chandra, Torch of Defiance (FRA) 244
 1 Bitter Triumph (SOA) 26
 1 Anguished Unmaking (OTP) 35
-1 Collective Brutality (SIR) 103
 1 Boros Charm (FDN) 721
 
-# Mana rocks
-1 Arcane Signet (FRC) 20
-1 Talisman of Indulgence (AA1) 23
+# Mana — Treasures and rocks
+1 Black Market Connections (HBG) 145
+1 The Mind Stone (MSH) 21
 
 # Lands (37)
 1 Command Tower (FRC) 22

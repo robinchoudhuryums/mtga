@@ -31,6 +31,7 @@ Antiquities on the Loose
 Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Archangel of Tithes
+Archfiend of Ifnir
 Archon of the Wild Rose
 Armament Dragon
 Army of the Damned
@@ -180,6 +181,7 @@ Firebending Student
 Flamehold Grappler
 Flatman
 Flopsie, Bumi's Buddy
+Florian, Voldaren Scion
 Flowerfoot Swordmaster
 Fog Bank
 Foggy Swamp Vinebender
