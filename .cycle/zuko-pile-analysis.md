@@ -182,3 +182,15 @@ Defiance, Kalain.
 
 **Protect (the cut ranking cannot see exile casts, rule 9):** Teleportation Circle (ranked
 #1 cut by `cuts`), Dream Devourer, Tannuk, Charred Foyer, Containment Construct, Moonstone.
+
+**2026-11-27 owner's marks round 4:** accepted Zuko cuts All-Fates Stalker, Big Score, Demon Bolt,
+Giant Killer, Lightning Helix, Nalfeshnee, Stromkirk Occultist, Vindicate (declined Laughing Jasper
+Flint, Olivia, Cool but Rude: their adds re-paired to Professional Face-Breaker -> Impetuous
+Lootmonger, Outpost Siege -> Goldspan, Spider-Verse -> Alpharael). Accepted Celes cuts Can't Stay
+Away, Cathartic Reunion, Faithless Looting, Inevitable Defeat, Mishra, Misty Knight, Nethergoyf,
+Priest of Fell Rites, Raging Goblinoids, Sevinne's Reclamation, Spider-Islanders, Tomb Robber
+(declined Smellerbee, Spider-Gwen, both Talismans, Collective Brutality: re-paired to Phyrexian
+Dragon Engine -> Spider-Man, Merciless Javelineer -> Liliana the Faultless, Neheb -> Black Market
+Connections, Infernal Grasp -> Boros Charm, Kolaghan's Command -> Tergrid). Quark re-graded on the
+owner's note (a Treasure battery cashed in by sacrificing it). Previews: Zuko floor A, interaction
+14, avg MV 3.38; Celes floor A, interaction 17, card advantage 9, avg MV 3.33.

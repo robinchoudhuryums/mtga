@@ -398,7 +398,7 @@
   },
   {
    "name": "Quark, Humble Proprietor",
-   "pile": "N",
+   "pile": "B",
    "src": "treasure-pass"
   },
   {
@@ -2168,7 +2168,7 @@
   },
   "Quark, Humble Proprietor": {
    "group": "Treasure",
-   "text": "Neither: you can't sacrifice Treasures.",
+   "text": "A Treasure in every upkeep, two per turn cycle, that you cannot sacrifice while Quark lives: a battery you cash in by sacrificing Quark. Zuko: Rakdos the Muscle and Hidetsugu are the outlets, but while it lives the Treasure spenders (Face-Breaker, Prosper, Heroes for Hire) are switched off. Celes: more outlets (Stormclaw, Woe Strider, Akul), and the sacrifice can be undone by her reanimators.",
    "graded_at": {
     "108": "4f0d619d9a1c",
     "109": "bfcf1d218add"
@@ -4984,11 +4984,11 @@
   },
   "Quark, Humble Proprietor": {
    "Z": {
-    "m": "✗",
+    "m": "◇",
     "graded_at": "4f0d619d9a1c"
    },
    "C": {
-    "m": "✗",
+    "m": "★",
     "graded_at": "bfcf1d218add"
    }
   },
