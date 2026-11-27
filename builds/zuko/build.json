@@ -1,0 +1,755 @@
+{
+ "schema": 1,
+ "title": "Banished Prince — bench",
+ "decks": [
+  {
+   "key": "Z",
+   "id": "108",
+   "label": "Fire"
+  }
+ ],
+ "piles": [
+  {
+   "key": "Z",
+   "label": "Zuko's pile",
+   "deck": "Z",
+   "intro": ""
+  },
+  {
+   "key": "N",
+   "label": "Doesn't fit",
+   "deck": null,
+   "intro": ""
+  }
+ ],
+ "groups": {},
+ "cards": [
+  {
+   "name": "Mog, Moogle Warrior",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Rakdos, the Muscle",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Phyrexian Dragon Engine",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Angrath, the Flame-Chained",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Long Goodbye",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Massacre Girl, Most Wanted",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Zagras, Thief of Heartbeats",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Boneyard Desecrator",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Outlaws' Merriment",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Ertha Jo, Frontier Mentor",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Alpharael, Stonechosen",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Genji Glove",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Vraan, Executioner Thane",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Avacyn's Judgment",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Bloodhall Priest",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Alchemist's Greeting",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Kitchen Imp",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Gisa's Bidding",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Cryptcaller Chariot",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Green Goblin, Revenant",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Hobgoblin, Mantled Marauder",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Ivora, Insatiable Heir",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Marauding Mako",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Necropotence",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Currency Converter",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Kitesail Freebooter",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Hellspur Posse Boss",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Vial Smasher, Gleeful Grenadier",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Foulmire Knight // Profane Insight",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Order of Midnight // Alter Fate",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Realm-Cloaked Giant // Cast Off",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Reckless Impulse",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Wrenn's Resolve",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Valakut Exploration",
+   "pile": "Z",
+   "src": "survey"
+  },
+  {
+   "name": "Appa, Steadfast Guardian",
+   "pile": "Z",
+   "src": "survey"
+  }
+ ],
+ "reasons": {
+  "Mog, Moogle Warrior": {
+   "group": "From deck 93",
+   "text": "End-step loot for EVERY player, so opponents sculpt too; Moogle tokens and counters ride on what you discard. A fine outlet, but symmetric.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Rakdos, the Muscle": {
+   "group": "From deck 93",
+   "text": "Each sacrifice exiles cards you may play (cast from exile, a Zuko trigger), but the list has almost no sacrifice fodder; it would want Bloodtithe, Treasures and mobilize-style tokens.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Phyrexian Dragon Engine": {
+   "group": "From deck 93",
+   "text": "Unearth returns it from the GRAVEYARD, which Zuko does not count; the discard-hand-draw-three is Celes-shaped value, not the exile engine.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Angrath, the Flame-Chained": {
+   "group": "From deck 93",
+   "text": "+1 makes the OPPONENT discard, which feeds none of our discard payoffs; a good walker, but off-axis here.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Long Goodbye": {
+   "group": "From deck 93",
+   "text": "Uncounterable 2-mana removal; left out only for slots (16 answers already). First interaction add if one underperforms.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Massacre Girl, Most Wanted": {
+   "group": "From deck 93",
+   "text": "Death payoff; this list kills few of its own creatures, so it would be a 5-mana pinger.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Zagras, Thief of Heartbeats": {
+   "group": "From deck 93",
+   "text": "Party discount and team deathtouch; no tie to discard or exile.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Boneyard Desecrator": {
+   "group": "From deck 93",
+   "text": "Outlaw-sacrifice Treasure maker, but the deck has no sacrifice plan.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Outlaws' Merriment": {
+   "group": "From deck 93",
+   "text": "A random Human token every upkeep; steady value, nothing to do with the engine.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Ertha Jo, Frontier Mentor": {
+   "group": "From deck 93",
+   "text": "Copies targeted activated abilities — Nico's and Liliana's would qualify, but that is two cards.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Alpharael, Stonechosen": {
+   "group": "From deck 93",
+   "text": "Void needs a warp or a permanent leaving; only All-Fates Stalker warps here.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Genji Glove": {
+   "group": "From deck 93",
+   "text": "Extra combat equipment; no attack-trigger core in this deck.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Vraan, Executioner Thane": {
+   "group": "From deck 93",
+   "text": "Death drain; same problem as Massacre Girl — few deaths.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Avacyn's Judgment": {
+   "group": "Madness",
+   "text": "Cut for Liliana the Faultless. Madness {X}{R} splits X damage among creatures — cast from exile, so a Zuko counter too.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Bloodhall Priest": {
+   "group": "Madness",
+   "text": "Cut for Boros Charm. Madness body that pings on entering or attacking, but only with an EMPTY hand, which this deck rarely has.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Alchemist's Greeting": {
+   "group": "Madness",
+   "text": "4 damage to a creature for {1}{R} on madness; a strong discard-outlet removal spell.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Kitchen Imp": {
+   "group": "Madness",
+   "text": "{B} madness 2/2 flying haste — the cheapest Zuko trigger in the pool.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Gisa's Bidding": {
+   "group": "Madness",
+   "text": "Two 2/2 Zombies for {2}{B} on madness; bodies to carry Zuko's counters.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Cryptcaller Chariot": {
+   "group": "Discard payoff",
+   "text": "A tapped 2/2 Zombie per card discarded, and it crews itself from them.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Green Goblin, Revenant": {
+   "group": "Discard payoff",
+   "text": "Flying deathtouch; on attack discard one, then draw for each card discarded this turn — grows with Inti and Conspiracy Theorist.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Hobgoblin, Mantled Marauder": {
+   "group": "Discard payoff",
+   "text": "Flying haste 2-drop that gets +2/+0 per discard; an evasive clock.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Ivora, Insatiable Heir": {
+   "group": "Discard payoff",
+   "text": "Grows per discard and makes Blood tokens (outlets).",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Marauding Mako": {
+   "group": "Discard payoff",
+   "text": "One-mana Pirate (outlaw) that grows per discard.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Necropotence": {
+   "group": "Discard payoff",
+   "text": "Huge card advantage; its discards are exiled but NOT castable, so it fights Containment Construct / Moonstone for the same cards.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Currency Converter": {
+   "group": "Discard outlet",
+   "text": "Loot rock; exiled discards come back as Treasures or 2/2 Rogues (outlaws).",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Kitesail Freebooter": {
+   "group": "Outlaws",
+   "text": "Pirate flier that strips a noncreature spell from their hand.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Hellspur Posse Boss": {
+   "group": "Outlaws",
+   "text": "Haste for outlaws plus two Mercenaries; the outlaw axis is light, so this has few targets.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Vial Smasher, Gleeful Grenadier": {
+   "group": "Outlaws",
+   "text": "Pings when another outlaw enters; about ten outlaws here.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Foulmire Knight // Profane Insight": {
+   "group": "Adventure",
+   "text": "Adventure draw, then the deathtouch 1-drop cast from exile — a Zuko trigger.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Order of Midnight // Alter Fate": {
+   "group": "Adventure",
+   "text": "Regrow a creature, then the flier cast from exile.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Realm-Cloaked Giant // Cast Off": {
+   "group": "Adventure",
+   "text": "Board wipe from an adventure; kills our own board, so only as a reset.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Reckless Impulse": {
+   "group": "Impulse",
+   "text": "Two cards from exile for {1}{R}; a cheaper Light Up the Stage.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Wrenn's Resolve": {
+   "group": "Impulse",
+   "text": "Same as Reckless Impulse.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Valakut Exploration": {
+   "group": "Impulse",
+   "text": "Every land drop is a card played from exile; leftover cards burn the opponent.",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  },
+  "Appa, Steadfast Guardian": {
+   "group": "Exile payoff",
+   "text": "Flash flier that airbends your own permanents (they re-cast from exile for {2}) and makes an Ally per exile cast; heavy white ({2}{W}{W}).",
+   "graded_at": {
+    "108": "20913d19456d"
+   }
+  }
+ },
+ "snapshots": {
+  "108": {
+   "20913d19456d": [
+    "All-Fates Stalker",
+    "Anguished Unmaking",
+    "Anje's Ravager",
+    "Arcane Signet",
+    "At Knifepoint",
+    "Big Score",
+    "Bitter Triumph",
+    "Blazemire Verge",
+    "Bleachbone Verge",
+    "Blightstep Pathway // Searstep Pathway",
+    "Blood Crypt",
+    "Bloodtithe Harvester",
+    "Bone Miser",
+    "Bonecrusher Giant // Stomp",
+    "Boros Charm",
+    "Celes, Rune Knight",
+    "Chaos Warp",
+    "Charred Foyer",
+    "Clifftop Retreat",
+    "Collective Brutality",
+    "Command Tower",
+    "Conspiracy Theorist",
+    "Containment Construct",
+    "Cool but Rude",
+    "Crucias, Titan of the Waves",
+    "Dalkovan Encampment",
+    "Dark Fortress",
+    "Demon Bolt",
+    "Dragonskull Summit",
+    "Ephemerate",
+    "Evolving Wilds",
+    "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
+    "Faithless Salvaging",
+    "Fiery Temper",
+    "Fire Lord Zuko",
+    "Giant Killer",
+    "Glint-Horn Buccaneer",
+    "Godless Shrine",
+    "Infernal Grasp",
+    "Inspiring Vantage",
+    "Inti, Seneschal of the Sun",
+    "Jeska's Will",
+    "Kolaghan's Command",
+    "Laelia, the Blade Reforged",
+    "Laughing Jasper Flint",
+    "Light Up the Stage",
+    "Lightning Helix",
+    "Liliana the Faultless",
+    "Living Laser",
+    "Magmakin Artillerist",
+    "Mana Confluence",
+    "Monument to Endurance",
+    "Moonstone, Harsh Mistress",
+    "Mountain",
+    "Murderous Rider // Swift End",
+    "Nalfeshnee",
+    "Nico Minoru, Runaway",
+    "Nomad Outpost",
+    "Olivia, Opulent Outlaw",
+    "Outpost Siege",
+    "Party Thrasher",
+    "Plains",
+    "Poison the Cup",
+    "Prismatic Vista",
+    "Professional Face-Breaker",
+    "Prosper, Tome-Bound",
+    "Quintorius Kand",
+    "Ragavan, Nimble Pilferer",
+    "Raucous Carnival",
+    "Sacred Foundry",
+    "Shadow of the Goblin",
+    "Shattered Sanctum",
+    "Spider-Man, New Champion",
+    "Spider-Verse",
+    "Starting Town",
+    "Steal the Show",
+    "Stromkirk Occultist",
+    "Sunbaked Canyon",
+    "Sunbillow Verge",
+    "Swamp",
+    "Talisman of Conviction",
+    "Talisman of Hierarchy",
+    "Talisman of Indulgence",
+    "Terminal Agony",
+    "The Infamous Cruelclaw",
+    "Unstable Amulet",
+    "Vindicate"
+   ]
+  }
+ },
+ "verdicts": {
+  "Mog, Moogle Warrior": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Rakdos, the Muscle": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Phyrexian Dragon Engine": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Angrath, the Flame-Chained": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Long Goodbye": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Massacre Girl, Most Wanted": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Zagras, Thief of Heartbeats": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Boneyard Desecrator": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Outlaws' Merriment": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Ertha Jo, Frontier Mentor": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Alpharael, Stonechosen": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Genji Glove": {
+   "Z": {
+    "m": "✗",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Vraan, Executioner Thane": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Avacyn's Judgment": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Bloodhall Priest": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Alchemist's Greeting": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Kitchen Imp": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Gisa's Bidding": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Cryptcaller Chariot": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Green Goblin, Revenant": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Hobgoblin, Mantled Marauder": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Ivora, Insatiable Heir": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Marauding Mako": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Necropotence": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Currency Converter": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Kitesail Freebooter": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Hellspur Posse Boss": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Vial Smasher, Gleeful Grenadier": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Foulmire Knight // Profane Insight": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Order of Midnight // Alter Fate": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Realm-Cloaked Giant // Cast Off": {
+   "Z": {
+    "m": "△",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Reckless Impulse": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Wrenn's Resolve": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Valakut Exploration": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  },
+  "Appa, Steadfast Guardian": {
+   "Z": {
+    "m": "★",
+    "graded_at": "20913d19456d"
+   }
+  }
+ }
+}
