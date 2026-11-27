@@ -103,9 +103,10 @@ heist give Celes nothing.
 **Zuko package v4 (proposed 2026-11-27, on the board as suggestions):** -Big Score +Heroes for Hire,
 -Laughing Jasper Flint +Impetuous Lootmonger, -Olivia Opulent Outlaw +Goldspan Dragon, -Cool but
 Rude +Alpharael, -Vindicate +Collective Defiance, -Nalfeshnee +Ruinous Ultimatum, -Giant Killer
-+Phelia, -Stromkirk Occultist +Azula, -Lightning Helix +Lorehold; Plains/Mountain/Swamp ->
-Eiganjo/Sokenzan/Takenuma. Preview: floor A, legal; interaction 18 -> 17, card advantage 22,
-protection 5 -> 6, board power 107 -> 112, avg MV 3.25 -> 3.40. Keeps Living Laser, Bone Miser,
++Phelia, -Stromkirk Occultist +Azula, -Lightning Helix +Lorehold, -Demon Bolt +Grenzo, -All-Fates Stalker +Nita
+(heist added 2026-11-27); Plains/Mountain/Swamp ->
+Eiganjo/Sokenzan/Takenuma. Preview: floor A, legal; interaction 18 -> 15, card advantage 22 -> 23,
+protection 5 -> 6, board power 107 -> 118, avg MV 3.25 -> 3.43. Keeps Living Laser, Bone Miser,
 At Knifepoint, Mog, Rakdos (owner's).
 
 **Celes package v1 (proposed 2026-11-27, on the board as suggestions):** -Spider-Islanders +Nico,
@@ -113,9 +114,16 @@ At Knifepoint, Mog, Rakdos (owner's).
 Dracosaur, -Misty Knight +Quintorius History Chaser, -Can't Stay Away +Sela, -Sevinne's
 Reclamation +Spider-Verse, -Talisman of Conviction +Black Market Connections, -Inevitable Defeat
 +Lightning Axe, -Mishra Claimed by Gix +Highway Reaver, -Tomb Robber +Stormclaw Rager, -Smellerbee
-+Spider-Man, -Talisman of Hierarchy +Liliana the Faultless, -Spider-Gwen +Boros Charm; Swamp ->
++Spider-Man, -Talisman of Hierarchy +Liliana the Faultless, -Spider-Gwen +Boros Charm, -Nethergoyf
++Necrogoyf, -Priest of Fell Rites +The Eldest Reborn, -Collective Brutality +Tergrid (opponent
+discard added 2026-11-27); Swamp ->
 Takenuma, Mountain -> Sokenzan. Preview: floor A, legal; interaction 16 -> 18, card advantage
-8 -> 10 (the role model undercounts recursion), protection 1 -> 3, avg MV 3.13 -> 3.22.
+8 -> 10 (the role model undercounts recursion), protection 1 -> 3, avg MV 3.13 -> 3.38,
+early drops 20 -> 14.
+
+**Heist vs opponent discard:** heist suits Zuko (exile casts; Nita stacks counters), opponent
+discard leans Celes (Tergrid, Eldest Reborn and Junji take from their graveyard; symmetric
+discard fills hers). Pure hand attack fits neither deck.
 
 
 **Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
