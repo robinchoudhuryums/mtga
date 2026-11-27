@@ -141,7 +141,6 @@
 5 Swamp (FRA) 285
 
 #~ +Alchemist's Greeting | BENCH (builder zuko): owner's bench pick
-#~ +Alpharael, Stonechosen | BENCH (builder zuko): owner's bench pick
 #~ +Angrath, the Flame-Chained | BENCH (builder zuko): owner's bench pick
 #~ +Boneyard Desecrator | BENCH (builder zuko): owner's bench pick
 #~ +Ertha Jo, Frontier Mentor | BENCH (builder zuko): owner's bench pick
