@@ -383,6 +383,711 @@
    "name": "Quark, Humble Proprietor",
    "pile": "Z",
    "src": "treasure-pass"
+  },
+  {
+   "name": "Drill Bit",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Reckoner Shakedown",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Azula, Ruthless Firebender",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Hostile Investigator",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Waste Not",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tomb Robber",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Dying to Serve",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Death of Gwen Stacy",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Heartless Pillage",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ozai's Cruelty",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ninja's Blades",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ral Zarek, Guest Lecturer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kroxa and Kunoros",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ruinous Ultimatum",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Lorehold, the Historian",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Killian, Spotlight Chaser",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Chainer, Nightmare Adept",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Inevitable Defeat",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Thoughtseize",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Carnival // Carnage",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Merciless Javelineer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Quintorius, History Chaser",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Neriv, Crackling Vanguard",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kroxa, Titan of Death's Hunger",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Intruder's Inquisition",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Thorna and Twigtooth",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Stinging Vitriol",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Bullseye, Death Dealer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Worf, Defiant Commander",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tinybones, Trinket Thief",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tourach, Dread Cantor",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Neriv, Heart of the Storm",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ob Nixilis, the Adversary",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tinybones, Bauble Burglar",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Green Goblin, Back for More",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Junji, the Midnight Sky",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Maha, Its Feathers Night",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tergrid, God of Fright // Tergrid's Lantern",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Witch-king of Angmar",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Eldest Reborn",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Armus, Skin of Evil",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Mind Twist",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Gamble",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Lightning Axe",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Artist's Talent",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Lady Spider, Maybelle Reilly",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Misty Knight, Hero for Hire",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ambergris, Citadel Agent",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Captain James T. Kirk",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Collective Defiance",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kardum, Patron of Flames",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Jaxis, the Troublemaker",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Neheb, Dreadhorde Champion",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Smellerbee, Rebel Fighter",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Solphim, Mayhem Dominus",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Jiang Yanggu, Alone",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Mishra, Claimed by Gix",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Cloudshift",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Daydream",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Airbender Ascension",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Phelia, Exuberant Shepherd",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Mind Stone",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Photon, Lady of Light",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Soul Stone",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Neutrinos",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Sadistic Slash",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ayara, Widow of the Realm // Ayara, Furnace Queen",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Hidetsugu Consumes All // Vessel of the All-Consuming",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Celestial Vault",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Living End",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kaya's Ghostform",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Indomitable Creativity",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Olivia, Crimson Bride",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Dauthi Voidwalker",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Black Widow, Super Spy",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Hellspur Brute",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Wild Pack Squad",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Lassoed by the Law",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "June, Bounty Hunter",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Rakish Crew",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Brimstone Roundup",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Iron Fist, Hero for Hire",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Squall, SeeD Mercenary",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Form a Posse",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Taii Wakeen, Perfect Shot",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Luke Cage, Hero for Hire",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Reno and Rude",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Vincent Valentine // Galian Beast",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Razorkin Needlehead",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Astelli Reclaimer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Tragic Trajectory",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Eject the Warp Core",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Elegy Acolyte",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Mishra, Tamer of Mak Fawa",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Highway Reaver",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Spider-Gwen, Free Spirit",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Magda, the Hoardmaster",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Sela, Tal Shiar Paradox",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kellan, Planar Trailblazer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Vaan, Street Thief",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Superior Foes of Spider-Man",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Baron Bertram Graywater",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Locke, Treasure Hunter",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Akul the Unrepentant",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Grand Goatnapper",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Grenzo, Crooked Jailer",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Sami, Wildcat Captain",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Great Train Heist",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Polterheist",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Rakdos Joins Up",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Rakdos, Patron of Chaos",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Rakdos's Return",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ozai, the Phoenix King",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Sun Warriors",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Cruel Administrator",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Zhao, Ruthless Admiral",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Hidetsugu, Devouring Chaos",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Fire Lord Ozai",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Evereth, Viceroy of Plunder",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kazarov, Sengir Pureblood",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Body Dropper",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Dreadhorde Butcher",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Invasion of Azgol // Ashen Reaper",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Juri, Master of the Revue",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kalain, Reclusive Painter",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Oni-Cult Anvil",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Dalkovan Outrider",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Florian, Voldaren Scion",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Stormclaw Rager",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Vial Smasher the Fierce",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kardur's Vicious Return",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kethek, Crucible Goliath",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Ob Nixilis, Captive Kingpin",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "The Balrog, Durin's Bane",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Orcus, Prince of Undeath",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Kaya the Inexorable",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Djeru and Hazoret",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Quintorius, Loremaster",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
+  },
+  {
+   "name": "Nita, Forum Conciliator",
+   "pile": "Z",
+   "src": "pile-2026-11-27"
   }
  ],
  "reasons": {
