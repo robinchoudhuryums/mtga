@@ -1804,6 +1804,216 @@
    "graded_at": {
     "108": "c612a2d650d4"
    }
+  },
+  "Tourach, Dread Cantor": {
+   "group": "Hand attack",
+   "text": "Grows only when an OPPONENT discards; kicked, it makes them discard two (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Neriv, Heart of the Storm": {
+   "group": "Damage",
+   "text": "Creatures that entered THIS turn deal double damage. Tannuk's warp and haste make every red creature that kind of attacker, and madness and adventure creatures enter mid-turn.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ob Nixilis, the Adversary": {
+   "group": "Hand attack",
+   "text": "Casualty copies it; +1 is opponent discard-or-lose-2 (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Tinybones, Bauble Burglar": {
+   "group": "Hand attack",
+   "text": "Opponents' discards go to exile for you to cast (a Zuko trigger), but only if you make them discard (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Green Goblin, Back for More": {
+   "group": "Discard outlet",
+   "text": "Each combat you discard (repeatable) and each opponent discards; a 5-mana flier with menace. Mayhem is a graveyard cast (rule 1).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Junji, the Midnight Sky": {
+   "group": "Other",
+   "text": "A death trigger: opponent discard or a reanimation; strong body, off the engine.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Maha, Its Feathers Night": {
+   "group": "Damage",
+   "text": "Opponents' creatures have base toughness 1, so Spider-Man, Bullseye, Kolaghan's Command, Fiery Temper and every ping become removal. Ward is a discard for them.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Tergrid, God of Fright // Tergrid's Lantern": {
+   "group": "Hand attack",
+   "text": "Steals permanents opponents discard or sacrifice; needs hand attack (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Witch-king of Angmar": {
+   "group": "Protection",
+   "text": "A flier whose own discard outlet makes it indestructible; punishes creatures that hit you. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "The Eldest Reborn": {
+   "group": "Graveyard",
+   "text": "Edict, opponent discard, then reanimation from any graveyard (a Celes card, rule 2).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Armus, Skin of Evil": {
+   "group": "Interaction",
+   "text": "Seven mana as a creature, but {2}{B} and discard it from hand for -4/-4: a discard that is removal, like Carnosaur.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Mind Twist": {
+   "group": "Hand attack",
+   "text": "Mass hand attack (rule 10).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Gamble": {
+   "group": "Tutor",
+   "text": "{R}: tutor for any card, then discard at random. Finds Tannuk or Containment Construct, and a random discard can hit a madness card.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Lightning Axe": {
+   "group": "Interaction",
+   "text": "{R}, discard a card: 5 damage to a creature at instant speed. The discard is the cost, so it feeds the payoffs and madness.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Artist's Talent": {
+   "group": "Discard outlet",
+   "text": "Loots on every noncreature spell; level 2 reduces costs; level 3 adds 2 to every noncombat damage (Spider-Man, Magmakin, Glint-Horn). Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Lady Spider, Maybelle Reilly": {
+   "group": "Discard payoff",
+   "text": "Counters go only on Spiders; Spider-Man and itself are the only ones.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Misty Knight, Hero for Hire": {
+   "group": "Discard outlet",
+   "text": "{2},{T}, discard: draw for each card discarded this turn. An outlet that turns a big discard turn into cards.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Ambergris, Citadel Agent": {
+   "group": "Discard outlet",
+   "text": "Attack: discard your hand, draw two. A big discard count, but it shrinks the hand.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Captain James T. Kirk": {
+   "group": "Discard outlet",
+   "text": "On entering and attacking: loot, a token or a team pump, and all three with an empty hand. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Collective Defiance": {
+   "group": "Interaction",
+   "text": "Escalate: wheel YOUR hand (a big madness turn), 4 to a creature, 3 to the opponent; one card, three useful modes.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Kardum, Patron of Flames": {
+   "group": "Other",
+   "text": "Seeks a card per attack and makes you discard them at end step if it dies.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Jaxis, the Troublemaker": {
+   "group": "Discard outlet",
+   "text": "Discard: a hasty token copy of a creature (draws when it dies); sorcery speed.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Neheb, Dreadhorde Champion": {
+   "group": "Discard outlet",
+   "text": "Combat damage: discard any number, draw that many and add that much red. A large discard turn plus mana.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Smellerbee, Rebel Fighter": {
+   "group": "Discard outlet",
+   "text": "Haste for the team; attacks to discard your hand and draw one per attacker. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Solphim, Mayhem Dominus": {
+   "group": "Damage",
+   "text": "Doubles noncombat damage to opponents and their permanents (Spider-Man, Magmakin, Glint-Horn, Bullseye, Nico, Shadow of the Goblin); discard two for an indestructible counter. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Jiang Yanggu, Alone": {
+   "group": "Discard outlet",
+   "text": "Loots only when a creature attacks ALONE, which a go-wide attacking deck rarely does. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Mishra, Claimed by Gix": {
+   "group": "Damage",
+   "text": "Drains per attacker; melds only with Phyrexian Dragon Engine. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": {
+   "group": "Discard outlet",
+   "text": "Enters looting two; transforming exiles and returns it (enters from exile, a Zuko trigger), and Phoenix's III reanimates and flips it back from exile again. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Cloudshift": {
+   "group": "Blink",
+   "text": "One-mana blink: a permanent entering from exile and another enters trigger (Celes, Joshua, Kirk, Bullseye).",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
+  },
+  "Daydream": {
+   "group": "Blink",
+   "text": "Blink with a counter, twice with flashback. Owned.",
+   "graded_at": {
+    "108": "c612a2d650d4"
+   }
   }
  },
  "snapshots": {
@@ -2596,6 +2806,186 @@
    }
   },
   "Tinybones, Trinket Thief": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tourach, Dread Cantor": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Neriv, Heart of the Storm": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ob Nixilis, the Adversary": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tinybones, Bauble Burglar": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Green Goblin, Back for More": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Junji, the Midnight Sky": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Maha, Its Feathers Night": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Tergrid, God of Fright // Tergrid's Lantern": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Witch-king of Angmar": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "The Eldest Reborn": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Armus, Skin of Evil": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Mind Twist": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Gamble": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Lightning Axe": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Artist's Talent": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Lady Spider, Maybelle Reilly": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Misty Knight, Hero for Hire": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Ambergris, Citadel Agent": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Captain James T. Kirk": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Collective Defiance": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Kardum, Patron of Flames": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Jaxis, the Troublemaker": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Neheb, Dreadhorde Champion": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Smellerbee, Rebel Fighter": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Solphim, Mayhem Dominus": {
+   "Z": {
+    "m": "★★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Jiang Yanggu, Alone": {
+   "Z": {
+    "m": "△",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Mishra, Claimed by Gix": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": {
+   "Z": {
+    "m": "★",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Cloudshift": {
+   "Z": {
+    "m": "◇",
+    "graded_at": "c612a2d650d4"
+   }
+  },
+  "Daydream": {
    "Z": {
     "m": "◇",
     "graded_at": "c612a2d650d4"
