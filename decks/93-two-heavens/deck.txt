@@ -74,7 +74,7 @@
 #: notes: unconditional taplands (tapped-land cost 3.1 -> 1.4 points a card). Open: refocus on the Isshin attack
 #: notes: core (cut the discard / outlaw / cast-from-exile strands for cheap attack-trigger creatures), add draw and interaction.
 #: notes: 2026-11-27: 24-swap refocus applied from the builds/isshin board (owner's 24 cuts; adds chosen for attack-trigger
-#: notes: draw, answers and protection). Interaction 12 -> 15, protection 3 -> 6. Owner keeps Pirate Peddlers, Kingpin and Akul.
+#: notes: draw, answers and protection). Interaction 12 -> 14, protection 3 -> 7, card advantage 9 -> 10. Owner keeps Pirate Peddlers, Kingpin and Akul.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Isshin, Two Heavens as One (NEO) 224
