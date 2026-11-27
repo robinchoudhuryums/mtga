@@ -83,6 +83,12 @@ Kalain, Kaya the Inexorable, Djeru and Hazoret, Quintorius Loremaster.
 
 ## 5. Consolidated plan (live)
 
+**2026-11-27 — applied and split.** Deck 108 took the owner's 12 board swaps (Ob Nixilis over
+Solphim) and Archfiend of Ifnir for Celes. Celes now commands **deck 109 Returners** (graveyard
+casts and reanimation; draft from the board), and `builds/zuko` covers BOTH decks: piles Z (Zuko),
+C (Celes), B (either deck), N (neither). Cards were pre-sorted by reason group; every card has a
+verdict for each deck. The owner divides the rest between the two decks on the board.
+
 
 **Owner's board round 3 (2026-11-27):** 53 adds marked against 12 cuts, plus notes. Re-graded
 on the owner's notes: Alpharael (void is on most turns via Treasures and warp), Dalkovan

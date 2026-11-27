@@ -1,0 +1,118 @@
+#: name: Returners
+#: format: Historic Brawl
+#: colors: RWB
+#: commander: Celes, Rune Knight
+#: plan: midrange
+#: archetype: 100-card Brawl, MARDU DISCARD-TO-GRAVEYARD around Celes, Rune Knight: "When Celes enters, discard any
+#: archetype: number of cards, then draw that many cards plus one. Whenever one or more other creatures you control enter,
+#: archetype: if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each
+#: archetype: creature you control." The sibling of deck 108 (Fire Lord Zuko), which casts from EXILE; this deck casts
+#: archetype: from the GRAVEYARD. Discard outlets fill the yard, then mayhem (Scarlet Spider, Swarm, Spider-Islanders,
+#: archetype: Raging Goblinoids, both Green Goblins, Carnage), escape (Phoenix of Ash, Woe Strider, Kroxa, Phlage,
+#: archetype: Nethergoyf), unearth (Gixian Recycler, Phyrexian Dragon Engine), Bloodghast, Squee and Tenacious Underdog
+#: archetype: come back, and the reanimators (Alesha, Terra, Kroxa and Kunoros, Olivia Crimson Bride, Chainer, Lurrus,
+#: archetype: Priest of Fell Rites, Sorin, Liliana, The Soul Stone) return the rest. Each return is a team-wide counter.
+#: protect: Chainer, Nightmare Adept; Lurrus of the Dream-Den; Alesha, Who Smiles at Death
+#: notes: 2026-11-27 drafted as deck 108's graveyard twin, from the shared builds/zuko board. PROVISIONAL first
+#: notes: draft: the owner will divide the board's cards between 108 and 109.
+
+# Commander (leads from the command zone; also one of the 100)
+1 Celes, Rune Knight (FIC) 1
+
+# Back from the graveyard — every one of these re-entering (or cast from the yard) is a Celes counter on the team
+1 Scarlet Spider, Kaine (SPM) 143
+1 Swarm, Being of Bees (MSC) 799
+1 Spider-Islanders (SPM) 91
+1 Raging Goblinoids (SPM) 85
+1 Green Goblin, Back for More (MSC) 657
+1 Ultimate Green Goblin (SPM) 157
+1 Carnage, Crimson Chaos (SPM) 125
+1 Bloodghast (DFT) 77
+1 Gixian Recycler (YBRO) 27
+1 Tenacious Underdog (SNC) 97
+1 Squee, Dubious Monarch (DMU) 146
+1 Phoenix of Ash (THB) 148
+1 Woe Strider (THB) 123
+1 Kroxa, Titan of Death's Hunger (THB) 221
+1 Phlage, Titan of Fire's Fury (MH3) 197
+1 Phyrexian Dragon Engine (BRO) 163
+1 Mishra, Claimed by Gix (BRO) 216
+1 Nethergoyf (MH3) 103
+
+# Reanimation engines — return creatures from the graveyard
+1 Alesha, Who Smiles at Death (EA1) 8
+1 Terra, Herald of Hope (FIC) 4
+1 Kroxa and Kunoros (MOM) 245
+1 Olivia, Crimson Bride (VOW) 245
+1 Chainer, Nightmare Adept (J21) 683
+1 Lurrus of the Dream-Den (IKO) 226
+1 Priest of Fell Rites (J21) 707
+1 Sorin, Vengeful Bloodlord (WAR) 217
+1 Liliana, Heretical Healer // Liliana, Defiant Necromancer (PIO) 96
+1 The Soul Stone (SPM) 66
+1 Can't Stay Away (MID) 213
+1 Joshua, Phoenix's Dominant (FIN) 229
+1 Sevinne's Reclamation (MH3) 267
+
+# Discard outlets — fill the graveyard
+1 Spider-Gwen, Free Spirit (MSC) 874
+1 Misty Knight, Hero for Hire (MSH) 145
+1 Azula, Ruthless Firebender (TLE) 101
+1 Tomb Robber (RIX) 87
+1 Merciless Javelineer (AKR) 245
+1 Bullseye, Death Dealer (MSH) 209
+1 Lorehold, the Historian (SOS) 201
+1 Smellerbee, Rebel Fighter (TLE) 125
+1 Neheb, Dreadhorde Champion (WAR) 140
+1 Faithless Looting (SIS) 40
+1 Cathartic Reunion (TLE) 164
+1 Unexpected Windfall (AFR) 164
+1 Archfiend of Ifnir (AKR) 91
+1 Hostile Investigator (BIG) 10
+
+# Interaction
+1 Lightning Helix (MKM) 218
+1 Vindicate (MH2) 294
+1 Terminal Agony (OTP) 55
+1 Bitter Triumph (SOA) 26
+1 Anguished Unmaking (OTP) 35
+1 Electro's Bolt (SPM) 77
+1 Sadistic Slash (MSC) 666
+1 Infernal Grasp (MID) 107
+1 Kolaghan's Command (HA5) 20
+1 Collective Brutality (SIR) 103
+1 Murderous Rider // Swift End (ELD) 97
+1 Kaya the Inexorable (KHM) 218
+1 Inevitable Defeat (TDM) 194
+
+# Mana rocks
+1 Arcane Signet (FRC) 20
+1 Talisman of Indulgence (AA1) 23
+1 Talisman of Hierarchy (AA1) 21
+1 Talisman of Conviction (AA1) 17
+
+# Lands (37)
+1 Command Tower (FRC) 22
+1 Nomad Outpost (TDM) 263
+1 Godless Shrine (EOE) 254
+1 Sacred Foundry (EOE) 256
+1 Blood Crypt (ECL) 262
+1 Starting Town (FIN) 289
+1 Bleachbone Verge (DFT) 250
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Shattered Sanctum (SOS) 260
+1 Dark Fortress (MSH) 264
+1 Mana Confluence (EOS) 25
+1 Raucous Carnival (DSK) 266
+1 Sunbaked Canyon (TLE) 58
+1 Prismatic Vista (SPG) 38
+1 Inspiring Vantage (OTJ) 269
+1 Blightstep Pathway // Searstep Pathway (KHM) 252
+1 Clifftop Retreat (DOM) 239
+1 Evolving Wilds (ECL) 264
+2 Plains (FRA) 281
+6 Mountain (FRA) 287
+1 Dalkovan Encampment (TDM) 253
+1 Dragonskull Summit (XLN) 252
+8 Swamp (FRA) 285

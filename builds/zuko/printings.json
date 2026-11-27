@@ -3,6 +3,7 @@
  "Airbender's Reversal": [],
  "Akul the Unrepentant": [],
  "Alchemist's Greeting": [],
+ "Alesha, Who Smiles at Death": [],
  "All-Fates Stalker": [],
  "Alpharael, Stonechosen": [],
  "Ambergris, Citadel Agent": [],
@@ -175,6 +176,30 @@
  "Bituminous Blast": [],
  "Black Market Connections": [],
  "Black Widow, Super Spy": [],
+ "Bloodghast": [
+  {
+   "a": "Daarken",
+   "art": "https://cards.scryfall.io/art_crop/front/c/f/cf5fe0bc-02b7-4bcf-8adf-93af7ad76963.jpg?1783915774",
+   "cn": "9",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/c/f/cf5fe0bc-02b7-4bcf-8adf-93af7ad76963.jpg?1783915774",
+   "r": "R",
+   "set": "HA7",
+   "sn": "Historic Anthology 7",
+   "y": "2023"
+  },
+  {
+   "a": "Francisco Badilla",
+   "art": "https://cards.scryfall.io/art_crop/front/f/d/fdceefe6-f083-4955-b53a-8e6f8aeb2083.jpg?1783907898",
+   "cn": "77",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/f/d/fdceefe6-f083-4955-b53a-8e6f8aeb2083.jpg?1783907898",
+   "r": "R",
+   "set": "DFT",
+   "sn": "Aetherdrift",
+   "y": "2025"
+  }
+ ],
  "Bloodhall Priest": [],
  "Bloodtithe Harvester": [
   {
@@ -211,8 +236,45 @@
  "Breeches, Eager Pillager": [],
  "Brimstone Roundup": [],
  "Bullseye, Death Dealer": [],
+ "Can't Stay Away": [],
  "Captain James T. Kirk": [],
+ "Carnage, Crimson Chaos": [],
  "Carnival // Carnage": [],
+ "Cathartic Reunion": [
+  {
+   "a": "Jakub Kasper",
+   "art": "https://cards.scryfall.io/art_crop/front/4/3/43d93cfd-06d1-4c6a-87f6-9b6eaa2a995f.jpg?1783931053",
+   "cn": "110",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/4/3/43d93cfd-06d1-4c6a-87f6-9b6eaa2a995f.jpg?1783931053",
+   "r": "C",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Howard Lyon",
+   "art": "https://cards.scryfall.io/art_crop/front/1/f/1f87884f-0502-4b5f-a8c4-f9598e9d6718.jpg?1783929004",
+   "cn": "116",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/1/f/1f87884f-0502-4b5f-a8c4-f9598e9d6718.jpg?1783929004",
+   "r": "C",
+   "set": "KLR",
+   "sn": "Kaladesh Remastered",
+   "y": "2020"
+  },
+  {
+   "a": "Awanqi (Angela Wang)",
+   "art": "https://cards.scryfall.io/art_crop/front/a/5/a5e23253-873d-4c0b-b446-ea2c21af11dd.jpg?1783904805",
+   "cn": "164",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/a/5/a5e23253-873d-4c0b-b446-ea2c21af11dd.jpg?1783904805",
+   "r": "C",
+   "set": "TLE",
+   "sn": "Avatar: The Last Airbender Eternal",
+   "y": "2025"
+  }
+ ],
  "Celes, Rune Knight": [],
  "Celestial Vault": [],
  "Chainer, Nightmare Adept": [],
@@ -508,6 +570,46 @@
    "y": "2022"
   }
  ],
+ "Faithless Looting": [
+  {
+   "a": "Carly Mazur",
+   "art": "https://cards.scryfall.io/art_crop/front/b/4/b429172f-2182-49dd-b6f6-e5e09493628d.jpg?1783927430",
+   "cn": "38",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/b/4/b429172f-2182-49dd-b6f6-e5e09493628d.jpg?1783927430",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Shiro Yayoi",
+   "art": "https://cards.scryfall.io/art_crop/front/7/0/7052a5cd-81b3-40ef-94e0-7c89e9554e33.jpg?1783927406",
+   "cn": "101",
+   "fx": [
+    "borderless"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/7/0/7052a5cd-81b3-40ef-94e0-7c89e9554e33.jpg?1783927406",
+   "r": "R",
+   "set": "STA",
+   "sn": "Strixhaven Mystical Archive",
+   "y": "2021"
+  },
+  {
+   "a": "Gabor Szikszai",
+   "art": "https://cards.scryfall.io/art_crop/front/0/4/0415df8a-078f-4c12-84e5-b9af7b3e7739.jpg?1783917489",
+   "cn": "40",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/0/4/0415df8a-078f-4c12-84e5-b9af7b3e7739.jpg?1783917489",
+   "r": "C",
+   "set": "SIS",
+   "sn": "Shadows of the Past",
+   "y": "2023"
+  }
+ ],
  "Faithless Salvaging": [],
  "Fiery Temper": [],
  "Fire Lord Ozai": [],
@@ -572,6 +674,7 @@
  "Geological Appraiser": [],
  "Giant Killer": [],
  "Gisa's Bidding": [],
+ "Gixian Recycler": [],
  "Glint-Horn Buccaneer": [],
  "Glorious Protector": [],
  "Goldspan Dragon": [],
@@ -808,6 +911,7 @@
  ],
  "Jeska's Will": [],
  "Jiang Yanggu, Alone": [],
+ "Joshua, Phoenix's Dominant": [],
  "Joshua, Phoenix's Dominant // Phoenix, Warden of Fire": [],
  "June, Bounty Hunter": [],
  "Junji, the Midnight Sky": [
@@ -1027,12 +1131,40 @@
   }
  ],
  "Liliana the Faultless": [],
+ "Liliana, Heretical Healer // Liliana, Defiant Necromancer": [],
  "Living End": [],
  "Living Laser": [],
  "Locke, Treasure Hunter": [],
  "Long Goodbye": [],
  "Lorehold, the Historian": [],
  "Luke Cage, Hero for Hire": [],
+ "Lurrus of the Dream-Den": [
+  {
+   "a": "Slawomir Maniak",
+   "art": "https://cards.scryfall.io/art_crop/front/5/a/5ad36fb2-c44e-4085-ba0d-54277841ad3a.jpg?1783931010",
+   "cn": "226",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/5/a/5ad36fb2-c44e-4085-ba0d-54277841ad3a.jpg?1783931010",
+   "r": "R",
+   "set": "IKO",
+   "sn": "Ikoria: Lair of Behemoths",
+   "y": "2020"
+  },
+  {
+   "a": "Steve Ellis",
+   "art": "https://cards.scryfall.io/art_crop/front/4/b/4b32771b-d89f-46b1-8c70-95a4f058ef05.jpg?1783916860",
+   "cn": "51",
+   "fx": [
+    "borderless",
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/4/b/4b32771b-d89f-46b1-8c70-95a4f058ef05.jpg?1783916860",
+   "r": "R",
+   "set": "MUL",
+   "sn": "Multiverse Legends",
+   "y": "2023"
+  }
+ ],
  "M.O.D.O.K.": [],
  "Magda, the Hoardmaster": [],
  "Magmakin Artillerist": [],
@@ -1130,6 +1262,7 @@
  "Neheb, Dreadhorde Champion": [],
  "Neriv, Crackling Vanguard": [],
  "Neriv, Heart of the Storm": [],
+ "Nethergoyf": [],
  "Nico Minoru, Runaway": [],
  "Ninja's Blades": [],
  "Nita, Forum Conciliator": [],
@@ -1250,11 +1383,13 @@
  "Party Thrasher": [],
  "Phelia, Exuberant Shepherd": [],
  "Phlage, Titan of Fire's Fury": [],
+ "Phoenix of Ash": [],
  "Photon, Lady of Light": [],
  "Phyrexian Dragon Engine": [],
  "Pirate's Pillage": [],
  "Poison the Cup": [],
  "Polterheist": [],
+ "Priest of Fell Rites": [],
  "Professional Face-Breaker": [],
  "Prosper, Tome-Bound": [
   {
@@ -1329,6 +1464,7 @@
    "y": "2025"
   }
  ],
+ "Raging Goblinoids": [],
  "Rakdos Joins Up": [],
  "Rakdos's Return": [],
  "Rakdos, Patron of Chaos": [],
@@ -1396,9 +1532,11 @@
  "Sadistic Slash": [],
  "Sami, Wildcat Captain": [],
  "Sandman's Quicksand": [],
+ "Scarlet Spider, Kaine": [],
  "Scurrilous Sentry": [],
  "Season of the Bold": [],
  "Sela, Tal Shiar Paradox": [],
+ "Sevinne's Reclamation": [],
  "Shadow of the Goblin": [],
  "Slickshot Show-Off": [],
  "Smaug, Wicked Worm": [],
@@ -1430,18 +1568,70 @@
   }
  ],
  "Solphim, Mayhem Dominus": [],
+ "Sorin, Vengeful Bloodlord": [
+  {
+   "a": "Tommy Arnold",
+   "art": "https://cards.scryfall.io/art_crop/front/3/5/354fe9bd-4ec8-409c-8ce5-b29393f3d169.jpg?1783933388",
+   "cn": "217",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/5/354fe9bd-4ec8-409c-8ce5-b29393f3d169.jpg?1783933388",
+   "r": "R",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  },
+  {
+   "a": "Yukie Tajima",
+   "art": "https://cards.scryfall.io/art_crop/front/9/a/9a29e375-081c-43ac-aeb5-9d71d65c5ddd.jpg?1783933385",
+   "cn": "217★",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/a/9a29e375-081c-43ac-aeb5-9d71d65c5ddd.jpg?1783933385",
+   "r": "R",
+   "set": "WAR",
+   "sn": "War of the Spark",
+   "y": "2019"
+  }
+ ],
  "Sozin's Comet": [],
  "Spider-Gwen, Free Spirit": [],
+ "Spider-Islanders": [],
  "Spider-Man, New Champion": [],
  "Spider-Verse": [],
  "Spring-Loaded Sawblades // Bladewheel Chariot": [],
  "Squall, SeeD Mercenary": [],
+ "Squee, Dubious Monarch": [
+  {
+   "a": "Zoltan Boros",
+   "art": "https://cards.scryfall.io/art_crop/front/3/c/3cd907ed-9c68-4bd6-af92-6244909fdf8b.jpg?1783921310",
+   "cn": "146",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/3/c/3cd907ed-9c68-4bd6-af92-6244909fdf8b.jpg?1783921310",
+   "r": "R",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  },
+  {
+   "a": "Daniel Lieske",
+   "art": "https://cards.scryfall.io/art_crop/front/0/f/0f39ecc9-0a4c-47e7-b8e6-7e00d4cb61e3.jpg?1783921239",
+   "cn": "291",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/0/f/0f39ecc9-0a4c-47e7-b8e6-7e00d4cb61e3.jpg?1783921239",
+   "r": "R",
+   "set": "DMU",
+   "sn": "Dominaria United",
+   "y": "2022"
+  }
+ ],
  "Steal the Show": [],
  "Stinging Vitriol": [],
  "Stormclaw Rager": [],
  "Stromkirk Occultist": [],
  "Sun Warriors": [],
  "Superior Foes of Spider-Man": [],
+ "Swarm, Being of Bees": [],
  "Taii Wakeen, Perfect Shot": [],
  "Takenuma, Abandoned Mire": [
   {
@@ -1500,6 +1690,32 @@
    "y": "2026"
   }
  ],
+ "Tenacious Underdog": [
+  {
+   "a": "Zara Alfonso",
+   "art": "https://cards.scryfall.io/art_crop/front/9/b/9b6a6d00-3e00-4827-8420-13343ac3d0fd.jpg?1783923123",
+   "cn": "97",
+   "fx": [],
+   "im": "https://cards.scryfall.io/normal/front/9/b/9b6a6d00-3e00-4827-8420-13343ac3d0fd.jpg?1783923123",
+   "r": "R",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  },
+  {
+   "a": "Jason A. Engle",
+   "art": "https://cards.scryfall.io/art_crop/front/a/1/a102db09-fae9-4714-951c-bbdf9d4658d7.jpg?1783923015",
+   "cn": "345",
+   "fx": [
+    "showcase"
+   ],
+   "im": "https://cards.scryfall.io/normal/front/a/1/a102db09-fae9-4714-951c-bbdf9d4658d7.jpg?1783923015",
+   "r": "R",
+   "set": "SNC",
+   "sn": "Streets of New Capenna",
+   "y": "2022"
+  }
+ ],
  "Tergrid, God of Fright // Tergrid's Lantern": [
   {
    "a": "Yongjae Choi",
@@ -1553,6 +1769,7 @@
    "y": "2024"
   }
  ],
+ "Terra, Herald of Hope": [],
  "Tersa Lightshatter": [],
  "The Balrog, Durin's Bane": [],
  "The Death of Gwen Stacy": [],
@@ -1561,6 +1778,7 @@
  "The Grand Goatnapper": [],
  "The Infamous Cruelclaw": [],
  "The Legend of Roku": [],
+ "The Legend of Roku // Avatar Roku": [],
  "The Mind Stone": [],
  "The Neutrinos": [],
  "The Rise of Sozin": [],
@@ -1753,6 +1971,7 @@
    "y": "2026"
   }
  ],
+ "Woe Strider": [],
  "Worf, Defiant Commander": [],
  "Wrenn's Resolve": [],
  "Zagras, Thief of Heartbeats": [],

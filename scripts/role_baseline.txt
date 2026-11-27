@@ -45,6 +45,7 @@ Aurelia, the Warleader
 Aurora Awakener
 Avenger of the Fallen
 Azula, Cunning Usurper
+Azula, Ruthless Firebender
 Badgermole
 Ball Lightning
 Battle of Wolf 359
@@ -166,6 +167,7 @@ Ephemerate
 Epic Experiment
 Eternal Skylord
 Exuberant Wolfbear
+Faithless Looting
 Fallen Shinobi
 Fang, Roku's Companion
 Fated Firepower
@@ -218,6 +220,7 @@ Goldvein Hydra
 Goro-Goro and Satoru
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
+Green Goblin, Back for More
 Grievous Wound
 Groundchuck & Dirtbag
 Group Project
@@ -317,6 +320,7 @@ Masked Meower
 Master Pakku
 Master's Councillors
 Mechanical Mobster
+Merciless Javelineer
 Miasmic Mummy
 Michelangelo, the Heart
 Mikaeus, the Lunarch
@@ -476,6 +480,7 @@ Sunpearl Kirin
 Super-Soldier Serum
 Support Skyforge
 Swarm Saboteur
+Swarm, Being of Bees
 Sweettooth Witch
 Swiftblade Vindicator
 Tal Shiar Operative
@@ -515,6 +520,7 @@ Tifa, Martial Artist
 Tiger Shark, Abyssal Hunter
 Tiger-Dillo
 Time Stop
+Tomb Robber
 Tomik, Izzet Sparkmage
 Toph, Greatest Earthbender
 Toph, the Blind Bandit
