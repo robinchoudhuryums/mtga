@@ -27,6 +27,7 @@
 #: notes: Recycler +Bone Miser (sacrifice payoffs and card advantage over spare outlets).
 #: notes: 2026-11-28 (owner's marks): -Talisman of Conviction +Ayara, -Talisman of Hierarchy +Ral Zarek, -Talisman of
 #: notes: Indulgence +Solphim, -Unexpected Windfall +Orcus. Arcane Signet kept as the one rock; Squall benched on the board.
+#: notes: 2026-11-28: -1 Plains +1 Swamp (black now 51 pips on 22 sources, white 14 on 18; the rebalance hint's pick).
 
 # Commander (leads from the command zone; also one of the 100)
 1 Celes, Rune Knight (FIC) 1
@@ -123,8 +124,8 @@
 1 Blightstep Pathway // Searstep Pathway (KHM) 252
 1 Clifftop Retreat (DOM) 239
 1 Evolving Wilds (ECL) 264
-2 Plains (FRA) 281
+1 Plains (FRA) 281
 6 Mountain (FRA) 287
 1 Dalkovan Encampment (TDM) 253
 1 Dragonskull Summit (XLN) 252
-8 Swamp (FRA) 285
+9 Swamp (FRA) 285
