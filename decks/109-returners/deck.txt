@@ -11,7 +11,8 @@
 #: archetype: yard, then mayhem (Scarlet Spider, Swarm, both Green Goblins, Carnage), escape (Phoenix of Ash, Woe Strider,
 #: archetype: Kroxa, Phlage), unearth (Highway Reaver grants it), Bloodghast, Squee and Tenacious
 #: archetype: Underdog come back, and the reanimators (Alesha, Terra, Kroxa and Kunoros, Olivia Crimson Bride, Chainer,
-#: archetype: Lurrus, Sorin, Liliana, The Soul Stone, The Eldest Reborn, Tergrid) return the rest. Each return is a
+#: archetype: Lurrus, Sorin, Liliana, The Soul Stone, The Eldest Reborn, Tergrid, Ral Zarek's −2, flipped Ayara
+#: archetype: every combat, Orcus all at once) return the rest. Solphim doubles the deck's noncombat damage. Each return is a
 #: archetype: team-wide counter. Graveyard casts count as casts "from anywhere other than your hand", so Nico pings and
 #: archetype: Spider-Verse copies them; Quintorius and Sela make tokens as cards leave the graveyard.
 #: protect: Chainer, Nightmare Adept; Lurrus of the Dream-Den; Alesha, Who Smiles at Death
@@ -24,6 +25,8 @@
 #: notes: the Faultless, -Neheb +Black Market Connections, -Phyrexian Dragon Engine +Boros Charm, -Kolaghan's Command +Tergrid.
 #: notes: 2026-11-27 follow-up (owner's marks): -Bullseye +Dalkovan Outrider, -Azula +Grand Nagus Zek, -Gixian
 #: notes: Recycler +Bone Miser (sacrifice payoffs and card advantage over spare outlets).
+#: notes: 2026-11-28 (owner's marks): -Talisman of Conviction +Ayara, -Talisman of Hierarchy +Ral Zarek, -Talisman of
+#: notes: Indulgence +Solphim, -Unexpected Windfall +Orcus. Arcane Signet kept as the one rock; Squall benched on the board.
 
 # Commander (leads from the command zone; also one of the 100)
 1 Celes, Rune Knight (FIC) 1
@@ -63,6 +66,9 @@
 1 Joshua, Phoenix's Dominant (FIN) 229
 1 Spider-Verse (SPM) 93
 1 Tergrid, God of Fright // Tergrid's Lantern (KHM) 112
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Ayara, Widow of the Realm // Ayara, Furnace Queen (MOM) 90
+1 Orcus, Prince of Undeath (AFR) 229
 
 # Discard outlets — fill the graveyard
 1 Spider-Gwen, Free Spirit (MSC) 874
@@ -76,9 +82,9 @@
 1 Black Market Connections (HBG) 145
 1 M.O.D.O.K. (MSH) 106
 1 Bonehoard Dracosaur (LCI) 134
-1 Unexpected Windfall (AFR) 164
 1 Archfiend of Ifnir (AKR) 91
 1 Hostile Investigator (BIG) 10
+1 Solphim, Mayhem Dominus (ONE) 150
 
 # Interaction
 1 Lightning Helix (MKM) 218
@@ -96,9 +102,6 @@
 
 # Mana rocks
 1 Arcane Signet (FRC) 20
-1 Talisman of Indulgence (AA1) 23
-1 Talisman of Hierarchy (AA1) 21
-1 Talisman of Conviction (AA1) 17
 
 # Lands (37)
 1 Command Tower (FRC) 22
